@@ -1,0 +1,240 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain 3 — Claude Code Configuration &amp; Workflows — Question Bank (20) — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · interactive</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><h1>Domain 3 — Claude Code Configuration &amp; Workflows — Question Bank (20)</h1>
+<p>Exam framing: 60 multiple-choice questions, 120 minutes, pass 720/1000, no guessing penalty. Each stem is a production scenario; wrong options are engineered traps drawn from the seven-type taxonomy (sounds-enterprise, sounds-efficient, sounds-smart, sounds-helpful, sounds-thorough, sounds-simple, sounds-pragmatic).</p>
+<h3>Q1</h3>
+<p>Your team has used Claude Code on the same repo for months. Three developers report that Claude follows the team&#39;s guidance to &quot;always include comprehensive error handling,&quot; but a fourth developer who joined last week says Claude ignores it. All four have up-to-date clones of the same branch.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Move the guidance from the original developers' user-level <code>~/.claude/CLAUDE.md</code> into the project-level <code>.claude/CLAUDE.md</code> and commit it.</span></li>
+  <li><span class="ltr">B</span><span>Have the new developer delete the conflicting section from their own <code>~/.claude/CLAUDE.md</code>.</span></li>
+  <li><span class="ltr">C</span><span>Tell the new developer to repeat the requirement in prompts until Claude remembers it for their sessions.</span></li>
+  <li><span class="ltr">D</span><span>Clear the Claude Code cache on all four machines so the current instructions are re-read.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Personal configuration in <code>~/.claude/CLAUDE.md</code> is never carried by git, so teammates never receive it; team standards belong in the version-controlled project file. B assumes a conflict where the symptom is a missing instruction, C assumes per-user learning the product does not do, and D assumes a cache that does not exist.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 3.1<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<h3>Q2</h3>
+<p>Your project CLAUDE.md has grown past 400 lines mixing coding standards, testing conventions, a PR review checklist, deployment instructions, and database migration procedures. Coding standards and testing conventions must apply in every session; the PR review, deploy, and migration guidance should only apply when doing that work.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Move all guidance into separate skills organised by workflow, leaving only a brief project description in CLAUDE.md.</span></li>
+  <li><span class="ltr">B</span><span>Keep everything in CLAUDE.md but use <code>@import</code> to organise it into separately maintained files by category.</span></li>
+  <li><span class="ltr">C</span><span>Split CLAUDE.md into files under <code>.claude/rules/</code> with path-bound globs so each rule loads only for matching file types.</span></li>
+  <li><span class="ltr">D</span><span>Keep the universal standards in CLAUDE.md and move the workflow-specific guidance (PR review, deploy, migrations) into skills that are invoked on demand.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> CLAUDE.md loads in every session, which is exactly what the always-on standards need, while a skill loads its context only when invoked — the correct home for workflow-specific guidance. A strips the always-on standards out of CLAUDE.md, B still pulls every @imported file into context each session, and C cannot distinguish &quot;deploying&quot; from &quot;editing a file that happens to match a glob.&quot;<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 3.1<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<h3>Q3</h3>
+<p>A developer insists their session is loading the right project standards, but a teammate reviewing the same change sees different conventions applied. Before changing any file, you want to confirm which memory files a session actually loaded.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Run <code>/memory</code> and read the list of memory files that are currently loaded.</span></li>
+  <li><span class="ltr">B</span><span>Run <code>/compact</code> to compress the transcript so the current instructions surface again.</span></li>
+  <li><span class="ltr">C</span><span>Search the repository for every file named CLAUDE.md and compare them by hand.</span></li>
+  <li><span class="ltr">D</span><span>Restart Claude Code so the configuration is re-discovered from scratch.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> <code>/memory</code> is the diagnostic command whose purpose is to show which memory files a session has loaded — the direct evidence you need. B compresses history and can lose detail, C cannot tell you which of those files was actually loaded for that session, and D is a restart that changes nothing about configuration discovery.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 3.1<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q4</h3>
+<p>Your team&#39;s <code>/migration</code> skill generates database migration files and takes the migration name via <code>$ARGUMENTS</code>. Three problems appear in production: developers run it with no arguments and get poorly named files; the skill sometimes picks up schema details from unrelated prior conversations; and a developer once triggered destructive test cleanup because the skill had broad tool access.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use positional <code>$1</code>/<code>$2</code> instead of <code>$ARGUMENTS</code>, add explicit schema file references with <code>@</code> syntax, and add a frontmatter description warning about destructive operations.</span></li>
+  <li><span class="ltr">B</span><span>Add <code>argument-hint</code> so a required parameter is requested, set <code>context: fork</code> to isolate execution, and restrict <code>allowed-tools</code> to the file-write operations the skill needs.</span></li>
+  <li><span class="ltr">C</span><span>Split the skill into <code>/migration-create</code> and <code>/migration-apply</code> with different <code>allowed-tools</code> scopes.</span></li>
+  <li><span class="ltr">D</span><span>Add prose validation in SKILL.md to check <code>$ARGUMENTS</code>, plus instructions to ignore prior conversation context and a list of prohibited operations.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Three problems map to three frontmatter controls: <code>argument-hint</code> for the missing argument, <code>context: fork</code> so prior conversation context does not leak in, and <code>allowed-tools</code> to make destructive tools unavailable. A warning is not a restriction, C leaves the missing-argument and context-leak problems unsolved, and D relies on advisory prose where a declaration is required.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 3.2<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<h3>Q5</h3>
+<p>Including two or three full endpoint implementation examples in context markedly improves consistency when generating new API endpoints. That context is useful only during endpoint creation — not while debugging, reviewing, or doing other work in the same API directory.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add the endpoint examples and pattern documentation to the project CLAUDE.md so they are always available.</span></li>
+  <li><span class="ltr">B</span><span>Copy the examples into the prompt manually on each generation request.</span></li>
+  <li><span class="ltr">C</span><span>Configure a path-scoped rule under <code>.claude/rules/</code> that activates whenever work touches the API directory.</span></li>
+  <li><span class="ltr">D</span><span>Create a skill that embeds the examples and pattern-following instructions, invoked on demand.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> A skill loads its context only when invoked, so the examples are present for generation and absent during review and debugging. A burns context in every session, B is unversioned manual toil, and C cannot distinguish creating an endpoint from debugging one inside the same directory.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 3.2<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<h3>Q6</h3>
+<p>A team <code>/review</code> skill implements the shared review checklist. One developer wants a stricter variant that also fails any change without a test, but they work in the same repository as everyone else.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Create <code>~/.claude/skills/review-strict/SKILL.md</code> with a different name so the stricter behaviour is personal and teammates are unaffected.</span></li>
+  <li><span class="ltr">B</span><span>Edit the project skill so it enforces the stricter rules for everyone.</span></li>
+  <li><span class="ltr">C</span><span>Add the stricter rules to the developer's <code>~/.claude/CLAUDE.md</code> and keep invoking the team skill.</span></li>
+  <li><span class="ltr">D</span><span>Add a copy of the project skill under a second name inside <code>.claude/skills/</code> so both variants are version-controlled.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Personal customisation lives in the user-level skills directory and must use a different name so nothing overrides the team&#39;s skill. B changes teammates&#39; behaviour, C leaves the skill itself unchanged and adds an ambiguous always-on standard, and D puts a personal preference into the shared, committed configuration.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 3.2<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q7</h3>
+<p>Conventions differ across your codebase: React components use functional style, API handlers use async/await with specific error handling, and models follow the repository pattern. Test files sit next to the code they test (<code>Button.test.tsx</code> beside <code>Button.tsx</code>) and must follow identical conventions wherever they live.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Put all conventions in the root CLAUDE.md under headings for each area and rely on Claude to infer which section applies.</span></li>
+  <li><span class="ltr">B</span><span>Create a skill per code type with the conventions embedded in each SKILL.md.</span></li>
+  <li><span class="ltr">C</span><span>Place a separate CLAUDE.md file in each subdirectory holding that area's conventions.</span></li>
+  <li><span class="ltr">D</span><span>Create rule files under <code>.claude/rules/</code> with YAML frontmatter declaring glob patterns, so conventions apply based on file path.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Glob-frontmatter rules apply conventions deterministically by path, including to test files distributed next to their source. A relies on inference and fails when conventions overlap, B is opt-in so conventions do not apply automatically as code is generated, and C cannot reach tests that live outside any convention-specific directory.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 3.3<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<h3>Q8</h3>
+<p>Your monorepo has migration directories in four separate services — <code>services/billing/migrations/</code>, <code>services/orders/migrations/</code>, and so on. All must follow one set of migration rules (naming, reversibility, no data backfills in the same PR), and new services are added regularly.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add a CLAUDE.md to each service's <code>migrations/</code> directory with a copy of the rules.</span></li>
+  <li><span class="ltr">B</span><span>Add one rule file under <code>.claude/rules/</code> with <code>paths: ["**/migrations/**/*"]</code> so the rules load wherever a migration file is touched.</span></li>
+  <li><span class="ltr">C</span><span>Add the migration rules to the root CLAUDE.md so they are always loaded.</span></li>
+  <li><span class="ltr">D</span><span>Create a <code>/migration-check</code> slash command that developers run before writing a migration.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> One glob-keyed rule covers every current and future migrations directory from a single source of truth. A duplicates the rules and guarantees drift, C makes every session pay for migration rules it will not use, and D makes an ambient standard opt-in — developers must remember to run it.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 3.3<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q9</h3>
+<p>Three sibling directory trees (<code>web/</code>, <code>api/</code>, <code>workers/</code>) must all follow the same Terraform conventions. The team is arguing about where to put them.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Three directory-level CLAUDE.md files, one per tree, each carrying the same rules.</span></li>
+  <li><span class="ltr">B</span><span>Root CLAUDE.md sections for each tree, leaving Claude to infer which section applies.</span></li>
+  <li><span class="ltr">C</span><span>One rule file under <code>.claude/rules/</code> whose <code>paths:</code> frontmatter lists <code>**/*.tf</code> across the repository.</span></li>
+  <li><span class="ltr">D</span><span>A <code>/terraform-review</code> command that developers invoke on Terraform changes.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> One path-scoped rule with a glob expresses a single convention that spans several trees, and it loads only for matching files. A creates three copies that drift, B is non-deterministic inference where a declaration is available, and D converts a standard into an invocation someone must remember.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 3.3<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q10</h3>
+<p>You need to add Slack as a notification channel. The codebase has established patterns for email, SMS, and push. Slack offers fundamentally different integration approaches — incoming webhooks (one-way), bot tokens (delivery confirmation, programmatic control), or a Slack App (two-way events, workspace approval) — and the task says only &quot;add Slack support.&quot;
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Start direct execution using incoming webhooks, matching the existing one-way channel pattern.</span></li>
+  <li><span class="ltr">B</span><span>Start plan mode: explore the integration options and their architectural implications, then present a recommendation before implementing.</span></li>
+  <li><span class="ltr">C</span><span>Start direct execution by scaffolding a Slack channel class from the existing pattern and defer the integration-method decision.</span></li>
+  <li><span class="ltr">D</span><span>Start direct execution with bot tokens, which keeps delivery confirmation available later.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Multiple valid approaches with materially different architectural consequences, plus ambiguous requirements, is exactly the plan-mode trigger. A and D each commit to an integration method before the trade-off is ever reviewed, and C builds throwaway structure because the integration method determines the class shape.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 3.4<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<h3>Q11</h3>
+<p>A production endpoint is throwing <code>NullPointerException</code> in <code>UserService.getById()</code>. The stack trace points at one line in one file, the null case is obvious, and the fix is adding a guard clause.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Implement the fix directly, then run the endpoint's tests to confirm.</span></li>
+  <li><span class="ltr">B</span><span>Enter plan mode, explore the service layer, present an approach, then implement after approval.</span></li>
+  <li><span class="ltr">C</span><span>Enter plan mode with several alternative guard-clause designs for the team to choose between.</span></li>
+  <li><span class="ltr">D</span><span>Rename the method and restructure the service layer while you are in the file.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Direct execution is correct when scope is narrow, the approach is known, and the change is contained to one file. B and C add approval ceremony with no decision left to make, and D expands a one-line fix into unrequested architectural change.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 3.4<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q12</h3>
+<p>You have inherited an unfamiliar 200-file service and must understand its data flow before you can plan the change. The first exploratory pass has already flooded the main conversation with directory listings and search results, and the context window is filling fast.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Delegate the reconnaissance to the Explore subagent so it holds the verbose search output and returns only a summary.</span></li>
+  <li><span class="ltr">B</span><span>Standardise the team on a larger-context model configuration so directory listings and search results fit in a single pass.</span></li>
+  <li><span class="ltr">C</span><span>Run <code>/compact</code> after every exploration step to keep the window clear.</span></li>
+  <li><span class="ltr">D</span><span>Ask Claude to keep searching but to print less text.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> The Explore subagent is the context-preservation move: it runs read-only discovery in its own context and returns a concise summary to the main conversation. B raises the ceiling instead of reducing what is pulled in, C loses detail and has to be repeated, and D asks the same context window to hold the same material in a smaller font.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 3.4<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q13</h3>
+<p>You have asked Claude Code three times to normalise API response fields into your internal format. Each attempt is wrong in a different way — fields nested differently, timestamps formatted inconsistently. You keep rewriting the prose description more carefully, and each rewrite produces a new misinterpretation.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Rewrite the requirement once more with more precise adjectives.</span></li>
+  <li><span class="ltr">B</span><span>Provide two or three concrete input/output examples of the exact transformation required.</span></li>
+  <li><span class="ltr">C</span><span>Raise the model's temperature so Claude explores different structures.</span></li>
+  <li><span class="ltr">D</span><span>Add an instruction at the end of the prompt telling Claude to remember the format.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> The model generalises from worked examples far more reliably than from descriptions; when prose has failed repeatedly, switch modality instead of rewording it. A tends to produce a different misinterpretation rather than fewer, C makes the output less determined, and D is another prose instruction of the kind that is already failing.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 3.5<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q14</h3>
+<p>Behaviour for a new validation function is precisely specified — the team already agrees on which inputs are valid and which are not — but the implementation keeps coming out wrong. You want the iteration to be driven by something checkable rather than by your description of the bug.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Describe the failing cases in prose and ask Claude to fix them in one pass.</span></li>
+  <li><span class="ltr">B</span><span>Have Claude ask you clarifying questions about the validation rules before writing code.</span></li>
+  <li><span class="ltr">C</span><span>Ask Claude to review its own implementation and explain why it is correct.</span></li>
+  <li><span class="ltr">D</span><span>Write the tests first, run them to failure, share the failing assertions, and iterate until the suite is green.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Test-driven iteration makes the requirement machine-checkable, so each round has an unambiguous pass/fail signal. A is prose again, B helps when requirements are unclear — here they are settled, and C is a self-review that will rationalise the implementation rather than correct it.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 3.5<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q15</h3>
+<p>Your team must add a compliance export that follows a regulator&#39;s retention rules. Nobody on the team has built one before, and you are worried about edge cases you would not think to specify.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Have Claude ask clarifying questions about the requirements before implementing anything.</span></li>
+  <li><span class="ltr">B</span><span>Write a detailed prose specification first and hand it over for implementation in one pass.</span></li>
+  <li><span class="ltr">C</span><span>Ask Claude to implement its best interpretation immediately and correct whatever looks wrong afterwards.</span></li>
+  <li><span class="ltr">D</span><span>Provide three input/output examples of the export and implement in one pass.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> The interview pattern surfaces considerations the team does not know it is missing — the right move in an unfamiliar domain. B encodes the team&#39;s blind spots into the specification, C discovers the gaps only after building the wrong thing, and D constrains output shape, which is not the problem here.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 3.5<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q16</h3>
+<p>Your auth middleware has two defects that interact: it does not check token expiry, and it returns HTTP 500 instead of 401 for invalid tokens. Fixing the status code changes which branch handles expired tokens, so the two fixes must be decided together. Separately, you have three unrelated typos in the docs.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Report the two middleware defects together in one message, then feed the doc typos back sequentially.</span></li>
+  <li><span class="ltr">B</span><span>Report all five issues in one message so Claude sees the complete picture.</span></li>
+  <li><span class="ltr">C</span><span>Report the two middleware defects sequentially, one per turn, so each change stays reviewable.</span></li>
+  <li><span class="ltr">D</span><span>Fix the doc typos first because they are quick, then describe the middleware defects in prose over several turns.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Interacting fixes belong in a single message so they are decided consistently, while independent issues are sequenced so each change stays clean. C inverts the rule for the defects that interact, B mixes interacting and independent work into one undifferentiated batch, and D delays the coupled change behind unrelated edits.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 3.5<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q17</h3>
+<p>Your pipeline script runs <code>claude &quot;Analyze this pull request for security issues&quot;</code>. The job hangs indefinitely, and the logs show Claude Code awaiting interactive input.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Increase the job timeout so the process has more time to complete.</span></li>
+  <li><span class="ltr">B</span><span>Add the <code>-p</code> flag so Claude Code runs non-interactively and exits when the prompt completes.</span></li>
+  <li><span class="ltr">C</span><span>Redirect stdin from <code>/dev/null</code> so nothing can block the process.</span></li>
+  <li><span class="ltr">D</span><span>Set <code>CLAUDE_HEADLESS=true</code> in the job environment before invoking the CLI.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> <code>-p</code> / <code>--print</code> is the documented non-interactive mode: it processes the prompt, prints to stdout, and exits without waiting for input. A treats the symptom and never terminates, C is not the documented headless mode and skips print-mode structured output and exit behaviour, and D names an environment variable that does not exist.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 3.6<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<h3>Q18</h3>
+<p>Your CI pipeline runs Claude Code in <code>--print</code> mode with CLAUDE.md supplying project context. Reviews are substantive, but integrating them is hard: Claude returns narrative paragraphs that developers paste into PR comments by hand. The team wants each finding posted automatically as an inline comment carrying file path, line number, severity, and suggested fix.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add an "Output Format for Review" section to CLAUDE.md with examples of structured findings.</span></li>
+  <li><span class="ltr">B</span><span>Ask the model in the prompt to return JSON instead of prose.</span></li>
+  <li><span class="ltr">C</span><span>Post-process the narrative with a regex extractor that pulls out file paths and severities.</span></li>
+  <li><span class="ltr">D</span><span>Run the review with <code>--output-format json</code> and <code>--json-schema</code> describing the finding object, then parse the output.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> A CLI-enforced output format plus schema validation is what guarantees a machine-parseable shape for downstream automation. A provides guidance that cannot guarantee the structure, B relies on the model&#39;s compliance rather than enforcement, and C is brittle and fails whenever the narrative phrasing shifts.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 3.6<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<h3>Q19</h3>
+<p>Your team uses Claude Code for code generation, and non-obvious defects — performance optimisations that break edge cases, cleanups that silently change behaviour — are caught only when another person reviews the PR. Claude&#39;s own reasoning trace during generation shows it considered those cases and concluded its approach was correct.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add a self-review step at the end of generation asking Claude to re-check its own changes.</span></li>
+  <li><span class="ltr">B</span><span>Run a second, independent Claude Code instance to review the changes without access to the generator's reasoning.</span></li>
+  <li><span class="ltr">C</span><span>Reuse the generating session for review, since it already holds all the code context.</span></li>
+  <li><span class="ltr">D</span><span>Require two developers to review every PR, one of them the author's pair.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> The generator retains its reasoning context and is therefore less likely to question its own decisions, so review must come from an instance without that context. A is the same session attempting self-critique, C is the anti-pattern the symptom describes, and D adds human overhead without addressing the model&#39;s blind spot.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 3.6<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<h3>Q20</h3>
+<p>CI-generated tests for new modules are consistently low value: they exercise getters, assert trivial truths, and never use the suite&#39;s existing fixtures. The team asks how to raise their quality.
+<strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Tighten the project-level <code>.claude/CLAUDE.md</code> with the team's testing standards, criteria for a valuable test, and the available fixtures and helpers.</span></li>
+  <li><span class="ltr">B</span><span>Add a rule under <code>.claude/rules/</code> banning mocks so generated tests must hit real services.</span></li>
+  <li><span class="ltr">C</span><span>Ask the CI prompt to "write high-quality tests that focus on behaviour" and leave configuration alone.</span></li>
+  <li><span class="ltr">D</span><span>Have a developer fix the generated tests by hand after each CI run.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> CLAUDE.md is the always-loaded place where the CI-invoked agent learns what a valuable test means in this codebase, including fixtures. B bans a mechanism instead of stating the standard, C restates the goal in prose that has already failed, and D makes the defect a permanent manual tax.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 3.6<br><strong>Source:</strong> newly written</p></div></details>
+<div class="foot">Built 2026-09-21 04:36 · source: banks/d3-questions.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script></body></html>

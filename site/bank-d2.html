@@ -1,0 +1,240 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain 2 — Question Bank (20 questions) — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · interactive</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><h1>Domain 2 — Question Bank (20 questions)</h1>
+<p>Tasks 2.1–2.5. Scenario-based, four options, one correct. Wrong options are engineered to sound smart, efficient, thorough, helpful, enterprise, simple, or pragmatic. Reused questions come from <code>resources/timothywarner-practice-60q.md</code> (original question number noted); the rest are newly written and grounded in the Domain 2 master note.</p>
+<h3>Q1</h3>
+<p>Production logs show requests like &quot;analyze the uploaded quarterly report&quot; are routed to the web-search agent 45% of the time instead of the document analysis agent. The web-search agent has a tool <code>analyze_content</code> described as &quot;analyzes content and extracts key information&quot;; the document analysis agent has <code>analyze_document</code>, described as &quot;analyzes documents and extracts key information.&quot;</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add a pre-routing classifier that detects whether the user refers to uploaded files or web content before the coordinator delegates.</span></li>
+  <li><span class="ltr">B</span><span>Rename the web-search tool to <code>extract_web_results</code> and update its description to "processes and returns information retrieved from web search and URLs."</span></li>
+  <li><span class="ltr">C</span><span>Add few-shot examples to the coordinator prompt showing correct routing for uploaded files versus web pages.</span></li>
+  <li><span class="ltr">D</span><span>Expand the document analysis tool description with usage examples, leaving the web-search tool unchanged.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Tool names and descriptions are the selection mechanism, so eliminating the semantic overlap between <code>analyze_content</code> and <code>analyze_document</code> fixes the root cause. A classifier and few-shot examples both mask the collision, and fixing only one of the two descriptions leaves the other still claiming to &quot;analyze content.&quot;<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 2.1<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Q7)</p></div></details>
+<h3>Q2</h3>
+<p>While testing a support agent you observe it often calls <code>get_customer</code> when users ask about order status, even though <code>lookup_order</code> would be more appropriate.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Implement a preprocessing classifier that detects order-related requests and routes them directly to <code>lookup_order</code>.</span></li>
+  <li><span class="ltr">B</span><span>Reduce the number of tools available to the agent to simplify the choice.</span></li>
+  <li><span class="ltr">C</span><span>Add few-shot examples to the system prompt covering all possible order-request patterns.</span></li>
+  <li><span class="ltr">D</span><span>Check the tool descriptions to confirm they clearly differentiate each tool's purpose and usage boundaries.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> The tool description is the primary input the model uses to decide which tool to call, so the first diagnostic step is verifying that the descriptions separate purpose and boundaries. A classifier is heavy infrastructure over a description problem, removing tools degrades capability without addressing the ambiguity, and enumerating &quot;all possible patterns&quot; is unbounded effort built on a weak foundation.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 2.1<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Q46)</p></div></details>
+<h3>Q3</h3>
+<p>A single <code>manage_refund</code> tool is described as &quot;processes refunds, partial refunds, store credits, or exchanges depending on policy and customer status.&quot; Production output shapes are inconsistent and the agent frequently sends the wrong parameter set.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Keep one tool but add a <code>mode</code> enum parameter listing the four behaviours.</span></li>
+  <li><span class="ltr">B</span><span>Rename the tool to <code>refund_processor</code> and expand its description to explain each mode.</span></li>
+  <li><span class="ltr">C</span><span>Split it into purpose-specific tools with tight contracts: <code>issue_full_refund</code>, <code>issue_partial_refund</code>, <code>issue_store_credit</code>, <code>process_exchange</code>.</span></li>
+  <li><span class="ltr">D</span><span>Add few-shot examples to the system prompt showing each mode in use.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> A description containing &quot;or&quot;/&quot;depending on&quot; is unsplittable at runtime, and purpose-specific tools with typed contracts make each parameter set unambiguous. An enum on one generic tool and a rename both leave the over-broad contract intact, and examples treat the symptom rather than the contract.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 2.1<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q4</h3>
+<p>A research subagent queries three source categories: academic databases return 15 relevant papers, industry reports return &quot;0 results&quot;, and patent databases return &quot;Connection timeout&quot;. You are designing how these outcomes reach the coordinator.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Aggregate the outcomes into a single success-percentage metric such as "67% source coverage", with detailed logs available on demand.</span></li>
+  <li><span class="ltr">B</span><span>Report both "timeout" and "0 results" as failures requiring coordinator intervention.</span></li>
+  <li><span class="ltr">C</span><span>Retry transient failures internally and report only persistent errors.</span></li>
+  <li><span class="ltr">D</span><span>Distinguish access failures (the timeout) that require a retry decision from valid empty results ("0 results") that represent a successful query.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> A timeout and a valid empty result are semantically different and demand different responses — retry the patent source, accept &quot;0 results&quot; as an informative finding. A coverage percentage discards which portion is retryable, treating &quot;0 results&quot; as failure forces needless intervention, and internal-only retries strip the partial-progress detail the coordinator needs.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 2.2<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Q12)</p></div></details>
+<h3>Q5</h3>
+<p>The web-search subagent times out while researching a complex topic. You need to design how information about this failure is returned to the coordinator.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Return structured error context to the coordinator including the failure type, the query executed, any partial results, and potential alternative approaches.</span></li>
+  <li><span class="ltr">B</span><span>Catch the timeout within the subagent and return an empty result set marked as successful.</span></li>
+  <li><span class="ltr">C</span><span>Implement exponential-backoff retries inside the subagent and return a generic "search unavailable" status after exhausting them.</span></li>
+  <li><span class="ltr">D</span><span>Propagate the timeout exception directly to the top-level handler, terminating the workflow.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Structured error context gives the coordinator what it needs to retry with a modified query, use partial results, or reroute. Marking a timeout as a successful empty result makes a search that never ran look like one that found nothing, a generic status strips the failure type and attempted query, and propagating the raw exception kills the whole workflow instead of one branch.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 2.2<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Q9)</p></div></details>
+<h3>Q6</h3>
+<p>A <code>get_customer</code> tool returns an empty array in two different situations: no customer matches the search, and the customer database is unreachable. The agent currently retries on both and eventually escalates with the message &quot;customer not found&quot;.</p>
+<p><strong>Which error contract is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Return <code>isError: true</code> whenever the results array is empty, so the agent always escalates rather than guessing.</span></li>
+  <li><span class="ltr">B</span><span>Return <code>isError: false</code> with an empty array when no customer matches, and <code>isError: true</code> with <code>errorCategory: "transient"</code> and <code>isRetryable: true</code> when the database is unreachable.</span></li>
+  <li><span class="ltr">C</span><span>Increase the retry count and raise the timeout so transient database failures resolve on their own.</span></li>
+  <li><span class="ltr">D</span><span>When the result is empty, have the agent ask the user to confirm their customer ID before proceeding.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> A valid empty result is information, not an error — <code>isError: false</code> with an empty array lets the agent say &quot;no customer found&quot;, while a genuine access failure carries <code>isError: true</code> and a transient category so the agent can decide whether to retry. Always escalating mislabels success, more retries cannot fix a misclassified empty result, and asking the user to confirm an ID that simply does not exist burns a turn on a non-problem.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 2.2<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q7</h3>
+<p>A <code>process_refund</code> tool returns a generic &quot;Operation failed&quot; in two distinct cases: the refund exceeds the self-service policy limit, and the payment gateway times out <em>after</em> the refund was submitted. The current wrapper marks both retryable.</p>
+<p><strong>Which error contract is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>For the policy case return <code>isError: true</code> with <code>errorCategory: "business"</code>, <code>isRetryable: false</code> and a customer-friendly description; for the post-submission timeout return <code>isError: true</code> with <code>errorCategory: "transient"</code>, <code>isRetryable: false</code> and an explicit "outcome unknown — do not retry without an idempotency check" message.</span></li>
+  <li><span class="ltr">B</span><span>Mark both <code>isRetryable: true</code> so the agent can retry with backoff.</span></li>
+  <li><span class="ltr">C</span><span>Retry both cases internally inside the tool up to five times before surfacing anything.</span></li>
+  <li><span class="ltr">D</span><span>Return both as empty results so the workflow continues without noise.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Business-rule violations are never retryable and need a user-facing explanation, and a write that may already have executed must report uncertainty rather than invite a retry that duplicates the charge. Retrying a policy failure cannot succeed, internal retries on an uncertain write risk double refunds, and returning empty hides both failures entirely.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 2.2<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q8</h3>
+<p>The document analysis agent was given a general-purpose <code>fetch_url</code> tool so it could download documents by URL. Logs show it now frequently downloads search engine results pages to do ad hoc web search, which should route through the web-search agent, producing inconsistent results.</p>
+<p><strong>Which fix is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Replace <code>fetch_url</code> with a <code>load_document</code> tool that validates that URLs point to document formats.</span></li>
+  <li><span class="ltr">B</span><span>Remove <code>fetch_url</code> and route all URL fetching through the coordinator to the web-search agent.</span></li>
+  <li><span class="ltr">C</span><span>Add domain filtering that blocks <code>fetch_url</code> calls to known search engine domains.</span></li>
+  <li><span class="ltr">D</span><span>Add a prompt instruction telling the agent to use <code>fetch_url</code> only for document URLs.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Constraining capability at the interface level makes undesired search behaviour impossible rather than discouraged — the principle of least privilege applied to the tool contract. Routing all fetches through the coordinator adds a hop for legitimate downloads, a domain blocklist is brittle against unlisted engines, and a prompt instruction leaves the over-broad capability intact.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 2.3<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Q10)</p></div></details>
+<h3>Q9</h3>
+<p>The synthesis agent must verify specific claims while merging results. Today it returns control to the coordinator, which calls the web-search agent before re-invoking synthesis — adding 2–3 loops per task and 40% latency. Assessment shows 85% of verifications are simple fact checks (dates, names, stats) and 15% need deeper research.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Give the synthesis agent access to all web-search tools so it never loops through the coordinator.</span></li>
+  <li><span class="ltr">B</span><span>Have the synthesis agent accumulate all verification needs and return them as one batch to the coordinator at the end.</span></li>
+  <li><span class="ltr">C</span><span>Have the web-search agent proactively cache extra context around each source during initial research.</span></li>
+  <li><span class="ltr">D</span><span>Give the synthesis agent a limited-scope <code>verify_fact</code> tool for simple checks, with complex verifications routed through the coordinator to the web-search agent.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> A scoped tool absorbs the 85% high-frequency case directly while preserving the delegation path for the 15% that needs it — least privilege plus a large latency cut. The full web-search toolset over-provisions and blurs roles, batching to the end lets unverified claims shape the draft, and proactive caching guesses at what will be questioned and inflates tokens.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 2.3<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Q15)</p></div></details>
+<h3>Q10</h3>
+<p>One agent has 18 tools configured and frequently selects the wrong one. Its task mix genuinely requires all 18 capabilities.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Expand all 18 tool descriptions with I/O contracts, examples, and explicit boundaries.</span></li>
+  <li><span class="ltr">B</span><span>Set <code>tool_choice: "any"</code> so the model must commit to a tool rather than answering in text.</span></li>
+  <li><span class="ltr">C</span><span>Distribute the tools across specialized subagents, giving each 4–5 role-relevant tools.</span></li>
+  <li><span class="ltr">D</span><span>Add few-shot selection examples for all 18 tools to the system prompt.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Selection reliability degrades with the number of tools in front of the model, and each subagent should carry only its role-relevant set. Better descriptions do not change the count, <code>tool_choice: &quot;any&quot;</code> forces a call without improving which one, and examples for 18 tools add token cost on every request while leaving the overload in place.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 2.3<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q11</h3>
+<p>Every customer message must call <code>extract_intent</code> before routing, currently enforced by a system prompt instruction. Roughly 15% of messages skip the extraction step.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Strengthen the system prompt to state that intent extraction is mandatory before routing.</span></li>
+  <li><span class="ltr">B</span><span>Set <code>tool_choice: {"type": "tool", "name": "extract_intent"}</code> on the first turn, then switch to <code>"auto"</code> for subsequent turns.</span></li>
+  <li><span class="ltr">C</span><span>Set <code>tool_choice: "any"</code> on the first turn so the model must call some tool.</span></li>
+  <li><span class="ltr">D</span><span>Add a post-hoc validation step that re-runs routing whenever the extraction output is missing.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> A forced tool choice makes the first call structurally guaranteed where a prompt only makes it probable. &quot;any&quot; still lets the model pick a different tool, stronger prose is the same probabilistic mechanism that already failed 15% of the time, and post-hoc validation pays a second pass after the wrong action may already have been taken. Note the corpus caveat: forced <code>tool_choice</code> returns 400 on Fable 5.1 / Mythos 5.1, where <code>auto</code> plus an explicit instruction naming the tool is the replacement; Opus 5, Sonnet 5, and the 4.x family accept forced values.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 2.3<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q12</h3>
+<p>Your team wants to add a GitHub MCP server for searching PRs and checking CI status in Claude Code. Six developers each have a personal GitHub token. You want consistent tooling across the team without committing credentials.</p>
+<p><strong>Which configuration approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Have each developer add the server in user scope with <code>claude mcp add --scope user</code>.</span></li>
+  <li><span class="ltr">B</span><span>Create an MCP server wrapper that reads tokens from a <code>.env</code> file and proxies GitHub API calls, then add the wrapper to the project <code>.mcp.json</code>.</span></li>
+  <li><span class="ltr">C</span><span>Add the server to the project <code>.mcp.json</code> using environment variable substitution (<code>${GITHUB_TOKEN}</code>) for auth, and document the required variable in the project README.</span></li>
+  <li><span class="ltr">D</span><span>Configure the server in project scope with a placeholder token and tell developers to override it in local config.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> A version-controlled <code>.mcp.json</code> with <code>${VAR}</code> expansion gives one shared source of truth for the config while each developer supplies their own secret locally. User-scope setup loses the shared source of truth, a custom proxy is unnecessary engineering when built-in expansion exists, and a committed placeholder token risks accidental use.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 2.4<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Q44)</p></div></details>
+<h3>Q13</h3>
+<p>At the start of every conversation a support agent makes a dozen exploratory tool calls to work out what data the backend exposes, burning context before any real work happens.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Build a natural-language aggregator tool that re-routes to the correct underlying tool automatically.</span></li>
+  <li><span class="ltr">B</span><span>Expose MCP resources that catalogue what is available — schemas, issue summaries, content listings — so the agent reads the catalogue once and then queries precisely.</span></li>
+  <li><span class="ltr">C</span><span>Load the full data catalogue into the system prompt and raise the MCP output token limit.</span></li>
+  <li><span class="ltr">D</span><span>Add a disambiguation tool that returns only the single best-matching data source per call.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Resources exist to reduce exploratory tool calls by showing the agent what data exists before it acts. An aggregator hides the real tool surface and makes selection worse, preloading the catalogue is token bloat, and returning one best match per call removes the model&#39;s ability to judge across options.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 2.4<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q14</h3>
+<p>A code-analysis MCP server exposes a tool that understands transitive dependencies and ranks results, but the agent keeps using Grep instead because Grep&#39;s description is tighter.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Enhance the MCP tool's description with inputs, outputs, examples, and an explicit boundary clause such as "use this for semantic queries like 'where do we handle payment retries'; prefer Grep for exact-string searches".</span></li>
+  <li><span class="ltr">B</span><span>Remove Grep and other overlapping built-in tools from the agent so the MCP tool is the only option.</span></li>
+  <li><span class="ltr">C</span><span>Add a hook that redirects Grep calls to the MCP tool.</span></li>
+  <li><span class="ltr">D</span><span>Add a system prompt line telling the agent to prefer the MCP tool.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> MCP tools compete with built-ins on description quality, and the documented fix is to strengthen the MCP tool&#39;s description with the concrete advantages built-ins cannot provide. Removing built-ins discards tools the agent still needs, a hook is the wrong layer for an API/MCP selection problem, and a bare prompt line is weaker than the description the model actually routes on.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 2.4<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q15</h3>
+<p>A team wants Jira integration for its research and support agents. A maintained community MCP server exists and covers the workflow, but its search tool returns more fields than the team needs.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Write a custom MCP server so the team controls the tool surface exactly.</span></li>
+  <li><span class="ltr">B</span><span>Skip MCP and give the agents a Bash script that calls the Jira REST API.</span></li>
+  <li><span class="ltr">C</span><span>Adopt the community server and add a <code>PostToolUse</code> hook to reshape its output.</span></li>
+  <li><span class="ltr">D</span><span>Adopt the community server and post-process its responses (or fork it) to trim the fields the team does not need.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> &quot;Configuration over construction&quot; and &quot;fork over fresh build&quot; — a community server that covers 90% of the need is the starting point, and a field-shape gap is handled by post-processing or a fork. A custom server is wasted effort for a standard integration, a Bash script discards the whole MCP integration, and a hook is the wrong layer when the gap is in the response shape.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 2.4<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q16</h3>
+<p>You need to find every caller of <code>legacyAuth</code> and then the test files that cover those callers. Test files follow the <code>&lt;source&gt;.test.ts</code> convention.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Glob every source file first, then Grep each one for <code>legacyAuth</code>.</span></li>
+  <li><span class="ltr">B</span><span>Grep for <code>legacyAuth(</code> to collect the caller files, derive the expected test filenames, then Glob patterns such as <code>**/{userService,paymentService}.test.{ts,tsx}</code>.</span></li>
+  <li><span class="ltr">C</span><span>Grep for <code>*.test.ts</code> to enumerate the test files, then Read each one.</span></li>
+  <li><span class="ltr">D</span><span>Ask the user which files contain the callers.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Content-seeded discovery starts with Grep to find the callers, then Glob narrows paths around the results. Glob-first inverts seed and filter and touches far more files, a glob pattern is not a content search so Grep <code>*.test.ts</code> returns nothing useful, and asking the user dodges a lookup the tools can perform.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 2.5<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q17</h3>
+<p>An Edit call fails with &quot;multiple matches&quot;: the target snippet appears identically in six places in a 400-line config, and only one occurrence should change.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Run <code>sed -i</code> over the file to replace the target string.</span></li>
+  <li><span class="ltr">B</span><span>Set <code>replace_all: true</code> so the edit applies to every occurrence.</span></li>
+  <li><span class="ltr">C</span><span>Expand <code>old_string</code> with surrounding context until it is unique; if no unique anchor exists at all, Read the full file and Write the corrected version.</span></li>
+  <li><span class="ltr">D</span><span>Delete the file and Write it again from scratch.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Edit&#39;s failure mode is structural — it needs a unique anchor — so the first move is to widen the anchor, with Read-then-Write as the fallback when nothing unique exists. Shell text tools are the wrong category, <code>replace_all</code> rewrites five sites that should not change, and deleting the file is destructive and loses content.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 2.5<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q18</h3>
+<p><code>formatDate</code> is defined in <code>date.ts</code> and re-exported from <code>index.ts</code> as <code>formatDateISO</code>. Grepping only <code>formatDate</code> finds the definition but misses the production callers.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Grep the original name across the repository and accept the results as complete.</span></li>
+  <li><span class="ltr">B</span><span>Read the wrapper module, list its exports and any aliases, then Grep each alias name across the codebase.</span></li>
+  <li><span class="ltr">C</span><span>Glob all <code>.ts</code> files and Read them all to see every use.</span></li>
+  <li><span class="ltr">D</span><span>Grep for the import of <code>./date</code> and infer the callers from that.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Re-exporting wrappers hide call sites behind aliases, so the trace is: read the wrapper, list exports and aliases, grep each. Grepping only the original name misses every alias caller, reading every file is a context-budget killer, and grepping imports finds the module boundary rather than the calls.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 2.5<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q19</h3>
+<p>You must explore an unfamiliar 200-file codebase to locate where request retries are handled, and the context window is already partly used.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Grep for entry points, Read those files, Grep for the identifiers they reference, then Read only the implementations that matter.</span></li>
+  <li><span class="ltr">B</span><span>Read every file in the target directory upfront to build a complete picture.</span></li>
+  <li><span class="ltr">C</span><span>Spawn one subagent per file so the whole directory is read in parallel.</span></li>
+  <li><span class="ltr">D</span><span>Index the repository into a vector store and query it semantically.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Understanding is built incrementally — Grep to find entry points, Read selectively, Grep again from what you learned. Reading everything upfront burns tens of thousands of tokens before any reasoning begins, per-file subagents multiply that cost, and a vector store is heavyweight infrastructure for a bounded lookup.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 2.5<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q20</h3>
+<p>Before running a codemod you need to enumerate every React component file in the repository so the tool can be pointed at them. A teammate suggests Grepping for <code>import React</code>.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Grep for <code>import React</code> and treat every matching file as a component.</span></li>
+  <li><span class="ltr">B</span><span>Glob every JavaScript file, then Grep each for <code>export default</code>.</span></li>
+  <li><span class="ltr">C</span><span>Ask the user to list the component files.</span></li>
+  <li><span class="ltr">D</span><span>Glob <code>**/*.tsx</code> to enumerate the component files by path.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> &quot;Which files exist&quot; is a path question, so Glob matches by name and extension. <code>import React</code> is a content pattern and misses components on modern runtimes that do not import React, Glob-then-Grep reads far more files than needed, and asking the user replaces a mechanical lookup with a manual step.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 2.5<br><strong>Source:</strong> newly written</p></div></details>
+<div class="foot">Built 2026-09-21 04:36 · source: banks/d2-questions.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script></body></html>

@@ -1,0 +1,374 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CCAF Preparation Class — Syllabus — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · interactive</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><div class="callout"><b>Start with the interactive tutor.</b><a href="lesson-d1.html">D1 · Agentic Architecture</a> · <a href="lesson-d2.html">D2 · Tool Design &amp; MCP</a> · <a href="lesson-d3.html">D3 · Claude Code Config</a> · <a href="lesson-d4.html">D4 · Prompt &amp; Structured Output</a> · <a href="lesson-d5.html">D5 · Context &amp; Reliability</a><br><span style="color:var(--mut);font-size:13.5px">Teaching is stepped with diagrams; you answer before you advance.</span></div><h1>CCAF Preparation Class — Syllabus</h1>
+<p>Coach: Hermes (Claude Code Architect Foundations tutor)
+Student: Colbert Low
+Started: 2026-09-19
+Class home: <code>/home/colb/.openclaw/workspace/ccaf/class/</code>
+Source corpus: <code>/home/colb/.openclaw/workspace/ccaf/resources/</code></p>
+<hr>
+<h2>Exam facts (verify before booking — vendor pages drift)</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Code</td>
+<td>CCA-F / CCAR-F</td>
+</tr>
+<tr>
+<td>Questions</td>
+<td>60 multiple choice, 4 options, scenario-based</td>
+</tr>
+<tr>
+<td>Duration</td>
+<td>120 minutes</td>
+</tr>
+<tr>
+<td>Scoring</td>
+<td>Scaled 100–1000, <strong>pass = 720</strong></td>
+</tr>
+<tr>
+<td>Guessing penalty</td>
+<td>None — never leave a blank</td>
+</tr>
+<tr>
+<td>Scenarios</td>
+<td>Drawn from 8 production scenarios</td>
+</tr>
+<tr>
+<td>Fee</td>
+<td>~USD 99–125 (free for first 5,000 partner-company employees)</td>
+</tr>
+<tr>
+<td>Delivery</td>
+<td>Online proctored or test centre</td>
+</tr>
+<tr>
+<td>Prerequisite</td>
+<td>Anthropic Academy access request (Skilljar)</td>
+</tr>
+</tbody></table>
+<h2>Domain weights (drives session time, not just order)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Domain</th>
+<th>Weight</th>
+<th>Tasks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Agentic Architecture</td>
+<td><strong>27%</strong></td>
+<td>1.1–1.7</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Tool Design &amp; MCP</td>
+<td><strong>18%</strong></td>
+<td>2.1–2.5</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Claude Code Config</td>
+<td><strong>20%</strong></td>
+<td>3.1–3.6</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Prompt &amp; Structured Output</td>
+<td><strong>20%</strong></td>
+<td>4.1–4.6</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Context &amp; Reliability</td>
+<td><strong>15%</strong></td>
+<td>5.1–5.6</td>
+</tr>
+</tbody></table>
+<p>Total 30 tasks. Domain 1 gets two sessions because 27% of 60 questions ≈ 16 questions.</p>
+<hr>
+<h2>Session plan (10 sessions, ~50 min each)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Session</th>
+<th>Covers</th>
+<th>Weight covered</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S0</td>
+<td>Diagnostic</td>
+<td>20-question baseline across all 5 domains</td>
+<td>—</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>Agentic loop + orchestration</td>
+<td>1.1, 1.2, 1.3, 1.7</td>
+<td>27% (half)</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>Enforcement + investigation</td>
+<td>1.4, 1.5, 1.6</td>
+<td>27% (half)</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>Tool design + MCP</td>
+<td>2.1–2.5</td>
+<td>18%</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>Claude Code configuration</td>
+<td>3.1–3.3, 3.6</td>
+<td>20% (half)</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>Claude Code workflow</td>
+<td>3.4, 3.5 + plan mode/explore</td>
+<td>20% (half)</td>
+</tr>
+<tr>
+<td>S6</td>
+<td>Prompting + structured output</td>
+<td>4.1–4.4, 4.6</td>
+<td>20% (half)</td>
+</tr>
+<tr>
+<td>S7</td>
+<td>Batch API + reliability</td>
+<td>4.5, 5.1–5.6</td>
+<td>15% + 4.5</td>
+</tr>
+<tr>
+<td>S8</td>
+<td>Scenario drills</td>
+<td>All 6 documented scenarios, cross-domain</td>
+<td>—</td>
+</tr>
+<tr>
+<td>S9</td>
+<td>Full mock #2 + trap repair</td>
+<td>Timed 60Q, miss → trap taxonomy</td>
+<td>—</td>
+</tr>
+<tr>
+<td>S10</td>
+<td>Final readiness gate</td>
+<td>Readiness score, booking decision</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<p>Cadence: 1 session/day is 10 days; 2/day is 5 days. Adjust at S0.</p>
+<h2>Session anatomy (every session, same shape)</h2>
+<ol>
+<li><strong>Recall warm-up</strong> — 5 rapid questions from the previous session (spaced repetition; no notes).</li>
+<li><strong>Core teaching</strong> — task-by-task. For each task: the principle, why the exam wants it, the exact API/config term, the distractor that will tempt you.</li>
+<li><strong>Trap drill</strong> — 6 questions built around the 7 trap types.</li>
+<li><strong>Scenario application</strong> — the production scenario that maps to this domain.</li>
+<li><strong>Exit quiz</strong> — 8 questions. <strong>Gate: 6/8 (75%) to advance.</strong> Below that, the session is re-run on the missed tasks.</li>
+<li><strong>Log</strong> — written to <code>PROGRESS.md</code>.</li>
+</ol>
+<h2>The 7 trap types (every wrong answer is one of these)</h2>
+<table>
+<thead>
+<tr>
+<th>Trap</th>
+<th>Sounds like</th>
+<th>Correct reflex</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sounds enterprise</td>
+<td>structured data layer, reference IDs</td>
+<td>progressive summarization when narrative matters</td>
+</tr>
+<tr>
+<td>Sounds efficient</td>
+<td>re-fetch via MCP, parallel workers</td>
+<td>trim context; adaptive single path</td>
+</tr>
+<tr>
+<td>Sounds smart</td>
+<td>confidence threshold, routing classifier</td>
+<td>explicit criteria; programmatic gates</td>
+</tr>
+<tr>
+<td>Sounds helpful</td>
+<td>immediate escalation, try unauthorized action</td>
+<td>calibrated: brief, one question, or resolve</td>
+</tr>
+<tr>
+<td>Sounds thorough</td>
+<td>plan everything first</td>
+<td>evidence-driven adaptive steps</td>
+</tr>
+<tr>
+<td>Sounds simple</td>
+<td>better description on the generic tool</td>
+<td>split tools + typed schemas</td>
+</tr>
+<tr>
+<td>Sounds pragmatic</td>
+<td>post-processing normalization</td>
+<td>canonical format at extraction</td>
+</tr>
+</tbody></table>
+<h2>Gates and stop rules</h2>
+<ul>
+<li>Exit quiz &lt; 75% → re-run the missed tasks, do not advance.</li>
+<li>Mock exam &lt; 800 → repair weak domains before booking.</li>
+<li>Mock exam 900+ twice → book the exam.</li>
+<li>After 3 misses on the same task ID → switch method (write the code, don&#39;t just read).</li>
+</ul>
+<h2>Assets</h2>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>SYLLABUS.md</code></td>
+<td>this file</td>
+</tr>
+<tr>
+<td><code>PROGRESS.md</code></td>
+<td>scores, mastery %, weak-trap log</td>
+</tr>
+<tr>
+<td><code>domains/dN-*.md</code></td>
+<td>merged master note per domain (dnacenta + hamza + guide cross-ref)</td>
+</tr>
+<tr>
+<td><code>banks/dN-questions.md</code></td>
+<td>20-question bank per domain, answer + trap + task ID</td>
+</tr>
+<tr>
+<td><code>sessions/sNN-*.md</code></td>
+<td>lesson + quiz for each session</td>
+</tr>
+<tr>
+<td><code>MOCKS.md</code></td>
+<td>mock exam log (CyberSkill, Certification Guide, local 60Q)</td>
+</tr>
+</tbody></table>
+<h2>How to use the class (web)</h2>
+<p>Site: <strong><a href="http://100.93.37.80:8081/">http://100.93.37.80:8081/</a></strong> (Tailscale only — reachable from any device on the tailnet).
+Served by the systemd user unit <code>ccaf-site.service</code>; rebuild after editing notes with <code>node /home/colb/build_ccaf_site.mjs</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>index.html</code></td>
+<td>this syllabus</td>
+</tr>
+<tr>
+<td><code>lesson-d1..d5.html</code></td>
+<td><strong>interactive tutor lessons</strong> — the primary way to learn each domain</td>
+</tr>
+<tr>
+<td><code>d1..d5.html</code></td>
+<td>the master reference note per domain</td>
+</tr>
+<tr>
+<td><code>bank-d1..d5.html</code></td>
+<td>20 drill questions per domain, answer keys collapsed</td>
+</tr>
+<tr>
+<td><code>s00-diagnostic.html</code></td>
+<td>the 20-question baseline test</td>
+</tr>
+<tr>
+<td><code>progress.html</code></td>
+<td>scores and mastery tracking</td>
+</tr>
+</tbody></table>
+<h3>How a lesson works</h3>
+<p>Each lesson is a stepper, one idea per screen:</p>
+<ol>
+<li>A <strong>teach</strong> or <strong>diagram</strong> step explains a single concept in the tutor&#39;s voice. Diagrams are inline SVG.</li>
+<li>A <strong>check</strong> or <strong>drill</strong> step is an answer gate — the four options are clickable, and <strong>Next stays locked until you answer</strong>. Picking wrong shows why, and names the trap type you fell for.</li>
+<li>The final <strong>recap</strong> step restates the spine of the domain.</li>
+<li>Progress, score and trap counts are stored in the browser (localStorage, key <code>ccaf.lesson.v1.&lt;domain&gt;</code>), so a refresh resumes where you left off. &quot;Restart this lesson&quot; clears it.</li>
+</ol>
+<p>Keyboard: <code>1</code>–<code>4</code> to answer, <code>Enter</code> or <code>→</code> for next, <code>←</code> to go back.</p>
+<h3>The study loop</h3>
+<p>Interactive lesson → drill bank → send the bank letters to Hermes on Telegram for grading. Lessons teach, banks test, and Hermes updates <code>PROGRESS.md</code> from what the grading shows.</p>
+<h2>Official prerequisite</h2>
+<p>Anthropic Academy exam guide: <a href="https://anthropic.skilljar.com/claude-certified-architect-foundations-access-request">https://anthropic.skilljar.com/claude-certified-architect-foundations-access-request</a>
+Read it at least three times. This class is the compression layer, not a replacement for the guide.</p>
+<div class="foot">Built 2026-09-21 04:36 · source: SYLLABUS.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script></body></html>

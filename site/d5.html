@@ -1,0 +1,198 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain 5 — Context Management &amp; Reliability (15%) — Master Note — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · interactive</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><div class="callout"><b>This is the reference text.</b>Learn it interactively instead: <a href="lesson-d5.html">open the D5 tutor lesson</a> — one idea at a time, with answer gates and diagrams.</div><h1>Domain 5 — Context Management &amp; Reliability (15%) — Master Note</h1>
+<p>Merged compression layer for exam day. Scenarios that carry most Domain 5 weight: Customer Support Resolution Agent (multi-issue context, escalation, identity), Multi-Agent Research System (error propagation, provenance), Structured Data Extraction (calibration), Codebase Exploration (long sessions, scratchpads).</p>
+<h2>Task index</h2>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>One-line principle</th>
+<th>Exam tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5.1</td>
+<td>Summarize resolved threads; keep the active thread verbatim — and pull exact amounts, dates and IDs into a case-facts block that summarization never touches</td>
+<td>Stem shows vague summaries (&quot;promotional pricing was discussed&quot;) or mid-conversation &quot;forgetting&quot;</td>
+</tr>
+<tr>
+<td>5.2</td>
+<td>Escalate on explicit human request, policy gap, or no meaningful progress — never on sentiment, self-rated confidence, or multi-intent</td>
+<td>Stem offers sentiment analysis, a 1–10 self-rating, a trained classifier, or a ranked/heuristic identity pick</td>
+</tr>
+<tr>
+<td>5.3</td>
+<td>Propagate structured errors (type + attempted query + partial results + alternatives); never suppress, never terminate the workflow</td>
+<td>Stem offers empty-result-as-success, generic &quot;search unavailable&quot;, or one subagent failing killing the run</td>
+</tr>
+<tr>
+<td>5.4</td>
+<td>Extended sessions degrade: write findings to a scratchpad, isolate exploration in subagents, checkpoint state to a manifest</td>
+<td>Stem offers a bigger window, a bigger model, higher temperature, or re-running from scratch</td>
+</tr>
+<tr>
+<td>5.5</td>
+<td>Aggregate accuracy hides stratum failures: validate by document type AND field, use field-level confidence calibrated on labeled data</td>
+<td>Stem quotes &quot;97% overall accuracy, ready to automate&quot; or a bare 0.9 threshold</td>
+</tr>
+<tr>
+<td>5.6</td>
+<td>Claim-source mappings travel with every claim; conflicts are annotated with both values, never averaged, picked, or omitted</td>
+<td>Stem has two credible sources disagreeing, or a summary that says &quot;studies show X&quot;</td>
+</tr>
+</tbody></table>
+<h2>Task 5.1 — Conversation Context Management</h2>
+<ul>
+<li><strong>Principle</strong>: Summarization is lossy compression that destroys high-value tokens first — amounts, dates, percentages, order/case IDs, customer-stated expectations, exact error strings. Replace older turns with structured summaries, keep recent turns verbatim, and hold transactional facts in a case-facts block injected verbatim into every prompt, outside the summarized history. Trim verbose tool results to the fields downstream reasoning needs before they are appended. Send the complete messages array every request — the API is stateless. Place key findings at the beginning of aggregated input with explicit section headers, because attention is biased toward the start and end (lost-in-the-middle).</li>
+<li><strong>Why the exam wants this</strong>: The intuitive answer — compact everything uniformly, raise the summarization threshold, or tell the model to remember — is wrong at the layer it addresses. The failure is history management, not prompt content. The exam also separates a sliding window (drops a thread the customer returns to) from progressive summarization of resolved threads while the active thread stays full.</li>
+<li><strong>Distractors</strong>: &quot;Apply progressive summarization uniformly across the whole conversation&quot; (destroys the transactional spine). &quot;Raise the summarization threshold from 70% to 85%&quot; (delays the loss, does not prevent it — sounds-efficient). &quot;Revise the summarization prompt to preserve all numbers verbatim&quot; (best-effort, not deterministic — sounds-thorough). &quot;Store full history externally and retrieve when the agent detects phrases like &#39;as I mentioned&#39;&quot; (silent references never trigger the retrieval — sounds-enterprise). &quot;Keep a sliding window of the last N turns&quot; (loses the resolved thread the customer returns to). &quot;Pass full tool responses to maintain fidelity&quot; (noise accumulates across turns). &quot;Put the summary at the end / rotate position between runs&quot; (lost-in-the-middle; rotation only balances on average). &quot;Add &#39;remember the refund amount&#39; to the system prompt&quot; (the real cause is the missing message history).</li>
+<li><strong>Exact terms</strong>: case-facts block injected verbatim outside summarized history; <code>/compact</code>; full <code>messages</code> array on every request; prompt caching on the stable prefix (system prompt + tools + early conversation); trimming at the integration layer before append (a PostToolUse hook is the corpus&#39;s trim point); subagents return structured key facts, citations, relevance scores, confidence — not verbose prose or reasoning chains. From the dnacenta module only (not stated elsewhere in the corpus): compaction beta <code>compact-2026-01-12</code>, context editing <code>clear_tool_uses_20250919</code> / <code>clear_thinking_20251015</code>, memory tool <code>memory_20250818</code>, <code>messages.count_tokens</code> for re-baselining token budgets.</li>
+<li><strong>Scenario tie-in</strong>: Support agent where the customer references &quot;the 15% discount I mentioned&quot; 20+ turns ago and the agent answers with a wrong value; multi-agent research where a 75K-token aggregate is cited from the first 15K and last 10K but the middle 50K is missed.</li>
+</ul>
+<h2>Task 5.2 — Escalation Patterns and Ambiguity Resolution</h2>
+<ul>
+<li><strong>Principle</strong>: Exactly three triggers justify escalation — the customer explicitly requests a human (escalate immediately, do not attempt resolution first), a policy gap or exception the agent cannot decide, and inability to make meaningful progress after legitimate avenues were tried. Sentiment, self-rated confidence, conversation length, and multi-intent messages are not triggers. When the customer is frustrated and the agent has no context yet: acknowledge the frustration and ask one targeted question, do not hand off cold. When a fix is already ready: offer resolve-or-escalate and preserve the customer&#39;s choice. On a multi-match identity lookup, ask for an additional identifier (email, phone, order ID) — never heuristically pick, never use a confidence threshold.</li>
+<li><strong>Why the exam wants this</strong>: This is the densest trap cluster in the domain. Every wrong option is dressed as diligence or empathy: sentiment routing (sounds-helpful), a confidence threshold (sounds-smart), a trained routing classifier (sounds-enterprise), resolve-first-then-escalate (sounds-pragmatic). The tested distinction is explicit signal versus inferred signal.</li>
+<li><strong>Distractors</strong>: &quot;Escalate because the customer sounds frustrated&quot; (sentiment is not complexity). &quot;Auto-escalate when the model&#39;s self-rated confidence drops below X&quot; (uncalibrated). &quot;Deploy a classifier trained on historical tickets to predict escalation&quot; (disproportionate infrastructure for a decision-boundary problem). &quot;Resolve the issue first, then escalate if the customer is still unhappy&quot; (overrides an explicit human request). &quot;Ask the customer to confirm they really want a human&quot; (patronising; explicit means explicit). &quot;Escalate a multi-issue message so a human coordinates both&quot; (decompose instead). &quot;Escalate because the tracking data contradicts the customer&quot; (clear system data is not a policy gap). &quot;Pick the most recently active / most recent order / geographically nearest match&quot; (heuristic on ambiguity). &quot;Have the tool return one ranked best match&quot; (hides the ambiguity). &quot;Confidence scoring above 85% acts autonomously&quot; (wrong-account refunds survive in the confident band).</li>
+<li><strong>Exact terms</strong>: <code>escalate_to_human</code> tool with explicit usage boundaries; explicit escalation criteria plus few-shot examples in the system prompt; programmatic precondition / hook for financial thresholds (enforcement is code, not prose); structured handoff fields — <code>customer_id</code>, <code>issue_summary</code>, <code>order_id</code>, <code>root_cause</code>, <code>actions_taken</code>, <code>recommended_action</code>, <code>escalation_reason</code>; the human sees the handoff, not the transcript, so it must be complete and self-contained.</li>
+<li><strong>Scenario tie-in</strong>: Support agent at 55% first-contact resolution that escalates simple photo-proof replacements and autonomously attempts policy exceptions; competitor price-matching request where policy covers price drops on your own site only; <code>get_customer</code> returning multiple &quot;John Smith&quot; matches.</li>
+</ul>
+<h2>Task 5.3 — Error Propagation</h2>
+<ul>
+<li><strong>Principle</strong>: How a failure is reported matters as much as the failure. Propagate a structured error carrying failure type (transient / validation / business / permission), what was attempted (specific query, parameters), partial results, potential alternatives (narrower query, fallback source, retry-after), and coverage impact. Distinguish an access failure (could not reach the source — a retry decision) from a valid empty result (the query ran, nothing matched — the empty result is the answer). Subagents do local recovery for transient failures (one to two retries with backoff) and propagate only what they cannot resolve. When one subagent fails, preserve the other subagents&#39; partial results and annotate the gap in synthesis.</li>
+<li><strong>Why the exam wants this</strong>: Silent suppression and workflow termination are both wrong, and they look like opposite virtues — graceful continuation and decisive failure handling. Both destroy recoverability. The clean binary the exam loves is &quot;retry only the access failure&quot;.</li>
+<li><strong>Distractors</strong>: &quot;Return empty results with <code>status: ok</code> so the orchestrator continues gracefully&quot; (silent suppression — worst option in any 5.3 question, zero recovery path). &quot;Abort the entire workflow on one subagent timeout&quot; (throws away partial results from the subagents that succeeded). &quot;Return a generic &#39;search unavailable&#39; status&quot; (strips the type, query and partial results the coordinator needs). &quot;Retry the tool indefinitely until it succeeds&quot; (wastes budget on permanent failures). &quot;Always retry empty results in case data appears&quot; (conflates valid empty with access failure). &quot;Collapse outcomes into a single coverage percentage&quot; (discards which part is retryable — sounds-enterprise). &quot;Catch the exception and log it for later review&quot; (the running model gets no signal — sounds-pragmatic). &quot;Implement retries inside the subagent and return only a generic status&quot; (internal retries are right; the generic status is the defect).</li>
+<li><strong>Exact terms</strong>: structured error JSON — <code>failure_type</code>, <code>attempted_query</code>, <code>partial_results</code>, <code>alternative_approaches</code>, <code>coverage_impact</code>, <code>is_retryable</code>, <code>retry_after_ms</code>; <code>isError</code> flag on MCP tool results; <code>errorCategory</code> / <code>isRetryable</code>; coverage annotation in the synthesis (&quot;PARTIAL COVERAGE — search agent timeout&quot;); local recovery with exponential backoff, 1–2 attempts, then propagate.</li>
+<li><strong>Scenario tie-in</strong>: Research pipeline where three of five source categories succeed and two time out; patent database returns &quot;Connection timeout&quot; while industry reports return &quot;0 results found&quot;; corrupted PDF terminates the document-analysis subagent and forces the coordinator to make every routine retry decision.</li>
+</ul>
+<h2>Task 5.4 — Large Codebase Context Management</h2>
+<ul>
+<li><strong>Principle</strong>: Extended agentic sessions degrade predictably — the model starts referencing &quot;typical patterns&quot; instead of the specific files and functions it found, gives inconsistent answers about the same code, and makes assumptions instead of checking. The root cause is high-signal early findings diluted by high-volume later exploration. Externalize findings to a scratchpad file that survives compaction and crashes; delegate verbose exploration to a subagent so the coordinator receives only the distilled result; inject a phase summary before spawning the next phase&#39;s subagents; checkpoint structured state to a manifest so a crash resumes from the last checkpoint rather than from zero; use <code>/compact</code> proactively, before natural degradation.</li>
+<li><strong>Why the exam wants this</strong>: Every wrong option treats the symptom as a capacity or sampling problem — more tokens, a larger model, a different temperature, a fresh start. Attention dilution is structural and does not shrink with a bigger window. The manifest pattern is the tested answer for crash recovery: the manifest is the source of truth, not the conversation history.</li>
+<li><strong>Distractors</strong>: &quot;Use a larger context window so degradation does not occur&quot; (attention dilution is not a token-count problem). &quot;Switch to a larger model with a bigger window&quot; (same error). &quot;Increase temperature to encourage more specific responses&quot; (temperature affects sampling, not retention). &quot;Re-run the whole exploration from scratch with a fresh context&quot; (hits the same wall at the same turn count). &quot;Do everything in the main conversation and <code>/compact</code> periodically as it fills&quot; (compaction runs after pollution and is lossy; isolation is cheaper than recovery). &quot;Trust the model to remember earlier findings if asked directly&quot; (that is the failure mode). &quot;Periodically clear context entirely during exploration&quot; (loses valid findings).</li>
+<li><strong>Exact terms</strong>: scratchpad file (<code>investigation-scratchpad.md</code> with file:line findings); Explore subagent for verbose discovery phases; subagent returns a concise summary; <code>context: fork</code> in skill frontmatter for isolated skill execution; <code>allowedTools</code> to narrow a subagent&#39;s toolset; manifest file (<code>agent-state/manifest.json</code>) loaded by the coordinator on resume; <code>/compact</code>; phase summaries injected before next-phase subagents.</li>
+<li><strong>Scenario tie-in</strong>: A 30+ minute codebase investigation where the model starts naming generic patterns instead of the classes it discovered; a three-phase error-handling refactor across 120 files where phase 1 discovery floods the window; a long multi-agent job that must survive a mid-task process crash.</li>
+</ul>
+<h2>Task 5.5 — Human Review Workflows and Confidence Calibration</h2>
+<ul>
+<li><strong>Principle</strong>: Aggregate accuracy masks stratum-level failure — 97% overall can hide 45% on handwritten documents or 42% on one field. Validate accuracy by document type and by field segment before removing humans. Emit per-field confidence (not per-document) and calibrate the routing thresholds against a labeled validation set, so a 0.9 means correct roughly 90% of the time for that field and document type. Route low-confidence or ambiguous-source extractions to human review and spend scarce reviewer capacity on the highest-uncertainty items. After deployment, keep running a stratified audit that samples high-confidence extractions too — novel error patterns appear over time and, by definition, never trigger a low-confidence threshold.</li>
+<li><strong>Why the exam wants this</strong>: The wrong answers are exactly the ones a busy team would ship — trust the headline number, set a threshold, review only the doubtful cases. The tested boundary is calibrated, field-level, ground-truth-grounded confidence (reliable) versus raw model self-report (unreliable). Carry this into 5.2: it is the same distinction behind &quot;never route identity on a confidence score&quot;.</li>
+<li><strong>Distractors</strong>: &quot;97% meets industry standard, automate&quot; (aggregate metric, no stratum check). &quot;Set the confidence threshold to 0.9 to ensure quality&quot; (uncalibrated number, meaningless without ground truth). &quot;Use document-level confidence to route review&quot; (field variance within a document is the whole point). &quot;Sample only low-confidence extractions for review&quot; (misses novel error patterns in the high-confidence band). &quot;Run more documents through to raise the sample size&quot; (volume does not reveal stratum failure). &quot;Compare against competitor systems&quot; (irrelevant to fitness). &quot;Human review is always required regardless of metrics&quot; (too absolute; calibrated automation is valid). &quot;Upgrade the model for complex cases&quot; (capability is not the missing verification step).</li>
+<li><strong>Exact terms</strong>: per-field confidence objects (<code>{&quot;value&quot;: ..., &quot;confidence&quot;: ...}</code>); calibration against a labeled validation set; stratified random sampling by document type, field segment and confidence band; accuracy reporting per document type and per field within type; reviewer capacity prioritised by uncertainty.</li>
+<li><strong>Scenario tie-in</strong>: An extraction pipeline at 97% headline accuracy with 45% on handwritten notes; a post-deployment audit that must catch a new document template that fails confidently; routing extractions to a small human review team.</li>
+</ul>
+<h2>Task 5.6 — Information Provenance</h2>
+<ul>
+<li><strong>Principle</strong>: Attribution has to travel with the claim as structured data, or it dies at the first summarization: the report says &quot;studies show X&quot; with no path back to which study, by whom, when. Require every subagent finding to carry claim plus source URL, document name, supporting excerpt and publication date, and preserve those mappings through every downstream agent instead of flattening them into prose. When two credible sources disagree, annotate both values with full attribution and pass the reconciliation to the coordinator — never average, never silently pick, never omit the statistic. Include publication and collection dates so an apparent contradiction is recognised as a trend (28% in 2022 versus 32% in 2024 is not a conflict). Separate well-established findings from contested ones, and render by content type: tables for financial data, prose for narrative, structured lists for technical findings.</li>
+<li><strong>Why the exam wants this</strong>: The traps are confident and tidy — average the two figures, take the conservative one, drop the disputed statistic, use a uniform bullet format for consistency. Each destroys information the consumer needs. The subagent must not resolve the conflict itself: reconciliation is a coordinator decision made with broader context.</li>
+<li><strong>Distractors</strong>: &quot;Select the more conservative value when sources conflict&quot; (arbitrary; erases the disagreement). &quot;Average the conflicting values&quot; (fabricates a number neither source reported). &quot;Pick the more recent value without flagging the discrepancy&quot; (erases that disagreement existed). &quot;Omit the statistic when sources disagree&quot; (destroys information). &quot;Silently pick one with a footnote mentioning the discrepancy&quot; (subagent resolving a coordinator-level decision with heuristics). &quot;Include both numbers without marking them as conflicting&quot; (the conflict gets merged away downstream). &quot;Render everything in one uniform format for consistency&quot; (content-format mismatch). &quot;Cite sources in an appendix rather than inline with claims&quot; (attribution dies during synthesis).</li>
+<li><strong>Exact terms</strong>: claim-source mapping fields — <code>claim</code>, <code>source_url</code>, <code>document_name</code>, excerpt/relevant passage, <code>publication_date</code>, <code>source_type</code> (primary etc.); conflicting-values structure with both values, source, note and reconciliation; temporal metadata — <code>data_as_of</code>, <code>source_published</code>, <code>retrieved_on</code>; certainty labelling (&quot;well-established&quot; / &quot;contested&quot; / &quot;single-source&quot;); content-appropriate rendering (table / prose / structured list).</li>
+<li><strong>Scenario tie-in</strong>: Two research subagents returning 40% and 12% growth from credible sources; a synthesis report that must distinguish a contested market-share range (12–18%) from a single-source claim; the same statistic reported for different years.</li>
+</ul>
+<h2>Escalation decision tree</h2>
+<p>Read the stem, then apply in order. First matching branch wins.</p>
+<ol>
+<li>If the customer explicitly asks for a human → escalate immediately, no further investigation, no &quot;let me try first&quot;, no confirming question. Structured handoff.</li>
+<li>If the request falls outside documented policy, or needs an exception or authority the agent does not have → escalate. The agent never invents policy.</li>
+<li>If a hard rule applies (refund above threshold, regulated workflow, high-impact side effect) → enforce programmatically in the tool or a hook, not by prompt; return a structured &quot;requires approval&quot; result rather than a silent pass.</li>
+<li>If a fix is already ready and the customer earlier asked for a person → offer resolve-or-escalate in one turn; do not silently act on the account, do not run a long intake questionnaire.</li>
+<li>If the customer is angry and the agent has no context yet → acknowledge the frustration and ask one targeted question. Not escalation.</li>
+<li>If the customer is frustrated and the issue is straightforward, with no human request → acknowledge, offer the concrete resolution; escalate only if the customer reiterates the request.</li>
+<li>If the lookup returns multiple matches → ask for an additional identifier (email, phone, order ID). Never rank, never pick by recency, never threshold on confidence.</li>
+<li>If several turns have been tried and the agent cannot make meaningful progress → escalate with what was attempted, what failed, and partial results. Do not count failures as the trigger.</li>
+<li>If a subagent&#39;s tool fails → local recovery first (1–2 retries with backoff) for transient errors; propagate only what cannot be resolved, with type, attempted query, partial results and alternatives.</li>
+<li>If a source is unreachable → that is an access failure: consider retry or an alternative path, and annotate the coverage gap. If the query ran and found nothing → that is the answer; do not retry and do not report it as an error.</li>
+<li>Never trigger escalation on sentiment, self-rated confidence, conversation length, multi-intent volume, or an automated pre-classifier.</li>
+</ol>
+<h2>Recall card</h2>
+<ul>
+<li>Summarization destroys numbers, dates, IDs, percentages and customer expectations first — extract them into a case-facts block outside the summarized history and inject it verbatim every prompt.</li>
+<li>Summarize resolved threads; keep the active thread verbatim. A sliding window drops the thread the customer returns to.</li>
+<li>Lost in the middle is structural: findings at the top, details in the middle, action items at the end, with explicit section headers.</li>
+<li>Trim tool results to the fields you need before appending; noise accumulates across turns.</li>
+<li>The API is stateless — send the full messages array, or the agent &quot;forgets&quot; mid-conversation. Upstream fix beats downstream fix: subagents return key facts, citations and confidence, not prose or reasoning chains.</li>
+<li>Three valid escalation triggers: explicit human request, policy gap, no meaningful progress.</li>
+<li>Two unreliable triggers: sentiment and self-rated confidence. Multi-intent and long conversations are not triggers either.</li>
+<li>Explicit &quot;get me a manager&quot; = escalate now. Frustration alone = acknowledge, offer resolution, escalate only if reiterated.</li>
+<li>Angry with no context = acknowledge + one targeted question. Fix already ready = offer resolve or escalate.</li>
+<li>Multi-match identity = ask for email, phone or order ID. Never rank, never pick by recency, never trust a confidence score.</li>
+<li>Structured error = failure type + what was attempted + partial results + alternatives + coverage impact.</li>
+<li>Silent suppression (empty result as success) is the worst pattern — no recovery path. Terminating the whole workflow throws away the partial results.</li>
+<li>Access failure ≠ valid empty result. Retry only the access failure; a valid empty result is the answer. Subagents do local recovery (1–2 retries) before propagating, and never return a generic status.</li>
+<li>Long sessions degrade into &quot;typical patterns&quot;: scratchpad file, subagent delegation, phase summaries, manifest, proactive <code>/compact</code>. Bigger window and bigger model do not fix attention dilution.</li>
+<li>The manifest is the source of truth across crashes, not the conversation history.</li>
+<li>97% aggregate accuracy hides stratum failure: validate by document type AND field segment before automating.</li>
+<li>Per-field confidence, calibrated on a labeled validation set, or raw 0.9 means nothing. Sample high-confidence cases post-deployment to catch novel errors.</li>
+<li>Every finding carries claim + URL + document + excerpt + date, through every downstream agent.</li>
+<li>Conflicts are annotated with both values and attribution, then reconciled by the coordinator — never averaged, never picked, never omitted.</li>
+<li>Dates distinguish trends from contradictions. Render by content type: tables for financials, prose for narrative, lists for technical findings.</li>
+</ul>
+<h2>Sources</h2>
+<ul>
+<li>resources/dnacenta-domains/d5-context-reliability.md (module notes, tasks 5.1–5.6 plus server-side context mechanisms and long-run bounding)</li>
+<li>resources/hamzafarooq-cheatsheets/domain5.md (cheatsheet, TS 5.1–5.6, distractor cribsheet, decision tree)</li>
+<li>resources/hamzafarooq-cheatsheets/sample-questions.md (scenario stems)</li>
+<li>resources/00-concept-map.md (Domain 5 task index, tradeoff table)</li>
+<li>resources/02-mock-exam-trap-guide.md (trap taxonomy and Domain 5 mapping)</li>
+<li>resources/03-anti-patterns-catalog.md (context, escalation and error-propagation anti-patterns)</li>
+<li>resources/paullarionov-guide_en.md (Domain 5 task list; Chapters 9–12 on escalation, multi-agent errors, production context management, provenance)</li>
+<li>resources/daronyondem-study-guide.md (§5 Conversation Context Management, §9 Customer Service and Production Workflow Design, §11 Iterative Refinement Testing and Evaluation, §15 Security and Trust Boundaries)</li>
+<li>resources/timothywarner-practice-60q.md (questions reused in the bank)</li>
+</ul>
+<div class="foot">Built 2026-09-21 04:36 · source: domains/d5-context-reliability.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script></body></html>

@@ -1,0 +1,274 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CCAF Progress Tracker — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · interactive</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><h1>CCAF Progress Tracker</h1>
+<p>Student: Colbert Low · Coach: Hermes · Started 2026-09-19</p>
+<h2>Session log</h2>
+<table>
+<thead>
+<tr>
+<th>Session</th>
+<th>Date</th>
+<th>Exit quiz</th>
+<th>Gate (75%)</th>
+<th>Status</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>S0 Diagnostic</td>
+<td>2026-09-19</td>
+<td>__/20</td>
+<td>—</td>
+<td>issued</td>
+<td>awaiting answers</td>
+</tr>
+<tr>
+<td>S1 Agentic loop</td>
+<td></td>
+<td>__/8</td>
+<td></td>
+<td>pending</td>
+<td></td>
+</tr>
+<tr>
+<td>S2 Enforcement + investigation</td>
+<td></td>
+<td>__/8</td>
+<td></td>
+<td>pending</td>
+<td></td>
+</tr>
+<tr>
+<td>S3 Tool design + MCP</td>
+<td></td>
+<td>__/8</td>
+<td></td>
+<td>pending</td>
+<td></td>
+</tr>
+<tr>
+<td>S4 Claude Code config</td>
+<td></td>
+<td>__/8</td>
+<td></td>
+<td>pending</td>
+<td></td>
+</tr>
+<tr>
+<td>S5 Claude Code workflow</td>
+<td></td>
+<td>__/8</td>
+<td></td>
+<td>pending</td>
+<td></td>
+</tr>
+<tr>
+<td>S6 Prompting + structured output</td>
+<td></td>
+<td>__/8</td>
+<td></td>
+<td>pending</td>
+<td></td>
+</tr>
+<tr>
+<td>S7 Batch + reliability</td>
+<td></td>
+<td>__/8</td>
+<td></td>
+<td>pending</td>
+<td></td>
+</tr>
+<tr>
+<td>S8 Scenario drills</td>
+<td></td>
+<td>__/8</td>
+<td></td>
+<td>pending</td>
+<td></td>
+</tr>
+<tr>
+<td>S9 Full mock #2 + repair</td>
+<td></td>
+<td>60Q</td>
+<td></td>
+<td>pending</td>
+<td></td>
+</tr>
+<tr>
+<td>S10 Readiness gate</td>
+<td></td>
+<td>—</td>
+<td></td>
+<td>pending</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>Domain mastery (updated after each session + mock)</h2>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Weight</th>
+<th>Tasks total</th>
+<th>Tasks mastered</th>
+<th>Mastery %</th>
+<th>Weakest tasks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 Agentic Architecture</td>
+<td>27%</td>
+<td>7</td>
+<td>0</td>
+<td>0%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2 Tool Design &amp; MCP</td>
+<td>18%</td>
+<td>5</td>
+<td>0</td>
+<td>0%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3 Claude Code Config</td>
+<td>20%</td>
+<td>6</td>
+<td>0</td>
+<td>0%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4 Prompt &amp; Structured Output</td>
+<td>20%</td>
+<td>6</td>
+<td>0</td>
+<td>0%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5 Context &amp; Reliability</td>
+<td>15%</td>
+<td>6</td>
+<td>0</td>
+<td>0%</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<p><em>Mastered = answered correctly twice, on separate days, without notes.</em></p>
+<h2>Miss log (every wrong answer, with trap type)</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Task</th>
+<th>Trap type</th>
+<th>What I picked</th>
+<th>Why it was wrong</th>
+<th>Re-test date</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>Mock exam log</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Source</th>
+<th>Score</th>
+<th>Pass?</th>
+<th>Domains below 75%</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>CyberSkill <a href="https://ccaf.cyberskill.world/">https://ccaf.cyberskill.world/</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Certification Guide <a href="https://claudecertificationguide.com/">https://claudecertificationguide.com/</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Local 60Q (timothywarner-practice-60q.md)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2>Readiness decision</h2>
+<ul>
+<li>Book when: two independent mocks ≥ 900, no domain below 75%, miss log has no repeat trap type.</li>
+<li>Current readiness: <strong>not assessed</strong> (S0 pending).</li>
+</ul>
+<div class="foot">Built 2026-09-21 04:36 · source: PROGRESS.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script></body></html>

@@ -1,0 +1,261 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain 4 — Question Bank (20 questions) — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · interactive</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><h1>Domain 4 — Question Bank (20 questions)</h1>
+<p>Covers tasks 4.1–4.6 of the CCAF exam guide. 4.1 ×3, 4.2 ×3, 4.3 ×4, 4.4 ×3, 4.5 ×4, 4.6 ×3.
+Ten questions are reused from <code>timothywarner-practice-60q.md</code> (Claude Code for CI scenario); ten are newly written and grounded in <code>dnacenta-domains/d4-prompt-engineering.md</code>, <code>hamzafarooq-cheatsheets/domain4.md</code>, <code>04-api-and-product-faq.md</code>, <code>paullarionov-guide_en.md</code> and <code>daronyondem-study-guide.md</code>.</p>
+<hr>
+<h3>Q1</h3>
+<p>An automated review analyses comments and docstrings. The prompt says &quot;check that comments are accurate and up to date&quot;. Findings regularly flag acceptable patterns such as TODO markers and simple descriptions, while missing comments that describe behaviour the code no longer implements.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Include <code>git blame</code> data so Claude can identify comments that predate recent code changes.</span></li>
+  <li><span class="ltr">B</span><span>Add few-shot examples of misleading comments so the model recognises similar patterns in this codebase.</span></li>
+  <li><span class="ltr">C</span><span>Filter TODO, FIXME and descriptive comment patterns before analysis to reduce noise.</span></li>
+  <li><span class="ltr">D</span><span>Specify explicit criteria: flag a comment only when the behaviour it claims contradicts the code's actual behaviour.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> The root cause is an undefined target criterion, not a formatting problem. Explicit categorical criteria define what qualifies and what does not, which removes both the false positives on acceptable patterns and the misses on genuinely misleading comments. Examples fix output shape, filtering narrows the symptom, and comment age is not the criterion.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Q22)</p></div></details>
+<hr>
+<h3>Q2</h3>
+<p>False-positive rates vary widely by finding category: security and correctness findings run at 8%, performance at 18%, style and naming at 52%, documentation at 48%. Developer surveys show growing distrust — many now dismiss findings without reading, saying &quot;half are wrong&quot;.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Temporarily disable the high-false-positive categories and keep only the high-precision categories while their prompts are improved.</span></li>
+  <li><span class="ltr">B</span><span>Keep all categories enabled but display a confidence score with each finding so developers can decide what to investigate.</span></li>
+  <li><span class="ltr">C</span><span>Keep all categories enabled and add few-shot examples to improve accuracy for each category over the next few weeks.</span></li>
+  <li><span class="ltr">D</span><span>Apply a uniform strictness reduction across all categories to bring the overall false-positive rate down.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> High false positives in some categories destroy trust in the accurate ones, so the immediate fix is to remove the noisy categories from output instead of leaving them on screen while accuracy improves slowly. Disabling also buys the space to iterate on those criteria before re-enabling. A uniform strictness reduction trades away the true positives in the accurate security and correctness categories.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Q29)</p></div></details>
+<hr>
+<h3>Q3</h3>
+<p>A review bot&#39;s prompt says &quot;report only high-confidence findings&quot; and &quot;use your best judgment on severity&quot;. Across runs the same null-dereference risk is rated critical in one PR and low in the next, and developers say they cannot predict what will be reported. The team wants findings that are stable and defensible.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add a five-level severity rubric written in prose so the model has finer granularity to choose from.</span></li>
+  <li><span class="ltr">B</span><span>Have the model emit a 0–1 confidence score per finding and act only on scores above 0.8.</span></li>
+  <li><span class="ltr">C</span><span>Define explicit categorical criteria for what to flag and what to skip, and anchor each severity level with a concrete code example.</span></li>
+  <li><span class="ltr">D</span><span>Lower temperature to 0 so severity ratings are deterministic across runs.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Vague confidence adjectives produce inconsistent results; categorical criteria plus code-anchored severity definitions give the model a boundary it can apply the same way each run. A prose rubric sounds thorough but still drifts, and both the threshold and the temperature change treat a definition problem as a randomness problem.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
+<hr>
+<h3>Q4</h3>
+<p>Automated reviews find real issues, but developers report the feedback is not actionable — phrases like &quot;complex ticket routing logic&quot; or &quot;potential null pointer&quot; with no indication of what to change. Adding the instruction &quot;always include concrete fix suggestions&quot; still produces output that is sometimes detailed and sometimes vague.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Refine the instructions further with more explicit requirements for each part of the feedback format.</span></li>
+  <li><span class="ltr">B</span><span>Expand the context window to include more surrounding code so the model has enough information to propose concrete fixes.</span></li>
+  <li><span class="ltr">C</span><span>Split into a two-pass approach where one prompt identifies issues and a second generates fixes.</span></li>
+  <li><span class="ltr">D</span><span>Add 3–4 few-shot examples showing the exact required format: identified issue, location in code, concrete fix suggestion.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Few-shot examples are the most effective technique when instructions alone produce variable output, because they demonstrate the required shape concretely rather than describing it abstractly. The scenario has already shown that more instructions do not converge; wider context does not constrain the shape of the feedback; and a two-pass split still relies on instruction-only prompting in each pass.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 4.2<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Q20)</p></div></details>
+<hr>
+<h3>Q5</h3>
+<p>A function must transform API responses into an internal normalised format. After two iterations the output still does not match expectations — fields are nested differently and timestamps are formatted incorrectly. The requirements were given in prose, and the model interprets them differently each time.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Write a JSON schema describing the expected output structure and validate the model's output against it after each iteration.</span></li>
+  <li><span class="ltr">B</span><span>Provide 2–3 concrete input-output examples showing the expected transformation for representative API responses.</span></li>
+  <li><span class="ltr">C</span><span>Rewrite the requirements with more technical precision: exact field mappings, nesting rules and timestamp format strings.</span></li>
+  <li><span class="ltr">D</span><span>Ask the model to explain its current understanding of the requirements to identify where interpretations diverge.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Concrete input-output examples remove the ambiguity that prose cannot, giving an unambiguous pattern for field nesting and timestamp format that generalises to new responses. A schema validates structure after the fact and does not teach the transformation; more precise prose uses the channel that already misfired twice; restating the understanding diagnoses the gap without supplying the ground truth.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 4.2<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Q31)</p></div></details>
+<hr>
+<h3>Q6</h3>
+<p>An extraction pipeline for research summaries receives documents in mixed shapes: some cite sources inline, some in a bibliography, some state figures only in narrative prose. Field audits show invented citation years and figures attached to the wrong source. Precision-focused instructions such as &quot;extract only values stated in the source&quot; have not reduced the rate.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add 2–4 few-shot examples showing complete input-output pairs for each document structure, including the reasoning for each extraction.</span></li>
+  <li><span class="ltr">B</span><span>Add 10 examples drawn from the most common document type so more cases are covered.</span></li>
+  <li><span class="ltr">C</span><span>Add a <code>do_not_fabricate</code> boolean field to the schema that the model must set to true.</span></li>
+  <li><span class="ltr">D</span><span>Retry any extraction that fails validation up to three times with the same prompt.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Few-shot examples that span varied document structures reduce hallucination because the model learns the shape of a valid extraction across formats instead of inventing data to fit the schema. Ten examples of one structure overfit to that structure; a boolean flag is a declaration rather than a demonstration; and retrying the same request does not change what the model understood.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 4.2<br><strong>Source:</strong> newly written</p></div></details>
+<hr>
+<h3>Q7</h3>
+<p>A shared intake service receives invoices, receipts, purchase orders and contracts, and no reliable document classifier exists. Each document type has its own extraction tool with its own schema. Prompt-based JSON requests sometimes return prose and sometimes drop fields. The team needs guaranteed schema-conformant output for every document, without knowing the type in advance.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Force <code>tool_choice: {"type": "tool", "name": "extract_invoice"}</code> so the model always returns a schema-conformant object.</span></li>
+  <li><span class="ltr">B</span><span>Keep <code>tool_choice: "auto"</code> and add "always respond with valid JSON" to the system prompt.</span></li>
+  <li><span class="ltr">C</span><span>Set <code>tool_choice: "any"</code> so the model must call one of the extraction tools, then parse and validate the returned <code>tool_use.input</code> against that tool's schema.</span></li>
+  <li><span class="ltr">D</span><span>Use one generic <code>analyze_document</code> tool with a free-text field and post-process the output into the per-type structure.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> <code>any</code> guarantees a tool call while letting the model choose the tool that fits the document, which is the correct pattern when the type is unknown and several schemas exist. A named tool routes every document through one schema that fits most of them; <code>auto</code> still allows an escape into prose; and a generic free-text tool reintroduces the inconsistent output shape the pipeline is trying to remove.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 4.3<br><strong>Source:</strong> newly written</p></div></details>
+<hr>
+<h3>Q8</h3>
+<p>An invoice extractor marks <code>purchase_order_number</code> and <code>payment_terms</code> as required in its tool schema with <code>strict: true</code>. About 30% of invoices in the corpus do not carry a PO number. Field-level audits show the extractor returns plausible-looking PO numbers for exactly those documents, and downstream reconciliation fails.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add "do not fabricate values" to the extraction prompt while keeping both fields required.</span></li>
+  <li><span class="ltr">B</span><span>Increase the retry limit so the model has more attempts to locate the PO number.</span></li>
+  <li><span class="ltr">C</span><span>Run a second LLM call to verify every extracted PO number against the source.</span></li>
+  <li><span class="ltr">D</span><span>Make both fields nullable — <code>type: ["string", "null"]</code> — and instruct the model to return null when the source does not state the value.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> A required field whose value is often absent is a fabrication factory: required guarantees something will be present, not that it is true. Nullable fields let the first call signal absence directly, which is cheaper and more honest than a verification pass that adds cost and can rationalise the original answer. Prompt wording cannot override structural pressure, and more retries produce more fabrications rather than more accuracy.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 4.3<br><strong>Source:</strong> newly written</p></div></details>
+<hr>
+<h3>Q9</h3>
+<p>Support-ticket classification uses a strict enum of <code>[&quot;billing&quot;, &quot;technical&quot;, &quot;account&quot;, &quot;other&quot;]</code>. Over a quarter, 22% of tickets land in <code>other</code> with no explanation, so analysts cannot tell whether a ticket is a genuinely ambiguous case or a category the taxonomy does not cover. New categories appear roughly monthly.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Expand the enum each time a new category appears and redeploy the schema.</span></li>
+  <li><span class="ltr">B</span><span>Instruct the model to choose the closest existing category rather than <code>other</code>.</span></li>
+  <li><span class="ltr">C</span><span>Keep the enum and add "report only high-confidence classifications" to the prompt.</span></li>
+  <li><span class="ltr">D</span><span>Add an <code>"unclear"</code> enum value for ambiguous cases and a paired <code>category_detail</code> free-string field that captures the source's own wording when the value is <code>other</code>.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> <code>unclear</code> gives an ambiguous case an honest option instead of a forced wrong bucket, and <code>other</code> plus a detail field handles the long tail without rewriting the schema every month. Expanding the enum per category is a maintenance treadmill, forcing the closest category manufactures misclassifications, and a confidence adjective adds no boundary.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 4.3<br><strong>Source:</strong> newly written</p></div></details>
+<hr>
+<h3>Q10</h3>
+<p>An extraction service uses <code>strict: true</code> with <code>additionalProperties: false</code>, and the output always validates against the schema. Even so, 4% of invoices report a <code>total_amount</code> that does not equal the sum of the line items, and due dates occasionally appear under <code>invoice_date</code>.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add domain validation in application code and extract both <code>stated_total</code> and <code>calculated_total</code> so the mismatch is detectable automatically.</span></li>
+  <li><span class="ltr">B</span><span>Add <code>minimum</code>, <code>maximum</code> and <code>pattern</code> constraints to the schema so the values themselves are constrained.</span></li>
+  <li><span class="ltr">C</span><span>Switch from <code>tool_use</code> to prompt-based JSON so the model has more freedom to correct itself.</span></li>
+  <li><span class="ltr">D</span><span>Fine-tune the model on the invoice corpus to eliminate the arithmetic and placement errors.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Strict mode guarantees syntax, not semantics — type, presence and enum errors are caught, but arithmetic and field placement are not. Extracting both totals makes the discrepancy machine-detectable instead of silently trusting one value. <code>minimum</code>, <code>maximum</code> and <code>pattern</code> are not supported in strict mode, prompt-only JSON is less reliable than the schema already in place, and fine-tuning is a heavy intervention for a validation-layer gap.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 4.3<br><strong>Source:</strong> newly written</p></div></details>
+<hr>
+<h3>Q11</h3>
+<p>A batch extraction over 8,000 contracts requires <code>governing_law</code> and <code>termination_notice_days</code> on every document. Validation rejects 900. Sampling shows 700 of those contracts simply do not state a governing law; the other 200 use a date format the schema rejects.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Retry all 900 failed documents three more times with the same prompt.</span></li>
+  <li><span class="ltr">B</span><span>Raise the retry limit from 3 to 10 for the failed documents.</span></li>
+  <li><span class="ltr">C</span><span>Retry the 200 format failures with the source document, the failed extraction and the exact validation error, and accept null for the 700 documents where the value is genuinely absent.</span></li>
+  <li><span class="ltr">D</span><span>Route all 900 failed documents to human review.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> The failures are two different populations and must be treated differently. Retry-with-feedback recovers output errors because the error message tells the model what specifically went wrong, while information that is absent from the source is not recoverable by retrying and needs a nullable field instead. Retrying everything produces fabrications, and escalating everything discards the majority that a targeted fix resolves.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 4.4<br><strong>Source:</strong> newly written</p></div></details>
+<hr>
+<h3>Q12</h3>
+<p>A code review bot&#39;s findings are dismissed by developers 35% of the time, but the team cannot tell which categories drive the dismissals. Prompt changes are currently guesswork, and the dismissal rate has not moved.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Ask the model to self-report a confidence score per finding and suppress everything below 0.8.</span></li>
+  <li><span class="ltr">B</span><span>Add "be conservative" to the review prompt.</span></li>
+  <li><span class="ltr">C</span><span>Insert a second filtering pass before the findings reach developers.</span></li>
+  <li><span class="ltr">D</span><span>Add <code>detected_pattern</code> and <code>rule_id</code> fields to each finding so dismissal rates can be aggregated by code construct and the over-reporting criteria revised.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Without a field naming the construct that triggered each finding, the team can only see &quot;35% are dismissed&quot; and cannot tell which criteria to tighten; with it, the black box becomes a measurable system and prompt changes follow evidence. Self-reported confidence is unreliable for routing, and both a filtering pass and a vaguer instruction reduce what developers see without improving the underlying criteria.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 4.4<br><strong>Source:</strong> newly written</p></div></details>
+<hr>
+<h3>Q13</h3>
+<p>An extraction endpoint fails JSON-schema validation for an unknown share of requests. The current handler retries the identical request up to three times, which rarely succeeds.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Increase the retry count and add exponential backoff around the same request.</span></li>
+  <li><span class="ltr">B</span><span>Escalate to a larger model on the third attempt.</span></li>
+  <li><span class="ltr">C</span><span>Resend the original document, the failed extraction and the specific validation error, and ask for a corrected call.</span></li>
+  <li><span class="ltr">D</span><span>Set temperature to 0 before retrying so the same input cannot produce a different error.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Retry-with-feedback is far more effective than a blind retry because the model receives signal about what specifically went wrong and can correct exactly that. More attempts, a bigger model or a lower temperature all change the conditions rather than supplying the missing diagnosis.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 4.4<br><strong>Source:</strong> newly written</p></div></details>
+<hr>
+<h3>Q14</h3>
+<p>A code review component is iterative: the model analyses the changed file, requests related files (imports, base classes, tests) through a tool, receives the results, and continues analysis before giving final feedback. The team is evaluating batch processing to reduce API cost.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Proceed with batch processing; the batch API provides <code>custom_id</code> for correlating the extra tool-call requests with their responses.</span></li>
+  <li><span class="ltr">B</span><span>Keep the workflow on the synchronous API, because the asynchronous batch model cannot execute a tool mid-request and return results for the model to continue analysis.</span></li>
+  <li><span class="ltr">C</span><span>Proceed with batch processing; the batch API accepts tool definitions in request parameters, which is all the workflow requires.</span></li>
+  <li><span class="ltr">D</span><span>Proceed with batch processing, accepting that the up-to-24-hour latency is slow for pull request feedback even though the workflow would otherwise function.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> A batch request is fire-and-forget: there is no mechanism to intercept a tool call during a request, execute it, and return the result so the model continues in the same interaction. The workflow cannot function on batch at all, so latency is not the primary constraint. The batch API does carry <code>custom_id</code> and does accept tool definitions — the block is executing those tools mid-request.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 4.5<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Q18)</p></div></details>
+<hr>
+<h3>Q15</h3>
+<p>A CI/CD system runs three analyses: fast style checks on every PR that block merging until completion; a comprehensive weekly security audit of the entire codebase; and nightly test-case generation for recently changed modules. The Message Batches API offers 50% savings but can take up to 24 hours. The team wants to reduce API cost without hurting developer experience.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use the Message Batches API for all three tasks to maximise the 50% savings, with the pipeline polling for batch completion.</span></li>
+  <li><span class="ltr">B</span><span>Use synchronous calls for the PR style checks and the Message Batches API for the weekly audit and the nightly test generation.</span></li>
+  <li><span class="ltr">C</span><span>Use synchronous calls for all three tasks for consistent response times, relying on prompt caching to reduce cost across workloads.</span></li>
+  <li><span class="ltr">D</span><span>Use synchronous calls for the PR style checks and the nightly test generation, and the Message Batches API only for the weekly audit.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Match the API to whether something is waiting. The style check is a blocking gate that must stay synchronous, while the weekly audit and nightly generation are scheduled, deadline-flexible workloads that can absorb the batch window and take the discount. Batching the gate stalls merges for up to 24 hours, keeping everything synchronous forfeits savings on the delay-tolerant work, and excluding nightly generation leaves the same savings on the table.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 4.5<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Q19)</p></div></details>
+<hr>
+<h3>Q16</h3>
+<p>A CI pipeline has two review modes: a pre-merge-commit hook that blocks the merge until completion, and a &quot;deep analysis&quot; that already runs overnight, polls for batch completion, and posts suggestions to the PR. The team wants to use the Message Batches API, which offers 50% savings and requires polling, to reduce cost.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Only the pre-merge-commit hook.</span></li>
+  <li><span class="ltr">B</span><span>Only the deep analysis.</span></li>
+  <li><span class="ltr">C</span><span>Both modes.</span></li>
+  <li><span class="ltr">D</span><span>Neither mode.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> The deep analysis already runs overnight, tolerates delay and uses a polling model, which matches the asynchronous batch architecture exactly and captures the discount. The pre-merge hook blocks the merge, so a batch window of up to 24 hours would stall every PR, and running both inherits that stall for no additional benefit.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 4.5<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Q21)</p></div></details>
+<hr>
+<h3>Q17</h3>
+<p>Two workflows currently use synchronous calls: a blocking pre-merge check that must complete before developers can merge, and a technical-debt report generated overnight for review the next morning. The manager proposes moving both to the Message Batches API to save 50%.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Move both to batch processing with a fallback to synchronous calls if the batches take too long.</span></li>
+  <li><span class="ltr">B</span><span>Move both workflows to batch processing with status polling to verify completion.</span></li>
+  <li><span class="ltr">C</span><span>Use batch processing only for the technical-debt report and keep synchronous calls for the pre-merge check.</span></li>
+  <li><span class="ltr">D</span><span>Keep synchronous calls for both workflows to avoid any issues with batch result ordering.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> The 24-hour window with no latency SLA is acceptable for an overnight report and unacceptable for a gate that developers are waiting on, so the correct answer is the mixed strategy rather than all-or-nothing. A synchronous fallback still places the blocking job in the batch queue first, polling does not shorten the window, and avoiding batch entirely forfeits savings that the overnight report tolerates well. Result ordering is not a real constraint, because results are joined by <code>custom_id</code>.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 4.5<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Q30)</p></div></details>
+<hr>
+<h3>Q18</h3>
+<p>Non-obvious issues — performance optimisations that break edge cases, cleanups that unexpectedly change behaviour — are only caught when another team member reviews the PR. The generation reasoning shows the model considered these cases and concluded its own approach was correct.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Run a second independent instance to review the changes without access to the generator's reasoning.</span></li>
+  <li><span class="ltr">B</span><span>Enable extended thinking for the generation stage so the model deliberates more thoroughly before producing suggestions.</span></li>
+  <li><span class="ltr">C</span><span>Add self-review instructions to the generation prompt asking the model to critique its own suggestions before finalising.</span></li>
+  <li><span class="ltr">D</span><span>Include full test files and documentation in the prompt context so the model better understands expected behaviour during generation.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> The model retained the reasoning context that produced the output and stayed biased toward its own conclusions, so the fix is a fresh instance with no generation history — the same reason human peer review works. More deliberation on the same chain of reasoning preserves the bias, self-critique instructions are the rationalisation loop that already failed, and extra context does not break a single-perspective bias.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 4.6<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Q17)</p></div></details>
+<hr>
+<h3>Q19</h3>
+<p>A pull request changes 14 files in an inventory module. A single-pass review produces inconsistent results: detailed feedback on some files, shallow comments on others, missed obvious bugs, and contradictory feedback where a pattern is flagged in one file and identical code is approved in another in the same PR.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Run three independent full-PR review passes and flag only issues that appear in at least two of the three runs.</span></li>
+  <li><span class="ltr">B</span><span>Split into focused passes: review each file individually for local issues, then run a separate integration-oriented pass for cross-file data flows.</span></li>
+  <li><span class="ltr">C</span><span>Require developers to split large PRs into submissions of 3–4 files before running automated review.</span></li>
+  <li><span class="ltr">D</span><span>Switch to a larger model with a bigger context window so it can pay sufficient attention to all 14 files in one pass.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Per-file passes fix attention dilution by giving every file consistent depth, and the separate integration pass covers cross-file interactions that a per-file view cannot see. Three full-PR passes multiply cost while carrying the same dilution, forcing developers to split PRs moves the problem to humans, and a larger context window does not change how attention is distributed across 14 files.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 4.6<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Q27)</p></div></details>
+<hr>
+<h3>Q20</h3>
+<p>A review agent produces findings, and a second agent is meant to mark findings that are already fixed or merely speculative before anything is posted. The team proposes reusing the original session: the reviewing agent asks the same agent that produced the findings to re-examine them and drop the weak ones. Precision does not improve.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Run the verification pass in a separate instance with no access to the generation reasoning, passing only the artifact and the review criteria.</span></li>
+  <li><span class="ltr">B</span><span>Ask the original agent to write a justification for each finding before it finalises.</span></li>
+  <li><span class="ltr">C</span><span>Raise the threshold applied to the original agent's self-reported confidence scores.</span></li>
+  <li><span class="ltr">D</span><span>Give the original agent more codebase context so it can re-evaluate its own findings.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> The instance that produced the findings keeps the reasoning that produced them, so it is the wrong reviewer regardless of how it is instructed — an independent instance with only the artifact and the criteria catches subtle issues the original rationalised away. A written justification is still self-critique, and both the confidence threshold and the extra context leave the same single perspective in place.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 4.6<br><strong>Source:</strong> newly written</p></div></details>
+<div class="foot">Built 2026-09-21 04:36 · source: banks/d4-questions.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script></body></html>
