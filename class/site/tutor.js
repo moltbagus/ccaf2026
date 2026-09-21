@@ -327,7 +327,7 @@
     .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(function (L) { start(L); })
     .catch(function (e) {
-      page.innerHTML = '<div class="err"><b>Could not load the lesson.</b><br>lessons/' + esc(domainId) +
+      page.innerHTML = '<div class="err"><b>Could not load the lesson.</b><br>/lessons/' + esc(domainId) +
         '.json — ' + esc(e.message) + '<br><br>Run <code>node /home/colb/build_ccaf_site.mjs</code> to refresh the site.</div>';
     });
 
