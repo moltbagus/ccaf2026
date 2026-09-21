@@ -1,6 +1,6 @@
 # CCAF Progress Tracker
 
-Student: Colbert Low · Coach: Hermes · Started 2026-09-19
+
 
 ## Session log
 

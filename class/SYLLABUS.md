@@ -1,8 +1,6 @@
 # CCAF Preparation Class — Syllabus
 
 Coach: Hermes (Claude Code Architect Foundations tutor)
-Student: Colbert Low
-Started: 2026-09-19
 
 ## Exam Facts
 | Parameter | Value |
