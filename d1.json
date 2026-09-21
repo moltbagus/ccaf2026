@@ -2,7 +2,7 @@
   "domain": 1,
   "title": "Agentic Architecture",
   "weight": "27%",
-  "goal": "Given a production scenario, decide the architecture that actually fits: a stop_reason-driven loop, a hub-and-spoke coordinator, a prompt or a programmatic gate, and the right resume, fork or fresh-start call.",
+  "goal": "Given a production scenario, decide the architecture that actually fits: a stop_reason-driven loop, a hub-and-spoke coordinator, a prompt or a programmatic gate, and the right resume, fork or fresh-start call. The loop must branch on stop_reason, preserve history mutations, and handle pause_turn, max_tokens, stop_sequence, refusal, and model_context_window_exceeded.",
   "tasks": [
     "1.1"
   ],
@@ -11,11 +11,11 @@
       "task": "1.1",
       "kind": "teach",
       "title": "An agent is a while loop, not a program",
-      "inshort": "An agentic loop calls the model, runs whatever tools it asked for, appends the results, and calls the model again — repeating until the model stops asking for tools.",
+      "inshort": "An agentic loop calls the model, runs whatever tools it asked for, appends the results, and calls the model again \u2014 repeating until the model stops asking for tools.",
       "lead": "Start with the piece that everything else in this domain hangs off. Your code sends a request, Claude replies, and if the reply asks for a tool you run it and send the result back. That cycle is the agent. Everything the exam asks about stopping, gating, delegating or recovering is a decision made somewhere on this cycle.",
       "points": [
         "The Messages API is stateless: every call must resend the whole conversation, because the endpoint remembers nothing between requests.",
-        "A response is a list of content blocks plus a `stop_reason` field — not a single string of text.",
+        "A response is a list of content blocks plus a `stop_reason` field \u2014 not a single string of text.",
         "A tool call arrives as a `tool_use` block; you answer it with a `tool_result` block inside a new user-role message.",
         "Each `tool_result` must carry the `tool_use_id` from the matching `tool_use` request, or the model cannot pair them up."
       ],
@@ -23,7 +23,7 @@
       "caption": null,
       "code": "while True:\n    response = client.messages.create(model=M, messages=messages, tools=tools)\n    messages.append({\"role\": \"assistant\", \"content\": response.content})\n    if response.stop_reason != \"tool_use\":\n        break\n    results = [run_tool(b) for b in response.content if b.type == \"tool_use\"]\n    messages.append({\"role\": \"user\", \"content\": results})",
       "ask": null,
-      "why": "The loop has no built-in sense of completion. The model cannot end your program for you — it can only say what it wants next, and the API gives you one structured field that says whether it wants a tool or is finished. Control lives in your code, driven by that field.",
+      "why": "The loop has no built-in sense of completion. The model cannot end your program for you \u2014 it can only say what it wants next, and the API gives you one structured field that says whether it wants a tool or is finished. Control lives in your code, driven by that field.",
       "contrast": "People reach for natural language: check whether the reply text contains done, or set a fixed iteration cap and call it completion detection. Both look like they work in a demo, because a demo has one happy path. In production the model writes text and calls a tool in the same response, so any check on the text fires early.",
       "exam": "This is the foundation task, and most Domain 1 questions reduce to it. If you can state that `stop_reason` is the only authoritative loop-control signal, you can answer the stopping questions without knowing the scenario.",
       "takeaway": "The model asks, your code decides. `stop_reason` is the switch."
@@ -35,8 +35,8 @@
       "inshort": "`stop_reason == \"tool_use\"` means keep looping. `stop_reason == \"end_turn\"` means stop. Nothing else decides.",
       "lead": "Two values do all the work, and the exam tests the pair constantly. Read the field, not the prose.",
       "points": [
-        "`tool_use` — the model wants a tool run. Execute it and loop again.",
-        "`end_turn` — the model is finished. Exit the loop and return the answer.",
+        "`tool_use` \u2014 the model wants a tool run. Execute it and loop again.",
+        "`end_turn` \u2014 the model is finished. Exit the loop and return the answer.",
         "`max_tokens` and `stop_sequence` are also stopping states you must handle, because the task may not be done.",
         "`refusal` means the model declined, which is not the same as finishing successfully."
       ],
@@ -45,9 +45,75 @@
       "code": null,
       "ask": null,
       "why": "Because it is a structured field produced by the API rather than text produced by the model, it cannot be reworded, reformatted, or buried in a long explanation. It is the one signal your code can branch on without guessing.",
-      "contrast": "Parsing the assistant text is the temptation — it avoids one API call and looks cheap. But a single response can carry both a text block and a `tool_use` block, so a text-based check exits while tools are still pending. That is the classic premature-termination bug.",
+      "contrast": "Parsing the assistant text is the temptation \u2014 it avoids one API call and looks cheap. But a single response can carry both a text block and a `tool_use` block, so a text-based check exits while tools are still pending. That is the classic premature-termination bug.",
       "exam": "The exam's preferred answer is `stop_reason`-driven control, and it usually appears next to a distractor that sounds more efficient. The other stopping states are tested as a secondary detail.",
       "takeaway": "Branch on the field. If it is not `tool_use`, your loop is finished looping."
+    },
+    {
+      "task": "1.1",
+      "kind": "teach",
+      "title": "The full stop_reason decision table",
+      "inshort": "The exam keys tool_use and end_turn, but production loops must also handle pause_turn, max_tokens, stop_sequence, refusal, and model_context_window_exceeded.",
+      "lead": "Treat any value other than end_turn as not finished, then branch on the specific reason. The two-value loop is the exam foundation; the full table is what keeps production running.",
+      "points": [
+        "tool_use \u2014 execute the requested tools, append a single user turn of matching tool_result blocks, and call the API again.",
+        "end_turn \u2014 the model is finished. Return the final text blocks to the caller.",
+        "pause_turn \u2014 the server hit its own sampling cap while running server tools. Append the assistant response unchanged and call again with the same tools.",
+        "max_tokens \u2014 output was truncated. If the last block is tool_use, the JSON input is incomplete: retry with a higher max_tokens.",
+        "stop_sequence \u2014 output matched your custom stop string. Treat it as a terminal stop for that pattern and finalize per your protocol.",
+        "refusal \u2014 the model declined for safety reasons. Do not loop; surface the refusal, optionally rephrase, route to a different model, or escalate.",
+        "model_context_window_exceeded \u2014 the response filled the model's context window. Handle it like max_tokens truncation: continue, summarize, or compact."
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "why": "The exam tests the two-value pair, but the live Messages API returns more states. A loop that only checks tool_use and end_turn silently truncates real work.",
+      "contrast": "Assuming every non-end_turn response is tool_use is the classic production bug. pause_turn has no tool_result for you to synthesize, and max_tokens with an incomplete tool_use cannot be retried with the same limit.",
+      "exam": "Given a stop_reason value, identify the correct loop action: continue with tool results, append-and-resend for pause_turn, exit on end_turn, retry-with-larger-budget on max_tokens mid-tool, or surface refusal.",
+      "takeaway": "end_turn is the only finish signal. Everything else is a specific recovery path."
+    },
+    {
+      "task": "1.1",
+      "kind": "teach",
+      "title": "Model-driven decision-making beats a hard-coded tool sequence",
+      "inshort": "In an agentic loop, Claude reads the current context and decides which tool to call next. A pre-configured decision tree statically runs tool_a \u2192 tool_b \u2192 tool_c.",
+      "lead": "This is the difference between an agent and a workflow. The model picks the next step from what it observed; your code only executes the choice.",
+      "points": [
+        "The model, not your code, decides which tool to call next based on the running context.",
+        "Agentic loops flex around edge cases the developer never mapped out.",
+        "Pre-configured decision trees are fine when the path is known and business logic demands deterministic compliance.",
+        "When financial, security, or regulatory rules require a fixed path, programmatic enforcement overrides model flexibility."
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "why": "The exam favours model-driven approaches because they adapt. Hard-coded sequences are workflows, not agents.",
+      "contrast": "Calling read_file \u2192 search \u2192 write_file from your own code with no model-in-the-loop reasoning is a workflow. It is fine for a known path, but it cannot recover from novel inputs.",
+      "exam": "Distinguish model-driven decision-making from pre-configured decision trees, and pick the right pattern for the described task: open-ended task = agent; well-defined fixed path = workflow.",
+      "takeaway": "Let the model decide when the path is open. Enforce in code when the path is a compliance requirement."
+    },
+    {
+      "task": "1.1",
+      "kind": "teach",
+      "title": "The history mutation rule: append, then append again",
+      "inshort": "Between iterations, append the assistant turn verbatim (including tool_use blocks), then append one user turn whose content is only tool_result blocks keyed by tool_use_id.",
+      "lead": "This is the critical handoff in the loop. Miss either mutation and the next request is invalid or the model cannot see what the tool returned.",
+      "points": [
+        "Append the assistant turn verbatim \u2014 the tool_use blocks must survive into history.",
+        "Then append a single new user turn whose content is a list of tool_result blocks, one per tool_use_id.",
+        "Do not add extra text after tool_result blocks; trailing text teaches Claude to expect user text after every tool call and causes empty end_turn responses.",
+        "The Messages API is stateless: every request must carry the full history, because the endpoint remembers nothing between calls."
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": "messages.append({\"role\": \"assistant\", \"content\": resp.content})  # verbatim, keep tool_use\nresults = [\n    {\"type\": \"tool_result\", \"tool_use_id\": b.id, \"content\": run_tool(b.name, b.input)}\n    for b in resp.content if b.type == \"tool_use\"\n]\nmessages.append({\"role\": \"user\", \"content\": results})",
+      "ask": null,
+      "why": "Sending tool results without first appending the assistant tool_use turn produces an invalid messages array and an API error. The pairing is the contract.",
+      "contrast": "The common bug is to send only the tool_result, or to synthesize a result for pause_turn. pause_turn has no result to synthesize \u2014 resend the assistant content unchanged.",
+      "exam": "Identify which messages mutations are required between iterations: append assistant turn verbatim, then append a user turn of tool_result blocks keyed by tool_use_id.",
+      "takeaway": "Verbatim assistant first. Pure tool_result user turn second."
     },
     {
       "task": "1.1",
@@ -56,8 +122,8 @@
       "inshort": "Checking if the reply contains words like \"done\" or \"finished\" to decide whether to stop the loop.",
       "lead": "It feels intuitive and works in early testing. It is also the most brittle choice you can make.",
       "points": [
-        "Natural language is ambiguous — the model might narrate reasoning (\"let me check that\") without calling a tool, or call a tool with no narration.",
-        "Phrasing drifts across prompts and model versions — a string match that works today silently breaks tomorrow.",
+        "Natural language is ambiguous \u2014 the model might narrate reasoning (\"let me check that\") without calling a tool, or call a tool with no narration.",
+        "Phrasing drifts across prompts and model versions \u2014 a string match that works today silently breaks tomorrow.",
         "The structured contract does not drift: a turn that wants a tool returns `stop_reason: tool_use`, full stop."
       ],
       "diagram": null,
@@ -75,7 +141,7 @@
       },
       "why": "Prose parsing fails both ways: it stops early when the model narrates, and runs forever when the model's wording changes.",
       "contrast": "A string match looks deterministic in a test case. In production the model's wording is not a contract.",
-      "exam": "The exam will phrase this as a production symptom — partial answers, infinite loops — and ask which change you would ship. The fix is always: branch on stop_reason.",
+      "exam": "The exam will phrase this as a production symptom \u2014 partial answers, infinite loops \u2014 and ask which change you would ship. The fix is always: branch on stop_reason.",
       "takeaway": "Text is for humans. stop_reason is for code."
     },
     {
@@ -92,7 +158,7 @@
       ],
       "diagram": null,
       "caption": null,
-      "code": "# guard, not decision\nMAX_ITER = 50  # generous backstop\nwhile iter < MAX_ITER:\n    resp = client.messages.create(...)\n    if resp.stop_reason != \"tool_use\":\n        break\n    # ... run tools, append results\n    iter += 1\n# iter == MAX_ITER means something went wrong — alert, don't silently return",
+      "code": "# guard, not decision\nMAX_ITER = 50  # generous backstop\nwhile iter < MAX_ITER:\n    resp = client.messages.create(...)\n    if resp.stop_reason != \"tool_use\":\n        break\n    # ... run tools, append results\n    iter += 1\n# iter == MAX_ITER means something went wrong \u2014 alert, don't silently return",
       "ask": null,
       "why": "A cap that is also the completion logic produces two failure modes: truncation (task needed more turns) and waste (task finished early). Both are invisible until you check results.",
       "contrast": "Setting MAX_ITER=5 looks safe in a demo where tasks finish in 3. In production the distribution shifts.",
@@ -168,14 +234,14 @@
     {
       "task": "1.1",
       "kind": "recap",
-      "title": "Exam lens — the one question that decides every Domain 1 loop answer",
+      "title": "Exam lens \u2014 the one question that decides every Domain 1 loop answer",
       "inshort": "Ask: \"Does this make the loop more dependent on stop_reason or less?\"",
       "lead": "Answers that add prose parsing, lean harder on a counter, or inspect content shape all move away from the authoritative signal and are wrong by construction. The single answer that moves toward branching on stop_reason, even if phrased plainly, is the one to choose.",
       "points": [
-        "Prose parsing → less dependent on stop_reason → wrong",
-        "Iteration cap as primary logic → less dependent on stop_reason → wrong",
-        "Content-type check → less dependent on stop_reason → wrong",
-        "Branch on stop_reason, cap as guardrail → more dependent on stop_reason → correct"
+        "Prose parsing \u2192 less dependent on stop_reason \u2192 wrong",
+        "Iteration cap as primary logic \u2192 less dependent on stop_reason \u2192 wrong",
+        "Content-type check \u2192 less dependent on stop_reason \u2192 wrong",
+        "Branch on stop_reason, cap as guardrail \u2192 more dependent on stop_reason \u2192 correct"
       ],
       "diagram": null,
       "caption": null,
