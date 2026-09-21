@@ -2,7 +2,7 @@
   "domain": 1,
   "title": "Agentic Architecture",
   "weight": "27%",
-  "goal": "Given a production scenario, decide the architecture that actually fits: a stop_reason-driven loop, a hub-and-spoke coordinator, a prompt or a programmatic gate, and the right resume, fork or fresh-start call.",
+  "goal": "Understand how an AI agent works: a loop that calls a model, runs tools, and repeats until done.",
   "tasks": [
     "1.1"
   ],
@@ -11,180 +11,111 @@
       "task": "1.1",
       "kind": "teach",
       "title": "An agent is a while loop, not a program",
-      "inshort": "An agentic loop calls the model, runs whatever tools it asked for, appends the results, and calls the model again — repeating until the model stops asking for tools.",
-      "lead": "Start with the piece that everything else in this domain hangs off. Your code sends a request, Claude replies, and if the reply asks for a tool you run it and send the result back. That cycle is the agent. Everything the exam asks about stopping, gating, delegating or recovering is a decision made somewhere on this cycle.",
+      "inshort": "An AI agent keeps calling the model, doing whatever it asks, and calling again \u2014 until the model says it's done.",
+      "lead": "Think of it like this: you send a message to the AI, it replies. If it needs a tool (like reading a file or running code), it asks. You do that, then send the result back. The AI replies again. This back-and-forth cycle is the agent.",
       "points": [
-        "The Messages API is stateless: every call must resend the whole conversation, because the endpoint remembers nothing between requests.",
-        "A response is a list of content blocks plus a `stop_reason` field — not a single string of text.",
-        "A tool call arrives as a `tool_use` block; you answer it with a `tool_result` block inside a new user-role message.",
-        "Each `tool_result` must carry the `tool_use_id` from the matching `tool_use` request, or the model cannot pair them up."
+        "Every message must include the full conversation history \u2014 the AI doesn't remember anything between calls",
+        "A response has content blocks (text, tool requests) and a stop_reason field",
+        "When the AI wants a tool, it sends a tool_use block \u2014 you run the tool and send back a tool_result",
+        "Each tool_result must match the tool_use_id from the request"
       ],
-      "diagram": null,
-      "caption": null,
-      "code": "while True:\n    response = client.messages.create(model=M, messages=messages, tools=tools)\n    messages.append({\"role\": \"assistant\", \"content\": response.content})\n    if response.stop_reason != \"tool_use\":\n        break\n    results = [run_tool(b) for b in response.content if b.type == \"tool_use\"]\n    messages.append({\"role\": \"user\", \"content\": results})",
-      "ask": null,
-      "why": "The loop has no built-in sense of completion. The model cannot end your program for you — it can only say what it wants next, and the API gives you one structured field that says whether it wants a tool or is finished. Control lives in your code, driven by that field.",
-      "contrast": "People reach for natural language: check whether the reply text contains done, or set a fixed iteration cap and call it completion detection. Both look like they work in a demo, because a demo has one happy path. In production the model writes text and calls a tool in the same response, so any check on the text fires early.",
-      "exam": "This is the foundation task, and most Domain 1 questions reduce to it. If you can state that `stop_reason` is the only authoritative loop-control signal, you can answer the stopping questions without knowing the scenario.",
-      "takeaway": "The model asks, your code decides. `stop_reason` is the switch."
+      "code": "while True:\n    response = client.messages.create(\n        model=M, messages=messages, tools=tools\n    )\n    messages.append({\"role\": \"assistant\",\n        \"content\": response.content})\n    if response.stop_reason != \"tool_use\":\n        break\n    results = [run_tool(b) for b in response.content\n        if b.type == \"tool_use\"]\n    messages.append({\"role\": \"user\",\n        \"content\": results})",
+      "takeaway": "The AI asks, your code decides. stop_reason is the switch."
     },
     {
       "task": "1.1",
       "kind": "teach",
-      "title": "One field decides whether the loop continues",
-      "inshort": "`stop_reason == \"tool_use\"` means keep looping. `stop_reason == \"end_turn\"` means stop. Nothing else decides.",
-      "lead": "Two values do all the work, and the exam tests the pair constantly. Read the field, not the prose.",
+      "title": "One field decides when to stop",
+      "inshort": "stop_reason == tool_use means keep going. stop_reason == end_turn means done. That's it.",
+      "lead": "Two values do all the work. When the model wants a tool, stop_reason is tool_use \u2014 keep looping. When it's finished, stop_reason is end_turn \u2014 stop and give the answer.",
       "points": [
-        "`tool_use` — the model wants a tool run. Execute it and loop again.",
-        "`end_turn` — the model is finished. Exit the loop and return the answer.",
-        "`max_tokens` and `stop_sequence` are also stopping states you must handle, because the task may not be done.",
-        "`refusal` means the model declined, which is not the same as finishing successfully."
+        "tool_use: the model wants a tool, keep looping",
+        "end_turn: the model is finished, exit the loop",
+        "max_tokens and stop_sequence are also stopping signals to handle",
+        "refusal means the model declined \u2014 not the same as success"
       ],
       "diagram": "agentic-loop",
-      "caption": "The cycle your code owns. The back edge exists only while stop_reason says tool_use.",
-      "code": null,
-      "ask": null,
-      "why": "Because it is a structured field produced by the API rather than text produced by the model, it cannot be reworded, reformatted, or buried in a long explanation. It is the one signal your code can branch on without guessing.",
-      "contrast": "Parsing the assistant text is the temptation — it avoids one API call and looks cheap. But a single response can carry both a text block and a `tool_use` block, so a text-based check exits while tools are still pending. That is the classic premature-termination bug.",
-      "exam": "The exam's preferred answer is `stop_reason`-driven control, and it usually appears next to a distractor that sounds more efficient. The other stopping states are tested as a secondary detail.",
-      "takeaway": "Branch on the field. If it is not `tool_use`, your loop is finished looping."
+      "caption": "The loop your code controls. It only continues while stop_reason says tool_use.",
+      "takeaway": "Read the field, not the prose. If it's not tool_use, you're done."
     },
     {
       "task": "1.1",
       "kind": "teach",
-      "title": "Anti-pattern one: parsing natural language for completion",
-      "inshort": "Checking if the reply contains words like \"done\" or \"finished\" to decide whether to stop the loop.",
-      "lead": "It feels intuitive and works in early testing. It is also the most brittle choice you can make.",
+      "title": "Don't check the text to know when to stop",
+      "inshort": "Looking for words like 'done' or 'finished' in the response to decide when to stop the loop.",
+      "lead": "It feels natural and works in early testing. But it's the most fragile choice you can make.",
       "points": [
-        "Natural language is ambiguous — the model might narrate reasoning (\"let me check that\") without calling a tool, or call a tool with no narration.",
-        "Phrasing drifts across prompts and model versions — a string match that works today silently breaks tomorrow.",
-        "The structured contract does not drift: a turn that wants a tool returns `stop_reason: tool_use`, full stop."
+        "Natural language is ambiguous \u2014 the model might explain its reasoning without actually calling a tool",
+        "Wording changes across prompts and model versions \u2014 a match that works today breaks tomorrow",
+        "The structured signal never changes: a tool request always has stop_reason: tool_use"
       ],
-      "diagram": null,
-      "caption": null,
-      "code": null,
-      "ask": {
-        "q": "A support agent loops over `client.messages.create` with tools. A teammate proposes exiting the loop whenever the assistant text contains the words done or resolved, to save an API call. Production shows the agent sometimes stops mid-task with a partial answer. What is the bug?",
-        "options": [
-          "A) The model sometimes narrates reasoning without emitting a tool call, so the text check fires early",
-          "B) The model stops emitting the word done after a prompt tweak, so the loop runs forever",
-          "C) Both A and B",
-          "D) The API ignores the text and only respects stop_reason"
-        ],
-        "answer": "C"
-      },
-      "why": "Prose parsing fails both ways: it stops early when the model narrates, and runs forever when the model's wording changes.",
-      "contrast": "A string match looks deterministic in a test case. In production the model's wording is not a contract.",
-      "exam": "The exam will phrase this as a production symptom — partial answers, infinite loops — and ask which change you would ship. The fix is always: branch on stop_reason.",
+      "why": "Checking the text fails both ways: it stops too early when the model is explaining, and runs forever when the model is working silently.",
       "takeaway": "Text is for humans. stop_reason is for code."
     },
     {
       "task": "1.1",
       "kind": "teach",
-      "title": "Anti-pattern two: iteration caps as the primary stopping mechanism",
-      "inshort": "Running a fixed number of iterations and returning whatever you have, instead of checking stop_reason.",
-      "lead": "Capping iterations is a legitimate safety guard. The anti-pattern is using that cap as the primary way to decide the work is done.",
+      "title": "Don't use a fixed iteration count to stop",
+      "inshort": "Running exactly N iterations and returning whatever you have, instead of checking if the AI is actually done.",
+      "lead": "A cap on iterations is a good safety net. But using it as the main way to decide the work is done is a mistake.",
       "points": [
-        "If your loop's real stopping logic is \"run exactly five iterations,\" you cut off useful work when the task needed six, and waste turns when it finished in two.",
-        "The cap is blind to whether the model is actually finished.",
-        "The correct design branches on `stop_reason` to decide completion, and keeps a generous iteration cap only as a backstop against runaways.",
-        "Caps guard; they do not decide."
+        "If your loop runs exactly 5 times, you might cut off useful work",
+        "The cap doesn't know if the AI is actually finished",
+        "The correct design uses stop_reason to decide completion, with a generous cap as backup"
       ],
-      "diagram": null,
-      "caption": null,
-      "code": "# guard, not decision\nMAX_ITER = 50  # generous backstop\nwhile iter < MAX_ITER:\n    resp = client.messages.create(...)\n    if resp.stop_reason != \"tool_use\":\n        break\n    # ... run tools, append results\n    iter += 1\n# iter == MAX_ITER means something went wrong — alert, don't silently return",
-      "ask": null,
-      "why": "A cap that is also the completion logic produces two failure modes: truncation (task needed more turns) and waste (task finished early). Both are invisible until you check results.",
-      "contrast": "Setting MAX_ITER=5 looks safe in a demo where tasks finish in 3. In production the distribution shifts.",
-      "exam": "Expect a scenario where an agent \"sometimes returns incomplete answers.\" The trap answer is \"increase the cap.\" The fix is: branch on stop_reason, keep a generous cap as a guardrail.",
-      "takeaway": "Caps are guardrails. stop_reason is the decision."
+      "code": "MAX_ITER = 50  \nwhile iter < MAX_ITER:\n    resp = client.messages.create(...)\n    if resp.stop_reason != \"tool_use\":\n        break\n    iter += 1",
+      "takeaway": "Caps are safety nets. stop_reason is the decision."
     },
     {
       "task": "1.1",
       "kind": "teach",
-      "title": "Anti-pattern three: checking for assistant text as a completion signal",
-      "inshort": "If the assistant returned a text block, conclude the agent is finished.",
-      "lead": "This breaks because the model frequently emits a text block alongside a `tool_use` block, narrating what it is about to do while also requesting the tool.",
+      "title": "Don't stop just because text appeared",
+      "inshort": "If the assistant returned a text block, thinking the work is finished.",
+      "lead": "This breaks because the AI often sends a text block AND a tool request in the same response \u2014 explaining what it's about to do while also asking for a tool.",
       "points": [
-        "Seeing text present, your loop concludes the agent is done, returns the half-formed narration, and never runs the tool.",
-        "This is the bug at the heart of premature loop termination: checking `response.content[0].type == \"text\"` ends the loop early.",
-        "The presence of text tells you nothing definitive about completion. Only `stop_reason` does."
+        "If you see text and think the work is done, you return half-finished output and never run the tool",
+        "The text describes what the model wants to do \u2014 not whether it's finished",
+        "Only stop_reason tells you definitively what comes next"
       ],
-      "diagram": null,
-      "caption": null,
-      "code": "# wrong\nif response.content[0].type == \"text\":\n    return response.content[0].text  # stops early when tool_use is also present\n\n# right\nif response.stop_reason == \"tool_use\":\n    # run tools, loop again\nelse:\n    # extract final answer from content blocks",
-      "ask": null,
-      "why": "A single response can contain both text narration and tool_use blocks. The text narrates intent; stop_reason declares completion.",
-      "contrast": "The content array describes what the model produced. stop_reason describes what the model intends next.",
-      "exam": "The exam shows a loop that checks for text blocks and asks why it fails on multi-step tasks. The answer: text and tool_use can appear together.",
-      "takeaway": "Text narrates. stop_reason decides."
+      "code": "if response.content[0].type == \"text\":\n    return response.content[0].text",
+      "takeaway": "Text narrates what's happening. stop_reason decides what happens next."
     },
     {
       "task": "1.1",
       "kind": "teach",
-      "title": "Three wrong signals versus the one right signal",
-      "inshort": "Every anti-pattern routes the decision through a proxy; only stop_reason is authoritative.",
-      "lead": "The sound loop is a while driven by stop_reason: continue while tool_use, stop on end_turn, explicitly handle max_tokens and refusal. A safety cap is a guardrail, never the primary logic.",
+      "title": "The one signal that matters",
+      "inshort": "Every other approach uses a proxy. Only stop_reason is the real answer.",
+      "lead": "The correct loop reads stop_reason and branches on it. Continue while tool_use, stop on end_turn. The cap is just a backup, never the main logic.",
       "points": [
-        "Natural-language parsing trusts wording",
-        "Iteration caps trust a counter",
-        "Content-type checks trust block shape",
-        "None of those proxies is the model's actual statement of intent"
+        "Checking text \u2192 trusts wording \u2192 unreliable",
+        "Counting iterations \u2192 trusts a counter \u2192 can cut off work",
+        "Checking content shape \u2192 trusts block type \u2192 can stop early",
+        "Reading stop_reason \u2192 trusts the API's structured signal \u2192 always correct"
       ],
-      "diagram": null,
-      "caption": null,
-      "code": "while True:\n    resp = client.messages.create(...)\n    if resp.stop_reason == \"tool_use\":\n        run_tools(resp)\n        continue\n    elif resp.stop_reason == \"end_turn\":\n        return extract_answer(resp)\n    elif resp.stop_reason in (\"max_tokens\", \"stop_sequence\"):\n        return handle_incomplete(resp)\n    elif resp.stop_reason == \"refusal\":\n        return handle_refusal(resp)",
-      "ask": null,
-      "why": "The unifying fix for all three anti-patterns is single: read stop_reason and branch on it.",
-      "contrast": "New variations appear constantly (\"stop when response < 50 tokens\", \"stop after particular tool\"). All fail the same way: they trust a proxy. If you can ask \"Is this decision made by stop_reason or a proxy for it?\" you can classify any loop on sight.",
-      "exam": "When the exam shows four loop designs, the right one branches on stop_reason and treats caps as backstops. The three wrong ones each lean on an anti-pattern.",
-      "takeaway": "Structured signal over prose, one authoritative field over three proxies."
+      "code": "while True:\n    resp = client.messages.create(...)\n    if resp.stop_reason == \"tool_use\":\n        run_tools(resp)\n    else:\n        break",
+      "takeaway": "Structured signal over prose. One authoritative field over three guesses."
     },
     {
       "task": "1.1",
       "kind": "ask",
-      "title": "Check your understanding",
-      "inshort": "An agent occasionally returns an empty or half-written answer. Its loop ends as soon as the assistant response includes any text content block.",
-      "lead": "Identify the anti-pattern and the fix.",
-      "points": [],
-      "diagram": null,
-      "caption": null,
-      "code": null,
-      "ask": {
-        "q": "An agent occasionally returns an empty or half-written answer. Its loop ends as soon as the assistant response includes any text content block. What is the best fix?",
-        "options": [
-          "A) Stop using text-block presence as the completion signal and branch the loop on `stop_reason` instead",
-          "B) Add a longer system-prompt instruction telling Claude to always finish before replying",
-          "C) Lower `max_tokens` so the model produces shorter, more decisive responses",
-          "D) Retry the request automatically whenever the answer looks short"
-        ],
-        "answer": "A"
-      },
-      "why": "The bug is anti-pattern three: checking for text presence instead of stop_reason. The model emits text alongside tool_use. Only A addresses the root cause.",
-      "contrast": "B relies on prompting (probabilistic). C truncates answers (counterproductive). D papers over the bug without fixing the logic.",
-      "exam": "This exact question structure appears: a production symptom, four fixes, one structural and three superficial.",
+      "title": "Quick check \u2014 do you understand?",
+      "inshort": "What's wrong with checking if the response contains text to know when to stop?",
+      "lead": "The AI can send text AND a tool request at the same time. If you stop on text, you miss the tool call and get half-finished results.",
       "takeaway": "The fix is always: read stop_reason."
     },
     {
       "task": "1.1",
       "kind": "recap",
-      "title": "Exam lens — the one question that decides every Domain 1 loop answer",
-      "inshort": "Ask: \"Does this make the loop more dependent on stop_reason or less?\"",
-      "lead": "Answers that add prose parsing, lean harder on a counter, or inspect content shape all move away from the authoritative signal and are wrong by construction. The single answer that moves toward branching on stop_reason, even if phrased plainly, is the one to choose.",
+      "title": "What matters most",
+      "inshort": "Here are the key takeaways for this domain.",
       "points": [
-        "Prose parsing → less dependent on stop_reason → wrong",
-        "Iteration cap as primary logic → less dependent on stop_reason → wrong",
-        "Content-type check → less dependent on stop_reason → wrong",
-        "Branch on stop_reason, cap as guardrail → more dependent on stop_reason → correct"
+        "stop_reason is the only authoritative signal for loop control",
+        "Text, counters, and content checks are all proxies \u2014 unreliable",
+        "A generous iteration cap is fine as a safety net",
+        "The loop continues while tool_use, stops on end_turn"
       ],
-      "diagram": null,
-      "caption": null,
-      "code": null,
-      "ask": null,
-      "why": "This lens collapses a four-option question into a one-question test. It is the same lens you should apply when reviewing real agent code.",
-      "contrast": "Most wrong answers in Domain 1 add a moving part: another agent, another cap, another prompt clause. The pattern is to prefer the signal that already exists and the guarantee that cannot be argued with.",
-      "exam": "Expect the scenario to describe a production symptom and ask which change you would ship. Sort the options by whether they add a probability or a guarantee.",
-      "takeaway": "Stop_reason is the source of truth. Every other signal is a proxy."
+      "takeaway": "Your loop is driven by one field: stop_reason. Everything else is a trap.",
+      "lead": "This is the summary of everything you just learned. Keep these points handy."
     }
   ]
 }
