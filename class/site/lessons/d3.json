@@ -2,7 +2,7 @@
   "domain": 3,
   "title": "Claude Code Configuration & Workflows",
   "weight": "20%",
-  "goal": "Decide whether a standard must be ambient or on-demand, and pick the option that correctly applies the documented principle.",
+  "goal": "Given a production stem about configuration, workflow or CI, decide whether the standard must be ambient or invoked, whether decisions remain, and which mechanism enforces it, then pick the option that matches instead of the trap.",
   "tasks": [
     "3.1",
     "3.2",
@@ -50,7 +50,7 @@
     {
       "task": "3.1",
       "kind": "diagram",
-      "title": "Layers get narrower",
+      "title": "Five layers, narrowing as they descend",
       "lead": "Read the hierarchy as layers that get more specific as they get closer to the work. Files in the working directory and its ancestors load at launch; files in subtrees below load on demand, when Claude reads files in those subtrees.",
       "points": [
         "Managed policy sits at the top and no setting can remove it.",
@@ -68,7 +68,7 @@
     {
       "task": "3.1",
       "kind": "check",
-      "title": "Check: the new developer who sees nothing",
+      "title": "Gate: the new developer who sees nothing",
       "lead": "Answer it now, before the rest of the lesson. One detail in the stem rules out two of the options for you.",
       "points": [],
       "diagram": null,
@@ -127,7 +127,7 @@
     {
       "task": "3.2",
       "kind": "check",
-      "title": "Check: the skill with three symptoms",
+      "title": "Gate: the skill with three symptoms",
       "lead": "Three problems in one stem, which usually means three controls in one answer. Watch for the option that offers a warning instead of a restriction.",
       "points": [],
       "diagram": null,
@@ -186,7 +186,7 @@
     {
       "task": "3.3",
       "kind": "check",
-      "title": "Check: conventions per code type",
+      "title": "Gate: conventions per code type",
       "lead": "The stem gives you the decisive detail in its last sentence: identical conventions wherever the test files live. Now answer.",
       "points": [],
       "diagram": null,
@@ -245,7 +245,7 @@
     {
       "task": "3.4",
       "kind": "check",
-      "title": "Check: add Slack, method undecided",
+      "title": "Gate: add Slack, method undecided",
       "lead": "Read what the stem does not say. Three integration methods, materially different consequences, and a task statement that names none of them.",
       "points": [],
       "diagram": null,
@@ -268,7 +268,7 @@
     {
       "task": "3.4",
       "kind": "diagram",
-      "title": "Where results go",
+      "title": "Where the search output ends up",
       "lead": "Now the move that saves the conversation itself. An unfamiliar service, a first reconnaissance pass, and the main thread is already full of directory listings and search results. The fix is not a bigger window.",
       "points": [
         "The Explore subagent runs Glob, Grep and Read in its own context and returns a concise summary.",
@@ -322,7 +322,7 @@
     {
       "task": "3.5",
       "kind": "drill",
-      "title": "Practice: coupled defects and stray typos",
+      "title": "Drill: coupled defects and stray typos",
       "lead": "The stem tells you the two middleware defects interact. That word decides the shape of your feedback. Answer.",
       "points": [],
       "diagram": null,
@@ -399,7 +399,7 @@
     {
       "task": "3.6",
       "kind": "check",
-      "title": "Check: the job that never finishes",
+      "title": "Gate: the job that never finishes",
       "lead": "One flag. The other options treat the symptom or invent surface that does not exist.",
       "points": [],
       "diagram": null,
@@ -440,7 +440,7 @@
     {
       "task": "3.6",
       "kind": "check",
-      "title": "Check: caught only by a colleague",
+      "title": "Gate: caught only by a colleague",
       "lead": "Answer the stem you just read. Every wrong option keeps the same perspective in place and changes something else about it.",
       "points": [],
       "diagram": null,
@@ -463,7 +463,7 @@
     {
       "task": "3.6",
       "kind": "diagram",
-      "title": "One trap",
+      "title": "One gate people classify as a memory question",
       "lead": "Logging before context is compacted is a hook, not a `CLAUDE.md` instruction. Memory files load as context; hooks are where behaviour is actually enforced. That difference decides this stem.",
       "points": [
         "PreCompact fires before context is compacted, which is where a pre-compaction log belongs.",
@@ -481,8 +481,8 @@
     {
       "task": "3.6",
       "kind": "recap",
-      "title": "What matters most",
-      "lead": "This is the summary of everything you just learned. Keep these points handy.",
+      "title": "Domain 3 in one breath",
+      "lead": "That is Domain 3: twenty percent of the exam and the densest configuration surface in it. Three reflexes answer almost every question. Is this file somewhere the team actually receives? Does the standard need to be ambient, or invoked? And does the mechanism enforce, or merely advise?",
       "points": [
         "Standards everyone must get live in the committed `.claude/CLAUDE.md`. `~/.claude/` is personal and never reaches a teammate.",
         "Ambient means CLAUDE.md, invoked means a skill, noisy means `context: fork`, unsafe means `allowed-tools`.",
@@ -494,8 +494,7 @@
       "caption": null,
       "code": null,
       "ask": null,
-      "takeaway": "Who receives it, ambient or invoked, enforce or advise. Three reflexes, most of Domain 3.",
-      "inshort": "Here are the key takeaways for this domain."
+      "takeaway": "Who receives it, ambient or invoked, enforce or advise. Three reflexes, most of Domain 3."
     }
   ]
 }

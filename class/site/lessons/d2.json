@@ -2,7 +2,7 @@
   "domain": 2,
   "title": "Tool Design & MCP",
   "weight": "18%",
-  "goal": "Identify which tool description causes the routing bug, and pick the cheapest layer that fixes it.",
+  "goal": "Pick the cheapest layer that fixes a routing, error, selection, or scope failure, and name the distractors the exam dresses up as architecture.",
   "tasks": [
     "2.1",
     "2.2",
@@ -30,7 +30,7 @@
     {
       "task": "2.1",
       "kind": "check",
-      "title": "What should we do? actually removes the overlap?",
+      "title": "Which fix actually removes the overlap?",
       "lead": "You are reviewing the routing failure above and must choose a remediation.",
       "points": [],
       "diagram": null,
@@ -71,7 +71,7 @@
     {
       "task": "2.1",
       "kind": "check",
-      "title": "One refund, four ways to handle it",
+      "title": "One refund tool, four behaviours",
       "lead": "A single tool is trying to cover four different actions, and the parameter sets do not agree.",
       "points": [],
       "diagram": null,
@@ -94,7 +94,7 @@
     {
       "task": "2.1",
       "kind": "diagram",
-      "title": "What the AI sees",
+      "title": "What the model actually sees",
       "lead": "Here is the whole contract. Everything else about your tool is invisible to the model.",
       "points": [
         "`name` and `description` route the call. `input_schema` constrains the arguments.",
@@ -167,7 +167,7 @@
     {
       "task": "2.2",
       "kind": "diagram",
-      "title": "The flow of information",
+      "title": "What reaches the coordinator",
       "lead": "A subagent fails mid-task. What it hands upward decides whether the workflow survives.",
       "points": [
         "The subagent recovers locally first, one or two retries, capped.",
@@ -201,7 +201,7 @@
     {
       "task": "2.3",
       "kind": "check",
-      "title": "Too many tools breaks things",
+      "title": "Eighteen tools is the failure",
       "lead": "A capability count problem is being misdiagnosed as a wording problem.",
       "points": [],
       "diagram": null,
@@ -242,7 +242,7 @@
     {
       "task": "2.3",
       "kind": "check",
-      "title": "Always start by calling the model",
+      "title": "Making the first call mandatory",
       "lead": "The instruction is already imperative and it still fails one turn in seven.",
       "points": [],
       "diagram": null,
@@ -283,7 +283,7 @@
     {
       "task": "2.4",
       "kind": "check",
-      "title": "Why sharing tokens backfires",
+      "title": "Six developers, one token each",
       "lead": "The requirement is shared tooling plus per-developer credentials.",
       "points": [],
       "diagram": null,
@@ -324,7 +324,7 @@
     {
       "task": "2.4",
       "kind": "diagram",
-      "title": "MCP connects tools",
+      "title": "MCP is a hub, not a pipe",
       "lead": "One client, several servers, each declaring its own surface.",
       "points": [
         "Server primitives: tools are model-controlled, resources are application-controlled, prompts are user-driven.",
@@ -376,7 +376,7 @@
     {
       "task": "2.5",
       "kind": "check",
-      "title": "Too many matches, one target",
+      "title": "Six identical matches, one target",
       "lead": "The tool is working correctly. The anchor is the problem.",
       "points": [],
       "diagram": null,
@@ -399,7 +399,7 @@
     {
       "task": "2.5",
       "kind": "diagram",
-      "title": "Tools cross boundaries",
+      "title": "Names change at the module boundary",
       "lead": "`formatDate` is defined in `date.ts` and re-exported from `index.ts` as `formatDateISO`. Grepping only the original name finds the definition and misses the production callers.",
       "points": [
         "Read the wrapper module first and list what it exports.",
@@ -416,8 +416,8 @@
     {
       "task": "2.5",
       "kind": "recap",
-      "title": "What matters most",
-      "lead": "This is the summary of everything you just learned. Keep these points handy.",
+      "title": "Domain 2 in one page",
+      "lead": "That is Domain 2. Five tasks, one chain: the description routes the call, the schema constrains the arguments, the error contract decides recovery, scope decides who can call it, and built-in choice decides what the work costs. This is the spine.",
       "points": [
         "Descriptions are the routing layer, not documentation. Fix order: descriptions, few-shot, merge, routing classifier, which is wrong.",
         "An \"or\" or a \"depending on\" inside a description means split the tool. Renaming and enums do not fix it.",
@@ -432,8 +432,7 @@
       "caption": null,
       "code": null,
       "ask": null,
-      "takeaway": "Every Domain 2 stem asks the same thing: which layer fixes this, and is it the cheapest one that reaches the root cause?",
-      "inshort": "Here are the key takeaways for this domain."
+      "takeaway": "Every Domain 2 stem asks the same thing: which layer fixes this, and is it the cheapest one that reaches the root cause?"
     }
   ]
 }

@@ -2,15 +2,8 @@
   "domain": 4,
   "title": "Prompt Engineering & Structured Output",
   "weight": "20%",
-  "goal": "Decide how to handle unpredictable review findings and fabricated extractions, and pick the option that correctly applies the documented principle.",
-  "tasks": [
-    "4.1",
-    "4.2",
-    "4.3",
-    "4.4",
-    "4.5",
-    "4.6"
-  ],
+  "goal": "Given a production stem about unpredictable review findings, fabricated extractions, or a manager proposing batch, pick the option that matches the documented principle instead of the trap.",
+  "tasks": ["4.1", "4.2", "4.3", "4.4", "4.5", "4.6"],
   "steps": [
     {
       "task": "4.1",
@@ -50,7 +43,7 @@
     {
       "task": "4.1",
       "kind": "check",
-      "title": "Check: trust collapse by category",
+      "title": "Gate: trust collapse by category",
       "lead": "Now the numbers version of that bot. Once one noisy category is in the report, your accurate categories stop getting read too, and that detail decides the answer.",
       "points": [],
       "diagram": null,
@@ -90,7 +83,7 @@
     {
       "task": "4.2",
       "kind": "check",
-      "title": "Check: vague feedback, again",
+      "title": "Gate: vague feedback, again",
       "lead": "The bot finds real issues, but developers cannot act on them. The stem explicitly closes the door on one option before you start.",
       "points": [],
       "diagram": null,
@@ -183,7 +176,7 @@
     {
       "task": "4.3",
       "kind": "check",
-      "title": "Check: required field, absent data",
+      "title": "Gate: required field, absent data",
       "lead": "Apply the mechanism you were just handed. Note which option changes the structure and which ones change only the wording.",
       "points": [],
       "diagram": null,
@@ -224,7 +217,7 @@
     {
       "task": "4.3",
       "kind": "check",
-      "title": "Check: unknown document type",
+      "title": "Gate: unknown document type",
       "lead": "Use the setting you just learned. The stem will tempt you with a single named tool because it sounds like a guarantee, but it guarantees the wrong thing.",
       "points": [],
       "diagram": null,
@@ -283,7 +276,7 @@
     {
       "task": "4.4",
       "kind": "check",
-      "title": "Check: the 900 of 8,000 stem",
+      "title": "Gate: the 900 of 8,000 stem",
       "lead": "Now answer it. The options differ in whether they treat both populations the same way or split them.",
       "points": [],
       "diagram": null,
@@ -358,7 +351,7 @@
     {
       "task": "4.5",
       "kind": "diagram",
-      "title": "Timing matters",
+      "title": "Where the batch window eats your deadline",
       "lead": "The window is up to 24 hours and your downstream deadline is the SLA. What is left after the window is your buffer, and your submission cadence has to fit inside that buffer. Worked case: SLA 30h, window 24h, buffer 6h.",
       "points": [
         "A record arriving just after a submission waits at most about 4h for the next batch, plus up to 24h processing.",
@@ -376,7 +369,7 @@
     {
       "task": "4.5",
       "kind": "drill",
-      "title": "Practice: the manager's 50% proposal",
+      "title": "Drill: the manager's 50% proposal",
       "lead": "Apply the split. Two workflows, one blocking and one overnight, and one option that sounds like it hedges.",
       "points": [],
       "diagram": null,
@@ -399,7 +392,7 @@
     {
       "task": "4.5",
       "kind": "diagram",
-      "title": "When batch fails",
+      "title": "The one workload batch can never run",
       "lead": "First, a workflow where the model calls a tool, sees the result, and continues cannot run on batch at all, which is a technical incompatibility rather than a latency problem. Second, results arrive in any order, so you join them by `custom_id` and never by position.",
       "points": [
         "Multi-turn tool calling is not supported inside a single batch request, regardless of latency tolerance.",
@@ -434,7 +427,7 @@
     {
       "task": "4.6",
       "kind": "check",
-      "title": "Check: caught only by a colleague",
+      "title": "Gate: caught only by a colleague",
       "lead": "Answer the stem you just read. Every wrong option keeps the same perspective in place and changes something else.",
       "points": [],
       "diagram": null,
@@ -457,7 +450,7 @@
     {
       "task": "4.6",
       "kind": "diagram",
-      "title": "Two passes",
+      "title": "Two passes: per-file, then cross-file",
       "lead": "A pull request changes 14 files, and one pass gives detailed feedback on some files, shallow comments on others, misses obvious bugs, and flags a pattern in one file while approving identical code in the next. That is attention dilution. A larger context window does not cure it, because it is not a token problem.",
       "points": [
         "Pass one is a per-file local analysis, which gives every file consistent depth.",
@@ -493,8 +486,8 @@
     {
       "task": "4.6",
       "kind": "recap",
-      "title": "What matters most",
-      "lead": "This is the summary of everything you just learned. Keep these points handy.",
+      "title": "Domain 4 in one breath",
+      "lead": "That is Domain 4: twenty percent of the exam, six tasks, and one habit that ties them together. When a stem describes a failure, name the layer that failed before you name the fix, because almost every wrong option moves the fix one layer away from the defect.",
       "points": [
         "Categorical criteria beat confidence adjectives. Flag X, report Y, skip Z, with each severity level anchored in a real code example.",
         "Inconsistent output despite detailed instructions means 2-4 targeted few-shot examples with reasoning, across varied structures.",
@@ -506,8 +499,7 @@
       "caption": null,
       "code": null,
       "ask": null,
-      "takeaway": "Name the layer, then name the fix. That single habit answers most of Domain 4.",
-      "inshort": "Here are the key takeaways for this domain."
+      "takeaway": "Name the layer, then name the fix. That single habit answers most of Domain 4."
     }
   ]
 }
