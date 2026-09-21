@@ -323,7 +323,7 @@
 
   var save = function () { try { localStorage.setItem(storeKey, JSON.stringify(S)); } catch (e) {} };
 
-  fetch('/legons/' + domainId + '.json', { cache: 'no-cache' })
+  fetch('/lessons/' + domainId + '.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(function (L) { start(L); })
     .catch(function (e) {
