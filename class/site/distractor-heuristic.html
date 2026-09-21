@@ -1,0 +1,353 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Distractor Heuristic — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · interactive</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><h1>The Distractor Heuristic</h1>
+<blockquote>
+<p>Imported into the class from <code>ccaf-exam-prep</code> (github.com/javiercriado/ccaf-exam-prep),
+MIT-licensed community material, kept locally in <code>resources/vendor/</code>.
+Not Anthropic-authored. Use it as a decision reflex, not as gospel.</p>
+</blockquote>
+<h1>The Distractor Heuristic — two axes for picking the right answer</h1>
+<blockquote>
+<p>A companion to the <strong>5 distractor patterns</strong> in <a href="./ANALYSIS.md"><code>ANALYSIS.md</code></a>. Where that
+section <em>names</em> the traps, this doc gives you a <strong>single question to ask</strong> when two options
+both look correct. The CCAF exam is ~80% distractor discrimination — this is the reflex it tests.</p>
+</blockquote>
+<h2>The key question</h2>
+<p>When two options both &quot;work,&quot; the wrong one is almost always the <strong>heavier</strong> one. Ask two things:</p>
+<h3>Axis A — Native capability, or a new moving part?</h3>
+<p>Does this option use something the tool/model <strong>already has</strong> — a CLI flag, parallel tool use,
+existing frontmatter — or does it <strong>add something new</strong> that has to be maintained and can fail:
+a second LLM call, a preprocessing model, a bespoke composite tool, an invented feature?</p>
+<blockquote>
+<p><strong>&quot;Native&quot; also means &quot;actually exists.&quot;</strong> Options that lean on a flag or frontmatter key you
+can&#39;t quite remember seeing (<code>override: true</code>, <code>--batch</code>, <code>CLAUDE_HEADLESS</code>) are often bait —
+distractor pattern #4 (nonexistent features).</p>
+</blockquote>
+<h3>Axis B — Deterministic, or relying on the model to behave?</h3>
+<p>Does this option <strong>guarantee</strong> the behavior by construction — a programmatic gate, a JSON schema,
+a hook — or does it <strong>ask the model nicely</strong> via a prompt instruction?</p>
+<p><strong>The correct answer tends to be native and/or deterministic. The distractor is the version with
+moving parts.</strong></p>
+<h2>The shapes, illustrated</h2>
+<table>
+<thead>
+<tr>
+<th>Problem shape</th>
+<th>Distractor (heavier)</th>
+<th>Correct (native / deterministic)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Need structured output from a CLI</td>
+<td>Add a second LLM call to summarize narrative → JSON</td>
+<td><code>--output-format json</code> + <code>--json-schema</code> (native, guarantees well-formed JSON)</td>
+</tr>
+<tr>
+<td>Too many sequential tool round-trips</td>
+<td>Build composite <code>get_x_with_y</code> tools (new tool per combination)</td>
+<td>Prompt the model to batch tool requests in one turn (it natively requests several at once)</td>
+</tr>
+<tr>
+<td>Agent mishandles multi-part requests, but nails single ones</td>
+<td>A separate preprocessing model to decompose the message</td>
+<td>Few-shot examples in the prompt (lean; the capability already works)</td>
+</tr>
+<tr>
+<td>Conventions must apply on every matching file</td>
+<td>A skill the model must choose to load</td>
+<td>A <strong>rule</strong> with a glob (automatic + deterministic by path)</td>
+</tr>
+<tr>
+<td>Customize a teammate&#39;s shared skill</td>
+<td><code>override: true</code> frontmatter (doesn&#39;t exist)</td>
+<td>Personal skill with a <strong>different name</strong> (<code>/my-x</code>)</td>
+</tr>
+<tr>
+<td>Agent skips a required verification step</td>
+<td>Strengthen the system prompt to say it&#39;s mandatory</td>
+<td>A <strong>programmatic prerequisite</strong> that blocks the downstream tool until verification ran</td>
+</tr>
+</tbody></table>
+<p>The last row is the canonical Axis-B case: a <strong>gate/hook beats an instruction</strong> because it holds
+regardless of how the model behaves. (Same lesson as enforcement-by-hook, not by prompt.)</p>
+<h2>The caveat that stops you over-applying it</h2>
+<p>The rule is <strong>not</strong> &quot;always pick the simplest option.&quot; Sometimes the correct answer <em>adds</em> a step:</p>
+<blockquote>
+<p><strong>Inconsistent, case-by-case-variable output</strong> (e.g. response completeness that varies per case):
+the right fix is a <strong>self-critique / evaluator-optimizer</strong> step — which adds a pass — over
+few-shot examples that can only cover a fixed set of cases.</p>
+</blockquote>
+<p>How that step is actually built (prompt instruction → second call → fresh-context subagent) and why a
+<em>separate</em> evaluator beats in-context self-critique: <a href="./SELF_CRITIQUE.md"><code>SELF_CRITIQUE.md</code></a>.</p>
+<p>Why doesn&#39;t the added step lose on Axis A? Because no lean option actually solves it: a handful of
+canned examples can&#39;t cover gaps that differ every time. <strong>When nothing lightweight genuinely solves
+the problem, the pattern that fits the problem&#39;s shape wins.</strong></p>
+<h3>Refined rule</h3>
+<blockquote>
+<p>Between two options that both &quot;work,&quot; prefer the one that <strong>uses an existing capability</strong> or
+<strong>guarantees the outcome by construction</strong> — <em>unless</em> the problem&#39;s shape genuinely needs a
+pattern (self-critique for per-case-variable gaps). The distractor is usually the <strong>heavier
+version of something a native option already does.</strong></p>
+</blockquote>
+<p>And the corollary for prompting technique: <strong>few-shot fits <em>patternable</em> gaps</strong> (tool sequencing,
+contrastive tool choice); <strong>self-critique fits <em>variable-per-case</em> gaps</strong>. Same question either way —
+<em>which option fits the shape of the problem?</em></p>
+<h2>Few-shot design — when few-shot <em>is</em> the answer, what makes it the <em>right</em> few-shot</h2>
+<p>Some questions pre-commit you to few-shot (&quot;you decide to add few-shot examples…&quot;) and then test
+whether you can <strong>design</strong> it. Watch for that stem: it fixes the method and quietly eliminates
+otherwise-tempting options (e.g. editing the tool <em>descriptions</em>), so the choice is now <em>which
+few-shot implementation</em>, not <em>whether few-shot</em>.</p>
+<p>A few-shot example is a worked demonstration <strong>you author of the ideal behavior</strong>: a representative
+<em>input</em> (a user message of the failing kind) paired with the <em>output you want</em> — the tool chosen plus
+the reasoning. The output is the gold answer you want, <strong>not</strong> whatever the model previously produced
+(that was the bug). Three properties separate the right answer from the plausible distractors:</p>
+<ol>
+<li><strong>Targeted, not voluminous.</strong> 4–6 examples aimed at the <em>failing</em> (ambiguous) cases beat 10–15
+examples of easy/unambiguous ones. More demonstrations of cases that already work ≠ improvement.</li>
+<li><strong>Contrastive, not grouped.</strong> Each example shows <em>why this choice over the plausible alternative</em> —
+the decision boundary. Grouping examples by category (all tool-A cases, then all tool-B cases)
+teaches each in isolation and never teaches the model to <strong>discriminate</strong>.</li>
+<li><strong>Matched to the gap&#39;s shape.</strong> Few-shot fits <em>patternable</em> gaps (tool sequencing, contrastive
+tool choice, multi-concern decomposition). For gaps that vary <em>per case</em> (response completeness),
+no fixed example set covers them → <strong>self-critique / evaluator-optimizer</strong> instead.</li>
+</ol>
+<blockquote>
+<p>One more edge: for <em>nuanced / ambiguous</em> selection, worked examples-with-reasoning also beat
+<strong>declarative rules</strong> (&quot;use when / do not use when&quot; in the tool description) — demonstrations
+transfer to fuzzy inputs better than rules do. This is <em>different</em> from the
+descriptions-beat-a-router lesson (D2.1), which is about <em>clearly separable</em> tools. Same scenario,
+different sub-problem → different winner.</p>
+</blockquote>
+<p><strong>One surface, two root causes — diagnose before you pick the lever.</strong> &quot;Multi-concern requests are
+failing&quot; can mean two different things, and few-shot answers only one of them:</p>
+<ul>
+<li>failing on <strong>speed / efficiency</strong> (12+ calls, redundant data re-fetching, sequential investigation)
+→ <strong>restructure</strong>: decompose + investigate in parallel + shared context, then synthesize. This is an
+<em>architecture</em> fix (native parallel tool use + the loop&#39;s accumulated context), <strong>not</strong> few-shot.</li>
+<li>failing on <strong>accuracy</strong> (addresses only one concern, mixes up parameters) → <strong>few-shot</strong>: a
+<em>patternable</em> reasoning gap; single-concern already works, so just teach the multi-concern pattern.</li>
+</ul>
+<p>Ask <em>&quot;is it failing on speed or on correctness?&quot;</em> first — the words &quot;multi-concern&quot; alone don&#39;t tell
+you, and the wrong reading picks few-shot when you needed to restructure (or vice versa).</p>
+<h2>Compound (half-true) distractors — read every clause</h2>
+<p>Some distractors weld a <strong>true</strong> fact to a <strong>false or over-claimed</strong> clause. You recognize the true
+half and accept the whole — that&#39;s the trap. Defense:</p>
+<ul>
+<li><strong>Split each option into its clauses and check each.</strong> A distractor is wrong if <em>any</em> clause is false
+or misattributed. The correct option is true in <em>every</em> clause <strong>and</strong> names the <em>primary</em> reason — not
+a true-but-tangential side fact.</li>
+<li><strong>Absolutes are tells.</strong> &quot;<em>only</em> X can…&quot;, &quot;Y <em>cannot</em> support…&quot;, &quot;<em>requires</em>…&quot;, &quot;always / never&quot; assert
+an exclusivity. Verify it&#39;s real — usually the capability exists elsewhere too, so the exclusivity is
+the lie bolted onto a true premise.</li>
+<li><strong>&quot;True, but is it the <em>main</em> reason?&quot;</strong> A real-but-secondary benefit presented as <em>the</em> advantage is a
+misattribution (correlation-vs-causation flavor). Ask whether it&#39;s the property you&#39;re actually buying
+or just a true footnote.</li>
+</ul>
+<blockquote>
+<p>Worked instance: a multi-agent &quot;why centralize communication?&quot; question where each wrong option states
+a true fact (subagents have isolated memory; retry is possible; batching exists) bolted to a false
+exclusivity or a wrong &quot;main advantage.&quot; Only the option true in <em>every</em> clause — and naming the real
+primary benefit — wins. See <a href="./HUB_AND_SPOKE.md"><code>HUB_AND_SPOKE.md</code></a>.</p>
+</blockquote>
+<h2>Claude Code config — directives &amp; inspectors that <em>look</em> right (D3.1 / D3.3)</h2>
+<p>Two D3 traps are pure <strong>Axis A — &quot;does it actually exist?&quot;</strong>: a directive and an inspector command
+that <em>look</em> native but quietly do the wrong thing. Both were confirmed by running Claude Code 2.1.x
+with the <code>InstructionsLoaded</code> hook (below), not from the docs alone.</p>
+<p><strong>1 · The import directive is a bare <code>@path</code> — not <code>@import &lt;path&gt;</code>.</strong> The exam guide <em>names</em> the
+feature &quot;the @import syntax,&quot; so <code>@import ./team-conventions.md</code> reads as correct. It isn&#39;t: Claude
+takes the token right after <code>@</code> as the path, so <code>@import …</code> tries to import a file literally named
+<code>import</code>, finds none, and <strong>silently loads nothing</strong>. The working directive is the bare path —
+<code>@team-conventions.md</code> (also <code>@./team-conventions.md</code>, <code>@~/std.md</code>, or absolute; a relative path
+resolves against the <em>importing</em> file). Verified: the bare form fires <code>load_reason=include</code>; the
+<code>@import &lt;path&gt;</code> form fires nothing. The invented word <code>import</code> is the Axis-A bait bolted onto a real
+feature. (And <code>@</code>-import is <strong>eager</strong> — expanded at launch like inlining; it buys <em>modularity</em>, not
+lazy loading. Conditional loading is <code>.claude/rules/</code>, below.)</p>
+<p><strong>2 · <code>/memory</code> lists CLAUDE.md files; it does <em>not</em> show rules — use <code>/context</code>. And rules load on
+READ, not write.</strong> &quot;Verify the rule loaded with <code>/memory</code>&quot; is a double-false signal:</p>
+<ul>
+<li><code>/memory</code> only lists/edits the <strong>CLAUDE.md</strong> memory stack (user + project). <code>/context</code> additionally
+shows the <strong>always-loaded</strong> content — the CLAUDE.md stack <em>plus</em> <code>@import</code> expansions — <strong>but not</strong>
+path-scoped rules.</li>
+<li>A path-scoped rule (<code>paths:</code> globs) loads when Claude <strong>reads</strong> a matching file
+(<code>load_reason=path_glob_match</code>) — <strong>not</strong> when it merely <em>writes/creates</em> one — and it rides in as a
+<strong>transient system-reminder</strong>, so it shows in <em>neither</em> <code>/memory</code> nor <code>/context</code>. Observe it via the
+<code>InstructionsLoaded</code> hook (below) or by Claude <strong>quoting the convention</strong> in the same turn. So &quot;create
+a <code>*.test.*</code> file, then run <code>/memory</code> or <code>/context</code>&quot; shows nothing — which reads as &quot;the feature
+doesn&#39;t work&quot; when it does (verified on Claude Code 2.1.x).</li>
+</ul>
+<p><strong>The load model, named once — the <code>InstructionsLoaded</code> hook&#39;s <code>load_reason</code> enum.</strong> This
+observability-only hook fires whenever an instruction file enters context, and its reasons <em>are</em> the
+whole hierarchy:</p>
+<table>
+<thead>
+<tr>
+<th><code>load_reason</code></th>
+<th>what loaded</th>
+<th>when</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>session_start</code></td>
+<td>user <code>CLAUDE.md</code> + cwd-and-parents <code>CLAUDE.md</code></td>
+<td>eagerly, at launch</td>
+</tr>
+<tr>
+<td><code>nested_traversal</code></td>
+<td>a <strong>subdirectory</strong> <code>CLAUDE.md</code> <em>below</em> cwd</td>
+<td>when Claude reads a file in that subtree</td>
+</tr>
+<tr>
+<td><code>path_glob_match</code></td>
+<td>a <code>.claude/rules/</code> file whose <code>paths:</code> glob matched</td>
+<td>when Claude reads a matching file</td>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td>an <code>@path</code> import target</td>
+<td>eagerly, with its parent (≤ 4 hops)</td>
+</tr>
+<tr>
+<td><code>compact</code></td>
+<td>reload after compaction</td>
+<td>post-compaction</td>
+</tr>
+</tbody></table>
+<p>Proof-rig (drop into <code>.claude/settings.json</code>, read a matching file, watch the log):
+<code>{&quot;hooks&quot;:{&quot;InstructionsLoaded&quot;:[{&quot;hooks&quot;:[{&quot;type&quot;:&quot;command&quot;,&quot;command&quot;:&quot;cat &gt;&gt; /tmp/rule-loads.jsonl&quot;}]}]}}</code></p>
+<hr>
+<h2>Concept deep-dives (index)</h2>
+<p>Focused write-ups that grew out of specific practice-exam questions. Each is its own file so it stays
+tight and links cleanly; this table is the front door. Sorted by the domain the concept lives in.</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Domain</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>The key question (native/deterministic vs moving part) + the 5 patterns</td>
+<td>all</td>
+<td>this file (top) · <a href="./ANALYSIS.md"><code>ANALYSIS.md</code></a></td>
+</tr>
+<tr>
+<td>Parallel tool use (default-on, round-trip math) <strong>+ vs the Batch API</strong></td>
+<td>D1 / D2 (vs D4)</td>
+<td><a href="./exercises/01-support-agent/PARALLEL_TOOL_USE.md"><code>exercises/01-support-agent/PARALLEL_TOOL_USE.md</code></a></td>
+</tr>
+<tr>
+<td>Multi-concern: same surface, two root causes (speed → restructure, accuracy → few-shot)</td>
+<td>D1.4</td>
+<td>this file, <em>§ One surface, two root causes</em></td>
+</tr>
+<tr>
+<td>Few-shot design (targeted · contrastive · matched to the gap)</td>
+<td>D2 / D4</td>
+<td>this file, <em>§ Few-shot design</em></td>
+</tr>
+<tr>
+<td>Self-critique / evaluator-optimizer (the cheap→rigorous spectrum)</td>
+<td>D1</td>
+<td><a href="./SELF_CRITIQUE.md"><code>SELF_CRITIQUE.md</code></a></td>
+</tr>
+<tr>
+<td>Graceful degradation / error propagation (preserve value + annotate gaps; retry at the right boundary)</td>
+<td>D1 / D5</td>
+<td><a href="./GRACEFUL_DEGRADATION.md"><code>GRACEFUL_DEGRADATION.md</code></a></td>
+</tr>
+<tr>
+<td>Hub-and-spoke (coordinator as central hub: observability + consistent errors + context control)</td>
+<td>D1</td>
+<td><a href="./HUB_AND_SPOKE.md"><code>HUB_AND_SPOKE.md</code></a></td>
+</tr>
+<tr>
+<td>Proactive task decomposition (partition the work before delegating; redundant agents = decomposition failure)</td>
+<td>D1</td>
+<td><a href="./TASK_DECOMPOSITION.md"><code>TASK_DECOMPOSITION.md</code></a></td>
+</tr>
+<tr>
+<td>Least privilege at the tool interface (scope the tool so misuse is impossible, not discouraged)</td>
+<td>D2</td>
+<td><a href="./LEAST_PRIVILEGE.md"><code>LEAST_PRIVILEGE.md</code></a></td>
+</tr>
+<tr>
+<td><code>@</code>-import is a bare <code>@path</code>, not <code>@import &lt;path&gt;</code> (eager; the keyword <code>import</code> is the invented part)</td>
+<td>D3.1</td>
+<td>this file, <em>§ Claude Code config — directives &amp; inspectors</em></td>
+</tr>
+<tr>
+<td><code>/memory</code> + <code>/context</code> show only the always-loaded CLAUDE.md/<code>@import</code> stack; path-rules are <strong>transient</strong> (load on <strong>Read</strong>) — observe via the <code>InstructionsLoaded</code> hook or Claude&#39;s behaviour</td>
+<td>D3.1 / 3.3</td>
+<td>this file, <em>§ Claude Code config — directives &amp; inspectors</em></td>
+</tr>
+<tr>
+<td>Compound (half-true) distractors — read every clause; absolutes are tells</td>
+<td>all</td>
+<td>this file, <em>§ Compound (half-true) distractors</em></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Placement rule</strong> (keeps these from scattering): a write-up that explains a <em>specific exercise&#39;s
+behavior</em> lives in that exercise&#39;s folder (e.g. <code>PARALLEL_TOOL_USE.md</code> next to Exercise 1&#39;s Case 1);
+a <em>general pattern</em> not demonstrated by any exercise lives here at the <code>ccaf-prep</code> root
+(<code>SELF_CRITIQUE.md</code>). Short discriminators stay inline in this file.</p>
+<p><strong>Private notes are not here.</strong> Verbatim exam questions + my own answers live in git-ignored
+<code>personal/</code> (not redistributed). The docs above teach the <em>concept</em> only — no answer keys.</p>
+</blockquote>
+<div class="foot">Built 2026-09-20 09:21 · source: external/distractor-heuristic.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script></body></html>

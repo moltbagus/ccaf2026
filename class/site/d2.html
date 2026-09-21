@@ -1,0 +1,173 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain 2 — Tool Design &amp; MCP (18%) — Master Note — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · interactive</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><div class="callout"><b>This is the reference text.</b>Learn it interactively instead: <a href="lesson-d2.html">open the D2 tutor lesson</a> — one idea at a time, with answer gates and diagrams.</div><h1>Domain 2 — Tool Design &amp; MCP (18%) — Master Note</h1>
+<p>Compression layer for tasks 2.1–2.5. Exam: 60 MCQ, 120 min, pass 720/1000, no guessing penalty. Every stem is a production situation followed by &quot;which approach is most effective?&quot;. Wrong options are engineered to sound smart, efficient, thorough, helpful, enterprise, simple, or pragmatic. Read the Recall card the morning of the exam.</p>
+<h2>Task index</h2>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>One-line principle</th>
+<th>Exam tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2.1</td>
+<td>Tool descriptions are the routing layer; split generic tools</td>
+<td>Two tools with near-identical descriptions; &quot;or&quot;/&quot;depending on&quot; inside a description</td>
+</tr>
+<tr>
+<td>2.2</td>
+<td>Structured error contracts separate &quot;couldn&#39;t look&quot; from &quot;looked and found nothing&quot;</td>
+<td>Empty array, <code>isError</code>, generic &quot;Operation failed&quot;, retry storms</td>
+</tr>
+<tr>
+<td>2.3</td>
+<td>4–5 role-scoped tools per agent; <code>tool_choice</code> forces the first call</td>
+<td>&quot;18 tools&quot;, &quot;must always run X first&quot;, synthesis agent doing lookups</td>
+</tr>
+<tr>
+<td>2.4</td>
+<td>Project vs user MCP scope; <code>${VAR}</code> for secrets; resources as catalogues</td>
+<td>Committed token, &quot;exploratory calls at conversation start&quot;, team sharing</td>
+</tr>
+<tr>
+<td>2.5</td>
+<td>Grep = content, Glob = paths; Edit anchor first, Read+Write as fallback</td>
+<td>&quot;find all files named&quot;, &quot;find all callers&quot;, Edit multiple matches, wrapper modules</td>
+</tr>
+</tbody></table>
+<h2>Task 2.1 — Tool Interface Design</h2>
+<ul>
+<li><strong>Principle</strong>: the tool description is the primary mechanism the model uses to select a tool — treat it as selection criteria, not documentation. Write purpose, input format, output format, edge cases, and explicit boundaries vs similar tools. Split any tool whose description contains &quot;or&quot; or &quot;depending on&quot; between behaviours into purpose-specific tools with tight contracts. Split when parameters have interdependent constraints or when action types need different required fields. After fixing descriptions, audit the system prompt for keyword-sensitive instructions that override them.</li>
+<li><strong>Why the exam wants this</strong>: misrouting is a description problem until proven otherwise. It is the cheapest layer that addresses the root cause (edit text before adding infrastructure). A generic multi-purpose tool produces inconsistent output shapes at runtime; a renamed generic tool is still generic — only splitting fixes it. Fix-ranking for misrouting: (1) expand descriptions, (2) few-shot examples, (3) merge tools, (4) train a routing classifier — the last is wrong.</li>
+<li><strong>Distractors</strong>: pre-routing classifier that detects intent before delegation (sounds-smart — adds a component that masks the ambiguity); few-shot examples covering &quot;all possible patterns&quot; (sounds-helpful — treats the symptom, token cost on every call); merge both tools into one universal tool (sounds-simple — loses the semantic distinction and widens the surface); rename the generic tool / add a <code>mode</code> enum (sounds-simple — &quot;description &lt; contract&quot;); expand only one of two colliding descriptions (partial fix).</li>
+<li><strong>Exact terms</strong>: <code>name</code>, <code>description</code>, <code>input_schema</code> (<code>type</code>, <code>properties</code>, <code>required</code>, <code>enum</code>), <code>strict: true</code> (requires <code>additionalProperties: false</code> and all properties in <code>required</code>), <code>input_examples</code> (per daronyondem, when supported). Lookup-then-act: <code>search_projects(query)</code> → <code>archive_project(project_id)</code>. Enum for closed sets (<code>knowledge_base</code>, <code>billing_records</code>, <code>support_tickets</code>). Never encode format hints in parameter names (<code>date_string_iso_yyyy_mm_dd</code>) — use descriptions and schemas.</li>
+<li><strong>Scenario tie-in</strong>: Customer Support Resolution Agent — <code>analyze_content</code> vs <code>analyze_document</code> colliding (45% misrouting); <code>get_customer</code> chosen for order questions when descriptions are minimal; a single <code>refund</code> tool serving full refunds, partial refunds, store credits, and exchanges.</li>
+</ul>
+<h2>Task 2.2 — Structured Error Responses</h2>
+<ul>
+<li><strong>Principle</strong>: return structured error metadata with every failure so the agent can decide retry / fix input / escalate. Use <code>isError</code>, <code>errorCategory</code>, <code>isRetryable</code>, a human-readable description, what was attempted, and <code>partial_results</code>. Categories: transient (timeout, 503, rate limit — retryable, retry with the same input), validation (bad format, missing field, malformed ID — retryable only after the agent corrects the input), business (policy limit exceeded, account locked, not eligible — not retryable, surface a customer-friendly description or escalate), permission (401/403, missing scope — not retryable, escalate). A valid empty result is <strong>not</strong> an error: return <code>isError: false</code> with an empty array and let the agent say &quot;no results&quot;.</li>
+<li><strong>Why the exam wants this</strong>: the error contract is the agent&#39;s recovery signal. Generic errors (&quot;Operation failed&quot;) strip the information the recovery decision needs. Silently returning <code>[]</code> when the backend is down makes the agent report &quot;I found nothing&quot; when the truth is &quot;I couldn&#39;t search&quot;. Conflating access failure with valid-empty is the canonical 2.2 trap.</li>
+<li><strong>Distractors</strong>: mark everything retryable and let the agent back off (sounds-pragmatic — causes duplicate side effects); increase retry count / max retries / timeout (sounds-efficient — wrong fix for a misclassified empty result); mark a post-submission write timeout as retryable (sounds-pragmatic — duplicate charges and notifications); return a JSON-RPC/protocol error for a business failure (sounds-enterprise); raise an exception so the orchestrator catches it (sounds-simple — frameworks hide exception detail from the model); collapse outcomes into a single coverage percentage (sounds-enterprise — discards which 33% is retryable); abort the whole workflow on one subagent failure (loses partial value).</li>
+<li><strong>Exact terms</strong>: <code>isError: true</code>, <code>errorCategory</code> (<code>transient</code> | <code>validation</code> | <code>business</code> | <code>permission</code>), <code>isRetryable</code>, <code>description</code> (business errors should be customer-friendly — the agent surfaces it), <code>attempted_action</code> / <code>attempted_query</code>, <code>partial_results</code>, <code>next_steps</code>, retry hints <code>retryAfter</code> and <code>maxRetries</code>. MCP error tiers: JSON-RPC <strong>protocol errors</strong> when the request itself is malformed or the tool cannot be invoked (missing required parameter, unknown method, bad type); tool result with <code>isError: true</code> when the tool ran and the operation failed (remote 404, upstream 503, business rule, permission denial, rate limit). Retry placement: tool-level retry for transient read failures; model-level retry for validation/syntax faults; human approval when a retry may duplicate a side effect.</li>
+<li><strong>Scenario tie-in</strong>: Multi-Agent Research System — web-search subagent times out while others succeed; three source categories returning 15 results, &quot;0 results&quot;, and &quot;connection timeout&quot;; Customer Support — <code>get_customer</code> returning <code>[]</code> for both &quot;no such customer&quot; and &quot;database unreachable&quot;; a payment/notification timeout after submission.</li>
+</ul>
+<h2>Task 2.3 — Tool Distribution and tool_choice</h2>
+<ul>
+<li><strong>Principle</strong>: cap each agent at 4–5 role-relevant tools; distribute the rest across specialized subagents. Giving one agent 18 tools degrades selection — the model picks wrong tools or calls unnecessary ones. Scope tools to roles: a synthesis agent gets no web search, a search agent gets no document analysis. When a requirement is &quot;the model must do X first&quot;, reach for <code>tool_choice: {&quot;type&quot;: &quot;tool&quot;, &quot;name&quot;: &quot;X&quot;}</code> — a prompt requests, <code>tool_choice</code> requires. For a high-frequency simple capability needed across roles, ship a constrained version with an explicit escalation boundary rather than the full tool.</li>
+<li><strong>Why the exam wants this</strong>: tool count and tool scope are architectural, not stylistic — reliability degrades before the model runs out of context. Constraining capability at the interface makes undesired behaviour impossible rather than discouraged (least privilege). A prompt instruction cannot deliver a deterministic guarantee.</li>
+<li><strong>Distractors</strong>: expand all 18 descriptions (sounds-thorough — the count, not the wording, is the failure); <code>tool_choice: &quot;any&quot;</code> to force commitment (sounds-efficient — the model may pick a different tool); few-shot examples for every tool (sounds-helpful); validate after the fact and re-prompt (sounds-thorough — too late, wrong layer); give the synthesis agent the full web-search toolset (sounds-efficient — over-provisions, blurs roles, adds prompt-injection surface); batch all verification needs to the end (sounds-thorough — unverified claims shape the draft); proactively cache context around every source (sounds-pragmatic — guesses what will be questioned); merge synthesis and coordinator (destroys the architecture); train a smaller model (wrong tool for a tool-design problem). Preferring Grep over a capable MCP tool: do not remove the built-ins first — enhance the MCP description.</li>
+<li><strong>Exact terms</strong>: <code>tool_choice</code> values <code>&quot;auto&quot;</code> (default), <code>&quot;any&quot;</code> (must call some tool), <code>{&quot;type&quot;: &quot;tool&quot;, &quot;name&quot;: &quot;...&quot;}</code> (must call this tool), <code>&quot;none&quot;</code> (text only); <code>disable_parallel_tool_use: true</code> caps one tool call per response. Constrained replacements: <code>fetch_url(url)</code> → <code>load_document(document_url)</code>; <code>run_sql(query)</code> → <code>query_orders(filters)</code>; <code>send_email(...)</code> → <code>send_customer_notification(template_id, ...)</code>. Scoped cross-role tool: <code>verify_fact(claim, max_sources=3)</code> with a description stating that complex multi-source verification routes back to the coordinator. Progressive availability / tool search: <code>{&quot;type&quot;: &quot;tool_search_tool_regex_20251119&quot;, ...}</code> or the BM25 variant, <code>defer_loading: true</code> on a tool, <code>mcp_toolset</code> <code>default_config</code>, <code>tool_reference</code> blocks. Never defer every tool — at least one must stay non-deferred or the request returns 400 &quot;All tools cannot be deferred&quot;; keep 3–5 hot tools non-deferred; <code>defer_loading: true</code> cannot carry <code>cache_control</code> (400). Per dnacenta&#39;s note, forced <code>tool_choice</code> (<code>any</code> and <code>tool</code>) returns 400 on Fable 5.1 / Mythos 5.1 — fall back to <code>auto</code> plus an explicit instruction naming the tool, with <code>strict: true</code>; Opus 5, Sonnet 5, and the 4.x family still accept all four values.</li>
+<li><strong>Scenario tie-in</strong>: Customer Support — a mandatory intent-extraction step skipped on ~15% of turns; an 18-tool agent selecting wrongly; Multi-Agent Research — the synthesis agent returning control for one-line fact checks (85% simple, 15% complex) and adding 2–3 loops at +40% latency.</li>
+</ul>
+<h2>Task 2.4 — MCP Server Integration</h2>
+<ul>
+<li><strong>Principle</strong>: put team-shared servers in project scope (<code>.mcp.json</code>, version-controlled) and personal/experimental servers in user scope (<code>~/.claude.json</code>); never commit secrets — reference them with <code>${VAR}</code> expansion and document the variable for onboarding. Expose MCP <strong>resources</strong> as catalogues so the agent reads what data exists instead of burning exploratory tool calls. Prefer a maintained community server for standard integrations; fork or post-process it rather than building from scratch. When an agent ignores a capable MCP tool in favour of a built-in, improve the MCP tool&#39;s description — do not delete the built-ins.</li>
+<li><strong>Why the exam wants this</strong>: config scope decides who gets the integration and where credentials live; the fix for a leaked token is parameterisation (and rotating the token), not relocating the file or gitignoring <code>.mcp.json</code> (which defeats team sharing). Resources complement tools: resources are what is true and stable about a system, tools are the actions on it.</li>
+<li><strong>Distractors</strong>: move <code>.mcp.json</code> to <code>~/.claude.json</code> to fix a credential leak (sounds-simple — the team integration stops being shared); add <code>.mcp.json</code> to <code>.gitignore</code> (sounds-pragmatic — defeats team sharing); have each developer configure the server in user scope (sounds-pragmatic — six setups, no shared source of truth); build a custom proxy/wrapper that reads tokens from <code>.env</code> (sounds-enterprise — <code>&quot;${VAR}&quot;</code> expansion already exists); build a custom MCP server because workflows are specific (sounds-enterprise — evaluate the community server first); a natural-language aggregator tool that re-routes to underlying tools (sounds-smart — hides the real tool surface and worsens selection); preload the whole catalogue into the system prompt (sounds-thorough); remove competing built-in tools (sounds-efficient); trust <code>readOnlyHint</code> as a security control (annotations are untrusted hints — the host must enforce policy in code).</li>
+<li><strong>Exact terms</strong>: <code>.mcp.json</code> at the repo root with <code>mcpServers</code> → <code>{ &quot;type&quot;, &quot;url&quot;, &quot;headers&quot;, &quot;timeout&quot;, &quot;command&quot;, &quot;args&quot;, &quot;env&quot; }</code>; <code>${DATABASE_URL}</code> and <code>${VAR:-default}</code> expansion; <code>~/.claude.json</code> (local scope keyed by project path; user scope untied to a project); managed scope <code>managedMcpServers</code> (admin-pushed); scope precedence when names collide is <strong>local &gt; project &gt; user</strong>, whole entry wins, fields are not merged. Transports: <code>stdio</code> (implied when the entry has <code>command</code>), <code>http</code> / <code>streamable-http</code> (the only remote transport supporting OAuth), <code>sse</code> (legacy), <code>ws</code> (header-only auth). A <code>url</code> with no <code>type</code> is skipped with &quot;has a url but no type&quot; — always set <code>type</code>. Lifecycle: <code>initialize</code> → <code>notifications/initialized</code> → <code>tools/list</code> → <code>tools/call</code>, JSON-RPC 2.0. Server primitives: tools (model-controlled), resources (application-controlled), prompts (user/application-controlled). Client primitives: sampling, elicitation, roots. CLI: <code>claude mcp add --transport http --scope project</code>, <code>--header</code>, <code>--env</code>, <code>claude mcp add-json</code>. Project-scope servers prompt for approval interactively; <code>claude -p</code> and Agent SDK/cloud sessions load them without asking (use <code>disabledMcpjsonServers</code> or <code>--setting-sources</code>). Tool search is on by default for MCP tools; <code>ENABLE_TOOL_SEARCH</code> = unset / <code>true</code> / <code>auto</code> / <code>auto:N</code> / <code>false</code>; <code>alwaysLoad: true</code> exempts a server; tool descriptions and server instructions truncate at 2 KB. Output: warn over 10,000 tokens, truncate at 25,000 by default, raise with <code>MAX_MCP_OUTPUT_TOKENS</code> (warning threshold is fixed). Annotations: <code>readOnlyHint</code>, <code>destructiveHint</code>, <code>idempotentHint</code>, <code>openWorldHint</code> — UI affordances, never a security boundary. <code>list_changed</code> notifications refresh a client&#39;s tool list without reconnect. Reserved server names (<code>workspace</code>, <code>claude-in-chrome</code>, <code>computer-use</code>, <code>Claude Preview</code>, <code>Claude Browser</code>) are skipped with a warning. MCP prompts surface as <code>mcp__&lt;server&gt;__&lt;prompt&gt;</code> slash commands.</li>
+<li><strong>Scenario tie-in</strong>: Developer Productivity Tools — six developers, one GitHub MCP server, per-developer tokens, no committed secrets; a code agent probing for available data at session start; an MCP code-analysis tool losing selection to Grep.</li>
+</ul>
+<h2>Task 2.5 — Built-in Tools</h2>
+<ul>
+<li><strong>Principle</strong>: Grep searches file <strong>contents</strong> (callers, error strings, imports, identifiers) and returns matching lines; Glob matches file <strong>paths</strong> (extensions, name patterns) and returns paths. Read/Write do whole files; Edit makes targeted changes through a unique text anchor. Build understanding incrementally: Grep for entry points, Read those files, Grep for the identifiers you found, Read only the implementations that matter — never read everything upfront. When tracing a re-exported function, read the wrapper module, list the exports/aliases, then grep each alias; grepping only the original name misses alias callers.</li>
+<li><strong>Why the exam wants this</strong>: the wrong tool makes the task impossible (a path pattern cannot match a function call) or wasteful (reading all files burns tens of thousands of tokens before any reasoning). Edit&#39;s failure mode is structural — it needs a unique match — and the escalation ladder, not a different tool category, is the fix.</li>
+<li><strong>Distractors</strong>: Glob first to enumerate all source files, then Grep each (sounds-thorough — inverts seed vs filter when the task is content-seeded); read every file in the directory upfront (sounds-thorough — context-budget killer); spawn one subagent per file, or read in parallel, to go faster (sounds-efficient); index the repo into a vector store (sounds-enterprise); Grep <code>import React</code> to find component files (sounds-smart — that is a path task, use Glob <code>**/*.tsx</code>); use <code>sed</code>/Bash for a targeted edit (wrong tool category); set <code>replace_all: true</code> so every occurrence changes (sounds-simple — changes sites that should not change); delete and recreate the file (destructive); ask the user which files (sounds-helpful).</li>
+<li><strong>Exact terms</strong>: Grep (contents), Glob (<code>**/*.test.ts</code>, <code>src/**/config.*</code>), Read, Write, Edit (<code>old_string</code>/<code>new_string</code> unique-match anchor, <code>replace_all</code>), Bash, WebSearch/WebFetch, Agent, Skill, NotebookEdit, AskUserQuestion, ToolSearch, SendMessage/ListAgents, Workflow. Edit-failure ladder: (1) expand the anchor with surrounding context until unique, (2) if no unique anchor exists, Read the whole file and Write the updated version, (3) if the intent really was every occurrence, <code>replace_all: true</code>. Sequencing rule: Grep first when discovering content, Glob second to narrow paths around the result; mirror form (known file set → check contents) is Glob → Grep. The order depends on which is the seed and which is the filter.</li>
+<li><strong>Scenario tie-in</strong>: Developer Productivity Tools — find all callers of <code>legacyAuth</code> then their test files; trace <code>formatDate</code> through an <code>index.ts</code> re-export under an alias; explore a 120-file codebase without destroying the context window; a targeted config edit whose snippet appears identically six times.</li>
+</ul>
+<h2>Correlations</h2>
+<p>Descriptions → selection → schemas → error contracts → recovery. A weak description misroutes the call before any schema or error logic can help, so fix descriptions first. A strong description over an over-broad tool still produces inconsistent output shapes, so split the tool when its contract contains &quot;or&quot;. Once the right tool is called, a typed schema (<code>enum</code>, nullable fields, split contracts) keeps the arguments valid. When the tool then fails, the error contract decides what the agent does next: <code>isError: true</code> plus <code>errorCategory</code> and <code>isRetryable</code> drives local recovery, while <code>isError: false</code> with an empty array ends the turn with an honest &quot;no results&quot;. Recovery inside a subagent is local and capped — only unresolved failures propagate, carrying what was attempted, partial results, and a recommended action, so the coordinator can retry, reroute, or annotate the gap instead of aborting. Scope sits above all of it: the right tool must also be in the agent&#39;s 4–5 tool role set, and the capability must be reachable from the layer being tested (API <code>tool_choice</code> / <code>tools</code>, MCP config, or tool implementation — not a Claude Code hook when the question is API agent design).</p>
+<h2>Recall card</h2>
+<ul>
+<li>Descriptions are the routing layer, not documentation — expand them first. Misrouting fix order: descriptions → few-shot → merge tools → routing classifier (wrong).</li>
+<li>&quot;Or&quot; / &quot;depending on&quot; in a description = split the tool. Renaming does not fix it.</li>
+<li>Misrouting persists after clean descriptions → audit the system prompt for keyword-sensitive instructions.</li>
+<li>Tool count: 4–5 role-relevant tools per agent. 18 tools degrades selection.</li>
+<li>&quot;Must do X first&quot; → <code>tool_choice: {&quot;type&quot;: &quot;tool&quot;, &quot;name&quot;: &quot;X&quot;}</code>, never a prompt instruction.</li>
+<li><code>&quot;any&quot;</code> guarantees a tool call, not a specific one. <code>&quot;none&quot;</code> = prose with tools still declared.</li>
+<li>High-frequency simple cross-role need → scoped tool (<code>verify_fact(claim, max_sources=3)</code>) with explicit escalation to the owner.</li>
+<li>Generic powerful tool → constrained replacement (<code>load_document</code>, <code>query_orders</code>, <code>send_customer_notification</code>).</li>
+<li><code>isError: true</code> = the tool couldn&#39;t look. <code>isError: false</code> + empty = the tool looked and found nothing. Returning <code>[]</code> when the backend is down is the canonical 2.2 trap.</li>
+<li>Transient retryable = retry the same input. Validation retryable = retry only after fixing the input. Business and permission errors are never retryable; business errors carry a customer-facing description. A post-submission write timeout is an uncertain outcome, not a retry.</li>
+<li>Protocol errors (JSON-RPC) = the request never ran. <code>isError: true</code> = the tool ran and the operation failed.</li>
+<li>Subagent recovers locally (1–2 retries), then propagates only what it cannot resolve, with partial results. The coordinator evaluates partial results; it does not abort on one subagent failure.</li>
+<li>Project <code>.mcp.json</code> = team, version-controlled. <code>~/.claude.json</code> = personal (local and user scopes both live there). Collision precedence: local &gt; project &gt; user, whole entry wins.</li>
+<li>Secrets: <code>${VAR}</code> expansion in the shared file, plus rotate the leaked token. Never relocate or gitignore the file.</li>
+<li>Agent probing for available data at conversation start → expose MCP resources as catalogues.</li>
+<li>Capable MCP tool losing to a built-in → enhance the MCP description; do not remove the built-ins. Standard integration → community server first; fork or post-process, do not build from scratch.</li>
+<li>MCP annotations (<code>readOnlyHint</code> etc.) are untrusted hints, never a security boundary.</li>
+<li>Grep = contents. Glob = paths. Content-seeded tasks: Grep then Glob. Path-seeded: Glob then Grep.</li>
+<li>Edit fails on a non-unique match → expand the anchor first; Read + Write only if no unique anchor exists. Never read every file upfront — Grep entry points, Read selectively, repeat.</li>
+<li>Wrapper modules: read the wrapper, list exports and aliases, grep each alias — the original name alone misses callers.</li>
+</ul>
+<h2>Sources</h2>
+<p>Read for this note:</p>
+<ul>
+<li><code>resources/dnacenta-domains/d2-tool-design-mcp.md</code></li>
+<li><code>resources/hamzafarooq-cheatsheets/domain2.md</code></li>
+<li><code>resources/00-concept-map.md</code></li>
+<li><code>resources/03-anti-patterns-catalog.md</code></li>
+<li><code>resources/02-mock-exam-trap-guide.md</code></li>
+<li><code>resources/04-api-and-product-faq.md</code></li>
+<li><code>resources/paullarionov-guide_en.md</code> (Chapter 2 Tools and <code>tool_use</code>, Chapter 4 MCP, Chapter 10 error handling, Chapter 13 built-in tools, Domain 2 task notes)</li>
+<li><code>resources/daronyondem-study-guide.md</code> (§2 Designing Tool Interfaces for LLM Agents, §3 Error Handling in Agent Tools, §7 Model Context Protocol, §8 Tool Distribution Across Agents, §10 Built-in Tool Selection)</li>
+<li><code>resources/timothywarner-practice-60q.md</code> (Domain 2 and tool-design questions)</li>
+</ul>
+<div class="foot">Built 2026-09-20 09:21 · source: domains/d2-tool-design-mcp.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script></body></html>

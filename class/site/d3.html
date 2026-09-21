@@ -1,0 +1,276 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain 3 — Claude Code Configuration &amp; Workflows (20%) — Master Note — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · interactive</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><div class="callout"><b>This is the reference text.</b>Learn it interactively instead: <a href="lesson-d3.html">open the D3 tutor lesson</a> — one idea at a time, with answer gates and diagrams.</div><h1>Domain 3 — Claude Code Configuration &amp; Workflows (20%) — Master Note</h1>
+<p>Merged from the written module notes, the Domain 3 cheatsheet, the concept map (tasks 3.1–3.6), the anti-patterns catalog, the mock trap guide, the API/product FAQ, the paullarionov guide Ch. 5, the daronyondem §10, and the timothywarner 60-question practice set.</p>
+<p>Three global rules decide most questions:</p>
+<ol>
+<li><strong>Configuration &gt; invocation.</strong> If it must happen consistently for everyone, the answer is a file in the right location — not a command someone must remember to run.</li>
+<li><strong>Path prefix is the whole answer.</strong> <code>~/.claude/</code> = personal, never shared. <code>.claude/</code> = project, shared via git. Same filename, opposite scope.</li>
+<li><strong>Load only what is needed.</strong> Always-loaded standards → CLAUDE.md. Pattern-matched standards → <code>.claude/rules/</code> with <code>paths:</code>. On-demand workflows → skills/commands. Do not make one mechanism do another mechanism&#39;s job.</li>
+</ol>
+<h2>Task index</h2>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>One-line principle</th>
+<th>Exam tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3.1</td>
+<td>Team standards live in project-level <code>.claude/CLAUDE.md</code> committed to VCS; split monoliths with <code>@import</code> / <code>.claude/rules/</code>; <code>/memory</code> diagnoses what loaded</td>
+<td>&quot;one developer gets different behaviour&quot;; &quot;CLAUDE.md is 400+ lines&quot;</td>
+</tr>
+<tr>
+<td>3.2</td>
+<td>Skills and slash commands are on-demand workflows; CLAUDE.md is always-loaded standards; frontmatter controls isolation and tool scope</td>
+<td>&quot;produces verbose output&quot;; &quot;must not modify anything&quot;; &quot;prompt for the parameter&quot;</td>
+</tr>
+<tr>
+<td>3.3</td>
+<td>Conventions for a file <em>pattern</em> spread across the codebase go in <code>.claude/rules/</code> with <code>paths:</code> globs, not N directory CLAUDE.md files</td>
+<td>&quot;tests scattered everywhere&quot;; &quot;pattern of files across the codebase&quot;</td>
+</tr>
+<tr>
+<td>3.4</td>
+<td>Plan mode when decisions remain; direct execution when the thing to do is known; Explore subagent for noisy reconnaissance</td>
+<td>&quot;45+ files&quot;; &quot;boundaries undecided&quot;; &quot;main conversation filling with grep output&quot;</td>
+</tr>
+<tr>
+<td>3.5</td>
+<td>When prose fails, switch modality: I/O examples, test-driven iteration, interview pattern; batch interacting fixes, sequence independent ones</td>
+<td>&quot;interprets the instruction differently each time&quot;; &quot;unfamiliar domain&quot;</td>
+</tr>
+<tr>
+<td>3.6</td>
+<td><code>-p</code> for non-interactive CI; <code>--output-format json --json-schema</code> for machine-parseable findings; review in an independent instance</td>
+<td>&quot;job hangs&quot;; &quot;inline PR comments&quot;; &quot;ignoring the bot&quot;</td>
+</tr>
+</tbody></table>
+<h2>Task 3.1 — CLAUDE.md Hierarchy, Loading, and /memory</h2>
+<ul>
+<li><strong>Principle</strong>: CLAUDE.md files load broader → more specific; project-level files are the only ones teammates receive because they are committed to version control.</li>
+<li>Loading order: managed policy (admin, cannot be excluded) → user (<code>~/.claude/CLAUDE.md</code>, personal, not version-controlled) → project (<code>./CLAUDE.md</code> or <code>./.claude/CLAUDE.md</code>, committed) → local (<code>./CLAUDE.local.md</code>, personal, gitignored) → directory-level subtrees (loaded on demand).</li>
+<li>Directory-level CLAUDE.md scopes <strong>downward and local, never upward</strong>: <code>src/backend/CLAUDE.md</code> does not affect work in <code>src/</code>.</li>
+<li>Files in the working directory and ancestors load at launch; files in subdirectories below the working directory load on demand when Claude reads files in those subtrees.</li>
+<li><code>@import</code> syntax (<code>@path/to/file.md</code>, no space) modularises CLAUDE.md; relative paths resolve relative to the file containing the import; <code>@~/</code> resolves to home; maximum import depth <strong>5</strong> hops.</li>
+<li><code>.claude/rules/</code> is the other modular option: topic files (<code>testing.md</code>, <code>api-conventions.md</code>, <code>deployment.md</code>). Without frontmatter they load unconditionally at session start; with <code>paths:</code> frontmatter they load conditionally.</li>
+<li>AGENTS.md interop: normal sessions read <code>CLAUDE.md</code>, <strong>not</strong> <code>AGENTS.md</code>; <code>/init</code> does read an existing <code>AGENTS.md</code>. Keep one source of truth by importing it (<code>@AGENTS.md</code>).</li>
+<li><code>/memory</code> is the <strong>diagnostic</strong> command: it lists which memory files are currently loaded and opens CLAUDE.md for editing. Use it to <strong>confirm</strong> the diagnosis; the fix is putting the file in the right location.</li>
+<li>Auto memory lives at <code>~/.claude/projects/&lt;project&gt;/memory/MEMORY.md</code>; first 200 lines or 25 KB load at session start; machine-local, not version-controlled; <code>autoMemoryEnabled: false</code> disables, <code>autoMemoryDirectory</code> relocates.</li>
+<li>CLAUDE.md and rules are loaded as <em>context</em>, not enforced configuration — there is no compliance guarantee. For behaviour that must always apply, use hooks or <code>permissions.deny</code>.</li>
+<li>Monorepo controls: <code>claudeMdExcludes</code> (glob list of CLAUDE.md files to skip), <code>--add-dir &lt;path&gt;</code>, <code>CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1</code>.</li>
+<li><strong>Why the exam wants this</strong>: this is the most-tested task in the domain, and most questions reduce to one question — is this file in a location the team receives, or only in one developer&#39;s home directory?</li>
+<li><strong>Distractors</strong>: &quot;run <code>/memory reload</code> to pick up the project&#39;s instructions&quot; (cannot refresh a file that does not exist on that machine); &quot;restart Claude Code&quot; (same non-problem); &quot;the new developer&#39;s user-level file is overriding project settings&quot; (the symptom is missing guidance, not conflicting guidance); &quot;Claude Code caches CLAUDE.md, clear the cache&quot; (Claude Code re-reads CLAUDE.md per session); &quot;move team standards into <code>~/.claude/CLAUDE.md</code> to load them on demand&quot; (that removes them from sharing); &quot;compress the 400-line CLAUDE.md by deleting examples and rationale&quot; (hides the structural problem).</li>
+<li><strong>Exact terms</strong>: <code>~/.claude/CLAUDE.md</code>, <code>.claude/CLAUDE.md</code>, root <code>./CLAUDE.md</code>, <code>./CLAUDE.local.md</code>, <code>&lt;subdir&gt;/CLAUDE.md</code>, <code>@path</code>, <code>@AGENTS.md</code>, <code>.claude/rules/</code>, <code>paths:</code> frontmatter, <code>/memory</code>, <code>/init</code>, <code>autoMemoryEnabled</code>, <code>autoMemoryDirectory</code>, <code>claudeMdExcludes</code>, <code>--add-dir</code>, import depth 5.</li>
+<li><strong>Scenario tie-in</strong>: Scenario 2 (Code Generation with Claude Code) and Scenario 4 (Developer Productivity Tools) — the divergent-developers bug and the monolithic-CLAUDE.md restructure.</li>
+</ul>
+<h2>Task 3.2 — Slash Commands and Skills</h2>
+<ul>
+<li><strong>Principle</strong>: Skills and slash commands are on-demand workflows; CLAUDE.md is always-loaded standards. Never use one for the other&#39;s job.</li>
+<li>Custom slash commands are merged into skills: <code>.claude/commands/deploy.md</code> and <code>.claude/skills/deploy/SKILL.md</code> both create <code>/deploy</code> and behave the same; when a skill and a command share a name, the skill wins.</li>
+<li>Locations and priority: Enterprise &gt; Personal (<code>~/.claude/skills/&lt;name&gt;/SKILL.md</code>) &gt; Project (<code>.claude/skills/&lt;name&gt;/SKILL.md</code>) &gt; Plugin (<code>plugin-name:skill-name</code>). Legacy <code>.claude/commands/</code> still works and supports the same frontmatter.</li>
+<li>Each skill is its own directory containing <code>SKILL.md</code>; the directory name defaults the <code>/name</code>.</li>
+<li>Frontmatter that the exam tests: <code>context: fork</code> (runs in an isolated subagent — verbose output stays in the fork, only the summary returns), <code>allowed-tools</code> (restricts which tools the skill may call — prevents destructive actions), <code>argument-hint</code> (prompts for a required parameter when invoked without one).</li>
+<li>Other frontmatter: <code>name</code>, <code>description</code> (Claude uses it to decide auto-loading), <code>when_to_use</code>, <code>arguments</code> / <code>$name</code>, <code>disable-model-invocation</code>, <code>user-invocable</code>, <code>model</code>, <code>effort</code>, <code>agent</code> (which subagent runs under <code>context: fork</code>), <code>hooks</code>, <code>paths</code>, <code>shell</code>.</li>
+<li>Substitutions: <code>$ARGUMENTS</code>, <code>$ARGUMENTS[N]</code> / <code>$N</code> (0-indexed), <code>$name</code>, <code>${CLAUDE_SESSION_ID}</code>, <code>${CLAUDE_SKILL_DIR}</code>.</li>
+<li>Dynamic context injection: <code>!`cmd`</code> runs before the skill body is sent; <code>```!</code> blocks for multi-line; <code>@path</code> includes files; disable globally with <code>&quot;disableSkillShellExecution&quot;: true</code>.</li>
+<li><code>context: fork</code> still loads CLAUDE.md but not main conversation history — the isolation move for noisy operations.</li>
+<li>Skill body enters the conversation once as a single message and is not re-read on later turns: write standing instructions, not one-time steps. Auto-compaction re-attaches recently invoked skills (first 5 000 tokens of each, 25 000-token combined budget).</li>
+<li>A skill can be project-scoped AND forked; personal AND unforked — location and isolation are orthogonal axes.</li>
+<li>Plugins (<code>claude plugin eval</code>) are the packaging unit for shipping and regression-testing a team&#39;s Claude Code conventions.</li>
+<li><strong>Why the exam wants this</strong>: it tests whether you can tell a category error — &quot;must happen every time&quot; is CLAUDE.md; &quot;invoked when needed&quot; is a skill; &quot;noisy output&quot; is a fork.</li>
+<li><strong>Distractors</strong>: &quot;move all guidance into skills so CLAUDE.md stays brief&quot; (strips the always-on standards out of every session); &quot;edit the project skill to add a stricter variant for one developer&quot; (affects teammates — create a personal skill under <code>~/.claude/skills/</code> with a different name); &quot;add a frontmatter description warning about destructive operations&quot; (a warning is not a tool restriction); &quot;prose validation inside SKILL.md to enforce a required argument&quot; (advisory, not enforcement); &quot;put the convention in a slash command everyone must remember to run&quot; (standards must be ambient, not opt-in).</li>
+<li><strong>Exact terms</strong>: <code>.claude/skills/&lt;name&gt;/SKILL.md</code>, <code>.claude/commands/&lt;name&gt;.md</code>, <code>~/.claude/skills/</code>, <code>context: fork</code>, <code>agent:</code> (<code>Explore</code>, <code>Plan</code>, <code>general-purpose</code>), <code>allowed-tools</code>, <code>argument-hint</code>, <code>$ARGUMENTS</code>, <code>${CLAUDE_SKILL_DIR}</code>, <code>disableSkillShellExecution</code>.</li>
+<li><strong>Scenario tie-in</strong>: Scenario 4 (Developer Productivity Tools) — team <code>/review</code> and <code>/migration</code> skills, personal variants, noisy-output skills.</li>
+</ul>
+<h2>Task 3.3 — Path-Specific Rules</h2>
+<ul>
+<li><strong>Principle</strong>: When a convention applies to a <em>pattern</em> of files spread across the codebase, one rule file with a glob beats N directory CLAUDE.md files.</li>
+<li>Mechanism: a file in <code>.claude/rules/</code> with YAML frontmatter declaring <code>paths:</code> globs; the rule loads <strong>only</strong> when Claude Code is about to work on a matching file.</li>
+<li>Example globs: <code>**/*.test.ts</code>, <code>**/*.test.tsx</code>, <code>**/*.spec.ts</code>, <code>src/api/**/*.ts</code>, <code>**/migrations/**/*</code>, <code>**/*.tf</code>.</li>
+<li>Why it beats directory CLAUDE.md: single source of truth, applies in new directories automatically, loads only on matching files (no token cost on unrelated work), and cannot drift into N copies.</li>
+<li>Why it beats the root CLAUDE.md: always-loaded content burns context on every interaction, including debugging and review where the convention is irrelevant.</li>
+<li>Why it beats a skill: skills are opt-in and must be invoked; unrelated tasks would also trigger them, and &quot;creating a new endpoint&quot; cannot be distinguished from &quot;debugging in the API directory&quot; by a path glob — that case is a skill, not a rule.</li>
+<li>When to reach for which: universal standards → project CLAUDE.md; one specific subdirectory → directory CLAUDE.md; a pattern across the codebase → path-specific rules; on-demand workflow → skill.</li>
+<li>Rules without frontmatter load unconditionally at session start — adding <code>paths:</code> is what makes loading conditional.</li>
+<li><strong>Why the exam wants this</strong>: it is the &quot;load only what&#39;s needed&quot; rule made concrete, and the exam repeatedly contrasts it with duplicate-per-directory CLAUDE.md files.</li>
+<li><strong>Distractors</strong>: &quot;put one CLAUDE.md in every directory that contains test files&quot; (maintenance disaster, drift inevitable); &quot;put all conventions in the root CLAUDE.md under headings and let Claude infer which applies&quot; (non-deterministic, fails when conventions overlap); &quot;create a <code>/migrate</code> slash command everyone invokes first&quot; (opt-in where the standard must be ambient); &quot;create a skill per code type with the conventions embedded&quot; (skills do not apply automatically as code is generated); &quot;define a <code>.claude/config.yaml</code> mapping file patterns to sections of CLAUDE.md&quot; (not a documented mechanism).</li>
+<li><strong>Exact terms</strong>: <code>.claude/rules/*.md</code>, <code>paths:</code> frontmatter with a glob list, <code>**</code> glob matching, conditional load on matching files.</li>
+<li><strong>Scenario tie-in</strong>: Scenario 2 — testing conventions for tests that sit next to their source, migration or Terraform conventions spread across directories.</li>
+</ul>
+<h2>Task 3.4 — Plan Mode vs Direct Execution</h2>
+<ul>
+<li><strong>Principle</strong>: Plan mode when decisions remain to be made; direct execution when the thing to do is already known. The dividing line is decisions vs known work.</li>
+<li>Plan mode is one entry in a permission-mode system: <code>--permission-mode &lt;mode&gt;</code> or <code>Shift+Tab</code> to cycle; modes are <code>default</code>, <code>acceptEdits</code>, <code>plan</code>, <code>auto</code>, <code>dontAsk</code>, <code>bypassPermissions</code>.</li>
+<li>In plan mode Claude explores read-only (Glob, Grep, Read), identifies affected files, designs an approach, presents the plan, and implements only after approval.</li>
+<li>Plan mode indicators: multi-file changes, architectural decisions, multiple valid approaches, large scope (library migration affecting 45+ files), unclear requirements.</li>
+<li>Direct execution indicators: single-file fix with a clear stack trace, adding a null check, a stated mechanical edit, typo or constant update.</li>
+<li>The hybrid is valid and commonly tested: plan mode for investigation and design → user approves → exit plan mode → direct execution file by file.</li>
+<li>The Explore subagent is the context-preservation move: it runs Glob/Grep/Read in its own context and returns a concise summary, keeping raw search output out of the main conversation. Built-in subagents: Explore, Plan (both read-only, skip CLAUDE.md and git status), general-purpose, claude.</li>
+<li>Same goal, different mechanism: <code>context: fork</code> isolates a noisy skill; the Explore subagent isolates a noisy investigation.</li>
+<li>Plan mode is not extended thinking: plan mode is workflow control gating thinking→doing; extended thinking is reasoning budget. Use plan mode when the agent jumps to edits without surfacing trade-offs; use more thinking when analysis is shallow.</li>
+<li><strong>Why the exam wants this</strong>: it is a judgement task statement — the exam describes a task and you classify it — and the traps are scale framing (&quot;it&#39;s mechanical&quot;) and ceremony framing (&quot;planning always helps&quot;).</li>
+<li><strong>Distractors</strong>: &quot;direct execution — start editing and adjust as you go&quot; (for an unfamiliar 80-file refactor with open architectural questions); &quot;plan mode — even small changes benefit from explicit planning&quot; (ceremony for a one-line fix with a clear stack trace); &quot;call a library migration mechanical because the file edits are repetitive&quot; (different APIs mean decisions remain); &quot;switch to plan mode only after complexity surfaces&quot; (edits across dozens of files may already be wrong); &quot;use a larger model with a bigger context window&quot; instead of isolating output.</li>
+<li><strong>Exact terms</strong>: <code>--permission-mode plan</code>, <code>Shift+Tab</code>, <code>acceptEdits</code>, <code>bypassPermissions</code>, Explore / Plan / general-purpose / claude subagents, <code>.claude/agents/</code>.</li>
+<li><strong>Scenario tie-in</strong>: Scenario 2 (designing boundaries before editing) and Scenario 5 (CI tasks that must not start editing).</li>
+</ul>
+<h2>Task 3.5 — Iterative Refinement</h2>
+<ul>
+<li><strong>Principle</strong>: When prose instructions produce inconsistent results, switch modality — the model generalises from examples far more reliably than from descriptions, and rewriting the prose produces different misinterpretations, not fewer.</li>
+<li>Technique 1, concrete I/O examples: give 2–3 input → output pairs for the transformation instead of an adjective (&quot;Format dates consistently&quot; → state the format and show three examples).</li>
+<li>Technique 2, test-driven iteration: write the test first, run it to failure, share the failure, let Claude fix the implementation, repeat until green. Iteration is against a machine-checkable specification, not prose.</li>
+<li>Technique 3, interview pattern: have Claude ask clarifying questions <strong>before</strong> implementing — the move when the domain is unfamiliar and you want edge cases surfaced.</li>
+<li>Technique 4, linking fixes: multiple <strong>interacting</strong> issues go in a single message so the fixes are decided together; <strong>independent</strong> issues are fed back sequentially, one at a time, so each change stays clean and reviewable.</li>
+<li>Default behaviour when standards are ignored: tighten the instruction where it is loaded (project CLAUDE.md), rather than banning the symptom in rules.</li>
+<li><strong>Why the exam wants this</strong>: it tests modality choice under failure, and whether you can name the right feedback shape (batch vs sequential) from a description of the bugs.</li>
+<li><strong>Distractors</strong>: &quot;rewrite the prose description more carefully&quot; (prose has already failed repeatedly); &quot;increase the model&#39;s temperature&quot; (randomness is not specification); &quot;add &#39;remember&#39; instructions to the prompt&quot; (prose again); &quot;ban all mocks in a rules file&quot; when integration-test standards are being ignored (tighten CLAUDE.md instead of banning the symptom); &quot;fix independent issues in one big message&quot; or &quot;resolve interacting issues one at a time&quot; (each inverts the other&#39;s correct shape).</li>
+<li><strong>Exact terms</strong>: input/output examples, test-first iteration, interview pattern, batched vs sequential feedback.</li>
+<li><strong>Scenario tie-in</strong>: Scenario 2 (a refactor whose output shape keeps drifting) and Scenario 5 (generated tests that miss the standard).</li>
+</ul>
+<h2>Task 3.6 — CI/CD Integration</h2>
+<ul>
+<li><strong>Principle</strong>: In CI, the CLI must never wait for input, the findings must be machine-parseable, and the review must not run in the session that generated the code.</li>
+<li><code>-p</code> / <code>--print</code> is non-interactive mode: process the prompt, print to stdout, exit. <strong>Without it the CI job hangs waiting for interactive input.</strong> This is the single most-tested CI detail.</li>
+<li>Structured output: <code>--output-format json</code> (or <code>stream-json</code>) plus <code>--json-schema &#39;{...}&#39;</code> to constrain the shape for reliable downstream parsing (e.g. file path, line number, severity, suggested fix for inline PR comments).</li>
+<li>Guardrails: <code>--max-turns N</code> (hard cap, exits with error), <code>--max-budget-usd X</code> (spend cap), <code>--fallback-model sonnet</code>, <code>--permission-prompts none</code> when no host can answer a prompt, <code>--no-session-persistence</code> for ephemeral runs.</li>
+<li>Other CI-facing flags: <code>--input-format stream-json</code>, <code>--bare</code> (skip auto-discovery: hooks, skills, plugins, MCP, auto memory, CLAUDE.md), <code>--safe-mode</code> (all customisations off, permissions still apply — for troubleshooting a broken config), <code>--setting-sources user,project,local</code>, <code>--strict-mcp-config</code>, <code>--include-hook-events</code>, <code>--session-id</code> / <code>--resume</code> / <code>--continue</code> / <code>--fork-session</code>.</li>
+<li>Session context isolation: the same session that generated code is <strong>less</strong> effective at reviewing it — it retains the reasoning context and is less likely to question its own decisions. Use an independent review instance with no generation context.</li>
+<li>Incremental review context: when re-reviewing after new commits, include prior findings and instruct Claude to report <strong>only new or still-unaddressed issues</strong>. Without it, duplicate comments on every push cause comment fatigue and developers start ignoring the bot — the fix is incremental context, not removing the bot.</li>
+<li>Full-file review still applies to unchanged code: running only the incremental diff misses pre-existing issues; prior-findings context handles deduplication.</li>
+<li>Test generation has two distinct context problems: <strong>low-quality</strong> tests (boilerplate, getters) are fixed by documenting valuable-test criteria, frameworks, and available fixtures in <code>.claude/CLAUDE.md</code>; <strong>duplicate</strong> tests (scenarios already covered) are fixed by passing the existing test files in the prompt context.</li>
+<li>Integration-test standards being ignored is a CLAUDE.md problem: tighten the project file rather than banning mocks in a rules file.</li>
+<li>Pre-compaction logging uses the <strong>PreCompact</strong> hook (log before context is compacted), not a PreToolUse hook on a Compact event.</li>
+<li>Managed CI paths exist (GitHub Actions, GitLab CI/CD, GitHub Code Review, Routines), but the <code>-p</code> + <code>--output-format json</code> primitive is the right answer when the question needs full control.</li>
+<li>Message Batches API is <strong>not</strong> for pre-merge blocking checks (up to 24-hour window, no latency SLA); it suits overnight analysis, weekly audits, nightly test generation. Batch results arrive in any order — key by <code>custom_id</code>.</li>
+<li><strong>Why the exam wants this</strong>: the highest-density memorisation task in the domain, and every failure pattern has a named symptom → fix mapping.</li>
+<li><strong>Distractors</strong>: &quot;increase the CI timeout to 90 minutes&quot; (treats the symptom); &quot;redirect /dev/null to stdin&quot; (wrong layer, not the documented headless mode); &quot;set <code>CLAUDE_HEADLESS=true</code>&quot;; &quot;add a <code>--batch</code> flag&quot; (no such flag); &quot;switch to <code>--output-format text</code> so output isn&#39;t buffered&quot; (the hang is not an output problem); &quot;have CLAUDE.md describe the output format with examples&quot; (guidance cannot guarantee a machine-parseable shape); &quot;reuse the generating session for review — it already knows the code&quot; (motivated reasoning); &quot;remove the review bot, developers find it noisy&quot; (incremental review context is the fix); &quot;run three full-PR passes and take the majority&quot; (multiplies cost, attention dilution remains); &quot;use a larger-context model&quot; for attention dilution.</li>
+<li><strong>Exact terms</strong>: <code>-p</code> / <code>--print</code>, <code>--output-format json</code> / <code>stream-json</code>, <code>--json-schema</code>, <code>--max-turns</code>, <code>--max-budget-usd</code>, <code>--bare</code>, <code>--safe-mode</code>, <code>--permission-prompts none</code>, <code>--no-session-persistence</code>, PreCompact hook, <code>custom_id</code>.</li>
+<li><strong>Scenario tie-in</strong>: Scenario 5 (Claude Code for Continuous Integration) — hanging jobs, inline PR comments, self-review blind spots, duplicate comments, low-value generated tests.</li>
+</ul>
+<h2>Configuration surface map</h2>
+<ul>
+<li><code>~/.claude/CLAUDE.md</code> — user-level instructions; personal, not version-controlled.</li>
+<li><code>./CLAUDE.md</code> or <code>./.claude/CLAUDE.md</code> — project-level instructions; committed, the only file teammates receive.</li>
+<li><code>&lt;subdir&gt;/CLAUDE.md</code> — directory-level instructions; loads on demand when Claude reads files in that subtree; scopes downward only.</li>
+<li><code>./CLAUDE.local.md</code> — personal project-only preferences; gitignored.</li>
+<li>Managed policy CLAUDE.md at the OS-specific path — org-wide, admin-controlled, cannot be excluded.</li>
+<li><code>@path</code> inside CLAUDE.md — file import for modular configuration; depth limit 5; <code>@~/</code> resolves to home.</li>
+<li><code>.claude/rules/&lt;topic&gt;.md</code> — topic rules; unconditional without frontmatter, conditional with <code>paths:</code> globs.</li>
+<li><code>.claude/skills/&lt;name&gt;/SKILL.md</code> — project skill, version-controlled, creates <code>/name</code>.</li>
+<li><code>~/.claude/skills/&lt;name&gt;/SKILL.md</code> — personal skill; use a different name to avoid affecting teammates.</li>
+<li><code>.claude/commands/&lt;name&gt;.md</code> — legacy project slash command; still supported, superseded by skills on name collision.</li>
+<li><code>.claude/agents/*</code> — custom subagent definitions used by <code>context: fork</code> and <code>--agent</code>.</li>
+<li><code>~/.claude/projects/&lt;project&gt;/memory/MEMORY.md</code> — auto memory index; first 200 lines or 25 KB per session.</li>
+<li><code>CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1</code> — also load CLAUDE.md from <code>--add-dir</code> paths.</li>
+<li><code>CLAUDE_CODE_NEW_INIT=1</code> — interactive multi-phase <code>/init</code>.</li>
+<li><code>claudeMdExcludes</code> — glob list of CLAUDE.md files to skip in a monorepo.</li>
+<li><code>autoMemoryEnabled</code> / <code>autoMemoryDirectory</code> — disable or relocate auto memory.</li>
+<li><code>disableSkillShellExecution</code> — disable shell execution in skills.</li>
+<li><code>/memory</code> — diagnostic: lists loaded memory files; it does not create them.</li>
+<li><code>/init</code> — scaffold a CLAUDE.md.</li>
+<li><code>--permission-mode &lt;mode&gt;</code> (<code>default</code> / <code>acceptEdits</code> / <code>plan</code> / <code>auto</code> / <code>dontAsk</code> / <code>bypassPermissions</code>), <code>Shift+Tab</code> to cycle — session workflow mode.</li>
+<li><code>-p</code> / <code>--print</code> — non-interactive CI mode; without it the job hangs.</li>
+<li><code>--output-format text|json|stream-json</code> and <code>--json-schema</code> — machine-parseable CI findings.</li>
+<li><code>--max-turns</code>, <code>--max-budget-usd</code>, <code>--fallback-model</code>, <code>--permission-prompts none</code>, <code>--no-session-persistence</code> — CI guardrails.</li>
+<li><code>--bare</code>, <code>--safe-mode</code>, <code>--setting-sources</code>, <code>--strict-mcp-config</code> — start-up surface control.</li>
+<li>Built-in subagents: Explore, Plan (read-only, skip CLAUDE.md and git status), general-purpose, claude.</li>
+<li>Hooks: PreCompact (log before compaction), PostToolUse, PreToolUse — enforcement where memory is only guidance.</li>
+</ul>
+<h2>Recall card</h2>
+<ul>
+<li>Two devs, same repo, divergent behaviour → conventions are in someone&#39;s <code>~/.claude/CLAUDE.md</code> and were never committed. Fix: move to project <code>.claude/CLAUDE.md</code>.</li>
+<li><code>/memory</code> is for diagnosis, not for fix — it tells you what is loaded.</li>
+<li>Directory CLAUDE.md scopes downward and local, never upward.</li>
+<li>Monolithic CLAUDE.md → <code>@import</code> and/or <code>.claude/rules/</code>; import depth limit 5.</li>
+<li>&quot;Must happen every time&quot; → CLAUDE.md. &quot;Invoked when needed&quot; → skill. Do not swap them.</li>
+<li>&quot;Produces verbose output&quot; / &quot;clutters the main conversation&quot; → <code>context: fork</code>.</li>
+<li>&quot;Must not modify anything&quot; → <code>allowed-tools</code> restricted to read-only.</li>
+<li>&quot;Prompt the developer for the parameter&quot; → <code>argument-hint</code>.</li>
+<li>Personal variant of a team skill → new name under <code>~/.claude/skills/</code>; never edit the team skill.</li>
+<li>&quot;Pattern of files spread across the codebase&quot; → <code>.claude/rules/</code> with <code>paths:</code> globs. Never N directory CLAUDE.md files, never a slash command.</li>
+<li>Standards must be ambient, not opt-in — a slash command for a convention is always wrong.</li>
+<li>Plan mode = decisions still to be made. Direct execution = a known thing to do.</li>
+<li>&quot;45+ files&quot;, &quot;boundaries undecided&quot;, &quot;multiple valid approaches&quot; → plan mode, even when the edits look mechanical.</li>
+<li>Plan mode → approve → direct execution is a valid hybrid, not a wrong answer.</li>
+<li>&quot;Main conversation filling with grep output&quot; → Explore subagent.</li>
+<li>Prose failed repeatedly → stop rewording, give 2–3 concrete input/output examples.</li>
+<li>Unfamiliar domain, edge cases unknown → interview pattern (Claude asks first).</li>
+<li>Interacting fixes → one message. Independent fixes → sequential.</li>
+<li>CI job hangs after the banner → add <code>-p</code>. Always. Not a timeout, not <code>/dev/null</code>.</li>
+<li>Auto-post inline PR comments → <code>--output-format json</code> with <code>--json-schema</code>.</li>
+<li>Same session reviewing its own code → motivated reasoning; use an independent instance.</li>
+<li>Duplicate review comments on every push → pass prior findings and report only new or unaddressed issues.</li>
+<li>CI generates low-value tests → document testing standards and fixtures in <code>.claude/CLAUDE.md</code>. CI generates duplicate tests → pass the existing test files in context.</li>
+<li>Log before compaction → PreCompact hook.</li>
+<li>Batch API is never the answer for a blocking pre-merge check.</li>
+</ul>
+<h2>Sources</h2>
+<ul>
+<li><code>/home/colb/.openclaw/workspace/ccaf/resources/dnacenta-domains/d3-claude-code-config.md</code></li>
+<li><code>/home/colb/.openclaw/workspace/ccaf/resources/hamzafarooq-cheatsheets/domain3.md</code></li>
+<li><code>/home/colb/.openclaw/workspace/ccaf/resources/00-concept-map.md</code> (Domain 3 section, tasks 3.1–3.6)</li>
+<li><code>/home/colb/.openclaw/workspace/ccaf/resources/03-anti-patterns-catalog.md</code></li>
+<li><code>/home/colb/.openclaw/workspace/ccaf/resources/02-mock-exam-trap-guide.md</code></li>
+<li><code>/home/colb/.openclaw/workspace/ccaf/resources/04-api-and-product-faq.md</code> (<code>/memory</code> FAQ)</li>
+<li><code>/home/colb/.openclaw/workspace/ccaf/resources/paullarionov-guide_en.md</code> (Chapter 5, and the Domain 3 practice questions)</li>
+<li><code>/home/colb/.openclaw/workspace/ccaf/resources/daronyondem-study-guide.md</code> (§10 Claude Code and Claude Agent SDK Workflows)</li>
+<li><code>/home/colb/.openclaw/workspace/ccaf/resources/timothywarner-practice-60q.md</code> (Code Generation with Claude Code, Claude Code for Continuous Integration)</li>
+</ul>
+<div class="foot">Built 2026-09-20 09:21 · source: domains/d3-claude-code-config.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script></body></html>

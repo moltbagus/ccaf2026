@@ -1,0 +1,360 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain 1 — Agentic Architecture (27%) — Master Note — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · interactive</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><div class="callout"><b>This is the reference text.</b>Learn it interactively instead: <a href="lesson-d1.html">open the D1 tutor lesson</a> — one idea at a time, with answer gates and diagrams.</div><h1>Domain 1 — Agentic Architecture (27%) — Master Note</h1>
+<p>Heaviest domain on the exam. 7 tasks (1.1–1.7). Scenario-based questions: a production
+situation is described, then &quot;which approach is most effective?&quot;. Wrong options are
+engineered traps that sound smart, efficient, thorough, helpful, enterprise, simple, or
+pragmatic while violating a documented principle.</p>
+<p>Exam framing: 60 multiple-choice questions, 120 minutes, pass 720 on a 100–1000 scale,
+no guessing penalty — answer every question. Domain weights: D1 27%, D2 18%, D3 20%,
+D4 20%, D5 15%.</p>
+<p>Global rules that decide most Domain 1 items (hamzafarooq-cheatsheets/domain1.md):</p>
+<ul>
+<li>Deterministic beats probabilistic when stakes are real. Money, identity, safety,
+compliance = hooks or programmatic gates. Tone, style, formatting = prompts.</li>
+<li>Trace a failure to its origin. Scope problems = upstream (decomposition, partitioning,
+context passing). Quality problems = subagent prompts or tools.</li>
+<li>Proportionate fixes only. A single agent beats multi-agent when a single agent
+suffices. Do not over-engineer.</li>
+</ul>
+<h2>Task index</h2>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>One-line principle</th>
+<th>Exam tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.1</td>
+<td>Terminate the loop on <code>stop_reason</code>, never on prose or an iteration cap</td>
+<td>&quot;How does the loop know it is finished?&quot;</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>One coordinator decomposes, selects, routes, aggregates, recovers</td>
+<td>&quot;subagents talk directly&quot;, &quot;topics missing&quot;, &quot;duplicate work&quot;</td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>Subagent context is isolated — the prompt is the universe</td>
+<td>&quot;the subagent did not know X&quot;, &quot;the orchestrator will not delegate&quot;</td>
+</tr>
+<tr>
+<td>1.4</td>
+<td>Financial/safety ordering is programmatic, never prompt-only</td>
+<td>&quot;must always happen before&quot; + refund / identity / approval</td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>PreToolUse gates and captures prior state; PostToolUse normalizes results</td>
+<td>&quot;heterogeneous formats&quot;, &quot;prior state for audit&quot;, &quot;before compaction&quot;</td>
+</tr>
+<tr>
+<td>1.6</td>
+<td>Match decomposition shape to the work; chain when fixed, adapt when unknown</td>
+<td>&quot;intermittent bug&quot;, &quot;14-file PR&quot;, &quot;every request follows the same flow&quot;</td>
+</tr>
+<tr>
+<td>1.7</td>
+<td>Resume only while tool results stay valid; fork to branch from a shared baseline</td>
+<td>&quot;files changed since&quot;, &quot;compare two approaches&quot;</td>
+</tr>
+</tbody></table>
+<h2>Task 1.1 — The Agentic Loop Lifecycle</h2>
+<ul>
+<li><strong>Principle</strong>: Send a request with tools, inspect <code>stop_reason</code>, and branch on it before
+reading <code>content</code>. <code>&quot;tool_use&quot;</code> → execute the tool, append <code>tool_result</code>, loop.
+<code>&quot;end_turn&quot;</code> → present the final text and stop. Claude decides which tool to call and
+when to stop; you do not pre-configure decision trees or fixed tool sequences.</li>
+<li><strong>Why the exam wants this</strong>: It is the domain&#39;s foundational mechanism, and every
+&quot;when does the agent stop?&quot; item resolves to one answer. It also separates agentic
+systems from traditional workflow automation, where steps are predetermined.</li>
+<li><strong>Distractors</strong>: Parsing natural language for &quot;I&#39;m done&quot; (non-deterministic — model
+prose varies); an arbitrary iteration cap as the <em>primary</em> stop condition (cuts work off
+mid-task; a cap is a safety net, not termination); checking that the response contains
+text, or <code>content[0].type == &quot;text&quot;</code> (a <code>tool_use</code> response can begin with a text block).</li>
+<li><strong>Exact terms</strong>: <code>stop_reason</code> with values <code>&quot;tool_use&quot;</code>, <code>&quot;end_turn&quot;</code>, <code>&quot;stop_sequence&quot;</code>,
+<code>&quot;pause_turn&quot;</code>, <code>&quot;max_tokens&quot;</code>, <code>&quot;refusal&quot;</code>, <code>&quot;model_context_window_exceeded&quot;</code>;
+<code>tool_result</code> blocks carrying <code>tool_use_id</code>, <code>content</code>, <code>is_error: true</code>; multiple
+<code>tool_use</code> blocks in one response for simultaneous calls; the <code>messages</code> array stays
+append-only. <code>pause_turn</code> (server-side tool loop hit its cap) and <code>max_tokens</code> are
+resumable, not terminal. <code>refusal</code> arrives as HTTP 200 — check <code>stop_reason</code> before
+reading <code>content</code>, or you silently process an empty response.</li>
+<li><strong>Scenario tie-in</strong>: 1. Customer Support Agent; 8. Agentic AI Tools (scenario reported
+by candidates but its content is missing from the corpus — paullarionov-guide_en.md).</li>
+</ul>
+<h2>Task 1.2 — Multi-Agent Orchestration</h2>
+<ul>
+<li><strong>Principle</strong>: Use hub-and-spoke. One coordinator decomposes the task, selects which
+subagents are needed, partitions scope, passes context, aggregates and validates
+results, handles errors, and iteratively refines. Subagents never talk to each other;
+all communication routes through the coordinator.</li>
+<li><strong>Why the exam wants this</strong>: Most multi-agent failures in the corpus are <em>scope</em>
+failures at the coordinator, not execution failures at the subagents. The exam tests
+whether you blame the right component.</li>
+<li><strong>Distractors</strong>: A subagent sending results directly to another subagent (removes
+central visibility and uniform error handling); concatenating raw subagent outputs
+instead of synthesising them (contradictions and overlap reach the user); a shared
+live-state mechanism so agents &quot;avoid duplication during execution&quot; (subagents run in
+isolated contexts and cannot watch each other mid-flight); post-hoc deduplication
+(cleans the output but still pays the token cost of duplicated work); broad-brush
+symptom fixes such as &quot;give the synthesis agent gap detection&quot; or &quot;widen the search
+queries&quot; when the decomposition itself was too narrow.</li>
+<li><strong>Exact terms</strong>: hub-and-spoke coordinator; dynamic subagent selection; isolated
+subagent context; iterative refinement loop (evaluate → identify gaps → targeted round
+2); coverage annotations; single-control-point design.</li>
+<li><strong>Failure-tracing table</strong> (hamzafarooq domain1): missing topics → decomposition too
+narrow. Duplicated work / redundant sources → scope partitioning sloppy. Shallow on
+every topic → subagent prompts or tool budgets. Missing source attribution →
+context-passing destroyed metadata.</li>
+<li><strong>Scenario tie-in</strong>: 3. Multi-Agent Research System.</li>
+</ul>
+<h2>Task 1.3 — Subagent Spawning and Context Passing</h2>
+<ul>
+<li><strong>Principle</strong>: Spawn subagents with the Task tool (the current Claude Code / Agent SDK
+canon name is <code>Agent</code>; older material and the exam guide say &quot;Task&quot; — they are the same
+mechanism). The coordinator&#39;s <code>allowedTools</code> must include <code>&quot;Task&quot;</code> or it physically
+cannot delegate. Context does not inherit: everything a subagent needs goes in its
+prompt.</li>
+<li><strong>Why the exam wants this</strong>: &quot;The subagent returned something generic&quot; and &quot;the
+orchestrator never delegates&quot; are both single-cause items — missing explicit context,
+and a missing <code>&quot;Task&quot;</code> entry in <code>allowedTools</code>.</li>
+<li><strong>Distractors</strong>: Assuming the subagent inherits the coordinator&#39;s conversation; passing
+a pointer or &quot;the document&quot; instead of the content; collapsing structured findings into
+prose (attribution lost); asking subagent A to hand results straight to subagent B;
+writing step-by-step procedural coordinator prompts instead of goals plus quality
+criteria; giving a subagent one broad general-purpose tool then adding a prompt
+instruction to use it narrowly.</li>
+<li><strong>Exact terms</strong>: Task tool for spawning subagents; <code>AgentDefinition</code> (<code>description</code> is
+used for selection — write it like a function docstring, plus <code>prompt</code>, <code>tools</code>,
+optionally <code>model</code>); the Task tool must be in the coordinator&#39;s <code>allowedTools</code>;
+<code>parent_tool_use_id</code> for attributing messages to a subagent run; parallel spawning by
+emitting multiple Task tool calls in a <em>single</em> coordinator response (separate turns =
+sequential); <code>fork_session</code> / <code>--fork-session</code> / <code>/subtask</code> for forks that inherit the
+full conversation and share the parent&#39;s prompt cache; scoped tool sets per subagent
+(a synthesis agent gets a narrow <code>verify_fact</code>, not web search).</li>
+<li><strong>Scenario tie-in</strong>: 3. Multi-Agent Research System; 4. Developer Productivity Tools.</li>
+</ul>
+<h2>Task 1.4 — Workflow Enforcement and Handoff</h2>
+<ul>
+<li><strong>Principle</strong>: Programmatic enforcement (hooks, prerequisite gates) is deterministic —
+100%. Prompt-based instructions are probabilistic and carry a non-zero failure rate.
+Use programmatic enforcement whenever a single failure causes financial loss, a
+security breach, a regulatory violation, or safety harm.</li>
+<li><strong>Why the exam wants this</strong>: It is the highest-frequency fork in the whole exam. The
+four-distractor pattern for high-stakes items always offers a stronger prompt, few-shot
+examples, and a specialised subagent — all three are wrong.</li>
+<li><strong>Distractors</strong>: Strengthening the system prompt (&quot;always verify identity before
+refunding&quot;); adding few-shot examples of correct ordering; routing to a subagent whose
+prompt emphasises the rule; dumping the full conversation transcript into a human
+handoff; escalating immediately with zero context when the agent can still make
+progress.</li>
+<li><strong>Exact terms</strong>: PreToolUse hook as a programmatic gate (exit code 2 blocks;
+<code>permissionDecision</code> values <code>&quot;allow&quot;</code>, <code>&quot;deny&quot;</code>, <code>&quot;ask&quot;</code>); prerequisite gate on
+<code>process_refund</code> gated on a verified customer ID from <code>get_customer</code>; structured handoff
+brief — customer ID, 2–3 sentence issue summary, root cause, actions taken,
+recommended action including refund amount, compliance/urgency flags (the human does
+not have the transcript, so the brief must be self-contained); multi-concern requests →
+decompose, investigate in parallel with shared context, synthesise a unified resolution.</li>
+<li><strong>Scenario tie-in</strong>: 1. Customer Support Agent.</li>
+</ul>
+<h2>Task 1.5 — Hooks: PreToolUse, PostToolUse, PreCompact</h2>
+<ul>
+<li><strong>Principle</strong>: PreToolUse fires before a tool executes — gates, authorization,
+prerequisite checks, financial limits, and capturing the <em>prior state</em> for audit.
+PostToolUse fires after the tool and before the model sees the result — normalization,
+redaction, truncation, enrichment. Hooks gate, block, or transform; they do not rank
+tools.</li>
+<li><strong>Why the exam wants this</strong>: Two keyword triggers decide these items. &quot;Prior state&quot; /
+&quot;pre-condition&quot; / &quot;before X happens&quot; → PreToolUse. &quot;Heterogeneous formats&quot; /
+&quot;normalize&quot; / &quot;the model is confused by varying outputs&quot; → PostToolUse.</li>
+<li><strong>Distractors</strong>: Capturing prior state in PostToolUse (the mutation already happened);
+normalizing formats downstream in reporting code instead of at the tool boundary;
+reordering tool preference with a hook (use descriptions and prompts); handling a
+compliance rule with a prompt instruction rather than a hook; a separate error-handling
+or compliance agent that commands subagents directly (second orchestrator, violates the
+single-control-point design).</li>
+<li><strong>Exact terms</strong>: PreToolUse, PostToolUse, PostToolUseFailure (fires when the tool itself
+errored), PreCompact / PostCompact, PermissionRequest, SessionStart, SessionEnd,
+UserPromptSubmit, Stop, SubagentStart / SubagentStop. Hook types: <code>command</code> (exit 0 =
+pass, exit 2 = block), <code>http</code>, <code>mcp_tool</code>, <code>prompt</code>, <code>agent</code>. Config locations:
+<code>~/.claude/settings.json</code> (personal), <code>.claude/settings.json</code> (project, versioned),
+<code>.claude/settings.local.json</code> (gitignored), managed policy settings (org-wide).</li>
+<li><strong>Scenario tie-in</strong>: 1. Customer Support Agent; 5. Claude Code for Continuous
+Integration.</li>
+</ul>
+<h2>Task 1.6 — Task Decomposition Strategies</h2>
+<ul>
+<li><strong>Principle</strong>: Match the pattern to the shape of the work, not to a preference. Prompt
+chaining when the steps really are fixed; dynamic adaptive decomposition when the next
+step depends on what the last one revealed; orchestrator–workers for typing and
+delegation; multi-pass review for large diff sets.</li>
+<li><strong>Why the exam wants this</strong>: The discriminating question is always which pattern fits —
+&quot;every request follows the same flow&quot; is chaining; &quot;the cause is unknown until we look&quot;
+is adaptive. It also guards the over-engineering trap: if a single-agent loop works, the
+preferred answer is not to refactor to multi-agent.</li>
+<li><strong>Distractors</strong>: A fixed checklist run unconditionally on an unknown bug path (wastes
+budget, misses the actual cause); brute-force parallelization across every layer &quot;just
+in case&quot;; expanding the checklist for more coverage; one giant single-pass review of a
+large PR (attention dilution, inconsistent findings, missed cross-file issues);
+refactoring a working single agent into a coordinator with subagents; an
+evaluator–optimiser loop over criteria the evaluator cannot reliably distinguish.</li>
+<li><strong>Exact terms</strong>: prompt chaining (fixed sequential pipeline) vs adaptive decomposition;
+multi-pass review — pass 1 per-file local analysis, pass 2 cross-file integration;
+evaluator–optimiser; orchestrator–worker (uniform clones differentiated only by
+prompt-supplied scope); parallel subagents across a partition (elapsed time becomes
+max(subagent_durations), so balance by expected effort); serial decomposition →
+parallel execution → serial synthesis.</li>
+<li><strong>Scenario tie-in</strong>: 2. Code Generation with Claude Code; 3. Multi-Agent Research
+System.</li>
+</ul>
+<h2>Task 1.7 — Session Management: <code>--resume</code>, <code>fork_session</code>, Stale State</h2>
+<ul>
+<li><strong>Principle</strong>: <code>--resume &lt;session-name&gt;</code> continues a named prior conversation with full
+context — only while its tool results are still valid. <code>--fork-session</code> resumes an
+existing session under a new session ID so the original is untouched and each branch
+explores a different approach.</li>
+<li><strong>Why the exam wants this</strong>: The trap is resuming because it is cheaper, then acting on
+stale tool results. Stale input produces confidently wrong work that costs more than a
+fresh start.</li>
+<li><strong>Distractors</strong>: Resuming after files changed and trusting the agent to notice;
+forking to give both branches the <em>old</em> state when the state itself is the problem;
+restarting with zero context when a structured summary would preserve valid findings;
+assuming a resumed session will detect file changes on its own.</li>
+<li><strong>Exact terms</strong>: <code>--resume &lt;session-name&gt;</code>; <code>--fork-session</code> (resumes under a new ID);
+<code>fork_session</code> (the older API-level name for the same shared-baseline branch); <code>/subtask &lt;prompt&gt;</code> spawns a fork inheriting the full conversation and returning only its result;
+<code>/fork</code> copies the whole session into a separate background session; <code>/branch</code> switches
+you into a copy; when starting fresh, pass a structured summary of prior findings.</li>
+<li><strong>Scenario tie-in</strong>: 2. Code Generation with Claude Code; 4. Developer Productivity
+Tools.</li>
+</ul>
+<h2>Correlations</h2>
+<ul>
+<li>Loops enforce the tool cycle; the coordinator delegates work into those loops; hooks
+gate what may pass through them. Reading them as one chain: <code>stop_reason</code> drives
+iteration → each <code>tool_use</code> is a chance for a PreToolUse gate → each result is a chance
+for PostToolUse normalization → the coordinator consumes aggregated results and decides
+the next delegation.</li>
+<li>Deterministic-compliance cluster: hooks + prerequisite gates + forced <code>tool_choice</code>
+(<code>{&quot;type&quot;:&quot;tool&quot;,&quot;name&quot;:&quot;...&quot;}</code>). Same answer family for identity-before-refund,
+trade limits, approvals, permission gates.</li>
+<li>Coordinator pattern cluster: hub-and-spoke + explicit context passing + scoped subagent
+tools + synthesis downstream. Decomposition, partitioning, and context-passing failures
+all present as output defects, so trace upstream first.</li>
+<li>Exploration cluster: adaptive decomposition + scratchpad/structured state + Explore
+subagent. Adaptive decomposition and prompt chaining are the two ends of one axis —
+predictability versus evidence-driven next steps.</li>
+<li>Session to context durability: because a session is a portable unit of state (resumable,
+forkable, teleportable), anything the agent must not lose belongs in files or a manifest,
+not in scrollback.</li>
+<li>Over-engineering guardrail ties 1.6 to 1.2: multi-agent adds latency, cost, and failure
+surface; delegate only when a task floods the coordinator&#39;s context, needs a genuinely
+different prompt or tool set, or can run in parallel.</li>
+</ul>
+<h2>Recall card</h2>
+<ul>
+<li><code>stop_reason</code> is the only authoritative termination signal. Anything else is wrong.</li>
+<li><code>&quot;tool_use&quot;</code> → execute, append <code>tool_result</code> with the matching <code>tool_use_id</code>, loop.
+<code>&quot;end_turn&quot;</code> → done. <code>&quot;pause_turn&quot;</code> and <code>&quot;max_tokens&quot;</code> are resumable, not terminal.</li>
+<li>Check <code>stop_reason</code> <em>before</em> reading <code>content</code>. A <code>refusal</code> is HTTP 200 with an empty or
+partial body.</li>
+<li>Iteration caps are safety nets. They are never the primary stop condition.</li>
+<li>Parallel tool calls need one <code>tool_result</code> per id, all in one user turn.</li>
+<li>Subagent state: nothing carries over. The prompt is the universe.</li>
+<li>Missing topics → the coordinator&#39;s decomposition was too narrow. Blame upstream.</li>
+<li>Duplicate work → sloppy scope partitioning. Missing citations → context-passing format.</li>
+<li>Won&#39;t delegate → <code>&quot;Task&quot;</code> is missing from the coordinator&#39;s <code>allowedTools</code>.</li>
+<li>Subagents never talk to each other. All communication routes through the coordinator.</li>
+<li>Parallel spawning = multiple Task calls in one coordinator response, not across turns.</li>
+<li>High stakes → hooks, every time, no matter how strong the prompt wording.</li>
+<li>The four distractors for a high-stakes item: stronger prompt, few-shot examples,
+specialised subagent, prompt-ordered tool sequence. All wrong.</li>
+<li>Prior state / pre-condition / &quot;before X happens&quot; → PreToolUse.</li>
+<li>Heterogeneous formats / normalize / redact / model confused by varying outputs →
+PostToolUse.</li>
+<li>Hooks gate, block, and transform. They do not rank tool preference.</li>
+<li>Human handoff must carry root cause <em>and</em> recommended action including the amount — the
+human has no transcript.</li>
+<li>Unknown bug path → adaptive decomposition, not a fixed checklist and not brute-force
+parallel layers.</li>
+<li>Large PR → two passes: per-file local analysis, then cross-file integration.</li>
+<li>Single-agent works? Do not refactor to multi-agent.</li>
+<li>Stale tool results → new session plus a structured summary, not <code>--resume</code>.</li>
+<li><code>--fork-session</code> to branch from a shared expensive baseline under a new session ID.</li>
+</ul>
+<h2>Sources</h2>
+<p>Files actually read for this note:</p>
+<ul>
+<li><code>dnacenta-domains/d1-agentic-architecture.md</code> (full)</li>
+<li><code>hamzafarooq-cheatsheets/domain1.md</code> (full)</li>
+<li><code>00-concept-map.md</code> (Domain 1 section + correlation/tradeoff tables)</li>
+<li><code>03-anti-patterns-catalog.md</code> (loop and coordinator anti-patterns)</li>
+<li><code>02-mock-exam-trap-guide.md</code> (trap taxonomy)</li>
+<li><code>paullarionov-guide_en.md</code> (lines 29–108 exam format and the 8 scenarios; §1.3
+<code>stop_reason</code>; §2.3–2.5 <code>tool_choice</code> and schemas; Chapter 3 Agent SDK 3.1–3.5; §5.10
+<code>fork_session</code>; Chapters 8–10 decomposition, escalation, multi-agent error handling)</li>
+<li><code>daronyondem-study-guide.md</code> (§8 Agentic Patterns and Task Decomposition; §9 Customer
+Service and Production Workflow Design)</li>
+<li><code>timothywarner-practice-60q.md</code> (&quot;Multi-agent Research System&quot; block, Q1–Q15)</li>
+<li><code>README.md</code> (scenario → domain mapping)</li>
+</ul>
+<p>Not stated in corpus: full content for Scenario 8 (Agentic AI Tools). The scenario is
+listed in paullarionov-guide_en.md but its body is marked missing.</p>
+<div class="foot">Built 2026-09-20 09:21 · source: domains/d1-agentic-architecture.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script></body></html>

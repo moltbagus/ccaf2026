@@ -1,0 +1,425 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain 5 — Context Management &amp; Reliability — Question Bank (20 items) — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · interactive</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><h1>Domain 5 — Context Management &amp; Reliability — Question Bank (20 items)</h1>
+<p>Exam framing: 60 MCQs, 120 minutes, pass 720/1000, no guessing penalty. Domain 5 is 15% (tasks 5.1–5.6) but is the most trap-dense domain. Every wrong option below is deliberately one of the seven trap types: sounds-enterprise, sounds-efficient, sounds-smart, sounds-helpful, sounds-thorough, sounds-simple, sounds-pragmatic.</p>
+<p>Coverage: 5.1 ×4, 5.2 ×4, 5.3 ×3, 5.4 ×3, 5.5 ×3, 5.6 ×3.</p>
+<hr>
+<h3>Q1</h3>
+<p>Customers keep citing specific figures (&quot;the 15% discount I mentioned&quot;) and the agent answers with the wrong value. Logs show those details were stated 20+ turns ago and were condensed into vague summaries such as &quot;promotional pricing was discussed.&quot; The conversation is a long multi-issue support thread and cannot be shortened.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Raise the summarization threshold from 70% to 85% so conversations have more room before summarization triggers.</span></li>
+  <li><span class="ltr">B</span><span>Store the full conversation history in external storage and retrieve it when the agent detects references like "as I mentioned."</span></li>
+  <li><span class="ltr">C</span><span>Extract transactional facts (amounts, dates, order numbers, customer-stated expectations) into a persistent case-facts block included in every prompt outside the summarized history.</span></li>
+  <li><span class="ltr">D</span><span>Revise the summarization prompt to explicitly preserve all numbers, percentages and dates verbatim.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Summarization is inherently lossy on exact values; a case-facts block injected verbatim makes preservation deterministic instead of best-effort. A only delays the loss to the next threshold, B depends on the agent detecting the reference at all, and D still relies on the model choosing to preserve every value on every pass.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 5.1<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<hr>
+<h3>Q2</h3>
+<p>Production monitoring shows the synthesis agent reliably cites content from the first 15K tokens of a 75K-token aggregate and from the final 10K tokens, but frequently omits findings from the middle 50K — including findings that directly answer the research question.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Compress all subagent outputs to under 20K tokens before aggregation so content sits inside the reliably processed range.</span></li>
+  <li><span class="ltr">B</span><span>Restructure the aggregate so key findings appear at the beginning with explicit section headers, keeping the detailed material behind that.</span></li>
+  <li><span class="ltr">C</span><span>Stream subagent results to the synthesis agent incrementally, completing one source before adding the next.</span></li>
+  <li><span class="ltr">D</span><span>Rotate which subagent's results appear first across research tasks so both sources get equal top positioning over time.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> The failure is content placement, not volume — the model does attend to the start and end of long inputs. A throws away detail the synthesis agent needs, C still leaves the second batch in the low-attention middle, and D only balances positioning on average rather than fixing any single report.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 5.1<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<hr>
+<h3>Q3</h3>
+<p>Subagents return raw search results, full page text and long reasoning traces to the coordinator. By the time synthesis runs, the context is saturated and conclusions are being buried under bulk. You want to reduce downstream context growth without weakening the findings.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Modify the upstream subagents to return structured key facts, citations, relevance scores and confidence values instead of verbose prose and reasoning.</span></li>
+  <li><span class="ltr">B</span><span>Add an intermediate summarization agent that condenses each subagent's output before passing it to synthesis.</span></li>
+  <li><span class="ltr">C</span><span>Give the synthesis agent a higher token budget so it can process the full payload.</span></li>
+  <li><span class="ltr">D</span><span>Summarize all subagent outputs together in one pass immediately before the final report.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Fixing verbosity at the source removes the bulk instead of paying to clean it up later; reasoning belongs inside the subagent&#39;s own context and only distilled conclusions cross the boundary. B adds a lossy extra hop for noise that should never have been emitted, C treats a placement and dilution problem as a capacity problem, and D compresses after the context is already polluted.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 5.1<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<hr>
+<h3>Q4</h3>
+<p>A support agent runs 45-turn conversations that touch three separate issues (a refund, a subscription question, a payment update). Two of the three issues were resolved by turn 20; the refund is still active. Under the current strategy the agent keeps re-reading all 45 turns, and when the customer returns to a resolved issue the details are gone.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Keep a sliding window of the last 10 turns plus the system prompt, and ask the customer to restate anything older.</span></li>
+  <li><span class="ltr">B</span><span>Replace resolved threads with structured summaries while keeping the active thread and recent turns verbatim.</span></li>
+  <li><span class="ltr">C</span><span>Summarize the whole conversation uniformly at a fixed interval so every thread is treated the same way.</span></li>
+  <li><span class="ltr">D</span><span>Increase the sliding window from 10 to 25 turns so older topics stay reachable.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Progressive summarization of resolved threads preserves narrative continuity at low token cost while the thread still in play stays exact — which is what the customer returns to. A drops the resolved thread entirely, C destroys the transactional spine of the thread that is still active, and D only defers the same failure to a longer conversation.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 5.1<br><strong>Source:</strong> newly written</p></div></details>
+<hr>
+<h3>Q5</h3>
+<p>Your agent achieves 55% first-contact resolution against an 80% target. Logs show it escalates simple, well-defined cases (standard replacements for damaged goods with photo proof) while attempting complex situations requiring policy exceptions autonomously.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Require the agent to self-rate confidence on a 1–10 scale before each response and auto-route to a human below a threshold.</span></li>
+  <li><span class="ltr">B</span><span>Deploy a separate classifier model trained on historical tickets to predict which requests need escalation before the agent starts.</span></li>
+  <li><span class="ltr">C</span><span>Add explicit escalation criteria to the system prompt with few-shot examples showing when to escalate versus resolve autonomously.</span></li>
+  <li><span class="ltr">D</span><span>Implement sentiment analysis and escalate automatically past a negative-sentiment threshold.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> The root cause is an unclear decision boundary, and explicit criteria with examples teach exactly that. A relies on self-rated confidence, which is poorly calibrated and uncorrelated with real difficulty; B is disproportionate infrastructure for a prompt-level boundary problem; D routes on mood, so calm policy exceptions still get mishandled and angry-but-simple cases get escalated.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 5.2<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<hr>
+<h3>Q6</h3>
+<p>After calling <code>get_customer</code> and <code>lookup_order</code>, the agent has all available system data but still faces an ambiguous case. Which situation is the most justified trigger for calling <code>escalate_to_human</code>?</p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>A customer wants to cancel an order shipped yesterday and arriving tomorrow; the agent should escalate because the customer might change their mind after delivery.</span></li>
+  <li><span class="ltr">B</span><span>A customer claims an order never arrived, but tracking shows it was delivered and signed for at their address three days ago; the agent should escalate because presenting contradictory evidence could harm the relationship.</span></li>
+  <li><span class="ltr">C</span><span>A customer requests competitor price matching; company policy covers price adjustments for price drops on your own site within 14 days but says nothing about competitor prices.</span></li>
+  <li><span class="ltr">D</span><span>A customer message contains both a billing question and a product return; the agent should escalate so a human can coordinate both issues in one interaction.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> This is a genuine policy gap — the agent cannot invent policy and must escalate for human judgment. A is a routine, well-defined operation plus speculation about future regret; B involves clear system data the agent should state factually, and difficult news is not a policy gap; D is handled by decomposing the message and issuing the tool calls, since multi-issue volume alone never justifies a human.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 5.2<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<hr>
+<h3>Q7</h3>
+<p>Your <code>get_customer</code> tool returns every match when searching by name. The agent currently picks the customer with the most recent order, and production data shows this selects the wrong account 15% of the time for ambiguous matches, causing misapplied refunds.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Implement confidence scoring that acts autonomously above 85% confidence and requests clarification only below that threshold.</span></li>
+  <li><span class="ltr">B</span><span>Instruct the agent to request an additional identifier (email, phone, or order number) when <code>get_customer</code> returns multiple matches, before taking any customer-specific action.</span></li>
+  <li><span class="ltr">C</span><span>Modify <code>get_customer</code> to return only a single most-likely match chosen by a ranking algorithm, eliminating the ambiguity.</span></li>
+  <li><span class="ltr">D</span><span>Add few-shot examples demonstrating correct reasoning and tool sequencing for ambiguous matches.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Only the customer holds the fact that disambiguates them, and one extra turn is cheap against a 15% wrong-account action rate. A keeps guessing inside the confident band, C hides the ambiguity inside a ranking algorithm that makes the same wrong pick, and D teaches reasoning but cannot supply the missing identifying fact.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 5.2<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<hr>
+<h3>Q8</h3>
+<p>A customer opens with &quot;This is ridiculous, I have been passed around for an hour!&quot; The agent has not looked anything up yet and has no case context. The complaint itself turns out to describe a routine, resolvable billing question.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Escalate immediately to a human because the customer is clearly distressed and the interaction has already gone badly.</span></li>
+  <li><span class="ltr">B</span><span>Ask the customer to complete a structured intake form covering the full account and issue history, then decide.</span></li>
+  <li><span class="ltr">C</span><span>Acknowledge the frustration and ask one targeted question to establish what the billing question actually is.</span></li>
+  <li><span class="ltr">D</span><span>Resolve the billing question silently without commenting on the frustration, since the issue is routine.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> With no context yet, one targeted question is the cheap move that both respects the frustration and gives the agent something to act on. A escalates on sentiment rather than complexity, B is a long intake questionnaire where one question suffices, and D ignores the frustration the customer just raised.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 5.2<br><strong>Source:</strong> newly written</p></div></details>
+<hr>
+<h3>Q9</h3>
+<p>The web-search subagent times out partway through a complex research topic, having already collected some usable sources. You are designing how the failure is reported to the coordinator.</p>
+<p><strong>Which error-propagation approach best enables intelligent recovery?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Return structured error context including the failure type, the query executed, any partial results, and potential alternative approaches.</span></li>
+  <li><span class="ltr">B</span><span>Catch the timeout inside the subagent and return an empty result set marked as successful.</span></li>
+  <li><span class="ltr">C</span><span>Implement automatic exponential-backoff retries inside the subagent and return a generic "search unavailable" status only after retries are exhausted.</span></li>
+  <li><span class="ltr">D</span><span>Log the exception for later review and return whatever the coordinator expects on the success path.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Structured error context gives the coordinator what it needs to choose between retry, a modified query, or proceeding with partial results. B is silent suppression with zero recovery path, C strips the type, query and partial results even though local retry itself was reasonable, and D means the running model receives no signal at all.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 5.3<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<hr>
+<h3>Q10</h3>
+<p>During one research run the web-search subagent queries three source categories: academic databases return 15 relevant papers, industry reports return &quot;0 results,&quot; and a patent database returns &quot;Connection timeout.&quot; You are deciding how these outcomes reach the coordinator.</p>
+<p><strong>Which approach enables the best recovery decisions?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Aggregate the outcomes into a single success-percentage metric (for example "67% source coverage") with detailed logs available on demand.</span></li>
+  <li><span class="ltr">B</span><span>Treat all three as errors and ask the coordinator to retry the entire query set.</span></li>
+  <li><span class="ltr">C</span><span>Distinguish the access failure (timeout), which requires a retry decision, from the valid empty result ("0 results"), which is a successful query that found nothing.</span></li>
+  <li><span class="ltr">D</span><span>Retry the timeout internally and report only persistent failures as a generic unavailable status.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> The timeout and the &quot;0 results&quot; are semantically different outcomes and demand opposite responses — retry the patent database, accept the industry-report result as an informative finding. A collapses the failure type so the coordinator cannot tell which part is retryable, B retries a query that already succeeded and found nothing, and D discards the partial-progress detail the coordinator could route.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 5.3<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<hr>
+<h3>Q11</h3>
+<p>The document-analysis subagent frequently fails on PDFs: some have corrupted sections that raise parsing exceptions, some are password-protected, and the parsing library occasionally hangs on large files. Any exception currently terminates the subagent and returns an error to the coordinator, which must decide on every routine retry, skip, or abort.</p>
+<p><strong>Which architectural improvement is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Create a dedicated error-handling agent that monitors failures on a shared queue and sends restart commands directly to subagents.</span></li>
+  <li><span class="ltr">B</span><span>Configure the subagent to always return partial results with a success status and embed error details in metadata.</span></li>
+  <li><span class="ltr">C</span><span>Have the coordinator validate every document before dispatch and reject any that might cause failures.</span></li>
+  <li><span class="ltr">D</span><span>Implement local recovery in the subagent for transient failures and escalate to the coordinator only errors it cannot resolve, including attempted steps and partial results.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Errors belong at the lowest level capable of resolving them — local retry removes routine load from the coordinator while unrecoverable failures still arrive with full context. A creates a second orchestrator competing with the coordinator, B hides failures behind a success status, and C pushes all validation upstream without handling the failures that still occur.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 5.3<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<hr>
+<h3>Q12</h3>
+<p>Your error-handling wrapper refactor spans 120 files in three phases: discover every call site, design the approach collaboratively, then implement consistently. Phase 1 produces enormous output listing hundreds of call sites with surrounding context and fills the context window before discovery finishes, so there is no room left for the phases that need retained context.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use an Explore subagent for Phase 1 to isolate the verbose discovery output and return a summary, then run Phases 2 and 3 in the main conversation.</span></li>
+  <li><span class="ltr">B</span><span>Run all three phases in the main conversation and use <code>/compact</code> periodically while moving through the files.</span></li>
+  <li><span class="ltr">C</span><span>Switch to headless mode with <code>--continue</code>, passing explicit context summaries between batch calls to maintain continuity.</span></li>
+  <li><span class="ltr">D</span><span>Write the discovery output to a file and rely on the agent to recall the relevant parts when implementing.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Isolation keeps the high-volume discovery output out of the context that the design and implementation phases actually need. B compacts after the pollution and does so lossily, risking the design decisions needed for consistent implementation; C is brittle hand-passed orchestration that a subagent handles natively; D is the failure mode itself, since the agent will not reliably recover specific findings.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 5.4<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<hr>
+<h3>Q13</h3>
+<p>Thirty minutes into a codebase investigation the agent starts describing &quot;typical patterns&quot; instead of the classes and files it found earlier, gives inconsistent answers about the same module, and begins assuming instead of checking. The exploration is expected to continue for another hour across unfamiliar code.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Switch to a larger model with a bigger context window so the earlier findings stay available.</span></li>
+  <li><span class="ltr">B</span><span>Have the agent write key findings (file:line, entry points, known issues) to a scratchpad file and consult it for subsequent questions.</span></li>
+  <li><span class="ltr">C</span><span>Restart the exploration with a fresh context and tighter prompts to avoid the drift.</span></li>
+  <li><span class="ltr">D</span><span>Increase the model temperature so responses stay specific rather than generic.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> A scratchpad externalizes findings so they survive context compression, and it is re-readable exactly when the agent starts drifting. A treats attention dilution as a capacity problem, C hits the same wall at the same turn count and wastes the work done, and D changes sampling, not what the model retains.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 5.4<br><strong>Source:</strong> newly written</p></div></details>
+<hr>
+<h3>Q14</h3>
+<p>A long-running multi-agent job crashes at hour three after four of six subagents had completed substantial work. On restart the coordinator begins from zero because the only record of progress is the conversation history, which was lost in the crash.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Have each agent export structured state to a known file location at checkpoints and have the coordinator load a manifest on resume to pick up where it left off.</span></li>
+  <li><span class="ltr">B</span><span>Write a narrative summary of the run into a single log file at the end of each subagent so a human can restart the work manually.</span></li>
+  <li><span class="ltr">C</span><span>Increase the session length limit so the job is more likely to finish before a crash occurs.</span></li>
+  <li><span class="ltr">D</span><span>Have the coordinator re-run all six subagents from the beginning to guarantee consistent output.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> The manifest is the source of truth across crashes, not the conversation history — it makes the crash a resume-from-checkpoint instead of a restart. B leaves recovery manual and unstructured, C does not survive an independent failure, and D discards hours of completed work and can fail identically.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 5.4<br><strong>Source:</strong> newly written</p></div></details>
+<hr>
+<h3>Q15</h3>
+<p>Your extraction pipeline reports 97% overall accuracy on the validation set and the team wants to automate without human review. The set is dominated by clean, printed invoices; the highest-value documents in production are handwritten notes and foreign-language scans.</p>
+<p><strong>Which information is most important before automating?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Run a larger volume of documents through the same pipeline to raise confidence in the 97% figure.</span></li>
+  <li><span class="ltr">B</span><span>Break accuracy down by document type and by field segment to confirm performance on each stratum.</span></li>
+  <li><span class="ltr">C</span><span>Compare the 97% figure against published accuracy of competing systems to confirm it meets the industry standard.</span></li>
+  <li><span class="ltr">D</span><span>Set the confidence threshold to 0.9 so that only high-confidence extractions proceed without review.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Aggregate accuracy masks stratum-level failure — 97% overall can hide a 45% error rate on handwritten notes, exactly the high-value class here. A cannot reveal a stratum gap that the validation sample does not represent, C measures the wrong thing, and D sets an uncalibrated threshold that means nothing without ground truth.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 5.5<br><strong>Source:</strong> newly written</p></div></details>
+<hr>
+<h3>Q16</h3>
+<p>Six months after deployment the extraction system&#39;s metrics are stable and the review queue stays short, because only low-confidence extractions are routed to humans. Operations reports a rise in errors on a new document template that the system had not seen before, and every one of those extractions carried high confidence.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Lower the review threshold so more low-confidence extractions reach a human.</span></li>
+  <li><span class="ltr">B</span><span>Continue a stratified sampling audit that also samples high-confidence extractions across document types, fields and confidence bands.</span></li>
+  <li><span class="ltr">C</span><span>Add the new document template to the validation set and re-run the original accuracy test.</span></li>
+  <li><span class="ltr">D</span><span>Escalate every extraction from the new template to human review indefinitely.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Novel error patterns appear over time and by definition never trigger a low-confidence threshold, so only sampling the high-confidence band catches them. A keeps the audit blind to confident failures, C measures a fixed set rather than monitoring live drift, and D is an unbounded permanent manual queue.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 5.5<br><strong>Source:</strong> newly written</p></div></details>
+<hr>
+<h3>Q17</h3>
+<p>A small human review team is the bottleneck in your extraction pipeline. You need to route extractions to it reliably, and you have a labeled validation set available for each document type.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Emit per-field confidence scores, calibrate the routing thresholds against the labeled validation set, and route low-confidence fields to review, prioritising the highest-uncertainty items.</span></li>
+  <li><span class="ltr">B</span><span>Emit a single document-level confidence score and review any document scoring below 0.8.</span></li>
+  <li><span class="ltr">C</span><span>Review a fixed 10% random sample of all extractions regardless of confidence.</span></li>
+  <li><span class="ltr">D</span><span>Review every extraction until the team has enough examples to justify loosening the criteria.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Fields within a document vary widely in difficulty, so routing must be field-level, and a threshold only means something once calibrated against ground truth. B hides per-field variance inside one document score and uses an uncalibrated number, C ignores confidence entirely and spends scarce capacity evenly, and D is an unbounded cost that calibrated routing is designed to replace.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 5.5<br><strong>Source:</strong> newly written</p></div></details>
+<hr>
+<h3>Q18</h3>
+<p>A document-analysis subagent finds that two credible sources contain directly contradictory figures for a key metric: a government report states 40% growth, an industry analysis states 12%. Both look legitimate and the discrepancy could materially affect the conclusions.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Apply credibility heuristics to choose the most likely correct number, finish the analysis with it, and add a footnote noting the discrepancy.</span></li>
+  <li><span class="ltr">B</span><span>Include both numbers without marking them as conflicting and let the synthesis agent decide which fits the broader context.</span></li>
+  <li><span class="ltr">C</span><span>Stop the analysis and escalate to the coordinator to decide which source is authoritative before continuing.</span></li>
+  <li><span class="ltr">D</span><span>Complete the analysis with both values, explicitly annotate the conflict with source attribution, and let the coordinator decide how to reconcile before passing to synthesis.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> The subagent finishes its own work without blocking, preserves both values with attribution, and defers the cross-source reconciliation to the layer that has the broader picture. A hides a coordinator-level decision behind a heuristic footnote, B strips the annotation so the conflict can be merged away, and C blocks on a decision that can be deferred and wastes the work in flight.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 5.6<br><strong>Source:</strong> reused from timothywarner-practice-60q.md</p></div></details>
+<hr>
+<h3>Q19</h3>
+<p>A synthesis draft states that renewable energy&#39;s share of global generation is 30% in one citation and 32% in another from a different source, and a reviewer flags the two as an unresolved contradiction that should be reduced to one figure.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Include publication and collection dates with each figure so a difference across reporting periods is read as a trend rather than a contradiction.</span></li>
+  <li><span class="ltr">B</span><span>Average the two figures into a single 31% value with both sources cited.</span></li>
+  <li><span class="ltr">C</span><span>Report the more conservative figure and note that sources vary.</span></li>
+  <li><span class="ltr">D</span><span>Omit the statistic until the two sources can be reconciled.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Dates turn an apparent conflict into change over time and preserve both claims intact. B fabricates a number neither source reported, C is an arbitrary heuristic that erases the disagreement, and D destroys information the reader needs.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 5.6<br><strong>Source:</strong> newly written</p></div></details>
+<hr>
+<h3>Q20</h3>
+<p>A research pipeline ends with a report that states &quot;studies show the market is growing&quot; with no path back to which study, by whom, or when. Each upstream subagent had the source in hand when it made the claim, and the synthesis step merged everything into narrative prose.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Have subagents output structured claim-source mappings (claim, source URL, document name, supporting excerpt, publication date) and require downstream agents to preserve and merge those mappings rather than flatten them into prose.</span></li>
+  <li><span class="ltr">B</span><span>Write a bibliography at the end of the report listing every source consulted, with the claims left in the narrative.</span></li>
+  <li><span class="ltr">C</span><span>Have the synthesis agent re-derive the sources by searching for the numbers it included.</span></li>
+  <li><span class="ltr">D</span><span>Split the report into established findings and contested findings, leaving contested claims unsourced.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Attribution survives synthesis only if it travels with the claim as structured data through every agent. B separates sources from claims so the link is lost on merge, C depends on re-finding sources and can invent matches, and D separates certainty levels — which is useful — but does not restore provenance.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 5.6<br><strong>Source:</strong> newly written</p></div></details>
+<hr>
+<h2>Answer key</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Ans</th>
+<th>Task</th>
+<th>Trap</th>
+<th>Origin</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>C</td>
+<td>5.1</td>
+<td>sounds-thorough</td>
+<td>reused</td>
+</tr>
+<tr>
+<td>2</td>
+<td>B</td>
+<td>5.1</td>
+<td>sounds-efficient</td>
+<td>reused</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A</td>
+<td>5.1</td>
+<td>sounds-thorough</td>
+<td>reused</td>
+</tr>
+<tr>
+<td>4</td>
+<td>B</td>
+<td>5.1</td>
+<td>sounds-pragmatic</td>
+<td>new</td>
+</tr>
+<tr>
+<td>5</td>
+<td>C</td>
+<td>5.2</td>
+<td>sounds-smart</td>
+<td>reused</td>
+</tr>
+<tr>
+<td>6</td>
+<td>C</td>
+<td>5.2</td>
+<td>sounds-helpful</td>
+<td>reused</td>
+</tr>
+<tr>
+<td>7</td>
+<td>B</td>
+<td>5.2</td>
+<td>sounds-smart</td>
+<td>reused</td>
+</tr>
+<tr>
+<td>8</td>
+<td>C</td>
+<td>5.2</td>
+<td>sounds-helpful</td>
+<td>new</td>
+</tr>
+<tr>
+<td>9</td>
+<td>A</td>
+<td>5.3</td>
+<td>sounds-simple</td>
+<td>reused</td>
+</tr>
+<tr>
+<td>10</td>
+<td>C</td>
+<td>5.3</td>
+<td>sounds-enterprise</td>
+<td>reused</td>
+</tr>
+<tr>
+<td>11</td>
+<td>D</td>
+<td>5.3</td>
+<td>sounds-thorough</td>
+<td>reused</td>
+</tr>
+<tr>
+<td>12</td>
+<td>A</td>
+<td>5.4</td>
+<td>sounds-pragmatic</td>
+<td>reused</td>
+</tr>
+<tr>
+<td>13</td>
+<td>B</td>
+<td>5.4</td>
+<td>sounds-efficient</td>
+<td>new</td>
+</tr>
+<tr>
+<td>14</td>
+<td>A</td>
+<td>5.4</td>
+<td>sounds-thorough</td>
+<td>new</td>
+</tr>
+<tr>
+<td>15</td>
+<td>B</td>
+<td>5.5</td>
+<td>sounds-simple</td>
+<td>new</td>
+</tr>
+<tr>
+<td>16</td>
+<td>B</td>
+<td>5.5</td>
+<td>sounds-pragmatic</td>
+<td>new</td>
+</tr>
+<tr>
+<td>17</td>
+<td>A</td>
+<td>5.5</td>
+<td>sounds-thorough</td>
+<td>new</td>
+</tr>
+<tr>
+<td>18</td>
+<td>D</td>
+<td>5.6</td>
+<td>sounds-smart</td>
+<td>reused</td>
+</tr>
+<tr>
+<td>19</td>
+<td>A</td>
+<td>5.6</td>
+<td>sounds-simple</td>
+<td>new</td>
+</tr>
+<tr>
+<td>20</td>
+<td>A</td>
+<td>5.6</td>
+<td>sounds-enterprise</td>
+<td>new</td>
+</tr>
+</tbody></table>
+<p>Totals: 20 questions; 11 reused from timothywarner-practice-60q.md, 9 newly written. Task coverage: 5.1 ×4, 5.2 ×4, 5.3 ×3, 5.4 ×3, 5.5 ×3, 5.6 ×3.</p>
+<h2>Sources</h2>
+<ul>
+<li>resources/timothywarner-practice-60q.md (Q1, Q3, Q5, Q9, Q12, Q45, Q49, Q50, Q54, Q55 stems adapted and re-pitched to Domain 5 wording)</li>
+<li>resources/dnacenta-domains/d5-context-reliability.md</li>
+<li>resources/hamzafarooq-cheatsheets/domain5.md</li>
+<li>resources/00-concept-map.md</li>
+<li>resources/02-mock-exam-trap-guide.md</li>
+<li>resources/03-anti-patterns-catalog.md</li>
+<li>resources/paullarionov-guide_en.md</li>
+<li>resources/daronyondem-study-guide.md</li>
+</ul>
+<div class="foot">Built 2026-09-20 09:21 · source: banks/d5-questions.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script></body></html>

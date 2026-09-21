@@ -1,0 +1,290 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain 1 — Agentic Architecture (27%) — Question Bank (20 questions) — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · interactive</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><h1>Domain 1 — Agentic Architecture (27%) — Question Bank (20 questions)</h1>
+<p>Coverage: 1.1 ×3, 1.2 ×5, 1.3 ×3, 1.4 ×2, 1.5 ×2, 1.6 ×3, 1.7 ×2.
+Trap types used: sounds-enterprise, sounds-efficient, sounds-smart, sounds-helpful,
+sounds-thorough, sounds-simple, sounds-pragmatic.</p>
+<hr>
+<h3>Q1</h3>
+<p>A customer-support agent runs a manual loop over <code>client.messages.create</code> with tools. A
+teammate proposes exiting the loop when the assistant&#39;s text contains &quot;resolved&quot; or
+&quot;done&quot;, because that avoids an extra API call. Production shows the agent sometimes
+presents a partial answer and stops before finishing the work.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Keep the phrase check but expand the list of completion words to cover more cases.</span></li>
+  <li><span class="ltr">B</span><span>Branch on <code>stop_reason</code>: keep looping while it is <code>"tool_use"</code>, and present the final text when it is <code>"end_turn"</code>.</span></li>
+  <li><span class="ltr">C</span><span>Exit after a fixed maximum of eight iterations so the loop is always bounded.</span></li>
+  <li><span class="ltr">D</span><span>Treat any response whose first content block is type <code>"text"</code> as complete.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> <code>stop_reason</code> is the only authoritative termination signal. A response can contain both a text block and a <code>tool_use</code> block, so text heuristics misfire; an iteration cap is a safety net, not the stopping mechanism.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 1.1<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q2</h3>
+<p>Operations wants a hard bound on a long-running research agent and asks you to make a
+five-iteration cap the primary stop condition. Since the change, agents are frequently
+cut off mid-task with partial results and no error.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Keep the cap as primary and rewrite the prompts so the work fits inside five turns.</span></li>
+  <li><span class="ltr">B</span><span>Let <code>stop_reason</code> terminate the loop, and keep a generous safety cap as a guardrail rather than the control.</span></li>
+  <li><span class="ltr">C</span><span>Parse the assistant's prose for a "task complete" marker so the loop can exit early.</span></li>
+  <li><span class="ltr">D</span><span>Raise temperature so Claude completes the task in fewer tool calls.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> The loop is <code>stop_reason</code>-driven; caps exist only to prevent runaway loops. A token budget that the model can see (<code>output_config.task_budget</code>, beta, per dnacenta-domains/d1-agentic-architecture.md and beyond the exam guide) is the modern way to pace the loop, but <code>stop_reason</code> still terminates it.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 1.1<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q3</h3>
+<p>A tool call returns two results from a pair of parallel <code>tool_use</code> blocks emitted in one
+coordinator response. The harness appends a single <code>tool_result</code> block summarising both,
+and the agent now re-calls the same tool repeatedly instead of continuing.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Append one <code>tool_result</code> block per tool call, all in a single <code>role: "user"</code> message, each carrying its matching <code>tool_use_id</code>.</span></li>
+  <li><span class="ltr">B</span><span>Send each <code>tool_result</code> in its own separate user message, one after the other.</span></li>
+  <li><span class="ltr">C</span><span>Combine both results into one prose <code>tool_result</code> block and let the model split them.</span></li>
+  <li><span class="ltr">D</span><span>Mark the second result <code>is_error: true</code> so the model stops calling the tool again.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Every <code>tool_use</code> must be answered by a <code>tool_result</code> carrying the exact <code>tool_use_id</code>; parallel calls require multiple blocks in the same user turn so the loop can match results to requests. Collapsing them leaves requests unanswered and the loop re-fires.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 1.1<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q4</h3>
+<p>After running a research system on &quot;AI impact on creative industries&quot;, every subagent
+completes successfully: search finds relevant articles, analysis summarises them
+correctly, and synthesis produces coherent text. Final reports cover only visual art and
+completely miss music, literature, and film. The coordinator&#39;s logs show it decomposed the
+topic into &quot;AI in digital art&quot;, &quot;AI in graphic design&quot;, and &quot;AI in photography&quot;.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add coverage-gap detection instructions to the synthesis agent.</span></li>
+  <li><span class="ltr">B</span><span>Loosen the document analysis agent's relevance criteria so it stops filtering non-visual sources.</span></li>
+  <li><span class="ltr">C</span><span>Broaden the web-search agent's queries to cover more industry sectors.</span></li>
+  <li><span class="ltr">D</span><span>Fix the root cause: the coordinator's task decomposition is too narrow and must partition the research space to cover all relevant areas.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> The subagents executed their briefs correctly, so the defect is upstream at the coordinator&#39;s decomposition — a synthesis gap-detector only sees what upstream returned and cannot recover topics never assigned, and no query rewrite covers sectors absent from the decomposition.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 1.2<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Multi-agent Research System, Q4)</p></div></details>
+<h3>Q5</h3>
+<p>The web-search and document-analysis agents have completed their tasks and returned
+results to the coordinator. You now need an integrated research report from both result
+sets.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Each agent sends its results directly to the report-writing agent, bypassing the coordinator.</span></li>
+  <li><span class="ltr">B</span><span>The document analysis agent requests the web-search results and merges them internally.</span></li>
+  <li><span class="ltr">C</span><span>The coordinator passes both result sets to the synthesis agent for unified integration.</span></li>
+  <li><span class="ltr">D</span><span>The coordinator concatenates the raw outputs from both agents and returns them as the final result.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> In hub-and-spoke, the coordinator forwards both result sets to synthesis for centralised integration, preserving control and quality. Direct agent-to-agent handoff bypasses the coordinator&#39;s visibility; concatenating raw outputs skips synthesis so contradictions reach the user unresolved.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 1.2<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Multi-agent Research System, Q2)</p></div></details>
+<h3>Q6</h3>
+<p>While researching a broad topic, the web-search agent and the document analysis agent
+investigate the same subtopics, producing substantial duplication. Token usage nearly
+doubles without a proportional increase in research breadth or depth.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Have the coordinator explicitly partition the research space before delegating, assigning each agent distinct subtopics or source types.</span></li>
+  <li><span class="ltr">B</span><span>Let both agents finish in parallel, then have the coordinator deduplicate overlapping results before synthesis.</span></li>
+  <li><span class="ltr">C</span><span>Add a shared-state focus log so agents can dynamically avoid duplication while running.</span></li>
+  <li><span class="ltr">D</span><span>Switch to sequential execution, running document analysis only after web search so it can reuse the results.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Partitioning before delegation fixes the root cause (unclear task boundaries) while preserving parallelism. Post-hoc deduplication still pays the token cost of the duplicated work; a shared live focus log assumes subagents in isolated contexts can watch each other; forcing sequential execution discards the parallelism that justifies the design.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 1.2<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Multi-agent Research System, Q11)</p></div></details>
+<h3>Q7</h3>
+<p>A document analysis subagent frequently fails on PDFs: some have corrupted sections,
+some are password-protected, and the parser sometimes hangs on large files. Today any
+exception immediately terminates the subagent and returns an error to the coordinator,
+which must decide whether to retry, skip, or fail the whole task — causing excessive
+coordinator involvement in routine error handling.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Create a dedicated error-handling agent that monitors failures via a shared queue and sends restart commands directly to subagents.</span></li>
+  <li><span class="ltr">B</span><span>Configure the subagent to always return partial results with a success status, embedding error details in metadata.</span></li>
+  <li><span class="ltr">C</span><span>Have the coordinator pre-validate every document before delegation, rejecting documents that might fail.</span></li>
+  <li><span class="ltr">D</span><span>Implement local recovery in the subagent for transient failures and escalate to the coordinator only errors it cannot resolve, including attempted steps and partial results.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Handle errors at the lowest level capable of resolving them, and escalate the rest with full context and partial progress. A separate error-handling agent creates a second orchestrator competing with the coordinator; reporting failures as success defeats the <code>tool_use</code> <code>is_error</code> signal; pre-validating in the coordinator pushes parsing concerns up the hierarchy and cannot predict a hang.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 1.2<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Multi-agent Research System, Q3)</p></div></details>
+<h3>Q8</h3>
+<p>A colleague proposes that the document analysis agent should send its results straight to
+the synthesis agent, bypassing the coordinator, to save a hop. You argue for keeping the
+coordinator as the central hub for all inter-subagent communication.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Keep the coordinator as hub: it observes all interactions, handles errors uniformly, and decides what information each subagent receives.</span></li>
+  <li><span class="ltr">B</span><span>Bypass the coordinator because it batches subagent requests and reduces total API calls and latency.</span></li>
+  <li><span class="ltr">C</span><span>Bypass the coordinator because central routing is the only way to get automatic retry logic.</span></li>
+  <li><span class="ltr">D</span><span>Bypass the coordinator because isolated subagent memory requires serialization only the coordinator can perform.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Central visibility, uniform error handling, and control over what each subagent receives are the defining advantages of the star topology. Batching is an optional optimisation, retries do not require a hub, and subagents already exchange plain structured <code>tool_result</code> content needing no bespoke serialization.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 1.2<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Multi-agent Research System, Q8)</p></div></details>
+<h3>Q9</h3>
+<p>The document analysis agent was given a general-purpose <code>fetch_url</code> tool so it could
+download documents by URL. Production logs show it now downloads search engine results
+pages to perform ad hoc web search — behaviour that should route through the web-search
+agent — producing inconsistent results.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Replace <code>fetch_url</code> with a <code>load_document</code> tool whose <code>input_schema</code> validates that URLs point to document formats.</span></li>
+  <li><span class="ltr">B</span><span>Remove <code>fetch_url</code> from the document analysis agent and route all URL fetching through the coordinator to the web-search agent.</span></li>
+  <li><span class="ltr">C</span><span>Block <code>fetch_url</code> calls to known search engine domains while allowing all other URLs.</span></li>
+  <li><span class="ltr">D</span><span>Add a prompt instruction telling the document analysis agent to use <code>fetch_url</code> only for document URLs.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Constrain capability at the interface, following least privilege, so the unwanted behaviour is impossible rather than discouraged. Routing legitimate downloads through the search agent overloads the wrong role; a domain blocklist is brittle; a prompt instruction leaves the over-broad capability intact.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 1.3<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Multi-agent Research System, Q10)</p></div></details>
+<h3>Q10</h3>
+<p>The synthesis agent often needs to verify specific claims while merging results. Today it
+returns control to the coordinator, which calls the web-search agent and re-invokes
+synthesis — adding 2–3 extra loops per task and 40% latency. Assessment shows 85% of
+these verifications are simple fact checks (dates, names, stats) and 15% need deeper
+research.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Give the synthesis agent the full web-search toolset so it can handle any verification directly.</span></li>
+  <li><span class="ltr">B</span><span>Have the synthesis agent accumulate all verification needs and return them to the coordinator as one batch at the end.</span></li>
+  <li><span class="ltr">C</span><span>Have the web-search agent proactively cache extra context around each source in anticipation of verification needs.</span></li>
+  <li><span class="ltr">D</span><span>Give the synthesis agent a limited-scope <code>verify_fact</code> tool for simple checks, and route complex verifications through the coordinator to the web-search agent.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> A narrowly scoped tool removes most loops while preserving the coordinator path for the 15% that needs real research — least privilege at the interface. Full web-search access over-provisions the role; batching to the end lets unverified claims shape the draft; speculative caching inflates tokens for sources never questioned.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 1.3<br><strong>Source:</strong> reused from timothywarner-practice-60q.md (Multi-agent Research System, Q15)</p></div></details>
+<h3>Q11</h3>
+<p>A coordinator spawns a document-analysis subagent with the prompt &quot;Analyze the customer&#39;s
+issue.&quot; The subagent returns generic advice. The coordinator&#39;s own context already holds
+the customer ID, order ID, order date, and disputed amount.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Create a shared scratchpad file that both the coordinator and the subagent read during the run.</span></li>
+  <li><span class="ltr">B</span><span>Include the relevant case facts explicitly in the subagent's prompt, with the goal, constraints, and expected output shape.</span></li>
+  <li><span class="ltr">C</span><span>Let the subagent call <code>get_customer</code> and <code>lookup_order</code> itself to fetch whatever context it needs.</span></li>
+  <li><span class="ltr">D</span><span>Resume the coordinator's session so the subagent inherits the conversation history.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Subagents have isolated context and do not inherit the coordinator&#39;s history, so every fact the subagent needs must be in the prompt it receives. A shared file adds a coordination mechanism where a prompt suffices; self-fetching pushes coordinator duties down; resuming a session does not transfer history into a new subagent&#39;s context.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 1.3<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q12</h3>
+<p>A customer-support agent must verify identity with <code>get_customer</code> before <code>process_refund</code>.
+The system prompt already states this requirement. An audit of 20,000 refunds finds 1.5%
+processed without a completed verification step.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Strengthen the system prompt to state that verification is mandatory and must never be skipped.</span></li>
+  <li><span class="ltr">B</span><span>Add few-shot examples demonstrating refunds that follow the verification step first.</span></li>
+  <li><span class="ltr">C</span><span>Add a PreToolUse hook on <code>process_refund</code> that blocks the call unless a verified customer ID exists, returning a denial reason with the next step.</span></li>
+  <li><span class="ltr">D</span><span>Route refund requests to a specialised subagent whose prompt emphasises verification before action.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Financial operations require deterministic, programmatic enforcement: a PreToolUse gate is 100% enforced, while prompt instructions and few-shot examples are probabilistic with a non-zero failure rate. A subagent with a stronger prompt is the same probabilistic mechanism with extra latency.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 1.4<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q13</h3>
+<p>Mid-investigation, a support agent escalates to a human. The human queue shows agents
+forwarding full transcripts; reviewers take three times longer and often re-ask the
+customer for details the agent had already established.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Forward the full conversation transcript so the human has every detail.</span></li>
+  <li><span class="ltr">B</span><span>Compose a structured handoff brief: customer ID, 2–3 sentence issue summary, root cause, actions taken, recommended action including the amount, and urgency/compliance flags.</span></li>
+  <li><span class="ltr">C</span><span>Have the human re-interview the customer to rebuild context from scratch.</span></li>
+  <li><span class="ltr">D</span><span>Escalate earlier, before investigation starts, so the transcript stays short.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> The receiving human does not have access to the transcript, so the handoff must be self-contained and must carry the two fields items most often omit — root-cause analysis and the recommended action including the refund amount. A raw transcript is thorough but unusable; escalating before investigating discards work the agent could complete.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 1.4<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q14</h3>
+<p>Three MCP servers return dates differently: one as Unix epoch integers, one as
+&quot;Mar 5, 2025&quot;, and one as ISO 8601. The agent frequently misreads the values and creates
+duplicate records. A colleague proposes normalising the formats in the downstream
+reporting code.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add a PostToolUse hook that normalises every tool result to ISO 8601 before the model sees it.</span></li>
+  <li><span class="ltr">B</span><span>Add a prompt instruction listing the three formats the model may encounter.</span></li>
+  <li><span class="ltr">C</span><span>Add few-shot examples showing one correctly parsed value in each format.</span></li>
+  <li><span class="ltr">D</span><span>Handle all format conversion in the downstream reporting pipeline and leave tool results untouched.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Intercept the result before the model processes it — PostToolUse is the boundary for normalising timestamps, dates, and status codes. Prompt guidance and few-shot examples are probabilistic, and downstream normalization leaves the model reasoning over inconsistent values for the rest of the loop.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 1.5<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q15</h3>
+<p>Auditors require the pre-change value of every record a mutating tool touches. Separately,
+the agent keeps choosing between two similar write tools and should prefer one of them.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>A PreToolUse hook on the mutating tool captures the prior state hash for audit; tool descriptions and prompts express which tool is preferred.</span></li>
+  <li><span class="ltr">B</span><span>A PostToolUse hook captures the record state after each mutation for the audit trail.</span></li>
+  <li><span class="ltr">C</span><span>A compliance subagent reviews tool calls asynchronously and flags policy problems afterwards.</span></li>
+  <li><span class="ltr">D</span><span>A prompt instruction asks the model to log prior values; a hook ranks which tool the model should prefer.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> PreToolUse is the only point where prior state exists to capture, and it is the gate for pre-conditions. PostToolUse fires after the mutation, so the prior value is already gone; an asynchronous reviewer cannot prevent the write; hooks gate, block, and transform but do not rank tool preference, so D&#39;s second half is wrong.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 1.5<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q16</h3>
+<p>Production shows intermittent 500s in one service. The cause is unknown. The current
+investigation runs a fixed six-step checklist every time: it burns budget on irrelevant
+layers and repeatedly misses the actual cause.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use adaptive decomposition: commit to the goal, then generate the next subtask from what the previous step revealed.</span></li>
+  <li><span class="ltr">B</span><span>Run all six checklist layers in parallel so every layer is covered in one pass.</span></li>
+  <li><span class="ltr">C</span><span>Expand the checklist to twelve steps so more of the system is covered.</span></li>
+  <li><span class="ltr">D</span><span>Hand the whole investigation to a larger model with a bigger context window.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Dynamic adaptive decomposition suits investigations where the next move depends on the current finding. Brute-force parallel layers and a longer fixed checklist both collect data the evidence does not call for, and a bigger model does not replace evidence-driven sequencing.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 1.6<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q17</h3>
+<p>A 14-file pull request was reviewed in a single pass. Findings are inconsistent — the same
+pattern is flagged in one file and approved in another — and no cross-file issues were
+found at all, even though the change alters a shared interface.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Review in two passes: per-file local analysis for consistent depth, then a separate cross-file integration pass for data flow and interface mismatches.</span></li>
+  <li><span class="ltr">B</span><span>Keep one pass but use a larger context window so all 14 files fit comfortably.</span></li>
+  <li><span class="ltr">C</span><span>Keep one pass and instruct the model to be thorough about every file.</span></li>
+  <li><span class="ltr">D</span><span>Review only the files with the largest diffs and trust the rest.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Single-pass review of a large PR causes attention dilution and inconsistent standards, and structurally cannot see cross-file integration problems. A bigger window or a &quot;be thorough&quot; instruction does not change how the model allocates attention, and reviewing only large diffs skips the interface changes.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 1.6<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q18</h3>
+<p>A single-agent loop already resolves 84% of support tickets, with the remainder mostly
+policy gaps that escalate to humans. A proposal recommends refactoring into a coordinator
+with four specialist subagents and an evaluator–optimiser quality loop.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Refactor to a coordinator with four subagents so each concern type gets a specialist.</span></li>
+  <li><span class="ltr">B</span><span>Keep the single agent, and add subagents only where a task floods the coordinator's context, needs a genuinely different prompt or tool set, or can run in parallel.</span></li>
+  <li><span class="ltr">C</span><span>Refactor to subagents but give every subagent the identical prompt so behaviour stays consistent.</span></li>
+  <li><span class="ltr">D</span><span>Wrap the existing agent in an evaluator–optimiser loop that iterates until quality criteria pass.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Multi-agent adds latency, cost, and failure surface, so delegate only when a single agent genuinely cannot do the job. Refactoring a working loop is the over-engineering trap, and an evaluator–optimiser spins when the evaluator cannot reliably distinguish good from bad.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 1.6<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q19</h3>
+<p>You have a three-day-old named session, <code>investigation-auth-bug</code>. Since then <code>auth.py</code> was
+rewritten to use JWT tokens instead of session cookies. Resuming it is cheaper than
+re-priming, but the agent&#39;s earlier tool results reflect the old file contents.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Start a fresh session and pass a structured summary of prior findings, or resume and explicitly state what changed since the last session.</span></li>
+  <li><span class="ltr">B</span><span>Resume the session unchanged and trust the agent to re-read the files it needs.</span></li>
+  <li><span class="ltr">C</span><span><code>--fork-session</code> so both branches keep the old tool results available for comparison.</span></li>
+  <li><span class="ltr">D</span><span>Start a fresh session with no context at all, to avoid any contamination from the old state.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Resume only while tool results are still valid; when files changed, either restart with a structured summary of prior findings or resume and explicitly tell Claude what changed — it will not notice on its own. Forking preserves the stale state rather than fixing it, and discarding all context throws away findings that are still valid.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 1.7<br><strong>Source:</strong> newly written</p></div></details>
+<h3>Q20</h3>
+<p>You must evaluate two refactoring strategies — Redux versus Context API — starting from
+the same expensive codebase analysis that took 40 minutes to build.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span><code>--fork-session</code> the existing session under a new session ID and explore one strategy in each branch, leaving the original untouched.</span></li>
+  <li><span class="ltr">B</span><span>Run both strategies inside the original session, alternating prompts, so both share the analysis and the cost.</span></li>
+  <li><span class="ltr">C</span><span>Start two brand-new sessions with no inherited context and re-run the analysis in each.</span></li>
+  <li><span class="ltr">D</span><span><code>--resume</code> the same session name twice and interleave the two strategies.</span></li>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Forking branches from a shared baseline so each alternative stays isolated and the original session is never contaminated. Alternating inside one session mixes the two reasoning paths, re-running the analysis from scratch discards the expensive baseline, and resume does not create independent branches.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 1.7<br><strong>Source:</strong> newly written</p></div></details>
+<div class="foot">Built 2026-09-20 09:21 · source: banks/d1-questions.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script></body></html>

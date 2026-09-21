@@ -1,0 +1,374 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain 4 — Prompt Engineering &amp; Structured Output (20%) — Master Note — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · interactive</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><div class="callout"><b>This is the reference text.</b>Learn it interactively instead: <a href="lesson-d4.html">open the D4 tutor lesson</a> — one idea at a time, with answer gates and diagrams.</div><h1>Domain 4 — Prompt Engineering &amp; Structured Output (20%) — Master Note</h1>
+<p>Exam framing: 60 multiple-choice questions, 120 minutes, passing score 720 on a 100–1000 scale, no guessing penalty. This domain is 20% and covers tasks 4.1–4.6. Questions are scenario stems: a production situation, then &quot;which approach is most effective?&quot;. Wrong options are engineered traps that sound smart, efficient, thorough, helpful, simple, pragmatic, or enterprise, but violate a documented principle.</p>
+<p>Primary scenarios: Scenario 5 (Claude Code for CI/CD) and Scenario 6 (Structured Data Extraction).</p>
+<hr>
+<h2>Task index</h2>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>One-line principle</th>
+<th>Exam tell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4.1</td>
+<td>Define what to flag, what to report, and what to skip — in categories, with code anchors for severity.</td>
+<td>Stem says &quot;inconsistent judgement&quot; or &quot;developers distrust the findings&quot;; an option contains <em>conservative</em>, <em>careful</em>, or <em>high-confidence</em> without a categorical definition.</td>
+</tr>
+<tr>
+<td>4.2</td>
+<td>Few-shot examples (2–4, with reasoning) fix consistency; more instructions do not.</td>
+<td>&quot;Despite detailed instructions, output is inconsistent&quot; or &quot;duplicate/empty fields across varied documents&quot;.</td>
+</tr>
+<tr>
+<td>4.3</td>
+<td><code>tool_use</code> + JSON schema eliminates syntax errors only; schema design (nullable, <code>unclear</code>, <code>other</code>) prevents fabrication.</td>
+<td>Malformed JSON, missing fields, values invented for absent source data, heterogeneous document types.</td>
+</tr>
+<tr>
+<td>4.4</td>
+<td>Retry with the specific validation error feeds back output errors; schema design handles source gaps.</td>
+<td>A failure rate on validation, a mix of format errors and genuinely absent data, a bot whose findings are dismissed.</td>
+</tr>
+<tr>
+<td>4.5</td>
+<td>Blocking work is synchronous; latency-tolerant single-shot work is batch. Batch is 50% off, up to 24h, no SLA, no in-request tool loop, joined by <code>custom_id</code>.</td>
+<td>&quot;Reduce API cost&quot;, &quot;manager proposes moving everything to batch&quot;, &quot;the job polls overnight&quot;, &quot;the workflow calls tools mid-request&quot;.</td>
+</tr>
+<tr>
+<td>4.6</td>
+<td>An instance that produced output must not review it; large reviews split per-file then cross-file.</td>
+<td>&quot;Claude reviewed its own work and missed it&quot;, &quot;14 files, inconsistent depth&quot;, &quot;second opinion&quot;, &quot;confidence threshold&quot;.</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Task 4.1 — Designing Prompts with Explicit Criteria to Improve Accuracy</h2>
+<ul>
+<li><strong>Principle</strong>: Replace vague instructions with explicit categorical criteria. For every judgement the model must make, define what qualifies, what does not qualify, and give examples showing the boundary.</li>
+<li><strong>Principle</strong>: Explain adversarial cases in the same structure — e.g. flag when a comment&#39;s claimed behaviour contradicts the code; do not flag comments that are merely incomplete or could be more detailed.</li>
+<li><strong>Principle</strong>: Anchor severity levels with real code examples, not prose. Prose definitions of severity drift across runs; code anchors do not.</li>
+<li><strong>Principle</strong>: A high false-positive rate in one category destroys trust in all categories, including the accurate ones. Developers dismiss the whole report.</li>
+<li><strong>Principle</strong>: The fix is to temporarily disable the noisy category entirely while improving its criteria, then re-enable. Do not tighten in place, because the noise keeps flowing while you iterate.</li>
+<li><strong>Why the exam wants this</strong>: This is the recurring &quot;instructions exist but the output is unpredictable&quot; stem. The tested distinction is categorical vs adjectival. Any option whose content is a confidence adjective or a threshold is a distractor.</li>
+<li><strong>Distractors</strong>:<ul>
+<li>&quot;Lower the confidence threshold for that category&quot; — keeps the noise flowing; the category stays untrustworthy.</li>
+<li>&quot;Add more instructions to the prompt for that category&quot; — more prose does not create a boundary.</li>
+<li>&quot;Lower the temperature&quot; — deterministic bad criteria are still bad criteria; judgement is not a randomness problem.</li>
+<li>&quot;Add a five-level severity rubric described in prose&quot; — sounds thorough, fails because it has no code anchors.</li>
+<li>&quot;Apply a uniform strictness reduction across all categories&quot; — suppresses true positives in the accurate categories.</li>
+</ul>
+</li>
+<li><strong>Exact terms</strong>: no API surface — this task is prompt content. The mandatory structure is three categories: what to flag, what to report, what to skip.</li>
+<li><strong>Scenario tie-in</strong>: CI/CD code review (the review bot that developers stop reading), and severity calibration in the review findings schema.</li>
+</ul>
+<hr>
+<h2>Task 4.2 — Using Few-shot Prompting to Improve Output Consistency</h2>
+<ul>
+<li><strong>Principle</strong>: Few-shot examples are the most effective technique for output consistency. Not more instructions, not confidence thresholds, not temperature changes.</li>
+<li><strong>Principle</strong>: Use 2–4 targeted examples on ambiguous scenarios. Not 1, not 10. Ten examples on solved cases wastes context and can overfit.</li>
+<li><strong>Principle</strong>: Each example shows input, output, and the reasoning for why that output is correct over plausible alternatives. Reasoning is what makes the pattern generalise to novel cases.</li>
+<li><strong>Principle</strong>: Three deployment triggers: detailed instructions alone produce inconsistent formatting; the model makes inconsistent judgement calls on ambiguous cases; extraction produces empty or null fields for information that exists in the document.</li>
+<li><strong>Principle</strong>: Few-shot reduces hallucination in extraction when examples cover varied document structures — inline citations vs bibliographies, narrative prose vs tables, informal units. The model learns the shape of a valid extraction instead of inventing data to fit the schema.</li>
+<li><strong>Principle</strong>: For strict schemas, pair the schema with format normalisation rules in the prompt (ISO-8601 dates, numeric amount plus currency code, decimal fractions). The schema validates types; the prompt specifies formats.</li>
+<li><strong>Why the exam wants this</strong>: the stem will already have failed the cheap fixes (more instructions, more examples of the wrong kind, temperature). The correct option names 2–4 targeted examples with rationale, or examples across varied structures.</li>
+<li><strong>Distractors</strong>:<ul>
+<li>&quot;Add more detailed step-by-step instructions covering all edge cases&quot; — instructions grow linearly, edge cases grow combinatorially.</li>
+<li>&quot;Add 10 diverse examples&quot; — wrong count; targeted beats broad.</li>
+<li>&quot;Add few-shot examples of the problem pattern&quot; when the failure is an undefined criterion — examples fix format, not an undefined target.</li>
+<li>&quot;Lower temperature to 0 and take the union of two runs&quot; — determinism is not a judgement problem.</li>
+<li>&quot;Add a <code>do_not_fabricate</code> boolean to the schema&quot; — sounds smart, but a flag is not a demonstration.</li>
+</ul>
+</li>
+<li><strong>Exact terms</strong>: no API surface. Count is 2–4; each example carries its rationale.</li>
+<li><strong>Scenario tie-in</strong>: CI review findings that are sometimes actionable and sometimes vague; extraction from documents with mixed citation styles and informal measurement units.</li>
+</ul>
+<hr>
+<h2>Task 4.3 — Enforcing Structured Output with <code>tool_use</code> and JSON Schemas</h2>
+<ul>
+<li><strong>Principle</strong>: <code>tool_use</code> with a JSON schema is the most reliable way to get structured output. It eliminates JSON syntax errors — malformed JSON, missing braces, trailing commas. That is the entire guarantee.</li>
+<li><strong>Principle</strong>: It does <strong>not</strong> guarantee semantic correctness. Three persistent failure modes survive: semantic errors (line items do not sum to the total), field placement errors (right value, wrong field), and fabrication (invented values for required fields).</li>
+<li><strong>Principle</strong>: Strict mode requires <code>additionalProperties: false</code> on every object and every property listed in <code>required</code>. Because <code>required</code> is not optional in strict mode, the anti-fabrication move is to make the field nullable — <code>type: [&quot;string&quot;,&quot;null&quot;]</code> — and instruct the model to return null when the source does not state the value.</li>
+<li><strong>Principle</strong>: An all-required schema is a fabrication factory. <em>Required</em> guarantees something will be present, not that it is true.</li>
+<li><strong>Principle</strong>: <code>tool_choice</code> has four settings: <code>&quot;auto&quot;</code> (model may answer in text), <code>&quot;any&quot;</code> (must call some tool, model picks which), <code>{&quot;type&quot;: &quot;tool&quot;, &quot;name&quot;: &quot;...&quot;}</code> (must call this specific tool), <code>&quot;none&quot;</code> (cannot call tools).</li>
+<li><strong>Principle</strong>: Use <code>&quot;any&quot;</code> when several extraction tools exist and the document type varies — guaranteed structured output without pre-selecting the schema. Use a named tool only to mandate a specific first step or a single-tool workflow.</li>
+<li><strong>Principle</strong>: An enum without an escape hatch creates validation failures when new categories keep appearing. Add <code>&quot;other&quot;</code> plus a paired <code>_detail</code> string field to capture the source&#39;s own wording, and <code>&quot;unclear&quot;</code> so an ambiguous case has an honest option instead of a forced wrong bucket.</li>
+<li><strong>Why the exam wants this</strong>: the highest-yield task in the domain. Distractors are wrong-layer answers — asking the prompt to do what the schema must do, or asking the schema to do what validation code must do.</li>
+<li><strong>Distractors</strong>:<ul>
+<li>&quot;Use tool_use with all fields required to guarantee complete extractions&quot; — fabrication factory.</li>
+<li>&quot;Add &#39;do not fabricate&#39; to the prompt while leaving the field required&quot; — the prompt cannot override structural pressure.</li>
+<li>&quot;Use tool_use so the line items sum to the total&quot; — schemas do not do arithmetic.</li>
+<li>&quot;Force <code>{&quot;type&quot;: &quot;tool&quot;, &quot;name&quot;: &quot;extract_invoice&quot;}</code> for documents of unknown type&quot; — a named tool routes heterogeneous documents through one schema that fits none of them.</li>
+<li>&quot;Use <code>tool_choice: &quot;auto&quot;</code> when structured output is required&quot; — lets the model escape into prose.</li>
+<li>&quot;Add <code>minimum</code>, <code>maximum</code>, <code>pattern</code>, or <code>minLength</code> to the schema&quot; — numeric range, string length, and regex constraints are not supported in strict mode; they belong in validation code.</li>
+<li>&quot;Use prefill to start the assistant turn with <code>{</code>&quot; — assistant prefill is removed on modern models.</li>
+</ul>
+</li>
+<li><strong>Exact terms</strong>:<ul>
+<li><code>tool_use</code>, <code>input_schema</code>, <code>tool_choice</code>, <code>strict: true</code>, <code>additionalProperties: false</code>, <code>required</code>.</li>
+<li><code>output_config.format</code> with <code>{&quot;type&quot;: &quot;json_schema&quot;, &quot;schema&quot;: {...}}</code> for a direct JSON answer.</li>
+<li><code>client.messages.parse()</code> wraps <code>output_config.format</code>, validates against a Pydantic or Zod schema, and returns <code>response.parsed_output</code>.</li>
+<li>The top-level <code>output_format</code> parameter is deprecated; the <code>structured-outputs-2025-11-13</code> beta header is no longer required.</li>
+<li>Supported in strict mode: <code>type</code>, <code>properties</code>, <code>required</code>, <code>enum</code>, <code>const</code>, <code>items</code>, <code>anyOf</code>/<code>allOf</code>, <code>$ref</code>/<code>$defs</code>, <code>additionalProperties: false</code>, <code>format</code> (date-time, date, time, duration, email, hostname, uri, ipv4, ipv6, uuid).</li>
+<li>Not supported: <code>minimum</code>/<code>maximum</code>/<code>multipleOf</code>, <code>minLength</code>/<code>maxLength</code>, <code>pattern</code>/<code>patternProperties</code>, <code>oneOf</code>, <code>if</code>/<code>then</code>/<code>else</code>, recursive schemas, <code>additionalProperties</code> set to anything other than <code>false</code>.</li>
+<li>Assistant message prefilling returns HTTP 400 on Opus 5, Sonnet 5, Fable 5, and the 4.6/4.7/4.8 family. Use <code>output_config.format</code> instead.</li>
+<li>Structured outputs and API-level citation features are hard to combine, because citations need interleaved citation blocks and a JSON schema needs constrained JSON. Put <code>source_location</code> and <code>source_quote</code> fields in the schema instead.</li>
+</ul>
+</li>
+<li><strong>Scenario tie-in</strong>: the Structured Data Extraction scenario — invoices, contracts, maintenance reports, and a shared intake service receiving documents of unknown type.</li>
+</ul>
+<hr>
+<h2>Task 4.4 — Implementing Validation, Retries, and Feedback Loops for Extraction Quality</h2>
+<ul>
+<li><strong>Principle</strong>: On validation failure, resend three things: the original document, the failed extraction, and the specific validation error. A targeted correction beats a blind retry, and far beats <code>temperature: 0</code>, which only removes variability without addressing the mismatch.</li>
+<li><strong>Principle</strong>: The retry boundary is the most-tested concept in this task. Retry is effective for format mismatches, structural errors, misplaced values, locale-formatted numbers, and datetimes that need truncating to a date. Retry is ineffective when the information is absent from the source or lives in a document that was not provided.</li>
+<li><strong>Principle</strong>: Memorise the sentence: <em>Retry handles output errors. Schema design handles source gaps.</em> More retries on absent data produce more fabrications, not more accuracy.</li>
+<li><strong>Principle</strong>: Separate absence from format error before deciding anything. A field that is null because the contract does not state it is a correct extraction; a date in the wrong format is a recoverable output error.</li>
+<li><strong>Principle</strong>: For fields prone to internal inconsistency, extract both values and let the mismatch surface: <code>stated_total</code> alongside <code>calculated_total</code>, plus <code>totals_match</code> or <code>conflict_detected</code> and a <code>conflict_note</code>. This catches OCR errors, extraction mistakes, and source contradictions without asking the model to reconcile figures it cannot verify.</li>
+<li><strong>Principle</strong>: Add <code>detected_pattern</code> (and <code>rule_id</code> or <code>evidence</code>) to each finding so dismissals can be aggregated by code construct. Without it you know &quot;35% are dismissed&quot; but not which constructs to suppress.</li>
+<li><strong>Principle</strong>: When the same defect recurs across many runs, change the prompt or schema structurally — add a few-shot example, make the field nullable, split the tool — rather than adding another retry. Prompt-level fixes generalise; per-instance retries do not.</li>
+<li><strong>Why the exam wants this</strong>: stems deliberately mix two failure populations in one number (e.g. &quot;900 of 8,000 failed&quot;). The correct option splits them: retry the format errors, accept null for the absent values.</li>
+<li><strong>Distractors</strong>:<ul>
+<li>&quot;Add retry-with-feedback to handle all extraction failures&quot; — conflates output errors with source gaps.</li>
+<li>&quot;Increase the retry limit from 3 to 10&quot; — if three retries did not fix it, more produce fabrications.</li>
+<li>&quot;Run a second LLM call to verify each value against the source&quot; — adds cost and latency, can itself rationalise the original answer, and does not fix the schema that demanded a value. Use verification only as a sampling-based audit on already-good extractions.</li>
+<li>&quot;Escalate every failed document to human review&quot; — sounds helpful; throws away the 80% that a targeted retry or a nullable field resolves.</li>
+<li>&quot;Set temperature to 0&quot; — removes variability, not the mismatch.</li>
+</ul>
+</li>
+<li><strong>Exact terms</strong>: <code>stated_total</code>, <code>calculated_total</code>, <code>totals_match</code>, <code>conflict_detected</code>, <code>conflict_note</code>, <code>detected_pattern</code>, <code>rule_id</code>, <code>evidence</code>, <code>requires_review</code>, <code>review_reasons</code>, and per-field <code>confidence</code> with <code>value</code>. Absence semantics: optional or nullable field, empty array allowed, item with <code>value: null</code> plus <code>reason</code>, <code>unclear</code> enum value, <code>other</code> plus <code>_detail</code>.</li>
+<li><strong>Scenario tie-in</strong>: contract and invoice reconciliation; the review bot whose findings developers dismiss; the extraction service with a partial failure rate.</li>
+</ul>
+<hr>
+<h2>Task 4.5 — Designing Efficient Batch Processing Strategies</h2>
+<ul>
+<li><strong>Principle</strong>: The Message Batches API is approximately 50% cheaper than synchronous calls, has a processing window of up to 24 hours, and carries no guaranteed latency SLA. Design for the 24-hour worst case, not the typical case.</li>
+<li><strong>Principle</strong>: Batch is right for high-volume, non-blocking, independent, deadline-flexible work: overnight technical-debt reports, weekly security audits, nightly test generation, bulk document processing.</li>
+<li><strong>Principle</strong>: Batch is wrong whenever a human or a gate is waiting: pre-merge checks, IDE suggestions, customer-facing chat, latency-sensitive alerts. A 50% saving is dwarfed by developers blocked for hours.</li>
+<li><strong>Principle</strong>: Never answer &quot;migrate everything to batch to save 50%&quot;. The correct answer is always the mixed strategy — batch the latency-tolerant workloads, keep the blocking ones synchronous. Route per-document, not per-batch, when urgency is mixed.</li>
+<li><strong>Principle</strong>: Multi-turn tool calling is not supported inside a single batch request. A workflow where the model calls a tool, sees the result, and continues cannot run on batch at all — this is a technical incompatibility, not a latency problem.</li>
+<li><strong>Principle</strong>: <code>custom_id</code> correlates request to response. Results may arrive in any order; join by <code>custom_id</code>, never by position. Use stable unique identifiers so a partial re-run is straightforward.</li>
+<li><strong>Principle</strong>: On partial failure, resubmit only the failures identified by <code>custom_id</code>, after fixing the cause — chunk the over-long inputs, add validation-error feedback, refine the prompt. Do not resubmit the whole batch.</li>
+<li><strong>Principle</strong>: Refine prompts on a small sample synchronously before submitting a large batch. Each iteration inside a batch loop costs up to 24 hours.</li>
+<li><strong>Why the exam wants this</strong>: the &quot;manager proposes switching everything to batch&quot; stem is a recurring shape. Any option that routes a blocking workflow through batch is wrong, including &quot;batch with a synchronous fallback&quot;, because the fallback only fires after the queue delay.</li>
+<li><strong>Distractors</strong>:<ul>
+<li>&quot;Use batch for the CI code-review bot&quot; / &quot;batch the pre-merge hook&quot; — CI is blocking.</li>
+<li>&quot;Use batch for the multi-turn support agent&quot; — no in-request tool loop.</li>
+<li>&quot;Batch everything and expedite urgent documents inside the batch&quot; — batch latency is exactly why urgent items cannot use it.</li>
+<li>&quot;A fallback to synchronous if the batch takes too long&quot; — the blocking job still waits in the queue first.</li>
+<li>&quot;Resubmit the entire batch when 0.4% fail&quot; — wastes the savings and reprocesses successes.</li>
+<li>&quot;Iterate on the prompt while the batch runs&quot; — iteration loops are 24h+.</li>
+<li>&quot;Keep everything synchronous&quot; — forfeits the savings on workloads that tolerate the window.</li>
+</ul>
+</li>
+<li><strong>Exact terms</strong>: Message Batches API, <code>custom_id</code>, <code>messages.batches.create(requests=[{&quot;custom_id&quot;: ..., &quot;params&quot;: {...}}])</code>, <code>batches.retrieve(id).processing_status</code> (poll until <code>&quot;ended&quot;</code>), <code>batches.results(id)</code> streamed as JSONL, result states <code>succeeded</code> / <code>errored</code> / <code>canceled</code> / <code>expired</code>. Batch supports tools in <code>params</code>; the block is executing them mid-request. Batch and prompt caching can stack, but cache hits inside an asynchronous batch are best-effort.</li>
+<li><strong>Scenario tie-in</strong>: Claude Code for CI/CD — the pre-merge gate versus the overnight deep analysis; bulk extraction of 50,000 documents.</li>
+</ul>
+<hr>
+<h2>Task 4.6 — Designing Multi-instance and Multi-pass Review Architectures</h2>
+<ul>
+<li><strong>Principle</strong>: A model reviewing its own output in the same session retains the reasoning context that produced it. It is biased toward its prior conclusions and less likely to question its own decisions. This is reasoning context bias.</li>
+<li><strong>Principle</strong>: The fix is an independent instance — a fresh session with no knowledge of why the decisions were made, receiving only the artifact and the criteria. Self-critique instructions inside the generating session are the failure mode, not the fix.</li>
+<li><strong>Principle</strong>: Large multi-file reviews need two passes: a per-file local analysis pass for consistent depth per file, then a separate cross-file integration pass for data flow, interface mismatches, and boundary error handling.</li>
+<li><strong>Principle</strong>: Single-pass review of 10+ files fails on attention dilution (early files get more attention than late ones), inconsistent standards (a pattern is flagged in one file and approved in another), and missed cross-file issues. A larger context window does not cure attention dilution — it is not a token problem.</li>
+<li><strong>Principle</strong>: Self-reported confidence is unreliable for routing. Calibrate thresholds on a labelled validation set, and measure accuracy by segment — document type, field, source quality, confidence band — before raising an automation threshold. A pipeline that is 97% accurate overall can be 80% accurate on one field or document type.</li>
+<li><strong>Principle</strong>: Field-level confidence with a reason is more actionable than a bare score: <code>value</code>, <code>confidence</code>, <code>requires_review</code>, <code>review_reasons</code>. Route to human review on low calibrated confidence, ambiguous or contradictory source content, high-impact fields, failed semantic validation, or new and historically error-prone document types.</li>
+<li><strong>Why the exam wants this</strong>: the stem describes a review that caught nothing, or a review whose depth varied across files. Options offering more deliberation, more context, or a confidence threshold in the same session are all wrong-layer.</li>
+<li><strong>Distractors</strong>:<ul>
+<li>&quot;Ask the model to review its own findings before returning&quot; — self-review in session; motivated reasoning.</li>
+<li>&quot;Enable extended thinking for the generation stage&quot; — deeper deliberation on the same chain of reasoning preserves the bias.</li>
+<li>&quot;Use a larger context window so the whole codebase fits in one pass&quot; — attention dilution.</li>
+<li>&quot;Run three full-PR passes and keep findings that appear twice&quot; — three passes carry three times the cost and the same dilution.</li>
+<li>&quot;Set the confidence threshold to 0.9 to guarantee quality&quot; — an uncalibrated number is meaningless; 0.9 is permissive in one system and prohibitive in another.</li>
+<li>&quot;Filter low-confidence findings before developers see them&quot; — violates a no-filtering constraint and hides findings rather than calibrating routing.</li>
+</ul>
+</li>
+<li><strong>Exact terms</strong>: independent review instance, reasoning context bias, per-file pass, cross-file integration pass, attention dilution, calibrated threshold, labelled validation set, stratified sampling, <code>requires_review</code>, <code>review_reasons</code>, segment-level accuracy.</li>
+<li><strong>Scenario tie-in</strong>: code generated and reviewed in the same CI session; a 14-file PR review with inconsistent depth; routing review findings to humans.</li>
+</ul>
+<hr>
+<h2>Schema design rules</h2>
+<p>Do:</p>
+<ul>
+<li>Make a field required only if the information is always available in the source.</li>
+<li>Use <code>&quot;type&quot;: [&quot;string&quot;, &quot;null&quot;]</code> for anything the source may omit, and say so in the description: &quot;null if not found&quot;.</li>
+<li>Allow <code>null</code> rather than an empty array when the distinction is semantic — an empty <code>pros</code> array claims &quot;the reviewer mentioned no pros&quot;, <code>null</code> means &quot;the document did not address pros&quot;.</li>
+<li>Add <code>&quot;unclear&quot;</code> to a classification enum so ambiguity has an honest option.</li>
+<li>Add <code>&quot;other&quot;</code> plus a paired <code>_detail</code> string field for long-tail categories, capturing the source&#39;s own wording.</li>
+<li>Put format normalisation in the prompt (ISO-8601 dates, numeric amount plus currency code, decimal fractions), because schemas validate types, not formats.</li>
+<li>Include provenance fields for high-stakes extraction: <code>source_location</code>, <code>source_quote</code>, <code>effective_date</code>.</li>
+<li>Capture original and amended values with effective dates when documents contain amendments.</li>
+<li>Add reconciliation fields: <code>stated_total</code>, <code>calculated_total</code>, <code>totals_match</code>.</li>
+<li>Add <code>detected_pattern</code> or <code>rule_id</code> to findings so over-reporting can be measured by construct.</li>
+<li>Keep schemas small: tool definitions and output schemas count as input tokens, and a large schema plus a long document crowds the attention boundary and degrades accuracy near the end of the document.</li>
+</ul>
+<p>Don&#39;t:</p>
+<ul>
+<li>Don&#39;t make an absent-from-source field required — that is the fabrication factory.</li>
+<li>Don&#39;t rely on <code>required</code> for correctness; it guarantees presence, not truth.</li>
+<li>Don&#39;t use <code>minimum</code>, <code>maximum</code>, <code>pattern</code>, <code>minLength</code>, or <code>oneOf</code> expecting schema enforcement — unsupported in strict mode; validate in application code.</li>
+<li>Don&#39;t omit <code>additionalProperties: false</code> in strict mode.</li>
+<li>Don&#39;t use a strict enum with no escape hatch where new categories keep appearing.</li>
+<li>Don&#39;t assume schema compliance is source truth. Syntax validation is the first layer only.</li>
+<li>Don&#39;t hardcode a scalar field for a value that amendments rewrite.</li>
+<li>Don&#39;t try to attach API citations to JSON fields; put source locations in the schema.</li>
+</ul>
+<hr>
+<h2>Batch API decision table</h2>
+<table>
+<thead>
+<tr>
+<th>Workload</th>
+<th>API</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pre-merge gate, PR style check, IDE suggestion, customer chat</td>
+<td>Synchronous</td>
+<td>A human or a gate is waiting; 24h is unacceptable</td>
+</tr>
+<tr>
+<td>Overnight technical-debt report, weekly security audit, nightly test generation, bulk extraction</td>
+<td>Batch</td>
+<td>Non-blocking, deadline-flexible, ~50% cheaper</td>
+</tr>
+<tr>
+<td>Workflow that calls tools mid-request and continues</td>
+<td>Synchronous</td>
+<td>No in-request tool loop on Batch, regardless of latency tolerance</td>
+</tr>
+<tr>
+<td>Mixed urgency across documents</td>
+<td>Route per-document</td>
+<td>Standard documents to Batch, urgent ones to synchronous — not per-batch</td>
+</tr>
+</tbody></table>
+<p>Latency arithmetic for a batch-backed deadline:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>24h</td>
+<td>Worst-case batch processing window</td>
+</tr>
+<tr>
+<td>SLA</td>
+<td>Your downstream deadline</td>
+</tr>
+<tr>
+<td>SLA − 24h</td>
+<td>Buffer available for downstream work</td>
+</tr>
+<tr>
+<td>Submission cadence</td>
+<td>Must be shorter than (deadline − batch window − buffer)</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Worked case: SLA 30h, window 24h, buffer 6h. Submit every 4h. A record arriving just after a submission waits at most ~4h for the next batch plus up to 24h processing = ~28h &lt; 30h.</li>
+<li>The 4h is the submission interval, not an addition to the 24h cap. The constraint is start_time + 24h ≤ deadline.</li>
+<li>Other cadences from the corpus: SLA 36h with a 24h window allows roughly a 12h cadence; SLA 26h forces a 2h cadence because there is almost no margin.</li>
+<li>Submitting once a day is only safe when the SLA is at least 48h.</li>
+<li>Cadence refers to when you submit; the worst case is set by the slowest record, not the average.</li>
+</ul>
+<hr>
+<h2>Recall card</h2>
+<ul>
+<li>Categorical criteria beat confidence adjectives. &quot;Flag X, report Y, skip Z&quot; wins. <em>Conservative</em>, <em>careful</em>, <em>high-confidence</em> in an option means distractor. Anchor each severity level with a real code example — prose severity drifts across runs.</li>
+<li>High false positives in one category destroy trust in all categories. Disable the noisy category, improve its criteria, re-enable.</li>
+<li>Inconsistent output despite detailed instructions → 2–4 targeted few-shot examples on ambiguous cases, each showing the reasoning. Not 1, not 10. More instructions do not converge.</li>
+<li>Few-shot over varied document structures reduces hallucination in extraction.</li>
+<li><code>tool_use</code> with a JSON schema eliminates syntax errors. That is the whole guarantee.</li>
+<li>Schema compliance ≠ semantic correctness. Line items summing to the total is your validation code&#39;s job.</li>
+<li>All-required schemas are fabrication factories. Make the field nullable and teach the model to return null.</li>
+<li><code>&quot;auto&quot;</code> for optional; <code>&quot;any&quot;</code> for must-call-something (heterogeneous documents); named tool for must-call-this; <code>&quot;none&quot;</code> to forbid tools.</li>
+<li>Nullable fields, <code>&quot;unclear&quot;</code> enums, <code>&quot;other&quot;</code> + detail — the anti-fabrication toolkit.</li>
+<li>Strict mode: <code>additionalProperties: false</code>, every property in <code>required</code>, and no <code>minimum</code>/<code>pattern</code>/<code>oneOf</code>.</li>
+<li>Retry fixes output errors. Schema design fixes source gaps. Never retry an absent value. Retry-with-feedback = original document + failed extraction + the specific validation error.</li>
+<li>Extract <code>stated_total</code> and <code>calculated_total</code>; flag the mismatch instead of trusting either.</li>
+<li><code>detected_pattern</code> turns a black-box review bot into a measurable system.</li>
+<li>Assistant prefill is gone on modern models. Use <code>output_config.format</code> with a <code>json_schema</code> type.</li>
+<li>Batch: ~50% cost, up to 24h, no SLA, no in-request tool loop, <code>custom_id</code> correlates.</li>
+<li>Blocking → synchronous. Latency-tolerant → batch. Multi-turn tool calls → synchronous, always.</li>
+<li>Refine prompts synchronously on a sample before batching. Resubmit failures by <code>custom_id</code>, never the whole batch.</li>
+<li>Same session reviewing its own work = motivated reasoning. Use a fresh independent instance.</li>
+<li>Per-file pass + separate cross-file integration pass beats one giant pass. A bigger context window does not fix attention dilution.</li>
+<li>Self-reported confidence is unreliable uncalibrated. Measure by segment on a labelled validation set.</li>
+</ul>
+<hr>
+<h2>Sources</h2>
+<p>Files actually read for this note:</p>
+<ul>
+<li><code>resources/dnacenta-domains/d4-prompt-engineering.md</code> (tasks 4.1–4.6 sections and Domain 4 practice questions)</li>
+<li><code>resources/hamzafarooq-cheatsheets/domain4.md</code> (full)</li>
+<li><code>resources/00-concept-map.md</code> (Domain 4 task index, tradeoff table, correlation graph)</li>
+<li><code>resources/04-api-and-product-faq.md</code> (full: prefill deprecation, <code>output_config.format</code>, batch FAQ, <code>custom_id</code>, 30h/24h SLA arithmetic, exam-vs-production table)</li>
+<li><code>resources/03-anti-patterns-catalog.md</code> (extraction and review anti-patterns)</li>
+<li><code>resources/02-mock-exam-trap-guide.md</code> (trap taxonomy)</li>
+<li><code>resources/paullarionov-guide_en.md</code> (Chapter 1 §1.1–1.5, Chapter 2 §2.1–2.5, Chapter 6, Chapter 7, §8.3, Domain 4 key knowledge and key skills)</li>
+<li><code>resources/daronyondem-study-guide.md</code> (§1 API Fundamentals and Output Control, §4 Structured Data Extraction and Validation, §6 System Prompt Engineering, §11 Iterative Refinement/Testing/Evaluation, §12 Model Selection and Inference Controls, §14 Batch Processing, Cost, and Latency)</li>
+<li><code>resources/timothywarner-practice-60q.md</code> (Claude Code for CI scenario, questions 16–31)</li>
+</ul>
+<div class="foot">Built 2026-09-20 09:21 · source: domains/d4-prompt-structured-output.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script></body></html>

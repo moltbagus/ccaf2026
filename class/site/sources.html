@@ -1,0 +1,159 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Where the material came from — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · interactive</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><h1>Where the material came from</h1>
+<p>Everything here is community material held locally under <code>resources/</code> and <code>resources/vendor/</code>.
+None of it is Anthropic-authored, and none of it is real exam content. The only authoritative
+document is the <a href="https://anthropic.skilljar.com/claude-certified-architect-foundations-access-request">official exam guide</a>.</p>
+<h2>Original corpus (<code>resources/</code>)</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>What it gave us</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>dnacenta-domains/d1-d5</code></td>
+<td>the written module notes each master note was built from</td>
+</tr>
+<tr>
+<td><code>hamzafarooq-cheatsheets/domain1-5</code></td>
+<td>the cheatsheet layer, merged into the master notes</td>
+</tr>
+<tr>
+<td><code>daronyondem-study-guide.md</code></td>
+<td>181 KB cross-domain guide (16 sections)</td>
+</tr>
+<tr>
+<td><code>paullarionov-guide_en.md</code></td>
+<td>194 KB guide: exam format, 8 scenarios, API fundamentals</td>
+</tr>
+<tr>
+<td><code>timothywarner-practice-60q.md</code></td>
+<td>the 60-question practice set mined into the drill banks</td>
+</tr>
+<tr>
+<td><code>00-concept-map.md</code></td>
+<td>all 30 tasks with 3-5 word takeaways</td>
+</tr>
+<tr>
+<td><code>02-mock-exam-trap-guide.md</code></td>
+<td>the 7-type trap taxonomy</td>
+</tr>
+<tr>
+<td><code>03-anti-patterns-catalog.md</code></td>
+<td>43 guide-derived anti-patterns</td>
+</tr>
+<tr>
+<td><code>04-api-and-product-faq.md</code></td>
+<td>prefill, <code>/memory</code>, Batch API, exam-vs-production deltas</td>
+</tr>
+</tbody></table>
+<h2>Cloned repositories (<code>resources/vendor/</code>)</h2>
+<table>
+<thead>
+<tr>
+<th>Repo</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>claude-architect-exam-guide</code> (utkarsh1agarwal)</td>
+<td><strong>the six 60-question mock exams</strong> in the Mock exams section</td>
+</tr>
+<tr>
+<td><code>ccaf-exam-prep</code> (javiercriado)</td>
+<td>the distractor heuristic, mapping notes, three worked exercises</td>
+</tr>
+<tr>
+<td><code>ClaudeStudyGuide</code> (kkaminsk)</td>
+<td>per-domain notes plus question/answer pairs, five domains</td>
+</tr>
+<tr>
+<td><code>claude-certified-architect-foundations-study-guide</code> (Jameers23)</td>
+<td>per-domain guides and a quick-revision cheatsheet</td>
+</tr>
+<tr>
+<td><code>claude-architect</code> (timothywarner-org)</td>
+<td>mostly the Anthropic cookbooks, not exam-specific</td>
+</tr>
+<tr>
+<td><code>cloud-certification-exam-prep</code> (schinchli)</td>
+<td>multi-cloud cert prep; one Claude CCA-F question file</td>
+</tr>
+<tr>
+<td><code>claude-certified-architect</code> (paullarionov)</td>
+<td>the upstream of the 60Q practice set already in the corpus</td>
+</tr>
+</tbody></table>
+<p><code>daronyondem/claude-architect-exam-guide</code> could not be cloned — the repository is private or renamed.
+The local copy of that guide in <code>resources/</code> is unaffected.</p>
+<h2>Free mock exams (browser, outside the tailnet)</h2>
+<ul>
+<li><strong>CyberSkill</strong> — <a href="https://ccaf.cyberskill.world/">https://ccaf.cyberskill.world/</a> — reported as closest to the real thing</li>
+<li><strong>Certification Guide</strong> — <a href="https://claudecertificationguide.com/">https://claudecertificationguide.com/</a></li>
+<li><strong>claudecertifiedarchitects.com</strong> — 400 scenario questions, free readiness diagnostic</li>
+<li><strong>flashgenius.net / secuspark.com</strong> — free sample sets</li>
+</ul>
+<p>Sites selling question dumps (examheist, dumpsbase, skillcertpro) were deliberately skipped:
+paid, unverifiable, and often a violation of the exam&#39;s terms.</p>
+<h2>How the local material was used</h2>
+<p>Nothing was copied verbatim into the lessons or banks. The external notes were read as a second
+opinion against the corpus, and the mock exams are rendered from their own repository data with
+provenance kept on the page. Where two sources disagreed, the version matching the exam guide won.</p>
+<div class="foot">Built 2026-09-20 09:21 · source: external/sources.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script></body></html>

@@ -1,0 +1,488 @@
+{
+  "domain": 5,
+  "title": "Context Management & Reliability",
+  "weight": "15%",
+  "goal": "Diagnose which layer is actually failing - history, escalation boundary, error reporting, session memory, verification or provenance - and pick the fix at that layer instead of the confidence-threshold, bigger-window or tidy-average reflex.",
+  "tasks": [
+    "5.1",
+    "5.2",
+    "5.3",
+    "5.4",
+    "5.5",
+    "5.6"
+  ],
+  "steps": [
+    {
+      "task": "5.1",
+      "kind": "teach",
+      "title": "The 15% discount that vanished",
+      "lead": "Tuesday morning, turn 34 of a support thread. The customer writes: 'just apply the 15% discount I mentioned earlier.' The agent answers with 8% and a confident apology - because on turn 20 the summarizer ran and turned the original 15% into 'promotional pricing was discussed.' Nothing in the prompt is wrong. The history is wrong.",
+      "points": [
+        "Summarization is lossy compression, and it destroys the high-value tokens first: amounts, dates, percentages, order and case IDs",
+        "It also eats what the customer said they expect, and the exact error strings the agent was working from",
+        "Raising the summarization threshold from 70% to 85% delays the loss to the next trigger; it does not prevent it",
+        "Telling the summarizer to preserve all numbers verbatim is best-effort, not deterministic - it still depends on the model every pass",
+        "The failure is history management, not prompt wording"
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Summaries eat the numbers first - a value that matters must live somewhere summarization never touches."
+    },
+    {
+      "task": "5.1",
+      "kind": "diagram",
+      "title": "Where the facts live outside the summary",
+      "lead": "Split the context into three zones and only ever compress the middle one. The case-facts block is the piece that makes 'the 15% discount' impossible to lose.",
+      "points": [
+        "Zone 1: system prompt and tool definitions, the stable prefix you can prompt-cache",
+        "Zone 2: resolved threads, replaced by structured summaries - lossy, and that is acceptable here",
+        "Zone 3: the active thread and recent turns, kept verbatim, because that is what the customer returns to",
+        "The case-facts block is injected verbatim into every prompt, outside the summarized history",
+        "Trim verbose tool results to the fields downstream reasoning needs before they are appended, because noise accumulates across turns"
+      ],
+      "diagram": "context-window",
+      "caption": "Watch the case-facts block: it sits outside the compressed zone, so no summarization pass can reach it.",
+      "code": "Resolved threads  -> structured summary (lossy, fine)\nActive thread     -> verbatim\nCase facts block  -> injected verbatim, every prompt\nAPI is stateless  -> send the full messages array",
+      "ask": null,
+      "takeaway": "Summarize resolved threads, keep the active thread verbatim, hold transactional facts in a case-facts block."
+    },
+    {
+      "task": "5.1",
+      "kind": "check",
+      "title": "Gate 1: the customer cites a figure",
+      "lead": "First gate. Answer before you read the explanation - the wrong options are built to feel responsible.",
+      "points": [],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": {
+        "q": "Customers keep citing specific figures ('the 15% discount I mentioned') and the agent answers with the wrong value. Logs show those details were stated 20+ turns ago and were condensed into vague summaries such as 'promotional pricing was discussed.' The conversation is a long multi-issue support thread and cannot be shortened. Which approach is most effective?",
+        "options": [
+          "Raise the summarization threshold from 70% to 85% so conversations have more room before summarization triggers.",
+          "Store the full conversation history in external storage and retrieve it when the agent detects references like 'as I mentioned.'",
+          "Revise the summarization prompt to explicitly preserve all numbers, percentages and dates verbatim.",
+          "Extract transactional facts (amounts, dates, order numbers, customer-stated expectations) into a persistent case-facts block included in every prompt outside the summarized history."
+        ],
+        "answer": 3,
+        "why": "Summarization is inherently lossy on exact values; a case-facts block injected verbatim makes preservation deterministic instead of best-effort. Raising the threshold only moves the loss to the next trigger point. The retrieval option depends on the agent noticing the reference at all, and silent references never fire the lookup. Rewriting the summarization prompt still relies on the model choosing to preserve every value on every pass.",
+        "trap": "sounds-thorough"
+      },
+      "takeaway": "Deterministic preservation beats best-effort summarization: keep transactional facts outside the summarized history."
+    },
+    {
+      "task": "5.1",
+      "kind": "teach",
+      "title": "The middle is where answers go to die",
+      "lead": "A multi-agent research job hands synthesis a 75K-token aggregate. Monitoring shows the synthesis agent reliably cites the first 15K and the last 10K, and skips the middle 50K - including the passage that answers the research question. This is not a token limit; it is where attention sits.",
+      "points": [
+        "Attention is biased toward the start and end of a long input; the middle gets least of it - lost-in-the-middle is structural",
+        "Fix placement, not volume: key findings at the beginning with explicit section headers, detail behind them",
+        "Compressing everything to fit discards the detail the synthesis agent actually needed",
+        "The API is stateless: send the complete `messages` array on every request, or the agent 'forgets' mid-conversation",
+        "Fix verbosity at the source: subagents return key facts, citations and confidence, not verbose prose or reasoning chains"
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Key findings at the top with explicit section headers, and send the full `messages` array every request."
+    },
+    {
+      "task": "5.1",
+      "kind": "check",
+      "title": "Gate 2: the 75K-token aggregate",
+      "lead": "Same failure, different reflex to resist. The tempting answer here saves tokens.",
+      "points": [],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": {
+        "q": "Production monitoring shows the synthesis agent reliably cites content from the first 15K tokens of a 75K-token aggregate and from the final 10K tokens, but frequently omits findings from the middle 50K - including findings that directly answer the research question. Which approach is most effective?",
+        "options": [
+          "Restructure the aggregate so key findings appear at the beginning with explicit section headers, keeping the detailed material behind that.",
+          "Compress all subagent outputs to under 20K tokens before aggregation so content sits inside the reliably processed range.",
+          "Stream subagent results to the synthesis agent incrementally, completing one source before adding the next.",
+          "Rotate which subagent's results appear first across research tasks so both sources get equal top positioning over time."
+        ],
+        "answer": 0,
+        "why": "The failure is content placement, not volume - the model does attend to the start and end of long inputs. Compressing to fit throws away detail the synthesis agent needs. Streaming still leaves the second batch sitting in the low-attention middle. Rotating position only balances the mistake on average across runs; it does not fix any single report.",
+        "trap": "sounds-efficient"
+      },
+      "takeaway": "Lost-in-the-middle is a placement bug - reorder the aggregate, do not shrink it."
+    },
+    {
+      "task": "5.2",
+      "kind": "teach",
+      "title": "A decision boundary nobody drew",
+      "lead": "The support agent escalates a standard replacement for a damaged item with photo proof attached, and on the same day attempts a policy exception it has no authority to grant. The failure is not effort; it is a decision boundary nobody wrote down.",
+      "points": [
+        "Three triggers: explicit human request; a policy gap or exception the agent cannot decide; no meaningful progress after real attempts",
+        "Not triggers: sentiment, self-rated confidence, conversation length, multi-intent volume",
+        "Do not reach for the classifier - the root cause is an unclear boundary, and explicit criteria plus few-shot examples fix it in the prompt",
+        "A hard rule such as a refund above a threshold is enforced in code or a hook, not in prose; return a structured 'requires approval' result",
+        "The tested distinction is explicit signal versus inferred signal"
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Escalate on explicit request, policy gap, or no meaningful progress - never on mood or a confidence score."
+    },
+    {
+      "task": "5.2",
+      "kind": "diagram",
+      "title": "Read the stem, then walk the tree",
+      "lead": "Eleven branches, applied in order, first match wins. In the exam you will use four or five of them, and the two that get dressed up as empathy are the ones people miss.",
+      "points": [
+        "Explicit human request -> escalate immediately: no investigation first, no 'let me try', no confirming question",
+        "Outside documented policy, or needs an exception the agent lacks authority for -> escalate; the agent never invents policy",
+        "Hard rule (refund above threshold, regulated workflow) -> enforce programmatically in the tool or a hook, not by prompt",
+        "A fix is already ready and the customer earlier asked for a person -> offer resolve-or-escalate in one turn",
+        "Angry with no context yet -> acknowledge and ask one targeted question; that is not escalation"
+      ],
+      "diagram": "escalation-tree",
+      "caption": "Order is the whole point: branch 1 beats everything below it, and branches 5 and 6 are the empathy-shaped distractors.",
+      "code": null,
+      "ask": null,
+      "takeaway": "First match wins: explicit request, policy gap, hard rule, fix-ready, angry-with-no-context."
+    },
+    {
+      "task": "5.2",
+      "kind": "check",
+      "title": "Gate 3: 55% against an 80% target",
+      "lead": "Symptom and cause are separated here by one question: is this a knowledge problem or a boundary problem?",
+      "points": [],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": {
+        "q": "Your agent achieves 55% first-contact resolution against an 80% target. Logs show it escalates simple, well-defined cases (standard replacements for damaged goods with photo proof) while attempting complex situations requiring policy exceptions autonomously. Which approach is most effective?",
+        "options": [
+          "Require the agent to self-rate confidence on a 1-10 scale before each response and auto-route to a human below a threshold.",
+          "Deploy a separate classifier model trained on historical tickets to predict which requests need escalation before the agent starts.",
+          "Add explicit escalation criteria to the system prompt with few-shot examples showing when to escalate versus resolve autonomously.",
+          "Implement sentiment analysis and escalate automatically past a negative-sentiment threshold."
+        ],
+        "answer": 2,
+        "why": "The root cause is an unclear decision boundary, and explicit criteria with worked examples teach exactly that. Self-rated confidence is poorly calibrated and uncorrelated with real difficulty. A trained routing classifier is disproportionate infrastructure for a boundary problem that lives in the prompt. Sentiment routing handles mood, so calm policy exceptions still get mishandled and angry-but-simple cases still get escalated.",
+        "trap": "sounds-smart"
+      },
+      "takeaway": "Unclear boundary means explicit criteria plus few-shot examples, never a confidence score or a classifier."
+    },
+    {
+      "task": "5.2",
+      "kind": "drill",
+      "title": "Drill: seven John Smiths",
+      "lead": "No explanation until you commit. This is the one where the tempting answer is the confident one.",
+      "points": [],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": {
+        "q": "Your `get_customer` tool returns every match when searching by name. The agent currently picks the customer with the most recent order, and production data shows this selects the wrong account 15% of the time for ambiguous matches, causing misapplied refunds. Which approach is most effective?",
+        "options": [
+          "Instruct the agent to request an additional identifier (email, phone, or order number) when `get_customer` returns multiple matches, before taking any customer-specific action.",
+          "Implement confidence scoring that acts autonomously above 85% confidence and requests clarification only below that threshold.",
+          "Modify `get_customer` to return only a single most-likely match chosen by a ranking algorithm, eliminating the ambiguity.",
+          "Add few-shot examples demonstrating correct reasoning and tool sequencing for ambiguous matches."
+        ],
+        "answer": 0,
+        "why": "Only the customer holds the fact that disambiguates them, and one extra turn is cheap against a 15% wrong-account action rate. Confidence scoring keeps guessing inside the confident band, which is exactly where wrong-account refunds survive. Ranking inside the tool hides the ambiguity behind an algorithm that would make the same wrong pick. Few-shot examples teach reasoning but cannot supply the missing identifying fact.",
+        "trap": "sounds-smart"
+      },
+      "takeaway": "Multi-match identity: ask for email, phone or order ID. Never rank, never pick by recency, never threshold on confidence."
+    },
+    {
+      "task": "5.2",
+      "kind": "teach",
+      "title": "The human sees the handoff, not the transcript",
+      "lead": "You decide to escalate. The human on the other end never sees the conversation - they see only what your handoff says. 'Customer unhappy about refund, please advise' sends the customer back to the start of their complaint.",
+      "points": [
+        "Handoff fields: `customer_id`, `issue_summary`, `order_id`, `root_cause`, `actions_taken`, `recommended_action`, `escalation_reason`",
+        "The handoff must be complete and self-contained, because there is no transcript to fall back on",
+        "The `escalate_to_human` tool needs explicit usage boundaries in its definition, not just a descriptive name",
+        "Frustrated, straightforward issue, no human request: acknowledge, offer the concrete fix, escalate only if the customer repeats the ask",
+        "Ask for identity details, not a diagnosis: on a multi-match lookup, one more identifier - never a ranked pick"
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "A handoff is the human's entire view of the case - complete, structured, self-contained."
+    },
+    {
+      "task": "5.3",
+      "kind": "teach",
+      "title": "Three sources up, two timed out",
+      "lead": "A research run hits three source categories. Academic databases return 15 relevant papers, industry reports return '0 results', and the patent database returns 'Connection timeout'. All three have to get back to the coordinator in a form it can act on - and right now the codebase returns the same two words for all of them: 'search failed.'",
+      "points": [
+        "Failure type (transient, validation, business, permission), what was attempted, partial results, alternatives, coverage impact",
+        "Fields: `failure_type`, `attempted_query`, `partial_results`, `alternative_approaches`, `coverage_impact`, `is_retryable`, `retry_after_ms`",
+        "The alternatives are the point - a narrower query, a fallback source, a retry-after",
+        "On the MCP boundary, an `isError` flag on the tool result; on your own tools, `errorCategory` and `isRetryable`",
+        "How a failure is reported matters as much as the failure itself"
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": "{\n  \"failure_type\": \"transient\",\n  \"attempted_query\": \"patent db: solid-state battery 2024\",\n  \"partial_results\": [...],\n  \"alternative_approaches\": [\"narrower query\", \"fallback source\", \"retry_after\"],\n  \"coverage_impact\": \"1 of 3 source categories\",\n  \"is_retryable\": true,\n  \"retry_after_ms\": 2000\n}",
+      "ask": null,
+      "takeaway": "Structured error = failure type + what was attempted + partial results + alternatives + coverage impact."
+    },
+    {
+      "task": "5.3",
+      "kind": "diagram",
+      "title": "Failure travels up with a payload",
+      "lead": "Two failures are in flight: one transient timeout and one valid empty result. Only one of them deserves a retry, and this diagram is the reason.",
+      "points": [
+        "The subagent does local recovery first: exponential backoff, one to two attempts, for transient failures only",
+        "Then it propagates only what it cannot resolve, carrying type, attempted query, partial results and alternatives",
+        "One subagent failing must not terminate the workflow - preserve the partial results the others produced",
+        "Annotate the gap where the results are used: PARTIAL COVERAGE - search agent timeout",
+        "A subagent never returns a generic status in place of the detail the coordinator needs to route"
+      ],
+      "diagram": "error-propagation",
+      "caption": "Follow the timeout and the '0 results' as they leave the subagent: same channel, different payloads, opposite decisions.",
+      "code": null,
+      "ask": null,
+      "takeaway": "Retry only the access failure; a valid empty result is the answer. Never suppress, never terminate the workflow."
+    },
+    {
+      "task": "5.3",
+      "kind": "check",
+      "title": "Gate 4: timeout versus zero results",
+      "lead": "This is the clean binary the exam loves. Two outcomes, one channel, opposite responses.",
+      "points": [],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": {
+        "q": "During one research run the web-search subagent queries three source categories: academic databases return 15 relevant papers, industry reports return '0 results', and a patent database returns 'Connection timeout.' You are deciding how these outcomes reach the coordinator. Which approach enables the best recovery decisions?",
+        "options": [
+          "Aggregate the outcomes into a single success-percentage metric (for example '67% source coverage') with detailed logs available on demand.",
+          "Treat all three as errors and ask the coordinator to retry the entire query set.",
+          "Retry the timeout internally and report only persistent failures as a generic unavailable status.",
+          "Distinguish the access failure (timeout), which requires a retry decision, from the valid empty result ('0 results'), which is a successful query that found nothing."
+        ],
+        "answer": 3,
+        "why": "The timeout and the '0 results' are semantically different outcomes and demand opposite responses: retry the patent database, accept the industry-report result as an informative finding. Collapsing to a coverage percentage discards which part is retryable. Retrying everything re-runs a query that already succeeded and found nothing. Internal retry plus a generic status strips out the type, query and partial results the coordinator needs to route.",
+        "trap": "sounds-enterprise"
+      },
+      "takeaway": "Access failure versus valid empty result: retry the first, report the second as the answer."
+    },
+    {
+      "task": "5.3",
+      "kind": "teach",
+      "title": "Two failure modes dressed as virtues",
+      "lead": "Two wrong answers show up in almost every 5.3 question, and they look like opposite virtues. One is graceful continuation; the other is decisive failure handling. Both destroy recoverability.",
+      "points": [
+        "Worst pattern: return empty results with a success status so the orchestrator continues gracefully - silent suppression, zero recovery path",
+        "Second worst: abort the entire workflow on one subagent timeout - throws away the partial results the successful subagents produced",
+        "'Catch the exception and log it for later review' means the running model receives no signal at all",
+        "'Retry indefinitely until it succeeds' spends budget on permanent failures",
+        "'Retry inside the subagent but return a generic status' - the retry was right, the generic status is the defect"
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Silent suppression and workflow termination both destroy recoverability - one hides the error, the other discards the partial work."
+    },
+    {
+      "task": "5.4",
+      "kind": "teach",
+      "title": "Thirty minutes in, it starts guessing",
+      "lead": "A codebase investigation runs for half an hour. Then the agent starts saying 'following the typical pattern here' instead of naming the class it found at minute four, gives two different answers about the same module, and assumes instead of opening the file. The window is nowhere near full.",
+      "points": [
+        "The symptom is attention dilution, not a token shortage: high-signal early findings get diluted by high-volume later exploration",
+        "A larger context window does not shrink the dilution, and neither does a larger model",
+        "Temperature changes sampling, not what the model retains",
+        "Restarting from scratch hits the same wall at the same turn count and wastes the work already done",
+        "The root cause is high-signal early findings diluted by high-volume later exploration - structural, not capacity"
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Degradation at 30 minutes is attention dilution - externalize the findings, do not buy a bigger window."
+    },
+    {
+      "task": "5.4",
+      "kind": "drill",
+      "title": "Drill: the agent goes generic",
+      "lead": "Commit to an answer. Three of the four options treat this as a capacity problem.",
+      "points": [],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": {
+        "q": "Thirty minutes into a codebase investigation the agent starts describing 'typical patterns' instead of the classes and files it found earlier, gives inconsistent answers about the same module, and begins assuming instead of checking. The exploration is expected to continue for another hour across unfamiliar code. Which approach is most effective?",
+        "options": [
+          "Switch to a larger model with a bigger context window so the earlier findings stay available.",
+          "Have the agent write key findings (file:line, entry points, known issues) to a scratchpad file and consult it for subsequent questions.",
+          "Restart the exploration with a fresh context and tighter prompts to avoid the drift.",
+          "Increase the model temperature so responses stay specific rather than generic."
+        ],
+        "answer": 1,
+        "why": "A scratchpad externalizes findings so they survive context compression and crashes, and it is re-readable exactly when the agent starts drifting. A larger window treats attention dilution as a capacity problem. Restarting hits the same wall at the same turn count and wastes work already done. Temperature changes sampling, not retention.",
+        "trap": "sounds-efficient"
+      },
+      "takeaway": "Write file:line findings to a scratchpad - the scratchpad is what survives compaction."
+    },
+    {
+      "task": "5.4",
+      "kind": "teach",
+      "title": "Isolate, summarize, checkpoint",
+      "lead": "Three moves carry most of the 5.4 marks. Isolation, so the noise never enters the context that has to stay sharp; phase summaries, so the next phase starts with the state it needs; checkpoints, so a crash costs one phase instead of three hours.",
+      "points": [
+        "Delegate verbose discovery to an Explore subagent so the coordinator receives only the distilled result",
+        "`context: fork` in skill frontmatter isolates a skill's execution; `allowedTools` narrows a subagent's toolset",
+        "Inject a phase summary before spawning the next phase's subagents",
+        "Checkpoint state to a manifest and load `agent-state/manifest.json` on resume; the manifest is the source of truth across a crash",
+        "Use `/compact` proactively, before natural degradation; compaction after pollution is lossy, and isolation is cheaper than recovery"
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": "phase 1  -> Explore subagent -> distilled summary back\nphase 2  -> design in the main conversation\nphase 3  -> implement\ncheckpoint -> agent-state/manifest.json\nin a 3-phase refactor over 120 files, phase 1 discovery is the flood",
+      "ask": null,
+      "takeaway": "Isolate discovery in a subagent, inject phase summaries, checkpoint to a manifest, compact before you have to."
+    },
+    {
+      "task": "5.5",
+      "kind": "teach",
+      "title": "97% overall, 45% on the hard half",
+      "lead": "The pipeline reports 97% overall accuracy on the validation set and the team wants to switch off human review. The validation set is mostly clean printed invoices; the highest-value production documents are handwritten notes and foreign-language scans. Nobody has broken those numbers down separately.",
+      "points": [
+        "Aggregate accuracy masks stratum-level failure: 97% overall can hide 45% on handwritten notes or 42% on a single field",
+        "Break it down by document type and by field segment before removing the humans",
+        "More volume does not reveal a stratum the validation sample never represented",
+        "Comparing against a competitor's published number measures the wrong thing",
+        "'97% meets the industry standard, so automate' is an aggregate metric with no stratum check behind it"
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Aggregate accuracy hides strata - break accuracy down by document type and by field before you automate."
+    },
+    {
+      "task": "5.5",
+      "kind": "check",
+      "title": "Gate 5: the 97% headline",
+      "lead": "The number is real. The question is what it is hiding.",
+      "points": [],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": {
+        "q": "Your extraction pipeline reports 97% overall accuracy on the validation set and the team wants to automate without human review. The set is dominated by clean, printed invoices; the highest-value documents in production are handwritten notes and foreign-language scans. Which information is most important before automating?",
+        "options": [
+          "Break accuracy down by document type and by field segment to confirm performance on each stratum.",
+          "Run a larger volume of documents through the same pipeline to raise confidence in the 97% figure.",
+          "Compare the 97% figure against published accuracy of competing systems to confirm it meets the industry standard.",
+          "Set the confidence threshold to 0.9 so that only high-confidence extractions proceed without review."
+        ],
+        "answer": 0,
+        "why": "Aggregate accuracy masks stratum-level failure - 97% overall can hide a 45% error rate on handwritten notes, exactly the high-value class here. Running more documents cannot reveal a stratum gap the validation sample does not represent. A competitor comparison measures the wrong thing entirely. And 0.9 is an uncalibrated number that means nothing without ground truth behind it.",
+        "trap": "sounds-simple"
+      },
+      "takeaway": "Before automating: accuracy per document type and per field, not the headline number."
+    },
+    {
+      "task": "5.5",
+      "kind": "teach",
+      "title": "A 0.9 that means nothing",
+      "lead": "Six months after deployment the review queue is short, because only low-confidence extractions reach a human. Then operations reports rising errors on a new document template - and every one of those extractions came back high-confidence.",
+      "points": [
+        "Emit per-field confidence, not per-document: fields within one document vary widely in difficulty, and a single document score hides that",
+        "Calibrate thresholds against a labeled validation set so a 0.9 means correct roughly 90% of the time for that field",
+        "Route low-confidence or ambiguous-source extractions to review, spending scarce reviewer capacity on the highest-uncertainty items",
+        "After deployment keep a stratified audit that samples high-confidence extractions too, across types, fields and confidence bands",
+        "Novel error patterns appear over time and by definition never trigger a low-confidence threshold"
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Per-field confidence calibrated on labeled data, plus an audit of the high-confidence band - that is what catches drift."
+    },
+    {
+      "task": "5.6",
+      "kind": "teach",
+      "title": "Studies show the market is growing",
+      "lead": "The report lands on the client's desk and says: 'studies show the market is growing.' No study named, no author, no date, no link. Every upstream subagent had the source open when it made that claim, and the synthesis step flattened all of it into narrative prose.",
+      "points": [
+        "Attribution dies at the first summarization unless it travels with the claim as structured data",
+        "Required mapping fields: `claim`, `source_url`, `document_name`, supporting excerpt, `publication_date`, `source_type`",
+        "Downstream agents preserve and merge those mappings - they never flatten them into prose",
+        "A bibliography at the end of the report separates sources from claims, so the link is lost on merge",
+        "Label certainty as well-established, contested or single-source; render tables for financials, prose for narrative, lists for findings"
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Every finding carries claim, source URL, document, excerpt and date, through every downstream agent."
+    },
+    {
+      "task": "5.6",
+      "kind": "diagram",
+      "title": "Claims route back to the coordinator",
+      "lead": "Two subagents return 40% growth and 12% growth, both from credible sources. In this architecture the mismatch travels inward to the hub with both values intact.",
+      "points": [
+        "Each spoke attaches attribution to the claim before it returns - the mapping is part of the payload",
+        "A contested finding arrives at the hub annotated with both values plus full source attribution",
+        "Reconciliation is a coordinator decision: it alone has the broader picture across sources",
+        "The subagent does not average the figures, does not pick the conservative value, does not omit the statistic",
+        "Dates travel too, so 28% in 2022 against 32% in 2024 reads as a trend rather than a contradiction"
+      ],
+      "diagram": "hub-spoke",
+      "caption": "Look at where the conflict gets resolved: never at the spoke, always at the hub, and always with both numbers still present.",
+      "code": null,
+      "ask": null,
+      "takeaway": "Subagents annotate, the coordinator reconciles - never average, never pick, never omit."
+    },
+    {
+      "task": "5.6",
+      "kind": "drill",
+      "title": "Drill: 40% against 12%",
+      "lead": "Last gate. The two tempting answers both tidy up the disagreement before anyone sees it.",
+      "points": [],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": {
+        "q": "A document-analysis subagent finds that two credible sources contain directly contradictory figures for a key metric: a government report states 40% growth, an industry analysis states 12%. Both look legitimate and the discrepancy could materially affect the conclusions. Which approach is most effective?",
+        "options": [
+          "Apply credibility heuristics to choose the most likely correct number, finish the analysis with it, and add a footnote noting the discrepancy.",
+          "Include both numbers without marking them as conflicting and let the synthesis agent decide which fits the broader context.",
+          "Complete the analysis with both values, explicitly annotate the conflict with source attribution, and let the coordinator decide how to reconcile before passing to synthesis.",
+          "Stop the analysis and escalate to the coordinator to decide which source is authoritative before continuing."
+        ],
+        "answer": 2,
+        "why": "The subagent finishes its own work without blocking, preserves both values with attribution, and defers the cross-source reconciliation to the layer with the broader picture. The heuristic keeps a coordinator-level decision hidden behind a footnote. Including both numbers unmarked lets the conflict get merged away downstream. Stopping to escalate blocks on a decision that can be deferred, wasting the analysis already in flight.",
+        "trap": "sounds-smart"
+      },
+      "takeaway": "Annotate the conflict with both values and attribution; reconciliation belongs to the coordinator."
+    },
+    {
+      "task": "5.6",
+      "kind": "recap",
+      "title": "Domain 5 in one pass",
+      "lead": "Domain 5 is 15% of the exam and its densest trap cluster. Almost every wrong option here is diligence or empathy in costume: a confidence threshold, a routing classifier, a bigger window, a tidy average. The one reflex to install is a question you ask before choosing - which layer is this failure actually at?",
+      "points": [
+        "5.1 - case-facts block outside the summarized history; resolved threads summarized, active thread verbatim, key findings first",
+        "5.2 - three triggers only: explicit human request, policy gap, no meaningful progress. Never sentiment or a self-rated confidence score",
+        "5.3 - structured error = type + attempted query + partial results + alternatives; retry the access failure, never the empty result",
+        "5.4 - scratchpad, subagent isolation, phase summaries, manifest checkpoint, proactive `/compact`; a bigger window is never the fix",
+        "5.5 and 5.6 - validate per document type and field; every claim carries a source and date; conflicts keep both values for the coordinator"
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Ask which layer the failure is at, then fix it there - history, boundary, reporting, memory, verification or provenance."
+    }
+  ]
+}
