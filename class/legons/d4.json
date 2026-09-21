@@ -1,0 +1,513 @@
+{
+  "domain": 4,
+  "title": "Prompt Engineering & Structured Output",
+  "weight": "20%",
+  "goal": "Given a production stem about unpredictable review findings, fabricated extractions, or a manager proposing batch, pick the option that matches the documented principle instead of the trap.",
+  "tasks": [
+    "4.1",
+    "4.2",
+    "4.3",
+    "4.4",
+    "4.5",
+    "4.6"
+  ],
+  "steps": [
+    {
+      "task": "4.1",
+      "kind": "teach",
+      "title": "The review bot developers stopped reading",
+      "lead": "Your CI review bot posts findings on every PR. Six weeks in, the survey says developers are dismissing findings without reading them, and that half of them are wrong. Name the actual defect before you touch anything: the bot was told to check that comments are accurate and up to date, and that phrase is the defect. It is not the model, the temperature, or the context window.",
+      "points": [
+        "The prompt names a quality to look for, not a boundary between what qualifies and what does not.",
+        "So TODO markers and simple descriptions get flagged, while comments describing behaviour the code no longer implements get missed.",
+        "This is the recurring stem shape for the whole domain: instructions exist, the output is unpredictable.",
+        "The tested distinction is categorical versus adjectival. A confidence adjective or a threshold in an option means distractor."
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "An undefined criterion is the bug. Vague instructions do not become precise by adding more of them."
+    },
+    {
+      "task": "4.1",
+      "kind": "teach",
+      "title": "What to flag, what to report, what to skip",
+      "lead": "For every judgement the model has to make, define what qualifies, what does not qualify, and show the boundary with examples. That is what turns a quality adjective into an operational test. The structure is mandatory: what to flag, what to report, what to skip.",
+      "points": [
+        "Flag when a comment's claimed behaviour contradicts what the code actually does.",
+        "Do not flag comments that are merely incomplete or could be more detailed. Explain adversarial cases in the same structure.",
+        "Anchor severity levels with real code examples, not prose. Prose severity drifts across runs; code anchors do not.",
+        "A high false-positive rate in one category destroys trust in all categories, including the accurate ones.",
+        "The fix is to temporarily disable the noisy category while you improve its criteria, then re-enable it."
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Flag X, report Y, skip Z. Disable the noisy category rather than tightening it in place."
+    },
+    {
+      "task": "4.1",
+      "kind": "check",
+      "title": "Check: trust collapse by category",
+      "lead": "Now the numbers version of that bot. Once one noisy category is in the report, your accurate categories stop getting read too, and that detail decides the answer.",
+      "points": [],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": {
+        "q": "False-positive rates vary widely by finding category: security and correctness findings run at 8%, performance at 18%, style and naming at 52%, documentation at 48%. Developer surveys show growing distrust, with many now dismissing findings without reading them, saying \"half are wrong\". Which approach is most effective?",
+        "options": [
+          "Temporarily disable the high-false-positive categories and keep only the high-precision categories while their prompts are improved.",
+          "Keep all categories enabled but display a confidence score with each finding so developers can decide what to investigate.",
+          "Keep all categories enabled and add few-shot examples to improve accuracy for each category over the next few weeks.",
+          "Apply a uniform strictness reduction across all categories to bring the overall false-positive rate down."
+        ],
+        "answer": 0,
+        "why": "High false positives in some categories destroy trust in the accurate ones, so the immediate fix is to remove the noisy categories from output rather than leaving them on screen while accuracy improves slowly. Disabling also buys the space to iterate on those criteria before re-enabling them. A uniform strictness reduction trades away the true positives in the accurate security and correctness categories.",
+        "trap": "sounds-thorough"
+      },
+      "takeaway": "Disable the noisy category, improve its criteria, re-enable. Do not tighten in place."
+    },
+    {
+      "task": "4.2",
+      "kind": "teach",
+      "title": "Despite detailed instructions, output varies",
+      "lead": "The team already added the instruction to always include concrete fix suggestions, and the output is still sometimes detailed and sometimes vague. When a stem opens by telling you instructions have already failed, it is telling you the channel is wrong. Which technique actually fixes consistency?",
+      "points": [
+        "Few-shot examples are the most effective technique for output consistency, not more instructions or a lower temperature.",
+        "Use 2-4 targeted examples on ambiguous scenarios. Not 1, not 10.",
+        "Each example shows input, output, and the reasoning for why that output is correct over plausible alternatives.",
+        "The reasoning is what makes the pattern generalise to novel cases."
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Consistency problem means 2-4 targeted examples with reasoning. Instructions grow linearly, edge cases combinatorially."
+    },
+    {
+      "task": "4.2",
+      "kind": "check",
+      "title": "Check: vague feedback, again",
+      "lead": "The bot finds real issues, but developers cannot act on them. The stem explicitly closes the door on one option before you start.",
+      "points": [],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": {
+        "q": "Automated reviews find real issues, but developers report the feedback is not actionable, with phrases like \"complex ticket routing logic\" or \"potential null pointer\" and no indication of what to change. Adding the instruction \"always include concrete fix suggestions\" still produces output that is sometimes detailed and sometimes vague. Which approach is most effective?",
+        "options": [
+          "Refine the instructions further with more explicit requirements for each part of the feedback format.",
+          "Expand the context window to include more surrounding code so the model has enough information to propose concrete fixes.",
+          "Split into a two-pass approach where one prompt identifies issues and a second generates fixes.",
+          "Add 3-4 few-shot examples showing the exact required format: identified issue, location in code, concrete fix suggestion."
+        ],
+        "answer": 3,
+        "why": "Few-shot examples are the most effective technique when instructions alone produce variable output, because they demonstrate the required shape concretely rather than describing it abstractly. The scenario has already shown that more instructions do not converge; wider context does not constrain the shape of the feedback; and a two-pass split still relies on instruction-only prompting in each pass.",
+        "trap": "sounds-thorough"
+      },
+      "takeaway": "Show the shape. Do not describe the shape harder."
+    },
+    {
+      "task": "4.2",
+      "kind": "teach",
+      "title": "Examples across varied structures",
+      "lead": "One more use of few-shot, and it is the extraction case. Three deployment triggers exist: detailed instructions alone produce inconsistent formatting, the model makes inconsistent judgement calls on ambiguous cases, and extraction produces empty or null fields for information that exists in the document. Here is the one people miss.",
+      "points": [
+        "Few-shot reduces hallucination in extraction when examples cover varied document structures.",
+        "Cover inline citations versus bibliographies, narrative prose versus tables, and informal units.",
+        "The model learns the shape of a valid extraction instead of inventing data to fit the schema.",
+        "10 examples of one structure overfits to that structure. Use 2-4 examples spanning the structures you really receive.",
+        "For strict schemas, put format normalisation in the prompt: ISO-8601 dates, amount plus currency code, decimal fractions."
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Varied structures, few examples, with reasoning. The schema validates types; the prompt specifies formats."
+    },
+    {
+      "task": "4.3",
+      "kind": "teach",
+      "title": "What tool_use actually guarantees",
+      "lead": "Slow down here, because this is the highest-yield task in the domain. `tool_use` with a JSON schema is the most reliable way to get structured output, and it eliminates JSON syntax errors such as malformed JSON, missing braces and trailing commas. That is the entire guarantee.",
+      "points": [
+        "It does not guarantee semantic correctness.",
+        "Three failure modes survive the schema: arithmetic errors, field placement errors, and fabricated values.",
+        "Schema compliance is not source truth. Syntax validation is the first layer only.",
+        "Most distractors here are wrong-layer answers: asking the prompt to do the schema's job, or the schema to do validation code's job."
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "tool_use kills syntax errors. It does not kill arithmetic errors, wrong-field errors, or invented values."
+    },
+    {
+      "task": "4.3",
+      "kind": "diagram",
+      "title": "Four layers, one job each",
+      "lead": "When a stem describes a failure, your first move is to name which layer is responsible. Almost every wrong answer moves the fix one layer away from the defect.",
+      "points": [
+        "Prompt layer: format normalisation rules, because schemas validate types but not formats.",
+        "Schema layer: shape, presence, enum membership, nullability.",
+        "Validation layer: arithmetic, cross-field reconciliation, range and regex checks.",
+        "Source layer: whether the information exists at all. No earlier layer can manufacture it."
+      ],
+      "diagram": "schema-contract",
+      "caption": "Read top to bottom: each layer can only fail in its own way, and only its own layer can fix it.",
+      "code": null,
+      "ask": null,
+      "takeaway": "Name the layer before you name the fix."
+    },
+    {
+      "task": "4.3",
+      "kind": "teach",
+      "title": "The fabrication factory",
+      "lead": "Here is the most dangerous schema decision you can make. An invoice extractor marks `purchase_order_number` and `payment_terms` as required with `strict: true`, and about 30% of the invoices do not carry a PO number. That schema just guaranteed the model will produce one anyway.",
+      "points": [
+        "Required guarantees something will be present, not that it is true.",
+        "Strict mode requires `additionalProperties: false` on every object and every property listed in `required`.",
+        "Because `required` is not optional in strict mode, the anti-fabrication move is to make the field nullable.",
+        "Use a nullable type such as `[\"string\", \"null\"]` and instruct the model to return null when the source does not state the value.",
+        "An all-required schema is a fabrication factory."
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Make it nullable and teach the model to say null. Prompt wording cannot override structural pressure."
+    },
+    {
+      "task": "4.3",
+      "kind": "check",
+      "title": "Check: required field, absent data",
+      "lead": "Apply the mechanism you were just handed. Note which option changes the structure and which ones change only the wording.",
+      "points": [],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": {
+        "q": "An invoice extractor marks `purchase_order_number` and `payment_terms` as required in its tool schema with `strict: true`. About 30% of invoices in the corpus do not carry a PO number. Field-level audits show the extractor returns plausible-looking PO numbers for exactly those documents, and downstream reconciliation fails. Which approach is most effective?",
+        "options": [
+          "Add \"do not fabricate values\" to the extraction prompt while keeping both fields required.",
+          "Increase the retry limit so the model has more attempts to locate the PO number.",
+          "Run a second LLM call to verify every extracted PO number against the source.",
+          "Make both fields nullable by setting `type: [\"string\", \"null\"]`, and instruct the model to return null when the source does not state the value."
+        ],
+        "answer": 3,
+        "why": "A required field whose value is often absent is a fabrication factory: required guarantees something will be present, not that it is true. Nullable fields let the first call signal absence directly, which is cheaper and more honest than a verification pass that adds cost and can rationalise the original answer. Prompt wording cannot override structural pressure, and more retries produce more fabrications rather than more accuracy.",
+        "trap": "sounds-thorough"
+      },
+      "takeaway": "Change the structure, not the wording."
+    },
+    {
+      "task": "4.3",
+      "kind": "teach",
+      "title": "tool_choice: four settings, one decision",
+      "lead": "Your shared intake service receives invoices, receipts, purchase orders and contracts with no reliable classifier. Each type has its own extraction tool and schema, prompt-based JSON sometimes returns prose and sometimes drops fields, and you need guaranteed schema-conformant output without knowing the type. That requirement picks the setting for you.",
+      "points": [
+        "`auto`: the model may answer in text instead. Wrong when structured output is required.",
+        "`any`: must call some tool, and the model picks which. Correct for heterogeneous documents.",
+        "A named tool: must call this specific tool. Use it to mandate a first step or a single-tool workflow.",
+        "`none`: cannot call tools.",
+        "A named tool routes heterogeneous documents through one schema that fits none of them."
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "auto for optional, any for must-call-something, named tool for must-call-this, none to forbid."
+    },
+    {
+      "task": "4.3",
+      "kind": "check",
+      "title": "Check: unknown document type",
+      "lead": "Use the setting you just learned. The stem will tempt you with a single named tool because it sounds like a guarantee, but it guarantees the wrong thing.",
+      "points": [],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": {
+        "q": "A shared intake service receives invoices, receipts, purchase orders and contracts, and no reliable document classifier exists. Each document type has its own extraction tool with its own schema. Prompt-based JSON requests sometimes return prose and sometimes drop fields. The team needs guaranteed schema-conformant output for every document, without knowing the type in advance. Which approach is most effective?",
+        "options": [
+          "Force `tool_choice: {\"type\": \"tool\", \"name\": \"extract_invoice\"}` so the model always returns a schema-conformant object.",
+          "Keep `tool_choice: \"auto\"` and add \"always respond with valid JSON\" to the system prompt.",
+          "Set `tool_choice: \"any\"` so the model must call one of the extraction tools, then parse and validate the returned `tool_use.input` against that tool's schema.",
+          "Use one generic `analyze_document` tool with a free-text field and post-process the output into the per-type structure."
+        ],
+        "answer": 2,
+        "why": "`any` guarantees a tool call while letting the model choose the tool that fits the document, which is the correct pattern when the type is unknown and several schemas exist. A named tool routes every document through one schema that fits most of them; `auto` still allows an escape into prose; and a generic free-text tool reintroduces the inconsistent output shape the pipeline is trying to remove.",
+        "trap": "sounds-simple"
+      },
+      "takeaway": "One tool that fits all types fits none of them."
+    },
+    {
+      "task": "4.3",
+      "kind": "teach",
+      "title": "Enums, strict mode's edges, and what is gone",
+      "lead": "Three pieces of exact API surface the exam can test directly. A strict enum with no escape hatch creates validation failures when new categories keep appearing, strict mode does not support numeric range, string length or regex constraints, and assistant prefill is removed on modern models.",
+      "points": [
+        "Add `unclear` to an enum so an ambiguous case has an honest option instead of a forced wrong bucket.",
+        "Add `other` plus a paired `_detail` string field to capture the source's own wording.",
+        "Supported in strict mode: `type`, `properties`, `required`, `enum`, `const`, `items`, `anyOf`, `$ref`, `additionalProperties: false`.",
+        "Not supported: `minimum`/`maximum`, `minLength`/`maxLength`, `pattern`, `oneOf`, `if`/`then`/`else`, recursive schemas.",
+        "For a direct JSON answer use `output_config.format` with a `json_schema` type; `client.messages.parse()` returns `response.parsed_output`."
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": "strict: true  +  additionalProperties: false  +  every property in required\nnullable field: \"null if not found\" via a null-capable type\nenum: [\"billing\", \"technical\", \"account\", \"unclear\", \"other\"]  +  category_detail\noutput_config.format: {\"type\": \"json_schema\", \"schema\": {...}}",
+      "ask": null,
+      "takeaway": "Nullable fields, unclear enums, other plus detail. Range and regex belong in code. Prefill is gone."
+    },
+    {
+      "task": "4.4",
+      "kind": "teach",
+      "title": "Split the failure population first",
+      "lead": "A batch extraction over 8,000 contracts requires `governing_law` and `termination_notice_days`, and validation rejects 900. Sampling shows 700 of those contracts simply never state a governing law, while the other 200 use a date format the schema rejects. One number, two completely different problems, and the exam tests whether you notice.",
+      "points": [
+        "The 200 are output errors. Retry fixes output errors.",
+        "The 700 are source gaps. No number of retries recovers information that was never in the document.",
+        "Memorise the sentence: retry handles output errors, schema design handles source gaps.",
+        "A field that is null because the contract does not state it is a correct extraction.",
+        "More retries on absent data produce more fabrications, not more accuracy."
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Separate absence from format error before you decide anything."
+    },
+    {
+      "task": "4.4",
+      "kind": "check",
+      "title": "Check: the 900 of 8,000 stem",
+      "lead": "Now answer it. The options differ in whether they treat both populations the same way or split them.",
+      "points": [],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": {
+        "q": "A batch extraction over 8,000 contracts requires `governing_law` and `termination_notice_days` on every document. Validation rejects 900. Sampling shows 700 of those contracts simply do not state a governing law; the other 200 use a date format the schema rejects. Which approach is most effective?",
+        "options": [
+          "Retry all 900 failed documents three more times with the same prompt.",
+          "Raise the retry limit from 3 to 10 for the failed documents.",
+          "Retry the 200 format failures with the source document, the failed extraction and the exact validation error, and accept null for the 700 documents where the value is genuinely absent.",
+          "Route all 900 failed documents to human review."
+        ],
+        "answer": 2,
+        "why": "The failures are two different populations and must be treated differently. Retry-with-feedback recovers output errors because the error message tells the model what specifically went wrong, while information that is absent from the source is not recoverable by retrying and needs a nullable field instead. Retrying everything produces fabrications, and escalating everything discards the majority that a targeted fix resolves.",
+        "trap": "sounds-thorough"
+      },
+      "takeaway": "Retry the format errors, accept null for the absent values. Never retry an absent value."
+    },
+    {
+      "task": "4.4",
+      "kind": "teach",
+      "title": "Retry with feedback, and when to stop",
+      "lead": "So what exactly do you resend on a retry? Three things. Retry is effective for format mismatches, structural errors, misplaced values, locale-formatted numbers, and datetimes that need truncating to a date; it is ineffective when the information is absent from the source or lives in a document that was not provided.",
+      "points": [
+        "Resend the original document, the failed extraction, and the specific validation error.",
+        "A targeted correction beats a blind retry, and both beat `temperature: 0`, which only removes variability.",
+        "Recurring defect across many runs means a structural fix: add a few-shot example, make the field nullable, split the tool.",
+        "Prompt-level fixes generalise; per-instance retries do not.",
+        "A second call verifying every value adds cost and can rationalise the original answer. Use it as a sampling audit instead."
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Original document plus failed extraction plus the specific error. Recurring defect means structural fix."
+    },
+    {
+      "task": "4.4",
+      "kind": "teach",
+      "title": "Make a review bot measurable",
+      "lead": "One more stem shape for this task. A review bot's findings are dismissed 35% of the time, but the team cannot tell which categories drive the dismissals, so prompt changes are guesswork. What is missing is not a better instruction. It is a field.",
+      "points": [
+        "Add `detected_pattern` plus `rule_id` or `evidence` to each finding, so dismissals aggregate by code construct.",
+        "Without it you know 35% are dismissed but not which constructs to suppress.",
+        "Extract both `stated_total` and `calculated_total` plus `totals_match`, so the mismatch surfaces for validation.",
+        "Routing fields: per-field `confidence` with `value`, plus `requires_review` and `review_reasons`."
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "detected_pattern turns a black-box review bot into a measurable system."
+    },
+    {
+      "task": "4.5",
+      "kind": "teach",
+      "title": "Batch is 50% off and takes up to 24 hours",
+      "lead": "Your manager says the Message Batches API is 50% cheaper and proposes moving both review workflows onto it. One is a pre-merge check that blocks developers until it completes; the other is a technical-debt report generated overnight for review the next morning. The question is never really about cost.",
+      "points": [
+        "Message Batches API: roughly 50% cheaper, processing window of up to 24 hours, and no guaranteed latency SLA.",
+        "Design for the 24-hour worst case, not the typical case.",
+        "Right for high-volume, non-blocking, independent, deadline-flexible work: overnight reports, weekly audits, nightly tests.",
+        "Wrong whenever a human or a gate is waiting, and never migrate everything. The correct answer is the mixed strategy."
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Blocking means synchronous. Latency-tolerant means batch. Match the API to whether something is waiting."
+    },
+    {
+      "task": "4.5",
+      "kind": "diagram",
+      "title": "Timing matters",
+      "lead": "The window is up to 24 hours and your downstream deadline is the SLA. What is left after the window is your buffer, and your submission cadence has to fit inside that buffer. Worked case: SLA 30h, window 24h, buffer 6h.",
+      "points": [
+        "A record arriving just after a submission waits at most about 4h for the next batch, plus up to 24h processing.",
+        "That is about 28h against a 30h SLA. The constraint is start time plus 24h no later than the deadline.",
+        "The 4h is the submission interval, not an addition to the 24h cap.",
+        "SLA 36h with a 24h window allows roughly a 12h cadence. SLA 26h forces a 2h cadence.",
+        "Submitting once a day is only safe when the SLA is at least 48h, and the worst case is the slowest record."
+      ],
+      "diagram": "batch-timeline",
+      "caption": "Find the buffer first, SLA minus 24h, then choose a cadence that fits inside it.",
+      "code": null,
+      "ask": null,
+      "takeaway": "Buffer equals SLA minus 24h, and the cadence must be shorter than the buffer."
+    },
+    {
+      "task": "4.5",
+      "kind": "drill",
+      "title": "Practice: the manager's 50% proposal",
+      "lead": "Apply the split. Two workflows, one blocking and one overnight, and one option that sounds like it hedges.",
+      "points": [],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": {
+        "q": "Two workflows currently use synchronous calls: a blocking pre-merge check that must complete before developers can merge, and a technical-debt report generated overnight for review the next morning. The manager proposes moving both to the Message Batches API to save 50%. Which approach is most effective?",
+        "options": [
+          "Move both to batch processing with a fallback to synchronous calls if the batches take too long.",
+          "Move both workflows to batch processing with status polling to verify completion.",
+          "Use batch processing only for the technical-debt report and keep synchronous calls for the pre-merge check.",
+          "Keep synchronous calls for both workflows to avoid any issues with batch result ordering."
+        ],
+        "answer": 2,
+        "why": "The 24-hour window with no latency SLA is acceptable for an overnight report and unacceptable for a gate that developers are waiting on, so the correct answer is the mixed strategy rather than all-or-nothing. A synchronous fallback still places the blocking job in the batch queue first, polling does not shorten the window, and avoiding batch entirely forfeits savings that the overnight report tolerates well. Result ordering is not a real constraint, because results are joined by `custom_id`.",
+        "trap": "sounds-efficient"
+      },
+      "takeaway": "A synchronous fallback only fires after the queue delay. The blocking job waits anyway."
+    },
+    {
+      "task": "4.5",
+      "kind": "diagram",
+      "title": "When batch fails",
+      "lead": "First, a workflow where the model calls a tool, sees the result, and continues cannot run on batch at all, which is a technical incompatibility rather than a latency problem. Second, results arrive in any order, so you join them by `custom_id` and never by position.",
+      "points": [
+        "Multi-turn tool calling is not supported inside a single batch request, regardless of latency tolerance.",
+        "Batch does accept tool definitions in `params`. The block is executing them mid-request.",
+        "`custom_id` correlates request to response. Use stable unique identifiers so a partial re-run is straightforward.",
+        "Poll `batches.retrieve(id).processing_status` until it returns `ended`, then stream `batches.results(id)` as JSONL.",
+        "Resubmit only the failures identified by `custom_id`, and refine prompts on a sample before batching."
+      ],
+      "diagram": "agentic-loop",
+      "caption": "A loop that needs a tool result before continuing has no place to run inside fire-and-forget batch.",
+      "code": null,
+      "ask": null,
+      "takeaway": "In-request tool loop means synchronous, always. Never batch the pre-merge hook."
+    },
+    {
+      "task": "4.6",
+      "kind": "teach",
+      "title": "The model that wrote it cannot judge it",
+      "lead": "Non-obvious issues keep reaching production and are only caught when another team member reviews the PR. Someone reads the generation reasoning and finds the model considered those exact cases and concluded its own approach was correct. That is reasoning context bias.",
+      "points": [
+        "A model reviewing its own output in the same session retains the reasoning context that produced it.",
+        "It is biased toward its prior conclusions and less likely to question its own decisions.",
+        "The fix is an independent instance: a fresh session receiving only the artifact and the criteria.",
+        "Self-critique instructions inside the generating session are the failure mode, not the fix."
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Same session, same reasoning, same bias. Fresh instance, artifact and criteria only."
+    },
+    {
+      "task": "4.6",
+      "kind": "check",
+      "title": "Check: caught only by a colleague",
+      "lead": "Answer the stem you just read. Every wrong option keeps the same perspective in place and changes something else.",
+      "points": [],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": {
+        "q": "Non-obvious issues such as performance optimisations that break edge cases, or cleanups that unexpectedly change behaviour, are only caught when another team member reviews the PR. The generation reasoning shows the model considered these cases and concluded its own approach was correct. Which approach is most effective?",
+        "options": [
+          "Run a second independent instance to review the changes without access to the generator's reasoning.",
+          "Enable extended thinking for the generation stage so the model deliberates more thoroughly before producing suggestions.",
+          "Add self-review instructions to the generation prompt asking the model to critique its own suggestions before finalising.",
+          "Include full test files and documentation in the prompt context so the model better understands expected behaviour during generation."
+        ],
+        "answer": 0,
+        "why": "The model retained the reasoning context that produced the output and stayed biased toward its own conclusions, so the fix is a fresh instance with no generation history, which is the same reason human peer review works. More deliberation on the same chain of reasoning preserves the bias, self-critique instructions are the rationalisation loop that already failed, and extra context does not break a single-perspective bias.",
+        "trap": "sounds-thorough"
+      },
+      "takeaway": "Deeper deliberation on the same reasoning keeps the bias. Only independence removes it."
+    },
+    {
+      "task": "4.6",
+      "kind": "diagram",
+      "title": "Two passes",
+      "lead": "A pull request changes 14 files, and one pass gives detailed feedback on some files, shallow comments on others, misses obvious bugs, and flags a pattern in one file while approving identical code in the next. That is attention dilution. A larger context window does not cure it, because it is not a token problem.",
+      "points": [
+        "Pass one is a per-file local analysis, which gives every file consistent depth.",
+        "Pass two is a separate cross-file integration pass for data flow, interface mismatches and boundary handling.",
+        "Single-pass review of 10 or more files fails on attention dilution and inconsistent standards.",
+        "Three full-PR passes carry three times the cost and the same dilution.",
+        "A bigger context window does not fix attention dilution, because it is not a token problem."
+      ],
+      "diagram": "escalation-tree",
+      "caption": "Trace one file down the per-file pass, then follow the cross-file arrows into the integration pass.",
+      "code": null,
+      "ask": null,
+      "takeaway": "Split per-file for depth, then run a separate integration pass for cross-file issues."
+    },
+    {
+      "task": "4.6",
+      "kind": "teach",
+      "title": "Confidence you can actually route on",
+      "lead": "Self-reported confidence is unreliable for routing, and an uncalibrated 0.9 means nothing: it is permissive in one system and prohibitive in another. Overall accuracy hides the rest, because a pipeline that is 97% accurate overall can be 80% accurate on one field or one document type.",
+      "points": [
+        "Calibrate thresholds on a labelled validation set before raising an automation threshold.",
+        "Measure accuracy by segment: document type, field, source quality, confidence band.",
+        "Field-level confidence with a reason beats a bare score: `value`, `confidence`, `requires_review`, `review_reasons`.",
+        "Route to humans on low calibrated confidence, contradictory sources, high-impact fields and failed semantic validation.",
+        "Filtering low-confidence findings before developers see them hides findings instead of calibrating routing."
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Calibrate on a labelled set and measure by segment. An uncalibrated threshold is meaningless."
+    },
+    {
+      "task": "4.6",
+      "kind": "recap",
+      "title": "What matters most",
+      "lead": "This is the summary of everything you just learned. Keep these points handy.",
+      "points": [
+        "Categorical criteria beat confidence adjectives. Flag X, report Y, skip Z, with each severity level anchored in a real code example.",
+        "Inconsistent output despite detailed instructions means 2-4 targeted few-shot examples with reasoning, across varied structures.",
+        "tool_use eliminates syntax errors and nothing else. All-required schemas are fabrication factories, so make fields nullable.",
+        "Retry fixes output errors, schema design fixes source gaps. Retry sends the document, the failed extraction and the exact error.",
+        "Batch suits flexible work, never a blocking gate or an in-request tool loop, and the instance that produced output must not review it."
+      ],
+      "diagram": null,
+      "caption": null,
+      "code": null,
+      "ask": null,
+      "takeaway": "Name the layer, then name the fix. That single habit answers most of Domain 4.",
+      "inshort": "Here are the key takeaways for this domain."
+    }
+  ]
+}

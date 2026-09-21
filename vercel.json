@@ -1,11 +1,14 @@
 {
   "routes": [
-    { "src": "/class/site/lessons/(.*)", "dest": "class/site/lessons/$1" },
+    { "src": "/legons/(.*)", "dest": "class/legons/$1" },
+    { "src": "/class/legons/(.*)", "dest": "class/legons/$1" },
+    { "src": "/class/site/legons/(.*)", "dest": "class/site/legons/$1" },
+    { "src": "/lessons/(.*)", "dest": "class/legons/$1" },
+    { "src": "/class/site/lessons/(.*)", "dest": "class/site/legons/$1" },
     { "src": "/class/lessons/(.*)", "dest": "class/lessons/$1" },
-    { "src": "/lessons/(.*)", "dest": "class/lessons/$1" },
     { "src": "/tutor.js", "dest": "class/site/tutor.js" },
     { "src": "/tutor.css", "dest": "class/site/tutor.css" },
-    { "src": "/d1.json", "dest": "class/lessons/d1.json" },
+    { "src": "/d1.json", "dest": "class/legons/d1.json" },
     { "src": "/index.html", "dest": "class/site/index.html" },
     { "src": "/lesson-d1.html", "dest": "class/site/lesson-d1.html" },
     { "src": "/(.*)", "dest": "class/site/$1" }
