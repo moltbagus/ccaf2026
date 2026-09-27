@@ -20,7 +20,12 @@
 
 ### 🎨 Site experience
 - [x] Diagrams on all 108 tutor steps (14-archetype engine + 92 authored specs, 10 legacy library diagrams kept)
-- [ ] Theme toggle: Auto → Daylight → Night, top right of every page (from build_ccaf_site.mjs shared shell)
+- [x] Theme toggle: Auto → Daylight → Night, top right of every page (from build_ccaf_site.mjs shared shell)
+
+### 🐛 Queued (found by visual QA of the night theme)
+- [ ] Night theme: D2–D5 domain chips and the `teach` badge are near-black on near-black — give inactive chips a visible border
+- [ ] Night theme: keyboard hints in the lesson footer are too dim to read
+- [ ] Lesson pages: sticky answer bar clips the last line of prose at some scroll positions
 
 ### 🔜 Next Steps
 - [ ] Custom domain for Vercel (ccaf2026.com)
