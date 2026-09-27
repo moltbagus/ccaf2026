@@ -18,6 +18,10 @@
 - [x] **D4** Prompt & Structured Output
 - [x] **D5** Context & Reliability
 
+### 🎨 Site experience
+- [x] Diagrams on all 108 tutor steps (14-archetype engine + 92 authored specs, 10 legacy library diagrams kept)
+- [ ] Theme toggle: Auto → Daylight → Night, top right of every page (from build_ccaf_site.mjs shared shell)
+
 ### 🔜 Next Steps
 - [ ] Custom domain for Vercel (ccaf2026.com)
 - [ ] CI/CD pipeline setup
