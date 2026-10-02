@@ -1,0 +1,279 @@
+{
+ "domain": "o1",
+ "title": "Prompting and Task Execution",
+ "weight": "14% of the exam",
+ "goal": "Given a workplace scenario, choose the prompt structure, decomposition, iteration move, or task-type strategy that fixes the root cause of a poor output \u2014 and name the lazy action the exam offers as a distractor.",
+ "tasks": [
+  "1.1",
+  "1.2",
+  "1.3",
+  "1.4",
+  "1.5"
+ ],
+ "steps": [
+  {
+   "task": "1.1",
+   "kind": "teach",
+   "title": "A prompt is a work order, not a wish",
+   "inshort": "Generic output is a missing-input problem: name role, audience, source material, format, and constraints.",
+   "lead": "A marketing manager types \"write a LinkedIn post about our new product\" into claude.ai. The result is 150 words of interchangeable cheerleading \u2014 no product specifics, no audience, and the wrong tone for the CTOs she is trying to reach. The product briefing she is holding in her other hand never made it into the prompt.",
+   "points": [
+    "An effective prompt names five things: the role Claude is playing, the audience the output is for, the source material to work from, the format and length, and the constraints \u2014 what to include and what to avoid.",
+    "Paste the real material. Claude has no access to your briefing doc, brand voice, or last quarter's numbers unless they go into the conversation or a Project.",
+    "Show what good looks like. One example of a past output you liked does more for tone than a paragraph of adjectives.",
+    "A prompt is a spec. \"Make it good\" is not a spec; \"three bullets, under 60 words each, addressed to IT directors, no exclamation points\" is."
+   ],
+   "diagram": "o1-1",
+   "caption": "Watch the spokes: each missing input is a hole the model fills with its average.",
+   "code": null,
+   "ask": null,
+   "why": "The model can only work with what is in the conversation. Every missing element \u2014 audience, source, format \u2014 gets filled in with a generic average of its training data, which is exactly what makes output feel interchangeable.",
+   "contrast": "The tempting shortcut is a one-line ask followed by disappointment and manual rewriting. The output was not lazy; the prompt was. Asking again louder, or asking Claude to \"do better\" without new specifics, reproduces the same generic result.",
+   "exam": "Expect stems that compare two prompts, or that show generic output and ask which prompt element was missing \u2014 audience, source material, or format \u2014 rather than blaming the model.",
+   "takeaway": "Role, audience, source material, format, constraints. Every one you omit gets replaced with a generic average."
+  },
+  {
+   "task": "1.1",
+   "kind": "check",
+   "title": "Which prompt gets the client-ready summary?",
+   "inshort": "Pick the prompt that supplies source, audience, and tone \u2014 not the one that outsources the spec to the model.",
+   "lead": "One of these four moves produces a usable deliverable in one pass. The other three feel reasonable and all fail the same way.",
+   "points": [],
+   "diagram": "o1-2",
+   "caption": "Left column: every shortcut changes effort or confidence, never the prompt's inputs.",
+   "code": null,
+   "ask": {
+    "q": "A project manager needs a one-page summary of a project status update for a client who is frustrated about delays. She has ten pages of meeting notes. Which prompt is most effective?",
+    "options": [
+     "Paste the meeting notes and ask for a one-page summary written for a frustrated client: acknowledge the delays, explain the recovery plan, end with next steps, calm and non-defensive tone.",
+     "Ask for \"a professional one-page summary of our project status\" and plan to edit whatever comes back.",
+     "Ask Claude to draft the summary, then rate its own draft for client-readiness and revise accordingly.",
+     "Switch to the most capable model available and ask it to produce the best possible summary of the project."
+    ],
+    "answer": 0,
+    "why": "The effective prompt supplies the source material, the audience and its emotional state, the structure, and the tone \u2014 everything that determines whether the summary lands. A vague \"professional summary\" leaves audience and sensitivity to guesswork and guarantees an edit-heavy generic result. Self-rating is not a quality control; the model cannot know what this client needs beyond what the prompt states. The top model executes the same under-specified request with more polish but the same missing inputs.",
+    "trap": "effort_aversion"
+   },
+   "why": "The credited option is the only one that changes the inputs the model works from; the other three change the effort level or the confidence, neither of which reaches the problem.",
+   "contrast": "On the exam, every wrong option costs less typing than the right one. That is the tell.",
+   "exam": "This is the standard Domain 1 stem: near-identical asks, one with the spec filled in.",
+   "takeaway": "The right prompt does the thinking up front; the wrong ones outsource the spec to the model."
+  },
+  {
+   "task": "1.2",
+   "kind": "teach",
+   "title": "Big asks break into a chain",
+   "inshort": "Decompose sprawling requests into extract \u2192 outline \u2192 draft, and verify the cheap steps before the expensive ones run.",
+   "lead": "An operations lead pastes forty pages of scattered interview notes into claude.ai and asks for \"a complete training guide for new support hires, with modules, quizzes, and role-plays.\" The reply is a plausible-looking skeleton with invented details wherever the notes ran thin \u2014 one giant request, and no way to check anything in the middle.",
+   "points": [
+    "Decompose by deliverable: first extract and organize the source facts, then outline the structure, then draft one section at a time, then a final consistency pass.",
+    "Each step's output becomes the next step's input, so you can check the extracted facts and the outline before any prose gets written.",
+    "Checkpoints catch invention early: if the fact-extraction step is wrong, every later step inherits the error \u2014 so review the cheap step first.",
+    "Inside claude.ai, one long chat can drift on a big build. Work in a Project so instructions and sources stay attached, or summarize progress into a fresh chat."
+   ],
+   "diagram": "o1-3",
+   "caption": "Each arrow is a checkpoint: catch an invented fact before it rides into the prose.",
+   "code": null,
+   "ask": null,
+   "why": "Quality compounds along the chain: verified facts, then an agreed outline, then drafting. The model does better when each step has one job, and you do better because errors surface where they are cheap to fix.",
+   "contrast": "The mega-prompt feels efficient \u2014 one ask, one answer \u2014 but it forces the model to invent the structure, the content, and the quality bar simultaneously, and hands you a single blob you can only accept or reject wholesale.",
+   "exam": "Stems describe a sprawling request and a disappointing monolithic answer. The credited option sequences the work with checkpoints; the distractors ask harder, add emphasis, or restart the dice roll.",
+   "takeaway": "Decompose, then verify the cheap steps before the expensive ones run."
+  },
+  {
+   "task": "1.2",
+   "kind": "check",
+   "title": "From thirty pages of policy to a curriculum",
+   "inshort": "When a monolithic request fails, add structure with checkpoints \u2014 not adjectives.",
+   "lead": "The first attempt failed because one request carried the whole job. Four fixes are proposed; only one changes the structure.",
+   "points": [],
+   "diagram": "o1-4",
+   "caption": "Read the right column: three of the four fixes leave the structure untouched.",
+   "code": null,
+   "ask": {
+    "q": "An HR business partner uploads thirty pages of policy documents and asks Claude for a complete new-hire onboarding curriculum with modules, exercises, and a quiz bank. The result is generic and drifts from the documents. What is the most appropriate next action?",
+    "options": [
+     "Sequence the request: have Claude extract and organize the key policies from the documents, review that extraction, then approve a module outline, then draft each module against the verified outline.",
+     "Repeat the original request, adding that the curriculum must be \"comprehensive, accurate, and based only on the attached documents.\"",
+     "Ask Claude to evaluate its first draft against the documents and produce an improved full curriculum.",
+     "Start a new chat and re-ask the original request to get a different attempt."
+    ],
+    "answer": 0,
+    "why": "Sequencing with checkpoints fixes the root problem: unverified source facts and an unreviewed structure. Re-asking with stronger emphasis repeats the monolithic request with adjectives instead of structure. Self-review is the same single-shot gamble with an extra step, and models tend to approve their own work. A fresh chat re-rolls the same overloaded request from zero.",
+    "trap": "emphasis_over_structure"
+   },
+   "why": "Only the credited option changes how the work is structured; the distractors change tone, add inspection theater, or reroll the dice.",
+   "contrast": "\"Comprehensive and accurate\" is a wish, not a workflow. The exam dresses wishes up as diligence.",
+   "exam": "Watch for the re-ask-with-adjectives distractor; it is the most popular wrong answer in this domain.",
+   "takeaway": "Structure beats emphasis. Break the job, check the joints."
+  },
+  {
+   "task": "1.3",
+   "kind": "teach",
+   "title": "Iterate with specifics, not verdicts",
+   "inshort": "A follow-up is a new input: say exactly what to change, for whom \u2014 never \"make it better\" or \"rate yourself\".",
+   "lead": "A consultant's client update comes back stiff and three times too long. Her first instinct is to open a new chat and try again. Instead she stays in the conversation and writes: \"Cut this to one page. Open with the delay and what it costs the client. Drop the methodology paragraph entirely. Write like you're briefing a busy CFO who is already annoyed.\"",
+   "points": [
+    "Diagnose before you revise: name what specifically is wrong \u2014 audience, tone, length, structure \u2014 and address exactly that.",
+    "A corrective follow-up is a new input. The draft on the table plus a specific instruction is a better starting point than a clean slate.",
+    "\"Make it better,\" \"more professional,\" and \"rate this draft out of ten\" give the model nothing new to act on.",
+    "Iteration has a stopping point: after two or three rounds that converge, make the final edits yourself. Claude drafts; you own the deliverable."
+   ],
+   "diagram": "o1-5",
+   "caption": "Left: each line says what to change and for whom. Right: nothing new to act on.",
+   "code": null,
+   "ask": null,
+   "why": "Each specific follow-up narrows the space of acceptable outputs; a vague one leaves it unchanged. The model cannot read your disappointment \u2014 only your words.",
+   "contrast": "Restarting or regenerating throws away accumulated context and re-rolls the same dice. Asking Claude to judge its own work invites a polite yes. Both feel like action; neither changes the inputs.",
+   "exam": "Stems show a near-miss draft and four follow-up moves. The credited one carries new, specific direction \u2014 audience, cut, tone. Distractors carry emphasis, self-assessment, or a restart.",
+   "takeaway": "Say exactly what to change and for whom. A complaint is not an instruction."
+  },
+  {
+   "task": "1.3",
+   "kind": "check",
+   "title": "Which follow-up fixes the voice?",
+   "inshort": "Style problems get example-based fixes in the same conversation \u2014 not self-critique, not a reroll.",
+   "lead": "The content is right; the voice is wrong. One of these moves targets the actual problem.",
+   "points": [],
+   "diagram": "o1-6",
+   "caption": "The gate asks for evidence: self-review and rerolls both land on the fail exit.",
+   "code": null,
+   "ask": {
+    "q": "A product marketer asked Claude for a launch announcement. The draft has the right content but reads stiff and corporate, while the company's voice is casual and direct. Which approach is most effective?",
+    "options": [
+     "In the same conversation, paste two past announcements in the company voice and ask Claude to rewrite the draft in that style.",
+     "Ask Claude to review its draft and improve the tone to match the company's brand.",
+     "Regenerate the announcement from the original prompt in a new conversation.",
+     "Ask Claude to score its draft for brand alignment and rewrite any section scoring below 8 out of 10."
+    ],
+    "answer": 0,
+    "why": "Style is learned from examples, so pasting real announcements gives the model an actual target, and staying in the conversation preserves the content the marketer already likes. Self-directed improvement names no concrete reference for \"casual and direct.\" A restart discards good content to re-solve a style problem. Self-scoring is a rubric the model invents for itself; it will happily pass its own draft.",
+    "trap": "self_assessment"
+   },
+   "why": "The only durable fix for a style miss is new evidence \u2014 examples \u2014 plus iteration in place. Everything else asks the model to guess better.",
+   "contrast": "Both self-assessment options sound rigorous because they involve review. Review by the author is theater.",
+   "exam": "Whenever an option says \"have Claude evaluate its own output,\" treat it as a flagged distractor.",
+   "takeaway": "Fix style with samples, in the same chat. Never with self-scores."
+  },
+  {
+   "task": "1.4",
+   "kind": "teach",
+   "title": "Claude doesn't know your firm's voice \u2014 bring the evidence",
+   "inshort": "Organizational knowledge and style must arrive via pasted examples or a Project; otherwise the model substitutes the generic average.",
+   "lead": "A new hire at a consulting firm asks Claude to \"write a client report in our firm's style.\" Claude has never seen a single one of the firm's reports. The draft arrives in perfectly competent, perfectly wrong consulting-clich\u00e9 style. The fix is not better adjectives \u2014 it is three redacted past reports, pasted into the Project once and available to every conversation after that.",
+   "points": [
+    "General knowledge covers the world. It does not cover your organization, your clients, your voice, or last quarter's numbers.",
+    "Examples beat adjectives: two or three real samples of the target output convey style better than any description of it.",
+    "Reusable context belongs in a Project \u2014 instructions, style guide, and past deliverables stay attached to every new conversation instead of being re-pasted each time.",
+    "State constraints explicitly: word limits, sections that must appear, claims that must not be made, sensitive topics that must not be named."
+   ],
+   "diagram": "o1-7",
+   "caption": "The third branch is the trap: fluent, confident, and in the wrong house style.",
+   "code": null,
+   "ask": null,
+   "why": "Every organizational fact and stylistic convention the model needs has to arrive through the prompt, the pasted material, or the Project. Anything you do not provide gets substituted with the generic average.",
+   "contrast": "The tempting move is to trust the defaults \u2014 \"it's an AI, it should know how consultancies write.\" That produces confident, fluent output in the wrong style, which is more dangerous than obvious failure because it looks right.",
+   "exam": "Stems show plausible-but-wrong style or invented company details. The credited option supplies examples or Project knowledge; distractors supply adjectives, instructions to \"be accurate,\" or a stronger model.",
+   "takeaway": "If it is not in the conversation or the Project, Claude does not know it."
+  },
+  {
+   "task": "1.4",
+   "kind": "check",
+   "title": "Make it sound like the CEO",
+   "inshort": "Real samples in a Project beat tone adjectives and borrowed voices.",
+   "lead": "Authentic examples exist. The question is whether the chosen approach actually uses them.",
+   "points": [],
+   "diagram": "o1-8",
+   "caption": "The samples exist, so any option that ignores them is already eliminated.",
+   "code": null,
+   "ask": {
+    "q": "A communications lead wants Claude to draft a weekly update email that sounds like the company's CEO. Several authentic past weekly emails from the CEO exist. Which approach is most effective?",
+    "options": [
+     "Add three of the CEO's past weekly emails to a Project along with a short note on the recurring structure, then ask for this week's update from the same bullet-point facts.",
+     "Instruct Claude to \"write in a confident, visionary, executive tone\" and provide the weekly facts.",
+     "Ask Claude to study how well-known CEOs write weekly updates and imitate that style.",
+     "Describe the desired tone in detail \u2014 sentence length, vocabulary, rhythm \u2014 without providing any sample emails."
+    ],
+    "answer": 0,
+    "why": "Real samples of the target voice are the only reliable style evidence, and a Project makes them reusable every week. Adjective lists and tone specs describe style abstractly and still leave the model guessing what this CEO actually sounds like. Imitating famous CEOs imports someone else's voice entirely.",
+    "trap": "adjective_over_evidence"
+   },
+   "why": "The pattern: evidence in the prompt beats description in the prompt, every time the exam asks about voice or fit.",
+   "contrast": "The tone-adjective option feels thorough because it is long. Length of instruction is not weight of evidence.",
+   "exam": "When the stem says authentic examples exist, an option that ignores them is already eliminated.",
+   "takeaway": "Show, don't describe. And put the showing somewhere reusable."
+  },
+  {
+   "task": "1.5",
+   "kind": "teach",
+   "title": "Match the play to the task",
+   "inshort": "Analysis wants data and verification, research wants sources, drafting wants examples, brainstorming wants quantity \u2014 and the model scales to the job.",
+   "lead": "The same four-word request pattern \u2014 \"here's some stuff, help\" \u2014 lands on every desk. But an analyst handing Claude a pricing spreadsheet, a researcher scoping a market, a drafter writing a proposal, and a strategist brainstorming campaign names each need a different shape of prompt.",
+   "points": [
+    "Analysis: hand over the actual data, ask for the structure of findings first, then drill in \u2014 and verify key figures against the source yourself. Never let an analysis assert facts the source does not contain.",
+    "Research: use research mode for anything time-sensitive, ask for sources, and spot-check the citations. Research is where confident fabrication does the most damage.",
+    "Drafting: define audience, purpose, and format up front, supply voice examples, and iterate section by section rather than demanding the finished document.",
+    "Brainstorming: ask for quantity and deliberately odd options first, then a second pass to critique and shortlist. The first ten ideas are the average ones; ask for twenty, and ask for the ideas it thinks you will reject.",
+    "Scale the model to the job: routine drafts and simple extraction run fine on the fast model; deep analysis and strategy benefit from the most capable one. That is task-execution economics, not brand loyalty."
+   ],
+   "diagram": "o1-9",
+   "caption": "Each row buys a different play; one template for everything fails a different way.",
+   "code": null,
+   "ask": null,
+   "why": "Task type determines what the model most needs from you: data and checking for analysis, sources and skepticism for research, examples and audience for drafting, and permission to be strange for brainstorming.",
+   "contrast": "The lazy uniform move is one template for everything \u2014 paste, say \"help,\" and accept. It works just often enough to be dangerous, and it fails differently per task: invented numbers in analysis, invented sources in research, off-voice drafts, and obvious names.",
+   "exam": "Stems name the task type and ask which approach fits. Distractors apply a different task's play \u2014 brainstorming freedom to an analysis job, or top-model-everything for a routine draft.",
+   "takeaway": "Analysis: data plus checking. Research: sources plus spot-checks. Drafting: examples plus audience. Brainstorming: quantity plus critique. Then match the model to the job."
+  },
+  {
+   "task": "1.5",
+   "kind": "check",
+   "title": "\"Find insights\" in a sales spreadsheet",
+   "inshort": "Analysis starts from what the data actually contains \u2014 structure first, human verification last.",
+   "lead": "One of these approaches anchors the analysis in the real numbers. The other three invite confident invention.",
+   "points": [],
+   "diagram": "o1-10",
+   "caption": "The final marker is the one every distractor skips - your own eyes on the numbers.",
+   "code": null,
+   "ask": {
+    "q": "An analyst uploads a spreadsheet of regional sales figures to claude.ai and asks Claude to \"find insights.\" Which approach is most effective?",
+    "options": [
+     "Ask Claude first to summarize what the data contains and which questions it can actually answer, then run the analyses that matter and check the key figures against the spreadsheet before using them.",
+     "Ask Claude to find the most interesting and actionable insights in the data and highlight anything surprising.",
+     "Use the most capable model available so the analysis is as deep as possible, with the same one-line request.",
+     "Ask Claude to analyze the data and flag any errors or unsupported numbers in its own analysis before delivering it."
+    ],
+    "answer": 0,
+    "why": "Analysis starts from what the data actually contains, so a structure-first pass with human verification anchors the work in real numbers. \"Find interesting insights\" invites plausible-sounding but unsupported claims. The most capable model deepens whatever direction it guesses at without changing the missing specification. Self-flagging asks the model to catch its own fabrications, which is not a reliable check; the analyst checking figures against the source is.",
+    "trap": "self_assessment"
+   },
+   "why": "The credited option adds two things the one-liner lacks: a grounded first pass and a human verification step that cannot be delegated.",
+   "contrast": "Every distractor delegates the quality control \u2014 to the prompt's optimism, to the model tier, or to the model itself.",
+   "exam": "\"Interesting insights\" appears verbatim in exam distractors; it is the lazy-analysis tell.",
+   "takeaway": "Ground in the data, verify with your own eyes."
+  },
+  {
+   "task": "1.5",
+   "kind": "recap",
+   "title": "Domain 1 in one page",
+   "inshort": "The prompt is the spec, big work breaks into checked steps, feedback is specific or useless, context comes from you, and the task type sets the play.",
+   "lead": "That is Domain 1. Fourteen percent of the exam: the prompt is the spec, big requests break into checked steps, feedback is specific or useless, context comes from you, and the task type sets the play.",
+   "points": [
+    "Effective prompts name five things: role, audience, source material, format, constraints. Generic output means a missing input, not a bad model.",
+    "Decompose big asks: extract facts, outline, draft section by section, consistency pass \u2014 and verify the cheap steps before the expensive ones run.",
+    "Iterate with specifics in the same conversation. \"Make it better,\" self-scoring, and restarting all leave the inputs unchanged.",
+    "Supply evidence, not adjectives: examples of voice, real documents, Project knowledge. If it is not in the conversation or the Project, Claude does not know it.",
+    "Match the play to the task: analysis wants data and checking, research wants sources and spot-checks, drafting wants examples and audience, brainstorming wants quantity and critique \u2014 and the model tier scales to the job.",
+    "Exam tells: every distractor costs less effort than the right answer, and any option that says \"have Claude evaluate its own output\" is wrong."
+   ],
+   "diagram": "o1-11",
+   "caption": "Five bands, one habit: the spec, the structure, and verification stay in your hands.",
+   "code": null,
+   "ask": null,
+   "why": "These five behaviors are one behavior: put the specification, the structure, and the verification in your hands instead of hoping the model guesses them.",
+   "contrast": "The unified wrong answer is always some version of \"ask once, accept or reroll.\" The exam prices that at zero.",
+   "exam": "Every Domain 1 stem asks which action is most effective; the credited option always adds information, structure, or verification that the distractors leave out.",
+   "takeaway": "Spec it, split it, check it, feed it, match it. That is Prompting and Task Execution."
+  }
+ ]
+}

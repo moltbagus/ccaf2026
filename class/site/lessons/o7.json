@@ -1,0 +1,227 @@
+{
+ "domain": "o7",
+ "title": "Troubleshooting and Optimization",
+ "weight": "10% of the exam",
+ "goal": "Domain 7 is the exam's diagnosis discipline: name the root cause of an underperforming prompt or workflow before touching a remedy, apply the fix where it actually lives, and make sure it persists.",
+ "tasks": [
+  "7.1",
+  "7.2",
+  "7.3"
+ ],
+ "steps": [
+  {
+   "task": "7.1",
+   "kind": "teach",
+   "title": "Name the cause before you reach for a fix",
+   "inshort": "Diagnose what changed; a remedy without a diagnosis is a guess.",
+   "lead": "A monthly client-update prompt produced sharp, specific summaries for six months. This month the output is generic filler. Nothing about the prompt text changed \u2014 but last week the report it summarizes was reorganized into a new layout. The associate's first instinct is to rewrite the whole prompt from scratch.",
+   "points": [
+    "Underperforming output almost always has one specific cause: a vague instruction, missing context, a changed source, or an overloaded prompt.",
+    "The core move is diagnosis first: ask \"what changed between the last good output and this one?\" and compare the failing run against the last good one.",
+    "A remedy chosen before diagnosis \u2014 rewrite from scratch, switch models, escalate to a human \u2014 treats a symptom and usually throws away the parts that were already working.",
+    "Most fixes are small once the cause is named: point the prompt at the new layout, add the missing audience, restore the context that was removed."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "The cheapest reliable fix is the one aimed at the actual cause. Everything else is guessing, and guessing spends effort while leaving the failure in place.",
+   "contrast": "Rewriting the prompt from scratch feels productive, but it discards months of working instructions and replaces one unknown with another \u2014 the failure usually returns wearing a different hat.",
+   "exam": "Exam stems in this domain describe output that \"used to work\" and now doesn't. The right answer names the root cause and aims a small fix at it; the distractors are remedies that skip the diagnosis entirely.",
+   "takeaway": "Diagnose, then fix. An answer that names the cause beats an answer that names a remedy."
+  },
+  {
+   "task": "7.1",
+   "kind": "check",
+   "title": "Generic output, unchanged prompt",
+   "inshort": "Pick the option that finds the cause, not the one that swings hardest.",
+   "lead": "The prompt text is unchanged. The source it works from is not.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "An associate's weekly report prompt produced focused one-page summaries for months. This week the output is generic and drops the section managers rely on most. The prompt text is unchanged, but the report it summarizes was reorganized into a new layout last week. What is the best first step?",
+    "options": [
+     "Compare a last good output with this week's, identify that the reorganized source layout is the cause, and update the prompt to point at the new layout.",
+     "Rewrite the entire prompt from scratch with different wording.",
+     "Switch to a more capable model tier to raise output quality.",
+     "Send each week's generic output to a human reviewer to fix manually before it goes out."
+    ],
+    "answer": 0,
+    "why": "The output changed exactly when the source's structure changed, so the root cause is the mismatch between the prompt and the reorganized report \u2014 comparing the last good output against the failing one isolates that, and updating the prompt to match the new layout fixes it. A full rewrite from scratch throws away months of working instructions and replaces one unknown with another, a model switch spends cost on a problem the model did not cause, and routing every future output through a human reviewer pays for the same failure forever without fixing it.",
+    "trap": "remedy_before_diagnosis"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "When output quality drops, the first question is \"what changed?\" \u2014 not \"what should I replace?\""
+  },
+  {
+   "task": "7.1",
+   "kind": "teach",
+   "title": "One prompt doing five jobs",
+   "inshort": "An overloaded prompt fails quietly; decomposition gives each job its own step and its own check.",
+   "lead": "A single prompt asks Claude to research the topic, build the outline, draft the full proposal, format it to the client template, and verify it for accuracy \u2014 all in one go. The draft comes back long and uneven, and the middle sections are consistently the weakest.",
+   "points": [
+    "Overloading one prompt with several jobs makes quality uneven: early requirements get attention, later ones get squeezed out of the same single response.",
+    "The fix is decomposition: split the work into steps \u2014 research, outline, draft, format, verify \u2014 each with its own instruction and its own chance to be reviewed.",
+    "Splitting also makes each step reusable and makes it obvious which step is the weak one, instead of guessing inside one long output.",
+    "Making the single prompt longer and more demanding is the tempting wrong turn: it raises the competition between the five jobs instead of removing it."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "Quality problems that cluster in one part of an output are a structural signal, not a wording problem. The structure is the five jobs sharing one response.",
+   "contrast": "Adding stronger wording like \"be thorough and high quality across all five tasks\" feels like control, but it asks the same single response to do more, not less \u2014 the middle sections stay starved.",
+   "exam": "When a stem lists one prompt carrying several distinct responsibilities and the output is uneven, the credited answer decomposes the work. Distractors make the single prompt louder, more expensive, or duplicated.",
+   "takeaway": "Five jobs in one prompt is five ways to fail quietly. One job per step."
+  },
+  {
+   "task": "7.1",
+   "kind": "check",
+   "title": "The five-task prompt",
+   "inshort": "Decompose the work; louder single prompts and model switches leave the overload intact.",
+   "lead": "One prompt, five responsibilities, and the same weak middle every week.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A marketing associate uses one prompt that asks Claude to research competitors, outline a positioning document, draft the full document, format it to the team template, and verify every claim. The output is long and the middle sections are consistently weak. Which approach is most likely to improve quality?",
+    "options": [
+     "Add stronger wording to the existing single prompt demanding high quality and thoroughness across all five tasks.",
+     "Switch to the most capable model tier and keep the five-task prompt unchanged.",
+     "Split the work into separate steps \u2014 research, outline, draft, format, verify \u2014 reviewing each step's output before moving to the next.",
+     "Run the same prompt twice and manually combine the strongest sections from both outputs."
+    ],
+    "answer": 2,
+    "why": "The middle sections are weak because five jobs are competing inside one response, so splitting the work into separate reviewed steps removes the competition and gives each job full attention. Demanding higher quality in the same overloaded prompt just asks one response to try harder at five things at once, switching to a more capable model raises the ceiling but the overload \u2014 the actual cause \u2014 stays in place, and running the prompt twice to merge the best parts pays double the cost for manual patchwork that still leaves the structure failing.",
+    "trap": "demand_quality_over_decomposition"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Uneven output from a multi-job prompt is a structure problem. Change the structure."
+  },
+  {
+   "task": "7.2",
+   "kind": "teach",
+   "title": "Feedback is a signal, not a to-do",
+   "inshort": "Turn feedback into a lasting change to the prompt or instructions \u2014 not a hand-patch of one output.",
+   "lead": "A sales team reports that Claude's weekly product-update drafts read like engineering documentation. The associate rewrites one draft by hand and moves on. Next week's batch has exactly the same problem.",
+   "points": [
+    "Feedback and results tell you precisely where the prompt is wrong: wrong audience, wrong format, wrong depth. Treat the complaint as a diagnosis waiting to be written down.",
+    "Adjusting the approach means changing what generates the output \u2014 the saved prompt, the project's instructions, the knowledge source \u2014 so the fix applies to every future run.",
+    "Persist the fix where the workflow actually reads it. A correction made once in the chat, or by hand on one deliverable, does not reach next week's run.",
+    "Close the loop: re-run the same task after the change and confirm the feedback is addressed before calling it fixed."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "A fix that lives only in this week's deliverable leaves the cause untouched, so the same complaint arrives with every batch \u2014 the effort repeats forever.",
+   "contrast": "Hand-editing the current output feels responsive, and the team gets a good deliverable today \u2014 but the prompt that produced the problem is still the prompt that produces next week's problem.",
+   "exam": "Stems pair a piece of stakeholder feedback with a set of responses. The credited answer changes the standing prompt or project instructions; distractors patch the single output, push rework onto people, or optimize something the feedback never mentioned.",
+   "takeaway": "A fix that isn't saved isn't a fix. Change the prompt, not just the product."
+  },
+  {
+   "task": "7.2",
+   "kind": "check",
+   "title": "Too technical for the audience",
+   "inshort": "The fix must live in the saved prompt, or the same complaint returns next week.",
+   "lead": "Real feedback from real stakeholders \u2014 and one draft that was fixed by hand, once.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A sales team gives feedback that Claude's weekly product-update drafts are too technical for their customer audience. The drafts are generated by a saved prompt in the team's project. What is the best response to this feedback?",
+    "options": [
+     "Manually simplify this week's draft before sending it to the team.",
+     "Update the saved prompt and the project's instructions to specify the customer audience and plain language, then regenerate the next draft with the updated prompt.",
+     "Ask each salesperson to rewrite their own portion of the update before it goes out.",
+     "Switch to a faster model tier so drafts arrive earlier and the team has more time to edit them."
+    ],
+    "answer": 1,
+    "why": "The feedback points at the saved prompt's missing audience definition, so updating the saved prompt and project instructions makes the fix apply to every future draft, and regenerating confirms it worked. Manually simplifying only this week's draft leaves next week's batch with the identical problem, having each salesperson rewrite their own portion multiplies the manual effort while still leaving the cause in place, and a faster model changes when the draft arrives, not whether it fits the audience.",
+    "trap": "non_persistent_fix"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Feedback identifies the gap; only a change to the standing prompt or instructions closes it permanently."
+  },
+  {
+   "task": "7.3",
+   "kind": "teach",
+   "title": "Optimize the workflow, not just the prompt",
+   "inshort": "Match treatment to task, keep knowledge sources current, and cut steps nobody uses.",
+   "lead": "A team's research workflow sends every question \u2014 including one-paragraph quick checks \u2014 through the same heavyweight path: a deep-dive request to the most capable model with a ten-section analysis format. Costs and turnaround keep climbing, and half the sections go unread.",
+   "points": [
+    "Efficiency means matching the approach to the job: quick questions get a short prompt and a fast model; only genuinely complex analysis earns the deep treatment.",
+    "Effectiveness means auditing the moving parts: is the knowledge source current, is the output format what the audience actually reads, are there steps nobody uses?",
+    "Stale knowledge sources quietly degrade outputs \u2014 Claude can only be as current as the material it is given, and it will answer confidently from outdated files.",
+    "An optimized workflow is measured, not assumed: faster turnaround, lower cost, outputs that fit \u2014 verified after the change."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "Most workflow cost is structural: a mismatch between the task and the treatment, a source that has gone stale, or a step that serves nobody. Prompt wording tweaks cannot touch any of those.",
+   "contrast": "Optimization is not \"make everything bigger.\" Routing every small task through the heavyweight flow wastes cost and time; but flattening everything to quick-and-shallow under-serves the genuinely complex work. The skill is matching, not maximizing.",
+   "exam": "Stems describe a workflow with a mismatch \u2014 wrong model tier for the task, an outdated knowledge source, output drifting from what its audience needs. The credited answer removes the mismatch; distractors add reviews, switch tools, or add instructions that don't touch it.",
+   "takeaway": "Match the treatment to the task, keep the sources current, and cut what nobody uses."
+  },
+  {
+   "task": "7.3",
+   "kind": "check",
+   "title": "Answers quoting last year's prices",
+   "inshort": "Claude answers from what it's given \u2014 replace the stale source, don't instruct accuracy.",
+   "lead": "Every pricing answer has been corrected by hand for a month. The source of the problem has been sitting in the project the whole time.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A support team's project includes an uploaded product-pricing document from last year. Claude's answers about current plans keep quoting the old prices, and team members have been correcting each answer by hand before it reaches customers. What is the most effective fix?",
+    "options": [
+     "Add an instruction to the prompt telling Claude to only provide current, accurate pricing information.",
+     "Have a human review and correct every pricing answer before it is sent.",
+     "Move pricing questions to a more capable model tier.",
+     "Replace the outdated pricing document in the project's knowledge source with the current one, so every future answer draws on current data."
+    ],
+    "answer": 3,
+    "why": "Claude can only answer from the material it is given, so the year-old document is the root cause, and replacing it in the knowledge source fixes every future answer at once. An instruction to be accurate cannot create pricing information the project does not contain, human review of every answer pays the same correction cost forever instead of removing it, and a more capable model tier would still be reading the same stale document.",
+    "trap": "instruction_instead_of_source"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "When answers are systematically wrong about facts, check the knowledge source before the prompt."
+  },
+  {
+   "task": "7.3",
+   "kind": "recap",
+   "title": "Domain 7 in one page",
+   "inshort": "Diagnose the cause, fix it where it lives, make the fix persist, and match the treatment to the task.",
+   "lead": "That is Domain 7 \u2014 the exam's shortest domain, carried by one discipline: name the root cause before you touch a remedy, apply the fix where it actually lives, and make sure it persists.",
+   "points": [
+    "Diagnosis before remedy. Ask \"what changed between the last good output and now?\" Rewriting from scratch, switching models, or escalating to a human all skip that question.",
+    "Uneven output from one prompt carrying several jobs is a structure problem \u2014 decompose into steps instead of making the single prompt louder.",
+    "Feedback identifies the gap; the fix belongs in the saved prompt, project instructions, or knowledge source, so it applies to every future run \u2014 not to one hand-patched deliverable.",
+    "Optimization is matching: quick tasks get a short prompt and a fast model, deep analysis earns the full treatment, knowledge sources are kept current, and steps nobody uses get cut.",
+    "On the exam, the right answer names the root cause and removes it permanently. Distractors jump straight to a remedy, patch a single output, or apply a fix that doesn't persist."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Every Domain 7 stem asks the same thing in different clothes: what is the root cause, and which remedy actually removes it \u2014 permanently?"
+  }
+ ]
+}

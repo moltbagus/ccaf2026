@@ -1,0 +1,306 @@
+{
+ "domain": "o2",
+ "title": "Output Evaluation and Validation",
+ "weight": "21% of the exam",
+ "goal": "Read every Claude output like a fact-checker: verify claims against authoritative sources, catch hallucinations and bias before they ship, put a human where consequences live, and pick the format that matches the destination.",
+ "tasks": [
+  "2.1",
+  "2.2",
+  "2.3",
+  "2.4",
+  "2.5",
+  "2.6",
+  "2.7",
+  "2.8",
+  "2.9",
+  "2.10",
+  "2.11",
+  "2.12"
+ ],
+ "steps": [
+  {
+   "task": "2.1",
+   "kind": "teach",
+   "title": "Fluent is not the same as correct",
+   "inshort": "How to read a Claude output before anyone else does.",
+   "lead": "A marketing associate asks Claude for a one-page competitive overview of three rivals: founding year, headquarters, pricing tiers. The draft lands in ninety seconds and reads beautifully \u2014 specific dates, clean comparisons, confident phrasing. This domain asks the question that comes next: did anyone check it?",
+   "points": [
+    "Language models produce the most plausible continuation of a prompt, not the most verified one. Fluent, well-structured prose is a property of the model, not a signal that the content is true.",
+    "Hallucination is confident fabrication: invented statistics, dates, citation numbers, quotes, product features, policies. The more specific the detail looks, the more it deserves a check, because specificity is exactly what makes a fabrication convincing.",
+    "Accuracy and completeness are separate checks: is what is here true, and is what is missing important? A response can be entirely accurate and still useless because it answered two of your three questions.",
+    "Verification effort scales with stakes. A brainstorm you will riff on needs a skim; a number bound for a compliance team, a client deck, or a published report needs a source."
+   ],
+   "diagram": "o2-1",
+   "caption": "Left is the shortcut that trusts polish; right is the fact-checker's read.",
+   "code": null,
+   "ask": null,
+   "why": "Evaluation is the associate's job, not the model's. Claude cannot flag its own fabrications because it does not know they are fabrications \u2014 they come out as fluent as the true statements.",
+   "contrast": "The tempting shortcut is reading for polish: if it sounds like a well-informed person wrote it, treating it as if one did. Fluency is precisely what a hallucination is made of.",
+   "exam": "Domain 2 stems hand you a confident, specific output and a consequential audience, then ask what to do before it ships. The correct answer is almost never 'send it'.",
+   "takeaway": "Read Claude's output like a fact-checker, not like a reader."
+  },
+  {
+   "task": "2.2",
+   "kind": "check",
+   "title": "The statistic that sounds too good to check",
+   "inshort": "Spot the fabricated-looking detail before the client does.",
+   "lead": "A consultant asks Claude for a one-page briefing on a client's industry. The draft includes: 'The segment grew 14% in 2023, according to XYZ Research.' It ships tomorrow.",
+   "points": [],
+   "diagram": "o2-2",
+   "caption": "Follow the draft through the verification gate \u2014 only one exit ships.",
+   "code": null,
+   "ask": {
+    "q": "A consultant asks Claude for a one-page industry briefing for a client. The draft includes a specific statistic attributed to a named research firm, and it ships tomorrow. What is the most appropriate action before sending it?",
+    "options": [
+     "Send it as-is \u2014 Claude's drafts are generally reliable, and the deadline is tomorrow.",
+     "Verify the statistic and its attribution against the named firm's actual published report before sending.",
+     "Ask Claude how confident it is in the statistic, and send it if Claude says it is certain.",
+     "Reword the line to say the segment 'grew significantly' so precision is no longer claimed."
+    ],
+    "answer": 1,
+    "why": "A named attribution is exactly the kind of specific, checkable detail language models fabricate, and a client-facing number needs validation against the firm's actual publication. Sending as-is stakes the client relationship on an unverified number; self-reported confidence is not an accuracy signal, because a hallucination is asserted as fluently as a fact; and softening the wording hides the risk instead of resolving it \u2014 the reader still relies on your briefing.",
+    "trap": "self_reported_confidence"
+   },
+   "why": "This is the exam's most repeated Domain 2 shape: confident specific detail plus a consequential audience equals verify against an authoritative source.",
+   "contrast": "The distractors are the three laziest moves available: trust it, ask the author, or blur the claim.",
+   "exam": "Expect at least one stem nearly identical to the official sample \u2014 a citation or subsection number bound for compliance or a client.",
+   "takeaway": "A number with a source attached is a number you can check \u2014 so check it."
+  },
+  {
+   "task": "2.3",
+   "kind": "teach",
+   "title": "The audit pass: hallucinations, inconsistencies, and bias",
+   "inshort": "Three failure classes, each with its own tells on the page.",
+   "lead": "You asked Claude to draft a customer-segment analysis from last quarter's survey data. Before you argue about wording, run a structural audit pass: three failure classes, each with its own tells and its own repair.",
+   "points": [
+    "Hallucination tells: details you cannot trace to anything you provided or can verify \u2014 a product feature that does not exist, a survey question you never asked, a competitor program that predates the competitor. Trace every concrete claim to a source: your upload, your own knowledge, or an authoritative one.",
+    "Inconsistency tells: the summary says the survey had 412 respondents while the chart says 380; a recommendation contradicts the finding two paragraphs above it. A long output has no built-in cross-check \u2014 you are the consistency contract.",
+    "Bias tells: unearned generalizations ('this demographic distrusts technology'), one-sided framing that omits contrary evidence, and stereotyped language in persona or segment descriptions. The test: would a fair-minded member of the described group recognize themselves?",
+    "Run these as explicit passes. Ask Claude to list every factual claim in the output, or to argue the opposing case, and to flag generalizations it cannot support from the provided data \u2014 then verify the flagged items yourself."
+   ],
+   "diagram": "o2-3",
+   "caption": "Each branch is a failure class with its own tell and its own repair.",
+   "code": null,
+   "ask": null,
+   "why": "Each failure class has a distinct repair: hallucinations get verified or cut, inconsistencies get reconciled against the source data, and bias gets rebased on what the data actually shows.",
+   "contrast": "The lazy version is a vibes read \u2014 'looks fine, sounds professional' \u2014 which catches typos and none of the three failure classes.",
+   "exam": "Stems describe a flaw in an output and ask how to identify or handle it. Correct answers name the class \u2014 hallucination, inconsistency, bias \u2014 and pair it with the matching response.",
+   "takeaway": "Three passes, three failure classes: trace claims, cross-check consistency, interrogate generalizations."
+  },
+  {
+   "task": "2.4",
+   "kind": "check",
+   "title": "The segment profile that goes too far",
+   "inshort": "Survey data in, stereotype out \u2014 what diligence looks like.",
+   "lead": "Claude analyzed your survey data and produced segment profiles. One reads: 'Budget-conscious older shoppers who distrust technology and prefer phone support.' The survey never asked about technology attitudes.",
+   "points": [],
+   "diagram": "o2-4",
+   "caption": "Left fixes the content; right are the paper tigers that leave it standing.",
+   "code": null,
+   "ask": {
+    "q": "Claude drafts customer-segment profiles from your uploaded survey data. In review, you notice one profile makes broad generalizations about an age group's attitudes toward technology that the survey data does not support. What is the most appropriate action?",
+    "options": [
+     "Ship it \u2014 the profiles came from analysis of your uploaded data, so they reflect the data.",
+     "Ask Claude whether the segment profiles are biased, and revise whatever Claude flags.",
+     "Cut or rebase the unsupported generalizations on what the survey data actually shows, and add a counter-framing pass (ask Claude to argue the opposite characterization) to your review routine.",
+     "Keep the profile but add a disclaimer that the analysis is AI-generated and may contain bias."
+    ],
+    "answer": 2,
+    "why": "Unsupported generalizations about a demographic are exactly the bias this domain expects you to catch, and the fix is rebasing the profile on actual data plus a deliberate counter-framing check. Shipping assumes provenance implies accuracy, but the bias entered after the data; asking Claude to self-audit relies on the process that produced the flaw to detect it; and a disclaimer transfers risk to the reader while shipping the same content.",
+    "trap": "self_audit"
+   },
+   "why": "Bias detection is a named objective and the exam tests the response, not just recognition: rebase on real data, don't annotate the stereotype.",
+   "contrast": "Two paper tigers: 'it came from my data' and 'we disclosed it'. Neither changes what the profile claims.",
+   "exam": "Watch for disclaimer distractors \u2014 they look like governance and are actually the send-as-is answer in a suit.",
+   "takeaway": "A stereotype with a disclaimer is still a stereotype. Fix the content, not the footer."
+  },
+  {
+   "task": "2.5",
+   "kind": "teach",
+   "title": "Fact-checking: verify against the authoritative source",
+   "inshort": "How to check a claim, and which source owns the truth of it.",
+   "lead": "You are fact-checking the competitive one-pager. The instinct is right, but the method is what the exam tests: verification means comparing the claim against the source that owns the truth of that claim.",
+   "points": [
+    "Authoritative source means the owner of the fact: the regulation itself for legal requirements, the named research firm's actual publication for a statistic, the vendor's own pricing page for their prices, your finance system for revenue figures. A second Claude pass is not a source.",
+    "Claude's products change the effort, not the obligation: research mode performs searches and shows clickable citations; Projects hold your own documents as ground truth. Citations reduce the work \u2014 you still confirm the source really says what Claude claims, and that the source itself is real and credible.",
+    "Prioritize what carries consequences: numbers that drive decisions, anything attributed to a person or publication, legal and regulatory specifics, and claims that would embarrass you if wrong. A marketing adjective can pass unverified; a subsection citation cannot.",
+    "When a claim fails verification, cut it or hedge honestly \u2014 state the limitation explicitly. Never keep a specific number that did not survive a check."
+   ],
+   "diagram": "o2-5",
+   "caption": "For each claim, look at who actually owns the truth of it.",
+   "code": null,
+   "ask": null,
+   "why": "Verification is minutes of work against the unbounded cost of a wrong claim surviving into a decision, and it converts Claude's draft from plausible to supported.",
+   "contrast": "The lazy alternatives \u2014 asking Claude to double-check itself, or re-running the prompt and trusting agreement between runs \u2014 use the model as its own reference. Two hallucinations can agree.",
+   "exam": "Wrong answers here are usually 'ask Claude to verify' or 'regenerate and compare'; the right answer names an external source that owns the fact.",
+   "takeaway": "A claim is verified when its owner's source says it, not when Claude repeats it."
+  },
+  {
+   "task": "2.6",
+   "kind": "check",
+   "title": "Research mode gave you citations. Now what?",
+   "inshort": "Citations are the map, not the territory.",
+   "lead": "A project manager used Claude's research mode to compare three software vendors. The report is polished, and every claim carries a citation. Leadership reads it Thursday.",
+   "points": [],
+   "diagram": "o2-6",
+   "caption": "A citation tells you where to look; diligence means visiting it.",
+   "code": null,
+   "ask": {
+    "q": "A project manager uses Claude's research mode to produce a vendor-comparison report for a leadership decision. The report is well-structured and includes citations to sources. What is the most appropriate action before presenting it?",
+    "options": [
+     "Present it \u2014 research mode's citations mean the claims have already been verified.",
+     "Spot-check the citations behind the claims driving the recommendation against the linked primary sources, and confirm the sources are current and credible.",
+     "Ask Claude to confirm that all citations are real and accurately reflect the sources.",
+     "Regenerate the report with a differently worded prompt and present the version whose recommendation feels better supported."
+    ],
+    "answer": 1,
+    "why": "A citation tells you where to look, not that the claim holds \u2014 diligence means reading the primary sources behind the decision-driving claims and checking currency and credibility. Presenting on citation presence trusts the format instead of the verification; asking Claude to confirm its own citations is the model checking itself; and choosing between two generated drafts by feel selects style over evidence.",
+    "trap": "citation_aura"
+   },
+   "why": "This stem updates the classic hallucination question for research mode: better tooling raises the bar on diligence, it does not clear it.",
+   "contrast": "Citations make a report easier to check, not easier to trust.",
+   "exam": "'Research mode already cites its sources' is the send-as-is distractor in its most modern costume.",
+   "takeaway": "Citations are the map. You still have to visit the territory."
+  },
+  {
+   "task": "2.7",
+   "kind": "teach",
+   "title": "When a human must sign off",
+   "inshort": "The line where AI assistance stops and human accountability starts.",
+   "lead": "Claude drafted an internal FAQ on parental-leave entitlements across three jurisdictions. It is clear, well-organized, and reads authoritative. Some outputs ship after a spot check. This one cannot \u2014 and the exam expects you to know exactly where that line sits.",
+   "points": [
+    "Human review is required when output is consequential and people rely on it: legal, regulatory, financial, medical, or safety claims; decisions affecting an individual (hiring, benefits, eligibility); and anything carrying your name or your company's commitment.",
+    "The reviewer must be qualified: a subject-matter expert or the accountable owner, not whoever is holding the draft. A layperson approving technical claims is review theater.",
+    "AI assistance is still the right tool in these cases \u2014 Claude drafts, the expert verifies and signs off. Human in the loop means a human makes the consequential judgment, not that a human glances at the draft.",
+    "When in doubt, default to review. The downside of a bad consequential claim is unbounded; the review costs minutes."
+   ],
+   "diagram": "o2-7",
+   "caption": "Same draft, two exits \u2014 the gate is whether people rely on it.",
+   "code": null,
+   "ask": null,
+   "why": "Regulators, courts, and your own organization's policies hold humans accountable for consequential outputs. That accountability cannot be delegated to a model.",
+   "contrast": "The tempting shortcuts: treating Claude's fluency as equivalent to expert review, or running two more Claude passes and calling the consensus 'verification'. Drafts from the same model agree with each other for the same reasons the first one was written.",
+   "exam": "Stems put a draft in front of a regulated or decision-affecting audience. The answer routes it to a qualified human; distractors offer model-side substitutes \u2014 another pass, a self-rating, a disclaimer.",
+   "takeaway": "Consequential claim, qualified human sign-off. No prompt replaces this."
+  },
+  {
+   "task": "2.8",
+   "kind": "check",
+   "title": "The leave-policy FAQ",
+   "inshort": "Flawless prose, real stakes.",
+   "lead": "HR asked Claude to draft an internal FAQ on parental-leave entitlements across three jurisdictions. It was ready in minutes and reads flawless. Employees will make personal decisions based on it.",
+   "points": [],
+   "diagram": "o2-8",
+   "caption": "First match wins: consequential content goes to the expert, not a disclaimer.",
+   "code": null,
+   "ask": {
+    "q": "Claude drafts an internal FAQ explaining parental-leave entitlements, including jurisdiction-specific rules that employees will rely on for personal decisions. What is the most appropriate action before publishing it?",
+    "options": [
+     "Publish it \u2014 parental-leave rules are standard HR topics that language models handle reliably.",
+     "Ask Claude to verify each jurisdiction's rules against the latest regulations, and publish once Claude confirms accuracy.",
+     "Send it to the HR compliance specialist with jurisdiction expertise for verification and sign-off before publishing.",
+     "Publish it with a note telling employees to verify their own entitlements with HR if in doubt."
+    ],
+    "answer": 2,
+    "why": "Benefits information that employees rely on is consequential: entitlements vary by jurisdiction and change over time, so a qualified human \u2014 the HR compliance specialist \u2014 must verify and own the content before it publishes. Publishing on topic familiarity stakes real decisions on a plausible draft; asking Claude to verify against regulations leaves the model grading its own homework against sources you still have not seen; and telling readers to double-check transfers the organization's duty onto each employee.",
+    "trap": "model_self_check"
+   },
+   "why": "This is the human-review objective in its exam form: qualified reviewer, before publication, no substitutes.",
+   "contrast": "Topic familiarity is not accuracy, self-verification is not review, and a disclaimer is not diligence.",
+   "exam": "Consequential-audience stems dominate this objective; the reviewer being qualified matters as much as review existing.",
+   "takeaway": "Consequential content gets a qualified human's signature, not a disclaimer."
+  },
+  {
+   "task": "2.9",
+   "kind": "teach",
+   "title": "Edit for the audience, not just for polish",
+   "inshort": "Adapting a correct output to the people who will actually read it.",
+   "lead": "A consultant has a verified research summary \u2014 dense, thorough, precise. Next stop: the client's board, who are non-technical and want a decision, not a literature review. The content is done. The communication is not.",
+   "points": [
+    "Adaptation is a real edit with a real brief: who reads it, what decision they will make, what vocabulary they share, what they already know, and what constraints apply \u2014 length, tone, format conventions.",
+    "Give Claude the brief explicitly: 'Rewrite for a non-technical board that has ten minutes and must decide whether to renew this vendor. Keep the three cost figures and the risk finding exact.' Audience, decision, time, and what must survive the edit verbatim.",
+    "Compare versions instead of overwriting: ask for the rewrite alongside the original so you can verify substance survived \u2014 numbers unchanged, key caveats intact, nothing simplified into a different claim.",
+    "The associate owns the final read. Claude adapts tone and structure reliably, but simplification can silently drop a caveat or sharpen a hedge into a promise."
+   ],
+   "diagram": "o2-9",
+   "caption": "Left rewrites blind; right briefs the reader, decision, and numbers that must survive.",
+   "code": null,
+   "ask": null,
+   "why": "The same verified content fails or succeeds on fit. A correct answer to the wrong audience is a failed output.",
+   "contrast": "The lazy version is 'make it shorter and friendlier' with no brief \u2014 which produces a vaguer draft, not an adapted one. Vagueness reads as polish and quietly changes the claims.",
+   "exam": "Stems hand you verified content and a specific audience. The right answer is an explicit audience brief plus a substance check \u2014 never a blind rewrite or send-as-is.",
+   "takeaway": "Brief the audience, demand the numbers survive, compare drafts. Polish is not adaptation."
+  },
+  {
+   "task": "2.10",
+   "kind": "check",
+   "title": "The board wants ten minutes, not forty",
+   "inshort": "Same content, new reader \u2014 what does diligence look like?",
+   "lead": "The vendor research is verified. Now it goes to the client's non-technical board, which has ten minutes and one decision to make: renew or switch.",
+   "points": [],
+   "diagram": "o2-10",
+   "caption": "Watch the chain: an explicit brief, then a comparison against the source.",
+   "code": null,
+   "ask": {
+    "q": "A consultant has a verified, detailed vendor-analysis document. The client's non-technical board needs a short version to decide whether to renew a contract. What is the most appropriate way to produce it?",
+    "options": [
+     "Send the full document \u2014 the board can focus on the parts they need and will appreciate the depth.",
+     "Ask Claude to rewrite it for a non-technical board that has ten minutes, keeping the key cost figures and the main risk finding exact, then compare the rewrite against the original to confirm the substance survived.",
+     "Ask Claude to make the document shorter and more engaging, then send whichever version reads better.",
+     "Extract the executive summary paragraph Claude wrote at the top of the document and send that alone."
+    ],
+    "answer": 1,
+    "why": "Adaptation needs an explicit audience brief \u2014 reader, decision, time budget, and the claims that must survive verbatim \u2014 followed by a comparison against the source so simplification does not alter the substance. Sending the full document outsources the editing to the busiest audience in the room; 'shorter and more engaging' with no brief yields polish without fit; and the auto-generated summary was never checked against what this board needs to decide.",
+    "trap": "polish_only"
+   },
+   "why": "The adaptation objective is tested as a judgment call: the right answer names the audience, the decision, and a substance check together.",
+   "contrast": "One distractor skips the edit, one edits without a brief, one skips the brief and the check. All three leave fit to chance.",
+   "exam": "A blind 'make it better' rewrite is this objective's signature wrong answer \u2014 it looks like action and changes the claims.",
+   "takeaway": "Adapt with a brief, then verify the numbers survived the rewrite."
+  },
+  {
+   "task": "2.11",
+   "kind": "teach",
+   "title": "Pick the format for the destination",
+   "inshort": "Inline, artifact, or structured data \u2014 the container follows the downstream use.",
+   "lead": "The content is verified. The last Domain 2 judgment is the container: a 40-row comparison living in a chat scroll, a one-line answer trapped in a document, a dataset the analyst needs to filter. Format is a decision, and the exam tests it.",
+   "points": [
+    "Inline chat for answers that live in the conversation: quick explanations, iteration, back-and-forth refinement \u2014 anything you consume right now and move on from.",
+    "Artifacts for deliverables with a life beyond the chat: documents, decks, one-pagers, dashboards, code, sites \u2014 things someone will reuse, edit, or present. They stay editable and shareable instead of dissolving into the scroll.",
+    "Structured data \u2014 tables, spreadsheets, CSV \u2014 when the output feeds a downstream process: sorting, filtering, calculation, or hand-off to an analyst. A decision matrix your team will weight and score belongs in a table, not prose.",
+    "The test is downstream use: consumed now and discarded means inline; reused, edited, or presented means artifact; filtered, calculated, or handed off means structured. When in doubt, ask where this output lives next week and pick that format."
+   ],
+   "diagram": "o2-11",
+   "caption": "Read the downstream use on the left and pick the container it implies.",
+   "code": null,
+   "ask": null,
+   "why": "Format determines whether the work survives contact with its next reader. The right content in the wrong container is rework.",
+   "contrast": "The lazy default is accepting whatever shape Claude produced first \u2014 usually a wall of prose \u2014 or 'make it a document' for everything. A 40-row table in chat is unreadable; a one-paragraph answer as an artifact is overhead.",
+   "exam": "Stems name a downstream use and ask for the appropriate format; distractors choose by length or personal preference rather than use.",
+   "takeaway": "Ask where the output goes next \u2014 conversation, deliverable, or dataset \u2014 then pick inline, artifact, or structured."
+  },
+  {
+   "task": "2.12",
+   "kind": "recap",
+   "title": "Domain 2 in one page",
+   "inshort": "The heaviest domain, compressed into one chain.",
+   "lead": "That is Domain 2 \u2014 the biggest slice of the exam, and one chain: read outputs like a fact-checker, audit for hallucination, inconsistency, and bias, verify against the source that owns the fact, put a human where consequences live, adapt for the audience, and pick the container that matches the destination.",
+   "points": [
+    "Fluency is not accuracy. The more specific the detail \u2014 a citation number, a statistic, a date \u2014 the more it needs a source, because fabrications read exactly like true statements.",
+    "Three audit passes: trace concrete claims (hallucination), cross-check internal consistency (inconsistency), interrogate generalizations and one-sided framing (bias).",
+    "Verify against the owner of the fact \u2014 the regulation, the named publication, the vendor's own pricing page. Claude checking Claude is not verification, and neither is agreement between two drafts.",
+    "Human review is required for consequential, regulated, or decision-affecting output, and the reviewer must be qualified. Consequential claim, human sign-off.",
+    "Adapt with an explicit audience brief \u2014 reader, decision, time, what survives verbatim \u2014 then compare against the original so simplification does not change the claims. Polish is not adaptation.",
+    "Format follows destination: inline for the conversation, artifacts for deliverables, structured data for downstream processing."
+   ],
+   "diagram": "o2-12",
+   "caption": "Read top to bottom: the habits that scale with the stakes.",
+   "code": null,
+   "ask": null,
+   "why": "Six objectives, one habit: diligence scaled to stakes.",
+   "contrast": "Every wrong answer on this domain is a way of skipping diligence while looking busy: send as-is, self-check, disclaimer, blind rewrite.",
+   "exam": "Every Domain 2 stem asks the same thing: what does diligence look like here \u2014 and the answer is never 'send as-is'.",
+   "takeaway": "Diligence scaled to stakes: skim the brainstorm, source the number, sign off the policy, brief the audience, match the format."
+  }
+ ]
+}

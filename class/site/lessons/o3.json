@@ -1,0 +1,230 @@
+{
+ "domain": "o3",
+ "title": "Product and Model Selection",
+ "weight": "12% of the exam",
+ "goal": "Match the task to the right surface, the right model tier, and the right conversation-management move \u2014 and name the wasteful reflexes the exam dresses up as diligence.",
+ "tasks": [
+  "3.1",
+  "3.2",
+  "3.3",
+  "3.4"
+ ],
+ "steps": [
+  {
+   "task": "3.1",
+   "kind": "teach",
+   "title": "Four surfaces, four jobs",
+   "inshort": "Chat is for one-off work, Projects persist context, research mode goes broad and sourced, artifacts make work editable.",
+   "lead": "A marketing consultant keeps pasting the same brand guidelines into a fresh chat every morning, loses the drafts every afternoon, and asks Claude one-off questions in between. Three behaviors, three surfaces, all being run through plain chat.",
+   "points": [
+    "Chat is the default surface: one conversation, one task, nothing carried over when it ends.",
+    "A Project pins instructions and knowledge \u2014 the brand guidelines live there once, and every conversation inside it starts already loaded.",
+    "Research mode is for breadth with sources: it searches extensively and returns cited findings, at the cost of taking longer and consuming more usage.",
+    "Artifacts are the editable output layer: a draft lives in a panel you can revise version by version instead of scrolling back through chat to find it."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "The exam tests whether you can name the feature that fits the need, and each surface exists because a real pattern of work outgrew plain chat: repetition outgrows it into Projects, breadth into research mode, and iteration into artifacts.",
+   "contrast": "The tempting wrong answer is to treat every request as a chat request \u2014 re-pasting context daily and hunting through scrollback for the latest draft. That is not diligence; it is using the default surface for jobs it was never built for.",
+   "exam": "Watch for stems where the same material or instructions recur across many sessions (Project), the deliverable needs revision and comparison (artifact), or the question demands sourced breadth rather than one answer (research mode).",
+   "takeaway": "Recurring context belongs in a Project, sourced breadth in research mode, revisable deliverables in an artifact \u2014 not everything in chat."
+  },
+  {
+   "task": "3.1",
+   "kind": "check",
+   "title": "Which surface fits the workflow?",
+   "inshort": "Pick the feature that removes the recurring work, not the one that sounds most advanced.",
+   "lead": "A repeated-pasting workflow is being solved with willpower and scrollback. Choose the fix.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A consultant runs daily conversations about the same client. Every morning she pastes the same brand guidelines and past campaign notes into a new chat, and every afternoon she scrolls back to find the latest approved draft. Which choice best fits the task?",
+    "options": [
+     "Create a Project for the client, upload the guidelines and campaign notes as project knowledge, and develop drafts as artifacts within it.",
+     "Keep using new chats but enable research mode each morning so Claude can re-read the pasted material more thoroughly.",
+     "Switch to the most capable model available so it retains the guidelines better across separate chats.",
+     "Send the guidelines by email each morning and continue the drafting in a regular chat."
+    ],
+    "answer": 0,
+    "why": "A Project with uploaded knowledge removes the daily pasting and an artifact keeps the latest draft in one editable place, so both recurring costs disappear. Research mode adds sourced breadth she never asked for and still requires the pasting, a more capable model does not carry memory across separate chats, and emailing the guidelines adds a manual step without changing anything the chat already fails to do.",
+    "trap": "top_model_reflex"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "When the same context recurs, the fix is persistence in a Project, not a stronger paste."
+  },
+  {
+   "task": "3.2",
+   "kind": "teach",
+   "title": "Haiku, Sonnet, Opus: speed, balance, depth",
+   "inshort": "Three tiers trade capability against speed and cost \u2014 the exam asks which trade the task actually needs.",
+   "lead": "An operations manager uses the most capable model for everything: triaging a ticket queue, summarizing a one-page memo, and drafting a client-recovery plan for a lost account. Two of those three are paying premium reasoning for work a faster tier does just as well.",
+   "points": [
+    "Haiku is the fast, low-cost tier: high-volume, straightforward work like short replies, classification, and routine summaries.",
+    "Sonnet is the balanced tier: everyday business work \u2014 drafting, analysis, multi-step tasks \u2014 where quality and speed both matter.",
+    "Opus is the most capable tier: complex reasoning, nuanced judgment calls, and high-stakes deliverables where the extra depth is worth the extra cost and wait.",
+    "The tiers are a dial, not a ranking. Reaching for Opus by reflex wastes cost and latency on work that never needed the depth."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "Model selection is an explicit exam objective because the reflex to always use the top model is both expensive and wrong: the question is never which model is best, but which model the task's actual demands fit.",
+   "contrast": "The tempting wrong way is 'always default to the most capable model for safety.' It feels prudent and quietly burns the budget on triage and routine summaries while adding latency nobody needed.",
+   "exam": "The official sample from this domain is exactly this shape: high volume, speed and cost matter more than deep reasoning \u2014 and the correct answer is the faster, lower-cost tier, not the top one.",
+   "takeaway": "Match the tier to the task: Haiku for volume, Sonnet for balance, Opus for depth \u2014 never Opus by reflex."
+  },
+  {
+   "task": "3.2",
+   "kind": "check",
+   "title": "High volume, low depth",
+   "inshort": "Speed-and-cost work goes to the fast tier; only deep reasoning justifies the top one.",
+   "lead": "This mirrors the official Domain 3 sample almost exactly \u2014 learn its shape.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "An associate needs to generate a high volume of short customer-reply drafts where speed and cost matter more than deep reasoning. Which choice best fits the task?",
+    "options": [
+     "Use the most capable model so every draft meets the highest quality bar regardless of cost.",
+     "Use the fast, low-cost model tier, reserving the most capable model for the complex or sensitive cases that actually need it.",
+     "Draft in bulk with whatever model is default, then rerun every draft through the most capable model for a polish pass.",
+     "Switch to a different platform known for cheaper generation."
+    ],
+    "answer": 1,
+    "why": "Aligning model selection with task requirements means matching a faster, lower-cost model to straightforward, high-volume work, reserving the most capable model for complex reasoning. Always using the top model wastes the cost and latency budget, a double-pass through the top model doubles both for no gain, and switching platforms abandons a workable answer to a trade-off that exists on every platform.",
+    "trap": "top_model_reflex"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "When the stem says speed and cost matter more than deep reasoning, the answer is the fast tier \u2014 every time."
+  },
+  {
+   "task": "3.3",
+   "kind": "teach",
+   "title": "The trade-off triangle: cost, speed, quality",
+   "inshort": "Every choice optimizes two corners of the triangle at the expense of the third \u2014 pick which corner the task can sacrifice.",
+   "lead": "A PM needs a stakeholder summary of a quarterly review by tomorrow morning for forty internal emails. A second task sits in the same queue: the client-facing strategy narrative that justifies a seven-figure renewal. Same deadline, opposite trade-offs \u2014 and the PM is about to run both the same way.",
+   "points": [
+    "Name the binding constraint first: the deadline, the budget, or the audience's tolerance for imperfection.",
+    "High volume plus a tight turnaround: fast tier, because per-item quality risk is low and the cost of depth multiplies across hundreds of items.",
+    "High stakes plus a hard audience: capable tier, because one weak deliverable costs more than the extra usage ever will.",
+    "Everyday mixed work: the balanced tier as the default, escalating only the items that prove they need more."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "The exam objective is aligning selection with task requirements \u2014 the alignment is only visible when you first name which of cost, speed, or quality the task can least afford to lose.",
+   "contrast": "The tempting wrong way is treating quality as always the constraint ('the client might see it'). Most internal, high-volume, or draft-stage work can sacrifice depth for speed and cost \u2014 and pretending otherwise is the top_model_reflex with a justification attached.",
+   "exam": "Stems will hand you the constraint in the scenario details \u2014 'hundreds of items', 'by end of day', 'board-facing'. The correct answer is the choice that protects the named constraint, not the choice that sounds most careful.",
+   "takeaway": "Ask which corner the task can afford to lose. The right tier is the one that protects the corner it cannot."
+  },
+  {
+   "task": "3.3",
+   "kind": "check",
+   "title": "Two tasks, two constraints",
+   "inshort": "Same deadline, opposite answers \u2014 the constraint named in the stem decides.",
+   "lead": "One queue, two deliverables, and a single reflex about to be applied to both.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A PM must summarize forty internal team emails into a daily digest for leadership by 9 a.m., and separately must produce a client-facing strategy narrative that will anchor a seven-figure renewal discussion. Both are due tomorrow. Which approach best fits the tasks?",
+    "options": [
+     "Run both tasks through the most capable model so nothing ships below the highest quality bar.",
+     "Draft the internal digest with the fast, low-cost tier and develop the client-facing narrative with the most capable model.",
+     "Run both tasks through the fast tier to protect the deadline, then manually improve the narrative if time allows.",
+     "Postpone the digest and use research mode to gather supporting sources for the narrative first."
+    ],
+    "answer": 1,
+    "why": "The two tasks name opposite constraints, so they get opposite tiers: the high-volume internal digest optimizes speed and cost on the fast tier while the high-stakes client deliverable spends capability where the audience justifies it. Running both on the top model wastes cost and latency on internal work that never needed it, running both on the fast tier risks the renewal-critical narrative on a manual patch, and research mode adds sourced breadth nobody asked for while letting the required digest slip.",
+    "trap": "top_model_reflex"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Match tiers per task, not per person or per day \u2014 the constraint is in the stem."
+  },
+  {
+   "task": "3.4",
+   "kind": "teach",
+   "title": "Context is finite: restart, summarize, or persist",
+   "inshort": "Long conversations degrade as they fill \u2014 the exam asks which management move fits which symptom.",
+   "lead": "A conversation that started Monday as a clean market analysis is now, by Thursday, a hundred-message thread mixing research, drafts, and side questions. Claude keeps re-referencing abandoned ideas and forgetting the constraints set on Tuesday. Nothing is broken \u2014 the context is simply full.",
+   "points": [
+    "Context is the conversation's working memory: everything Claude can 'see' is what is in the thread, and long threads crowd out early instructions.",
+    "Restart with a fresh chat when the task has changed or the thread has drifted \u2014 carry over only what still matters as a short handoff prompt.",
+    "Summarize when the work must continue: ask Claude to compress the thread's decisions and constraints, then start a new chat from that summary.",
+    "Persist when context recurs across sessions: move stable instructions and knowledge into a Project so no conversation has to re-establish it.",
+    "Symptoms of a full or overloaded context: forgotten early instructions, revived discarded ideas, drifting focus. The fix is memory management, not a stronger model."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "The exam objective is explicitly when to restart, summarize, or persist \u2014 and the unifying rule is that each move handles a different relationship to the past: discard it, compress it, or keep it.",
+   "contrast": "The tempting wrong ways: re-pasting everything into the same thread (adds more load to an already-full context), upgrading the model (depth does not restore forgotten instructions), or plowing on (quality quietly degrades).",
+   "exam": "Stems describe a degraded long conversation and ask for the best next move. New task or hopeless drift \u2192 restart. Continuation that matters \u2192 summarize then restart. Repeating context \u2192 persist in a Project.",
+   "takeaway": "Restart to discard, summarize to compress, persist to keep \u2014 the symptom in the stem tells you which."
+  },
+  {
+   "task": "3.4",
+   "kind": "check",
+   "title": "The Thursday thread",
+   "inshort": "A degraded thread needs a memory move, not a model upgrade.",
+   "lead": "Diagnose the symptom, then pick the move that matches it.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A week-long working thread has accumulated research notes, several abandoned drafts, and side questions. Claude now contradicts instructions set early in the conversation and revives ideas the team already discarded. The analysis itself must continue with the agreed constraints. What is the most appropriate action?",
+    "options": [
+     "Switch to the most capable model in the same thread so Claude can hold the full history more reliably.",
+     "Ask Claude to summarize the current state \u2014 decisions made, constraints agreed, next steps \u2014 then continue in a fresh chat from that summary.",
+     "Keep working in the same thread and paste the original instructions again at the bottom of each new message.",
+     "Start a completely fresh chat with no summary, restating the task from memory."
+    ],
+    "answer": 1,
+    "why": "The work must continue with established decisions and constraints, so summarizing compresses what matters and a fresh chat restores usable context. A model upgrade does not recover instructions crowded out of a full context, re-pasting instructions into the same thread adds load to the very overload causing the failures, and a bare restart discards the decisions and constraints the continuation depends on.",
+    "trap": "model_upgrade_reflex"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Continuation work gets summarize-then-restart; only finished or drifted work gets a bare restart."
+  },
+  {
+   "task": "3.4",
+   "kind": "recap",
+   "title": "Domain 3 in one page",
+   "inshort": "Four questions: which surface, which tier, which constraint, which memory move.",
+   "lead": "That is Domain 3. Four tasks, one chain: the surface decides where the work lives, the tier decides what it costs, the constraint decides the trade-off, and memory management decides whether the conversation survives its own length.",
+   "points": [
+    "Surfaces: chat for one-off work, Projects for recurring context, research mode for sourced breadth, artifacts for revisable deliverables.",
+    "Tiers: Haiku for fast and cheap volume, Sonnet for balanced everyday work, Opus for complex and high-stakes reasoning.",
+    "Selection is alignment, not ranking: name the binding constraint \u2014 cost, speed, or quality \u2014 and protect the corner the task cannot lose.",
+    "The top-model reflex is the domain's signature distractor: it appears in feature questions, tier questions, and memory questions, and it is always the wasteful answer.",
+    "Context management: restart to discard, summarize to compress and continue, persist in a Project when context recurs.",
+    "A degraded long conversation is a memory problem, not a model problem \u2014 upgrading the tier never restores forgotten instructions."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": null,
+   "contrast": null,
+   "exam": "Every Domain 3 stem asks 'which choice best fits the task?' \u2014 the correct answer fits the named requirement, and the distractors are always plausible-but-wasteful: always the top model, disabling or ignoring features, or switching platforms.",
+   "takeaway": "Fit the surface to the pattern, the tier to the constraint, and the memory move to the symptom \u2014 'best' on this exam always means best-fitting, not most powerful."
+  }
+ ]
+}

@@ -1,0 +1,276 @@
+{
+ "domain": "o6",
+ "title": "Governance, Risk, and Responsible Use",
+ "weight": "15% of the exam",
+ "goal": "Make the judgment call the exam keeps testing: enable the work safely \u2014 add review, redact the data, follow policy, disclose \u2014 instead of blocking it outright or risking it as-is.",
+ "tasks": [
+  "6.1",
+  "6.2",
+  "6.3",
+  "6.4"
+ ],
+ "steps": [
+  {
+   "task": "6.1",
+   "kind": "teach",
+   "title": "Claude drafts, humans decide",
+   "inshort": "Appropriate use is language work a human reviews and owns; the human, not Claude, is accountable for the outcome.",
+   "lead": "You are a consultant scoping a client engagement. The task list: summarize fifty public market reports, draft the project charter, brainstorm rollout risks, and write the final recommendation on which vendor wins a $2M contract. A named partner signs that recommendation.",
+   "points": [
+    "Appropriate: summarizing, drafting, structuring, brainstorming, first-pass analysis of non-sensitive material. Claude is strongest where the work is language-shaped and a qualified human reviews the result.",
+    "The dividing line is accountability. Ask two questions: who reviews this, and can a named person take responsibility for what it produces?",
+    "The exam's right answers usually enable the work with review built in \u2014 'Claude drafts, the human owns and signs' \u2014 rather than blocking the task outright."
+   ],
+   "diagram": "o6-1",
+   "caption": "Watch the right panel: the work still happens, but a named person reviews and signs it.",
+   "code": null,
+   "ask": null,
+   "why": "The Associate exam tests judgment about where AI assistance is safe, not technical skill. The pattern is augmentation: Claude accelerates language work while a person keeps ownership of the outcome.",
+   "contrast": "The tempting wrong way: reading 'Claude can technically do it' as 'Claude should do it.' Capability is not authorization, and speed is not a review step.",
+   "exam": "Scenario stems pair plausible tasks with a decision point. Pick the option where a human reviews and owns the output; reject options where Claude's text becomes the unreviewed decision.",
+   "takeaway": "If no named human owns the output, it is the wrong use."
+  },
+  {
+   "task": "6.1",
+   "kind": "check",
+   "title": "Who owns the vendor call?",
+   "inshort": "Safe use pairs Claude's draft with a human who reviews, adjusts, and signs.",
+   "lead": "The $2M vendor recommendation needs to move fast, and someone proposes letting Claude make the call.",
+   "points": [],
+   "diagram": "o6-2",
+   "caption": "The pass exit keeps the human as owner; the fail exit posts a machine ranking with no one accountable.",
+   "code": null,
+   "ask": {
+    "q": "A procurement lead is short on time and proposes having Claude rank three vendors on a $2M contract and posting the ranking directly to the selection record with no human pass. Which use of Claude is most appropriate?",
+    "options": [
+     "Have Claude draft a structured comparison of the proposals, then the procurement lead reviews the draft, adjusts it, and signs the final recommendation.",
+     "Let Claude produce and post the final ranking, since the proposals are non-confidential and the scoring criteria are objective.",
+     "Let Claude post the ranking and attach a note that it was machine-generated, so reviewers know no human judgment was involved.",
+     "Do not use Claude for any part of the vendor selection because the contract value is high."
+    ],
+    "answer": 0,
+    "why": "Drafting the comparison keeps a qualified human as the decision-owner while Claude does the heavy lifting. Posting the ranking unreviewed hands a consequential decision to a model with no accountability, a machine-generated disclaimer documents the gap instead of closing it, and refusing Claude entirely discards assistance the accountability test would allow.",
+    "trap": "capability_is_authorization"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Consequential decision plus no human owner is inappropriate, no matter how objective the criteria look."
+  },
+  {
+   "task": "6.1",
+   "kind": "teach",
+   "title": "The no-go zone",
+   "inshort": "Inappropriate use is unreviewed model output turned into a consequential decision about a person.",
+   "lead": "Not every task can be made safe with a review step. Some uses put model output directly in charge of what happens to people: layoff scoring lists, hiring rejection filters, medical or legal determinations delivered as advice, safety-critical instructions no expert checked.",
+   "points": [
+    "Inappropriate: unreviewed model output that becomes a consequential decision about a person's job, money, health, rights, or safety.",
+    "Also inappropriate: presenting AI text as professional advice you are not qualified to give. Claude's legal-sounding memo does not make you a lawyer.",
+    "The mirror trap is blanket refusal: 'cancel the task entirely' is a distractor as often as recklessness, because a review step or a redaction usually enables the work.",
+    "The fix pattern keeps the task and adds the safeguard: human expert review, redaction, disclosure, or a narrower scope."
+   ],
+   "diagram": "o6-3",
+   "caption": "The first two rows are the no-go zone; the third row is the safeguard that enables the work.",
+   "code": null,
+   "ask": null,
+   "why": "Use-case questions test whether you can spot the moment model output starts deciding something about a person, and whether you reach for a safeguard before a verdict.",
+   "contrast": "The tempting wrong way: assuming the risky part of a task makes the whole task forbidden. The exam rewards the option that salvages the work with a safeguard, not the one that cancels it.",
+   "exam": "Stems list several proposed uses and ask which is inappropriate (or appropriate). Scan for the option where unreviewed output decides something about a person; that one is the violation.",
+   "takeaway": "Unreviewed, consequential, and about a person \u2014 that combination is the no-go zone. Everything else usually has a safeguard that enables it."
+  },
+  {
+   "task": "6.1",
+   "kind": "check",
+   "title": "Four proposals, one violation",
+   "inshort": "Find the proposal where no person stands between the model's output and someone's job.",
+   "lead": "A team lead brings four Claude ideas to quarterly planning. Only one crosses the line.",
+   "points": [],
+   "diagram": "o6-4",
+   "caption": "Scan the middle column \u2014 the only violation is the row with no human in the loop.",
+   "code": null,
+   "ask": {
+    "q": "A team lead proposes four uses of Claude for the coming quarter. Which one is inappropriate?",
+    "options": [
+     "Claude drafts interview questions, and HR screens and rewrites them before any interviewer sees them.",
+     "Claude generates a first draft of a performance-improvement plan, and the manager edits, personalizes, and signs it.",
+     "Claude scores employees on layoff risk from their review files, and the ranked list goes to HR for termination planning with no human review of the scores.",
+     "Claude summarizes newly published industry regulations from public sources for the whole team."
+    ],
+    "answer": 2,
+    "why": "The layoff scoring turns unreviewed model output into a consequential decision about people's jobs, with no human accountable for the ranking. The interview questions get human screening before use, the performance plan keeps a named manager as owner after editing, and summarizing public regulations touches neither personal data nor decisions about individuals.",
+    "trap": "scoring_feels_objective"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Find the option where no person stands between the model's output and someone's job, money, or rights."
+  },
+  {
+   "task": "6.2",
+   "kind": "teach",
+   "title": "Classify before you paste",
+   "inshort": "Sort data by sensitivity first; regulated identifiers get redacted or anonymized, not skipped.",
+   "lead": "A project manager wants to upload a spreadsheet of customer names and account numbers so Claude can spot churn trends. Policy restricts sharing regulated personal data with third-party services. The trend analysis does not need the names \u2014 it needs the patterns.",
+   "points": [
+    "Classify before uploading: public information is free to use; internal business data follows policy; regulated personal data \u2014 names, account numbers, health details, government IDs \u2014 needs safeguards first.",
+    "The enabling move: redact or anonymize regulated identifiers, using labels like Customer A/B/C, random IDs, or role names, so the analysis runs on the pattern, not the person.",
+    "Privacy rules follow the data, not your intent. 'It's internal' and 'it's just a draft' are not controls.",
+    "A prompt is not a policy control: instructing Claude to 'ignore' or 'not retain' the names does not change what data left your systems."
+   ],
+   "diagram": "o6-5",
+   "caption": "The higher the band, the stronger the safeguard required before the data reaches Claude.",
+   "code": null,
+   "ask": null,
+   "why": "Data-sensitivity questions test whether you apply the safeguard before the exposure \u2014 and whether you notice the work usually survives the safeguard.",
+   "contrast": "Two tempting wrong ways bracket the right one: upload as-is because the data is internal, or cancel the analysis because the data is regulated. The right answer sits between them: redact, then proceed.",
+   "exam": "Official sample 3 is this exact shape: policy restricts the data, and the correct option anonymizes and proceeds. Distractors upload as-is, promise non-retention, or abandon the task.",
+   "takeaway": "Classify, redact, proceed. The trend survives anonymization; the compliance exposure does not."
+  },
+  {
+   "task": "6.2",
+   "kind": "check",
+   "title": "Health details in the transcripts",
+   "inshort": "Anonymize the identifiers, keep the insight \u2014 the themes do not need the names.",
+   "lead": "HR wants themes from exit interviews, but the transcripts carry names and medical-leave details.",
+   "points": [],
+   "diagram": "o6-6",
+   "caption": "Both bad exits skip the redaction the policy actually requires.",
+   "code": null,
+   "ask": {
+    "q": "An HR analyst wants Claude to summarize exit-interview transcripts that contain employee names and details about medical leave. Organizational policy restricts sharing regulated personal data outside approved systems. What is the most appropriate action?",
+    "options": [
+     "Upload the transcripts as-is because they are internal HR documents and the summary is for internal use only.",
+     "Remove employee names and medical details from the transcripts, replacing them with role and department labels, then ask Claude to summarize the anonymized text.",
+     "Upload the transcripts with an instruction that Claude must not retain or remember any personal details.",
+     "Cancel the summarization and have the analyst read every transcript manually, since the data cannot leave the HR system."
+    ],
+    "answer": 1,
+    "why": "Redacting names and medical details before upload lets the theme analysis proceed without exposing regulated data. Uploading as-is violates policy regardless of internal intent, a non-retention instruction does not stop the data from leaving approved systems because a prompt is not a policy control, and manual reading is unnecessary once anonymization enables the summary.",
+    "trap": "retention_by_promise"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Anonymize the identifiers, keep the insight. The themes do not need the names."
+  },
+  {
+   "task": "6.3",
+   "kind": "teach",
+   "title": "Policy is the floor, not a suggestion",
+   "inshort": "Route work through approved tools, honor client contracts, and escalate ambiguity instead of guessing.",
+   "lead": "Your company's AI policy: Claude work goes through the enterprise workspace, regulated data needs approval before upload, and client contract terms override internal defaults. A teammate suggests running a client's contract drafts through a personal Claude account tonight because the enterprise login is 'a hassle.'",
+   "points": [
+    "The approved tool is approved because of its controls: data handling agreements, retention settings, audit trail. A personal account carries none of them.",
+    "Client and vendor contracts can be stricter than your internal policy. Check confidentiality terms before their material touches any AI tool.",
+    "When policy is silent, ask. Escalating to governance, legal, or your manager is the professional move; a confident guess is not.",
+    "Bypassing a control for convenience \u2014 shadow AI \u2014 is the most common real-world violation the exam describes."
+   ],
+   "diagram": "o6-7",
+   "caption": "Convenience is not an authority \u2014 each branch names where the real answer lives.",
+   "code": null,
+   "ask": null,
+   "why": "Governance questions test whether you can locate the authority for a decision \u2014 the policy, the contract, or the governance team \u2014 instead of improvising one.",
+   "contrast": "The tempting wrong way: 'just this once, it's internal, I'll delete it after.' Convenience is the reason policies get violated, and it never appears in a right answer.",
+   "exam": "Right answers use approved channels and escalate unclear cases. Distractors optimize for speed: personal accounts, teammates' verbal assurances, retroactive disclosure.",
+   "takeaway": "Approved tool, written policy, escalate ambiguity. A workaround is a violation, not a shortcut."
+  },
+  {
+   "task": "6.3",
+   "kind": "check",
+   "title": "Deadline tonight, wrong account",
+   "inshort": "The deadline pressure is the setup; the right answer never routes client data around approved controls.",
+   "lead": "A client deliverable is due tomorrow, and enterprise access takes 24 hours to provision.",
+   "points": [],
+   "diagram": "o6-8",
+   "caption": "The deadline is the setup; every right-hand action keeps client data in approved controls.",
+   "code": null,
+   "ask": {
+    "q": "The enterprise AI platform requires a 24-hour wait for new project access. A client deliverable is due tomorrow morning, and a teammate offers their personal Claude account for the client's confidential strategy documents. What is the most appropriate action?",
+    "options": [
+     "Use the teammate's personal account for tonight's session and delete the chat history afterward.",
+     "Upload the documents to the personal account but instruct Claude to treat everything as strictly confidential.",
+     "Proceed with the personal account tonight and disclose it to your manager tomorrow so the use is on record.",
+     "Request expedited access through the approved process, and if it cannot be shortened, tell the client the timeline slipped rather than move their documents to an unapproved account."
+    ],
+    "answer": 3,
+    "why": "Keeping client data inside the approved platform preserves its handling agreements and audit trail, and an honest timeline conversation is a legitimate business outcome. A personal account breaks the control set even with deleted chat history, a confidentiality instruction does not substitute for contractual data protections, and disclosing afterward records a violation rather than preventing one.",
+    "trap": "shadow_ai"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "The deadline pressure is the setup. The right answer never routes client data around approved controls."
+  },
+  {
+   "task": "6.4",
+   "kind": "teach",
+   "title": "Disclose, de-bias, verify",
+   "inshort": "Ethical use means disclosing AI's role where it matters, checking outputs for bias, and keeping a human accountable for effects on people.",
+   "lead": "Your team used Claude to draft a customer-facing campaign and to compress a year of support tickets into 'top customer issues.' Both outputs will shape how real customers are treated next quarter.",
+   "points": [
+    "Disclosure: where AI-generated material faces customers or regulators, follow your organization's disclosure norms. Hidden AI authorship is an ethical line the exam tests.",
+    "Bias: models trained on human text inherit human patterns. Outputs that influence decisions about people \u2014 segmentation, prioritization, scoring \u2014 get a bias check before they take effect.",
+    "Over-reliance: fluent, confident text is not verified text. Ethical use keeps verification human; the model's polish is not evidence.",
+    "The accountability chain: Claude can inform a decision, but a person remains answerable for it and for its downstream effects on people."
+   ],
+   "diagram": "o6-9",
+   "caption": "Four duties ring the hub \u2014 disclosure, bias, verification, accountability.",
+   "code": null,
+   "ask": null,
+   "why": "Ethics questions are applied versions of the accountability test: who knew AI was involved, who checked the output, and who answers for the result.",
+   "contrast": "The tempting wrong way: 'the draft is 95% there, ship it.' Polished, unreviewed output sent to real people is exactly the failure ethics questions describe \u2014 polish is not a review.",
+   "exam": "Right answers pair AI assistance with human verification, bias checks, and appropriate disclosure. Distractors either hide the AI's role, ship unreviewed output, or ban the tool when a review step would make it safe.",
+   "takeaway": "Disclose AI's role, check for bias, verify claims, and keep a human answerable for the outcome."
+  },
+  {
+   "task": "6.4",
+   "kind": "check",
+   "title": "Personas with a skew",
+   "inshort": "The model that produced the bias cannot be the one that certifies it is gone.",
+   "lead": "Claude generated outreach personas for a lending product, and they lean toward one demographic.",
+   "points": [],
+   "diagram": "o6-10",
+   "caption": "Follow the cycle: the same model that made the skew cannot sign off that it's fixed.",
+   "code": null,
+   "ask": {
+    "q": "A marketing team used Claude to generate customer personas for a lending product's outreach campaign. You notice the personas skew toward a single demographic, and the team plans to use them to prioritize outreach without further review. What is the most appropriate action?",
+    "options": [
+     "Launch with the personas as-is, since Claude derived them from real market data and the underlying data cannot be biased.",
+     "Have the team review the personas for bias with diverse input, correct or regenerate them, and document that AI was used in their development before the campaign proceeds.",
+     "Prompt Claude to remove all bias from the personas and launch once the model confirms they are balanced.",
+     "Stop using AI for persona work entirely, since outreach for a lending product can influence people's financial decisions."
+    ],
+    "answer": 1,
+    "why": "A human bias review with correction and documentation keeps the campaign fair and accountable. Launching unreviewed lets inherited skew shape who hears about a lending product, asking the model to audit its own output adds no independent check and its self-confirmation proves nothing, and banning AI personas altogether discards useful assistance that a review step makes safe.",
+    "trap": "model_self_review"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "The model that produced the bias cannot certify it is gone. Human review first, disclose, then launch."
+  },
+  {
+   "task": "6.4",
+   "kind": "recap",
+   "title": "Domain 6 in one page",
+   "inshort": "Enable the work safely: review, redact, follow policy, and stay accountable.",
+   "lead": "That is Domain 6. Four objectives, one habit: before bringing work to Claude, ask who owns the outcome, what data class you are touching, what policy and contracts say, and who could be harmed \u2014 then add the safeguard that lets the work proceed.",
+   "points": [
+    "Appropriate use is language work a named human reviews and owns. Inappropriate use is unreviewed model output deciding something consequential about a person.",
+    "Blanket refusal is a distractor as often as recklessness: redact, review, or narrow the scope, then proceed.",
+    "Classify data before uploading. Regulated identifiers \u2014 PII, health, financial \u2014 get redacted or anonymized first, and 'it's internal' is not a control.",
+    "A prompt is not a policy control: 'don't retain this' does not undo the upload.",
+    "Use approved tools and follow organizational policy and client contracts; escalate ambiguity to governance instead of guessing. Shadow AI is the classic violation.",
+    "Ethics: disclose AI's role where it matters, check outputs for bias before they shape decisions about people, verify before shipping, and keep a human answerable."
+   ],
+   "diagram": "o6-11",
+   "caption": "Four questions, then the safeguard \u2014 every Domain 6 stem runs this loop.",
+   "code": null,
+   "ask": null,
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Every Domain 6 stem asks the same thing: which option enables the work with the right safeguard \u2014 and the safeguards are review, redaction, policy, and disclosure."
+  }
+ ]
+}

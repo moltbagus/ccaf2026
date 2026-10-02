@@ -1,0 +1,227 @@
+{
+ "domain": "o5",
+ "title": "Configuration and Knowledge Management",
+ "weight": "12% of the exam",
+ "goal": "Set a Project up once so every conversation inherits the right context, and keep that configuration true over time instead of patching its outputs by hand.",
+ "tasks": [
+  "5.1",
+  "5.2",
+  "5.3",
+  "5.4"
+ ],
+ "steps": [
+  {
+   "task": "5.1",
+   "kind": "teach",
+   "title": "Configure once, inherit everywhere",
+   "inshort": "A Project bundles instructions plus knowledge so every chat starts with the right context.",
+   "lead": "A marketing associate opens a new Claude chat every morning and pastes in the brand guidelines, the audience notes, and the house style rules before asking anything. One day she forgets the paste, and the draft comes back in the wrong voice for the wrong audience. This is the problem Projects exist to solve.",
+   "points": [
+    "A claude.ai Project is a persistent workspace: every conversation started inside it inherits the Project's custom instructions and its knowledge sources automatically.",
+    "Custom instructions are the standing rules (role, audience, tone, format). Knowledge files are the reference material (guidelines, policies, past examples) that Claude can consult when a question relates to them.",
+    "The configure-once step is where the leverage is: a good setup improves every future conversation; a bad one degrades every future conversation the same way.",
+    "Instructions and knowledge do different jobs and you usually need both \u2014 instructions shape how Claude works, knowledge supplies what it should know."
+   ],
+   "diagram": "o5-1",
+   "caption": "Configure the Project once and every chat inside it starts already carrying the instructions and knowledge.",
+   "code": null,
+   "ask": null,
+   "why": "The exam treats a Project as the durable answer to 'I keep re-supplying the same context.' The unit of configuration is the Project, not the individual chat.",
+   "contrast": "The tempting wrong way: keep pasting the context manually into each new chat. It works until the day it doesn't, and it scales to zero \u2014 the failure is invisible until an output goes wrong.",
+   "exam": "Expect stems describing someone who re-types the same background in every conversation. The 'most appropriate action' is configuring the Project, not improving the daily paste.",
+   "takeaway": "If you supply the same context twice, it belongs in the Project."
+  },
+  {
+   "task": "5.1",
+   "kind": "check",
+   "title": "The daily paste, solved at the right layer",
+   "inshort": "Re-supplied context is a configuration problem, not a discipline problem.",
+   "lead": "The marketing associate from the previous step asks you where this routine should live.",
+   "points": [],
+   "diagram": "o5-2",
+   "caption": "Every alternative still depends on someone remembering \u2014 only the Project makes the context structural.",
+   "code": null,
+   "ask": {
+    "q": "A marketing associate pastes the same brand guidelines and audience notes into every new Claude conversation, and outputs drift whenever she forgets. What is the most appropriate action?",
+    "options": [
+     "Create a Claude Project with the brand guidelines and audience notes as custom instructions and knowledge, and start all marketing conversations inside it.",
+     "Save the guidelines in a text file on her desktop so she can paste them faster each morning.",
+     "Keep pasting as before but add a reminder to her calendar to check every chat for missing context.",
+     "Ask Claude to remember the brand guidelines from earlier conversations and apply them automatically."
+    ],
+    "answer": 0,
+    "why": "A Project makes the context structural: every conversation inside it inherits the instructions and knowledge without depending on memory or discipline. A faster paste (B) still fails the day it is skipped, a calendar reminder (C) manages the symptom instead of removing it, and chats do not carry reliable memory across conversations (D) \u2014 that persistence is exactly what Projects provide.",
+    "trap": "copy_paste_every_time"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "The fix lives in the Project configuration, not in a better daily ritual."
+  },
+  {
+   "task": "5.2",
+   "kind": "teach",
+   "title": "Uploads are snapshots; connectors are live",
+   "inshort": "Pick the knowledge source type by how often the source changes.",
+   "lead": "A sales team uploads their pricing battlecards to a Project. The file is a snapshot taken on upload day. Two weeks later Finance revises the prices in the team's Google Drive, and the Project keeps confidently quoting the old numbers. Nobody touched the Project \u2014 that is exactly the problem.",
+   "points": [
+    "Uploaded knowledge files are static copies: they stay exactly as they were at upload time and go stale silently when the source document changes.",
+    "Connectors (Google Drive, Gmail) let a Project reference material at its source, so Claude works from the current version instead of the version that existed on setup day.",
+    "Rule of thumb: stable, finished reference material belongs as an upload; living documents that change on a schedule belong behind a connector.",
+    "Managing knowledge sources also means pruning: an old version left in the Project competes with the new one, and Claude has no way to know which one wins."
+   ],
+   "diagram": "o5-3",
+   "caption": "Pick the source type by change rate: upload what is stable, connect what changes.",
+   "code": null,
+   "ask": null,
+   "why": "The exam's version of this objective is a choosing-between-source-types question: the deciding fact is whether the underlying document changes.",
+   "contrast": "The tempting wrong way: re-upload the newest version every week by hand. It feels diligent, but it is a manual sync loop a connector eliminates \u2014 and the week someone forgets, the Project is quietly wrong again.",
+   "exam": "Watch for the tell in the stem: 'updated monthly', 'revised last week', 'lives in the team Drive'. Change frequency decides upload versus connector.",
+   "takeaway": "Upload what is stable. Connect what changes."
+  },
+  {
+   "task": "5.2",
+   "kind": "check",
+   "title": "The pricing sheet that will not stay current",
+   "inshort": "A changing source needs a connector, not a monthly re-upload.",
+   "lead": "Same sales team, one month later: the pricing sheet in Google Drive is now revised monthly, and the uploaded copy is behind again.",
+   "points": [],
+   "diagram": "o5-4",
+   "caption": "Connect the living document and delete the stale upload \u2014 correcting every quote is the tax you avoid.",
+   "code": null,
+   "ask": {
+    "q": "A sales Project was given an uploaded copy of the pricing sheet. Finance now revises prices in Google Drive every month, and Claude keeps quoting last month's numbers. What is the most appropriate action?",
+    "options": [
+     "Connect the Project to Google Drive so it references the pricing sheet at its source, and remove the stale uploaded copy.",
+     "Keep the uploaded file but add a note telling Claude that prices may be outdated and to hedge its answers.",
+     "Re-upload the current pricing sheet at the start of every week so the copy is fresh.",
+     "Instruct the sales team to verify every price Claude quotes against the Drive file before sending anything to a customer."
+    ],
+    "answer": 0,
+    "why": "A connector makes currency structural: the Project reads the version that exists now, and removing the stale upload eliminates the competing copy. Hedging instructions (B) teach Claude to be vague instead of correct, weekly re-uploads (C) are a manual sync loop that fails the week it is skipped, and pushing verification onto every user (D) pays the staleness tax on every single quote instead of fixing it once at the source.",
+    "trap": "stale_snapshot"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "When the source changes, configure the connection once rather than refreshing the copy forever."
+  },
+  {
+   "task": "5.3",
+   "kind": "teach",
+   "title": "Custom instructions are standing rules, so make them specific",
+   "inshort": "Project instructions should say exactly what to do, in what format, for whom \u2014 every time.",
+   "lead": "A consulting team sets a Project's custom instructions to 'write professionally and be helpful.' Every Monday the team then re-explains that the client update must be a five-section memo, plain language, no hype, addressed to a non-technical steering committee. The instructions were not wrong \u2014 they were so vague they said nothing.",
+   "points": [
+    "Custom instructions apply to every conversation in the Project, so each line should be a rule you actually want enforced every time.",
+    "Specific beats aspirational: 'address a non-technical steering committee, five sections, plain language, no hype' is enforceable; 'write well' is not.",
+    "Say what to do, not only what to avoid \u2014 'use the house style guide for all formatting' is stronger than 'don't format things badly'.",
+    "Include the hard rules you would otherwise repeat each session: which knowledge file is authoritative, what must never be invented, what format every deliverable takes."
+   ],
+   "diagram": "o5-5",
+   "caption": "An instruction earns its place only if it names the audience, format, source, or a hard rule.",
+   "code": null,
+   "ask": null,
+   "why": "The exam tests whether you can tell an effective instruction from a pleasant-sounding one. Effective instructions are specific, actionable, and repeated by the configuration instead of by the user.",
+   "contrast": "The tempting wrong way: writing longer, warmer instructions. 'You are a world-class consultant who always produces excellent work' adds no decision information \u2014 the model cannot act on praise.",
+   "exam": "Distractors will offer instruction rewrites that are longer but vaguer. Length is not specificity; concrete requirements are.",
+   "takeaway": "If an instruction could apply to any Project at any company, it is not doing any work."
+  },
+  {
+   "task": "5.3",
+   "kind": "check",
+   "title": "'Write professionally' is not an instruction",
+   "inshort": "The memo format keeps being re-explained because the Project never captured it.",
+   "lead": "The consulting team wants the Monday re-explanation to stop.",
+   "points": [],
+   "diagram": "o5-6",
+   "caption": "If a rule cannot be enforced every session, it belongs rewritten \u2014 not repeated in chat.",
+   "code": null,
+   "ask": {
+    "q": "A consulting Project's custom instructions say 'write professionally and be helpful.' Every session the team re-explains that client updates must be five-section memos in plain language for a non-technical steering committee. What is the most appropriate action?",
+    "options": [
+     "Rewrite the Project's custom instructions to state the requirements concretely: audience, five-section memo structure, plain-language rule, and which knowledge file is authoritative.",
+     "Ask Claude at the start of each session to remember the memo format from the previous conversation.",
+     "Expand the custom instructions to 'you are a world-class consultant who always produces flawless, professional, excellent work'.",
+     "Paste an example memo into each conversation whenever the format comes out wrong."
+    ],
+    "answer": 0,
+    "why": "The format rule is standing policy, so it belongs as concrete, enforceable custom instructions the Project applies every time. Asking Claude to remember prior chats (B) relies on memory the Project is supposed to replace, flattering adjectives (C) add no decision information the model can act on, and pasting examples per conversation (D) re-supplies context the configuration should already carry.",
+    "trap": "vague_instructions"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Move the standing rule into the Project and stop re-explaining it in chat."
+  },
+  {
+   "task": "5.4",
+   "kind": "teach",
+   "title": "A correct configuration rots",
+   "inshort": "The setup that was right in January is silently wrong by July \u2014 maintenance is the exam's favorite trap.",
+   "lead": "In January, a support team uploads its returns policy to their Project: 30-day returns, restocking fee applies. In July, the company changes the policy to 60 days and drops the fee. Nobody updates the Project. Claude keeps telling customers '30 days, restocking fee applies' \u2014 confidently, in every conversation. The configuration was correct when it was made. That is no longer the relevant question.",
+   "points": [
+    "Configurations decay without anyone touching them: policies change, processes change, files are superseded \u2014 and the Project keeps applying the old truth on your behalf.",
+    "Staleness is silent: the outputs still look polished and confident, so nothing announces that the knowledge underneath is months old.",
+    "The maintenance move is to review instructions and knowledge sources on a schedule tied to how fast the underlying material changes, and to update the Project \u2014 replace the old file, revise the instruction \u2014 when reality moves.",
+    "When outputs go wrong, diagnose the configuration first: is the knowledge current, are the instructions still the rules you want? Fixing the source fixes every future conversation; fixing one output fixes one output."
+   ],
+   "diagram": "o5-7",
+   "caption": "Trace the drift: the configuration was correct on its setup date, and nobody announced the day it stopped being correct.",
+   "code": null,
+   "ask": null,
+   "why": "The exam loves a config that was right at setup but is now wrong, because the lazy answer ('it worked when we configured it') sounds reasonable and is still incorrect.",
+   "contrast": "The tempting wrong way: manually correcting each wrong reply as it appears. The manual fix repairs one conversation and leaves the stale source producing the next wrong one. Set-and-forget is the failure mode, not the strategy.",
+   "exam": "The stem tell: a policy changed, a process was updated, a file was superseded \u2014 and someone is still patching outputs by hand or hasn't touched the Project since setup.",
+   "takeaway": "A configuration is not correct, it is correct as of a date. Maintain it."
+  },
+  {
+   "task": "5.4",
+   "kind": "check",
+   "title": "The 30-day policy that refuses to die",
+   "inshort": "Patch the source of truth, not the individual outputs.",
+   "lead": "It is July in that support Project, and a teammate reports the wrong returns information again.",
+   "points": [],
+   "diagram": "o5-8",
+   "caption": "The loop keeps producing wrong drafts because the fix is applied to outputs, not to the configuration.",
+   "code": null,
+   "ask": {
+    "q": "A company extended its returns window from 30 to 60 days and dropped the restocking fee in July. The support Project still holds the January policy file, and an associate has been manually correcting the return window in each of Claude's draft replies for two weeks. What is the most appropriate action?",
+    "options": [
+     "Update the Project: replace the outdated returns policy file with the current one and review the custom instructions for anything else the policy change affects.",
+     "Keep correcting the return window manually in each reply, since the associate is already fast at it.",
+     "Add an instruction telling Claude that return-window answers may have changed and to be less certain about policy details.",
+     "Tell the support team to rely on the Project only for drafting tone and to verify every policy detail themselves against the company intranet."
+    ],
+    "answer": 0,
+    "why": "The stale file is the root cause, so replacing it in the Project fixes every future conversation at once. Manual correction (B) is a band-aid that leaves the wrong source producing the next wrong draft, hedging instructions (C) make Claude vague instead of correct, and routing humans to the intranet for every policy detail (D) abandons the Project's purpose when a one-time update restores it.",
+    "trap": "manual_bandaid"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "When reality changes, update the configuration. Correcting outputs one by one is the trap the exam keeps re-dressing."
+  },
+  {
+   "task": "5.4",
+   "kind": "recap",
+   "title": "Domain 5 in one page",
+   "lead": "That is Domain 5. Four tasks, one chain: put the standing context in the Project (instructions plus knowledge), pick the right source type for how fast the material changes (upload for stable, connector for living), write instructions concrete enough to be enforced, and maintain the whole configuration as reality moves. Every exam stem in this domain is a link in that chain.",
+   "points": [
+    "Projects make context structural: instructions and knowledge apply to every conversation, so configure once instead of pasting daily.",
+    "Uploads are snapshots that go stale silently; connectors keep a Project reading the current version. Change frequency decides the choice, and old copies must be removed, not just supplemented.",
+    "Effective custom instructions are specific and actionable \u2014 audience, format, authoritative source, hard rules. 'Write professionally' is a wish, not an instruction.",
+    "A configuration is correct as of a date. Review instructions and knowledge on a schedule, and when outputs go wrong, suspect the configuration before the model.",
+    "Fix the source, not the symptom: updating the Project fixes every future conversation; correcting one output fixes one output. Set-and-forget and manual patching are the exam's two favorite wrong answers."
+   ],
+   "diagram": "o5-9",
+   "caption": "The four tasks chain together: configure once, choose sources by change rate, write enforceable rules, maintain as reality moves.",
+   "code": null,
+   "ask": null,
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Configure once, choose sources by change rate, write enforceable instructions, and maintain \u2014 the exam's stems are all laziness versus leverage."
+  }
+ ]
+}

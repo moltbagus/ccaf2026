@@ -1,0 +1,248 @@
+{
+ "domain": "o4",
+ "title": "Workflow Integration and Solution Design",
+ "weight": "16% of the exam",
+ "goal": "Decide which steps of a real workflow go to Claude and which stay human, design the handoffs, and tell stakeholders exactly what they are getting \u2014 including what Claude cannot do.",
+ "tasks": [
+  "4.1",
+  "4.2",
+  "4.3",
+  "4.4",
+  "4.5"
+ ],
+ "steps": [
+  {
+   "task": "4.1",
+   "kind": "teach",
+   "title": "Requirements analysis: Claude drafts, the owner decides",
+   "lead": "Your operations director Priya hands you a one-page email from a franchise owner complaining that monthly inventory counts take three days, and asks you to \"figure out what we actually need to fix.\" You use Claude to turn an unstructured complaint into a structured picture of the problem before anyone proposes a fix.",
+   "points": [
+    "Feed Claude the raw material \u2014 the email, the intake form, the meeting notes \u2014 and ask it to extract stated needs, unstated assumptions, constraints, and open questions as separate lists.",
+    "Claude is strongest at converting messy human input into organized requirements: themes, gaps, conflicts between what different stakeholders asked for.",
+    "The requirements list is a draft for the humans who own the process. Priya confirms which extracted needs are real business requirements and which are one franchisee's workaround.",
+    "Requirement decisions stay human: priority calls, trade-offs between departments, anything requiring authority over the process itself."
+   ],
+   "diagram": "o4-1",
+   "caption": "Follow the split: Claude structures the messy input, Priya owns which requirements are real.",
+   "code": null,
+   "ask": null,
+   "why": "Domain 4 rewards using Claude as an analysis accelerator on real input, not as the decision-maker. The exam frames Claude as the tool that structures requirements so the process owner can make the call faster and better.",
+   "contrast": "The tempting wrong move is skipping the structuring step: either reading the complaint yourself and jumping to a solution, or asking Claude to \"solve the inventory problem\" directly from one email. Both lose the gap analysis that catches unstated assumptions before they become rework.",
+   "exam": "Expect scenario stems with unstructured input \u2014 complaint emails, interview notes, scattered requests \u2014 and a question about the most effective way to turn them into requirements. The right answer keeps Claude on extraction and organization, and keeps confirmation with the human owner.",
+   "takeaway": "Claude extracts and organizes; the process owner validates and decides. That split is the pattern for every requirements question."
+  },
+  {
+   "task": "4.1",
+   "kind": "check",
+   "title": "One complaint email, one requirements process",
+   "lead": "A stakeholder's email is on your desk and a structured understanding is what the team needs.",
+   "points": [],
+   "diagram": "o4-2",
+   "caption": "The correct option extracts and organizes; the owner confirms which requirements are real.",
+   "code": null,
+   "ask": {
+    "q": "A team lead receives an unstructured complaint email about a slow internal approval process and needs to turn it into a shared understanding of the requirements before proposing changes. Which approach is most effective?",
+    "options": [
+     "Ask Claude to read the email and produce a recommended process redesign so the team can vote on it at the next meeting.",
+     "Ask Claude to extract the stated needs, unstated assumptions, constraints, and open questions as separate lists, then review the lists with the process owner to confirm which requirements are real.",
+     "Forward the email directly to the process owner and let them decide what the complaint means without analysis.",
+     "Have Claude conduct a full requirements analysis, sign off on the requirements, and present them to stakeholders as final."
+    ],
+    "answer": 1,
+    "why": "Claude adds the most value structuring unstructured input into needs, assumptions, constraints, and questions, with the human owner validating the result. Asking Claude to redesign the process straight from one email jumps past the requirements step and hard-codes one complaint, forwarding the email with no analysis wastes the tool entirely, and letting Claude sign off on final requirements hands a judgment call to someone with no authority over the process.",
+    "trap": "all_or_nothing_delegation",
+    "takeaway": "The requirements answer is almost always 'Claude drafts the structure, the owner confirms the content.'"
+   }
+  },
+  {
+   "task": "4.2",
+   "kind": "teach",
+   "title": "Research and planning: Claude as the prep step",
+   "lead": "You are the PM for a client onboarding revamp. Your manager Tomas wants a project plan by Friday, and you have forty pages of process notes and a half-empty wiki. Claude's job in this workflow is the heavy prep: research synthesis, option comparison, and a first-draft plan a human reviews and edits.",
+   "points": [
+    "Use Claude to summarize what you already have \u2014 process notes, past project post-mortems, wiki pages \u2014 into a working picture before planning starts.",
+    "Ask for options, not one answer: three sequencing approaches with pros, cons, and what each assumes. A drafted plan you can react to beats a blank page.",
+    "Treat anything Claude states as a fact \u2014 a timeline estimate, a figure, a claim about the client \u2014 as a draft claim to verify, not as researched truth.",
+    "The human contribution is judgment Claude does not have: which risks Tomas will actually care about, which estimate is politically realistic, which stakeholder constraint never made it into the notes."
+   ],
+   "diagram": "o4-3",
+   "caption": "The prep runs left to right: synthesize, draft options, verify claims, then add judgment.",
+   "code": null,
+   "ask": null,
+   "why": "This objective is about leveraging Claude to compress the research and drafting phases of planning so humans spend their time on judgment and validation instead of assembling information.",
+   "contrast": "The wrong pattern is asking Claude for 'the plan' and forwarding it. The other wrong pattern is doing nothing differently: assembling the plan by hand because planning is 'a human responsibility.' The exam's correct answers use Claude for the draft and humans for the judgment, every time.",
+   "exam": "Watch for stems about preparing plans, comparing approaches, or synthesizing research. The effective option uses Claude to generate and compare drafts with explicit fact-checking; distractors either skip Claude or accept its output unverified.",
+   "takeaway": "Claude compresses research and drafting; humans supply the judgment and verify the claims."
+  },
+  {
+   "task": "4.2",
+   "kind": "check",
+   "title": "Plan by Friday, notes by the pound",
+   "lead": "A PM sitting on forty pages of source material needs a credible project plan on a deadline.",
+   "points": [],
+   "diagram": "o4-4",
+   "caption": "Only one row keeps Claude on the draft and humans on verification and judgment.",
+   "code": null,
+   "ask": {
+    "q": "A project manager needs a project plan by the end of the week and has forty pages of process notes, post-mortems, and wiki pages to build it from. Which approach is most effective?",
+    "options": [
+     "Ask Claude to research the notes and produce the final project plan, then circulate it to the team so work can begin immediately.",
+     "Write the plan entirely by hand from the notes, since planning accountability cannot be shared with an AI tool.",
+     "Ask Claude to synthesize the source material into a working picture and draft two or three plan approaches with pros and cons, then verify key claims and add stakeholder judgment before finalizing.",
+     "Assign the plan to a rotating committee of team members so no single person bears the research workload."
+    ],
+    "answer": 2,
+    "why": "Claude compresses synthesis and drafting, and the human verifies claims and adds judgment the notes do not contain, which is the effective division of labor. Forwarding Claude's plan as final skips verification and stakeholder judgment, writing it by hand rejects the leverage the tool offers, and a committee adds coordination cost without changing how the research work gets done.",
+    "trap": "delegate_everything",
+    "takeaway": "Deadline pressure is not a reason to skip verification \u2014 it is the scenario where a draft-plus-judgment split wins."
+   }
+  },
+  {
+   "task": "4.3",
+   "kind": "teach",
+   "title": "Solution design: iterate with Claude in the loop",
+   "lead": "Your consulting team is redesigning how a regional bank handles loan-document intake. The design lead Marco has three candidate process designs on a whiteboard and a review with the client on Monday. Claude's role is iteration support: stress-testing drafts, generating variations, and pressure-testing each design against the requirements.",
+   "points": [
+    "Give Claude the agreed requirements and ask it to critique each candidate design against them: where it breaks, what it assumes, which stakeholder it shortchanges.",
+    "Use Claude to generate variations you would not have drafted \u2014 a lighter-weight version, a version that splits the intake step \u2014 then evaluate them with the team.",
+    "Iteration is a loop: draft, critique with Claude, revise with human judgment, repeat. Each pass narrows the gap between the draft and the requirements.",
+    "Design authority stays with the team. Claude critiques and proposes; Marco and the client decide, because Claude does not carry accountability for the chosen design."
+   ],
+   "diagram": "o4-5",
+   "caption": "Iteration is a loop, not one-shot generation: each pass narrows the gap to the requirements.",
+   "code": null,
+   "ask": null,
+   "why": "The objective is using Claude to support solution design through development and iteration \u2014 support, not authorship. The exam consistently credits the answer where Claude expands the option set and hardens drafts while humans keep design authority.",
+   "contrast": "The lazy version is asking Claude to 'design the new intake process' and presenting the first output. The overly cautious version is banning Claude from design work because designs are 'too important.' Both lose the same thing: cheap, fast iteration that surfaces weaknesses before the client does.",
+   "exam": "Stems will show a design-in-progress and a deadline. The effective answer keeps Claude in the critique-and-variations loop with human decision points; distractors make Claude the designer or exclude it entirely.",
+   "takeaway": "Claude widens the option set and finds the flaws; the team picks the design. Iterate in a loop, not a one-shot generation."
+  },
+  {
+   "task": "4.3",
+   "kind": "check",
+   "title": "Three designs on a whiteboard",
+   "lead": "A design review is scheduled and the team has candidate designs that have never been stress-tested.",
+   "points": [],
+   "diagram": "o4-6",
+   "caption": "Claude critiques and drafts variations; the team and client keep design authority.",
+   "code": null,
+   "ask": {
+    "q": "A team has three candidate process designs for a loan-intake redesign and a client review on Monday. Which approach is most effective for using Claude to support solution design and iteration?",
+    "options": [
+     "Ask Claude to pick the best of the three designs and present that one to the client to keep the review focused.",
+     "Ask Claude to produce a brand-new design from scratch so the team can compare a fourth option against its own work.",
+     "Keep Claude out of the design phase and use it only after the client approves a design, to document the chosen process.",
+     "Give Claude the agreed requirements and ask it to critique each candidate against them, then have it draft variations; the team reviews the critiques and selects the design with the client."
+    ],
+    "answer": 3,
+    "why": "Critiquing each candidate against the requirements and drafting variations is exactly the iteration support that hardens a design before a review, with the team keeping selection authority. Letting Claude pick the design hands design authority to a tool with no accountability, generating from scratch discards the team's work and context, and restricting Claude to documentation wastes it during the phase where critique adds the most value.",
+    "trap": "ai_as_decision_maker",
+    "takeaway": "Support means critique and variations against agreed requirements \u2014 not selection."
+   }
+  },
+  {
+   "task": "4.4",
+   "kind": "teach",
+   "title": "Workflow integration: sort every step into three buckets",
+   "lead": "Your HR team runs a six-step hiring workflow: screen resumes, run a phone screen, write the summary for the hiring manager, schedule interviews, run the interview, decide. The HR lead Dana wants to know which steps Claude should take over. The answer is a step-by-step sorting, not a wholesale handover.",
+   "points": [
+    "Bucket one \u2014 delegate to Claude: information-heavy, pattern-based work. Drafting resume-screening notes, writing candidate summaries, drafting interview questions. Fast, low-risk, human-readable output.",
+    "Bucket two \u2014 keep human: judgment, accountability, and relationship steps. The hiring decision, the interview itself, anything where a wrong call damages a person or carries legal weight.",
+    "Bucket three \u2014 Claude-assisted human: the human decides with Claude's prep in front of them. A recruiter reads Claude's screening notes but makes the shortlist call.",
+    "Sort by risk and reversibility per step, not per workflow. Never delegate an irreversible or high-impact decision step; always look twice before leaving a drafting step manual."
+   ],
+   "diagram": "o4-7",
+   "caption": "Sort by step risk: draft work to Claude, judgment stays human, the middle decides with prep.",
+   "code": null,
+   "ask": null,
+   "why": "Integrating Claude into existing workflows is the core of this domain: augment or redesign means mapping the workflow step by step and assigning each step to Claude, to a human, or to a human working from Claude's output.",
+   "contrast": "The tempting wrong answer is the headline version \u2014 'Claude handles hiring workflow screening' \u2014 which delegates a decision step wholesale. The mirror-image wrong answer keeps everything manual because the workflow 'touches people's careers.' The exam tests whether you sort steps by risk, not whether you accept or reject AI in bulk.",
+   "exam": "Stems describe a multi-step workflow and ask where Claude fits. The effective answer sorts steps individually and keeps judgment and accountability steps human; distractors delegate the whole workflow, block Claude entirely, or add an approval layer to every step without regard to risk.",
+   "takeaway": "Three buckets: delegate the drafting, keep the judgment, assist the middle. Sort by step, not by workflow."
+  },
+  {
+   "task": "4.4",
+   "kind": "check",
+   "title": "Six steps, three buckets",
+   "lead": "An HR lead wants to know which parts of a six-step hiring workflow Claude should take over.",
+   "points": [],
+   "diagram": "o4-8",
+   "caption": "Distractors delegate everything, block everything, or add a blanket approval layer - the answer sorts per step.",
+   "code": null,
+   "ask": {
+    "q": "An HR team's hiring workflow has six steps: screen resumes, run a phone screen, write the hiring-manager summary, schedule interviews, run the interview, and make the hiring decision. The HR lead wants to integrate Claude. Which approach is most effective?",
+    "options": [
+     "Delegate the entire screening-and-decision pipeline to Claude so the recruiters can focus on closing candidates.",
+     "Have Claude draft the resume-screening notes and the hiring-manager summaries, keep the interview and the hiring decision human, and have recruiters make shortlist calls using Claude's screening notes.",
+     "Keep the entire workflow human and use Claude only to answer general questions about hiring best practices, since the workflow touches people's careers.",
+     "Insert a mandatory committee review between Claude and every downstream step of the workflow, so each of Claude's outputs gets an additional approval layer."
+    ],
+    "answer": 1,
+    "why": "Sorting steps individually puts pattern-based drafting work with Claude, keeps judgment, relationship, and accountability steps human, and uses Claude's output as assistance where a human still decides. Delegating the whole pipeline hands over the decision steps where a wrong call is irreversible, keeping everything manual rejects the leverage on the low-risk drafting steps, and a committee review on every step adds cost uniformly instead of matching oversight to risk.",
+    "trap": "all_or_nothing_delegation",
+    "takeaway": "The distractors split cleanly: everything, nothing, or a blanket approval layer. The answer is always a per-step sort."
+   }
+  },
+  {
+   "task": "4.5",
+   "kind": "teach",
+   "title": "Telling stakeholders the truth about Claude",
+   "lead": "You are presenting the redesigned workflow to the bank's operations VP, Ms. Okafor. She asks two questions: 'what does this actually get me?' and 'where will it let me down?' Your credibility \u2014 and the exam \u2014 lives in answering both, specifically and honestly.",
+   "points": [
+    "State value in concrete workflow terms: this step goes from three hours to twenty minutes, this error pattern disappears, this bottleneck now has a draft waiting for the reviewer.",
+    "State limitations just as concretely: outputs need human review, Claude can present incorrect information confidently, it does not learn your process between sessions, and it should not make consequential decisions.",
+    "Overselling is the classic failure: promising full automation or guaranteed accuracy to win approval. The gap between the promise and reality destroys trust at the first failed output.",
+    "Underselling fails too: describing Claude as 'just a chatbot' hides the real time savings the team could be getting. Calibrate, in both directions, to what the workflow evidence shows."
+   ],
+   "diagram": "o4-9",
+   "caption": "Both exits are dishonest: overselling breaks trust, underselling blocks the pilot.",
+   "code": null,
+   "ask": null,
+   "why": "Communicating value and limitations to stakeholders is an exam objective on its own, because adoption dies from both dishonest directions: the oversell that breaks trust and the undersell that blocks the pilot.",
+   "contrast": "The tempting wrong move in the room with a powerful stakeholder is to promise what she wants to hear. The exam's distractors are versions of that: guaranteed accuracy, full automation, 'it works like a human colleague.' The effective answer names benefits and limitations with equal specificity.",
+   "exam": "Stems put you in front of a stakeholder who is excited, skeptical, or both. The effective answer pairs a concrete benefit with an honest limitation and a defined human checkpoint; distractors oversell, undersell, or defer the question.",
+   "takeaway": "One sentence for the value, one sentence for the limitation, both specific. Stakeholder trust is a scoring criterion on this domain."
+  },
+  {
+   "task": "4.5",
+   "kind": "check",
+   "title": "The VP wants a straight answer",
+   "lead": "An operations VP is deciding whether to approve a Claude-assisted workflow and asks what it delivers and where it fails.",
+   "points": [],
+   "diagram": "o4-10",
+   "caption": "The effective answer sits top-right: concrete value and honest limitation, both specific.",
+   "code": null,
+   "ask": {
+    "q": "A stakeholder deciding whether to approve a Claude-assisted document-intake workflow asks what benefits it will deliver and what its limitations are. Which response is most effective?",
+    "options": [
+     "Emphasize that Claude will fully automate the intake process with guaranteed accuracy, since accuracy concerns can be addressed during rollout.",
+     "Describe Claude as an experimental chatbot with limited practical value, so expectations stay low and any success will exceed them.",
+     "Explain that drafting and summarization steps will drop from hours to minutes with human review of every output, while noting that Claude can present incorrect information confidently and must not make final approval decisions.",
+     "Decline to characterize Claude's capabilities and recommend a multi-month governance review before any discussion of benefits."
+    ],
+    "answer": 2,
+    "why": "A specific, calibrated answer \u2014 concrete time savings, human review checkpoints, and honest naming of hallucination risk \u2014 is what lets a stakeholder make a sound adoption decision. Promising full automation with guaranteed accuracy oversells capabilities the tool does not have, calling it a limited chatbot undersells real measured value and blocks a justified pilot, and deferring capability questions to a governance review leaves the stakeholder without the information the decision requires.",
+    "trap": "overselling_capabilities",
+    "takeaway": "The oversell and the undersell are the same mistake in opposite directions; the exam wants calibrated specifics."
+   }
+  },
+  {
+   "task": "4.5",
+   "kind": "recap",
+   "title": "Domain 4 in one page",
+   "lead": "That is Domain 4. Five tasks, one chain: structure the requirements, compress the research and planning, harden the design through critique loops, sort the workflow into delegate / assist / keep-human, and tell the stakeholder the truth about both halves.",
+   "points": [
+    "Requirements: Claude extracts stated needs, unstated assumptions, constraints, and open questions; the process owner validates and decides.",
+    "Research and planning: Claude synthesizes sources and drafts option sets; humans verify claims and add judgment. Never forward a Claude plan as final.",
+    "Solution design: Claude critiques candidates against agreed requirements and drafts variations; the team keeps design authority. Iterate in a loop.",
+    "Workflow integration: sort every step into three buckets \u2014 delegate the drafting, keep judgment and accountability steps human, assist the middle. Sort by step risk, never by workflow.",
+    "Stakeholder communication: one specific sentence of value, one specific sentence of limitation. Overselling and underselling are the same failure in opposite directions."
+   ],
+   "diagram": "o4-11",
+   "caption": "Five tasks, one chain: where Claude sits, and did the judgment stay human and the story stay honest.",
+   "code": null,
+   "ask": null,
+   "takeaway": "Every Domain 4 stem asks the same thing: where does Claude sit in this workflow, and did you keep the judgment steps human while telling the stakeholder the truth?"
+  }
+ ]
+}

@@ -48,3 +48,20 @@
 
 - Book when: two independent mocks ≥ 900, no domain below 75%, miss log has no repeat trap type.
 - Current readiness: **not assessed** (S0 pending).
+
+## Associate lane (CCAO-F) — mastery
+
+Opened 2026-10-02. Same rule: mastered = answered correctly twice, on separate days, without notes.
+
+| # | Domain | Weight | Steps | Gates | Gates right | Mastery % | Weakest task |
+|---|---|---|---|---|---|---|---|
+| 1 | Prompting & Task Execution | 14% | 11 | 5 | 0 | 0% | — |
+| 2 | Output Evaluation & Validation | 21% | 12 | 5 | 0 | 0% | — |
+| 3 | Product & Model Selection | 12% | 9 | 4 | 0 | 0% | — |
+| 4 | Workflow Integration & Solution Design | 16% | 11 | 5 | 0 | 0% | — |
+| 5 | Configuration & Knowledge Management | 12% | 9 | 4 | 0 | 0% | — |
+| 6 | Governance, Risk & Responsible Use | 15% | 11 | 5 | 0 | 0% | — |
+| 7 | Troubleshooting & Optimization | 10% | 9 | 4 | 0 | 0% | — |
+
+Notes: the tutor page records right/wrong and trap counts per lesson in the browser
+(`ccaf.lesson.v1.oN`); send the trap list to Hermes to fold into this table.
