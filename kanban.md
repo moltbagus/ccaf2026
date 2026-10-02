@@ -29,9 +29,9 @@
 
 ### 🎓 CCAO-F Associate lane (second lane, opened 2 Oct)
 - [x] Official exam guide + Certification Exam Policy PDFs filed under class/external/, plus the ccao-f.html overview page (facts, eligibility, retakes, full blueprint)
-- [x] Seven domain lessons o1-o7 authored from the public blueprint (62 steps, teach/check gates + recap), all validated
+- [x] Seven domain lessons o1-o7 authored from the public blueprint (72 steps, teach/check gates + recap), all validated
 - [x] Second-lane nav, syllabus section, progress tracker; the build now emits 36 pages / 12 lesson pages
-- [x] Diagram specs for o1-o7 wired into the engine (72 diagrams, all 62 associate steps covered)
+- [x] Diagram specs for o1-o7 wired into the engine (72 diagrams, all 72 associate steps covered)
 - [ ] Push the lane to origin main + Vercel and walk it live
 - [ ] Associate drill banks + a 60-question timed mock, matching the CCAR-F lane
 
