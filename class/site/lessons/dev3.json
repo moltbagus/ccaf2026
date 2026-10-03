@@ -1,0 +1,180 @@
+{
+ "domain": "dev3",
+ "title": "Claude Code",
+ "weight": "3.1% of the exam",
+ "goal": "Operate Claude Code correctly: place CLAUDE.md memory in the layer that matches its audience, configure behavior through the layered settings.json files, recognize the core component set (Rules, Skills, Commands, Agents, Agent Memory), and select the right session and execution mode \u2014 interactive, headless, streaming, or auto \u2014 for the task at hand.",
+ "tasks": [
+  "3.1"
+ ],
+ "steps": [
+  {
+   "task": "3.1",
+   "kind": "teach",
+   "title": "The CLAUDE.md memory hierarchy",
+   "inshort": "Claude Code reads memory from several CLAUDE.md layers; where the file lives decides who it reaches and how specific it is.",
+   "lead": "You join a repo and want every teammate's Claude Code to follow the project's test-first rule, but you also want a private style note that never gets committed. You write the team rule in ./CLAUDE.md and your note in ./CLAUDE.local.md. Claude reads both \u2014 the shared file reaches the whole team through git, the local file reaches only your working copy.",
+   "points": [
+    "User memory: ~/.claude/CLAUDE.md \u2014 applies to you in every project; personal and not committed.",
+    "Project memory: ./CLAUDE.md \u2014 committed, so it reaches every developer who checks out the repo.",
+    "Project-local memory: ./CLAUDE.local.md \u2014 gitignored, reaches only your working copy.",
+    "Claude Code also walks parent directories, and reads CLAUDE.md files in subdirectories when it touches files there; deeper, more specific files are read later and take precedence on conflict.",
+    "Enterprise managed memory (e.g. /etc/claude-code/CLAUDE.md on Linux) is org-wide and cannot be overridden by lower layers."
+   ],
+   "diagram": "dev3-1",
+   "caption": "Where a CLAUDE.md lives decides who it reaches; match the layer to its audience.",
+   "code": "# hierarchy (most general -> most specific)\n~/.claude/CLAUDE.md            # user: all of your projects\nrepo/CLAUDE.md                 # project: everyone who clones (committed)\nrepo/CLAUDE.local.md           # project-local: only you (gitignored)\nrepo/.claude/CLAUDE.md         # alternate project location\n/etc/claude-code/CLAUDE.md     # enterprise managed (org-wide)\n\n# scaffold a starter memory file for a repo\n/init\n/memory                        # open memory files for editing",
+   "ask": null,
+   "why": "Placement is the whole point: the same sentence reaches one developer or the whole organization depending on which file it lives in, and more specific (deeper) files win when instructions conflict.",
+   "contrast": "A rule in ~/.claude/CLAUDE.md follows you between repos but never reaches teammates; a rule in ./CLAUDE.md reaches the team but also applies to you. Private per-repo overrides belong in CLAUDE.local.md, not the user file.",
+   "exam": "Scenario: a team wants Claude to enforce a shared coding standard on every checkout, while one developer needs a private exception that is never committed. Which approach is most effective? \u2014 Commit the standard to ./CLAUDE.md and keep the exception in ./CLAUDE.local.md.",
+   "takeaway": "Match the memory layer to its audience: user = you everywhere, project = the team, local = you in this repo, enterprise = the whole org."
+  },
+  {
+   "task": "3.1",
+   "kind": "check",
+   "title": "Which memory layer?",
+   "inshort": "Pick the layer whose reach matches the requirement.",
+   "lead": null,
+   "points": null,
+   "diagram": "dev3-2",
+   "caption": "Match the layer to the requirement: the reach it needs and whether any project can override it.",
+   "code": null,
+   "ask": {
+    "q": "A platform team must ensure every developer in the organization inherits a mandatory security instruction that individual projects cannot disable. Where should the instruction live?",
+    "options": [
+     "In each repository's ./CLAUDE.md, copied into every project.",
+     "In each developer's ~/.claude/CLAUDE.md user memory.",
+     "In the enterprise managed CLAUDE.md file (e.g. /etc/claude-code/CLAUDE.md).",
+     "In ./CLAUDE.local.md inside every working copy."
+    ],
+    "answer": 2,
+    "why": "The per-repo copy fails because it is editable and must be maintained in every project \u2014 nothing enforces it. User memory fails because it is per-developer and each person can edit or remove it. CLAUDE.local.md fails because it is gitignored and local-only, so it reaches no one else. The managed enterprise file is deployed centrally and takes precedence over every lower layer.",
+    "trap": "enterprise_memory_over_user_memory"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": null
+  },
+  {
+   "task": "3.1",
+   "kind": "teach",
+   "title": "settings.json and the component set",
+   "inshort": "settings.json controls how Claude Code behaves (permissions, hooks, env, model); the component set \u2014 Rules, Skills, Commands, Agents, Agent Memory \u2014 controls what it knows and can do.",
+   "lead": "Your team keeps re-approving the same 'never touch prod' prompt. You add a deny rule to .claude/settings.json so every checkout inherits it, and put your machine-specific API key helper in ~/.claude/settings.json so it stays out of git.",
+   "points": [
+    "settings.json precedence (high to low): enterprise managed settings > command-line arguments > .claude/settings.local.json (not committed) > .claude/settings.json (committed) > ~/.claude/settings.json (user).",
+    "Common fields: permissions (allow/deny/ask rules per tool), env (environment variables), model (default model), hooks (deterministic shell handlers on events), statusLine.",
+    "Rules are the CLAUDE.md memory and instruction files that shape behavior; Skills are SKILL.md packages under .claude/skills/<name>/ that Claude loads on demand (progressive disclosure).",
+    "Commands are custom slash commands defined as markdown files in .claude/commands/*.md (invoked as /name); Agents are subagent definitions in .claude/agents/*.md.",
+    "Agent Memory is the persistent memory layer \u2014 the CLAUDE.md hierarchy plus memory files that survive across sessions."
+   ],
+   "diagram": "dev3-3",
+   "caption": "settings.json is layered, enforced config: enterprise beats command-line args, which beat local, project, then user settings.",
+   "code": "// .claude/settings.json (committed, shared by the team)\n{\n  \"model\": \"claude-sonnet-4-5\",\n  \"permissions\": {\n    \"deny\": [\"Bash(rm -rf:*)\"],\n    \"allow\": [\"Bash(npm test)\"]\n  },\n  \"env\": { \"NODE_ENV\": \"test\" }\n}",
+   "ask": null,
+   "why": "settings.json is enforced configuration (mechanics: what tools may run, which model, what env); the component set is capability (what Claude reads and can do). Confusing the two \u2014 e.g. expecting a permission rule to take effect from CLAUDE.md \u2014 is a common failure.",
+   "contrast": "CLAUDE.md says what to do in natural language (guidance); settings.json says what may run (enforced config). A deny rule in settings.json blocks a command even if CLAUDE.md asked for it.",
+   "exam": "Scenario: a developer wants a permission rule enforced on their machine without committing it, while a shared default model is committed for the whole team. Which approach is most effective? \u2014 Put the permission rule in .claude/settings.local.json and the model default in .claude/settings.json.",
+   "takeaway": "settings.json is layered, enforced configuration; the component set is Rules, Skills, Commands, Agents, and Agent Memory."
+  },
+  {
+   "task": "3.1",
+   "kind": "check",
+   "title": "Local versus shared settings",
+   "inshort": "Choose where each setting belongs so the right audience gets it.",
+   "lead": null,
+   "points": null,
+   "diagram": "dev3-4",
+   "caption": "Ask who each setting is for and whether it should be committed - the answers pick the layer.",
+   "code": null,
+   "ask": {
+    "q": "A developer needs a personal permission allow-rule that must not be committed, while the team's shared default model must apply to everyone who clones the repo. Where do the two settings belong?",
+    "options": [
+     "Both in ~/.claude/settings.json.",
+     "Both in ./CLAUDE.md.",
+     "The permission rule in .claude/settings.json; the model default in .claude/settings.local.json.",
+     "The permission rule in .claude/settings.local.json; the model default in .claude/settings.json."
+    ],
+    "answer": 3,
+    "why": "Putting both in user settings fails because user settings apply to every project, so the rule is not scoped to this repo and the model is not shared with the team. Putting both in CLAUDE.md fails because CLAUDE.md carries guidance, not enforced permission configuration. The third option swaps the layers: the permission rule would be committed for everyone and the model would be local-only. The uncommitted personal rule belongs in local settings and the shared committed model belongs in project settings.",
+    "trap": "local_vs_shared_settings_swapped"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": null
+  },
+  {
+   "task": "3.1",
+   "kind": "teach",
+   "title": "Sessions and execution modes",
+   "inshort": "Claude Code runs interactively or headlessly; sessions persist and can be continued, and headless, streaming, and auto modes let you script it.",
+   "lead": "You want CI to run Claude on every pull request and post a review with no human at the keyboard. You invoke claude -p \"review this diff\" --output-format json inside the pipeline; Claude runs non-interactively, prints a machine-readable result, and exits.",
+   "points": [
+    "Session management: an interactive run keeps conversation state; claude --continue (-c) resumes the most recent session and claude --resume (-r) lets you pick a past one. /clear drops context and /compact summarizes and compresses it to reclaim the context window.",
+    "Built-in slash commands include /init, /memory, /clear, /compact, /config, /model, /agents, /mcp, /review, /permissions, and /help.",
+    "Custom slash commands are markdown files in .claude/commands/*.md that become /name, and can accept arguments and frontmatter.",
+    "Headless mode: claude -p (--print) runs one non-interactive turn and exits \u2014 the mode for scripts and CI. Streaming mode: --output-format stream-json emits events (with --input-format stream-json to consume them) for programmatic use.",
+    "Auto mode (acceptEdits / auto-accept edits) lets Claude apply edits without a prompt per change; pair it with deny rules so it cannot run destructive commands."
+   ],
+   "diagram": "dev3-5",
+   "caption": "The mode axis is who drives the run - interactive, headless, streaming, or auto; the session axis is --continue / --resume.",
+   "code": "# headless, machine-readable result for a script or CI\nclaude -p \"review this diff\" --output-format json\n\n# continue the most recent session interactively\nclaude --continue\n\n# streaming events for a programmatic consumer\nclaude -p \"...\" --output-format stream-json --verbose",
+   "ask": null,
+   "why": "The mode determines who is driving: interactive (a human), headless -p (a script), streaming (a program consuming events), auto/acceptEdits (Claude applying edits without per-change approval). Choosing the wrong one either blocks automation or removes a safety gate you needed.",
+   "contrast": "Headless -p runs once and exits with no interactive session to resume; a normal interactive run keeps state you can --continue. Auto-accept mode speeds up trusted edits but should be paired with deny rules so it cannot run destructive commands.",
+   "exam": "Scenario: an automated pipeline must run Claude Code on every commit with no human present and parse the result programmatically. Which approach is most effective? \u2014 Invoke headless mode with claude -p and a structured output format such as JSON or stream-json.",
+   "takeaway": "Interactive versus headless (-p) versus streaming versus auto is the mode axis; --continue/--resume is the session axis."
+  },
+  {
+   "task": "3.1",
+   "kind": "check",
+   "title": "Headless for automation",
+   "inshort": "Choose the invocation that matches an unattended, parseable run.",
+   "lead": null,
+   "points": null,
+   "diagram": "dev3-6",
+   "caption": "List what the run must satisfy, then pick the invocation whose behaviour matches all of them.",
+   "code": null,
+   "ask": {
+    "q": "A CI job must run Claude Code unattended, have its output parsed by a script, and make no interactive prompts. Which invocation is most effective?",
+    "options": [
+     "Run claude -p \"...\" with --output-format json (headless mode).",
+     "Run claude interactively and pipe keystrokes to it.",
+     "Run claude --resume and wait for a human to approve edits.",
+     "Add the instructions to CLAUDE.md and run claude with no flags."
+    ],
+    "answer": 0,
+    "why": "Interactive piping fails because interactive mode expects a terminal and human input, which CI does not provide. --resume fails because it restores a session for a person to drive, not an unattended script. A plain interactive run still waits for input; CLAUDE.md shapes behavior but does not make the run non-interactive. Headless -p with a structured output format is purpose-built for scripts.",
+    "trap": "interactive_vs_headless_confusion"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": null
+  },
+  {
+   "task": "3.1",
+   "kind": "recap",
+   "title": "Domain 3 in one page",
+   "inshort": "Claude Code: memory layers, configuration, components, and modes.",
+   "lead": "Everything in this domain reduces to four questions: which memory layer reaches whom, how settings.json is layered, what the five components are, and which execution mode fits the job.",
+   "points": [
+    "Memory hierarchy: user (~/.claude/CLAUDE.md, all your projects) < project (./CLAUDE.md, committed, whole team) < project-local (./CLAUDE.local.md, gitignored, you only); enterprise managed files sit above all and cannot be overridden. Deeper files are read later and win on conflict. /init scaffolds a CLAUDE.md.",
+    "settings.json precedence: enterprise managed > command-line args > .claude/settings.local.json > .claude/settings.json > ~/.claude/settings.json. Key fields: permissions (allow/deny/ask), env, model, hooks, statusLine.",
+    "Component set: Rules (CLAUDE.md guidance), Skills (SKILL.md, loaded on demand), Commands (.claude/commands/*.md -> /name), Agents (subagents in .claude/agents/*.md), Agent Memory (the persistent memory layer).",
+    "Sessions: interactive state persists; --continue/-c resumes the latest, --resume/-r picks one, /clear drops context, /compact compresses it.",
+    "Modes: headless (claude -p, for CI and scripts), streaming (--output-format stream-json for programmatic consumers), auto (acceptEdits applies edits without per-change prompts)."
+   ],
+   "diagram": "dev3-7",
+   "caption": "Every question in this domain reduces to memory layer, settings precedence, the component set, and the execution mode.",
+   "code": null,
+   "ask": null,
+   "why": null,
+   "contrast": null,
+   "exam": "At most two exam items come from this domain (3.1%), so expect one scenario on memory placement or settings precedence and one on headless/mode selection.",
+   "takeaway": "Layer memory by audience, layer settings by precedence, know the five components, and pick the mode that matches who is driving."
+  }
+ ]
+}

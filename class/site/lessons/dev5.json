@@ -1,0 +1,280 @@
+{
+ "domain": "dev5",
+ "title": "Model Selection and Optimization",
+ "weight": "16.8% of the exam",
+ "goal": "Understand what an LLM actually does with your input, then make the model, the transport, and the token budget deliberate choices instead of defaults \u2014 picking the cheapest tier that passes your eval and caching only what you reuse.",
+ "tasks": [
+  "5.1",
+  "5.2",
+  "5.3",
+  "5.4"
+ ],
+ "steps": [
+  {
+   "task": "5.1",
+   "kind": "teach",
+   "title": "How the model reads and writes: tokens, context, next-token loop",
+   "inshort": "Claude sees tokens, works inside one context window, and produces one token at a time.",
+   "lead": "An engineer pastes a 400-page PDF into a single API call and asks for a summary. The call fails outright with a context-length error, and an earlier, shorter attempt had quietly omitted the last third of the document. Nothing was 'too long' in human terms \u2014 it was too long in tokens, and the model never saw the part that fell outside the window.",
+   "points": [
+    "Text is split into tokens \u2014 subword chunks, not words or characters. Pricing, context limits, and latency are all measured in tokens, so token count, not page count, is the real unit.",
+    "The context window is the total budget for one request: system prompt, conversation history, tool definitions, retrieved documents, and the model's own output all share it. Exceeding it is an error, not a silent truncation.",
+    "Generation is a next-token loop: the model predicts one token, appends it, and predicts the next. Output is produced left to right and cannot be edited backwards, which is why output constraints and stop conditions matter.",
+    "The same loop runs every call, but the model samples from a probability distribution rather than computing a single fixed answer \u2014 the same prompt can produce different valid outputs on different calls."
+   ],
+   "diagram": "dev5-1",
+   "caption": "Claude reads tokens inside one context window and writes one token at a time \u2014 a loop that samples, not a fixed computation.",
+   "code": null,
+   "ask": null,
+   "why": "The exam tests these as the vocabulary underneath every other Domain 5 decision: caching, budgeting, and model choice are all about tokens and the context window.",
+   "contrast": "The tempting wrong mental model: 'it's a search engine over the document.' Claude does not retrieve; it reads what is inside the context window and predicts the next token. Anything outside the window does not exist to it.",
+   "exam": "Stems give a size in pages, files, or messages and expect you to reason in tokens and context-window capacity. 'It fit in the file' does not mean 'it fits the context window'.",
+   "takeaway": "Everything you send is tokens, and everything shares one context window. Count tokens, not pages."
+  },
+  {
+   "task": "5.1",
+   "kind": "check",
+   "title": "The document that 'should have fit'",
+   "inshort": "The context window is a hard token budget shared by the whole request.",
+   "lead": "The engineer from the previous step asks why the summary was incomplete and the call errored.",
+   "points": [],
+   "diagram": "dev5-2",
+   "caption": "The context window is a hard budget shared by every part of the request \u2014 the question turns on whether the input fits it in tokens.",
+   "code": null,
+   "ask": {
+    "q": "An engineer sends a long contract in one Claude API call and asks for a summary. The request fails with a context-length error, and an earlier shorter attempt returned a summary that silently omitted the last third of the document. What is the most appropriate action?",
+    "options": [
+     "Measure the input in tokens, keep system prompt, history, tools, and document inside the context window, and chunk or summarise the document so nothing is dropped.",
+     "Switch to the largest model available, since a bigger model must have a bigger context window and will simply accept the whole contract.",
+     "Increase max_tokens on the request until the whole contract fits and the error goes away.",
+     "Paste the document twice so the model is more likely to read all of it."
+    ],
+    "answer": 0,
+    "why": "The context window is a hard token budget shared by every part of the request, so the fix is to count tokens and fit or chunk the input. A larger model (B) may have a bigger window, but that is not the guarantee the stem implies and it does not fix an oversized input \u2014 the error is about capacity, not capability. max_tokens (C) caps output length; raising it does nothing for an over-large input and can make the request more expensive. Repeating the document (D) doubles the token count and makes overflow worse.",
+    "trap": "bigger_model_fixes_everything"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "When the input is too big, count tokens and fit it \u2014 do not reach for a bigger model."
+  },
+  {
+   "task": "5.1",
+   "kind": "teach",
+   "title": "Steering the model: sampling, thinking modes, shot count",
+   "inshort": "You steer output with sampling settings, thinking/effort controls, and example count \u2014 and you verify with evals, not assumptions.",
+   "lead": "A team ships a support classifier on a Friday and by Monday it is misfiling tickets. Nothing in the code changed. The prompt is identical; the model simply sampled a different token sequence on some inputs, and nobody had measured accuracy on a representative set before release.",
+   "points": [
+    "Non-determinism is inherent: even at temperature 0 the model samples from a distribution and can vary across calls and across model versions. You therefore evaluate behaviour on a test set instead of assuming a prompt 'works'.",
+    "Sampling controls shape the distribution \u2014 lower temperature for consistent, repeatable classification; higher for brainstorming where variety is wanted. They reduce variation but never remove it.",
+    "Thinking options trade latency and cost for reasoning: fast, low-effort responses return quickly for simple tasks, while extended or adaptive thinking spends more tokens to reason through hard problems. Adaptive thinking lets the model decide how much to think per request.",
+    "Prompting technique scales the same task: zero-shot (instructions only), single-shot (one example), and multi-shot (several examples) trade prompt tokens for reliability on nuanced formats.",
+    "Because model releases can change behaviour, treat a version bump like a code change: pin the model, re-run the eval, and promote the new version only if quality holds."
+   ],
+   "diagram": "dev5-3",
+   "caption": "Sampling, thinking mode, and shot count shape the output \u2014 treat each as a hypothesis you test on an eval set.",
+   "code": null,
+   "ask": null,
+   "why": "The exam wants you to connect non-determinism to process: if output can vary, correctness is established by evaluation, not by eyeballing a single run.",
+   "contrast": "The tempting wrong move: set temperature to 0, call it deterministic, and ship without tests. Lower temperature reduces variance; it does not make the model a pure function, and it cannot detect a regression.",
+   "exam": "Stems describe a prompt that 'sometimes' fails or a model upgrade that quietly changed outputs. The right answer evaluates; the wrong answers assume determinism or blame the caller.",
+   "takeaway": "Same prompt, different output is normal. Prove behaviour with evals and version pinning, not one lucky run."
+  },
+  {
+   "task": "5.1",
+   "kind": "check",
+   "title": "The prompt that works on your machine",
+   "inshort": "If output can vary, only a measured eval set establishes accuracy.",
+   "lead": "The classifier team wants a release process it can trust before the next scheduled model upgrade.",
+   "points": [],
+   "diagram": "dev5-4",
+   "caption": "When output can vary, the question turns on how accuracy is actually established, not on one lucky run.",
+   "code": null,
+   "ask": {
+    "q": "A team's support classifier passes on every prompt they try by hand, but occasionally misfiles tickets in production, and a scheduled model upgrade is weeks away. What is the most appropriate approach?",
+    "options": [
+     "Pin the current model version, build a labelled eval set, measure accuracy on it, and re-run the eval against any new model version before promoting it.",
+     "Set temperature to 0 and ship, because deterministic sampling removes the variation.",
+     "Add an instruction telling the model to always classify correctly and never make mistakes.",
+     "Upgrade to the newest model immediately so the upgrade happens before the deadline."
+    ],
+    "answer": 0,
+    "why": "Non-determinism means the only way to know accuracy is to measure it on a representative set, and pinning plus re-evaluating turns a model change into a controlled release. Temperature 0 (B) reduces variance but does not eliminate it and yields no accuracy number. An instruction to 'always be correct' (C) adds no information the model can act on. Upgrading first (D) is exactly the unmeasured change the eval exists to catch.",
+    "trap": "temperature_zero_is_deterministic"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Measure on an eval set and pin the version; never ship on one hand-checked run."
+  },
+  {
+   "task": "5.2",
+   "kind": "teach",
+   "title": "The engineering underneath: SDKs, REST, and streaming",
+   "inshort": "The SDKs wrap a REST API \u2014 knowing the wire underneath is what lets you stream, retry, and account for cost.",
+   "lead": "A developer's streaming UI hangs and then shows nothing. They used the SDK's convenience method and never looked at what it sends. The bug is a raw HTTP detail: the response arrives as server-sent events, but the code waited for a single JSON body that never comes.",
+   "points": [
+    "The official SDKs are thin wrappers over a REST API: they build the HTTP request (headers, auth, JSON body) and parse the JSON response, including the usage and error fields you need for accounting and debugging.",
+    "Streaming uses server-sent events: the response arrives as a sequence of incremental events, so a client that expects one complete JSON body appears to hang. Streaming lowers time-to-first-token, not total tokens.",
+    "Websockets and other persistent transports fit interactive or push-style integrations; request/response REST fits most batch and tool-calling work. Pick the transport by interaction pattern, not fashion.",
+    "Error and status handling is the integration layer's job: distinguishing a 4xx request problem, a 429 rate limit, a 5xx server fault, and a truncated model output tells you whether to fix the payload, back off and retry, or surface it.",
+    "Usage accounting lives in the response (input tokens, output tokens, cache fields), so the SDK's parsed object \u2014 not a guess \u2014 is the source of truth for cost."
+   ],
+   "diagram": "dev5-5",
+   "caption": "The SDK is a thin wrapper over a REST API \u2014 streaming is server-sent events and usage fields are the source of truth for cost.",
+   "code": null,
+   "ask": null,
+   "why": "This is the largest slice of Domain 5: the exam assumes you can reason about the HTTP layer beneath the convenience methods.",
+   "contrast": "The tempting shortcut: treat the SDK as a black box and 'just call the helper'. That works until something fails at the wire \u2014 streaming, retries, timeouts, usage fields \u2014 and you have no mental model to debug it.",
+   "exam": "Stems describe a symptom (UI hangs, cost is unexplained, retries storm) and expect you to name the transport or error class causing it, not to rewrite the prompt.",
+   "takeaway": "The SDK is a convenience over REST. Know the request, the response, the streaming events, and the error classes."
+  },
+  {
+   "task": "5.2",
+   "kind": "check",
+   "title": "The streaming UI that never renders",
+   "inshort": "A streamed response is incremental events, not one complete body.",
+   "lead": "The developer needs to fix the hang without giving up streaming.",
+   "points": [],
+   "diagram": "dev5-6",
+   "caption": "A streamed response is a sequence of incremental events \u2014 the question turns on what the client assumes it receives.",
+   "code": null,
+   "ask": {
+    "q": "A chat UI built with an Anthropic SDK helper waits for the full response before rendering and appears to hang until the answer is complete. Time-to-first-token is the metric the team cares about. What is the most appropriate action?",
+    "options": [
+     "Consume the streamed server-sent events as they arrive and render each increment, rather than waiting for a single complete JSON response.",
+     "Increase the request timeout so the UI eventually gets the full body and renders it.",
+     "Switch to a smaller model so the whole answer arrives faster in one piece.",
+     "Disable streaming and poll the API repeatedly until the answer is ready."
+    ],
+    "answer": 0,
+    "why": "Streaming returns incremental SSE events; the fix is to handle each event so the first tokens render immediately, which is exactly what time-to-first-token measures. A longer timeout (B) just makes the user wait longer for the same single render. A smaller model (C) may finish sooner but still returns one body, so the first token is no sooner and quality is traded away for nothing. Disabling streaming and polling (D) adds latency and cost and defeats the point of streaming.",
+    "trap": "wait_for_full_body"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Render the streamed events as they arrive; a single-body client is the bug."
+  },
+  {
+   "task": "5.3",
+   "kind": "teach",
+   "title": "Haiku, Sonnet, Opus: match the tier to the task",
+   "inshort": "Pick the cheapest tier that reliably passes your eval; escalate only when quality demands it.",
+   "lead": "A team routes every request \u2014 a three-word intent tag, a code review, and a legal-clause analysis \u2014 to the top model 'to be safe'. Their bill is triple what it needs to be and latency is worse, while the intent tag's accuracy is identical on the small model.",
+   "points": [
+    "Three capability tiers: Haiku is the fastest and cheapest, built for high-volume, well-specified work (classification, extraction, routing, simple formatting); Sonnet is the balanced default for most production tasks; Opus is the most capable and most expensive, for hard reasoning, nuanced writing, and complex agentic work.",
+    "The tradeoff is a triangle \u2014 quality versus latency versus cost. Moving up a tier buys capability and costs money and time; moving down saves both but risks accuracy on hard inputs.",
+    "Decide per task, not per app: route the easy majority of traffic to the cheap tier and escalate only the inputs that need it. A router, or a two-pass 'cheap first, escalate on low confidence' pattern, captures most of the saving.",
+    "Not every tier supports every option \u2014 extended or adaptive thinking and effort levels are capability-dependent \u2014 so confirm the feature you need exists on the tier you choose.",
+    "Model releases can change behaviour: a newer version of the same tier may answer differently, so re-run the eval on the specific task before switching, and pin the version you validated."
+   ],
+   "diagram": "dev5-7",
+   "caption": "Pick the cheapest tier that reliably passes your eval; escalate only where quality demands it.",
+   "code": null,
+   "ask": null,
+   "why": "The exam frames this as 'which model best fits the task?' and scores the reasoning, not a slogan \u2014 the correct answer is always the cheapest tier that meets the requirement.",
+   "contrast": "The tempting wrong answers: always use the top model 'for safety' (pays for capability the task cannot use), or cut cost by picking the cheapest model regardless of quality (breaks the hard inputs). Both fail because neither is tied to a measurement.",
+   "exam": "Stems give volume, difficulty, and a quality bar ('thousands per hour, simple labels' versus 'one-off complex analysis'). Map the tier to the requirement; watch for distractors that degrade quality to save money or overspend for unneeded capability.",
+   "takeaway": "Cheapest tier that passes the eval, escalated only where it must be."
+  },
+  {
+   "task": "5.3",
+   "kind": "check",
+   "title": "One model for three very different jobs",
+   "inshort": "Tier by task: high-volume simple work and hard reasoning do not need the same model.",
+   "lead": "The team wants a routing policy instead of a single default.",
+   "points": [],
+   "diagram": "dev5-8",
+   "caption": "Each workload has a different volume and quality bar \u2014 the question turns on whether one model should serve all three.",
+   "code": null,
+   "ask": {
+    "q": "A product sends three workloads to the most capable model: (1) tagging each of 200,000 messages per day with one of eight intent labels, (2) reviewing pull requests, and (3) analysing complex legal clauses where errors are costly. Cost and latency matter for workload 1. What is the most appropriate action?",
+    "options": [
+     "Route the high-volume, well-specified tagging to the fast cheap tier, keep a mid-tier model for code review, and reserve the top tier for the complex legal analysis.",
+     "Keep all three on the top model, since a single consistent model is simpler to operate.",
+     "Move all three to the cheapest tier and accept some accuracy loss on legal analysis to minimise cost.",
+     "Move all three to the cheapest tier but disable extended thinking everywhere to save tokens."
+    ],
+    "answer": 0,
+    "why": "Tier by task: simple, high-volume tagging is exactly what the fast cheap tier is for, code review fits a balanced mid-tier, and the costly, nuanced legal work justifies the top tier. A single top model everywhere (B) pays a premium for capability the tagging cannot use. Cheapest-everywhere (C) and disabling thinking to save tokens (D) both degrade quality on the workload that needs it \u2014 the exam's 'optimise cost by degrading quality' trap.",
+    "trap": "one_model_for_everything"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Match each workload to a tier; do not collapse three jobs onto one model."
+  },
+  {
+   "task": "5.4",
+   "kind": "teach",
+   "title": "Token budgets and prompt caching: shaping the cost curve",
+   "inshort": "Budget the tokens you send and receive, and cache the stable prefix so repeated context is billed at a fraction.",
+   "lead": "A coding assistant sends the same 20,000-token system prompt, tool definitions, and project rules on every one of thousands of daily calls. The prefix never changes, yet the team pays full price for it every time \u2014 until they mark it cacheable and the read cost drops to a fraction of the input rate.",
+   "points": [
+    "A token budget is the per-request and per-task allowance for input and output tokens, set against max_tokens and the context window. Track it from the response usage fields (input, output, cache-write, cache-read) so cost is measured, not guessed.",
+    "Cost is input tokens times the input price plus output tokens times the output price, per model. Output is usually the pricier side, so an unbounded max_tokens or a rambling prompt shape is where bills hide.",
+    "Prompt caching stores a stable prefix so later calls reuse it. A cache write costs a premium over standard input, and a cache read costs a small fraction \u2014 roughly a tenth \u2014 of the standard input rate. The break-even is reuse: the write pays off only if the cached prefix is read enough times before it expires.",
+    "Caching helps when the prefix is stable and reused (system rules, tool schemas, long reference documents, few-shot examples) and does nothing when every request has a unique prefix \u2014 you pay the write premium and never read it back.",
+    "Cache hits require an exact prefix match: changing anything early in the cached block invalidates the cache from that point on. Order requests so the stable material sits first and the changing user input sits last, and keep the cache warm by using it within its short time-to-live."
+   ],
+   "diagram": "dev5-9",
+   "caption": "Budget the tokens you send and receive, and cache the stable prefix so repeated context is billed at a fraction.",
+   "code": "resp = client.messages.create(\n    model=\"claude-sonnet-4-5\",\n    max_tokens=1024,\n    system=[{\n        \"type\": \"text\",\n        \"text\": SYSTEM_RULES,                      # long, stable prefix\n        \"cache_control\": {\"type\": \"ephemeral\"},    # mark it cacheable\n    }],\n    messages=[{\"role\": \"user\", \"content\": question}],  # changes each call\n)\nu = resp.usage\n# u.cache_creation_input_tokens -> billed at a premium (the write)\n# u.cache_read_input_tokens     -> billed at a fraction (the read)\n# u.input_tokens, u.output_tokens\n\ncost = (u.input_tokens * IN_PRICE\n      + u.cache_creation_input_tokens * IN_PRICE * 1.25   # write premium\n      + u.cache_read_input_tokens     * IN_PRICE * 0.10   # read discount\n      + u.output_tokens * OUT_PRICE)",
+   "ask": null,
+   "why": "The exam tests the caching curve directly: the write premium versus the read discount, and the reuse condition that decides whether caching pays off at all.",
+   "contrast": "The tempting wrong move: 'caching always saves money, so cache everything.' Cache a prefix that is never reused and you have added a write premium to every call for no read benefit \u2014 caching can cost more than it saves.",
+   "exam": "Stems describe a repeated large context and ask what reduces cost. The correct answer marks the stable prefix cacheable and keeps the changing part outside it; distractors cache the volatile part, disable caching, or shrink output quality to save tokens.",
+   "takeaway": "Cache the stable prefix, keep the changing input last, and only cache what gets reused before it expires."
+  },
+  {
+   "task": "5.4",
+   "kind": "check",
+   "title": "The system prompt billed a thousand times a day",
+   "inshort": "Cache the large unchanging prefix, never the volatile input.",
+   "lead": "The coding-assistant team wants to cut cost without touching answer quality.",
+   "points": [],
+   "diagram": "dev5-10",
+   "caption": "Cache the stable prefix and keep the changing input last \u2014 a write only pays off when it is read before it expires.",
+   "code": null,
+   "ask": {
+    "q": "A coding assistant sends an identical 20,000-token system prompt and tool-definition block on every one of thousands of daily requests, with only the user's question changing. The team wants to lower cost without reducing answer quality. What is the most appropriate action?",
+    "options": [
+     "Mark the stable system-and-tools block as cacheable so repeated calls read it at a fraction of the input rate, and keep the changing user question outside the cached prefix.",
+     "Cache the user's question on each call, since that is the part that differs.",
+     "Shorten the system prompt and tool definitions by deleting rules until the token count drops, accepting slightly weaker instructions.",
+     "Disable caching and reduce max_tokens so every response is shorter."
+    ],
+    "answer": 0,
+    "why": "The cost is in a large, unchanging prefix sent thousands of times, which is exactly what prompt caching is for: the write premium is paid once and the reads are billed at a fraction. Caching the volatile user question (B) means every call writes a cache it never reuses, adding cost for no benefit. Deleting rules (C) trades quality for tokens \u2014 the degradation trap. Disabling caching and clipping output (D) leaves the big prefix at full price and shortens answers, hurting quality.",
+    "trap": "cache_the_wrong_prefix"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Mark the stable prefix cacheable and leave the changing input outside it."
+  },
+  {
+   "task": "5.4",
+   "kind": "recap",
+   "title": "Domain 5 in one page",
+   "inshort": "Tokens and one shared context window, non-determinism you evaluate, the SDK-over-REST wire, tier-per-task, and caching the stable prefix.",
+   "lead": "That is Domain 5. Everything reduces to a few primitives: the model reads and writes tokens inside one context window; it samples rather than computes, so you prove behaviour with evals and version pinning; the SDKs wrap a REST API whose transport and error classes you must understand; you pick the cheapest model tier that passes your eval for each task; and you control cost with a token budget and by caching the stable prefix while keeping the changing input last.",
+   "points": [
+    "Tokens are the unit of everything \u2014 price, context limits, latency \u2014 and the context window is shared by system prompt, history, tools, documents, and output. Overflow is an error, not a silent trim.",
+    "Generation is a next-token sampling loop, so output varies across calls and model versions. Establish correctness with a labelled eval set and pin the model version you validated.",
+    "Steer with sampling settings, thinking modes and effort levels, and shot count (zero/single/multi-shot); none of these make the model deterministic, so they are hypotheses you test.",
+    "The SDKs wrap a REST API: streaming is server-sent events, and error classes (4xx, 429, 5xx, truncation) drive the retry-versus-fix decision. Usage fields are the source of truth for cost.",
+    "Pick the cheapest tier that reliably meets the requirement \u2014 fast and cheap for high-volume simple work, balanced for most tasks, top tier for hard reasoning \u2014 and cache the stable prefix, keeping the volatile input last, because a cache write pays off only when it is read before it expires."
+   ],
+   "diagram": "dev5-11",
+   "caption": "Count tokens, evaluate instead of assume, know the wire, match the tier to the task, and cache the stable prefix.",
+   "code": null,
+   "ask": null,
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Count tokens, eval instead of assume, know the wire, match the tier to the task, and cache the stable prefix."
+  }
+ ]
+}

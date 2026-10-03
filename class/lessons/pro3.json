@@ -1,0 +1,337 @@
+{
+ "domain": "pro3",
+ "title": "Integration",
+ "weight": "19% of the exam",
+ "goal": "Design integrations that respect the constraint that actually binds: least-privilege capability, authenticated boundaries, accuracy\u2013latency budgets, observability at scale, and retrieval and protocol choices matched to data shape and query pattern.",
+ "tasks": [
+  "3.1",
+  "3.2",
+  "3.3",
+  "3.4",
+  "3.5",
+  "3.6",
+  "3.7",
+  "3.8"
+ ],
+ "steps": [
+  {
+   "task": "3.1+3.2",
+   "kind": "teach",
+   "title": "Tool surface and access boundaries",
+   "inshort": "Every tool an agent can call is both a capability and an attack surface.",
+   "lead": "A customer-support platform wires its Claude agent to fourteen tools: read ticket, draft reply, issue refund, delete account, run SQL, send email, and more. Support staff only ever read tickets and draft replies. During review an auditor finds the agent's service account holds write scope to the billing database \u2014 a capability no one asked for.",
+   "points": [
+    "Capability bloat: each tool widens the model's decision space and the blast radius of a misplan or prompt injection.",
+    "Least privilege applies to tools, not just IAM: remove capabilities the role never needs rather than gating them with confirmations.",
+    "Authentication proves who is calling (service account, OAuth token, user-delegated token); authorization decides what that identity may do \u2014 they are separate controls.",
+    "Security gaps concentrate where the agent's identity is broader than the user's: shared service accounts, on-behalf-of tokens with extra scopes, over-scoped API keys.",
+    "Map every tool to the identity and scope it requires; if a user role cannot justify the scope, the tool should not exist."
+   ],
+   "diagram": "pro3-1",
+   "caption": "Each tool widens the decision space and the blast radius; least privilege means the role justifies the scope or the tool does not exist.",
+   "code": null,
+   "ask": null,
+   "why": "Least privilege eliminates the attack surface instead of monitoring it: a tool the agent cannot invoke is a tool that cannot be misused, injected into, or leaked.",
+   "contrast": "Adding logging or a confirmation prompt is a detective or compensating control \u2014 it changes what you notice, not what the agent is permitted to do.",
+   "exam": "The exam favours this shape: a role with a narrow need and an over-provisioned agent, where the right answer removes capability rather than guarding it.",
+   "takeaway": "Prune the tool list to the role; the safest capability is the one the agent cannot invoke."
+  },
+  {
+   "task": "3.1+3.2",
+   "kind": "check",
+   "title": "Check: capability bloat and least privilege",
+   "inshort": "Remove capabilities the role never needs.",
+   "lead": null,
+   "points": null,
+   "diagram": "pro3-2",
+   "caption": "Least privilege eliminates the capability; a gate around a tool the role never needs is not least privilege.",
+   "code": null,
+   "ask": {
+    "q": "An internal analytics agent is configured with eleven tools, including execute_sql, drop_table, and send_email. Analysts only need read-only SQL and chart generation. Which change best reduces risk under least privilege?",
+    "options": [
+     "Keep all tools but add an approval step before execute_sql and drop_table.",
+     "Remove drop_table and send_email, and scope execute_sql to a read-only database role.",
+     "Add audit logging to every tool invocation and alert on any drop_table call.",
+     "Move to a larger model with stronger instruction-following so it will not misuse the tools."
+    ],
+    "answer": 1,
+    "why": "Option 1 removes the unnecessary capabilities and constrains the remaining one to the least scope it needs (read-only), eliminating the attack surface rather than watching it. Option 0 keeps the dangerous tools reachable and only gates them, so a bypass or injection still lands \u2014 an approval is compensating, not removal. Option 2 is purely detective: it records misuse after the fact and still permits drop_table. Option 3 addresses reliability, not authorization scope \u2014 a larger model holds exactly the same privileges.",
+    "trap": "monitor_over_remove"
+   },
+   "why": "Option 1 removes the unnecessary capabilities and constrains the remaining one to the least scope it needs (read-only), eliminating the attack surface rather than watching it. Option 0 keeps the dangerous tools reachable and only gates them, so a bypass or injection still lands \u2014 an approval is compensating, not removal. Option 2 is purely detective: it records misuse after the fact and still permits drop_table. Option 3 addresses reliability, not authorization scope \u2014 a larger model holds exactly the same privileges.",
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Least privilege removes the capability; it does not add a gate around it."
+  },
+  {
+   "task": "3.3",
+   "kind": "teach",
+   "title": "Accuracy, latency, and the budget that binds",
+   "inshort": "Pick the cheapest configuration that still clears the accuracy bar the task requires.",
+   "lead": "A fraud-triage pipeline must return a decision within 800 ms. A deep multi-pass configuration hits 96% accuracy but takes 4 seconds; a single fast pass hits 89% in 300 ms. The team argues about which number matters more.",
+   "points": [
+    "Accuracy and latency trade off along model size, reasoning depth, retrieval breadth, and the number of agent turns.",
+    "Define the constraint first: an SLA (p95 latency), a cost ceiling, or a minimum accuracy \u2014 the binding one decides the design.",
+    "Right-size per step: not every stage needs the largest model; route easy cases fast and escalate only hard ones.",
+    "More retrieval or more reasoning raises accuracy at the cost of tokens and latency; justify each increment against the bar.",
+    "Measure at the percentile that matters (p95/p99), not the mean \u2014 tail latency is what breaks SLAs."
+   ],
+   "diagram": "pro3-3",
+   "caption": "You cannot maximize both; name the binding constraint and choose the cheapest configuration that clears it.",
+   "code": null,
+   "ask": null,
+   "why": "You cannot maximize both; the architectural move is to identify which constraint binds and choose the configuration that satisfies it, then justify the trade-off explicitly.",
+   "contrast": "Maximizing accuracy with no budget is not architecture \u2014 it is a configuration that silently fails the SLA.",
+   "exam": "The exam's favourite shape here: a latency or cost constraint plus two defensible designs, where the right answer names the trade-off and picks the one that respects the constraint.",
+   "takeaway": "Name the binding constraint, then choose the cheapest configuration that clears it."
+  },
+  {
+   "task": "3.3",
+   "kind": "check",
+   "title": "Check: accuracy\u2013latency trade-off",
+   "inshort": "Respect the SLA percentile, not the mean.",
+   "lead": null,
+   "points": null,
+   "diagram": "pro3-4",
+   "caption": "The constraint is stated at a percentile; spend the p95 budget, not the mean.",
+   "code": null,
+   "ask": {
+    "q": "A claims-triage agent must return a decision within 1.5 s at p95 to fit the UI. A two-model cascade (fast classifier \u2192 deep reasoner for uncertain cases) reaches 94% accuracy at 1.2 s p95. A single large model reaches 96% at 3.8 s p95. Which design should you justify?",
+    "options": [
+     "Single large model \u2014 accuracy always dominates latency.",
+     "Add a third reasoning pass to the cascade to push accuracy higher.",
+     "Two-model cascade \u2014 it clears the accuracy bar while respecting the p95 latency budget.",
+     "Keep the single large model but add caching to bring the mean latency down."
+    ],
+    "answer": 2,
+    "why": "Option 2 is the only design that respects the binding constraint (1.5 s p95) while still clearing the accuracy requirement \u2014 the cascade trades a little accuracy for the latency budget the UI imposes. Option 0 treats accuracy as unconditional and blows the SLA. Option 1 adds latency in the direction already over budget. Option 3 optimizes the mean, but the SLA is stated at p95, so speeding the common path does not fix the tail.",
+    "trap": "mean_for_percentile"
+   },
+   "why": "Option 2 is the only design that respects the binding constraint (1.5 s p95) while still clearing the accuracy requirement \u2014 the cascade trades a little accuracy for the latency budget the UI imposes. Option 0 treats accuracy as unconditional and blows the SLA. Option 1 adds latency in the direction already over budget. Option 3 optimizes the mean, but the SLA is stated at p95, so speeding the common path does not fix the tail.",
+   "contrast": null,
+   "exam": null,
+   "takeaway": "The constraint is stated at a percentile; optimize the percentile that was named."
+  },
+  {
+   "task": "3.4",
+   "kind": "teach",
+   "title": "Observability when volume hides failure",
+   "inshort": "At scale you cannot read traces by hand; you need aggregated signals tied to decisions.",
+   "lead": "An agent platform runs two million requests a day across forty tools. A regression in refund handling stays invisible until support complaints spike two weeks later \u2014 error rate and latency look normal the whole time.",
+   "points": [
+    "Log the decision, not just the request: chosen tool, retrieved chunk IDs, model/version, token counts, and outcome.",
+    "Trace end-to-end across hops (agent \u2192 tool \u2192 API \u2192 agent) with a correlation ID so multi-step runs are reconstructable.",
+    "Aggregate to metrics: error rate, latency percentiles, tool-selection distribution, retrieval hit rate, cost per run \u2014 and alert on shifts.",
+    "Sample and score a fraction of outputs (LLM-as-judge or a rubric) to catch quality drift that metrics alone miss.",
+    "Observability must scale independently of the workload it watches; sampling and aggregation keep its cost bounded."
+   ],
+   "diagram": "pro3-5",
+   "caption": "Instrument decisions, aggregate to metrics, then sample a fraction for the quality signal metrics cannot express.",
+   "code": null,
+   "ask": null,
+   "why": "At volume, per-request inspection is impossible, so the strategy is structured decision logs plus aggregation, with sampling reserved for the quality signals metrics cannot express.",
+   "contrast": "Dumping every full prompt and response is not observability \u2014 it is cost and PII exposure without a signal you can alert on.",
+   "exam": "The exam tests monitoring-strategy selection under volume: full capture, error-only alerting, and debug verbosity are the seductive wrong answers.",
+   "takeaway": "Instrument decisions and aggregate them; sample for quality and alert on drift."
+  },
+  {
+   "task": "3.4",
+   "kind": "check",
+   "title": "Check: observability at scale",
+   "inshort": "Quality drift without an error signal.",
+   "lead": null,
+   "points": null,
+   "diagram": "pro3-6",
+   "caption": "At five million requests a day, catching silent quality drift takes aggregated signals plus sampled scoring \u2014 not more raw volume.",
+   "code": null,
+   "ask": {
+    "q": "An agent platform runs five million requests a day. Engineers want to catch a slow regression in answer quality that produces no change in error rate or latency. Which observability strategy best fits at scale?",
+    "options": [
+     "Store every full prompt and response and have engineers read a daily manual sample.",
+     "Add error-rate alerting only, since quality regressions should surface as errors.",
+     "Increase log verbosity to debug level across all services to capture more detail.",
+     "Emit structured decision logs with a trace ID, aggregate to per-percentile metrics, and score a sampled fraction of outputs against a rubric."
+    ],
+    "answer": 3,
+    "why": "Option 3 combines decision-level structured logs, end-to-end trace IDs, aggregated percentile metrics, and sampled rubric scoring \u2014 the only approach that catches a quality drift carrying no error signal at five million requests a day. Option 0 does not scale and carries PII risk without aggregation. Option 1 assumes quality regressions raise errors, which is exactly what the scenario denies. Option 2 raises volume and cost without adding a signal you can act on.",
+    "trap": "verbosity_as_observability"
+   },
+   "why": "Option 3 combines decision-level structured logs, end-to-end trace IDs, aggregated percentile metrics, and sampled rubric scoring \u2014 the only approach that catches a quality drift carrying no error signal at five million requests a day. Option 0 does not scale and carries PII risk without aggregation. Option 1 assumes quality regressions raise errors, which is exactly what the scenario denies. Option 2 raises volume and cost without adding a signal you can act on.",
+   "contrast": null,
+   "exam": null,
+   "takeaway": "More raw log volume is not more signal; aggregation and sampling are."
+  },
+  {
+   "task": "3.5",
+   "kind": "teach",
+   "title": "RAG: chunk for meaning, index for the query",
+   "inshort": "Chunking and indexing are design decisions driven by the corpus and the question, not defaults.",
+   "lead": "A legal RAG system indexes 400,000 contracts and must answer two very different questions: 'what is the liability cap in this MSA?' (semantic) and 'which clauses changed this quarter?' (exact + filtered by date). Default fixed-window chunks over a single vector index keep returning the wrong passages.",
+   "points": [
+    "Chunk on document structure \u2014 sections, clauses, headings \u2014 rather than fixed token windows that cut meaning in half.",
+    "Chunk size trades context completeness against precision: too large dilutes retrieval, too small severs the answer from its anchor.",
+    "Overlap preserves continuity across boundaries but adds index size and near-duplicates \u2014 use it where sentences genuinely span chunks.",
+    "Index the right representation: embeddings for semantic similarity, keyword/BM25 for exact terms and IDs, metadata (date, jurisdiction, entity) for filtering.",
+    "Keep provenance (source ID, section, version) in the index so retrieved chunks are attributable and refreshable."
+   ],
+   "diagram": "pro3-7",
+   "caption": "Let document structure set chunk boundaries and let the query pattern set the index representation.",
+   "code": null,
+   "ask": null,
+   "why": "Chunking decides what a retrievable unit means and indexing decides how it can be found; both must follow the corpus structure and the query pattern, or retrieval returns plausible but wrong context.",
+   "contrast": "Fixed-size chunks with a single vector index is the default that fails on structured, filterable corpora \u2014 it severs clauses and cannot filter or match exact identifiers.",
+   "exam": "The exam tests RAG design as a pipeline: chunk boundaries, index representation, and provenance are the decisions it scores.",
+   "takeaway": "Let document structure set chunk boundaries and let the query pattern set the index."
+  },
+  {
+   "task": "3.5",
+   "kind": "check",
+   "title": "Check: chunking and indexing design",
+   "inshort": "Structure-aware chunks plus a hybrid index.",
+   "lead": null,
+   "points": null,
+   "diagram": "pro3-8",
+   "caption": "Precision on an exact identifier like clause 4.2(b) comes from the index, not from retrieving more chunks.",
+   "code": null,
+   "ask": {
+    "q": "A RAG system over regulatory filings must answer both 'explain the capital-adequacy rule' (semantic) and 'show clause 4.2(b) as of 2023' (exact plus filtered). Fixed 512-token chunks over a single vector index return irrelevant passages. What is the strongest fix?",
+    "options": [
+     "Chunk on document structure and add a hybrid index (vectors plus keyword) with metadata filters for clause ID and year.",
+     "Increase the embedding model size to improve semantic similarity.",
+     "Halve the chunk size to 256 tokens for finer granularity.",
+     "Raise top-k to 50 and let the model find the clause itself."
+    ],
+    "answer": 0,
+    "why": "Option 0 addresses the actual data shape (structured clauses) and query pattern (semantic, exact, and filtered) by chunking on structure and combining vector, keyword, and metadata indexes. Option 1 improves only one query type and still cannot resolve 'clause 4.2(b)' or the 2023 filter. Option 2 changes granularity without respecting structure and still lacks exact-match and filtering. Option 3 floods the context with irrelevant chunks \u2014 a larger top-k raises recall of noise, not precision on an exact identifier.",
+    "trap": "more_topk_as_precision"
+   },
+   "why": "Option 0 addresses the actual data shape (structured clauses) and query pattern (semantic, exact, and filtered) by chunking on structure and combining vector, keyword, and metadata indexes. Option 1 improves only one query type and still cannot resolve 'clause 4.2(b)' or the 2023 filter. Option 2 changes granularity without respecting structure and still lacks exact-match and filtering. Option 3 floods the context with irrelevant chunks \u2014 a larger top-k raises recall of noise, not precision on an exact identifier.",
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Precision on an exact identifier comes from the index, not from retrieving more chunks."
+  },
+  {
+   "task": "3.6",
+   "kind": "teach",
+   "title": "Match retrieval to data shape and query pattern",
+   "inshort": "The right retrieval method is the one that fits how the data is shaped and how users ask.",
+   "lead": "One product needs three retrieval modes at once: policy PDFs written as prose, a product catalog of structured rows, and a knowledge graph of service dependencies. A well-meaning engineer proposes a single vector index over all of it.",
+   "points": [
+    "Dense vector search fits prose and paraphrase; it fails on exact identifiers, rare tokens, and numeric filters.",
+    "Keyword/lexical search (BM25) fits IDs, codes, and exact phrases; it misses paraphrase.",
+    "Hybrid (vector + lexical, fused by rank) covers mixed query patterns and is the usual default for heterogeneous corpora.",
+    "Structured data is queried with SQL and filters, not embeddings \u2014 shape retrieval to the store and let the agent route by query type.",
+    "Relationship questions need graph traversal; choosing retrieval by fashion rather than by data shape is the classic integration failure."
+   ],
+   "diagram": "pro3-9",
+   "caption": "Route by shape and query type: prose to vectors, IDs to lexical, rows to SQL, relationships to graph.",
+   "code": null,
+   "ask": null,
+   "why": "Retrieval quality is a function of fit: the data's shape and the query's pattern determine whether vectors, lexical search, SQL, or graph traversal is correct \u2014 not which method is currently fashionable.",
+   "contrast": "One vector index for every corpus is the fashionable default that quietly underperforms on structured rows, exact IDs, and relationships.",
+   "exam": "The exam presents mixed corpora and asks you to route retrieval by shape and query pattern rather than defaulting to embeddings.",
+   "takeaway": "Route by shape and query type: prose\u2192vectors, IDs\u2192lexical, rows\u2192SQL, relationships\u2192graph."
+  },
+  {
+   "task": "3.6",
+   "kind": "check",
+   "title": "Check: retrieval strategy selection",
+   "inshort": "Route each query to the store that fits it.",
+   "lead": null,
+   "points": null,
+   "diagram": "pro3-10",
+   "caption": "A single retrieval modality cannot fit prose, exact IDs, and relationships at once \u2014 match the query to its data shape.",
+   "code": null,
+   "ask": {
+    "q": "A single assistant must answer three queries: (a) 'summarize our refund policy', (b) 'status of order 88213-B', and (c) 'what depends on service payments-api?'. The team proposes one large vector index over everything. Which retrieval design should you justify?",
+    "options": [
+     "One large vector index with a bigger embedding model.",
+     "Increase top-k and raise temperature so the model can handle all three query types.",
+     "Route queries: vectors for prose, keyword/ID lookup for the order, graph traversal for dependencies \u2014 hybrid-fused where patterns mix.",
+     "Fine-tune the model on all three corpora so retrieval becomes unnecessary."
+    ],
+    "answer": 2,
+    "why": "Option 2 matches each query to its data shape \u2014 prose to vectors, an exact order ID to lexical lookup, and a dependency question to graph traversal \u2014 which is precisely what matching retrieval to data shape and query pattern means. Option 0 chooses retrieval by fashion and cannot resolve exact IDs or relationships. Option 1 raises noise and temperature, which increases confident errors. Option 3 discards retrieval for training, which cannot supply live order status or exact graph edges.",
+    "trap": "vector_index_for_all"
+   },
+   "why": "Option 2 matches each query to its data shape \u2014 prose to vectors, an exact order ID to lexical lookup, and a dependency question to graph traversal \u2014 which is precisely what matching retrieval to data shape and query pattern means. Option 0 chooses retrieval by fashion and cannot resolve exact IDs or relationships. Option 1 raises noise and temperature, which increases confident errors. Option 3 discards retrieval for training, which cannot supply live order status or exact graph edges.",
+   "contrast": null,
+   "exam": null,
+   "takeaway": "A single retrieval modality cannot fit prose, exact IDs, and relationships at once."
+  },
+  {
+   "task": "3.7+3.8",
+   "kind": "teach",
+   "title": "Connection protocols and progressive discovery",
+   "inshort": "Choose the integration mechanism by boundary and lifecycle, and load context progressively rather than all at once.",
+   "lead": "An enterprise agent must reach an internal ticketing system, a large SaaS CRM, and a peer research agent that owns its own tools and policy. Someone proposes wiring all sixty CRM endpoints as tools up front and loading them on every turn.",
+   "points": [
+    "MCP standardises how the model reaches tools and resources with a common protocol, discovery, and auth \u2014 best when many tools share a lifecycle and you want one integration surface.",
+    "Direct API/CLI suits a small number of stable, well-scoped calls where standing up an MCP server is pure overhead.",
+    "Agent-to-agent (A2A) fits delegation to another agent that owns its own context, tools, and policy \u2014 not a single function call.",
+    "Progressive discovery loads tool definitions and context on demand (search and select), keeping the working context small; monolithic context front-loads everything and bloats tokens, cost, and decision noise.",
+    "Choose by boundary and lifecycle: shared tool ecosystem \u2192 MCP; one stable call \u2192 API/CLI; autonomous peer \u2192 agent-to-agent; large tool sets \u2192 progressive discovery."
+   ],
+   "diagram": "pro3-11",
+   "caption": "Pick the protocol by the boundary and lifecycle it crosses, and discover capabilities progressively so context stays lean.",
+   "code": null,
+   "ask": null,
+   "why": "Protocol choice is governed by the boundary the integration crosses and the lifecycle of what it reaches, while discovery strategy is governed by the context budget \u2014 neither should be picked by default or fashion.",
+   "contrast": "Exposing every endpoint as a tool up front is capability bloat wearing a protocol badge; it also inflates every turn's context for capabilities the task rarely needs.",
+   "exam": "The exam tests protocol selection (MCP vs API/CLI vs agent-to-agent) and the progressive-discovery-versus-monolithic-context decision, often in the same scenario.",
+   "takeaway": "Pick the protocol by boundary and lifecycle, and discover capabilities progressively so context stays lean."
+  },
+  {
+   "task": "3.7+3.8",
+   "kind": "check",
+   "title": "Check: connection protocol and discovery",
+   "inshort": "Mechanism by boundary, discovery by context budget.",
+   "lead": null,
+   "points": null,
+   "diagram": "pro3-12",
+   "caption": "A stable single call is cheapest as an API call; a large changing ecosystem fits MCP with progressive discovery.",
+   "code": null,
+   "ask": {
+    "q": "An agent needs one stable call to an internal HR API, plus access to a 200-tool partner ecosystem that changes frequently. What integration design best fits both boundaries?",
+    "options": [
+     "Call the HR API directly, and use MCP with progressive discovery for the partner ecosystem.",
+     "Wrap the HR call and all 200 partner tools as up-front MCP tools loaded on every turn.",
+     "Replace the HR API call with a dedicated agent-to-agent delegation.",
+     "Expose everything through a single CLI wrapper to avoid protocols altogether."
+    ],
+    "answer": 0,
+    "why": "Option 0 matches mechanism to boundary and lifecycle: a single stable call is cheapest as a direct API call, while a large, changing partner ecosystem fits MCP with progressive discovery so tool definitions load on demand instead of bloating every turn. Option 1 front-loads 200 tools \u2014 classic capability bloat and monolithic context. Option 2 adds an agent-to-agent hop and context for what is just one function call. Option 3 hides many tools behind a CLI and still lacks per-tool auth and discovery.",
+    "trap": "protocol_as_fashion"
+   },
+   "why": "Option 0 matches mechanism to boundary and lifecycle: a single stable call is cheapest as a direct API call, while a large, changing partner ecosystem fits MCP with progressive discovery so tool definitions load on demand instead of bloating every turn. Option 1 front-loads 200 tools \u2014 classic capability bloat and monolithic context. Option 2 adds an agent-to-agent hop and context for what is just one function call. Option 3 hides many tools behind a CLI and still lacks per-tool auth and discovery.",
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Match the mechanism to the boundary and load capabilities progressively."
+  },
+  {
+   "task": "3.1\u20133.8",
+   "kind": "recap",
+   "title": "Domain 3 in one page",
+   "inshort": "Integration is the art of respecting the constraint that binds.",
+   "lead": "Every Domain 3 decision reduces to a constraint plus two defensible options \u2014 name the trade-off and pick the option that respects the constraint.",
+   "points": [
+    "Capability bloat: each tool is both a capability and an attack surface \u2014 remove, don't merely gate.",
+    "Authn \u2260 authz: prove the identity, then scope exactly what it may do; gaps live where the agent's scope exceeds the user's.",
+    "Accuracy\u2013latency: name the binding constraint (SLA percentile, cost ceiling, accuracy bar), then pick the cheapest configuration that clears it; measure p95/p99, not the mean.",
+    "Observability at scale: log decisions with trace IDs, aggregate to metrics, sample for quality, alert on drift.",
+    "RAG pipeline: chunk on document structure, index by representation (vector/keyword/metadata), and keep provenance.",
+    "Retrieval: match to data shape and query pattern \u2014 prose\u2192vectors, IDs\u2192lexical, rows\u2192SQL, relationships\u2192graph.",
+    "Protocols: MCP for shared tool ecosystems, API/CLI for one stable call, agent-to-agent for an autonomous peer \u2014 choose by boundary and lifecycle.",
+    "Context: progressive discovery beats monolithic context \u2014 load capabilities on demand."
+   ],
+   "diagram": "pro3-13",
+   "caption": "Every Domain 3 decision is a constraint plus two defensible options: find the binding constraint, and the defensible answer respects it.",
+   "code": null,
+   "ask": null,
+   "why": "This domain carries 19% of the exam, the heaviest single weight, and its items consistently test whether you can name the binding constraint before choosing a design.",
+   "contrast": "Fashion-driven choices \u2014 a bigger model, more top-k, another protocol layer \u2014 are the recurring wrong answers.",
+   "exam": "Expect constraint-plus-two-options scenarios across all eight objectives.",
+   "takeaway": "Find the binding constraint; the defensible answer respects it."
+  }
+ ]
+}

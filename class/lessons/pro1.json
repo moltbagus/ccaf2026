@@ -1,0 +1,333 @@
+{
+ "domain": "pro1",
+ "title": "Solution Design & Architecture",
+ "weight": "17% of the exam",
+ "goal": "On exam day, analyse an enterprise scenario and justify a Claude-based architecture that meets the funded business outcome and every named constraint \u2014 framing the problem, choosing the least-autonomous pattern that fits, decomposing for testability, orchestrating only where roles genuinely differ, and holding the required SLA.",
+ "tasks": [
+  "1.1",
+  "1.2",
+  "1.3",
+  "1.4",
+  "1.5",
+  "1.6"
+ ],
+ "steps": [
+  {
+   "task": "1.1",
+   "kind": "teach",
+   "title": "Framing the business problem before choosing Claude",
+   "inshort": "A Claude solution earns its budget only when it is anchored to a measurable business outcome, not to a capability.",
+   "lead": "A regional insurer's claims team spends six days on manual intake triage per claim and asks for 'an AI assistant'. Before any model or tool is chosen, the architect restates the ask as a business outcome: cut first-pass intake triage from six days to under one day while holding misrouted claims below 2%.",
+   "points": [
+    "Separate the business outcome (cycle time, cost, risk) from the proposed technology \u2014 stakeholders often arrive with a solution already in mind.",
+    "Quantify the current baseline and the target threshold; you cannot justify an architecture without both.",
+    "Map the workflow's decision points to what Claude can do (classify, extract, summarise, draft) versus what needs deterministic code or a human.",
+    "State explicit non-goals and constraints \u2014 regulatory, data-residency, latency \u2014 because they bound the pattern selection later.",
+    "Define the success metric up front so evaluation and the value pillars trace back to a single number."
+   ],
+   "diagram": "pro1-1",
+   "caption": "The same ask framed two ways: only the right-hand framing ties the architecture to a baseline, a target, and an owner.",
+   "code": null,
+   "ask": null,
+   "why": "The exam rewards architects who translate the ask into an outcome with a baseline and a target; the model and pattern choices are downstream of that framing.",
+   "contrast": "The tempting move is to start from 'which model and tools' \u2014 a capability-first framing that produces an impressive demo but no defensible business case and usually no owner for the outcome.",
+   "exam": "The stem gives a business scenario and two plausible solution framings; the correct answer ties the architecture to the stated outcome and constraint, and the distractor optimises a capability nobody funded.",
+   "takeaway": "Anchor every design to a named business outcome, a baseline, and a target \u2014 then let the constraints pick the pattern."
+  },
+  {
+   "task": "1.1",
+   "kind": "check",
+   "title": "A logistics firm asks for 'an AI system to handle carrier emails.' Discovery finds 80% are routine status updates following five templates, 15% need a policy lookup, and 5% are disputes requiring human judgement. Leadership's goal is to cut handling time 40% without increasing misclassification. Which framing should the architect take into design?",
+   "inshort": null,
+   "lead": null,
+   "points": null,
+   "diagram": "pro1-2",
+   "caption": "The decision turns on whether the design maps each class of work to the funded 40% goal while honouring the no-more-misclassification constraint.",
+   "code": null,
+   "ask": {
+    "q": "A logistics firm asks for 'an AI system to handle carrier emails.' Discovery finds 80% are routine status updates following five templates, 15% need a policy lookup, and 5% are disputes requiring human judgement. Leadership's goal is to cut handling time 40% without increasing misclassification. Which framing should the architect take into design?",
+    "options": [
+     "Build one autonomous agent that reads, decides, and replies to every email end to end.",
+     "Model the work as a triage workflow: template-match the 80% deterministically, use Claude for the 15% policy lookups, and route the 5% disputes to humans, targeting the 40% handling-time goal.",
+     "Deploy the largest available Claude model on all email so accuracy is maximised, then measure the change in handling time.",
+     "Stand up a multi-agent system with a router, a policy agent, and a dispute agent so every class is handled by a specialist."
+    ],
+    "answer": 1,
+    "why": "B matches the pattern to each segment and ties directly to the funded 40% goal, keeping the human for the judgement case. A over-automates the 5% that needs judgement, risking the misclassification constraint. C optimises accuracy with no reference to the handling-time goal and adds cost. D adds orchestration machinery \u2014 specialist agents \u2014 that the segmented workflow already covers, with no benefit to the stated metric.",
+    "trap": "over_agentifying_heterogeneous_work"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": null
+  },
+  {
+   "task": "1.2",
+   "kind": "teach",
+   "title": "Designing the end-to-end loop, not just the model call",
+   "inshort": "A production architecture has four stages \u2014 input, processing, output, feedback \u2014 and the feedback loop is the one teams forget.",
+   "lead": "A wealth-management firm summarises advisor-client meetings into CRM notes. The happy path (transcript in, summary out) demos well; in production the summaries drift as products change and advisors stop trusting them. The architect designs the whole loop, not just the model call.",
+   "points": [
+    "Input: capture, validate, and normalise the source \u2014 bad inputs, not the model, cause most production failures.",
+    "Processing: retrieval, tool calls, prompt assembly, and the model \u2014 make each step observable so a regression can be localised.",
+    "Output: format, confidence, and delivery channel; decide what the consumer does with a low-confidence result.",
+    "Feedback loop: capture outcomes (accept / edit / reject) and route them to evaluation and improvement, not into a log nobody reads.",
+    "Close the loop with a measurable drift signal so quality regressions surface before users lose trust."
+   ],
+   "diagram": "pro1-3",
+   "caption": "Design all four stages explicitly \u2014 the feedback stage is the one teams forget, and the one that keeps quality from silently decaying.",
+   "code": null,
+   "ask": null,
+   "why": "The exam treats the feedback loop as an architectural component with owners and metrics, not an afterthought; solutions that omit it cannot be defended at enterprise scale.",
+   "contrast": "The tempting shortcut is to design input-to-output as a one-way pipeline and treat quality as fixed at launch; without a feedback loop the system silently degrades and the business case decays.",
+   "exam": "Items present a deployed system whose quality drifts after a change; the correct answer adds or repairs a specific feedback or observability component, while distractors propose a model upgrade, a bigger prompt, or a governance board.",
+   "takeaway": "Design all four stages explicitly and make the feedback loop a first-class, measured component."
+  },
+  {
+   "task": "1.2",
+   "kind": "check",
+   "title": "A retail bank's Claude-powered loan-summary tool was accurate at launch. Six months later, relationship managers report summaries citing superseded lending policies, while latency and model version are unchanged. The architect must restore trust and prevent recurrence. Which design change best addresses both?",
+   "inshort": null,
+   "lead": null,
+   "points": null,
+   "diagram": "pro1-4",
+   "caption": "Latency and model version are unchanged, so the defect is not the model \u2014 the decision turns on which design both surfaces and stops the drift.",
+   "code": null,
+   "ask": {
+    "q": "A retail bank's Claude-powered loan-summary tool was accurate at launch. Six months later, relationship managers report summaries citing superseded lending policies, while latency and model version are unchanged. The architect must restore trust and prevent recurrence. Which design change best addresses both?",
+    "options": [
+     "Add a feedback loop that captures manager edits and rejections, and alert when the edit rate on policy citations crosses a threshold.",
+     "Upgrade to the newest Claude model and re-baseline the prompt.",
+     "Add a human review step that requires a manager to approve every summary before it reaches the customer.",
+     "Convene a monthly governance board to review the tool's outputs."
+    ],
+    "answer": 0,
+    "why": "A both restores trust (edits and rejections surface the defect) and prevents recurrence (a threshold alert on the drift signal). B assumes the model is the cause; the policy changed, not the model, and a version bump does not fix stale source content. C adds cost and latency to every case yet still does not detect the drift, only guards against it. D adds governance ceremony with no feedback signal into the pipeline.",
+    "trap": "missing_feedback_loop_attributed_to_model"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": null
+  },
+  {
+   "task": "1.3",
+   "kind": "teach",
+   "title": "Workflow, agentic, or augmented LLM \u2014 choose by predictability",
+   "inshort": "Pick the least-autonomous pattern that meets the goal: a deterministic workflow where steps are known, agentic only where the path must be discovered.",
+   "lead": "A pharma company needs to screen inbound partnership proposals against an internal playbook and draft a go/no-go memo; the steps are fixed and auditable. A different team needs an open-ended research assistant that must decide which sources to consult. The architect matches the pattern to the task's shape.",
+   "points": [
+    "Workflow (prompt chaining / routing): the steps are known in advance; maximise determinism, testability, and cost control.",
+    "Augmented LLM: a single model call plus retrieval and tools for a bounded task with a clear output.",
+    "Agentic: the model chooses the next action in a loop, justified only when the path cannot be enumerated and the environment is safe to explore.",
+    "Autonomy has a cost \u2014 latency, cost variance, and testability all worsen as you move from workflow toward agent; earn it with an unmet requirement.",
+    "Match the pattern to the task's determinism and to the organisation's tolerance for non-deterministic cost and behaviour."
+   ],
+   "diagram": "pro1-5",
+   "caption": "Autonomy is a cost: latency, cost variance, and testability all worsen as you move away from a fixed workflow, so earn every step toward agency.",
+   "code": null,
+   "ask": null,
+   "why": "The exam's senior-level items reward the pattern with the least autonomy that still meets the requirement; gratuitous agency is a classic distractor.",
+   "contrast": "The tempting move is to default to an agent because it sounds more capable; for known, auditable steps it adds cost, latency, and failure modes with no benefit.",
+   "exam": "The stem describes a task whose steps are knowable; the correct answer is a workflow or augmented pattern, and distractors propose an autonomous agent, a multi-agent team, or a model upgrade.",
+   "takeaway": "Choose the least autonomous pattern that satisfies the requirement; escalate to agency only against a named uncertainty."
+  },
+  {
+   "task": "1.3",
+   "kind": "check",
+   "title": "A hospital network must extract structured findings from radiology reports and route them to the correct downstream system. Report formats are known, routing rules are fixed, and outputs are audited. A colleague proposes an autonomous agent that 'decides the best way to process each report.' Which pattern should the architect select?",
+   "inshort": null,
+   "lead": null,
+   "points": null,
+   "diagram": "pro1-6",
+   "caption": "Fixed formats, fixed rules, and audited outputs are the signature of a workflow \u2014 the decision turns on whether any uncertainty actually exists to justify agency.",
+   "code": null,
+   "ask": {
+    "q": "A hospital network must extract structured findings from radiology reports and route them to the correct downstream system. Report formats are known, routing rules are fixed, and outputs are audited. A colleague proposes an autonomous agent that 'decides the best way to process each report.' Which pattern should the architect select?",
+    "options": [
+     "An autonomous agent that plans its own extraction and routing steps per report.",
+     "A prompt-chained workflow: extract to a fixed schema, validate, then route by deterministic rules, using Claude for extraction.",
+     "A multi-agent team with a coordinator agent and per-specialty extractor agents.",
+     "An agentic loop that calls the routing API and retries until it reports success."
+    ],
+    "answer": 1,
+    "why": "B uses the least-autonomous pattern that meets a fully known, audited task, giving determinism and testability. A adds autonomy with no unknown path to discover and makes audit harder. C adds orchestration machinery and per-specialty agents for formats already known. D makes routing non-deterministic and harder to audit when fixed rules already suffice.",
+    "trap": "agency_without_uncertainty"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": null
+  },
+  {
+   "task": "1.4",
+   "kind": "teach",
+   "title": "Multi-agent systems: orchestrate only when you must",
+   "inshort": "Add agents when the work needs genuinely different roles, tools, or context \u2014 and name the orchestration topology explicitly.",
+   "lead": "A consulting firm wants an 'AI team' to produce market-entry briefs: research, financial modelling, risk review, and an executive summary. The roles need different tools and context, and the risk review must be able to challenge the research. The architect designs the orchestration, not just the roster.",
+   "points": [
+    "Justify each agent by a distinct role, tool set, or context window \u2014 not by mirroring a human org chart.",
+    "Choose a topology: orchestrator/worker (one coordinator delegates), peer/handoff (agents pass control), or pipeline; the topology determines failure and cost behaviour.",
+    "Decide the control flow: who decomposes the task, who integrates results, and how conflicts between agents are resolved.",
+    "Bound the system: cap iterations and tokens, define termination conditions, and make hand-offs observable.",
+    "Reserve multi-agent for parallelisable, role-differentiated work; for a single coherent task a workflow is cheaper and more testable."
+   ],
+   "diagram": "pro1-7",
+   "caption": "The topology determines failure and cost behaviour; justify each agent by a distinct role or context, never by mirroring an org chart.",
+   "code": null,
+   "ask": null,
+   "why": "The exam tests whether you can defend an orchestration topology and its controls; 'more agents' is usually the distractor, not the answer.",
+   "contrast": "The tempting move is to spawn an agent per sub-task for symmetry; without distinct roles or context needs this multiplies cost, latency, and coordination failures.",
+   "exam": "The stem implies independent, role-differentiated sub-tasks; the correct answer names an orchestration topology with bounded control flow, while distractors add agents or a review board without addressing the coordination need.",
+   "takeaway": "Every agent must earn its place with a distinct role, tool, or context; state the topology and its termination rules."
+  },
+  {
+   "task": "1.4",
+   "kind": "check",
+   "title": "An investment firm wants Claude to produce quarterly portfolio reviews. Each review needs (1) retrieval of holdings and market data, (2) a compliance check against a rulebook, and (3) narrative drafting, all complete before a single reviewer sees a draft. Retrieval and compliance use different, mutually exclusive tool sets. Which orchestration design should the architect choose?",
+   "inshort": null,
+   "lead": null,
+   "points": null,
+   "diagram": "pro1-8",
+   "caption": "The decision turns on matching a topology to role- and tool-differentiated sub-tasks, with a bounded, explicit integration step before review.",
+   "code": null,
+   "ask": {
+    "q": "An investment firm wants Claude to produce quarterly portfolio reviews. Each review needs (1) retrieval of holdings and market data, (2) a compliance check against a rulebook, and (3) narrative drafting, all complete before a single reviewer sees a draft. Retrieval and compliance use different, mutually exclusive tool sets. Which orchestration design should the architect choose?",
+    "options": [
+     "An orchestrator agent that decomposes the task, dispatches retrieval and compliance as bounded workers, then integrates their outputs and hands the assembled draft to the reviewer.",
+     "A single general-purpose agent with all retrieval and compliance tools, which decides when to use each.",
+     "A peer network where retrieval, compliance, and drafting agents message each other until they agree.",
+     "Three independent agents whose outputs are concatenated in arrival order for the reviewer."
+    ],
+    "answer": 0,
+    "why": "A names a topology (orchestrator/worker) matched to role- and tool-differentiated sub-tasks, with bounded workers and a clear integration point. B gives one agent mutually exclusive tool sets, risking wrong-tool selection with no clean separation. C uses an unbounded peer topology with no termination guarantee for work that is not genuinely collaborative. D discards the integration and ordering the reviewer needs \u2014 arrival order can place the narrative before its compliance check.",
+    "trap": "unbounded_peer_orchestration"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": null
+  },
+  {
+   "task": "1.5",
+   "kind": "teach",
+   "title": "Decomposing complex problems into tractable Claude work",
+   "inshort": "Break a problem until each unit has one clear output, a checkable result, and a bounded context.",
+   "lead": "A utility must convert 20 years of mixed-format regulatory filings into a queryable compliance knowledge base and answer auditor questions. As one task it is intractable; decomposed, it becomes ingest, normalise, chunk/index, and answer-with-citations, each independently testable.",
+   "points": [
+    "Decompose by output: each unit should produce one artefact you can verify in isolation.",
+    "Separate deterministic transforms (parsing, normalising, de-duplication) from model calls \u2014 keep the model for judgement, not for plumbing.",
+    "Give each unit the minimum context it needs; oversized context hides errors and inflates cost.",
+    "Sequence the decomposition so failures are localised and can be retried without redoing the whole run.",
+    "Prefer the split that lets you test and evaluate stages independently \u2014 testability is the tie-breaker between two valid decompositions."
+   ],
+   "diagram": "pro1-9",
+   "caption": "As one task it is intractable; decomposed, each stage produces one artefact you can verify and retry on its own.",
+   "code": null,
+   "ask": null,
+   "why": "The exam rewards decompositions that localise failure and enable per-stage evaluation; a split that only 'feels' modular but cannot be tested stage-wise is a distractor.",
+   "contrast": "The tempting move is one large prompt that does everything in a single shot; it is hard to test, hard to retry, and one failure costs the whole result.",
+   "exam": "The stem describes a monolithic ask; the correct answer splits it into verifiable stages with a clear hand-off, and distractors propose a longer prompt, a bigger model, or a single agent that 'handles it all.'",
+   "takeaway": "Decompose until each unit has one verifiable output and a bounded context; keep deterministic work out of the model."
+  },
+  {
+   "task": "1.5",
+   "kind": "check",
+   "title": "A manufacturer wants Claude to turn 40,000 scanned supplier contracts into a structured obligations register. Contracts are scanned PDFs of varying quality, extraction is error-prone, and the register must be auditable. Which decomposition should the architect choose?",
+   "inshort": null,
+   "lead": null,
+   "points": null,
+   "diagram": "pro1-10",
+   "caption": "The decision turns on which split separates deterministic work from model judgement and lets a single contract fail and retry without redoing the run.",
+   "code": null,
+   "ask": {
+    "q": "A manufacturer wants Claude to turn 40,000 scanned supplier contracts into a structured obligations register. Contracts are scanned PDFs of varying quality, extraction is error-prone, and the register must be auditable. Which decomposition should the architect choose?",
+    "options": [
+     "One prompt per contract that asks Claude to read the PDF and return the full structured register row, retrying on failure.",
+     "A staged pipeline: OCR and normalise each PDF deterministically, then a Claude extraction step against a fixed schema with per-field validation, then a reconciliation step that flags low-confidence rows for review.",
+     "A single agent with OCR, extraction, and database tools that loops until the register looks complete.",
+     "Batch all contracts into one large context and ask Claude to produce the whole register at once."
+    ],
+    "answer": 1,
+    "why": "B separates deterministic OCR from model extraction, validates against a schema, and localises errors so the register is auditable. A mixes unreliable OCR into a single model call and gives no field-level validation. C adds an autonomous loop with no termination or confidence signal for an audited deliverable. D exceeds any context window, obscures per-contract errors, and cannot be retried at contract granularity.",
+    "trap": "monolithic_prompt_over_verifiable_stages"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": null
+  },
+  {
+   "task": "1.6",
+   "kind": "teach",
+   "title": "Trading off the value pillars explicitly",
+   "inshort": "Every design trades efficiency, transformation, productivity, cost, and performance (SLAs) \u2014 name which one the business is buying and which you are not breaking.",
+   "lead": "A telecom wants AI-driven support deflection. Finance funds it on cost-per-contact; the CTO mandates a p95 first-response SLA under three seconds; operations wants higher agent productivity. The architect must satisfy the funded pillar without silently breaking the mandated SLA.",
+   "points": [
+    "Identify the primary funded pillar and the hard constraints (often an SLA) before optimising anything.",
+    "Efficiency and productivity gains usually come from removing human steps; cost and performance often pull against them (bigger context, more agents, more calls).",
+    "State the trade-off you are making and its metric \u2014 for example, accept 4% lower automation to hold the latency SLA.",
+    "Tie each architectural choice to the pillar it serves, so the business case and the design stay linked.",
+    "Watch for options that maximise one pillar while violating a constraint the stem named."
+   ],
+   "diagram": "pro1-11",
+   "caption": "Name the funded pillar and the hard constraints first \u2014 bigger context, more agents, and more calls push cost and performance against efficiency.",
+   "code": null,
+   "ask": null,
+   "why": "Senior items test whether you can satisfy the funded pillar without breaching a stated SLA or cost ceiling \u2014 the trade-off, not a single best metric, is the answer.",
+   "contrast": "The tempting move is to optimise the loudest pillar (usually cost) and treat the SLA as a later tuning task; the exam treats a named constraint as non-negotiable.",
+   "exam": "The stem funds one pillar and names a hard constraint; the correct answer preserves the constraint while advancing the funded pillar, and distractors optimise the funded pillar by breaking the constraint.",
+   "takeaway": "Name the funded pillar and the hard constraints first; make the trade-off explicit and measurable."
+  },
+  {
+   "task": "1.6",
+   "kind": "check",
+   "title": "A bank funds a Claude fraud-triage tool strictly on reducing analyst cost per case. Compliance mandates that every high-risk case be fully explained and reviewed by a human within a 4-hour SLA. A proposed design automates 90% of cases and removes human review for medium-risk cases \u2014 cutting cost the most, but pushing some medium-risk cases past the 4-hour explanation SLA during peak load. Which decision should the architect defend?",
+   "inshort": null,
+   "lead": null,
+   "points": null,
+   "diagram": "pro1-12",
+   "caption": "The decision turns on a design that advances cost per case while keeping the mandated 4-hour explanation SLA intact, even at peak.",
+   "code": null,
+   "ask": {
+    "q": "A bank funds a Claude fraud-triage tool strictly on reducing analyst cost per case. Compliance mandates that every high-risk case be fully explained and reviewed by a human within a 4-hour SLA. A proposed design automates 90% of cases and removes human review for medium-risk cases \u2014 cutting cost the most, but pushing some medium-risk cases past the 4-hour explanation SLA during peak load. Which decision should the architect defend?",
+    "options": [
+     "Automate 90% of cases and remove medium-risk human review to maximise the cost saving the bank funded.",
+     "Keep human review for high-risk cases and add a bounded fast-path for medium-risk cases that still meets the 4-hour explanation SLA, accepting a smaller cost reduction.",
+     "Automate all cases and add logging so any missed explanations can be reconstructed after the fact.",
+     "Add a governance board to approve the automation level before launch, leaving the SLA question open."
+    ],
+    "answer": 1,
+    "why": "B advances the funded cost pillar while preserving the mandated 4-hour SLA. A optimises the funded pillar by breaking the compliance SLA \u2014 the exact trade-off the stem warns against. C removes the human and the explanation guarantee, using logging as an after-the-fact substitute for a real-time obligation. D defers the constraint instead of designing to it, and governance ceremony does not meet the SLA.",
+    "trap": "optimising_funded_pillar_breaks_named_sla"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": null
+  },
+  {
+   "task": "1.6",
+   "kind": "recap",
+   "title": "Domain 1 in one page",
+   "inshort": "Translate first, choose the least autonomous pattern, decompose for testability, orchestrate only for real role differences, and never trade away a named constraint.",
+   "lead": null,
+   "points": [
+    "Framing: restate the ask as an outcome with a baseline, a target, and explicit non-goals before selecting any model or tool.",
+    "End-to-end: design input, processing, output, and a measured feedback loop; quality that drifts after launch is a missing architectural component, not a model problem.",
+    "Patterns: workflow for known steps, augmented LLM for a bounded task, agentic only against a named uncertainty \u2014 earn autonomy, never assume it.",
+    "Multi-agent: each agent must own a distinct role, tool set, or context; name the topology and its termination and integration rules.",
+    "Decomposition: split until every unit has one verifiable output and a bounded context, keeping deterministic work out of the model.",
+    "Value pillars: identify the funded pillar and the hard constraints, then make the trade-off explicit \u2014 the exam's distractors optimise one pillar by breaking another the stem named."
+   ],
+   "diagram": "pro1-13",
+   "caption": "Translate first, pick the least autonomous pattern that fits, decompose for testability, orchestrate only for real role differences, and never trade away a named constraint.",
+   "code": null,
+   "ask": null,
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": null
+  }
+ ]
+}

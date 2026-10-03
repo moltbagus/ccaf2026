@@ -1,0 +1,283 @@
+{
+ "domain": "pro4",
+ "title": "Evaluation, Testing & Optimization",
+ "weight": "16% of the exam",
+ "goal": "Define metrics that survive scrutiny, build the evaluation set that proves them, test changes against a control, diagnose failures to the right stage, optimise cost/latency/quality with the trade-off named, and keep the system observable.",
+ "tasks": [
+  "4.1",
+  "4.2",
+  "4.3",
+  "4.4",
+  "4.5"
+ ],
+ "steps": [
+  {
+   "task": "4.1",
+   "kind": "teach",
+   "title": "Metrics that don't lie \u2014 and the set that measures them",
+   "inshort": "One headline accuracy number hides the segment that fails; define metrics in the plural and build a dataset that measures each one by segment.",
+   "lead": "An insurer ships a claims-triage assistant with a 94% accuracy score on its evaluation set. Leadership signs off and the tool goes live in three regions. Within a week the smallest region is quietly failing: the model is 61% accurate on the scanned handwritten claim forms that region still uses. The evaluation set contained three examples of them \u2014 the overall number was never wrong, it was just measured on the wrong population.",
+   "points": [
+    "Define metrics in the plural, each tied to a business consequence: task accuracy, latency (p50/p95/p99 \u2014 never just the mean), cost per task, safety (harmful or unsafe outputs), and security (prompt injection, data leakage, unauthorized actions). One number is not a metric set.",
+    "Measure by segment \u2014 document type, region, customer tier, language, edge case. A blended average can pass while an entire segment fails, and the failing segment is usually the one the business depends on.",
+    "Build the evaluation dataset before you trust the system: a versioned golden set of representative, labelled cases that deliberately includes the hard, rare, and adversarial ones \u2014 not just the easy majority.",
+    "Use a mixed methodology: deterministic assertions for what has a right answer (schema, format, arithmetic), human review for judgment-heavy quality, and model-graded scoring (LLM-as-judge) for scale. Each method covers another's blind spot.",
+    "Promote every production failure into a permanent regression case, so a fixed bug can never quietly return."
+   ],
+   "diagram": "pro4-1",
+   "caption": "Define accuracy, latency, cost, safety and security \u2014 then measure each one by segment, never as a single blended average.",
+   "code": "EVAL REPORT  model=claude-sonnet-4  set=golden-v7  n=500\n  overall accuracy ........ 94%\n  segment policy_wording .. 96%   (n=410)\n  segment scanned_forms ... 61%   (n=18)   <- only 3 in the set\n  p95 latency ............. 1.9s\n  cost / task ............. $0.011",
+   "ask": null,
+   "why": "Evaluation is an exam objective because a metric is a claim about the whole system, and the exam rewards architects who interrogate the claim \u2014 which population, which segments, which metric set \u2014 before believing it.",
+   "contrast": "The tempting alternative is a single blended accuracy figure on a small happy-path set. It is cheap, it looks convincing on a slide, and it is exactly how a segment failure ships to production unnoticed.",
+   "exam": "Stems will give you a headline number that looks healthy and a business outcome that broke anyway. The correct answer measures by segment and states the metric trade-off; the distractors celebrate the headline, retry until it passes, or reach for a bigger model.",
+   "takeaway": "A metric is only meaningful with the segment and the dataset attached. Measure in the plural, measure by segment, and keep a golden set you can regress against."
+  },
+  {
+   "task": "4.1",
+   "kind": "check",
+   "title": "The 94% that hides a 61%",
+   "inshort": "A headline accuracy figure passes while a whole segment fails \u2014 pick the response that finds the real number.",
+   "lead": "Leadership is about to sign off on a system whose aggregate score looks fine.",
+   "points": [],
+   "diagram": "pro4-2",
+   "caption": "The aggregate was never wrong \u2014 it was measured on the wrong population. Only the segment view exposes the 61% hiding under the 94%.",
+   "code": null,
+   "ask": {
+    "q": "A claims-triage assistant reports 94% accuracy on its evaluation set and passes review. A week after launch, the smallest region reports unusable output \u2014 the model handles that region's scanned handwritten forms poorly. Overall latency and cost are unchanged. Which response best addresses the problem?",
+    "options": [
+     "Accept the 94% as accurate and attribute the region's complaints to training or change management, since the model itself has not changed.",
+     "Re-run the evaluation set and, if the number holds at 94%, increase the retry count so failing requests are resubmitted until they produce acceptable output.",
+     "Break the metrics down by segment \u2014 document type and region \u2014 rebuild the evaluation set to include the underrepresented form type, and state the accuracy/latency/cost trade-off per segment before deciding.",
+     "Immediately upgrade to the most capable model so the weak segment improves, then confirm the overall average still meets the bar."
+    ],
+    "answer": 2,
+    "why": "Only the segment-aware response finds the real number, exposes the coverage gap in the evaluation set, and forces an explicit trade-off decision. Option A trusts an aggregate that already demonstrably failed and blames the users; Option B's retry loop raises cost and latency while hiding the failure instead of measuring it; Option D upgrades by reflex without measuring the segment first, and confirming only the overall average repeats the original mistake.",
+    "trap": "single_headline_metric"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "When a headline metric passes but a business outcome fails, the answer is always: measure by segment and fix the evaluation set."
+  },
+  {
+   "task": "4.2",
+   "kind": "teach",
+   "title": "A/B testing: change one thing, watch every metric",
+   "inshort": "Ship a variant to a slice against a control, and judge it on the primary metric AND the guardrail metrics that must not regress.",
+   "lead": "A team ships a rewritten summarization prompt to 100% of production because it scored better on the offline eval set. Three days later the support-ticket escalation rate has climbed 20%: the new summaries are more fluent but drop the policy exceptions that agents relied on. The change improved the metric they were watching and broke one they were not.",
+   "points": [
+    "Establish a control and a variant and randomize across comparable slices. Offline eval results are a hypothesis; a controlled comparison is the evidence.",
+    "Choose the primary metric before you run \u2014 and name the guardrail metrics that must not regress: latency, cost, safety, escalation rate, refusal accuracy. A change that lifts accuracy while doubling latency has not improved the system.",
+    "Change one variable at a time. Altering the model, the prompt, and the retrieval together makes attribution impossible.",
+    "Iterate in a cheap, reversible loop: measure, diagnose, change one thing, re-measure. Version every winning configuration so you can revert instantly.",
+    "Define kill criteria in advance \u2014 the result that would make you roll back \u2014 so the decision is not made by whoever is most attached to the change."
+   ],
+   "diagram": "pro4-3",
+   "caption": "Test a variant against a control, change one variable at a time, and judge on the primary metric plus the guardrails that must not regress.",
+   "code": null,
+   "ask": null,
+   "why": "A/B testing is an exam objective because it is the only way to prove an iteration helped, and the exam's favourite trap is an optimisation that improves the headline metric while silently breaking a guardrail the business depends on.",
+   "contrast": "The tempting alternative is a full rollout on offline scores, judged on one metric. It skips the control group and the guardrails, so the regression it causes is discovered by customers rather than by the test.",
+   "exam": "Stems describe a change with a promising headline result and an unmeasured side effect. The correct answer keeps a control, measures the full metric set by segment, changes one variable, and states the trade-off.",
+   "takeaway": "Test against a control, change one thing, and judge on the primary metric plus the guardrails \u2014 never a single number in isolation."
+  },
+  {
+   "task": "4.2",
+   "kind": "check",
+   "title": "Faster, cheaper \u2014 and wrong more often",
+   "inshort": "An optimisation improved one metric and quietly broke another; name the trade-off and decide on evidence.",
+   "lead": "A proposed change looks like a clear win on the dashboard leadership watches.",
+   "points": [],
+   "diagram": "pro4-4",
+   "caption": "Latency fell 35% and cost 40%, but one segment's refusal accuracy dropped 99% to 92%. The decision turns on whether every segment still clears its own bar.",
+   "code": null,
+   "ask": {
+    "q": "A new routing change sends 70% of requests to a faster, cheaper model tier. Average response time drops 35% and cost per task drops 40%, but the safety-critical segment's refusal accuracy falls from 99% to 92% \u2014 a regression visible only when measured by segment. Which action is most appropriate?",
+    "options": [
+     "Ship it \u2014 the latency and cost gains apply to every request, while the accuracy drop affects only one segment.",
+     "Ship it and raise the retry count on the safety-critical segment so failed refusals get a second attempt.",
+     "Reject all routing changes and keep every request on the most capable tier so no metric can regress.",
+     "Hold the rollout, report the trade-off explicitly (latency and cost gains versus the safety-segment regression), and gate the fast tier to the segments where measured quality holds \u2014 keeping the capable tier for the safety-critical path."
+    ],
+    "answer": 3,
+    "why": "The correct answer names the trade-off and keeps the capability where the business cannot afford to lose it, which is what the exam rewards. Option A trades away a safety guarantee for throughput \u2014 the classic optimise-one-metric-break-another trap; Option B patches the symptom with retries and leaves the unsafe outputs in place; Option C rejects a real gain outright instead of scoping it, which the exam also treats as wrong.",
+    "trap": "optimize_one_break_another"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "When an optimisation improves one metric and regresses another, scope the change to where quality holds and state the trade-off \u2014 never trade a safety guarantee for speed."
+  },
+  {
+   "task": "4.3",
+   "kind": "teach",
+   "title": "Diagnose before you fix: prompt, retrieval, or model",
+   "inshort": "A confident wrong answer has three common causes \u2014 the prompt, the retrieved context, or the model \u2014 and each has a different fix.",
+   "lead": "A RAG assistant that had been reliable starts returning confident but incorrect answers after a routine document refresh. Latency is unchanged and the model version has not moved. Someone suggests swapping in a bigger model; someone else suggests a stronger prompt. Both are guesses until the failing stage is located.",
+   "points": [
+    "Prompt failure: the instruction was ambiguous, missing, or its output format was never enforced. The model did what the prompt said, not what you meant \u2014 look for ignored constraints, wrong tone, inconsistent structure.",
+    "Hallucination: the model asserts content that is not grounded in its context. In a RAG system the cause is usually retrieval \u2014 stale, irrelevant, or missing chunks \u2014 not the model inventing freely. Check what was actually retrieved before blaming the generator.",
+    "Model mismatch: the task needs more capability, a longer context, or a different tier than the one deployed. Diagnose by running the same failing inputs through a different model and comparing \u2014 not by assuming.",
+    "Localize the failure by testing each stage independently on the failing case: inspect the retrieved chunks, then the assembled prompt, then the generation. Fix the stage that actually broke.",
+    "Fix the cause, not the symptom. Retry-until-it-passes and prompt-patching mask the failure, inflate cost and latency, and leave it unreproducible."
+   ],
+   "diagram": "pro4-5",
+   "caption": "Localize the failure \u2014 inspect the retrieved chunks, then the assembled prompt, then the generation \u2014 and fix the stage that actually broke.",
+   "code": null,
+   "ask": null,
+   "why": "Diagnosing failures is its own objective because the instinctive fixes \u2014 upgrade the model, strengthen the prompt \u2014 target the wrong layer and waste budget. The exam rewards locating the stage before changing anything.",
+   "contrast": "The tempting alternative is to reach for the biggest lever first: upgrade the model or rewrite the prompt. When the real fault is stale retrieval, both changes add cost and leave the failure exactly where it was.",
+   "exam": "Stems give a symptom with the model and latency unchanged \u2014 the tell that points away from the model. The correct answer investigates retrieval/context first and localizes by stage; distractors upgrade the model, blame its 'understanding', or patch with retries.",
+   "takeaway": "Isolate the stage \u2014 retrieval, prompt, or model \u2014 before you change anything. Unchanged latency and model version point away from the model and toward the context."
+  },
+  {
+   "task": "4.3",
+   "kind": "check",
+   "title": "Confident, wrong, and unchanged",
+   "inshort": "Something in the pipeline broke while the model stood still \u2014 find the stage.",
+   "lead": "A familiar symptom: the answers are wrong but nothing about the model moved.",
+   "points": [],
+   "diagram": "pro4-6",
+   "caption": "A confident wrong answer can come from several stages. Localize the failing stage before you change anything.",
+   "code": null,
+   "ask": {
+    "q": "A RAG system suddenly returns confident but incorrect answers after a document refresh, while latency and the model version are unchanged. Which is the most likely first place to investigate?",
+    "options": [
+     "The model weights have silently changed and the deployed version no longer matches what was evaluated.",
+     "The retrieval/indexing step is returning irrelevant or stale chunks, so the model is faithfully summarizing the wrong context.",
+     "The temperature setting is too low, making the model overconfident in a single answer.",
+     "The context window has shrunk, so earlier parts of the conversation are being dropped."
+    ],
+    "answer": 1,
+    "why": "A RAG system that degrades right after a document refresh, with latency and model version unchanged, points at retrieval \u2014 the model is grounding its answer in bad or stale chunks. Option A contradicts the stated fact that the model version is unchanged; Option C is backwards (lower temperature reduces randomness, it does not cause confident errors, and it would not correlate with a document refresh); Option D invents a capacity change the stem rules out and that would not track a document refresh.",
+    "trap": "blame_the_model"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "When the model and latency are unchanged but quality fell after a data change, investigate retrieval first."
+  },
+  {
+   "task": "4.4",
+   "kind": "teach",
+   "title": "Optimise the trade-off \u2014 and name what you spent",
+   "inshort": "Every token, latency, and cost optimisation buys one metric with another; the right move states the trade-off explicitly and protects the metric the business needs.",
+   "lead": "A product manager asks you to cut inference cost 40% before the next quarter without hurting the experience. You have four levers \u2014 caching, tier routing, context trimming, and batching \u2014 and each one spends something to save something.",
+   "points": [
+    "Prompt caching: put the stable content first \u2014 system prompt, policy documents, few-shot examples \u2014 and cache it. Repeated prefixes get cheaper and faster with no change to output quality.",
+    "Model tier routing: send the easy, high-volume requests to a fast tier and reserve the capable tier for the hard cases. Measure per-segment quality before trusting the split; routing that is not measured is just a hope.",
+    "Context trimming: drop or summarize material that is not relevant to the request. A bloated context costs tokens and degrades quality through the lost-in-the-middle effect \u2014 trimming helps both.",
+    "Batching: for work with no latency SLA, batch processing trades latency for a large cost reduction. Never batch anything that blocks a user or a merge.",
+    "Name the trade-off and the metric you are protecting: 'we cut cost 40% and p95 latency 20%, holding accuracy within 1 point on the golden set' \u2014 or state plainly which metric regressed and why that is acceptable."
+   ],
+   "diagram": "pro4-7",
+   "caption": "Every lever spends one metric to buy another: cache what repeats, route by measured segment, trim context, batch only non-blocking work \u2014 and always state the trade-off.",
+   "code": null,
+   "ask": null,
+   "why": "Optimising token, latency, and cost trade-offs is an objective because every lever moves more than one metric, and the exam rewards the architect who states the exchange rather than claiming a free lunch.",
+   "contrast": "The tempting alternative is to cut the biggest line item \u2014 swap to the smallest model, or truncate the context \u2014 and report only the cost saving. That is how a cost win becomes a quality incident the next sprint.",
+   "exam": "Stems name a target (cut cost, cut latency) and a constraint the business cares about. The correct answer applies a lever, measures the full metric set, and states the trade-off; distractors optimise the headline and ignore the collateral metric.",
+   "takeaway": "Optimise with your eyes on every metric: cache what repeats, route by measured segment, trim context, batch only non-blocking work \u2014 and always state the trade-off."
+  },
+  {
+   "task": "4.4",
+   "kind": "check",
+   "title": "40% cheaper, quietly worse",
+   "inshort": "A cost cut lands on budget but moves a metric the business depends on.",
+   "lead": "The saving is real; so is the regression hiding behind the average.",
+   "points": [],
+   "diagram": "pro4-8",
+   "caption": "Cost fell 45% and the average still looks fine, but the complex-contract segment dropped 91% to 74%. The question is whether every segment still clears its own bar.",
+   "code": null,
+   "ask": {
+    "q": "To cut inference cost, a team switches all traffic to the smallest model tier. Cost per task falls 45% and average latency improves, but the golden-set accuracy for the complex-contract segment drops from 91% to 74%. The overall average still looks acceptable. Which action is most appropriate?",
+    "options": [
+     "Keep the change \u2014 the overall average meets the bar, and the complex-contract segment is a small share of traffic.",
+     "Keep the change but add a retry loop for the complex-contract segment so low-confidence answers are regenerated until they pass.",
+     "Revert the change, measure per segment, and route by task difficulty \u2014 fast tier for simple requests, capable tier for complex contracts \u2014 then report the cost/quality trade-off with the measured numbers.",
+     "Upgrade the entire workload to the largest model so no segment can be under-served, accepting the higher cost."
+    ],
+    "answer": 2,
+    "why": "The correct answer measures by segment and routes on that evidence, which preserves the cost win where it is safe and the quality where it matters. Option A accepts a hidden segment failure because the average looks fine \u2014 the exact trap this domain tests; Option B masks the regression with retries while inflating latency and cost; Option D abandons the cost objective entirely and over-provisions, which the exam also treats as wrong.",
+    "trap": "single_headline_metric"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "A cost optimisation is only sound if every segment still clears its own bar \u2014 route by measured segment, not by the global average."
+  },
+  {
+   "task": "4.5",
+   "kind": "teach",
+   "title": "You can't manage what you can't see",
+   "inshort": "Log structured events, trace each request end to end, and alert on segment-level drift \u2014 uptime and average latency are not quality.",
+   "lead": "A system has run for months with a green dashboard: uptime 99.9%, average latency flat. Then a provider quietly updates a model version and output quality drifts for three weeks before anyone notices \u2014 because the only things being monitored were availability and speed, never the quality of what the system produced.",
+   "points": [
+    "Log structured events per request: prompt version, model version, retrieved document IDs, token counts, latency, cost, outcome, and a trace ID that ties the whole pipeline together.",
+    "Trace end to end so a failure can be attributed to a stage \u2014 retrieval, prompt, or generation \u2014 instead of guessed at.",
+    "Monitor quality, not just uptime: sample and score real outputs continuously, and track the full metric set (accuracy, safety, cost, latency) over time.",
+    "Alert on segment-level drift and guardrail breaches, not only on a global average \u2014 the average is precisely what hides the segment that broke.",
+    "Watch for silent external change: model version updates, retrieval index refreshes, upstream data shifts. Pin or detect versions so drift becomes visible instead of invisible."
+   ],
+   "diagram": "pro4-9",
+   "caption": "Uptime is not quality. Log structured events, trace by stage, sample output quality, and alert on segment-level drift.",
+   "code": null,
+   "ask": null,
+   "why": "Monitoring with logging and observability is an objective because a system you cannot see is a system you cannot diagnose, and the exam's observability distractors are always uptime, average latency, or 'we would notice from complaints'.",
+   "contrast": "The tempting alternative is to treat availability and average latency as the health of the system. They are the health of the servers, not the quality of the output \u2014 and quality is what the business actually depends on.",
+   "exam": "Stems describe a failure that went undetected for weeks. The correct answer adds structured logging, tracing, quality sampling, and segment-level alerting; distractors add more uptime checks, more dashboards of the same averages, or rely on users to report problems.",
+   "takeaway": "Uptime is not quality. Log structured events, trace by stage, and alert on segment-level drift so silent regressions surface in hours, not weeks."
+  },
+  {
+   "task": "4.5",
+   "kind": "check",
+   "title": "Three weeks of silent drift",
+   "inshort": "The dashboard was green the whole time; the monitoring was watching the wrong thing.",
+   "lead": "A quality regression ran undetected for weeks because nothing was watching quality.",
+   "points": [],
+   "diagram": "pro4-10",
+   "caption": "The dashboard stayed green because it watched the servers, not the output. Monitor quality by segment so a silent regression surfaces in hours, not weeks.",
+   "code": null,
+   "ask": {
+    "q": "A production system degraded in quality for three weeks after an upstream model update, yet every dashboard stayed green because the only monitored signals were uptime and average latency. Which change most directly closes this observability gap?",
+    "options": [
+     "Add more frequent uptime checks and a lower latency alert threshold so problems surface faster.",
+     "Add structured per-request logging (prompt/model version, retrieved IDs, token counts, cost, outcome), end-to-end tracing by stage, continuous sampling and scoring of output quality, and segment-level drift alerts.",
+     "Ask users to report bad outputs through a feedback form so regressions are caught by the people who notice them.",
+     "Pin the model to a fixed version and stop monitoring, since the version can no longer change underneath the system."
+    ],
+    "answer": 1,
+    "why": "Only the logging-and-tracing change monitors the thing that actually failed \u2014 output quality \u2014 and does so at segment granularity where drift is visible. Option A strengthens the two signals that stayed green, so it would not have caught this; Option C outsources detection to users, who see the failure only after the damage; Option D removes one source of drift but monitoring nothing is not observability, and it cannot catch retrieval or data drift.",
+    "trap": "uptime_is_not_quality"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "If the dashboard only shows uptime and latency, it cannot see a quality regression \u2014 monitor output quality by segment."
+  },
+  {
+   "task": "4.5",
+   "kind": "recap",
+   "title": "Domain 4 in one page",
+   "inshort": "Define plural, segmented metrics; test against a control; diagnose the stage; optimise with the trade-off named; and watch quality, not uptime.",
+   "lead": "That is Domain 4. Five tasks, one loop: define what good looks like, measure it honestly, test changes against a control, diagnose before you fix, optimise with the trade-off stated, and keep the whole thing observable.",
+   "points": [
+    "Metrics: define them in the plural \u2014 accuracy, latency, cost, safety, security \u2014 and measure by segment. A headline average hides the segment the business depends on.",
+    "Evaluation: build a versioned golden set that includes the hard and rare cases, and use a mixed methodology \u2014 deterministic assertions, human review, and model-graded scoring \u2014 so each method covers the others' blind spots.",
+    "A/B testing: compare a variant against a control, change one variable at a time, and judge on the primary metric plus guardrails. Define kill criteria before you run.",
+    "Diagnosis: locate the failing stage \u2014 prompt, retrieval, or model \u2014 before changing anything. Unchanged latency and model version point away from the model; retry-until-it-passes and prompt-hacking hide the cause.",
+    "Optimisation: every token, latency, and cost lever spends one metric to buy another. Cache what repeats, route by measured segment, trim context, batch non-blocking work \u2014 and state the trade-off.",
+    "Observability: log structured events, trace by stage, monitor output quality, and alert on segment-level drift. Uptime and average latency are not quality."
+   ],
+   "diagram": "pro4-11",
+   "caption": "Define what good looks like, measure it honestly, test against a control, diagnose before you fix, optimise with the trade-off named, and keep it all observable.",
+   "code": null,
+   "ask": null,
+   "why": null,
+   "contrast": null,
+   "exam": "Every Domain 4 stem hides a number that looks fine \u2014 a headline accuracy, a cost saving, a green dashboard \u2014 with a segment or a guardrail broken underneath. The correct answer measures by segment and states the trade-off; the distractors trust the headline, retry until it passes, upgrade the model, or ship on vibes.",
+   "takeaway": "Measure by segment, test against a control, diagnose the stage, name every trade-off, and watch quality \u2014 not uptime."
+  }
+ ]
+}

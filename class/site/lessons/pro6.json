@@ -1,0 +1,283 @@
+{
+ "domain": "pro6",
+ "title": "Stakeholder Communication & Lifecycle Management",
+ "weight": "14% of the exam",
+ "goal": "Set expectations at the layer that can hold them: run structured discovery before design, justify decisions as business trade-offs, put SLAs where the architecture can keep them, document the 'why', and run the solution as a lifecycle rather than a launch.",
+ "tasks": [
+  "6.1",
+  "6.2",
+  "6.3",
+  "6.4",
+  "6.5"
+ ],
+ "steps": [
+  {
+   "task": "6.1",
+   "kind": "teach",
+   "title": "Discovery before the demo",
+   "inshort": "Structured discovery converts a vague ask into testable requirements \u2014 whose decision, on what data, with what acceptable failure \u2014 before any architecture is drawn.",
+   "lead": "A retail COO opens the kickoff with the solution already chosen: 'Put Claude on our support tickets and cut handling cost 30%.' No one has asked which tickets, who reads the output, or what a wrong answer costs. The architect who starts designing now is designing for a requirement nobody verified.",
+   "points": [
+    "Discovery is structured, not conversational: capture the business outcome, the decision the system feeds, the data it may legally use, the volume and latency envelope, and the cost of a wrong answer \u2014 in writing, before design.",
+    "Separate the stated want ('use AI') from the requirement ('route 40% of tier-1 tickets with a human approving every refund over $50'). The want is the sponsor's hypothesis; the requirement is what you can build and test against.",
+    "Interview the roles that touch the outcome \u2014 the support agent, the finance approver, the compliance owner \u2014 not only the sponsor. The sponsor owns the budget; the operators own the failure modes.",
+    "Every requirement gets a success measure and an owner. 'Improve quality' is not a requirement; 'resolve 70% of billing questions in one turn at \u226595% accuracy on the eval set' is.",
+    "Discovery output is a signed-off problem statement and requirement list, not a slide of capabilities. If it cannot be tested, it is not yet a requirement."
+   ],
+   "diagram": "pro6-1",
+   "caption": "Structured discovery turns a vague ask into testable requirements \u2014 outcome, decision, data, error tolerance and owners \u2014 before any architecture is drawn.",
+   "code": null,
+   "ask": null,
+   "why": "The Professional exam rewards candidates who notice a stem hands them a solution before the problem is defined. Structured discovery is the move that de-risks every later phase.",
+   "contrast": "The tempting wrong way: accept the sponsor's metric ('cut cost 30%') and architect to it. That number is a hypothesis; without knowing which tickets, which accuracy, and who approves the output, you will optimize a system that fails acceptance.",
+   "exam": "Stems pair an eager sponsor with an undefined requirement. The right option runs structured discovery \u2014 outcome, decision, data, failure tolerance, owners \u2014 before proposing architecture; distractors jump straight to a model, a prompt, or a pilot.",
+   "takeaway": "Define the problem in writing and in testable terms before you draw a box. A requirement you cannot measure is a wish."
+  },
+  {
+   "task": "6.1",
+   "kind": "check",
+   "title": "The sponsor already picked the solution",
+   "inshort": "The right first move is discovery that pins down the decision, the data and the acceptable error \u2014 not a demo of the model.",
+   "lead": "The COO wants a working prototype by Friday. Nothing is written down.",
+   "points": [],
+   "diagram": "pro6-2",
+   "caption": "The right first move is discovery that pins down the decision, the data and the acceptable error \u2014 not a demo of the model.",
+   "code": null,
+   "ask": {
+    "q": "A logistics VP asks you to 'use Claude to automate our dispatch exceptions' and wants a prototype this week. No requirements document exists. Which action best reflects structured discovery?",
+    "options": [
+     "Interview the dispatch operators, the exception-approval owner and compliance to capture the decisions the system will feed, the data it may use, the acceptable error rate and how success will be measured \u2014 then write and confirm the problem statement before designing.",
+     "Build a prototype against the VP's description this week and let the requirements emerge from what the prototype does.",
+     "Ask the VP to choose between Claude models and a retrieval approach so the prototype can start.",
+     "Survey the dispatch team with a one-line question \u2014 'what would you automate?' \u2014 and design to the most common answer."
+    ],
+    "answer": 0,
+    "why": "Interviewing the roles that own the decisions, the data constraints and the error tolerance produces testable requirements and a confirmable problem statement. Prototyping first makes the design become the requirements and bakes in unverified assumptions. Choosing models and retrieval is a design decision taken before the problem is defined. A one-line survey collects wants, not the decision, data and failure-tolerance facts structured discovery needs, and design-by-popularity ignores the compliance owner entirely.",
+    "trap": "prototype_as_discovery"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Discover before you design: outcome, decision, data, error tolerance and owners \u2014 then write and confirm the problem statement."
+  },
+  {
+   "task": "6.2",
+   "kind": "teach",
+   "title": "Lead with the trade-off, not the diagram",
+   "inshort": "Executives fund outcomes and accept trade-offs; present the decision, the options you rejected, and the cost of the choice \u2014 in their terms, not the stack's.",
+   "lead": "The steering committee has fifteen minutes. You can show them the orchestration diagram, or you can say: 'We can hit 95% accuracy with human review on the last 5%, at 2 seconds and $0.004 per ticket; removing the human saves 12% of cost and drops effective accuracy to about 88% on edge cases. We recommend keeping the human.' One of those gets a decision.",
+   "points": [
+    "State the decision and the recommendation first, then the evidence. Executives approve or reject a choice, not a diagram.",
+    "Quantify every option in business units: cost per transaction, latency the user feels, accuracy the process needs, risk exposure, time to value. 'A better model' is not an option; '1.9s at $0.004 vs 0.7s at $0.011' is.",
+    "Name the option you rejected and why. A decision without a visible alternative reads as a preference, not an architecture.",
+    "Translate technical limits into business consequences: 'probabilistic output' becomes 'we route the 5% least-confident cases to a human rather than promising every answer is correct.'",
+    "Keep one slide of the architecture for the engineers who ask; lead the room with the trade-off and the numbers."
+   ],
+   "diagram": "pro6-3",
+   "caption": "Lead with the decision and the numbers in business units; name the option you rejected and what the choice costs.",
+   "code": null,
+   "ask": null,
+   "why": "The exam's decision-communication items ask which framing gets a stakeholder to a defensible decision. The right answer makes the trade-off explicit and business-readable; wrong answers bury it in technical detail or assert one option is simply 'best'.",
+   "contrast": "The tempting wrong way: present the architecture and let the executives infer the trade-offs. If they cannot see what they are giving up, they cannot own the decision \u2014 and the first production surprise becomes your credibility problem.",
+   "exam": "Stems give you a decision and an audience of executives or procurement. Right options quantify cost, latency, accuracy and risk in business terms and name the rejected option; distractors lead with jargon, hide the trade-off, or claim no trade-off exists.",
+   "takeaway": "Decision first, numbers in business units, the rejected option named. If the room cannot see what it is giving up, it cannot make the call."
+  },
+  {
+   "task": "6.2",
+   "kind": "check",
+   "title": "The slide that buries the trade-off",
+   "inshort": "Justify in business units and name the cost of the choice; a capability list and a jargon diagram lose the decision.",
+   "lead": "Procurement will sign only if the recommendation is defensible on the record.",
+   "points": [],
+   "diagram": "pro6-4",
+   "caption": "Justify in business units and name the cost of the choice; a capability list and a jargon diagram lose the decision.",
+   "code": null,
+   "ask": {
+    "q": "You must get procurement to approve an architecture that keeps a human review step rather than fully automating a claims-triage process. Which presentation best communicates the architectural decision and its trade-off?",
+    "options": [
+     "Walk procurement through the retrieval and orchestration architecture in detail so they can see the engineering rigor behind the recommendation.",
+     "Recommend full automation because it is faster and cheaper, and note that a review step can be added later if accuracy problems appear.",
+     "Present the decision and recommendation first, quantify each option in cost per claim, turnaround time, accuracy on the eval set and risk exposure, and state explicitly what the review step costs and why you recommend keeping it.",
+     "Present only the accuracy benchmark and state that the architecture is the highest-accuracy option available."
+    ],
+    "answer": 2,
+    "why": "Leading with the decision, quantifying options in business units and stating the cost of the review step gives procurement the information to own a defensible call. A deep architecture walkthrough is detail procurement cannot evaluate and it buries the trade-off. Recommending full automation with a 'fix it later' caveat oversells capability and defers a known risk the decision should surface now. A single accuracy benchmark hides the cost, latency and risk dimensions the decision turns on and presents a preference as a fact.",
+    "trap": "detail_as_transparency"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Decision first, options quantified in business units, the rejected cost named. Detail without a trade-off is not transparency."
+  },
+  {
+   "task": "6.3",
+   "kind": "teach",
+   "title": "An SLA on a probabilistic system",
+   "inshort": "Set the SLA at the layer you can guarantee \u2014 availability, latency, human-review turnaround \u2014 never at the accuracy of a model that cannot promise certainty.",
+   "lead": "A bank's operations head drafts the contract clause: 'The system will answer customer questions with 99.9% accuracy.' The architecture is a language model over a document store. 99.9% accuracy on open-ended questions is not a number any probabilistic system can promise, and signing it makes every edge case a breach.",
+   "points": [
+    "Separate the SLA dimensions and assign each to the layer that can hold it: availability and latency the platform guarantees; review turnaround the operations team guarantees; accuracy a measured rate on a defined eval set with a stated confidence band \u2014 not a promise of perfection.",
+    "Set the accuracy expectation as a floor with a measured baseline and a monitoring plan: '\u226595% on the labeled eval set, re-measured monthly, with the low-confidence band routed to human review.'",
+    "Reframe 'guarantee accuracy' into 'guarantee the process': every answer either meets the confidence bar or reaches a human within the agreed window. Certainty lives in the process, not the model.",
+    "Align the SLA to what the business needs, not the number that sounds safest. 99.9% accuracy may be unachievable; 99.9% availability with a human fallback is contractable.",
+    "Get the SLA in writing with the confidence band, the eval methodology and the review window \u2014 an SLA nobody can measure is a dispute waiting to happen."
+   ],
+   "diagram": "pro6-5",
+   "caption": "Set the SLA at the layer you can guarantee \u2014 availability, latency, review turnaround \u2014 never at the accuracy of a model that cannot promise certainty.",
+   "code": null,
+   "ask": null,
+   "why": "Expectation-alignment items put a stakeholder and an impossible guarantee in the same stem. The right answer moves the guarantee to a layer that can hold it and defines the metric, method and fallback; distractors accept the impossible number, quietly lower it, or hide it.",
+   "contrast": "Two tempting wrong ways bracket the right one: accept '99.9% accuracy' to win the deal (overselling a probabilistic system), or refuse to commit to any number at all (which reads as evasion and loses the trust you need). The right answer commits hard to the layers you control and defines accuracy as a measured, monitored rate.",
+   "exam": "Stems hand you a fixed accuracy or availability guarantee the architecture cannot support. Right options split the SLA by layer, define accuracy as a measured rate on a named eval set with a human-review fallback, and put it in writing; distractors promise the number, hide the limitation, or abandon the metric.",
+   "takeaway": "Promise availability, latency and review turnaround; measure accuracy as a rate on an eval set. Never sign a certainty a probabilistic system cannot give."
+  },
+  {
+   "task": "6.3",
+   "kind": "check",
+   "title": "The 99.9% accuracy clause",
+   "inshort": "Split the SLA by layer; define accuracy as a measured rate with a review fallback, not a guarantee of perfection.",
+   "lead": "Legal is ready to sign. The clause as drafted would make every low-confidence answer a contract breach.",
+   "points": [],
+   "diagram": "pro6-6",
+   "caption": "Split the SLA by layer: commit to availability and latency, measure accuracy as a rate with a review fallback \u2014 never sign perfection.",
+   "code": null,
+   "ask": {
+    "q": "A client's procurement team requires a signed SLA. They propose: 'The AI system will answer customer questions with 99.9% accuracy.' Your architecture is a Claude model over a document corpus with human review for low-confidence cases. Which response best aligns expectations?",
+    "options": [
+     "Accept the 99.9% accuracy clause to win the contract and plan to negotiate it down if edge cases cause problems.",
+     "Decline to commit to any accuracy number and offer only a best-effort clause, since language models are probabilistic.",
+     "Accept the accuracy clause but add a note that the system is 'AI-based and may occasionally be wrong.'",
+     "Propose an SLA that separates the dimensions: platform availability and response latency as committed targets, accuracy as a measured rate on a defined eval set with a stated confidence band, and a human-review turnaround for low-confidence cases \u2014 documented in the contract."
+    ],
+    "answer": 3,
+    "why": "Splitting the SLA assigns each guarantee to the layer that can hold it and defines accuracy as a measured rate with a review fallback, which is honest and contractable. Accepting 99.9% signs a certainty the system cannot give and makes every edge case a breach. Refusing any number is evasion that costs the trust the deal needs, when a measurable floor with a human fallback is achievable. A disclaimer note documents the gap without closing it and leaves the impossible clause intact.",
+    "trap": "disclaimer_instead_of_design"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Split the SLA by layer: commit to availability, latency and review turnaround; measure accuracy as a rate on an eval set with a human fallback."
+  },
+  {
+   "task": "6.4",
+   "kind": "teach",
+   "title": "The document that explains the 'why'",
+   "inshort": "Document the decisions and their trade-offs, not just the diagram \u2014 a future engineer must be able to see what you chose, what you rejected, and what would change the answer.",
+   "lead": "Eighteen months after handoff a new team inherits a RAG system with a 500-token chunk size. Nobody knows why. They 'improve' it to 2,000 tokens, retrieval quality collapses on their FAQ corpus, and they spend a quarter rediscovering the trade-off you made in an afternoon. The diagram survived; the reasoning did not.",
+   "points": [
+    "An architecture document carries the context a diagram cannot: the problem, the constraints, the options considered, the decision, the rationale, and the conditions that would reverse it.",
+    "Record decisions as ADRs \u2014 one short entry per decision with status, context, decision and consequences. They are greppable, dated and defensible when a stakeholder asks 'why is it like this?'",
+    "Document the rejected options with the reason, so the next team does not re-litigate or blindly reverse a choice whose constraint still holds.",
+    "Include the operational contract: eval sets and their provenance, confidence thresholds, the human-review trigger, known limitations, and the runbook for when monitoring fires.",
+    "Write for two readers \u2014 the engineer who will change the system and the procurement or audit reader who must see governance \u2014 and keep the 'why' where both can find it."
+   ],
+   "diagram": "pro6-7",
+   "caption": "Document the decisions and their trade-offs, not just the diagram \u2014 a future engineer must see what you chose, what you rejected and what would change the answer.",
+   "code": null,
+   "ask": null,
+   "why": "Documentation items test whether you capture reasoning and its boundaries, not just the picture. The right answer preserves decisions, rejected options and the conditions that would change them; distractors ship a diagram alone or a document too thin to guide the next change.",
+   "contrast": "The tempting wrong way: treat the diagram as the deliverable and the reasoning as tribal knowledge. Every decision without a recorded 'why' gets reversed by the next team the moment it looks expensive.",
+   "exam": "Stems describe a handoff or an audit and ask what documentation is missing. Right options capture decisions, trade-offs, rejected options and reversal conditions; distractors point to more diagrams, more code comments, or a wiki of links.",
+   "takeaway": "Document the decision and its trade-offs, not just the diagram \u2014 the next engineer needs the 'why', the rejected options, and what would change the answer."
+  },
+  {
+   "task": "6.4",
+   "kind": "check",
+   "title": "The wiki nobody can use",
+   "inshort": "A diagram plus a code repository is not documentation; record the decisions, the rejected options and the reversal conditions.",
+   "lead": "A new team inherits the system and cannot tell why any choice was made.",
+   "points": [],
+   "diagram": "pro6-8",
+   "caption": "A diagram plus a code repository is not documentation; record the decisions, the rejected options and the reversal conditions.",
+   "code": null,
+   "ask": {
+    "q": "You are handing a production Claude-based system to a new engineering team. The existing documentation is an architecture diagram, the code repository, and a folder of meeting notes. Which documentation would most improve the handoff?",
+    "options": [
+     "A more detailed architecture diagram showing every component, integration and data flow in the system.",
+     "A set of decision records capturing each key choice \u2014 the context, the options considered, the decision, the rationale and the conditions that would reverse it \u2014 plus the operational contract: eval sets, confidence thresholds, review triggers, known limitations and the monitoring runbook.",
+     "Inline code comments on every function explaining what each line does.",
+     "A link index to the meeting notes and the original project charter, so the team can trace decisions when questions arise."
+    ],
+    "answer": 1,
+    "why": "Decision records with rationale and reversal conditions plus the operational contract give the incoming team the 'why', the boundaries and the runbook \u2014 exactly what a handoff needs. A richer diagram shows structure but not reasoning. Line-by-line comments explain mechanics, not decisions or trade-offs. A link index sends the team digging through unstructured notes to reconstruct a rationale that should have been written down.",
+    "trap": "diagram_is_documentation"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Record decisions, trade-offs, rejected options and reversal conditions, plus the operational contract. A diagram is not documentation."
+  },
+  {
+   "task": "6.5",
+   "kind": "teach",
+   "title": "The lifecycle does not end at handoff",
+   "inshort": "A solution is a lifecycle \u2014 discovery, design, handoff, monitoring, iteration \u2014 and the architect owns the transitions, especially the feedback loop that keeps the system honest after launch.",
+   "lead": "The system ships, the kickoff deck becomes a memory, and three months later the team notices retrieval has quietly drifted after a content migration. Nobody is watching the metric that would have caught it, and nobody owns the feedback loop that would have fixed it. Launch was treated as the finish line; in lifecycle terms it was the starting gun.",
+   "points": [
+    "Name the phases and their gates: discovery (problem confirmed), design (decisions recorded), handoff (operational contract signed), monitoring (metrics live), iteration (feedback changes the system).",
+    "Monitoring is a design-time commitment: define the metrics \u2014 accuracy on the eval set, confidence-band distribution, review-queue volume, latency, cost per transaction \u2014 before launch, each with an owner and a threshold that triggers action.",
+    "Build the feedback loop into the architecture: reviewed low-confidence cases, user corrections and escalations become labeled data that feeds the next eval and iteration, not a backlog nobody reads.",
+    "Expectation alignment continues after launch: report measured accuracy and drift against the agreed baseline, so the stakeholder sees the system honestly rather than discovering a regression.",
+    "Iteration is planned, not reactive: a cadence to re-measure, re-tune thresholds and re-run the eval set, so change is governed rather than ad hoc."
+   ],
+   "diagram": "pro6-9",
+   "caption": "A solution is a lifecycle \u2014 discovery, design, handoff, monitoring, iteration \u2014 and the architect owns the transitions, especially the feedback loop.",
+   "code": null,
+   "ask": null,
+   "why": "Lifecycle items test whether you treat launch as a phase transition, not a finish. The right answer installs monitoring, ownership and a feedback loop before go-live; distractors declare victory at handoff or bolt on monitoring only after something breaks.",
+   "contrast": "The tempting wrong way: hand off, celebrate, and move to the next project. Systems that are not monitored do not stay correct \u2014 they drift quietly until a stakeholder notices, and then the fix is a crisis instead of a cadence.",
+   "exam": "Stems show a system in or after launch with a slow degradation or an unmet expectation. Right options install monitoring, an owner and a feedback loop tied to the agreed metrics; distractors treat go-live as the end, monitor only errors, or rebuild instead of iterating.",
+   "takeaway": "Treat launch as a phase transition: metrics and owners defined at design time, a feedback loop that feeds the next iteration, and honest reporting against the agreed baseline."
+  },
+  {
+   "task": "6.5",
+   "kind": "check",
+   "title": "Drift after the content migration",
+   "inshort": "Monitoring, ownership and a feedback loop are design-time commitments; a system nobody measures drifts until a stakeholder finds it.",
+   "lead": "Three months post-launch, retrieval quality has degraded after a routine content migration, and the team only learned of it from a customer complaint.",
+   "points": [],
+   "diagram": "pro6-10",
+   "caption": "Define metrics, an owner, a threshold and a feedback loop at design time; report against the baseline so the stakeholder sees drift, not a surprise.",
+   "code": null,
+   "ask": {
+    "q": "A Claude-based support assistant has been in production for three months. After a routine content migration, answer quality has degraded, and the team learned of it from a customer complaint rather than their own systems. Which action best reflects lifecycle management of the solution?",
+    "options": [
+     "Treat the launch as complete and address degradations reactively as stakeholders report them.",
+     "Rebuild the system on a newer model to resolve the quality regression.",
+     "Define and instrument monitoring at design time \u2014 accuracy on the eval set, confidence-band distribution, review-queue volume \u2014 assign an owner and a threshold, and feed reviewed cases and corrections back into the eval set to drive the next iteration.",
+     "Add error-rate logging so that when answers fail, the failures are captured for later review."
+    ],
+    "answer": 2,
+    "why": "Monitoring, an owner, a threshold and a feedback loop into the eval set are the lifecycle controls that catch drift before a customer does and turn corrections into iteration. Treating launch as complete is the failure the stem describes \u2014 reactive discovery of drift. A model rebuild does not fix a retrieval or content problem and replaces a governed system with an unmeasured one. Error logging is a detective control that captures failures but measures no baseline, so it cannot detect a slow drift in quality that never throws an error.",
+    "trap": "launch_is_finish"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Define metrics, an owner, a threshold and a feedback loop at design time, and report against the baseline \u2014 launch is a phase transition, not the finish."
+  },
+  {
+   "task": "6.5",
+   "kind": "recap",
+   "title": "Domain 6 in one page",
+   "inshort": "Discovery defines the problem, communication justifies the trade-off, SLAs live at the layer that can hold them, documentation preserves the 'why', and the lifecycle never ends at launch.",
+   "lead": "That is Domain 6 \u2014 14% of the exam, and the domain where every wrong answer sounds confident. Almost every item hands you a stakeholder who wants certainty the system cannot give, or a decision that has to survive procurement. The reflex to install: quantify the trade-off honestly and set the expectation at the layer that can actually hold it.",
+   "points": [
+    "6.1 Discovery: capture outcome, decision, data, failure tolerance and owners in writing before design. A requirement you cannot measure is a wish.",
+    "6.2 Communication: decision first, options quantified in business units, the rejected option named. Never bury the trade-off in technical detail.",
+    "6.3 Expectation alignment and SLAs: promise availability, latency and review turnaround; measure accuracy as a rate on an eval set with a human fallback. Never sign a certainty a probabilistic system cannot give.",
+    "6.4 Documentation: record decisions, trade-offs, rejected options and reversal conditions \u2014 plus the operational contract. A diagram is not documentation.",
+    "6.5 Lifecycle: launch is a phase transition. Define metrics, owners and a feedback loop at design time, report honestly against the baseline, and iterate on a cadence.",
+    "The universal distractor set: overselling capability, hiding the limitation, promising a metric the architecture cannot support, or burying the trade-off in technical detail."
+   ],
+   "diagram": "pro6-11",
+   "caption": "Discovery defines the problem, communication justifies the trade-off, SLAs live at the layer that can hold them, documentation preserves the why, and the lifecycle never ends at launch.",
+   "code": null,
+   "ask": null,
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "The honest, quantified, right-layer answer wins: define the problem, name the trade-off, set the SLA where it can be held, write down the 'why', and keep the loop running after launch."
+  }
+ ]
+}

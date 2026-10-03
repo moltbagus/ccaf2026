@@ -40,6 +40,10 @@
 - [ ] **CCAR-P Architect-Professional lane** — build out from the "Claude Certified Architect Professional" series (Ep 01-08, same channel, not fetched). Needs its own exam-guide research first (7 domains, 63 items, $175).
 - [ ] Refresh the Obsidian `Learning/CCAF/Class/` master-note mirrors — they were mirrored 2026-09-19 and predate the video-series merges (D1 17->27 steps etc.)
 
+### 🎬 Queued: video material for the two new lanes
+- [ ] Fetch the CCDV-F "Claude Certified Developer" (Ep 01-12) and CCAR-P "Claude Certified Architect Professional" (Ep 01-08) transcripts — **YouTube rate-limited the box (HTTP 429 on both the transcript API and yt-dlp) after the 21-episode CCAR-F batch**. Retry later, then merge as a second pass over the two new lanes.
+- [ ] Save the same transcripts into the Obsidian vault under `Learning/CCAF/CCDV-F/` and `Learning/CCAF/CCAR-P/`.
+
 ### 🔜 Next Steps
 - [ ] Custom domain for Vercel (ccaf2026.com)
 - [ ] CI/CD pipeline setup

@@ -1,0 +1,281 @@
+{
+ "domain": "dev6",
+ "title": "Prompt and Context Engineering",
+ "weight": "11.0% of the exam",
+ "goal": "Implement the builder's half of prompt and context engineering: keep the context window lean by externalising state and pruning input, write instructions with explicit criteria and worked examples instead of vague prose, and constrain model output with a schema then validate its meaning \u2014 fixing the layer that actually failed rather than buying more capacity.",
+ "tasks": [
+  "6.1",
+  "6.2",
+  "6.3"
+ ],
+ "steps": [
+  {
+   "task": "6.1",
+   "kind": "teach",
+   "title": "The window is not memory",
+   "inshort": "A long session degrades because attention dilutes and noise accumulates \u2014 externalise the findings instead of buying a bigger window.",
+   "lead": "Ninety minutes into a codebase investigation the agent stops naming the class it found at minute four and starts saying 'following the typical pattern here.' The window is nowhere near full and nothing crashed. The findings are still in the transcript \u2014 they are just buried under forty tool results that no longer matter.",
+   "points": [
+    "Degradation is attention dilution and bloat, not a token shortage: high-signal early findings get crowded out by high-volume later output.",
+    "A larger window does not fix it \u2014 every token is re-sent and re-billed each turn, and the middle of a long input gets the least attention.",
+    "Externalise findings to a file the session can re-read: a scratchpad of file:line references, entry points and known issues survives compaction and crashes.",
+    "Prune at the source \u2014 trim each tool result to the fields the next decision needs before it is appended, because verbose results accumulate across turns.",
+    "Restart only when the task has changed or the thread has drifted, and carry the live state forward as a short handoff rather than replaying everything."
+   ],
+   "diagram": "dev6-1",
+   "caption": "A long session degrades from attention dilution \u2014 write findings to a scratchpad and keep the window lean.",
+   "code": "# scratchpad.md\n## Auth system findings\n- Entry point: src/auth/middleware.ts:23\n- Token expiry: 1 hour; refresh: 7 days\n- Known issue: no token revocation mechanism\n# Re-read this after compaction instead of re-scanning the tree.",
+   "ask": null,
+   "why": "The exam is testing the builder's reflex: a degraded long session is a memory-management problem, so the effective move is to get durable facts out of the window and into a file while keeping the live window lean.",
+   "contrast": "The tempting wrong answer is a bigger window or a bigger model \u2014 both leave the same findings under the same pile of noise, at greater cost. A cold restart with no handoff throws away the work already done.",
+   "exam": "Stems describe a session that starts describing 'typical patterns', contradicts itself, or assumes instead of checking, well before the window is full; the correct answer externalises state or prunes input, never upgrades capacity.",
+   "takeaway": "Degradation is dilution, not capacity \u2014 write findings to a file, prune tool output, and restart only with a handoff."
+  },
+  {
+   "task": "6.1",
+   "kind": "check",
+   "title": "Gate: the investigation that goes generic",
+   "inshort": "A degraded session needs an externalised memory move, not more capacity.",
+   "lead": "Thirty minutes in, the agent has stopped being specific. Pick the fix at the right layer.",
+   "points": [],
+   "diagram": "dev6-2",
+   "caption": "The question turns on whether the failure is capacity or diluted attention.",
+   "code": null,
+   "ask": {
+    "q": "Thirty minutes into a codebase investigation the agent starts describing 'typical patterns' instead of the classes and files it found earlier, gives inconsistent answers about the same module, and begins assuming instead of checking. The exploration will continue for another hour across unfamiliar code. Which approach is most effective?",
+    "options": [
+     "Switch to a model with a larger context window so the earlier findings stay resident.",
+     "Have the agent write key findings \u2014 file:line, entry points, known issues \u2014 to a scratchpad file and consult it for later questions.",
+     "Restart the investigation from a clean context and re-run the earlier exploration with tighter prompts.",
+     "Raise the model temperature so responses stay specific rather than generic."
+    ],
+    "answer": 1,
+    "why": "A scratchpad externalises the findings so they survive compaction and crashes and are re-readable exactly when the agent drifts. A larger window treats attention dilution as a capacity problem. Restarting re-runs the same work and hits the same wall at the same turn count. Temperature changes sampling, not what the model retains.",
+    "trap": "bigger_window_reflex"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Write file:line findings to a scratchpad \u2014 the scratchpad is what survives compaction."
+  },
+  {
+   "task": "6.1",
+   "kind": "teach",
+   "title": "Compact to continue, restart to discard",
+   "inshort": "Compaction is lossy and restart is clean; pick the one that matches whether the work must continue, and keep must-not-change facts outside the compressed zone.",
+   "lead": "A working thread must keep going, but it has accumulated abandoned drafts and side questions, and the model has started ignoring constraints agreed on day one. The decisions and constraints still matter, so throwing the thread away is not an option.",
+   "points": [
+    "Compaction summarises earlier turns, so exact values, IDs and error strings are the first things to degrade \u2014 treat a summary as lossy by default.",
+    "Compact to continue: compress decisions, constraints and next steps into a structured summary, then resume from it rather than replaying the raw turns.",
+    "Restart to discard: when the task has changed or the thread has drifted, a clean context plus a short handoff beats dragging the old one along.",
+    "Facts that must never be paraphrased \u2014 amounts, order IDs, dates \u2014 live in a case-facts block injected verbatim, outside the summarised history.",
+    "Prune tool output before it enters the window: a forty-field lookup trimmed to the five fields the decision needs never bloats the context in the first place."
+   ],
+   "diagram": "dev6-3",
+   "caption": "Compress to keep going, discard when the task changed \u2014 and hold must-not-change facts outside the summary.",
+   "code": "# Structured carry-forward notes\nDECISIONS:  retry on 5xx only; keep 2 thinking turns\nCONSTRAINTS: p95 latency < 300ms; EU data stays in-region\nNEXT:       wire the retry into the coordinator\nFACTS (never summarise): order #67890, total $149.99, ordered 2024-01-15",
+   "ask": null,
+   "why": "The exam objective is explicitly when to compact versus restart, and the unifying rule is that each move has a different relationship to the past: compress it to keep going, or discard it because the work changed.",
+   "contrast": "The tempting wrong ways are to keep piling onto an overloaded thread and re-paste instructions into it, or to restart cold and lose the decisions the continuation depends on.",
+   "exam": "A stem that says the work must continue with agreed constraints points to compact-then-continue; a stem where the task changed or the thread drifted points to a clean restart with a handoff.",
+   "takeaway": "Compact to continue, restart to discard, and hold must-not-change facts outside the summarised zone."
+  },
+  {
+   "task": "6.1",
+   "kind": "check",
+   "title": "Gate: the sixty-turn loop",
+   "inshort": "Same constraint, two fixes: prune the input and compress the history \u2014 not a bigger window.",
+   "lead": "An agentic loop has filled its context with noise. Choose the move that keeps the work going.",
+   "points": [],
+   "diagram": "dev6-4",
+   "caption": "When the work must continue, prune the input and compact the history.",
+   "code": null,
+   "ask": {
+    "q": "An agentic coding loop has run sixty turns, each appending a full forty-field API response. The model now ignores the constraints set at the start even though those constraints are still in the transcript. The work must continue with the same constraints, and the state cannot be cheaply re-derived. Which approach is most effective?",
+    "options": [
+     "Increase the context window so the full transcript and every tool result stay resident.",
+     "Prune each tool result to the fields the next decision needs, compact the history into a structured summary of decisions and constraints, and continue from it.",
+     "Restart from a clean context and re-derive the state by re-running the earlier turns.",
+     "Raise the summarisation threshold so compaction triggers later in the run."
+    ],
+    "answer": 1,
+    "why": "The failure is noise plus a lossy continuation, so the fix is to stop noise entering (prune) and carry the decisions forward in a structured summary (compact). A larger window keeps the same pile of noise resident and bills for it every turn. Re-deriving the state repeats work the transcript already contains. Raising the threshold only delays compaction; it does not remove the bloat that caused the drift.",
+    "trap": "sounds_thorough"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "When the work must continue, prune the input and compact the history \u2014 a bigger window keeps the noise."
+  },
+  {
+   "task": "6.2",
+   "kind": "teach",
+   "title": "Say what qualifies, not 'use your best judgment'",
+   "inshort": "Vague criteria produce inconsistent output; explicit criteria name what triggers a decision and what must not.",
+   "lead": "A review system is told to 'be conservative when flagging issues' and to 'only report high-confidence findings.' Two runs over the same file disagree, and developers start ignoring every warning \u2014 including the correct ones.",
+   "points": [
+    "For every judgment the model makes, define what qualifies, what does not, and the boundary between them.",
+    "Negative examples are part of the spec: 'do NOT flag ORM queries, which are already parameterised' removes the most common false positive.",
+    "Placement matters: durable role and rules belong in the system prompt; the task, the data and one-off constraints belong in the user turn.",
+    "Output constraints are instructions too \u2014 state the format, the fields and what to do when a value is missing instead of leaving it to interpretation.",
+    "Iterate on a small sample and tighten the criterion where the output drifts, rather than adding more prose every time it is wrong."
+   ],
+   "diagram": "dev6-5",
+   "caption": "Replace every 'best judgment' with explicit qualifying and disqualifying conditions.",
+   "code": "Flag as a security issue ONLY when:\n  - user input reaches a SQL query without parameterisation\n  - credentials are hardcoded in source\nDo NOT flag:\n  - ORM queries (already parameterised)\n  - credentials loaded from environment variables",
+   "ask": null,
+   "why": "The exam objective is instruction clarity, and vague criteria fail for a structural reason: the model re-interprets them differently each run, so no amount of downstream confidence filtering makes the output consistent.",
+   "contrast": "The tempting wrong answers add machinery around the ambiguity \u2014 a confidence threshold, a temperature change, more examples of past reviews \u2014 without ever defining the criterion the model is guessing at.",
+   "exam": "A stem that quotes a vague criterion such as 'use your best judgment' or 'be conservative' is asking for explicit qualifying and disqualifying conditions, not for a downstream filter.",
+   "takeaway": "Replace every 'best judgment' with what qualifies and what does not \u2014 and put durable rules in the system prompt."
+  },
+  {
+   "task": "6.2",
+   "kind": "check",
+   "title": "Gate: the vague criterion",
+   "inshort": "The inconsistency comes from the criterion, not from the model's confidence.",
+   "lead": "Find the fix that removes the ambiguity rather than filtering around it.",
+   "points": [],
+   "diagram": "dev6-6",
+   "caption": "Inconsistency traces to the criterion, not to the model's confidence.",
+   "code": null,
+   "ask": {
+    "q": "A code-review prompt instructs the model to 'be conservative when flagging issues' and to 'only report high-confidence findings.' Reviewers report inconsistent results and a high false-positive rate, and they have started ignoring all warnings. Which approach is most effective?",
+    "options": [
+     "Raise the model temperature so it makes more nuanced judgment calls.",
+     "Replace the vague criterion with explicit criteria that define what qualifies as reportable and what does not, including the boundary cases that must not be flagged.",
+     "Add a confidence-score threshold and route anything below it to a human reviewer.",
+     "Add several more examples of past reviews without changing the criterion."
+    ],
+    "answer": 1,
+    "why": "The root cause is an underspecified criterion, so the durable fix is to define qualifying and disqualifying conditions. Temperature changes sampling and makes output less consistent, not more. A confidence threshold filters after the fact and leaves the model guessing at the same vague rule. More examples of past reviews still rest on the same ambiguity, so the disagreement persists.",
+    "trap": "confidence_threshold_reflex"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Inconsistency from a vague criterion is fixed by explicit qualifying conditions, never by a threshold or more prose."
+  },
+  {
+   "task": "6.2",
+   "kind": "teach",
+   "title": "An example is a shape demonstration",
+   "inshort": "When prose cannot pin down a format or an edge case, two to four worked examples teach the pattern better than another paragraph.",
+   "lead": "An extraction prompt describes the output schema in careful prose, yet the model keeps filing edge cases in the wrong bucket and inventing values for fields that are simply absent from the document. The instruction is clear to a human and still underdetermined for the model.",
+   "points": [
+    "Reach for few-shot when the instruction is ambiguous in practice, when the output shape must be demonstrated, or when an edge case needs showing.",
+    "Each example carries input, output and the reasoning that makes the output correct \u2014 the reasoning is what lets the model generalise to novel cases.",
+    "Two to four targeted examples is the sweet spot: too few miss the pattern, too many waste context and overfit to the examples shown.",
+    "Show the negative case too \u2014 an example whose correct output is null teaches the boundary as clearly as a positive one.",
+    "An example beats more description specifically when the failure is about shape or boundary; when the model lacks the rule, state the rule instead."
+   ],
+   "diagram": "dev6-7",
+   "caption": "Examples with reasoning teach a shape or boundary that prose leaves implicit.",
+   "code": "Example\nInput:  comment says 'returns full name', code returns firstName only\nOutput: { \"issue\": \"comment contradicts code\", \"severity\": \"medium\" }\nReasoning: the comment claims a value the code does not return\n\nInput:  comment says 'validates input', code checks length only\nOutput: null\nReasoning: vague but not false \u2014 it does not claim a rule the code breaks",
+   "ask": null,
+   "why": "Few-shot is an exam objective because examples communicate the boundary that prose tends to leave implicit, and the reasoning attached to each example is what transfers to cases the example never covered.",
+   "contrast": "The tempting wrong answers pile on more description or set temperature to zero \u2014 neither adds the missing boundary information, and a deterministic wrong answer is still wrong.",
+   "exam": "A stem where prose instructions keep producing subtly wrong shapes, wrong buckets or invented values points to worked examples with reasoning, not to more description or a sampler change.",
+   "takeaway": "Two to four worked examples with reasoning \u2014 including a negative case \u2014 beat another paragraph of description."
+  },
+  {
+   "task": "6.2",
+   "kind": "check",
+   "title": "Gate: the invented values",
+   "inshort": "The model is missing a boundary, not a rule; demonstrate the shape.",
+   "lead": "Pick the technique that teaches the boundary rather than restating it.",
+   "points": [],
+   "diagram": "dev6-8",
+   "caption": "When the failure is shape or boundary, demonstrate it \u2014 do not restate the rule.",
+   "code": null,
+   "ask": {
+    "q": "An extraction prompt describes the output schema in careful prose, but the model keeps placing edge cases in the wrong category and inventing values for fields that are absent from the source document. Which approach is most effective?",
+    "options": [
+     "Add two to four worked examples \u2014 input, correct output, and the reasoning \u2014 including one where the correct output is null because the value is absent.",
+     "Rewrite the instruction in more detail, restating the schema a second time.",
+     "Lower the temperature to zero so the output becomes deterministic.",
+     "Add a confidence field and discard any extraction that falls below a threshold."
+    ],
+    "answer": 0,
+    "why": "The failures are about shape and boundary, which worked examples with reasoning teach directly, and a null example shows that absent data is not a value to invent. More description restates a rule that is already clear. A lower temperature makes the same wrong shape repeatable. A confidence field does not tell the model what the correct output is.",
+    "trap": "more_description_reflex"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "When the failure is shape or boundary, demonstrate it with two to four reasoned examples \u2014 including a null case."
+  },
+  {
+   "task": "6.3",
+   "kind": "teach",
+   "title": "Schema compliance is not correctness",
+   "inshort": "A structured output guarantees the shape, never the meaning \u2014 validate both, and feed specific errors back on retry instead of parsing prose you could have constrained.",
+   "lead": "An invoice extractor returns a schema-valid object every time: the right types, every required field present, a valid currency enum. The stated total still does not equal the sum of the line items, and downstream reconciliation fails on data the schema called correct.",
+   "points": [
+    "Constrain the output with a schema \u2014 a tool definition's `input_schema` forced with `tool_choice`, or `output_config.format` \u2014 instead of asking for JSON in prose.",
+    "Strict mode needs `additionalProperties: false` and every property listed in `required`; it guarantees types and required fields, not semantic correctness.",
+    "Validate semantics separately: line items must sum to the total, dates must be plausible, and cross-field contradictions are your code's job, not the schema's.",
+    "Retry with feedback: append the specific validation errors to the prompt and re-ask, bounded by a retry limit \u2014 a generic 'try again' burns attempts on the same mistake.",
+    "Be sceptical of confident output: a schema-valid object can still hold a fabricated value, and missing source data must be null, not invented."
+   ],
+   "diagram": "dev6-9",
+   "caption": "A schema is a format contract, not a truth contract \u2014 validate meaning separately.",
+   "code": "# strict tool schema\n{ \"strict\": true,\n  \"input_schema\": { \"type\": \"object\", \"additionalProperties\": false,\n    \"required\": [\"vendor_name\", \"total_amount\", \"currency\"], ... } }\n\n# validation-retry loop\nfor attempt in range(3):\n    obj = extract(doc)\n    errors = validate(obj)          # schema AND semantics\n    if not errors:\n        break\n    doc += f\"Fix these specific errors: {errors}\"",
+   "ask": null,
+   "why": "The exam objective is producing, validating and consuming output, and the trap it guards against is trusting a structured response as if it were verified: the schema is a format contract, not a truth contract.",
+   "contrast": "The tempting wrong answers either treat strict mode as a correctness guarantee, raise max_tokens hoping the model computes better, or parse the model's free-text reasoning \u2014 parsing prose you could have constrained.",
+   "exam": "A stem where output is always valid JSON but semantically wrong points to semantic validation plus retry-with-feedback, not to a stricter schema or a bigger token budget.",
+   "takeaway": "Constrain with a schema, then validate meaning separately \u2014 and on failure, retry with the specific errors fed back."
+  },
+  {
+   "task": "6.3",
+   "kind": "check",
+   "title": "Gate: the total that will not add up",
+   "inshort": "The schema passed; the meaning did not. Name the layer that catches it.",
+   "lead": "Valid JSON, wrong arithmetic. Choose the fix at the validation layer.",
+   "points": [],
+   "diagram": "dev6-10",
+   "caption": "The schema passed; the meaning did not \u2014 name the layer that catches it.",
+   "code": null,
+   "ask": {
+    "q": "An invoice extraction service uses a strict schema and returns schema-valid JSON on every request, but the stated total sometimes does not equal the sum of the line items, and downstream reconciliation fails. Which approach is most effective?",
+    "options": [
+     "Add semantic validation after extraction: recompute the total from the line items and, on a mismatch, retry with the specific discrepancy fed back to the model.",
+     "Enable strict mode on the schema so the model cannot return an inconsistent total.",
+     "Increase max_tokens so the model has more room to compute the total correctly.",
+     "Parse the model's free-text reasoning and use whichever total it describes."
+    ],
+    "answer": 0,
+    "why": "Strict mode guarantees schema compliance \u2014 types and required fields \u2014 not that the arithmetic is right, so the fix is semantic validation with a retry that names the specific error. Strict mode is already on and cannot enforce cross-field arithmetic. More output tokens does not make the model recompute the sum. Parsing free-text reasoning abandons the constrained channel you already have.",
+    "trap": "strict_mode_reflex"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "A valid schema is not a valid answer \u2014 validate semantics and retry with the specific error fed back."
+  },
+  {
+   "task": "6.3",
+   "kind": "recap",
+   "title": "Domain 6 in one page",
+   "inshort": "Three moves: keep the window lean, make the instruction explicit, and constrain then validate the output.",
+   "lead": "Domain 6 is 11% of the exam and it rewards the builder's reflex at every layer: manage the context you feed in, write the instruction so it cannot be misread, and treat model output as data to be validated rather than text to be trusted.",
+   "points": [
+    "Context \u2014 degradation is attention dilution and bloat, not capacity: externalise findings to a scratchpad, prune tool output at the source, and keep must-not-change facts in a case-facts block outside any summary.",
+    "Continue or restart \u2014 compact with a structured summary when the work must go on, restart clean when the task has changed, and never trust a lossy summary to preserve exact values.",
+    "Prompting \u2014 replace 'use your best judgment' with what qualifies and what does not; put durable rules in the system prompt and task data in the user turn.",
+    "Few-shot \u2014 two to four examples carrying input, output and reasoning teach a shape or a boundary that prose leaves implicit, including a negative or null case.",
+    "Output handling \u2014 constrain with a schema (`input_schema`, `tool_choice`, `output_config.format`), but validate semantics in your own code and retry with the specific errors fed back.",
+    "Scepticism \u2014 a schema-valid object can still be wrong and a confident answer is not a verified one; missing data is null, never invented."
+   ],
+   "diagram": "dev6-11",
+   "caption": "Keep the window lean, make the instruction explicit, constrain then validate \u2014 fix the layer that failed.",
+   "code": null,
+   "ask": null,
+   "why": null,
+   "contrast": null,
+   "exam": "Domain 6 stems hand you a symptom \u2014 a degraded session, an inconsistent review, a valid-but-wrong extraction \u2014 and ask for the most effective approach; the answer fixes the layer that actually failed, and the distractors are capacity upgrades, thresholds and prose parsing.",
+   "takeaway": "Keep the window lean, make the instruction explicit, constrain then validate the output \u2014 fix the layer that failed, not the one that is easiest to buy."
+  }
+ ]
+}

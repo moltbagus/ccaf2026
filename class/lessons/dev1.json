@@ -1,0 +1,330 @@
+{
+ "domain": "dev1",
+ "title": "Agents and Workflows",
+ "weight": "14.7% of the exam",
+ "goal": "On exam day the learner must be able to choose a workflow or an agent for a given task, structure a manager/subagent hierarchy, build the agent with the Claude Agent SDK and enforce hard rules with hooks, and select the right pattern or abstraction framework for multi-step work.",
+ "tasks": [
+  "1.1",
+  "1.2",
+  "1.3"
+ ],
+ "steps": [
+  {
+   "task": "1.1",
+   "kind": "teach",
+   "title": "Workflow or agent? The decision comes first",
+   "inshort": "A workflow is a fixed code path through LLM calls; an agent decides its own path at runtime \u2014 build the simplest one that fits.",
+   "lead": "A developer is building a feature that reads a support ticket, classifies it, then either answers from a knowledge base or escalates. The steps are known in advance, but they are about to reach for a fully autonomous agent 'so it can handle anything.'",
+   "points": [
+    "A workflow defines the control flow in code: prompt chaining, routing, parallelization, orchestrator-workers, and evaluator-optimizer are the classic shapes.",
+    "An agent lets the model direct its own process \u2014 choosing tools and steps in a loop \u2014 which you need only when the number of steps cannot be known up front.",
+    "The decision criterion is simple: if you can draw the flowchart, build the workflow; hand the steering wheel to the model only when the path is genuinely open-ended.",
+    "Agents trade latency, cost, and predictability for flexibility, and that trade only pays off when fixed paths cannot cover the task.",
+    "Start with a single LLM call, add workflow steps, and add agency last \u2014 the simplest thing that works."
+   ],
+   "diagram": "dev1-1",
+   "caption": "If the path is fixed and drawable, build the workflow; give the model the wheel only when the steps genuinely cannot be enumerated.",
+   "code": null,
+   "ask": null,
+   "why": "The exam objective is the decision criteria for workflow versus agent. The production failure it guards against is reaching for autonomy when a deterministic path already solves the problem \u2014 paying unpredictability for nothing.",
+   "contrast": "The tempting wrong way is 'build an agent so it can handle anything.' An agent that could handle anything also fails unpredictably, costs more per run, and is harder to test than a five-line classifier plus a router.",
+   "exam": "Stems describing a known, stable sequence \u2192 the answer is a workflow (chaining, routing, parallelization). Stems where the required steps vary per input and cannot be enumerated \u2192 the answer is an agent.",
+   "takeaway": "If you can draw the flowchart, build the workflow. Reserve agents for genuinely open-ended tasks."
+  },
+  {
+   "task": "1.1",
+   "kind": "check",
+   "title": "Draw the flowchart",
+   "inshort": "A fixed classify-route-respond path is a workflow, not an agent.",
+   "lead": "The path is fully known; the team is proposing autonomy anyway.",
+   "points": [],
+   "diagram": "dev1-2",
+   "caption": "Four proposals against one known path: which shape does a fixed, stable sequence actually need?",
+   "code": null,
+   "ask": {
+    "q": "A team is building a feature that takes a customer email, classifies it into one of five fixed categories, routes it to a category-specific prompt, and returns a templated reply. They propose a fully autonomous agent with a general tool set. Which approach is most effective?",
+    "options": [
+     "Build a workflow: classify with one call, route to the category-specific prompt, and return the templated reply.",
+     "Build an autonomous agent with all five prompts exposed as tools so it can decide which reply path to take.",
+     "Build an autonomous agent and add a router agent in front of it to pick the category before the main agent runs.",
+     "Build the autonomous agent but cap it at a maximum of ten iterations to bound the cost."
+    ],
+    "answer": 0,
+    "why": "The path is fully known and fixed, so a workflow (classify, then route, then respond) is predictable, cheap, and testable. Exposing the five prompts as tools hands the model a decision it never needed to make and makes output nondeterministic; a router agent in front is just the workflow's router with an extra agent wrapped around it; and an iteration cap bounds runaway cost but leaves the unnecessary nondeterminism in place.",
+    "trap": "autonomy_by_reflex"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "When the sequence is fixed and stable, a workflow beats an agent on every axis that matters."
+  },
+  {
+   "task": "1.1",
+   "kind": "teach",
+   "title": "Manager/supervisor hierarchies and subagents",
+   "inshort": "A lead agent decomposes work and delegates to narrow subagents; each subagent gets its own context and only the tools it needs.",
+   "lead": "A research feature must gather sources, draft a summary, and fact-check claims. A single agent doing all three accumulates every source and every draft in one context until it drifts. The team splits it into an orchestrator plus three specialists.",
+   "points": [
+    "The orchestrator/supervisor pattern: a lead agent breaks the goal into subtasks, dispatches each to a worker, and synthesizes the results.",
+    "Each subagent runs with its own context window and tool set, so the parent's context stays clean \u2014 it receives a summary, not the subagent's whole transcript.",
+    "Give each subagent the least tooling it needs; a fact-checker does not need write access to production.",
+    "Delegation buys parallelism and context isolation; it costs extra model calls and demands a clear contract for what each subagent returns.",
+    "Subagents are the primary context-isolation tool: a subagent can burn enormous context internally and hand back one paragraph."
+   ],
+   "diagram": "dev1-3",
+   "caption": "The lead agent breaks the goal apart and dispatches narrow subagents \u2014 each absorbs its own context and hands back only a conclusion.",
+   "code": null,
+   "ask": null,
+   "why": "The exam objective covers the structure of manager/supervisor hierarchies and the role of subagents. What makes them worth the extra calls is context isolation plus focused tooling \u2014 not 'more agents equals better.'",
+   "contrast": "The tempting wrong ways are a single mega-agent with every tool, or a swarm of subagents each carrying the full tool set. Both defeat the purpose: the first bloats one context and one permission surface, the second multiplies cost without isolating anything.",
+   "exam": "Stems where a task has distinct phases or specialties, or where context is bloating \u2192 the answer is an orchestrator with focused subagents. Stems where one narrow task is being split 'for safety' \u2192 the answer is a single agent.",
+   "takeaway": "Delegate to subagents for context isolation and focused tooling \u2014 one job, one context, one minimal tool set."
+  },
+  {
+   "task": "1.1",
+   "kind": "check",
+   "title": "One agent or an orchestrator?",
+   "inshort": "Context bloat is solved by isolating work in subagents, not by a bigger window.",
+   "lead": "A long research run is losing its own instructions as raw page text piles up.",
+   "points": [],
+   "diagram": "dev1-4",
+   "caption": "The question turns on whether the problem is too little room or too much unmanaged detail sitting in one context.",
+   "code": null,
+   "ask": {
+    "q": "A long-running agent must research a topic across dozens of pages and then write a report. Its context fills with raw page text and it begins to lose the original instructions. Which approach is most effective?",
+    "options": [
+     "Keep the single agent but switch to a larger-context, more capable model so it can hold everything.",
+     "Use an orchestrator that dispatches a research subagent per source; each subagent returns only the extracted facts, and the orchestrator writes the report from those.",
+     "Give the single agent a summarization tool and instruct it to summarize each page before reading the next.",
+     "Split into one subagent per page but give every subagent the full tool set so any of them can write the report."
+    ],
+    "answer": 1,
+    "why": "Subagents isolate context: each research subagent absorbs the raw page text and returns a distilled fact, so the orchestrator's context holds only what the report needs. A larger-context model just delays the overflow and costs more; a self-summarization instruction is non-deterministic and still grows the same single context; and one subagent per page with the full tool set multiplies cost and hands report-writing authority to every worker.",
+    "trap": "bigger_context_reflex"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "When one context is drowning in detail, isolate the heavy work in subagents that return only conclusions."
+  },
+  {
+   "task": "1.2",
+   "kind": "teach",
+   "title": "The Claude Agent SDK: don't hand-roll the loop",
+   "inshort": "The Claude Agent SDK ships the agent loop, tool dispatch, permissions, and hooks \u2014 use it instead of writing the harness yourself.",
+   "lead": "A developer starts building an agent by calling the Messages API in a while loop, parsing tool_use blocks by hand, and re-implementing permission checks. The team points them at the Claude Agent SDK, which already provides all of it.",
+   "points": [
+    "The Claude Agent SDK (Python and TypeScript) provides the agentic loop, built-in tools (Read, Write, Edit, Bash, Grep, Glob, WebSearch, WebFetch, and Task for subagents), MCP integration, permission modes, and hooks.",
+    "query() runs a one-shot agent loop; ClaudeSDKClient holds a session for multi-turn interaction; ClaudeAgentOptions configures the system prompt, allowed tools, hooks, and MCP servers.",
+    "Custom tools can be defined in-process (for example the @tool decorator with create_sdk_mcp_server) so they ship with your code rather than as a separate server.",
+    "The SDK is the harness: it owns tool dispatch, context management, and the turn loop, so you do not reimplement them or maintain them against API changes.",
+    "You still own the model, the tools, and the prompts \u2014 the SDK removes boilerplate, not your design decisions."
+   ],
+   "diagram": "dev1-5",
+   "caption": "The Claude Agent SDK ships the loop, tool dispatch, permissions, and hooks \u2014 write only the logic unique to your task.",
+   "code": "from claude_agent_sdk import query, ClaudeAgentOptions\n\noptions = ClaudeAgentOptions(\n    system_prompt=\"You are a release-notes agent.\",\n    allowed_tools=[\"Read\", \"Grep\", \"Write\"],\n    permission_mode=\"acceptEdits\",\n)\n\nasync for message in query(prompt=\"Summarize this week's merged PRs\", options=options):\n    print(message)",
+   "ask": null,
+   "why": "The exam objective is the methods and tools for constructing Claude agents, including the Claude Agent SDK and custom loops and harnesses. Recognizing when the SDK already provides a capability is the whole point \u2014 hand-rolling is the expensive mistake.",
+   "contrast": "The tempting wrong way is to hand-roll the whole harness 'for control.' You end up reimplementing tool dispatch, permission checks, and context handling, then maintaining all of it against API changes the SDK would have absorbed.",
+   "exam": "Stems describing boilerplate agent infrastructure (the loop, tool parsing, permissions, subagent dispatch) \u2192 the answer is the Agent SDK. Stems needing a bespoke control flow the SDK cannot express \u2192 a custom loop over the Messages API.",
+   "takeaway": "Reach for the Claude Agent SDK first; hand-roll the loop only when you need control it genuinely cannot give you."
+  },
+  {
+   "task": "1.2",
+   "kind": "check",
+   "title": "Build it or adopt it?",
+   "inshort": "File tools, test running, and write approvals are SDK features, not a custom-loop project.",
+   "lead": "A team is about to reimplement tool dispatch and an approval flow the SDK already ships.",
+   "points": [],
+   "diagram": "dev1-6",
+   "caption": "The decision: which of these requirements are really a custom-loop project, and which the SDK already provides?",
+   "code": null,
+   "ask": {
+    "q": "A developer needs an agent that reads files, runs tests, and edits code in a repository, with a permission prompt before any write. They plan to write a custom while-loop over the Messages API that parses tool_use blocks and implements its own approval flow. Which approach is most effective?",
+    "options": [
+     "Build the custom loop so the approval flow can be tuned exactly as needed.",
+     "Use the Claude Agent SDK: configure built-in tools and a permission mode so writes require approval, and keep only the logic unique to their task.",
+     "Build the custom loop but reuse the SDK's tool schemas by copy-pasting them into the code.",
+     "Skip tools entirely and ask the model to output the file edits as text for the developer to apply by hand."
+    ],
+    "answer": 1,
+    "why": "The SDK already ships the loop, the built-in file and test tools, and a permission system, so the team writes only what is unique to their task. A custom loop reimplements all of it and inherits the maintenance; copy-pasting schemas still leaves the loop, dispatch, and approvals hand-rolled; and abandoning tools for text output throws away the agentic capability the task requires.",
+    "trap": "hand_roll_reflex"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "If the requirement is a standard tool plus an approval gate, the SDK already has it \u2014 write only the part that is yours."
+  },
+  {
+   "task": "1.2",
+   "kind": "teach",
+   "title": "Managed vs self-hosted; hooks for guarantees",
+   "inshort": "Anthropic-hosted managed agents remove infrastructure but cede control; self-hosting keeps secrets and network in your VPC. Hooks enforce rules that prompts can only request.",
+   "lead": "A regulated team must run an agent that touches customer data, and separately wants a hard guarantee that the agent never deletes a production record. That is two decisions: where the agent runs, and how the guarantee is enforced.",
+   "points": [
+    "Managed/hosted agents: Anthropic runs the agent infrastructure \u2014 fastest to ship and least operational burden, but your data flows through the vendor's environment and you inherit its controls.",
+    "Self-hosted: you run the agent loop (for example the Agent SDK on your own compute) \u2014 full control of secrets, network egress, data residency, and audit, at the cost of operating it.",
+    "Choose by constraint: data residency, secret handling, and network isolation push toward self-hosted; speed and low operations push toward managed.",
+    "Hooks are deterministic code bound to lifecycle events (for example PreToolUse and PostToolUse) that runs on every matching call \u2014 it can inspect, allow, block, or modify a tool call.",
+    "Use hooks for rules that must hold: block writes outside a sandbox, require approval for destructive commands, log every tool call. A prompt instruction is a request; a hook is a guarantee."
+   ],
+   "diagram": "dev1-7",
+   "caption": "Two independent decisions: where the agent runs (managed vs self-hosted) and how a hard rule is enforced (prompt vs hook).",
+   "code": null,
+   "ask": null,
+   "why": "The exam objective names managed deployment models and hooks for deterministic actions. The distinction that matters is that hooks enforce while prompts merely ask \u2014 and the exam rewards the mechanism that cannot be talked out of the rule.",
+   "contrast": "The tempting wrong way is to write 'never delete production data' in the system prompt and call it safe. A prompt can be overridden by injected content or a confused model; a PreToolUse hook that rejects the command cannot.",
+   "exam": "Stems demanding a hard, always-on guarantee (block a command, require approval, log every call) \u2192 a hook, not a prompt line. Stems about where the agent runs (residency, secrets, operational burden) \u2192 the managed versus self-hosted trade-off.",
+   "takeaway": "Hooks enforce, prompts request. Choose hosting by where your data and secrets are allowed to live."
+  },
+  {
+   "task": "1.2",
+   "kind": "check",
+   "title": "A guarantee, not a request",
+   "inshort": "Blocking a destructive command needs deterministic code, not a system-prompt line.",
+   "lead": "An agent with shell access must never run a destructive command, whatever it reads.",
+   "points": [],
+   "diagram": "dev1-8",
+   "caption": "Which mechanism actually holds when a prompt or a retrieved document tells the agent otherwise?",
+   "code": null,
+   "ask": {
+    "q": "An agent with shell access must be prevented from running destructive commands like 'rm -rf' or pushing to a protected branch \u2014 no matter what a prompt or a retrieved document says. Which mechanism is most effective?",
+    "options": [
+     "Add 'never run destructive commands or push to protected branches' to the system prompt.",
+     "Register a PreToolUse hook that inspects the command and blocks destructive patterns and protected-branch pushes before they execute.",
+     "Use a more capable model, which follows safety instructions more reliably.",
+     "Log every command the agent runs so violations can be reviewed afterward."
+    ],
+    "answer": 1,
+    "why": "A hook is deterministic code that runs on the tool call before execution, so the block holds regardless of what the model was told or ingested. A prompt line is only a request that injected content or a confused model can override; a more capable model improves compliance but still gives no guarantee; and logging is detective, not preventive \u2014 by the time the log is read, the destructive command has already run.",
+    "trap": "prompt_as_guardrail"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "For rules that must never break, enforce them in code with a hook \u2014 never rely on the model to obey a sentence."
+  },
+  {
+   "task": "1.3",
+   "kind": "teach",
+   "title": "The tool-use loop, memory, and the context window",
+   "inshort": "The agent loop is model \u2192 tool_use \u2192 tool_result \u2192 repeat; memory and context management are what keep it from drowning in its own history.",
+   "lead": "An agent works for twenty turns, calling tools and appending results. By turn twenty its context is mostly stale tool output and it is re-fetching data it already has. The loop is fine \u2014 the bookkeeping around it is not.",
+   "points": [
+    "The core loop: send messages with tools; if stop_reason is tool_use, execute the tools and append tool_result blocks; send again; stop when stop_reason is end_turn.",
+    "Memory has two horizons: short-term (the conversation/context) and long-term (an external store \u2014 files, a memory tool, or a database \u2014 that survives across sessions).",
+    "Context-window management: compact (summarize) as you approach the limit, prune stale tool output, and isolate heavy work in subagents so the main context stays small.",
+    "Prompt caching keeps the stable prefix cheap across loop iterations; context bloat and drift are the symptoms of skipping this bookkeeping.",
+    "The loop has the same shape whether you write it or the SDK does \u2014 knowing it tells you where cost, latency, and failure come from."
+   ],
+   "diagram": "dev1-9",
+   "caption": "Model to tool_use to tool_result and back \u2014 compaction, pruning, caching, and isolation keep the loop healthy.",
+   "code": "messages = [{\"role\": \"user\", \"content\": task}]\nwhile True:\n    resp = client.messages.create(\n        model=MODEL, max_tokens=1024, tools=tools, messages=messages\n    )\n    messages.append({\"role\": \"assistant\", \"content\": resp.content})\n    if resp.stop_reason != \"tool_use\":\n        break\n    results = run_tools(resp.content)                       # execute each tool_use block\n    messages.append({\"role\": \"user\", \"content\": results})   # tool_result blocks",
+   "ask": null,
+   "why": "The exam objective is the common patterns: tool-use loops, memory, and context-window management. These are the mechanics that decide whether an agent stays coherent over many steps.",
+   "contrast": "The tempting wrong way is to append every tool result forever and never compact, treating the context window as free. Cost climbs, latency climbs, and early instructions get crowded out \u2014 the agent gets dumber the longer it runs.",
+   "exam": "Stems about an agent degrading over a long run or cost climbing per step \u2192 context management (compaction, pruning, subagent isolation, caching). Stems about state that must persist across separate runs \u2192 a long-term memory store.",
+   "takeaway": "The loop is model to tool_use to tool_result and back; keep it healthy with compaction, pruning, caching, and isolation."
+  },
+  {
+   "task": "1.3",
+   "kind": "check",
+   "title": "The agent gets dumber the longer it runs",
+   "inshort": "Rising cost plus ignored early instructions is context bloat \u2014 manage the context, don't buy a bigger one.",
+   "lead": "A 30-tool-call agent is degrading within a single run.",
+   "points": [],
+   "diagram": "dev1-10",
+   "caption": "The question turns on the symptom: growth in cost plus forgotten instructions points at the context, not the output budget.",
+   "code": null,
+   "ask": {
+    "q": "A multi-step agent that processes support tickets runs 30 or more tool calls per ticket. Its per-ticket cost and latency keep rising, and late in each run it ignores formatting rules set at the start. Which change is most effective?",
+    "options": [
+     "Increase max_tokens so the model has more room to think on each call.",
+     "Compact the conversation as it grows \u2014 summarize completed steps, prune stale tool output, cache the stable prefix \u2014 and offload bulky sub-tasks to subagents.",
+     "Switch to a larger-context model and keep the full history for every ticket.",
+     "Reduce the agent to a single tool call per ticket so the context never grows."
+    ],
+    "answer": 1,
+    "why": "Rising cost and ignored early instructions are the classic symptoms of context bloat, so the fix is active context management: compact, prune, cache, and isolate. Raising max_tokens adds output room but no context hygiene; a bigger context window only lets the bloat grow larger before it fails the same way; and collapsing to one tool call removes the multi-step capability the task requires.",
+    "trap": "context_growth_ignored"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "When an agent degrades over a long run, manage the context \u2014 compaction, pruning, caching, isolation \u2014 rather than paying for a bigger window."
+  },
+  {
+   "task": "1.3",
+   "kind": "teach",
+   "title": "Frameworks: Strands, LangGraph, PydanticAI",
+   "inshort": "Abstraction frameworks add orchestration, state, and typed outputs \u2014 reach for one when the SDK alone cannot express your control flow.",
+   "lead": "A team needs a multi-agent workflow with explicit state, a human-approval checkpoint in the middle, and typed, validated outputs between steps. They are about to wire it all by hand on the raw SDK.",
+   "points": [
+    "LangGraph models the workflow as a graph of nodes and edges over explicit state, with cycles, persistence/checkpointing, and human-in-the-loop pauses \u2014 strong for complex, stateful orchestration.",
+    "PydanticAI builds type-safe agents where inputs, dependencies, and outputs are validated Pydantic models \u2014 strong when structured, validated input/output matters.",
+    "Strands (AWS) is a model-driven agent framework where the model plans and calls tools with minimal orchestration code \u2014 strong for tool-driven agents you should not hand-wire.",
+    "Choose an abstraction when you need state, persistence, branching, or typed contracts the plain SDK does not provide; otherwise the SDK (or a workflow) is simpler and closer to the metal.",
+    "Frameworks are not a free upgrade: they add a dependency and their own idioms. Adopt the smallest layer that expresses your control flow."
+   ],
+   "diagram": "dev1-11",
+   "caption": "Each framework has a strength \u2014 graph state, typed outputs, model-driven tools \u2014 and the SDK is right when none is needed.",
+   "code": null,
+   "ask": null,
+   "why": "The exam objective explicitly names agentic abstraction frameworks for multi-step tasks. The skill being tested is matching a framework's strength (graph state, typed outputs, model-driven tool use) to the requirement, not memorizing names.",
+   "contrast": "The tempting wrong way is to hand-roll a bespoke orchestration framework when a mature one already models exactly this \u2014 or, the mirror error, to pull in a heavyweight graph framework for a task a single SDK loop already solves.",
+   "exam": "Stems naming explicit state, branching/cycles, checkpointing, or human-in-the-loop \u2192 a graph framework such as LangGraph. Stems naming validated or typed structured outputs \u2192 a typed framework such as PydanticAI. Stems about a plain tool-driven agent \u2192 the Agent SDK, not a framework.",
+   "takeaway": "Pick the abstraction whose strength matches the requirement \u2014 graph state, typed outputs, or model-driven tools \u2014 or stay on the SDK."
+  },
+  {
+   "task": "1.3",
+   "kind": "check",
+   "title": "Match the framework to the requirement",
+   "inshort": "Explicit state, resumability, and human approval are a graph framework's job, not a hand-rolled loop's.",
+   "lead": "Typed handoffs, a human checkpoint, and resumable runs are the stated requirements.",
+   "points": [],
+   "diagram": "dev1-12",
+   "caption": "The decision: which option actually models explicit state, resumability, and an enforced human approval?",
+   "code": null,
+   "ask": {
+    "q": "A team is building a multi-agent system where each step must pass a validated, typed object to the next, a human must approve before the final step, and the run must be resumable after a pause. Which approach is most effective?",
+    "options": [
+     "Hand-roll the orchestration on the raw Messages API so nothing is constrained by a framework.",
+     "Use an abstraction framework that models the workflow as a stateful graph with checkpointing and human-in-the-loop support (for example LangGraph), with typed step outputs.",
+     "Use a single agent with a large system prompt describing all the steps and let it decide the order.",
+     "Give every agent the full tool set and let them message each other freely until the task completes."
+    ],
+    "answer": 1,
+    "why": "Explicit state, resumability, human-in-the-loop, and typed handoffs are exactly what a stateful graph framework provides out of the box. Hand-rolling reimplements checkpointing and approvals and maintains them yourself; a single mega-prompt agent enforces no ordering and cannot resume; and free-form agent-to-agent messaging with full tool sets removes the guarantees the requirements demand.",
+    "trap": "reinvent_orchestration"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "When the requirement is state, resumability, and enforced approvals, use the framework that models it \u2014 do not build it from scratch."
+  },
+  {
+   "task": "1.3",
+   "kind": "recap",
+   "title": "Domain 1 in one page",
+   "inshort": "Three questions: workflow or agent, how to build it, and which pattern or framework fits.",
+   "lead": "That is Domain 1. Three subdomains, one chain of reasoning: decide the shape of the control flow, build it on the right substrate, then manage its context and pick the abstraction that fits.",
+   "points": [
+    "Agent Architecture: draw the flowchart first \u2014 fixed paths are workflows (chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer); open-ended paths are agents.",
+    "Hierarchies and subagents: an orchestrator decomposes and delegates to narrow subagents, each with its own context and minimal tool set, for isolation and parallelism.",
+    "Agent Construction: the Claude Agent SDK ships the loop, tools, permissions, and hooks \u2014 hand-roll the harness only for control it cannot express.",
+    "Deployment and hooks: managed (Anthropic-hosted) trades control for low ops; self-hosted keeps secrets, network, and residency. Hooks enforce hard rules that prompts can only request.",
+    "Patterns: the tool-use loop is model to tool_use to tool_result and back; memory spans short-term context and long-term stores; context management means compaction, pruning, caching, and subagent isolation.",
+    "Frameworks: match the abstraction to the requirement \u2014 LangGraph for stateful graphs with checkpointing and human-in-the-loop, PydanticAI for typed validated outputs, Strands for model-driven tool agents \u2014 or stay on the SDK."
+   ],
+   "diagram": "dev1-13",
+   "caption": "Domain 1 is one chain: decide the control flow, build it on the SDK, then manage its context and match the abstraction.",
+   "code": null,
+   "ask": null,
+   "why": null,
+   "contrast": null,
+   "exam": "Every Domain 1 stem is a scenario ending in 'which approach is most effective?'. The correct answer fits the named requirement, and the distractors are the recurring lazy or over-built reflexes: build an autonomous agent for a fixed path, hand-roll what the SDK provides, put a safety rule in the prompt instead of a hook, or buy a bigger context window instead of managing it.",
+   "takeaway": "Choose the simplest control flow that fits, build it on the SDK, enforce guarantees with hooks, manage the context, and reach for a framework only when it earns its weight."
+  }
+ ]
+}

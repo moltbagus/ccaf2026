@@ -1,0 +1,382 @@
+{
+ "domain": "dev2",
+ "title": "Applications and Integration",
+ "weight": "33.1% of the exam",
+ "goal": "Given a developer scenario, choose the requirement-driven API pattern, lifecycle control, engineering practice, application design, and configuration that make a Claude application correct, reproducible, and operable.",
+ "tasks": [
+  "2.1",
+  "2.2",
+  "2.3",
+  "2.4",
+  "2.5",
+  "2.6"
+ ],
+ "steps": [
+  {
+   "task": "2.1",
+   "kind": "teach",
+   "title": "Turn the business ask into requirements you can build against",
+   "inshort": "A business goal becomes functional requirements plus infrastructure requirements \u2014 latency, throughput, data residency, cost \u2014 before any API call is designed.",
+   "lead": "A product owner says: \"We want Claude to answer support tickets automatically.\" The engineer's instinct is to open an editor and write a prompt. But the business requirement has not been decomposed yet: which tickets, does a human review replies, where may the data be processed, what is peak throughput, what latency do agents tolerate, and what is the cost ceiling? Those answers pick the API pattern and the deployment path before a single token is sent.",
+   "points": [
+    "Separate functional requirements (what the system does: classify a ticket, draft a reply, route to a human) from infrastructure requirements (latency, throughput, availability, data residency, cost, audit trail).",
+    "Infrastructure requirements decide API mechanics early: a sub-second interactive helper needs the realtime Messages API with streaming and a fast model; an overnight report needs the Message Batches API.",
+    "Residency and vendor constraints decide where the call lands: direct Anthropic API versus Amazon Bedrock or Google Vertex AI in a specific region, because data flows and available regions differ.",
+    "Write requirements as testable acceptance criteria \u2014 \"EU personal data never leaves EU processing\", \"p95 reply under 3 seconds\" \u2014 so the design can be evaluated against them.",
+    "Trace every requirement back to the business goal: a constraint with no business driver is over-engineering, and a business goal with no infrastructure requirement is an unexamined risk."
+   ],
+   "diagram": "dev2-1",
+   "caption": "A business goal decomposes into functional and infrastructure requirements before any API call is designed.",
+   "code": null,
+   "ask": null,
+   "why": "The model and the API pattern fall out of the requirements, not the other way around. Skipping the infrastructure half is how teams ship a synchronous realtime design for a batch problem, or route regulated data to the wrong region.",
+   "contrast": "The tempting shortcut is to jump straight to a prompt and a model. That solves the demo and then fails the compliance review, the load test, and the cost ceiling \u2014 all of which were requirements the design never read.",
+   "exam": "Stems give a business goal plus one or two infrastructure constraints (latency, cost, region, volume) and ask which design fits. The credited option satisfies the stated constraint; distractors optimize for speed or quality alone and drop the constraint.",
+   "takeaway": "Business goal becomes functional requirements plus infrastructure requirements; the constraints pick the API pattern and the deployment path."
+  },
+  {
+   "task": "2.1",
+   "kind": "check",
+   "title": "Residency, latency, and a volume spike",
+   "inshort": "When the stem names a hard constraint, the credited design satisfies it; the lazy options quietly drop it.",
+   "lead": "One option respects the stated constraints; the other three each trade away the constraint the business actually cares about.",
+   "points": [],
+   "diagram": "dev2-2",
+   "caption": "The check turns on whether one design honors both the residency and the latency constraint together.",
+   "code": null,
+   "ask": {
+    "q": "An EU insurance company wants Claude to summarize claim documents for human adjusters. The documents contain EU personal data that must be processed in the EU, adjusters read summaries within minutes, and volume spikes to thousands per hour. Which approach best fits the requirement?",
+    "options": [
+     "Process Claude in an EU region through a vendor that offers regional processing (for example Bedrock or Vertex AI in an EU region) and call the realtime Messages API with streaming for the adjusters.",
+     "Use the Message Batches API because it is cheaper, and let adjusters wait up to 24 hours for the summaries.",
+     "Send every document to the direct Anthropic API from the company's US servers to minimize latency.",
+     "Use the smallest, fastest model available and drop the region requirement, since the data is only summarized."
+    ],
+    "answer": 0,
+    "why": "The credited option is the only one that satisfies both hard constraints at once: EU processing for residency and the realtime Messages API for the minutes-scale latency. The Batch API (B) violates the adjuster SLA even though it is cheaper. US processing (C) violates the residency requirement, which is a legal constraint, not a performance preference. Dropping the region requirement and shrinking the model (D) trades a compliance obligation away for speed and does not address residency at all.",
+    "trap": "constraint_dropping"
+   },
+   "why": "Only one option holds both the residency and latency constraints simultaneously; the distractors each sacrifice the constraint the business named.",
+   "contrast": "The cheaper and the faster options both sound efficient. Efficiency that violates a named constraint is not a fit.",
+   "exam": "This is the classic Domain 2 requirements stem: a goal plus a constraint, and one option that honors it end to end.",
+   "takeaway": "Read the constraints first; the API pattern and deployment path are decided by them, not by which option sounds cheapest."
+  },
+  {
+   "task": "2.2",
+   "kind": "teach",
+   "title": "Prompts and models are versioned artifacts in the lifecycle",
+   "inshort": "The SDLC applies to Claude apps too: requirements, design, build, test/eval, deploy, operate, retire \u2014 and every prompt or model change is a config change that needs versioning and rollback.",
+   "lead": "A team ships a Claude feature, then edits the system prompt directly in production to fix a formatting complaint. Overall answer quality drops, and no one can tell whether the prompt edit or a coincidental model update caused it \u2014 because the prompt was never versioned and no eval ran before it went live.",
+   "points": [
+    "Map Claude work onto the standard lifecycle: requirements and design choose the interface and API pattern; build and test include an eval suite; deploy and operate include monitoring, alerting, and rollback.",
+    "Treat prompts, tool schemas, and model IDs as configuration with versions: commit them, review them in pull requests, and be able to roll a change back the way you roll back code.",
+    "Put an eval gate in CI: a prompt or model change must pass the suite before it ships, not after users notice a regression.",
+    "Plan for change across the lifecycle: models get deprecated and APIs gain versions, so pin versions, track deprecation notices, and design so a component can be swapped.",
+    "Operate with observability: log inputs and outputs within policy, track error rates, latency, and cost, and name who owns a regression when it appears."
+   ],
+   "diagram": "dev2-3",
+   "caption": "Claude work maps onto the standard life cycle, with an eval gate at test and rollback at operate.",
+   "code": null,
+   "ask": null,
+   "why": "An LLM application has non-deterministic output, so the only way to know a change helped is a versioned artifact plus a repeatable eval \u2014 exactly what the SDLC already gives you for ordinary code. Without it, every production edit is an uncontrolled experiment.",
+   "contrast": "The shortcut is to treat the prompt as a scratchpad you edit live. It works until the first regression you cannot attribute or roll back, at which point you are debugging a change nobody recorded.",
+   "exam": "Stems describe a quality regression after a prompt or model change and ask for the most effective response. The credited option adds versioning plus an eval gate; distractors blame the model or pile on more instructions.",
+   "takeaway": "Prompts, tool schemas, and model IDs are versioned config; changes pass an eval gate and every change can be rolled back."
+  },
+  {
+   "task": "2.2",
+   "kind": "check",
+   "title": "A regression you cannot attribute",
+   "inshort": "Version control plus an eval gate is the only response that isolates cause and prevents recurrence.",
+   "lead": "The production edit and the model update happened around the same time. The fix must restore a known-good state and stop the next regression from reaching users.",
+   "points": [],
+   "diagram": "dev2-4",
+   "caption": "The check turns on whether a change can be attributed and rolled back to a known-good state.",
+   "code": null,
+   "ask": {
+    "q": "A team edits the system prompt in production to fix a formatting issue. Overall answer quality drops, but nobody can tell whether the prompt change or a coincidental model-alias update caused it. What is the most effective response?",
+    "options": [
+     "Version the system prompt and the model ID in source control, roll back to the last known-good combination, and add an eval suite as a gate for future prompt and model changes.",
+     "Revert the prompt change and keep editing the prompt live in production until quality recovers.",
+     "Switch to a more capable model so the prompt change matters less.",
+     "Add instructions to the prompt telling Claude to preserve the previous formatting and quality."
+    ],
+    "answer": 0,
+    "why": "Versioning plus rollback to a known-good combination is the only option that restores a reproducible state and then prevents recurrence with an eval gate. Live editing (B) has no control and no record, so it cannot isolate cause. A bigger model (C) adds a second uncontrolled variable and does not restore attribution. Adding more instructions (D) compounds the untracked change rather than reverting it.",
+    "trap": "no_versioning"
+   },
+   "why": "The credited move controls the change: it versions the artifact, reverts to a known-good state, and gates the future. The distractors keep changing things.",
+   "contrast": "Both of the last two options feel like progress because they change something. Progress without a baseline is just another uncontrolled variable.",
+   "exam": "Whenever a stem shows a regression after a change with no way to attribute it, the credited answer is versioning plus an eval gate.",
+   "takeaway": "No version, no attribution. Version the artifact, roll back, and gate the change."
+  },
+  {
+   "task": "2.3",
+   "kind": "teach",
+   "title": "The Messages API: request, response, tools, streaming, thinking, caching",
+   "inshort": "One stateless endpoint: you send the whole conversation each call, and tools, streaming, vision, thinking, and caching are all parameters on that call.",
+   "lead": "A developer's first integration is a POST to /v1/messages with a model, max_tokens, and messages, followed by a surprise: Claude 'forgets' the previous turn. The Messages API is stateless \u2014 the server keeps no session, and the client resends the entire history on every request.",
+   "points": [
+    "Call POST /v1/messages with headers x-api-key and anthropic-version. The API is stateless: send the full messages array (user/assistant turns) plus a top-level system prompt on every call, because you own the conversation history.",
+    "Tools are declared in the request (name, description, and a JSON Schema input_schema). Claude returns a tool_use block with stop_reason \"tool_use\"; your code runs the tool, then sends a tool_result block back in the next user message. The model never executes your code.",
+    "Streaming (stream: true) returns server-sent events so text renders as it is generated; vision accepts image content blocks (base64 or URL) alongside text; extended thinking returns thinking blocks when enabled with a token budget.",
+    "Prompt caching marks stable prefixes \u2014 the system prompt, tool definitions, large documents \u2014 with cache_control so repeated calls read them at a fraction of input cost; the usage object reports cache_creation_input_tokens and cache_read_input_tokens.",
+    "You can reach Claude through the direct API, the Anthropic SDKs, or third-party vendors (Amazon Bedrock, Google Vertex AI). The request shape is similar, but authentication, model IDs, and feature availability differ by vendor."
+   ],
+   "diagram": "dev2-5",
+   "caption": "You resend the whole conversation, you declare the tools, and your code executes them.",
+   "code": "from anthropic import Anthropic\nclient = Anthropic()  # reads ANTHROPIC_API_KEY\n\nresp = client.messages.create(\n    model=\"claude-sonnet-4-5\",\n    max_tokens=1024,\n    system=[{\"type\": \"text\", \"text\": \"You are a support triage assistant.\",\n             \"cache_control\": {\"type\": \"ephemeral\"}}],  # cache the stable prefix\n    tools=[{\n        \"name\": \"get_order\",\n        \"description\": \"Look up an order by its id.\",\n        \"input_schema\": {\"type\": \"object\",\n                         \"properties\": {\"order_id\": {\"type\": \"string\"}},\n                         \"required\": [\"order_id\"]},\n    }],\n    messages=[{\"role\": \"user\", \"content\": \"Where is order 4471?\"}],\n)\n# resp.content is a list of blocks: text, tool_use, or thinking\n# resp.stop_reason == \"tool_use\" -> run the tool, then send a tool_result block back",
+   "ask": null,
+   "why": "Everything Claude does per call is data you send: history, tools, system prompt. The API holds no session, so context management, caching, and the tool loop are the client's responsibility.",
+   "contrast": "The shortcut is to assume the model remembers the last call, or that declaring a tool runs it. Neither is true \u2014 you resend history, and your code executes the tool.",
+   "exam": "Stems ask what a field or block does, or why 'Claude forgot'. The credited answer names statelessness and client-owned history; distractors invent server-side memory or blame the model.",
+   "takeaway": "Stateless endpoint, client-owned history; tools are declared by you and executed by you; streaming, vision, thinking, and caching are request parameters."
+  },
+  {
+   "task": "2.3",
+   "kind": "check",
+   "title": "Claude 'forgot' the previous turn",
+   "inshort": "The Messages API is stateless; history lives on the client and must be resent.",
+   "lead": "The symptom points at memory, but the cause is the request. Only one fix actually puts the earlier turns back in front of the model.",
+   "points": [],
+   "diagram": "dev2-6",
+   "caption": "The check turns on whether the Messages API stores prior turns or the client owns them.",
+   "code": null,
+   "ask": {
+    "q": "A developer reports that Claude 'forgot' everything from the previous turn and keeps asking for information already provided. Their code sends only the newest user message on each call. What is the most effective fix?",
+    "options": [
+     "Keep conversation state on the client and send the full messages array \u2014 prior user and assistant turns plus the new message \u2014 on every request, since the Messages API is stateless.",
+     "Enable a session parameter on the Messages API so the server retains prior turns between calls.",
+     "Raise max_tokens so Claude has more room to remember earlier messages.",
+     "Add 'remember everything the user said earlier' to the system prompt."
+    ],
+    "answer": 0,
+    "why": "Statelessness is the root cause, so the fix is to resend the prior turns in the messages array. There is no server-side session parameter (B) on the Messages API \u2014 the client owns history. max_tokens (C) caps output length and has nothing to do with memory. A system instruction (D) cannot restore content the API never received, so it cannot help.",
+    "trap": "server_side_memory"
+   },
+   "why": "Only the credited option puts the missing data back into the request. The others add knobs or instructions that do not address statelessness.",
+   "contrast": "The system-prompt option reads like a memory fix and is pure theater \u2014 you cannot instruct your way out of data you never sent.",
+   "exam": "Any stem where 'Claude forgot' appears is testing statelessness: the answer resends history client-side.",
+   "takeaway": "No server memory. Resend the history yourself, every call."
+  },
+  {
+   "task": "2.3",
+   "kind": "teach",
+   "title": "Batch vs realtime, and where the request lands",
+   "inshort": "Match the API pattern to the latency requirement: realtime Messages API for interactive work, the Message Batches API for large latency-tolerant jobs at lower cost.",
+   "lead": "The guide's own sample: process 10,000 documents overnight, cost is the priority, and results are not needed until morning. Firing thousands of synchronous calls in parallel burns cost and rate limits; the Message Batches API exists for exactly this shape of work.",
+   "points": [
+    "The Message Batches API accepts up to 100,000 requests (or roughly 256 MB) per batch, processes them within a 24-hour window, and charges a discount versus synchronous calls. You submit the batch, poll its status, then download results as JSONL and match each result by its custom_id.",
+    "Batch results are asynchronous and unordered, so build for idempotency and keyed reassembly. Batches fit latency-tolerant, high-volume, cost-sensitive work \u2014 reports, backfills, bulk classification \u2014 not interactive UX.",
+    "The realtime Messages API (optionally streaming) is for interactive, low-latency work. Scaling it to huge volumes costs more and hits rate limits, which you absorb with backoff and retry rather than brute force.",
+    "Data access pattern: the direct API gives you control of the data path and region; on Amazon Bedrock or Google Vertex AI the data stays inside your cloud account and region and authentication uses the vendor's identity (SigV4 or GCP IAM), but some model features and betas lag behind the direct API.",
+    "Choose deliberately: interactive equals realtime; overnight or bulk equals batch; residency-bound equals the vendor and region that satisfies it. Check feature parity before assuming a capability exists on every path."
+   ],
+   "diagram": "dev2-7",
+   "caption": "Realtime for interactive, Batch for bulk latency-tolerant, and vendor plus region for residency.",
+   "code": "batch = client.messages.batches.create(requests=[\n    {\"custom_id\": \"doc-0001\",\n     \"params\": {\"model\": \"claude-sonnet-4-5\", \"max_tokens\": 512,\n                \"messages\": [{\"role\": \"user\",\n                              \"content\": \"Summarize this document.\"}]}},\n    # ... up to 100,000 requests / ~256 MB per batch\n])\n# poll client.messages.batches.retrieve(batch.id).processing_status\n# then read client.messages.batches.results(batch.id)\n# each result carries its custom_id, so you reassemble out of order",
+   "ask": null,
+   "why": "Cost and latency are different axes. Batch trades latency for cost; realtime trades cost for latency. The requirement names which axis matters, so the pattern is chosen by the requirement, not by habit.",
+   "contrast": "The lazy move is 'send everything through the Messages API in parallel and lower max_tokens'. Parallel synchronous calls do not reduce per-token cost and can trip rate limits; trimming output or blindly downsizing the model does not address the batch-versus-realtime tradeoff.",
+   "exam": "This is the flagship Domain 2 stem (see the guide's Sample 1): latency-tolerant, high-volume, cost-sensitive work points to the Batch API. Distractors are synchronous-parallel, max_tokens trimming, or a blind model downgrade.",
+   "takeaway": "Realtime for interactive, Batch for bulk latency-tolerant, vendor and region for residency \u2014 pick the pattern the requirement names."
+  },
+  {
+   "task": "2.3",
+   "kind": "check",
+   "title": "Indexing 50,000 archived recordings",
+   "inshort": "Latency-tolerant, high-volume, cost-sensitive work is a Batch API job, reassembled by custom_id.",
+   "lead": "Nothing here is user-facing and the deadline is next week. That removes latency from the equation and leaves cost as the deciding constraint.",
+   "points": [],
+   "diagram": "dev2-8",
+   "caption": "Latency, volume, and residency each name a different path \u2014 the requirement chooses.",
+   "code": null,
+   "ask": {
+    "q": "A media company must summarize 50,000 archived recordings to build a searchable index. Nothing is user-facing, the index is needed next week, and cost is the main constraint. Which approach best fits?",
+    "options": [
+     "Submit the work as Message Batches, poll for completion, and reassemble the results by custom_id when the batch finishes.",
+     "Fire all 50,000 requests through the realtime Messages API concurrently to finish as fast as possible.",
+     "Trim max_tokens on each summary to cut cost, then run everything synchronously.",
+     "Switch to the smallest model for every recording, regardless of summary quality."
+    ],
+    "answer": 0,
+    "why": "Batch fits latency-tolerant, high-volume, cost-sensitive work and reassembles unordered results by custom_id. Concurrent realtime calls (B) ignore the cost constraint and invite rate limits. Trimming max_tokens (C) degrades output without touching the cost structure that batch fixes. A blind model downgrade (D) sacrifices quality and still does not capture the batch discount.",
+    "trap": "sync_parallel_brute_force"
+   },
+   "why": "The credited option uses the API built for this shape of workload; the distractors optimize one dimension while ignoring the cost constraint the stem names.",
+   "contrast": "The fastest option and the cheapest-looking options both miss that 'cost is the main constraint' is the whole question.",
+   "exam": "Same stem as the guide's Sample 1: no deadline pressure plus cost sensitivity plus high volume equals Batch API.",
+   "takeaway": "Latency-tolerant and cost-sensitive means batch, not a faster synchronous firehose."
+  },
+  {
+   "task": "2.4",
+   "kind": "teach",
+   "title": "It is still software: REST, JSON, async, version control, review, refactor",
+   "inshort": "A Claude app is a normal service: REST/JSON contracts, asynchronous I/O with backoff and idempotency, version control and code review, and disciplined refactoring.",
+   "lead": "The model call is one line; the integration around it is where projects fail. A synchronous handler blocks on a slow model call, a retry loop with no backoff hammers a 429 until the service melts down, and a prompt edited in place by three people has no history.",
+   "points": [
+    "REST and JSON: the Messages API is JSON over HTTPS. Design your own service contracts the same way \u2014 explicit request and response schemas, correct HTTP status codes, and versioned JSON payloads that you validate.",
+    "Asynchronous programming: model calls are network I/O, so await them, run independent calls concurrently, and never block a request handler. Handle 429 and 5xx responses with exponential backoff plus jitter and a bounded retry count.",
+    "Idempotency: retries and batch replays must not double-charge or double-act. Key operations by an idempotency key or custom_id and make downstream actions idempotent.",
+    "Version control and code review: prompts, tool schemas, and configuration belong in git behind pull requests and review, not in a live console or a shared doc.",
+    "Refactoring: small, test-backed refactors \u2014 extract the model client, centralize prompt templates, split a monolith \u2014 beat large rewrites; keep an eval suite so a refactor can prove behavior is unchanged."
+   ],
+   "diagram": "dev2-9",
+   "caption": "The integration is real software: async, idempotent, version-controlled, and refactored in small steps.",
+   "code": null,
+   "ask": null,
+   "why": "The model is the easy part. Reliability, cost, and correctness live in the surrounding engineering: the same REST, async, version-control, and refactoring discipline every service needs, applied to a dependency that is slow, rate-limited, and non-deterministic.",
+   "contrast": "The shortcut is to treat the integration as a one-off script: blocking calls, retries without backoff, prompts edited in place, one giant rewrite to fix it later. It demos fine and fails under load and on the first team change.",
+   "exam": "Stems describe an integration defect \u2014 a blocking handler, a 429 storm, an unversioned prompt, a risky rewrite \u2014 and ask the most effective fix. The credited option applies standard engineering practice; distractors tune the model or add prompt instructions.",
+   "takeaway": "Treat the Claude integration as a real service: async with backoff, idempotent, version-controlled, reviewed, and refactored in small verified steps."
+  },
+  {
+   "task": "2.4",
+   "kind": "check",
+   "title": "The 429 retry storm",
+   "inshort": "Exponential backoff with jitter, a bounded retry count, and idempotency \u2014 not more retries.",
+   "lead": "The retry loop is making the outage worse. The fix has to reduce pressure on the API while keeping the operation safe to repeat.",
+   "points": [],
+   "diagram": "dev2-10",
+   "caption": "The check turns on why immediate retries amplify a rate limit instead of relieving it.",
+   "code": null,
+   "ask": {
+    "q": "Under load, a service that calls Claude starts returning HTTP 429 rate-limit errors. The current retry loop immediately resends every failed request in a tight loop, making the overload worse. What is the most effective fix?",
+    "options": [
+     "Retry with exponential backoff plus jitter, cap the number of attempts, and make the retried operation idempotent so a duplicate call cannot double-act.",
+     "Increase the retry count so more requests eventually succeed.",
+     "Lower max_tokens so requests are smaller and less likely to be rate-limited.",
+     "Switch to a smaller model, which has higher rate limits."
+    ],
+    "answer": 0,
+    "why": "Backoff with jitter, a bounded attempt count, and idempotency is the standard remedy for 429s; retrying immediately amplifies the overload. More retries without backoff (B) worsen the storm. max_tokens (C) changes output length, not the request rate that triggers the limit. A smaller model (D) does not remove the client-side retry storm, and rate limits are per-model, so it is not a fix for the loop.",
+    "trap": "retry_without_backoff"
+   },
+   "why": "Only the credited option reduces pressure on the API and keeps retries safe to repeat. The others change model or payload settings that do not address the storm.",
+   "contrast": "Increasing the retry count feels like trying harder. Against a rate limit, trying harder faster is exactly the wrong direction.",
+   "exam": "429 storms and retry loops are a standard Domain 2 integration stem; the answer is backoff plus idempotency, never more retries.",
+   "takeaway": "Back off with jitter, bound the retries, make it idempotent."
+  },
+  {
+   "task": "2.5",
+   "kind": "teach",
+   "title": "Same model, different interface \u2014 design for how it reads instructions",
+   "inshort": "Claude Code, Desktop, claude.ai, the API, and the SDKs expose the same model with different instruction surfaces; know what each reads, where the content boundaries are, and how to design schemas and sessions.",
+   "lead": "A developer moves a prompt that worked in claude.ai into an API-backed app and the behavior changes. claude.ai applies its own system prompt and tooling; Claude Code reads project context and CLAUDE.md and can act on the filesystem; the raw API applies only what your request contains. Same model, different harness.",
+   "points": [
+    "Interfaces differ: Claude Code reads project context and CLAUDE.md and can act on files; claude.ai and Desktop add their own system prompt and tools; the raw API and SDKs apply only what your request contains. To port behavior, port the inputs, not just the text.",
+    "Content boundaries: instructions in the system prompt carry more authority than content in user turns or retrieved documents. Keep trusted instructions separate from untrusted retrieved content so injected text cannot redirect behavior.",
+    "Schema design: define tool inputs and structured outputs with tight JSON Schemas \u2014 required fields, enums, clear descriptions \u2014 and validate the response. A loose schema invites plausible but wrong shapes.",
+    "Session hygiene: long sessions accumulate context and drift. Start fresh or summarize and compact between tasks, and pass only the context the task needs instead of an ever-growing transcript.",
+    "Plugin management: reuse capabilities through plugins and MCP servers rather than re-implementing them per app; pin plugin versions and review what each plugin is allowed to access."
+   ],
+   "diagram": "dev2-11",
+   "caption": "Each interface supplies different hidden inputs, so the same model behaves differently.",
+   "code": null,
+   "ask": null,
+   "why": "The same model behaves differently because the surrounding harness supplies different instructions and tools. Designing an application means designing that harness: its inputs, its boundaries, its schemas, and its session lifecycle.",
+   "contrast": "The shortcut is to assume a prompt that worked in one interface works everywhere. It silently changes behavior, because the hidden inputs \u2014 system prompt, tools, context files \u2014 changed underneath it.",
+   "exam": "Stems describe behavior shifting when a feature moves between interfaces, or a loose schema or long session that causes drift. The credited option controls the inputs and boundaries; distractors re-tune the model.",
+   "takeaway": "Port the inputs, not the text; keep trusted instructions apart from untrusted content; use tight schemas; keep sessions short and deliberate."
+  },
+  {
+   "task": "2.5",
+   "kind": "check",
+   "title": "The prototype worked in claude.ai",
+   "inshort": "Port the missing inputs \u2014 system prompt, tools, examples \u2014 and eval the app; do not expect the text alone to transfer.",
+   "lead": "The behavior changed because the harness changed. The fix has to reconstruct the harness the API does not provide.",
+   "points": [],
+   "diagram": "dev2-12",
+   "caption": "The check turns on whether the API request reconstructed the system prompt, tools, and examples.",
+   "code": null,
+   "ask": {
+    "q": "A team prototypes a customer-facing feature in claude.ai and it works well. They move the same prompt text into their API-backed app, but the answers are worse and the model no longer uses a tool it used before. What is the most effective next step?",
+    "options": [
+     "Recognize that the interface changed the inputs: re-create the needed system prompt, tools, and examples explicitly in the API request, then eval the app rather than assuming the prompt text transfers.",
+     "Paste the original prompt into the system field and raise max_tokens until the answers match the prototype.",
+     "Switch to the most capable model so the same prompt produces comparable quality.",
+     "Add 'use the tools available' to the prompt and re-test."
+    ],
+    "answer": 0,
+    "why": "claude.ai supplies its own system prompt and tooling that the raw API does not, so the fix is to supply the missing inputs and eval the result. Raising max_tokens (B) changes output length, not the missing tools or instructions. A bigger model (C) cannot use tools you never declared. 'Use the tools available' (D) is meaningless when no tools were declared in the request.",
+    "trap": "interface_assumption"
+   },
+   "why": "Only the credited option rebuilds the harness the API does not provide. The distractors adjust settings that are unrelated to the missing inputs.",
+   "contrast": "The last option sounds like a fix and is the most misleading \u2014 you cannot instruct the model to use tools the request never defined.",
+   "exam": "When a stem shows behavior changing across interfaces, the answer is to port the inputs; the distractors blame the model or add instructions.",
+   "takeaway": "The interface supplies hidden inputs. Recreate them, then eval \u2014 do not assume the prompt text carries over."
+  },
+  {
+   "task": "2.6",
+   "kind": "teach",
+   "title": "CLAUDE.md, settings.json, and pinning what you ship",
+   "inshort": "Configuration is code: CLAUDE.md for instructions, settings.json for permissions and environment, and explicit version pinning for models, prompts, and plugins.",
+   "lead": "A team's Claude Code behavior changes after someone edits a personal ~/.claude/CLAUDE.md, and a production feature's output shifts when a model alias is updated by the vendor. Both are configuration-management failures: untracked, unreviewed, unpinned.",
+   "points": [
+    "CLAUDE.md is layered: enterprise, user, project, and subdirectory files merge, with the more specific scope taking precedence. Keep project instructions in the repository's CLAUDE.md so they are versioned and shared.",
+    "settings.json is layered too: user settings, a project .claude/settings.json that is checked in, a local .claude/settings.local.json that is gitignored, and managed enterprise settings. Permissions, environment variables, hooks, and model selection live here, not in prose.",
+    "Pin the model: reference a specific dated snapshot ID in production rather than a moving alias, so a vendor update cannot silently change behavior. Treat an alias as 'latest' only where you accept drift.",
+    "Version prompts and plugin dependencies: commit prompt templates, pin plugin and MCP versions, and review updates the way you review any dependency.",
+    "Separate secrets from configuration: keep API keys in environment variables or a secret store, never in committed settings. Config holds behavior; secrets hold credentials."
+   ],
+   "diagram": "dev2-13",
+   "caption": "Instructions in CLAUDE.md, behavior in settings.json, and pinned model IDs, prompts, and plugins.",
+   "code": "{\n  \"permissions\": {\n    \"allow\": [\"Bash(npm run test:*)\"],\n    \"deny\": [\"Read(./.env)\", \"Bash(curl:*)\"]\n  },\n  \"env\": { \"NODE_ENV\": \"development\" },\n  \"model\": \"claude-sonnet-4-5-20250929\"\n}",
+   "ask": null,
+   "why": "Non-deterministic output plus silent configuration drift is how a working system breaks without a code change. Layering and pinning configuration makes behavior reproducible, reviewable, and reversible.",
+   "contrast": "The shortcut is to tune behavior by editing whatever config is at hand \u2014 a personal file, a live prompt, a moving model alias \u2014 none of which is versioned, reviewed, or pinned.",
+   "exam": "Stems describe behavior changing with no code deploy, or a conflict between shared and personal configuration. The credited option controls layering and pinning; distractors re-prompt or blame the model.",
+   "takeaway": "Instructions in CLAUDE.md, behavior in settings.json, and pin model IDs, prompts, and plugins \u2014 config is versioned, reviewed, and reversible."
+  },
+  {
+   "task": "2.6",
+   "kind": "check",
+   "title": "Changed overnight with no deploy",
+   "inshort": "An unpinned model alias plus unversioned prompts is the root cause; pin and version them.",
+   "lead": "No code shipped, yet behavior moved. That points at configuration that was never fixed or versioned.",
+   "points": [],
+   "diagram": "dev2-14",
+   "caption": "The check turns on whether the model was pinned and the prompts versioned.",
+   "code": null,
+   "ask": {
+    "q": "A production Claude feature's outputs change overnight with no code deploy. The code references the model by a moving alias (for example 'latest'), and prompts are edited in a shared document. What is the most effective fix?",
+    "options": [
+     "Pin the model to a specific dated snapshot and move prompt templates into version-controlled files, then roll out changes through review and an eval gate.",
+     "Ask the vendor to stop updating the alias so outputs stay stable.",
+     "Add a system instruction telling Claude to keep its answers consistent over time.",
+     "Switch to the most capable model, which changes less often."
+    ],
+    "answer": 0,
+    "why": "A moving alias is exactly the unpinned-model failure, and a shared doc is exactly the unversioned-prompt failure; pinning plus version control restores reproducibility. You cannot make a vendor freeze an alias (B). A prompt cannot stabilize a changed model or unversioned inputs (C). Model tier (D) is unrelated to pinning and does not fix the drift.",
+    "trap": "model_pinning_by_alias"
+   },
+   "why": "Only the credited option removes the two sources of silent change: the moving alias and the unversioned prompt. The others ask someone else to fix it or add instructions that cannot.",
+   "contrast": "Asking the vendor to stop changing things is not a control you own; it is a wish.",
+   "exam": "Stems about behavior changing with no deploy are testing version pinning: the answer pins the model and versions the prompts.",
+   "takeaway": "No code deploy but behavior moved means unpinned config. Pin the model ID and version the prompts."
+  },
+  {
+   "task": "2.6",
+   "kind": "recap",
+   "title": "Domain 2 in one page",
+   "inshort": "Requirements pick the pattern, the lifecycle versions it, the API is stateless, the integration is real software, the interface shapes behavior, and config is pinned.",
+   "lead": "That is Domain 2 \u2014 Applications and Integration, a third of the exam. Six subdomains, one through-line: a Claude application is a requirements-driven, versioned, stateless service whose behavior depends on the inputs you supply.",
+   "points": [
+    "Understanding requirements: a business goal becomes functional requirements plus infrastructure requirements (latency, throughput, residency, cost). The constraints pick the API pattern and the deployment path.",
+    "Systems life cycle: prompts, tool schemas, and model IDs are versioned artifacts; changes pass an eval gate and can be rolled back like code.",
+    "Claude API mechanics: the Messages API is stateless \u2014 you resend history; tools are declared and executed by you; streaming, vision, thinking, and caching are request parameters; realtime for interactive work, Batch for latency-tolerant bulk, and vendor plus region for residency.",
+    "Software engineering foundations: async with backoff, idempotent operations, version control and review, and small verified refactors \u2014 the integration is where reliability lives.",
+    "Claude application design: the same model behaves differently across Claude Code, Desktop, claude.ai, the API, and the SDKs \u2014 port the inputs, keep trusted instructions apart from untrusted content, use tight schemas, and keep sessions short.",
+    "Configuration management: CLAUDE.md for instructions, settings.json for behavior, and pinning for models, prompts, and plugins. Exam tells: cheap-sounding options drop a named constraint, and any option that changes the model instead of the input is usually wrong."
+   ],
+   "diagram": "dev2-15",
+   "caption": "Six subdomains, one through-line: a requirements-driven, versioned, stateless service whose behavior depends on the inputs you supply.",
+   "code": null,
+   "ask": null,
+   "why": "Every subdomain is the same discipline at a different layer: name the requirement, control the change, and put the specification in your hands instead of hoping the model guesses it.",
+   "contrast": "The unified wrong answer is always some version of 'change the model, add instructions, or accept the default.' Domain 2 prices that at zero.",
+   "exam": "Every Domain 2 stem asks which approach is most effective given a constraint; the credited option satisfies the constraint and controls the inputs, and the distractors trade the constraint away or re-tune the model.",
+   "takeaway": "Requirements pick the pattern, the lifecycle versions it, the API is stateless, the integration is real software, the interface shapes behavior, and config is pinned. That is Applications and Integration."
+  }
+ ]
+}

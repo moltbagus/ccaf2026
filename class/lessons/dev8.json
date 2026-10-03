@@ -1,0 +1,280 @@
+{
+ "domain": "dev8",
+ "title": "Tools and MCPs",
+ "weight": "10.6% of the exam",
+ "goal": "Given a build-side stem about giving Claude a capability, decide whether it lives at the definition layer, the error contract, an MCP server, or a lighter approach, then pick the cheapest option that actually fits the named requirement.",
+ "tasks": [
+  "8.1",
+  "8.2",
+  "8.3"
+ ],
+ "steps": [
+  {
+   "task": "8.1",
+   "kind": "teach",
+   "title": "A tool is an API the model cannot see",
+   "inshort": "The model never reads your code. It reads the name, the description and the JSON Schema, and picks from those.",
+   "lead": "A team wires a lookup_order function into Claude and watches it call the wrong function half the time. Nothing is wrong with the code. The model only ever saw three strings, and the description was the four words \"Looks up an order.\"",
+   "points": [
+    "A tool definition is name + description + input_schema (JSON Schema). That declaration, not your implementation, is everything the model can reason about.",
+    "The description is the selection signal: the model chooses among tools by matching the request against descriptions, so an ambiguous description produces ambiguous calls.",
+    "Write the description as instructions: what it does, when to use it, when not to, and what it returns.",
+    "Keep names and descriptions mutually distinct; two tools that sound alike split the model's decision and it guesses.",
+    "The input_schema is the argument contract: types, required fields, enums, defaults. What is not in the schema the model will not reliably send."
+   ],
+   "diagram": "dev8-1",
+   "caption": "The model never reads your code: it selects on the description and shapes arguments from the schema, so both are the interface.",
+   "code": "{\n  \"name\": \"lookup_order\",\n  \"description\": \"Look up ONE order by its ID and return status, line items and shipping. Use when the user supplies an order ID; do not use to list a customer's orders.\",\n  \"input_schema\": {\n    \"type\": \"object\",\n    \"properties\": { \"order_id\": { \"type\": \"string\" } },\n    \"required\": [\"order_id\"]\n  }\n}",
+   "ask": null,
+   "why": "Tool implementation is tested at the definition layer because that is the only layer the model controls. A correct function behind a vague description fails the same way a wrong function does.",
+   "contrast": "The tempting fix for a mis-called tool is to rewrite the function or add more tools; both leave the description unchanged, and more lookalike tools make selection worse, not better.",
+   "exam": "Stems that say Claude calls the wrong tool or sends malformed arguments are asking about the definition (description and schema), not about the function body.",
+   "takeaway": "The model selects on the description and shapes arguments from the schema. Fix those first."
+  },
+  {
+   "task": "8.1",
+   "kind": "check",
+   "title": "Two tools that sound the same",
+   "inshort": "Confused tool selection is a description problem, not a model or token-budget problem.",
+   "lead": "Read the two descriptions in the stem. They are nearly identical, which is the whole failure.",
+   "points": [],
+   "diagram": "dev8-2",
+   "caption": "When two tools get confused, the question is whether their descriptions separate them \u2014 the fix is a description, not another tool or a bigger budget.",
+   "code": null,
+   "ask": {
+    "q": "An agent has two tools: get_customer described as \"Gets customer information\" and get_customer_orders described as \"Gets customer data\". Asked to list a customer's recent orders, Claude frequently calls get_customer and then reports it cannot find the orders. Which approach is most effective?",
+    "options": [
+     "Merge the two tools into one get_customer that returns profile and orders together, and let the model pick out the fields it needs.",
+     "Rewrite both descriptions to state precisely what each returns and when to use it, so get_customer covers profile details and get_customer_orders covers order history, with no overlap.",
+     "Add a third tool that lists customers together with their orders, so an always-applicable option exists.",
+     "Raise max_tokens so the model has more room to reason about which tool to pick."
+    ],
+    "answer": 1,
+    "why": "The confusion is a description problem: both tools describe themselves almost identically, so the model cannot separate them, and distinct descriptions fix selection. Merging (A) forces the model to infer fields and breaks the single-purpose contract; a third always-applicable tool (C) adds another lookalike and increases ambiguity; raising max_tokens (D) changes nothing because the model is not out of room, it is out of signal.",
+    "trap": "more_tools_reflex"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "When two tools get confused, the fix is their descriptions, not another tool or a bigger budget."
+  },
+  {
+   "task": "8.1",
+   "kind": "teach",
+   "title": "Validate before you run, return errors the model can act on",
+   "inshort": "Reject malformed arguments at the boundary and return a structured, actionable error instead of an opaque failure.",
+   "lead": "A create_ticket tool receives priority as \"urgent\" when the schema allowed low, medium or high, and title is missing. The handler passes it to the database, the insert throws, and the tool returns a stack trace. The model reads the stack trace, retries the identical arguments, and loops.",
+   "points": [
+    "Validate arguments against the schema before executing anything: required fields, types and enums, checked at the boundary.",
+    "On failure, return a structured error the model can act on, naming the field and the valid values, for example: priority must be one of low, medium, high.",
+    "Flag the failure in the tool_result block (is_error: true) so the model treats it as a failed call, not a successful result.",
+    "An opaque exception teaches the model nothing, so it retries the same call; a specific message lets it correct the argument and succeed.",
+    "Separate a validation error (the model can fix it) from a system error (retrying will not help): the first should describe the correction, the second should say so plainly."
+   ],
+   "diagram": "dev8-3",
+   "caption": "Reject bad arguments before running and return a specific, flagged error so the next attempt differs from the last.",
+   "code": "{ \"type\": \"tool_result\", \"tool_use_id\": \"toolu_01...\", \"is_error\": true,\n  \"content\": \"Invalid argument: priority='urgent'. Must be one of: low, medium, high.\" }",
+   "ask": null,
+   "why": "Error handling is an explicit objective because a tool that fails cryptically turns one bad argument into an infinite retry loop. The error message is part of the tool's interface.",
+   "contrast": "Returning the raw exception feels like honest reporting, but the model cannot map a database stack trace to a corrected argument, so it repeats the call that caused it.",
+   "exam": "The model keeps retrying with the same arguments, or the agent loops after a failed tool call, points to an unstructured error, not to a model or prompt problem.",
+   "takeaway": "Validate at the boundary, return errors that name the fix, and flag them as errors."
+  },
+  {
+   "task": "8.1",
+   "kind": "check",
+   "title": "The loop after a bad argument",
+   "inshort": "A flagged, specific error lets the model correct itself; a raw exception makes it repeat.",
+   "lead": "The agent is not stubborn. It is acting on the only feedback it was given, which is a database stack trace.",
+   "points": [],
+   "diagram": "dev8-4",
+   "caption": "A raw exception teaches the model nothing, so it repeats the identical call; a specific, flagged error breaks the cycle.",
+   "code": null,
+   "ask": {
+    "q": "An agent calls an update_invoice tool. When a caller sends an amount as the string \"1,200.00\", the handler throws a database error, the tool returns the raw exception text, and the agent calls the same tool with the same string again, looping. Which approach is most effective?",
+    "options": [
+     "Have the tool coerce any value it receives into the correct type and proceed, so the call never fails.",
+     "Validate the argument against the schema and, on failure, return a structured error stating that amount must be a number without separators, flagged with is_error, so the model can correct the call.",
+     "Add a system-prompt instruction telling the model to always pass valid arguments.",
+     "Increase the retry limit so the agent has more attempts to get the argument right."
+    ],
+    "answer": 1,
+    "why": "Structured validation catches the bad value at the boundary and the specific message tells the model exactly how to fix it, so the retry succeeds. Silent coercion (A) hides a real data problem and can write a wrong amount; a prompt instruction (C) is guidance the model can still miss and does not explain the specific failure; a higher retry limit (D) repeats the same opaque failure more times.",
+    "trap": "sounds_helpful"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Fail with a specific, flagged message so the next attempt differs from the last."
+  },
+  {
+   "task": "8.2",
+   "kind": "teach",
+   "title": "MCP: one server, three primitives, many clients",
+   "inshort": "An MCP server packages capability once, as tools the model calls, resources the app reads, and prompts the user invokes, and any MCP client can connect.",
+   "lead": "A team needs Claude to reach an internal inventory service, and three different applications each want that same capability. Copying the integration into each app means three copies to maintain and three places to fix. An MCP server exposes it once and every client connects to the same server.",
+   "points": [
+    "Tools are model-invoked executable functions, carrying the same name, description and input-schema contract, exposed over MCP instead of hand-wired into one application.",
+    "Resources are application-controlled context, such as files or records addressed by URI, that the client can read and attach; the model does not call them like a function.",
+    "Prompts are user-invoked templates: reusable workflows a person selects, closer to a slash command than to a tool.",
+    "Transport follows location: stdio runs the server as a local subprocess and speaks over stdin/stdout with no network, while streamable HTTP or sockets reach a remote server over the network.",
+    "The split is client versus server: the host application owns the connection and the model loop, while the server you author only exposes capability and answers requests."
+   ],
+   "diagram": "dev8-5",
+   "caption": "Author the capability once as an MCP server: every client connects to the same server instead of each reimplementing it.",
+   "code": "# the server exposes capability; the host client owns the model loop\n@server.tool()\ndef check_stock(sku: str) -> int:\n    \"\"\"Return units on hand for a SKU. Use before promising a ship date.\"\"\"\n    return inventory.units_on_hand(sku)",
+   "ask": null,
+   "why": "MCP is tested as the reuse and independence mechanism: it lets one capability serve many applications without each reimplementing it. The three primitives and the transport choice are the core of server development.",
+   "contrast": "Hard-wiring the integration into each application works for one app and becomes three diverging copies for three; the server is the version written once and maintained in one place.",
+   "exam": "Reusable across several applications, maintained independently, or expose the same capability to multiple clients points to an MCP server, not a custom tool in each app.",
+   "takeaway": "Author the capability once as an MCP server: tools are model-invoked, resources app-read, prompts user-invoked."
+  },
+  {
+   "task": "8.2",
+   "kind": "check",
+   "title": "One capability, many applications",
+   "inshort": "Reuse plus independent maintenance is the MCP tell.",
+   "lead": "This mirrors the official Domain 8 sample. Learn its shape: the stem names reuse and independence, and the answer is the server.",
+   "points": [],
+   "diagram": "dev8-6",
+   "caption": "The decision turns on two named requirements \u2014 reuse across applications and independent maintenance \u2014 not on the power of the option.",
+   "code": null,
+   "ask": {
+    "q": "A team needs Claude to call an internal inventory service exposed as a REST API. The capability must be reusable across several Claude applications and maintained independently of any one app. Which approach is most effective?",
+    "options": [
+     "Hard-code the inventory logic into each application's system prompt.",
+     "Build an MCP server that exposes the inventory operations as tools, so multiple applications can connect to the same server.",
+     "Paste the current inventory data into the context window on every request.",
+     "Rely on a built-in tool, since built-in tools can reach any internal REST API."
+    ],
+    "answer": 1,
+    "why": "The stem names reuse across applications and independent maintenance, which is exactly what an MCP server provides: one implementation, many clients. Hard-coding (A) is neither reusable nor maintainable; pasting data (C) gives no live access and wastes context; built-in tools (D) do not reach arbitrary internal APIs and would not carry the custom logic anyway.",
+    "trap": "builtin_will_do"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Reusable and independently maintained means an MCP server, not a copy per application."
+  },
+  {
+   "task": "8.3",
+   "kind": "teach",
+   "title": "Built-in, custom tool, Skill, or MCP: pick by reach and cost",
+   "inshort": "Use the built-in if one fits, a Skill to shape behavior, a custom tool for one app's live capability, and an MCP server only when many clients need the same capability.",
+   "lead": "There are four ways to give Claude a capability, and the exam wants the cheapest one that actually fits. The reflex is to build something custom, or to reach for a server, when a built-in tool or a Skill already does the job with nothing to maintain.",
+   "points": [
+    "Built-in tool: already available, such as web search, code execution or file access. Zero build and zero maintenance, so if one fits it wins outright.",
+    "Skill: instructions and a procedure with no executable code. Cheap and it shapes how the model works, but it cannot itself reach an external system.",
+    "Custom tool: your own function wired into one application. Precise control and live access, but you own the implementation, validation and errors.",
+    "MCP server: a packaged set of tools and resources reusable across many clients and maintained independently. The highest setup cost, justified only by reuse or an independent lifecycle.",
+    "Match by reach: one app needs a live custom capability means a custom tool; many clients need the same means an MCP server; no code needed, just behavior, means a Skill; it already exists means the built-in."
+   ],
+   "diagram": "dev8-7",
+   "caption": "Choose by reach and need: built-in, then Skill, then custom tool, then MCP server \u2014 cheapest option that actually fits.",
+   "code": null,
+   "ask": null,
+   "why": "Agentic customization is tested as a selection judgment, and the distractors are always over-builds: a custom server for something a built-in tool does, or a custom tool where a Skill would do.",
+   "contrast": "Reaching for the most powerful option by reflex, always building a server, is the same waste as always reaching for the top model: it adds maintenance and context cost for capability the task never needed.",
+   "exam": "A built-in tool already does this, or no executable access is needed, rules out custom tools and servers; reusable across applications rules them back in.",
+   "takeaway": "Cheapest option that fits: built-in, then Skill, then custom tool, then MCP server, chosen by reach and need, not by power."
+  },
+  {
+   "task": "8.3",
+   "kind": "check",
+   "title": "A convention, not a capability",
+   "inshort": "Pure behavior needs no runtime, so a server is an over-build.",
+   "lead": "Ask one question of the stem: does anything external actually get contacted, or is this just instructions?",
+   "points": [],
+   "diagram": "dev8-8",
+   "caption": "Ask one question of the stem: does anything external actually get contacted, or is this just instructions?",
+   "code": null,
+   "ask": {
+    "q": "A team wants Claude to follow a fixed review checklist every time it reviews a pull request. The checklist is pure procedure: no external system is contacted and no live data is needed. A developer proposes building an MCP server to expose the checklist. Which approach is most effective?",
+    "options": [
+     "Build the MCP server, since exposing the checklist as a tool guarantees Claude follows it.",
+     "Express the checklist as a Skill or project instructions that shape how the model reviews, since no executable capability or external access is required.",
+     "Write a custom tool that returns the checklist text when the model calls it.",
+     "Add the checklist as a new built-in tool."
+    ],
+    "answer": 1,
+    "why": "A checklist is behavior, not capability: it needs no code, no external system and no reuse across apps, so a Skill or project instructions carries it with no maintenance. An MCP server (A) and a custom tool (C) both add runtime and maintenance for something that is only text, and a built-in tool (D) is not something a developer can add.",
+    "trap": "over_build_reflex"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Instructions are a Skill; only live external capability earns a tool or a server."
+  },
+  {
+   "task": "8.3",
+   "kind": "teach",
+   "title": "Every tool is context, and no agent should hold every tool",
+   "inshort": "Tool definitions cost tokens on every request, and a large, overlapping set degrades selection, so scope each agent to the tools its job needs.",
+   "lead": "A platform team gives one general agent every tool in the organisation, sixty of them, and selection quality drops: the model picks near-miss tools and every request now pays for sixty schemas. More tools is not more capable; it is more ambiguity and more cost.",
+   "points": [
+    "Every tool's name, description and schema is sent on every request, so tool count is a context and cost budget, not a free list.",
+    "Large, overlapping tool sets degrade selection: the more tools that sound alike, the more the model guesses.",
+    "Scope tools to the agent's job: a billing agent gets billing tools, not the whole catalogue.",
+    "Giving every agent every tool is the classic distractor: it maximizes cost and blast radius while hurting accuracy.",
+    "Prefer a smaller set of well-described, non-overlapping tools over a large set of thin wrappers."
+   ],
+   "diagram": "dev8-9",
+   "caption": "Every tool's name, description and schema is sent on every request, so tool count is a context budget \u2014 keep the set small and scoped.",
+   "code": null,
+   "ask": null,
+   "why": "Tool set construction is an explicit best-practice objective, and the two named anti-patterns, adding more tools and giving every agent every tool, are the recurring wrong answers.",
+   "contrast": "Loading every tool just in case feels safe and thorough, but it spends context on every turn and makes the correct tool harder to find.",
+   "exam": "Add a tool for every case, or share one tool set across all agents, are the traps; the answer scopes tools to the task and keeps descriptions distinct.",
+   "takeaway": "Tools are context: keep the set small, distinct and scoped to the agent's job."
+  },
+  {
+   "task": "8.3",
+   "kind": "check",
+   "title": "Sixty tools for one job",
+   "inshort": "An over-broad tool set costs accuracy and tokens; scoping fixes both.",
+   "lead": "Two symptoms in the stem, unreliable selection and high cost, have one cause: a tool set far larger than the job.",
+   "points": [],
+   "diagram": "dev8-10",
+   "caption": "An over-broad tool set costs accuracy and tokens at once; scoping to the tools the job needs fixes both.",
+   "code": null,
+   "ask": {
+    "q": "A support agent is given access to every tool in the company, including order lookup, billing, inventory, deployment and HR, so it can handle anything. Tool selection is now unreliable and each request is expensive. Which approach is most effective?",
+    "options": [
+     "Add more tools to cover the cases the agent currently gets wrong.",
+     "Scope the agent to the small set of tools its job needs, with distinct descriptions, and let other agents own the other capabilities.",
+     "Keep all sixty tools but raise max_tokens so the model can reason over the full list.",
+     "Merge all sixty tools into one tool that takes a mode parameter."
+    ],
+    "answer": 1,
+    "why": "Selection degrades as the tool set grows and overlaps, and every schema costs context on every request, so scoping to the tools the job needs fixes both accuracy and cost. Adding more tools (A) increases the ambiguity that caused the failures; a larger max_tokens (C) pays more for the same over-broad set; collapsing everything into one mode-parameter tool (D) hides distinct capabilities behind a single vague description, which is worse for selection.",
+    "trap": "more_tools_reflex"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Give each agent only the tools its job needs, described distinctly."
+  },
+  {
+   "task": "8.1-8.3",
+   "kind": "recap",
+   "title": "Domain 8 in one page",
+   "inshort": "Define tools as the selection signal, run them for recovery, package capability as MCP, and pick the cheapest approach that fits.",
+   "lead": "That is Domain 8, ten point six percent, in three moves: define tools so the model can choose them, run them so the model can recover, and package and scope them so the cost stays justified.",
+   "points": [
+    "Tool implementation: the model only sees name, description and input_schema; the description is the selection signal and the schema is the argument contract.",
+    "Validate arguments at the boundary and return structured, flagged errors that name the fix, so a bad call is corrected instead of repeated.",
+    "MCP server development: expose capability once as tools (model-invoked), resources (app-read) and prompts (user-invoked); choose stdio for local and HTTP or sockets for remote.",
+    "Agentic customization: a built-in if one fits, a Skill for pure behavior, a custom tool for one app's live capability, and an MCP server only when many clients need the same capability.",
+    "Tool sets are context: keep them small, distinct and scoped to the agent's job; never give every agent every tool, and never add a tool for every case."
+   ],
+   "diagram": "dev8-11",
+   "caption": "Define for selection, run for recovery, package for reuse, scope for cost \u2014 the cheapest approach that fits.",
+   "code": null,
+   "ask": null,
+   "why": null,
+   "contrast": null,
+   "exam": "The Domain 8 distractors are all over-builds: add another tool, give every agent every tool, or build a custom server for something a built-in tool already does. The correct answer is the cheapest option that actually fits the named requirement.",
+   "takeaway": "Define for selection, run for recovery, package for reuse, scope for cost: the cheapest approach that fits."
+  }
+ ]
+}

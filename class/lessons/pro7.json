@@ -1,0 +1,228 @@
+{
+ "domain": "pro7",
+ "title": "Developer Productivity & Operational Enablement",
+ "weight": "7% of the exam",
+ "goal": "Given a scenario where teams are adopting Claude, choose the move that scales enablement through a shared, governed standard \u2014 configuring tools once for everyone, embedding AI in the workflow, running operations with scoped access and runbooks \u2014 and name the one-off fix that helps a single team while silently breaking the platform standard.",
+ "tasks": [
+  "7.1",
+  "7.2",
+  "7.3",
+  "7.4"
+ ],
+ "steps": [
+  {
+   "task": "7.1",
+   "kind": "teach",
+   "title": "Configure once, so every team inherits it",
+   "inshort": "Team enablement lives in shared, version-controlled configuration \u2014 not in each developer's local settings file.",
+   "lead": "A platform team rolls Claude Code out to fourteen product teams using a shared repository. The first team asks for a custom CLAUDE.md and an extra MCP server. If that lives in one engineer's personal settings, the other thirteen teams never inherit it, and the standard quietly forks into fourteen variants.",
+   "points": [
+    "Shared configuration is the product. A committed CLAUDE.md, a checked-in .claude/settings.json, and a repo .mcp.json mean every developer who clones gets the same conventions, tools, and guardrails.",
+    "Managed or organization-level settings set the non-negotiables \u2014 allowed tools, deny rules, network policy \u2014 that an individual project cannot loosen on its own.",
+    "Personal local settings have a place for private shortcuts, but anything the team should inherit must live where the team can see it, review it, and version it.",
+    "When a team requests a change, the architect asks one question: should everyone get this? If yes, it goes into the shared config through review; if no, it stays local and scoped."
+   ],
+   "diagram": "pro7-1",
+   "caption": "The test is inheritance: anything the team should get belongs in the shared, version-controlled layers.",
+   "code": null,
+   "ask": null,
+   "why": "This is the core Domain 7 move: scale enablement through a shared standard, not a one-off fix. A configuration only one team can see is a fork waiting to happen.",
+   "contrast": "The tempting shortcut is to let the requesting team configure itself and move on. It unblocks one team today and silently breaks the shared standard for everyone tomorrow. A wiki page describing the setup is documentation, not an enforced standard.",
+   "exam": "Stems show a team asking for a bespoke setup or a config change. The credited option puts it in shared, reviewed, version-controlled configuration; distractors keep it local, fork the standard, or write it down instead of enforcing it.",
+   "takeaway": "Enablement scales only when it lives in shared configuration every team inherits."
+  },
+  {
+   "task": "7.1",
+   "kind": "check",
+   "title": "One team wants its own settings",
+   "inshort": "Route the capability and its guardrail through the shared, reviewed config \u2014 not a private local file.",
+   "lead": "A dozen teams share one Claude Code configuration. One team wants more, and the exam is watching whether the standard survives.",
+   "points": [],
+   "diagram": "pro7-2",
+   "caption": "The whole question turns on one test - should every team inherit it? - and only one option keeps the standard visible.",
+   "code": null,
+   "ask": {
+    "q": "A platform team has rolled Claude Code out to a dozen product teams using a shared repository configuration. One team now wants an additional MCP server and a relaxed tool-permission rule so they can move faster. What is the most appropriate action?",
+    "options": [
+     "Add the MCP server to the shared, version-controlled team configuration and route the permission change through the same review, so both the capability and its guardrail stay visible to every team.",
+     "Let the team keep the MCP server and the relaxed permission in a local settings file that is not committed, so other teams are unaffected.",
+     "Grant the team the change and record it in the platform team's documentation so the exception is traceable.",
+     "Commit the MCP server to the shared config and disable the permission rule for all teams so no one is ever blocked again."
+    ],
+    "answer": 0,
+    "why": "The credited option keeps the change inside the shared, reviewed standard so all teams inherit it and the guardrail stays visible. A private local file makes the change invisible and unreviewed, forking the standard silently. Recording an exception in documentation is not enforcement \u2014 the tooling never sees the doc, so it drifts. Disabling the permission rule for everyone spreads one team's convenience into a permanent, global loss of control.",
+    "trap": "bespoke_team_config"
+   },
+   "why": "Only the credited option changes the shared standard under review; the distractors hide the change, describe it, or weaken the control globally.",
+   "contrast": "The wrong answers all feel like serving the team; only one of them also serves the other eleven.",
+   "exam": "When a stem has one team wanting something special, the credited answer folds it into the shared, reviewed standard.",
+   "takeaway": "Shared config, reviewed change. Not a private file, not a doc."
+  },
+  {
+   "task": "7.2",
+   "kind": "teach",
+   "title": "Put the AI in the workflow, not beside it",
+   "inshort": "If developers copy-paste between a chat window and their editor, codify the routine as a command, hook, or skill the whole team runs.",
+   "lead": "A team adopted Claude, but every developer runs ad-hoc prompts and pastes the results into pull requests. Quality varies by who is typing, and the prompts that actually work live in one engineer's chat history. The productivity gain never compounds because nothing is shared.",
+   "points": [
+    "Move repeated prompts out of individual chats and into the repo: custom slash commands, hooks that run on save or commit, and skills that package a whole workflow.",
+    "Automate the boring, reviewable steps \u2014 drafting PR descriptions, generating tests, summarizing diffs, triaging failing CI \u2014 so the gain is consistent across the team rather than personal.",
+    "Keep the human at the gate for anything that ships: the agent drafts, the developer reviews and merges.",
+    "Measure the effect \u2014 cycle time, review latency, rework \u2014 so adoption is justified with evidence rather than enthusiasm."
+   ],
+   "diagram": "pro7-3",
+   "caption": "The gain compounds only when each step runs from the repo for every developer, not from someone's chat window.",
+   "code": null,
+   "ask": null,
+   "why": "Workflow-embedded tooling compounds because it runs the same way for everyone; chat-window tooling depends on each developer's discipline and evaporates when they change teams.",
+   "contrast": "The lazy move is a shared prompt cheat-sheet. A document of prompts is not the same as executable, versioned, reviewable commands the tooling actually runs \u2014 and it decays the moment no one maintains it.",
+   "exam": "Stems describe inconsistent AI use across a team. The credited option codifies the workflow so it runs identically for everyone; distractors distribute a prompt list, buy more seats, or relax review.",
+   "takeaway": "A prompt in someone's chat history is a personal habit; a command in the repo is a team capability."
+  },
+  {
+   "task": "7.2",
+   "kind": "check",
+   "title": "Good prompts, inconsistent results",
+   "inshort": "Codify the effective prompts as versioned commands and skills \u2014 a document is not an executable standard.",
+   "lead": "The content is good and the tooling works; the problem is that only one person can reproduce it.",
+   "points": [],
+   "diagram": "pro7-4",
+   "caption": "Both are shared; only the right one is executable - and execution is what makes results consistent.",
+   "code": null,
+   "ask": {
+    "q": "A team has adopted Claude for code review and test generation, but results vary widely between developers, and the most effective prompts live in one engineer's chat history. What is the most effective way to improve consistency?",
+    "options": [
+     "Capture the team's effective prompts as versioned commands, hooks, and skills committed to the repository, so every developer runs the same workflow.",
+     "Distribute a shared document of the best prompts so developers can paste them when they need them.",
+     "Buy Claude licenses for the rest of the team and ask everyone to experiment until they find what works.",
+     "Loosen the code-review requirement so AI-generated changes can ship faster."
+    ],
+    "answer": 0,
+    "why": "The credited option turns tribal knowledge into an executable, versioned standard the tooling runs for everyone. A prompt document is not enforcement \u2014 adoption depends on each developer remembering to paste it, and it drifts as prompts evolve. More licenses without a shared workflow multiply inconsistency across more people. Loosening review trades governance for speed and does nothing about consistency.",
+    "trap": "docs_not_enforcement"
+   },
+   "why": "The credited option changes what the tooling does for every developer; the others change how many people guess, or how little is checked.",
+   "contrast": "The cheat-sheet option feels collaborative because it is shared \u2014 but shared reading is not shared execution.",
+   "exam": "Whenever an option offers a document where the tool could run a versioned standard, it is a flagged distractor.",
+   "takeaway": "Ship the workflow, not a wiki page about it."
+  },
+  {
+   "task": "7.3",
+   "kind": "teach",
+   "title": "Operational readiness: runbooks the agent can follow",
+   "inshort": "Give the agent scoped, read-only access to production signals plus a runbook and a human gate \u2014 never broad write access to prod.",
+   "lead": "An on-call engineer wants Claude to help triage a production incident. The fastest-looking option is to hand the agent admin credentials so it can just fix it. The safe, exam-correct option is a written runbook, read-only access to logs and metrics, and an explicit human approval before any remediation.",
+   "points": [
+    "Operational readiness is a runbook plus the observability to follow it: logs, traces, metrics, and service topology the agent can read.",
+    "Scope production access to read-only for diagnosis; anything that changes state runs behind a human-in-the-loop approval.",
+    "Debugging with the agent is a diagnosis loop \u2014 reproduce, isolate the failing component, check recent changes, and only then propose a fix.",
+    "After an incident, feed the root cause back into the runbook and the shared configuration so the next team inherits the lesson."
+   ],
+   "diagram": "pro7-5",
+   "caption": "The loop closes only when the lesson lands back in the runbook, so the next team inherits it instead of rediscovering it.",
+   "code": null,
+   "ask": null,
+   "why": "The governance instinct: enable the agent to see everything it needs to diagnose, but gate every action that could make an outage worse.",
+   "contrast": "Broad write access to production feels like faster resolution; it converts a diagnosis problem into a second incident. A runbook the agent cannot execute against \u2014 no log access \u2014 is theater.",
+   "exam": "Stems describe incident support. The credited option combines scoped read access, a runbook, and a human gate; distractors grant broad credentials, cut off observability, or hand over a static checklist.",
+   "takeaway": "Read to diagnose, gate to remediate, and write the lesson back into the runbook."
+  },
+  {
+   "task": "7.3",
+   "kind": "check",
+   "title": "Claude on the incident bridge",
+   "inshort": "Read-only production access, a runbook to follow, and a human gate before any state change.",
+   "lead": "The team has runbooks, centralized telemetry, and a change process. The question is what access the agent should get.",
+   "points": [],
+   "diagram": "pro7-6",
+   "caption": "The credited configuration matches the agent's access to the diagnostic task and keeps the human gate on every write.",
+   "code": null,
+   "ask": {
+    "q": "An operations team wants Claude to assist with production incident triage. They have runbooks, centralized logs and metrics, and a change-management process. Which configuration is most appropriate?",
+    "options": [
+     "Give the agent read-only access to logs, metrics, and recent change history, have it work from the existing runbooks, and require human approval before any remediation action.",
+     "Give the agent administrative credentials to production so it can apply fixes directly and reduce mean time to resolution.",
+     "Have the agent summarize incidents after the fact from exported logs, without live access to the environment.",
+     "Disable the change-management gate during incidents so remediation can proceed without delay."
+    ],
+    "answer": 0,
+    "why": "The credited option matches the agent's access to the diagnostic task and keeps a human gate on every state change. Admin credentials let a wrong action escalate one incident into two and bypass review entirely. Post-hoc summarization gives no live triage capability, so it does not help resolve the incident. Disabling the change gate removes the control exactly when a wrong action is most costly.",
+    "trap": "disable_guardrail_to_unblock"
+   },
+   "why": "The credited option grants the visibility to diagnose and nothing more; the others grant too much power, too little visibility, or drop the control.",
+   "contrast": "The admin-credentials option looks like the fastest path to resolution; it is the fastest path to a second outage.",
+   "exam": "When a stem offers 'full access to fix it faster,' the credited answer scopes access to read-only and gates the writes.",
+   "takeaway": "Read to diagnose. Gate to remediate. Always."
+  },
+  {
+   "task": "7.4",
+   "kind": "teach",
+   "title": "Scale adoption through the standard, not one-off favors",
+   "inshort": "When a team is blocked, fix the shared standard for everyone \u2014 or grant a scoped, reviewed, time-boxed exception. Never a silent per-team bypass.",
+   "lead": "Adoption is surging and a product team is blocked by a platform guardrail before a release. They ask the architect to just turn it off for them. This is the exam's favourite shape: a decision that helps one team and silently breaks a standard. The right answer keeps the control and removes the root cause in the shared platform, or routes a scoped, time-boxed exception through the governed path.",
+   "points": [
+    "Separate the root cause from the blocker: if the guardrail is too coarse, the fix is to refine the standard for all teams, not to exempt one.",
+    "Every exception is scoped, justified, time-boxed, and reviewed \u2014 and it expires. A permanent silent exception is a hole in the standard.",
+    "Adoption pressure is not a reason to weaken a control; it is a reason to make the compliant path faster \u2014 better templates, self-service, clearer defaults.",
+    "Governance that scales is automated: policy lives in the shared configuration and CI checks, so the standard enforces itself instead of relying on memory or goodwill."
+   ],
+   "diagram": "pro7-7",
+   "caption": "A standard scales by fanning out to every team at once; a per-team fork helps one and breaks the reach.",
+   "code": null,
+   "ask": null,
+   "why": "The exam rewards the answer that scales enablement through a shared standard while preserving the control. Helping one team at the cost of the platform is the wrong trade.",
+   "contrast": "The tempting move is to unblock the team now and document the exception later. A per-team fork or a disabled guardrail helps one team and silently breaks the standard for everyone \u2014 the exact failure the exam tests.",
+   "exam": "Stems set adoption urgency against a guardrail. The credited option strengthens or refines the shared standard (or grants a governed, expiring exception); distractors disable the guardrail, fork a per-team setup, or substitute documentation for enforcement.",
+   "takeaway": "Scale the enablement, keep the control. Fix the standard, don't exempt the team."
+  },
+  {
+   "task": "7.4",
+   "kind": "check",
+   "title": "The release is blocked by the guardrail",
+   "inshort": "Keep the control; refine the shared standard or grant a governed, expiring exception.",
+   "lead": "Two days to release, one team blocked, one guardrail protecting every team. The exam wants the answer that serves both.",
+   "points": [],
+   "diagram": "pro7-8",
+   "caption": "Every row keeps the control; the last row trades the platform's safety for one team's deadline.",
+   "code": null,
+   "ask": {
+    "q": "A product team is blocked by a platform security guardrail two days before a release and asks the architect to disable it just for their team. The guardrail protects data handling across all teams. What is the best action?",
+    "options": [
+     "Keep the guardrail in place, identify whether the shared standard can be refined to meet the team's legitimate need, and if it cannot, grant a scoped, time-boxed exception through the governed review process.",
+     "Disable the guardrail for that team only so they can make the release, and note the exception in the team's documentation.",
+     "Let the team maintain a forked copy of the platform configuration with the guardrail removed.",
+     "Escalate to leadership to waive the guardrail permanently, since the team has a business-critical deadline."
+    ],
+    "answer": 0,
+    "why": "The credited option keeps the control and either fixes the standard for everyone or grants an exception that is scoped, reviewed, and expires. A per-team disabled guardrail is a silent hole, and noting it in a document is not enforcement. Forking the platform configuration breaks the shared standard for every downstream team. A permanent leadership waiver for a deadline weakens a control that protects all teams \u2014 the control is the point.",
+    "trap": "adoption_over_control"
+   },
+   "why": "The credited option is the only one that scales enablement while preserving the standard; every distractor trades the shared control for one team's deadline.",
+   "contrast": "All three distractors feel pragmatic under deadline pressure. Each one is the exam's 'helps one team, breaks the standard' trap.",
+   "exam": "When adoption urgency meets a platform control, the credited answer refines the standard or grants a governed, expiring exception \u2014 never a silent bypass.",
+   "takeaway": "Fix the standard, don't exempt the team."
+  },
+  {
+   "task": "7.4",
+   "kind": "recap",
+   "title": "Domain 7 in one page",
+   "inshort": "Shared config, workflow-embedded tooling, read-to-diagnose runbooks, and a standard that scales \u2014 enablement every team inherits.",
+   "lead": "That is Domain 7. Seven percent of the exam: enable teams through shared configuration, embed AI in the workflow, run operations with scoped access and runbooks, and scale adoption through the standard without losing governance.",
+   "points": [
+    "Configure once: team enablement lives in shared, version-controlled configuration (CLAUDE.md, committed settings, .mcp.json) plus managed policy for non-negotiables \u2014 not in personal local files.",
+    "Put AI in the workflow: codify effective prompts as versioned commands, hooks, and skills so the whole team runs the same loop, and keep the human at the merge gate.",
+    "Operational readiness: read-only production access to diagnose, a runbook to follow, and human approval before any state change. Write incident lessons back into the runbook.",
+    "Scale through the standard: when a team is blocked, refine the shared platform or grant a scoped, time-boxed, reviewed exception \u2014 never a silent per-team bypass or a disabled guardrail.",
+    "Exam tells: the credited answer scales enablement through a shared standard; distractors are per-team bespoke setups, disabling a guardrail to unblock a team, or documentation standing in for an enforced standard."
+   ],
+   "diagram": "pro7-9",
+   "caption": "Four moves, one instinct: enable the many through a shared standard while keeping the control.",
+   "code": null,
+   "ask": null,
+   "why": "Every Domain 7 answer is the same instinct: enable the many through a shared standard while preserving the control that keeps the platform safe.",
+   "contrast": "The unified wrong answer is a one-off fix \u2014 a local config, a disabled guardrail, or a wiki page. The exam prices each at zero because none of them scale or enforce.",
+   "exam": "Domain 7 stems weigh adoption pressure against a standard; the credited option serves both, the distractors serve the one team.",
+   "takeaway": "Enable through the standard, gate the actions, and scale the gain. That is Developer Productivity & Operational Enablement."
+  }
+ ]
+}

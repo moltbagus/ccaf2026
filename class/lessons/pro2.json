@@ -1,0 +1,288 @@
+{
+ "domain": "pro2",
+ "title": "Claude Models, Prompting & Context Engineering",
+ "weight": "13% of the exam",
+ "goal": "Read model, prompt, and context decisions like an architect: choose the Claude tier that fits the stated constraint, design the system prompt as a contract with guardrails as the enforcement layer, match the prompting technique to the failure, keep the context minimal and ordered, and reuse stable prefixes through caching and modular prompts.",
+ "tasks": [
+  "2.1",
+  "2.2",
+  "2.3",
+  "2.4",
+  "2.5",
+  "2.6",
+  "2.7",
+  "2.8",
+  "2.9",
+  "2.10",
+  "2.11"
+ ],
+ "steps": [
+  {
+   "task": "2.1",
+   "kind": "teach",
+   "title": "Pick the model for the constraint, not the leaderboard",
+   "inshort": "Choosing a Claude tier is an architecture decision with a stated constraint.",
+   "lead": "A claims platform runs two workloads. One classifies roughly two million incoming messages a day under a 300 ms p95 latency SLA and a fixed per-message cost ceiling. The other produces a weekly root-cause analysis of incident logs that a senior engineer reviews and signs off. The engineering lead proposes running everything on the most capable model 'so quality is never the bottleneck.' The architect's job is to say why that answer is wrong before it ships.",
+   "points": [
+    "Three levers move together: capability, cost, and latency. Climbing the capability ladder buys better reasoning at a higher per-token price and slower responses; descending buys throughput and speed at the cost of judgment on genuinely hard tasks.",
+    "Match the tier to the task's failure cost. Highest-stakes reasoning \u2014 multi-step planning, ambiguous judgment, complex extraction \u2014 justifies the top tier. Well-specified, high-volume, latency-sensitive work such as classification, routing, or extraction against a fixed schema belongs on the fast, cheap tier.",
+    "Thinking depth is a second dial. On models that support adaptive thinking and effort levels, you can buy more reasoning for one route without moving to a bigger model \u2014 reserve high effort for the hard routes and low or medium for routine ones.",
+    "'Largest model everywhere' is the anti-pattern: it multiplies the cost of the traffic that never needed it, blows latency budgets, and hides the real fix \u2014 a better prompt or better context.",
+    "Default to a balanced mid-tier workhorse and escalate or downgrade per route, then verify the choice with evals rather than assuming capability maps to quality on your task."
+   ],
+   "diagram": "pro2-1",
+   "caption": "Match the tier to the task's failure cost and the stated SLA or cost ceiling \u2014 'largest model everywhere' multiplies cost and latency for no quality gain.",
+   "code": null,
+   "ask": null,
+   "why": "The exam asks why a model fits a stated constraint. The reasoning is always the binding constraint \u2014 an SLA, a cost ceiling, a regulated or hard task \u2014 plus the cost of being wrong, never 'bigger is better.'",
+   "contrast": "The lazy answer is 'use the most capable model to be safe.' Buying safety on the easy ninety percent costs money and latency for no quality gain, because the constraint was the SLA or the cost ceiling, not maximum capability.",
+   "exam": "Stems hand you a latency SLA, a cost ceiling, or a regulated or hard task and ask which model to use. The correct answer matches the tier to the constraint; the wrong answers are 'largest everywhere' or 'smallest regardless of task fit.'",
+   "takeaway": "Choose the model that meets the constraint with the least capability you can defend, then verify the choice with evals."
+  },
+  {
+   "task": "2.2",
+   "kind": "check",
+   "title": "Two workloads, two constraints",
+   "inshort": "One cost ceiling, one quality-critical route \u2014 where does each go?",
+   "lead": "A support platform runs two workloads: (1) real-time intent classification of about two million messages a day with a 300 ms p95 latency SLA, and (2) a weekly root-cause analysis of incident logs that a senior engineer reviews. Cost and latency are hard constraints on workload 1; quality dominates workload 2.",
+   "points": [],
+   "diagram": "pro2-2",
+   "caption": "The question turns on whether one global tier or a per-route tier matches the two different constraints.",
+   "code": null,
+   "ask": {
+    "q": "A support platform runs two workloads: (1) real-time intent classification of about two million messages a day under a 300 ms p95 latency SLA, and (2) a weekly root-cause analysis of incident logs that a senior engineer reviews. Cost and latency are hard constraints on workload 1; quality dominates workload 2. Which model strategy is most appropriate?",
+    "options": [
+     "Run both workloads on the most capable model available so quality is never the bottleneck.",
+     "Route the high-volume classification to the fast, cheap tier and the root-cause analysis to the most capable tier, tuning thinking effort per route.",
+     "Run both workloads on the fast, cheap tier \u2014 if classification passes, the root-cause analysis will too.",
+     "Run both on the mid-tier with thinking disabled, to hit the classification latency SLA."
+    ],
+    "answer": 1,
+    "why": "A ignores the 300 ms SLA and the cost ceiling on two million well-specified classifications a day \u2014 capability is not the binding constraint there, and it inflates both cost and latency. C runs the hardest reasoning task on the weakest tier, where quality is the binding constraint; a matched strategy routes each workload to the tier its constraint demands. D applies one configuration to two different constraints and disables the very reasoning depth the root-cause analysis depends on. The correct split routes high-volume, latency-sensitive classification to the fast, cheap tier and the reasoning-heavy analysis to the most capable tier, with thinking effort tuned per route.",
+    "trap": "largest_model_everywhere"
+   },
+   "why": "Model selection is a routing decision, not a single global choice: each workload gets the tier its own constraint demands.",
+   "contrast": "The distractors collapse two constraints into one \u2014 'capable everywhere' or 'cheap everywhere' \u2014 when the right answer is 'capable where quality binds, cheap where latency and cost bind.'",
+   "exam": "This is the domain's signature shape: a stem names conflicting constraints and asks you to justify a per-route tier choice.",
+   "takeaway": "Match each route to the tier its binding constraint requires \u2014 and dial thinking effort before you change models."
+  },
+  {
+   "task": "2.3",
+   "kind": "teach",
+   "title": "The system prompt is a contract; guardrails are the controls",
+   "inshort": "State the rules in the prompt, enforce them outside the model.",
+   "lead": "A financial-services team is building an assistant that drafts client emails. Compliance requires that it never give investment advice and never reveal personal data. The first instinct is to stuff every policy line into the system prompt and hope the model complies. An architect separates the instruction from the enforcement.",
+   "points": [
+    "A production system prompt has four parts: role and scope (who the model is and what it is for), explicit rules and boundaries (what qualifies and what does not), an output contract (format, schema, tone), and refusal or escalation behavior for anything out of scope.",
+    "Explicit criteria beat adjectives. 'Be conservative' is interpreted differently on every call; define exactly what qualifies and what does not, with boundary examples, so behavior is consistent.",
+    "Templates separate the stable instruction from the variable payload: freeze the role, rules, and format as a reusable prefix and inject only the per-request data. This is what makes reuse and caching possible later.",
+    "Guardrails are the enforcement layer, not more prompt text: input validation, output filtering and PII redaction, allow/deny tool scoping, and human-in-the-loop for consequential actions. A prompt is a request; a guardrail is a control.",
+    "Do not duplicate an existing control. Adding a second guardrail that repeats a control you already have raises cost and false positives without reducing risk; add the control that closes an actual gap."
+   ],
+   "diagram": "pro2-3",
+   "caption": "The prompt declares the contract in four parts \u2014 enforcement lives in the guardrail layer, not in more prompt text.",
+   "code": null,
+   "ask": null,
+   "why": "Prompts persuade; controls enforce. Design both, and place each rule where it cannot be talked out of \u2014 explicit criteria in the prompt, hard limits in the guardrail layer.",
+   "contrast": "The anti-pattern is a two-thousand-token system prompt carrying every policy and trusting the model to comply. Compliance is a control, not a suggestion, and an over-long prompt dilutes attention while burning tokens on every call.",
+   "exam": "Stems ask how to make a behavior reliable or how to close a guardrail gap. Correct answers pair explicit criteria with enforcement at the right layer; wrong answers add more prompt text or a guardrail that duplicates an existing control.",
+   "takeaway": "The system prompt states the contract; guardrails enforce it; never make the prompt do a control's job."
+  },
+  {
+   "task": "2.4",
+   "kind": "check",
+   "title": "The guardrail that guards nothing new",
+   "inshort": "Defense in depth, or duplication?",
+   "lead": "A regulated assistant must never output unredacted account numbers. The team already has an output filter that redacts account numbers before the response is returned. A new requirement adds: never give investment advice. The proposed change is a second output filter that also scans for account numbers, plus a system-prompt rule for advice.",
+   "points": [],
+   "diagram": "pro2-4",
+   "caption": "Which design adds a control for the new risk without duplicating or removing the one already in place?",
+   "code": null,
+   "ask": {
+    "q": "A regulated assistant must never output unredacted account numbers, and an existing output filter already redacts them before the response is returned. A new requirement adds 'never give investment advice.' The proposed change is a second output filter that also scans for account numbers, plus a system-prompt rule for advice. What is the most appropriate design?",
+    "options": [
+     "Add the second account-number filter and the advice rule, for defense in depth.",
+     "Add a refusal and escalation rule for advice to the system prompt and enforce it with a dedicated guardrail that routes advice-seeking requests to a human, leaving the existing account-number filter as the single control for that risk.",
+     "Put both rules in the system prompt and remove the account-number filter to simplify the pipeline.",
+     "Increase the model's capability tier so it follows the advice rule more reliably."
+    ],
+    "answer": 1,
+    "why": "A adds a second account-number filter that duplicates a control already in place \u2014 extra cost and false positives with no new risk reduction. C removes an existing enforcement control and relies on prompt compliance for a regulated requirement, converting a control into a suggestion. D assumes a bigger model is a control; model capability is not an enforcement layer and does not close the gap. The correct design adds the missing control for the new risk \u2014 a refusal/escalation rule plus a dedicated guardrail \u2014 while leaving the account-number filter as the single control for its risk.",
+    "trap": "duplicate_guardrail"
+   },
+   "why": "This is the guardrail objective in its exam form: close the actual gap, do not stack a second copy of a control you already own.",
+   "contrast": "Two paper tigers: 'defense in depth' that adds no depth, and 'make the model smarter' that is not a control at all.",
+   "exam": "Watch for distractors that sound like governance but only repeat an existing control or push a regulated requirement onto prompt compliance.",
+   "takeaway": "One control per risk; add the guardrail that closes a real gap, not a duplicate of the one you have."
+  },
+  {
+   "task": "2.5",
+   "kind": "teach",
+   "title": "Zero-shot, few-shot, chain-of-thought: choose by symptom",
+   "inshort": "Each prompting technique buys precision on a different kind of failure.",
+   "lead": "The same pipeline runs three tasks: extracting fields from clean, well-formed invoices; classifying ambiguous support tickets; and reconciling a multi-step refund dispute where the arithmetic has to add up. One prompt template is being stretched across all three, and it is failing differently on each.",
+   "points": [
+    "Zero-shot when the task is well-specified and the output format is unambiguous: a clear instruction plus an output contract is enough, and examples only add tokens on every call.",
+    "Few-shot when the task is ambiguous or the boundary is subtle: two to four targeted examples that each show input, output, and the reason the output is correct teach the pattern and generalize to novel cases. Too few miss the pattern; too many waste context and overfit.",
+    "Chain-of-thought when the task needs multi-step reasoning or an arithmetic or consistency check: ask for the reasoning before the answer so the model works through intermediate steps instead of pattern-matching a conclusion. On thinking-capable models, prefer raising thinking effort over hand-writing 'think step by step.'",
+    "Examples are for the model's pattern, not a place to bury a policy document. Moving required reference content into a few-shot block does not make it more reliable and is not a cacheable, reusable prefix.",
+    "Match the technique to the failure: wrong format means a schema or output contract, wrong boundary calls mean few-shot, a wrong multi-step result means chain-of-thought or higher thinking effort."
+   ],
+   "diagram": "pro2-5",
+   "caption": "Diagnose the failure \u2014 format, boundary, or multi-step \u2014 and match the technique; do not stack all three.",
+   "code": null,
+   "ask": null,
+   "why": "The exam asks which technique fits a stated symptom. The answer follows from what is failing \u2014 format, boundary, or multi-step reasoning \u2014 not from a default preference.",
+   "contrast": "The anti-pattern is stacking all three everywhere: examples plus 'think step by step' on every route, bloating tokens and a cache-hostile prefix while leaving a format problem that needed a schema untouched.",
+   "exam": "Stems name a symptom \u2014 ambiguous edge cases, inconsistent format, multi-step arithmetic \u2014 and ask for the technique. Correct answers match the technique to the symptom.",
+   "takeaway": "Diagnose the failure first, then choose zero-shot, few-shot, or chain-of-thought \u2014 do not stack all three."
+  },
+  {
+   "task": "2.6",
+   "kind": "check",
+   "title": "The borderline tickets",
+   "inshort": "Valid JSON, wrong category, twenty percent of the time.",
+   "lead": "A ticket-classification model returns the right category for obvious tickets but misroutes about twenty percent of borderline tickets \u2014 for example, calling a billing dispute a refund request. The output is always valid JSON, and the definitions of the categories are already in the prompt.",
+   "points": [],
+   "diagram": "pro2-6",
+   "caption": "The format is already valid and the categories are defined \u2014 the question turns on what a boundary-definition failure actually needs.",
+   "code": null,
+   "ask": {
+    "q": "A ticket-classification model returns the right category for obvious tickets but misroutes about twenty percent of borderline tickets, such as 'refund' versus 'billing dispute.' The output format is always valid JSON, and the category definitions are already in the prompt. Which change most directly fixes the misrouting?",
+    "options": [
+     "Add a chain-of-thought instruction telling the model to reason step by step before choosing a category.",
+     "Add three to four few-shot examples that show borderline tickets and explain why each belongs to its category, including a near-miss on the other side.",
+     "Switch to the largest available model so it classifies more accurately.",
+     "Replace the definitions with a longer, more detailed set of category descriptions and ask the model to use its best judgment."
+    ],
+    "answer": 1,
+    "why": "A adds reasoning the task does not need \u2014 the output is already valid and the problem is a boundary definition, not a multi-step computation \u2014 at the cost of latency and tokens. C reaches for raw capability to fix a definitional gap; the model already knows how to classify, it has not been shown where the line is, and an upgrade violates any cost or latency ceiling without addressing the cause. D substitutes more prose and 'best judgment' for the boundary examples the task needs, and vague instructions produce inconsistent results. The correct fix is few-shot examples that demonstrate borderline tickets on both sides of the boundary and explain why each falls where it does.",
+    "trap": "reasoning_for_classification"
+   },
+   "why": "The technique objective is tested by symptom: a boundary-definition failure calls for few-shot, not reasoning and not a bigger model.",
+   "contrast": "One distractor over-engineers (chain-of-thought), one over-spends (largest model), one adds vagueness (more prose). None teaches the boundary.",
+   "exam": "If a stem says 'valid format, wrong category on edge cases,' the answer is few-shot examples with boundary reasoning.",
+   "takeaway": "Ambiguous boundary means few-shot with near-misses \u2014 not more reasoning, more model, or more prose."
+  },
+  {
+   "task": "2.7",
+   "kind": "teach",
+   "title": "Context is a budget: order it, trim it, disclose it",
+   "inshort": "Optimize the window by what earns its place, not by what fits.",
+   "lead": "A document-analysis agent loads entire document sets into the prompt and its answers get worse as the conversation grows. The team's proposed fix is to buy a bigger context window. The architect knows that is the wrong lever: the model is not running out of room, it is drowning in irrelevant content.",
+   "points": [
+    "A bigger window does not fix a context-quality problem. Performance degrades as irrelevant content crowds the prompt, so the goal is the smallest context that contains the signal, not the largest that fits.",
+    "Order matters: put stable content first \u2014 frozen system prompt, tool list in a deterministic order, reference documents \u2014 and volatile content last: the current question, timestamps, per-request IDs. This keeps the cacheable prefix intact and puts the question where the model can act on it.",
+    "Trim by relevance, not by truncation. Retrieve or select the chunks that answer the question instead of cutting the first N tokens, which silently drops the policy paragraph the answer depended on.",
+    "Prefer progressive disclosure over monolithic loading: start with an index or catalogue and fetch detail on demand rather than loading everything up front. The same principle applies to tool discovery \u2014 load schemas lazily instead of all at once.",
+    "When the prompt fails, suspect the context before rewriting the prompt. Confident-but-wrong answers after a content refresh usually mean stale or irrelevant context, not a bad instruction."
+   ],
+   "diagram": "pro2-7",
+   "caption": "Optimize for the smallest context that holds the signal \u2014 a bigger window only admits more irrelevant content.",
+   "code": null,
+   "ask": null,
+   "why": "Token usage drives cost and latency; context quality drives accuracy. Optimizing one by wrecking the other is not optimization \u2014 it is a trade you did not intend to make.",
+   "contrast": "The anti-patterns are 'buy a bigger window,' 'truncate to the first thousand tokens,' or 'rewrite the prompt' when retrieval is feeding the model the wrong chunks. Fix the context; do not paper over it.",
+   "exam": "Stems give a cost, latency, or accuracy problem in a context-heavy system. Correct answers order stable-first, trim by relevance, and disclose progressively; wrong answers reach for a bigger window, blind truncation, or a prompt rewrite.",
+   "takeaway": "Minimize and order the context; when accuracy drops, check what the model was actually fed before you touch the prompt."
+  },
+  {
+   "task": "2.8",
+   "kind": "check",
+   "title": "Confident and wrong after the refresh",
+   "inshort": "The model did not change. The content did.",
+   "lead": "A retrieval assistant answers policy questions from an internal knowledge base. After a large document refresh, it starts returning confident but wrong answers. Latency and the model version are unchanged. The team proposes increasing the context window and rewriting the system prompt.",
+   "points": [],
+   "diagram": "pro2-8",
+   "caption": "An accuracy drop that appeared with a content refresh points at what was retrieved, not at the window or the words.",
+   "code": null,
+   "ask": {
+    "q": "A retrieval assistant answers policy questions from an internal knowledge base. After a large document refresh, it returns confident but wrong answers, while latency and the model version are unchanged. The team proposes increasing the context window and rewriting the system prompt. What should the architect do first?",
+    "options": [
+     "Increase the context window so more documents fit and the correct one is more likely to be included.",
+     "Investigate the retrieval and indexing step \u2014 check for stale or mismatched chunks after the refresh \u2014 before touching the window or the prompt.",
+     "Rewrite the system prompt with stronger instructions to answer only from the retrieved documents.",
+     "Move the reference documents into few-shot examples so they are always present."
+    ],
+    "answer": 1,
+    "why": "A treats an accuracy regression as a capacity problem; a larger window admits more irrelevant chunks and dilutes attention, and the failure appeared with a content change, not a capacity change. C rewrites the instruction when the model was fed the wrong context \u2014 a better prompt cannot answer from a chunk that was never retrieved correctly. D bloats every request with embedded documents that are not a cacheable prefix and does not address stale retrieval. The regression tracks the document refresh, so the first move is to inspect the retrieval and indexing step for stale or mismatched chunks.",
+    "trap": "rewrite_prompt_not_context"
+   },
+   "why": "This is the context-objective in exam form: a content-triggered accuracy drop points at retrieval, not at the window or the prompt.",
+   "contrast": "Three fixes for the wrong layer: more room, better words, always-present documents. None of them repairs a broken index.",
+   "exam": "'Confident but wrong after a document refresh, model and latency unchanged' is the classic signal to check retrieval first.",
+   "takeaway": "When accuracy drops and the content changed, inspect what was retrieved before you rewrite anything."
+  },
+  {
+   "task": "2.9",
+   "kind": "teach",
+   "title": "Reuse the stable prefix; modularize the rest",
+   "inshort": "Caching, modular prompts, and Skills turn repeated work into a shared asset.",
+   "lead": "The same 8,000-token system prompt and policy document are sent on every request, followed by a short, varying user message. Latency and cost are both concerns. This is the shape the official sample question uses, and it is the cleanest illustration of the reuse objective: the expensive part never changes, and the design should reflect that.",
+   "points": [
+    "Prompt caching keys on an exact prefix. Cache reads cost a fraction of normal input \u2014 roughly ten percent of the input price, less on the newest tiers \u2014 and cut time-to-first-token. The win materializes only if the prefix is byte-stable across requests.",
+    "Structure for the cache: stable content first (frozen system prompt, deterministically ordered tool list), volatile content after the last cache breakpoint. Put the breakpoint on the static block, never on a block that varies per request.",
+    "Caching is not free \u2014 it is cheaper, not zero. Writes cost more than normal input, there is a minimum prefix length below which nothing caches, and there is a small limit on breakpoints per request. Treat it as an optimization to measure, not a given.",
+    "Audit the silent invalidators: a timestamp or session ID in the system prompt, non-deterministic JSON key order, a tool set that reorders between requests, or changing the thinking or effort configuration mid-conversation each invalidate the prefix and zero out the savings.",
+    "Modularize and version the rest: split the prompt into composable blocks \u2014 role, policy, task template, output schema \u2014 and reuse them across routes, and package stable domain knowledge and procedures as Skills so they live in one place instead of being copy-pasted into every prompt."
+   ],
+   "diagram": "pro2-9",
+   "caption": "Front-load the byte-stable prefix and cache it; modularize and version the rest so reuse does not drift.",
+   "code": null,
+   "ask": null,
+   "why": "The exam asks which reuse strategy fits a repeated-prefix or repeated-knowledge pattern. Caching fits a repeated, byte-stable prefix; modular prompts and Skills fit repeated structure and knowledge that would otherwise drift across copies.",
+   "contrast": "The anti-patterns: treating caching as free (ignoring write costs, minimums, and invalidators), truncating the shared document to save tokens, or copy-pasting the same policy block into twenty prompts where it silently diverges.",
+   "exam": "The official D2 sample is exactly this: a static 8,000-token prefix plus a short varying message, with cost and latency both at stake. The answer is to order the static content first and enable caching.",
+   "takeaway": "Freeze and front-load the stable prefix to cache it; modularize and version the rest so reuse does not become drift."
+  },
+  {
+   "task": "2.10",
+   "kind": "check",
+   "title": "The cache that never hits",
+   "inshort": "Caching is on. The reads are zero.",
+   "lead": "A platform sends a fixed 6,000-token system prompt and tool definitions with every request, followed by a short user message. The team enabled prompt caching but sees cache_read_input_tokens of zero on every call, and latency is unchanged.",
+   "points": [],
+   "diagram": "pro2-10",
+   "caption": "Caching saves only when the prefix is byte-stable; the question turns on what changes in the prefix on every request.",
+   "code": null,
+   "ask": {
+    "q": "A platform sends a fixed 6,000-token system prompt and tool definitions with every request, followed by a short user message. Prompt caching is enabled, but cache_read_input_tokens is zero on every call and latency is unchanged. What is the most likely cause?",
+    "options": [
+     "The cache is too small to help; this model tier does not support prompt caching.",
+     "Something in the prefix changes on every request \u2014 a timestamp or session ID in the system prompt, or a tool list whose order varies \u2014 so the prefix never matches.",
+     "Caching only takes effect once thinking is disabled and effort is lowered.",
+     "Caching applies only to user messages, not to system prompts, so the system prompt must be moved into the first user turn."
+    ],
+    "answer": 1,
+    "why": "A assumes caching is a per-tier toggle; zero reads across repeated requests indicate the prefix never matched, not that the tier lacks the feature. C conflates unrelated settings \u2014 changing the thinking or effort configuration mid-conversation can invalidate a cache, but disabling thinking is not a precondition for caching. D rests on a false premise: the cacheable prefix is exactly the system and tool content, so relocating it changes nothing about the invalidator. Zero reads mean something in the prefix changes every request, so the prefix never matches and nothing is ever read back.",
+    "trap": "caching_is_free"
+   },
+   "why": "The reuse objective is tested as diagnosis: caching saves money and time only when the prefix is stable, so a zero read count is a structural signal.",
+   "contrast": "Three ways of treating caching as magic \u2014 'unsupported tier,' 'needs other settings,' 'wrong location' \u2014 when the real cause is a prefix that changes every call.",
+   "exam": "If a stem shows caching enabled but cache_read_input_tokens at zero, look for the volatile field in the stable prefix.",
+   "takeaway": "Cache reads of zero mean the prefix is not stable \u2014 find the changing byte, do not add more caching."
+  },
+  {
+   "task": "2.11",
+   "kind": "recap",
+   "title": "Domain 2 in one page",
+   "inshort": "Five objectives, one chain of decisions.",
+   "lead": "That is Domain 2: choose the model for the constraint, design the prompt as a contract with guardrails as the enforcement layer, match the prompting technique to the failure, keep the context minimal and ordered, and reuse the stable parts.",
+   "points": [
+    "Model selection is a trade-off among capability, cost, and latency, plus a thinking-effort dial. Match the tier to the task's failure cost and the stated SLA or cost ceiling; 'largest model everywhere' is the anti-pattern.",
+    "The system prompt is a contract \u2014 role, explicit rules and boundaries, output format, refusal and escalation. Guardrails enforce outside the model, so never make the prompt do a control's job and never duplicate an existing control.",
+    "Pick the technique by the symptom: zero-shot for well-specified tasks, two to four few-shot examples for ambiguous boundaries, chain-of-thought or higher thinking effort for multi-step reasoning.",
+    "Context is a budget: stable content first, volatile content last, trim by relevance rather than truncation, and disclose progressively. When accuracy drops, check what the model was fed before rewriting the prompt.",
+    "Reuse the stable prefix with prompt caching, measuring cache_read_input_tokens and auditing invalidators, and modularize and version the rest as composable blocks and Skills so reuse does not drift."
+   ],
+   "diagram": "pro2-11",
+   "caption": "Five objectives, one habit: fit each strategy to the stated constraint \u2014 and measure, do not assume.",
+   "code": null,
+   "ask": null,
+   "why": "Five objectives, one habit: fit the strategy to the stated constraint \u2014 and measure, do not assume.",
+   "contrast": "Every wrong answer on this domain skips the constraint: the biggest model, more prompt text, a bigger window, or caching assumed to be free.",
+   "exam": "Domain 2 stems give you a constraint \u2014 an SLA, a cost ceiling, regulated data, a repeated prefix \u2014 and ask why a strategy fits. Answer from the constraint, not from a default.",
+   "takeaway": "Fit the model to the constraint, the technique to the failure, the context to the signal, and reuse the stable parts."
+  }
+ ]
+}

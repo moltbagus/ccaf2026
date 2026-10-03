@@ -1,0 +1,181 @@
+{
+ "domain": "dev4",
+ "title": "Eval, Testing, and Debugging",
+ "weight": "2.6% of the exam",
+ "goal": "Debug and harden Claude applications like a developer: classify a failure before reacting to it, retry only what can succeed and stop when it cannot, log enough to reproduce the failure, and eval a change on a labelled set before it ships.",
+ "tasks": [
+  "4.1"
+ ],
+ "steps": [
+  {
+   "task": "4.1",
+   "kind": "teach",
+   "title": "Some failures recover on their own; most will not",
+   "inshort": "Retryable failures are transient \u2014 rate limits, overload, timeouts, 5xx. Client-side failures \u2014 bad request, auth, permission, too-large \u2014 are deterministic and will fail again identically.",
+   "lead": "A service that calls the Messages API starts throwing errors during a load spike. The on-call engineer's first instinct is to wrap the call in a blanket retry loop. Half of the errors it just saw will succeed on the next attempt; the other half will fail exactly the same way forever, and the loop will bury a real bug behind a minute of latency.",
+   "points": [
+    "Transient, server-side failures are retryable: rate limits (429), overload (529 and other 5xx), connection resets, and request timeouts. The same request can succeed on a later attempt.",
+    "Deterministic, client-side failures are not retryable: invalid request (400), authentication (401), permission (403), not found (404), and request-too-large / context-length-exceeded. The identical request returns the identical error, so the fix is the request, not a retry.",
+    "Classify first, then choose the recovery: fail fast and fix (client errors), retry with backoff (transient errors), or shorten and resend (too-large input).",
+    "Model-output failures are their own class: malformed JSON, a refusal, or wrong tool arguments are output problems \u2014 validate, repair, or re-ask, and do not treat them as transport errors to be blindly retried.",
+    "Origin isolation: before retrying, decide whether the fault is in your integration layer (bad params, auth, parsing, timeout) or in model output \u2014 the recovery for each is different."
+   ],
+   "diagram": "dev4-1",
+   "caption": "Retryable means a later attempt can succeed; deterministic means the identical request returns the identical error \u2014 so the fix is the request, not a retry.",
+   "code": null,
+   "ask": null,
+   "why": "Error-type identification and recovery-strategy selection are the explicit objectives here. The exam rewards the developer who separates a transient transport failure from a deterministic request bug, because the two demand opposite responses.",
+   "contrast": "The tempting wrong move is to retry every error 'to be safe.' For a 400 or a 401 that is an infinite loop of the same failure: it burns latency and quota and hides the malformed request or bad key that a fail-fast would have surfaced on the first call.",
+   "exam": "Stems hand you specific error conditions \u2014 a 429 under load, a 401 after a deploy, a context-length error on a long input. The correct answer separates what can succeed on retry (transient) from what cannot (deterministic).",
+   "takeaway": "Classify before you retry: transient errors recover, deterministic errors need the request fixed."
+  },
+  {
+   "task": "4.1",
+   "kind": "check",
+   "title": "Which of these should you retry?",
+   "inshort": "Pick the handling that retries what can succeed and fails fast on what cannot.",
+   "lead": "One incident, four error types. Decide the recovery policy.",
+   "points": [],
+   "diagram": "dev4-2",
+   "caption": "Only failures a later attempt can turn into a success earn a retry; the rest return the same result forever, so retrying them just buries the bug.",
+   "code": null,
+   "ask": {
+    "q": "A service calling the Messages API is seeing a mix of errors under load: 429 rate_limit_error, occasional 529 overloaded responses, and \u2014 after a bad deploy \u2014 a 400 invalid_request_error and a 401 authentication_error. Which handling is most effective?",
+    "options": [
+     "Retry only the 429 and 529 (transient) with backoff, and fail fast on the 400 and 401 so the malformed request and bad credentials surface immediately.",
+     "Retry all four error types with backoff so the service recovers automatically without operator intervention.",
+     "Increase max_tokens and retry every failed request, since a larger response budget may avoid the errors.",
+     "Disable retries entirely and surface every error to the caller, so the service never amplifies load on the API."
+    ],
+    "answer": 0,
+    "why": "Only the transient failures can succeed on a later attempt, so they get backoff retries while the deterministic client errors fail fast and stay visible. Retrying all four is wrong because a 400 or 401 returns the same error forever \u2014 the loop hides the bad request and bad key. Raising max_tokens is wrong because it does not touch any of the causes (rate limit, overload, or a malformed request). Disabling retries entirely is wrong because it abandons the recoverable transient failures and turns a momentary spike into user-visible downtime.",
+    "trap": "retry_everything_reflex"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Transient errors get retries; deterministic errors get fixed \u2014 never one policy for both."
+  },
+  {
+   "task": "4.1",
+   "kind": "teach",
+   "title": "Backoff, jitter, and a stopping rule",
+   "inshort": "Retry transient failures with exponential backoff plus jitter, honor Retry-After, bound the attempts and total time, and fail loudly when the budget is gone.",
+   "lead": "A batch job is failing against an endpoint that is briefly overloaded. The team adds retries and the problem gets worse: every worker retries on the same cadence, hammering the service at the exact moment it is trying to recover. The retry loop that was meant to absorb the spike is now the spike.",
+   "points": [
+    "Exponential backoff \u2014 wait longer after each failure \u2014 gives a struggling service room to recover; honor the server's Retry-After when it is provided, otherwise start from a small base delay and double up to a cap.",
+    "Jitter \u2014 randomize each wait \u2014 stops synchronized clients from retrying in lockstep and re-creating the overload.",
+    "Bound the retry with both a maximum attempt count and a maximum total elapsed time, so a persistent outage fails fast rather than pinning workers.",
+    "Retry only idempotent work, or make retries safe with an idempotency key, so a retry can never duplicate a side effect like a charge, a ticket, or a sent message.",
+    "When the budget is exhausted, surface the error with its context (request id, error class, attempts made) \u2014 never silently return an empty or partial result."
+   ],
+   "diagram": "dev4-3",
+   "caption": "Wait longer each try, randomize the wait, cap both attempts and elapsed time \u2014 and when the budget is gone, fail loudly instead of looping.",
+   "code": "import time, random\n\nRETRYABLE = {429, 500, 529}          # rate limit, server error, overload\n\ndef call_with_backoff(send, *, max_attempts=5, base=0.5, cap=8.0):\n    for attempt in range(max_attempts):\n        try:\n            return send()\n        except Exception as e:\n            status = getattr(e, \"status_code\", None)\n            if status not in RETRYABLE:\n                raise                    # deterministic: fix the request, don't retry\n            if attempt == max_attempts - 1:\n                raise                    # budget exhausted: fail loudly with context\n            delay = min(cap, base * 2 ** attempt)\n            time.sleep(delay + random.uniform(0, delay / 2))   # backoff + jitter",
+   "ask": null,
+   "why": "Recovery-strategy selection is not just 'should I retry' but 'how, and until when.' Backoff plus jitter protects the recovering service, and a hard budget is what guarantees a real outage surfaces instead of being masked by endless retries.",
+   "contrast": "Two tempting wrong ways: retry immediately in a tight loop, which amplifies the overload and makes the 429s worse; or retry forever with backoff, which turns a thirty-second outage into a worker stuck for hours and quietly hides a persistent failure behind a slow retry.",
+   "exam": "Stems describe a transient spike and a team's proposed retry plan. The correct answer combines backoff, jitter, a bounded attempt/time budget, and a loud failure \u2014 not immediate retries and not unlimited ones.",
+   "takeaway": "Backoff spreads the load, jitter prevents thundering herds, and a hard budget makes sure the failure is heard."
+  },
+  {
+   "task": "4.1",
+   "kind": "check",
+   "title": "Design the retry policy",
+   "inshort": "The right policy has backoff, jitter, a bound, and a loud end.",
+   "lead": "A spike is causing transient 429s and 529s. Choose the retry policy that actually helps.",
+   "points": [],
+   "diagram": "dev4-4",
+   "caption": "The policy that helps a recovering service spreads the load, follows the server's guidance, and stops on a budget \u2014 never a tight loop and never forever.",
+   "code": null,
+   "ask": {
+    "q": "A service hits transient 429 and 529 responses during traffic spikes and the team is adding retries. Which retry policy is most effective?",
+    "options": [
+     "Retry immediately in a tight loop until the request succeeds.",
+     "Use exponential backoff with jitter, honor Retry-After, cap both attempts and total elapsed time, and fail with context once the budget is exhausted.",
+     "Retry with one fixed long delay for every failed request, regardless of the error type.",
+     "Retry indefinitely with backoff so the request never returns a failure to the caller."
+    ],
+    "answer": 1,
+    "why": "Backoff plus jitter eases pressure on the recovering service, honoring Retry-After follows the server's guidance, and a bounded budget guarantees a persistent outage surfaces instead of hanging. Retrying immediately in a tight loop is wrong because it amplifies the very overload causing the 429s and 529s. A fixed delay for every error is wrong because it ignores the server's Retry-After, applies the same wait to non-retryable errors, and wastes time. Retrying indefinitely is wrong because it pins workers forever, inflates cost and latency, and hides an outage that should have been reported.",
+    "trap": "retry_forever_reflex"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "A retry policy is incomplete without a stopping rule \u2014 bound it and fail loudly."
+  },
+  {
+   "task": "4.1",
+   "kind": "teach",
+   "title": "Reproduce it, then prove the fix",
+   "inshort": "Structured logs with a request id make a failure replayable; a small labelled set run before and after a change proves the fix and catches regressions.",
+   "lead": "Two problems sit in the same backlog. One is an intermittent parse failure nobody can reproduce \u2014 the logs only show 'JSON decode error,' never the payload that caused it. The other is a prompt change about to ship that fixes one case; the last time someone shipped a prompt change it silently broke a case that used to work. Both are solved by the same discipline: make the failure reproducible, then test the change against a set.",
+   "points": [
+    "Log structured fields, not free text: a correlation/request id (echo the API's request id), the model and version, every request parameter, the prompt version or hash, token usage, stop reason, and latency \u2014 so failures can be filtered and aggregated by type, model, or prompt version.",
+    "Log the raw request and raw response, not just the parsed result \u2014 a parse failure hides the real output, and without the raw bytes you cannot replay the exact call.",
+    "Capture the exact prompt, params, and model version so a failing call can be reproduced; trace one request id across your integration layer and the API to isolate whether the fault is yours (bad params, parsing, timeout) or the model's (malformed output, refusal, wrong tool arguments).",
+    "Build a small labelled set of representative cases \u2014 including previously failing cases and edge cases \u2014 each with an expected output or a pass criterion.",
+    "Run the set before and after the change and compare the pass rate: a regression check catches a fix that breaks another case, and re-running the same set after model or config changes detects drift. Gate the release on the metric."
+   ],
+   "diagram": "dev4-5",
+   "caption": "Structured fields plus the raw payload are what make an intermittent failure replayable \u2014 without the raw bytes you cannot reproduce the exact call.",
+   "code": "# Golden set: representative + previously-failing cases, each with a check.\nCASES = [\n    {\"in\": case_a, \"expect\": lambda o: is_valid_json(o) and \"order_id\" in o},\n    {\"in\": case_b, \"expect\": lambda o: o.strip() == \"refund\"},   # prior regression\n]\n\ndef score(prompt_version):\n    passed = sum(c[\"expect\"](run(c[\"in\"], prompt_version)) for c in CASES)\n    return passed / len(CASES)\n\nbefore, after = score(\"v3\"), score(\"v4\")   # regression check on the labelled set\nassert after >= before, f\"regression: {before:.0%} -> {after:.0%}\"",
+   "ask": null,
+   "why": "Structured logging is what makes an intermittent failure reproducible, and a labelled set is what makes a change verifiable. Together they replace guesswork with evidence, which is the whole point of debugging and eval.",
+   "contrast": "The tempting wrong way is 'it works on my prompt' \u2014 ship the change and watch production error rates for a week. One happy-path prompt is not an eval, and production is the worst place to discover a regression, because that is where it reaches users.",
+   "exam": "Stems describe an intermittent failure or a change about to ship. The correct answer is structured logging with a request id and raw payloads (for reproduction), or a pre/post eval on a labelled set (for verification) \u2014 not free-text logs, not swallowing the error, and not shipping to watch a dashboard.",
+   "takeaway": "If you cannot replay it you cannot fix it; if you did not run the set before and after, you did not test it."
+  },
+  {
+   "task": "4.1",
+   "kind": "check",
+   "title": "Ship it or eval it?",
+   "inshort": "Reproduction and a regression check, not a production experiment.",
+   "lead": "An intermittent parse failure and a prompt change are both on the desk. Choose the most effective approach.",
+   "points": [],
+   "diagram": "dev4-6",
+   "caption": "Production is where regressions reach users, not where they should be discovered \u2014 run the labelled set before and after, then gate the release.",
+   "code": null,
+   "ask": {
+    "q": "A developer is about to ship a system-prompt change; occasionally the model returns JSON that fails to parse, and a past prompt change once broke a different case that used to work. Which approach is most effective?",
+    "options": [
+     "Ship the change and watch production error rates for a week, rolling back only if users report problems.",
+     "Log the raw request and response with a request id plus model, param, and prompt-version fields, run the change against a small labelled set of cases that includes the previously failing one, compare the pass rate to the pre-change baseline, and gate the release on no regression.",
+     "Wrap the parse in a try/except that returns an empty object on failure so the application keeps running.",
+     "Raise the temperature and re-request until the JSON happens to parse."
+    ],
+    "answer": 1,
+    "why": "Structured logging with a request id and the raw payload makes the parse failure reproducible, and a pre/post run on a labelled set that includes the prior failure is a real regression check before users are exposed. Shipping to production is wrong because production is where regressions reach users, not where they should be discovered. Swallowing the parse error is wrong because it hides the failure and leaves nothing to reproduce or fix. Re-requesting at higher temperature is wrong because it adds cost and nondeterminism without validating against a set or checking for regression.",
+    "trap": "production_as_eval"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Reproduce from structured logs, then prove the change on a labelled set before it ships."
+  },
+  {
+   "task": "4.1",
+   "kind": "recap",
+   "title": "Domain 4 in one page",
+   "inshort": "Classify the error, bound the retry, log so it replays, eval before you ship.",
+   "lead": "That is Domain 4. One discipline in four moves: know what failed, decide whether it is worth retrying, make the failure reproducible, and prove the change on a labelled set before it reaches users.",
+   "points": [
+    "Classify before you retry. Retryable = transient: rate limits, overload, timeouts, 5xx. Non-retryable = deterministic: bad request, auth, permission, request-too-large / context length. The class decides the recovery.",
+    "Model-output failures \u2014 malformed JSON, refusals, wrong tool arguments \u2014 are a separate class: validate and repair, do not treat them as transport errors.",
+    "Retry transient failures with exponential backoff plus jitter, honor Retry-After, and bound both attempts and total time; fail loudly with context when the budget is gone.",
+    "Retry only idempotent work, or use an idempotency key, so a retry cannot duplicate a side effect.",
+    "Structured logs \u2014 request id, model and version, params, prompt version, raw request and response \u2014 are what make a failure reproducible; trace one request id to isolate your integration layer from model output.",
+    "Eval before shipping: a small labelled set including prior failures, run before and after, compared to a baseline and gated in CI; re-run on model or config changes to catch drift."
+   ],
+   "diagram": "dev4-7",
+   "caption": "Know what failed, decide whether it is worth retrying, make the failure reproducible, and prove the change on a labelled set before it reaches users.",
+   "code": null,
+   "ask": null,
+   "why": null,
+   "contrast": null,
+   "exam": "Every Domain 4 stem gives you a failure or a change: an error condition to classify, a retry plan to judge, an intermittent failure to make reproducible, or a change to verify. The correct answer always distinguishes transient from deterministic, bounds the retry, captures the raw payload, or runs the labelled set \u2014 never a blanket retry, an unbounded loop, free-text logs, or a production experiment.",
+   "takeaway": "Classify, bound, log, eval \u2014 the whole 2.6% in four moves."
+  }
+ ]
+}

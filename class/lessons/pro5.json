@@ -1,0 +1,277 @@
+{
+ "domain": "pro5",
+ "title": "Governance, Safety & Risk Management",
+ "weight": "14% of the exam",
+ "goal": "Keep AI systems safe, lawful, and fair by making controls enforceable in the architecture rather than promises in a prompt, and by matching human oversight and risk treatment to the stakes of each action.",
+ "tasks": [
+  "5.1",
+  "5.2",
+  "5.3",
+  "5.4",
+  "5.5"
+ ],
+ "steps": [
+  {
+   "task": "5.1",
+   "kind": "teach",
+   "title": "Guardrails that bind live outside the prompt",
+   "inshort": "A guardrail the model can be talked past is a suggestion; the controls that hold are enforced in the pipeline.",
+   "lead": "A retail bank deploys an internal assistant that can look up accounts and initiate transfers. The risk team's safeguard is a system prompt line: 'Never transfer more than $5,000 without human approval.' During a red-team exercise, a crafted message convinces the model the transfer is pre-approved, and it calls the tool. The prompt said no. The pipeline said yes.",
+   "points": [
+    "Model-level guardrails (system prompt, refusal rules, output formatting) shape behaviour but are probabilistic \u2014 an adversarial or simply unusual input can talk the model past them.",
+    "System-level guardrails are enforced outside the model and cannot be argued with: allow-listed tools, least-privilege scopes, input and output classifiers, schema validation, deterministic policy checks, and hard limits in the execution layer.",
+    "Defence in depth is the design: the prompt is the first and cheapest layer; the deterministic check at the boundary is the layer that still holds when the prompt fails.",
+    "Design rule for irreversible or high-impact actions: the constraint must live somewhere the model cannot edit \u2014 the tool, the gateway, or the approval workflow."
+   ],
+   "diagram": "pro5-1",
+   "caption": "Defence in depth: the prompt shapes behaviour, but the deterministic check at the boundary still holds when it fails.",
+   "code": null,
+   "ask": null,
+   "why": "This is the domain's signature shape: an option that asks the model nicely versus an option that enforces the rule in code or policy. The enforced one wins, because it does not depend on the model behaving.",
+   "contrast": "The tempting wrong way: write a firmer instruction \u2014 'under no circumstances', with worked examples. That raises the odds and lowers the guarantee; the exam is asking for the guarantee.",
+   "exam": "Stems describe a safety rule that lives only in a prompt, then ask what to do. Choose the option that relocates the rule to an enforceable boundary (tool config, gateway, approval gate) over the one that strengthens the wording.",
+   "takeaway": "A control the model can be persuaded to ignore is not a control. Put the rule where the model cannot reach it."
+  },
+  {
+   "task": "5.1",
+   "kind": "check",
+   "title": "The transfer cap that lived only in the prompt",
+   "inshort": "Move the limit out of the model's reach and into the execution path.",
+   "lead": "The bank from the previous step wants the $5,000 transfer cap to actually hold.",
+   "points": [],
+   "diagram": "pro5-2",
+   "caption": "The question turns on where the $5,000 limit lives \u2014 a rule the model can be argued past, or one the execution path enforces.",
+   "code": null,
+   "ask": {
+    "q": "An agent can call a transfer_funds tool. The only safeguard against large transfers is a system prompt line: 'Never transfer more than $5,000 without human approval.' What is the most appropriate action?",
+    "options": [
+     "Enforce the $5,000 limit in the tool and execution layer \u2014 reject over-limit calls and route them to a human approver \u2014 so the cap holds regardless of what the model outputs.",
+     "Rewrite the instruction more forcefully and add few-shot examples of over-limit refusals.",
+     "Add logging to transfer_funds so any over-limit transfer can be audited and reversed after the fact.",
+     "Switch to a more capable model that follows instructions more reliably."
+    ],
+    "answer": 0,
+    "why": "Enforcing the cap at the tool boundary makes it a control the model cannot argue past. Strengthening the prompt (B) only raises the odds and leaves the failure mode intact \u2014 a probabilistic guard is not a limit. Auditing and reversing (C) is detective and compensating at best, and money transfers are irreversible, so the harm lands before the audit fires. A bigger model (D) changes capability, not authorization scope: reliable instruction-following is still instruction-following, and the exam is asking for a guarantee.",
+    "trap": "prompt_as_guardrail"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "If a limit must always hold, enforce it where the model cannot edit it."
+  },
+  {
+   "task": "5.2",
+   "kind": "teach",
+   "title": "Name the failure mode before you mitigate it",
+   "inshort": "LLM systems fail in specific, catalogueable ways \u2014 treat risk as an inventory, not a vibe.",
+   "lead": "A legal-tech startup's research assistant is 95% accurate in demos. Six months in: it cites a repealed statute with total confidence, a user pastes a hidden instruction inside a contract and the agent follows it, and a pinned model version is deprecated with two weeks' notice. Three different failures, none of them simply 'the model is bad.'",
+   "points": [
+    "Inventory the core failure modes: hallucination and confabulation, prompt injection (including indirect injection through retrieved content), data leakage, silent quality drift, cascading errors across agents, over-reliance and automation bias, and model deprecation or version drift.",
+    "LLMs are probabilistic and non-deterministic \u2014 they have no ground-truth lookup, no calibrated self-knowledge, and bounded context \u2014 so 'wrong while sounding certain' is a property to design around, not a one-time bug to patch.",
+    "Do risk work as an inventory: enumerate each mode, estimate likelihood \u00d7 impact, and attach a named control and an owner. A risk with no control is an accepted risk, and accepting it should be a decision, not an accident.",
+    "Aggregate accuracy hides failure: a 96% average can conceal a document type or user segment where the system is dangerously wrong."
+   ],
+   "diagram": "pro5-3",
+   "caption": "Each mode has a different cause and a different control \u2014 name it before you mitigate it.",
+   "code": null,
+   "ask": null,
+   "why": "The exam tests whether you can match a symptom to the correct failure mode and treat the cause, rather than applying a generic 'make it more accurate' fix to the wrong layer.",
+   "contrast": "The tempting wrong way: call every bad output 'hallucination' and answer with a better prompt. Mis-naming the mode sends the fix to the wrong layer \u2014 a prompt tweak cannot repair stale retrieval, an injection, or a deprecated model version.",
+   "exam": "Watch for a stem reporting a confident-but-wrong or segment-specific failure, with options that only tune the prompt or the model choice. The right answer diagnoses the specific mode and fixes that layer.",
+   "takeaway": "You cannot mitigate a failure mode you have not named. Inventory the modes, then control each one."
+  },
+  {
+   "task": "5.2",
+   "kind": "check",
+   "title": "96% overall, dangerously wrong in one segment",
+   "inshort": "An average is not a risk assessment; find the mode and fix its layer.",
+   "lead": "The legal-tech assistant keeps fabricating statutory details for one practice area while its overall test score stays high.",
+   "points": [],
+   "diagram": "pro5-4",
+   "caption": "The decision turns on scope: an overall score that hides the gap versus the segment slice and layer that would expose and fix it.",
+   "code": null,
+   "ask": {
+    "q": "An assistant confidently fabricates policy details for one product line, yet it scores 96% on the overall evaluation set. The team proposes adding 'never make things up' to the system prompt. What is the most appropriate action?",
+    "options": [
+     "Treat it as a specific failure mode: investigate the affected segment (likely retrieval or indexing), fix that layer, and add a disaggregated evaluation slice that would have caught it \u2014 instead of a global prompt plea.",
+     "Add the anti-hallucination instruction and re-run the same overall test set to confirm the score stays high.",
+     "Accept the 96% as within tolerance, since the average is strong.",
+     "Replace the model with a larger one that knows the policy details."
+    ],
+    "answer": 0,
+    "why": "The symptom is segment-specific, so the cause is downstream of the model (typically retrieval feeding it stale or irrelevant chunks) and the evaluation is too coarse to see it. Re-running the aggregate set (B) reproduces the blind spot by construction, and the prompt plea is probabilistic anyway. Accepting the average (C) treats a hidden, high-impact segment failure as noise. A larger model (D) does not repair a broken retrieval or indexing step \u2014 it just fabricates from the same bad context with more fluency.",
+    "trap": "aggregate_masks_segment"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Disaggregate the evaluation so a strong average cannot hide a failing segment."
+  },
+  {
+   "task": "5.3",
+   "kind": "teach",
+   "title": "Human-in-the-loop is a designed control, not a warm body",
+   "inshort": "HITL means a defined trigger, a defined moment, and real authority \u2014 matched to how irreversible the action is.",
+   "lead": "A fintech agent drafts and sends customer communications, including delinquency notices with legal consequences. Someone proposes that 'a human will review the outputs.' Nobody defines which outputs, at what point, with what information, or what the reviewer can actually stop. The review becomes a rubber stamp on notices that have already gone out.",
+   "points": [
+    "Design HITL along three axes: which decisions need a human, at which moment (before an action executes versus after, on a sample), and with what authority and context the human decides.",
+    "Match oversight to stakes: irreversible or high-blast-radius actions (payments, account closure, legal notice, clinical advice) need approval before execution; low-risk reversible outputs can use post-hoc sampling.",
+    "A reviewer needs the evidence and the ability to stop the action. A reviewer who can only comment after the fact is a recorder, not a control.",
+    "'A human reviews everything' is also not a control: it does not scale, it drifts into rubber-stamping, and it erases the automation's value \u2014 the exam's favourite way to make a wrong answer sound responsible."
+   ],
+   "diagram": "pro5-5",
+   "caption": "HITL is three design choices: which decisions, at which moment, with what authority \u2014 matched to how irreversible the action is.",
+   "code": null,
+   "ask": null,
+   "why": "The exam contrasts a designed control \u2014 specific trigger, correct moment, real authority \u2014 against two decoys that merely sound like governance: a review committee that meets later, and blanket review of everything.",
+   "contrast": "The tempting wrong way: add a committee, or route every output through a person. Both sound responsible and neither binds the high-risk action at the moment it matters.",
+   "exam": "Distractors will read 'form a review committee', 'have someone check the outputs', 'require approval for all outputs'. The correct option names the specific high-risk action and places the human before it executes.",
+   "takeaway": "Autonomy should scale with reversibility. Put the human before the irreversible action, not in a meeting after it."
+  },
+  {
+   "task": "5.3",
+   "kind": "check",
+   "title": "The notice that had already been sent",
+   "inshort": "Place the human before the irreversible action, not in a weekly meeting.",
+   "lead": "The fintech team wants the delinquency-notice risk to actually be controlled.",
+   "points": [],
+   "diagram": "pro5-6",
+   "caption": "The question turns on placement: a human who can stop the notice before it sends versus one who only records it afterwards.",
+   "code": null,
+   "ask": {
+    "q": "An agent can auto-send customer communications, including delinquency notices with legal consequences, with no human in the loop. Which human-in-the-loop design is most appropriate?",
+    "options": [
+     "Require human approval before send for high-impact, irreversible messages (legal notices, account actions), while allowing auto-send only for low-risk, reversible drafts \u2014 matching autonomy to blast radius.",
+     "Form a standing review committee that meets weekly to sample emails that have already been sent.",
+     "Have a human review every single email regardless of risk before or after sending.",
+     "Let the model assess its own risk and escalate only when it is unsure."
+    ],
+    "answer": 0,
+    "why": "Tying the approval gate to the irreversible action puts the control exactly where the harm happens. A weekly committee (B) reviews after the notices are already out \u2014 it records history, it does not prevent harm. Reviewing everything (C) does not scale, degrades into rubber-stamping, and destroys the automation's value, so it is governance theatre rather than a control. Self-assessed escalation (D) relies on the model's uncalibrated confidence \u2014 the same overconfidence that produced the bad draft will decide it is fine.",
+    "trap": "review_committee_not_control"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "A gate is only a control if it stands between the decision and the irreversible action."
+  },
+  {
+   "task": "5.4",
+   "kind": "teach",
+   "title": "Compliance is a property of the data path, not the prompt",
+   "inshort": "GDPR, HIPAA and FedRAMP constrain where data flows and under what agreement \u2014 a prompt cannot satisfy a regulator.",
+   "lead": "A health-tech team wants to summarise patient records with Claude. The engineer's plan is to add 'do not retain or store any patient data' to the system prompt and start sending PHI. Legal's problem is not what the model remembers; it is that PHI is leaving through a path with no business associate agreement, no minimum-necessary filter, and no audited boundary.",
+   "points": [
+    "HIPAA: protected health information requires a Business Associate Agreement with every processor that touches it, minimum-necessary data, and audit controls \u2014 obligations that are contractual and architectural, and that exist whether or not the model 'remembers' anything.",
+    "GDPR: you need a lawful basis and a data-processing agreement, data minimisation, a defined retention period, support for erasure and access rights, and rules for cross-border transfer \u2014 again properties of the pipeline, not of a prompt.",
+    "FedRAMP: federal data must stay inside an authorised environment at the appropriate impact level; the control is the boundary and its authorisation, not a promise about behaviour.",
+    "The binding move is to make the data path lawful first \u2014 execute the agreement, de-identify or minimise before the data crosses, enforce retention in platform configuration, and keep an audit trail \u2014 and only then send anything."
+   ],
+   "diagram": "pro5-7",
+   "caption": "Each regulation constrains the data path \u2014 agreement, boundary, minimisation, retention \u2014 not the model's behaviour.",
+   "code": null,
+   "ask": null,
+   "why": "The domain's favourite compliance trap is a prompt that promises a legal property ('don't retain this') where the regulation demands a contract, a boundary, or an enforceable control.",
+   "contrast": "The tempting wrong ways: 'it's internal, so we can send it as-is', or 'we told the model not to keep it'. Both substitute a statement for the agreement, filter, and boundary the regulation actually requires.",
+   "exam": "Stems will offer prompt instructions, disclaimers, and 'trust us' language. The correct answer names the real controls: BAA or DPA, minimisation or de-identification, an authorised boundary, enforced retention, and audit.",
+   "takeaway": "You comply with a data path, not a promise. Contracts, boundaries, and minimisation are the controls; the prompt is not."
+  },
+  {
+   "task": "5.4",
+   "kind": "check",
+   "title": "The prompt that promised HIPAA compliance",
+   "inshort": "A retention instruction is not a business associate agreement.",
+   "lead": "The health-tech engineer wants to ship the patient-record summariser this sprint.",
+   "points": [],
+   "diagram": "pro5-8",
+   "caption": "The decision turns on whether the data path is made lawful first \u2014 agreement, minimisation, boundary \u2014 or merely promised.",
+   "code": null,
+   "ask": {
+    "q": "A health-tech team wants Claude to summarise patient records. The engineer says: 'We'll instruct the model not to store the data, so we're HIPAA-compliant.' What is the most appropriate action?",
+    "options": [
+     "Establish the binding controls: execute a BAA with the processor, send only the minimum necessary data through an authorised boundary (or de-identify first), and enforce retention and audit in platform configuration and contracts \u2014 a prompt promise is not a control.",
+     "Add 'do not retain or store any patient data' to the system prompt and proceed.",
+     "Abandon the project, because LLM systems can never lawfully touch PHI.",
+     "Have a clinician review every generated summary, and otherwise send PHI as-is."
+    ],
+    "answer": 0,
+    "why": "Compliance is a property of the data path, so the fix is contractual and architectural: a BAA, minimisation or de-identification, an authorised boundary, and enforced retention with audit. The prompt instruction (B) changes nothing a regulator inspects and creates no agreement or boundary. Abandoning the work (C) is the exam's 'skip it entirely' decoy \u2014 a compliant path exists, and the right answer enables the work safely. Clinician review (D) improves output quality but does not make an unlawful data flow lawful: review is not a BAA, a filter, or an authorised boundary.",
+    "trap": "prompt_retention_promise"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Paper and boundary first: BAA or DPA, minimisation, an authorised path, enforced retention \u2014 then send."
+  },
+  {
+   "task": "5.5",
+   "kind": "teach",
+   "title": "Fairness is measured and disclosed, not asserted",
+   "inshort": "Bias lives in data and proxies; the only credible answer is disaggregated measurement, mitigation, and transparency.",
+   "lead": "A bank's loan-triage assistant scores 97% on the overall evaluation and ships. Months later an audit shows it under-performs badly for applicants in one postcode \u2014 a proxy for a protected group. Nobody lied; the team measured an average and called it fairness.",
+   "points": [
+    "Bias enters through training data, historical labels, proxy variables (postcode, school, name), and automation bias \u2014 users over-trusting a confident system. It is a data and measurement problem before it is a model problem.",
+    "Fairness must be measured with disaggregated metrics across relevant subgroups, not a single aggregate accuracy number that hides the weak segment.",
+    "Mitigation and governance: remove or de-weight proxy features, re-balance data, route high-stakes decisions to human review, document known limitations, and provide a route to contest an adverse decision.",
+    "Transparency has two audiences: the people affected (disclose that AI is used, on what basis, and how to appeal) and the organisation (documented limitations and evaluation results, so the risk is visible and owned)."
+   ],
+   "diagram": "pro5-9",
+   "caption": "An average is not a fairness result: measure across subgroups, mitigate the disparity, and disclose the limits.",
+   "code": null,
+   "ask": null,
+   "why": "The exam rewards measurement and disclosure over reassurance. 'We tested it and it's accurate' is the decoy; subgroup disparity plus the honest disclosure of limitations is the answer.",
+   "contrast": "The tempting wrong ways: add 'be fair and unbiased' to the prompt, or add a disclaimer while shipping the disparity. Asserting fairness changes nothing measured; disclosing without mitigating leaves the harm in place.",
+   "exam": "Look for an aggregate score paired with evidence of subgroup harm. The right answer disaggregates, mitigates, and discloses with a contest path \u2014 not 'ship it, the average is high.'",
+   "takeaway": "An average is not a fairness result. Measure across groups, mitigate the disparity, and disclose the limits."
+  },
+  {
+   "task": "5.5",
+   "kind": "check",
+   "title": "97% overall, failing one postcode",
+   "inshort": "Disparity across groups outranks a flattering average.",
+   "lead": "The bank's leadership argues the loan-triage model is accurate enough to keep shipping.",
+   "points": [],
+   "diagram": "pro5-10",
+   "caption": "The question turns on whether a strong average settles it, or whether the measured subgroup disparity demands mitigation and disclosure.",
+   "code": null,
+   "ask": {
+    "q": "A loan-triage model scores 98% overall on its evaluation set, but a fairness audit shows it rejects qualified applicants from one demographic at twice the rate. Leadership says 'the accuracy is fine, ship it.' What is the most appropriate action?",
+    "options": [
+     "Condition the deployment on disaggregated evaluation across subgroups, mitigate the disparity, and disclose the system's role and limitations to affected people with a route to contest decisions.",
+     "Ship it, because 98% overall accuracy proves the model is fair.",
+     "Ship it but add a disclaimer that AI is used in the hiring or lending process.",
+     "Add an instruction telling the model to be fair and unbiased."
+    ],
+    "answer": 0,
+    "why": "A measured disparity across groups is the finding; the response is to measure it fully, mitigate it, and disclose with a contest path. The aggregate score (B) is exactly what hid the disparity, so it cannot prove fairness \u2014 a high average and a subgroup failure coexist. A disclaimer alone (C) is transparency without mitigation: it tells people they were harmed but leaves the harm in place. A prompt instruction (D) is unmeasurable and non-deterministic and does not touch the data or proxies that produced the disparity.",
+    "trap": "fairness_by_assertion"
+   },
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Mitigate the measured disparity and disclose the limits \u2014 do not trade a subgroup's fairness for a flattering average."
+  },
+  {
+   "task": "5.5",
+   "kind": "recap",
+   "title": "Domain 5 in one page",
+   "inshort": "Enforceable controls, an inventoried risk set, stakes-matched oversight, a lawful data path, and measured fairness.",
+   "lead": "That is Domain 5. Five tasks, one throughline: a control only counts if it binds. Put the guardrail where the model cannot reach it, name the specific failure mode before you mitigate it, place humans before irreversible actions with real authority, make the data path lawful rather than promising it, and measure fairness across groups rather than asserting it. Every stem in this domain is a promise that sounds compliant measured against the control that actually holds.",
+   "points": [
+    "Guardrails that hold live outside the model: allow-listed tools, least privilege, input/output validators, and approval gates. The prompt is the first layer, never the guarantee.",
+    "Risk is an inventory of specific failure modes \u2014 hallucination, injection, leakage, drift, cascade, over-reliance, deprecation \u2014 each with a likelihood \u00d7 impact estimate, a named control, and an owner.",
+    "Human-in-the-loop is a designed control: a defined trigger placed before irreversible actions, with the evidence and the authority to stop them. Committees and blanket review are decoys.",
+    "Compliance is a property of the data path \u2014 BAA or DPA, minimisation or de-identification, an authorised boundary, enforced retention, and audit. A prompt cannot satisfy GDPR, HIPAA, or FedRAMP.",
+    "Fairness is measured across subgroups and disclosed, not asserted: mitigate the disparity, document limitations, and give affected people a route to contest. Across every task, the right answer enables the work safely \u2014 it neither skips it nor merely promises."
+   ],
+   "diagram": "pro5-11",
+   "caption": "Every Domain 5 stem is a promise that sounds compliant weighed against the control that actually holds.",
+   "code": null,
+   "ask": null,
+   "why": null,
+   "contrast": null,
+   "exam": null,
+   "takeaway": "Enforce controls where the model cannot reach them, inventory the risks, put humans before irreversible actions, keep the data path lawful, and measure fairness \u2014 the exam rewards the control that binds over the promise that sounds compliant."
+  }
+ ]
+}
