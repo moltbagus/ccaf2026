@@ -78,11 +78,7 @@ missing.</p>
   <li><span class="ltr">B</span><span>Rewrite both descriptions to state precisely what each returns and when to use it, so the two are mutually distinct with no overlap.</span></li>
   <li><span class="ltr">C</span><span>Merge them into one tool that takes a mode parameter, letting the model pick the behavior.</span></li>
   <li><span class="ltr">D</span><span>Raise max_tokens so the model has more room to reason about which tool to pick.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> The model selects among tools by matching the request against their descriptions, so two near-identical descriptions split the decision and it guesses. Distinct descriptions fix selection at the layer the model actually controls; a third tool (A) or a mode-parameter merge (C) adds more ambiguity, and a larger token budget (D) changes nothing because the model is not out of room, it is out of signal.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 8.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> The model selects among tools by matching the request against their descriptions, so two near-identical descriptions split the decision and it guesses. Distinct descriptions fix selection at the layer the model actually controls; a third tool (A) or a mode-parameter merge (C) adds more ambiguity, and a larger token budget (D) changes nothing because the model is not out of room, it is out of signal.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 8.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q2</h3>
 <p>A <code>schedule_meeting</code> tool accepts a <code>timezone</code> parameter in its handler, but the model
 almost never sends it, so meetings land in the wrong zone. The developer confirms the
@@ -93,11 +89,7 @@ parameter exists in the Python function signature.</p>
   <li><span class="ltr">B</span><span>Add a second tool, <code>schedule_meeting_with_timezone</code>, so the model has an explicit option.</span></li>
   <li><span class="ltr">C</span><span>Add <code>timezone</code> to the tool's <code>input_schema</code> with its type and description, since the model only reliably sends arguments the schema declares.</span></li>
   <li><span class="ltr">D</span><span>Have the handler silently default to UTC and never ask the model for a timezone.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> The model shapes arguments from the JSON Schema, not from your function signature, so a parameter absent from <code>input_schema</code> will not be sent reliably. Declaring it in the schema fixes the contract; a prompt instruction (A) is probabilistic guidance, a parallel tool (B) adds another lookalike, and a silent default (D) writes the wrong value instead of asking for the right one.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 8.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> The model shapes arguments from the JSON Schema, not from your function signature, so a parameter absent from <code>input_schema</code> will not be sent reliably. Declaring it in the schema fixes the contract; a prompt instruction (A) is probabilistic guidance, a parallel tool (B) adds another lookalike, and a silent default (D) writes the wrong value instead of asking for the right one.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 8.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q3</h3>
 <p>A <code>create_issue</code> tool returns the generic string &quot;Error: request failed&quot; whenever an
 argument is rejected. The agent reads it, re-sends the identical arguments, gets the same
@@ -108,11 +100,7 @@ string, and loops until the retry limit stops it.</p>
   <li><span class="ltr">B</span><span>Increase the retry limit so the agent has more attempts to get the argument right.</span></li>
   <li><span class="ltr">C</span><span>Add a tool per failure case so each error has its own dedicated path.</span></li>
   <li><span class="ltr">D</span><span>Loosen validation so any value is accepted and the call never fails.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> A specific, flagged error teaches the model what to change, so the next attempt differs from the last. A higher retry limit (B) repeats the same opaque failure more times; a tool per case (C) multiplies surface without adding signal; removing validation (D) hides a real data problem and can write a wrong record.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 8.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> A specific, flagged error teaches the model what to change, so the next attempt differs from the last. A higher retry limit (B) repeats the same opaque failure more times; a tool per case (C) multiplies surface without adding signal; removing validation (D) hides a real data problem and can write a wrong record.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 8.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q4</h3>
 <p>An <code>update_quantity</code> tool passes the raw model arguments straight to the database. When
 the model sends the string <code>&quot;5&quot;</code> or a negative number, the insert throws mid-write and the
@@ -123,11 +111,7 @@ tool returns the raw SQL error text.</p>
   <li><span class="ltr">B</span><span>Add a prompt instruction telling the model to always send valid values.</span></li>
   <li><span class="ltr">C</span><span>Wrap the whole handler in try/except and return "something went wrong."</span></li>
   <li><span class="ltr">D</span><span>Validate arguments against the schema (type, range, enum) before executing, and return a specific error the model can act on.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> Checking types, ranges, and enums at the boundary stops a bad value before it reaches the database and lets the tool return a message that names the fix. Leaning on the database (A) leaks an opaque error the model cannot map to a correction; a prompt instruction (B) is guidance the model can still miss; a catch-all message (C) is the same useless signal the model already receives.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 8.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Checking types, ranges, and enums at the boundary stops a bad value before it reaches the database and lets the tool return a message that names the fix. Leaning on the database (A) leaks an opaque error the model cannot map to a correction; a prompt instruction (B) is guidance the model can still miss; a catch-all message (C) is the same useless signal the model already receives.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 8.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q5</h3>
 <p>An agent can send email through a <code>send_email</code> tool. Policy requires a human to approve
 each send before it leaves the system, without changing the model&#39;s behavior otherwise.</p>
@@ -137,11 +121,7 @@ each send before it leaves the system, without changing the model&#39;s behavior
   <li><span class="ltr">B</span><span>Use a tool-approval pattern in the harness: intercept the <code>send_email</code> tool_use, obtain human approval, then execute and return the <code>tool_result</code>.</span></li>
   <li><span class="ltr">C</span><span>Give the model a <code>request_approval</code> tool it should call before sending.</span></li>
   <li><span class="ltr">D</span><span>Route all email through a subagent whose prompt always asks for approval.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> Approval is a control that belongs to the harness, which can deterministically hold a tool call and gate its execution. Prompt instructions (A) and a voluntary approval tool (C) are probabilistic and can be skipped; a subagent (D) is the same probabilistic mechanism with extra latency.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 8.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Approval is a control that belongs to the harness, which can deterministically hold a tool call and gate its execution. Prompt instructions (A) and a voluntary approval tool (C) are probabilistic and can be skipped; a subagent (D) is the same probabilistic mechanism with extra latency.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 8.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q6</h3>
 <p>A <code>get_forecast</code> tool fails two ways: sometimes the model sent a malformed date it could
 fix, sometimes the upstream API is down and no retry will help. Today both return the same
@@ -152,11 +132,7 @@ generic message, and the agent retries endlessly during outages.</p>
   <li><span class="ltr">B</span><span>Always mark both as <code>is_error</code> and let the model retry either way.</span></li>
   <li><span class="ltr">C</span><span>Distinguish the two: for a validation error, name the field and the valid format so the model can fix the call; for a system error, state plainly that retrying will not help.</span></li>
   <li><span class="ltr">D</span><span>Add an internal retry wrapper that re-calls the upstream API on any failure.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> A validation error is fixable by the model and should describe the correction; a system error is not, and saying so stops the loop. One generic message (A) or one blanket flag (B) gives the model no basis to tell them apart, and an internal retry wrapper (D) hides an outage behind latency and still fails.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 8.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> A validation error is fixable by the model and should describe the correction; a system error is not, and saying so stops the loop. One generic message (A) or one blanket flag (B) gives the model no basis to tell them apart, and an internal retry wrapper (D) hides an outage behind latency and still fails.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 8.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q7</h3>
 <p>A single tool named <code>process</code> is described as &quot;Processes data&quot; and handles orders, refunds,
 and shipments by a <code>mode</code> argument. The agent frequently sends the wrong mode with fields
@@ -167,11 +143,7 @@ that do not match it.</p>
   <li><span class="ltr">B</span><span>Keep one tool but add few-shot examples of each mode to the prompt.</span></li>
   <li><span class="ltr">C</span><span>Add more modes to the <code>process</code> tool to cover the cases it misses.</span></li>
   <li><span class="ltr">D</span><span>Rename the tool to <code>process_anything</code> for clarity.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> A vague umbrella tool forces the model to infer both the mode and the fields from one thin description. Purpose-specific tools carry a description and a schema matched to each job, so selection and argument shaping both improve; few-shot examples (B) paper over the ambiguity, more modes (C) widen it, and a clearer name (D) does not touch the schema that shapes arguments.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 8.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> A vague umbrella tool forces the model to infer both the mode and the fields from one thin description. Purpose-specific tools carry a description and a schema matched to each job, so selection and argument shaping both improve; few-shot examples (B) paper over the ambiguity, more modes (C) widen it, and a clearer name (D) does not touch the schema that shapes arguments.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 8.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q8</h3>
 <p>When the model cannot find what it needs, a developer&#39;s reflex has been to add a tool per
 case. The tool list has grown to thirty near-duplicate search helpers, and selection is now
@@ -182,11 +154,7 @@ worse than it was with three.</p>
   <li><span class="ltr">B</span><span>Keep all thirty but raise max_tokens so the model can reason over the full list.</span></li>
   <li><span class="ltr">C</span><span>Give the model a meta-tool that picks among the thirty.</span></li>
   <li><span class="ltr">D</span><span>Consolidate to a small set of well-described, non-overlapping tools rather than many thin wrappers.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> The more tools that sound alike, the more the model guesses, and every schema costs context on every request, so consolidation fixes both accuracy and cost. Adding more tools (A) increases the ambiguity that caused the failures; a larger token budget (B) pays more for the same over-broad set; a meta-tool (C) hides the ambiguity behind one more decision.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 8.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> The more tools that sound alike, the more the model guesses, and every schema costs context on every request, so consolidation fixes both accuracy and cost. Adding more tools (A) increases the ambiguity that caused the failures; a larger token budget (B) pays more for the same over-broad set; a meta-tool (C) hides the ambiguity behind one more decision.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 8.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q9</h3>
 <p>A team is authoring an MCP server. They want to expose callable functions the model
 invokes, a browsable set of documents the client can attach as context, and a set of
@@ -197,11 +165,7 @@ reusable user-selected workflows.</p>
   <li><span class="ltr">B</span><span>Everything as tools, since tools are the most flexible primitive.</span></li>
   <li><span class="ltr">C</span><span>Functions as tools (model-invoked), documents as resources (application-controlled context addressed by URI), workflows as prompts (user-invoked templates).</span></li>
   <li><span class="ltr">D</span><span>Everything as prompts so the user drives every step.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> MCP has three primitives with distinct control: tools are model-invoked functions, resources are application-controlled context addressed by URI, and prompts are user-invoked templates closer to a slash command. Flattening everything into tools (B) or prompts (D) misuses the control model the primitives exist to express, and A swaps the roles.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 8.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> MCP has three primitives with distinct control: tools are model-invoked functions, resources are application-controlled context addressed by URI, and prompts are user-invoked templates closer to a slash command. Flattening everything into tools (B) or prompts (D) misuses the control model the primitives exist to express, and A swaps the roles.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 8.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q10</h3>
 <p>An MCP server wraps a local command-line tool on a developer&#39;s machine. It must run as a
 subprocess of the host application with no network exposure.</p>
@@ -211,11 +175,7 @@ subprocess of the host application with no network exposure.</p>
   <li><span class="ltr">B</span><span>Streamable HTTP so any client on the network can reach it.</span></li>
   <li><span class="ltr">C</span><span>A TCP socket bound to 0.0.0.0.</span></li>
   <li><span class="ltr">D</span><span>Polling a shared database table for requests.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Transport follows location: a local process that must not be networked speaks over stdin/stdout as a stdio server. HTTP (B) and a socket on 0.0.0.0 (C) expose it to the network the requirement forbids, and database polling (D) is not an MCP transport at all.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 8.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Transport follows location: a local process that must not be networked speaks over stdin/stdout as a stdio server. HTTP (B) and a socket on 0.0.0.0 (C) expose it to the network the requirement forbids, and database polling (D) is not an MCP transport at all.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 8.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q11</h3>
 <p>A team needs Claude to call an internal pricing service. Three separate Claude
 applications need the same pricing operations, and the pricing team wants to version and
@@ -226,11 +186,7 @@ deploy them on its own schedule.</p>
   <li><span class="ltr">B</span><span>Build an MCP server that exposes the pricing operations, so all three applications connect to one server the pricing team maintains.</span></li>
   <li><span class="ltr">C</span><span>Paste the current prices into each application's context window.</span></li>
   <li><span class="ltr">D</span><span>Rely on a built-in web-search tool to find the prices.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> The stem names reuse across applications and independent maintenance, which is exactly what an MCP server provides: one implementation, many clients, one lifecycle. Copying (A) is three diverging copies to fix; pasting prices (C) gives no live access and wastes context; a built-in search tool (D) cannot reach an internal API.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 8.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> The stem names reuse across applications and independent maintenance, which is exactly what an MCP server provides: one implementation, many clients, one lifecycle. Copying (A) is three diverging copies to fix; pasting prices (C) gives no live access and wastes context; a built-in search tool (D) cannot reach an internal API.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 8.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q12</h3>
 <p>A developer building an MCP server asks where the model loop and the connection should
 live.</p>
@@ -240,11 +196,7 @@ live.</p>
   <li><span class="ltr">B</span><span>The server must own both the model loop and the tools so the client stays thin.</span></li>
   <li><span class="ltr">C</span><span>The model connects directly to the server with no host application involved.</span></li>
   <li><span class="ltr">D</span><span>The host application (client) owns the connection and the model loop; the server you author exposes capability and answers requests.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> The client-versus-server split is the point: the host application runs the model loop and holds the connection, while the server only exposes capability and answers requests. Putting the loop in the server (A, B) inverts the roles, and a model connecting directly to the server (C) removes the host that owns the loop.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 8.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> The client-versus-server split is the point: the host application runs the model loop and holds the connection, while the server only exposes capability and answers requests. Putting the loop in the server (A, B) inverts the roles, and a model connecting directly to the server (C) removes the host that owns the loop.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 8.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q13</h3>
 <p>A developer wants Claude to read the contents of a local file the user points to in Claude
 Code. They propose building a custom MCP server to expose file reading.</p>
@@ -254,11 +206,7 @@ Code. They propose building a custom MCP server to expose file reading.</p>
   <li><span class="ltr">B</span><span>Write a custom tool that shells out to <code>cat</code>.</span></li>
   <li><span class="ltr">C</span><span>Use the built-in file-reading capability, since it already does this with nothing to build or maintain.</span></li>
   <li><span class="ltr">D</span><span>Add the file contents to the system prompt on every request.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> If a built-in already provides the capability, it wins outright: zero build and zero maintenance. A custom server (A) or a shell-out tool (B) adds runtime and upkeep for something that already exists, and preloading file contents (D) is not live access and wastes context.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 8.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> If a built-in already provides the capability, it wins outright: zero build and zero maintenance. A custom server (A) or a shell-out tool (B) adds runtime and upkeep for something that already exists, and preloading file contents (D) is not live access and wastes context.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 8.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q14</h3>
 <p>A team wants Claude to always write commit messages in a fixed house style with a specific
 structure. No external system is contacted and no live data is needed. A developer
@@ -269,11 +217,7 @@ proposes building an MCP server.</p>
   <li><span class="ltr">B</span><span>Build the MCP server exposing a <code>format_commit_message</code> tool.</span></li>
   <li><span class="ltr">C</span><span>Write a custom tool that returns the style guide text.</span></li>
   <li><span class="ltr">D</span><span>Add a new built-in tool for commit formatting.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> A style guide is behavior, not capability: it needs no code, no external system, and no reuse across apps, so a Skill or project instructions carries it with no maintenance. An MCP server (B) and a custom tool (C) both add runtime for text, and a developer cannot add built-in tools (D).
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 8.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> A style guide is behavior, not capability: it needs no code, no external system, and no reuse across apps, so a Skill or project instructions carries it with no maintenance. An MCP server (B) and a custom tool (C) both add runtime for text, and a developer cannot add built-in tools (D).<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 8.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q15</h3>
 <p>A single application needs a live call to the company&#39;s internal holiday-calendar API to
 answer scheduling questions. No other client will ever need it.</p>
@@ -283,11 +227,7 @@ answer scheduling questions. No other client will ever need it.</p>
   <li><span class="ltr">B</span><span>Wire a custom tool into this application that calls the API, since only one app needs it and an MCP server would add packaging overhead with no reuse.</span></li>
   <li><span class="ltr">C</span><span>Give the agent the built-in web-search tool and let it find holidays.</span></li>
   <li><span class="ltr">D</span><span>Paste the holiday list into the context window.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> A custom tool wired into one application gives precise control and live access without packaging a server no one else will reuse. An MCP server (A) is the highest-setup option, justified only by reuse or an independent lifecycle, neither of which the stem names; a web-search tool (C) cannot reach the internal API, and pasting data (D) is not live.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 8.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> A custom tool wired into one application gives precise control and live access without packaging a server no one else will reuse. An MCP server (A) is the highest-setup option, justified only by reuse or an independent lifecycle, neither of which the stem names; a web-search tool (C) cannot reach the internal API, and pasting data (D) is not live.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 8.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q16</h3>
 <p>A general-purpose agent is loaded with every tool in the organization, around sixty, &quot;just
 in case.&quot; Tool selection is now unreliable and each request is expensive.</p>
@@ -297,11 +237,7 @@ in case.&quot; Tool selection is now unreliable and each request is expensive.</
   <li><span class="ltr">B</span><span>Keep all sixty and raise max_tokens so the model can reason over the full list.</span></li>
   <li><span class="ltr">C</span><span>Merge all sixty into one tool that takes a mode parameter.</span></li>
   <li><span class="ltr">D</span><span>Scope the agent to the small set of tools its job needs, with distinct descriptions, and let other agents own other capabilities.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> Every tool&#39;s name, description, and schema is sent on every request, so tool count is a context and cost budget, and a large overlapping set degrades selection. Scoping fixes both accuracy and cost; adding tools (A) worsens the ambiguity, a larger token budget (B) pays more for the same set, and one mode-parameter tool (C) hides distinct capabilities behind a single vague description.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 8.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Every tool&#39;s name, description, and schema is sent on every request, so tool count is a context and cost budget, and a large overlapping set degrades selection. Scoping fixes both accuracy and cost; adding tools (A) worsens the ambiguity, a larger token budget (B) pays more for the same set, and one mode-parameter tool (C) hides distinct capabilities behind a single vague description.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 8.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q17</h3>
 <p>A platform team is configuring a fleet of agents and proposes giving every agent the full
 tool catalogue so any agent can handle any request.</p>
@@ -311,11 +247,7 @@ tool catalogue so any agent can handle any request.</p>
   <li><span class="ltr">B</span><span>Give every agent every tool so no request is unhandleable.</span></li>
   <li><span class="ltr">C</span><span>Give every agent every tool but describe them all identically for consistency.</span></li>
   <li><span class="ltr">D</span><span>Give every agent every tool and add a prompt telling it to ignore irrelevant ones.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Loading every tool maximizes cost and blast radius while making the correct tool harder to find, so each agent should hold only what its job needs. Giving everyone everything (B) is the classic anti-pattern, identical descriptions (C) make selection worse, and a prompt to ignore irrelevant tools (D) pays the full context cost and still leaves the ambiguity.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 8.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Loading every tool maximizes cost and blast radius while making the correct tool harder to find, so each agent should hold only what its job needs. Giving everyone everything (B) is the classic anti-pattern, identical descriptions (C) make selection worse, and a prompt to ignore irrelevant tools (D) pays the full context cost and still leaves the ambiguity.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 8.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q18</h3>
 <p>A billing agent occasionally needs to look up a customer&#39;s shipping address. A developer
 proposes adding the entire logistics tool set to the billing agent so it is covered.</p>
@@ -325,11 +257,7 @@ proposes adding the entire logistics tool set to the billing agent so it is cove
   <li><span class="ltr">B</span><span>Add the logistics tools and a prompt telling the agent to ignore the ones it does not need.</span></li>
   <li><span class="ltr">C</span><span>Add only the single address-lookup tool the billing agent needs, keeping the set minimal and distinct.</span></li>
   <li><span class="ltr">D</span><span>Create a second billing agent with the same tools to spread the load.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Add the smallest capability that satisfies the need: one address-lookup tool keeps the set minimal and distinct and pays context only for what is used. The full logistics set (A) spends context on every request for tools the job never calls, a prompt to ignore them (B) still pays that cost, and a duplicate agent (D) adds a second maintainer without changing the tool set.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 8.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Add the smallest capability that satisfies the need: one address-lookup tool keeps the set minimal and distinct and pays context only for what is used. The full logistics set (A) spends context on every request for tools the job never calls, a prompt to ignore them (B) still pays that cost, and a duplicate agent (D) adds a second maintainer without changing the tool set.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 8.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q19</h3>
 <p>An agent needs current news. The platform already provides a built-in web-search tool. A
 developer proposes building a custom news-scraping MCP server with curated sources.</p>
@@ -339,11 +267,7 @@ developer proposes building a custom news-scraping MCP server with curated sourc
   <li><span class="ltr">B</span><span>Write a custom tool that returns hard-coded headlines.</span></li>
   <li><span class="ltr">C</span><span>Paste today's headlines into the system prompt.</span></li>
   <li><span class="ltr">D</span><span>Use the built-in web-search tool, since it already provides the capability with nothing to build or maintain.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> When a built-in already provides the capability, it wins: no build, no maintenance. A custom MCP server (A) or a scraping tool (B) adds runtime and upkeep for something already available, and pasting headlines (C) is not live and goes stale immediately.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 8.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> When a built-in already provides the capability, it wins: no build, no maintenance. A custom MCP server (A) or a scraping tool (B) adds runtime and upkeep for something already available, and pasting headlines (C) is not live and goes stale immediately.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 8.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q20</h3>
 <p>A team wants Claude to (i) follow a fixed escalation procedure and (ii) query a live
 ticketing system that three separate applications need. They propose solving both with one
@@ -354,12 +278,8 @@ large MCP server.</p>
   <li><span class="ltr">B</span><span>Express the procedure as a Skill (pure behavior) and expose the ticketing queries as an MCP server (shared live capability across three clients).</span></li>
   <li><span class="ltr">C</span><span>Put both in the system prompt of each application.</span></li>
   <li><span class="ltr">D</span><span>Build two MCP servers, one per concern.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> Match each need by reach and cost: a procedure is pure behavior and belongs in a Skill, while a live capability shared by three clients justifies an MCP server. Bundling the procedure into the server (A) adds runtime for text, prompts in each app (C) give neither reuse nor live access, and two servers (D) over-builds the behavior half that needs no server at all.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 8.3
-<strong>Source:</strong> newly written</p>
-<div class="foot">Built 2026-10-03 15:44 · source: banks/dev8-questions.md</div></main></div>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Match each need by reach and cost: a procedure is pure behavior and belongs in a Skill, while a live capability shared by three clients justifies an MCP server. Bundling the procedure into the server (A) adds runtime for text, prompts in each app (C) give neither reuse nor live access, and two servers (D) over-builds the behavior half that needs no server at all.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 8.3<br><strong>Source:</strong> newly written</p></div></details>
+<div class="foot">Built 2026-10-03 15:46 · source: banks/dev8-questions.md</div></main></div>
 <div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
 <script>
 const q=document.getElementById('q');

@@ -78,11 +78,7 @@ most capable model &quot;so quality is never the bottleneck.&quot;</p>
   <li><span class="ltr">B</span><span>Route the high-volume tagging to the fast, cheap tier and the editorial risk review to the most capable tier, tuning thinking effort per route.</span></li>
   <li><span class="ltr">C</span><span>Run both on the fast, cheap tier — if tagging passes quality, the review will too.</span></li>
   <li><span class="ltr">D</span><span>Run both on the mid-tier with thinking disabled so the tagging SLA is met.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> Capability is not the binding constraint on five million well-specified tags — the SLA and the cost ceiling are — so the capable-everywhere answer inflates cost and latency for no gain, while the review&#39;s constraint is quality and it earns the top tier. C puts the hardest judgment on the weakest tier; D collapses two different constraints into one and disables the reasoning the review depends on.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 2.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Capability is not the binding constraint on five million well-specified tags — the SLA and the cost ceiling are — so the capable-everywhere answer inflates cost and latency for no gain, while the review&#39;s constraint is quality and it earns the top tier. C puts the hardest judgment on the weakest tier; D collapses two different constraints into one and disables the reasoning the review depends on.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 2.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q2</h3>
 <p>A planning route in a scheduling agent is missing correct multi-step dependencies. The route
 already runs on the mid-tier workhorse, and the team wants better reasoning without moving to a
@@ -93,11 +89,7 @@ larger, slower, costlier model that would breach the service&#39;s cost ceiling.
   <li><span class="ltr">B</span><span>Shorten the system prompt so fewer instructions compete for the model's attention.</span></li>
   <li><span class="ltr">C</span><span>Add chain-of-thought examples to every route, including the high-volume extraction route.</span></li>
   <li><span class="ltr">D</span><span>Raise thinking effort on the planning route only, keeping the mid-tier model and the other routes unchanged.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> On models that support adaptive thinking, reasoning depth is a per-route dial, so the planning route buys more reasoning without climbing to a bigger model and breaching the cost ceiling. A pays the top-tier price across all traffic for a fix one route needs; B trades a capability problem for a prompt-size change; C bloats routes that never needed reasoning and makes the prompt cache-hostile.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 2.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> On models that support adaptive thinking, reasoning depth is a per-route dial, so the planning route buys more reasoning without climbing to a bigger model and breaching the cost ceiling. A pays the top-tier price across all traffic for a fix one route needs; B trades a capability problem for a prompt-size change; C bloats routes that never needed reasoning and makes the prompt cache-hostile.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 2.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q3</h3>
 <p>A bank runs a single assistant on one global model tier for three routes: high-volume
 transaction categorisation (cost- and latency-bound), customer-facing summaries
@@ -110,11 +102,7 @@ subtle patterns.</p>
   <li><span class="ltr">B</span><span>Move everything to the fast, cheap tier and rely on retrieval to supply the missing judgment.</span></li>
   <li><span class="ltr">C</span><span>Move everything to the most capable tier so no route is under-served.</span></li>
   <li><span class="ltr">D</span><span>Keep one global tier but raise temperature on the fraud route so it explores more.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> The two failures have opposite causes — over-provisioning the cheap route and under-provisioning the hard one — which a single global tier cannot fix; per-route selection matches each constraint. B starves the judgment-heavy route; C over-spends on the volume route; D confuses sampling randomness with reasoning depth.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 2.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> The two failures have opposite causes — over-provisioning the cheap route and under-provisioning the hard one — which a single global tier cannot fix; per-route selection matches each constraint. B starves the judgment-heavy route; C over-spends on the volume route; D confuses sampling randomness with reasoning depth.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 2.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q4</h3>
 <p>A well-specified field-extraction route pulls dates, amounts, and IDs from clean invoices against
 a fixed JSON schema. It currently runs on the most capable model, costs are rising, and evals
@@ -125,11 +113,7 @@ show the fast tier matches it on this schema. The schema and inputs are stable a
   <li><span class="ltr">B</span><span>Keep the most capable model but reduce the input by truncating each invoice to its first page.</span></li>
   <li><span class="ltr">C</span><span>Downgrade this route to the fast, cheap tier — the task is well-specified and evals confirm parity — while reserving the capable tier for routes where judgment binds.</span></li>
   <li><span class="ltr">D</span><span>Downgrade every route to the fast tier at once so cost savings are maximised.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> When a route is well-specified and evals show the cheaper tier matches, the capability upgrade buys nothing and the cost ceiling is the binding constraint; the change should be scoped to the route the evidence covers. A pays for capability the task does not use; B drops content that may hold fields; D generalises a route-specific eval to routes it never measured.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 2.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> When a route is well-specified and evals show the cheaper tier matches, the capability upgrade buys nothing and the cost ceiling is the binding constraint; the change should be scoped to the route the evidence covers. A pays for capability the task does not use; B drops content that may hold fields; D generalises a route-specific eval to routes it never measured.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 2.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q5</h3>
 <p>A legal-tech assistant drafts contract summaries. Its system prompt is a 2,000-token block of
 adjectives — &quot;be accurate, be conservative, be helpful&quot; — and reviewers complain that
@@ -141,11 +125,7 @@ summaries come out inconsistently.</p>
   <li><span class="ltr">B</span><span>Restructure the system prompt as a contract — role and scope, explicit criteria for what is in and out of scope with boundary examples, an output format, and refusal/escalation behaviour — and enforce the hard boundaries outside the prompt.</span></li>
   <li><span class="ltr">C</span><span>Move the entire policy block into a few-shot example so the model treats it as a pattern.</span></li>
   <li><span class="ltr">D</span><span>Switch to a larger model, since it will follow the existing instructions more reliably.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> Adjectives are interpreted differently on every call; explicit criteria plus boundary examples produce consistent behaviour, and an out-of-scope refusal is a control best enforced at the guardrail layer. A compounds the vagueness; C does not make reference content more reliable and breaks the cacheable prefix; D treats capability as a substitute for a clear contract.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 2.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Adjectives are interpreted differently on every call; explicit criteria plus boundary examples produce consistent behaviour, and an out-of-scope refusal is a control best enforced at the guardrail layer. A compounds the vagueness; C does not make reference content more reliable and breaks the cacheable prefix; D treats capability as a substitute for a clear contract.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 2.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q6</h3>
 <p>A healthcare assistant must never surface a patient&#39;s full record when answering a scheduling
 question. The team has written &quot;never reveal protected health information&quot; three times in the
@@ -156,11 +136,7 @@ system prompt, in different words, to be safe.</p>
   <li><span class="ltr">B</span><span>Move the three lines into the tool description so the model sees them at call time.</span></li>
   <li><span class="ltr">C</span><span>Rely on the model's safety training rather than any explicit rule.</span></li>
   <li><span class="ltr">D</span><span>State the boundary once in the system prompt as explicit criteria, and enforce it with an output filter and field-level redaction in the guardrail layer.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> A prompt is a request, and repetition does not turn it into a control; a regulated never-reveal requirement needs enforcement outside the model, so an output filter and redaction close the gap. A burns tokens on the same instruction; B relocates a control into a suggestion; C removes the contract entirely and trusts probabilistic behaviour.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 2.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> A prompt is a request, and repetition does not turn it into a control; a regulated never-reveal requirement needs enforcement outside the model, so an output filter and redaction close the gap. A burns tokens on the same instruction; B relocates a control into a suggestion; C removes the contract entirely and trusts probabilistic behaviour.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 2.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q7</h3>
 <p>A regulated assistant must never output unredacted account numbers, and an existing output filter
 already redacts them. A new requirement adds &quot;never give investment advice.&quot; The proposed change
@@ -171,11 +147,7 @@ is a second output filter that also scans for account numbers, plus a prompt rul
   <li><span class="ltr">B</span><span>Add the second account-number filter as well, for defense in depth.</span></li>
   <li><span class="ltr">C</span><span>Put both rules in the system prompt and remove the account-number filter to simplify the pipeline.</span></li>
   <li><span class="ltr">D</span><span>Raise the model tier so it follows the advice rule more reliably.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> The missing risk is investment advice, so the change adds a control for it; a second account-number filter duplicates a control already in place, raising cost and false positives with no new risk reduction. C converts a regulated control into a suggestion; D mistakes capability for an enforcement layer.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 2.4
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> The missing risk is investment advice, so the change adds a control for it; a second account-number filter duplicates a control already in place, raising cost and false positives with no new risk reduction. C converts a regulated control into a suggestion; D mistakes capability for an enforcement layer.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 2.4<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q8</h3>
 <p>A financial assistant already has an input validator that rejects malformed requests and an output
 filter that redacts PII. A new policy forbids the assistant from executing trades. Compliance
@@ -186,11 +158,7 @@ proposes adding three more PII redaction passes &quot;to be safe&quot; alongside
   <li><span class="ltr">B</span><span>Handle trade refusal only in the system prompt and skip the guardrail.</span></li>
   <li><span class="ltr">C</span><span>Add the trade-refusal control — a dedicated guardrail that blocks trade-execution requests and escalates — while leaving the existing PII and input controls untouched as the single controls for their risks.</span></li>
   <li><span class="ltr">D</span><span>Remove the input validator so the new trade guardrail has fewer controls to coordinate with.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Close the actual gap (trade execution) with a control, and do not stack duplicates of controls you already own — extra PII passes add cost and false positives without reducing risk. B makes a hard requirement a prompt suggestion; D removes a working control.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 2.4
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Close the actual gap (trade execution) with a control, and do not stack duplicates of controls you already own — extra PII passes add cost and false positives without reducing risk. B makes a hard requirement a prompt suggestion; D removes a working control.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 2.4<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q9</h3>
 <p>A support-triage classifier returns the right label for obvious tickets but misroutes about twenty
 percent of borderline cases — calling a billing dispute a refund request. Output is always valid
@@ -201,11 +169,7 @@ JSON, and the category definitions are already in the prompt.</p>
   <li><span class="ltr">B</span><span>Add three to four few-shot examples showing borderline tickets on both sides of the boundary, each explaining why it belongs to its category.</span></li>
   <li><span class="ltr">C</span><span>Switch to the largest model so it classifies more accurately.</span></li>
   <li><span class="ltr">D</span><span>Replace the definitions with longer descriptions and ask the model to use its best judgment.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> The failure is a boundary-definition gap — the format is valid and the definitions are present — and few-shot examples with near-misses teach where the line sits. A adds reasoning the task does not need at a latency cost; C reaches for capability to fix a definitional gap; D substitutes prose and &quot;best judgment&quot; for the boundary the model is missing.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 2.5
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> The failure is a boundary-definition gap — the format is valid and the definitions are present — and few-shot examples with near-misses teach where the line sits. A adds reasoning the task does not need at a latency cost; C reaches for capability to fix a definitional gap; D substitutes prose and &quot;best judgment&quot; for the boundary the model is missing.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 2.5<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q10</h3>
 <p>A reconciliation agent must total disputed charges across several invoices and confirm the
 arithmetic balances. Its current zero-shot prompt returns confident totals that do not add up,
@@ -216,11 +180,7 @@ and the model is on a tier that supports adaptive thinking.</p>
   <li><span class="ltr">B</span><span>Truncate the invoices to reduce the numbers the model has to hold.</span></li>
   <li><span class="ltr">C</span><span>Ask the model to output only the final total, with no intermediate steps, so it commits to one number.</span></li>
   <li><span class="ltr">D</span><span>Ask for the reasoning before the answer and raise thinking effort on this route so the model works through the intermediate steps.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> The symptom is a multi-step arithmetic failure, which chain-of-thought or higher thinking effort addresses; on thinking-capable models, raising effort is preferred over hand-writing &quot;step by step.&quot; A&#39;s examples do not teach the computation; B drops data the total depends on; C removes exactly the intermediate work that makes the arithmetic checkable.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 2.5
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> The symptom is a multi-step arithmetic failure, which chain-of-thought or higher thinking effort addresses; on thinking-capable models, raising effort is preferred over hand-writing &quot;step by step.&quot; A&#39;s examples do not teach the computation; B drops data the total depends on; C removes exactly the intermediate work that makes the arithmetic checkable.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 2.5<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q11</h3>
 <p>An extraction service returns clean, well-specified fields from structured forms. A separate
 classification service on the same pipeline mislabels a subset of ambiguous requests, while a
@@ -232,11 +192,7 @@ prompt template to cover all three.</p>
   <li><span class="ltr">B</span><span>Stack all three techniques — examples, "think step by step," and a schema — on every route to cover every case.</span></li>
   <li><span class="ltr">C</span><span>Use few-shot examples on all routes, since examples never hurt.</span></li>
   <li><span class="ltr">D</span><span>Use chain-of-thought on all routes so every task reasons before answering.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Each route fails differently, so each needs the technique its symptom calls for; stacking all three bloats tokens, makes the prompt cache-hostile, and still leaves the format problem unsolved. C adds examples where a schema is the fix; D adds reasoning to well-specified tasks that do not need it.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 2.6
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Each route fails differently, so each needs the technique its symptom calls for; stacking all three bloats tokens, makes the prompt cache-hostile, and still leaves the format problem unsolved. C adds examples where a schema is the fix; D adds reasoning to well-specified tasks that do not need it.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 2.6<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q12</h3>
 <p>A downstream service cannot parse a summarisation route&#39;s output: it sometimes emits prose,
 sometimes bullet lists, sometimes a partial JSON object. The model is given the instruction
@@ -247,11 +203,7 @@ sometimes bullet lists, sometimes a partial JSON object. The model is given the 
   <li><span class="ltr">B</span><span>Add "think step by step about the format" before answering.</span></li>
   <li><span class="ltr">C</span><span>Replace the vague instruction with an explicit output contract — a fixed JSON schema with required fields and types — so the format is unambiguous.</span></li>
   <li><span class="ltr">D</span><span>Switch to the largest model so it infers the format more reliably.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> The symptom is an inconsistent format, which an explicit output contract or schema fixes deterministically; &quot;return it clearly&quot; is the vague instruction that caused it. A&#39;s examples help a boundary, not a schema gap; B reasons about a format the prompt never defined; D guesses at an unstated format.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 2.6
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> The symptom is an inconsistent format, which an explicit output contract or schema fixes deterministically; &quot;return it clearly&quot; is the vague instruction that caused it. A&#39;s examples help a boundary, not a schema gap; B reasons about a format the prompt never defined; D guesses at an unstated format.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 2.6<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q13</h3>
 <p>A document-analysis agent concatenates the full conversation, all retrieved chunks, and the
 current question into one prompt in arrival order. Answers degrade as the session grows, and the
@@ -262,11 +214,7 @@ cache hit rate is near zero. The team proposes buying a larger context window.</
   <li><span class="ltr">B</span><span>Order the prompt stable-first — frozen system prompt, deterministically ordered tool list, reference documents — and put the volatile content (current question, timestamps, per-request IDs) last, so the cacheable prefix stays intact.</span></li>
   <li><span class="ltr">C</span><span>Rewrite the system prompt with stronger instructions to focus on the relevant content.</span></li>
   <li><span class="ltr">D</span><span>Interleave stable and volatile content so the model sees variety.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> The problem is context quality and cache structure, not capacity; ordering stable-first preserves the byte-stable prefix and puts the question where the model can act on it. A admits more irrelevant content and dilutes attention; C rewrites the instruction when the arrangement of context is the fault; D destroys the cacheable prefix deliberately.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 2.7
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> The problem is context quality and cache structure, not capacity; ordering stable-first preserves the byte-stable prefix and puts the question where the model can act on it. A admits more irrelevant content and dilutes attention; C rewrites the instruction when the arrangement of context is the fault; D destroys the cacheable prefix deliberately.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 2.7<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q14</h3>
 <p>A policy assistant must answer questions from a 400-page handbook. It currently loads the whole
 handbook on every call, hitting the cost ceiling and slowing responses, and the team proposes
@@ -277,11 +225,7 @@ truncating the handbook to its first 1,000 tokens to cut tokens.</p>
   <li><span class="ltr">B</span><span>Keep loading the full handbook but move it after the user question.</span></li>
   <li><span class="ltr">C</span><span>Switch to the smallest model so the full handbook is affordable.</span></li>
   <li><span class="ltr">D</span><span>Retrieve or select only the sections relevant to the question instead of truncating, so the answer keeps the passage it depends on.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> Trimming by relevance removes tokens that carry no signal while preserving the passage the answer needs; blind truncation silently drops the policy paragraph the answer depended on. A is the truncation anti-pattern; B reorders but keeps the cost; C changes the model to afford content that should not be there.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 2.7
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Trimming by relevance removes tokens that carry no signal while preserving the passage the answer needs; blind truncation silently drops the policy paragraph the answer depended on. A is the truncation anti-pattern; B reorders but keeps the cost; C changes the model to afford content that should not be there.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 2.7<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q15</h3>
 <p>A retrieval assistant answers policy questions from an internal knowledge base. After a large
 document refresh it returns confident but wrong answers; latency and the model version are
@@ -292,11 +236,7 @@ unchanged. The team proposes increasing the context window and rewriting the sys
   <li><span class="ltr">B</span><span>Increase the context window so the correct document is more likely to be included.</span></li>
   <li><span class="ltr">C</span><span>Rewrite the system prompt to answer only from retrieved documents.</span></li>
   <li><span class="ltr">D</span><span>Move the reference documents into few-shot examples so they are always present.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> The regression tracks a content change, not a capacity or instruction change, so the first move is to inspect what was retrieved — a better prompt cannot answer from a chunk that was never retrieved correctly. B treats an accuracy drop as a capacity problem; C rewrites the instruction when the model was fed wrong context; D bloats every request with non-cacheable content.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 2.8
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> The regression tracks a content change, not a capacity or instruction change, so the first move is to inspect what was retrieved — a better prompt cannot answer from a chunk that was never retrieved correctly. B treats an accuracy drop as a capacity problem; C rewrites the instruction when the model was fed wrong context; D bloats every request with non-cacheable content.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 2.8<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q16</h3>
 <p>A support agent&#39;s answers get worse as its conversation grows, even though the questions
 themselves are simple. Each turn appends the full ticket history, every retrieved article, and the
@@ -308,11 +248,7 @@ window.</p>
   <li><span class="ltr">B</span><span>Keep the current model but raise temperature so it ignores irrelevant content.</span></li>
   <li><span class="ltr">C</span><span>Keep the context to the smallest set that holds the signal — recent turns, the articles that answer the question, and a progressive index fetched on demand — rather than admitting more content.</span></li>
   <li><span class="ltr">D</span><span>Load the knowledge base index into a few-shot block so it is always available.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> A bigger window does not fix a context-quality problem — performance degrades as irrelevant content crowds the prompt, so the goal is the smallest context that contains the signal. A admits more noise; B confuses sampling with focus; D bloats every request with a non-cacheable block.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 2.8
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> A bigger window does not fix a context-quality problem — performance degrades as irrelevant content crowds the prompt, so the goal is the smallest context that contains the signal. A admits more noise; B confuses sampling with focus; D bloats every request with a non-cacheable block.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 2.8<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q17</h3>
 <p>A platform sends the same 8,000-token system prompt and policy document on every request,
 followed by a short, varying user message. Cost and latency are both concerns. The team has
@@ -323,11 +259,7 @@ enabled prompt caching but has not changed how the prompt is assembled.</p>
   <li><span class="ltr">B</span><span>Place the static system prompt and policy first, keep the volatile user message after the last cache breakpoint, and put the breakpoint on the static block so the prefix is byte-stable.</span></li>
   <li><span class="ltr">C</span><span>Move the policy document into a few-shot example block so it is reused.</span></li>
   <li><span class="ltr">D</span><span>Switch to the smallest model so the shared prefix is affordable.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> Caching keys on an exact prefix, so the static content must be front-loaded and byte-stable with the breakpoint on the static block, letting reads cost a fraction of normal input. A drops content the answer may need; C is not a cacheable, reusable prefix; D changes the model instead of the structure.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 2.9
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Caching keys on an exact prefix, so the static content must be front-loaded and byte-stable with the breakpoint on the static block, letting reads cost a fraction of normal input. A drops content the answer may need; C is not a cacheable, reusable prefix; D changes the model instead of the structure.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 2.9<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q18</h3>
 <p>The same 600-token compliance policy block has been copy-pasted into twenty different prompt
 templates across the platform. A recent regulation change required editing all twenty, and two
@@ -338,11 +270,7 @@ were missed.</p>
   <li><span class="ltr">B</span><span>Move the policy block into each template's few-shot examples so it is embedded.</span></li>
   <li><span class="ltr">C</span><span>Increase the context window so the duplicated policy has room in every template.</span></li>
   <li><span class="ltr">D</span><span>Modularise the prompt into composable, versioned blocks — role, policy, task template, output schema — and package stable domain knowledge and procedures as Skills so the policy lives in one place.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> The root cause is duplication that drifts; a single versioned block or Skill keeps one source of truth so updates propagate. A is a reminder that already failed; B embeds a copy in each template; C gives the duplication more room rather than removing it.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 2.9
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> The root cause is duplication that drifts; a single versioned block or Skill keeps one source of truth so updates propagate. A is a reminder that already failed; B embeds a copy in each template; C gives the duplication more room rather than removing it.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 2.9<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q19</h3>
 <p>A service sends a fixed 6,000-token system prompt and tool definitions with every request, then a
 short user message. Prompt caching is enabled, but <code>cache_read_input_tokens</code> is zero on every
@@ -353,11 +281,7 @@ call and latency is unchanged.</p>
   <li><span class="ltr">B</span><span>Conclude the model tier does not support caching and switch tiers.</span></li>
   <li><span class="ltr">C</span><span>Disable thinking, since caching only takes effect once thinking is off.</span></li>
   <li><span class="ltr">D</span><span>Move the system prompt into the first user turn, since caching applies only to user messages.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Zero reads across repeated requests mean the prefix never matched, which points at a volatile field inside the supposedly stable prefix. B assumes caching is a per-tier toggle; C conflates unrelated settings; D rests on a false premise — the cacheable prefix is exactly the system and tool content.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 2.10
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Zero reads across repeated requests mean the prefix never matched, which points at a volatile field inside the supposedly stable prefix. B assumes caching is a per-tier toggle; C conflates unrelated settings; D rests on a false premise — the cacheable prefix is exactly the system and tool content.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 2.10<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q20</h3>
 <p>An architect must justify a single Domain 2 design across a service with three routes: a
 latency-bound classifier, a cost-bound extractor, and a quality-bound reasoner that share one
@@ -368,12 +292,8 @@ prompt template and one cache prefix.</p>
   <li><span class="ltr">B</span><span>Standardise on the smallest model and one short prompt so the cost ceiling holds for all routes.</span></li>
   <li><span class="ltr">C</span><span>Fit each strategy to its route's constraint — the tier to the failure cost and SLA, the technique to each route's symptom, the context to the signal, and a shared byte-stable prefix that all three can cache — then verify with evals.</span></li>
   <li><span class="ltr">D</span><span>Enable caching everywhere and assume the savings will absorb the cost of running every route on the top tier.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Every Domain 2 decision follows its binding constraint — model to failure cost and SLA, technique to symptom, context to signal — and reuse works only on the genuinely stable prefix. A over-spends on the cheap routes; B starves the reasoner; D treats caching as free and assumes it can fund an unjustified tier choice.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 2.11
-<strong>Source:</strong> newly written</p>
-<div class="foot">Built 2026-10-03 15:44 · source: banks/pro2-questions.md</div></main></div>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Every Domain 2 decision follows its binding constraint — model to failure cost and SLA, technique to symptom, context to signal — and reuse works only on the genuinely stable prefix. A over-spends on the cheap routes; B starves the reasoner; D treats caching as free and assumes it can fund an unjustified tier choice.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 2.11<br><strong>Source:</strong> newly written</p></div></details>
+<div class="foot">Built 2026-10-03 15:46 · source: banks/pro2-questions.md</div></main></div>
 <div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
 <script>
 const q=document.getElementById('q');

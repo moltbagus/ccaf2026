@@ -77,11 +77,7 @@ choosing the largest model to be safe.</p>
   <li><span class="ltr">B</span><span>Decompose the goal into functional requirements (classify the ticket, draft a reply, decide when a human reviews) and infrastructure requirements (latency, peak throughput, data residency, cost ceiling), write them as testable acceptance criteria, then let those constraints select the API pattern and model.</span></li>
   <li><span class="ltr">C</span><span>Prototype quickly in claude.ai to confirm the idea is feasible, then port the prompt to production unchanged.</span></li>
   <li><span class="ltr">D</span><span>Copy a competitor's public support-bot prompt as a starting point and iterate from there.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> The model and API pattern fall out of the requirements, not the reverse. Writing the prompt first (A), prototyping before requirements (C), and borrowing a prompt (D) all solve the demo while leaving latency, throughput, residency, and cost unexamined.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 2.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> The model and API pattern fall out of the requirements, not the reverse. Writing the prompt first (A), prototyping before requirements (C), and borrowing a prompt (D) all solve the demo while leaving latency, throughput, residency, and cost unexamined.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 2.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q2</h3>
 <p>A hospital network wants Claude to summarize patient charts for clinicians. Regulators
 require the data to be processed within the country. Clinicians read summaries within
@@ -92,11 +88,7 @@ seconds, and volume peaks during morning rounds.</p>
   <li><span class="ltr">B</span><span>Send all traffic to the direct Anthropic API from the company's US data center to minimize latency.</span></li>
   <li><span class="ltr">C</span><span>Process every chart with the most capable model and extended thinking enabled so the summaries are maximally thorough, keeping the current processing location.</span></li>
   <li><span class="ltr">D</span><span>Route requests through a vendor that offers in-country regional processing and call the realtime Messages API with streaming so summaries render within seconds.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> D is the only option that satisfies both hard constraints at once — in-country processing for residency and the realtime Messages API for the seconds-scale latency. Batch (A) violates the clinician SLA even though it is cheaper. US processing (B) violates residency, a legal constraint, not a performance preference. The maximally thorough option (C) drops residency entirely to chase summary quality.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 2.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> D is the only option that satisfies both hard constraints at once — in-country processing for residency and the realtime Messages API for the seconds-scale latency. Batch (A) violates the clinician SLA even though it is cheaper. US processing (B) violates residency, a legal constraint, not a performance preference. The maximally thorough option (C) drops residency entirely to chase summary quality.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 2.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q3</h3>
 <p>A team edits a production system prompt to fix a formatting complaint. Overall answer
 quality drops, but a model alias was also updated by the vendor the same week, so nobody
@@ -107,11 +99,7 @@ can tell which change caused it.</p>
   <li><span class="ltr">B</span><span>Revert the prompt edit and keep tuning it live in production until quality recovers.</span></li>
   <li><span class="ltr">C</span><span>Switch to the most capable model available so the prompt change matters less.</span></li>
   <li><span class="ltr">D</span><span>Add instructions to the prompt telling Claude to preserve the previous quality and formatting.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Versioning plus rollback to a known-good combination is the only option that restores a reproducible state and then prevents recurrence with an eval gate. Live editing (B) has no record, so it cannot isolate cause. A bigger model (C) adds a second uncontrolled variable. More instructions (D) compound the untracked change instead of reverting it.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 2.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Versioning plus rollback to a known-good combination is the only option that restores a reproducible state and then prevents recurrence with an eval gate. Live editing (B) has no record, so it cannot isolate cause. A bigger model (C) adds a second uncontrolled variable. More instructions (D) compound the untracked change instead of reverting it.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 2.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q4</h3>
 <p>The vendor announces that the model snapshot a production feature depends on will be
 deprecated in six months. The feature has no automated tests.</p>
@@ -121,11 +109,7 @@ deprecated in six months. The feature has no automated tests.</p>
   <li><span class="ltr">B</span><span>Immediately rewrite the application on a new agent framework before the deadline.</span></li>
   <li><span class="ltr">C</span><span>Track the deprecation notice, pin the current snapshot, build an eval suite that captures current behavior, and run a reviewed migration to a replacement snapshot before the cutoff.</span></li>
   <li><span class="ltr">D</span><span>Ask the vendor to extend support for the snapshot indefinitely.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Lifecycle management means planning for model change: pin what you ship, capture current behavior in an eval, and migrate deliberately before the cutoff. Ignoring the notice (A) leaves an unplanned outage. A full framework rewrite (B) is a large unrelated change driven by a small migration need. Asking the vendor to freeze the snapshot (D) is not a control you own.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 2.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Lifecycle management means planning for model change: pin what you ship, capture current behavior in an eval, and migrate deliberately before the cutoff. Ignoring the notice (A) leaves an unplanned outage. A full framework rewrite (B) is a large unrelated change driven by a small migration need. Asking the vendor to freeze the snapshot (D) is not a control you own.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 2.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q5</h3>
 <p>A developer&#39;s multi-turn assistant keeps asking for information the user already provided.
 Their code sends only the newest user message on each call to <code>/v1/messages</code>.</p>
@@ -135,11 +119,7 @@ Their code sends only the newest user message on each call to <code>/v1/messages
   <li><span class="ltr">B</span><span>Enable the <code>session</code> parameter on the Messages API so the server retains prior turns between calls.</span></li>
   <li><span class="ltr">C</span><span>Raise <code>max_tokens</code> so Claude has more room to remember earlier messages.</span></li>
   <li><span class="ltr">D</span><span>Add "remember everything the user said earlier" to the system prompt.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Statelessness is the root cause, so the fix is to resend the prior turns in the <code>messages</code> array. There is no server-side <code>session</code> parameter (B) — the client owns history. <code>max_tokens</code> (C) caps output length and has nothing to do with memory. A system instruction (D) cannot restore content the API never received.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 2.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Statelessness is the root cause, so the fix is to resend the prior turns in the <code>messages</code> array. There is no server-side <code>session</code> parameter (B) — the client owns history. <code>max_tokens</code> (C) caps output length and has nothing to do with memory. A system instruction (D) cannot restore content the API never received.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 2.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q6</h3>
 <p>A response from Claude contains a text block followed by a <code>tool_use</code> block, and
 <code>stop_reason</code> is <code>&quot;tool_use&quot;</code>. The harness only executes a tool when the entire <code>content</code>
@@ -151,11 +131,7 @@ running the tool.</p>
   <li><span class="ltr">B</span><span>Iterate over every content block; for each <code>tool_use</code> block run the tool and return a <code>tool_result</code> block carrying its matching <code>tool_use_id</code>, then continue while <code>stop_reason</code> is <code>"tool_use"</code>.</span></li>
   <li><span class="ltr">C</span><span>Treat the presence of any text block as the end of the turn to avoid an extra API call.</span></li>
   <li><span class="ltr">D</span><span>Set <code>stop_sequences</code> so the model cannot emit text and a tool call in the same response.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> A single response can contain both text and <code>tool_use</code> blocks, so the harness must iterate the block list and answer each <code>tool_use</code> with a matching <code>tool_result</code>. Text parsing (A) is brittle. Treating text as the end of turn (C) drops the tool call. <code>stop_sequences</code> (D) cannot forbid a block type and does not address the loop.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 2.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> A single response can contain both text and <code>tool_use</code> blocks, so the harness must iterate the block list and answer each <code>tool_use</code> with a matching <code>tool_result</code>. Text parsing (A) is brittle. Treating text as the end of turn (C) drops the tool call. <code>stop_sequences</code> (D) cannot forbid a block type and does not address the loop.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 2.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q7</h3>
 <p>A team must classify 200,000 historical support emails to seed a search index. The index
 is needed next week, nothing is user-facing, and cost is the primary constraint.</p>
@@ -165,11 +141,7 @@ is needed next week, nothing is user-facing, and cost is the primary constraint.
   <li><span class="ltr">B</span><span>Trim <code>max_tokens</code> on each classification to cut cost, then run everything synchronously.</span></li>
   <li><span class="ltr">C</span><span>Switch to the smallest model for every email regardless of classification quality.</span></li>
   <li><span class="ltr">D</span><span>Submit the work as Message Batches, poll for completion, and reassemble the results by <code>custom_id</code>.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> Batch fits latency-tolerant, high-volume, cost-sensitive work and reassembles unordered results by <code>custom_id</code>. Parallel realtime calls (A) ignore the cost constraint and invite rate limits. Trimming <code>max_tokens</code> (B) degrades output without touching the cost structure batch fixes. A blind model downgrade (C) sacrifices quality and still misses the batch discount.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 2.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Batch fits latency-tolerant, high-volume, cost-sensitive work and reassembles unordered results by <code>custom_id</code>. Parallel realtime calls (A) ignore the cost constraint and invite rate limits. Trimming <code>max_tokens</code> (B) degrades output without touching the cost structure batch fixes. A blind model downgrade (C) sacrifices quality and still misses the batch discount.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 2.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q8</h3>
 <p>Every request in a high-volume service shares the same 40,000-token system prompt, tool
 definitions, and policy document; only the final user question changes. Input cost and
@@ -180,11 +152,7 @@ time-to-first-token are both high.</p>
   <li><span class="ltr">B</span><span>Enable a persistent session so the server keeps the shared prefix between calls.</span></li>
   <li><span class="ltr">C</span><span>Mark the stable prefix (system prompt, tools, document) with <code>cache_control</code> so repeated calls read it from cache, and confirm the effect via <code>cache_creation_input_tokens</code> and <code>cache_read_input_tokens</code> in the usage object.</span></li>
   <li><span class="ltr">D</span><span>Raise <code>max_tokens</code> so the model has room to re-read the shared context each call.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Prompt caching is the mechanism for a stable prefix reused across calls, and the usage object reports cache creation and read tokens. Summarizing the policy (A) loses fidelity and still is not cached. A persistent session (B) does not exist — the Messages API is stateless. <code>max_tokens</code> (D) is unrelated to input caching.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 2.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Prompt caching is the mechanism for a stable prefix reused across calls, and the usage object reports cache creation and read tokens. Summarizing the policy (A) loses fidelity and still is not cached. A persistent session (B) does not exist — the Messages API is stateless. <code>max_tokens</code> (D) is unrelated to input caching.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 2.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q9</h3>
 <p>Under load, a service calling Claude receives HTTP 429 rate-limit responses. The current
 retry loop immediately resends every failed request in a tight loop, worsening the
@@ -195,11 +163,7 @@ overload.</p>
   <li><span class="ltr">B</span><span>Retry with exponential backoff plus jitter, cap the number of attempts, and make the retried operation idempotent so a duplicate call cannot double-act.</span></li>
   <li><span class="ltr">C</span><span>Lower <code>max_tokens</code> so requests are smaller and less likely to be rate-limited.</span></li>
   <li><span class="ltr">D</span><span>Switch to a smaller model, which has higher rate limits.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> Backoff with jitter, a bounded attempt count, and idempotency is the standard remedy for 429s; retrying immediately amplifies the overload. More retries without backoff (A) worsen the storm. <code>max_tokens</code> (C) changes output length, not request rate. A smaller model (D) does not remove the client-side retry loop.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 2.4
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Backoff with jitter, a bounded attempt count, and idempotency is the standard remedy for 429s; retrying immediately amplifies the overload. More retries without backoff (A) worsen the storm. <code>max_tokens</code> (C) changes output length, not request rate. A smaller model (D) does not remove the client-side retry loop.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 2.4<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q10</h3>
 <p>A synchronous HTTP handler calls Claude inline and blocks a worker thread for several
 seconds per request. Under load the worker pool is exhausted and unrelated endpoints slow
@@ -210,11 +174,7 @@ down.</p>
   <li><span class="ltr">B</span><span>Raise the request timeout so the blocking calls have time to finish.</span></li>
   <li><span class="ltr">C</span><span>Lower <code>max_tokens</code> so each call returns faster.</span></li>
   <li><span class="ltr">D</span><span>Make the model call asynchronous and non-blocking (await it or hand it to a queue with a callback) so a slow upstream call never holds a request-handling thread.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> Model calls are network I/O and must not block a request handler; async or queued dispatch frees the thread. Adding threads (A) scales the symptom and the cost. A longer timeout (B) keeps threads blocked even longer. Trimming <code>max_tokens</code> (C) does not change the blocking architecture.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 2.4
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Model calls are network I/O and must not block a request handler; async or queued dispatch frees the thread. Adding threads (A) scales the symptom and the cost. A longer timeout (B) keeps threads blocked even longer. Trimming <code>max_tokens</code> (C) does not change the blocking architecture.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 2.4<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q11</h3>
 <p>A 2,000-line integration module mixes prompt strings, retry logic, and provider calls, and
 is hard to change safely. A teammate proposes rewriting it from scratch in a single pull
@@ -225,11 +185,7 @@ request.</p>
   <li><span class="ltr">B</span><span>Freeze the module and avoid touching it until a full rewrite is unavoidable.</span></li>
   <li><span class="ltr">C</span><span>Rewrite the whole module in one pull request so the end state is clean quickly.</span></li>
   <li><span class="ltr">D</span><span>Add explanatory comments throughout and leave the structure as is.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Small, verified refactors keep behavior provable against an eval suite. A big-bang rewrite (C) lands a large unverified change. Freezing (B) and commenting (D) leave the coupling in place. The eval suite is what makes each step safe.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 2.4
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Small, verified refactors keep behavior provable against an eval suite. A big-bang rewrite (C) lands a large unverified change. Freezing (B) and commenting (D) leave the coupling in place. The eval suite is what makes each step safe.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 2.4<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q12</h3>
 <p>Three engineers edit a shared prompt document directly; prompt changes are never reviewed
 and have no history. A recent edit silently broke a behavior that an eval had previously
@@ -240,11 +196,7 @@ passed.</p>
   <li><span class="ltr">B</span><span>Stand up a dedicated prompt-management platform with a web UI and approval workflow.</span></li>
   <li><span class="ltr">C</span><span>Move prompts and tool schemas into git behind pull requests and code review, and run the eval suite in CI so a prompt change must pass before it ships.</span></li>
   <li><span class="ltr">D</span><span>Require a Slack message describing each prompt change before it is made.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Prompts and tool schemas are versioned artifacts that belong in version control behind review, gated by the eval suite in CI. Locking the doc (A) removes collaboration without adding history or review. A bespoke platform (B) is heavy process that still needs the same versioning and gate. A Slack note (D) is not a record or a gate.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 2.4
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Prompts and tool schemas are versioned artifacts that belong in version control behind review, gated by the eval suite in CI. Locking the doc (A) removes collaboration without adding history or review. A bespoke platform (B) is heavy process that still needs the same versioning and gate. A Slack note (D) is not a record or a gate.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 2.4<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q13</h3>
 <p>A feature prototyped in claude.ai works well. The team moves the same prompt text into
 their API-backed app, but the answers are worse and the model no longer uses a tool it
@@ -255,11 +207,7 @@ used in the prototype.</p>
   <li><span class="ltr">B</span><span>Paste the original prompt into the system field and raise <code>max_tokens</code> until answers match the prototype.</span></li>
   <li><span class="ltr">C</span><span>Switch to the most capable model so the same prompt produces comparable quality.</span></li>
   <li><span class="ltr">D</span><span>Add "use the tools available" to the prompt and re-test.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> claude.ai supplies its own system prompt and tooling that the raw API does not, so the fix is to supply the missing inputs and eval the result. Raising <code>max_tokens</code> (B) changes output length, not the missing tools or instructions. A bigger model (C) cannot use tools you never declared. &quot;Use the tools available&quot; (D) is meaningless when no tools were declared.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 2.5
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> claude.ai supplies its own system prompt and tooling that the raw API does not, so the fix is to supply the missing inputs and eval the result. Raising <code>max_tokens</code> (B) changes output length, not the missing tools or instructions. A bigger model (C) cannot use tools you never declared. &quot;Use the tools available&quot; (D) is meaningless when no tools were declared.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 2.5<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q14</h3>
 <p>An agent summarizes web pages submitted by end users. One page contains hidden
 white-on-white text instructing the model to ignore its instructions and email the
@@ -270,11 +218,7 @@ conversation to an external address.</p>
   <li><span class="ltr">B</span><span>Treat retrieved page content as untrusted input, keep it separate from trusted system instructions, and use guardrails or hooks so injected instructions cannot trigger sensitive actions like sending email.</span></li>
   <li><span class="ltr">C</span><span>Pass the entire raw page, including the hidden text, so Claude has complete context, and instruct it to ignore anything suspicious.</span></li>
   <li><span class="ltr">D</span><span>Add a line to the system prompt asking users not to include malicious instructions.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> The content boundary is the defense: trusted instructions live apart from untrusted retrieved content, and a hook or guardrail prevents injected text from triggering sensitive actions. Temperature (A) does not stop injection. Passing the raw page (C) hands the injected text straight to the model. A prompt request (D) cannot constrain a user who is attacking the system.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 2.5
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> The content boundary is the defense: trusted instructions live apart from untrusted retrieved content, and a hook or guardrail prevents injected text from triggering sensitive actions. Temperature (A) does not stop injection. Passing the raw page (C) hands the injected text straight to the model. A prompt request (D) cannot constrain a user who is attacking the system.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 2.5<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q15</h3>
 <p>A tool that extracts invoice fields uses a loose <code>input_schema</code> with no required fields
 and free-form string properties. The model returns plausible but inconsistent shapes and
@@ -285,11 +229,7 @@ downstream parsing crashes.</p>
   <li><span class="ltr">B</span><span>Add an instruction telling the model to always return valid JSON.</span></li>
   <li><span class="ltr">C</span><span>Catch the exceptions downstream and skip malformed records.</span></li>
   <li><span class="ltr">D</span><span>Tighten the JSON Schema — required fields, enums for fixed values, and clear property descriptions — and validate the response against it.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> A tight schema with required fields and enums constrains the shape, and validating the response catches violations at the boundary. Examples (A) and an instruction (B) are probabilistic and leave the loose contract. Swallowing exceptions downstream (C) hides the defect and silently drops data.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 2.5
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> A tight schema with required fields and enums constrains the shape, and validating the response catches violations at the boundary. Examples (A) and an instruction (B) are probabilistic and leave the loose contract. Swallowing exceptions downstream (C) hides the defect and silently drops data.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 2.5<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q16</h3>
 <p>A long-running assistant session has grown to 180,000 tokens. Responses drift from the
 original task, latency rises, and earlier instructions are inconsistently followed. A
@@ -300,11 +240,7 @@ teammate proposes raising the context window limit.</p>
   <li><span class="ltr">B</span><span>Keep the full transcript and increase <code>max_tokens</code> so the model has more room to reason.</span></li>
   <li><span class="ltr">C</span><span>Start a fresh session or summarize and compact between tasks, passing only the context the current task needs.</span></li>
   <li><span class="ltr">D</span><span>Add a system instruction reminding the model of the original task every turn.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Long sessions accumulate context and drift; session hygiene means compacting or starting fresh and passing only what the task needs. A larger window (A) carries the drift forward. <code>max_tokens</code> (B) changes output length, not context quality. A reminder (D) does not remove the accumulated noise.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 2.5
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Long sessions accumulate context and drift; session hygiene means compacting or starting fresh and passing only what the task needs. A larger window (A) carries the drift forward. <code>max_tokens</code> (B) changes output length, not context quality. A reminder (D) does not remove the accumulated noise.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 2.5<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q17</h3>
 <p>Three separate applications each reimplement the same document-retrieval capability with
 slightly different code, and each has its own access rules.</p>
@@ -314,11 +250,7 @@ slightly different code, and each has its own access rules.</p>
   <li><span class="ltr">B</span><span>Copy the retrieval code into each application so each can evolve independently.</span></li>
   <li><span class="ltr">C</span><span>Build a bespoke internal framework that all future plugins must use.</span></li>
   <li><span class="ltr">D</span><span>Move the retrieval logic into each application's system prompt so it needs no code.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Reuse through a shared plugin or MCP server avoids re-implementation, and pinning plus an access review keeps the shared capability controlled. Copying (B) multiplies the divergence. A bespoke framework (C) is heavy process for one capability. Prompt logic (D) cannot perform retrieval.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 2.5
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Reuse through a shared plugin or MCP server avoids re-implementation, and pinning plus an access review keeps the shared capability controlled. Copying (B) multiplies the divergence. A bespoke framework (C) is heavy process for one capability. Prompt logic (D) cannot perform retrieval.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 2.5<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q18</h3>
 <p>A production Claude feature&#39;s outputs change overnight with no code deploy. The code
 references the model by a moving alias, and prompts are edited in a shared document.</p>
@@ -328,11 +260,7 @@ references the model by a moving alias, and prompts are edited in a shared docum
   <li><span class="ltr">B</span><span>Add a system instruction telling Claude to keep its answers consistent over time.</span></li>
   <li><span class="ltr">C</span><span>Pin the model to a specific dated snapshot and move prompt templates into version-controlled files, rolling changes out through review and an eval gate.</span></li>
   <li><span class="ltr">D</span><span>Switch to the most capable model, which changes less often.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> A moving alias is exactly the unpinned-model failure, and a shared doc is exactly the unversioned-prompt failure; pinning plus version control restores reproducibility. You cannot make a vendor freeze an alias (A). A prompt cannot stabilize a changed model (B). Model tier (D) is unrelated to pinning.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 2.6
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> A moving alias is exactly the unpinned-model failure, and a shared doc is exactly the unversioned-prompt failure; pinning plus version control restores reproducibility. You cannot make a vendor freeze an alias (A). A prompt cannot stabilize a changed model (B). Model tier (D) is unrelated to pinning.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 2.6<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q19</h3>
 <p>Team members get inconsistent Claude Code behavior. One engineer&#39;s personal
 <code>~/.claude/CLAUDE.md</code> contains instructions that override the shared project conventions,
@@ -343,11 +271,7 @@ and nobody knows which file wins.</p>
   <li><span class="ltr">B</span><span>Keep team-shared instructions in the repository's project <code>CLAUDE.md</code> (versioned and shared), understand the layering (enterprise → user → project → subdirectory, with the more specific scope taking precedence), and put shared conventions in the project scope rather than personal files.</span></li>
   <li><span class="ltr">C</span><span>Duplicate the shared conventions into every engineer's personal file so they always apply.</span></li>
   <li><span class="ltr">D</span><span>Move all instructions into a wiki page that engineers paste into their personal files.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> CLAUDE.md is layered with the more specific scope taking precedence, so shared conventions belong in the versioned project file. Deleting personal files (A) is heavy-handed and breaks legitimate personal preferences. Duplicating into every personal file (C) creates drift. A wiki paste (D) is unversioned and unenforced.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 2.6
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> CLAUDE.md is layered with the more specific scope taking precedence, so shared conventions belong in the versioned project file. Deleting personal files (A) is heavy-handed and breaks legitimate personal preferences. Duplicating into every personal file (C) creates drift. A wiki paste (D) is unversioned and unenforced.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 2.6<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q20</h3>
 <p>A team configures Claude Code permissions and hooks. One engineer committed an API key
 directly into the shared <code>.claude/settings.json</code> for convenience, and personal overrides in
@@ -358,12 +282,8 @@ the same file conflict with team settings.</p>
   <li><span class="ltr">B</span><span>Hard-code the key into the application source so it is always available at runtime.</span></li>
   <li><span class="ltr">C</span><span>Email the settings file with the key to the team so everyone uses the same configuration.</span></li>
   <li><span class="ltr">D</span><span>Keep shared behavior (permissions, hooks, environment variables) in the checked-in <code>.claude/settings.json</code>, personal overrides in a gitignored <code>.claude/settings.local.json</code>, and secrets in environment variables or a secret store — never in committed configuration.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> Shared behavior belongs in the checked-in settings, personal overrides in the gitignored local file, and secrets in the environment or a secret store — never committed. Committing the key (A) leaks a credential into version control. Hard-coding it (B) does the same in source. Emailing it (C) spreads the secret further.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 2.6
-<strong>Source:</strong> newly written</p>
-<div class="foot">Built 2026-10-03 15:44 · source: banks/dev2-questions.md</div></main></div>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Shared behavior belongs in the checked-in settings, personal overrides in the gitignored local file, and secrets in the environment or a secret store — never committed. Committing the key (A) leaks a credential into version control. Hard-coding it (B) does the same in source. Emailing it (C) spreads the secret further.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 2.6<br><strong>Source:</strong> newly written</p></div></details>
+<div class="foot">Built 2026-10-03 15:46 · source: banks/dev2-questions.md</div></main></div>
 <div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
 <script>
 const q=document.getElementById('q');

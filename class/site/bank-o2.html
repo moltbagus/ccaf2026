@@ -79,11 +79,7 @@ update.</p>
   <li><span class="ltr">B</span><span>Accept it as-is, since every claim it did make is accurate and matches the report.</span></li>
   <li><span class="ltr">C</span><span>Ask Claude to "make the summary more comprehensive" and use whatever comes back.</span></li>
   <li><span class="ltr">D</span><span>Add a line noting that churn data was unavailable, so the reader knows a question went unanswered.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Accuracy and completeness are independent checks — a response can be entirely true and still miss a question the reader needs answered, so the fix is to obtain and verify the missing piece. B confuses accuracy with completeness; C is an unaimed rewrite that may still skip churn and adds no verification; D documents the gap instead of closing it and misstates why it exists.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 2.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Accuracy and completeness are independent checks — a response can be entirely true and still miss a question the reader needs answered, so the fix is to obtain and verify the missing piece. B confuses accuracy with completeness; C is an unaimed rewrite that may still skip churn and adds no verification; D documents the gap instead of closing it and misstates why it exists.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 2.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q2</h3>
 <p>An associate must produce a two-page market brief that includes a competitor pricing table
 and a risk section. Claude&#39;s first draft is accurate but runs six pages and buries the risk
@@ -94,11 +90,7 @@ section in the middle. The deadline is end of day.</p>
   <li><span class="ltr">B</span><span>Brief Claude explicitly on the required length and sections, keep the pricing figures exact, then check the shorter draft still contains every required element and no changed numbers.</span></li>
   <li><span class="ltr">C</span><span>Delete the risk section to hit the length target.</span></li>
   <li><span class="ltr">D</span><span>Ask Claude to summarize itself until it fits two pages.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> The problem is fit to a defined deliverable, so the fix is an explicit brief plus a verification pass that substance survived. A ignores the format requirement; C drops required content; D compresses without knowing what must survive, risking a lost caveat or an altered figure.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 2.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> The problem is fit to a defined deliverable, so the fix is an explicit brief plus a verification pass that substance survived. A ignores the format requirement; C drops required content; D compresses without knowing what must survive, risking a lost caveat or an altered figure.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 2.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q3</h3>
 <p>A financial analyst asks Claude to extract every figure from a board pack into a summary.
 Reviewing the output, the analyst notices it reports total revenue but omits the segment
@@ -109,11 +101,7 @@ breakdown the pack clearly contains. The analyst wants confidence nothing else i
   <li><span class="ltr">B</span><span>Ask Claude whether the summary is complete.</span></li>
   <li><span class="ltr">C</span><span>Ask Claude to list every figure present in the source and reconcile that list against the summary to find anything omitted.</span></li>
   <li><span class="ltr">D</span><span>Assume the segment figures were not important because Claude left them out.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Completeness is checked by enumerating the source and comparing, not by trusting the draft. A accepts an incomplete extract; B asks the model to grade its own coverage; D treats an omission as a judgment rather than a defect.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 2.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Completeness is checked by enumerating the source and comparing, not by trusting the draft. A accepts an incomplete extract; B asks the model to grade its own coverage; D treats an omission as a judgment rather than a defect.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 2.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q4</h3>
 <p>An associate asks Claude to draft a compliance memo, and Claude cites &quot;Section 4.2(b) of
 the Data Handling Regulation&quot; and a specific effective date. The memo will go to the legal
@@ -124,11 +112,7 @@ team.</p>
   <li><span class="ltr">B</span><span>Reword the memo to say "applicable regulations require" and drop the section number.</span></li>
   <li><span class="ltr">C</span><span>Send it because a section number indicates Claude consulted the regulation.</span></li>
   <li><span class="ltr">D</span><span>Verify the cited section and date against the actual regulation text before the memo leaves the team.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> Specific citations are exactly the detail models fabricate, and a compliance audience requires checking the claim against the source that owns it. A relies on self-reported confidence; B hides the risk without resolving it; C mistakes a specific-looking detail for evidence.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 2.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Specific citations are exactly the detail models fabricate, and a compliance audience requires checking the claim against the source that owns it. A relies on self-reported confidence; B hides the risk without resolving it; C mistakes a specific-looking detail for evidence.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 2.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q5</h3>
 <p>A consultant gets a polished industry briefing from Claude that includes a market-growth
 percentage attributed to a named research firm. The client presentation is in two hours and
@@ -139,11 +123,7 @@ the number anchors the recommendation.</p>
   <li><span class="ltr">B</span><span>Keep the number but attribute it to "industry estimates" so no specific source is claimed.</span></li>
   <li><span class="ltr">C</span><span>Present it as-is since the briefing is only for discussion.</span></li>
   <li><span class="ltr">D</span><span>Ask Claude to re-run the analysis and keep the number if it appears again.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> A decision-anchoring statistic with a named attribution must be confirmed against its owner&#39;s publication. B launders an unverified number; C understates the stakes of a number shaping a recommendation; D uses the model as its own reference, and two runs can agree on the same fabrication.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 2.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> A decision-anchoring statistic with a named attribution must be confirmed against its owner&#39;s publication. B launders an unverified number; C understates the stakes of a number shaping a recommendation; D uses the model as its own reference, and two runs can agree on the same fabrication.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 2.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q6</h3>
 <p>Claude produces a competitor overview stating that a rival launched a loyalty program in
 2019. Your own knowledge is that the program launched in 2023, and the output offers no
@@ -154,11 +134,7 @@ source for the 2019 date.</p>
   <li><span class="ltr">B</span><span>Treat the date as a likely fabrication, verify it against the competitor's own announcements, and correct or cut the claim.</span></li>
   <li><span class="ltr">C</span><span>Assume Claude found an earlier pilot program and leave the 2019 date.</span></li>
   <li><span class="ltr">D</span><span>Remove all dates from the overview to avoid any risk.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> A concrete detail you cannot trace or corroborate is the signature of a hallucination, and the repair is to verify against the owning source, then correct or cut. A publishes the error with a shrug; C invents a justification for the fabrication; D discards good content along with the bad.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 2.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> A concrete detail you cannot trace or corroborate is the signature of a hallucination, and the repair is to verify against the owning source, then correct or cut. A publishes the error with a shrug; C invents a justification for the fabrication; D discards good content along with the bad.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 2.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q7</h3>
 <p>A long Claude-generated report on customer feedback says there were 412 survey
 respondents, but the chart in the same report totals 380, and a recommendation near the end
@@ -169,11 +145,7 @@ contradicts a finding two paragraphs earlier. A colleague suggests it still &quo
   <li><span class="ltr">B</span><span>Ask Claude to rate the report's internal consistency out of ten and fix anything below eight.</span></li>
   <li><span class="ltr">C</span><span>Run an explicit consistency pass: reconcile the respondent counts against the source data and resolve the recommendation so it follows from the findings.</span></li>
   <li><span class="ltr">D</span><span>Add a footnote that figures may vary.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> A long output has no built-in cross-check, so the associate reconciles internal contradictions against the source and repairs the logic. A outsources the check to chance; B asks the model to grade its own work; D annotates the contradiction instead of resolving it.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 2.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> A long output has no built-in cross-check, so the associate reconciles internal contradictions against the source and repairs the logic. A outsources the check to chance; B asks the model to grade its own work; D annotates the contradiction instead of resolving it.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 2.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q8</h3>
 <p>A Claude-drafted segment analysis includes the line &quot;these customers rarely engage with
 digital channels.&quot; The survey it was based on never asked about channel preferences; it
@@ -184,11 +156,7 @@ measured purchase frequency only.</p>
   <li><span class="ltr">B</span><span>Soften the wording to "may prefer other channels."</span></li>
   <li><span class="ltr">C</span><span>Ask Claude to confirm the statement is supported.</span></li>
   <li><span class="ltr">D</span><span>Cut the claim or rebase it on what the survey actually measured, then ask Claude to argue the opposite characterization as a bias check.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> An unsupported generalization is bias, and the repair is to ground the profile in measured data plus a deliberate counter-framing check. A assumes provenance equals support; B keeps the same unsupported claim in softer clothing; C asks the process that produced the flaw to detect it.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 2.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> An unsupported generalization is bias, and the repair is to ground the profile in measured data plus a deliberate counter-framing check. A assumes provenance equals support; B keeps the same unsupported claim in softer clothing; C asks the process that produced the flaw to detect it.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 2.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q9</h3>
 <p>Claude analyzes your uploaded survey and produces demographic profiles. One profile
 describes a group as &quot;traditional, change-resistant, and uncomfortable with new tools,&quot;
@@ -200,11 +168,7 @@ profiles to target campaigns.</p>
   <li><span class="ltr">B</span><span>Keep the profile and add a note that it is AI-generated and may contain bias.</span></li>
   <li><span class="ltr">C</span><span>Ask Claude to review the profiles for bias and revise whatever it flags.</span></li>
   <li><span class="ltr">D</span><span>Keep the profile because it came from analysis of your own uploaded data.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> The fix is to replace unsupported generalizations with what the data shows and to build a bias check into review. B transfers risk to the reader while shipping the stereotype; C relies on self-audit; D assumes the data itself contained the attitude, but the bias entered after the analysis.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 2.4
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> The fix is to replace unsupported generalizations with what the data shows and to build a bias check into review. B transfers risk to the reader while shipping the stereotype; C relies on self-audit; D assumes the data itself contained the attitude, but the bias entered after the analysis.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 2.4<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q10</h3>
 <p>An associate needs to confirm whether a regulation requires a specific retention period.
 Claude states &quot;seven years.&quot; The associate wants the fastest reliable path to certainty.</p>
@@ -214,11 +178,7 @@ Claude states &quot;seven years.&quot; The associate wants the fastest reliable 
   <li><span class="ltr">B</span><span>Check the regulation text itself, since the regulation is the source that owns the requirement.</span></li>
   <li><span class="ltr">C</span><span>Ask Claude to explain its reasoning and trust the answer if the reasoning is coherent.</span></li>
   <li><span class="ltr">D</span><span>Ask a second Claude conversation to confirm the first answer.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> Verification means comparing the claim to the source that owns the fact — here the regulation itself. A and D treat model agreement as evidence, and two runs can share the same fabrication; C rewards fluent reasoning, which is exactly how a wrong answer sounds.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 2.5
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Verification means comparing the claim to the source that owns the fact — here the regulation itself. A and D treat model agreement as evidence, and two runs can share the same fabrication; C rewards fluent reasoning, which is exactly how a wrong answer sounds.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 2.5<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q11</h3>
 <p>A vendor&#39;s claimed price appears in a Claude-generated comparison. With limited time before
 the comparison informs a purchasing decision, the associate must decide which claims to
@@ -229,11 +189,7 @@ check first.</p>
   <li><span class="ltr">B</span><span>Verify claims in the order they appear, top to bottom.</span></li>
   <li><span class="ltr">C</span><span>Prioritize the claims that carry consequences — the price figures, contractual terms, and anything attributed to the vendor — against the vendor's own published pages.</span></li>
   <li><span class="ltr">D</span><span>Skip verification since the comparison is internal.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Verification effort should follow stakes: numbers driving decisions, contractual specifics, and attributed claims are checked against their owner first. A spends effort on low-stakes wording; B ignores priority; D assumes internal use lowers the bar when the output still drives a purchase.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 2.5
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Verification effort should follow stakes: numbers driving decisions, contractual specifics, and attributed claims are checked against their owner first. A spends effort on low-stakes wording; B ignores priority; D assumes internal use lowers the bar when the output still drives a purchase.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 2.5<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q12</h3>
 <p>Claude&#39;s research mode returns a report comparing three software vendors, and every claim
 carries a clickable citation. Leadership will use it to choose a vendor. The associate wants
@@ -244,11 +200,7 @@ to confirm the report is trustworthy.</p>
   <li><span class="ltr">B</span><span>Ask Claude to confirm that its citations are real and accurate.</span></li>
   <li><span class="ltr">C</span><span>Regenerate the report and present the version that reads as better supported.</span></li>
   <li><span class="ltr">D</span><span>Open the primary sources behind the claims driving the recommendation, confirm they say what the report claims, and check they are current and credible.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> A citation is a pointer, not proof — diligence means reading the sources behind the decision-driving claims. A trusts the format; B asks the model to validate itself; C selects on style rather than evidence.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 2.6
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> A citation is a pointer, not proof — diligence means reading the sources behind the decision-driving claims. A trusts the format; B asks the model to validate itself; C selects on style rather than evidence.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 2.6<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q13</h3>
 <p>A Claude research-mode report cites a study for a key statistic. When the associate clicks
 through, the linked page is a blog post that references the study rather than the study
@@ -259,11 +211,7 @@ itself, and the blog&#39;s date is older than the reported finding.</p>
   <li><span class="ltr">B</span><span>Cite the blog post since it is what the citation linked to.</span></li>
   <li><span class="ltr">C</span><span>Drop the statistic and keep the report otherwise unchanged.</span></li>
   <li><span class="ltr">D</span><span>Keep the citation because it is at least a real, reachable source.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> A secondary mention is not the source that owns the fact; the claim must be traced to the study and confirmed. B and D accept a proxy for the source; C discards a claim that may be salvageable once properly grounded.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 2.6
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> A secondary mention is not the source that owns the fact; the claim must be traced to the study and confirmed. B and D accept a proxy for the source; C discards a claim that may be salvageable once properly grounded.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 2.6<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q14</h3>
 <p>Claude drafts an internal FAQ explaining employee eligibility for a government-subsidized
 benefits program. The draft is clear and confident. Staff will make personal financial
@@ -274,11 +222,7 @@ decisions based on it.</p>
   <li><span class="ltr">B</span><span>Route it to the benefits specialist with program expertise to verify each rule and sign off before publication.</span></li>
   <li><span class="ltr">C</span><span>Ask Claude to verify each rule against the latest program guidance, then publish once it confirms accuracy.</span></li>
   <li><span class="ltr">D</span><span>Publish it with a line telling staff to confirm details with HR if unsure.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> Eligibility content that people rely on is consequential and belongs with a qualified human who verifies and owns it. A equates topic familiarity with accuracy; C lets the model grade its own work; D shifts the organization&#39;s duty onto each employee.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 2.7
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Eligibility content that people rely on is consequential and belongs with a qualified human who verifies and owns it. A equates topic familiarity with accuracy; C lets the model grade its own work; D shifts the organization&#39;s duty onto each employee.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 2.7<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q15</h3>
 <p>Claude produces a hiring-shortlist summary that ranks candidates with brief rationales. The
 hiring manager plans to use it to decide whom to interview, and the summary includes a claim
@@ -289,11 +233,7 @@ about one candidate&#39;s &quot;communication style&quot; drawn from ambiguous n
   <li><span class="ltr">B</span><span>Ask Claude to soften the questionable rationale and send it.</span></li>
   <li><span class="ltr">C</span><span>Have a human reviewer assess the rationales against the underlying materials and correct or remove unsupported judgments before the manager uses the list.</span></li>
   <li><span class="ltr">D</span><span>Add a disclaimer that the ranking is AI-assisted.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Decisions affecting individuals require qualified human review against the source, and unsupported judgments must be corrected or removed. A and B leave a consequential claim standing; D discloses the problem without fixing it.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 2.7
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Decisions affecting individuals require qualified human review against the source, and unsupported judgments must be corrected or removed. A and B leave a consequential claim standing; D discloses the problem without fixing it.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 2.7<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q16</h3>
 <p>HR asks Claude to draft an internal FAQ on parental-leave entitlements spanning three
 jurisdictions. It reads flawlessly and is ready in minutes. Employees will rely on it to
@@ -304,11 +244,7 @@ plan leave.</p>
   <li><span class="ltr">B</span><span>Ask Claude to double-check each jurisdiction's rules and publish once it confirms.</span></li>
   <li><span class="ltr">C</span><span>Publish it with a note telling employees to verify with HR if in doubt.</span></li>
   <li><span class="ltr">D</span><span>Send it to the HR compliance specialist with jurisdiction expertise for verification and sign-off before publishing.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> Entitlements that employees rely on are consequential and vary by jurisdiction, so a qualified human must verify and own the content. A equates familiarity with accuracy; B is the model checking itself; C transfers the duty to each employee.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 2.8
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Entitlements that employees rely on are consequential and vary by jurisdiction, so a qualified human must verify and own the content. A equates familiarity with accuracy; B is the model checking itself; C transfers the duty to each employee.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 2.8<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q17</h3>
 <p>A consultant has a verified, detailed research document. The client&#39;s non-technical board
 has ten minutes and must decide whether to renew a contract. The consultant asks Claude to
@@ -319,11 +255,7 @@ adapt the document for the board.</p>
   <li><span class="ltr">B</span><span>Ask Claude to make it shorter and more engaging, then send whichever version reads better.</span></li>
   <li><span class="ltr">C</span><span>Send the full document so the board has all the detail.</span></li>
   <li><span class="ltr">D</span><span>Send only the first paragraph Claude wrote at the top of the document.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Adaptation needs an explicit audience brief plus a substance check so simplification does not change the claims. B edits without a brief and chooses on style; C outsources editing to the busiest readers; D sends an unchecked fragment that was never written for this decision.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 2.9
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Adaptation needs an explicit audience brief plus a substance check so simplification does not change the claims. B edits without a brief and chooses on style; C outsources editing to the busiest readers; D sends an unchecked fragment that was never written for this decision.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 2.9<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q18</h3>
 <p>A verified technical summary must become a one-page update for an executive who wants the
 recommendation and the two key risks, with the figures unchanged. The associate wants to be
@@ -334,11 +266,7 @@ sure the executive version is faithful.</p>
   <li><span class="ltr">B</span><span>Give Claude the reader, the decision, the length, and the figures that must stay exact; then compare the new version against the source to confirm nothing material changed.</span></li>
   <li><span class="ltr">C</span><span>Cut paragraphs from the source until it fits one page.</span></li>
   <li><span class="ltr">D</span><span>Ask Claude to keep only the conclusions and drop the risks to stay short.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> A faithful adaptation combines an explicit brief with a comparison against the original so caveats and numbers survive. A assumes a verified source guarantees a faithful rewrite; C edits by cutting, which can drop required content; D removes the risks the executive needs.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 2.10
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> A faithful adaptation combines an explicit brief with a comparison against the original so caveats and numbers survive. A assumes a verified source guarantees a faithful rewrite; C edits by cutting, which can drop required content; D removes the risks the executive needs.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 2.10<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q19</h3>
 <p>An associate has Claude produce a 40-row comparison of vendors across ten criteria. The
 team will score and weight the criteria in a meeting tomorrow and will also sort by price.</p>
@@ -348,11 +276,7 @@ team will score and weight the criteria in a meeting tomorrow and will also sort
   <li><span class="ltr">B</span><span>Put the comparison in a shared document so everyone can read it.</span></li>
   <li><span class="ltr">C</span><span>Deliver the comparison as a structured table (or spreadsheet) so it can be sorted, filtered, and scored.</span></li>
   <li><span class="ltr">D</span><span>Paste the comparison inline in the chat and let the team transcribe what they need.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> The output feeds downstream sorting, filtering, and scoring, which calls for structured data. A and B bury a dataset in prose or a document; D leaves the team to retype values, inviting transcription errors.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 2.11
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> The output feeds downstream sorting, filtering, and scoring, which calls for structured data. A and B bury a dataset in prose or a document; D leaves the team to retype values, inviting transcription errors.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 2.11<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q20</h3>
 <p>An associate gets a one-paragraph answer explaining a policy question. It will be reused,
 edited, and presented in a client deck next week, and the team will refine it over several
@@ -363,12 +287,8 @@ sessions.</p>
   <li><span class="ltr">B</span><span>Expand the answer into a multi-page document to justify the effort.</span></li>
   <li><span class="ltr">C</span><span>Paste the paragraph into the deck manually and edit there.</span></li>
   <li><span class="ltr">D</span><span>Produce the content as a shareable artifact the team can reopen, edit, and present, rather than leaving it to dissolve in the chat scroll.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> Output that will be reused, edited, and presented belongs in an artifact that survives the conversation. A lets a reusable deliverable dissolve in the scroll; B inflates scope beyond the need; C scatters edits outside the tool, losing the ability to refine it as a unit.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 2.11
-<strong>Source:</strong> newly written</p>
-<div class="foot">Built 2026-10-03 15:44 · source: banks/o2-questions.md</div></main></div>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Output that will be reused, edited, and presented belongs in an artifact that survives the conversation. A lets a reusable deliverable dissolve in the scroll; B inflates scope beyond the need; C scatters edits outside the tool, losing the ability to refine it as a unit.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 2.11<br><strong>Source:</strong> newly written</p></div></details>
+<div class="foot">Built 2026-10-03 15:46 · source: banks/o2-questions.md</div></main></div>
 <div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
 <script>
 const q=document.getElementById('q');

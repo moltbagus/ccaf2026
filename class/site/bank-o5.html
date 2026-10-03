@@ -77,11 +77,7 @@ someone forgets a rule.</p>
   <li><span class="ltr">B</span><span>Save the rules in a shared document so reps can copy and paste them faster.</span></li>
   <li><span class="ltr">C</span><span>Ask each rep to keep a personal checklist of context to paste before every request.</span></li>
   <li><span class="ltr">D</span><span>Ask Claude to infer the house style from each rep's past conversations.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> A Project makes the context structural — every conversation inside it inherits the instructions and knowledge without depending on anyone remembering. A faster paste still fails the day it is skipped, a personal checklist is discipline rather than configuration, and chats do not carry reliable memory across conversations.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 5.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> A Project makes the context structural — every conversation inside it inherits the instructions and knowledge without depending on anyone remembering. A faster paste still fails the day it is skipped, a personal checklist is discipline rather than configuration, and chats do not carry reliable memory across conversations.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 5.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q2</h3>
 <p>A team already has a Project, but its custom instructions field is empty. Instead, someone
 pastes a one-page &quot;context brief&quot; at the top of every conversation because it feels faster
@@ -92,11 +88,7 @@ than filling out the instructions box.</p>
   <li><span class="ltr">B</span><span>Move the brief's standing rules into the Project's custom instructions so every conversation inherits them, and keep only request-specific detail in the chat.</span></li>
   <li><span class="ltr">C</span><span>Save the brief as a knowledge file and leave the instructions field empty.</span></li>
   <li><span class="ltr">D</span><span>Ask Claude to re-read the previous conversation's brief at the start of each new chat.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> Standing rules belong in the Project&#39;s instructions, where they apply to every conversation automatically; only the parts that change per request belong in the chat. Leaving the field empty and relying on a knowledge file or on Claude re-reading past chats keeps the setup dependent on manual effort.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 5.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Standing rules belong in the Project&#39;s instructions, where they apply to every conversation automatically; only the parts that change per request belong in the chat. Leaving the field empty and relying on a knowledge file or on Claude re-reading past chats keeps the setup dependent on manual effort.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 5.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q3</h3>
 <p>A Project&#39;s knowledge contains both the current employee handbook and a superseded draft
 of the same handbook. Claude sometimes cites figures from the draft.</p>
@@ -106,11 +98,7 @@ of the same handbook. Claude sometimes cites figures from the draft.</p>
   <li><span class="ltr">B</span><span>Rename both files so the current one sorts alphabetically first.</span></li>
   <li><span class="ltr">C</span><span>Remove the superseded draft from the Project's knowledge so only the current handbook remains.</span></li>
   <li><span class="ltr">D</span><span>Ask users to double-check every figure against the handbook before using an output.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> An old copy left in the Project competes with the new one and Claude has no way to know which wins, so the fix is to prune it, not to supplement it. A preference instruction still leaves the competing source, renaming does not change what the model reads, and pushing verification onto users pays the tax on every output.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 5.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> An old copy left in the Project competes with the new one and Claude has no way to know which wins, so the fix is to prune it, not to supplement it. A preference instruction still leaves the competing source, renaming does not change what the model reads, and pushing verification onto users pays the tax on every output.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 5.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q4</h3>
 <p>An onboarding team wants every new hire to get consistent answers. Today each hire starts
 their own chat from scratch and receives different guidance depending on how they phrase
@@ -121,11 +109,7 @@ the question.</p>
   <li><span class="ltr">B</span><span>Have a senior staffer answer new-hire questions directly instead of using Claude.</span></li>
   <li><span class="ltr">C</span><span>Tell new hires to search past chats for a relevant answer before asking.</span></li>
   <li><span class="ltr">D</span><span>Create an onboarding Project with the policy handbook as knowledge and role-specific instructions, and direct all hires to it.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> A Project gives every new hire the same instructions and knowledge automatically, so answers stay consistent without anyone re-supplying context. Pasting the whole handbook per chat is thorough but unmanageable, routing questions to a person abandons the setup, and searching past chats depends on someone having asked before.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 5.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> A Project gives every new hire the same instructions and knowledge automatically, so answers stay consistent without anyone re-supplying context. Pasting the whole handbook per chat is thorough but unmanageable, routing questions to a person abandons the setup, and searching past chats depends on someone having asked before.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 5.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q5</h3>
 <p>A 40-person department wants one standard Claude setup for recurring client work. A
 manager proposes building a bespoke, centrally provisioned enterprise knowledge base with
@@ -136,11 +120,7 @@ its own approval process before anyone can standardise.</p>
   <li><span class="ltr">B</span><span>Let each employee build a personal Project so the setup matches their individual working style.</span></li>
   <li><span class="ltr">C</span><span>Assign one person to paste the department context into each new conversation on the team's behalf.</span></li>
   <li><span class="ltr">D</span><span>Wait for a bespoke enterprise template to be procured before standardising anything.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> One shared Project is the durable way to standardise a team&#39;s context: everyone inherits the same instructions and knowledge, and updates reach the whole team at once. Personal Projects fragment the standard, a designated paster depends on one person, and blocking on a heavyweight procurement delays a setup a Project already provides.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 5.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> One shared Project is the durable way to standardise a team&#39;s context: everyone inherits the same instructions and knowledge, and updates reach the whole team at once. Personal Projects fragment the standard, a designated paster depends on one person, and blocking on a heavyweight procurement delays a setup a Project already provides.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 5.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q6</h3>
 <p>A sales Project was given an uploaded copy of the pricing sheet. Finance now revises prices
 in Google Drive every month, and Claude keeps quoting last month&#39;s numbers.</p>
@@ -150,11 +130,7 @@ in Google Drive every month, and Claude keeps quoting last month&#39;s numbers.<
   <li><span class="ltr">B</span><span>Connect the Project to Google Drive so it references the pricing sheet at its source, and remove the stale uploaded copy.</span></li>
   <li><span class="ltr">C</span><span>Re-upload the current pricing sheet at the start of every week so the copy stays fresh.</span></li>
   <li><span class="ltr">D</span><span>Instruct the sales team to verify every price Claude quotes against the Drive file before sending anything.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> A connector makes currency structural — the Project reads the version that exists now — and removing the stale upload eliminates the competing copy. Hedging instructions teach Claude to be vague instead of correct, weekly re-uploads are a manual sync loop that fails the week it is skipped, and per-quote verification pays the staleness tax on every message.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 5.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> A connector makes currency structural — the Project reads the version that exists now — and removing the stale upload eliminates the competing copy. Hedging instructions teach Claude to be vague instead of correct, weekly re-uploads are a manual sync loop that fails the week it is skipped, and per-quote verification pays the staleness tax on every message.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 5.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q7</h3>
 <p>A Project&#39;s knowledge is a mix of stable and living material: a finished brand book that
 rarely changes, and a weekly status log that lives in Gmail. Everything was uploaded as
@@ -165,11 +141,7 @@ files at setup.</p>
   <li><span class="ltr">B</span><span>Keep everything as uploads and add an instruction telling Claude to flag any answer that might be outdated.</span></li>
   <li><span class="ltr">C</span><span>Keep the stable brand book as an upload, and connect Gmail so the weekly status log is read at its source.</span></li>
   <li><span class="ltr">D</span><span>Ask Claude to notice when an uploaded file looks stale and pull the current version from its original location automatically.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Pick the source type by change rate: upload what is stable, connect what changes. The brand book is a snapshot that belongs as an upload; the status log changes weekly and belongs behind a connector. Weekly re-uploads are a manual loop, a flagging instruction makes Claude vague rather than current, and uploads cannot fetch their own newer versions.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 5.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Pick the source type by change rate: upload what is stable, connect what changes. The brand book is a snapshot that belongs as an upload; the status log changes weekly and belongs behind a connector. Weekly re-uploads are a manual loop, a flagging instruction makes Claude vague rather than current, and uploads cannot fetch their own newer versions.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 5.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q8</h3>
 <p>A team connects their Project to an entire shared drive so Claude &quot;always has everything.&quot;
 Answers now mix in unrelated files and outdated drafts, and quality drops.</p>
@@ -179,11 +151,7 @@ Answers now mix in unrelated files and outdated drafts, and quality drops.</p>
   <li><span class="ltr">B</span><span>Connect to more drives so Claude has even more context to choose from.</span></li>
   <li><span class="ltr">C</span><span>Tell users to phrase their questions more precisely so Claude picks the right files.</span></li>
   <li><span class="ltr">D</span><span>Narrow the connector to the specific folders the Project actually needs, so the knowledge set stays relevant and curated.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> Managing connectors means scoping them to the material the Project actually needs, not granting blanket access and hoping the model filters. An ignore instruction leaves the noise in scope, more drives add more of it, and pushing the problem onto users&#39; phrasing does not change what is connected.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 5.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Managing connectors means scoping them to the material the Project actually needs, not granting blanket access and hoping the model filters. An ignore instruction leaves the noise in scope, more drives add more of it, and pushing the problem onto users&#39; phrasing does not change what is connected.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 5.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q9</h3>
 <p>A support Project is connected to a shared Gmail inbox, and the connected label includes an
 archive of resolved tickets from three years ago that no longer reflect current process.
@@ -194,11 +162,7 @@ Agents report Claude quoting retired procedures.</p>
   <li><span class="ltr">B</span><span>Add a note to the instructions listing which old procedures to ignore.</span></li>
   <li><span class="ltr">C</span><span>Keep the full connection but ask Claude to weigh recent emails more heavily.</span></li>
   <li><span class="ltr">D</span><span>Have agents open the current procedure manually whenever Claude cites an old one.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Scoping the connector removes the retired material from the knowledge set entirely, which is the durable fix. An ignore list is brittle and must be maintained, weighting recency leaves the old material in scope, and manual correction repairs one answer while the connection keeps supplying the outdated procedure.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 5.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Scoping the connector removes the retired material from the knowledge set entirely, which is the durable fix. An ignore list is brittle and must be maintained, weighting recency leaves the old material in scope, and manual correction repairs one answer while the connection keeps supplying the outdated procedure.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 5.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q10</h3>
 <p>A Project&#39;s knowledge holds the same policy twice — as an uploaded PDF and through a
 connected folder. When the policy changed, the PDF was updated but the folder still holds
@@ -209,11 +173,7 @@ the old copy, and Claude sometimes cites the outdated version.</p>
   <li><span class="ltr">B</span><span>Remove the duplicate and keep one authoritative source for the policy, so Claude cannot pick the outdated copy.</span></li>
   <li><span class="ltr">C</span><span>Keep both so Claude has redundancy if one source becomes unavailable.</span></li>
   <li><span class="ltr">D</span><span>Add version numbers to both files' names so the newer one is obvious.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> Two copies of the same document compete, and Claude has no reliable way to choose between them; the fix is to keep a single source of truth. A preference instruction and filename version numbers are hints rather than guarantees, and redundancy here guarantees that one copy will drift out of date.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 5.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Two copies of the same document compete, and Claude has no reliable way to choose between them; the fix is to keep a single source of truth. A preference instruction and filename version numbers are hints rather than guarantees, and redundancy here guarantees that one copy will drift out of date.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 5.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q11</h3>
 <p>A Project&#39;s custom instructions read &quot;Be accurate, thorough, and helpful.&quot; Every week the
 team re-explains that risk summaries must be one page, in plain language, list the top
@@ -224,11 +184,7 @@ three risks, and cite the source file.</p>
   <li><span class="ltr">B</span><span>Add a calendar reminder for the team to restate the format every Monday.</span></li>
   <li><span class="ltr">C</span><span>Rewrite the custom instructions to state the concrete requirements: one-page risk summary, plain language, top three risks, and cite the source file.</span></li>
   <li><span class="ltr">D</span><span>Paste an example risk summary into each conversation whenever the format comes out wrong.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> The format rule is standing policy, so it belongs as concrete, enforceable instructions the Project applies every time. Encouraging adjectives add no decision information, a weekly reminder manages the symptom instead of removing it, and pasting examples per conversation re-supplies context the configuration should already carry.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 5.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> The format rule is standing policy, so it belongs as concrete, enforceable instructions the Project applies every time. Encouraging adjectives add no decision information, a weekly reminder manages the symptom instead of removing it, and pasting examples per conversation re-supplies context the configuration should already carry.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 5.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q12</h3>
 <p>A department&#39;s Project instructions run to 2,000 words mixing hard rules, aspirational
 values, and company history. Outputs are inconsistent and the rules are sometimes ignored.</p>
@@ -238,11 +194,7 @@ values, and company history. Outputs are inconsistent and the rules are sometime
   <li><span class="ltr">B</span><span>Split the document across several Projects so each set of instructions is shorter.</span></li>
   <li><span class="ltr">C</span><span>Formalise the instructions as a governed policy document with an approval and review workflow before any change is allowed.</span></li>
   <li><span class="ltr">D</span><span>Trim the instructions to the specific, enforceable rules — audience, format, authoritative source, hard constraints — and remove aspirational filler.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> Effective instructions name the audience, format, source, or a hard rule; length and ceremony are not specificity. A summary over an unfocused document still leaves the filler, splitting it across Projects fragments the standard, and a governance workflow adds process without making the rules any more enforceable.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 5.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Effective instructions name the audience, format, source, or a hard rule; length and ceremony are not specificity. A summary over an unfocused document still leaves the filler, splitting it across Projects fragments the standard, and a governance workflow adds process without making the rules any more enforceable.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 5.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q13</h3>
 <p>A Project&#39;s instructions say &quot;use the house style guide for all formatting,&quot; but no one has
 specified which file is the house style guide, and three candidate guides sit in the
@@ -253,11 +205,7 @@ knowledge.</p>
   <li><span class="ltr">B</span><span>Tell Claude to average the three guides so no guide is left out.</span></li>
   <li><span class="ltr">C</span><span>Remove the instruction and let each user specify the guide every time.</span></li>
   <li><span class="ltr">D</span><span>Paste all three guides' contents into the instructions so the rule is self-contained.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> An instruction that points at a source must name that source; otherwise the rule cannot be enforced. Averaging guides produces a style none of them defines, dropping the instruction re-supplies context per session, and copying every guide into the instructions duplicates knowledge that belongs in a file.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 5.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> An instruction that points at a source must name that source; otherwise the rule cannot be enforced. Averaging guides produces a style none of them defines, dropping the instruction re-supplies context per session, and copying every guide into the instructions duplicates knowledge that belongs in a file.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 5.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q14</h3>
 <p>A manager proposes adding &quot;always reason like a top-tier strategy consultant and use
 advanced frameworks&quot; to a Project&#39;s instructions, believing it will raise the quality of
@@ -268,11 +216,7 @@ outputs. The concrete requirements already produce the desired result.</p>
   <li><span class="ltr">B</span><span>Keep only the specific, enforceable requirements; the aspirational framing adds no decision information and cannot be enforced.</span></li>
   <li><span class="ltr">C</span><span>Replace the concrete requirements with the consultant framing.</span></li>
   <li><span class="ltr">D</span><span>Add several such expert framings to reinforce the effect.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> Instructions earn their place by naming audience, format, source, or a hard rule; flattering role framing gives the model nothing it can act on. If the concrete requirements already produce the desired output, adding aspirational language at best does nothing and at worst crowds out the rules that work.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 5.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Instructions earn their place by naming audience, format, source, or a hard rule; flattering role framing gives the model nothing it can act on. If the concrete requirements already produce the desired output, adding aspirational language at best does nothing and at worst crowds out the rules that work.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 5.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q15</h3>
 <p>A Project&#39;s instructions tell Claude &quot;don&#39;t make the memos too long.&quot; Memos still come back
 at the wrong length.</p>
@@ -282,11 +226,7 @@ at the wrong length.</p>
   <li><span class="ltr">B</span><span>Repeat the length rule at the start of every conversation.</span></li>
   <li><span class="ltr">C</span><span>Replace the negative, unmeasurable rule with a concrete one: every memo is at most one page.</span></li>
   <li><span class="ltr">D</span><span>Ask Claude at the end of each session whether it followed the length rule.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Say what to do, not only what to avoid, and make it measurable; &quot;not too long&quot; gives no threshold to enforce, while &quot;at most one page&quot; does. Emphasis words add nothing, repeating the rule per conversation re-supplies context, and asking Claude to self-report is not a control.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 5.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Say what to do, not only what to avoid, and make it measurable; &quot;not too long&quot; gives no threshold to enforce, while &quot;at most one page&quot; does. Emphasis words add nothing, repeating the rule per conversation re-supplies context, and asking Claude to self-report is not a control.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 5.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q16</h3>
 <p>A company extended its returns window from 30 to 60 days and dropped the restocking fee in
 July. The support Project still holds the January policy file, and an associate has been
@@ -297,11 +237,7 @@ manually correcting the return window in each of Claude&#39;s draft replies for 
   <li><span class="ltr">B</span><span>Add an instruction that return-window answers may have changed, so Claude is less certain about policy details.</span></li>
   <li><span class="ltr">C</span><span>Have the support team verify every policy detail against the company intranet themselves.</span></li>
   <li><span class="ltr">D</span><span>Replace the outdated policy file in the Project with the current one and review the custom instructions for anything else the policy change affects.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> The stale file is the root cause, so replacing it in the Project fixes every future conversation at once. Manual correction leaves the wrong source producing the next wrong draft, a hedging instruction makes Claude vague instead of correct, and routing humans to the intranet for every detail abandons the Project&#39;s purpose when a one-time update restores it.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 5.4
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> The stale file is the root cause, so replacing it in the Project fixes every future conversation at once. Manual correction leaves the wrong source producing the next wrong draft, a hedging instruction makes Claude vague instead of correct, and routing humans to the intranet for every detail abandons the Project&#39;s purpose when a one-time update restores it.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 5.4<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q17</h3>
 <p>A compliance Project&#39;s knowledge was set up 18 months ago and has not been touched since,
 even though the underlying regulations are reviewed quarterly. The outputs still look
@@ -312,11 +248,7 @@ confident and polished.</p>
   <li><span class="ltr">B</span><span>Leave it as it is, since the polished outputs show the configuration is still correct.</span></li>
   <li><span class="ltr">C</span><span>Set up a job that re-uploads the existing files every quarter so the Project looks maintained.</span></li>
   <li><span class="ltr">D</span><span>Add an instruction telling Claude to caveat anything that might be out of date.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> A configuration is correct as of a date, and staleness is silent — polished output is not evidence the knowledge is current. Tying review to how fast the source material changes keeps the Project true; a scheduled re-upload of unchanged files changes nothing, and a caveat instruction makes Claude vague rather than accurate.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 5.4
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> A configuration is correct as of a date, and staleness is silent — polished output is not evidence the knowledge is current. Tying review to how fast the source material changes keeps the Project true; a scheduled re-upload of unchanged files changes nothing, and a caveat instruction makes Claude vague rather than accurate.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 5.4<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q18</h3>
 <p>A department&#39;s Claude setup has drifted: several overlapping Projects, duplicated knowledge
 files, contradictory instructions, and no one knows which Project is current. Leadership
@@ -327,11 +259,7 @@ proposes rebuilding everything from scratch under a new governance board.</p>
   <li><span class="ltr">B</span><span>Audit the existing Projects, consolidate duplicates, designate one authoritative Project per workstream, and assign an owner to maintain each.</span></li>
   <li><span class="ltr">C</span><span>Keep all the Projects but add a rule that everyone must use the newest one.</span></li>
   <li><span class="ltr">D</span><span>Leave the Projects alone and let each team keep working as they have.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> The maintenance move is to consolidate and assign ownership so each workstream has one authoritative setup that someone keeps current. A full rebuild under a governance board discards working configuration and adds process without fixing ownership, a &quot;use the newest&quot; rule leaves the duplicates in place, and doing nothing leaves the drift to compound.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 5.4
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> The maintenance move is to consolidate and assign ownership so each workstream has one authoritative setup that someone keeps current. A full rebuild under a governance board discards working configuration and adds process without fixing ownership, a &quot;use the newest&quot; rule leaves the duplicates in place, and doing nothing leaves the drift to compound.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 5.4<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q19</h3>
 <p>A Project&#39;s outputs have started citing an obsolete process. The team is debating whether
 to fix the one bad output or to look into the Project itself.</p>
@@ -341,11 +269,7 @@ to fix the one bad output or to look into the Project itself.</p>
   <li><span class="ltr">B</span><span>Ask Claude to be more careful with process details going forward.</span></li>
   <li><span class="ltr">C</span><span>Diagnose the configuration first — check whether the knowledge is current and the instructions still reflect the rules — then update the Project so every future conversation is fixed.</span></li>
   <li><span class="ltr">D</span><span>Replace the Project with a fresh one every time drift is suspected.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> When outputs go wrong, suspect the configuration before the model: fixing the source fixes every future conversation, while fixing one output fixes one output. Correcting the single reply leaves the stale source producing the next wrong one, a &quot;be careful&quot; instruction is not a control, and rebuilding the Project repeatedly throws away working configuration.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 5.4
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> When outputs go wrong, suspect the configuration before the model: fixing the source fixes every future conversation, while fixing one output fixes one output. Correcting the single reply leaves the stale source producing the next wrong one, a &quot;be careful&quot; instruction is not a control, and rebuilding the Project repeatedly throws away working configuration.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 5.4<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q20</h3>
 <p>A team wants their Project&#39;s configuration to stay healthy over time. They propose asking
 Claude to self-monitor and automatically update the Project&#39;s knowledge whenever it
@@ -356,12 +280,8 @@ notices something looks outdated.</p>
   <li><span class="ltr">B</span><span>Add a monthly reminder to review the Project but change nothing else.</span></li>
   <li><span class="ltr">C</span><span>Rely on users to report wrong answers whenever they happen to notice one.</span></li>
   <li><span class="ltr">D</span><span>Assign an owner, tie review frequency to how fast the source material changes, and update the Project whenever reality moves.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> Maintenance is a deliberate, owned activity: someone reviews the instructions and knowledge on a cadence matched to the material&#39;s change rate and updates the Project when it moves. Self-monitoring is not a reliable control, a reminder with no owner or cadence is easy to ignore, and waiting for users to notice errors leaves the Project wrong in the meantime.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 5.4
-<strong>Source:</strong> newly written</p>
-<div class="foot">Built 2026-10-03 15:44 · source: banks/o5-questions.md</div></main></div>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Maintenance is a deliberate, owned activity: someone reviews the instructions and knowledge on a cadence matched to the material&#39;s change rate and updates the Project when it moves. Self-monitoring is not a reliable control, a reminder with no owner or cadence is easy to ignore, and waiting for users to notice errors leaves the Project wrong in the meantime.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 5.4<br><strong>Source:</strong> newly written</p></div></details>
+<div class="foot">Built 2026-10-03 15:46 · source: banks/o5-questions.md</div></main></div>
 <div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
 <script>
 const q=document.getElementById('q');

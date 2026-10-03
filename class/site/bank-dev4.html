@@ -78,11 +78,7 @@ policy for all of them so the service &quot;heals itself&quot; without operator 
   <li><span class="ltr">B</span><span>Retry all four error types with backoff so the service recovers automatically with no operator involvement.</span></li>
   <li><span class="ltr">C</span><span>Retry only the 401 (re-authenticating each time) and the 429, and drop the others silently.</span></li>
   <li><span class="ltr">D</span><span>Fail fast on all four so no extra load is added to the API during the spike.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Only the transient failures can succeed on a later attempt, so they get backoff retries, while the deterministic client errors must fail fast and stay visible. Retrying all four loops forever on a 400 and a 401, burying the bad request and bad key behind a minute of latency; the 401 needs a corrected credential, not a re-auth retry; failing fast on the 429 and 529 abandons failures a retry would recover.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Only the transient failures can succeed on a later attempt, so they get backoff retries, while the deterministic client errors must fail fast and stay visible. Retrying all four loops forever on a 400 and a 401, burying the bad request and bad key behind a minute of latency; the 401 needs a corrected credential, not a re-auth retry; failing fast on the 429 and 529 abandons failures a retry would recover.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q2</h3>
 <p>A batch job is hitting transient 429 and 529 responses during a brief overload. A
 teammate proposes retrying each failed request immediately in a tight loop until it
@@ -93,11 +89,7 @@ succeeds, arguing this clears the backlog in the shortest time.</p>
   <li><span class="ltr">B</span><span>Use exponential backoff with jitter, honor <code>Retry-After</code> when present, bound both attempts and total elapsed time, and fail with context once the budget is exhausted.</span></li>
   <li><span class="ltr">C</span><span>Apply a single fixed long delay to every failed request, regardless of error type.</span></li>
   <li><span class="ltr">D</span><span>Retry indefinitely with backoff so a request never returns a failure to the caller.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> Backoff plus jitter eases pressure on the recovering service, <code>Retry-After</code> follows the server&#39;s own guidance, and a bounded budget makes a persistent outage surface instead of hanging. A tight loop amplifies the very overload causing the 429s and 529s; a fixed delay ignores <code>Retry-After</code>, applies the same wait to non-retryable errors, and wastes time; retrying indefinitely pins workers and hides an outage that should have been reported.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Backoff plus jitter eases pressure on the recovering service, <code>Retry-After</code> follows the server&#39;s own guidance, and a bounded budget makes a persistent outage surface instead of hanging. A tight loop amplifies the very overload causing the 429s and 529s; a fixed delay ignores <code>Retry-After</code>, applies the same wait to non-retryable errors, and wastes time; retrying indefinitely pins workers and hides an outage that should have been reported.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q3</h3>
 <p>An intermittent parse failure has been in the backlog for weeks. The logs show only
 <code>JSON decode error</code> with no payload, so nobody can reproduce the exact call that failed.
@@ -109,11 +101,7 @@ data shows up somewhere.&quot;</p>
   <li><span class="ltr">B</span><span>Wrap the parse step in a try/except that returns an empty object on failure so the pipeline keeps running.</span></li>
   <li><span class="ltr">C</span><span>Log the raw request and raw response, keyed by a request id, alongside the parsed result so the exact failing call can be replayed.</span></li>
   <li><span class="ltr">D</span><span>Add a retry around the parse step so a transient bad parse is retried.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> A parse failure hides the real output; without the raw bytes of the request and response you cannot replay the call, and a correlation id lets you find the exact invocation. Broad DEBUG verbosity floods logs without guaranteeing the payload is captured; returning an empty object hides the failure; retrying a parse does not change a deterministic malformed payload.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> A parse failure hides the real output; without the raw bytes of the request and response you cannot replay the call, and a correlation id lets you find the exact invocation. Broad DEBUG verbosity floods logs without guaranteeing the payload is captured; returning an empty object hides the failure; retrying a parse does not change a deterministic malformed payload.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q4</h3>
 <p>A developer is about to ship a system-prompt change that fixes one customer case. The
 last prompt change shipped by the team silently broke a case that used to work, so the
@@ -125,11 +113,7 @@ with a mandatory perfect score.</p>
   <li><span class="ltr">B</span><span>Generate a large suite of 5,000 synthetic cases and require a perfect score before shipping.</span></li>
   <li><span class="ltr">C</span><span>Expand the prompt with extra edge-case instructions so nothing is missed.</span></li>
   <li><span class="ltr">D</span><span>Run a small labelled set of representative cases — including the previously failing one and known edge cases — before and after the change, and gate the release on no regression.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> A small labelled set with a pass criterion, run before and after and compared to a baseline, catches a fix that breaks another case and is cheap enough to actually run each time. A 5,000-case generated suite is expensive to maintain and its aggregate score can mask a single regression; shipping to production is where regressions reach users; a longer prompt is not a test.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> A small labelled set with a pass criterion, run before and after and compared to a baseline, catches a fix that breaks another case and is cheap enough to actually run each time. A 5,000-case generated suite is expensive to maintain and its aggregate score can mask a single regression; shipping to production is where regressions reach users; a longer prompt is not a test.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q5</h3>
 <p>A team is standardising how every service retries the Messages API during spikes. A
 platform architect proposes adopting a shared enterprise retry framework whose retry
@@ -140,11 +124,7 @@ budget is configured centrally, so individual teams never hand-roll a policy.</p
   <li><span class="ltr">B</span><span>Adopt the shared enterprise retry framework and let the platform team own the retry budget centrally.</span></li>
   <li><span class="ltr">C</span><span>Use a fixed delay with no cap so retry latency is predictable.</span></li>
   <li><span class="ltr">D</span><span>Route every failed request through a dedicated retry queue serviced by a separate worker pool.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> The correct policy is defined by its behaviour — backoff, jitter, honoring server guidance, a hard bound, and a loud end — not by which framework owns it. A centrally configured budget still has to get those mechanics right, and hides them from the team that owns the failure; a fixed uncapped delay ignores <code>Retry-After</code> and can hang; a retry queue adds infrastructure without changing what makes a retry safe.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> The correct policy is defined by its behaviour — backoff, jitter, honoring server guidance, a hard bound, and a loud end — not by which framework owns it. A centrally configured budget still has to get those mechanics right, and hides them from the team that owns the failure; a fixed uncapped delay ignores <code>Retry-After</code> and can hang; a retry queue adds infrastructure without changing what makes a retry safe.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q6</h3>
 <p>After a transient timeout, an automatic retry re-submitted a payment request and the
 customer was charged twice. The team wants to keep retrying transient failures but must
@@ -155,11 +135,7 @@ guarantee the side effect can never be applied twice.</p>
   <li><span class="ltr">B</span><span>Make the retry safe with an idempotency key, so re-submitting the same operation cannot apply the side effect twice.</span></li>
   <li><span class="ltr">C</span><span>Retry only after a longer delay so duplicates become unlikely.</span></li>
   <li><span class="ltr">D</span><span>Retry freely and deduplicate duplicate charges downstream in the ledger afterwards.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> Retry only idempotent work, or make it idempotent with an idempotency key so a retry can never duplicate a charge, a ticket, or a sent message. Disabling retries discards recovery for a genuinely transient failure; a longer delay only makes duplication less likely, not impossible; downstream deduplication runs after the customer has already been charged twice.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Retry only idempotent work, or make it idempotent with an idempotency key so a retry can never duplicate a charge, a ticket, or a sent message. Disabling retries discards recovery for a genuinely transient failure; a longer delay only makes duplication less likely, not impossible; downstream deduplication runs after the customer has already been charged twice.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q7</h3>
 <p>A support agent occasionally gets malformed JSON, an occasional refusal, and now and then
 wrong tool arguments. The harness treats these the same as a 429: it retries the identical
@@ -170,11 +146,7 @@ request with backoff. Success rate has not improved and latency has grown.</p>
   <li><span class="ltr">B</span><span>Lower the temperature so the model stops producing malformed output.</span></li>
   <li><span class="ltr">C</span><span>Treat model-output failures as their own class: validate the output, repair or re-ask with a corrective instruction, and do not blindly retry them as transport errors.</span></li>
   <li><span class="ltr">D</span><span>Catch the parse error and pass the raw text through to the caller.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Malformed JSON, refusals, and wrong tool arguments are output problems — validate, repair, or re-ask — not transport errors that a blind retry fixes; the identical prompt tends to reproduce them. Raising the cap just retries the same failure more; lowering temperature does not address a refusal or wrong tool arguments and is not a fix; passing raw text through pushes an unvalidated value to the caller.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Malformed JSON, refusals, and wrong tool arguments are output problems — validate, repair, or re-ask — not transport errors that a blind retry fixes; the identical prompt tends to reproduce them. Raising the cap just retries the same failure more; lowering temperature does not address a refusal or wrong tool arguments and is not a fix; passing raw text through pushes an unvalidated value to the caller.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q8</h3>
 <p>A long-context request returns a 400 <code>request_too_large</code> / context-length-exceeded error.
 An engineer wraps the call in the standard backoff retry used for 429s, expecting it to
@@ -185,11 +157,7 @@ get through on a later attempt.</p>
   <li><span class="ltr">B</span><span>Raise <code>max_tokens</code> so the request is accepted.</span></li>
   <li><span class="ltr">C</span><span>Re-send the same request on a larger-context model.</span></li>
   <li><span class="ltr">D</span><span>Treat it as a deterministic request error: shorten, summarise, or chunk the input and resend, because the identical request fails identically every time.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> Request-too-large and context-length-exceeded are deterministic client errors — the fix is the request, not a retry, and the recovery is to shorten and resend. Backoff cannot shrink an oversized payload; raising <code>max_tokens</code> affects the output budget, not the input length; switching models does not make an over-limit prompt valid for the same context window.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Request-too-large and context-length-exceeded are deterministic client errors — the fix is the request, not a retry, and the recovery is to shorten and resend. Backoff cannot shrink an oversized payload; raising <code>max_tokens</code> affects the output budget, not the input length; switching models does not make an over-limit prompt valid for the same context window.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q9</h3>
 <p>A batch job&#39;s retries made an overload worse: every worker retries on the same fixed
 cadence, so they hammer the endpoint at the exact moment it is trying to recover. The
@@ -200,11 +168,7 @@ cadence, so they hammer the endpoint at the exact moment it is trying to recover
   <li><span class="ltr">B</span><span>Increase the retry count so every worker eventually gets through.</span></li>
   <li><span class="ltr">C</span><span>Reduce the base delay so retries happen sooner and clear the backlog faster.</span></li>
   <li><span class="ltr">D</span><span>Remove the backoff entirely so failed requests are retried as soon as possible.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Jitter randomises each wait and stops synchronized clients from retrying in lockstep — the thundering-herd that turned the retry loop into the spike. More retries or shorter delays add more concurrent pressure at the worst moment; removing backoff maximises the lockstep hammering that caused the problem.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Jitter randomises each wait and stops synchronized clients from retrying in lockstep — the thundering-herd that turned the retry loop into the spike. More retries or shorter delays add more concurrent pressure at the worst moment; removing backoff maximises the lockstep hammering that caused the problem.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q10</h3>
 <p>A production agent fails only on the largest 2% of inputs, and the on-call engineer can
 see that a call failed but not why: the parsed object looks fine, the error class is
@@ -215,11 +179,7 @@ generic, and the request that produced it is gone.</p>
   <li><span class="ltr">B</span><span>Log the raw request and raw response alongside the parsed output, keyed by a correlation id, so a failure on any input still has the exact bytes that produced it.</span></li>
   <li><span class="ltr">C</span><span>Log only the parsed object so downstream behaviour is visible in the history.</span></li>
   <li><span class="ltr">D</span><span>Keep logs in memory and dump them only when the process crashes.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> The parsed result is not the payload — a parse or validation failure hides the real output, and without the raw request and response you cannot replay the exact call. A broad handler with a generic message loses the data that matters; logging the parsed object loses the raw bytes that failed to parse; an in-memory buffer dumped on crash loses everything from a failure that did not crash the process.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> The parsed result is not the payload — a parse or validation failure hides the real output, and without the raw request and response you cannot replay the exact call. A broad handler with a generic message loses the data that matters; logging the parsed object loses the raw bytes that failed to parse; an in-memory buffer dumped on crash loses everything from a failure that did not crash the process.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q11</h3>
 <p>A team is setting up an eval for a structured-output feature. One engineer proposes
 testing with the single case that currently fails, arguing that is the whole point of the
@@ -230,11 +190,7 @@ change; another wants a huge randomly generated suite.</p>
   <li><span class="ltr">B</span><span>Generate a large random suite of synthetic inputs and require a high aggregate score.</span></li>
   <li><span class="ltr">C</span><span>Build a small labelled set of representative cases — including the previously failing case and known edge cases — each with an expected output or an explicit pass criterion.</span></li>
   <li><span class="ltr">D</span><span>Test only the happy path, since edge cases are rare and cost time.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> A labelled set of representative cases with explicit pass criteria is what makes a change verifiable and catches a regression in a case you did not set out to fix. The single failing case passes the moment the targeted fix lands even if it broke something else; a large random suite is expensive and an aggregate score can hide a single regression; testing only the happy path is not a test of the failure you are trying to fix.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> A labelled set of representative cases with explicit pass criteria is what makes a change verifiable and catches a regression in a case you did not set out to fix. The single failing case passes the moment the targeted fix lands even if it broke something else; a large random suite is expensive and an aggregate score can hide a single regression; testing only the happy path is not a test of the failure you are trying to fix.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q12</h3>
 <p>An agent intermittently returns unusable output. The team is unsure whether the fault is
 in their own integration layer — bad parameters, a parsing bug, a client timeout — or in
@@ -246,11 +202,7 @@ with the failing request id.</p>
   <li><span class="ltr">B</span><span>Add retries across the whole pipeline so any intermittent fault clears on its own.</span></li>
   <li><span class="ltr">C</span><span>Roll back to the previous model version and see if the errors stop.</span></li>
   <li><span class="ltr">D</span><span>Trace one request id across the integration layer and the API to isolate whether the fault is bad parameters, parsing, or a timeout on your side, versus malformed model output, and fix the layer that owns it.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> Origin isolation — deciding whether the fault is in your integration layer or in model output — comes first, because the recovery differs completely and a fix in the wrong layer wastes the outage. Escalating before isolating hands the provider a symptom you have not located; blanket retries mask a deterministic bug and inflate cost; a blind rollback discards the evidence and may not address an integration-layer fault.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Origin isolation — deciding whether the fault is in your integration layer or in model output — comes first, because the recovery differs completely and a fix in the wrong layer wastes the outage. Escalating before isolating hands the provider a symptom you have not located; blanket retries mask a deterministic bug and inflate cost; a blind rollback discards the evidence and may not address an integration-layer fault.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q13</h3>
 <p>Under load, the API returns 429 responses with a <code>Retry-After</code> header. A developer is
 writing the backoff logic and asks how to treat that header, suggesting they ignore it
@@ -262,11 +214,7 @@ safe.&quot;</p>
   <li><span class="ltr">B</span><span>Ignore <code>Retry-After</code> and use a fixed 60-second delay for every failed request, since the header varies.</span></li>
   <li><span class="ltr">C</span><span>Retry immediately but attach an idempotency key so any duplicate is safe.</span></li>
   <li><span class="ltr">D</span><span>Ignore <code>Retry-After</code> and always add a flat 50% to the computed delay to be safe.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> <code>Retry-After</code> is the server telling you exactly how long to wait; honoring it is the most reliable way to stop amplifying the overload, and exponential backoff from a small base up to a cap covers the case where no header is present. A fixed delay over-waits on short limits and under-waits on long ones; ignoring the header and padding your own estimate is a guess the server already answered; retrying immediately re-creates the overload.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> <code>Retry-After</code> is the server telling you exactly how long to wait; honoring it is the most reliable way to stop amplifying the overload, and exponential backoff from a small base up to a cap covers the case where no header is present. A fixed delay over-waits on short limits and under-waits on long ones; ignoring the header and padding your own estimate is a guess the server already answered; retrying immediately re-creates the overload.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q14</h3>
 <p>A persistent outage has one worker pinned: it has been retrying a single request with
 backoff for forty minutes. The teammate who wrote the loop argues this is correct because
@@ -277,11 +225,7 @@ backoff for forty minutes. The teammate who wrote the loop argues this is correc
   <li><span class="ltr">B</span><span>Bound the retry with both a maximum attempt count and a maximum total elapsed time, then fail loudly with context so a persistent outage surfaces.</span></li>
   <li><span class="ltr">C</span><span>Cap the attempt count but remove the time bound so a slow success still lands.</span></li>
   <li><span class="ltr">D</span><span>Retry until a human notices and cancels the job.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> A retry policy is incomplete without a stopping rule: bounding both attempts and total time guarantees that a real outage fails fast with context instead of pinning a worker indefinitely. Retrying forever turns a thirty-second outage into hours of silent hang; a count-only cap can still run for an unbounded time; waiting for a human is not a control, it is the absence of one.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> A retry policy is incomplete without a stopping rule: bounding both attempts and total time guarantees that a real outage fails fast with context instead of pinning a worker indefinitely. Retrying forever turns a thirty-second outage into hours of silent hang; a count-only cap can still run for an unbounded time; waiting for a human is not a control, it is the absence of one.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q15</h3>
 <p>An agent must return JSON that downstream code parses. Occasionally the model emits
 prose around the object or a missing brace, and the parse throws. A teammate proposes
@@ -293,11 +237,7 @@ a bad model day.&quot;</p>
   <li><span class="ltr">B</span><span>Retry the request at a higher temperature until the JSON happens to parse.</span></li>
   <li><span class="ltr">C</span><span>Validate the response against a schema, and on failure repair it or re-ask with a corrective instruction, logging the raw output so the failure is reproducible.</span></li>
   <li><span class="ltr">D</span><span>Add "always return valid JSON" to the system prompt and trust the model to comply.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Validate and repair is the right recovery for an output problem: it produces a usable value, records the raw output for reproduction, and re-asks with a corrective instruction when repair is not possible. Swallowing the error returns a silently wrong empty object and leaves nothing to fix; higher temperature adds nondeterminism without guaranteeing validity; a prompt instruction is probabilistic and will still fail occasionally with no fallback.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Validate and repair is the right recovery for an output problem: it produces a usable value, records the raw output for reproduction, and re-asks with a corrective instruction when repair is not possible. Swallowing the error returns a silently wrong empty object and leaves nothing to fix; higher temperature adds nondeterminism without guaranteeing validity; a prompt instruction is probabilistic and will still fail occasionally with no fallback.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q16</h3>
 <p>A user-facing endpoint wraps the Messages API call in retries. The team set the attempt
 cap very high so that &quot;no request is ever dropped,&quot; but p99 latency has tripled because a
@@ -308,11 +248,7 @@ slow dependency makes each retry wait before failing.</p>
   <li><span class="ltr">B</span><span>Remove the cap entirely and let retries run until success.</span></li>
   <li><span class="ltr">C</span><span>Retry only on the fastest path with no delay between attempts.</span></li>
   <li><span class="ltr">D</span><span>Keep a modest attempt cap and a total-time budget sized to the caller's latency SLO, so a stuck retry cannot pin a worker past the time the caller is willing to wait.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> A retry budget is sized to the caller&#39;s tolerance, not to &quot;never drop anything&quot; — bounding both attempts and total elapsed time keeps p99 within the SLO while still recovering transient failures. A high or absent cap is what tripled latency; retrying with no delay amplifies load and ignores <code>Retry-After</code>; throughput is not the metric a user-facing call is judged on.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> A retry budget is sized to the caller&#39;s tolerance, not to &quot;never drop anything&quot; — bounding both attempts and total elapsed time keeps p99 within the SLO while still recovering transient failures. A high or absent cap is what tripled latency; retrying with no delay amplifies load and ignores <code>Retry-After</code>; throughput is not the metric a user-facing call is judged on.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q17</h3>
 <p>An intermittent failure appears only for one customer and one prompt version, but the
 service logs a human-readable sentence per call: &quot;called model, got a response.&quot; The team
@@ -323,11 +259,7 @@ cannot filter by model, prompt version, or error type to find the pattern.</p>
   <li><span class="ltr">B</span><span>Log a clearer human-readable sentence for each call so the team can read the history.</span></li>
   <li><span class="ltr">C</span><span>Log only errors, to keep log volume down.</span></li>
   <li><span class="ltr">D</span><span>Log nothing and rely on reproducing the issue locally from the customer's description.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Structured fields are what let you filter and aggregate failures by type, model, or prompt version and correlate one request id across the integration layer and the API — the whole point of logging for debugging. A clearer prose sentence is still not machine-filterable; logging only errors discards the successful calls that show the pattern around the failure; reproducing from a description is guesswork when you already have the traffic.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Structured fields are what let you filter and aggregate failures by type, model, or prompt version and correlate one request id across the integration layer and the API — the whole point of logging for debugging. A clearer prose sentence is still not machine-filterable; logging only errors discards the successful calls that show the pattern around the failure; reproducing from a description is guesswork when you already have the traffic.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q18</h3>
 <p>A prompt change passes the three cases it was written to fix. The engineer plans to ship
 it and rely on the next scheduled suite run to catch any problem, arguing the full suite
@@ -338,11 +270,7 @@ covers everything anyway.</p>
   <li><span class="ltr">B</span><span>Run the labelled set before and after the change, compare the pass rate to the pre-change baseline, and block the release if any previously passing case regresses.</span></li>
   <li><span class="ltr">C</span><span>Run only the cases the change was meant to fix and ship if they pass.</span></li>
   <li><span class="ltr">D</span><span>Ship the change and review any suite failures manually after release.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> A regression check is run before the change ships, comparing the new pass rate against the baseline so a fix that breaks another case is caught while it can still be blocked. Relying on the next run means the regression is already in front of users; running only the targeted cases cannot detect the regression by construction; reviewing failures after release is production being used as the test environment.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> A regression check is run before the change ships, comparing the new pass rate against the baseline so a fix that breaks another case is caught while it can still be blocked. Relying on the next run means the regression is already in front of users; running only the targeted cases cannot detect the regression by construction; reviewing failures after release is production being used as the test environment.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q19</h3>
 <p>A team pins no model version and upgrades whenever a new release lands. Historically,
 quality regressions after an upgrade were only discovered from a rising production error
@@ -353,11 +281,7 @@ dashboard weeks later.</p>
   <li><span class="ltr">B</span><span>Rely on the vendor's release notes to flag any breaking changes before upgrading.</span></li>
   <li><span class="ltr">C</span><span>Re-run the same labelled set on every model or config change and gate the release in CI, so drift is caught before users see it.</span></li>
   <li><span class="ltr">D</span><span>Build a production error-rate dashboard and watch it closely after each upgrade.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Re-running the labelled set on model or config changes is exactly how drift is detected before it reaches users, and gating in CI makes the check binding. Pinning forever forfeits new capabilities and is not a fix for evaluating them; release notes describe intent, not the behaviour of your specific cases; a production dashboard is where a regression is discovered after it has already reached users.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Re-running the labelled set on model or config changes is exactly how drift is detected before it reaches users, and gating in CI makes the check binding. Pinning forever forfeits new capabilities and is not a fix for evaluating them; release notes describe intent, not the behaviour of your specific cases; a production dashboard is where a regression is discovered after it has already reached users.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q20</h3>
 <p>A retry budget for a flaky upstream is exhausted for a particular request. The current
 code catches the final exception and returns an empty result with HTTP 200, so the caller
@@ -368,12 +292,8 @@ code catches the final exception and returns an empty result with HTTP 200, so t
   <li><span class="ltr">B</span><span>Log the error at DEBUG level and continue so log volume stays low.</span></li>
   <li><span class="ltr">C</span><span>Swallow the error and increment a counter that nobody reads.</span></li>
   <li><span class="ltr">D</span><span>When the budget is exhausted, surface the error with its context — request id, error class, and attempts made — instead of silently returning empty or partial results.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> When the retry budget is gone, the failure must be heard: surfacing it with its context lets the caller decide and keeps the outage visible. Returning an empty success hides a real failure and pushes it into silent downstream corruption; DEBUG logging buries it below the level anyone watches; an unread counter is not an alert.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 4.1
-<strong>Source:</strong> newly written</p>
-<div class="foot">Built 2026-10-03 15:44 · source: banks/dev4-questions.md</div></main></div>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> When the retry budget is gone, the failure must be heard: surfacing it with its context lets the caller decide and keeps the outage visible. Returning an empty success hides a real failure and pushes it into silent downstream corruption; DEBUG logging buries it below the level anyone watches; an unread counter is not an alert.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
+<div class="foot">Built 2026-10-03 15:46 · source: banks/dev4-questions.md</div></main></div>
 <div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
 <script>
 const q=document.getElementById('q');

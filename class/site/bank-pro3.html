@@ -80,11 +80,7 @@ technician&#39;s role.</p>
   <li><span class="ltr">B</span><span>Remove the three write tools from the agent's configuration and expose a read-and-attach tool set only.</span></li>
   <li><span class="ltr">C</span><span>Keep the tools but require a second technician to co-approve each write.</span></li>
   <li><span class="ltr">D</span><span>Replace the model with a larger one that follows the "never write" instruction more reliably.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> Least privilege eliminates the capability rather than guarding it: a tool the role never needs should not exist, so a bypass or prompt injection has nothing to reach. An approval gate and audit logging are compensating and detective controls — they change what you notice, not what the agent may do — and a larger model holds exactly the same write scope.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 3.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Least privilege eliminates the capability rather than guarding it: a tool the role never needs should not exist, so a bypass or prompt injection has nothing to reach. An approval gate and audit logging are compensating and detective controls — they change what you notice, not what the agent may do — and a larger model holds exactly the same write scope.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 3.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q2</h3>
 <p>An operations agent has a <code>run_shell</code> tool that accepts an unconstrained command string;
 it is used to check disk usage and restart services. Audit shows the model has invoked it
@@ -95,11 +91,7 @@ to edit configuration files and list secrets. The team must keep the restart cap
   <li><span class="ltr">B</span><span>Keep <code>run_shell</code> but block the specific dangerous binaries with a denylist.</span></li>
   <li><span class="ltr">C</span><span>Replace <code>run_shell</code> with two narrow tools — <code>check_disk</code> and <code>restart_service</code> — whose input schemas accept only a validated service name.</span></li>
   <li><span class="ltr">D</span><span>Increase logging on <code>run_shell</code> and alert on any configuration-file edit.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Constrain capability at the interface, following least privilege, so the unwanted behaviour is impossible rather than discouraged: a schema that accepts only a service name cannot express &quot;edit config&quot;. A prompt instruction is probabilistic, a binary denylist is brittle and bypassable, and logging only records the misuse after it has happened.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 3.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Constrain capability at the interface, following least privilege, so the unwanted behaviour is impossible rather than discouraged: a schema that accepts only a service name cannot express &quot;edit config&quot;. A prompt instruction is probabilistic, a binary denylist is brittle and bypassable, and logging only records the misuse after it has happened.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 3.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q3</h3>
 <p>A procurement agent&#39;s tool list grew from 6 to 41 tools as teams each added &quot;just one
 more&quot; integration. Latency is up 30% and the agent increasingly selects the wrong tool
@@ -111,11 +103,7 @@ constraint is decision noise and turn latency.</p>
   <li><span class="ltr">B</span><span>Keep all 41 tools but improve each description so the model can disambiguate.</span></li>
   <li><span class="ltr">C</span><span>Add a routing classifier in front that selects the correct tool before the model sees them.</span></li>
   <li><span class="ltr">D</span><span>Move to a larger model so it can hold all 41 tool definitions reliably.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Capability bloat widens the model&#39;s decision space and blast radius, so the fix is to remove tools the role never uses, collapse the near-duplicates, and load the remainder on demand — reducing both latency and mis-selection at the source. Better descriptions and a larger model still present 41 choices, and a routing classifier adds a layer and a new failure mode without shrinking the surface the model reasons over.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 3.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Capability bloat widens the model&#39;s decision space and blast radius, so the fix is to remove tools the role never uses, collapse the near-duplicates, and load the remainder on demand — reducing both latency and mis-selection at the source. Better descriptions and a larger model still present 41 choices, and a routing classifier adds a layer and a new failure mode without shrinking the surface the model reasons over.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 3.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q4</h3>
 <p>A support agent acts on behalf of end users and calls the ticketing API with a shared
 service account that holds broad scope, so any customer&#39;s ticket is reachable regardless
@@ -128,11 +116,7 @@ requesting user is entitled to.</p>
   <li><span class="ltr">B</span><span>Log every ticket read and alert when a session reads more than one account.</span></li>
   <li><span class="ltr">C</span><span>Keep the shared service account but add a per-request rate limit.</span></li>
   <li><span class="ltr">D</span><span>Replace the shared service account with per-user delegated (on-behalf-of) tokens scoped to the requesting user's entitlements.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> The gap is that the agent&#39;s identity is broader than the user&#39;s, so authorization must be enforced at the token boundary — per-user delegated tokens make the over-reach impossible, not merely discouraged. A prompt instruction is probabilistic, alerting is detective, and a rate limit changes volume rather than scope.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 3.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> The gap is that the agent&#39;s identity is broader than the user&#39;s, so authorization must be enforced at the token boundary — per-user delegated tokens make the over-reach impossible, not merely discouraged. A prompt instruction is probabilistic, alerting is detective, and a rate limit changes volume rather than scope.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 3.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q5</h3>
 <p>An integration authenticates to three SaaS APIs with long-lived static keys stored in an
 env file shared across dev, staging, and production. Each key carries every scope the
@@ -144,11 +128,7 @@ agent&#39;s behaviour.</p>
   <li><span class="ltr">B</span><span>Move to short-lived OAuth tokens scoped to only the operations the agent performs, with separate per-environment credentials.</span></li>
   <li><span class="ltr">C</span><span>Put an API gateway in front that logs every call and rate-limits per key.</span></li>
   <li><span class="ltr">D</span><span>Encrypt the env file and restrict read access to the deploy pipeline.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> The gap is standing, over-scoped, shared-across-environment privilege; short-lived least-scope tokens per environment shrink both the window and the breadth of exposure. Rotating a static key still leaves it long-lived, over-scoped, and shared; a gateway and encryption are protective layers that do not reduce the scope the credential actually holds.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 3.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> The gap is standing, over-scoped, shared-across-environment privilege; short-lived least-scope tokens per environment shrink both the window and the breadth of exposure. Rotating a static key still leaves it long-lived, over-scoped, and shared; a gateway and encryption are protective layers that do not reduce the scope the credential actually holds.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 3.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q6</h3>
 <p>A customer-facing answer service has an SLA of 1.2 s at p95 and a quality bar of 90%.
 A retrieval-heavy configuration with a large model and eight retrieved chunks reaches 95%
@@ -160,11 +140,7 @@ p95. The two designs are the ones on the table.</p>
   <li><span class="ltr">B</span><span>Ship the retrieval-heavy configuration because 95% quality is worth the extra latency.</span></li>
   <li><span class="ltr">C</span><span>Ship the retrieval-heavy configuration but add caching to bring the mean latency down.</span></li>
   <li><span class="ltr">D</span><span>Ship the retrieval-heavy configuration and renegotiate the SLA up to 3.5 s.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Name the binding constraint — the 1.2 s p95 SLA with a 90% quality floor — and choose the cheapest configuration that clears it; the single pass does, and the extra seven quality points are not worth breaching a stated SLA. B treats accuracy as unconditional, C optimises the mean while the SLA is set at p95, and D changes the requirement instead of meeting it.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 3.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Name the binding constraint — the 1.2 s p95 SLA with a 90% quality floor — and choose the cheapest configuration that clears it; the single pass does, and the extra seven quality points are not worth breaching a stated SLA. B treats accuracy as unconditional, C optimises the mean while the SLA is set at p95, and D changes the requirement instead of meeting it.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 3.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q7</h3>
 <p>A triage agent must decide within 900 ms at p95. About 80% of cases are simple and a
 small model resolves them at 400 ms; the remaining 20% are ambiguous and a large model
@@ -175,11 +151,7 @@ resolves them at 2.8 s. The team wants one configuration for all cases.</p>
   <li><span class="ltr">B</span><span>Use the small model for every case to guarantee the SLA.</span></li>
   <li><span class="ltr">C</span><span>Use the large model and add few-shot examples to make it faster.</span></li>
   <li><span class="ltr">D</span><span>Use a cascade: run the small model first and escalate only the ambiguous 20% to the large model, keeping the p95 under budget while hard cases still get depth.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> Right-size each step against the binding constraint: the cascade keeps the p95 inside 900 ms because only a fifth of traffic pays the large-model cost, and hard cases still get the reasoning they need. A single large model blows the SLA on every case, a single small model sacrifices accuracy on the ambiguous fifth, and few-shot examples do not remove the large model&#39;s per-call latency.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 3.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Right-size each step against the binding constraint: the cascade keeps the p95 inside 900 ms because only a fifth of traffic pays the large-model cost, and hard cases still get the reasoning they need. A single large model blows the SLA on every case, a single small model sacrifices accuracy on the ambiguous fifth, and few-shot examples do not remove the large model&#39;s per-call latency.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 3.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q8</h3>
 <p>A nightly batch enrichment job processes 5 million records under a fixed cost ceiling.
 A deep multi-pass configuration costs four times the single-pass configuration and would
@@ -191,11 +163,7 @@ single-pass delivers 89%, deep delivers 96%.</p>
   <li><span class="ltr">B</span><span>Use the deep configuration only on weekends when spend is less scrutinised.</span></li>
   <li><span class="ltr">C</span><span>Use the single-pass configuration: it clears the 88% accuracy floor within the fixed cost ceiling, and the extra seven points are not worth breaching the binding constraint.</span></li>
   <li><span class="ltr">D</span><span>Add a third pass to the deep configuration to push accuracy above 96%.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> The binding constraint is cost, and the accuracy floor is already met, so the defensible choice is the cheapest configuration that clears the bar — spending 4× for quality beyond the requirement is not architecture. A and B breach the ceiling, and D spends even more in the direction already over budget.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 3.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> The binding constraint is cost, and the accuracy floor is already met, so the defensible choice is the cheapest configuration that clears the bar — spending 4× for quality beyond the requirement is not architecture. A and B breach the ceiling, and D spends even more in the direction already over budget.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 3.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q9</h3>
 <p>An agent platform runs three million requests a day across forty tools. A silent
 regression in tool selection — the agent calls <code>refund</code> where it should call <code>void</code> —
@@ -207,11 +175,7 @@ weeks later. Observability cost must stay bounded.</p>
   <li><span class="ltr">B</span><span>Store every full prompt and response and have an engineer review a daily sample.</span></li>
   <li><span class="ltr">C</span><span>Raise the log level to debug across all services to capture more detail.</span></li>
   <li><span class="ltr">D</span><span>Add error-rate alerting only, on the assumption that regressions surface as errors.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> At volume you cannot read traces by hand, so the strategy is decision-level structured logs aggregated into metrics you can alert on, plus sampled rubric scoring for the quality signal metrics cannot express. Full capture does not scale and carries PII risk, debug verbosity raises cost without adding a signal, and error-only alerting assumes exactly the error signal the scenario says is absent.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 3.4
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> At volume you cannot read traces by hand, so the strategy is decision-level structured logs aggregated into metrics you can alert on, plus sampled rubric scoring for the quality signal metrics cannot express. Full capture does not scale and carries PII risk, debug verbosity raises cost without adding a signal, and error-only alerting assumes exactly the error signal the scenario says is absent.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 3.4<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q10</h3>
 <p>Multi-hop runs (agent → tool → API → agent) fail intermittently, and support cannot
 reconstruct what happened across the hops. The platform must be able to reconstruct a run
@@ -222,11 +186,7 @@ end to end without capturing full request and response payloads, which contain P
   <li><span class="ltr">B</span><span>Add a separate debug agent that watches the queue and reports anomalies.</span></li>
   <li><span class="ltr">C</span><span>Reduce the number of hops by merging the downstream services.</span></li>
   <li><span class="ltr">D</span><span>Propagate a correlation/trace ID through every hop and log structured decision metadata — not full payloads — so runs are reconstructable without PII exposure.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> A trace ID threads the hops into one reconstructable run, and structured decision metadata gives the signal without copying PII into the log. Full payload logging is exactly the PII exposure the constraint forbids, a watcher agent adds a second moving part without end-to-end linkage, and merging services is a redesign that does not by itself make runs traceable.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 3.4
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> A trace ID threads the hops into one reconstructable run, and structured decision metadata gives the signal without copying PII into the log. Full payload logging is exactly the PII exposure the constraint forbids, a watcher agent adds a second moving part without end-to-end linkage, and merging services is a redesign that does not by itself make runs traceable.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 3.4<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q11</h3>
 <p>A legal RAG system indexes 400,000 contracts and must answer two very different
 questions: &quot;what is the liability cap in this MSA?&quot; (semantic) and &quot;which clauses changed
@@ -238,11 +198,7 @@ keep returning the wrong passages.</p>
   <li><span class="ltr">B</span><span>Chunk on document structure (sections and clauses), keep provenance, and add a hybrid index — vectors plus keyword — with metadata filters for clause ID and date.</span></li>
   <li><span class="ltr">C</span><span>Halve the chunk size to 256 tokens for finer granularity.</span></li>
   <li><span class="ltr">D</span><span>Raise top-k to 50 and let the model locate the clause itself.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> The data shape is structured clauses and the query pattern spans semantic, exact, and filtered asks, so chunk boundaries should follow document structure and the index should carry the representations each query needs. A bigger embedding model helps only the semantic half, halving the window changes granularity without respecting structure, and a larger top-k raises recall of noise rather than precision on an exact identifier.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 3.5
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> The data shape is structured clauses and the query pattern spans semantic, exact, and filtered asks, so chunk boundaries should follow document structure and the index should carry the representations each query needs. A bigger embedding model helps only the semantic half, halving the window changes granularity without respecting structure, and a larger top-k raises recall of noise rather than precision on an exact identifier.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 3.5<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q12</h3>
 <p>A policy RAG system&#39;s chunks routinely cut a rule in half, so a retrieved passage states a
 condition but not its exception, and answers misstate policy. Retrieved units must be
@@ -253,11 +209,7 @@ self-contained and attributable to their source section.</p>
   <li><span class="ltr">B</span><span>Reduce the chunk size so each chunk is more focused.</span></li>
   <li><span class="ltr">C</span><span>Chunk on document structure (headings and rules) with overlap only where sentences genuinely span boundaries, and store section provenance so each retrieved unit is self-contained and attributable.</span></li>
   <li><span class="ltr">D</span><span>Increase top-k so both halves of a rule are usually retrieved together.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Chunk boundaries set by document structure keep a rule with its exception, and provenance makes each unit attributable — the two properties the constraint names. A reranker reorders the same severed chunks, smaller chunks worsen the amputation, and a larger top-k hopes both halves appear and leaves attribution unsolved.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 3.5
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Chunk boundaries set by document structure keep a rule with its exception, and provenance makes each unit attributable — the two properties the constraint names. A reranker reorders the same severed chunks, smaller chunks worsen the amputation, and a larger top-k hopes both halves appear and leaves attribution unsolved.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 3.5<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q13</h3>
 <p>A RAG corpus is refreshed daily, but after each refresh answers become confidently wrong
 and cite content that was deleted. Latency and model version are unchanged. Retrieval
@@ -268,11 +220,7 @@ must reflect the current documents.</p>
   <li><span class="ltr">B</span><span>Add a prompt instruction telling the model to prefer recent content.</span></li>
   <li><span class="ltr">C</span><span>Re-embed the entire corpus every hour to keep it fresh.</span></li>
   <li><span class="ltr">D</span><span>Fix the indexing/refresh pipeline so stale chunks are deleted and re-indexed with versioned provenance, then verify retrieval returns the current versions.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> The symptom points at stale indexing, so the fix is in the pipeline: delete superseded chunks, re-index, and carry versioned provenance so freshness is verifiable. Temperature and a &quot;prefer recent&quot; instruction change nothing about what is retrieved, and hourly full re-embeds cost far more while still not deleting the deleted content.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 3.5
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> The symptom points at stale indexing, so the fix is in the pipeline: delete superseded chunks, re-index, and carry versioned provenance so freshness is verifiable. Temperature and a &quot;prefer recent&quot; instruction change nothing about what is retrieved, and hourly full re-embeds cost far more while still not deleting the deleted content.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 3.5<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q14</h3>
 <p>One assistant must answer three queries: (a) &quot;summarize our refund policy&quot; (prose),
 (b) &quot;status of order 88213-B&quot; (an exact identifier), and (c) &quot;what depends on service
@@ -284,11 +232,7 @@ over everything.</p>
   <li><span class="ltr">B</span><span>Use one vector index with a larger embedding model.</span></li>
   <li><span class="ltr">C</span><span>Fine-tune the model on all three corpora so retrieval becomes unnecessary.</span></li>
   <li><span class="ltr">D</span><span>Increase top-k and raise temperature so the model can handle all three query types.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Retrieval quality is a function of fit — prose suits vectors, an exact ID suits lexical lookup, and a dependency question suits graph traversal — which is what matching retrieval to data shape and query pattern means. A single vector index chosen by fashion cannot resolve exact identifiers or relationships, fine-tuning cannot supply live order status, and raising top-k and temperature increases confident errors.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 3.6
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Retrieval quality is a function of fit — prose suits vectors, an exact ID suits lexical lookup, and a dependency question suits graph traversal — which is what matching retrieval to data shape and query pattern means. A single vector index chosen by fashion cannot resolve exact identifiers or relationships, fine-tuning cannot supply live order status, and raising top-k and temperature increases confident errors.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 3.6<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q15</h3>
 <p>A product catalog holds two million structured rows (SKU, price, stock, category). Users
 ask filtered and aggregate questions such as &quot;in-stock laptops under $900 with 16GB RAM&quot;.
@@ -299,11 +243,7 @@ A vendor pitches a vector database for the catalog.</p>
   <li><span class="ltr">B</span><span>Build a vector index over the rows and rely on semantic similarity for the filters.</span></li>
   <li><span class="ltr">C</span><span>Query the catalog with SQL and filters (exposed as a structured tool), and reserve vectors for the prose policy content rather than the rows.</span></li>
   <li><span class="ltr">D</span><span>Embed each row and raise top-k to 1000.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Structured rows are queried with SQL and filters — exact, cheap, and correct for aggregates — while vectors are reserved for the prose where similarity actually helps, which is matching retrieval to data shape. Loading two million rows overflows context, and embedding the rows plus a large top-k approximates an exact filter with a fashionable method that cannot guarantee it.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 3.6
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Structured rows are queried with SQL and filters — exact, cheap, and correct for aggregates — while vectors are reserved for the prose where similarity actually helps, which is matching retrieval to data shape. Loading two million rows overflows context, and embedding the rows plus a large top-k approximates an exact filter with a fashionable method that cannot guarantee it.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 3.6<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q16</h3>
 <p>An agent needs one stable call to an internal HR API, plus access to a 200-tool partner
 ecosystem that changes frequently. Neither context bloat nor protocol overhead where it is
@@ -314,11 +254,7 @@ unneeded is acceptable.</p>
   <li><span class="ltr">B</span><span>Call the HR API directly (a single stable call) and use MCP with progressive discovery for the partner ecosystem.</span></li>
   <li><span class="ltr">C</span><span>Replace the HR call with a dedicated agent-to-agent delegation.</span></li>
   <li><span class="ltr">D</span><span>Expose everything through a single CLI wrapper to avoid protocols altogether.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> Match the mechanism to the boundary and lifecycle: a single stable call is cheapest as a direct API call, while a large, changing ecosystem fits MCP with progressive discovery so tool definitions load on demand instead of bloating every turn. A front-loads 200 tools, C adds an agent hop for what is one function call, and D hides many tools behind a CLI that still lacks per-tool auth and discovery.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 3.7
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Match the mechanism to the boundary and lifecycle: a single stable call is cheapest as a direct API call, while a large, changing ecosystem fits MCP with progressive discovery so tool definitions load on demand instead of bloating every turn. A front-loads 200 tools, C adds an agent hop for what is one function call, and D hides many tools behind a CLI that still lacks per-tool auth and discovery.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 3.7<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q17</h3>
 <p>A research coordinator must delegate to a peer research agent that owns its own context,
 its own tools, and its own policy, and that returns findings over time. The team proposes
@@ -329,11 +265,7 @@ wrapping the peer as a single function call.</p>
   <li><span class="ltr">B</span><span>Give the coordinator the peer's full tool set directly.</span></li>
   <li><span class="ltr">C</span><span>Expose the peer through a CLI wrapper.</span></li>
   <li><span class="ltr">D</span><span>Use agent-to-agent delegation, because the peer owns its own context, tools, and policy rather than being a single function call.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> Protocol choice is governed by the boundary the integration crosses: an autonomous peer that owns its own context, tools, and policy is reached by agent-to-agent delegation, not by pretending it is one deterministic function. A single-schema tool and a CLI wrapper both erase the peer&#39;s own agency and policy, and handing the coordinator the peer&#39;s tools ignores that the peer, not the coordinator, owns them.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 3.7
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Protocol choice is governed by the boundary the integration crosses: an autonomous peer that owns its own context, tools, and policy is reached by agent-to-agent delegation, not by pretending it is one deterministic function. A single-schema tool and a CLI wrapper both erase the peer&#39;s own agency and policy, and handing the coordinator the peer&#39;s tools ignores that the peer, not the coordinator, owns them.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 3.7<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q18</h3>
 <p>Fourteen internal teams each maintain their own tools, changing weekly, and each needs
 per-tool authentication. Leadership wants Claude agents to reach all of them through one
@@ -344,11 +276,7 @@ integration surface with discovery as the ecosystem evolves.</p>
   <li><span class="ltr">B</span><span>Have each team write bespoke function-calling glue for every agent.</span></li>
   <li><span class="ltr">C</span><span>Build one large CLI that fronts every service.</span></li>
   <li><span class="ltr">D</span><span>Give every agent a static list of all tools, refreshed manually each week.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> MCP standardises how the model reaches tools with a common protocol, discovery, and auth — the fit when many tools share a lifecycle and you want one integration surface. Bespoke glue multiplies maintenance, a single CLI still lacks per-tool auth and discovery, and a manually refreshed static list drifts out of date against a weekly-changing ecosystem.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 3.7
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> MCP standardises how the model reaches tools with a common protocol, discovery, and auth — the fit when many tools share a lifecycle and you want one integration surface. Bespoke glue multiplies maintenance, a single CLI still lacks per-tool auth and discovery, and a manually refreshed static list drifts out of date against a weekly-changing ecosystem.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 3.7<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q19</h3>
 <p>An agent has access to a large tool ecosystem. Today all tool definitions and a
 60k-token knowledge base are loaded on every turn, inflating cost and causing the model to
@@ -360,11 +288,7 @@ actually needs.</p>
   <li><span class="ltr">B</span><span>Load everything but move to a larger model with a bigger window.</span></li>
   <li><span class="ltr">C</span><span>Load capabilities progressively: expose a search-and-select step so tool definitions and context load on demand, keeping the working context small.</span></li>
   <li><span class="ltr">D</span><span>Cache the full context so repeat turns are cheaper.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Progressive discovery loads capabilities on demand and keeps the working context small, which is the direct answer to context bloat and attention dilution. Compression loses fidelity, a bigger window still front-loads everything and does not fix focus, and caching reduces repeat-turn cost without shrinking the context the model must reason over.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 3.8
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Progressive discovery loads capabilities on demand and keeps the working context small, which is the direct answer to context bloat and attention dilution. Compression loses fidelity, a bigger window still front-loads everything and does not fix focus, and caching reduces repeat-turn cost without shrinking the context the model must reason over.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 3.8<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q20</h3>
 <p>A narrow, stable workflow uses only three tools and a fixed 2k-token policy. A redesign is
 proposed that front-loads eighty tool definitions and the entire knowledge base &quot;so the
@@ -375,12 +299,8 @@ agent is never blocked&quot;. Context budget and latency both matter.</p>
   <li><span class="ltr">B</span><span>Load the three tools and the 2k policy directly: the task is narrow and stable, so progressive discovery would add machinery with no benefit here.</span></li>
   <li><span class="ltr">C</span><span>Front-load everything but enable prompt caching to offset the cost.</span></li>
   <li><span class="ltr">D</span><span>Add a routing agent that selects among the eighty tools on each turn.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> Progressive discovery is a means to keep context lean; where the task is narrow and stable, loading its three tools and small policy directly is the leaner design, and the monolithic alternative is capability bloat wearing a protocol badge. Front-loading eighty tools plus the whole knowledge base inflates every turn, caching does not remove the bloat, and a routing agent adds a layer to solve a problem the narrow task does not have.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 3.8
-<strong>Source:</strong> newly written</p>
-<div class="foot">Built 2026-10-03 15:44 · source: banks/pro3-questions.md</div></main></div>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Progressive discovery is a means to keep context lean; where the task is narrow and stable, loading its three tools and small policy directly is the leaner design, and the monolithic alternative is capability bloat wearing a protocol badge. Front-loading eighty tools plus the whole knowledge base inflates every turn, caching does not remove the bloat, and a routing agent adds a layer to solve a problem the narrow task does not have.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 3.8<br><strong>Source:</strong> newly written</p></div></details>
+<div class="foot">Built 2026-10-03 15:46 · source: banks/pro3-questions.md</div></main></div>
 <div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
 <script>
 const q=document.getElementById('q');

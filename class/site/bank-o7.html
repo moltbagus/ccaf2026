@@ -78,11 +78,7 @@ section layout.</p>
   <li><span class="ltr">B</span><span>Compare last month's good draft with this month's failing one, identify that the reorganized source is the cause, and update the prompt to match the new layout.</span></li>
   <li><span class="ltr">C</span><span>Switch to a more capable model so the summaries recover their specificity.</span></li>
   <li><span class="ltr">D</span><span>Assign a person to enrich each month's draft by hand before it is sent.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> Output changed exactly when the source&#39;s structure changed, so the root cause is the mismatch between the prompt and the reorganized report; comparing the last good output against the failing one isolates that and points at the small fix. A full rewrite discards months of working instructions and replaces one unknown with another, a model switch spends cost on a problem the model did not cause, and hand-enriching every draft pays the same cost forever without removing the cause.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 7.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Output changed exactly when the source&#39;s structure changed, so the root cause is the mismatch between the prompt and the reorganized report; comparing the last good output against the failing one isolates that and points at the small fix. A full rewrite discards months of working instructions and replaces one unknown with another, a model switch spends cost on a problem the model did not cause, and hand-enriching every draft pays the same cost forever without removing the cause.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 7.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q2</h3>
 <p>An associate keeps asking Claude to &quot;improve this proposal,&quot; and each revision comes back
 polished but still missing the client&#39;s decision criteria and a clear recommendation. The
@@ -93,11 +89,7 @@ proposal text itself is complete and accurate.</p>
   <li><span class="ltr">B</span><span>Keep asking for "improve this even more" and repeat until the result happens to land.</span></li>
   <li><span class="ltr">C</span><span>Switch to a more capable model to infer what the reader needs.</span></li>
   <li><span class="ltr">D</span><span>Ask a colleague to rewrite the request for the associate.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> The output is polished but off-target because the ask was vague — it never named the audience or the decision the reader must make, so the model cannot supply them. Adding those specifics to the prompt fixes the cause. Repeating the same vague ask produces the same gap, a stronger model still has no audience to aim at, and having a colleague rewrite the request is a one-off workaround rather than a change to what generates the output.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 7.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> The output is polished but off-target because the ask was vague — it never named the audience or the decision the reader must make, so the model cannot supply them. Adding those specifics to the prompt fixes the cause. Repeating the same vague ask produces the same gap, a stronger model still has no audience to aim at, and having a colleague rewrite the request is a one-off workaround rather than a change to what generates the output.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 7.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q3</h3>
 <p>A research assistant asked Claude to summarize &quot;the attached findings,&quot; but attached an
 early internal draft instead of the final reviewed version. Claude&#39;s summary is coherent
@@ -108,11 +100,7 @@ and confident, but it states figures that were revised before the report was fin
   <li><span class="ltr">B</span><span>Ask Claude to double-check its own summary for accuracy before returning it.</span></li>
   <li><span class="ltr">C</span><span>Recognize that the wrong document was supplied, attach the final reviewed version, and regenerate the summary from it.</span></li>
   <li><span class="ltr">D</span><span>Switch to a more capable model to produce a more accurate summary.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> The summary is wrong because the input was wrong — an early draft, not the final report — so the fix is to supply the correct source and regenerate. An instruction to flag uncertainty cannot make revised figures disappear, self-checking runs against the same flawed input, and a stronger model would faithfully summarize the same outdated draft.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 7.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> The summary is wrong because the input was wrong — an early draft, not the final report — so the fix is to supply the correct source and regenerate. An instruction to flag uncertainty cannot make revised figures disappear, self-checking runs against the same flawed input, and a stronger model would faithfully summarize the same outdated draft.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 7.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q4</h3>
 <p>An employee pastes a question about the company&#39;s current expense policy into a plain chat
 with no company documents attached. The answer describes a generic expense process that
@@ -123,11 +111,7 @@ does not match the company&#39;s actual policy.</p>
   <li><span class="ltr">B</span><span>Recognize that the answer came from general knowledge because the policy was never provided, and ask the question in the configured Project that holds the current policy documents.</span></li>
   <li><span class="ltr">C</span><span>Switch to a more capable model so it can recall the company's policy.</span></li>
   <li><span class="ltr">D</span><span>Paste the policy in by hand each time and edit the answer to match.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> The output is off because it was produced on the wrong surface — a bare chat with no access to the company&#39;s documents — so moving the question to the configured Project that holds the current policy fixes the cause. Adding a phrase to a chat with no policy attached cannot conjure the document, a stronger model still has no company policy to read, and pasting and editing by hand leaves the wrong surface in place for every future question.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 7.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> The output is off because it was produced on the wrong surface — a bare chat with no access to the company&#39;s documents — so moving the question to the configured Project that holds the current policy fixes the cause. Adding a phrase to a chat with no policy attached cannot conjure the document, a stronger model still has no company policy to read, and pasting and editing by hand leaves the wrong surface in place for every future question.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 7.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q5</h3>
 <p>A project is connected to the team&#39;s shared drive so Claude can answer policy questions
 from the latest documents. A key policy was updated in the drive last month, but Claude&#39;s
@@ -139,11 +123,7 @@ answer.</p>
   <li><span class="ltr">B</span><span>Switch to a more capable model to reason about which version is correct.</span></li>
   <li><span class="ltr">C</span><span>Recognize that the connected source has not been refreshed to the updated document, update the connection so Claude reads the current version, and re-test a policy question.</span></li>
   <li><span class="ltr">D</span><span>Have staff manually correct answers until the old policy stops appearing.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> Claude answers from the material it is connected to, and the connection is still serving the pre-update document, so refreshing the source to the current version fixes every future answer at once. An instruction to &quot;use the newest&quot; cannot supply a document the source has not updated, a stronger model would read the same stale copy, and correcting answers by hand repeats the same cost indefinitely.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 7.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> Claude answers from the material it is connected to, and the connection is still serving the pre-update document, so refreshing the source to the current version fixes every future answer at once. An instruction to &quot;use the newest&quot; cannot supply a document the source has not updated, a stronger model would read the same stale copy, and correcting answers by hand repeats the same cost indefinitely.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 7.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q6</h3>
 <p>Output from a long-standing saved prompt dropped sharply this week, and no one can say
 why. A colleague wants to start editing the prompt immediately.</p>
@@ -153,11 +133,7 @@ why. A colleague wants to start editing the prompt immediately.</p>
   <li><span class="ltr">B</span><span>Add more detail and constraints to strengthen the prompt.</span></li>
   <li><span class="ltr">C</span><span>Switch to a more capable model tier to lift quality.</span></li>
   <li><span class="ltr">D</span><span>Compare the most recent good output with the failing one to isolate exactly what changed, then fix only that.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> When output that used to work fails, the reliable first move is diagnosis — comparing the last good run against the failing one names the actual cause and points at the smallest fix. Rewriting, adding constraints, and switching models are all remedies chosen before any cause is known, so they spend effort while leaving the real failure in place.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 7.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> When output that used to work fails, the reliable first move is diagnosis — comparing the last good run against the failing one names the actual cause and points at the smallest fix. Rewriting, adding constraints, and switching models are all remedies chosen before any cause is known, so they spend effort while leaving the real failure in place.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 7.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q7</h3>
 <p>A single saved prompt asks Claude to research a topic, outline a document, draft it, format
 it to the team template, and check every claim. The drafts come back long, and the middle
@@ -168,11 +144,7 @@ sections are consistently the weakest.</p>
   <li><span class="ltr">B</span><span>Add stronger wording demanding high quality and thoroughness across all five tasks.</span></li>
   <li><span class="ltr">C</span><span>Switch to the most capable model and keep the single five-task prompt.</span></li>
   <li><span class="ltr">D</span><span>Run the prompt twice and merge the strongest sections by hand.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> The weak middle is a structural signal: five jobs are competing inside one response, so early requirements get attention and later ones get squeezed. Splitting the work into separate reviewed steps removes the competition and makes the weak step obvious. Demanding thoroughness asks the same single response to do more, not less; a stronger model raises the ceiling while the overload stays; running twice pays double for manual patchwork that leaves the structure failing.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 7.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> The weak middle is a structural signal: five jobs are competing inside one response, so early requirements get attention and later ones get squeezed. Splitting the work into separate reviewed steps removes the competition and makes the weak step obvious. Demanding thoroughness asks the same single response to do more, not less; a stronger model raises the ceiling while the overload stays; running twice pays double for manual patchwork that leaves the structure failing.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 7.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q8</h3>
 <p>A weekly report is assembled in several steps, and only the &quot;key risks&quot; section has gone
 wrong — the rest of the report is fine. A teammate proposes rebuilding the whole workflow
@@ -183,11 +155,7 @@ from the beginning.</p>
   <li><span class="ltr">B</span><span>Diagnose the single failing step — check whether its input or its instruction changed — and fix only that step.</span></li>
   <li><span class="ltr">C</span><span>Add a reviewer to check the whole report every week.</span></li>
   <li><span class="ltr">D</span><span>Add extra instructions to every step so no part is missed.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> One section failing while the rest is fine localizes the fault to that step, so the efficient fix is to inspect that step&#39;s input and instruction and repair only it. Rebuilding the whole workflow throws away the parts that are working, a standing reviewer pays a permanent cost for a single-step problem, and adding instructions everywhere raises the competition between steps instead of removing the fault.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 7.1
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> One section failing while the rest is fine localizes the fault to that step, so the efficient fix is to inspect that step&#39;s input and instruction and repair only it. Rebuilding the whole workflow throws away the parts that are working, a standing reviewer pays a permanent cost for a single-step problem, and adding instructions everywhere raises the competition between steps instead of removing the fault.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 7.1<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q9</h3>
 <p>A sales team reports that Claude&#39;s weekly product-update drafts read like engineering
 documentation. The drafts are generated by a saved prompt in the team&#39;s project.</p>
@@ -197,11 +165,7 @@ documentation. The drafts are generated by a saved prompt in the team&#39;s proj
   <li><span class="ltr">B</span><span>Ask each salesperson to rewrite their own portion before the update is sent.</span></li>
   <li><span class="ltr">C</span><span>Update the saved prompt and the project instructions to name the customer audience and plain language, then regenerate the next draft to confirm the fix.</span></li>
   <li><span class="ltr">D</span><span>Switch to a faster model tier so drafts arrive earlier and the team has more time to edit.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> The feedback points at the saved prompt&#39;s missing audience definition, so changing the prompt and project instructions makes the fix apply to every future draft, and regenerating confirms it worked. Hand-simplifying only this week&#39;s draft leaves next week&#39;s batch with the identical problem, having each salesperson rewrite their own part multiplies the manual effort, and a faster model changes when the draft arrives, not whether it fits the audience.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 7.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> The feedback points at the saved prompt&#39;s missing audience definition, so changing the prompt and project instructions makes the fix apply to every future draft, and regenerating confirms it worked. Hand-simplifying only this week&#39;s draft leaves next week&#39;s batch with the identical problem, having each salesperson rewrite their own part multiplies the manual effort, and a faster model changes when the draft arrives, not whether it fits the audience.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 7.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q10</h3>
 <p>The same report is generated every Monday, but its format varies from week to week —
 sometimes tight bullets, sometimes long paragraphs — so downstream staff reformat it every
@@ -212,11 +176,7 @@ time before it can be used.</p>
   <li><span class="ltr">B</span><span>Add "be consistent" to the prompt and hope the format settles.</span></li>
   <li><span class="ltr">C</span><span>Switch models until one happens to produce a steady format.</span></li>
   <li><span class="ltr">D</span><span>Specify the exact required format in the saved prompt — the section order and the bullet style — so every run produces the same structure.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> Variable format is a missing-specification problem, so naming the exact structure in the saved prompt makes every run match and ends the manual reformatting. Asking staff to standardize by hand leaves the cause untouched, a vague &quot;be consistent&quot; gives the model nothing concrete to follow, and shopping for a model that happens to be steady is luck rather than a defined requirement.
-<strong>Trap:</strong> sounds-simple
-<strong>Task:</strong> 7.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Variable format is a missing-specification problem, so naming the exact structure in the saved prompt makes every run match and ends the manual reformatting. Asking staff to standardize by hand leaves the cause untouched, a vague &quot;be consistent&quot; gives the model nothing concrete to follow, and shopping for a model that happens to be steady is luck rather than a defined requirement.<br><strong>Trap:</strong> sounds-simple<br><strong>Task:</strong> 7.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q11</h3>
 <p>A saved prompt consistently omits the required &quot;next steps&quot; section, no matter how many
 times the associate rephrases the other parts of the prompt.</p>
@@ -226,11 +186,7 @@ times the associate rephrases the other parts of the prompt.</p>
   <li><span class="ltr">B</span><span>Keep rephrasing the whole prompt each run until the section appears.</span></li>
   <li><span class="ltr">C</span><span>Add a general instruction to "include everything important."</span></li>
   <li><span class="ltr">D</span><span>Ask a colleague to add the section to each output afterward.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> The prompt keeps missing the same requirement because that requirement is never stated specifically, so making it explicit — the section, its place, its contents — fixes the cause. Rephrasing unrelated parts changes nothing about the missing section, a vague &quot;include everything&quot; gives the model no target, and having a colleague patch each output forever leaves the prompt producing the same gap.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 7.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> The prompt keeps missing the same requirement because that requirement is never stated specifically, so making it explicit — the section, its place, its contents — fixes the cause. Rephrasing unrelated parts changes nothing about the missing section, a vague &quot;include everything&quot; gives the model no target, and having a colleague patch each output forever leaves the prompt producing the same gap.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 7.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q12</h3>
 <p>After an hour of back-and-forth corrections, a chat&#39;s output keeps contradicting earlier
 instructions, and every new fix introduces another problem. The conversation has
@@ -241,11 +197,7 @@ accumulated many corrections and several reversed decisions.</p>
   <li><span class="ltr">B</span><span>Start a fresh conversation and provide a clean summary of the confirmed requirements and decisions.</span></li>
   <li><span class="ltr">C</span><span>Switch to a more capable model inside the same conversation.</span></li>
   <li><span class="ltr">D</span><span>Ask the assistant to "forget everything and start over" within the same chat.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> When a conversation has accumulated contradictory corrections and reversed decisions, more patching adds to the conflict, so a clean restart that carries only the confirmed requirements removes it. Continuing to patch compounds the contradiction, a stronger model still reads the tangled history, and telling the assistant to &quot;forget everything&quot; inside the same chat leaves the conflicting record in place.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 7.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> When a conversation has accumulated contradictory corrections and reversed decisions, more patching adds to the conflict, so a clean restart that carries only the confirmed requirements removes it. Continuing to patch compounds the contradiction, a stronger model still reads the tangled history, and telling the assistant to &quot;forget everything&quot; inside the same chat leaves the conflicting record in place.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 7.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q13</h3>
 <p>A long drafting session began with an outline that has since been revised three times. New
 output still reflects the old structure and ignores the revisions. The work is far enough
@@ -256,11 +208,7 @@ along that restarting feels wasteful.</p>
   <li><span class="ltr">B</span><span>Add an instruction to "use the latest outline" and continue.</span></li>
   <li><span class="ltr">C</span><span>Switch to a more capable model to reconcile the versions.</span></li>
   <li><span class="ltr">D</span><span>Restart with a clean prompt built from the current outline, carrying forward only the confirmed content.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> The session&#39;s output keeps reverting to a superseded structure, so continuing to correct it fights the accumulated context; restarting from the current outline with only the confirmed content forward fixes the cause. Correcting indefinitely repeats the same failure, a single instruction cannot outweigh the stale structure already in the conversation, and a stronger model would still be working from the outdated outline.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 7.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> The session&#39;s output keeps reverting to a superseded structure, so continuing to correct it fights the accumulated context; restarting from the current outline with only the confirmed content forward fixes the cause. Correcting indefinitely repeats the same failure, a single instruction cannot outweigh the stale structure already in the conversation, and a stronger model would still be working from the outdated outline.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 7.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q14</h3>
 <p>A team retypes the same background, tone, and format instructions into the chat at the
 start of every task, and results still vary from one team member to the next.</p>
@@ -270,11 +218,7 @@ start of every task, and results still vary from one team member to the next.</p
   <li><span class="ltr">B</span><span>Have each member write a better one-off prompt each time.</span></li>
   <li><span class="ltr">C</span><span>Switch the whole team to the most capable model.</span></li>
   <li><span class="ltr">D</span><span>Accept the variation and fix outputs by hand as they arrive.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Consistency comes from a single defined setup that every run reads, so moving the recurring instructions into saved project instructions removes the person-to-person variation at its source. One-off prompts re-introduce variation each time, a stronger model does not standardize instructions that differ between users, and fixing outputs by hand leaves the inconsistency in place.
-<strong>Trap:</strong> sounds-smart
-<strong>Task:</strong> 7.2
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Consistency comes from a single defined setup that every run reads, so moving the recurring instructions into saved project instructions removes the person-to-person variation at its source. One-off prompts re-introduce variation each time, a stronger model does not standardize instructions that differ between users, and fixing outputs by hand leaves the inconsistency in place.<br><strong>Trap:</strong> sounds-smart<br><strong>Task:</strong> 7.2<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q15</h3>
 <p>A research team routes every question through the same heavyweight process — a deep
 analysis on the most capable model with a ten-section output — including quick one-line
@@ -285,11 +229,7 @@ checks. Costs and turnaround keep climbing.</p>
   <li><span class="ltr">B</span><span>Cut the process down for every task, including genuinely complex analysis.</span></li>
   <li><span class="ltr">C</span><span>Match the treatment to the task: quick questions get a short prompt and a fast model, and only genuinely complex analysis gets the deep treatment.</span></li>
   <li><span class="ltr">D</span><span>Add more reviewers to the heavyweight process to speed it up.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> The cost and delay come from a mismatch — heavyweight treatment applied to trivial questions — so matching the approach to the task removes the waste while preserving depth where it matters. Keeping the heavy process for everything preserves the waste, flattening everything to shallow treatment starves the complex work, and adding reviewers to a process that is already too heavy only adds cost.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 7.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> The cost and delay come from a mismatch — heavyweight treatment applied to trivial questions — so matching the approach to the task removes the waste while preserving depth where it matters. Keeping the heavy process for everything preserves the waste, flattening everything to shallow treatment starves the complex work, and adding reviewers to a process that is already too heavy only adds cost.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 7.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q16</h3>
 <p>To cut costs, a team switched all requests — including complex multi-source analysis — to
 the fastest model with a short one-paragraph format. Turnaround improved, but the complex
@@ -300,11 +240,7 @@ analyses now miss key findings and are being redone.</p>
   <li><span class="ltr">B</span><span>Return every task, simple or complex, to the most capable model.</span></li>
   <li><span class="ltr">C</span><span>Add a reviewer to catch weak analyses after the fact.</span></li>
   <li><span class="ltr">D</span><span>Match the treatment to the task: keep the fast model for simple requests and route genuinely complex analysis to the deeper treatment.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> The redesign overcorrected — flattening complex analysis to a fast, shallow path starves it — so matching treatment to task keeps the savings on simple work while restoring depth for the analyses that need it. Keeping the fast model for everything accepts the rework, sending everything back to the top model restores the original cost problem, and a reviewer catches failures after they have already cost a redo.
-<strong>Trap:</strong> sounds-efficient
-<strong>Task:</strong> 7.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> The redesign overcorrected — flattening complex analysis to a fast, shallow path starves it — so matching treatment to task keeps the savings on simple work while restoring depth for the analyses that need it. Keeping the fast model for everything accepts the rework, sending everything back to the top model restores the original cost problem, and a reviewer catches failures after they have already cost a redo.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 7.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q17</h3>
 <p>A weekly analysis is delivered as a ten-section document, but staff report they only ever
 read the first two sections. The remaining eight sections add cost and delay with no
@@ -315,11 +251,7 @@ reader.</p>
   <li><span class="ltr">B</span><span>Keep all ten sections and instruct readers to skim faster.</span></li>
   <li><span class="ltr">C</span><span>Add a summary section on top of the ten existing sections.</span></li>
   <li><span class="ltr">D</span><span>Switch to a faster model to reduce the delay.</span></li>
-</ul><p><strong>Answer:</strong> A
-<strong>Why:</strong> Effectiveness means the output fits its audience, and eight unread sections are pure cost, so redesigning the output to what readers use removes the waste at the source. Keeping the sections and asking readers to skim leaves the cost in place, adding a summary on top increases the volume nobody reads, and a faster model shortens the delay without removing the unread work.
-<strong>Trap:</strong> sounds-thorough
-<strong>Task:</strong> 7.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Effectiveness means the output fits its audience, and eight unread sections are pure cost, so redesigning the output to what readers use removes the waste at the source. Keeping the sections and asking readers to skim leaves the cost in place, adding a summary on top increases the volume nobody reads, and a faster model shortens the delay without removing the unread work.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 7.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q18</h3>
 <p>A knowledge assistant&#39;s answers are accurate but built on a process document that was
 replaced two months ago, so its guidance quietly drifts from current practice. The
@@ -330,11 +262,7 @@ outdated document is still the one in the project&#39;s knowledge.</p>
   <li><span class="ltr">B</span><span>Recognize the stale source and update the project's knowledge with the current process document, then re-test.</span></li>
   <li><span class="ltr">C</span><span>Move the assistant to a more capable model.</span></li>
   <li><span class="ltr">D</span><span>Have staff flag outdated answers as they appear.</span></li>
-</ul><p><strong>Answer:</strong> B
-<strong>Why:</strong> Claude can only be as current as the material it is given, so the replaced document is the root cause and updating the project&#39;s knowledge fixes every future answer at once. An instruction to &quot;prefer current practice&quot; cannot supply information the source lacks, a stronger model would read the same outdated document, and flagging answers after they appear is a permanent manual tax on a problem that a source update removes.
-<strong>Trap:</strong> sounds-helpful
-<strong>Task:</strong> 7.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Claude can only be as current as the material it is given, so the replaced document is the root cause and updating the project&#39;s knowledge fixes every future answer at once. An instruction to &quot;prefer current practice&quot; cannot supply information the source lacks, a stronger model would read the same outdated document, and flagging answers after they appear is a permanent manual tax on a problem that a source update removes.<br><strong>Trap:</strong> sounds-helpful<br><strong>Task:</strong> 7.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q19</h3>
 <p>A workflow includes a manual approval step that every output passes through. Data shows
 the approval has never changed an output in six months, but it adds two days to every
@@ -345,11 +273,7 @@ request.</p>
   <li><span class="ltr">B</span><span>Add a second reviewer to the step to make it worthwhile.</span></li>
   <li><span class="ltr">C</span><span>Remove the step that adds delay without value, and confirm outputs are still acceptable.</span></li>
   <li><span class="ltr">D</span><span>Replace the step with a faster model.</span></li>
-</ul><p><strong>Answer:</strong> C
-<strong>Why:</strong> A step that never changes an output and costs two days is pure overhead, so removing it optimizes the workflow, with a confirmation that outputs are still acceptable. Keeping it &quot;to be safe&quot; preserves a cost with no demonstrated benefit, adding a reviewer doubles down on the same waste, and a faster model does not address a step whose value is the problem.
-<strong>Trap:</strong> sounds-enterprise
-<strong>Task:</strong> 7.3
-<strong>Source:</strong> newly written</p>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> C<br><strong>Why:</strong> A step that never changes an output and costs two days is pure overhead, so removing it optimizes the workflow, with a confirmation that outputs are still acceptable. Keeping it &quot;to be safe&quot; preserves a cost with no demonstrated benefit, adding a reviewer doubles down on the same waste, and a faster model does not address a step whose value is the problem.<br><strong>Trap:</strong> sounds-enterprise<br><strong>Task:</strong> 7.3<br><strong>Source:</strong> newly written</p></div></details>
 <h3>Q20</h3>
 <p>A team simplified its workflow — shorter prompts, a faster model for routine tasks, a
 trimmed output. Leadership asks whether the change actually helped.</p>
@@ -359,12 +283,8 @@ trimmed output. Leadership asks whether the change actually helped.</p>
   <li><span class="ltr">B</span><span>Ask the team whether it seems faster now.</span></li>
   <li><span class="ltr">C</span><span>Add a new review step to double-check the results.</span></li>
   <li><span class="ltr">D</span><span>Measure after the change — compare turnaround, cost, and output quality against the previous workflow — to confirm the optimization worked.</span></li>
-</ul><p><strong>Answer:</strong> D
-<strong>Why:</strong> An optimization is verified by measurement, so comparing turnaround, cost, and output quality against the previous workflow confirms whether the change actually helped. Assuming it helped from a feeling and asking the team for an impression both substitute belief for evidence, and adding a review step adds cost without answering whether the optimization worked.
-<strong>Trap:</strong> sounds-pragmatic
-<strong>Task:</strong> 7.3
-<strong>Source:</strong> newly written</p>
-<div class="foot">Built 2026-10-03 15:44 · source: banks/o7-questions.md</div></main></div>
+</ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> An optimization is verified by measurement, so comparing turnaround, cost, and output quality against the previous workflow confirms whether the change actually helped. Assuming it helped from a feeling and asking the team for an impression both substitute belief for evidence, and adding a review step adds cost without answering whether the optimization worked.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 7.3<br><strong>Source:</strong> newly written</p></div></details>
+<div class="foot">Built 2026-10-03 15:46 · source: banks/o7-questions.md</div></main></div>
 <div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
 <script>
 const q=document.getElementById('q');
