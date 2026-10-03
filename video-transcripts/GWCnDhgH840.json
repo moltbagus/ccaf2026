@@ -1,0 +1,4327 @@
+{
+ "video_id": "GWCnDhgH840",
+ "episode": "Ep 13",
+ "title": "Claude Code CI/CD Pipelines",
+ "segments": [
+  {
+   "start": 2.88,
+   "duration": 2.36,
+   "text": "Hello everyone and welcome to this"
+  },
+  {
+   "start": 4.08,
+   "duration": 3.8,
+   "text": "lesson."
+  },
+  {
+   "start": 5.24,
+   "duration": 6.32,
+   "text": "So in this lesson we are going to learn"
+  },
+  {
+   "start": 7.88,
+   "duration": 6.36,
+   "text": "how you can use Cloud Code to actually"
+  },
+  {
+   "start": 11.56,
+   "duration": 3.8,
+   "text": "create an automated end-to-end CI/CD"
+  },
+  {
+   "start": 14.24,
+   "duration": 2.16,
+   "text": "pipeline."
+  },
+  {
+   "start": 15.36,
+   "duration": 3.04,
+   "text": "And"
+  },
+  {
+   "start": 16.4,
+   "duration": 3.24,
+   "text": "what exactly are the issues that you"
+  },
+  {
+   "start": 18.4,
+   "duration": 3.32,
+   "text": "would face? First we're going to talk"
+  },
+  {
+   "start": 19.64,
+   "duration": 3.76,
+   "text": "about the issues that probably you're"
+  },
+  {
+   "start": 21.72,
+   "duration": 4.68,
+   "text": "going to face while you are creating"
+  },
+  {
+   "start": 23.4,
+   "duration": 4.72,
+   "text": "that, you know, amazingly powerful CI/CD"
+  },
+  {
+   "start": 26.4,
+   "duration": 3.28,
+   "text": "pipeline which will go from building"
+  },
+  {
+   "start": 28.12,
+   "duration": 3.24,
+   "text": "your application to testing and to"
+  },
+  {
+   "start": 29.68,
+   "duration": 3.4,
+   "text": "deployment. Everything will be taken"
+  },
+  {
+   "start": 31.36,
+   "duration": 3.92,
+   "text": "care by Cloud Code."
+  },
+  {
+   "start": 33.08,
+   "duration": 4.16,
+   "text": "Right? But there are some issues that"
+  },
+  {
+   "start": 35.28,
+   "duration": 4.12,
+   "text": "will happen and many of"
+  },
+  {
+   "start": 37.24,
+   "duration": 3.48,
+   "text": "many of the people don't actually, you"
+  },
+  {
+   "start": 39.4,
+   "duration": 3.24,
+   "text": "know,"
+  },
+  {
+   "start": 40.72,
+   "duration": 3.64,
+   "text": "have a look into it and they think why"
+  },
+  {
+   "start": 42.64,
+   "duration": 4.2,
+   "text": "this issue is happening. So we're going"
+  },
+  {
+   "start": 44.36,
+   "duration": 5.12,
+   "text": "to like demystify all of those things"
+  },
+  {
+   "start": 46.84,
+   "duration": 3.68,
+   "text": "and yeah, let's have a, you know, fun"
+  },
+  {
+   "start": 49.48,
+   "duration": 2.88,
+   "text": "session."
+  },
+  {
+   "start": 50.52,
+   "duration": 3.44,
+   "text": "So um"
+  },
+  {
+   "start": 52.36,
+   "duration": 4.16,
+   "text": "let's start with a problem statement,"
+  },
+  {
+   "start": 53.96,
+   "duration": 4.12,
+   "text": "right? And yeah, by the end of the this"
+  },
+  {
+   "start": 56.52,
+   "duration": 2.88,
+   "text": "lesson I will show you I'll I'll I'll"
+  },
+  {
+   "start": 58.08,
+   "duration": 4.28,
+   "text": "give you"
+  },
+  {
+   "start": 59.4,
+   "duration": 4.52,
+   "text": "uh an example of a GitHub Actions file"
+  },
+  {
+   "start": 62.36,
+   "duration": 3.84,
+   "text": "uh and I will show you how you can"
+  },
+  {
+   "start": 63.92,
+   "duration": 4.08,
+   "text": "integrate your Cloud Code, you know,"
+  },
+  {
+   "start": 66.2,
+   "duration": 4.04,
+   "text": "commands and Cloud Code into your"
+  },
+  {
+   "start": 68.0,
+   "duration": 3.84,
+   "text": "particular CI/CD pipeline. You know, it"
+  },
+  {
+   "start": 70.24,
+   "duration": 3.72,
+   "text": "is going to be fun, so please stay"
+  },
+  {
+   "start": 71.84,
+   "duration": 4.48,
+   "text": "tuned. So first of all, let's try to"
+  },
+  {
+   "start": 73.96,
+   "duration": 3.76,
+   "text": "understand the problem that is happening"
+  },
+  {
+   "start": 76.32,
+   "duration": 3.32,
+   "text": "here."
+  },
+  {
+   "start": 77.72,
+   "duration": 4.0,
+   "text": "Right? So you have created this"
+  },
+  {
+   "start": 79.64,
+   "duration": 3.64,
+   "text": "amazingly CI/CD pipeline, right? You are"
+  },
+  {
+   "start": 81.72,
+   "duration": 4.64,
+   "text": "a developer and you created it and you"
+  },
+  {
+   "start": 83.28,
+   "duration": 5.32,
+   "text": "are you you generally um, you know, like"
+  },
+  {
+   "start": 86.36,
+   "duration": 5.44,
+   "text": "you use Cloud. There is one step in that"
+  },
+  {
+   "start": 88.6,
+   "duration": 5.36,
+   "text": "particular um, you know, CI/CD pipeline"
+  },
+  {
+   "start": 91.8,
+   "duration": 4.92,
+   "text": "which says, you know, um"
+  },
+  {
+   "start": 93.96,
+   "duration": 5.16,
+   "text": "you are using Cloud to, for example, um"
+  },
+  {
+   "start": 96.72,
+   "duration": 4.12,
+   "text": "do something. For example, uh review the"
+  },
+  {
+   "start": 99.12,
+   "duration": 4.04,
+   "text": "test cases, right? Because the test"
+  },
+  {
+   "start": 100.84,
+   "duration": 4.24,
+   "text": "cases should run in your CI/CD pipeline"
+  },
+  {
+   "start": 103.16,
+   "duration": 4.56,
+   "text": "and there is a step in that particular"
+  },
+  {
+   "start": 105.08,
+   "duration": 4.88,
+   "text": "CI/CD pipeline which uh instructs Cloud"
+  },
+  {
+   "start": 107.72,
+   "duration": 3.4,
+   "text": "to basically uh review and run those"
+  },
+  {
+   "start": 109.96,
+   "duration": 3.72,
+   "text": "test cases."
+  },
+  {
+   "start": 111.12,
+   "duration": 4.52,
+   "text": "Now, what is happening is that whenever"
+  },
+  {
+   "start": 113.68,
+   "duration": 4.92,
+   "text": "you are running that command in your"
+  },
+  {
+   "start": 115.64,
+   "duration": 4.84,
+   "text": "local, it is working fine. You're you're"
+  },
+  {
+   "start": 118.6,
+   "duration": 3.52,
+   "text": "interacting with Claude and you're"
+  },
+  {
+   "start": 120.48,
+   "duration": 3.48,
+   "text": "working when you're able to review those"
+  },
+  {
+   "start": 122.12,
+   "duration": 3.84,
+   "text": "test cases and run those test cases and"
+  },
+  {
+   "start": 123.96,
+   "duration": 5.28,
+   "text": "everything. But when you are running"
+  },
+  {
+   "start": 125.96,
+   "duration": 6.16,
+   "text": "that in your CICD pipeline, you found"
+  },
+  {
+   "start": 129.24,
+   "duration": 4.96,
+   "text": "your an issue that your GitHub action or"
+  },
+  {
+   "start": 132.12,
+   "duration": 4.0,
+   "text": "whatever you are using to, you know,"
+  },
+  {
+   "start": 134.2,
+   "duration": 4.12,
+   "text": "maintain your CICD pipeline is getting"
+  },
+  {
+   "start": 136.12,
+   "duration": 4.04,
+   "text": "timed out."
+  },
+  {
+   "start": 138.32,
+   "duration": 4.16,
+   "text": "So you're you're thinking to yourself,"
+  },
+  {
+   "start": 140.16,
+   "duration": 6.36,
+   "text": "my commands are running fine in local."
+  },
+  {
+   "start": 142.48,
+   "duration": 5.32,
+   "text": "Why is this Claude getting timed out?"
+  },
+  {
+   "start": 146.52,
+   "duration": 3.48,
+   "text": "You know,"
+  },
+  {
+   "start": 147.8,
+   "duration": 3.92,
+   "text": "in the particular"
+  },
+  {
+   "start": 150.0,
+   "duration": 4.4,
+   "text": "GitHub action whenever it is you know,"
+  },
+  {
+   "start": 151.72,
+   "duration": 6.12,
+   "text": "it is executing in the environment."
+  },
+  {
+   "start": 154.4,
+   "duration": 5.92,
+   "text": "So the the reason behind this issue is"
+  },
+  {
+   "start": 157.84,
+   "duration": 3.92,
+   "text": "that whenever you are interacting with"
+  },
+  {
+   "start": 160.32,
+   "duration": 3.639,
+   "text": "Claude code, for example, I am"
+  },
+  {
+   "start": 161.76,
+   "duration": 3.28,
+   "text": "interacting with Claude code over here"
+  },
+  {
+   "start": 163.959,
+   "duration": 2.121,
+   "text": "and"
+  },
+  {
+   "start": 165.04,
+   "duration": 2.2,
+   "text": "you know,"
+  },
+  {
+   "start": 166.08,
+   "duration": 2.96,
+   "text": "um"
+  },
+  {
+   "start": 167.24,
+   "duration": 3.84,
+   "text": "I ask Claude code, you know, Claude, you"
+  },
+  {
+   "start": 169.04,
+   "duration": 3.16,
+   "text": "know, please I'm already in the session"
+  },
+  {
+   "start": 171.08,
+   "duration": 3.4,
+   "text": "so I'm not"
+  },
+  {
+   "start": 172.2,
+   "duration": 4.52,
+   "text": "uh using the Claude. Whenever you will"
+  },
+  {
+   "start": 174.48,
+   "duration": 4.68,
+   "text": "use uh you know, Claude code in a CLI"
+  },
+  {
+   "start": 176.72,
+   "duration": 4.239,
+   "text": "way, you would use the Claude command"
+  },
+  {
+   "start": 179.16,
+   "duration": 4.04,
+   "text": "and with that you would pass on some"
+  },
+  {
+   "start": 180.959,
+   "duration": 3.56,
+   "text": "arguments, right? But I'm already in the"
+  },
+  {
+   "start": 183.2,
+   "duration": 3.84,
+   "text": "session so I don't need to do that"
+  },
+  {
+   "start": 184.519,
+   "duration": 3.681,
+   "text": "because I already went into the session"
+  },
+  {
+   "start": 187.04,
+   "duration": 3.12,
+   "text": "by"
+  },
+  {
+   "start": 188.2,
+   "duration": 3.2,
+   "text": "typing in Claude, right? I hope it's"
+  },
+  {
+   "start": 190.16,
+   "duration": 3.64,
+   "text": "making sense."
+  },
+  {
+   "start": 191.4,
+   "duration": 4.8,
+   "text": "So here I'm going to say for example,"
+  },
+  {
+   "start": 193.8,
+   "duration": 6.12,
+   "text": "you know, um"
+  },
+  {
+   "start": 196.2,
+   "duration": 7.759,
+   "text": "can you review the test cases?"
+  },
+  {
+   "start": 199.92,
+   "duration": 6.8,
+   "text": "And um you know, ask me any questions"
+  },
+  {
+   "start": 203.959,
+   "duration": 4.721,
+   "text": "if you need. So when I when I fire this"
+  },
+  {
+   "start": 206.72,
+   "duration": 4.96,
+   "text": "prompt to Claude, you know, what happens"
+  },
+  {
+   "start": 208.68,
+   "duration": 4.4,
+   "text": "here is that this is a conversational"
+  },
+  {
+   "start": 211.68,
+   "duration": 3.16,
+   "text": "uh thing that you are doing with Claude."
+  },
+  {
+   "start": 213.08,
+   "duration": 3.2,
+   "text": "It is not a one-off thing that you give"
+  },
+  {
+   "start": 214.84,
+   "duration": 3.48,
+   "text": "one instruction and Claude will do"
+  },
+  {
+   "start": 216.28,
+   "duration": 3.6,
+   "text": "everything on its own. If the"
+  },
+  {
+   "start": 218.32,
+   "duration": 3.24,
+   "text": "instruction is simple enough, then"
+  },
+  {
+   "start": 219.88,
+   "duration": 4.639,
+   "text": "Claude will perform that instruction on"
+  },
+  {
+   "start": 221.56,
+   "duration": 4.92,
+   "text": "the fly in one shot. But if it is"
+  },
+  {
+   "start": 224.519,
+   "duration": 3.44,
+   "text": "complicated stuff like reviewing test"
+  },
+  {
+   "start": 226.48,
+   "duration": 3.68,
+   "text": "cases or if there is some failure"
+  },
+  {
+   "start": 227.959,
+   "duration": 4.041,
+   "text": "detected or there is some bug, then"
+  },
+  {
+   "start": 230.16,
+   "duration": 3.4,
+   "text": "Claude would probably ask you a"
+  },
+  {
+   "start": 232.0,
+   "duration": 3.76,
+   "text": "follow-up question."
+  },
+  {
+   "start": 233.56,
+   "duration": 4.6,
+   "text": "Now, it is okay in while you are"
+  },
+  {
+   "start": 235.76,
+   "duration": 4.28,
+   "text": "executing that in the local because"
+  },
+  {
+   "start": 238.16,
+   "duration": 3.4,
+   "text": "whenever Claude asks you a follow-up"
+  },
+  {
+   "start": 240.04,
+   "duration": 3.56,
+   "text": "question, you are there to answer it,"
+  },
+  {
+   "start": 241.56,
+   "duration": 3.92,
+   "text": "right? You are the user who is using"
+  },
+  {
+   "start": 243.6,
+   "duration": 3.84,
+   "text": "Claude. But, what happens if you're"
+  },
+  {
+   "start": 245.48,
+   "duration": 4.64,
+   "text": "running it as a GitHub action or in your"
+  },
+  {
+   "start": 247.44,
+   "duration": 4.04,
+   "text": "CI/CD pipeline? There no one is there to"
+  },
+  {
+   "start": 250.12,
+   "duration": 4.2,
+   "text": "answer"
+  },
+  {
+   "start": 251.48,
+   "duration": 5.039,
+   "text": "Claude's follow-up question. Right? If"
+  },
+  {
+   "start": 254.32,
+   "duration": 3.84,
+   "text": "it it if it if it doesn't know what to"
+  },
+  {
+   "start": 256.519,
+   "duration": 3.321,
+   "text": "do, it will ask a follow-up question and"
+  },
+  {
+   "start": 258.16,
+   "duration": 4.0,
+   "text": "probably in your CI/CD pipeline, there"
+  },
+  {
+   "start": 259.84,
+   "duration": 4.96,
+   "text": "is no one to answer that question. And"
+  },
+  {
+   "start": 262.16,
+   "duration": 4.88,
+   "text": "that is why, you know, probably your"
+  },
+  {
+   "start": 264.8,
+   "duration": 4.96,
+   "text": "GitHub action will get timed out because"
+  },
+  {
+   "start": 267.04,
+   "duration": 4.16,
+   "text": "it cannot wait indefinitely, you know,"
+  },
+  {
+   "start": 269.76,
+   "duration": 3.52,
+   "text": "that"
+  },
+  {
+   "start": 271.2,
+   "duration": 5.84,
+   "text": "job will be over because Claude is"
+  },
+  {
+   "start": 273.28,
+   "duration": 6.0,
+   "text": "anyways is not finishing its job, right?"
+  },
+  {
+   "start": 277.04,
+   "duration": 3.92,
+   "text": "So, obviously you would have configured"
+  },
+  {
+   "start": 279.28,
+   "duration": 4.44,
+   "text": "some kind of timeout in your GitHub"
+  },
+  {
+   "start": 280.96,
+   "duration": 5.2,
+   "text": "action file that, you know, after this"
+  },
+  {
+   "start": 283.72,
+   "duration": 4.96,
+   "text": "much amount of time, you know, you just"
+  },
+  {
+   "start": 286.16,
+   "duration": 4.36,
+   "text": "dispose of the job. You know, just throw"
+  },
+  {
+   "start": 288.68,
+   "duration": 4.28,
+   "text": "an error that timeout has occurred and"
+  },
+  {
+   "start": 290.52,
+   "duration": 3.92,
+   "text": "that's it. And all the further steps in"
+  },
+  {
+   "start": 292.96,
+   "duration": 2.959,
+   "text": "the CI/CD pipeline will not work,"
+  },
+  {
+   "start": 294.44,
+   "duration": 3.88,
+   "text": "obviously."
+  },
+  {
+   "start": 295.919,
+   "duration": 4.521,
+   "text": "So, that is the reason that whenever you"
+  },
+  {
+   "start": 298.32,
+   "duration": 3.96,
+   "text": "are using this in a CI/CD pipeline, the"
+  },
+  {
+   "start": 300.44,
+   "duration": 4.04,
+   "text": "Claude, you know, this kind of error is"
+  },
+  {
+   "start": 302.28,
+   "duration": 4.2,
+   "text": "occurring. Now, how to mitigate that"
+  },
+  {
+   "start": 304.48,
+   "duration": 4.6,
+   "text": "error?"
+  },
+  {
+   "start": 306.48,
+   "duration": 4.6,
+   "text": "Right? The how to mitigate that error we"
+  },
+  {
+   "start": 309.08,
+   "duration": 3.76,
+   "text": "will see in this lesson."
+  },
+  {
+   "start": 311.08,
+   "duration": 4.12,
+   "text": "Okay. So,"
+  },
+  {
+   "start": 312.84,
+   "duration": 4.96,
+   "text": "uh we'll see the hyphen P flag. The"
+  },
+  {
+   "start": 315.2,
+   "duration": 4.76,
+   "text": "hyphen P flag is for non-interactive"
+  },
+  {
+   "start": 317.8,
+   "duration": 3.36,
+   "text": "Claude, you know, mode. And we'll see"
+  },
+  {
+   "start": 319.96,
+   "duration": 3.16,
+   "text": "how you can"
+  },
+  {
+   "start": 321.16,
+   "duration": 2.96,
+   "text": "uh use that in your CI/CD pipeline so"
+  },
+  {
+   "start": 323.12,
+   "duration": 3.0,
+   "text": "that"
+  },
+  {
+   "start": 324.12,
+   "duration": 3.76,
+   "text": "it becomes non-interactive. We're going"
+  },
+  {
+   "start": 326.12,
+   "duration": 4.24,
+   "text": "to talk about some exam distractors,"
+  },
+  {
+   "start": 327.88,
+   "duration": 5.2,
+   "text": "some output formats, session isolation"
+  },
+  {
+   "start": 330.36,
+   "duration": 6.24,
+   "text": "architecture, and Claude.md, how you can"
+  },
+  {
+   "start": 333.08,
+   "duration": 6.0,
+   "text": "use Claude.md effectively in your CI/CD"
+  },
+  {
+   "start": 336.6,
+   "duration": 3.96,
+   "text": "pipelines, deduplication, and some"
+  },
+  {
+   "start": 339.08,
+   "duration": 2.92,
+   "text": "testing standards also we are going to"
+  },
+  {
+   "start": 340.56,
+   "duration": 4.48,
+   "text": "see."
+  },
+  {
+   "start": 342.0,
+   "duration": 4.36,
+   "text": "So, as I told you, right? That locally"
+  },
+  {
+   "start": 345.04,
+   "duration": 2.92,
+   "text": "you are interacting. The user is"
+  },
+  {
+   "start": 346.36,
+   "duration": 3.76,
+   "text": "interacting with Claude, Claude is"
+  },
+  {
+   "start": 347.96,
+   "duration": 4.24,
+   "text": "giving back some feedback, and this"
+  },
+  {
+   "start": 350.12,
+   "duration": 4.12,
+   "text": "cycle come you know continues. This is"
+  },
+  {
+   "start": 352.2,
+   "duration": 4.6,
+   "text": "there's a human in the loop. But when it"
+  },
+  {
+   "start": 354.24,
+   "duration": 4.12,
+   "text": "comes to CICD pipelines as I talked"
+  },
+  {
+   "start": 356.8,
+   "duration": 3.56,
+   "text": "before, right?"
+  },
+  {
+   "start": 358.36,
+   "duration": 4.0,
+   "text": "Uh there are it is it is it is getting"
+  },
+  {
+   "start": 360.36,
+   "duration": 4.6,
+   "text": "executed in the terminal by a by a"
+  },
+  {
+   "start": 362.36,
+   "duration": 4.08,
+   "text": "GitHub action, then it will you know"
+  },
+  {
+   "start": 364.96,
+   "duration": 3.12,
+   "text": "obviously use the Claude. You will it"
+  },
+  {
+   "start": 366.44,
+   "duration": 4.4,
+   "text": "will it will it will interact with"
+  },
+  {
+   "start": 368.08,
+   "duration": 4.6,
+   "text": "Claude, and then there is nothing. There"
+  },
+  {
+   "start": 370.84,
+   "duration": 3.64,
+   "text": "is no human in the loop here. No"
+  },
+  {
+   "start": 372.68,
+   "duration": 4.08,
+   "text": "terminal, Claude asks a clarifying"
+  },
+  {
+   "start": 374.48,
+   "duration": 4.32,
+   "text": "question, nobody responds, right? So the"
+  },
+  {
+   "start": 376.76,
+   "duration": 3.76,
+   "text": "job hangs and the"
+  },
+  {
+   "start": 378.8,
+   "duration": 3.6,
+   "text": "basically the engineers blame the"
+  },
+  {
+   "start": 380.52,
+   "duration": 3.44,
+   "text": "integration, but there is nothing wrong"
+  },
+  {
+   "start": 382.4,
+   "duration": 3.4,
+   "text": "with the integration."
+  },
+  {
+   "start": 383.96,
+   "duration": 4.959,
+   "text": "It's just that you missed a particular"
+  },
+  {
+   "start": 385.8,
+   "duration": 6.32,
+   "text": "flag so that Claude doesn't need a human"
+  },
+  {
+   "start": 388.919,
+   "duration": 3.201,
+   "text": "in the loop to operate."
+  },
+  {
+   "start": 393.16,
+   "duration": 5.28,
+   "text": "So there comes the P flag."
+  },
+  {
+   "start": 396.2,
+   "duration": 3.8,
+   "text": "The P flag is for non-interactive mode"
+  },
+  {
+   "start": 398.44,
+   "duration": 3.76,
+   "text": "for CICD."
+  },
+  {
+   "start": 400.0,
+   "duration": 4.0,
+   "text": "So {hyphen} P stands for"
+  },
+  {
+   "start": 402.2,
+   "duration": 5.32,
+   "text": "{hyphen}{hyphen} print."
+  },
+  {
+   "start": 404.0,
+   "duration": 5.88,
+   "text": "Okay? So the behavior is simple."
+  },
+  {
+   "start": 407.52,
+   "duration": 4.24,
+   "text": "You say that okay, you give the input"
+  },
+  {
+   "start": 409.88,
+   "duration": 3.28,
+   "text": "okay like Claude, you give some input,"
+  },
+  {
+   "start": 411.76,
+   "duration": 3.52,
+   "text": "right? I'll I'll show you a"
+  },
+  {
+   "start": 413.16,
+   "duration": 3.6,
+   "text": "production-ready script over here so"
+  },
+  {
+   "start": 415.28,
+   "duration": 2.88,
+   "text": "that it will make sense how to use"
+  },
+  {
+   "start": 416.76,
+   "duration": 3.84,
+   "text": "Claude in your CICD pipeline. I'll just"
+  },
+  {
+   "start": 418.16,
+   "duration": 4.48,
+   "text": "show you one line so that you don't get"
+  },
+  {
+   "start": 420.6,
+   "duration": 2.04,
+   "text": "um"
+  },
+  {
+   "start": 422.72,
+   "duration": 4.199,
+   "text": "um"
+  },
+  {
+   "start": 424.24,
+   "duration": 4.4,
+   "text": "uh here. So I don't get confused. So"
+  },
+  {
+   "start": 426.919,
+   "duration": 4.321,
+   "text": "here if you see"
+  },
+  {
+   "start": 428.64,
+   "duration": 4.8,
+   "text": "uh here is one one uh step in the So"
+  },
+  {
+   "start": 431.24,
+   "duration": 4.28,
+   "text": "this is generally how you write a GitHub"
+  },
+  {
+   "start": 433.44,
+   "duration": 4.28,
+   "text": "actions, right? You'll write a dot sh"
+  },
+  {
+   "start": 435.52,
+   "duration": 4.6,
+   "text": "file, right?"
+  },
+  {
+   "start": 437.72,
+   "duration": 4.12,
+   "text": "And basically um"
+  },
+  {
+   "start": 440.12,
+   "duration": 3.44,
+   "text": "these are the job this is a these are"
+  },
+  {
+   "start": 441.84,
+   "duration": 4.64,
+   "text": "the steps in the particular job. I don't"
+  },
+  {
+   "start": 443.56,
+   "duration": 4.76,
+   "text": "have to explain this uh GitHub action"
+  },
+  {
+   "start": 446.48,
+   "duration": 3.439,
+   "text": "thing because most of the people know,"
+  },
+  {
+   "start": 448.32,
+   "duration": 3.72,
+   "text": "or if you don't know, you can just"
+  },
+  {
+   "start": 449.919,
+   "duration": 4.641,
+   "text": "Google about it or ask Claude about it"
+  },
+  {
+   "start": 452.04,
+   "duration": 5.32,
+   "text": "basically. So here in this particular"
+  },
+  {
+   "start": 454.56,
+   "duration": 5.56,
+   "text": "step there is a step known as run Claude"
+  },
+  {
+   "start": 457.36,
+   "duration": 4.84,
+   "text": "review. Okay? So obviously it will take"
+  },
+  {
+   "start": 460.12,
+   "duration": 3.44,
+   "text": "some findings from prior findings, and"
+  },
+  {
+   "start": 462.2,
+   "duration": 3.68,
+   "text": "then we are passing into cloud. For"
+  },
+  {
+   "start": 463.56,
+   "duration": 4.4,
+   "text": "example, cloud {hyphen} p. If you don't"
+  },
+  {
+   "start": 465.88,
+   "duration": 3.32,
+   "text": "use this {hyphen} p"
+  },
+  {
+   "start": 467.96,
+   "duration": 2.64,
+   "text": "and"
+  },
+  {
+   "start": 469.2,
+   "duration": 2.96,
+   "text": "you know, you give the particular"
+  },
+  {
+   "start": 470.6,
+   "duration": 3.08,
+   "text": "message to cloud that review this or"
+  },
+  {
+   "start": 472.16,
+   "duration": 3.08,
+   "text": "review that or do this or do that. If it"
+  },
+  {
+   "start": 473.68,
+   "duration": 3.56,
+   "text": "needs a human in the loop, it will not"
+  },
+  {
+   "start": 475.24,
+   "duration": 4.16,
+   "text": "work. It will hang over there because"
+  },
+  {
+   "start": 477.24,
+   "duration": 4.32,
+   "text": "there is no human to approve or review"
+  },
+  {
+   "start": 479.4,
+   "duration": 3.96,
+   "text": "that particular step. So, you have to"
+  },
+  {
+   "start": 481.56,
+   "duration": 4.24,
+   "text": "use the {hyphen} p in this manner. So,"
+  },
+  {
+   "start": 483.36,
+   "duration": 4.44,
+   "text": "cloud {hyphen} p then your query,"
+  },
+  {
+   "start": 485.8,
+   "duration": 3.48,
+   "text": "whatever you want to execute with cloud."
+  },
+  {
+   "start": 487.8,
+   "duration": 3.32,
+   "text": "Now, we're not going to understand this"
+  },
+  {
+   "start": 489.28,
+   "duration": 4.48,
+   "text": "entire file for now. I just wanted to"
+  },
+  {
+   "start": 491.12,
+   "duration": 4.32,
+   "text": "show you how you can use it, right? Like"
+  },
+  {
+   "start": 493.76,
+   "duration": 4.76,
+   "text": "this you have to use it anywhere in your"
+  },
+  {
+   "start": 495.44,
+   "duration": 5.32,
+   "text": "files and you will get this code in the"
+  },
+  {
+   "start": 498.52,
+   "duration": 4.6,
+   "text": "GitHub. It's there. So, you can also"
+  },
+  {
+   "start": 500.76,
+   "duration": 3.64,
+   "text": "refer it after the lesson as well."
+  },
+  {
+   "start": 503.12,
+   "duration": 3.72,
+   "text": "So, this is how you will use the"
+  },
+  {
+   "start": 504.4,
+   "duration": 4.32,
+   "text": "{hyphen} p. Now, it works identically"
+  },
+  {
+   "start": 506.84,
+   "duration": 3.88,
+   "text": "with the short form {hyphen} p or the"
+  },
+  {
+   "start": 508.72,
+   "duration": 4.52,
+   "text": "long form {hyphen} {hyphen} print."
+  },
+  {
+   "start": 510.72,
+   "duration": 4.04,
+   "text": "Whatever, you know,"
+  },
+  {
+   "start": 513.24,
+   "duration": 4.04,
+   "text": "you like, you can use. You can use"
+  },
+  {
+   "start": 514.76,
+   "duration": 4.36,
+   "text": "{hyphen} p or {hyphen} {hyphen} print"
+  },
+  {
+   "start": 517.28,
+   "duration": 5.6,
+   "text": "to execute that particular"
+  },
+  {
+   "start": 519.12,
+   "duration": 5.36,
+   "text": "non-interactive way of cloud."
+  },
+  {
+   "start": 522.88,
+   "duration": 4.6,
+   "text": "So, some of the things that you need to"
+  },
+  {
+   "start": 524.48,
+   "duration": 6.04,
+   "text": "keep in mind that the exam will try to"
+  },
+  {
+   "start": 527.48,
+   "duration": 5.0,
+   "text": "trick you. So, except for {hyphen} p or"
+  },
+  {
+   "start": 530.52,
+   "duration": 4.56,
+   "text": "{hyphen} {hyphen} print, there is no"
+  },
+  {
+   "start": 532.48,
+   "duration": 4.88,
+   "text": "flag that cloud supports for this"
+  },
+  {
+   "start": 535.08,
+   "duration": 4.24,
+   "text": "particular non-interactive approach."
+  },
+  {
+   "start": 537.36,
+   "duration": 4.64,
+   "text": "Okay? Now, this is These are some of the"
+  },
+  {
+   "start": 539.32,
+   "duration": 5.44,
+   "text": "exam traps that they will try to trick"
+  },
+  {
+   "start": 542.0,
+   "duration": 5.839,
+   "text": "you because these are some of the"
+  },
+  {
+   "start": 544.76,
+   "duration": 5.84,
+   "text": "very common kind of flags that we"
+  },
+  {
+   "start": 547.839,
+   "duration": 4.961,
+   "text": "generally use for non-interactive"
+  },
+  {
+   "start": 550.6,
+   "duration": 3.8,
+   "text": "you know, in curl commands or somewhere"
+  },
+  {
+   "start": 552.8,
+   "duration": 3.56,
+   "text": "or some terminal commands you use. So,"
+  },
+  {
+   "start": 554.4,
+   "duration": 3.64,
+   "text": "you are your"
+  },
+  {
+   "start": 556.36,
+   "duration": 4.44,
+   "text": "head will go into that direction. Okay,"
+  },
+  {
+   "start": 558.04,
+   "duration": 4.32,
+   "text": "headless might be the particular option."
+  },
+  {
+   "start": 560.8,
+   "duration": 4.68,
+   "text": "But, in that case, wherever you see"
+  },
+  {
+   "start": 562.36,
+   "duration": 5.8,
+   "text": "{hyphen} headless or cloud headless mode"
+  },
+  {
+   "start": 565.48,
+   "duration": 4.28,
+   "text": "or batch mode or CI mode, there is"
+  },
+  {
+   "start": 568.16,
+   "duration": 3.92,
+   "text": "nothing"
+  },
+  {
+   "start": 569.76,
+   "duration": 4.48,
+   "text": "of that that exists. Only the {hyphen} p"
+  },
+  {
+   "start": 572.08,
+   "duration": 4.72,
+   "text": "or {hyphen} {hyphen} print exists and"
+  },
+  {
+   "start": 574.24,
+   "duration": 4.48,
+   "text": "this is the single valid headless flag"
+  },
+  {
+   "start": 576.8,
+   "duration": 3.96,
+   "text": "that you would need for Claude"
+  },
+  {
+   "start": 578.72,
+   "duration": 5.24,
+   "text": "interactive mode."
+  },
+  {
+   "start": 580.76,
+   "duration": 5.2,
+   "text": "And yeah, so keep sure that make sure"
+  },
+  {
+   "start": 583.96,
+   "duration": 2.88,
+   "text": "that you don't fall into this trap, you"
+  },
+  {
+   "start": 585.96,
+   "duration": 2.64,
+   "text": "know,"
+  },
+  {
+   "start": 586.84,
+   "duration": 4.84,
+   "text": "and"
+  },
+  {
+   "start": 588.6,
+   "duration": 5.96,
+   "text": "go for the correct option."
+  },
+  {
+   "start": 591.68,
+   "duration": 5.84,
+   "text": "Okay, now let's talk about"
+  },
+  {
+   "start": 594.56,
+   "duration": 4.52,
+   "text": "machine-readable output. Now,"
+  },
+  {
+   "start": 597.52,
+   "duration": 4.64,
+   "text": "you have to think of in a way whenever"
+  },
+  {
+   "start": 599.08,
+   "duration": 5.68,
+   "text": "you are going to work with Claude"
+  },
+  {
+   "start": 602.16,
+   "duration": 6.48,
+   "text": "not in a user human in the loop. Let's"
+  },
+  {
+   "start": 604.76,
+   "duration": 3.88,
+   "text": "talk about the CI/CD thing, right?"
+  },
+  {
+   "start": 608.92,
+   "duration": 3.68,
+   "text": "So, you have configured Claude in your"
+  },
+  {
+   "start": 610.8,
+   "duration": 4.4,
+   "text": "CI/CD pipeline,"
+  },
+  {
+   "start": 612.6,
+   "duration": 5.28,
+   "text": "and you need to pass something to"
+  },
+  {
+   "start": 615.2,
+   "duration": 4.96,
+   "text": "Claude, right? For example, you found"
+  },
+  {
+   "start": 617.88,
+   "duration": 4.64,
+   "text": "some logs in the previous step of the"
+  },
+  {
+   "start": 620.16,
+   "duration": 4.8,
+   "text": "CI/CD pipeline, and you need to pass it"
+  },
+  {
+   "start": 622.52,
+   "duration": 4.28,
+   "text": "on to Claude."
+  },
+  {
+   "start": 624.96,
+   "duration": 3.48,
+   "text": "You would pass it as a normal message"
+  },
+  {
+   "start": 626.8,
+   "duration": 3.6,
+   "text": "because Claude is a LLM and it will"
+  },
+  {
+   "start": 628.44,
+   "duration": 3.12,
+   "text": "understand. That is fine, ready to"
+  },
+  {
+   "start": 630.4,
+   "duration": 2.4,
+   "text": "understand."
+  },
+  {
+   "start": 631.56,
+   "duration": 4.32,
+   "text": "But,"
+  },
+  {
+   "start": 632.8,
+   "duration": 7.039,
+   "text": "whatever Claude responds back,"
+  },
+  {
+   "start": 635.88,
+   "duration": 7.92,
+   "text": "that also is in normal text format. It"
+  },
+  {
+   "start": 639.839,
+   "duration": 5.921,
+   "text": "responds unless you specify to respond"
+  },
+  {
+   "start": 643.8,
+   "duration": 3.4,
+   "text": "in a specific format."
+  },
+  {
+   "start": 645.76,
+   "duration": 3.4,
+   "text": "Whenever you are interacting with Claude"
+  },
+  {
+   "start": 647.2,
+   "duration": 4.0,
+   "text": "on the web or on the Claude code, every"
+  },
+  {
+   "start": 649.16,
+   "duration": 3.28,
+   "text": "time Claude responds with some text,"
+  },
+  {
+   "start": 651.2,
+   "duration": 3.16,
+   "text": "first of all."
+  },
+  {
+   "start": 652.44,
+   "duration": 4.08,
+   "text": "It will respond you with some particular"
+  },
+  {
+   "start": 654.36,
+   "duration": 4.2,
+   "text": "HTML like artifact or whatever. If you"
+  },
+  {
+   "start": 656.52,
+   "duration": 3.64,
+   "text": "particularly specify that I want this"
+  },
+  {
+   "start": 658.56,
+   "duration": 3.6,
+   "text": "and want that."
+  },
+  {
+   "start": 660.16,
+   "duration": 4.0,
+   "text": "Right? So,"
+  },
+  {
+   "start": 662.16,
+   "duration": 3.44,
+   "text": "for example, you have Claude used Claude"
+  },
+  {
+   "start": 664.16,
+   "duration": 3.0,
+   "text": "in a particular step in the CI/CD"
+  },
+  {
+   "start": 665.6,
+   "duration": 4.4,
+   "text": "pipeline."
+  },
+  {
+   "start": 667.16,
+   "duration": 5.04,
+   "text": "The next step requires a structured JSON"
+  },
+  {
+   "start": 670.0,
+   "duration": 3.92,
+   "text": "output, for example."
+  },
+  {
+   "start": 672.2,
+   "duration": 3.52,
+   "text": "Right? For example, to run the unit"
+  },
+  {
+   "start": 673.92,
+   "duration": 5.04,
+   "text": "tests, Claude has to generate some"
+  },
+  {
+   "start": 675.72,
+   "duration": 6.16,
+   "text": "sample data, for example. And the sample"
+  },
+  {
+   "start": 678.96,
+   "duration": 5.2,
+   "text": "data is not in JSON format as your tests"
+  },
+  {
+   "start": 681.88,
+   "duration": 3.68,
+   "text": "kind of, you know, predict."
+  },
+  {
+   "start": 684.16,
+   "duration": 3.48,
+   "text": "So, in that in that particular"
+  },
+  {
+   "start": 685.56,
+   "duration": 3.44,
+   "text": "situation, your tests will fail,"
+  },
+  {
+   "start": 687.64,
+   "duration": 3.24,
+   "text": "obviously, because they are not"
+  },
+  {
+   "start": 689.0,
+   "duration": 3.32,
+   "text": "receiving the data in the particular"
+  },
+  {
+   "start": 690.88,
+   "duration": 5.08,
+   "text": "format."
+  },
+  {
+   "start": 692.32,
+   "duration": 6.08,
+   "text": "So, it is your job to specify wherever"
+  },
+  {
+   "start": 695.96,
+   "duration": 4.84,
+   "text": "you are using Cloud in the step to tell"
+  },
+  {
+   "start": 698.4,
+   "duration": 3.92,
+   "text": "Cloud that okay, whatever code you are"
+  },
+  {
+   "start": 700.8,
+   "duration": 2.92,
+   "text": "returning back, whatever response you're"
+  },
+  {
+   "start": 702.32,
+   "duration": 4.16,
+   "text": "returning back,"
+  },
+  {
+   "start": 703.72,
+   "duration": 4.88,
+   "text": "you you you kind of respond it in this"
+  },
+  {
+   "start": 706.48,
+   "duration": 3.88,
+   "text": "manner so that the next step in that"
+  },
+  {
+   "start": 708.6,
+   "duration": 3.4,
+   "text": "particular CSCD pipeline will"
+  },
+  {
+   "start": 710.36,
+   "duration": 3.56,
+   "text": "understand."
+  },
+  {
+   "start": 712.0,
+   "duration": 3.64,
+   "text": "So, in this format, if you see, I found"
+  },
+  {
+   "start": 713.92,
+   "duration": 3.36,
+   "text": "a bug on line 42 regarding the user"
+  },
+  {
+   "start": 715.64,
+   "duration": 3.96,
+   "text": "authentication check output format,"
+  },
+  {
+   "start": 717.28,
+   "duration": 4.0,
+   "text": "convert it. So, it will come in this"
+  },
+  {
+   "start": 719.6,
+   "duration": 3.28,
+   "text": "particular JSON format for the next"
+  },
+  {
+   "start": 721.28,
+   "duration": 4.24,
+   "text": "step. So, it will give a particular"
+  },
+  {
+   "start": 722.88,
+   "duration": 4.52,
+   "text": "severity tag like critical, line number,"
+  },
+  {
+   "start": 725.52,
+   "duration": 5.6,
+   "text": "message, and file. So, now it is in a"
+  },
+  {
+   "start": 727.4,
+   "duration": 5.64,
+   "text": "proper proper JSON format. So, probably"
+  },
+  {
+   "start": 731.12,
+   "duration": 3.88,
+   "text": "the next step in the particular CSCD"
+  },
+  {
+   "start": 733.04,
+   "duration": 3.8,
+   "text": "pipeline will be able to understand this"
+  },
+  {
+   "start": 735.0,
+   "duration": 3.64,
+   "text": "message now. But, it will not understand"
+  },
+  {
+   "start": 736.84,
+   "duration": 3.88,
+   "text": "this text message."
+  },
+  {
+   "start": 738.64,
+   "duration": 4.76,
+   "text": "So, default prose is great for humans."
+  },
+  {
+   "start": 740.72,
+   "duration": 4.28,
+   "text": "It is useless for pipelines or machines."
+  },
+  {
+   "start": 743.4,
+   "duration": 3.2,
+   "text": "Machines will understand structured"
+  },
+  {
+   "start": 745.0,
+   "duration": 2.88,
+   "text": "response, guys."
+  },
+  {
+   "start": 746.6,
+   "duration": 3.52,
+   "text": "So,"
+  },
+  {
+   "start": 747.88,
+   "duration": 4.72,
+   "text": "yeah, keep that in mind. Combine output"
+  },
+  {
+   "start": 750.12,
+   "duration": 5.04,
+   "text": "format, JSON with {hyphen} {hyphen} JSON"
+  },
+  {
+   "start": 752.6,
+   "duration": 4.32,
+   "text": "schema to strictly enforce output shape."
+  },
+  {
+   "start": 755.16,
+   "duration": 4.44,
+   "text": "So, these is this these are the you"
+  },
+  {
+   "start": 756.92,
+   "duration": 4.16,
+   "text": "know, flags that you would use to kind"
+  },
+  {
+   "start": 759.6,
+   "duration": 4.6,
+   "text": "of um"
+  },
+  {
+   "start": 761.08,
+   "duration": 5.6,
+   "text": "tell Cloud that, you know, in the"
+  },
+  {
+   "start": 764.2,
+   "duration": 4.0,
+   "text": "after you are done with your particular"
+  },
+  {
+   "start": 766.68,
+   "duration": 4.2,
+   "text": "um whatever work you are doing in the"
+  },
+  {
+   "start": 768.2,
+   "duration": 5.8,
+   "text": "CSCD pipeline, uh"
+  },
+  {
+   "start": 770.88,
+   "duration": 4.92,
+   "text": "respond with a particular JSON format"
+  },
+  {
+   "start": 774.0,
+   "duration": 2.88,
+   "text": "which we need for the particular next"
+  },
+  {
+   "start": 775.8,
+   "duration": 2.56,
+   "text": "step."
+  },
+  {
+   "start": 776.88,
+   "duration": 3.24,
+   "text": "So,"
+  },
+  {
+   "start": 778.36,
+   "duration": 3.64,
+   "text": "then the downstream actions that are"
+  },
+  {
+   "start": 780.12,
+   "duration": 4.8,
+   "text": "there in your CSCD pipeline would be"
+  },
+  {
+   "start": 782.0,
+   "duration": 5.12,
+   "text": "able to understand what was the previous"
+  },
+  {
+   "start": 784.92,
+   "duration": 3.919,
+   "text": "response given by Cloud. So, I'm hope"
+  },
+  {
+   "start": 787.12,
+   "duration": 4.0,
+   "text": "I'm making sense and to show you an"
+  },
+  {
+   "start": 788.839,
+   "duration": 3.801,
+   "text": "example, I have used it here. So, if you"
+  },
+  {
+   "start": 791.12,
+   "duration": 3.68,
+   "text": "see uh"
+  },
+  {
+   "start": 792.64,
+   "duration": 4.24,
+   "text": "uh here in my CSCD pipeline example,"
+  },
+  {
+   "start": 794.8,
+   "duration": 4.76,
+   "text": "I've used Cloud {hyphen} P review the PR"
+  },
+  {
+   "start": 796.88,
+   "duration": 4.72,
+   "text": "existing issues. And this is the prior"
+  },
+  {
+   "start": 799.56,
+   "duration": 4.32,
+   "text": "data that I'm sending. So, previously we"
+  },
+  {
+   "start": 801.6,
+   "duration": 4.56,
+   "text": "I'm I'm getting some data basically, uh"
+  },
+  {
+   "start": 803.88,
+   "duration": 4.68,
+   "text": "some pull request data, and then putting"
+  },
+  {
+   "start": 806.16,
+   "duration": 5.64,
+   "text": "in prior findings txt."
+  },
+  {
+   "start": 808.56,
+   "duration": 5.2,
+   "text": "Right? Simple as that. And basically"
+  },
+  {
+   "start": 811.8,
+   "duration": 4.16,
+   "text": "then we are reading the prior findings"
+  },
+  {
+   "start": 813.76,
+   "duration": 4.04,
+   "text": "putting in a variable known as prior and"
+  },
+  {
+   "start": 815.96,
+   "duration": 4.28,
+   "text": "passing it into cloud. So this is pretty"
+  },
+  {
+   "start": 817.8,
+   "duration": 4.4,
+   "text": "easy to understand. Then by using the"
+  },
+  {
+   "start": 820.24,
+   "duration": 4.56,
+   "text": "hyphen hyphen output format we are"
+  },
+  {
+   "start": 822.2,
+   "duration": 4.2,
+   "text": "specifying the output format to be JSON"
+  },
+  {
+   "start": 824.8,
+   "duration": 2.84,
+   "text": "so that it returns you structured"
+  },
+  {
+   "start": 826.4,
+   "duration": 2.64,
+   "text": "output."
+  },
+  {
+   "start": 827.64,
+   "duration": 4.96,
+   "text": "Right?"
+  },
+  {
+   "start": 829.04,
+   "duration": 5.2,
+   "text": "Now the JSON schema you can give the for"
+  },
+  {
+   "start": 832.6,
+   "duration": 3.48,
+   "text": "example you are having a particular"
+  },
+  {
+   "start": 834.24,
+   "duration": 3.64,
+   "text": "schema. Right? For example for this"
+  },
+  {
+   "start": 836.08,
+   "duration": 3.6,
+   "text": "particular JSON format you are"
+  },
+  {
+   "start": 837.88,
+   "duration": 4.8,
+   "text": "maintaining a schema somewhere. Right?"
+  },
+  {
+   "start": 839.68,
+   "duration": 5.4,
+   "text": "Like a template for So for that also you"
+  },
+  {
+   "start": 842.68,
+   "duration": 5.56,
+   "text": "can give a particular file."
+  },
+  {
+   "start": 845.08,
+   "duration": 6.28,
+   "text": "Right? Review schema.json for example."
+  },
+  {
+   "start": 848.24,
+   "duration": 4.4,
+   "text": "Then you output that into findings.json."
+  },
+  {
+   "start": 851.36,
+   "duration": 3.08,
+   "text": "So that is what we are doing. We are"
+  },
+  {
+   "start": 852.64,
+   "duration": 3.76,
+   "text": "taking the input. We're instructing"
+  },
+  {
+   "start": 854.44,
+   "duration": 4.76,
+   "text": "Cloud what to do and we are instructing"
+  },
+  {
+   "start": 856.4,
+   "duration": 6.2,
+   "text": "Cloud in which format as well you have"
+  },
+  {
+   "start": 859.2,
+   "duration": 5.8,
+   "text": "to return the particular findings. So"
+  },
+  {
+   "start": 862.6,
+   "duration": 4.24,
+   "text": "that is how you should be able to do"
+  },
+  {
+   "start": 865.0,
+   "duration": 5.6,
+   "text": "this machine readable output whenever"
+  },
+  {
+   "start": 866.84,
+   "duration": 3.76,
+   "text": "you are working with CI/CD pipelines."
+  },
+  {
+   "start": 871.0,
+   "duration": 3.08,
+   "text": "I hope that is making sense guys. If you"
+  },
+  {
+   "start": 872.88,
+   "duration": 2.36,
+   "text": "have any questions put it down in the"
+  },
+  {
+   "start": 874.08,
+   "duration": 3.04,
+   "text": "comments"
+  },
+  {
+   "start": 875.24,
+   "duration": 4.16,
+   "text": "and I'm going to I'll be able to answer"
+  },
+  {
+   "start": 877.12,
+   "duration": 2.28,
+   "text": "them."
+  },
+  {
+   "start": 879.52,
+   "duration": 7.44,
+   "text": "Okay. So now let's talk about the"
+  },
+  {
+   "start": 882.28,
+   "duration": 7.559,
+   "text": "psychology of review session isolation."
+  },
+  {
+   "start": 886.96,
+   "duration": 4.76,
+   "text": "Now let let me tell you a given a very"
+  },
+  {
+   "start": 889.839,
+   "duration": 4.881,
+   "text": "simple scenario"
+  },
+  {
+   "start": 891.72,
+   "duration": 5.68,
+   "text": "to understand this particular concept."
+  },
+  {
+   "start": 894.72,
+   "duration": 4.08,
+   "text": "So we have various members in our team."
+  },
+  {
+   "start": 897.4,
+   "duration": 3.4,
+   "text": "We have"
+  },
+  {
+   "start": 898.8,
+   "duration": 5.0,
+   "text": "kind of you know we have roles in our"
+  },
+  {
+   "start": 900.8,
+   "duration": 5.039,
+   "text": "team known as developers and testers."
+  },
+  {
+   "start": 903.8,
+   "duration": 4.48,
+   "text": "So developers develop."
+  },
+  {
+   "start": 905.839,
+   "duration": 3.881,
+   "text": "Testers test. So they have specific"
+  },
+  {
+   "start": 908.28,
+   "duration": 3.16,
+   "text": "roles."
+  },
+  {
+   "start": 909.72,
+   "duration": 3.32,
+   "text": "The reason there are roles it's not that"
+  },
+  {
+   "start": 911.44,
+   "duration": 2.96,
+   "text": "developers cannot do the testing or"
+  },
+  {
+   "start": 913.04,
+   "duration": 3.56,
+   "text": "testers cannot do the develop. The"
+  },
+  {
+   "start": 914.4,
+   "duration": 5.48,
+   "text": "reason is that whatever a developer"
+  },
+  {
+   "start": 916.6,
+   "duration": 5.04,
+   "text": "develops it has already you know kind of"
+  },
+  {
+   "start": 919.88,
+   "duration": 4.04,
+   "text": "like a psychologically"
+  },
+  {
+   "start": 921.64,
+   "duration": 4.2,
+   "text": "that person has it in mind that whatever"
+  },
+  {
+   "start": 923.92,
+   "duration": 4.88,
+   "text": "I have developed is correct."
+  },
+  {
+   "start": 925.84,
+   "duration": 5.48,
+   "text": "So, that person will test it in a way"
+  },
+  {
+   "start": 928.8,
+   "duration": 5.04,
+   "text": "that it will always be as per the"
+  },
+  {
+   "start": 931.32,
+   "duration": 4.32,
+   "text": "directions that person has used to"
+  },
+  {
+   "start": 933.84,
+   "duration": 4.2,
+   "text": "create that code."
+  },
+  {
+   "start": 935.64,
+   "duration": 4.6,
+   "text": "Now, when the code goes to a tester,"
+  },
+  {
+   "start": 938.04,
+   "duration": 4.4,
+   "text": "tester as the tester has not developed"
+  },
+  {
+   "start": 940.24,
+   "duration": 4.2,
+   "text": "the code, the tester will have a very"
+  },
+  {
+   "start": 942.44,
+   "duration": 3.72,
+   "text": "fresh perspective of how to test that"
+  },
+  {
+   "start": 944.44,
+   "duration": 5.6,
+   "text": "particular application or how to test"
+  },
+  {
+   "start": 946.16,
+   "duration": 5.76,
+   "text": "that particular uh code, right? So, that"
+  },
+  {
+   "start": 950.04,
+   "duration": 4.84,
+   "text": "person the tester person would be able"
+  },
+  {
+   "start": 951.92,
+   "duration": 5.08,
+   "text": "to think of new scenarios or it will ask"
+  },
+  {
+   "start": 954.88,
+   "duration": 4.16,
+   "text": "you more questions and it will test that"
+  },
+  {
+   "start": 957.0,
+   "duration": 4.4,
+   "text": "particular thing thoroughly. Similar is"
+  },
+  {
+   "start": 959.04,
+   "duration": 3.92,
+   "text": "with a Claude code session as well."
+  },
+  {
+   "start": 961.4,
+   "duration": 3.4,
+   "text": "So, for example, you have been using"
+  },
+  {
+   "start": 962.96,
+   "duration": 4.08,
+   "text": "Claude code to develop a particular"
+  },
+  {
+   "start": 964.8,
+   "duration": 3.96,
+   "text": "module or a particular application. You"
+  },
+  {
+   "start": 967.04,
+   "duration": 4.56,
+   "text": "are in the same session."
+  },
+  {
+   "start": 968.76,
+   "duration": 5.08,
+   "text": "Now, when you ask Claude to test that"
+  },
+  {
+   "start": 971.6,
+   "duration": 4.2,
+   "text": "particular thing out, right? I mean,"
+  },
+  {
+   "start": 973.84,
+   "duration": 3.4,
+   "text": "write some test cases for that"
+  },
+  {
+   "start": 975.8,
+   "duration": 4.08,
+   "text": "particular thing."
+  },
+  {
+   "start": 977.24,
+   "duration": 4.92,
+   "text": "So, Claude would be able to retain the"
+  },
+  {
+   "start": 979.88,
+   "duration": 5.12,
+   "text": "reasoning used to write the code."
+  },
+  {
+   "start": 982.16,
+   "duration": 5.84,
+   "text": "It will rationalize the reason based on"
+  },
+  {
+   "start": 985.0,
+   "duration": 5.16,
+   "text": "which it has written the code."
+  },
+  {
+   "start": 988.0,
+   "duration": 4.04,
+   "text": "And it will not critique the code. Try"
+  },
+  {
+   "start": 990.16,
+   "duration": 4.64,
+   "text": "to understand. It will try to kind of"
+  },
+  {
+   "start": 992.04,
+   "duration": 5.12,
+   "text": "create the test cases as per"
+  },
+  {
+   "start": 994.8,
+   "duration": 4.32,
+   "text": "uh Claude has written the code, right?"
+  },
+  {
+   "start": 997.16,
+   "duration": 4.2,
+   "text": "It might write all the happy path"
+  },
+  {
+   "start": 999.12,
+   "duration": 5.08,
+   "text": "scenarios. It might ignore the you know,"
+  },
+  {
+   "start": 1001.36,
+   "duration": 5.0,
+   "text": "the negative path scenarios. But, on the"
+  },
+  {
+   "start": 1004.2,
+   "duration": 5.32,
+   "text": "other hand, if you just close off that"
+  },
+  {
+   "start": 1006.36,
+   "duration": 5.36,
+   "text": "session to take a very small summary by"
+  },
+  {
+   "start": 1009.52,
+   "duration": 3.92,
+   "text": "using the explore sub agent, take the"
+  },
+  {
+   "start": 1011.72,
+   "duration": 3.04,
+   "text": "very small summary of what Claude has"
+  },
+  {
+   "start": 1013.44,
+   "duration": 4.16,
+   "text": "done in that particular development"
+  },
+  {
+   "start": 1014.76,
+   "duration": 5.12,
+   "text": "session, create a new session. Just exit"
+  },
+  {
+   "start": 1017.6,
+   "duration": 3.92,
+   "text": "Claude and maybe go into a new session"
+  },
+  {
+   "start": 1019.88,
+   "duration": 4.88,
+   "text": "and paste in that summary and tell that,"
+  },
+  {
+   "start": 1021.52,
+   "duration": 4.799,
+   "text": "you know, write um"
+  },
+  {
+   "start": 1024.76,
+   "duration": 3.76,
+   "text": "the you know, some tests and read the"
+  },
+  {
+   "start": 1026.319,
+   "duration": 4.481,
+   "text": "code for flaws and all those things."
+  },
+  {
+   "start": 1028.52,
+   "duration": 4.48,
+   "text": "Now, in this fresh session, Claude will"
+  },
+  {
+   "start": 1030.8,
+   "duration": 3.56,
+   "text": "act like a critic because see, whatever"
+  },
+  {
+   "start": 1033.0,
+   "duration": 3.6,
+   "text": "Claude has done in the previous session,"
+  },
+  {
+   "start": 1034.36,
+   "duration": 4.32,
+   "text": "it doesn't remember anything that it has"
+  },
+  {
+   "start": 1036.6,
+   "duration": 3.16,
+   "text": "done in the you know in the new session"
+  },
+  {
+   "start": 1038.68,
+   "duration": 3.32,
+   "text": "basically."
+  },
+  {
+   "start": 1039.76,
+   "duration": 4.439,
+   "text": "So, it doesn't have that context so it"
+  },
+  {
+   "start": 1042.0,
+   "duration": 5.16,
+   "text": "will kind of think like a critique like"
+  },
+  {
+   "start": 1044.199,
+   "duration": 5.321,
+   "text": "a tester and it will do all the right"
+  },
+  {
+   "start": 1047.16,
+   "duration": 4.96,
+   "text": "things basically to test your code. So,"
+  },
+  {
+   "start": 1049.52,
+   "duration": 4.72,
+   "text": "that is objective analysis."
+  },
+  {
+   "start": 1052.12,
+   "duration": 3.64,
+   "text": "Right? So, fresh eyes review better."
+  },
+  {
+   "start": 1054.24,
+   "duration": 4.6,
+   "text": "That is what I am just telling in this"
+  },
+  {
+   "start": 1055.76,
+   "duration": 5.44,
+   "text": "slide. So, what I what the point of this"
+  },
+  {
+   "start": 1058.84,
+   "duration": 5.32,
+   "text": "entire discussion is that if you have"
+  },
+  {
+   "start": 1061.2,
+   "duration": 5.72,
+   "text": "separate CI jobs, if you have one job to"
+  },
+  {
+   "start": 1064.16,
+   "duration": 5.36,
+   "text": "basically build the particular"
+  },
+  {
+   "start": 1066.92,
+   "duration": 4.56,
+   "text": "code, then you have a review step, then"
+  },
+  {
+   "start": 1069.52,
+   "duration": 4.12,
+   "text": "use a new cloud session."
+  },
+  {
+   "start": 1071.48,
+   "duration": 4.56,
+   "text": "Now, if you have another CI/CD step"
+  },
+  {
+   "start": 1073.64,
+   "duration": 5.12,
+   "text": "where you are kind of reviewing the test"
+  },
+  {
+   "start": 1076.04,
+   "duration": 4.36,
+   "text": "cases or executing the test cases or"
+  },
+  {
+   "start": 1078.76,
+   "duration": 3.44,
+   "text": "kind of"
+  },
+  {
+   "start": 1080.4,
+   "duration": 3.6,
+   "text": "executing integration test cases and"
+  },
+  {
+   "start": 1082.2,
+   "duration": 3.8,
+   "text": "getting some summary out of it, that"
+  },
+  {
+   "start": 1084.0,
+   "duration": 5.32,
+   "text": "should be a new cloud session. So, that"
+  },
+  {
+   "start": 1086.0,
+   "duration": 6.44,
+   "text": "each step will get fresh set of kind of"
+  },
+  {
+   "start": 1089.32,
+   "duration": 7.0,
+   "text": "context and everything would be tested,"
+  },
+  {
+   "start": 1092.44,
+   "duration": 6.48,
+   "text": "you know, or ran in a completely"
+  },
+  {
+   "start": 1096.32,
+   "duration": 5.12,
+   "text": "isolated context. So, that is what I"
+  },
+  {
+   "start": 1098.92,
+   "duration": 5.12,
+   "text": "wanted to say the psychology of review."
+  },
+  {
+   "start": 1101.44,
+   "duration": 6.04,
+   "text": "Think of it in the same manner as humans"
+  },
+  {
+   "start": 1104.04,
+   "duration": 5.76,
+   "text": "think and kind of execute your CI/CD"
+  },
+  {
+   "start": 1107.48,
+   "duration": 4.8,
+   "text": "pipelines in that manner itself. I hope"
+  },
+  {
+   "start": 1109.8,
+   "duration": 4.44,
+   "text": "that is making sense."
+  },
+  {
+   "start": 1112.28,
+   "duration": 4.4,
+   "text": "Okay?"
+  },
+  {
+   "start": 1114.24,
+   "duration": 4.2,
+   "text": "Okay. Now, the next thing is that we"
+  },
+  {
+   "start": 1116.68,
+   "duration": 3.16,
+   "text": "talked about creating new sessions,"
+  },
+  {
+   "start": 1118.44,
+   "duration": 5.0,
+   "text": "right? We talked about creating new"
+  },
+  {
+   "start": 1119.84,
+   "duration": 4.88,
+   "text": "sessions for your um"
+  },
+  {
+   "start": 1123.44,
+   "duration": 3.44,
+   "text": "new"
+  },
+  {
+   "start": 1124.72,
+   "duration": 4.56,
+   "text": "steps in your particular CI/CD pipeline."
+  },
+  {
+   "start": 1126.88,
+   "duration": 4.64,
+   "text": "And I told you that maybe you might want"
+  },
+  {
+   "start": 1129.28,
+   "duration": 4.24,
+   "text": "to get a summary of the previous step or"
+  },
+  {
+   "start": 1131.52,
+   "duration": 4.12,
+   "text": "the previous thing that Cloud did. So,"
+  },
+  {
+   "start": 1133.52,
+   "duration": 4.84,
+   "text": "that is necessary. Yes, you might get a"
+  },
+  {
+   "start": 1135.64,
+   "duration": 5.2,
+   "text": "summary of what the previous step did."
+  },
+  {
+   "start": 1138.36,
+   "duration": 4.04,
+   "text": "On the other hand, one more good thing"
+  },
+  {
+   "start": 1140.84,
+   "duration": 3.8,
+   "text": "that you can do is kind of keep the"
+  },
+  {
+   "start": 1142.4,
+   "duration": 5.88,
+   "text": "cloud.md file. Now, we all know that"
+  },
+  {
+   "start": 1144.64,
+   "duration": 3.64,
+   "text": "what cloud.md file is, right?"
+  },
+  {
+   "start": 1148.32,
+   "duration": 6.2,
+   "text": "Cloud.md file basically"
+  },
+  {
+   "start": 1152.2,
+   "duration": 4.56,
+   "text": "is a like a rules and regulations of"
+  },
+  {
+   "start": 1154.52,
+   "duration": 4.52,
+   "text": "your project. Now, you can keep some"
+  },
+  {
+   "start": 1156.76,
+   "duration": 4.28,
+   "text": "rules and regulations of your CI/CD"
+  },
+  {
+   "start": 1159.04,
+   "duration": 3.2,
+   "text": "pipeline as well, like your deployment"
+  },
+  {
+   "start": 1161.04,
+   "duration": 4.44,
+   "text": "pipeline."
+  },
+  {
+   "start": 1162.24,
+   "duration": 5.6,
+   "text": "Now, you can keep like, you know,"
+  },
+  {
+   "start": 1165.48,
+   "duration": 4.88,
+   "text": "some centralized code standards or"
+  },
+  {
+   "start": 1167.84,
+   "duration": 4.68,
+   "text": "review criteria, security policies,"
+  },
+  {
+   "start": 1170.36,
+   "duration": 3.32,
+   "text": "testing requirements. All of these rules"
+  },
+  {
+   "start": 1172.52,
+   "duration": 3.68,
+   "text": "and regulations you can keep in a"
+  },
+  {
+   "start": 1173.68,
+   "duration": 5.4,
+   "text": "claw.md file. So, whenever you start a"
+  },
+  {
+   "start": 1176.2,
+   "duration": 5.92,
+   "text": "new session for each step in your CI/CD"
+  },
+  {
+   "start": 1179.08,
+   "duration": 4.6,
+   "text": "pipeline, this claw.md will be loaded."
+  },
+  {
+   "start": 1182.12,
+   "duration": 3.32,
+   "text": "So, at least"
+  },
+  {
+   "start": 1183.68,
+   "duration": 4.68,
+   "text": "even if you're not getting a summary out"
+  },
+  {
+   "start": 1185.44,
+   "duration": 5.04,
+   "text": "of the previous step, at least the new"
+  },
+  {
+   "start": 1188.36,
+   "duration": 5.0,
+   "text": "session which gets created as part of"
+  },
+  {
+   "start": 1190.48,
+   "duration": 5.4,
+   "text": "the new step in your CI/CD pipeline, it"
+  },
+  {
+   "start": 1193.36,
+   "duration": 3.48,
+   "text": "will get some context via the claw.md"
+  },
+  {
+   "start": 1195.88,
+   "duration": 4.84,
+   "text": "file."
+  },
+  {
+   "start": 1196.84,
+   "duration": 5.4,
+   "text": "So, this is also a way to make sure that"
+  },
+  {
+   "start": 1200.72,
+   "duration": 3.56,
+   "text": "you know, you're not spending too many"
+  },
+  {
+   "start": 1202.24,
+   "duration": 3.88,
+   "text": "of the tokens."
+  },
+  {
+   "start": 1204.28,
+   "duration": 4.04,
+   "text": "Your Claude's new sessions are working"
+  },
+  {
+   "start": 1206.12,
+   "duration": 3.88,
+   "text": "absolutely perfect."
+  },
+  {
+   "start": 1208.32,
+   "duration": 3.36,
+   "text": "And you're getting the job done without"
+  },
+  {
+   "start": 1210.0,
+   "duration": 3.52,
+   "text": "messing anything up."
+  },
+  {
+   "start": 1211.68,
+   "duration": 3.04,
+   "text": "Right? So, till now, what important"
+  },
+  {
+   "start": 1213.52,
+   "duration": 3.44,
+   "text": "things have we learned? One is the"
+  },
+  {
+   "start": 1214.72,
+   "duration": 4.6,
+   "text": "hyphen P tag or the print."
+  },
+  {
+   "start": 1216.96,
+   "duration": 4.16,
+   "text": "Second thing is basically this"
+  },
+  {
+   "start": 1219.32,
+   "duration": 5.72,
+   "text": "machine readable output. Make sure you"
+  },
+  {
+   "start": 1221.12,
+   "duration": 6.16,
+   "text": "convert to you know, required output for"
+  },
+  {
+   "start": 1225.04,
+   "duration": 3.92,
+   "text": "the particular response that is that"
+  },
+  {
+   "start": 1227.28,
+   "duration": 3.56,
+   "text": "Claude gives to you."
+  },
+  {
+   "start": 1228.96,
+   "duration": 3.36,
+   "text": "Right? And now we talked about the"
+  },
+  {
+   "start": 1230.84,
+   "duration": 4.36,
+   "text": "psychology of review, the session"
+  },
+  {
+   "start": 1232.32,
+   "duration": 6.76,
+   "text": "isolation thing and claw.md file. Right?"
+  },
+  {
+   "start": 1235.2,
+   "duration": 3.88,
+   "text": "I hope till now these things are clear."
+  },
+  {
+   "start": 1239.32,
+   "duration": 4.04,
+   "text": "Okay."
+  },
+  {
+   "start": 1240.52,
+   "duration": 4.48,
+   "text": "So, the deduplication engine."
+  },
+  {
+   "start": 1243.36,
+   "duration": 3.8,
+   "text": "Let's try to understand what is this"
+  },
+  {
+   "start": 1245.0,
+   "duration": 4.56,
+   "text": "problem first, this loop that you see on"
+  },
+  {
+   "start": 1247.16,
+   "duration": 4.08,
+   "text": "the screen, and I'll explain it to you"
+  },
+  {
+   "start": 1249.56,
+   "duration": 3.4,
+   "text": "via the code that I have written, this"
+  },
+  {
+   "start": 1251.24,
+   "duration": 3.96,
+   "text": "particular CI/CD code that I have"
+  },
+  {
+   "start": 1252.96,
+   "duration": 3.84,
+   "text": "written. What is the What is happening"
+  },
+  {
+   "start": 1255.2,
+   "duration": 4.16,
+   "text": "over here, basically?"
+  },
+  {
+   "start": 1256.8,
+   "duration": 2.56,
+   "text": "So,"
+  },
+  {
+   "start": 1259.64,
+   "duration": 3.56,
+   "text": "Claude, for example, Claude is a code"
+  },
+  {
+   "start": 1261.64,
+   "duration": 3.44,
+   "text": "reviewer. There is a step in your"
+  },
+  {
+   "start": 1263.2,
+   "duration": 5.72,
+   "text": "particular CI/CD pipeline where Claude"
+  },
+  {
+   "start": 1265.08,
+   "duration": 6.24,
+   "text": "reviews your code. Right? Fine."
+  },
+  {
+   "start": 1268.92,
+   "duration": 4.96,
+   "text": "Claude reviewed your code, then you push"
+  },
+  {
+   "start": 1271.32,
+   "duration": 3.72,
+   "text": "some new changes. That session of Claude"
+  },
+  {
+   "start": 1273.88,
+   "duration": 2.56,
+   "text": "is gone"
+  },
+  {
+   "start": 1275.04,
+   "duration": 3.28,
+   "text": "and a new session of Claude got"
+  },
+  {
+   "start": 1276.44,
+   "duration": 3.32,
+   "text": "established. For example, you went to"
+  },
+  {
+   "start": 1278.32,
+   "duration": 4.56,
+   "text": "the next step."
+  },
+  {
+   "start": 1279.76,
+   "duration": 5.04,
+   "text": "Now, what about the previous reviews"
+  },
+  {
+   "start": 1282.88,
+   "duration": 4.44,
+   "text": "that Claude did? Claude doesn't remember"
+  },
+  {
+   "start": 1284.8,
+   "duration": 5.2,
+   "text": "in the new session that what review I"
+  },
+  {
+   "start": 1287.32,
+   "duration": 4.52,
+   "text": "had given in the given for that PR, for"
+  },
+  {
+   "start": 1290.0,
+   "duration": 3.56,
+   "text": "example, that pull request."
+  },
+  {
+   "start": 1291.84,
+   "duration": 3.72,
+   "text": "Now, in that scenario, what happens is"
+  },
+  {
+   "start": 1293.56,
+   "duration": 5.08,
+   "text": "in the new session as well, Claude will"
+  },
+  {
+   "start": 1295.56,
+   "duration": 4.8,
+   "text": "re-review the entire PR and probably"
+  },
+  {
+   "start": 1298.64,
+   "duration": 4.08,
+   "text": "give the same comments that it has"
+  },
+  {
+   "start": 1300.36,
+   "duration": 5.36,
+   "text": "already given."
+  },
+  {
+   "start": 1302.72,
+   "duration": 4.92,
+   "text": "Right? So, instead of doing that, what"
+  },
+  {
+   "start": 1305.72,
+   "duration": 4.4,
+   "text": "you can do is"
+  },
+  {
+   "start": 1307.64,
+   "duration": 4.2,
+   "text": "probably before starting a new step,"
+  },
+  {
+   "start": 1310.12,
+   "duration": 3.6,
+   "text": "right? If you see over here in this"
+  },
+  {
+   "start": 1311.84,
+   "duration": 2.96,
+   "text": "particular jobs that we have in the"
+  },
+  {
+   "start": 1313.72,
+   "duration": 2.96,
+   "text": "steps."
+  },
+  {
+   "start": 1314.8,
+   "duration": 4.12,
+   "text": "So, I have a step knowing that load"
+  },
+  {
+   "start": 1316.68,
+   "duration": 4.92,
+   "text": "prior review findings."
+  },
+  {
+   "start": 1318.92,
+   "duration": 4.96,
+   "text": "So, you use a normal GH command, which"
+  },
+  {
+   "start": 1321.6,
+   "duration": 5.72,
+   "text": "is basically a GitHub command,"
+  },
+  {
+   "start": 1323.88,
+   "duration": 6.28,
+   "text": "to view the PR, get the pull request,"
+  },
+  {
+   "start": 1327.32,
+   "duration": 4.32,
+   "text": "and get the comments that Claude already"
+  },
+  {
+   "start": 1330.16,
+   "duration": 4.36,
+   "text": "has given."
+  },
+  {
+   "start": 1331.64,
+   "duration": 6.4,
+   "text": "And put it in some TXT file."
+  },
+  {
+   "start": 1334.52,
+   "duration": 5.12,
+   "text": "Right? Then, again, run Claude review."
+  },
+  {
+   "start": 1338.04,
+   "duration": 3.12,
+   "text": "Fresh session. This is a fresh session"
+  },
+  {
+   "start": 1339.64,
+   "duration": 3.44,
+   "text": "with the P flag."
+  },
+  {
+   "start": 1341.16,
+   "duration": 4.04,
+   "text": "Now, with the fresh session, it doesn't"
+  },
+  {
+   "start": 1343.08,
+   "duration": 4.4,
+   "text": "has to re-review the PR, right? I I"
+  },
+  {
+   "start": 1345.2,
+   "duration": 4.24,
+   "text": "already have the findings over here,"
+  },
+  {
+   "start": 1347.48,
+   "duration": 3.6,
+   "text": "which I got it from the previous step,"
+  },
+  {
+   "start": 1349.44,
+   "duration": 4.28,
+   "text": "and I'm passing those findings to the"
+  },
+  {
+   "start": 1351.08,
+   "duration": 4.84,
+   "text": "new session of Claude."
+  },
+  {
+   "start": 1353.72,
+   "duration": 4.08,
+   "text": "Now, here, Claude doesn't have Claude"
+  },
+  {
+   "start": 1355.92,
+   "duration": 3.8,
+   "text": "now got an idea that, \"Okay, you know, I"
+  },
+  {
+   "start": 1357.8,
+   "duration": 5.28,
+   "text": "have already reviewed the code based on"
+  },
+  {
+   "start": 1359.72,
+   "duration": 5.0,
+   "text": "the this prior findings. I don't have to"
+  },
+  {
+   "start": 1363.08,
+   "duration": 3.2,
+   "text": "re-review the code.\""
+  },
+  {
+   "start": 1364.72,
+   "duration": 3.92,
+   "text": "Now, if you follow this cycle, even if"
+  },
+  {
+   "start": 1366.28,
+   "duration": 4.56,
+   "text": "you're pushing new, you know, commits,"
+  },
+  {
+   "start": 1368.64,
+   "duration": 3.12,
+   "text": "for example, it will already know what"
+  },
+  {
+   "start": 1370.84,
+   "duration": 3.2,
+   "text": "all"
+  },
+  {
+   "start": 1371.76,
+   "duration": 5.56,
+   "text": "changes it has already reviewed. It will"
+  },
+  {
+   "start": 1374.04,
+   "duration": 5.4,
+   "text": "only review the new,"
+  },
+  {
+   "start": 1377.32,
+   "duration": 3.96,
+   "text": "you know, commits or pushes that is"
+  },
+  {
+   "start": 1379.44,
+   "duration": 4.0,
+   "text": "happening. It will not take into"
+  },
+  {
+   "start": 1381.28,
+   "duration": 4.0,
+   "text": "consideration what is already done"
+  },
+  {
+   "start": 1383.44,
+   "duration": 4.44,
+   "text": "because you are giving Claude a"
+  },
+  {
+   "start": 1385.28,
+   "duration": 4.44,
+   "text": "particular context by, you know,"
+  },
+  {
+   "start": 1387.88,
+   "duration": 3.72,
+   "text": "providing the prior findings. So, this"
+  },
+  {
+   "start": 1389.72,
+   "duration": 3.08,
+   "text": "is very very important in terms of the"
+  },
+  {
+   "start": 1391.6,
+   "duration": 3.28,
+   "text": "exam as well. There will be one"
+  },
+  {
+   "start": 1392.8,
+   "duration": 5.28,
+   "text": "scenario-based question where you will"
+  },
+  {
+   "start": 1394.88,
+   "duration": 4.4,
+   "text": "be asked, you know, how in the real-life"
+  },
+  {
+   "start": 1398.08,
+   "duration": 3.4,
+   "text": "production"
+  },
+  {
+   "start": 1399.28,
+   "duration": 4.2,
+   "text": "CI/CD pipeline, how would you make sure"
+  },
+  {
+   "start": 1401.48,
+   "duration": 5.52,
+   "text": "that Claude doesn't do the double work?"
+  },
+  {
+   "start": 1403.48,
+   "duration": 6.2,
+   "text": "Claude doesn't review the particular um"
+  },
+  {
+   "start": 1407.0,
+   "duration": 5.48,
+   "text": "findings again, right? So, here this"
+  },
+  {
+   "start": 1409.68,
+   "duration": 5.4,
+   "text": "cycle just kind of understand, don't try"
+  },
+  {
+   "start": 1412.48,
+   "duration": 4.44,
+   "text": "to mug it up. So, um"
+  },
+  {
+   "start": 1415.08,
+   "duration": 4.36,
+   "text": "fetch PR, you know, commit, push, fetch"
+  },
+  {
+   "start": 1416.92,
+   "duration": 4.0,
+   "text": "previous PR comments, pass into fresh"
+  },
+  {
+   "start": 1419.44,
+   "duration": 3.64,
+   "text": "session context that I just showed in"
+  },
+  {
+   "start": 1420.92,
+   "duration": 4.36,
+   "text": "the code, generate the new comments"
+  },
+  {
+   "start": 1423.08,
+   "duration": 4.68,
+   "text": "only, and then the cycle will continue."
+  },
+  {
+   "start": 1425.28,
+   "duration": 5.08,
+   "text": "So, that again and again Claude is not"
+  },
+  {
+   "start": 1427.76,
+   "duration": 5.48,
+   "text": "spending those tokens, precious tokens,"
+  },
+  {
+   "start": 1430.36,
+   "duration": 4.8,
+   "text": "the context and everything to basically"
+  },
+  {
+   "start": 1433.24,
+   "duration": 4.28,
+   "text": "re-review the code which is it has"
+  },
+  {
+   "start": 1435.16,
+   "duration": 3.84,
+   "text": "already reviewed, right? So, that is one"
+  },
+  {
+   "start": 1437.52,
+   "duration": 2.76,
+   "text": "thing I wanted to point that out that is"
+  },
+  {
+   "start": 1439.0,
+   "duration": 3.8,
+   "text": "very very important in terms of the"
+  },
+  {
+   "start": 1440.28,
+   "duration": 2.52,
+   "text": "exam."
+  },
+  {
+   "start": 1443.04,
+   "duration": 4.4,
+   "text": "Okay."
+  },
+  {
+   "start": 1444.52,
+   "duration": 5.6,
+   "text": "So, let's talk about standardizing test"
+  },
+  {
+   "start": 1447.44,
+   "duration": 2.68,
+   "text": "generation."
+  },
+  {
+   "start": 1451.24,
+   "duration": 4.64,
+   "text": "So,"
+  },
+  {
+   "start": 1452.6,
+   "duration": 5.96,
+   "text": "this is nothing but driving your"
+  },
+  {
+   "start": 1455.88,
+   "duration": 4.56,
+   "text": "test generation. I mean, whatever tests"
+  },
+  {
+   "start": 1458.56,
+   "duration": 3.8,
+   "text": "you generate for your code"
+  },
+  {
+   "start": 1460.44,
+   "duration": 3.64,
+   "text": "via the Claude.md file. I have already"
+  },
+  {
+   "start": 1462.36,
+   "duration": 3.36,
+   "text": "talked about Claude.md file like, you"
+  },
+  {
+   "start": 1464.08,
+   "duration": 3.32,
+   "text": "know, thousands of times. Not thousands"
+  },
+  {
+   "start": 1465.72,
+   "duration": 3.24,
+   "text": "of times, I'm just kidding, but, you"
+  },
+  {
+   "start": 1467.4,
+   "duration": 4.8,
+   "text": "know, many times."
+  },
+  {
+   "start": 1468.96,
+   "duration": 5.76,
+   "text": "So, whatever structure, whatever rules,"
+  },
+  {
+   "start": 1472.2,
+   "duration": 5.44,
+   "text": "whatever regulations you have to enforce"
+  },
+  {
+   "start": 1474.72,
+   "duration": 5.0,
+   "text": "on your project or your CI/CD pipeline,"
+  },
+  {
+   "start": 1477.64,
+   "duration": 3.36,
+   "text": "you have to do it via the Claude.md"
+  },
+  {
+   "start": 1479.72,
+   "duration": 2.44,
+   "text": "file."
+  },
+  {
+   "start": 1481.0,
+   "duration": 3.24,
+   "text": "So,"
+  },
+  {
+   "start": 1482.16,
+   "duration": 3.8,
+   "text": "if Claude doesn't have a context on how"
+  },
+  {
+   "start": 1484.24,
+   "duration": 3.28,
+   "text": "to generate the"
+  },
+  {
+   "start": 1485.96,
+   "duration": 3.56,
+   "text": "uh I mean, you don't have a Claude.md"
+  },
+  {
+   "start": 1487.52,
+   "duration": 4.44,
+   "text": "file, for example, then it will generate"
+  },
+  {
+   "start": 1489.52,
+   "duration": 5.0,
+   "text": "the tasks, you know, the the the the"
+  },
+  {
+   "start": 1491.96,
+   "duration": 4.16,
+   "text": "tests on its own. I mean, it has its own"
+  },
+  {
+   "start": 1494.52,
+   "duration": 3.8,
+   "text": "brain. It is the LLM, so it will think"
+  },
+  {
+   "start": 1496.12,
+   "duration": 4.12,
+   "text": "of its own um way of doing things and it"
+  },
+  {
+   "start": 1498.32,
+   "duration": 3.44,
+   "text": "will generate the particular uh tests"
+  },
+  {
+   "start": 1500.24,
+   "duration": 3.4,
+   "text": "and all those things. For example, like"
+  },
+  {
+   "start": 1501.76,
+   "duration": 4.44,
+   "text": "this, which is like a generic test."
+  },
+  {
+   "start": 1503.64,
+   "duration": 5.44,
+   "text": "But if you have a compliance"
+  },
+  {
+   "start": 1506.2,
+   "duration": 6.24,
+   "text": "notes written in claw.md file, which"
+  },
+  {
+   "start": 1509.08,
+   "duration": 5.44,
+   "text": "kinds of gives claw the context how to"
+  },
+  {
+   "start": 1512.44,
+   "duration": 4.52,
+   "text": "generate those, those, you know, tests,"
+  },
+  {
+   "start": 1514.52,
+   "duration": 4.84,
+   "text": "then claw will understand, okay,"
+  },
+  {
+   "start": 1516.96,
+   "duration": 4.36,
+   "text": "it will enforce the exact structure,"
+  },
+  {
+   "start": 1519.36,
+   "duration": 4.2,
+   "text": "accurate mock patterns, and strict"
+  },
+  {
+   "start": 1521.32,
+   "duration": 3.48,
+   "text": "naming conventions because all of those"
+  },
+  {
+   "start": 1523.56,
+   "duration": 3.04,
+   "text": "things you have mentioned in your"
+  },
+  {
+   "start": 1524.8,
+   "duration": 3.72,
+   "text": "claw.md file."
+  },
+  {
+   "start": 1526.6,
+   "duration": 5.08,
+   "text": "So, this is the result you would get if"
+  },
+  {
+   "start": 1528.52,
+   "duration": 5.92,
+   "text": "you are standardizing everything via the"
+  },
+  {
+   "start": 1531.68,
+   "duration": 4.04,
+   "text": "claw.md file. And it is very important,"
+  },
+  {
+   "start": 1534.44,
+   "duration": 3.2,
+   "text": "you know,"
+  },
+  {
+   "start": 1535.72,
+   "duration": 3.88,
+   "text": "to understand in the terms of your real"
+  },
+  {
+   "start": 1537.64,
+   "duration": 4.04,
+   "text": "life as well because nowadays we just"
+  },
+  {
+   "start": 1539.6,
+   "duration": 4.76,
+   "text": "go, open up a claw session, and just"
+  },
+  {
+   "start": 1541.68,
+   "duration": 4.48,
+   "text": "say, \"Generate tests.\" That's it. We are"
+  },
+  {
+   "start": 1544.36,
+   "duration": 3.48,
+   "text": "not even"
+  },
+  {
+   "start": 1546.16,
+   "duration": 3.52,
+   "text": "writing more lines as well. We just say,"
+  },
+  {
+   "start": 1547.84,
+   "duration": 4.4,
+   "text": "\"Generate tests for this class.\" Which"
+  },
+  {
+   "start": 1549.68,
+   "duration": 3.8,
+   "text": "is very vague because your project might"
+  },
+  {
+   "start": 1552.24,
+   "duration": 3.28,
+   "text": "be following different project"
+  },
+  {
+   "start": 1553.48,
+   "duration": 3.8,
+   "text": "standards. If it's a new project, fine,"
+  },
+  {
+   "start": 1555.52,
+   "duration": 6.76,
+   "text": "but even with new projects as well, you"
+  },
+  {
+   "start": 1557.28,
+   "duration": 6.96,
+   "text": "should have a proper claw.md file. Okay?"
+  },
+  {
+   "start": 1562.28,
+   "duration": 4.2,
+   "text": "So, though that's the thing."
+  },
+  {
+   "start": 1564.24,
+   "duration": 5.88,
+   "text": "Document testing convention is claw.md"
+  },
+  {
+   "start": 1566.48,
+   "duration": 6.44,
+   "text": "file once, naming patterns is structure,"
+  },
+  {
+   "start": 1570.12,
+   "duration": 5.32,
+   "text": "mocking rules, and coverage targets."
+  },
+  {
+   "start": 1572.92,
+   "duration": 5.52,
+   "text": "Every automated test generation inherits"
+  },
+  {
+   "start": 1575.44,
+   "duration": 5.32,
+   "text": "these rules automatically. So, please"
+  },
+  {
+   "start": 1578.44,
+   "duration": 4.36,
+   "text": "use the claw.md file to the fullest. And"
+  },
+  {
+   "start": 1580.76,
+   "duration": 4.4,
+   "text": "I think in some of my previous lessons,"
+  },
+  {
+   "start": 1582.8,
+   "duration": 5.24,
+   "text": "I have you know, um"
+  },
+  {
+   "start": 1585.16,
+   "duration": 5.6,
+   "text": "kind of discussed in detail how can you"
+  },
+  {
+   "start": 1588.04,
+   "duration": 5.04,
+   "text": "use claw.md file, where can you use"
+  },
+  {
+   "start": 1590.76,
+   "duration": 4.32,
+   "text": "claw.md file in user context, in project"
+  },
+  {
+   "start": 1593.08,
+   "duration": 4.12,
+   "text": "context, in directory levels. All of"
+  },
+  {
+   "start": 1595.08,
+   "duration": 4.84,
+   "text": "these I have discussed. You know, just"
+  },
+  {
+   "start": 1597.2,
+   "duration": 5.08,
+   "text": "go and have a look. I'll also link that"
+  },
+  {
+   "start": 1599.92,
+   "duration": 4.6,
+   "text": "video to this particular description as"
+  },
+  {
+   "start": 1602.28,
+   "duration": 2.24,
+   "text": "well."
+  },
+  {
+   "start": 1604.6,
+   "duration": 3.72,
+   "text": "Okay, so the production pipeline"
+  },
+  {
+   "start": 1606.12,
+   "duration": 4.84,
+   "text": "architecture, okay, this is one of the"
+  },
+  {
+   "start": 1608.32,
+   "duration": 5.6,
+   "text": "examples of a production-ready pipeline"
+  },
+  {
+   "start": 1610.96,
+   "duration": 4.64,
+   "text": "CI/CD architecture that you can do. So,"
+  },
+  {
+   "start": 1613.92,
+   "duration": 3.2,
+   "text": "you have a Claude MD file which will"
+  },
+  {
+   "start": 1615.6,
+   "duration": 2.76,
+   "text": "contain your project context, right? We"
+  },
+  {
+   "start": 1617.12,
+   "duration": 3.6,
+   "text": "have already"
+  },
+  {
+   "start": 1618.36,
+   "duration": 4.84,
+   "text": "kind of, you know, discussed about this."
+  },
+  {
+   "start": 1620.72,
+   "duration": 5.96,
+   "text": "Then, prior finding switch. So, to"
+  },
+  {
+   "start": 1623.2,
+   "duration": 3.48,
+   "text": "remove the deduplication."
+  },
+  {
+   "start": 1627.12,
+   "duration": 4.84,
+   "text": "Then then after getting the prior"
+  },
+  {
+   "start": 1628.84,
+   "duration": 4.88,
+   "text": "findings, you open up a fresh session"
+  },
+  {
+   "start": 1631.96,
+   "duration": 4.76,
+   "text": "for Claude because it has the prior"
+  },
+  {
+   "start": 1633.72,
+   "duration": 4.8,
+   "text": "findings, it will not be like completely"
+  },
+  {
+   "start": 1636.72,
+   "duration": 4.2,
+   "text": "clueless of what has happened. So, it"
+  },
+  {
+   "start": 1638.52,
+   "duration": 3.96,
+   "text": "already has a very decent idea of what"
+  },
+  {
+   "start": 1640.92,
+   "duration": 3.92,
+   "text": "has happened before."
+  },
+  {
+   "start": 1642.48,
+   "duration": 4.64,
+   "text": "Then you use the P flag for execution so"
+  },
+  {
+   "start": 1644.84,
+   "duration": 4.24,
+   "text": "that it it it doesn't"
+  },
+  {
+   "start": 1647.12,
+   "duration": 3.64,
+   "text": "it it it kind of works in a"
+  },
+  {
+   "start": 1649.08,
+   "duration": 4.08,
+   "text": "non-interactive way that we had"
+  },
+  {
+   "start": 1650.76,
+   "duration": 4.72,
+   "text": "discussed. Then you"
+  },
+  {
+   "start": 1653.16,
+   "duration": 4.36,
+   "text": "particularly specify in which format you"
+  },
+  {
+   "start": 1655.48,
+   "duration": 5.24,
+   "text": "need the output from Claude by using"
+  },
+  {
+   "start": 1657.52,
+   "duration": 4.32,
+   "text": "the, you know, JSON schema and, you"
+  },
+  {
+   "start": 1660.72,
+   "duration": 2.76,
+   "text": "know, the"
+  },
+  {
+   "start": 1661.84,
+   "duration": 3.56,
+   "text": "these things"
+  },
+  {
+   "start": 1663.48,
+   "duration": 4.28,
+   "text": "that I just showed you, right? Output"
+  },
+  {
+   "start": 1665.4,
+   "duration": 3.48,
+   "text": "format and JSON schema, right?"
+  },
+  {
+   "start": 1667.76,
+   "duration": 3.16,
+   "text": "And then"
+  },
+  {
+   "start": 1668.88,
+   "duration": 4.4,
+   "text": "after you get the response from Claude,"
+  },
+  {
+   "start": 1670.92,
+   "duration": 4.28,
+   "text": "you act on it, basically. And this code"
+  },
+  {
+   "start": 1673.28,
+   "duration": 3.88,
+   "text": "I have already explained it to you. It"
+  },
+  {
+   "start": 1675.2,
+   "duration": 3.48,
+   "text": "just checks for,"
+  },
+  {
+   "start": 1677.16,
+   "duration": 3.2,
+   "text": "uh, you know, the load prior review"
+  },
+  {
+   "start": 1678.68,
+   "duration": 2.8,
+   "text": "findings and then Claude does the"
+  },
+  {
+   "start": 1680.36,
+   "duration": 2.76,
+   "text": "review,"
+  },
+  {
+   "start": 1681.48,
+   "duration": 4.04,
+   "text": "you know, review the you review reviews"
+  },
+  {
+   "start": 1683.12,
+   "duration": 5.2,
+   "text": "the PR. And then there is one more step"
+  },
+  {
+   "start": 1685.52,
+   "duration": 5.04,
+   "text": "based on the findings that we got from"
+  },
+  {
+   "start": 1688.32,
+   "duration": 4.56,
+   "text": "Claude over here, the next step happens."
+  },
+  {
+   "start": 1690.56,
+   "duration": 3.4,
+   "text": "So, block merge on critical findings."
+  },
+  {
+   "start": 1692.88,
+   "duration": 4.68,
+   "text": "So,"
+  },
+  {
+   "start": 1693.96,
+   "duration": 6.92,
+   "text": "run critical findings, whatever we see."
+  },
+  {
+   "start": 1697.56,
+   "duration": 4.92,
+   "text": "Uh, so because we kind of converted uh,"
+  },
+  {
+   "start": 1700.88,
+   "duration": 4.04,
+   "text": "the problems"
+  },
+  {
+   "start": 1702.48,
+   "duration": 5.8,
+   "text": "uh, or or or whatever Claude has found"
+  },
+  {
+   "start": 1704.92,
+   "duration": 5.68,
+   "text": "out into a proper schema, now this step"
+  },
+  {
+   "start": 1708.28,
+   "duration": 4.44,
+   "text": "it can easily read, you know, by using"
+  },
+  {
+   "start": 1710.6,
+   "duration": 5.12,
+   "text": "JQ or something, right? You can easily"
+  },
+  {
+   "start": 1712.72,
+   "duration": 5.68,
+   "text": "pass the JSON that Claude has generated"
+  },
+  {
+   "start": 1715.72,
+   "duration": 6.68,
+   "text": "and we kind of say that if the severity"
+  },
+  {
+   "start": 1718.4,
+   "duration": 7.36,
+   "text": "is critical, then exit, basically. Block"
+  },
+  {
+   "start": 1722.4,
+   "duration": 5.92,
+   "text": "merge. Now, after that, if this uh, you"
+  },
+  {
+   "start": 1725.76,
+   "duration": 4.8,
+   "text": "can have more code, basically. If uh"
+  },
+  {
+   "start": 1728.32,
+   "duration": 4.0,
+   "text": "this is if the if the if this doesn't"
+  },
+  {
+   "start": 1730.56,
+   "duration": 3.48,
+   "text": "work out, I mean, there is no issue with"
+  },
+  {
+   "start": 1732.32,
+   "duration": 3.92,
+   "text": "that particular uh"
+  },
+  {
+   "start": 1734.04,
+   "duration": 3.96,
+   "text": "findings, then this will not exit out"
+  },
+  {
+   "start": 1736.24,
+   "duration": 4.84,
+   "text": "the GitHub action, right? And the"
+  },
+  {
+   "start": 1738.0,
+   "duration": 4.52,
+   "text": "others, uh you know, jobs will go on."
+  },
+  {
+   "start": 1741.08,
+   "duration": 3.08,
+   "text": "So, I didn't put the other job because"
+  },
+  {
+   "start": 1742.52,
+   "duration": 5.44,
+   "text": "it was irrelevant. I just wanted to show"
+  },
+  {
+   "start": 1744.16,
+   "duration": 5.32,
+   "text": "you how you can use Claude to um you"
+  },
+  {
+   "start": 1747.96,
+   "duration": 3.44,
+   "text": "know, like a step in your CI/CD"
+  },
+  {
+   "start": 1749.48,
+   "duration": 3.76,
+   "text": "pipeline. So, this is a very basic thing"
+  },
+  {
+   "start": 1751.4,
+   "duration": 4.48,
+   "text": "of, you know, pull request of reviewing"
+  },
+  {
+   "start": 1753.24,
+   "duration": 5.24,
+   "text": "the pull request. And this is how you"
+  },
+  {
+   "start": 1755.88,
+   "duration": 4.28,
+   "text": "should be doing it. Right? That's That's"
+  },
+  {
+   "start": 1758.48,
+   "duration": 3.88,
+   "text": "the thing. I'll push the code and it's"
+  },
+  {
+   "start": 1760.16,
+   "duration": 4.44,
+   "text": "already pushed and uh you can check this"
+  },
+  {
+   "start": 1762.36,
+   "duration": 3.96,
+   "text": "out, right? And all this uh GitHub"
+  },
+  {
+   "start": 1764.6,
+   "duration": 3.64,
+   "text": "action things, you can"
+  },
+  {
+   "start": 1766.32,
+   "duration": 4.96,
+   "text": "uh understand, basically, GitHub actions"
+  },
+  {
+   "start": 1768.24,
+   "duration": 4.96,
+   "text": "to give you an idea. Uh it will run um"
+  },
+  {
+   "start": 1771.28,
+   "duration": 3.64,
+   "text": "on your uh basically, you create a"
+  },
+  {
+   "start": 1773.2,
+   "duration": 3.48,
+   "text": "repository, you'll have actions which"
+  },
+  {
+   "start": 1774.92,
+   "duration": 3.52,
+   "text": "they will directly run on your repo or a"
+  },
+  {
+   "start": 1776.68,
+   "duration": 3.36,
+   "text": "particular branch, you know, for"
+  },
+  {
+   "start": 1778.44,
+   "duration": 2.92,
+   "text": "building your code or deploying your"
+  },
+  {
+   "start": 1780.04,
+   "duration": 4.0,
+   "text": "code or something like that, right? And"
+  },
+  {
+   "start": 1781.36,
+   "duration": 4.88,
+   "text": "it's very easy as well. Um"
+  },
+  {
+   "start": 1784.04,
+   "duration": 4.56,
+   "text": "you just can just have a look uh"
+  },
+  {
+   "start": 1786.24,
+   "duration": 4.4,
+   "text": "whenever you get some time."
+  },
+  {
+   "start": 1788.6,
+   "duration": 3.24,
+   "text": "Okay, so let's look at some exam"
+  },
+  {
+   "start": 1790.64,
+   "duration": 4.76,
+   "text": "questions"
+  },
+  {
+   "start": 1791.84,
+   "duration": 5.4,
+   "text": "uh before we wrap up the session. So, um"
+  },
+  {
+   "start": 1795.4,
+   "duration": 3.48,
+   "text": "these are exactly the questions that you"
+  },
+  {
+   "start": 1797.24,
+   "duration": 3.92,
+   "text": "see in the sample questions. So, which"
+  },
+  {
+   "start": 1798.88,
+   "duration": 3.88,
+   "text": "flag enables non-interactive CI mode?"
+  },
+  {
+   "start": 1801.16,
+   "duration": 3.48,
+   "text": "These are direct base questions, guys,"
+  },
+  {
+   "start": 1802.76,
+   "duration": 3.08,
+   "text": "but you will get scenario-based. I just"
+  },
+  {
+   "start": 1804.64,
+   "duration": 3.44,
+   "text": "wanted to make sure that you guys"
+  },
+  {
+   "start": 1805.84,
+   "duration": 4.36,
+   "text": "remember all this. It's either {hyphen}"
+  },
+  {
+   "start": 1808.08,
+   "duration": 4.44,
+   "text": "P or {hyphen} {hyphen} print."
+  },
+  {
+   "start": 1810.2,
+   "duration": 4.32,
+   "text": "If you get any other options, those are"
+  },
+  {
+   "start": 1812.52,
+   "duration": 3.44,
+   "text": "those are just fabricated distractors."
+  },
+  {
+   "start": 1814.52,
+   "duration": 2.6,
+   "text": "So, don't go with those options,"
+  },
+  {
+   "start": 1815.96,
+   "duration": 3.48,
+   "text": "basically."
+  },
+  {
+   "start": 1817.12,
+   "duration": 3.0,
+   "text": "Which CI use case is inappropriate for"
+  },
+  {
+   "start": 1819.44,
+   "duration": 2.72,
+   "text": "the"
+  },
+  {
+   "start": 1820.12,
+   "duration": 4.36,
+   "text": "message batches API?"
+  },
+  {
+   "start": 1822.16,
+   "duration": 5.0,
+   "text": "Block pre-merge checks. You know,"
+  },
+  {
+   "start": 1824.48,
+   "duration": 5.4,
+   "text": "batches API has a 24-hour window with no"
+  },
+  {
+   "start": 1827.16,
+   "duration": 4.88,
+   "text": "latency SLA. Never use for blocking"
+  },
+  {
+   "start": 1829.88,
+   "duration": 3.72,
+   "text": "workflows. Why does a fresh session"
+  },
+  {
+   "start": 1832.04,
+   "duration": 3.24,
+   "text": "review better than the same session? We"
+  },
+  {
+   "start": 1833.6,
+   "duration": 5.44,
+   "text": "already discussed this. Because there is"
+  },
+  {
+   "start": 1835.28,
+   "duration": 5.92,
+   "text": "no prior reasoning context with Claude."
+  },
+  {
+   "start": 1839.04,
+   "duration": 3.72,
+   "text": "Okay, so this is this just a quick"
+  },
+  {
+   "start": 1841.2,
+   "duration": 3.2,
+   "text": "reference cheat sheet. Anyways, the"
+  },
+  {
+   "start": 1842.76,
+   "duration": 3.84,
+   "text": "slides also I will provide in that"
+  },
+  {
+   "start": 1844.4,
+   "duration": 3.92,
+   "text": "particular same repo, but if you want to"
+  },
+  {
+   "start": 1846.6,
+   "duration": 3.2,
+   "text": "keep a flash card or something, you can"
+  },
+  {
+   "start": 1848.32,
+   "duration": 3.96,
+   "text": "just take a"
+  },
+  {
+   "start": 1849.8,
+   "duration": 4.84,
+   "text": "screenshot of this. Just the concept and"
+  },
+  {
+   "start": 1852.28,
+   "duration": 3.68,
+   "text": "what to know and the exam signals,"
+  },
+  {
+   "start": 1854.64,
+   "duration": 4.72,
+   "text": "right?"
+  },
+  {
+   "start": 1855.96,
+   "duration": 5.08,
+   "text": "So, yeah. So, that was"
+  },
+  {
+   "start": 1859.36,
+   "duration": 3.72,
+   "text": "all about"
+  },
+  {
+   "start": 1861.04,
+   "duration": 4.0,
+   "text": "this particular lesson."
+  },
+  {
+   "start": 1863.08,
+   "duration": 3.68,
+   "text": "And uh"
+  },
+  {
+   "start": 1865.04,
+   "duration": 2.84,
+   "text": "see you in the next session. Take till"
+  },
+  {
+   "start": 1866.76,
+   "duration": 2.36,
+   "text": "then um"
+  },
+  {
+   "start": 1867.88,
+   "duration": 3.08,
+   "text": "we're going to start with something"
+  },
+  {
+   "start": 1869.12,
+   "duration": 3.68,
+   "text": "fresh from the next session, probably"
+  },
+  {
+   "start": 1870.96,
+   "duration": 5.68,
+   "text": "with prompt engineering. It is going to"
+  },
+  {
+   "start": 1872.8,
+   "duration": 5.32,
+   "text": "be very fun. So, yeah."
+  },
+  {
+   "start": 1876.64,
+   "duration": 3.96,
+   "text": "Till then, have a nice day. Take care."
+  },
+  {
+   "start": 1878.12,
+   "duration": 2.48,
+   "text": "Bye-bye."
+  }
+ ]
+}

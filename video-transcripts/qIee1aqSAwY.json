@@ -1,0 +1,4207 @@
+{
+ "video_id": "qIee1aqSAwY",
+ "episode": "Ep 10",
+ "title": "CLAUDE.md Hierarchy & Config Rules",
+ "segments": [
+  {
+   "start": 2.96,
+   "duration": 3.68,
+   "text": "Guys, and welcome to this lesson."
+  },
+  {
+   "start": 4.88,
+   "duration": 4.72,
+   "text": "So, in this lesson we're going to talk"
+  },
+  {
+   "start": 6.64,
+   "duration": 5.0,
+   "text": "about the missing instructions problem."
+  },
+  {
+   "start": 9.6,
+   "duration": 3.92,
+   "text": "Now, this missing instructions problem"
+  },
+  {
+   "start": 11.64,
+   "duration": 3.36,
+   "text": "might sound a little bit vague and you"
+  },
+  {
+   "start": 13.52,
+   "duration": 3.64,
+   "text": "would be thinking like what missing"
+  },
+  {
+   "start": 15.0,
+   "duration": 5.28,
+   "text": "instruction this guy is actually talking"
+  },
+  {
+   "start": 17.16,
+   "duration": 5.92,
+   "text": "about, but we're going to learn about"
+  },
+  {
+   "start": 20.28,
+   "duration": 4.88,
+   "text": "you know, some concepts which will make,"
+  },
+  {
+   "start": 23.08,
+   "duration": 4.16,
+   "text": "you know, your life with Claude Code"
+  },
+  {
+   "start": 25.16,
+   "duration": 4.52,
+   "text": "very easy."
+  },
+  {
+   "start": 27.24,
+   "duration": 5.24,
+   "text": "You know, and it is one of the standards"
+  },
+  {
+   "start": 29.68,
+   "duration": 6.0,
+   "text": "that people should follow while writing"
+  },
+  {
+   "start": 32.48,
+   "duration": 5.36,
+   "text": "quality code using Claude Code."
+  },
+  {
+   "start": 35.68,
+   "duration": 4.2,
+   "text": "Right? So,"
+  },
+  {
+   "start": 37.84,
+   "duration": 4.48,
+   "text": "let's picture this particular scenario,"
+  },
+  {
+   "start": 39.88,
+   "duration": 5.68,
+   "text": "right? You've been working on a project"
+  },
+  {
+   "start": 42.32,
+   "duration": 5.68,
+   "text": "for 2 to 3 weeks, let's say. You've got"
+  },
+  {
+   "start": 45.56,
+   "duration": 4.64,
+   "text": "Claude dialed in, it knows your, you"
+  },
+  {
+   "start": 48.0,
+   "duration": 4.04,
+   "text": "know, code style, it understands your"
+  },
+  {
+   "start": 50.2,
+   "duration": 4.16,
+   "text": "TypeScript conventions. For example, it"
+  },
+  {
+   "start": 52.04,
+   "duration": 3.84,
+   "text": "is a React JS file or sorry, TS file,"
+  },
+  {
+   "start": 54.36,
+   "duration": 2.96,
+   "text": "you know,"
+  },
+  {
+   "start": 55.88,
+   "duration": 2.96,
+   "text": "Angular project or something like that"
+  },
+  {
+   "start": 57.32,
+   "duration": 3.48,
+   "text": "you've been working on for weeks which"
+  },
+  {
+   "start": 58.84,
+   "duration": 3.88,
+   "text": "you should not have been because Claude"
+  },
+  {
+   "start": 60.8,
+   "duration": 3.719,
+   "text": "Code can do it in 2 days, but you know,"
+  },
+  {
+   "start": 62.72,
+   "duration": 3.76,
+   "text": "just for the scenario purpose I'm giving"
+  },
+  {
+   "start": 64.519,
+   "duration": 3.841,
+   "text": "you the scenario. Yeah, it's just a"
+  },
+  {
+   "start": 66.48,
+   "duration": 3.44,
+   "text": "joke, guys. Don't um"
+  },
+  {
+   "start": 68.36,
+   "duration": 2.6,
+   "text": "you know, take it to the heart or"
+  },
+  {
+   "start": 69.92,
+   "duration": 2.96,
+   "text": "something."
+  },
+  {
+   "start": 70.96,
+   "duration": 5.04,
+   "text": "Okay. Now, we have worked on it for a"
+  },
+  {
+   "start": 72.88,
+   "duration": 4.88,
+   "text": "long time. That's my point, right? And"
+  },
+  {
+   "start": 76.0,
+   "duration": 4.52,
+   "text": "you you you have done, you know, you"
+  },
+  {
+   "start": 77.76,
+   "duration": 4.64,
+   "text": "have dialed in Claude and you have"
+  },
+  {
+   "start": 80.52,
+   "duration": 3.84,
+   "text": "you know, just you're an amazing"
+  },
+  {
+   "start": 82.4,
+   "duration": 4.6,
+   "text": "developer. You've done everything. It"
+  },
+  {
+   "start": 84.36,
+   "duration": 6.76,
+   "text": "knows, you know, everything to use. For"
+  },
+  {
+   "start": 87.0,
+   "duration": 6.96,
+   "text": "example, any always add JS docs"
+  },
+  {
+   "start": 91.12,
+   "duration": 4.8,
+   "text": "comments, you know, everything is sorted"
+  },
+  {
+   "start": 93.96,
+   "duration": 3.44,
+   "text": "out. Claude knows everything about this"
+  },
+  {
+   "start": 95.92,
+   "duration": 4.28,
+   "text": "and we'll see how Claude knows"
+  },
+  {
+   "start": 97.4,
+   "duration": 5.16,
+   "text": "everything about your conventions."
+  },
+  {
+   "start": 100.2,
+   "duration": 3.68,
+   "text": "But, what happens is"
+  },
+  {
+   "start": 102.56,
+   "duration": 3.08,
+   "text": "a new"
+  },
+  {
+   "start": 103.88,
+   "duration": 4.24,
+   "text": "team member or an engineer joins your"
+  },
+  {
+   "start": 105.64,
+   "duration": 4.24,
+   "text": "team, for example."
+  },
+  {
+   "start": 108.12,
+   "duration": 4.08,
+   "text": "They fire up their own Claude Code, they"
+  },
+  {
+   "start": 109.88,
+   "duration": 3.88,
+   "text": "are in their own session and they clone"
+  },
+  {
+   "start": 112.2,
+   "duration": 4.28,
+   "text": "your repo, basically, whatever you have"
+  },
+  {
+   "start": 113.76,
+   "duration": 4.6,
+   "text": "created. Same code base,"
+  },
+  {
+   "start": 116.48,
+   "duration": 4.72,
+   "text": "same stack,"
+  },
+  {
+   "start": 118.36,
+   "duration": 5.4,
+   "text": "but Claude is kind of acting like has"
+  },
+  {
+   "start": 121.2,
+   "duration": 4.28,
+   "text": "never heard of your project. So, now"
+  },
+  {
+   "start": 123.76,
+   "duration": 3.56,
+   "text": "what will the developer do? It will ask"
+  },
+  {
+   "start": 125.48,
+   "duration": 3.88,
+   "text": "Claude go through the whole project and"
+  },
+  {
+   "start": 127.32,
+   "duration": 5.2,
+   "text": "tell me the conventions."
+  },
+  {
+   "start": 129.36,
+   "duration": 5.0,
+   "text": "And what will happen?"
+  },
+  {
+   "start": 132.52,
+   "duration": 4.6,
+   "text": "Claude will run out of context, too many"
+  },
+  {
+   "start": 134.36,
+   "duration": 5.56,
+   "text": "tokens will get utilized, lot of cost to"
+  },
+  {
+   "start": 137.12,
+   "duration": 4.6,
+   "text": "the company, and unnecessarily"
+  },
+  {
+   "start": 139.92,
+   "duration": 4.68,
+   "text": "that employee is going to be fired,"
+  },
+  {
+   "start": 141.72,
+   "duration": 5.6,
+   "text": "maybe. Something like that."
+  },
+  {
+   "start": 144.6,
+   "duration": 4.48,
+   "text": "So, what to do in that case?"
+  },
+  {
+   "start": 147.32,
+   "duration": 3.68,
+   "text": "It was working fine, you know, Claude"
+  },
+  {
+   "start": 149.08,
+   "duration": 4.2,
+   "text": "was understanding your conventions, your"
+  },
+  {
+   "start": 151.0,
+   "duration": 4.44,
+   "text": "rules, and whatever and whatnot for your"
+  },
+  {
+   "start": 153.28,
+   "duration": 4.04,
+   "text": "repository, but it is not working on"
+  },
+  {
+   "start": 155.44,
+   "duration": 3.96,
+   "text": "your teammate's, you know, in the new"
+  },
+  {
+   "start": 157.32,
+   "duration": 3.8,
+   "text": "joiner's machine."
+  },
+  {
+   "start": 159.4,
+   "duration": 3.4,
+   "text": "So, this is what this lesson is going to"
+  },
+  {
+   "start": 161.12,
+   "duration": 3.6,
+   "text": "be clarifying."
+  },
+  {
+   "start": 162.8,
+   "duration": 3.68,
+   "text": "So, first of all, let's understand"
+  },
+  {
+   "start": 164.72,
+   "duration": 3.88,
+   "text": "Claude.md"
+  },
+  {
+   "start": 166.48,
+   "duration": 3.6,
+   "text": "file. What does this Claude.md file"
+  },
+  {
+   "start": 168.6,
+   "duration": 4.04,
+   "text": "actually is?"
+  },
+  {
+   "start": 170.08,
+   "duration": 5.0,
+   "text": "And how it is beneficial, and later we"
+  },
+  {
+   "start": 172.64,
+   "duration": 4.68,
+   "text": "will understand how you would place this"
+  },
+  {
+   "start": 175.08,
+   "duration": 4.44,
+   "text": "Claude.md file in various parts of your"
+  },
+  {
+   "start": 177.32,
+   "duration": 3.8,
+   "text": "project or in various places, right?"
+  },
+  {
+   "start": 179.52,
+   "duration": 2.44,
+   "text": "Let's first understand what Claude.md"
+  },
+  {
+   "start": 181.12,
+   "duration": 2.96,
+   "text": "is."
+  },
+  {
+   "start": 181.96,
+   "duration": 3.76,
+   "text": "So,"
+  },
+  {
+   "start": 184.08,
+   "duration": 5.52,
+   "text": "Claude.md"
+  },
+  {
+   "start": 185.72,
+   "duration": 5.52,
+   "text": "{dot} md is persistent context. Just in"
+  },
+  {
+   "start": 189.6,
+   "duration": 4.56,
+   "text": "two words I'm going to explain this."
+  },
+  {
+   "start": 191.24,
+   "duration": 6.44,
+   "text": "Persistent context."
+  },
+  {
+   "start": 194.16,
+   "duration": 5.92,
+   "text": "Okay? It's like the stuff that Claude"
+  },
+  {
+   "start": 197.68,
+   "duration": 4.0,
+   "text": "reads before your conversation even"
+  },
+  {
+   "start": 200.08,
+   "duration": 4.56,
+   "text": "starts."
+  },
+  {
+   "start": 201.68,
+   "duration": 5.6,
+   "text": "Just when you are typing in Claude, you"
+  },
+  {
+   "start": 204.64,
+   "duration": 4.8,
+   "text": "are initializing the session, that is"
+  },
+  {
+   "start": 207.28,
+   "duration": 3.64,
+   "text": "when it asks you, \"Do I need to trust"
+  },
+  {
+   "start": 209.44,
+   "duration": 4.04,
+   "text": "this folder? Do you trust this folder?\""
+  },
+  {
+   "start": 210.92,
+   "duration": 5.28,
+   "text": "Yes. That is where Claude reads this"
+  },
+  {
+   "start": 213.48,
+   "duration": 5.04,
+   "text": "Claude.md instructions file."
+  },
+  {
+   "start": 216.2,
+   "duration": 4.88,
+   "text": "Think of it like a briefing document,"
+  },
+  {
+   "start": 218.52,
+   "duration": 2.56,
+   "text": "you know, um"
+  },
+  {
+   "start": 221.2,
+   "duration": 3.72,
+   "text": "that you hand in to your new joiner or"
+  },
+  {
+   "start": 223.2,
+   "duration": 4.2,
+   "text": "something like that."
+  },
+  {
+   "start": 224.92,
+   "duration": 4.2,
+   "text": "Right? Previously, we used to, you know,"
+  },
+  {
+   "start": 227.4,
+   "duration": 3.48,
+   "text": "give KTs and all that things, right? We"
+  },
+  {
+   "start": 229.12,
+   "duration": 3.72,
+   "text": "used to give a"
+  },
+  {
+   "start": 230.88,
+   "duration": 3.88,
+   "text": "documentation."
+  },
+  {
+   "start": 232.84,
+   "duration": 3.84,
+   "text": "No, now also we do it. Why am I telling"
+  },
+  {
+   "start": 234.76,
+   "duration": 3.24,
+   "text": "previously? Because now that we have"
+  },
+  {
+   "start": 236.68,
+   "duration": 3.44,
+   "text": "Claude Code, we have left all the"
+  },
+  {
+   "start": 238.0,
+   "duration": 4.72,
+   "text": "traditional things, but yeah, today also"
+  },
+  {
+   "start": 240.12,
+   "duration": 4.36,
+   "text": "we do it. But, this is the new way of"
+  },
+  {
+   "start": 242.72,
+   "duration": 3.64,
+   "text": "doing it, basically."
+  },
+  {
+   "start": 244.48,
+   "duration": 3.44,
+   "text": "So, it's like a briefing document that"
+  },
+  {
+   "start": 246.36,
+   "duration": 4.12,
+   "text": "you give to a new developer or a new"
+  },
+  {
+   "start": 247.92,
+   "duration": 4.8,
+   "text": "consultant which has all the tech stack,"
+  },
+  {
+   "start": 250.48,
+   "duration": 3.84,
+   "text": "the conventions,"
+  },
+  {
+   "start": 252.72,
+   "duration": 4.04,
+   "text": "you know, and you don't have to explain"
+  },
+  {
+   "start": 254.32,
+   "duration": 3.919,
+   "text": "it again. You just give it that and and"
+  },
+  {
+   "start": 256.76,
+   "duration": 3.36,
+   "text": "tell that particular developer, \"Okay,"
+  },
+  {
+   "start": 258.239,
+   "duration": 4.281,
+   "text": "this is what you need to follow if"
+  },
+  {
+   "start": 260.12,
+   "duration": 5.12,
+   "text": "you're going to code in our repo.\""
+  },
+  {
+   "start": 262.52,
+   "duration": 4.28,
+   "text": "So, Claude.md is the same file for your"
+  },
+  {
+   "start": 265.24,
+   "duration": 2.68,
+   "text": "Claude Code,"
+  },
+  {
+   "start": 266.8,
+   "duration": 3.32,
+   "text": "Claude session, whatever in the"
+  },
+  {
+   "start": 267.92,
+   "duration": 3.4,
+   "text": "individual systems where people will"
+  },
+  {
+   "start": 270.12,
+   "duration": 3.6,
+   "text": "use, right?"
+  },
+  {
+   "start": 271.32,
+   "duration": 4.96,
+   "text": "So,"
+  },
+  {
+   "start": 273.72,
+   "duration": 4.04,
+   "text": "it will basically, if you are going out"
+  },
+  {
+   "start": 276.28,
+   "duration": 4.0,
+   "text": "of the session and creating a new"
+  },
+  {
+   "start": 277.76,
+   "duration": 4.6,
+   "text": "session, for example, it doesn't matter."
+  },
+  {
+   "start": 280.28,
+   "duration": 4.56,
+   "text": "You if you have a Claude.md file in"
+  },
+  {
+   "start": 282.36,
+   "duration": 5.32,
+   "text": "handy, it will basically"
+  },
+  {
+   "start": 284.84,
+   "duration": 5.08,
+   "text": "load it before every session, and you"
+  },
+  {
+   "start": 287.68,
+   "duration": 4.04,
+   "text": "don't have to tell Claude to again, you"
+  },
+  {
+   "start": 289.92,
+   "duration": 3.52,
+   "text": "know, go through the project and spend"
+  },
+  {
+   "start": 291.72,
+   "duration": 2.8,
+   "text": "unnecessary tokens. Basically, that is"
+  },
+  {
+   "start": 293.44,
+   "duration": 3.36,
+   "text": "the thing."
+  },
+  {
+   "start": 294.52,
+   "duration": 6.0,
+   "text": "So, I hope you understood what Claude.md"
+  },
+  {
+   "start": 296.8,
+   "duration": 6.8,
+   "text": "is and how it is helpful."
+  },
+  {
+   "start": 300.52,
+   "duration": 6.04,
+   "text": "Okay? Now, here's what's critical."
+  },
+  {
+   "start": 303.6,
+   "duration": 4.4,
+   "text": "Claude.md isn't just one file."
+  },
+  {
+   "start": 306.56,
+   "duration": 3.72,
+   "text": "Okay?"
+  },
+  {
+   "start": 308.0,
+   "duration": 6.84,
+   "text": "There's a whole system."
+  },
+  {
+   "start": 310.28,
+   "duration": 7.0,
+   "text": "It's three levels deep. Right?"
+  },
+  {
+   "start": 314.84,
+   "duration": 5.28,
+   "text": "So, let's try to understand this"
+  },
+  {
+   "start": 317.28,
+   "duration": 5.48,
+   "text": "Claude.md hierarchy a little bit. So,"
+  },
+  {
+   "start": 320.12,
+   "duration": 5.32,
+   "text": "each level has different scope,"
+  },
+  {
+   "start": 322.76,
+   "duration": 4.64,
+   "text": "different visibility, and different"
+  },
+  {
+   "start": 325.44,
+   "duration": 3.44,
+   "text": "purpose."
+  },
+  {
+   "start": 327.4,
+   "duration": 3.2,
+   "text": "Okay?"
+  },
+  {
+   "start": 328.88,
+   "duration": 4.36,
+   "text": "So, getting"
+  },
+  {
+   "start": 330.6,
+   "duration": 4.92,
+   "text": "these wrong is exactly how you end up in"
+  },
+  {
+   "start": 333.24,
+   "duration": 4.28,
+   "text": "that situation, right?"
+  },
+  {
+   "start": 335.52,
+   "duration": 4.24,
+   "text": "My teammate doesn't see this this"
+  },
+  {
+   "start": 337.52,
+   "duration": 4.6,
+   "text": "particular bug that we just saw, right?"
+  },
+  {
+   "start": 339.76,
+   "duration": 4.36,
+   "text": "So, if you are if you are not properly"
+  },
+  {
+   "start": 342.12,
+   "duration": 5.0,
+   "text": "placing that"
+  },
+  {
+   "start": 344.12,
+   "duration": 4.4,
+   "text": "Claude.md file in the in the particular"
+  },
+  {
+   "start": 347.12,
+   "duration": 2.653,
+   "text": "place which we'll just discuss in a"
+  },
+  {
+   "start": 348.52,
+   "duration": 1.44,
+   "text": "minute,"
+  },
+  {
+   "start": 349.773,
+   "duration": 2.187,
+   "text": ">> [snorts]"
+  },
+  {
+   "start": 349.96,
+   "duration": 4.24,
+   "text": ">> it will not work as expected. It might"
+  },
+  {
+   "start": 351.96,
+   "duration": 4.12,
+   "text": "work for you, but it might not work for"
+  },
+  {
+   "start": 354.2,
+   "duration": 4.04,
+   "text": "somebody else."
+  },
+  {
+   "start": 356.08,
+   "duration": 6.08,
+   "text": "And we're going to understand, you know,"
+  },
+  {
+   "start": 358.24,
+   "duration": 5.16,
+   "text": "how to basically um"
+  },
+  {
+   "start": 362.16,
+   "duration": 4.32,
+   "text": "do this."
+  },
+  {
+   "start": 363.4,
+   "duration": 5.68,
+   "text": "So, the three-level hierarchy that you"
+  },
+  {
+   "start": 366.48,
+   "duration": 4.24,
+   "text": "can place Claude.md files is one is the"
+  },
+  {
+   "start": 369.08,
+   "duration": 2.64,
+   "text": "user level."
+  },
+  {
+   "start": 370.72,
+   "duration": 4.48,
+   "text": "Okay?"
+  },
+  {
+   "start": 371.72,
+   "duration": 5.52,
+   "text": "Now, the user level is your home"
+  },
+  {
+   "start": 375.2,
+   "duration": 4.12,
+   "text": "directory. For example, you have Mac OS,"
+  },
+  {
+   "start": 377.24,
+   "duration": 3.6,
+   "text": "right? You will place, you know, this is"
+  },
+  {
+   "start": 379.32,
+   "duration": 3.12,
+   "text": "your home directory, this tilde sign,"
+  },
+  {
+   "start": 380.84,
+   "duration": 5.88,
+   "text": "and then {slash} {dot} Claude and"
+  },
+  {
+   "start": 382.44,
+   "duration": 6.8,
+   "text": "{slash} Claude.md file. If you remember,"
+  },
+  {
+   "start": 386.72,
+   "duration": 5.4,
+   "text": "in MCP servers also we used to configure"
+  },
+  {
+   "start": 389.24,
+   "duration": 5.24,
+   "text": "{dot} mcp.json in project level, and"
+  },
+  {
+   "start": 392.12,
+   "duration": 4.92,
+   "text": "Claude in the {dot} Claude in your home"
+  },
+  {
+   "start": 394.48,
+   "duration": 4.96,
+   "text": "directory also we can configure your MCP"
+  },
+  {
+   "start": 397.04,
+   "duration": 4.52,
+   "text": "servers. It will be specific to you,"
+  },
+  {
+   "start": 399.44,
+   "duration": 4.6,
+   "text": "right? It will not go inside the project"
+  },
+  {
+   "start": 401.56,
+   "duration": 4.92,
+   "text": "repo or into the"
+  },
+  {
+   "start": 404.04,
+   "duration": 4.44,
+   "text": "GitHub repo that you push, right? So,"
+  },
+  {
+   "start": 406.48,
+   "duration": 3.12,
+   "text": "similarly is with the Claude.md file"
+  },
+  {
+   "start": 408.48,
+   "duration": 3.72,
+   "text": "also."
+  },
+  {
+   "start": 409.6,
+   "duration": 4.4,
+   "text": "So, this will live inside your home"
+  },
+  {
+   "start": 412.2,
+   "duration": 3.84,
+   "text": "folder, and"
+  },
+  {
+   "start": 414.0,
+   "duration": 3.239,
+   "text": "basically, it will apply to all of your"
+  },
+  {
+   "start": 416.04,
+   "duration": 1.64,
+   "text": "projects."
+  },
+  {
+   "start": 417.239,
+   "duration": 2.361,
+   "text": ">> [snorts]"
+  },
+  {
+   "start": 417.68,
+   "duration": 3.76,
+   "text": ">> Okay? It will apply to all of your"
+  },
+  {
+   "start": 419.6,
+   "duration": 3.12,
+   "text": "projects. That is one advantage, but"
+  },
+  {
+   "start": 421.44,
+   "duration": 3.0,
+   "text": "sometimes it will get a little bit"
+  },
+  {
+   "start": 422.72,
+   "duration": 3.52,
+   "text": "messier if you have a lot of projects."
+  },
+  {
+   "start": 424.44,
+   "duration": 4.48,
+   "text": "But, if you want to keep certain"
+  },
+  {
+   "start": 426.24,
+   "duration": 4.6,
+   "text": "instructions specific to your system,"
+  },
+  {
+   "start": 428.92,
+   "duration": 3.36,
+   "text": "some tricks and tips, maybe, that you"
+  },
+  {
+   "start": 430.84,
+   "duration": 2.84,
+   "text": "use while using Claude Code, you can"
+  },
+  {
+   "start": 432.28,
+   "duration": 3.6,
+   "text": "keep it in your home directory which you"
+  },
+  {
+   "start": 433.68,
+   "duration": 4.0,
+   "text": "don't want to share with"
+  },
+  {
+   "start": 435.88,
+   "duration": 4.76,
+   "text": "you know, other people"
+  },
+  {
+   "start": 437.68,
+   "duration": 4.64,
+   "text": "in your company. Something like that."
+  },
+  {
+   "start": 440.64,
+   "duration": 3.48,
+   "text": "But, yeah, please do share, guys. It's a"
+  },
+  {
+   "start": 442.32,
+   "duration": 3.96,
+   "text": "it's it's a tough world. Let's keep"
+  },
+  {
+   "start": 444.12,
+   "duration": 4.88,
+   "text": "sharing information as much as we can,"
+  },
+  {
+   "start": 446.28,
+   "duration": 4.6,
+   "text": "right? That is what I want to tell."
+  },
+  {
+   "start": 449.0,
+   "duration": 3.36,
+   "text": "So, um"
+  },
+  {
+   "start": 450.88,
+   "duration": 3.6,
+   "text": "yeah, that is personal to you. That is"
+  },
+  {
+   "start": 452.36,
+   "duration": 3.88,
+   "text": "not to your project. Like, stuff like,"
+  },
+  {
+   "start": 454.48,
+   "duration": 4.4,
+   "text": "for example, you keep"
+  },
+  {
+   "start": 456.24,
+   "duration": 4.52,
+   "text": "my personal preferences I told, right? I"
+  },
+  {
+   "start": 458.88,
+   "duration": 4.56,
+   "text": "prefer verbose commit messages that"
+  },
+  {
+   "start": 460.76,
+   "duration": 3.96,
+   "text": "explain why, you know, um while"
+  },
+  {
+   "start": 463.44,
+   "duration": 2.64,
+   "text": "generating code, something like that"
+  },
+  {
+   "start": 464.72,
+   "duration": 3.4,
+   "text": "that you generally use. That is your own"
+  },
+  {
+   "start": 466.08,
+   "duration": 3.64,
+   "text": "style. Basically, in that cases you"
+  },
+  {
+   "start": 468.12,
+   "duration": 4.16,
+   "text": "would use the"
+  },
+  {
+   "start": 469.72,
+   "duration": 5.76,
+   "text": "uh Claude.md file in the home directory"
+  },
+  {
+   "start": 472.28,
+   "duration": 4.52,
+   "text": "of your system. It's a user level."
+  },
+  {
+   "start": 475.48,
+   "duration": 3.56,
+   "text": "Okay?"
+  },
+  {
+   "start": 476.8,
+   "duration": 3.84,
+   "text": "So, as we know that file is not in any"
+  },
+  {
+   "start": 479.04,
+   "duration": 3.76,
+   "text": "project repo, it lives in your home. So,"
+  },
+  {
+   "start": 480.64,
+   "duration": 4.48,
+   "text": "if anybody else clones your repo, it"
+  },
+  {
+   "start": 482.8,
+   "duration": 4.12,
+   "text": "will not automatically come into their"
+  },
+  {
+   "start": 485.12,
+   "duration": 3.24,
+   "text": "home directory, right? It's pretty much"
+  },
+  {
+   "start": 486.92,
+   "duration": 2.72,
+   "text": "common sense."
+  },
+  {
+   "start": 488.36,
+   "duration": 3.28,
+   "text": "So,"
+  },
+  {
+   "start": 489.64,
+   "duration": 4.0,
+   "text": "that is the thing."
+  },
+  {
+   "start": 491.64,
+   "duration": 3.56,
+   "text": "Then, let's talk about the level two,"
+  },
+  {
+   "start": 493.64,
+   "duration": 3.48,
+   "text": "that is project level. Now, this is a"
+  },
+  {
+   "start": 495.2,
+   "duration": 4.8,
+   "text": "big one. This is where your team's"
+  },
+  {
+   "start": 497.12,
+   "duration": 4.52,
+   "text": "shared knowledge, you know,"
+  },
+  {
+   "start": 500.0,
+   "duration": 3.24,
+   "text": "lives, basically. It lives inside the"
+  },
+  {
+   "start": 501.64,
+   "duration": 4.52,
+   "text": "project repo. It is committed to your"
+  },
+  {
+   "start": 503.24,
+   "duration": 4.32,
+   "text": "GitHub repo and everything like that."
+  },
+  {
+   "start": 506.16,
+   "duration": 4.24,
+   "text": "So,"
+  },
+  {
+   "start": 507.56,
+   "duration": 4.2,
+   "text": "there are actually two"
+  },
+  {
+   "start": 510.4,
+   "duration": 3.199,
+   "text": "um"
+  },
+  {
+   "start": 511.76,
+   "duration": 4.12,
+   "text": "valid locations for project level"
+  },
+  {
+   "start": 513.599,
+   "duration": 4.56,
+   "text": "config. And basically, what do you mean"
+  },
+  {
+   "start": 515.88,
+   "duration": 4.68,
+   "text": "by project level config, right? Mean, it"
+  },
+  {
+   "start": 518.159,
+   "duration": 4.56,
+   "text": "just means that the Claude.md file is in"
+  },
+  {
+   "start": 520.56,
+   "duration": 4.2,
+   "text": "your project itself. Let me show you an"
+  },
+  {
+   "start": 522.719,
+   "duration": 3.521,
+   "text": "example. So, this"
+  },
+  {
+   "start": 524.76,
+   "duration": 3.36,
+   "text": "uh project that I have created, you"
+  },
+  {
+   "start": 526.24,
+   "duration": 4.2,
+   "text": "know, for our customer support agent and"
+  },
+  {
+   "start": 528.12,
+   "duration": 4.32,
+   "text": "all other files that I have created,"
+  },
+  {
+   "start": 530.44,
+   "duration": 4.96,
+   "text": "I have created a Claude.md file. And"
+  },
+  {
+   "start": 532.44,
+   "duration": 5.16,
+   "text": "this Claude.md file is specific to this"
+  },
+  {
+   "start": 535.4,
+   "duration": 4.32,
+   "text": "project itself. Now, if I push it to"
+  },
+  {
+   "start": 537.6,
+   "duration": 3.96,
+   "text": "get, you know, to share the updated code"
+  },
+  {
+   "start": 539.72,
+   "duration": 3.64,
+   "text": "with you guys, you would get this"
+  },
+  {
+   "start": 541.56,
+   "duration": 4.04,
+   "text": "Claude.md file. And when you clone it"
+  },
+  {
+   "start": 543.36,
+   "duration": 4.56,
+   "text": "and when you start Claude Code in your"
+  },
+  {
+   "start": 545.6,
+   "duration": 3.56,
+   "text": "terminal, it will load this Claude.md"
+  },
+  {
+   "start": 547.92,
+   "duration": 3.28,
+   "text": "file."
+  },
+  {
+   "start": 549.16,
+   "duration": 3.36,
+   "text": "But, if I keep a Claude.md file in my"
+  },
+  {
+   "start": 551.2,
+   "duration": 2.64,
+   "text": "users"
+  },
+  {
+   "start": 552.52,
+   "duration": 3.92,
+   "text": "in my home,"
+  },
+  {
+   "start": 553.84,
+   "duration": 5.08,
+   "text": "you know, folder in my Mac OS, for"
+  },
+  {
+   "start": 556.44,
+   "duration": 4.28,
+   "text": "example, it will not"
+  },
+  {
+   "start": 558.92,
+   "duration": 4.76,
+   "text": "you know, you cannot use it, basically."
+  },
+  {
+   "start": 560.72,
+   "duration": 5.56,
+   "text": "Now, here there are also different ways"
+  },
+  {
+   "start": 563.68,
+   "duration": 4.08,
+   "text": "to keep your Claude.md file."
+  },
+  {
+   "start": 566.28,
+   "duration": 4.88,
+   "text": "One"
+  },
+  {
+   "start": 567.76,
+   "duration": 5.6,
+   "text": "is in the, you know, project root."
+  },
+  {
+   "start": 571.16,
+   "duration": 3.92,
+   "text": "Okay? That that I have used. So, this is"
+  },
+  {
+   "start": 573.36,
+   "duration": 3.56,
+   "text": "my project folder. I have kept the"
+  },
+  {
+   "start": 575.08,
+   "duration": 3.16,
+   "text": "Claude.md file in my project root"
+  },
+  {
+   "start": 576.92,
+   "duration": 2.8,
+   "text": "itself."
+  },
+  {
+   "start": 578.24,
+   "duration": 4.28,
+   "text": "Okay?"
+  },
+  {
+   "start": 579.72,
+   "duration": 5.64,
+   "text": "So, basically,"
+  },
+  {
+   "start": 582.52,
+   "duration": 6.04,
+   "text": "um the other way is to basically create"
+  },
+  {
+   "start": 585.36,
+   "duration": 5.28,
+   "text": "a new folder, a dedicated, you know,"
+  },
+  {
+   "start": 588.56,
+   "duration": 5.68,
+   "text": "{dot} Claude folder. So, I'm just going"
+  },
+  {
+   "start": 590.64,
+   "duration": 3.6,
+   "text": "to create a {dot} Claude"
+  },
+  {
+   "start": 595.12,
+   "duration": 5.72,
+   "text": "{dot} Claude folder, and inside this"
+  },
+  {
+   "start": 597.2,
+   "duration": 5.72,
+   "text": "cloud folder you can create you know"
+  },
+  {
+   "start": 600.84,
+   "duration": 4.2,
+   "text": "cloud.md file and it is preferred by"
+  },
+  {
+   "start": 602.92,
+   "duration": 4.56,
+   "text": "most teams."
+  },
+  {
+   "start": 605.04,
+   "duration": 4.52,
+   "text": "Right? I mean both the paths work. You"
+  },
+  {
+   "start": 607.48,
+   "duration": 4.32,
+   "text": "can either keep it in the project root"
+  },
+  {
+   "start": 609.56,
+   "duration": 3.76,
+   "text": "level this cloud.md file or otherwise"
+  },
+  {
+   "start": 611.8,
+   "duration": 2.68,
+   "text": "you can keep it inside the dot cloud"
+  },
+  {
+   "start": 613.32,
+   "duration": 2.84,
+   "text": "folder."
+  },
+  {
+   "start": 614.48,
+   "duration": 3.52,
+   "text": "You know, you have to choose based on"
+  },
+  {
+   "start": 616.16,
+   "duration": 4.16,
+   "text": "your team's preference."
+  },
+  {
+   "start": 618.0,
+   "duration": 3.84,
+   "text": "So dot cloud folder kind of keeps it"
+  },
+  {
+   "start": 620.32,
+   "duration": 4.96,
+   "text": "organized"
+  },
+  {
+   "start": 621.84,
+   "duration": 5.44,
+   "text": "and if you keep the cloud.md file at the"
+  },
+  {
+   "start": 625.28,
+   "duration": 3.52,
+   "text": "root level it is more discoverable"
+  },
+  {
+   "start": 627.28,
+   "duration": 3.28,
+   "text": "basically."
+  },
+  {
+   "start": 628.8,
+   "duration": 3.4,
+   "text": "But yeah, it's up to you how you want to"
+  },
+  {
+   "start": 630.56,
+   "duration": 3.04,
+   "text": "use it. If you want if you want to keep"
+  },
+  {
+   "start": 632.2,
+   "duration": 2.8,
+   "text": "it organized you keep it here otherwise"
+  },
+  {
+   "start": 633.6,
+   "duration": 3.32,
+   "text": "you keep it here."
+  },
+  {
+   "start": 635.0,
+   "duration": 3.6,
+   "text": "Now what difference this makes it from"
+  },
+  {
+   "start": 636.92,
+   "duration": 3.44,
+   "text": "the user level? It lives inside the"
+  },
+  {
+   "start": 638.6,
+   "duration": 4.24,
+   "text": "project repo. You know, you commit it"
+  },
+  {
+   "start": 640.36,
+   "duration": 4.96,
+   "text": "you push it your teammates pull it and"
+  },
+  {
+   "start": 642.84,
+   "duration": 4.36,
+   "text": "uh your CI pipeline loads it everything."
+  },
+  {
+   "start": 645.32,
+   "duration": 4.72,
+   "text": "It is you are just basically exporting"
+  },
+  {
+   "start": 647.2,
+   "duration": 4.52,
+   "text": "your cloud.md file here and there. Okay?"
+  },
+  {
+   "start": 650.04,
+   "duration": 4.0,
+   "text": "Whoever works on this project will get"
+  },
+  {
+   "start": 651.72,
+   "duration": 4.2,
+   "text": "that cloud.md file."
+  },
+  {
+   "start": 654.04,
+   "duration": 4.72,
+   "text": "Okay. Now basically what do you keep in"
+  },
+  {
+   "start": 655.92,
+   "duration": 5.2,
+   "text": "your cloud.md file? Uh uh about your"
+  },
+  {
+   "start": 658.76,
+   "duration": 5.0,
+   "text": "basically the rules and conventions of"
+  },
+  {
+   "start": 661.12,
+   "duration": 6.24,
+   "text": "your particular uh repo. So I have"
+  },
+  {
+   "start": 663.76,
+   "duration": 6.72,
+   "text": "created uh you know cloud.md file for"
+  },
+  {
+   "start": 667.36,
+   "duration": 4.16,
+   "text": "you guys to for this particular repo."
+  },
+  {
+   "start": 670.48,
+   "duration": 2.92,
+   "text": "Uh you know the"
+  },
+  {
+   "start": 671.52,
+   "duration": 3.8,
+   "text": "regarding the setup."
+  },
+  {
+   "start": 673.4,
+   "duration": 4.56,
+   "text": "Uh you know"
+  },
+  {
+   "start": 675.32,
+   "duration": 2.64,
+   "text": "uh of the"
+  },
+  {
+   "start": 678.0,
+   "duration": 6.04,
+   "text": "environment and then the file map"
+  },
+  {
+   "start": 681.48,
+   "duration": 6.0,
+   "text": "and conventions basically."
+  },
+  {
+   "start": 684.04,
+   "duration": 5.36,
+   "text": "Uh all examples use Claude Haiku 4.5 so"
+  },
+  {
+   "start": 687.48,
+   "duration": 4.4,
+   "text": "uh if you if you write some you know"
+  },
+  {
+   "start": 689.4,
+   "duration": 4.12,
+   "text": "create an agent in Claude um code for"
+  },
+  {
+   "start": 691.88,
+   "duration": 4.24,
+   "text": "example I don't want you guys to use"
+  },
+  {
+   "start": 693.52,
+   "duration": 3.6,
+   "text": "Opus for simpler calls and spending more"
+  },
+  {
+   "start": 696.12,
+   "duration": 2.92,
+   "text": "money."
+  },
+  {
+   "start": 697.12,
+   "duration": 4.04,
+   "text": "Okay? Cost for speed for learners don't"
+  },
+  {
+   "start": 699.04,
+   "duration": 3.88,
+   "text": "bump that to Sonnet Opus without asking."
+  },
+  {
+   "start": 701.16,
+   "duration": 4.12,
+   "text": "Error categories tools errors must be"
+  },
+  {
+   "start": 702.92,
+   "duration": 4.68,
+   "text": "used the four category schema from"
+  },
+  {
+   "start": 705.28,
+   "duration": 3.76,
+   "text": "agent.py transient permission validation"
+  },
+  {
+   "start": 707.6,
+   "duration": 3.76,
+   "text": "and internal."
+  },
+  {
+   "start": 709.04,
+   "duration": 4.16,
+   "text": "Okay? New tool should follow the same"
+  },
+  {
+   "start": 711.36,
+   "duration": 4.04,
+   "text": "pattern."
+  },
+  {
+   "start": 713.2,
+   "duration": 4.2,
+   "text": "Agent include exit stop reason equals to"
+  },
+  {
+   "start": 715.4,
+   "duration": 3.84,
+   "text": "end turn is the only primary exit. Max"
+  },
+  {
+   "start": 717.4,
+   "duration": 3.16,
+   "text": "iteration is a safety valve. So all"
+  },
+  {
+   "start": 719.24,
+   "duration": 3.4,
+   "text": "these things that we had done I'm just"
+  },
+  {
+   "start": 720.56,
+   "duration": 4.56,
+   "text": "put it in the cloud.md file. And one"
+  },
+  {
+   "start": 722.64,
+   "duration": 5.4,
+   "text": "more bonus that I have done is agent"
+  },
+  {
+   "start": 725.12,
+   "duration": 5.04,
+   "text": "guide.md I have created where you can"
+  },
+  {
+   "start": 728.04,
+   "duration": 3.68,
+   "text": "how how to create an agent with Claude."
+  },
+  {
+   "start": 730.16,
+   "duration": 4.28,
+   "text": "So basically if you just go through it"
+  },
+  {
+   "start": 731.72,
+   "duration": 5.76,
+   "text": "study it it is also very very beneficial"
+  },
+  {
+   "start": 734.44,
+   "duration": 4.92,
+   "text": "for interviews as well. And um you know,"
+  },
+  {
+   "start": 737.48,
+   "duration": 3.4,
+   "text": "it has been asked a lot so I'm just"
+  },
+  {
+   "start": 739.36,
+   "duration": 4.4,
+   "text": "providing you guys with this particular"
+  },
+  {
+   "start": 740.88,
+   "duration": 5.24,
+   "text": "piece of information and I hope you guys"
+  },
+  {
+   "start": 743.76,
+   "duration": 6.4,
+   "text": "would like it. So I hope you got what"
+  },
+  {
+   "start": 746.12,
+   "duration": 5.32,
+   "text": "cloud.md is and what basically it does."
+  },
+  {
+   "start": 750.16,
+   "duration": 3.0,
+   "text": "Right?"
+  },
+  {
+   "start": 751.44,
+   "duration": 4.92,
+   "text": "Now"
+  },
+  {
+   "start": 753.16,
+   "duration": 5.12,
+   "text": "let's go back to so project level config"
+  },
+  {
+   "start": 756.36,
+   "duration": 3.32,
+   "text": "I hope how to configure cloud.md in"
+  },
+  {
+   "start": 758.28,
+   "duration": 4.92,
+   "text": "project level that is pretty much of"
+  },
+  {
+   "start": 759.68,
+   "duration": 5.88,
+   "text": "clear. Now let's go to directory level."
+  },
+  {
+   "start": 763.2,
+   "duration": 5.08,
+   "text": "Now this is the third level is the most"
+  },
+  {
+   "start": 765.56,
+   "duration": 5.4,
+   "text": "surgical kind of a solution, right? You"
+  },
+  {
+   "start": 768.28,
+   "duration": 5.72,
+   "text": "can put a cloud.md file inside any"
+  },
+  {
+   "start": 770.96,
+   "duration": 5.56,
+   "text": "subdirectory of your project basically."
+  },
+  {
+   "start": 774.0,
+   "duration": 5.76,
+   "text": "So it only loads when Claude code is"
+  },
+  {
+   "start": 776.52,
+   "duration": 5.72,
+   "text": "working in that directory itself."
+  },
+  {
+   "start": 779.76,
+   "duration": 4.36,
+   "text": "Right? For example"
+  },
+  {
+   "start": 782.24,
+   "duration": 3.52,
+   "text": "you can have you know"
+  },
+  {
+   "start": 784.12,
+   "duration": 4.08,
+   "text": "infrastructure/cloud.md"
+  },
+  {
+   "start": 785.76,
+   "duration": 5.0,
+   "text": "packages/apis/cloud.md"
+  },
+  {
+   "start": 788.2,
+   "duration": 4.28,
+   "text": "you know packages front ends cloud.md."
+  },
+  {
+   "start": 790.76,
+   "duration": 3.44,
+   "text": "So basically what are the advantages"
+  },
+  {
+   "start": 792.48,
+   "duration": 4.04,
+   "text": "that you know"
+  },
+  {
+   "start": 794.2,
+   "duration": 4.88,
+   "text": "basically at different places you know"
+  },
+  {
+   "start": 796.52,
+   "duration": 4.08,
+   "text": "having different conventions."
+  },
+  {
+   "start": 799.08,
+   "duration": 4.12,
+   "text": "Because different parts of your code"
+  },
+  {
+   "start": 800.6,
+   "duration": 4.6,
+   "text": "base have different needs, right? Your"
+  },
+  {
+   "start": 803.2,
+   "duration": 4.12,
+   "text": "infrastructure directory needs Terraform"
+  },
+  {
+   "start": 805.2,
+   "duration": 5.639,
+   "text": "specific guidance."
+  },
+  {
+   "start": 807.32,
+   "duration": 6.12,
+   "text": "You know, your API needs you know NestJS"
+  },
+  {
+   "start": 810.839,
+   "duration": 5.601,
+   "text": "patterns for example and your front end"
+  },
+  {
+   "start": 813.44,
+   "duration": 4.72,
+   "text": "needs some React rules and conventions."
+  },
+  {
+   "start": 816.44,
+   "duration": 3.44,
+   "text": "So in that case if you put it in one"
+  },
+  {
+   "start": 818.16,
+   "duration": 3.32,
+   "text": "directory you know, it it will be a"
+  },
+  {
+   "start": 819.88,
+   "duration": 3.48,
+   "text": "little bit messier."
+  },
+  {
+   "start": 821.48,
+   "duration": 3.04,
+   "text": "But if you uh you know, if you have a"
+  },
+  {
+   "start": 823.36,
+   "duration": 3.2,
+   "text": "lot of"
+  },
+  {
+   "start": 824.52,
+   "duration": 5.72,
+   "text": "uh conventions you can put you you can"
+  },
+  {
+   "start": 826.56,
+   "duration": 5.96,
+   "text": "like divide it into this uh cloud um"
+  },
+  {
+   "start": 830.24,
+   "duration": 5.08,
+   "text": "md file in different directories"
+  },
+  {
+   "start": 832.52,
+   "duration": 5.16,
+   "text": "basically. That is the advantage, right?"
+  },
+  {
+   "start": 835.32,
+   "duration": 4.8,
+   "text": "But the way cloud.md works doesn't"
+  },
+  {
+   "start": 837.68,
+   "duration": 6.36,
+   "text": "change. It's the same thing. You're just"
+  },
+  {
+   "start": 840.12,
+   "duration": 7.68,
+   "text": "kind of specializing it more."
+  },
+  {
+   "start": 844.04,
+   "duration": 5.36,
+   "text": "Okay. Now the classic team bug that I"
+  },
+  {
+   "start": 847.8,
+   "duration": 3.56,
+   "text": "call it."
+  },
+  {
+   "start": 849.4,
+   "duration": 3.96,
+   "text": "Okay. So let's revisit that particular"
+  },
+  {
+   "start": 851.36,
+   "duration": 3.76,
+   "text": "opening scenario and this will come in"
+  },
+  {
+   "start": 853.36,
+   "duration": 3.719,
+   "text": "the exam. That is why I'm I'm kind of"
+  },
+  {
+   "start": 855.12,
+   "duration": 4.28,
+   "text": "putting it again in in on the screen so"
+  },
+  {
+   "start": 857.079,
+   "duration": 4.081,
+   "text": "that you guys will know that okay, this"
+  },
+  {
+   "start": 859.4,
+   "duration": 3.0,
+   "text": "scenario we guys had talked about and"
+  },
+  {
+   "start": 861.16,
+   "duration": 3.2,
+   "text": "this will come as a question or"
+  },
+  {
+   "start": 862.4,
+   "duration": 4.32,
+   "text": "something in the or a scenario in the"
+  },
+  {
+   "start": 864.36,
+   "duration": 4.64,
+   "text": "exam. So"
+  },
+  {
+   "start": 866.72,
+   "duration": 4.16,
+   "text": "the original developer set up the why"
+  },
+  {
+   "start": 869.0,
+   "duration": 4.12,
+   "text": "why did that happen that problem happen?"
+  },
+  {
+   "start": 870.88,
+   "duration": 4.68,
+   "text": "Basically the original developer set up"
+  },
+  {
+   "start": 873.12,
+   "duration": 4.48,
+   "text": "the cloud md file in their home"
+  },
+  {
+   "start": 875.56,
+   "duration": 4.0,
+   "text": "directory. Okay? The file has all the"
+  },
+  {
+   "start": 877.6,
+   "duration": 4.0,
+   "text": "great project context, the architectural"
+  },
+  {
+   "start": 879.56,
+   "duration": 3.6,
+   "text": "notes and whatever and whatnot. It"
+  },
+  {
+   "start": 881.6,
+   "duration": 3.8,
+   "text": "worked great for them but it was never"
+  },
+  {
+   "start": 883.16,
+   "duration": 5.04,
+   "text": "committed to the repo. So when the new"
+  },
+  {
+   "start": 885.4,
+   "duration": 5.24,
+   "text": "engineer cloned the repo and ran Claude"
+  },
+  {
+   "start": 888.2,
+   "duration": 4.32,
+   "text": "code there was no cloud.md file only. So"
+  },
+  {
+   "start": 890.64,
+   "duration": 4.68,
+   "text": "that is why Claude was not able to"
+  },
+  {
+   "start": 892.52,
+   "duration": 4.88,
+   "text": "understand anything about the project."
+  },
+  {
+   "start": 895.32,
+   "duration": 3.639,
+   "text": "Right? That is what the problem we had"
+  },
+  {
+   "start": 897.4,
+   "duration": 4.12,
+   "text": "discussed"
+  },
+  {
+   "start": 898.959,
+   "duration": 5.361,
+   "text": "um you know in the first uh"
+  },
+  {
+   "start": 901.52,
+   "duration": 4.4,
+   "text": "problem basically the first book part."
+  },
+  {
+   "start": 904.32,
+   "duration": 3.84,
+   "text": "So the fix move to the"
+  },
+  {
+   "start": 905.92,
+   "duration": 4.039,
+   "text": "cloud.cloud/cloud.md"
+  },
+  {
+   "start": 908.16,
+   "duration": 4.24,
+   "text": "in the project root."
+  },
+  {
+   "start": 909.959,
+   "duration": 4.281,
+   "text": "Right? Or into the dot cloud folder"
+  },
+  {
+   "start": 912.4,
+   "duration": 4.4,
+   "text": "however you would need it."
+  },
+  {
+   "start": 914.24,
+   "duration": 4.88,
+   "text": "Commit to get and everyone gets that"
+  },
+  {
+   "start": 916.8,
+   "duration": 4.96,
+   "text": "particular file. Every teammate gets the"
+  },
+  {
+   "start": 919.12,
+   "duration": 5.719,
+   "text": "same context on pull."
+  },
+  {
+   "start": 921.76,
+   "duration": 4.56,
+   "text": "Okay? So exam alert. Team may if if you"
+  },
+  {
+   "start": 924.839,
+   "duration": 4.281,
+   "text": "get written questions something like"
+  },
+  {
+   "start": 926.32,
+   "duration": 5.68,
+   "text": "teammate not following conventions check"
+  },
+  {
+   "start": 929.12,
+   "duration": 4.92,
+   "text": "the config location first. Okay? And"
+  },
+  {
+   "start": 932.0,
+   "duration": 4.56,
+   "text": "they will uh you know, also might get"
+  },
+  {
+   "start": 934.04,
+   "duration": 4.36,
+   "text": "questions about directory level cloud.md"
+  },
+  {
+   "start": 936.56,
+   "duration": 5.0,
+   "text": "file as well like you want to put"
+  },
+  {
+   "start": 938.4,
+   "duration": 6.08,
+   "text": "specific kind of conventions for your uh"
+  },
+  {
+   "start": 941.56,
+   "duration": 5.12,
+   "text": "ReactJS files in your particular"
+  },
+  {
+   "start": 944.48,
+   "duration": 4.08,
+   "text": "uh you know, your folder ReactJS folder"
+  },
+  {
+   "start": 946.68,
+   "duration": 3.64,
+   "text": "in your particular uh project then what"
+  },
+  {
+   "start": 948.56,
+   "duration": 3.72,
+   "text": "you would do. In [snorts] that case you"
+  },
+  {
+   "start": 950.32,
+   "duration": 3.639,
+   "text": "would create a cloud.md file in that"
+  },
+  {
+   "start": 952.28,
+   "duration": 5.08,
+   "text": "particular folder."
+  },
+  {
+   "start": 953.959,
+   "duration": 5.401,
+   "text": "Okay? I hope that is making sense."
+  },
+  {
+   "start": 957.36,
+   "duration": 5.96,
+   "text": "Okay."
+  },
+  {
+   "start": 959.36,
+   "duration": 6.64,
+   "text": "So let's talk about the import keeping"
+  },
+  {
+   "start": 963.32,
+   "duration": 4.6,
+   "text": "it clean with @import."
+  },
+  {
+   "start": 966.0,
+   "duration": 4.24,
+   "text": "Now here's a very real world problem."
+  },
+  {
+   "start": 967.92,
+   "duration": 4.76,
+   "text": "Okay? We talked about you know"
+  },
+  {
+   "start": 970.24,
+   "duration": 6.28,
+   "text": "how projects grow."
+  },
+  {
+   "start": 972.68,
+   "duration": 7.0,
+   "text": "And cloud.md will grow very long as your"
+  },
+  {
+   "start": 976.52,
+   "duration": 5.12,
+   "text": "project keeps on you know"
+  },
+  {
+   "start": 979.68,
+   "duration": 5.279,
+   "text": "kind of increasing"
+  },
+  {
+   "start": 981.64,
+   "duration": 6.111,
+   "text": "your cloud.md will get long really long."
+  },
+  {
+   "start": 984.959,
+   "duration": 3.0,
+   "text": "Architectural docs, testing conventions"
+  },
+  {
+   "start": 987.751,
+   "duration": 2.929,
+   "text": ">> [snorts]"
+  },
+  {
+   "start": 987.959,
+   "duration": 4.761,
+   "text": ">> API patterns, deployment rules, you"
+  },
+  {
+   "start": 990.68,
+   "duration": 4.279,
+   "text": "know, glossaries"
+  },
+  {
+   "start": 992.72,
+   "duration": 4.88,
+   "text": "it can turn into like a 5,000 line"
+  },
+  {
+   "start": 994.959,
+   "duration": 5.201,
+   "text": "monster as you can see and and if you're"
+  },
+  {
+   "start": 997.6,
+   "duration": 4.4,
+   "text": "not checking your cloud.md file time to"
+  },
+  {
+   "start": 1000.16,
+   "duration": 4.64,
+   "text": "time and completely trusting on Claude"
+  },
+  {
+   "start": 1002.0,
+   "duration": 5.079,
+   "text": "code then it will be a"
+  },
+  {
+   "start": 1004.8,
+   "duration": 4.52,
+   "text": "you know demon that you don't want to"
+  },
+  {
+   "start": 1007.079,
+   "duration": 5.561,
+   "text": "mess around with. Something like that."
+  },
+  {
+   "start": 1009.32,
+   "duration": 5.32,
+   "text": "So @import solves this, right? It lets"
+  },
+  {
+   "start": 1012.64,
+   "duration": 4.92,
+   "text": "you split your configuration into"
+  },
+  {
+   "start": 1014.64,
+   "duration": 4.08,
+   "text": "focused files and basically compose"
+  },
+  {
+   "start": 1017.56,
+   "duration": 2.68,
+   "text": "them."
+  },
+  {
+   "start": 1018.72,
+   "duration": 3.88,
+   "text": "So"
+  },
+  {
+   "start": 1020.24,
+   "duration": 4.92,
+   "text": "this is a cloud.md file which has a lot"
+  },
+  {
+   "start": 1022.6,
+   "duration": 4.52,
+   "text": "of lines, right? Lot of conventions and"
+  },
+  {
+   "start": 1025.16,
+   "duration": 3.76,
+   "text": "all that. As your project grows you just"
+  },
+  {
+   "start": 1027.12,
+   "duration": 4.76,
+   "text": "kind of um"
+  },
+  {
+   "start": 1028.92,
+   "duration": 5.519,
+   "text": "kept everything in one file, right? But"
+  },
+  {
+   "start": 1031.88,
+   "duration": 5.559,
+   "text": "let's go into the modular approach."
+  },
+  {
+   "start": 1034.439,
+   "duration": 5.201,
+   "text": "So there is a separate md file for API"
+  },
+  {
+   "start": 1037.439,
+   "duration": 4.041,
+   "text": "patterns. There is a separate md file"
+  },
+  {
+   "start": 1039.64,
+   "duration": 4.799,
+   "text": "for testing conventions something like"
+  },
+  {
+   "start": 1041.48,
+   "duration": 4.92,
+   "text": "that, right? So when your back end team"
+  },
+  {
+   "start": 1044.439,
+   "duration": 3.64,
+   "text": "is updating their APIs and all those"
+  },
+  {
+   "start": 1046.4,
+   "duration": 4.52,
+   "text": "things they will only update the API"
+  },
+  {
+   "start": 1048.079,
+   "duration": 5.481,
+   "text": "patterns.md file. When the when the"
+  },
+  {
+   "start": 1050.92,
+   "duration": 4.48,
+   "text": "testing team will update uh you know, or"
+  },
+  {
+   "start": 1053.56,
+   "duration": 3.96,
+   "text": "test it out or something like that their"
+  },
+  {
+   "start": 1055.4,
+   "duration": 6.04,
+   "text": "patterns they will keep inside testing"
+  },
+  {
+   "start": 1057.52,
+   "duration": 6.159,
+   "text": "conventions.md file. So in that way this"
+  },
+  {
+   "start": 1061.44,
+   "duration": 4.0,
+   "text": "uh root cloud.md file or your main"
+  },
+  {
+   "start": 1063.679,
+   "duration": 4.241,
+   "text": "cloud.md file is not getting messed"
+  },
+  {
+   "start": 1065.44,
+   "duration": 5.12,
+   "text": "around with only those"
+  },
+  {
+   "start": 1067.92,
+   "duration": 4.48,
+   "text": "uh you know, md files"
+  },
+  {
+   "start": 1070.56,
+   "duration": 3.36,
+   "text": "with specific teams are concerned with"
+  },
+  {
+   "start": 1072.4,
+   "duration": 3.44,
+   "text": "or specific developers are concerned"
+  },
+  {
+   "start": 1073.92,
+   "duration": 3.48,
+   "text": "with are only getting modified. So there"
+  },
+  {
+   "start": 1075.84,
+   "duration": 3.44,
+   "text": "are no merge conflicts or you know,"
+  },
+  {
+   "start": 1077.4,
+   "duration": 4.279,
+   "text": "there is not"
+  },
+  {
+   "start": 1079.28,
+   "duration": 4.2,
+   "text": "uh you know, any drastic changes"
+  },
+  {
+   "start": 1081.679,
+   "duration": 5.681,
+   "text": "uh to any parts of the you know,"
+  },
+  {
+   "start": 1083.48,
+   "duration": 6.24,
+   "text": "cloud.md file. So we are basically"
+  },
+  {
+   "start": 1087.36,
+   "duration": 5.0,
+   "text": "keeping it clean. Clean PRs, clean"
+  },
+  {
+   "start": 1089.72,
+   "duration": 4.28,
+   "text": "ownership no merge conflicts and nothing"
+  },
+  {
+   "start": 1092.36,
+   "duration": 6.92,
+   "text": "like that. And nobody is messing around"
+  },
+  {
+   "start": 1094.0,
+   "duration": 7.84,
+   "text": "with the cloud.md file, right? So"
+  },
+  {
+   "start": 1099.28,
+   "duration": 5.8,
+   "text": "that is how it is. So basically if you"
+  },
+  {
+   "start": 1101.84,
+   "duration": 4.92,
+   "text": "going to talk about you know, um"
+  },
+  {
+   "start": 1105.08,
+   "duration": 3.88,
+   "text": "in the exam if you get some questions"
+  },
+  {
+   "start": 1106.76,
+   "duration": 4.28,
+   "text": "like uh how to make your cloud.md"
+  },
+  {
+   "start": 1108.96,
+   "duration": 4.959,
+   "text": "modular, right? So"
+  },
+  {
+   "start": 1111.04,
+   "duration": 4.72,
+   "text": "import is the mechanism. It is simple"
+  },
+  {
+   "start": 1113.919,
+   "duration": 4.321,
+   "text": "concept, right? Like"
+  },
+  {
+   "start": 1115.76,
+   "duration": 5.12,
+   "text": "uh you keep your code modular as well,"
+  },
+  {
+   "start": 1118.24,
+   "duration": 3.48,
+   "text": "right? Whenever you are using"
+  },
+  {
+   "start": 1120.88,
+   "duration": 3.68,
+   "text": "uh"
+  },
+  {
+   "start": 1121.72,
+   "duration": 5.16,
+   "text": "for example some in"
+  },
+  {
+   "start": 1124.56,
+   "duration": 4.56,
+   "text": "um Angular basically we create these uh"
+  },
+  {
+   "start": 1126.88,
+   "duration": 4.88,
+   "text": "services or you know, this utils, right?"
+  },
+  {
+   "start": 1129.12,
+   "duration": 4.32,
+   "text": "Then we import them into specific files"
+  },
+  {
+   "start": 1131.76,
+   "duration": 4.52,
+   "text": "wherever we need them."
+  },
+  {
+   "start": 1133.44,
+   "duration": 4.6,
+   "text": "Right? Similarly you would do the same"
+  },
+  {
+   "start": 1136.28,
+   "duration": 5.36,
+   "text": "thing in cloud.md file. The concepts are"
+  },
+  {
+   "start": 1138.04,
+   "duration": 7.36,
+   "text": "the same. It's just the way how you are"
+  },
+  {
+   "start": 1141.64,
+   "duration": 5.72,
+   "text": "writing your cloud.md file. It depends."
+  },
+  {
+   "start": 1145.4,
+   "duration": 6.04,
+   "text": "Okay? So I hope this is making sense"
+  },
+  {
+   "start": 1147.36,
+   "duration": 6.68,
+   "text": "this uh @import thingy. And um"
+  },
+  {
+   "start": 1151.44,
+   "duration": 6.76,
+   "text": "yeah, that is what it is."
+  },
+  {
+   "start": 1154.04,
+   "duration": 7.68,
+   "text": "Now let's talk about one more nice"
+  },
+  {
+   "start": 1158.2,
+   "duration": 6.44,
+   "text": "thing known as the dot cloud/"
+  },
+  {
+   "start": 1161.72,
+   "duration": 4.76,
+   "text": "rules directory."
+  },
+  {
+   "start": 1164.64,
+   "duration": 3.68,
+   "text": "Now this is really powerful. We are"
+  },
+  {
+   "start": 1166.48,
+   "duration": 2.8,
+   "text": "getting into really really powerful"
+  },
+  {
+   "start": 1168.32,
+   "duration": 4.8,
+   "text": "stuff."
+  },
+  {
+   "start": 1169.28,
+   "duration": 6.52,
+   "text": "Now besides cloud.md files you have"
+  },
+  {
+   "start": 1173.12,
+   "duration": 5.72,
+   "text": "another configuration mechanism"
+  },
+  {
+   "start": 1175.8,
+   "duration": 4.92,
+   "text": "the dot cloud/rules"
+  },
+  {
+   "start": 1178.84,
+   "duration": 4.319,
+   "text": "directory."
+  },
+  {
+   "start": 1180.72,
+   "duration": 6.199,
+   "text": "Now"
+  },
+  {
+   "start": 1183.159,
+   "duration": 7.561,
+   "text": "this is where basically you put topic"
+  },
+  {
+   "start": 1186.919,
+   "duration": 6.081,
+   "text": "specific rule files, right? I mean what"
+  },
+  {
+   "start": 1190.72,
+   "duration": 5.24,
+   "text": "do you mean by rule files?"
+  },
+  {
+   "start": 1193.0,
+   "duration": 5.16,
+   "text": "Now, each rule file is"
+  },
+  {
+   "start": 1195.96,
+   "duration": 5.36,
+   "text": "focused on a particular area of your"
+  },
+  {
+   "start": 1198.16,
+   "duration": 5.04,
+   "text": "code base or workflow."
+  },
+  {
+   "start": 1201.32,
+   "duration": 4.52,
+   "text": "Now, you would tell me, \"Okay, what is"
+  },
+  {
+   "start": 1203.2,
+   "duration": 4.72,
+   "text": "the difference between Claude.md file"
+  },
+  {
+   "start": 1205.84,
+   "duration": 4.24,
+   "text": "and these rules files?\" I I mean, I can"
+  },
+  {
+   "start": 1207.92,
+   "duration": 4.36,
+   "text": "create Claude.md files, you know,"
+  },
+  {
+   "start": 1210.08,
+   "duration": 4.24,
+   "text": "specific to a directory as well, right?"
+  },
+  {
+   "start": 1212.28,
+   "duration": 3.76,
+   "text": "That is true."
+  },
+  {
+   "start": 1214.32,
+   "duration": 3.88,
+   "text": "What does this rule files do in"
+  },
+  {
+   "start": 1216.04,
+   "duration": 4.52,
+   "text": "additionally?"
+  },
+  {
+   "start": 1218.2,
+   "duration": 3.52,
+   "text": "So, there is something known as front"
+  },
+  {
+   "start": 1220.56,
+   "duration": 5.2,
+   "text": "matter."
+  },
+  {
+   "start": 1221.72,
+   "duration": 7.84,
+   "text": "Okay? Front matter, which we'll discuss."
+  },
+  {
+   "start": 1225.76,
+   "duration": 4.96,
+   "text": "And that is where the magic lies."
+  },
+  {
+   "start": 1229.56,
+   "duration": 6.12,
+   "text": "Okay?"
+  },
+  {
+   "start": 1230.72,
+   "duration": 7.44,
+   "text": "So, let's discuss this, you know."
+  },
+  {
+   "start": 1235.68,
+   "duration": 2.48,
+   "text": "So,"
+  },
+  {
+   "start": 1238.4,
+   "duration": 5.92,
+   "text": "if you see in this particular slide over"
+  },
+  {
+   "start": 1240.56,
+   "duration": 3.76,
+   "text": "here, there is a paths field."
+  },
+  {
+   "start": 1244.44,
+   "duration": 5.04,
+   "text": "So, basically,"
+  },
+  {
+   "start": 1247.6,
+   "duration": 4.0,
+   "text": "this is a front, you know, path specific"
+  },
+  {
+   "start": 1249.48,
+   "duration": 3.88,
+   "text": "rules with the YAML formatter."
+  },
+  {
+   "start": 1251.6,
+   "duration": 3.28,
+   "text": "Front matter, sorry, not formatter."
+  },
+  {
+   "start": 1253.36,
+   "duration": 3.16,
+   "text": "Front front matter."
+  },
+  {
+   "start": 1254.88,
+   "duration": 3.64,
+   "text": "So, basically, if you see the"
+  },
+  {
+   "start": 1256.52,
+   "duration": 4.44,
+   "text": "description, all these are front matter,"
+  },
+  {
+   "start": 1258.52,
+   "duration": 5.32,
+   "text": "basically. So, the description is React"
+  },
+  {
+   "start": 1260.96,
+   "duration": 4.72,
+   "text": "component testing patterns."
+  },
+  {
+   "start": 1263.84,
+   "duration": 3.96,
+   "text": "Right? For example,"
+  },
+  {
+   "start": 1265.68,
+   "duration": 4.68,
+   "text": "or"
+  },
+  {
+   "start": 1267.8,
+   "duration": 4.88,
+   "text": "you're putting something like, you know,"
+  },
+  {
+   "start": 1270.36,
+   "duration": 5.24,
+   "text": "TypeScript script script mode"
+  },
+  {
+   "start": 1272.68,
+   "duration": 5.84,
+   "text": "conventions, something like that."
+  },
+  {
+   "start": 1275.6,
+   "duration": 5.0,
+   "text": "Or you're putting into more details like"
+  },
+  {
+   "start": 1278.52,
+   "duration": 4.44,
+   "text": "TypeScript rules. For example, never use"
+  },
+  {
+   "start": 1280.6,
+   "duration": 4.24,
+   "text": "any type, use unknown with type"
+  },
+  {
+   "start": 1282.96,
+   "duration": 3.72,
+   "text": "narrowing or something like that. All"
+  },
+  {
+   "start": 1284.84,
+   "duration": 3.92,
+   "text": "function parameters and return types"
+  },
+  {
+   "start": 1286.68,
+   "duration": 3.88,
+   "text": "must be explicitly annotated. Something"
+  },
+  {
+   "start": 1288.76,
+   "duration": 3.32,
+   "text": "like that you're putting the rules."
+  },
+  {
+   "start": 1290.56,
+   "duration": 3.96,
+   "text": "The next thing that is very, very"
+  },
+  {
+   "start": 1292.08,
+   "duration": 5.52,
+   "text": "important is the paths."
+  },
+  {
+   "start": 1294.52,
+   "duration": 5.04,
+   "text": "Right? So, that's when the rules become"
+  },
+  {
+   "start": 1297.6,
+   "duration": 6.08,
+   "text": "conditional. So, whatever rule I just"
+  },
+  {
+   "start": 1299.56,
+   "duration": 5.56,
+   "text": "told, right? Never use any or never"
+  },
+  {
+   "start": 1303.68,
+   "duration": 3.24,
+   "text": "you know,"
+  },
+  {
+   "start": 1305.12,
+   "duration": 3.12,
+   "text": "all function parameters and whatever I"
+  },
+  {
+   "start": 1306.92,
+   "duration": 3.68,
+   "text": "told, right? Return types must be"
+  },
+  {
+   "start": 1308.24,
+   "duration": 4.0,
+   "text": "explicitly annotated. All those things."
+  },
+  {
+   "start": 1310.6,
+   "duration": 3.76,
+   "text": "Where you want to apply those rules,"
+  },
+  {
+   "start": 1312.24,
+   "duration": 3.2,
+   "text": "basically."
+  },
+  {
+   "start": 1314.36,
+   "duration": 2.52,
+   "text": "That is"
+  },
+  {
+   "start": 1315.44,
+   "duration": 5.04,
+   "text": "where the paths come into the picture."
+  },
+  {
+   "start": 1316.88,
+   "duration": 3.6,
+   "text": "The paths tell you that, \"Okay,"
+  },
+  {
+   "start": 1320.64,
+   "duration": 7.4,
+   "text": "these are the file types that I want to"
+  },
+  {
+   "start": 1324.48,
+   "duration": 6.12,
+   "text": "apply the particular rule to.\""
+  },
+  {
+   "start": 1328.04,
+   "duration": 3.8,
+   "text": "Now, it can be in any folder. It doesn't"
+  },
+  {
+   "start": 1330.6,
+   "duration": 3.04,
+   "text": "matter."
+  },
+  {
+   "start": 1331.84,
+   "duration": 4.2,
+   "text": "It can be in your infra folder. It can"
+  },
+  {
+   "start": 1333.64,
+   "duration": 5.24,
+   "text": "be in your backend folder. It can be in"
+  },
+  {
+   "start": 1336.04,
+   "duration": 5.48,
+   "text": "your testing folder. But, if the file"
+  },
+  {
+   "start": 1338.88,
+   "duration": 5.4,
+   "text": "ends with these"
+  },
+  {
+   "start": 1341.52,
+   "duration": 5.32,
+   "text": "extensions, for example, test.tsx,"
+  },
+  {
+   "start": 1344.28,
+   "duration": 4.92,
+   "text": "test.tsx means basically test files. And"
+  },
+  {
+   "start": 1346.84,
+   "duration": 5.16,
+   "text": "spec.ts is for spec files."
+  },
+  {
+   "start": 1349.2,
+   "duration": 5.64,
+   "text": "So, if it is ending with those patterns,"
+  },
+  {
+   "start": 1352.0,
+   "duration": 5.2,
+   "text": "then basically this rule will be applied"
+  },
+  {
+   "start": 1354.84,
+   "duration": 2.36,
+   "text": "there."
+  },
+  {
+   "start": 1357.679,
+   "duration": 3.881,
+   "text": "Right? You're not cramming everything"
+  },
+  {
+   "start": 1359.36,
+   "duration": 4.64,
+   "text": "into one Claude.md. You are organizing"
+  },
+  {
+   "start": 1361.56,
+   "duration": 6.24,
+   "text": "rules by concern."
+  },
+  {
+   "start": 1364.0,
+   "duration": 5.6,
+   "text": "So, rules by concern."
+  },
+  {
+   "start": 1367.8,
+   "duration": 5.2,
+   "text": "And the difference between Claude.md and"
+  },
+  {
+   "start": 1369.6,
+   "duration": 6.68,
+   "text": "rules is simple. Claude.md cannot be"
+  },
+  {
+   "start": 1373.0,
+   "duration": 5.32,
+   "text": "applied to specific file types or a"
+  },
+  {
+   "start": 1376.28,
+   "duration": 3.64,
+   "text": "specific pattern or to a particular"
+  },
+  {
+   "start": 1378.32,
+   "duration": 4.4,
+   "text": "file."
+  },
+  {
+   "start": 1379.92,
+   "duration": 5.36,
+   "text": "Right? It is not capable of doing that."
+  },
+  {
+   "start": 1382.72,
+   "duration": 6.4,
+   "text": "It is just basic conventions like the"
+  },
+  {
+   "start": 1385.28,
+   "duration": 4.72,
+   "text": "template on which your project works."
+  },
+  {
+   "start": 1389.12,
+   "duration": 2.559,
+   "text": "And"
+  },
+  {
+   "start": 1390.0,
+   "duration": 3.96,
+   "text": "you are giving the tech stack"
+  },
+  {
+   "start": 1391.679,
+   "duration": 4.441,
+   "text": "information or something like that. But,"
+  },
+  {
+   "start": 1393.96,
+   "duration": 4.08,
+   "text": "if you want to apply specific rules to"
+  },
+  {
+   "start": 1396.12,
+   "duration": 4.48,
+   "text": "specific files irrespective of the tech"
+  },
+  {
+   "start": 1398.04,
+   "duration": 6.28,
+   "text": "stack, for example, you know, to"
+  },
+  {
+   "start": 1400.6,
+   "duration": 5.28,
+   "text": "specific types of files, right? You"
+  },
+  {
+   "start": 1404.32,
+   "duration": 3.0,
+   "text": "would use the rules in that particular"
+  },
+  {
+   "start": 1405.88,
+   "duration": 3.52,
+   "text": "scenario. And that is where you need to"
+  },
+  {
+   "start": 1407.32,
+   "duration": 5.12,
+   "text": "differentiate when to use what. When to"
+  },
+  {
+   "start": 1409.4,
+   "duration": 5.52,
+   "text": "use Claude, when to use rules."
+  },
+  {
+   "start": 1412.44,
+   "duration": 2.48,
+   "text": "Right?"
+  },
+  {
+   "start": 1414.96,
+   "duration": 6.08,
+   "text": "Okay? So, the exam signal that you"
+  },
+  {
+   "start": 1417.84,
+   "duration": 3.2,
+   "text": "should know is that"
+  },
+  {
+   "start": 1422.36,
+   "duration": 5.8,
+   "text": "Claude rules directory means topic"
+  },
+  {
+   "start": 1424.92,
+   "duration": 5.4,
+   "text": "specific rule files with formatter."
+  },
+  {
+   "start": 1428.16,
+   "duration": 4.56,
+   "text": "Description field is always present in"
+  },
+  {
+   "start": 1430.32,
+   "duration": 4.32,
+   "text": "the front front matter. Okay?"
+  },
+  {
+   "start": 1432.72,
+   "duration": 4.64,
+   "text": "Adding a path fields makes rules"
+  },
+  {
+   "start": 1434.64,
+   "duration": 6.44,
+   "text": "conditional on file patterns."
+  },
+  {
+   "start": 1437.36,
+   "duration": 6.24,
+   "text": "Okay? That is what we just discussed."
+  },
+  {
+   "start": 1441.08,
+   "duration": 4.92,
+   "text": "Right?"
+  },
+  {
+   "start": 1443.6,
+   "duration": 5.079,
+   "text": "Okay. Now, let's talk about the glob"
+  },
+  {
+   "start": 1446.0,
+   "duration": 4.0,
+   "text": "patterns, file targeting superpower, I"
+  },
+  {
+   "start": 1448.679,
+   "duration": 2.801,
+   "text": "would say."
+  },
+  {
+   "start": 1450.0,
+   "duration": 3.4,
+   "text": "So, glob, you know, right? We talked"
+  },
+  {
+   "start": 1451.48,
+   "duration": 4.36,
+   "text": "about, you know, the"
+  },
+  {
+   "start": 1453.4,
+   "duration": 4.36,
+   "text": "kind of"
+  },
+  {
+   "start": 1455.84,
+   "duration": 4.0,
+   "text": "inbuilt tools of Claude, right? That is"
+  },
+  {
+   "start": 1457.76,
+   "duration": 3.52,
+   "text": "glob."
+  },
+  {
+   "start": 1459.84,
+   "duration": 4.32,
+   "text": "So, glob does what? It lists down your"
+  },
+  {
+   "start": 1461.28,
+   "duration": 5.08,
+   "text": "files based on your pattern."
+  },
+  {
+   "start": 1464.16,
+   "duration": 4.28,
+   "text": "So, here, how do you use a glob pattern?"
+  },
+  {
+   "start": 1466.36,
+   "duration": 3.72,
+   "text": "That is what the main, you know, thing"
+  },
+  {
+   "start": 1468.44,
+   "duration": 2.72,
+   "text": "that I want to convey in this particular"
+  },
+  {
+   "start": 1470.08,
+   "duration": 4.16,
+   "text": "point."
+  },
+  {
+   "start": 1471.16,
+   "duration": 5.36,
+   "text": "Glob patterns are how you define which"
+  },
+  {
+   "start": 1474.24,
+   "duration": 4.56,
+   "text": "files trigger this rule."
+  },
+  {
+   "start": 1476.52,
+   "duration": 3.68,
+   "text": "Right? So, if you've used Git ignore,"
+  },
+  {
+   "start": 1478.8,
+   "duration": 3.4,
+   "text": "you have all you guys have used Git"
+  },
+  {
+   "start": 1480.2,
+   "duration": 4.92,
+   "text": "ignore, right? You know, where we"
+  },
+  {
+   "start": 1482.2,
+   "duration": 5.52,
+   "text": "specify which file patterns, which"
+  },
+  {
+   "start": 1485.12,
+   "duration": 4.559,
+   "text": "folders to exclude in the Git commit"
+  },
+  {
+   "start": 1487.72,
+   "duration": 3.2,
+   "text": "and, you know, Git push operations,"
+  },
+  {
+   "start": 1489.679,
+   "duration": 2.761,
+   "text": "right?"
+  },
+  {
+   "start": 1490.92,
+   "duration": 4.64,
+   "text": "So,"
+  },
+  {
+   "start": 1492.44,
+   "duration": 5.4,
+   "text": "let me make sure that the exam relevant"
+  },
+  {
+   "start": 1495.56,
+   "duration": 3.6,
+   "text": "patterns are crystal clear."
+  },
+  {
+   "start": 1497.84,
+   "duration": 3.68,
+   "text": "Right?"
+  },
+  {
+   "start": 1499.16,
+   "duration": 3.96,
+   "text": "So, for example,"
+  },
+  {
+   "start": 1501.52,
+   "duration": 2.96,
+   "text": "it just means that, for example, this"
+  },
+  {
+   "start": 1503.12,
+   "duration": 3.6,
+   "text": "this particular pattern, let's say,"
+  },
+  {
+   "start": 1504.48,
+   "duration": 5.12,
+   "text": "Terraform/star star /star. It means that"
+  },
+  {
+   "start": 1506.72,
+   "duration": 4.6,
+   "text": "all files under Terraform at any depth."
+  },
+  {
+   "start": 1509.6,
+   "duration": 4.04,
+   "text": "So, if you apply, so if you see in this"
+  },
+  {
+   "start": 1511.32,
+   "duration": 4.44,
+   "text": "particular rule, if you apply that"
+  },
+  {
+   "start": 1513.64,
+   "duration": 4.44,
+   "text": "pattern here, for example, here in the"
+  },
+  {
+   "start": 1515.76,
+   "duration": 4.32,
+   "text": "paths, it would just say that all files"
+  },
+  {
+   "start": 1518.08,
+   "duration": 3.72,
+   "text": "under the Terraform at any depth, that"
+  },
+  {
+   "start": 1520.08,
+   "duration": 4.16,
+   "text": "rule will be applied."
+  },
+  {
+   "start": 1521.8,
+   "duration": 5.52,
+   "text": "Star star /star.test.tsx."
+  },
+  {
+   "start": 1524.24,
+   "duration": 4.8,
+   "text": "It means that any test.tsx file anywhere"
+  },
+  {
+   "start": 1527.32,
+   "duration": 3.92,
+   "text": "in the project."
+  },
+  {
+   "start": 1529.04,
+   "duration": 4.24,
+   "text": "Star star /star.spec.ts."
+  },
+  {
+   "start": 1531.24,
+   "duration": 5.12,
+   "text": "Any spec.ts file."
+  },
+  {
+   "start": 1533.28,
+   "duration": 5.64,
+   "text": "So, this one, src/api. This is a bit"
+  },
+  {
+   "start": 1536.36,
+   "duration": 5.44,
+   "text": "more specific, like any TS file directly"
+  },
+  {
+   "start": 1538.92,
+   "duration": 5.2,
+   "text": "in src/api only."
+  },
+  {
+   "start": 1541.8,
+   "duration": 4.48,
+   "text": "And this is basically both TS and TSX"
+  },
+  {
+   "start": 1544.12,
+   "duration": 3.6,
+   "text": "file anywhere. So, it gives you the"
+  },
+  {
+   "start": 1546.28,
+   "duration": 4.96,
+   "text": "superpower. It gives you that"
+  },
+  {
+   "start": 1547.72,
+   "duration": 7.44,
+   "text": "particular, you know, freedom."
+  },
+  {
+   "start": 1551.24,
+   "duration": 3.92,
+   "text": "You know, to actually"
+  },
+  {
+   "start": 1556.28,
+   "duration": 4.76,
+   "text": "basically, you know, kind of put the"
+  },
+  {
+   "start": 1558.4,
+   "duration": 4.24,
+   "text": "rule to any file or any specific file in"
+  },
+  {
+   "start": 1561.04,
+   "duration": 3.44,
+   "text": "any part of your project. So, that is"
+  },
+  {
+   "start": 1562.64,
+   "duration": 3.76,
+   "text": "the superpower of rules."
+  },
+  {
+   "start": 1564.48,
+   "duration": 3.28,
+   "text": "That is how you use paths in the front"
+  },
+  {
+   "start": 1566.4,
+   "duration": 3.8,
+   "text": "matter."
+  },
+  {
+   "start": 1567.76,
+   "duration": 3.96,
+   "text": "Right? So, just to be just the, you"
+  },
+  {
+   "start": 1570.2,
+   "duration": 3.96,
+   "text": "know, the"
+  },
+  {
+   "start": 1571.72,
+   "duration": 4.88,
+   "text": "jargons that I used, star star means any"
+  },
+  {
+   "start": 1574.16,
+   "duration": 5.0,
+   "text": "number of directories."
+  },
+  {
+   "start": 1576.6,
+   "duration": 3.88,
+   "text": "Right? Like you see star star /star. So,"
+  },
+  {
+   "start": 1579.16,
+   "duration": 2.84,
+   "text": "basically, star star means any"
+  },
+  {
+   "start": 1580.48,
+   "duration": 4.12,
+   "text": "directory."
+  },
+  {
+   "start": 1582.0,
+   "duration": 5.48,
+   "text": "Right? Then /star means with any name"
+  },
+  {
+   "start": 1584.6,
+   "duration": 4.88,
+   "text": "with this test.tsx file."
+  },
+  {
+   "start": 1587.48,
+   "duration": 3.72,
+   "text": "Okay? I hope that is making sense. Star"
+  },
+  {
+   "start": 1589.48,
+   "duration": 2.96,
+   "text": "means anything within one directory"
+  },
+  {
+   "start": 1591.2,
+   "duration": 3.8,
+   "text": "level."
+  },
+  {
+   "start": 1592.44,
+   "duration": 5.76,
+   "text": "Okay? I mean, anything under"
+  },
+  {
+   "start": 1595.0,
+   "duration": 4.679,
+   "text": "with whatever with name.test.tsx,"
+  },
+  {
+   "start": 1598.2,
+   "duration": 3.479,
+   "text": "basically, in that directory with"
+  },
+  {
+   "start": 1599.679,
+   "duration": 4.401,
+   "text": "whatever name, right?"
+  },
+  {
+   "start": 1601.679,
+   "duration": 4.321,
+   "text": "Patterns apply regardless of directory"
+  },
+  {
+   "start": 1604.08,
+   "duration": 4.44,
+   "text": "depth."
+  },
+  {
+   "start": 1606.0,
+   "duration": 2.52,
+   "text": "Okay?"
+  },
+  {
+   "start": 1608.64,
+   "duration": 4.24,
+   "text": "Okay, I hope that is making sense. So,"
+  },
+  {
+   "start": 1611.28,
+   "duration": 3.76,
+   "text": "if I'm going to give you another example"
+  },
+  {
+   "start": 1612.88,
+   "duration": 4.56,
+   "text": "if you guys are getting confused. So,"
+  },
+  {
+   "start": 1615.04,
+   "duration": 4.0,
+   "text": "Terraform. Terraform."
+  },
+  {
+   "start": 1617.44,
+   "duration": 3.36,
+   "text": "Then,"
+  },
+  {
+   "start": 1619.04,
+   "duration": 4.32,
+   "text": "at any depth, basically, any number of"
+  },
+  {
+   "start": 1620.8,
+   "duration": 4.8,
+   "text": "directories inside the Terraform."
+  },
+  {
+   "start": 1623.36,
+   "duration": 3.8,
+   "text": "Right? And then,"
+  },
+  {
+   "start": 1625.6,
+   "duration": 3.6,
+   "text": "in under that directory level. So,"
+  },
+  {
+   "start": 1627.16,
+   "duration": 4.2,
+   "text": "basically, under Terraform, there is"
+  },
+  {
+   "start": 1629.2,
+   "duration": 5.16,
+   "text": "something known as"
+  },
+  {
+   "start": 1631.36,
+   "duration": 3.0,
+   "text": "templates."
+  },
+  {
+   "start": 1634.56,
+   "duration": 4.36,
+   "text": "So, inside the templates. Now, inside"
+  },
+  {
+   "start": 1636.48,
+   "duration": 4.24,
+   "text": "the templates, all the files, basically."
+  },
+  {
+   "start": 1638.92,
+   "duration": 4.52,
+   "text": "I hope that is making sense."
+  },
+  {
+   "start": 1640.72,
+   "duration": 4.32,
+   "text": "So, that is what I wanted to just put"
+  },
+  {
+   "start": 1643.44,
+   "duration": 3.44,
+   "text": "out. There is a visual thing over here"
+  },
+  {
+   "start": 1645.04,
+   "duration": 2.639,
+   "text": "that you can just check it out."
+  },
+  {
+   "start": 1646.88,
+   "duration": 3.16,
+   "text": "Mhm?"
+  },
+  {
+   "start": 1647.679,
+   "duration": 4.401,
+   "text": "I hope that is making sense."
+  },
+  {
+   "start": 1650.04,
+   "duration": 5.16,
+   "text": "Okay, the slash memory command,"
+  },
+  {
+   "start": 1652.08,
+   "duration": 4.88,
+   "text": "basically. So,"
+  },
+  {
+   "start": 1655.2,
+   "duration": 3.52,
+   "text": "you if you want to debug, you know, your"
+  },
+  {
+   "start": 1656.96,
+   "duration": 4.24,
+   "text": "setup. If you want to know that, \"Okay,"
+  },
+  {
+   "start": 1658.72,
+   "duration": 3.48,
+   "text": "Claude knows what are what all files are"
+  },
+  {
+   "start": 1661.2,
+   "duration": 2.16,
+   "text": "there,"
+  },
+  {
+   "start": 1662.2,
+   "duration": 3.56,
+   "text": "what all rules are there.\" It is"
+  },
+  {
+   "start": 1663.36,
+   "duration": 4.44,
+   "text": "actually, you know, getting all those"
+  },
+  {
+   "start": 1665.76,
+   "duration": 3.12,
+   "text": "files and rules, basically,"
+  },
+  {
+   "start": 1667.8,
+   "duration": 2.48,
+   "text": "you know, in your session. You want to"
+  },
+  {
+   "start": 1668.88,
+   "duration": 4.08,
+   "text": "check that."
+  },
+  {
+   "start": 1670.28,
+   "duration": 4.96,
+   "text": "Or while using Claude, you found out"
+  },
+  {
+   "start": 1672.96,
+   "duration": 3.68,
+   "text": "that it is not loading your Claude.md"
+  },
+  {
+   "start": 1675.24,
+   "duration": 2.4,
+   "text": "files or your rules or something like"
+  },
+  {
+   "start": 1676.64,
+   "duration": 2.96,
+   "text": "that."
+  },
+  {
+   "start": 1677.64,
+   "duration": 5.32,
+   "text": "If you would use the slash memory"
+  },
+  {
+   "start": 1679.6,
+   "duration": 5.48,
+   "text": "command. Okay? Now, if Claude"
+  },
+  {
+   "start": 1682.96,
+   "duration": 4.719,
+   "text": "doesn't list down a particular file that"
+  },
+  {
+   "start": 1685.08,
+   "duration": 4.96,
+   "text": "you want Claude to load, basically, in"
+  },
+  {
+   "start": 1687.679,
+   "duration": 4.761,
+   "text": "your session, then that is your problem"
+  },
+  {
+   "start": 1690.04,
+   "duration": 5.72,
+   "text": "that you need to fix. Maybe some naming"
+  },
+  {
+   "start": 1692.44,
+   "duration": 5.44,
+   "text": "convention or some configurations. It"
+  },
+  {
+   "start": 1695.76,
+   "duration": 3.68,
+   "text": "should load, but due to some reason it"
+  },
+  {
+   "start": 1697.88,
+   "duration": 3.32,
+   "text": "is not loading, you need to check that"
+  },
+  {
+   "start": 1699.44,
+   "duration": 4.04,
+   "text": "out, basically. So, that is what the"
+  },
+  {
+   "start": 1701.2,
+   "duration": 4.4,
+   "text": "slash memory command will do. And if you"
+  },
+  {
+   "start": 1703.48,
+   "duration": 4.04,
+   "text": "go, I can show you that here. I have"
+  },
+  {
+   "start": 1705.6,
+   "duration": 5.72,
+   "text": "opened my Claude code over already. I'm"
+  },
+  {
+   "start": 1707.52,
+   "duration": 5.36,
+   "text": "just going to just"
+  },
+  {
+   "start": 1711.32,
+   "duration": 3.44,
+   "text": "See?"
+  },
+  {
+   "start": 1712.88,
+   "duration": 4.44,
+   "text": "So, if you see, it is giving me project"
+  },
+  {
+   "start": 1714.76,
+   "duration": 3.96,
+   "text": "memory, user memory, and"
+  },
+  {
+   "start": 1717.32,
+   "duration": 3.64,
+   "text": "this thing. So, I'm just going to go for"
+  },
+  {
+   "start": 1718.72,
+   "duration": 5.28,
+   "text": "project memory."
+  },
+  {
+   "start": 1720.96,
+   "duration": 5.8,
+   "text": "So, if you see here,"
+  },
+  {
+   "start": 1724.0,
+   "duration": 5.2,
+   "text": "let me just show that out."
+  },
+  {
+   "start": 1726.76,
+   "duration": 4.36,
+   "text": "Okay, so it is loading the particular"
+  },
+  {
+   "start": 1729.2,
+   "duration": 5.44,
+   "text": "Claude.md file. It is showing me that it"
+  },
+  {
+   "start": 1731.12,
+   "duration": 6.36,
+   "text": "has in memory. Right? So,"
+  },
+  {
+   "start": 1734.64,
+   "duration": 4.96,
+   "text": "that is what the memory command will do."
+  },
+  {
+   "start": 1737.48,
+   "duration": 4.12,
+   "text": "So, that is what if in the exam it tells"
+  },
+  {
+   "start": 1739.6,
+   "duration": 4.8,
+   "text": "you that, you know, how to check"
+  },
+  {
+   "start": 1741.6,
+   "duration": 4.48,
+   "text": "if Claude is loading your"
+  },
+  {
+   "start": 1744.4,
+   "duration": 4.64,
+   "text": "files, then basically, you have to use"
+  },
+  {
+   "start": 1746.08,
+   "duration": 6.36,
+   "text": "the slash memory command."
+  },
+  {
+   "start": 1749.04,
+   "duration": 5.72,
+   "text": "Okay? So, finish it off. A sample"
+  },
+  {
+   "start": 1752.44,
+   "duration": 4.04,
+   "text": "question, maybe. You know,"
+  },
+  {
+   "start": 1754.76,
+   "duration": 3.28,
+   "text": "different rules for TypeScript files and"
+  },
+  {
+   "start": 1756.48,
+   "duration": 5.08,
+   "text": "Terraform files. How do you apply"
+  },
+  {
+   "start": 1758.04,
+   "duration": 6.08,
+   "text": "TypeScript files only to src/star star"
+  },
+  {
+   "start": 1761.56,
+   "duration": 6.52,
+   "text": "/star.ts and Terraform guidance to only"
+  },
+  {
+   "start": 1764.12,
+   "duration": 6.16,
+   "text": "Terraform /star star /star. So, you"
+  },
+  {
+   "start": 1768.08,
+   "duration": 4.4,
+   "text": "would use Claude/rules"
+  },
+  {
+   "start": 1770.28,
+   "duration": 5.2,
+   "text": "for plus YAML paths"
+  },
+  {
+   "start": 1772.48,
+   "duration": 5.24,
+   "text": "front matter. So, purpose-built for"
+  },
+  {
+   "start": 1775.48,
+   "duration": 4.28,
+   "text": "glob-based conditional loading. So,"
+  },
+  {
+   "start": 1777.72,
+   "duration": 4.08,
+   "text": "these are the glob patterns, and you"
+  },
+  {
+   "start": 1779.76,
+   "duration": 5.36,
+   "text": "would use it in the rules."
+  },
+  {
+   "start": 1781.8,
+   "duration": 4.96,
+   "text": "Right? And so, that will be your answer."
+  },
+  {
+   "start": 1785.12,
+   "duration": 2.8,
+   "text": "Directory level Claude, I have already"
+  },
+  {
+   "start": 1786.76,
+   "duration": 3.84,
+   "text": "explained the difference between"
+  },
+  {
+   "start": 1787.92,
+   "duration": 5.6,
+   "text": "cloud.md and"
+  },
+  {
+   "start": 1790.6,
+   "duration": 5.28,
+   "text": "cloud rules. Make sure you are kind of"
+  },
+  {
+   "start": 1793.52,
+   "duration": 5.32,
+   "text": "differentiating between them."
+  },
+  {
+   "start": 1795.88,
+   "duration": 5.68,
+   "text": "@import for conditional loading."
+  },
+  {
+   "start": 1798.84,
+   "duration": 5.04,
+   "text": "Okay, it is not relevant over here and"
+  },
+  {
+   "start": 1801.56,
+   "duration": 3.84,
+   "text": "cloud.md with path prefixes."
+  },
+  {
+   "start": 1803.88,
+   "duration": 2.6,
+   "text": "It is not going to work in this"
+  },
+  {
+   "start": 1805.4,
+   "duration": 3.08,
+   "text": "scenario."
+  },
+  {
+   "start": 1806.48,
+   "duration": 3.52,
+   "text": "So exam cheat sheet,"
+  },
+  {
+   "start": 1808.48,
+   "duration": 3.68,
+   "text": "right? Guys, take a screenshot or"
+  },
+  {
+   "start": 1810.0,
+   "duration": 4.8,
+   "text": "something if you want to keep it."
+  },
+  {
+   "start": 1812.16,
+   "duration": 4.96,
+   "text": "So the three levels grade user level"
+  },
+  {
+   "start": 1814.8,
+   "duration": 5.56,
+   "text": "project level directory level, okay? And"
+  },
+  {
+   "start": 1817.12,
+   "duration": 6.36,
+   "text": "how the cloud MD you know kind of"
+  },
+  {
+   "start": 1820.36,
+   "duration": 5.68,
+   "text": "performs or"
+  },
+  {
+   "start": 1823.48,
+   "duration": 5.8,
+   "text": "kind of what do we say?"
+  },
+  {
+   "start": 1826.04,
+   "duration": 5.88,
+   "text": "Works in different levels, right? And"
+  },
+  {
+   "start": 1829.28,
+   "duration": 5.36,
+   "text": "who sees it? User level only you project"
+  },
+  {
+   "start": 1831.92,
+   "duration": 5.8,
+   "text": "level whole team plus CI directory level"
+  },
+  {
+   "start": 1834.64,
+   "duration": 5.12,
+   "text": "the directory and the below. Rules"
+  },
+  {
+   "start": 1837.72,
+   "duration": 3.96,
+   "text": "conditional conditionally when you"
+  },
+  {
+   "start": 1839.76,
+   "duration": 3.88,
+   "text": "written when in the question or in your"
+  },
+  {
+   "start": 1841.68,
+   "duration": 4.16,
+   "text": "real life whenever something comes as"
+  },
+  {
+   "start": 1843.64,
+   "duration": 5.0,
+   "text": "conditional application, then in that"
+  },
+  {
+   "start": 1845.84,
+   "duration": 5.68,
+   "text": "case you would use cloud rules."
+  },
+  {
+   "start": 1848.64,
+   "duration": 5.24,
+   "text": "The three mechanisms import paths front"
+  },
+  {
+   "start": 1851.52,
+   "duration": 4.76,
+   "text": "matter conditional loading import means"
+  },
+  {
+   "start": 1853.88,
+   "duration": 5.24,
+   "text": "modular cloud.md file topic specific"
+  },
+  {
+   "start": 1856.28,
+   "duration": 4.84,
+   "text": "rules memory means /memory is used to"
+  },
+  {
+   "start": 1859.12,
+   "duration": 3.6,
+   "text": "debug exactly what's loaded in any"
+  },
+  {
+   "start": 1861.12,
+   "duration": 3.72,
+   "text": "session."
+  },
+  {
+   "start": 1862.72,
+   "duration": 4.88,
+   "text": "Okay, three facts that win exam"
+  },
+  {
+   "start": 1864.84,
+   "duration": 5.32,
+   "text": "questions. User level is never shared"
+  },
+  {
+   "start": 1867.6,
+   "duration": 4.4,
+   "text": "cloud rules plus paths the answer for"
+  },
+  {
+   "start": 1870.16,
+   "duration": 3.6,
+   "text": "conditional file type. I'm"
+  },
+  {
+   "start": 1872.0,
+   "duration": 4.56,
+   "text": "telling that again and again so that it"
+  },
+  {
+   "start": 1873.76,
+   "duration": 4.4,
+   "text": "kind of settles it down in your mind so"
+  },
+  {
+   "start": 1876.56,
+   "duration": 2.56,
+   "text": "that you don't get confused later on,"
+  },
+  {
+   "start": 1878.16,
+   "duration": 3.36,
+   "text": "right?"
+  },
+  {
+   "start": 1879.12,
+   "duration": 5.04,
+   "text": "/memory means a diagnostic command for"
+  },
+  {
+   "start": 1881.52,
+   "duration": 5.84,
+   "text": "config debugging."
+  },
+  {
+   "start": 1884.16,
+   "duration": 4.44,
+   "text": "Okay, so that is all for this particular"
+  },
+  {
+   "start": 1887.36,
+   "duration": 4.04,
+   "text": "lesson."
+  },
+  {
+   "start": 1888.6,
+   "duration": 2.8,
+   "text": "And"
+  },
+  {
+   "start": 1891.48,
+   "duration": 5.84,
+   "text": "yeah, see you in the next lesson. Take"
+  },
+  {
+   "start": 1893.56,
+   "duration": 3.76,
+   "text": "care. Ta-ta and bye-bye."
+  }
+ ]
+}

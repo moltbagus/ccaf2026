@@ -1,0 +1,4482 @@
+{
+ "video_id": "CaDaLn7DcQ0",
+ "episode": "Ep 16",
+ "title": "Structured Output & JSON Schema",
+ "segments": [
+  {
+   "start": 3.2,
+   "duration": 4.48,
+   "text": "Welcome to this lesson. So we are kind"
+  },
+  {
+   "start": 5.6,
+   "duration": 3.84,
+   "text": "of nearing the end of this course. We"
+  },
+  {
+   "start": 7.68,
+   "duration": 3.76,
+   "text": "have we just have like a couple of"
+  },
+  {
+   "start": 9.44,
+   "duration": 4.48,
+   "text": "videos till we are finishing this"
+  },
+  {
+   "start": 11.44,
+   "duration": 4.96,
+   "text": "course. And a lot of people have been"
+  },
+  {
+   "start": 13.92,
+   "duration": 4.96,
+   "text": "asking me uh when this course will be"
+  },
+  {
+   "start": 16.4,
+   "duration": 5.36,
+   "text": "over. So you know I have been telling"
+  },
+  {
+   "start": 18.88,
+   "duration": 4.639,
+   "text": "that like the first week of June and"
+  },
+  {
+   "start": 21.76,
+   "duration": 4.0,
+   "text": "that's that's the deadline. I I'm I'm"
+  },
+  {
+   "start": 23.519,
+   "duration": 5.361,
+   "text": "planning to finish this course by the"
+  },
+  {
+   "start": 25.76,
+   "duration": 5.679,
+   "text": "first week of June. So yeah, we are just"
+  },
+  {
+   "start": 28.88,
+   "duration": 4.0,
+   "text": "a couple of videos short and I'll try to"
+  },
+  {
+   "start": 31.439,
+   "duration": 4.481,
+   "text": "finish it before that time as well"
+  },
+  {
+   "start": 32.88,
+   "duration": 5.359,
+   "text": "because a lot of uh students have their"
+  },
+  {
+   "start": 35.92,
+   "duration": 4.799,
+   "text": "exams planned as well. I understand"
+  },
+  {
+   "start": 38.239,
+   "duration": 4.721,
+   "text": "that. So I'll try to finish it before"
+  },
+  {
+   "start": 40.719,
+   "duration": 5.041,
+   "text": "that time as well. I'll give my best but"
+  },
+  {
+   "start": 42.96,
+   "duration": 6.0,
+   "text": "I want to keep up the quality of the"
+  },
+  {
+   "start": 45.76,
+   "duration": 6.16,
+   "text": "videos and the research that I do. So um"
+  },
+  {
+   "start": 48.96,
+   "duration": 6.0,
+   "text": "I might take time for the videos but"
+  },
+  {
+   "start": 51.92,
+   "duration": 5.68,
+   "text": "yeah uh I'll make sure I'll try my best"
+  },
+  {
+   "start": 54.96,
+   "duration": 5.599,
+   "text": "to you know complete it before that"
+  },
+  {
+   "start": 57.6,
+   "duration": 6.0,
+   "text": "time. So yeah for this particular lesson"
+  },
+  {
+   "start": 60.559,
+   "duration": 6.001,
+   "text": "we're going to talk about um production"
+  },
+  {
+   "start": 63.6,
+   "duration": 6.08,
+   "text": "grade extraction and uh to be honest in"
+  },
+  {
+   "start": 66.56,
+   "duration": 5.919,
+   "text": "layman's terms it's just structured"
+  },
+  {
+   "start": 69.68,
+   "duration": 6.08,
+   "text": "output from your agents."
+  },
+  {
+   "start": 72.479,
+   "duration": 4.96,
+   "text": "Now um just going to uh talk about that"
+  },
+  {
+   "start": 75.76,
+   "duration": 4.56,
+   "text": "customer support agent that we have"
+  },
+  {
+   "start": 77.439,
+   "duration": 5.68,
+   "text": "built right if you have a look at this"
+  },
+  {
+   "start": 80.32,
+   "duration": 4.64,
+   "text": "um all this uh agent. py and all of this"
+  },
+  {
+   "start": 83.119,
+   "duration": 3.921,
+   "text": "code that we have written over here."
+  },
+  {
+   "start": 84.96,
+   "duration": 4.159,
+   "text": "This capstone project py right we have"
+  },
+  {
+   "start": 87.04,
+   "duration": 6.24,
+   "text": "written a lot of code and we are having"
+  },
+  {
+   "start": 89.119,
+   "duration": 7.201,
+   "text": "a lot of tools in use currently and we"
+  },
+  {
+   "start": 93.28,
+   "duration": 5.199,
+   "text": "know what each tool does. I mean we are"
+  },
+  {
+   "start": 96.32,
+   "duration": 4.88,
+   "text": "pretty much sure and we have put some"
+  },
+  {
+   "start": 98.479,
+   "duration": 5.521,
+   "text": "hooks over there. We have put a proper"
+  },
+  {
+   "start": 101.2,
+   "duration": 6.4,
+   "text": "system prompts and our our agent is"
+  },
+  {
+   "start": 104.0,
+   "duration": 7.04,
+   "text": "working really fine. But the thing is"
+  },
+  {
+   "start": 107.6,
+   "duration": 6.0,
+   "text": "what if I want to use those outputs that"
+  },
+  {
+   "start": 111.04,
+   "duration": 6.0,
+   "text": "I get from those tools and I want to"
+  },
+  {
+   "start": 113.6,
+   "duration": 4.879,
+   "text": "pass it on to a different sub agent or I"
+  },
+  {
+   "start": 117.04,
+   "duration": 3.759,
+   "text": "want to just pass it on to the"
+  },
+  {
+   "start": 118.479,
+   "duration": 6.96,
+   "text": "coordinator you know to do some other"
+  },
+  {
+   "start": 120.799,
+   "duration": 7.281,
+   "text": "works and perhaps those output formats"
+  },
+  {
+   "start": 125.439,
+   "duration": 4.481,
+   "text": "that those tools return may not be in"
+  },
+  {
+   "start": 128.08,
+   "duration": 5.519,
+   "text": "the required format that we haven't"
+  },
+  {
+   "start": 129.92,
+   "duration": 5.84,
+   "text": "talked about. We had talked about um"
+  },
+  {
+   "start": 133.599,
+   "duration": 4.321,
+   "text": "output formats in our CI/CD pipelines"
+  },
+  {
+   "start": 135.76,
+   "duration": 4.0,
+   "text": "and all those things but we actually"
+  },
+  {
+   "start": 137.92,
+   "duration": 4.48,
+   "text": "didn't talk about the output formats"
+  },
+  {
+   "start": 139.76,
+   "duration": 5.04,
+   "text": "that much in detail uh when you are"
+  },
+  {
+   "start": 142.4,
+   "duration": 5.76,
+   "text": "going to use it as tools right because"
+  },
+  {
+   "start": 144.8,
+   "duration": 7.519,
+   "text": "each tool will return you a specific um"
+  },
+  {
+   "start": 148.16,
+   "duration": 7.84,
+   "text": "kind of output and uh to be honest uh"
+  },
+  {
+   "start": 152.319,
+   "duration": 6.161,
+   "text": "the model if you don't specify it"
+  },
+  {
+   "start": 156.0,
+   "duration": 4.48,
+   "text": "completely it might return you I mean"
+  },
+  {
+   "start": 158.48,
+   "duration": 4.16,
+   "text": "the data would be consistent but it"
+  },
+  {
+   "start": 160.48,
+   "duration": 4.56,
+   "text": "might return you in a format that you"
+  },
+  {
+   "start": 162.64,
+   "duration": 5.92,
+   "text": "don't do not want basically. So that is"
+  },
+  {
+   "start": 165.04,
+   "duration": 8.479,
+   "text": "what um we are going to cover in this"
+  },
+  {
+   "start": 168.56,
+   "duration": 6.959,
+   "text": "lesson, right? You know, so so um we"
+  },
+  {
+   "start": 173.519,
+   "duration": 5.44,
+   "text": "have to enforce structured output"
+  },
+  {
+   "start": 175.519,
+   "duration": 5.281,
+   "text": "mechanisms, right? And a specific"
+  },
+  {
+   "start": 178.959,
+   "duration": 5.121,
+   "text": "concept that we're going to use in this"
+  },
+  {
+   "start": 180.8,
+   "duration": 5.359,
+   "text": "lesson is uh tool use. And we're going"
+  },
+  {
+   "start": 184.08,
+   "duration": 4.079,
+   "text": "to talk about it in detail in a little"
+  },
+  {
+   "start": 186.159,
+   "duration": 4.8,
+   "text": "bit later. But yeah, that is the thing"
+  },
+  {
+   "start": 188.159,
+   "duration": 5.36,
+   "text": "tool use. and it's kind of you know"
+  },
+  {
+   "start": 190.959,
+   "duration": 7.441,
+   "text": "asked in the exam as well um a lot many"
+  },
+  {
+   "start": 193.519,
+   "duration": 7.681,
+   "text": "times. So we can also see the"
+  },
+  {
+   "start": 198.4,
+   "duration": 6.08,
+   "text": "resiliency of retry loops you know for"
+  },
+  {
+   "start": 201.2,
+   "duration": 5.52,
+   "text": "example uh you have invoked your agent"
+  },
+  {
+   "start": 204.48,
+   "duration": 3.92,
+   "text": "and it will go in in the agentic loop"
+  },
+  {
+   "start": 206.72,
+   "duration": 3.68,
+   "text": "and it will give you a wrong output."
+  },
+  {
+   "start": 208.4,
+   "duration": 3.919,
+   "text": "Then what you would do you would have a"
+  },
+  {
+   "start": 210.4,
+   "duration": 3.68,
+   "text": "retry counter for example and then you"
+  },
+  {
+   "start": 212.319,
+   "duration": 3.28,
+   "text": "would retry that loop something like"
+  },
+  {
+   "start": 214.08,
+   "duration": 4.719,
+   "text": "that you will have right and we're going"
+  },
+  {
+   "start": 215.599,
+   "duration": 6.64,
+   "text": "to discuss that in detail as well."
+  },
+  {
+   "start": 218.799,
+   "duration": 5.921,
+   "text": "So the main um thing that I want to"
+  },
+  {
+   "start": 222.239,
+   "duration": 4.401,
+   "text": "discuss in this lecture is structured"
+  },
+  {
+   "start": 224.72,
+   "duration": 3.92,
+   "text": "data extraction"
+  },
+  {
+   "start": 226.64,
+   "duration": 4.959,
+   "text": "um because it is a very important thing"
+  },
+  {
+   "start": 228.64,
+   "duration": 5.76,
+   "text": "that comes in the exam and I want you"
+  },
+  {
+   "start": 231.599,
+   "duration": 4.961,
+   "text": "guys to really understand it. So let us"
+  },
+  {
+   "start": 234.4,
+   "duration": 3.919,
+   "text": "understand what does free form prompt"
+  },
+  {
+   "start": 236.56,
+   "duration": 4.399,
+   "text": "prompting breaks production pipelines."
+  },
+  {
+   "start": 238.319,
+   "duration": 4.64,
+   "text": "Why does it is very important. So we"
+  },
+  {
+   "start": 240.959,
+   "duration": 4.881,
+   "text": "discussed how you can make your tools"
+  },
+  {
+   "start": 242.959,
+   "duration": 4.721,
+   "text": "efficient. how Claude will efficiently"
+  },
+  {
+   "start": 245.84,
+   "duration": 3.84,
+   "text": "pick your tools by giving a better"
+  },
+  {
+   "start": 247.68,
+   "duration": 4.479,
+   "text": "description, a better name and all those"
+  },
+  {
+   "start": 249.68,
+   "duration": 5.199,
+   "text": "things we have discovered before. So we"
+  },
+  {
+   "start": 252.159,
+   "duration": 6.8,
+   "text": "we we focused more on the functionality"
+  },
+  {
+   "start": 254.879,
+   "duration": 7.281,
+   "text": "of the tools, right? But we should"
+  },
+  {
+   "start": 258.959,
+   "duration": 4.881,
+   "text": "really also understand what output those"
+  },
+  {
+   "start": 262.16,
+   "duration": 4.479,
+   "text": "kind of tools return. For example, I"
+  },
+  {
+   "start": 263.84,
+   "duration": 4.639,
+   "text": "give you an example of the uh customer"
+  },
+  {
+   "start": 266.639,
+   "duration": 5.441,
+   "text": "support agent that we had written,"
+  },
+  {
+   "start": 268.479,
+   "duration": 5.761,
+   "text": "right? And we talked about the uh how to"
+  },
+  {
+   "start": 272.08,
+   "duration": 4.88,
+   "text": "use hooks over there, how to make the"
+  },
+  {
+   "start": 274.24,
+   "duration": 5.04,
+   "text": "tools efficient and how to create checks"
+  },
+  {
+   "start": 276.96,
+   "duration": 5.36,
+   "text": "and all those things. So you know every"
+  },
+  {
+   "start": 279.28,
+   "duration": 4.4,
+   "text": "tool executes in a specific manner. But"
+  },
+  {
+   "start": 282.32,
+   "duration": 3.599,
+   "text": "at the end of the day when we were"
+  },
+  {
+   "start": 283.68,
+   "duration": 4.0,
+   "text": "executing that particular agent, we were"
+  },
+  {
+   "start": 285.919,
+   "duration": 4.0,
+   "text": "not caring about the output of each"
+  },
+  {
+   "start": 287.68,
+   "duration": 5.2,
+   "text": "tool. But here we have to understand"
+  },
+  {
+   "start": 289.919,
+   "duration": 4.481,
+   "text": "that. So why free form prompting breaks"
+  },
+  {
+   "start": 292.88,
+   "duration": 3.759,
+   "text": "production pipeline. So markdown"
+  },
+  {
+   "start": 294.4,
+   "duration": 4.64,
+   "text": "wrapping is one of the things model"
+  },
+  {
+   "start": 296.639,
+   "duration": 4.481,
+   "text": "returns triple back. This is an example."
+  },
+  {
+   "start": 299.04,
+   "duration": 3.84,
+   "text": "Okay, try to understand this. The parser"
+  },
+  {
+   "start": 301.12,
+   "duration": 4.72,
+   "text": "hits a back tick instead of a bracket"
+  },
+  {
+   "start": 302.88,
+   "duration": 4.879,
+   "text": "and throws a fatal syntax error. It is"
+  },
+  {
+   "start": 305.84,
+   "duration": 4.079,
+   "text": "intellectually the data is correct but"
+  },
+  {
+   "start": 307.759,
+   "duration": 4.481,
+   "text": "the way it is returning the data is not"
+  },
+  {
+   "start": 309.919,
+   "duration": 5.601,
+   "text": "correct. So structurally it is not"
+  },
+  {
+   "start": 312.24,
+   "duration": 5.28,
+   "text": "correct. So schema drift complex"
+  },
+  {
+   "start": 315.52,
+   "duration": 4.32,
+   "text": "documents cause the model to omit"
+  },
+  {
+   "start": 317.52,
+   "duration": 4.08,
+   "text": "optional fields, change key names or"
+  },
+  {
+   "start": 319.84,
+   "duration": 4.72,
+   "text": "alter nesting structures. Production"
+  },
+  {
+   "start": 321.6,
+   "duration": 4.879,
+   "text": "reliability collapses. So the schema in"
+  },
+  {
+   "start": 324.56,
+   "duration": 4.24,
+   "text": "which the data is required to be"
+  },
+  {
+   "start": 326.479,
+   "duration": 4.801,
+   "text": "processed maybe that is not the schema"
+  },
+  {
+   "start": 328.8,
+   "duration": 6.0,
+   "text": "in which the tool returns the data or"
+  },
+  {
+   "start": 331.28,
+   "duration": 5.52,
+   "text": "your one sub agent returns the data."
+  },
+  {
+   "start": 334.8,
+   "duration": 4.32,
+   "text": "So in that case the coordinator is"
+  },
+  {
+   "start": 336.8,
+   "duration": 5.28,
+   "text": "responsible to handle what kind of"
+  },
+  {
+   "start": 339.12,
+   "duration": 4.799,
+   "text": "schema it needs to process it further."
+  },
+  {
+   "start": 342.08,
+   "duration": 3.76,
+   "text": "Right?"
+  },
+  {
+   "start": 343.919,
+   "duration": 4.72,
+   "text": "That is that is for the coordinator to"
+  },
+  {
+   "start": 345.84,
+   "duration": 6.0,
+   "text": "handle. Yes, that is correct. But if"
+  },
+  {
+   "start": 348.639,
+   "duration": 5.601,
+   "text": "your uh sub agent uses some tools or"
+  },
+  {
+   "start": 351.84,
+   "duration": 5.44,
+   "text": "your agent uses some tools then you can"
+  },
+  {
+   "start": 354.24,
+   "duration": 5.6,
+   "text": "also enforce that structural kind of"
+  },
+  {
+   "start": 357.28,
+   "duration": 4.08,
+   "text": "convention that Claude needs to"
+  },
+  {
+   "start": 359.84,
+   "duration": 3.84,
+   "text": "understand to follow and we will"
+  },
+  {
+   "start": 361.36,
+   "duration": 4.64,
+   "text": "understand how to do that basically in"
+  },
+  {
+   "start": 363.68,
+   "duration": 4.16,
+   "text": "this particular lesson. The third thing"
+  },
+  {
+   "start": 366.0,
+   "duration": 3.36,
+   "text": "is fabrication of required fields. And"
+  },
+  {
+   "start": 367.84,
+   "duration": 3.44,
+   "text": "it is very very important to understand"
+  },
+  {
+   "start": 369.36,
+   "duration": 4.32,
+   "text": "and uh if you're if you're if you're"
+  },
+  {
+   "start": 371.28,
+   "duration": 3.84,
+   "text": "building a production grade agent or"
+  },
+  {
+   "start": 373.68,
+   "duration": 3.76,
+   "text": "something like that, it is very"
+  },
+  {
+   "start": 375.12,
+   "duration": 4.24,
+   "text": "important to understand that uh if you"
+  },
+  {
+   "start": 377.44,
+   "duration": 5.039,
+   "text": "are reading or extracting data from a"
+  },
+  {
+   "start": 379.36,
+   "duration": 5.04,
+   "text": "document or from a reliable source and"
+  },
+  {
+   "start": 382.479,
+   "duration": 4.081,
+   "text": "uh there are certain fields for which"
+  },
+  {
+   "start": 384.4,
+   "duration": 4.079,
+   "text": "the data is not present. Then the in"
+  },
+  {
+   "start": 386.56,
+   "duration": 5.44,
+   "text": "that in those cases the model might"
+  },
+  {
+   "start": 388.479,
+   "duration": 5.601,
+   "text": "fabricate some data for those fields and"
+  },
+  {
+   "start": 392.0,
+   "duration": 3.36,
+   "text": "you know that is not the required thing."
+  },
+  {
+   "start": 394.08,
+   "duration": 4.16,
+   "text": "you know it might be personal"
+  },
+  {
+   "start": 395.36,
+   "duration": 4.8,
+   "text": "information it might be uh very critical"
+  },
+  {
+   "start": 398.24,
+   "duration": 4.079,
+   "text": "information for a patient for example if"
+  },
+  {
+   "start": 400.16,
+   "duration": 4.64,
+   "text": "you are working on a agent for a"
+  },
+  {
+   "start": 402.319,
+   "duration": 5.041,
+   "text": "hospital or something. So in those case"
+  },
+  {
+   "start": 404.8,
+   "duration": 5.839,
+   "text": "fabricating data is not an option. So"
+  },
+  {
+   "start": 407.36,
+   "duration": 6.64,
+   "text": "how do we actually handle that because"
+  },
+  {
+   "start": 410.639,
+   "duration": 6.321,
+   "text": "that is also part of uh you know a"
+  },
+  {
+   "start": 414.0,
+   "duration": 5.12,
+   "text": "structured data extraction or structured"
+  },
+  {
+   "start": 416.96,
+   "duration": 3.12,
+   "text": "data handling right so that is also one"
+  },
+  {
+   "start": 419.12,
+   "duration": 4.24,
+   "text": "of the things that we're going to"
+  },
+  {
+   "start": 420.08,
+   "duration": 5.44,
+   "text": "discuss in this lecture as well. So that"
+  },
+  {
+   "start": 423.36,
+   "duration": 3.92,
+   "text": "is the thing that I wanted to discuss."
+  },
+  {
+   "start": 425.52,
+   "duration": 4.64,
+   "text": "So [snorts] let's move on. Protocol"
+  },
+  {
+   "start": 427.28,
+   "duration": 5.84,
+   "text": "enforcement of a prompt engineering. Now"
+  },
+  {
+   "start": 430.16,
+   "duration": 4.8,
+   "text": "fake tool paradism. So define a tool"
+  },
+  {
+   "start": 433.12,
+   "duration": 4.88,
+   "text": "that does nothing but accept a"
+  },
+  {
+   "start": 434.96,
+   "duration": 5.519,
+   "text": "structured payload. Now let's let's"
+  },
+  {
+   "start": 438.0,
+   "duration": 4.479,
+   "text": "understand it uh in in in a in a pretty"
+  },
+  {
+   "start": 440.479,
+   "duration": 5.44,
+   "text": "much of a easy manner so that you would"
+  },
+  {
+   "start": 442.479,
+   "duration": 7.44,
+   "text": "not get confused. So you have an"
+  },
+  {
+   "start": 445.919,
+   "duration": 6.081,
+   "text": "application running and uh there are lot"
+  },
+  {
+   "start": 449.919,
+   "duration": 4.241,
+   "text": "of functions over there. Consider them"
+  },
+  {
+   "start": 452.0,
+   "duration": 4.8,
+   "text": "as tools like we have in our customer"
+  },
+  {
+   "start": 454.16,
+   "duration": 5.52,
+   "text": "agent tool. Now each function will"
+  },
+  {
+   "start": 456.8,
+   "duration": 4.959,
+   "text": "return its specified data. For example,"
+  },
+  {
+   "start": 459.68,
+   "duration": 4.0,
+   "text": "you have five functions. Three of them"
+  },
+  {
+   "start": 461.759,
+   "duration": 6.241,
+   "text": "returns integer data and two of them"
+  },
+  {
+   "start": 463.68,
+   "duration": 6.959,
+   "text": "returns um for example string data. Now"
+  },
+  {
+   "start": 468.0,
+   "duration": 5.52,
+   "text": "for the user to understand those data"
+  },
+  {
+   "start": 470.639,
+   "duration": 5.361,
+   "text": "needs to be in a specific format, right?"
+  },
+  {
+   "start": 473.52,
+   "duration": 4.239,
+   "text": "You cannot randomly even though the data"
+  },
+  {
+   "start": 476.0,
+   "duration": 3.44,
+   "text": "is correct you cannot just randomly"
+  },
+  {
+   "start": 477.759,
+   "duration": 5.921,
+   "text": "throw out the data to the user and tell"
+  },
+  {
+   "start": 479.44,
+   "duration": 9.199,
+   "text": "that okay this is the data 1 1257 uh my"
+  },
+  {
+   "start": 483.68,
+   "duration": 6.959,
+   "text": "name is um dawn and you know I am a"
+  },
+  {
+   "start": 488.639,
+   "duration": 3.601,
+   "text": "gangster or something like that. You"
+  },
+  {
+   "start": 490.639,
+   "duration": 5.84,
+   "text": "cannot just throw out this random data"
+  },
+  {
+   "start": 492.24,
+   "duration": 6.079,
+   "text": "to the customer and um you know kind of"
+  },
+  {
+   "start": 496.479,
+   "duration": 3.681,
+   "text": "um make them understand it right. It has"
+  },
+  {
+   "start": 498.319,
+   "duration": 4.401,
+   "text": "to be in a specific format like name is"
+  },
+  {
+   "start": 500.16,
+   "duration": 4.879,
+   "text": "this, age is this, something something"
+  },
+  {
+   "start": 502.72,
+   "duration": 4.96,
+   "text": "like this, key and value pair you want"
+  },
+  {
+   "start": 505.039,
+   "duration": 4.481,
+   "text": "for example. In that case you know your"
+  },
+  {
+   "start": 507.68,
+   "duration": 3.359,
+   "text": "agent might not return the data in that"
+  },
+  {
+   "start": 509.52,
+   "duration": 3.439,
+   "text": "specific format because you haven't"
+  },
+  {
+   "start": 511.039,
+   "duration": 4.24,
+   "text": "enforced that kind of a thing on your"
+  },
+  {
+   "start": 512.959,
+   "duration": 5.041,
+   "text": "agent and on your tool usages for"
+  },
+  {
+   "start": 515.279,
+   "duration": 5.041,
+   "text": "example. So that is where the fake tool"
+  },
+  {
+   "start": 518.0,
+   "duration": 4.159,
+   "text": "paradigm comes in the picture. So let's"
+  },
+  {
+   "start": 520.32,
+   "duration": 4.959,
+   "text": "go back to an example. So you have like"
+  },
+  {
+   "start": 522.159,
+   "duration": 6.001,
+   "text": "five functions. Five functions return uh"
+  },
+  {
+   "start": 525.279,
+   "duration": 6.161,
+   "text": "you know specific kind of data but you"
+  },
+  {
+   "start": 528.16,
+   "duration": 6.0,
+   "text": "want to structure those kind of data. So"
+  },
+  {
+   "start": 531.44,
+   "duration": 5.76,
+   "text": "you can also kind of like uh compare it"
+  },
+  {
+   "start": 534.16,
+   "duration": 5.04,
+   "text": "to uh tool usage like a post tool usage."
+  },
+  {
+   "start": 537.2,
+   "duration": 4.8,
+   "text": "You can use that to structure the data"
+  },
+  {
+   "start": 539.2,
+   "duration": 5.44,
+   "text": "or you can use uh something like a fake"
+  },
+  {
+   "start": 542.0,
+   "duration": 5.839,
+   "text": "tool. You know those that tool does"
+  },
+  {
+   "start": 544.64,
+   "duration": 6.24,
+   "text": "nothing but accept some kind of fields"
+  },
+  {
+   "start": 547.839,
+   "duration": 5.041,
+   "text": "and kind of uh return the data in a"
+  },
+  {
+   "start": 550.88,
+   "duration": 4.32,
+   "text": "structured format."
+  },
+  {
+   "start": 552.88,
+   "duration": 4.32,
+   "text": "Right? That is the that is kind of like"
+  },
+  {
+   "start": 555.2,
+   "duration": 4.4,
+   "text": "the work of the sixth function for"
+  },
+  {
+   "start": 557.2,
+   "duration": 4.48,
+   "text": "example in this example."
+  },
+  {
+   "start": 559.6,
+   "duration": 3.359,
+   "text": "So let me give you an example and you'll"
+  },
+  {
+   "start": 561.68,
+   "duration": 3.76,
+   "text": "understand that. So let me go back to"
+  },
+  {
+   "start": 562.959,
+   "duration": 5.201,
+   "text": "visual studio code and this is uh one of"
+  },
+  {
+   "start": 565.44,
+   "duration": 4.56,
+   "text": "the tools extract invoice data. So this"
+  },
+  {
+   "start": 568.16,
+   "duration": 4.16,
+   "text": "tool doesn't need to do anything real."
+  },
+  {
+   "start": 570.0,
+   "duration": 4.0,
+   "text": "Its job is to enforce schema compliance"
+  },
+  {
+   "start": 572.32,
+   "duration": 4.079,
+   "text": "on the output. That's it. It will accept"
+  },
+  {
+   "start": 574.0,
+   "duration": 4.88,
+   "text": "some data and it will return the data in"
+  },
+  {
+   "start": 576.399,
+   "duration": 4.961,
+   "text": "some specified format. The tool actually"
+  },
+  {
+   "start": 578.88,
+   "duration": 4.48,
+   "text": "doesn't do any kind of a business logic"
+  },
+  {
+   "start": 581.36,
+   "duration": 4.159,
+   "text": "except enforcing the structural"
+  },
+  {
+   "start": 583.36,
+   "duration": 4.8,
+   "text": "integrity on the data. So if you see"
+  },
+  {
+   "start": 585.519,
+   "duration": 5.281,
+   "text": "over here the name is extract info data."
+  },
+  {
+   "start": 588.16,
+   "duration": 4.88,
+   "text": "This might not be a a function at all"
+  },
+  {
+   "start": 590.8,
+   "duration": 6.64,
+   "text": "because till now whatever tools we have"
+  },
+  {
+   "start": 593.04,
+   "duration": 7.04,
+   "text": "understood is just you know um functions"
+  },
+  {
+   "start": 597.44,
+   "duration": 4.88,
+   "text": "right and in this case it is not"
+  },
+  {
+   "start": 600.08,
+   "duration": 4.72,
+   "text": "nothing. It is just enforcing the schema"
+  },
+  {
+   "start": 602.32,
+   "duration": 4.32,
+   "text": "on claude. That's it. So description is"
+  },
+  {
+   "start": 604.8,
+   "duration": 4.24,
+   "text": "extract structural invoice information"
+  },
+  {
+   "start": 606.64,
+   "duration": 4.56,
+   "text": "for the document and the input schema is"
+  },
+  {
+   "start": 609.04,
+   "duration": 4.4,
+   "text": "of type object and the properties are"
+  },
+  {
+   "start": 611.2,
+   "duration": 4.56,
+   "text": "vendor name, total amount and invoice"
+  },
+  {
+   "start": 613.44,
+   "duration": 5.28,
+   "text": "data. And if you see we are also"
+  },
+  {
+   "start": 615.76,
+   "duration": 4.96,
+   "text": "enforcing a required parameter over here"
+  },
+  {
+   "start": 618.72,
+   "duration": 4.559,
+   "text": "that the vendor name, total amount and"
+  },
+  {
+   "start": 620.72,
+   "duration": 5.679,
+   "text": "invoice data is required. But there is a"
+  },
+  {
+   "start": 623.279,
+   "duration": 5.441,
+   "text": "catch over here. Sometimes uh whenever"
+  },
+  {
+   "start": 626.399,
+   "duration": 5.521,
+   "text": "you say that this field is required the"
+  },
+  {
+   "start": 628.72,
+   "duration": 6.799,
+   "text": "model understands that okay those fields"
+  },
+  {
+   "start": 631.92,
+   "duration": 6.479,
+   "text": "I need to fill at any cost. So in that"
+  },
+  {
+   "start": 635.519,
+   "duration": 5.201,
+   "text": "case fabrication of data happens. So"
+  },
+  {
+   "start": 638.399,
+   "duration": 4.0,
+   "text": "even the for example the vendor vendor"
+  },
+  {
+   "start": 640.72,
+   "duration": 4.16,
+   "text": "name is not present in the data you"
+  },
+  {
+   "start": 642.399,
+   "duration": 4.0,
+   "text": "supply right in that case the model will"
+  },
+  {
+   "start": 644.88,
+   "duration": 5.36,
+   "text": "understand okay the vendor name is not"
+  },
+  {
+   "start": 646.399,
+   "duration": 5.601,
+   "text": "there I you know let's give a example"
+  },
+  {
+   "start": 650.24,
+   "duration": 4.159,
+   "text": "vendor name like a dummy vendor name or"
+  },
+  {
+   "start": 652.0,
+   "duration": 4.88,
+   "text": "something like that but that is not the"
+  },
+  {
+   "start": 654.399,
+   "duration": 4.481,
+   "text": "required output you would need right so"
+  },
+  {
+   "start": 656.88,
+   "duration": 5.12,
+   "text": "there is also a way where you can like"
+  },
+  {
+   "start": 658.88,
+   "duration": 4.88,
+   "text": "kind of pass null right in case the data"
+  },
+  {
+   "start": 662.0,
+   "duration": 4.72,
+   "text": "is missing and we're going to understand"
+  },
+  {
+   "start": 663.76,
+   "duration": 5.04,
+   "text": "that so just to uh clarify things till"
+  },
+  {
+   "start": 666.72,
+   "duration": 4.32,
+   "text": "now this tool tool does nothing but to"
+  },
+  {
+   "start": 668.8,
+   "duration": 4.159,
+   "text": "enforce the structural integrity on the"
+  },
+  {
+   "start": 671.04,
+   "duration": 3.919,
+   "text": "particular you know claude when it"
+  },
+  {
+   "start": 672.959,
+   "duration": 5.361,
+   "text": "returns the data right this is the"
+  },
+  {
+   "start": 674.959,
+   "duration": 5.681,
+   "text": "response so model is opus max tokens is"
+  },
+  {
+   "start": 678.32,
+   "duration": 3.6,
+   "text": "1024 tools is basically the tools that"
+  },
+  {
+   "start": 680.64,
+   "duration": 3.68,
+   "text": "you are supplying over here there might"
+  },
+  {
+   "start": 681.92,
+   "duration": 4.479,
+   "text": "be multiple tools it's just that uh"
+  },
+  {
+   "start": 684.32,
+   "duration": 4.4,
+   "text": "currently it has only one tool uh this"
+  },
+  {
+   "start": 686.399,
+   "duration": 4.401,
+   "text": "fake tool that you would say okay"
+  },
+  {
+   "start": 688.72,
+   "duration": 4.4,
+   "text": "messages is we haven't set the tool"
+  },
+  {
+   "start": 690.8,
+   "duration": 3.92,
+   "text": "choice more on this in a moment okay"
+  },
+  {
+   "start": 693.12,
+   "duration": 4.08,
+   "text": "tool choice we have already discussed"
+  },
+  {
+   "start": 694.72,
+   "duration": 4.0,
+   "text": "about it like any or a specific tool"
+  },
+  {
+   "start": 697.2,
+   "duration": 3.52,
+   "text": "tool you want to execute. We're going to"
+  },
+  {
+   "start": 698.72,
+   "duration": 4.559,
+   "text": "discuss it again in this video because"
+  },
+  {
+   "start": 700.72,
+   "duration": 4.4,
+   "text": "it is really relevant over here. Okay."
+  },
+  {
+   "start": 703.279,
+   "duration": 3.361,
+   "text": "If you have any questions, please drop"
+  },
+  {
+   "start": 705.12,
+   "duration": 3.44,
+   "text": "it on the comments. It might be a little"
+  },
+  {
+   "start": 706.64,
+   "duration": 3.52,
+   "text": "bit complicated to understand, but I"
+  },
+  {
+   "start": 708.56,
+   "duration": 3.76,
+   "text": "will try to clear it up as much as"
+  },
+  {
+   "start": 710.16,
+   "duration": 3.84,
+   "text": "possible. Okay. So, I hope you"
+  },
+  {
+   "start": 712.32,
+   "duration": 2.959,
+   "text": "understood this fake tool page. You"
+  },
+  {
+   "start": 714.0,
+   "duration": 3.36,
+   "text": "know, define a tool that does nothing"
+  },
+  {
+   "start": 715.279,
+   "duration": 4.961,
+   "text": "but accept a structured payload."
+  },
+  {
+   "start": 717.36,
+   "duration": 4.719,
+   "text": "Strongly typed contract. The API"
+  },
+  {
+   "start": 720.24,
+   "duration": 5.2,
+   "text": "enforces the exact schema before"
+  },
+  {
+   "start": 722.079,
+   "duration": 7.2,
+   "text": "returning data. So, schema validation."
+  },
+  {
+   "start": 725.44,
+   "duration": 5.68,
+   "text": "Now uh if you see if in the tool use uh"
+  },
+  {
+   "start": 729.279,
+   "duration": 4.0,
+   "text": "if you see the properties are there and"
+  },
+  {
+   "start": 731.12,
+   "duration": 4.56,
+   "text": "there is a particular input schema over"
+  },
+  {
+   "start": 733.279,
+   "duration": 4.881,
+   "text": "here right if you see that I have"
+  },
+  {
+   "start": 735.68,
+   "duration": 4.8,
+   "text": "implemented that this is the schema in"
+  },
+  {
+   "start": 738.16,
+   "duration": 4.32,
+   "text": "which uh you know you need to understand"
+  },
+  {
+   "start": 740.48,
+   "duration": 4.56,
+   "text": "okay this is the format of data that I"
+  },
+  {
+   "start": 742.48,
+   "duration": 5.12,
+   "text": "need to read and execute. So that is the"
+  },
+  {
+   "start": 745.04,
+   "duration": 3.84,
+   "text": "very important to understand right and"
+  },
+  {
+   "start": 747.6,
+   "duration": 2.96,
+   "text": "zero passing read"
+  },
+  {
+   "start": 748.88,
+   "duration": 4.16,
+   "text": "response.content0ero.input"
+  },
+  {
+   "start": 750.56,
+   "duration": 5.36,
+   "text": "input and extract a pristine dictionary."
+  },
+  {
+   "start": 753.04,
+   "duration": 5.44,
+   "text": "It just means that basically don't"
+  },
+  {
+   "start": 755.92,
+   "duration": 5.359,
+   "text": "hallucinate data on your own. Read"
+  },
+  {
+   "start": 758.48,
+   "duration": 4.96,
+   "text": "whatever data is supplied to you. Uh use"
+  },
+  {
+   "start": 761.279,
+   "duration": 5.12,
+   "text": "that particular fake tool and generate"
+  },
+  {
+   "start": 763.44,
+   "duration": 5.519,
+   "text": "the structured output. That is what I"
+  },
+  {
+   "start": 766.399,
+   "duration": 5.041,
+   "text": "want to convey in this particular slide."
+  },
+  {
+   "start": 768.959,
+   "duration": 4.161,
+   "text": "Right? But in the case of for example,"
+  },
+  {
+   "start": 771.44,
+   "duration": 4.32,
+   "text": "you just say you know I need the data in"
+  },
+  {
+   "start": 773.12,
+   "duration": 4.959,
+   "text": "JSON. You don't specifically specify the"
+  },
+  {
+   "start": 775.76,
+   "duration": 4.879,
+   "text": "format of data you need. you just say I"
+  },
+  {
+   "start": 778.079,
+   "duration": 6.88,
+   "text": "need it for JSON like a normal prompt"
+  },
+  {
+   "start": 780.639,
+   "duration": 6.721,
+   "text": "that is fragile passing maybe u you know"
+  },
+  {
+   "start": 784.959,
+   "duration": 5.281,
+   "text": "uh it will generate something unreliable"
+  },
+  {
+   "start": 787.36,
+   "duration": 4.56,
+   "text": "data or in a different format or it"
+  },
+  {
+   "start": 790.24,
+   "duration": 3.2,
+   "text": "might even fabricate the data that we"
+  },
+  {
+   "start": 791.92,
+   "duration": 4.96,
+   "text": "don't need that we just discussed the"
+  },
+  {
+   "start": 793.44,
+   "duration": 5.44,
+   "text": "problem currently right so I hope it is"
+  },
+  {
+   "start": 796.88,
+   "duration": 6.24,
+   "text": "making sense"
+  },
+  {
+   "start": 798.88,
+   "duration": 6.639,
+   "text": "okay so tool choice now uh we talked"
+  },
+  {
+   "start": 803.12,
+   "duration": 4.64,
+   "text": "about this uh you know fake tool"
+  },
+  {
+   "start": 805.519,
+   "duration": 4.721,
+   "text": "paradigm strongly type context and all"
+  },
+  {
+   "start": 807.76,
+   "duration": 5.199,
+   "text": "of these things right now. So this is"
+  },
+  {
+   "start": 810.24,
+   "duration": 6.719,
+   "text": "regarding to tool use. It just means"
+  },
+  {
+   "start": 812.959,
+   "duration": 6.56,
+   "text": "that how does your tool executes and uh"
+  },
+  {
+   "start": 816.959,
+   "duration": 4.961,
+   "text": "what kind of output it generates right"
+  },
+  {
+   "start": 819.519,
+   "duration": 4.481,
+   "text": "that is the tool use paradigm. Now we're"
+  },
+  {
+   "start": 821.92,
+   "duration": 3.52,
+   "text": "going to talk about tool choice and I've"
+  },
+  {
+   "start": 824.0,
+   "duration": 3.44,
+   "text": "already talked about this. So I'm not"
+  },
+  {
+   "start": 825.44,
+   "duration": 4.8,
+   "text": "going to take much time regarding this"
+  },
+  {
+   "start": 827.44,
+   "duration": 5.36,
+   "text": "and just going to uh you know hover"
+  },
+  {
+   "start": 830.24,
+   "duration": 4.159,
+   "text": "through it in a bit. So what are the"
+  },
+  {
+   "start": 832.8,
+   "duration": 3.92,
+   "text": "tool choices present? I'm going to give"
+  },
+  {
+   "start": 834.399,
+   "duration": 4.721,
+   "text": "you an example as well. If you uh go"
+  },
+  {
+   "start": 836.72,
+   "duration": 6.52,
+   "text": "down um"
+  },
+  {
+   "start": 839.12,
+   "duration": 4.12,
+   "text": "I hope I have made"
+  },
+  {
+   "start": 844.16,
+   "duration": 6.08,
+   "text": "um"
+  },
+  {
+   "start": 846.56,
+   "duration": 6.079,
+   "text": "okay I I think I missed that"
+  },
+  {
+   "start": 850.24,
+   "duration": 6.68,
+   "text": "the tool choice. Did I have that? Let me"
+  },
+  {
+   "start": 852.639,
+   "duration": 4.281,
+   "text": "just search it out over here."
+  },
+  {
+   "start": 858.24,
+   "duration": 5.76,
+   "text": "Okay, so we have that. Okay,"
+  },
+  {
+   "start": 861.92,
+   "duration": 3.68,
+   "text": "so let's understand this tool choice,"
+  },
+  {
+   "start": 864.0,
+   "duration": 4.48,
+   "text": "right? And uh basically you would give"
+  },
+  {
+   "start": 865.6,
+   "duration": 5.039,
+   "text": "the tool choice to make cloud understand"
+  },
+  {
+   "start": 868.48,
+   "duration": 4.24,
+   "text": "which kind of tool you want it to"
+  },
+  {
+   "start": 870.639,
+   "duration": 4.56,
+   "text": "execute. Do you want it to pick any kind"
+  },
+  {
+   "start": 872.72,
+   "duration": 5.04,
+   "text": "of tool and execute or you want to you"
+  },
+  {
+   "start": 875.199,
+   "duration": 5.041,
+   "text": "want to make it to pick like a specific"
+  },
+  {
+   "start": 877.76,
+   "duration": 5.04,
+   "text": "tool to execute right? If you want it to"
+  },
+  {
+   "start": 880.24,
+   "duration": 5.2,
+   "text": "make no tools to execute. So what does"
+  },
+  {
+   "start": 882.8,
+   "duration": 5.599,
+   "text": "it mean auto? So if you say the tool"
+  },
+  {
+   "start": 885.44,
+   "duration": 5.68,
+   "text": "choice to be auto clot decides it may"
+  },
+  {
+   "start": 888.399,
+   "duration": 4.56,
+   "text": "call a tool it may respond with a text"
+  },
+  {
+   "start": 891.12,
+   "duration": 4.32,
+   "text": "right. So it just means that you are"
+  },
+  {
+   "start": 892.959,
+   "duration": 5.041,
+   "text": "giving the autonomy to claw to decide on"
+  },
+  {
+   "start": 895.44,
+   "duration": 4.639,
+   "text": "which tool to execute right you're"
+  },
+  {
+   "start": 898.0,
+   "duration": 3.92,
+   "text": "giving the tool it might execute the"
+  },
+  {
+   "start": 900.079,
+   "duration": 4.081,
+   "text": "tool it might not execute the tool it"
+  },
+  {
+   "start": 901.92,
+   "duration": 5.2,
+   "text": "depends on claude in what it actually"
+  },
+  {
+   "start": 904.16,
+   "duration": 4.479,
+   "text": "chooses to execute right so I have"
+  },
+  {
+   "start": 907.12,
+   "duration": 3.68,
+   "text": "already discussed this in detail just"
+  },
+  {
+   "start": 908.639,
+   "duration": 5.681,
+   "text": "I'm giving a heads up in this video"
+  },
+  {
+   "start": 910.8,
+   "duration": 5.92,
+   "text": "because it is important right but let's"
+  },
+  {
+   "start": 914.32,
+   "duration": 4.8,
+   "text": "discuss about the architectural fit it"
+  },
+  {
+   "start": 916.72,
+   "duration": 3.919,
+   "text": "says that unreliable for strict"
+  },
+  {
+   "start": 919.12,
+   "duration": 3.519,
+   "text": "extraction pipelines best for"
+  },
+  {
+   "start": 920.639,
+   "duration": 5.361,
+   "text": "conversational additional agents. See"
+  },
+  {
+   "start": 922.639,
+   "duration": 5.521,
+   "text": "the thing is you have a tool but claude"
+  },
+  {
+   "start": 926.0,
+   "duration": 4.399,
+   "text": "decide that I don't need this tool but"
+  },
+  {
+   "start": 928.16,
+   "duration": 4.239,
+   "text": "you actually need to execute that tool"
+  },
+  {
+   "start": 930.399,
+   "duration": 4.481,
+   "text": "for that particular sub agent. In that"
+  },
+  {
+   "start": 932.399,
+   "duration": 4.0,
+   "text": "case auto is very unreliable because in"
+  },
+  {
+   "start": 934.88,
+   "duration": 6.56,
+   "text": "that case you are leaving the decision"
+  },
+  {
+   "start": 936.399,
+   "duration": 7.44,
+   "text": "to claude but you can explicitly specify"
+  },
+  {
+   "start": 941.44,
+   "duration": 5.12,
+   "text": "by using the type of tool and the name"
+  },
+  {
+   "start": 943.839,
+   "duration": 4.641,
+   "text": "of tool and you can specify to claude"
+  },
+  {
+   "start": 946.56,
+   "duration": 5.199,
+   "text": "saying that you know claude must call"
+  },
+  {
+   "start": 948.48,
+   "duration": 5.44,
+   "text": "this specific name tool. It is mandatory"
+  },
+  {
+   "start": 951.759,
+   "duration": 4.561,
+   "text": "right? So it gives you maximum lockdown"
+  },
+  {
+   "start": 953.92,
+   "duration": 5.52,
+   "text": "for single tool extraction systems. So"
+  },
+  {
+   "start": 956.32,
+   "duration": 4.72,
+   "text": "it just means that claude has to execute"
+  },
+  {
+   "start": 959.44,
+   "duration": 3.839,
+   "text": "that particular tool. It doesn't have"
+  },
+  {
+   "start": 961.04,
+   "duration": 5.28,
+   "text": "any choice."
+  },
+  {
+   "start": 963.279,
+   "duration": 4.961,
+   "text": "Right? Next comes any. It's just the"
+  },
+  {
+   "start": 966.32,
+   "duration": 6.56,
+   "text": "opposite not the opposite of claude."
+  },
+  {
+   "start": 968.24,
+   "duration": 6.64,
+   "text": "It's like u kind of like auto but it"
+  },
+  {
+   "start": 972.88,
+   "duration": 3.92,
+   "text": "just"
+  },
+  {
+   "start": 974.88,
+   "duration": 4.079,
+   "text": "tells claude that you have to execute"
+  },
+  {
+   "start": 976.8,
+   "duration": 4.399,
+   "text": "any one tool."
+  },
+  {
+   "start": 978.959,
+   "duration": 4.32,
+   "text": "It h Claude has to use any one of the"
+  },
+  {
+   "start": 981.199,
+   "duration": 4.64,
+   "text": "available tools,"
+  },
+  {
+   "start": 983.279,
+   "duration": 4.401,
+   "text": "right? I mean it is a onetwo punch"
+  },
+  {
+   "start": 985.839,
+   "duration": 3.601,
+   "text": "guarantees a tool use block in the"
+  },
+  {
+   "start": 987.68,
+   "duration": 4.159,
+   "text": "response every single time. It just"
+  },
+  {
+   "start": 989.44,
+   "duration": 5.68,
+   "text": "means that claude will execute any one"
+  },
+  {
+   "start": 991.839,
+   "duration": 5.041,
+   "text": "of the tools that is available. Now it"
+  },
+  {
+   "start": 995.12,
+   "duration": 5.279,
+   "text": "might raise a question saying that it"
+  },
+  {
+   "start": 996.88,
+   "duration": 6.0,
+   "text": "might also execute a tool um that is"
+  },
+  {
+   "start": 1000.399,
+   "duration": 5.36,
+   "text": "wrong right and it makes sense because"
+  },
+  {
+   "start": 1002.88,
+   "duration": 4.959,
+   "text": "you will specify a lot of tools uh in"
+  },
+  {
+   "start": 1005.759,
+   "duration": 4.561,
+   "text": "this particular uh tools right and you"
+  },
+  {
+   "start": 1007.839,
+   "duration": 4.0,
+   "text": "give the tool choice as any then it"
+  },
+  {
+   "start": 1010.32,
+   "duration": 4.0,
+   "text": "might execute any of the tools that you"
+  },
+  {
+   "start": 1011.839,
+   "duration": 4.481,
+   "text": "supply over here right and it makes"
+  },
+  {
+   "start": 1014.32,
+   "duration": 3.68,
+   "text": "sense that's a valid question but in"
+  },
+  {
+   "start": 1016.32,
+   "duration": 4.0,
+   "text": "that case you have to make the tool"
+  },
+  {
+   "start": 1018.0,
+   "duration": 4.32,
+   "text": "selection really really efficient and we"
+  },
+  {
+   "start": 1020.32,
+   "duration": 3.84,
+   "text": "already discussed how to do that by"
+  },
+  {
+   "start": 1022.32,
+   "duration": 4.56,
+   "text": "providing proper descriptions s by"
+  },
+  {
+   "start": 1024.16,
+   "duration": 4.879,
+   "text": "providing proper tool names and you know"
+  },
+  {
+   "start": 1026.88,
+   "duration": 4.4,
+   "text": "few short examples all of these things"
+  },
+  {
+   "start": 1029.039,
+   "duration": 5.04,
+   "text": "you need to take care of right then only"
+  },
+  {
+   "start": 1031.28,
+   "duration": 5.919,
+   "text": "this any kind of configuration would be"
+  },
+  {
+   "start": 1034.079,
+   "duration": 6.321,
+   "text": "the best but if you know that claude"
+  },
+  {
+   "start": 1037.199,
+   "duration": 4.88,
+   "text": "will have to execute a tool every time"
+  },
+  {
+   "start": 1040.4,
+   "duration": 4.24,
+   "text": "then you can go with a specific type of"
+  },
+  {
+   "start": 1042.079,
+   "duration": 4.48,
+   "text": "tool you can say that the tool choice is"
+  },
+  {
+   "start": 1044.64,
+   "duration": 4.24,
+   "text": "type tool and you specify the tool name"
+  },
+  {
+   "start": 1046.559,
+   "duration": 6.081,
+   "text": "that it needs to execute and claude will"
+  },
+  {
+   "start": 1048.88,
+   "duration": 5.44,
+   "text": "execute that tool every time u whenever"
+  },
+  {
+   "start": 1052.64,
+   "duration": 3.52,
+   "text": "you know the agent and is fired or"
+  },
+  {
+   "start": 1054.32,
+   "duration": 6.32,
+   "text": "something like that. I hope that is"
+  },
+  {
+   "start": 1056.16,
+   "duration": 6.24,
+   "text": "making sense. Okay. Now, schema design"
+  },
+  {
+   "start": 1060.64,
+   "duration": 3.919,
+   "text": "engineering and honest path and this is"
+  },
+  {
+   "start": 1062.4,
+   "duration": 5.12,
+   "text": "the uh very important to understand"
+  },
+  {
+   "start": 1064.559,
+   "duration": 5.441,
+   "text": "about the fabrication of data. Now, if"
+  },
+  {
+   "start": 1067.52,
+   "duration": 4.96,
+   "text": "you see this hush and trap. So, if you"
+  },
+  {
+   "start": 1070.0,
+   "duration": 5.679,
+   "text": "see uh these kind of input schemas I"
+  },
+  {
+   "start": 1072.48,
+   "duration": 4.559,
+   "text": "give I say the type is string and I give"
+  },
+  {
+   "start": 1075.679,
+   "duration": 4.081,
+   "text": "the vendor name and all those things"
+  },
+  {
+   "start": 1077.039,
+   "duration": 5.76,
+   "text": "that is fine. But the thing is this is"
+  },
+  {
+   "start": 1079.76,
+   "duration": 5.44,
+   "text": "required plus non-nullable not nullable"
+  },
+  {
+   "start": 1082.799,
+   "duration": 6.0,
+   "text": "sorry this is what the model understands"
+  },
+  {
+   "start": 1085.2,
+   "duration": 5.28,
+   "text": "I mean the model must produce a value."
+  },
+  {
+   "start": 1088.799,
+   "duration": 3.361,
+   "text": "If you just specify the type as string"
+  },
+  {
+   "start": 1090.48,
+   "duration": 4.559,
+   "text": "it will understand okay this is the"
+  },
+  {
+   "start": 1092.16,
+   "duration": 6.96,
+   "text": "field in the input schema that is of"
+  },
+  {
+   "start": 1095.039,
+   "duration": 6.161,
+   "text": "string type but it cannot be nullable it"
+  },
+  {
+   "start": 1099.12,
+   "duration": 5.2,
+   "text": "should always have a value even though"
+  },
+  {
+   "start": 1101.2,
+   "duration": 4.88,
+   "text": "it doesn't get a value right as part of"
+  },
+  {
+   "start": 1104.32,
+   "duration": 5.2,
+   "text": "the input. It might hallucinate some"
+  },
+  {
+   "start": 1106.08,
+   "duration": 6.16,
+   "text": "data and feed it basically to the tool"
+  },
+  {
+   "start": 1109.52,
+   "duration": 4.08,
+   "text": "and yeah it invents something that you"
+  },
+  {
+   "start": 1112.24,
+   "duration": 3.2,
+   "text": "don't want and it will be very"
+  },
+  {
+   "start": 1113.6,
+   "duration": 5.36,
+   "text": "unreliable because you don't want to"
+  },
+  {
+   "start": 1115.44,
+   "duration": 5.92,
+   "text": "have this kind of um you know um data"
+  },
+  {
+   "start": 1118.96,
+   "duration": 7.04,
+   "text": "that is not verified you know that is"
+  },
+  {
+   "start": 1121.36,
+   "duration": 6.8,
+   "text": "just generated by the you know um model."
+  },
+  {
+   "start": 1126.0,
+   "duration": 4.4,
+   "text": "But in that case if you say that okay"
+  },
+  {
+   "start": 1128.16,
+   "duration": 5.44,
+   "text": "the type is string and you specify it as"
+  },
+  {
+   "start": 1130.4,
+   "duration": 6.72,
+   "text": "null in that case it is a required field"
+  },
+  {
+   "start": 1133.6,
+   "duration": 5.92,
+   "text": "nonetheless but it is nullable. It just"
+  },
+  {
+   "start": 1137.12,
+   "duration": 6.08,
+   "text": "means that the field is guaranteed to be"
+  },
+  {
+   "start": 1139.52,
+   "duration": 6.399,
+   "text": "present but null is a escape hatch. It"
+  },
+  {
+   "start": 1143.2,
+   "duration": 5.599,
+   "text": "just means that if the model doesn't"
+  },
+  {
+   "start": 1145.919,
+   "duration": 5.601,
+   "text": "find any uh reliable data that you"
+  },
+  {
+   "start": 1148.799,
+   "duration": 5.441,
+   "text": "supply it will just fill it with null"
+  },
+  {
+   "start": 1151.52,
+   "duration": 4.32,
+   "text": "and that is better than fabricating the"
+  },
+  {
+   "start": 1154.24,
+   "duration": 4.559,
+   "text": "data. Right? So that is the thing that"
+  },
+  {
+   "start": 1155.84,
+   "duration": 5.44,
+   "text": "you need to understand. Okay, I hope"
+  },
+  {
+   "start": 1158.799,
+   "duration": 4.961,
+   "text": "that is making sense."
+  },
+  {
+   "start": 1161.28,
+   "duration": 6.48,
+   "text": "So illusion of perfection, syntax versus"
+  },
+  {
+   "start": 1163.76,
+   "duration": 6.159,
+   "text": "semantics. And um it's very very"
+  },
+  {
+   "start": 1167.76,
+   "duration": 4.48,
+   "text": "important to understand the difference"
+  },
+  {
+   "start": 1169.919,
+   "duration": 4.241,
+   "text": "um between the both. I know I say that"
+  },
+  {
+   "start": 1172.24,
+   "duration": 4.88,
+   "text": "everything is very very important but"
+  },
+  {
+   "start": 1174.16,
+   "duration": 5.92,
+   "text": "you know I I only take the topics that"
+  },
+  {
+   "start": 1177.12,
+   "duration": 5.919,
+   "text": "are actually very very important. So um"
+  },
+  {
+   "start": 1180.08,
+   "duration": 6.24,
+   "text": "I hope that is making sense."
+  },
+  {
+   "start": 1183.039,
+   "duration": 5.921,
+   "text": "Okay. Now here the difference is pretty"
+  },
+  {
+   "start": 1186.32,
+   "duration": 6.0,
+   "text": "simple. You need to understand the"
+  },
+  {
+   "start": 1188.96,
+   "duration": 5.599,
+   "text": "difference between the"
+  },
+  {
+   "start": 1192.32,
+   "duration": 3.84,
+   "text": "integrity of data and the structure of"
+  },
+  {
+   "start": 1194.559,
+   "duration": 5.36,
+   "text": "data."
+  },
+  {
+   "start": 1196.16,
+   "duration": 5.44,
+   "text": "Now syntax will actually you know let's"
+  },
+  {
+   "start": 1199.919,
+   "duration": 4.161,
+   "text": "see let's see this example below right"
+  },
+  {
+   "start": 1201.6,
+   "duration": 4.56,
+   "text": "the strict JSON schema guarantees your"
+  },
+  {
+   "start": 1204.08,
+   "duration": 4.719,
+   "text": "output is structurally flawless. It just"
+  },
+  {
+   "start": 1206.16,
+   "duration": 5.6,
+   "text": "means that whatever output you generate"
+  },
+  {
+   "start": 1208.799,
+   "duration": 5.441,
+   "text": "it is in the proper structure."
+  },
+  {
+   "start": 1211.76,
+   "duration": 4.24,
+   "text": "It guarantees nothing about the truth of"
+  },
+  {
+   "start": 1214.24,
+   "duration": 4.559,
+   "text": "the data."
+  },
+  {
+   "start": 1216.0,
+   "duration": 4.48,
+   "text": "I mean the model might have hallucinated"
+  },
+  {
+   "start": 1218.799,
+   "duration": 4.401,
+   "text": "the data. You don't know about that. But"
+  },
+  {
+   "start": 1220.48,
+   "duration": 5.92,
+   "text": "it is structurally correct. So the next"
+  },
+  {
+   "start": 1223.2,
+   "duration": 5.28,
+   "text": "sub agent or the or the pre-processor"
+  },
+  {
+   "start": 1226.4,
+   "duration": 4.159,
+   "text": "might get structurally correct data and"
+  },
+  {
+   "start": 1228.48,
+   "duration": 6.4,
+   "text": "it might not throw any errors but the"
+  },
+  {
+   "start": 1230.559,
+   "duration": 6.641,
+   "text": "end user might see wrong data because it"
+  },
+  {
+   "start": 1234.88,
+   "duration": 5.6,
+   "text": "is not truthful data. I mean it might"
+  },
+  {
+   "start": 1237.2,
+   "duration": 4.88,
+   "text": "have fabricated the data. So if the for"
+  },
+  {
+   "start": 1240.48,
+   "duration": 3.6,
+   "text": "example if the model extracts the due"
+  },
+  {
+   "start": 1242.08,
+   "duration": 4.4,
+   "text": "date when you ask for the invoice date"
+  },
+  {
+   "start": 1244.08,
+   "duration": 5.599,
+   "text": "your parser accepts it but your data is"
+  },
+  {
+   "start": 1246.48,
+   "duration": 6.559,
+   "text": "factually wrong. So schemas are the"
+  },
+  {
+   "start": 1249.679,
+   "duration": 8.641,
+   "text": "structure but it's not a ceiling"
+  },
+  {
+   "start": 1253.039,
+   "duration": 9.281,
+   "text": "basically. So how do you control I mean"
+  },
+  {
+   "start": 1258.32,
+   "duration": 5.92,
+   "text": "the integrity of data or the"
+  },
+  {
+   "start": 1262.32,
+   "duration": 4.32,
+   "text": "truthfulness of the data that is very"
+  },
+  {
+   "start": 1264.24,
+   "duration": 4.799,
+   "text": "very important to understand."
+  },
+  {
+   "start": 1266.64,
+   "duration": 4.72,
+   "text": "So it is syntactically perfect. I mean"
+  },
+  {
+   "start": 1269.039,
+   "duration": 5.921,
+   "text": "the schema is satisfied but semantically"
+  },
+  {
+   "start": 1271.36,
+   "duration": 6.08,
+   "text": "it is wrong. I mean uh the data that the"
+  },
+  {
+   "start": 1274.96,
+   "duration": 6.079,
+   "text": "you know your tool gives right gives"
+  },
+  {
+   "start": 1277.44,
+   "duration": 6.32,
+   "text": "back it is not semantically correct or"
+  },
+  {
+   "start": 1281.039,
+   "duration": 5.681,
+   "text": "you know it is not truthful."
+  },
+  {
+   "start": 1283.76,
+   "duration": 4.96,
+   "text": "So that is also one of the uh scenarios"
+  },
+  {
+   "start": 1286.72,
+   "duration": 5.36,
+   "text": "you'll be tested in the exam and we need"
+  },
+  {
+   "start": 1288.72,
+   "duration": 6.959,
+   "text": "to understand how do we actually um you"
+  },
+  {
+   "start": 1292.08,
+   "duration": 5.2,
+   "text": "know um rectify that right."
+  },
+  {
+   "start": 1295.679,
+   "duration": 4.401,
+   "text": "So"
+  },
+  {
+   "start": 1297.28,
+   "duration": 5.759,
+   "text": "the system boundary matrix as I call it"
+  },
+  {
+   "start": 1300.08,
+   "duration": 4.88,
+   "text": "what it is structural or format failure"
+  },
+  {
+   "start": 1303.039,
+   "duration": 4.081,
+   "text": "semantic we understand that it is"
+  },
+  {
+   "start": 1304.96,
+   "duration": 4.56,
+   "text": "logical or interpretation failure. So"
+  },
+  {
+   "start": 1307.12,
+   "duration": 5.039,
+   "text": "what are the examples of syntax errors?"
+  },
+  {
+   "start": 1309.52,
+   "duration": 4.56,
+   "text": "Missing required fields, string instead"
+  },
+  {
+   "start": 1312.159,
+   "duration": 4.801,
+   "text": "of number, malformed JSON, everything"
+  },
+  {
+   "start": 1314.08,
+   "duration": 6.0,
+   "text": "that is required to structure is comes"
+  },
+  {
+   "start": 1316.96,
+   "duration": 5.44,
+   "text": "under the syntax errors and semantic"
+  },
+  {
+   "start": 1320.08,
+   "duration": 4.32,
+   "text": "means reading the wrong table row,"
+  },
+  {
+   "start": 1322.4,
+   "duration": 4.8,
+   "text": "confusing similar terms or hallucination"
+  },
+  {
+   "start": 1324.4,
+   "duration": 5.519,
+   "text": "of data like straightforward. What fixes"
+  },
+  {
+   "start": 1327.2,
+   "duration": 4.56,
+   "text": "it? Strict JSON schemas, tool use"
+  },
+  {
+   "start": 1329.919,
+   "duration": 4.961,
+   "text": "enforcement. So the fake tool that we"
+  },
+  {
+   "start": 1331.76,
+   "duration": 6.08,
+   "text": "just understood uh a few slides back,"
+  },
+  {
+   "start": 1334.88,
+   "duration": 5.76,
+   "text": "right? Uh let me just get back the"
+  },
+  {
+   "start": 1337.84,
+   "duration": 7.6,
+   "text": "slides a bit."
+  },
+  {
+   "start": 1340.64,
+   "duration": 7.039,
+   "text": "Okay. Uh it's not going back. Let's me"
+  },
+  {
+   "start": 1345.44,
+   "duration": 5.44,
+   "text": "uh it went back to the first time. My"
+  },
+  {
+   "start": 1347.679,
+   "duration": 5.761,
+   "text": "bad. Okay. I I showed that in uh in"
+  },
+  {
+   "start": 1350.88,
+   "duration": 4.159,
+   "text": "here. Okay. So this is the fake tool"
+  },
+  {
+   "start": 1353.44,
+   "duration": 4.32,
+   "text": "kind of a thing that we have created"
+  },
+  {
+   "start": 1355.039,
+   "duration": 5.281,
+   "text": "right. But this enforces the structural"
+  },
+  {
+   "start": 1357.76,
+   "duration": 4.799,
+   "text": "integrity of the data but actual"
+  },
+  {
+   "start": 1360.32,
+   "duration": 6.56,
+   "text": "truthful integrity of data. It doesn't"
+  },
+  {
+   "start": 1362.559,
+   "duration": 6.48,
+   "text": "kind of you know things because it just"
+  },
+  {
+   "start": 1366.88,
+   "duration": 4.32,
+   "text": "it just tells okay this this this this"
+  },
+  {
+   "start": 1369.039,
+   "duration": 3.921,
+   "text": "is the input schema and this is the this"
+  },
+  {
+   "start": 1371.2,
+   "duration": 3.52,
+   "text": "is the data that I need in that"
+  },
+  {
+   "start": 1372.96,
+   "duration": 4.16,
+   "text": "particular format but it actually"
+  },
+  {
+   "start": 1374.72,
+   "duration": 5.199,
+   "text": "doesn't specify you know what is the"
+  },
+  {
+   "start": 1377.12,
+   "duration": 6.32,
+   "text": "actual data. So that you have to control"
+  },
+  {
+   "start": 1379.919,
+   "duration": 5.681,
+   "text": "using this kind of a thing right like if"
+  },
+  {
+   "start": 1383.44,
+   "duration": 3.44,
+   "text": "the data is not present just return null"
+  },
+  {
+   "start": 1385.6,
+   "duration": 3.84,
+   "text": "in that case you are actually"
+  },
+  {
+   "start": 1386.88,
+   "duration": 4.96,
+   "text": "maintaining the actual integrity of data"
+  },
+  {
+   "start": 1389.44,
+   "duration": 6.32,
+   "text": "not just the structure that is what I"
+  },
+  {
+   "start": 1391.84,
+   "duration": 6.0,
+   "text": "wanted to discuss right um so what fixes"
+  },
+  {
+   "start": 1395.76,
+   "duration": 4.799,
+   "text": "it business logic validation cross field"
+  },
+  {
+   "start": 1397.84,
+   "duration": 4.719,
+   "text": "consistency checks human review now the"
+  },
+  {
+   "start": 1400.559,
+   "duration": 4.321,
+   "text": "usage of hooks also come into the"
+  },
+  {
+   "start": 1402.559,
+   "duration": 5.12,
+   "text": "picture you might want to validate the"
+  },
+  {
+   "start": 1404.88,
+   "duration": 4.56,
+   "text": "data in the post tool hook for example"
+  },
+  {
+   "start": 1407.679,
+   "duration": 3.921,
+   "text": "if you're using it in your agent. So"
+  },
+  {
+   "start": 1409.44,
+   "duration": 4.479,
+   "text": "that is also one of the plus points in"
+  },
+  {
+   "start": 1411.6,
+   "duration": 4.079,
+   "text": "the exam that you might also you know"
+  },
+  {
+   "start": 1413.919,
+   "duration": 4.0,
+   "text": "receive"
+  },
+  {
+   "start": 1415.679,
+   "duration": 4.081,
+   "text": "the root cause model failing structural"
+  },
+  {
+   "start": 1417.919,
+   "duration": 4.721,
+   "text": "alignment and we we already discussed"
+  },
+  {
+   "start": 1419.76,
+   "duration": 5.12,
+   "text": "how does the model treats the data like"
+  },
+  {
+   "start": 1422.64,
+   "duration": 5.519,
+   "text": "any other data and you should be the"
+  },
+  {
+   "start": 1424.88,
+   "duration": 6.88,
+   "text": "person to enforce that structural uh"
+  },
+  {
+   "start": 1428.159,
+   "duration": 5.52,
+   "text": "schema on the particular model. Okay. So"
+  },
+  {
+   "start": 1431.76,
+   "duration": 3.68,
+   "text": "I hope that is making sense about this"
+  },
+  {
+   "start": 1433.679,
+   "duration": 4.48,
+   "text": "self-correcting retry loop technique"
+  },
+  {
+   "start": 1435.44,
+   "duration": 5.04,
+   "text": "that you can use uh in your code or in"
+  },
+  {
+   "start": 1438.159,
+   "duration": 5.441,
+   "text": "your agent wherever you want right. So"
+  },
+  {
+   "start": 1440.48,
+   "duration": 6.319,
+   "text": "basically this is a feedback loop right"
+  },
+  {
+   "start": 1443.6,
+   "duration": 5.52,
+   "text": "so basically uh whatever issue whatever"
+  },
+  {
+   "start": 1446.799,
+   "duration": 5.12,
+   "text": "structural issue is happening you would"
+  },
+  {
+   "start": 1449.12,
+   "duration": 5.52,
+   "text": "write a kind of a loop that will correct"
+  },
+  {
+   "start": 1451.919,
+   "duration": 4.801,
+   "text": "itself based on the feedback received."
+  },
+  {
+   "start": 1454.64,
+   "duration": 4.88,
+   "text": "So let's try to understand it. So let's"
+  },
+  {
+   "start": 1456.72,
+   "duration": 4.8,
+   "text": "say you run the extraction right the"
+  },
+  {
+   "start": 1459.52,
+   "duration": 4.8,
+   "text": "first time to extract some data from"
+  },
+  {
+   "start": 1461.52,
+   "duration": 5.92,
+   "text": "document or from three or four or"
+  },
+  {
+   "start": 1464.32,
+   "duration": 5.44,
+   "text": "multiple you know um tools. Now you run"
+  },
+  {
+   "start": 1467.44,
+   "duration": 4.56,
+   "text": "the extraction you'll have a validation"
+  },
+  {
+   "start": 1469.76,
+   "duration": 4.399,
+   "text": "gate. It can be a simple uh if condition"
+  },
+  {
+   "start": 1472.0,
+   "duration": 3.76,
+   "text": "or something like that. It can be inside"
+  },
+  {
+   "start": 1474.159,
+   "duration": 3.441,
+   "text": "like a while loop or something like"
+  },
+  {
+   "start": 1475.76,
+   "duration": 3.6,
+   "text": "that. It will be a simple if condition"
+  },
+  {
+   "start": 1477.6,
+   "duration": 4.48,
+   "text": "which will just check the validation of"
+  },
+  {
+   "start": 1479.36,
+   "duration": 5.919,
+   "text": "the uh you know data that has been"
+  },
+  {
+   "start": 1482.08,
+   "duration": 6.0,
+   "text": "received. Now what it will validate?"
+  },
+  {
+   "start": 1485.279,
+   "duration": 5.201,
+   "text": "Now there is a catch here. This this"
+  },
+  {
+   "start": 1488.08,
+   "duration": 6.32,
+   "text": "feedback loop is only for correcting the"
+  },
+  {
+   "start": 1490.48,
+   "duration": 6.4,
+   "text": "formats, right? Don't take it in a way"
+  },
+  {
+   "start": 1494.4,
+   "duration": 5.12,
+   "text": "that it will generate the data itself."
+  },
+  {
+   "start": 1496.88,
+   "duration": 5.12,
+   "text": "For example, um you know from the source"
+  },
+  {
+   "start": 1499.52,
+   "duration": 5.68,
+   "text": "where it is extracting the data, it it"
+  },
+  {
+   "start": 1502.0,
+   "duration": 5.76,
+   "text": "got name, age and the occupation is"
+  },
+  {
+   "start": 1505.2,
+   "duration": 6.88,
+   "text": "missing. For example, just a example"
+  },
+  {
+   "start": 1507.76,
+   "duration": 6.24,
+   "text": "data I'm taking. So if name, age and"
+  },
+  {
+   "start": 1512.08,
+   "duration": 4.16,
+   "text": "occupation is in the valid format and"
+  },
+  {
+   "start": 1514.0,
+   "duration": 4.32,
+   "text": "you have also used the null kind of a"
+  },
+  {
+   "start": 1516.24,
+   "duration": 4.799,
+   "text": "thing. So if the data is missing it is"
+  },
+  {
+   "start": 1518.32,
+   "duration": 5.44,
+   "text": "null. Now name is there, age is there,"
+  },
+  {
+   "start": 1521.039,
+   "duration": 5.281,
+   "text": "occupation is not there but it is null."
+  },
+  {
+   "start": 1523.76,
+   "duration": 4.48,
+   "text": "Now that in that case this validation"
+  },
+  {
+   "start": 1526.32,
+   "duration": 4.32,
+   "text": "gate will pass because it is in the"
+  },
+  {
+   "start": 1528.24,
+   "duration": 5.039,
+   "text": "specific format and then it is a success"
+  },
+  {
+   "start": 1530.64,
+   "duration": 5.76,
+   "text": "and the agent might output the data."
+  },
+  {
+   "start": 1533.279,
+   "duration": 5.441,
+   "text": "That is one thing. But don't expect the"
+  },
+  {
+   "start": 1536.4,
+   "duration": 5.04,
+   "text": "feedback loop to work in a way that it"
+  },
+  {
+   "start": 1538.72,
+   "duration": 5.12,
+   "text": "might you know generate the data itself."
+  },
+  {
+   "start": 1541.44,
+   "duration": 4.0,
+   "text": "Keep in mind the exam will test you"
+  },
+  {
+   "start": 1543.84,
+   "duration": 4.079,
+   "text": "again and again. It will ask you about"
+  },
+  {
+   "start": 1545.44,
+   "duration": 4.239,
+   "text": "this self-correcting retry loop. It will"
+  },
+  {
+   "start": 1547.919,
+   "duration": 5.12,
+   "text": "ask you the code and say that for"
+  },
+  {
+   "start": 1549.679,
+   "duration": 5.761,
+   "text": "example your selfcorrecting retry loop"
+  },
+  {
+   "start": 1553.039,
+   "duration": 4.0,
+   "text": "is failing again and again. You know"
+  },
+  {
+   "start": 1555.44,
+   "duration": 4.08,
+   "text": "even though the data is structurally"
+  },
+  {
+   "start": 1557.039,
+   "duration": 6.161,
+   "text": "correct this loop is failing again and"
+  },
+  {
+   "start": 1559.52,
+   "duration": 5.68,
+   "text": "again. So one of the options in the exam"
+  },
+  {
+   "start": 1563.2,
+   "duration": 5.12,
+   "text": "would be there which be saying that okay"
+  },
+  {
+   "start": 1565.2,
+   "duration": 6.719,
+   "text": "some data is missing and that is why the"
+  },
+  {
+   "start": 1568.32,
+   "duration": 5.28,
+   "text": "loop is kind of stuck over there. So"
+  },
+  {
+   "start": 1571.919,
+   "duration": 4.481,
+   "text": "there would be an option saying that you"
+  },
+  {
+   "start": 1573.6,
+   "duration": 4.4,
+   "text": "know make the model generate the data."
+  },
+  {
+   "start": 1576.4,
+   "duration": 4.32,
+   "text": "You don't have you should not go with"
+  },
+  {
+   "start": 1578.0,
+   "duration": 4.88,
+   "text": "that option cross off that option. There"
+  },
+  {
+   "start": 1580.72,
+   "duration": 4.72,
+   "text": "will be an option saying that make that"
+  },
+  {
+   "start": 1582.88,
+   "duration": 5.36,
+   "text": "particular field nullable so the"
+  },
+  {
+   "start": 1585.44,
+   "duration": 4.56,
+   "text": "structural integrity is maintained. You"
+  },
+  {
+   "start": 1588.24,
+   "duration": 3.039,
+   "text": "can null is a valid value. That's what"
+  },
+  {
+   "start": 1590.0,
+   "duration": 4.4,
+   "text": "we are discussed throughout this"
+  },
+  {
+   "start": 1591.279,
+   "duration": 4.561,
+   "text": "particular video uh or the lesson and"
+  },
+  {
+   "start": 1594.4,
+   "duration": 3.12,
+   "text": "it's very very important to understand."
+  },
+  {
+   "start": 1595.84,
+   "duration": 4.16,
+   "text": "It's a it's a it's a perfect"
+  },
+  {
+   "start": 1597.52,
+   "duration": 4.159,
+   "text": "structurally correct value. For string"
+  },
+  {
+   "start": 1600.0,
+   "duration": 3.919,
+   "text": "it can be null. For object it can be"
+  },
+  {
+   "start": 1601.679,
+   "duration": 4.321,
+   "text": "null. Maybe for numbers you can specify"
+  },
+  {
+   "start": 1603.919,
+   "duration": 4.961,
+   "text": "a default value like zero or something"
+  },
+  {
+   "start": 1606.0,
+   "duration": 4.88,
+   "text": "like that. So those are all structurally"
+  },
+  {
+   "start": 1608.88,
+   "duration": 4.08,
+   "text": "correct you know syntactically correct"
+  },
+  {
+   "start": 1610.88,
+   "duration": 5.44,
+   "text": "values. So for that the validation will"
+  },
+  {
+   "start": 1612.96,
+   "duration": 5.76,
+   "text": "pass. when the validation will fail if"
+  },
+  {
+   "start": 1616.32,
+   "duration": 4.959,
+   "text": "the particular thing you know uh is not"
+  },
+  {
+   "start": 1618.72,
+   "duration": 4.4,
+   "text": "in a particular format. For example, uh"
+  },
+  {
+   "start": 1621.279,
+   "duration": 3.76,
+   "text": "generic validation failed yields"
+  },
+  {
+   "start": 1623.12,
+   "duration": 5.12,
+   "text": "identical failures. Give specific target"
+  },
+  {
+   "start": 1625.039,
+   "duration": 5.201,
+   "text": "invoice date must be in this format but"
+  },
+  {
+   "start": 1628.24,
+   "duration": 3.84,
+   "text": "the whatever it has extracted it is not"
+  },
+  {
+   "start": 1630.24,
+   "duration": 4.48,
+   "text": "in the particular format. In that case"
+  },
+  {
+   "start": 1632.08,
+   "duration": 6.32,
+   "text": "the validation gate will fail saying"
+  },
+  {
+   "start": 1634.72,
+   "duration": 5.839,
+   "text": "that this is the error. Right? So what"
+  },
+  {
+   "start": 1638.4,
+   "duration": 3.84,
+   "text": "would you do with that error? So this is"
+  },
+  {
+   "start": 1640.559,
+   "duration": 3.841,
+   "text": "where the feedback will come into the"
+  },
+  {
+   "start": 1642.24,
+   "duration": 5.039,
+   "text": "picture. Once it fails with the"
+  },
+  {
+   "start": 1644.4,
+   "duration": 5.44,
+   "text": "particular format failure error right"
+  },
+  {
+   "start": 1647.279,
+   "duration": 5.601,
+   "text": "the feedback payer payload whatever you"
+  },
+  {
+   "start": 1649.84,
+   "duration": 7.199,
+   "text": "got right the error basically you have"
+  },
+  {
+   "start": 1652.88,
+   "duration": 7.279,
+   "text": "to append it to the assistant response"
+  },
+  {
+   "start": 1657.039,
+   "duration": 4.88,
+   "text": "so it will maintain the conversation"
+  },
+  {
+   "start": 1660.159,
+   "duration": 4.961,
+   "text": "integrity we know how to do that right"
+  },
+  {
+   "start": 1661.919,
+   "duration": 5.441,
+   "text": "we know how to use the user role and the"
+  },
+  {
+   "start": 1665.12,
+   "duration": 5.2,
+   "text": "uh you know assistant role to spec send"
+  },
+  {
+   "start": 1667.36,
+   "duration": 5.84,
+   "text": "specific uh messages to the particular"
+  },
+  {
+   "start": 1670.32,
+   "duration": 4.8,
+   "text": "uh tool use I mean sorry the tool call"
+  },
+  {
+   "start": 1673.2,
+   "duration": 3.44,
+   "text": "right whatever we are doing there we can"
+  },
+  {
+   "start": 1675.12,
+   "duration": 3.52,
+   "text": "append those things into the"
+  },
+  {
+   "start": 1676.64,
+   "duration": 3.519,
+   "text": "conversation and we can send it to the"
+  },
+  {
+   "start": 1678.64,
+   "duration": 3.36,
+   "text": "model so the model will understand okay"
+  },
+  {
+   "start": 1680.159,
+   "duration": 3.76,
+   "text": "this is the feedback that is received"
+  },
+  {
+   "start": 1682.0,
+   "duration": 4.48,
+   "text": "this is not in the particular format so"
+  },
+  {
+   "start": 1683.919,
+   "duration": 4.64,
+   "text": "I need to fix it then again the loop"
+  },
+  {
+   "start": 1686.48,
+   "duration": 4.24,
+   "text": "will run and then it might succeed with"
+  },
+  {
+   "start": 1688.559,
+   "duration": 4.081,
+   "text": "the particular you know correct format"
+  },
+  {
+   "start": 1690.72,
+   "duration": 4.4,
+   "text": "so if I'm going to show you a very"
+  },
+  {
+   "start": 1692.64,
+   "duration": 5.12,
+   "text": "simple code regarding that I'm just"
+  },
+  {
+   "start": 1695.12,
+   "duration": 4.559,
+   "text": "going to show it off here to extract"
+  },
+  {
+   "start": 1697.76,
+   "duration": 5.44,
+   "text": "with retry and uh there is one more"
+  },
+  {
+   "start": 1699.679,
+   "duration": 6.401,
+   "text": "example over here how you can um"
+  },
+  {
+   "start": 1703.2,
+   "duration": 6.079,
+   "text": "make the particular field as uh null. So"
+  },
+  {
+   "start": 1706.08,
+   "duration": 5.04,
+   "text": "if you see um required plus nullable"
+  },
+  {
+   "start": 1709.279,
+   "duration": 3.921,
+   "text": "this we have discussed already in this"
+  },
+  {
+   "start": 1711.12,
+   "duration": 4.0,
+   "text": "uh lesson. So there is a particular"
+  },
+  {
+   "start": 1713.2,
+   "duration": 4.0,
+   "text": "field called tax id you know type is"
+  },
+  {
+   "start": 1715.12,
+   "duration": 4.08,
+   "text": "string but you you are telling okay null"
+  },
+  {
+   "start": 1717.2,
+   "duration": 4.32,
+   "text": "is acceptable. So I'm just just"
+  },
+  {
+   "start": 1719.2,
+   "duration": 4.479,
+   "text": "rewinding that uh concept so you don't"
+  },
+  {
+   "start": 1721.52,
+   "duration": 4.08,
+   "text": "get confused over here. Okay. So extract"
+  },
+  {
+   "start": 1723.679,
+   "duration": 5.521,
+   "text": "with retry. So you see this is simple"
+  },
+  {
+   "start": 1725.6,
+   "duration": 5.36,
+   "text": "for loop and inside there uh we this is"
+  },
+  {
+   "start": 1729.2,
+   "duration": 4.479,
+   "text": "how we you know append the response"
+  },
+  {
+   "start": 1730.96,
+   "duration": 4.48,
+   "text": "right yeah so the tool calls the tool"
+  },
+  {
+   "start": 1733.679,
+   "duration": 4.48,
+   "text": "choice is any and we are appending the"
+  },
+  {
+   "start": 1735.44,
+   "duration": 5.839,
+   "text": "messages if not errors then return the"
+  },
+  {
+   "start": 1738.159,
+   "duration": 6.081,
+   "text": "result right if not append to the"
+  },
+  {
+   "start": 1741.279,
+   "duration": 4.88,
+   "text": "messages. So role is assistant content"
+  },
+  {
+   "start": 1744.24,
+   "duration": 4.24,
+   "text": "is responsive content which is basically"
+  },
+  {
+   "start": 1746.159,
+   "duration": 4.481,
+   "text": "the error that you have received right"
+  },
+  {
+   "start": 1748.48,
+   "duration": 5.04,
+   "text": "and then basically uh you send the"
+  },
+  {
+   "start": 1750.64,
+   "duration": 5.039,
+   "text": "message to the uh you know cloud itself"
+  },
+  {
+   "start": 1753.52,
+   "duration": 6.399,
+   "text": "and it will understand okay I did some"
+  },
+  {
+   "start": 1755.679,
+   "duration": 5.761,
+   "text": "mistake and now uh I need to fix it to a"
+  },
+  {
+   "start": 1759.919,
+   "duration": 4.401,
+   "text": "particular format the extraction I need"
+  },
+  {
+   "start": 1761.44,
+   "duration": 4.479,
+   "text": "to fix it now the max retries is two you"
+  },
+  {
+   "start": 1764.32,
+   "duration": 4.4,
+   "text": "can specify the number of retries as"
+  },
+  {
+   "start": 1765.919,
+   "duration": 5.681,
+   "text": "well it is completely your own logic the"
+  },
+  {
+   "start": 1768.72,
+   "duration": 4.64,
+   "text": "the concept is the feedback loop but the"
+  },
+  {
+   "start": 1771.6,
+   "duration": 4.079,
+   "text": "logic that you write is your own logic"
+  },
+  {
+   "start": 1773.36,
+   "duration": 6.0,
+   "text": "right so make sure that you make the"
+  },
+  {
+   "start": 1775.679,
+   "duration": 5.841,
+   "text": "best out of this u feedback loop concept"
+  },
+  {
+   "start": 1779.36,
+   "duration": 4.799,
+   "text": "now limit of engineering when retries"
+  },
+  {
+   "start": 1781.52,
+   "duration": 4.72,
+   "text": "fail so I told you retries are format"
+  },
+  {
+   "start": 1784.159,
+   "duration": 3.921,
+   "text": "correctors I already discussed this in"
+  },
+  {
+   "start": 1786.24,
+   "duration": 3.76,
+   "text": "the previous slide they are not data"
+  },
+  {
+   "start": 1788.08,
+   "duration": 3.68,
+   "text": "generators you cannot prompt the model"
+  },
+  {
+   "start": 1790.0,
+   "duration": 3.679,
+   "text": "to look harder for information that"
+  },
+  {
+   "start": 1791.76,
+   "duration": 4.88,
+   "text": "doesn't exist because if you try to do"
+  },
+  {
+   "start": 1793.679,
+   "duration": 5.36,
+   "text": "that and if you include missing data as"
+  },
+  {
+   "start": 1796.64,
+   "duration": 4.56,
+   "text": "part of the feedback right that this"
+  },
+  {
+   "start": 1799.039,
+   "duration": 4.801,
+   "text": "data is missing and you are forcing the"
+  },
+  {
+   "start": 1801.2,
+   "duration": 4.24,
+   "text": "model to basically hallucinate data. You"
+  },
+  {
+   "start": 1803.84,
+   "duration": 3.52,
+   "text": "do not have to do that. If the data is"
+  },
+  {
+   "start": 1805.44,
+   "duration": 3.76,
+   "text": "missing, clearly say that that that is"
+  },
+  {
+   "start": 1807.36,
+   "duration": 4.24,
+   "text": "not an error for the feedback loop."
+  },
+  {
+   "start": 1809.2,
+   "duration": 6.079,
+   "text": "Clearly, you can return the output"
+  },
+  {
+   "start": 1811.6,
+   "duration": 5.52,
+   "text": "saying that okay um this is the error"
+  },
+  {
+   "start": 1815.279,
+   "duration": 4.081,
+   "text": "that we received but we can't do much"
+  },
+  {
+   "start": 1817.12,
+   "duration": 4.48,
+   "text": "more with it because it is not a"
+  },
+  {
+   "start": 1819.36,
+   "duration": 4.96,
+   "text": "structural uh kind of a problem over"
+  },
+  {
+   "start": 1821.6,
+   "duration": 5.28,
+   "text": "here. The actual data only is missing."
+  },
+  {
+   "start": 1824.32,
+   "duration": 4.959,
+   "text": "So in that case it is uh you know the"
+  },
+  {
+   "start": 1826.88,
+   "duration": 4.56,
+   "text": "human should fix it maybe with the"
+  },
+  {
+   "start": 1829.279,
+   "duration": 3.921,
+   "text": "correct data in the document or you know"
+  },
+  {
+   "start": 1831.44,
+   "duration": 4.08,
+   "text": "whatever the data is supplied to the"
+  },
+  {
+   "start": 1833.2,
+   "duration": 5.04,
+   "text": "agent should be correct you know"
+  },
+  {
+   "start": 1835.52,
+   "duration": 5.36,
+   "text": "sanitized something like that. Okay so I"
+  },
+  {
+   "start": 1838.24,
+   "duration": 4.48,
+   "text": "hope that is making sense. Okay. So a"
+  },
+  {
+   "start": 1840.88,
+   "duration": 4.799,
+   "text": "scenario that you would receive in the"
+  },
+  {
+   "start": 1842.72,
+   "duration": 5.76,
+   "text": "exam that is particularly uh based on"
+  },
+  {
+   "start": 1845.679,
+   "duration": 5.521,
+   "text": "the concepts that we discussed basically"
+  },
+  {
+   "start": 1848.48,
+   "duration": 5.04,
+   "text": "the required plus null label schema"
+  },
+  {
+   "start": 1851.2,
+   "duration": 5.04,
+   "text": "right define fields permit honest null"
+  },
+  {
+   "start": 1853.52,
+   "duration": 4.24,
+   "text": "escapes better uh you know this is a"
+  },
+  {
+   "start": 1856.24,
+   "duration": 5.2,
+   "text": "better idea than generation you know"
+  },
+  {
+   "start": 1857.76,
+   "duration": 6.399,
+   "text": "hallucination and generation right"
+  },
+  {
+   "start": 1861.44,
+   "duration": 4.8,
+   "text": "protocol enforcement. So apply tool"
+  },
+  {
+   "start": 1864.159,
+   "duration": 4.081,
+   "text": "choice any to guarantee structured tool"
+  },
+  {
+   "start": 1866.24,
+   "duration": 3.52,
+   "text": "calls. And if you have know that you"
+  },
+  {
+   "start": 1868.24,
+   "duration": 4.0,
+   "text": "know claude should call a particular"
+  },
+  {
+   "start": 1869.76,
+   "duration": 4.24,
+   "text": "tool at every time then you can specify"
+  },
+  {
+   "start": 1872.24,
+   "duration": 3.76,
+   "text": "the tool that we have already discussed"
+  },
+  {
+   "start": 1874.0,
+   "duration": 5.12,
+   "text": "in our previous lectures and in this"
+  },
+  {
+   "start": 1876.0,
+   "duration": 5.36,
+   "text": "lecture as well. Semantic validation"
+  },
+  {
+   "start": 1879.12,
+   "duration": 4.96,
+   "text": "deploy cross field consistency and"
+  },
+  {
+   "start": 1881.36,
+   "duration": 4.72,
+   "text": "business rule checks beyond the schema."
+  },
+  {
+   "start": 1884.08,
+   "duration": 4.079,
+   "text": "So schema validation is a different"
+  },
+  {
+   "start": 1886.08,
+   "duration": 4.16,
+   "text": "thing. Semantic is a different thing."
+  },
+  {
+   "start": 1888.159,
+   "duration": 6.561,
+   "text": "Semantic is basically the integrity of"
+  },
+  {
+   "start": 1890.24,
+   "duration": 6.72,
+   "text": "data. Um uh syntactic is basically the"
+  },
+  {
+   "start": 1894.72,
+   "duration": 4.24,
+   "text": "schema of the data right the format of"
+  },
+  {
+   "start": 1896.96,
+   "duration": 4.48,
+   "text": "the data basically so make sure that"
+  },
+  {
+   "start": 1898.96,
+   "duration": 4.48,
+   "text": "both sides of the coin you are doing and"
+  },
+  {
+   "start": 1901.44,
+   "duration": 3.76,
+   "text": "don't get confused with the feedback"
+  },
+  {
+   "start": 1903.44,
+   "duration": 4.079,
+   "text": "retry loop the feedback retry loop is"
+  },
+  {
+   "start": 1905.2,
+   "duration": 4.56,
+   "text": "only a format character not a data"
+  },
+  {
+   "start": 1907.519,
+   "duration": 4.481,
+   "text": "generator I hope that is making sense"
+  },
+  {
+   "start": 1909.76,
+   "duration": 5.2,
+   "text": "targeted retry loop right that is the"
+  },
+  {
+   "start": 1912.0,
+   "duration": 4.88,
+   "text": "next concept so you can put all of these"
+  },
+  {
+   "start": 1914.96,
+   "duration": 5.439,
+   "text": "in a particular use case right for"
+  },
+  {
+   "start": 1916.88,
+   "duration": 5.519,
+   "text": "example in our customer support agent um"
+  },
+  {
+   "start": 1920.399,
+   "duration": 4.961,
+   "text": "we have a lot of tools right and lot of"
+  },
+  {
+   "start": 1922.399,
+   "duration": 5.52,
+   "text": "tools return a lot of data. Now there"
+  },
+  {
+   "start": 1925.36,
+   "duration": 4.48,
+   "text": "might be a certain validation in the end"
+  },
+  {
+   "start": 1927.919,
+   "duration": 4.721,
+   "text": "that you want to do by the data"
+  },
+  {
+   "start": 1929.84,
+   "duration": 5.199,
+   "text": "extracted from various tools. So in that"
+  },
+  {
+   "start": 1932.64,
+   "duration": 4.639,
+   "text": "case you need to make sure that uh if"
+  },
+  {
+   "start": 1935.039,
+   "duration": 4.401,
+   "text": "there the data is missing it it returns"
+  },
+  {
+   "start": 1937.279,
+   "duration": 4.961,
+   "text": "null so that the structural integrity is"
+  },
+  {
+   "start": 1939.44,
+   "duration": 4.88,
+   "text": "maintained. uh tool choice is any so"
+  },
+  {
+   "start": 1942.24,
+   "duration": 5.279,
+   "text": "that you are making sure that Claude is"
+  },
+  {
+   "start": 1944.32,
+   "duration": 6.0,
+   "text": "calling at least one tool uh you know at"
+  },
+  {
+   "start": 1947.519,
+   "duration": 5.841,
+   "text": "every time [snorts] right if you set it"
+  },
+  {
+   "start": 1950.32,
+   "duration": 4.88,
+   "text": "to auto then claude might not call the"
+  },
+  {
+   "start": 1953.36,
+   "duration": 4.159,
+   "text": "tool as well but if you set it to any"
+  },
+  {
+   "start": 1955.2,
+   "duration": 4.959,
+   "text": "then claude has to call a tool every"
+  },
+  {
+   "start": 1957.519,
+   "duration": 4.481,
+   "text": "time then semantic validation so for"
+  },
+  {
+   "start": 1960.159,
+   "duration": 4.64,
+   "text": "example uh in in a customer support"
+  },
+  {
+   "start": 1962.0,
+   "duration": 4.64,
+   "text": "agent we have customer ID then the order"
+  },
+  {
+   "start": 1964.799,
+   "duration": 3.681,
+   "text": "ID and all those things right you have"
+  },
+  {
+   "start": 1966.64,
+   "duration": 5.6,
+   "text": "some business logic in your pre hook or"
+  },
+  {
+   "start": 1968.48,
+   "duration": 5.84,
+   "text": "your post hook and you are kind of doing"
+  },
+  {
+   "start": 1972.24,
+   "duration": 4.159,
+   "text": "the business logic validation over there"
+  },
+  {
+   "start": 1974.32,
+   "duration": 4.4,
+   "text": "that we have already discussed. So you"
+  },
+  {
+   "start": 1976.399,
+   "duration": 4.721,
+   "text": "are also doing the semantic validation."
+  },
+  {
+   "start": 1978.72,
+   "duration": 4.48,
+   "text": "Now you are extracting the data and you"
+  },
+  {
+   "start": 1981.12,
+   "duration": 3.84,
+   "text": "know creating that particular document"
+  },
+  {
+   "start": 1983.2,
+   "duration": 3.92,
+   "text": "in the end or the output right from the"
+  },
+  {
+   "start": 1984.96,
+   "duration": 4.16,
+   "text": "various tools. In that case you are"
+  },
+  {
+   "start": 1987.12,
+   "duration": 5.039,
+   "text": "making sure that you have a targeted"
+  },
+  {
+   "start": 1989.12,
+   "duration": 4.64,
+   "text": "retry loop which for example the"
+  },
+  {
+   "start": 1992.159,
+   "duration": 3.76,
+   "text": "customer ID is not in the particular"
+  },
+  {
+   "start": 1993.76,
+   "duration": 3.919,
+   "text": "format then the retry loop will run"
+  },
+  {
+   "start": 1995.919,
+   "duration": 5.521,
+   "text": "again and again with know till the"
+  },
+  {
+   "start": 1997.679,
+   "duration": 5.84,
+   "text": "maximum attempts is reached and um"
+  },
+  {
+   "start": 2001.44,
+   "duration": 4.32,
+   "text": "basically it will fix the format but if"
+  },
+  {
+   "start": 2003.519,
+   "duration": 4.481,
+   "text": "the customer ID itself is not there then"
+  },
+  {
+   "start": 2005.76,
+   "duration": 5.68,
+   "text": "it will not fix it. That is not part of"
+  },
+  {
+   "start": 2008.0,
+   "duration": 5.2,
+   "text": "what the uh feedback loop does. So make"
+  },
+  {
+   "start": 2011.44,
+   "duration": 3.2,
+   "text": "sure that is in your mind. I'm saying"
+  },
+  {
+   "start": 2013.2,
+   "duration": 2.959,
+   "text": "that again and again because the exam"
+  },
+  {
+   "start": 2014.64,
+   "duration": 4.159,
+   "text": "will try to test you and try to trick"
+  },
+  {
+   "start": 2016.159,
+   "duration": 6.4,
+   "text": "you. Don't fall for that trap. Human"
+  },
+  {
+   "start": 2018.799,
+   "duration": 5.76,
+   "text": "handoff. So once um you know if"
+  },
+  {
+   "start": 2022.559,
+   "duration": 4.24,
+   "text": "there are personal failures or you know"
+  },
+  {
+   "start": 2024.559,
+   "duration": 3.921,
+   "text": "it has reached the threshold of the"
+  },
+  {
+   "start": 2026.799,
+   "duration": 3.841,
+   "text": "maximum retries and hand it off to the"
+  },
+  {
+   "start": 2028.48,
+   "duration": 4.079,
+   "text": "agent maybe just send a signal back to"
+  },
+  {
+   "start": 2030.64,
+   "duration": 4.32,
+   "text": "the coordinator saying that okay I"
+  },
+  {
+   "start": 2032.559,
+   "duration": 3.84,
+   "text": "cannot handle it please uh escalate it"
+  },
+  {
+   "start": 2034.96,
+   "duration": 3.76,
+   "text": "something like that right and we know"
+  },
+  {
+   "start": 2036.399,
+   "duration": 3.681,
+   "text": "all the concepts of escalation that you"
+  },
+  {
+   "start": 2038.72,
+   "duration": 4.48,
+   "text": "know we have learned throughout our"
+  },
+  {
+   "start": 2040.08,
+   "duration": 6.479,
+   "text": "lessons. So I hope that is making sense."
+  },
+  {
+   "start": 2043.2,
+   "duration": 5.52,
+   "text": "Okay. So uh an example question. Your"
+  },
+  {
+   "start": 2046.559,
+   "duration": 4.481,
+   "text": "extraction system uses tool use and"
+  },
+  {
+   "start": 2048.72,
+   "duration": 5.04,
+   "text": "passes JSON schema validation 100% of"
+  },
+  {
+   "start": 2051.04,
+   "duration": 4.639,
+   "text": "the time. Occasionally it contains wrong"
+  },
+  {
+   "start": 2053.76,
+   "duration": 4.24,
+   "text": "monitored amounts because the model"
+  },
+  {
+   "start": 2055.679,
+   "duration": 6.0,
+   "text": "reads the wrong table line. What is the"
+  },
+  {
+   "start": 2058.0,
+   "duration": 5.839,
+   "text": "architectural fix? So the solution is so"
+  },
+  {
+   "start": 2061.679,
+   "duration": 4.48,
+   "text": "let's let's see the analysis. The schema"
+  },
+  {
+   "start": 2063.839,
+   "duration": 4.32,
+   "text": "is satisfied. Okay that is fine. That is"
+  },
+  {
+   "start": 2066.159,
+   "duration": 4.161,
+   "text": "what I mean by the structural integrity"
+  },
+  {
+   "start": 2068.159,
+   "duration": 4.24,
+   "text": "of the data. That is fine. output is"
+  },
+  {
+   "start": 2070.32,
+   "duration": 3.759,
+   "text": "structurally valid but the value is"
+  },
+  {
+   "start": 2072.399,
+   "duration": 3.841,
+   "text": "wrong. This is a semantic error. Now"
+  },
+  {
+   "start": 2074.079,
+   "duration": 3.6,
+   "text": "what is the solution? If there is an"
+  },
+  {
+   "start": 2076.24,
+   "duration": 2.879,
+   "text": "option saying that you know put it in"
+  },
+  {
+   "start": 2077.679,
+   "duration": 3.44,
+   "text": "the feedback loop or something like"
+  },
+  {
+   "start": 2079.119,
+   "duration": 4.321,
+   "text": "that. Don't go with that. The solution"
+  },
+  {
+   "start": 2081.119,
+   "duration": 4.24,
+   "text": "would be add semantic validation with"
+  },
+  {
+   "start": 2083.44,
+   "duration": 4.399,
+   "text": "business run checks and cross field"
+  },
+  {
+   "start": 2085.359,
+   "duration": 4.401,
+   "text": "consistency. Stricter schemas or more"
+  },
+  {
+   "start": 2087.839,
+   "duration": 3.601,
+   "text": "retries cannot fix the interpretation."
+  },
+  {
+   "start": 2089.76,
+   "duration": 4.319,
+   "text": "You have to make sure in your business"
+  },
+  {
+   "start": 2091.44,
+   "duration": 4.719,
+   "text": "logic that whatever the agent is reading"
+  },
+  {
+   "start": 2094.079,
+   "duration": 3.841,
+   "text": "for example it is reading the correct"
+  },
+  {
+   "start": 2096.159,
+   "duration": 4.321,
+   "text": "column or not. Right? That is the thing"
+  },
+  {
+   "start": 2097.92,
+   "duration": 4.72,
+   "text": "that you have to keep in mind."
+  },
+  {
+   "start": 2100.48,
+   "duration": 4.24,
+   "text": "Scenario. Now this is another scenario"
+  },
+  {
+   "start": 2102.64,
+   "duration": 4.16,
+   "text": "that you know will will be tested. An"
+  },
+  {
+   "start": 2104.72,
+   "duration": 3.68,
+   "text": "extraction pipeline fails validation on"
+  },
+  {
+   "start": 2106.8,
+   "duration": 3.36,
+   "text": "every retry. The documents being"
+  },
+  {
+   "start": 2108.4,
+   "duration": 4.4,
+   "text": "processed are genuinely missing a"
+  },
+  {
+   "start": 2110.16,
+   "duration": 4.24,
+   "text": "required field uh tax ID. What is the"
+  },
+  {
+   "start": 2112.8,
+   "duration": 2.72,
+   "text": "correct architectural response?"
+  },
+  {
+   "start": 2114.4,
+   "duration": 3.52,
+   "text": "Understand the question. What is the"
+  },
+  {
+   "start": 2115.52,
+   "duration": 4.72,
+   "text": "analysis? The retries are failing every"
+  },
+  {
+   "start": 2117.92,
+   "duration": 4.159,
+   "text": "time because the data is absent. More"
+  },
+  {
+   "start": 2120.24,
+   "duration": 3.599,
+   "text": "retries will never find the missing"
+  },
+  {
+   "start": 2122.079,
+   "duration": 4.241,
+   "text": "data. Yeah, that is what we just"
+  },
+  {
+   "start": 2123.839,
+   "duration": 5.841,
+   "text": "discussed uh right now. Removing the"
+  },
+  {
+   "start": 2126.32,
+   "duration": 5.68,
+   "text": "field loses uh presence guarantees. You"
+  },
+  {
+   "start": 2129.68,
+   "duration": 4.72,
+   "text": "know that is what we just discussed"
+  },
+  {
+   "start": 2132.0,
+   "duration": 5.76,
+   "text": "right? Change the field type to string"
+  },
+  {
+   "start": 2134.4,
+   "duration": 5.6,
+   "text": "null. So what will happen? So the retry"
+  },
+  {
+   "start": 2137.76,
+   "duration": 5.76,
+   "text": "will not fail every time and you are not"
+  },
+  {
+   "start": 2140.0,
+   "duration": 5.119,
+   "text": "for forcing the model to actually you"
+  },
+  {
+   "start": 2143.52,
+   "duration": 3.68,
+   "text": "know generate or hallucinate the data."
+  },
+  {
+   "start": 2145.119,
+   "duration": 4.881,
+   "text": "Instead you are telling null is also a"
+  },
+  {
+   "start": 2147.2,
+   "duration": 4.879,
+   "text": "fine data right. So if the data is"
+  },
+  {
+   "start": 2150.0,
+   "duration": 4.56,
+   "text": "absent then just populate it with null."
+  },
+  {
+   "start": 2152.079,
+   "duration": 5.201,
+   "text": "That is what you are telling."
+  },
+  {
+   "start": 2154.56,
+   "duration": 5.44,
+   "text": "Okay. So what are the concepts that we"
+  },
+  {
+   "start": 2157.28,
+   "duration": 4.48,
+   "text": "learned in this lesson? Basically tool"
+  },
+  {
+   "start": 2160.0,
+   "duration": 3.599,
+   "text": "used for JSON schema is the apex"
+  },
+  {
+   "start": 2161.76,
+   "duration": 4.24,
+   "text": "structured output mechanism. Discard"
+  },
+  {
+   "start": 2163.599,
+   "duration": 5.201,
+   "text": "prompt based JSON be more specific."
+  },
+  {
+   "start": 2166.0,
+   "duration": 5.28,
+   "text": "Basically enforcement tool choice any is"
+  },
+  {
+   "start": 2168.8,
+   "duration": 4.72,
+   "text": "the switch that guarantees execution. So"
+  },
+  {
+   "start": 2171.28,
+   "duration": 4.16,
+   "text": "make sure you are using that properly."
+  },
+  {
+   "start": 2173.52,
+   "duration": 5.92,
+   "text": "Required plus nullable fields prevent"
+  },
+  {
+   "start": 2175.44,
+   "duration": 5.84,
+   "text": "hallucinated data. Right? So that's all"
+  },
+  {
+   "start": 2179.44,
+   "duration": 5.04,
+   "text": "we discussed. Boundary schemas eliminate"
+  },
+  {
+   "start": 2181.28,
+   "duration": 5.04,
+   "text": "syntax errors not semantic errors limits"
+  },
+  {
+   "start": 2184.48,
+   "duration": 3.599,
+   "text": "retry cure formatting. They cannot"
+  },
+  {
+   "start": 2186.32,
+   "duration": 4.0,
+   "text": "manifest absent information. It's very"
+  },
+  {
+   "start": 2188.079,
+   "duration": 4.561,
+   "text": "very important. Keep that in mind guys."
+  },
+  {
+   "start": 2190.32,
+   "duration": 4.56,
+   "text": "Okay. So this is a simple kind of a"
+  },
+  {
+   "start": 2192.64,
+   "duration": 5.28,
+   "text": "flash card that you can uh take a"
+  },
+  {
+   "start": 2194.88,
+   "duration": 5.84,
+   "text": "screenshot of that we discussed right"
+  },
+  {
+   "start": 2197.92,
+   "duration": 5.439,
+   "text": "and uh I think we are done with this"
+  },
+  {
+   "start": 2200.72,
+   "duration": 4.8,
+   "text": "lesson. We just have a few uh lessons"
+  },
+  {
+   "start": 2203.359,
+   "duration": 4.561,
+   "text": "left and u I'll see you in the next"
+  },
+  {
+   "start": 2205.52,
+   "duration": 5.72,
+   "text": "lesson. Till then take care. Bye-bye."
+  },
+  {
+   "start": 2207.92,
+   "duration": 3.32,
+   "text": "And tada."
+  }
+ ]
+}

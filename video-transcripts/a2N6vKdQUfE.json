@@ -1,0 +1,4582 @@
+{
+ "video_id": "a2N6vKdQUfE",
+ "episode": "Ep 03",
+ "title": "Subagent Context Passing & Session Management",
+ "segments": [
+  {
+   "start": 3.12,
+   "duration": 4.92,
+   "text": "Look at this uh lesson over here and um"
+  },
+  {
+   "start": 6.48,
+   "duration": 4.2,
+   "text": "this is like the continuation of our"
+  },
+  {
+   "start": 8.04,
+   "duration": 5.52,
+   "text": "previous lesson where we talked about,"
+  },
+  {
+   "start": 10.68,
+   "duration": 5.04,
+   "text": "you know, um multi-agent architecture in"
+  },
+  {
+   "start": 13.56,
+   "duration": 4.48,
+   "text": "Claude and we talked about uh some"
+  },
+  {
+   "start": 15.72,
+   "duration": 4.04,
+   "text": "patterns and we talked about the task"
+  },
+  {
+   "start": 18.04,
+   "duration": 2.92,
+   "text": "tool calls and a lot of other stuff we"
+  },
+  {
+   "start": 19.76,
+   "duration": 4.32,
+   "text": "did."
+  },
+  {
+   "start": 20.96,
+   "duration": 6.0,
+   "text": "Now, let's continue over that and um you"
+  },
+  {
+   "start": 24.08,
+   "duration": 4.52,
+   "text": "know, and um let's talk about uh"
+  },
+  {
+   "start": 26.96,
+   "duration": 4.68,
+   "text": "sub-agent context and session"
+  },
+  {
+   "start": 28.6,
+   "duration": 5.12,
+   "text": "management, okay? Now, these"
+  },
+  {
+   "start": 31.64,
+   "duration": 4.84,
+   "text": "uh terminologies may feel a little bit"
+  },
+  {
+   "start": 33.72,
+   "duration": 5.28,
+   "text": "more, uh you know, confusing, but as we"
+  },
+  {
+   "start": 36.48,
+   "duration": 5.2,
+   "text": "go forward, it will, you know, clear up."
+  },
+  {
+   "start": 39.0,
+   "duration": 4.36,
+   "text": "So, bear with me uh for a little time."
+  },
+  {
+   "start": 41.68,
+   "duration": 3.56,
+   "text": "And also, if you are feeling a little"
+  },
+  {
+   "start": 43.36,
+   "duration": 4.0,
+   "text": "bit disconnected between the concepts"
+  },
+  {
+   "start": 45.24,
+   "duration": 4.72,
+   "text": "that I'm teaching, don't worry."
+  },
+  {
+   "start": 47.36,
+   "duration": 5.72,
+   "text": "Uh by the end of this lesson, uh I have"
+  },
+  {
+   "start": 49.96,
+   "duration": 5.32,
+   "text": "created a hands-on uh agent demo which"
+  },
+  {
+   "start": 53.08,
+   "duration": 4.24,
+   "text": "covers all of these concepts and you"
+  },
+  {
+   "start": 55.28,
+   "duration": 4.88,
+   "text": "will see everything working together,"
+  },
+  {
+   "start": 57.32,
+   "duration": 4.4,
+   "text": "right? So, agents, you will see how you"
+  },
+  {
+   "start": 60.16,
+   "duration": 3.64,
+   "text": "your agent will work inside your"
+  },
+  {
+   "start": 61.72,
+   "duration": 3.68,
+   "text": "project, how you would use this task"
+  },
+  {
+   "start": 63.8,
+   "duration": 3.64,
+   "text": "tool calls, how would you use this"
+  },
+  {
+   "start": 65.4,
+   "duration": 4.28,
+   "text": "coordinator, how would you use session"
+  },
+  {
+   "start": 67.44,
+   "duration": 4.2,
+   "text": "management and sub-agents and all these"
+  },
+  {
+   "start": 69.68,
+   "duration": 3.44,
+   "text": "things, right? So, don't worry about all"
+  },
+  {
+   "start": 71.64,
+   "duration": 2.72,
+   "text": "of these um"
+  },
+  {
+   "start": 73.12,
+   "duration": 3.12,
+   "text": "if you're getting confused or something."
+  },
+  {
+   "start": 74.36,
+   "duration": 4.16,
+   "text": "I try to explain the concept as much as"
+  },
+  {
+   "start": 76.24,
+   "duration": 3.64,
+   "text": "possible, but if you still have doubts,"
+  },
+  {
+   "start": 78.52,
+   "duration": 3.04,
+   "text": "you can put it down in the comments,"
+  },
+  {
+   "start": 79.88,
+   "duration": 3.0,
+   "text": "okay? I I I will try to explain it"
+  },
+  {
+   "start": 81.56,
+   "duration": 3.92,
+   "text": "further."
+  },
+  {
+   "start": 82.88,
+   "duration": 4.84,
+   "text": "Okay. Now, what is the"
+  },
+  {
+   "start": 85.48,
+   "duration": 4.68,
+   "text": "purpose of this thing? Let's talk about"
+  },
+  {
+   "start": 87.72,
+   "duration": 5.28,
+   "text": "a scenario first, okay? So, imagine"
+  },
+  {
+   "start": 90.16,
+   "duration": 5.8,
+   "text": "you're running a, you know, very massive"
+  },
+  {
+   "start": 93.0,
+   "duration": 5.32,
+   "text": "research project, okay? You have, you"
+  },
+  {
+   "start": 95.96,
+   "duration": 3.84,
+   "text": "know, you you have a team of brilliant"
+  },
+  {
+   "start": 98.32,
+   "duration": 3.72,
+   "text": "analysts."
+  },
+  {
+   "start": 99.8,
+   "duration": 4.12,
+   "text": "Each one is expert in their own field,"
+  },
+  {
+   "start": 102.04,
+   "duration": 3.04,
+   "text": "obviously, right? Now, I'm talking if"
+  },
+  {
+   "start": 103.92,
+   "duration": 3.24,
+   "text": "you if you want to correlate, I'm"
+  },
+  {
+   "start": 105.08,
+   "duration": 3.68,
+   "text": "talking about sub-agents over here."
+  },
+  {
+   "start": 107.16,
+   "duration": 4.76,
+   "text": "Okay, and you are the coordinator and"
+  },
+  {
+   "start": 108.76,
+   "duration": 4.96,
+   "text": "these people are the sub-agents who are,"
+  },
+  {
+   "start": 111.92,
+   "duration": 4.64,
+   "text": "you know, um"
+  },
+  {
+   "start": 113.72,
+   "duration": 5.6,
+   "text": "best in their field, basically."
+  },
+  {
+   "start": 116.56,
+   "duration": 5.56,
+   "text": "So, you brief the first one, uh they dig"
+  },
+  {
+   "start": 119.32,
+   "duration": 4.64,
+   "text": "deep and find gold. I mean, like 10"
+  },
+  {
+   "start": 122.12,
+   "duration": 2.84,
+   "text": "amazing sources, killer insights they"
+  },
+  {
+   "start": 123.96,
+   "duration": 2.88,
+   "text": "find."
+  },
+  {
+   "start": 124.96,
+   "duration": 4.36,
+   "text": "Then you say, \"Great. Now hand your"
+  },
+  {
+   "start": 126.84,
+   "duration": 4.08,
+   "text": "findings to the analyst number two, for"
+  },
+  {
+   "start": 129.32,
+   "duration": 3.76,
+   "text": "example.\""
+  },
+  {
+   "start": 130.92,
+   "duration": 4.64,
+   "text": "Now, analyst number two will look at you"
+  },
+  {
+   "start": 133.08,
+   "duration": 4.64,
+   "text": "and like, \"What findings?"
+  },
+  {
+   "start": 135.56,
+   "duration": 3.08,
+   "text": "What findings are you talking about?"
+  },
+  {
+   "start": 137.72,
+   "duration": 2.8,
+   "text": "It's"
+  },
+  {
+   "start": 138.64,
+   "duration": 3.52,
+   "text": "Are you crazy or what?"
+  },
+  {
+   "start": 140.52,
+   "duration": 4.12,
+   "text": "I just got here. What findings are you"
+  },
+  {
+   "start": 142.16,
+   "duration": 4.84,
+   "text": "talking about?\" Now, that's exactly what"
+  },
+  {
+   "start": 144.64,
+   "duration": 4.319,
+   "text": "happens with sub agents by default. Now,"
+  },
+  {
+   "start": 147.0,
+   "duration": 4.8,
+   "text": "in the previous lesson I told you that"
+  },
+  {
+   "start": 148.959,
+   "duration": 5.601,
+   "text": "sub agents don't talk to each other."
+  },
+  {
+   "start": 151.8,
+   "duration": 5.04,
+   "text": "It is the duty of the coordinator to"
+  },
+  {
+   "start": 154.56,
+   "duration": 4.36,
+   "text": "pass on the context to the sub agent."
+  },
+  {
+   "start": 156.84,
+   "duration": 3.36,
+   "text": "Who is the coordinator, right?"
+  },
+  {
+   "start": 158.92,
+   "duration": 4.12,
+   "text": "So,"
+  },
+  {
+   "start": 160.2,
+   "duration": 6.32,
+   "text": "every sub agent you spawn starts with"
+  },
+  {
+   "start": 163.04,
+   "duration": 5.84,
+   "text": "zero memory of what happened before."
+  },
+  {
+   "start": 166.52,
+   "duration": 4.68,
+   "text": "Right? And that's what you can see in"
+  },
+  {
+   "start": 168.88,
+   "duration": 3.96,
+   "text": "the slide as well."
+  },
+  {
+   "start": 171.2,
+   "duration": 4.2,
+   "text": "Now, if you don't know how to pass"
+  },
+  {
+   "start": 172.84,
+   "duration": 5.08,
+   "text": "context properly, your whole multi-agent"
+  },
+  {
+   "start": 175.4,
+   "duration": 3.96,
+   "text": "system falls apart."
+  },
+  {
+   "start": 177.92,
+   "duration": 2.96,
+   "text": "You know, you will say you will pass"
+  },
+  {
+   "start": 179.36,
+   "duration": 3.04,
+   "text": "something and the sub agent will"
+  },
+  {
+   "start": 180.88,
+   "duration": 3.88,
+   "text": "understand something and do something"
+  },
+  {
+   "start": 182.4,
+   "duration": 6.52,
+   "text": "else. That's not what you want. You have"
+  },
+  {
+   "start": 184.76,
+   "duration": 5.68,
+   "text": "to have proper context passing from, you"
+  },
+  {
+   "start": 188.92,
+   "duration": 3.599,
+   "text": "know, the wherever you're calling the"
+  },
+  {
+   "start": 190.44,
+   "duration": 3.76,
+   "text": "sub agent, basically."
+  },
+  {
+   "start": 192.519,
+   "duration": 3.041,
+   "text": "Right? So,"
+  },
+  {
+   "start": 194.2,
+   "duration": 3.039,
+   "text": "we are In this lesson, we're going to"
+  },
+  {
+   "start": 195.56,
+   "duration": 3.56,
+   "text": "solve that. Don't worry. We're going to"
+  },
+  {
+   "start": 197.239,
+   "duration": 3.321,
+   "text": "solve this context passing thing. We're"
+  },
+  {
+   "start": 199.12,
+   "duration": 3.8,
+   "text": "going to talk about attribute"
+  },
+  {
+   "start": 200.56,
+   "duration": 4.56,
+   "text": "preservation, session management. You"
+  },
+  {
+   "start": 202.92,
+   "duration": 4.039,
+   "text": "know, by the end you'll know exactly how"
+  },
+  {
+   "start": 205.12,
+   "duration": 4.8,
+   "text": "to build this multi-agent system that"
+  },
+  {
+   "start": 206.959,
+   "duration": 4.681,
+   "text": "don't lose context. You know, you'll be"
+  },
+  {
+   "start": 209.92,
+   "duration": 4.16,
+   "text": "pretty amazing"
+  },
+  {
+   "start": 211.64,
+   "duration": 3.72,
+   "text": "in this thing. Okay."
+  },
+  {
+   "start": 214.08,
+   "duration": 4.8,
+   "text": "Now,"
+  },
+  {
+   "start": 215.36,
+   "duration": 5.12,
+   "text": "let's talk about this um"
+  },
+  {
+   "start": 218.88,
+   "duration": 3.4,
+   "text": "context problem."
+  },
+  {
+   "start": 220.48,
+   "duration": 4.479,
+   "text": "Before we look at the solution, let's"
+  },
+  {
+   "start": 222.28,
+   "duration": 4.239,
+   "text": "actually feel the problem."
+  },
+  {
+   "start": 224.959,
+   "duration": 4.0,
+   "text": "You know, in the less You know, we we"
+  },
+  {
+   "start": 226.519,
+   "duration": 4.121,
+   "text": "already seen we built a coordinator,"
+  },
+  {
+   "start": 228.959,
+   "duration": 3.321,
+   "text": "right? We we talked about a coordinator"
+  },
+  {
+   "start": 230.64,
+   "duration": 3.52,
+   "text": "in our previous lesson."
+  },
+  {
+   "start": 232.28,
+   "duration": 5.44,
+   "text": "The coordinator spawns sub agents using"
+  },
+  {
+   "start": 234.16,
+   "duration": 5.12,
+   "text": "the task tool, right? And"
+  },
+  {
+   "start": 237.72,
+   "duration": 3.04,
+   "text": "I have already mentioned that sub agents"
+  },
+  {
+   "start": 239.28,
+   "duration": 3.76,
+   "text": "don't inherit the coordinator's"
+  },
+  {
+   "start": 240.76,
+   "duration": 3.96,
+   "text": "conversation history."
+  },
+  {
+   "start": 243.04,
+   "duration": 4.08,
+   "text": "Now, think about it in this way. Your"
+  },
+  {
+   "start": 244.72,
+   "duration": 5.08,
+   "text": "coordinator has been running for 10"
+  },
+  {
+   "start": 247.12,
+   "duration": 5.24,
+   "text": "minutes, for example. It's called like"
+  },
+  {
+   "start": 249.8,
+   "duration": 5.0,
+   "text": "three tools,"
+  },
+  {
+   "start": 252.36,
+   "duration": 5.159,
+   "text": "you know, went through four documents,"
+  },
+  {
+   "start": 254.8,
+   "duration": 5.999,
+   "text": "accumulated a ton of context."
+  },
+  {
+   "start": 257.519,
+   "duration": 5.601,
+   "text": "Now, it invokes a"
+  },
+  {
+   "start": 260.799,
+   "duration": 4.281,
+   "text": "synthesis sub agent, for example, you"
+  },
+  {
+   "start": 263.12,
+   "duration": 3.48,
+   "text": "know?"
+  },
+  {
+   "start": 265.08,
+   "duration": 2.8,
+   "text": "The sub agent, what is the purpose of"
+  },
+  {
+   "start": 266.6,
+   "duration": 4.24,
+   "text": "the sub agent? The sub agent gets"
+  },
+  {
+   "start": 267.88,
+   "duration": 5.76,
+   "text": "exactly one thing, for example."
+  },
+  {
+   "start": 270.84,
+   "duration": 5.04,
+   "text": "Only the sub agent will get whatever"
+  },
+  {
+   "start": 273.64,
+   "duration": 5.32,
+   "text": "text you put in the task tool call,"
+  },
+  {
+   "start": 275.88,
+   "duration": 5.56,
+   "text": "because obviously, how does a"
+  },
+  {
+   "start": 278.96,
+   "duration": 5.52,
+   "text": "coordinator spawn a sub agent using the"
+  },
+  {
+   "start": 281.44,
+   "duration": 3.04,
+   "text": "task tool call?"
+  },
+  {
+   "start": 284.76,
+   "duration": 3.48,
+   "text": "Okay?"
+  },
+  {
+   "start": 286.28,
+   "duration": 4.08,
+   "text": "So,"
+  },
+  {
+   "start": 288.24,
+   "duration": 4.76,
+   "text": "apart from that, the sub agent has"
+  },
+  {
+   "start": 290.36,
+   "duration": 4.559,
+   "text": "nothing to understand."
+  },
+  {
+   "start": 293.0,
+   "duration": 5.16,
+   "text": "Right? So, we have to make sure that"
+  },
+  {
+   "start": 294.919,
+   "duration": 5.161,
+   "text": "whatever task tool call we are doing, we"
+  },
+  {
+   "start": 298.16,
+   "duration": 3.12,
+   "text": "are doing it properly."
+  },
+  {
+   "start": 300.08,
+   "duration": 3.24,
+   "text": "That's what we are going to talk about"
+  },
+  {
+   "start": 301.28,
+   "duration": 4.88,
+   "text": "it. This is not a rocket science. Same"
+  },
+  {
+   "start": 303.32,
+   "duration": 5.4,
+   "text": "concept, how to do it properly."
+  },
+  {
+   "start": 306.16,
+   "duration": 6.84,
+   "text": "And at the end, it always comes down of"
+  },
+  {
+   "start": 308.72,
+   "duration": 6.6,
+   "text": "how well you prompt. I always tell in"
+  },
+  {
+   "start": 313.0,
+   "duration": 4.56,
+   "text": "in today's time, right?"
+  },
+  {
+   "start": 315.32,
+   "duration": 4.8,
+   "text": "Doesn't matter what how many languages"
+  },
+  {
+   "start": 317.56,
+   "duration": 5.4,
+   "text": "you know, how better you code. It always"
+  },
+  {
+   "start": 320.12,
+   "duration": 5.04,
+   "text": "comes down to how better you prompt, how"
+  },
+  {
+   "start": 322.96,
+   "duration": 4.2,
+   "text": "better you use prompt engineering. Now,"
+  },
+  {
+   "start": 325.16,
+   "duration": 3.64,
+   "text": "let's you know, you're getting confused?"
+  },
+  {
+   "start": 327.16,
+   "duration": 3.28,
+   "text": "Let's see how that prompt engineering"
+  },
+  {
+   "start": 328.8,
+   "duration": 2.6,
+   "text": "comes comes into the picture."
+  },
+  {
+   "start": 330.44,
+   "duration": 2.32,
+   "text": "Now,"
+  },
+  {
+   "start": 331.4,
+   "duration": 3.24,
+   "text": "the core principle you have to remember"
+  },
+  {
+   "start": 332.76,
+   "duration": 2.96,
+   "text": "that every sub agent starts with a clean"
+  },
+  {
+   "start": 334.64,
+   "duration": 3.64,
+   "text": "slate."
+  },
+  {
+   "start": 335.72,
+   "duration": 4.16,
+   "text": "It's entire world, it's what you put in"
+  },
+  {
+   "start": 338.28,
+   "duration": 4.04,
+   "text": "the prompt."
+  },
+  {
+   "start": 339.88,
+   "duration": 5.8,
+   "text": "Now, this is a feature. It prevents this"
+  },
+  {
+   "start": 342.32,
+   "duration": 4.96,
+   "text": "context contamination or context loss or"
+  },
+  {
+   "start": 345.68,
+   "duration": 2.6,
+   "text": "whatever."
+  },
+  {
+   "start": 347.28,
+   "duration": 2.28,
+   "text": "Okay?"
+  },
+  {
+   "start": 348.28,
+   "duration": 6.32,
+   "text": "Now,"
+  },
+  {
+   "start": 349.56,
+   "duration": 5.04,
+   "text": "um let's talk about uh you know"
+  },
+  {
+   "start": 355.56,
+   "duration": 3.96,
+   "text": "um uh and I"
+  },
+  {
+   "start": 357.32,
+   "duration": 5.72,
+   "text": "a particular uh you know example of a"
+  },
+  {
+   "start": 359.52,
+   "duration": 6.16,
+   "text": "good prompt and a bad prompt. Okay?"
+  },
+  {
+   "start": 363.04,
+   "duration": 4.08,
+   "text": "Now, for example, uh"
+  },
+  {
+   "start": 365.68,
+   "duration": 4.52,
+   "text": "let's say let's let's me let me just get"
+  },
+  {
+   "start": 367.12,
+   "duration": 4.68,
+   "text": "me the pen which I really like."
+  },
+  {
+   "start": 370.2,
+   "duration": 3.88,
+   "text": "Okay?"
+  },
+  {
+   "start": 371.8,
+   "duration": 6.08,
+   "text": "Now, let's see I I I would have noted"
+  },
+  {
+   "start": 374.08,
+   "duration": 3.8,
+   "text": "some prompts down over here."
+  },
+  {
+   "start": 383.0,
+   "duration": 2.68,
+   "text": "Did I not"
+  },
+  {
+   "start": 385.72,
+   "duration": 4.56,
+   "text": "I I I guess I haven't noted it down, but"
+  },
+  {
+   "start": 387.88,
+   "duration": 4.4,
+   "text": "anyways. So, for example,"
+  },
+  {
+   "start": 390.28,
+   "duration": 3.6,
+   "text": "uh you have your spawning a sub agent,"
+  },
+  {
+   "start": 392.28,
+   "duration": 3.36,
+   "text": "right? So, so the point what I'm trying"
+  },
+  {
+   "start": 393.88,
+   "duration": 4.56,
+   "text": "to tell is you're you're spawning a sub"
+  },
+  {
+   "start": 395.64,
+   "duration": 4.2,
+   "text": "agent, and uh you are not properly"
+  },
+  {
+   "start": 398.44,
+   "duration": 3.8,
+   "text": "giving a particular prompt. You're just"
+  },
+  {
+   "start": 399.84,
+   "duration": 4.36,
+   "text": "telling, you know,"
+  },
+  {
+   "start": 402.24,
+   "duration": 4.96,
+   "text": "I don't know why it's not coming. Okay."
+  },
+  {
+   "start": 404.2,
+   "duration": 4.4,
+   "text": "Uh let me uh You're just telling,"
+  },
+  {
+   "start": 407.2,
+   "duration": 2.68,
+   "text": "\"Here are some research notes.\" You're"
+  },
+  {
+   "start": 408.6,
+   "duration": 3.08,
+   "text": "giving the prompt like that. \"Here are"
+  },
+  {
+   "start": 409.88,
+   "duration": 3.8,
+   "text": "some research findings or research notes"
+  },
+  {
+   "start": 411.68,
+   "duration": 6.72,
+   "text": "from the previous agents. Please"
+  },
+  {
+   "start": 413.68,
+   "duration": 4.72,
+   "text": "synthesize them into a final report.\""
+  },
+  {
+   "start": 418.44,
+   "duration": 3.28,
+   "text": "Now,"
+  },
+  {
+   "start": 419.88,
+   "duration": 4.32,
+   "text": "the question the sub agent will ask,"
+  },
+  {
+   "start": 421.72,
+   "duration": 4.68,
+   "text": "\"What findings are you talking about?"
+  },
+  {
+   "start": 424.2,
+   "duration": 4.92,
+   "text": "Where are those findings?\""
+  },
+  {
+   "start": 426.4,
+   "duration": 4.76,
+   "text": "The sub agent has no idea what previous"
+  },
+  {
+   "start": 429.12,
+   "duration": 3.56,
+   "text": "agents find. Right? Because that sub"
+  },
+  {
+   "start": 431.16,
+   "duration": 3.36,
+   "text": "agent will not be able to talk to those"
+  },
+  {
+   "start": 432.68,
+   "duration": 4.08,
+   "text": "previous agents, right?"
+  },
+  {
+   "start": 434.52,
+   "duration": 5.12,
+   "text": "It will either hallucinate"
+  },
+  {
+   "start": 436.76,
+   "duration": 5.04,
+   "text": "or produce a generic report."
+  },
+  {
+   "start": 439.64,
+   "duration": 3.96,
+   "text": "Right? Now,"
+  },
+  {
+   "start": 441.8,
+   "duration": 4.24,
+   "text": "who knows what was found? The"
+  },
+  {
+   "start": 443.6,
+   "duration": 6.4,
+   "text": "coordinator. Because every sub agent who"
+  },
+  {
+   "start": 446.04,
+   "duration": 6.28,
+   "text": "works sends the particular data or"
+  },
+  {
+   "start": 450.0,
+   "duration": 5.32,
+   "text": "whatever they found to the coordinator."
+  },
+  {
+   "start": 452.32,
+   "duration": 5.96,
+   "text": "But the sub sub agent doesn't know that."
+  },
+  {
+   "start": 455.32,
+   "duration": 5.24,
+   "text": "Unless you explicitly include it."
+  },
+  {
+   "start": 458.28,
+   "duration": 4.8,
+   "text": "Okay? And this is the number one mistake"
+  },
+  {
+   "start": 460.56,
+   "duration": 5.76,
+   "text": "in multi-agent architecture, and it's"
+  },
+  {
+   "start": 463.08,
+   "duration": 4.84,
+   "text": "very subtle. You you you know the"
+  },
+  {
+   "start": 466.32,
+   "duration": 3.2,
+   "text": "you it it looks reasonable. You think"
+  },
+  {
+   "start": 467.92,
+   "duration": 3.64,
+   "text": "that they are intelligent enough to get"
+  },
+  {
+   "start": 469.52,
+   "duration": 4.36,
+   "text": "it, but actually they don't get it. You"
+  },
+  {
+   "start": 471.56,
+   "duration": 4.48,
+   "text": "know, you have to be sure enough and you"
+  },
+  {
+   "start": 473.88,
+   "duration": 3.92,
+   "text": "have to be attentive enough to pass the"
+  },
+  {
+   "start": 476.04,
+   "duration": 4.52,
+   "text": "context."
+  },
+  {
+   "start": 477.8,
+   "duration": 4.68,
+   "text": "So, we have to talk about structured"
+  },
+  {
+   "start": 480.56,
+   "duration": 4.08,
+   "text": "context finding."
+  },
+  {
+   "start": 482.48,
+   "duration": 4.64,
+   "text": "Now, if you see I gave you a bad prompt"
+  },
+  {
+   "start": 484.64,
+   "duration": 6.36,
+   "text": "example like in double quotes bad prompt"
+  },
+  {
+   "start": 487.12,
+   "duration": 3.88,
+   "text": "example where I said, you know,"
+  },
+  {
+   "start": 493.0,
+   "duration": 4.4,
+   "text": "just to you know, this is what the"
+  },
+  {
+   "start": 495.04,
+   "duration": 4.16,
+   "text": "previous research you know, just these"
+  },
+  {
+   "start": 497.4,
+   "duration": 4.28,
+   "text": "are the findings of the previous agents."
+  },
+  {
+   "start": 499.2,
+   "duration": 4.12,
+   "text": "Just create this report. Now, the new"
+  },
+  {
+   "start": 501.68,
+   "duration": 3.48,
+   "text": "agent doesn't know, doesn't have any"
+  },
+  {
+   "start": 503.32,
+   "duration": 3.16,
+   "text": "context. Now, let me show you an example"
+  },
+  {
+   "start": 505.16,
+   "duration": 3.36,
+   "text": "of a good"
+  },
+  {
+   "start": 506.48,
+   "duration": 4.08,
+   "text": "uh you know,"
+  },
+  {
+   "start": 508.52,
+   "duration": 4.28,
+   "text": "way of doing this."
+  },
+  {
+   "start": 510.56,
+   "duration": 4.64,
+   "text": "So, let's say about research findings."
+  },
+  {
+   "start": 512.8,
+   "duration": 5.48,
+   "text": "You create one array like this."
+  },
+  {
+   "start": 515.2,
+   "duration": 5.12,
+   "text": "Okay? Now,"
+  },
+  {
+   "start": 518.28,
+   "duration": 4.4,
+   "text": "this is what the coordinator does."
+  },
+  {
+   "start": 520.32,
+   "duration": 4.2,
+   "text": "Coordinator building context for"
+  },
+  {
+   "start": 522.68,
+   "duration": 3.48,
+   "text": "synthesis sub agent. Now, we're talking"
+  },
+  {
+   "start": 524.52,
+   "duration": 3.88,
+   "text": "about the synthesis sub agent example,"
+  },
+  {
+   "start": 526.16,
+   "duration": 4.08,
+   "text": "right? Now, we have to pass properly"
+  },
+  {
+   "start": 528.4,
+   "duration": 3.84,
+   "text": "what was found and what was the research"
+  },
+  {
+   "start": 530.24,
+   "duration": 2.96,
+   "text": "research findings or whatever, right?"
+  },
+  {
+   "start": 532.24,
+   "duration": 2.599,
+   "text": "So,"
+  },
+  {
+   "start": 533.2,
+   "duration": 4.24,
+   "text": "here there is one object which says this"
+  },
+  {
+   "start": 534.839,
+   "duration": 3.961,
+   "text": "is the finding Claude's tool use stop"
+  },
+  {
+   "start": 537.44,
+   "duration": 2.64,
+   "text": "reason requires the full assistant"
+  },
+  {
+   "start": 538.8,
+   "duration": 3.56,
+   "text": "message to be appended before tool"
+  },
+  {
+   "start": 540.08,
+   "duration": 4.04,
+   "text": "results. Fine. Source URL is this."
+  },
+  {
+   "start": 542.36,
+   "duration": 3.92,
+   "text": "Source title is this."
+  },
+  {
+   "start": 544.12,
+   "duration": 4.76,
+   "text": "Page number retrieved at confidence is"
+  },
+  {
+   "start": 546.28,
+   "duration": 4.8,
+   "text": "high. Similarly, using an iteration gap"
+  },
+  {
+   "start": 548.88,
+   "duration": 4.24,
+   "text": "as a primary stop condition is an"
+  },
+  {
+   "start": 551.08,
+   "duration": 3.24,
+   "text": "anti-pattern. Okay, so this is just some"
+  },
+  {
+   "start": 553.12,
+   "duration": 3.64,
+   "text": "data I have"
+  },
+  {
+   "start": 554.32,
+   "duration": 4.44,
+   "text": "pulled in from the Claude"
+  },
+  {
+   "start": 556.76,
+   "duration": 3.92,
+   "text": "you know, documentations and I have put"
+  },
+  {
+   "start": 558.76,
+   "duration": 3.6,
+   "text": "the source URL."
+  },
+  {
+   "start": 560.68,
+   "duration": 3.68,
+   "text": "Now, using this particular research"
+  },
+  {
+   "start": 562.36,
+   "duration": 4.32,
+   "text": "findings that you see over here, we"
+  },
+  {
+   "start": 564.36,
+   "duration": 4.92,
+   "text": "build the synthesis prompt. Now, if you"
+  },
+  {
+   "start": 566.68,
+   "duration": 4.44,
+   "text": "see synthesis prompt equals to your"
+  },
+  {
+   "start": 569.28,
+   "duration": 4.28,
+   "text": "synthesis agent, your task is to produce"
+  },
+  {
+   "start": 571.12,
+   "duration": 5.28,
+   "text": "a structured research report. The"
+  },
+  {
+   "start": 573.56,
+   "duration": 5.28,
+   "text": "findings to synthesize. Now, we properly"
+  },
+  {
+   "start": 576.4,
+   "duration": 5.12,
+   "text": "format json.dumps research findings"
+  },
+  {
+   "start": 578.84,
+   "duration": 4.04,
+   "text": "indentation equals to two and then this"
+  },
+  {
+   "start": 581.52,
+   "duration": 3.32,
+   "text": "is the requirements. We are also putting"
+  },
+  {
+   "start": 582.88,
+   "duration": 4.04,
+   "text": "some constraints. Every claim in the"
+  },
+  {
+   "start": 584.84,
+   "duration": 3.64,
+   "text": "report must cite its source URL,"
+  },
+  {
+   "start": 586.92,
+   "duration": 4.44,
+   "text": "preserve the retrieved at date for"
+  },
+  {
+   "start": 588.48,
+   "duration": 5.04,
+   "text": "temporal accuracy, flag any conflicting"
+  },
+  {
+   "start": 591.36,
+   "duration": 3.96,
+   "text": "findings that both sources annotated."
+  },
+  {
+   "start": 593.52,
+   "duration": 4.92,
+   "text": "These are some things that we have put."
+  },
+  {
+   "start": 595.32,
+   "duration": 5.2,
+   "text": "Then we put it in the task call. Now"
+  },
+  {
+   "start": 598.44,
+   "duration": 5.52,
+   "text": "pass to the sub agent via the task tool"
+  },
+  {
+   "start": 600.52,
+   "duration": 5.04,
+   "text": "call. Right? So same concept we are"
+  },
+  {
+   "start": 603.96,
+   "duration": 3.52,
+   "text": "doing. We are doing the same task tool"
+  },
+  {
+   "start": 605.56,
+   "duration": 4.28,
+   "text": "call, right? Nothing like we are doing"
+  },
+  {
+   "start": 607.48,
+   "duration": 4.08,
+   "text": "using a separate concept to provide the"
+  },
+  {
+   "start": 609.84,
+   "duration": 3.28,
+   "text": "context to the sub agent. We are doing"
+  },
+  {
+   "start": 611.56,
+   "duration": 4.44,
+   "text": "the same thing, but we are doing it"
+  },
+  {
+   "start": 613.12,
+   "duration": 4.28,
+   "text": "properly. That's it."
+  },
+  {
+   "start": 616.0,
+   "duration": 4.6,
+   "text": "Right?"
+  },
+  {
+   "start": 617.4,
+   "duration": 5.0,
+   "text": "So that is what I wanted to tell."
+  },
+  {
+   "start": 620.6,
+   "duration": 4.6,
+   "text": "And yeah."
+  },
+  {
+   "start": 622.4,
+   "duration": 4.44,
+   "text": "That is how you would actually do the"
+  },
+  {
+   "start": 625.2,
+   "duration": 4.0,
+   "text": "right thing."
+  },
+  {
+   "start": 626.84,
+   "duration": 4.2,
+   "text": "Okay?"
+  },
+  {
+   "start": 629.2,
+   "duration": 3.56,
+   "text": "So you have to do a structured approach."
+  },
+  {
+   "start": 631.04,
+   "duration": 5.12,
+   "text": "That is what I wanted to do."
+  },
+  {
+   "start": 632.76,
+   "duration": 4.68,
+   "text": "Talking about preserving attribution."
+  },
+  {
+   "start": 636.16,
+   "duration": 3.8,
+   "text": "Now"
+  },
+  {
+   "start": 637.44,
+   "duration": 5.0,
+   "text": "let us let us, you know,"
+  },
+  {
+   "start": 639.96,
+   "duration": 4.72,
+   "text": "talk about this subtle problem, you"
+  },
+  {
+   "start": 642.44,
+   "duration": 3.72,
+   "text": "know, that bites people hard in"
+  },
+  {
+   "start": 644.68,
+   "duration": 4.12,
+   "text": "production."
+  },
+  {
+   "start": 646.16,
+   "duration": 4.84,
+   "text": "The source attribution gets lost during"
+  },
+  {
+   "start": 648.8,
+   "duration": 4.84,
+   "text": "summarization."
+  },
+  {
+   "start": 651.0,
+   "duration": 5.88,
+   "text": "Source is what? Source is where the"
+  },
+  {
+   "start": 653.64,
+   "duration": 4.8,
+   "text": "information is coming from."
+  },
+  {
+   "start": 656.88,
+   "duration": 3.2,
+   "text": "Okay?"
+  },
+  {
+   "start": 658.44,
+   "duration": 3.12,
+   "text": "Now if you see this particular slide,"
+  },
+  {
+   "start": 660.08,
+   "duration": 4.6,
+   "text": "I'm there in this particular slide since"
+  },
+  {
+   "start": 661.56,
+   "duration": 5.4,
+   "text": "long. It says 10 web searches sources"
+  },
+  {
+   "start": 664.68,
+   "duration": 4.24,
+   "text": "summarized into a paragraph you did."
+  },
+  {
+   "start": 666.96,
+   "duration": 4.6,
+   "text": "Pass to the synthesis agent final report"
+  },
+  {
+   "start": 668.92,
+   "duration": 5.28,
+   "text": "written zero sources remain traceable."
+  },
+  {
+   "start": 671.56,
+   "duration": 5.72,
+   "text": "You can't trace where this information"
+  },
+  {
+   "start": 674.2,
+   "duration": 5.2,
+   "text": "came from. See, at the end of the day,"
+  },
+  {
+   "start": 677.28,
+   "duration": 4.0,
+   "text": "these are all AI."
+  },
+  {
+   "start": 679.4,
+   "duration": 3.2,
+   "text": "All AI generated."
+  },
+  {
+   "start": 681.28,
+   "duration": 3.6,
+   "text": "Obviously, they they are pulling"
+  },
+  {
+   "start": 682.6,
+   "duration": 5.12,
+   "text": "information from various sources and"
+  },
+  {
+   "start": 684.88,
+   "duration": 4.88,
+   "text": "they are putting it as a summary. Now,"
+  },
+  {
+   "start": 687.72,
+   "duration": 3.92,
+   "text": "while writing the summary, you can trust"
+  },
+  {
+   "start": 689.76,
+   "duration": 4.08,
+   "text": "it to a some level, right? That okay, we"
+  },
+  {
+   "start": 691.64,
+   "duration": 3.56,
+   "text": "I am providing the summary, so"
+  },
+  {
+   "start": 693.84,
+   "duration": 4.16,
+   "text": "uh you know, the source. So, they are"
+  },
+  {
+   "start": 695.2,
+   "duration": 4.0,
+   "text": "pulling in the summary, but"
+  },
+  {
+   "start": 698.0,
+   "duration": 3.8,
+   "text": "how will you know that they haven't"
+  },
+  {
+   "start": 699.2,
+   "duration": 4.96,
+   "text": "hallucinated in the prompt?"
+  },
+  {
+   "start": 701.8,
+   "duration": 4.56,
+   "text": "You don't have an idea about that. So,"
+  },
+  {
+   "start": 704.16,
+   "duration": 4.44,
+   "text": "preserving the source attribution is"
+  },
+  {
+   "start": 706.36,
+   "duration": 4.32,
+   "text": "very, very necessary. And it comes in"
+  },
+  {
+   "start": 708.6,
+   "duration": 3.84,
+   "text": "the exam. Okay, it is not a very small"
+  },
+  {
+   "start": 710.68,
+   "duration": 3.16,
+   "text": "thing. You know, this guy is telling,"
+  },
+  {
+   "start": 712.44,
+   "duration": 3.76,
+   "text": "you know, just put the source and all"
+  },
+  {
+   "start": 713.84,
+   "duration": 3.8,
+   "text": "that things. Citations he's telling."
+  },
+  {
+   "start": 716.2,
+   "duration": 3.84,
+   "text": "But, this is very important to"
+  },
+  {
+   "start": 717.64,
+   "duration": 4.72,
+   "text": "understand in with the prospective of"
+  },
+  {
+   "start": 720.04,
+   "duration": 4.12,
+   "text": "the exam. And even if you sit for an"
+  },
+  {
+   "start": 722.36,
+   "duration": 4.16,
+   "text": "AI-based interview, this is going to be"
+  },
+  {
+   "start": 724.16,
+   "duration": 3.88,
+   "text": "asked. So, you have to answer how would"
+  },
+  {
+   "start": 726.52,
+   "duration": 3.36,
+   "text": "you preserve that."
+  },
+  {
+   "start": 728.04,
+   "duration": 3.52,
+   "text": "Now,"
+  },
+  {
+   "start": 729.88,
+   "duration": 6.36,
+   "text": "so"
+  },
+  {
+   "start": 731.56,
+   "duration": 8.68,
+   "text": "the fix, how should we do that?"
+  },
+  {
+   "start": 736.24,
+   "duration": 4.0,
+   "text": "Now, the fix is what I call"
+  },
+  {
+   "start": 740.28,
+   "duration": 6.0,
+   "text": "claim source mappings."
+  },
+  {
+   "start": 743.24,
+   "duration": 7.64,
+   "text": "Okay, claim source mappings. Now, this"
+  },
+  {
+   "start": 746.28,
+   "duration": 4.6,
+   "text": "this this looks like a very fancy word."
+  },
+  {
+   "start": 751.08,
+   "duration": 5.56,
+   "text": "Right? So, but what does it mean?"
+  },
+  {
+   "start": 754.12,
+   "duration": 4.96,
+   "text": "Instead of passing summaries as plain"
+  },
+  {
+   "start": 756.64,
+   "duration": 5.8,
+   "text": "text, you pass them as an array where"
+  },
+  {
+   "start": 759.08,
+   "duration": 6.68,
+   "text": "every claim, for example, is explicitly"
+  },
+  {
+   "start": 762.44,
+   "duration": 6.84,
+   "text": "paired with its source."
+  },
+  {
+   "start": 765.76,
+   "duration": 5.64,
+   "text": "Now, what does what do I mean by that?"
+  },
+  {
+   "start": 769.28,
+   "duration": 4.2,
+   "text": "So, if you see this um"
+  },
+  {
+   "start": 771.4,
+   "duration": 4.72,
+   "text": "particular thing. This is an example of,"
+  },
+  {
+   "start": 773.48,
+   "duration": 4.359,
+   "text": "you know, every synthesis step must"
+  },
+  {
+   "start": 776.12,
+   "duration": 4.24,
+   "text": "must output a claim source pairs,"
+  },
+  {
+   "start": 777.839,
+   "duration": 2.521,
+   "text": "basically."
+  },
+  {
+   "start": 780.64,
+   "duration": 4.04,
+   "text": "So, what you see over here is pretty"
+  },
+  {
+   "start": 783.12,
+   "duration": 4.44,
+   "text": "pretty straightforward, right? If you"
+  },
+  {
+   "start": 784.68,
+   "duration": 4.88,
+   "text": "see over here,"
+  },
+  {
+   "start": 787.56,
+   "duration": 5.32,
+   "text": "these are the claims."
+  },
+  {
+   "start": 789.56,
+   "duration": 5.72,
+   "text": "For example, the it has a claim ID C001,"
+  },
+  {
+   "start": 792.88,
+   "duration": 4.12,
+   "text": "and the text it says subagents do not"
+  },
+  {
+   "start": 795.28,
+   "duration": 4.04,
+   "text": "inherit coordinator conversation"
+  },
+  {
+   "start": 797.0,
+   "duration": 4.52,
+   "text": "history."
+  },
+  {
+   "start": 799.32,
+   "duration": 3.28,
+   "text": "Source ID is there, and confidence is"
+  },
+  {
+   "start": 801.52,
+   "duration": 3.92,
+   "text": "high."
+  },
+  {
+   "start": 802.6,
+   "duration": 4.16,
+   "text": "Now, just have a look at this source ID,"
+  },
+  {
+   "start": 805.44,
+   "duration": 4.08,
+   "text": "because this is what you need to"
+  },
+  {
+   "start": 806.76,
+   "duration": 4.64,
+   "text": "understand. Now, I have a uh you know,"
+  },
+  {
+   "start": 809.52,
+   "duration": 3.28,
+   "text": "in this particular object of inter you"
+  },
+  {
+   "start": 811.4,
+   "duration": 3.28,
+   "text": "can name this anything, okay? I just"
+  },
+  {
+   "start": 812.8,
+   "duration": 3.52,
+   "text": "named it as intermediate output because"
+  },
+  {
+   "start": 814.68,
+   "duration": 3.88,
+   "text": "we need to pass it on to the agent."
+  },
+  {
+   "start": 816.32,
+   "duration": 4.08,
+   "text": "That's why it's an intermediate output."
+  },
+  {
+   "start": 818.56,
+   "duration": 3.04,
+   "text": "So,"
+  },
+  {
+   "start": 820.4,
+   "duration": 3.64,
+   "text": "these are the claims and these are the"
+  },
+  {
+   "start": 821.6,
+   "duration": 4.68,
+   "text": "sources. And if you see the sources,"
+  },
+  {
+   "start": 824.04,
+   "duration": 3.52,
+   "text": "every source So, basically, each object"
+  },
+  {
+   "start": 826.28,
+   "duration": 4.32,
+   "text": "is a source"
+  },
+  {
+   "start": 827.56,
+   "duration": 5.08,
+   "text": "is associated with a source ID."
+  },
+  {
+   "start": 830.6,
+   "duration": 4.04,
+   "text": "Right? Because this source ID is"
+  },
+  {
+   "start": 832.64,
+   "duration": 4.12,
+   "text": "referred in the claims that, okay, this"
+  },
+  {
+   "start": 834.64,
+   "duration": 4.96,
+   "text": "claim is coming from this particular"
+  },
+  {
+   "start": 836.76,
+   "duration": 4.68,
+   "text": "source ID. Now,"
+  },
+  {
+   "start": 839.6,
+   "duration": 5.6,
+   "text": "the agent will know where this"
+  },
+  {
+   "start": 841.44,
+   "duration": 5.92,
+   "text": "particular information is coming from."
+  },
+  {
+   "start": 845.2,
+   "duration": 4.4,
+   "text": "So, when passing to the next agent, pass"
+  },
+  {
+   "start": 847.36,
+   "duration": 4.68,
+   "text": "the whole object. Never extract just"
+  },
+  {
+   "start": 849.6,
+   "duration": 4.2,
+   "text": "claims and drop sources. The next agent"
+  },
+  {
+   "start": 852.04,
+   "duration": 5.56,
+   "text": "needs both to produce accurate output."
+  },
+  {
+   "start": 853.8,
+   "duration": 5.96,
+   "text": "Now, in this way, whatever the sub agent"
+  },
+  {
+   "start": 857.6,
+   "duration": 4.04,
+   "text": "will produce,"
+  },
+  {
+   "start": 859.76,
+   "duration": 3.8,
+   "text": "it will be accurate because you have"
+  },
+  {
+   "start": 861.64,
+   "duration": 4.44,
+   "text": "told that, okay, for this particular"
+  },
+  {
+   "start": 863.56,
+   "duration": 3.84,
+   "text": "claim, this is the source."
+  },
+  {
+   "start": 866.08,
+   "duration": 2.88,
+   "text": "Pretty easy to understand, right? Now,"
+  },
+  {
+   "start": 867.4,
+   "duration": 3.56,
+   "text": "it is it should should be making sense"
+  },
+  {
+   "start": 868.96,
+   "duration": 4.28,
+   "text": "to you. Why this is very very important"
+  },
+  {
+   "start": 870.96,
+   "duration": 4.6,
+   "text": "that the sub agent should have the"
+  },
+  {
+   "start": 873.24,
+   "duration": 4.64,
+   "text": "context clear context on what it needs"
+  },
+  {
+   "start": 875.56,
+   "duration": 6.04,
+   "text": "to do."
+  },
+  {
+   "start": 877.88,
+   "duration": 3.72,
+   "text": "Okay? I hope that is making sense."
+  },
+  {
+   "start": 882.44,
+   "duration": 4.8,
+   "text": "Okay, let's go back to the slides now."
+  },
+  {
+   "start": 885.839,
+   "duration": 3.681,
+   "text": "Okay?"
+  },
+  {
+   "start": 887.24,
+   "duration": 4.0,
+   "text": "Now, let's talk about something known as"
+  },
+  {
+   "start": 889.52,
+   "duration": 3.48,
+   "text": "conflict."
+  },
+  {
+   "start": 891.24,
+   "duration": 4.0,
+   "text": "Now, when does conflict happens"
+  },
+  {
+   "start": 893.0,
+   "duration": 3.64,
+   "text": "basically? Okay, so if you see the"
+  },
+  {
+   "start": 895.24,
+   "duration": 3.96,
+   "text": "particular slide over here, you'll get"
+  },
+  {
+   "start": 896.64,
+   "duration": 5.92,
+   "text": "an idea."
+  },
+  {
+   "start": 899.2,
+   "duration": 5.16,
+   "text": "If two sources say different things, now"
+  },
+  {
+   "start": 902.56,
+   "duration": 3.04,
+   "text": "this you know, they are talking about"
+  },
+  {
+   "start": 904.36,
+   "duration": 5.36,
+   "text": "the same thing, but they are they are"
+  },
+  {
+   "start": 905.6,
+   "duration": 5.68,
+   "text": "telling, you know, um"
+  },
+  {
+   "start": 909.72,
+   "duration": 3.28,
+   "text": "that okay, they're talking about the"
+  },
+  {
+   "start": 911.28,
+   "duration": 4.76,
+   "text": "same thing, but they're giving different"
+  },
+  {
+   "start": 913.0,
+   "duration": 5.52,
+   "text": "findings, for example."
+  },
+  {
+   "start": 916.04,
+   "duration": 4.88,
+   "text": "Now, these comes a lot in real research,"
+  },
+  {
+   "start": 918.52,
+   "duration": 5.04,
+   "text": "you know?"
+  },
+  {
+   "start": 920.92,
+   "duration": 4.4,
+   "text": "Now, you cannot just discard one source"
+  },
+  {
+   "start": 923.56,
+   "duration": 3.36,
+   "text": "and keep another source. You cannot"
+  },
+  {
+   "start": 925.32,
+   "duration": 3.0,
+   "text": "silently lose one source and keep"
+  },
+  {
+   "start": 926.92,
+   "duration": 2.84,
+   "text": "another source. That is out of the"
+  },
+  {
+   "start": 928.32,
+   "duration": 3.4,
+   "text": "question because you should consider"
+  },
+  {
+   "start": 929.76,
+   "duration": 4.84,
+   "text": "both the sources and you should be the"
+  },
+  {
+   "start": 931.72,
+   "duration": 5.64,
+   "text": "one to judge, okay, this is the actual"
+  },
+  {
+   "start": 934.6,
+   "duration": 4.12,
+   "text": "factual accuracy."
+  },
+  {
+   "start": 937.36,
+   "duration": 3.08,
+   "text": "Now, how do we resolve that in that"
+  },
+  {
+   "start": 938.72,
+   "duration": 4.2,
+   "text": "case?"
+  },
+  {
+   "start": 940.44,
+   "duration": 5.84,
+   "text": "In that case, you add a conflict object"
+  },
+  {
+   "start": 942.92,
+   "duration": 4.8,
+   "text": "with both claims explicitly annotated."
+  },
+  {
+   "start": 946.28,
+   "duration": 2.88,
+   "text": "And I'll show you the conflict object in"
+  },
+  {
+   "start": 947.72,
+   "duration": 3.12,
+   "text": "a minute. So, just understand the"
+  },
+  {
+   "start": 949.16,
+   "duration": 3.76,
+   "text": "concept first."
+  },
+  {
+   "start": 950.84,
+   "duration": 3.6,
+   "text": "Mark the resolution state as unresolved,"
+  },
+  {
+   "start": 952.92,
+   "duration": 3.96,
+   "text": "escalate the conflict back to the"
+  },
+  {
+   "start": 954.44,
+   "duration": 4.6,
+   "text": "coordinator to make the final decision."
+  },
+  {
+   "start": 956.88,
+   "duration": 3.84,
+   "text": "So, what does that mean? The sub agent"
+  },
+  {
+   "start": 959.04,
+   "duration": 3.2,
+   "text": "It's a very simple thing, okay? So,"
+  },
+  {
+   "start": 960.72,
+   "duration": 3.64,
+   "text": "there is a manager, there is a group of"
+  },
+  {
+   "start": 962.24,
+   "duration": 4.72,
+   "text": "researchers or analysts, then they find"
+  },
+  {
+   "start": 964.36,
+   "duration": 4.88,
+   "text": "some kind of a uh conflicts over there."
+  },
+  {
+   "start": 966.96,
+   "duration": 3.72,
+   "text": "Okay, this is what uh I found it in the"
+  },
+  {
+   "start": 969.24,
+   "duration": 3.2,
+   "text": "source."
+  },
+  {
+   "start": 970.68,
+   "duration": 3.64,
+   "text": "Both the sources."
+  },
+  {
+   "start": 972.44,
+   "duration": 3.48,
+   "text": "They will not take the decision. They"
+  },
+  {
+   "start": 974.32,
+   "duration": 2.76,
+   "text": "will not take the final decision, by the"
+  },
+  {
+   "start": 975.92,
+   "duration": 3.08,
+   "text": "way."
+  },
+  {
+   "start": 977.08,
+   "duration": 3.48,
+   "text": "The manager is responsible to take the"
+  },
+  {
+   "start": 979.0,
+   "duration": 3.52,
+   "text": "final decision, okay, this is what we"
+  },
+  {
+   "start": 980.56,
+   "duration": 4.4,
+   "text": "need to present. Same thing is with the"
+  },
+  {
+   "start": 982.52,
+   "duration": 4.08,
+   "text": "coordinator. The coordinator should make"
+  },
+  {
+   "start": 984.96,
+   "duration": 4.64,
+   "text": "the final decision. And let me show you"
+  },
+  {
+   "start": 986.6,
+   "duration": 5.32,
+   "text": "how that conflict object looks. So, when"
+  },
+  {
+   "start": 989.6,
+   "duration": 4.36,
+   "text": "two sources conflict, add it to"
+  },
+  {
+   "start": 991.92,
+   "duration": 5.76,
+   "text": "conflicts array. So, you will say"
+  },
+  {
+   "start": 993.96,
+   "duration": 5.8,
+   "text": "conflict ID conf 001, parallel sub agent"
+  },
+  {
+   "start": 997.68,
+   "duration": 4.24,
+   "text": "invocation, topic is this. This is the"
+  },
+  {
+   "start": 999.76,
+   "duration": 4.64,
+   "text": "claim and you have to put the source ID."
+  },
+  {
+   "start": 1001.92,
+   "duration": 4.16,
+   "text": "Obviously, this is where uh"
+  },
+  {
+   "start": 1004.4,
+   "duration": 3.08,
+   "text": "you know, things get"
+  },
+  {
+   "start": 1006.08,
+   "duration": 4.8,
+   "text": "easier to understand. If there is a"
+  },
+  {
+   "start": 1007.48,
+   "duration": 5.76,
+   "text": "conflict between two claims, they must"
+  },
+  {
+   "start": 1010.88,
+   "duration": 4.48,
+   "text": "refer to two different sources where"
+  },
+  {
+   "start": 1013.24,
+   "duration": 3.96,
+   "text": "that conflict is coming from."
+  },
+  {
+   "start": 1015.36,
+   "duration": 4.08,
+   "text": "I hope that is making sense. That is how"
+  },
+  {
+   "start": 1017.2,
+   "duration": 4.4,
+   "text": "you you know, create a conflict object"
+  },
+  {
+   "start": 1019.44,
+   "duration": 4.56,
+   "text": "and pass it on to the coordinator and"
+  },
+  {
+   "start": 1021.6,
+   "duration": 4.44,
+   "text": "the coordinator will take the decision."
+  },
+  {
+   "start": 1024.0,
+   "duration": 3.8,
+   "text": "Now, in the exam, if a question asks"
+  },
+  {
+   "start": 1026.04,
+   "duration": 4.6,
+   "text": "about handling conflict sources in"
+  },
+  {
+   "start": 1027.8,
+   "duration": 5.84,
+   "text": "multi-agent pipeline, always annotate"
+  },
+  {
+   "start": 1030.64,
+   "duration": 4.88,
+   "text": "them both with attribution and pass it"
+  },
+  {
+   "start": 1033.64,
+   "duration": 4.88,
+   "text": "to the coordinator."
+  },
+  {
+   "start": 1035.52,
+   "duration": 5.96,
+   "text": "Never let a sub agent silently resolve"
+  },
+  {
+   "start": 1038.52,
+   "duration": 5.48,
+   "text": "conflicts. This is a direct exam pattern"
+  },
+  {
+   "start": 1041.48,
+   "duration": 4.28,
+   "text": "and I'm 100% sure this question will"
+  },
+  {
+   "start": 1044.0,
+   "duration": 4.04,
+   "text": "come."
+  },
+  {
+   "start": 1045.76,
+   "duration": 5.0,
+   "text": "Okay? Because in my lessons, I always"
+  },
+  {
+   "start": 1048.04,
+   "duration": 5.08,
+   "text": "talk about more about how it is specific"
+  },
+  {
+   "start": 1050.76,
+   "duration": 4.8,
+   "text": "to the exam and how it is specific to"
+  },
+  {
+   "start": 1053.12,
+   "duration": 4.64,
+   "text": "your interviews and your real life"
+  },
+  {
+   "start": 1055.56,
+   "duration": 5.4,
+   "text": "because you know, and you can create an"
+  },
+  {
+   "start": 1057.76,
+   "duration": 4.96,
+   "text": "agent from Claude code itself. Claude"
+  },
+  {
+   "start": 1060.96,
+   "duration": 4.28,
+   "text": "code can create an agent for you. Then"
+  },
+  {
+   "start": 1062.72,
+   "duration": 3.8,
+   "text": "why do you need this concept of agents?"
+  },
+  {
+   "start": 1065.24,
+   "duration": 2.4,
+   "text": "You need to understand what you are"
+  },
+  {
+   "start": 1066.52,
+   "duration": 2.72,
+   "text": "creating. Otherwise, it will be"
+  },
+  {
+   "start": 1067.64,
+   "duration": 3.44,
+   "text": "disastrous."
+  },
+  {
+   "start": 1069.24,
+   "duration": 3.44,
+   "text": "You know, people say that Claude deleted"
+  },
+  {
+   "start": 1071.08,
+   "duration": 4.12,
+   "text": "my database,"
+  },
+  {
+   "start": 1072.68,
+   "duration": 4.28,
+   "text": "chat GPT did that, you know, did this."
+  },
+  {
+   "start": 1075.2,
+   "duration": 3.96,
+   "text": "But at the end of the day, they are just"
+  },
+  {
+   "start": 1076.96,
+   "duration": 4.0,
+   "text": "tools. You are the people who are using"
+  },
+  {
+   "start": 1079.16,
+   "duration": 3.84,
+   "text": "those tools. You have to use them"
+  },
+  {
+   "start": 1080.96,
+   "duration": 4.72,
+   "text": "responsibly. So that's why you have to"
+  },
+  {
+   "start": 1083.0,
+   "duration": 4.6,
+   "text": "have good knowledge of these concepts."
+  },
+  {
+   "start": 1085.68,
+   "duration": 4.32,
+   "text": "Right?"
+  },
+  {
+   "start": 1087.6,
+   "duration": 3.88,
+   "text": "Okay. So this is how you would pass on"
+  },
+  {
+   "start": 1090.0,
+   "duration": 4.04,
+   "text": "the sessions. How would you handle"
+  },
+  {
+   "start": 1091.48,
+   "duration": 4.28,
+   "text": "conflicts? How would you make proper"
+  },
+  {
+   "start": 1094.04,
+   "duration": 4.04,
+   "text": "context you would pass on the proper"
+  },
+  {
+   "start": 1095.76,
+   "duration": 3.6,
+   "text": "context to the sub-agents and"
+  },
+  {
+   "start": 1098.08,
+   "duration": 3.6,
+   "text": "that's it."
+  },
+  {
+   "start": 1099.36,
+   "duration": 4.24,
+   "text": "Now let's talk about a different you"
+  },
+  {
+   "start": 1101.68,
+   "duration": 4.12,
+   "text": "know, um"
+  },
+  {
+   "start": 1103.6,
+   "duration": 5.4,
+   "text": "cons you know, the next topic known as"
+  },
+  {
+   "start": 1105.8,
+   "duration": 3.2,
+   "text": "session management."
+  },
+  {
+   "start": 1109.28,
+   "duration": 5.08,
+   "text": "When you are working with Claude code in"
+  },
+  {
+   "start": 1111.12,
+   "duration": 5.92,
+   "text": "an agentic context, you are not always"
+  },
+  {
+   "start": 1114.36,
+   "duration": 4.12,
+   "text": "starting from scratch, by the way."
+  },
+  {
+   "start": 1117.04,
+   "duration": 3.36,
+   "text": "Let's talk about normal Claude code"
+  },
+  {
+   "start": 1118.48,
+   "duration": 4.2,
+   "text": "scenario. I've talked about this in my"
+  },
+  {
+   "start": 1120.4,
+   "duration": 4.72,
+   "text": "Claude code masterclass video. You can"
+  },
+  {
+   "start": 1122.68,
+   "duration": 3.96,
+   "text": "go and have a look at that. So Claude"
+  },
+  {
+   "start": 1125.12,
+   "duration": 3.84,
+   "text": "always remembers what happened before"
+  },
+  {
+   "start": 1126.64,
+   "duration": 3.88,
+   "text": "because if you are chatting with Claude"
+  },
+  {
+   "start": 1128.96,
+   "duration": 3.92,
+   "text": "and doing some changes to your code and"
+  },
+  {
+   "start": 1130.52,
+   "duration": 4.52,
+   "text": "it suddenly loses context,"
+  },
+  {
+   "start": 1132.88,
+   "duration": 3.88,
+   "text": "then again, you have to do, you know,"
+  },
+  {
+   "start": 1135.04,
+   "duration": 3.64,
+   "text": "tell Claude everything. That's why there"
+  },
+  {
+   "start": 1136.76,
+   "duration": 3.8,
+   "text": "are a lot of skills over there which"
+  },
+  {
+   "start": 1138.68,
+   "duration": 5.08,
+   "text": "will help you to summarize whatever has"
+  },
+  {
+   "start": 1140.56,
+   "duration": 6.04,
+   "text": "happened. For example, the slash compact"
+  },
+  {
+   "start": 1143.76,
+   "duration": 4.08,
+   "text": "that is the best example of this."
+  },
+  {
+   "start": 1146.6,
+   "duration": 3.56,
+   "text": "Now"
+  },
+  {
+   "start": 1147.84,
+   "duration": 3.84,
+   "text": "sometimes obviously you want to pick up"
+  },
+  {
+   "start": 1150.16,
+   "duration": 3.96,
+   "text": "where you have left off. That's the"
+  },
+  {
+   "start": 1151.68,
+   "duration": 2.44,
+   "text": "reason."
+  },
+  {
+   "start": 1154.48,
+   "duration": 5.88,
+   "text": "Um so, Cloud Code gives you three"
+  },
+  {
+   "start": 1158.04,
+   "duration": 4.12,
+   "text": "mechanisms for preserving this kind of"
+  },
+  {
+   "start": 1160.36,
+   "duration": 3.52,
+   "text": "context or session."
+  },
+  {
+   "start": 1162.16,
+   "duration": 3.64,
+   "text": "Okay?"
+  },
+  {
+   "start": 1163.88,
+   "duration": 3.56,
+   "text": "Now,"
+  },
+  {
+   "start": 1165.8,
+   "duration": 4.0,
+   "text": "let's talk about the three core"
+  },
+  {
+   "start": 1167.44,
+   "duration": 6.0,
+   "text": "patterns. Okay?"
+  },
+  {
+   "start": 1169.8,
+   "duration": 7.48,
+   "text": "Now, the first pattern is known as named"
+  },
+  {
+   "start": 1173.44,
+   "duration": 6.16,
+   "text": "session resume resumption. Just let me"
+  },
+  {
+   "start": 1177.28,
+   "duration": 4.08,
+   "text": "write it down if you want. Uh let me get"
+  },
+  {
+   "start": 1179.6,
+   "duration": 4.72,
+   "text": "my pen. Okay, I have my pen. So, the"
+  },
+  {
+   "start": 1181.36,
+   "duration": 5.88,
+   "text": "first pattern is named"
+  },
+  {
+   "start": 1184.32,
+   "duration": 2.92,
+   "text": "session"
+  },
+  {
+   "start": 1189.6,
+   "duration": 5.2,
+   "text": "resumption."
+  },
+  {
+   "start": 1191.72,
+   "duration": 6.0,
+   "text": "Okay? What does named res- session"
+  },
+  {
+   "start": 1194.8,
+   "duration": 2.92,
+   "text": "resumption mean?"
+  },
+  {
+   "start": 1197.88,
+   "duration": 4.68,
+   "text": "This is the most straightforward. When"
+  },
+  {
+   "start": 1200.56,
+   "duration": 4.6,
+   "text": "you start a Cloud Code session with a"
+  },
+  {
+   "start": 1202.56,
+   "duration": 4.36,
+   "text": "name, you can resume it later by that"
+  },
+  {
+   "start": 1205.16,
+   "duration": 3.44,
+   "text": "name. That is why it is known as named"
+  },
+  {
+   "start": 1206.92,
+   "duration": 4.56,
+   "text": "session resumption."
+  },
+  {
+   "start": 1208.6,
+   "duration": 5.28,
+   "text": "And I'll tell you a few uh"
+  },
+  {
+   "start": 1211.48,
+   "duration": 5.12,
+   "text": "uh you know, commands with which you can"
+  },
+  {
+   "start": 1213.88,
+   "duration": 4.6,
+   "text": "achieve that. So, uh I have noted down"
+  },
+  {
+   "start": 1216.6,
+   "duration": 4.68,
+   "text": "the commands. I Hopefully, I have noted"
+  },
+  {
+   "start": 1218.48,
+   "duration": 3.96,
+   "text": "down the commands."
+  },
+  {
+   "start": 1221.28,
+   "duration": 3.4,
+   "text": "Um"
+  },
+  {
+   "start": 1222.44,
+   "duration": 4.56,
+   "text": "Okay, I haven't noted down the commands."
+  },
+  {
+   "start": 1224.68,
+   "duration": 4.36,
+   "text": "Okay, I'll just uh use my terminal to"
+  },
+  {
+   "start": 1227.0,
+   "duration": 3.92,
+   "text": "write it basically, and uh"
+  },
+  {
+   "start": 1229.04,
+   "duration": 3.96,
+   "text": "you would know. So, for example, you"
+  },
+  {
+   "start": 1230.92,
+   "duration": 3.32,
+   "text": "want Cloud to create a session, okay?"
+  },
+  {
+   "start": 1233.0,
+   "duration": 3.32,
+   "text": "And"
+  },
+  {
+   "start": 1234.24,
+   "duration": 3.56,
+   "text": "you know, you want to maintain you know,"
+  },
+  {
+   "start": 1236.32,
+   "duration": 2.8,
+   "text": "maintain the session in that particular"
+  },
+  {
+   "start": 1237.8,
+   "duration": 3.2,
+   "text": "session whatever you have created, and"
+  },
+  {
+   "start": 1239.12,
+   "duration": 3.44,
+   "text": "later you want to resume the session."
+  },
+  {
+   "start": 1241.0,
+   "duration": 2.72,
+   "text": "So, Cloud knows whatever you have done"
+  },
+  {
+   "start": 1242.56,
+   "duration": 4.0,
+   "text": "before."
+  },
+  {
+   "start": 1243.72,
+   "duration": 5.28,
+   "text": "So, you can just use this command Cloud"
+  },
+  {
+   "start": 1246.56,
+   "duration": 6.72,
+   "text": "uh it was session"
+  },
+  {
+   "start": 1249.0,
+   "duration": 7.2,
+   "text": "double you know, session hyphen name and"
+  },
+  {
+   "start": 1253.28,
+   "duration": 4.52,
+   "text": "just put in the session name like this."
+  },
+  {
+   "start": 1256.2,
+   "duration": 3.88,
+   "text": "This is how you would create the session"
+  },
+  {
+   "start": 1257.8,
+   "duration": 4.24,
+   "text": "name, start a named session. Now, if you"
+  },
+  {
+   "start": 1260.08,
+   "duration": 6.32,
+   "text": "want to later resume that session, you"
+  },
+  {
+   "start": 1262.04,
+   "duration": 6.64,
+   "text": "have to put Cloud hyphen hyphen resume"
+  },
+  {
+   "start": 1266.4,
+   "duration": 3.92,
+   "text": "and then you have to put session name"
+  },
+  {
+   "start": 1268.68,
+   "duration": 4.2,
+   "text": "that you had created before. Then in"
+  },
+  {
+   "start": 1270.32,
+   "duration": 5.52,
+   "text": "that case it will resume the session."
+  },
+  {
+   "start": 1272.88,
+   "duration": 4.2,
+   "text": "But if you have only uh"
+  },
+  {
+   "start": 1275.84,
+   "duration": 3.52,
+   "text": "you know, you would just want to resume"
+  },
+  {
+   "start": 1277.08,
+   "duration": 4.32,
+   "text": "the recent session that you've created."
+  },
+  {
+   "start": 1279.36,
+   "duration": 3.4,
+   "text": "If you have multiple sessions, and for"
+  },
+  {
+   "start": 1281.4,
+   "duration": 2.84,
+   "text": "example, you have created five different"
+  },
+  {
+   "start": 1282.76,
+   "duration": 3.68,
+   "text": "sessions, you want to resume in from the"
+  },
+  {
+   "start": 1284.24,
+   "duration": 4.36,
+   "text": "second session that you had created, in"
+  },
+  {
+   "start": 1286.44,
+   "duration": 4.0,
+   "text": "that case you have to use the this"
+  },
+  {
+   "start": 1288.6,
+   "duration": 3.68,
+   "text": "command basically. Cloud hyphen hyphen"
+  },
+  {
+   "start": 1290.44,
+   "duration": 3.68,
+   "text": "resume, then you have to put the session"
+  },
+  {
+   "start": 1292.28,
+   "duration": 4.16,
+   "text": "name here. But if you just want to"
+  },
+  {
+   "start": 1294.12,
+   "duration": 4.4,
+   "text": "resume the uh recent session that you"
+  },
+  {
+   "start": 1296.44,
+   "duration": 3.6,
+   "text": "had created, you just can omit the name,"
+  },
+  {
+   "start": 1298.52,
+   "duration": 3.08,
+   "text": "and you can just say Cloud hyphen hyphen"
+  },
+  {
+   "start": 1300.04,
+   "duration": 4.04,
+   "text": "resume."
+  },
+  {
+   "start": 1301.6,
+   "duration": 5.4,
+   "text": "Okay, so that is the first way of"
+  },
+  {
+   "start": 1304.08,
+   "duration": 2.92,
+   "text": "preserving session."
+  },
+  {
+   "start": 1307.04,
+   "duration": 4.36,
+   "text": "Now, when you resume, always tell the"
+  },
+  {
+   "start": 1309.04,
+   "duration": 4.52,
+   "text": "agent what changed since the last time."
+  },
+  {
+   "start": 1311.4,
+   "duration": 3.72,
+   "text": "Don't assume it knows. You know, the"
+  },
+  {
+   "start": 1313.56,
+   "duration": 3.44,
+   "text": "reason is"
+  },
+  {
+   "start": 1315.12,
+   "duration": 3.48,
+   "text": "there are a lot of files, right? And"
+  },
+  {
+   "start": 1317.0,
+   "duration": 4.24,
+   "text": "they might have been modified."
+  },
+  {
+   "start": 1318.6,
+   "duration": 5.04,
+   "text": "Dependencies might have been updated."
+  },
+  {
+   "start": 1321.24,
+   "duration": 4.64,
+   "text": "Requirements would have changed."
+  },
+  {
+   "start": 1323.64,
+   "duration": 4.68,
+   "text": "So, you have to be explicit."
+  },
+  {
+   "start": 1325.88,
+   "duration": 5.36,
+   "text": "Okay. Right? You have to inform the"
+  },
+  {
+   "start": 1328.32,
+   "duration": 5.16,
+   "text": "resume session about the changes. Why is"
+  },
+  {
+   "start": 1331.24,
+   "duration": 4.68,
+   "text": "is is this important? Because"
+  },
+  {
+   "start": 1333.48,
+   "duration": 3.64,
+   "text": "the last time when the agent did some"
+  },
+  {
+   "start": 1335.92,
+   "duration": 3.32,
+   "text": "work,"
+  },
+  {
+   "start": 1337.12,
+   "duration": 4.04,
+   "text": "it remembered some files. Maybe you"
+  },
+  {
+   "start": 1339.24,
+   "duration": 3.68,
+   "text": "deleted those files."
+  },
+  {
+   "start": 1341.16,
+   "duration": 3.2,
+   "text": "Or you added more files that the"
+  },
+  {
+   "start": 1342.92,
+   "duration": 2.92,
+   "text": "particular agent doesn't have any"
+  },
+  {
+   "start": 1344.36,
+   "duration": 3.68,
+   "text": "context only."
+  },
+  {
+   "start": 1345.84,
+   "duration": 4.8,
+   "text": "Then in that case, you have to"
+  },
+  {
+   "start": 1348.04,
+   "duration": 4.52,
+   "text": "inform resume session about the changes."
+  },
+  {
+   "start": 1350.64,
+   "duration": 3.48,
+   "text": "So, resuming from previous analysis"
+  },
+  {
+   "start": 1352.56,
+   "duration": 4.88,
+   "text": "session, you have you can provide"
+  },
+  {
+   "start": 1354.12,
+   "duration": 5.28,
+   "text": "changes since the last session. So, some"
+  },
+  {
+   "start": 1357.44,
+   "duration": 3.68,
+   "text": "uh this this small this particular, you"
+  },
+  {
+   "start": 1359.4,
+   "duration": 4.2,
+   "text": "know, file has been modified, or"
+  },
+  {
+   "start": 1361.12,
+   "duration": 4.12,
+   "text": "requirements.txt have been updated."
+  },
+  {
+   "start": 1363.6,
+   "duration": 3.72,
+   "text": "Please reanalyze only the changed file"
+  },
+  {
+   "start": 1365.24,
+   "duration": 4.88,
+   "text": "and continue from your prior findings."
+  },
+  {
+   "start": 1367.32,
+   "duration": 2.8,
+   "text": "Something like that."
+  },
+  {
+   "start": 1370.16,
+   "duration": 3.76,
+   "text": "Okay."
+  },
+  {
+   "start": 1371.84,
+   "duration": 3.96,
+   "text": "Critical from the exam perspective, this"
+  },
+  {
+   "start": 1373.92,
+   "duration": 4.08,
+   "text": "is very very important, guys."
+  },
+  {
+   "start": 1375.8,
+   "duration": 4.8,
+   "text": "Never resume a session without"
+  },
+  {
+   "start": 1378.0,
+   "duration": 4.2,
+   "text": "explicitly stating what has changed."
+  },
+  {
+   "start": 1380.6,
+   "duration": 3.92,
+   "text": "Because the agent cannot detect"
+  },
+  {
+   "start": 1382.2,
+   "duration": 4.32,
+   "text": "automatically."
+  },
+  {
+   "start": 1384.52,
+   "duration": 4.76,
+   "text": "Now, let's talk about the second pattern"
+  },
+  {
+   "start": 1386.52,
+   "duration": 5.28,
+   "text": "known as the fork session. Fork session."
+  },
+  {
+   "start": 1389.28,
+   "duration": 4.08,
+   "text": "Okay, if you see the fly, you know, the"
+  },
+  {
+   "start": 1391.8,
+   "duration": 4.08,
+   "text": "slide over here."
+  },
+  {
+   "start": 1393.36,
+   "duration": 4.32,
+   "text": "I'm sorry, I'm talking about the flight."
+  },
+  {
+   "start": 1395.88,
+   "duration": 4.0,
+   "text": "So, if you see the fork, it has diverged"
+  },
+  {
+   "start": 1397.68,
+   "duration": 5.28,
+   "text": "into two branches. Now, this is the"
+  },
+  {
+   "start": 1399.88,
+   "duration": 4.36,
+   "text": "similar concept of GitHub branching."
+  },
+  {
+   "start": 1402.96,
+   "duration": 3.2,
+   "text": "You know?"
+  },
+  {
+   "start": 1404.24,
+   "duration": 4.88,
+   "text": "GitHub branching, same."
+  },
+  {
+   "start": 1406.16,
+   "duration": 5.2,
+   "text": "But, in the context of agents."
+  },
+  {
+   "start": 1409.12,
+   "duration": 4.44,
+   "text": "For example, you have a baseline"
+  },
+  {
+   "start": 1411.36,
+   "duration": 5.24,
+   "text": "analysis that took a long time to build"
+  },
+  {
+   "start": 1413.56,
+   "duration": 5.48,
+   "text": "up. You created such a nice build and it"
+  },
+  {
+   "start": 1416.6,
+   "duration": 4.96,
+   "text": "took a long time. This agent knows a lot"
+  },
+  {
+   "start": 1419.04,
+   "duration": 4.76,
+   "text": "of things and all those things. But, now"
+  },
+  {
+   "start": 1421.56,
+   "duration": 3.92,
+   "text": "you have some time left."
+  },
+  {
+   "start": 1423.8,
+   "duration": 3.96,
+   "text": "You're a very hard working employee. You"
+  },
+  {
+   "start": 1425.48,
+   "duration": 4.08,
+   "text": "created this flow agent tick flow. It is"
+  },
+  {
+   "start": 1427.76,
+   "duration": 4.6,
+   "text": "working perfectly, but you know, you"
+  },
+  {
+   "start": 1429.56,
+   "duration": 4.2,
+   "text": "have some time on your hands."
+  },
+  {
+   "start": 1432.36,
+   "duration": 3.56,
+   "text": "Then, if you have some time on your"
+  },
+  {
+   "start": 1433.76,
+   "duration": 4.68,
+   "text": "hands, don't work. Go and enjoy. Play"
+  },
+  {
+   "start": 1435.92,
+   "duration": 5.28,
+   "text": "some games or watch football. Anyways,"
+  },
+  {
+   "start": 1438.44,
+   "duration": 6.8,
+   "text": "I'm going out of the out of the way, but"
+  },
+  {
+   "start": 1441.2,
+   "duration": 4.04,
+   "text": "that is what I would like to, you know,"
+  },
+  {
+   "start": 1446.2,
+   "duration": 3.08,
+   "text": "tell."
+  },
+  {
+   "start": 1447.76,
+   "duration": 2.88,
+   "text": "Okay."
+  },
+  {
+   "start": 1449.28,
+   "duration": 4.04,
+   "text": "So,"
+  },
+  {
+   "start": 1450.64,
+   "duration": 4.2,
+   "text": "but you have already developed that, but"
+  },
+  {
+   "start": 1453.32,
+   "duration": 4.0,
+   "text": "you want to explore two different"
+  },
+  {
+   "start": 1454.84,
+   "duration": 4.12,
+   "text": "different approaches, for example."
+  },
+  {
+   "start": 1457.32,
+   "duration": 2.96,
+   "text": "And you don't want to"
+  },
+  {
+   "start": 1458.96,
+   "duration": 3.2,
+   "text": "that, you know, mess with that"
+  },
+  {
+   "start": 1460.28,
+   "duration": 4.52,
+   "text": "particular thing that you have done. So,"
+  },
+  {
+   "start": 1462.16,
+   "duration": 5.4,
+   "text": "in that case, what you would do is you"
+  },
+  {
+   "start": 1464.8,
+   "duration": 5.24,
+   "text": "would create forks."
+  },
+  {
+   "start": 1467.56,
+   "duration": 4.12,
+   "text": "Okay. So, this is your approach A."
+  },
+  {
+   "start": 1470.04,
+   "duration": 3.64,
+   "text": "Having a fork and you go with approach"
+  },
+  {
+   "start": 1471.68,
+   "duration": 3.72,
+   "text": "B, you create a new fork. You create a"
+  },
+  {
+   "start": 1473.68,
+   "duration": 3.08,
+   "text": "new fork session."
+  },
+  {
+   "start": 1475.4,
+   "duration": 2.88,
+   "text": "So, you can explore independent"
+  },
+  {
+   "start": 1476.76,
+   "duration": 4.56,
+   "text": "approaches"
+  },
+  {
+   "start": 1478.28,
+   "duration": 4.72,
+   "text": "on a shared baseline, you know? So, if"
+  },
+  {
+   "start": 1481.32,
+   "duration": 3.28,
+   "text": "you would see how to create a fork, I"
+  },
+  {
+   "start": 1483.0,
+   "duration": 2.8,
+   "text": "have Okay."
+  },
+  {
+   "start": 1484.6,
+   "duration": 3.2,
+   "text": "For God's sake, I've created this"
+  },
+  {
+   "start": 1485.8,
+   "duration": 3.84,
+   "text": "particular fork say, how to create a"
+  },
+  {
+   "start": 1487.8,
+   "duration": 3.32,
+   "text": "fork session."
+  },
+  {
+   "start": 1489.64,
+   "duration": 3.28,
+   "text": "So,"
+  },
+  {
+   "start": 1491.12,
+   "duration": 3.44,
+   "text": "imagine we have a baseline session. So,"
+  },
+  {
+   "start": 1492.92,
+   "duration": 3.68,
+   "text": "there is already one session, okay,"
+  },
+  {
+   "start": 1494.56,
+   "duration": 4.0,
+   "text": "where you have been working on. You know"
+  },
+  {
+   "start": 1496.6,
+   "duration": 4.08,
+   "text": "already how to create a session. So, you"
+  },
+  {
+   "start": 1498.56,
+   "duration": 3.8,
+   "text": "just mention the session over"
+  },
+  {
+   "start": 1500.68,
+   "duration": 4.16,
+   "text": "here in the code."
+  },
+  {
+   "start": 1502.36,
+   "duration": 4.64,
+   "text": "So, you create Forkit to explore two"
+  },
+  {
+   "start": 1504.84,
+   "duration": 3.84,
+   "text": "different refracting approaches."
+  },
+  {
+   "start": 1507.0,
+   "duration": 3.44,
+   "text": "So, you [snorts] create Fork session"
+  },
+  {
+   "start": 1508.68,
+   "duration": 4.12,
+   "text": "over here."
+  },
+  {
+   "start": 1510.44,
+   "duration": 4.36,
+   "text": "Okay, and you create Fork B session over"
+  },
+  {
+   "start": 1512.8,
+   "duration": 4.2,
+   "text": "here."
+  },
+  {
+   "start": 1514.8,
+   "duration": 5.56,
+   "text": "But, the thing is if you see, it is"
+  },
+  {
+   "start": 1517.0,
+   "duration": 5.0,
+   "text": "coming from the same session ID."
+  },
+  {
+   "start": 1520.36,
+   "duration": 3.84,
+   "text": "This is a fork."
+  },
+  {
+   "start": 1522.0,
+   "duration": 4.44,
+   "text": "Let's see an example of a of a"
+  },
+  {
+   "start": 1524.2,
+   "duration": 5.12,
+   "text": "repository that is there."
+  },
+  {
+   "start": 1526.44,
+   "duration": 4.52,
+   "text": "Now, if someone forks that repository,"
+  },
+  {
+   "start": 1529.32,
+   "duration": 3.48,
+   "text": "it is coming from the source which is"
+  },
+  {
+   "start": 1530.96,
+   "duration": 3.44,
+   "text": "the same repository. I have created a"
+  },
+  {
+   "start": 1532.8,
+   "duration": 2.64,
+   "text": "repository."
+  },
+  {
+   "start": 1534.4,
+   "duration": 4.16,
+   "text": "Uh"
+  },
+  {
+   "start": 1535.44,
+   "duration": 4.68,
+   "text": "one guy is guy number A, for example, is"
+  },
+  {
+   "start": 1538.56,
+   "duration": 3.96,
+   "text": "forking."
+  },
+  {
+   "start": 1540.12,
+   "duration": 4.76,
+   "text": "Guy number B is also forking."
+  },
+  {
+   "start": 1542.52,
+   "duration": 3.88,
+   "text": "It is not affecting me, which is my"
+  },
+  {
+   "start": 1544.88,
+   "duration": 3.72,
+   "text": "repository."
+  },
+  {
+   "start": 1546.4,
+   "duration": 4.0,
+   "text": "Right? That is the same concept that is"
+  },
+  {
+   "start": 1548.6,
+   "duration": 4.36,
+   "text": "applied here."
+  },
+  {
+   "start": 1550.4,
+   "duration": 5.2,
+   "text": "You run both forks independently. Fork A"
+  },
+  {
+   "start": 1552.96,
+   "duration": 4.68,
+   "text": "gets the same baseline context. But, it"
+  },
+  {
+   "start": 1555.6,
+   "duration": 4.0,
+   "text": "is exploring a different approach. Fork"
+  },
+  {
+   "start": 1557.64,
+   "duration": 3.8,
+   "text": "B gets the same baseline approach you"
+  },
+  {
+   "start": 1559.6,
+   "duration": 4.76,
+   "text": "know context, but you are a"
+  },
+  {
+   "start": 1561.44,
+   "duration": 4.64,
+   "text": "doing a different approach over here."
+  },
+  {
+   "start": 1564.36,
+   "duration": 3.2,
+   "text": "Okay?"
+  },
+  {
+   "start": 1566.08,
+   "duration": 4.2,
+   "text": "That is what I wanted to say. That is"
+  },
+  {
+   "start": 1567.56,
+   "duration": 4.44,
+   "text": "how you would work with fork sessions."
+  },
+  {
+   "start": 1570.28,
+   "duration": 2.68,
+   "text": "Okay."
+  },
+  {
+   "start": 1572.0,
+   "duration": 3.24,
+   "text": "Okay."
+  },
+  {
+   "start": 1572.96,
+   "duration": 4.96,
+   "text": "Now, let us talk about the"
+  },
+  {
+   "start": 1575.24,
+   "duration": 2.68,
+   "text": "you know, um"
+  },
+  {
+   "start": 1579.84,
+   "duration": 3.92,
+   "text": "fresh start. Actually, this is not a"
+  },
+  {
+   "start": 1581.64,
+   "duration": 3.28,
+   "text": "Sorry for the big pause. I got confused"
+  },
+  {
+   "start": 1583.76,
+   "duration": 2.04,
+   "text": "here."
+  },
+  {
+   "start": 1584.92,
+   "duration": 3.4,
+   "text": "Uh"
+  },
+  {
+   "start": 1585.8,
+   "duration": 2.52,
+   "text": "you know,"
+  },
+  {
+   "start": 1589.08,
+   "duration": 3.32,
+   "text": "this is actually a pattern, in my"
+  },
+  {
+   "start": 1591.24,
+   "duration": 4.12,
+   "text": "opinion."
+  },
+  {
+   "start": 1592.4,
+   "duration": 4.2,
+   "text": "But, it is just like you start a fresh"
+  },
+  {
+   "start": 1595.36,
+   "duration": 3.24,
+   "text": "session."
+  },
+  {
+   "start": 1596.6,
+   "duration": 3.56,
+   "text": "Now, here is the question that I get"
+  },
+  {
+   "start": 1598.6,
+   "duration": 3.48,
+   "text": "asked most."
+  },
+  {
+   "start": 1600.16,
+   "duration": 4.36,
+   "text": "When should I resume and when should I"
+  },
+  {
+   "start": 1602.08,
+   "duration": 4.48,
+   "text": "start fresh?"
+  },
+  {
+   "start": 1604.52,
+   "duration": 4.08,
+   "text": "The instinct that you would get from"
+  },
+  {
+   "start": 1606.56,
+   "duration": 3.6,
+   "text": "your inside, under say,"
+  },
+  {
+   "start": 1608.6,
+   "duration": 3.16,
+   "text": "you know,"
+  },
+  {
+   "start": 1610.16,
+   "duration": 4.12,
+   "text": "you don't want to throw away all the"
+  },
+  {
+   "start": 1611.76,
+   "duration": 5.88,
+   "text": "work, but sometimes resuming is actually"
+  },
+  {
+   "start": 1614.28,
+   "duration": 5.4,
+   "text": "the wrong call."
+  },
+  {
+   "start": 1617.64,
+   "duration": 3.92,
+   "text": "Now, how would you take that decision"
+  },
+  {
+   "start": 1619.68,
+   "duration": 4.68,
+   "text": "whether I have to start a fresh session"
+  },
+  {
+   "start": 1621.56,
+   "duration": 4.56,
+   "text": "in you know, even though I have done so"
+  },
+  {
+   "start": 1624.36,
+   "duration": 4.36,
+   "text": "much work?"
+  },
+  {
+   "start": 1626.12,
+   "duration": 2.6,
+   "text": "Okay?"
+  },
+  {
+   "start": 1628.8,
+   "duration": 5.8,
+   "text": "That is pretty simple. Okay?"
+  },
+  {
+   "start": 1631.92,
+   "duration": 3.92,
+   "text": "So, you resume when prior context is"
+  },
+  {
+   "start": 1634.6,
+   "duration": 5.28,
+   "text": "valid."
+  },
+  {
+   "start": 1635.84,
+   "duration": 6.84,
+   "text": "So, you resume when prior context is"
+  },
+  {
+   "start": 1639.88,
+   "duration": 2.8,
+   "text": "valid."
+  },
+  {
+   "start": 1642.92,
+   "duration": 6.24,
+   "text": "Start fresh when your tool results are"
+  },
+  {
+   "start": 1645.76,
+   "duration": 5.6,
+   "text": "stale or when extended context degrades"
+  },
+  {
+   "start": 1649.16,
+   "duration": 5.48,
+   "text": "model reasoning capabilities."
+  },
+  {
+   "start": 1651.36,
+   "duration": 5.16,
+   "text": "Now, if resuming you know, in the"
+  },
+  {
+   "start": 1654.64,
+   "duration": 3.92,
+   "text": "previously also just a few minutes ago I"
+  },
+  {
+   "start": 1656.52,
+   "duration": 3.68,
+   "text": "told that, you know, some files would"
+  },
+  {
+   "start": 1658.56,
+   "duration": 3.4,
+   "text": "have changed. It is okay if it is some"
+  },
+  {
+   "start": 1660.2,
+   "duration": 4.0,
+   "text": "files that you can you can you can just"
+  },
+  {
+   "start": 1661.96,
+   "duration": 3.8,
+   "text": "provide in the context resume context"
+  },
+  {
+   "start": 1664.2,
+   "duration": 4.72,
+   "text": "that okay, these files have changed."
+  },
+  {
+   "start": 1665.76,
+   "duration": 5.48,
+   "text": "What if entire code base 80% of the code"
+  },
+  {
+   "start": 1668.92,
+   "duration": 4.56,
+   "text": "base changed? Can you resume the same"
+  },
+  {
+   "start": 1671.24,
+   "duration": 4.48,
+   "text": "session? No, right?"
+  },
+  {
+   "start": 1673.48,
+   "duration": 5.04,
+   "text": "In that case, you cannot resume it. So,"
+  },
+  {
+   "start": 1675.72,
+   "duration": 3.88,
+   "text": "in the exam it will test you when would"
+  },
+  {
+   "start": 1678.52,
+   "duration": 3.2,
+   "text": "you"
+  },
+  {
+   "start": 1679.6,
+   "duration": 3.36,
+   "text": "resume and when would you do a fresh"
+  },
+  {
+   "start": 1681.72,
+   "duration": 4.16,
+   "text": "start? So, you have to take this"
+  },
+  {
+   "start": 1682.96,
+   "duration": 4.16,
+   "text": "decision based on this rule. If the if"
+  },
+  {
+   "start": 1685.88,
+   "duration": 3.16,
+   "text": "you're seeing the scenario in the"
+  },
+  {
+   "start": 1687.12,
+   "duration": 3.12,
+   "text": "question if it is valid, you know,"
+  },
+  {
+   "start": 1689.04,
+   "duration": 2.88,
+   "text": "resuming session, you know, it is a"
+  },
+  {
+   "start": 1690.24,
+   "duration": 3.76,
+   "text": "valid thing, then you resume the"
+  },
+  {
+   "start": 1691.92,
+   "duration": 4.96,
+   "text": "session. Otherwise, you create a new"
+  },
+  {
+   "start": 1694.0,
+   "duration": 5.12,
+   "text": "session. Simple as that."
+  },
+  {
+   "start": 1696.88,
+   "duration": 6.32,
+   "text": "Okay?"
+  },
+  {
+   "start": 1699.12,
+   "duration": 6.52,
+   "text": "Okay. Now, for example, you start a new"
+  },
+  {
+   "start": 1703.2,
+   "duration": 4.4,
+   "text": "session. That is okay."
+  },
+  {
+   "start": 1705.64,
+   "duration": 4.28,
+   "text": "You start a new session,"
+  },
+  {
+   "start": 1707.6,
+   "duration": 3.76,
+   "text": "but you have to give something to be"
+  },
+  {
+   "start": 1709.92,
+   "duration": 4.16,
+   "text": "starting on. You cannot start from a"
+  },
+  {
+   "start": 1711.36,
+   "duration": 5.4,
+   "text": "very, you know, blank slate."
+  },
+  {
+   "start": 1714.08,
+   "duration": 3.72,
+   "text": "You can give a summary of what happened"
+  },
+  {
+   "start": 1716.76,
+   "duration": 2.52,
+   "text": "and"
+  },
+  {
+   "start": 1717.8,
+   "duration": 4.08,
+   "text": "you can tell okay, this is the summary"
+  },
+  {
+   "start": 1719.28,
+   "duration": 5.6,
+   "text": "of what happened and some you know, code"
+  },
+  {
+   "start": 1721.88,
+   "duration": 5.56,
+   "text": "has been changed."
+  },
+  {
+   "start": 1724.88,
+   "duration": 4.84,
+   "text": "Okay? But, you remember the summary so"
+  },
+  {
+   "start": 1727.44,
+   "duration": 4.48,
+   "text": "that even if I refer to something you"
+  },
+  {
+   "start": 1729.72,
+   "duration": 4.72,
+   "text": "would be able to know what has happened."
+  },
+  {
+   "start": 1731.92,
+   "duration": 5.04,
+   "text": "So, I can show you an example over here."
+  },
+  {
+   "start": 1734.44,
+   "duration": 4.6,
+   "text": "So, it's just a prior finding summary."
+  },
+  {
+   "start": 1736.96,
+   "duration": 3.72,
+   "text": "You can tell like the analysis summary."
+  },
+  {
+   "start": 1739.04,
+   "duration": 3.8,
+   "text": "The summary is two to from two days the"
+  },
+  {
+   "start": 1740.68,
+   "duration": 3.8,
+   "text": "code base has changed since updated."
+  },
+  {
+   "start": 1742.84,
+   "duration": 3.32,
+   "text": "Please treat these as hypotheses to"
+  },
+  {
+   "start": 1744.48,
+   "duration": 3.24,
+   "text": "validate, not established facts. You"
+  },
+  {
+   "start": 1746.16,
+   "duration": 3.52,
+   "text": "have to tell that, \"Okay, just for"
+  },
+  {
+   "start": 1747.72,
+   "duration": 4.24,
+   "text": "validation purposes or just to, you"
+  },
+  {
+   "start": 1749.68,
+   "duration": 4.36,
+   "text": "know,"
+  },
+  {
+   "start": 1751.96,
+   "duration": 5.28,
+   "text": "just to have some context, treat this,"
+  },
+  {
+   "start": 1754.04,
+   "duration": 6.48,
+   "text": "but don't treat these as absolutes. That"
+  },
+  {
+   "start": 1757.24,
+   "duration": 3.28,
+   "text": "is what I wanted to tell.\""
+  },
+  {
+   "start": 1760.56,
+   "duration": 4.68,
+   "text": "Okay, this is all patterns we talked"
+  },
+  {
+   "start": 1763.0,
+   "duration": 4.12,
+   "text": "about."
+  },
+  {
+   "start": 1765.24,
+   "duration": 4.52,
+   "text": "This is just we just talk about how when"
+  },
+  {
+   "start": 1767.12,
+   "duration": 4.96,
+   "text": "you start a fresh start and when you do"
+  },
+  {
+   "start": 1769.76,
+   "duration": 3.68,
+   "text": "the injection of prior findings that was"
+  },
+  {
+   "start": 1772.08,
+   "duration": 2.36,
+   "text": "already there. We just talked about"
+  },
+  {
+   "start": 1773.44,
+   "duration": 2.68,
+   "text": "that."
+  },
+  {
+   "start": 1774.44,
+   "duration": 3.72,
+   "text": "So, critical framing rule I just want to"
+  },
+  {
+   "start": 1776.12,
+   "duration": 4.8,
+   "text": "point it out over here. The prompt must"
+  },
+  {
+   "start": 1778.16,
+   "duration": 4.16,
+   "text": "frame the injected summary as hypothesis"
+  },
+  {
+   "start": 1780.92,
+   "duration": 3.84,
+   "text": "to validate. Very important to"
+  },
+  {
+   "start": 1782.32,
+   "duration": 4.68,
+   "text": "understand."
+  },
+  {
+   "start": 1784.76,
+   "duration": 4.12,
+   "text": "You gave a You started a fresh session"
+  },
+  {
+   "start": 1787.0,
+   "duration": 5.04,
+   "text": "and gave you injected something like"
+  },
+  {
+   "start": 1788.88,
+   "duration": 5.04,
+   "text": "prior's finding summary, but that hasn't"
+  },
+  {
+   "start": 1792.04,
+   "duration": 4.16,
+   "text": "That needs not to be treated as an"
+  },
+  {
+   "start": 1793.92,
+   "duration": 4.84,
+   "text": "absolute thing. This is just hypothesis"
+  },
+  {
+   "start": 1796.2,
+   "duration": 5.16,
+   "text": "to validate."
+  },
+  {
+   "start": 1798.76,
+   "duration": 2.6,
+   "text": "Okay."
+  },
+  {
+   "start": 1802.08,
+   "duration": 2.36,
+   "text": "So,"
+  },
+  {
+   "start": 1805.32,
+   "duration": 4.16,
+   "text": "these are the, you know, a cheat sheet"
+  },
+  {
+   "start": 1807.24,
+   "duration": 4.6,
+   "text": "which you can use to, you know, what"
+  },
+  {
+   "start": 1809.48,
+   "duration": 4.12,
+   "text": "kind of a pattern you would to use."
+  },
+  {
+   "start": 1811.84,
+   "duration": 3.04,
+   "text": "Okay."
+  },
+  {
+   "start": 1813.6,
+   "duration": 3.32,
+   "text": "You can have a look. You can take a"
+  },
+  {
+   "start": 1814.88,
+   "duration": 4.48,
+   "text": "screenshot, whatever you need. Something"
+  },
+  {
+   "start": 1816.92,
+   "duration": 4.68,
+   "text": "we just discussed right now."
+  },
+  {
+   "start": 1819.36,
+   "duration": 3.96,
+   "text": "This is just a flowchart"
+  },
+  {
+   "start": 1821.6,
+   "duration": 3.4,
+   "text": "that, you know, our existing tool"
+  },
+  {
+   "start": 1823.32,
+   "duration": 3.84,
+   "text": "results fundamentally stale. If yes,"
+  },
+  {
+   "start": 1825.0,
+   "duration": 3.52,
+   "text": "then start a fresh session and inject"
+  },
+  {
+   "start": 1827.16,
+   "duration": 3.44,
+   "text": "the hypothesis. That is just what I"
+  },
+  {
+   "start": 1828.52,
+   "duration": 5.04,
+   "text": "talked about. Are we comparing new"
+  },
+  {
+   "start": 1830.6,
+   "duration": 4.84,
+   "text": "parallel architectures? Yes, then you"
+  },
+  {
+   "start": 1833.56,
+   "duration": 5.4,
+   "text": "you take the fork session. Very"
+  },
+  {
+   "start": 1835.44,
+   "duration": 5.16,
+   "text": "important in case of the exam because"
+  },
+  {
+   "start": 1838.96,
+   "duration": 4.68,
+   "text": "you have to take some decision on which"
+  },
+  {
+   "start": 1840.6,
+   "duration": 5.0,
+   "text": "session techniques you need to use."
+  },
+  {
+   "start": 1843.64,
+   "duration": 5.12,
+   "text": "Continuing the exact same sequential"
+  },
+  {
+   "start": 1845.6,
+   "duration": 4.88,
+   "text": "task, hmm."
+  },
+  {
+   "start": 1848.76,
+   "duration": 3.84,
+   "text": "Execute hyphen hyphen resume and"
+  },
+  {
+   "start": 1850.48,
+   "duration": 4.04,
+   "text": "explicitly inform agent of specific file"
+  },
+  {
+   "start": 1852.6,
+   "duration": 3.52,
+   "text": "changes."
+  },
+  {
+   "start": 1854.52,
+   "duration": 3.04,
+   "text": "So, yeah, are we comparing new parallel"
+  },
+  {
+   "start": 1856.12,
+   "duration": 3.16,
+   "text": "architecture? If that is a no, you go"
+  },
+  {
+   "start": 1857.56,
+   "duration": 3.92,
+   "text": "over here, continuing the exact same"
+  },
+  {
+   "start": 1859.28,
+   "duration": 3.68,
+   "text": "sequential task, then you can resume. If"
+  },
+  {
+   "start": 1861.48,
+   "duration": 3.16,
+   "text": "you have been doing the same things,"
+  },
+  {
+   "start": 1862.96,
+   "duration": 4.48,
+   "text": "then you can just resume. That's what"
+  },
+  {
+   "start": 1864.64,
+   "duration": 2.8,
+   "text": "this slide says."
+  },
+  {
+   "start": 1868.2,
+   "duration": 2.64,
+   "text": "Okay."
+  },
+  {
+   "start": 1870.88,
+   "duration": 3.88,
+   "text": "Now, let's see this particular slide,"
+  },
+  {
+   "start": 1873.76,
+   "duration": 3.04,
+   "text": "um"
+  },
+  {
+   "start": 1874.76,
+   "duration": 3.8,
+   "text": "you know, architectural anti-patterns,"
+  },
+  {
+   "start": 1876.8,
+   "duration": 3.32,
+   "text": "you know, passing prose summaries"
+  },
+  {
+   "start": 1878.56,
+   "duration": 3.64,
+   "text": "between agents that we talked about,"
+  },
+  {
+   "start": 1880.12,
+   "duration": 3.6,
+   "text": "don't do that. Structured context to"
+  },
+  {
+   "start": 1882.2,
+   "duration": 3.76,
+   "text": "use. So, when I talked about"
+  },
+  {
+   "start": 1883.72,
+   "duration": 5.08,
+   "text": "anti-patterns, I always tell you don't"
+  },
+  {
+   "start": 1885.96,
+   "duration": 4.52,
+   "text": "do that anti-pattern, okay?"
+  },
+  {
+   "start": 1888.8,
+   "duration": 3.64,
+   "text": "Letting a sub-agent silently resolve"
+  },
+  {
+   "start": 1890.48,
+   "duration": 3.88,
+   "text": "source conflicts, no. Annotate both,"
+  },
+  {
+   "start": 1892.44,
+   "duration": 3.88,
+   "text": "mark unresolved, escalate to the"
+  },
+  {
+   "start": 1894.36,
+   "duration": 4.28,
+   "text": "coordinator."
+  },
+  {
+   "start": 1896.32,
+   "duration": 6.04,
+   "text": "Use fork session to handle handle"
+  },
+  {
+   "start": 1898.64,
+   "duration": 3.72,
+   "text": "targeted file updates."
+  },
+  {
+   "start": 1902.64,
+   "duration": 4.92,
+   "text": "Fork is for parallel exploration only."
+  },
+  {
+   "start": 1904.72,
+   "duration": 5.68,
+   "text": "If that is a targeted file update,"
+  },
+  {
+   "start": 1907.56,
+   "duration": 4.2,
+   "text": "then you can resume the session, or if,"
+  },
+  {
+   "start": 1910.4,
+   "duration": 4.24,
+   "text": "you know, a lot of stale things had"
+  },
+  {
+   "start": 1911.76,
+   "duration": 4.36,
+   "text": "happened, then just, you know,"
+  },
+  {
+   "start": 1914.64,
+   "duration": 2.96,
+   "text": "get rid of that particular session and"
+  },
+  {
+   "start": 1916.12,
+   "duration": 3.12,
+   "text": "start fresh."
+  },
+  {
+   "start": 1917.6,
+   "duration": 3.6,
+   "text": "Resuming a session with heavily changed"
+  },
+  {
+   "start": 1919.24,
+   "duration": 4.0,
+   "text": "code base, just what I told. Resuming"
+  },
+  {
+   "start": 1921.2,
+   "duration": 4.56,
+   "text": "without informing the agent of changes."
+  },
+  {
+   "start": 1923.24,
+   "duration": 4.76,
+   "text": "Obviously, explicitly declare what has"
+  },
+  {
+   "start": 1925.76,
+   "duration": 4.56,
+   "text": "been done. That is what you need to do."
+  },
+  {
+   "start": 1928.0,
+   "duration": 3.4,
+   "text": "Just be clear."
+  },
+  {
+   "start": 1930.32,
+   "duration": 2.92,
+   "text": "So,"
+  },
+  {
+   "start": 1931.4,
+   "duration": 3.44,
+   "text": "sample scenario breakdown. Scenario"
+  },
+  {
+   "start": 1933.24,
+   "duration": 4.12,
+   "text": "number three, multi-agent research, the"
+  },
+  {
+   "start": 1934.84,
+   "duration": 4.92,
+   "text": "bug claim attribution is lost because"
+  },
+  {
+   "start": 1937.36,
+   "duration": 4.16,
+   "text": "web results are summarized into prose"
+  },
+  {
+   "start": 1939.76,
+   "duration": 3.84,
+   "text": "before synthesis."
+  },
+  {
+   "start": 1941.52,
+   "duration": 3.84,
+   "text": "So, what is the fix?"
+  },
+  {
+   "start": 1943.6,
+   "duration": 4.4,
+   "text": "When attribution is lost, I already"
+  },
+  {
+   "start": 1945.36,
+   "duration": 4.08,
+   "text": "talked about this. You have to require"
+  },
+  {
+   "start": 1948.0,
+   "duration": 3.76,
+   "text": "structured You have to pass on"
+  },
+  {
+   "start": 1949.44,
+   "duration": 4.28,
+   "text": "structured object with explicit claim to"
+  },
+  {
+   "start": 1951.76,
+   "duration": 3.56,
+   "text": "source mappings."
+  },
+  {
+   "start": 1953.72,
+   "duration": 3.08,
+   "text": "Okay?"
+  },
+  {
+   "start": 1955.32,
+   "duration": 3.36,
+   "text": "That's it. Scenario two, code"
+  },
+  {
+   "start": 1956.8,
+   "duration": 3.64,
+   "text": "generation. Code base analysis ran three"
+  },
+  {
+   "start": 1958.68,
+   "duration": 4.48,
+   "text": "days ago, payments module was just"
+  },
+  {
+   "start": 1960.44,
+   "duration": 6.24,
+   "text": "refactored. What is the fix? Resume via"
+  },
+  {
+   "start": 1963.16,
+   "duration": 5.28,
+   "text": "hyphen hyphen resume. So,"
+  },
+  {
+   "start": 1966.68,
+   "duration": 3.64,
+   "text": "was just refactored. Just a recent"
+  },
+  {
+   "start": 1968.44,
+   "duration": 3.88,
+   "text": "refactor that has been happened. You can"
+  },
+  {
+   "start": 1970.32,
+   "duration": 5.12,
+   "text": "inform the agent which specific file"
+  },
+  {
+   "start": 1972.32,
+   "duration": 4.84,
+   "text": "change to trigger targeted reanalysis."
+  },
+  {
+   "start": 1975.44,
+   "duration": 4.56,
+   "text": "But, if in this case you it would have"
+  },
+  {
+   "start": 1977.16,
+   "duration": 6.04,
+   "text": "told that, you know, code base analysis"
+  },
+  {
+   "start": 1980.0,
+   "duration": 4.68,
+   "text": "ran like 1 month ago and four or five"
+  },
+  {
+   "start": 1983.2,
+   "duration": 4.52,
+   "text": "modules changed. In that case, you would"
+  },
+  {
+   "start": 1984.68,
+   "duration": 4.16,
+   "text": "start a fresh session."
+  },
+  {
+   "start": 1987.72,
+   "duration": 2.48,
+   "text": "Okay?"
+  },
+  {
+   "start": 1988.84,
+   "duration": 3.2,
+   "text": "So, in the"
+  },
+  {
+   "start": 1990.2,
+   "duration": 5.52,
+   "text": "with reference to we talked about"
+  },
+  {
+   "start": 1992.04,
+   "duration": 7.4,
+   "text": "sources, right? This is from the uh"
+  },
+  {
+   "start": 1995.72,
+   "duration": 5.76,
+   "text": "syllabus only. So, 1.3 and 1.7 talk"
+  },
+  {
+   "start": 1999.44,
+   "duration": 5.0,
+   "text": "about subagent invocation and session"
+  },
+  {
+   "start": 2001.48,
+   "duration": 5.24,
+   "text": "state. And I've just noted down some"
+  },
+  {
+   "start": 2004.44,
+   "duration": 3.6,
+   "text": "critical fact summary."
+  },
+  {
+   "start": 2006.72,
+   "duration": 3.88,
+   "text": "You can just take a screenshot from"
+  },
+  {
+   "start": 2008.04,
+   "duration": 5.08,
+   "text": "this. All these things we have discussed"
+  },
+  {
+   "start": 2010.6,
+   "duration": 7.0,
+   "text": "quite in detail."
+  },
+  {
+   "start": 2013.12,
+   "duration": 4.48,
+   "text": "Okay. So, that is all for this"
+  }
+ ]
+}

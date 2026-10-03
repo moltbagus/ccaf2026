@@ -1,0 +1,4717 @@
+{
+ "video_id": "BXs7QoLQxX0",
+ "episode": "Ep 17",
+ "title": "Batch API & Multi-Pass Review",
+ "segments": [
+  {
+   "start": 6.96,
+   "duration": 3.32,
+   "text": "All right. Hi and welcome to this"
+  },
+  {
+   "start": 9.2,
+   "duration": 2.36,
+   "text": "lesson."
+  },
+  {
+   "start": 10.28,
+   "duration": 3.12,
+   "text": "So,"
+  },
+  {
+   "start": 11.56,
+   "duration": 3.2,
+   "text": "let's start off with a scenario for this"
+  },
+  {
+   "start": 13.4,
+   "duration": 4.6,
+   "text": "lesson, right?"
+  },
+  {
+   "start": 14.76,
+   "duration": 6.36,
+   "text": "Um kind of picture this, your team has a"
+  },
+  {
+   "start": 18.0,
+   "duration": 5.88,
+   "text": "code review pipeline, right?"
+  },
+  {
+   "start": 21.12,
+   "duration": 5.12,
+   "text": "And every time someone kind of opens up"
+  },
+  {
+   "start": 23.88,
+   "duration": 4.8,
+   "text": "a pull request, a PR,"
+  },
+  {
+   "start": 26.24,
+   "duration": 4.96,
+   "text": "Claude reviews it before it can be"
+  },
+  {
+   "start": 28.68,
+   "duration": 4.52,
+   "text": "merged. So, that is"
+  },
+  {
+   "start": 31.2,
+   "duration": 4.0,
+   "text": "like a CI/CD pipeline which you already"
+  },
+  {
+   "start": 33.2,
+   "duration": 3.24,
+   "text": "know and we have already discussed,"
+  },
+  {
+   "start": 35.2,
+   "duration": 3.36,
+   "text": "right? And it's pretty easy to"
+  },
+  {
+   "start": 36.44,
+   "duration": 5.36,
+   "text": "understand how to integrate Claude into"
+  },
+  {
+   "start": 38.56,
+   "duration": 5.44,
+   "text": "your CI/CD pipeline. Now,"
+  },
+  {
+   "start": 41.8,
+   "duration": 3.52,
+   "text": "but here's a problem, right? I mean,"
+  },
+  {
+   "start": 44.0,
+   "duration": 4.64,
+   "text": "you're playing you know, you're kind of"
+  },
+  {
+   "start": 45.32,
+   "duration": 5.32,
+   "text": "paying full price for every single one"
+  },
+  {
+   "start": 48.64,
+   "duration": 4.56,
+   "text": "of those reviews."
+  },
+  {
+   "start": 50.64,
+   "duration": 4.32,
+   "text": "So, it's like every call you make"
+  },
+  {
+   "start": 53.2,
+   "duration": 3.36,
+   "text": "uh to Claude, you are paying some kind"
+  },
+  {
+   "start": 54.96,
+   "duration": 4.48,
+   "text": "of a price."
+  },
+  {
+   "start": 56.56,
+   "duration": 6.32,
+   "text": "And when it comes to reviews, most of"
+  },
+  {
+   "start": 59.44,
+   "duration": 5.0,
+   "text": "those reviews are not even urgent,"
+  },
+  {
+   "start": 62.88,
+   "duration": 3.48,
+   "text": "right? Half of them are, you know,"
+  },
+  {
+   "start": 64.44,
+   "duration": 3.72,
+   "text": "opened at the end of the day and no"
+  },
+  {
+   "start": 66.36,
+   "duration": 4.16,
+   "text": "one's looking at them like, you know,"
+  },
+  {
+   "start": 68.16,
+   "duration": 3.92,
+   "text": "like tomorrow morning because, you know,"
+  },
+  {
+   "start": 70.52,
+   "duration": 4.08,
+   "text": "once we shut down our laptops, we"
+  },
+  {
+   "start": 72.08,
+   "duration": 5.52,
+   "text": "developers, we don't open it again in"
+  },
+  {
+   "start": 74.6,
+   "duration": 4.24,
+   "text": "that particular day. Or I am kidding."
+  },
+  {
+   "start": 77.6,
+   "duration": 2.92,
+   "text": "People who work day and night, they"
+  },
+  {
+   "start": 78.84,
+   "duration": 3.12,
+   "text": "might open it, but"
+  },
+  {
+   "start": 80.52,
+   "duration": 2.76,
+   "text": "some people don't,"
+  },
+  {
+   "start": 81.96,
+   "duration": 3.2,
+   "text": "you know?"
+  },
+  {
+   "start": 83.28,
+   "duration": 3.44,
+   "text": "Anyways, I shouldn't go into the"
+  },
+  {
+   "start": 85.16,
+   "duration": 4.48,
+   "text": "psychological aspects of being a"
+  },
+  {
+   "start": 86.72,
+   "duration": 4.84,
+   "text": "developer. Let's stick to our lesson,"
+  },
+  {
+   "start": 89.64,
+   "duration": 4.6,
+   "text": "you know?"
+  },
+  {
+   "start": 91.56,
+   "duration": 4.12,
+   "text": "So, now imagine uh like whatever we have"
+  },
+  {
+   "start": 94.24,
+   "duration": 3.52,
+   "text": "discussed, right? Now, the reviews are"
+  },
+  {
+   "start": 95.68,
+   "duration": 4.68,
+   "text": "happening real time and Claude is"
+  },
+  {
+   "start": 97.76,
+   "duration": 4.64,
+   "text": "pushing those reviews and uh maybe those"
+  },
+  {
+   "start": 100.36,
+   "duration": 4.4,
+   "text": "reviews are not looked at right away."
+  },
+  {
+   "start": 102.4,
+   "duration": 5.28,
+   "text": "That's my point."
+  },
+  {
+   "start": 104.76,
+   "duration": 5.32,
+   "text": "And also imagine there is your"
+  },
+  {
+   "start": 107.68,
+   "duration": 3.84,
+   "text": "nightly test generation pipeline also."
+  },
+  {
+   "start": 110.08,
+   "duration": 2.36,
+   "text": "There is another pipeline which you"
+  },
+  {
+   "start": 111.52,
+   "duration": 3.0,
+   "text": "know,"
+  },
+  {
+   "start": 112.44,
+   "duration": 4.56,
+   "text": "uh which kind of spins off Claude to"
+  },
+  {
+   "start": 114.52,
+   "duration": 4.36,
+   "text": "write tests for every file that changed"
+  },
+  {
+   "start": 117.0,
+   "duration": 4.0,
+   "text": "that week."
+  },
+  {
+   "start": 118.88,
+   "duration": 4.72,
+   "text": "Now, for this as well, you are paying"
+  },
+  {
+   "start": 121.0,
+   "duration": 4.44,
+   "text": "kind of full price and"
+  },
+  {
+   "start": 123.6,
+   "duration": 3.6,
+   "text": "nobody is waiting around for those"
+  },
+  {
+   "start": 125.44,
+   "duration": 3.56,
+   "text": "results in real time. They might be"
+  },
+  {
+   "start": 127.2,
+   "duration": 3.44,
+   "text": "looked at tomorrow. The QA might come"
+  },
+  {
+   "start": 129.0,
+   "duration": 4.56,
+   "text": "in, you know, if the QA is on leave or"
+  },
+  {
+   "start": 130.64,
+   "duration": 6.16,
+   "text": "something. Um"
+  },
+  {
+   "start": 133.56,
+   "duration": 5.16,
+   "text": "might be in Japan having a vacation."
+  },
+  {
+   "start": 136.8,
+   "duration": 3.84,
+   "text": "I think I really miss Japan, though. I"
+  },
+  {
+   "start": 138.72,
+   "duration": 3.92,
+   "text": "might go to Japan again. But, that is"
+  },
+  {
+   "start": 140.64,
+   "duration": 5.24,
+   "text": "also I I I think I'm getting distracted"
+  },
+  {
+   "start": 142.64,
+   "duration": 4.96,
+   "text": "too much in this lesson. Anyways, so"
+  },
+  {
+   "start": 145.88,
+   "duration": 4.92,
+   "text": "So, the point is all your tests and"
+  },
+  {
+   "start": 147.6,
+   "duration": 6.04,
+   "text": "reviews are all generated real time, but"
+  },
+  {
+   "start": 150.8,
+   "duration": 5.64,
+   "text": "you know, nobody is having a look at it."
+  },
+  {
+   "start": 153.64,
+   "duration": 3.96,
+   "text": "And I must tell you there is a way, you"
+  },
+  {
+   "start": 156.44,
+   "duration": 3.72,
+   "text": "know,"
+  },
+  {
+   "start": 157.6,
+   "duration": 5.4,
+   "text": "uh kind of Anthropic offers a way to run"
+  },
+  {
+   "start": 160.16,
+   "duration": 5.44,
+   "text": "those exact same requests at half the"
+  },
+  {
+   "start": 163.0,
+   "duration": 2.6,
+   "text": "cost."
+  },
+  {
+   "start": 165.92,
+   "duration": 5.88,
+   "text": "You know, same model, same output"
+  },
+  {
+   "start": 168.0,
+   "duration": 6.08,
+   "text": "quality, just slash it by 50%."
+  },
+  {
+   "start": 171.8,
+   "duration": 4.159,
+   "text": "You know, what is the catch in this?"
+  },
+  {
+   "start": 174.08,
+   "duration": 4.52,
+   "text": "We are not very aware of Anthropic"
+  },
+  {
+   "start": 175.959,
+   "duration": 3.841,
+   "text": "providing such generous,"
+  },
+  {
+   "start": 178.6,
+   "duration": 3.68,
+   "text": "uh you know,"
+  },
+  {
+   "start": 179.8,
+   "duration": 3.68,
+   "text": "um your tokens or prices or whatever,"
+  },
+  {
+   "start": 182.28,
+   "duration": 3.16,
+   "text": "right?"
+  },
+  {
+   "start": 183.48,
+   "duration": 4.08,
+   "text": "But, what is this 50% dilemma that is"
+  },
+  {
+   "start": 185.44,
+   "duration": 5.24,
+   "text": "happening over here?"
+  },
+  {
+   "start": 187.56,
+   "duration": 4.84,
+   "text": "The dilemma is you have to wait. That is"
+  },
+  {
+   "start": 190.68,
+   "duration": 3.0,
+   "text": "the thing."
+  },
+  {
+   "start": 192.4,
+   "duration": 3.68,
+   "text": "Now,"
+  },
+  {
+   "start": 193.68,
+   "duration": 4.24,
+   "text": "let's discuss the topic for this problem"
+  },
+  {
+   "start": 196.08,
+   "duration": 4.4,
+   "text": "that we just discussed, right? I mean,"
+  },
+  {
+   "start": 197.92,
+   "duration": 4.68,
+   "text": "you have all of these tests and reviews"
+  },
+  {
+   "start": 200.48,
+   "duration": 4.2,
+   "text": "that are not that are not needed to be"
+  },
+  {
+   "start": 202.6,
+   "duration": 3.639,
+   "text": "generated real time. And Anthropic"
+  },
+  {
+   "start": 204.68,
+   "duration": 5.24,
+   "text": "provides you a way so that, you know,"
+  },
+  {
+   "start": 206.239,
+   "duration": 6.361,
+   "text": "you save some costs by waiting for the"
+  },
+  {
+   "start": 209.92,
+   "duration": 4.76,
+   "text": "results. And how do you achieve that?"
+  },
+  {
+   "start": 212.6,
+   "duration": 4.56,
+   "text": "You achieve that by using the message"
+  },
+  {
+   "start": 214.68,
+   "duration": 4.16,
+   "text": "batches API."
+  },
+  {
+   "start": 217.16,
+   "duration": 3.0,
+   "text": "Right?"
+  },
+  {
+   "start": 218.84,
+   "duration": 3.2,
+   "text": "So, we're going to look about this"
+  },
+  {
+   "start": 220.16,
+   "duration": 2.96,
+   "text": "message batches API and how does it"
+  },
+  {
+   "start": 222.04,
+   "duration": 3.56,
+   "text": "work,"
+  },
+  {
+   "start": 223.12,
+   "duration": 5.2,
+   "text": "right? And how does it save costs"
+  },
+  {
+   "start": 225.6,
+   "duration": 4.32,
+   "text": "by making you wait?"
+  },
+  {
+   "start": 228.32,
+   "duration": 3.04,
+   "text": "So,"
+  },
+  {
+   "start": 229.92,
+   "duration": 3.64,
+   "text": "what we are covering today, we are"
+  },
+  {
+   "start": 231.36,
+   "duration": 4.84,
+   "text": "covering about, you know, batch"
+  },
+  {
+   "start": 233.56,
+   "duration": 5.24,
+   "text": "processing strategies."
+  },
+  {
+   "start": 236.2,
+   "duration": 4.96,
+   "text": "And this this particular topic comes,"
+  },
+  {
+   "start": 238.8,
+   "duration": 4.32,
+   "text": "you know, in a domain number four, which"
+  },
+  {
+   "start": 241.16,
+   "duration": 3.6,
+   "text": "is, you know,"
+  },
+  {
+   "start": 243.12,
+   "duration": 4.4,
+   "text": "probably covers like two task"
+  },
+  {
+   "start": 244.76,
+   "duration": 5.32,
+   "text": "statements. And it's like 20% of your"
+  },
+  {
+   "start": 247.52,
+   "duration": 5.0,
+   "text": "exam score. Not this topic, the entire"
+  },
+  {
+   "start": 250.08,
+   "duration": 4.0,
+   "text": "domain four is 20% of the exam, and this"
+  },
+  {
+   "start": 252.52,
+   "duration": 3.2,
+   "text": "is part of the domain four. That's what"
+  },
+  {
+   "start": 254.08,
+   "duration": 3.36,
+   "text": "I meant."
+  },
+  {
+   "start": 255.72,
+   "duration": 4.239,
+   "text": "So, we're going to talk about batch"
+  },
+  {
+   "start": 257.44,
+   "duration": 4.56,
+   "text": "processing strategies, when to use the"
+  },
+  {
+   "start": 259.959,
+   "duration": 3.761,
+   "text": "batch, you know, batches API, and when"
+  },
+  {
+   "start": 262.0,
+   "duration": 3.36,
+   "text": "it's the wrong choice, right? We're"
+  },
+  {
+   "start": 263.72,
+   "duration": 3.52,
+   "text": "going to talk about,"
+  },
+  {
+   "start": 265.36,
+   "duration": 5.0,
+   "text": "you know, some multi-instance and"
+  },
+  {
+   "start": 267.24,
+   "duration": 4.24,
+   "text": "multi-pass review architectures. Yeah,"
+  },
+  {
+   "start": 270.36,
+   "duration": 3.6,
+   "text": "don't get confused, we're going to"
+  },
+  {
+   "start": 271.48,
+   "duration": 4.4,
+   "text": "discuss about that. Why self-review"
+  },
+  {
+   "start": 273.96,
+   "duration": 4.4,
+   "text": "fails and how to structure reviews that"
+  },
+  {
+   "start": 275.88,
+   "duration": 4.64,
+   "text": "actually catch bugs. So, we we discuss"
+  },
+  {
+   "start": 278.36,
+   "duration": 4.8,
+   "text": "about the code reviews and all that in"
+  },
+  {
+   "start": 280.52,
+   "duration": 5.72,
+   "text": "our CICD patterns lecture, right,"
+  },
+  {
+   "start": 283.16,
+   "duration": 4.96,
+   "text": "previously. Now, just consider this"
+  },
+  {
+   "start": 286.24,
+   "duration": 5.12,
+   "text": "lecture as an enhancement on that"
+  },
+  {
+   "start": 288.12,
+   "duration": 5.36,
+   "text": "lecture with an additional addition of"
+  },
+  {
+   "start": 291.36,
+   "duration": 5.04,
+   "text": "this message batches API, right, which"
+  },
+  {
+   "start": 293.48,
+   "duration": 4.64,
+   "text": "will also save you a lot of money."
+  },
+  {
+   "start": 296.4,
+   "duration": 2.88,
+   "text": "Okay. So,"
+  },
+  {
+   "start": 298.12,
+   "duration": 4.08,
+   "text": "we're going to break down the batches"
+  },
+  {
+   "start": 299.28,
+   "duration": 4.96,
+   "text": "API, how it works, what it costs,"
+  },
+  {
+   "start": 302.2,
+   "duration": 4.44,
+   "text": "some key limitations. Then, we're going"
+  },
+  {
+   "start": 304.24,
+   "duration": 4.4,
+   "text": "to go on to the self-review thingy that"
+  },
+  {
+   "start": 306.64,
+   "duration": 3.84,
+   "text": "I just discussed, right? That is the"
+  },
+  {
+   "start": 308.64,
+   "duration": 3.56,
+   "text": "roadmap for"
+  },
+  {
+   "start": 310.48,
+   "duration": 2.8,
+   "text": "this particular"
+  },
+  {
+   "start": 312.2,
+   "duration": 2.0,
+   "text": "lesson."
+  },
+  {
+   "start": 313.28,
+   "duration": 3.32,
+   "text": "Okay."
+  },
+  {
+   "start": 314.2,
+   "duration": 4.08,
+   "text": "Now, the message batches API,"
+  },
+  {
+   "start": 316.6,
+   "duration": 3.44,
+   "text": "let's take an example over here. Let's"
+  },
+  {
+   "start": 318.28,
+   "duration": 3.08,
+   "text": "start simple."
+  },
+  {
+   "start": 320.04,
+   "duration": 3.52,
+   "text": "Now,"
+  },
+  {
+   "start": 321.36,
+   "duration": 3.92,
+   "text": "if we think of it very normally, right,"
+  },
+  {
+   "start": 323.56,
+   "duration": 3.4,
+   "text": "when you send a request to Cloud in a"
+  },
+  {
+   "start": 325.28,
+   "duration": 3.8,
+   "text": "normal scenario,"
+  },
+  {
+   "start": 326.96,
+   "duration": 5.32,
+   "text": "it's like you're going to a restaurant"
+  },
+  {
+   "start": 329.08,
+   "duration": 5.64,
+   "text": "and ordering food. You order, you wait."
+  },
+  {
+   "start": 332.28,
+   "duration": 5.2,
+   "text": "I mean, the kitchen makes it right now,"
+  },
+  {
+   "start": 334.72,
+   "duration": 5.32,
+   "text": "and you get it fast."
+  },
+  {
+   "start": 337.48,
+   "duration": 4.2,
+   "text": "That's the standard way of"
+  },
+  {
+   "start": 340.04,
+   "duration": 4.08,
+   "text": "interacting with Cloud."
+  },
+  {
+   "start": 341.68,
+   "duration": 3.96,
+   "text": "Standard messages API. And you're paying"
+  },
+  {
+   "start": 344.12,
+   "duration": 3.72,
+   "text": "full price because you're getting"
+  },
+  {
+   "start": 345.64,
+   "duration": 4.16,
+   "text": "immediate attention."
+  },
+  {
+   "start": 347.84,
+   "duration": 3.72,
+   "text": "You always pay more if you want to get"
+  },
+  {
+   "start": 349.8,
+   "duration": 3.68,
+   "text": "immediate attention."
+  },
+  {
+   "start": 351.56,
+   "duration": 2.76,
+   "text": "What am I referring to?"
+  },
+  {
+   "start": 353.48,
+   "duration": 4.0,
+   "text": "Yeah."
+  },
+  {
+   "start": 354.32,
+   "duration": 4.88,
+   "text": "I know I make bad jokes, but"
+  },
+  {
+   "start": 357.48,
+   "duration": 3.56,
+   "text": "I don't know."
+  },
+  {
+   "start": 359.2,
+   "duration": 3.96,
+   "text": "Okay, anyways. So, that is the standard"
+  },
+  {
+   "start": 361.04,
+   "duration": 5.08,
+   "text": "way of interacting with Claude. Now, the"
+  },
+  {
+   "start": 363.16,
+   "duration": 3.84,
+   "text": "batches API, if you see this"
+  },
+  {
+   "start": 366.12,
+   "duration": 3.28,
+   "text": "um"
+  },
+  {
+   "start": 367.0,
+   "duration": 5.04,
+   "text": "right side of the presentation over"
+  },
+  {
+   "start": 369.4,
+   "duration": 6.44,
+   "text": "here, is more like placing a catering"
+  },
+  {
+   "start": 372.04,
+   "duration": 5.96,
+   "text": "order, right? And uh you drop like a big"
+  },
+  {
+   "start": 375.84,
+   "duration": 3.56,
+   "text": "list of requests, like on Indian"
+  },
+  {
+   "start": 378.0,
+   "duration": 4.84,
+   "text": "weddings, right?"
+  },
+  {
+   "start": 379.4,
+   "duration": 7.12,
+   "text": "Uh we call like 500, 600 people because"
+  },
+  {
+   "start": 382.84,
+   "duration": 6.12,
+   "text": "we take loans, and then, you know, um"
+  },
+  {
+   "start": 386.52,
+   "duration": 5.36,
+   "text": "then feed a lot of people"
+  },
+  {
+   "start": 388.96,
+   "duration": 4.44,
+   "text": "for no reason, in my opinion."
+  },
+  {
+   "start": 391.88,
+   "duration": 3.96,
+   "text": "I don't know. Why am I getting so much"
+  },
+  {
+   "start": 393.4,
+   "duration": 4.519,
+   "text": "distracted in this lesson, but anyways."
+  },
+  {
+   "start": 395.84,
+   "duration": 5.24,
+   "text": "So,"
+  },
+  {
+   "start": 397.919,
+   "duration": 5.201,
+   "text": "the thing is uh yeah, so in Indian"
+  },
+  {
+   "start": 401.08,
+   "duration": 3.76,
+   "text": "weddings, you know, we give"
+  },
+  {
+   "start": 403.12,
+   "duration": 4.32,
+   "text": "catering to a lot, you know, to to a"
+  },
+  {
+   "start": 404.84,
+   "duration": 4.68,
+   "text": "particular catering company, and we"
+  },
+  {
+   "start": 407.44,
+   "duration": 4.24,
+   "text": "uh give a list big list of orders,"
+  },
+  {
+   "start": 409.52,
+   "duration": 4.36,
+   "text": "right? Like 500 people or 600 people"
+  },
+  {
+   "start": 411.68,
+   "duration": 3.88,
+   "text": "orders, and"
+  },
+  {
+   "start": 413.88,
+   "duration": 3.16,
+   "text": "you know, um"
+  },
+  {
+   "start": 415.56,
+   "duration": 3.12,
+   "text": "they just make it. But, the thing is it"
+  },
+  {
+   "start": 417.04,
+   "duration": 3.4,
+   "text": "is not immediate. We give the order in"
+  },
+  {
+   "start": 418.68,
+   "duration": 3.72,
+   "text": "advance, and they make it, for example,"
+  },
+  {
+   "start": 420.44,
+   "duration": 3.84,
+   "text": "like 15 days after, something like that,"
+  },
+  {
+   "start": 422.4,
+   "duration": 5.08,
+   "text": "whenever the reception or the marriage"
+  },
+  {
+   "start": 424.28,
+   "duration": 5.0,
+   "text": "is, you know, particularly. So,"
+  },
+  {
+   "start": 427.48,
+   "duration": 3.68,
+   "text": "that is the same thing of messages"
+  },
+  {
+   "start": 429.28,
+   "duration": 3.8,
+   "text": "batches API."
+  },
+  {
+   "start": 431.16,
+   "duration": 3.72,
+   "text": "So, we're going to tell Claude that,"
+  },
+  {
+   "start": 433.08,
+   "duration": 3.88,
+   "text": "\"Okay,"
+  },
+  {
+   "start": 434.88,
+   "duration": 3.32,
+   "text": "these are the messages that I want to"
+  },
+  {
+   "start": 436.96,
+   "duration": 3.16,
+   "text": "send,"
+  },
+  {
+   "start": 438.2,
+   "duration": 3.52,
+   "text": "or I want the I want the results for"
+  },
+  {
+   "start": 440.12,
+   "duration": 2.84,
+   "text": "these messages, but I don't want them"
+  },
+  {
+   "start": 441.72,
+   "duration": 3.16,
+   "text": "right now.\""
+  },
+  {
+   "start": 442.96,
+   "duration": 3.68,
+   "text": "So, Anthropic processes them when there"
+  },
+  {
+   "start": 444.88,
+   "duration": 3.6,
+   "text": "is spare capacity,"
+  },
+  {
+   "start": 446.64,
+   "duration": 5.92,
+   "text": "because you are flexible on the timing,"
+  },
+  {
+   "start": 448.48,
+   "duration": 5.48,
+   "text": "so you get a generous 50% discount."
+  },
+  {
+   "start": 452.56,
+   "duration": 3.44,
+   "text": "Right?"
+  },
+  {
+   "start": 453.96,
+   "duration": 4.68,
+   "text": "So, you send a list of requests up to"
+  },
+  {
+   "start": 456.0,
+   "duration": 3.919,
+   "text": "thousands, or you know, more than that,"
+  },
+  {
+   "start": 458.64,
+   "duration": 3.72,
+   "text": "for example,"
+  },
+  {
+   "start": 459.919,
+   "duration": 4.801,
+   "text": "and you send it with a custom ID. Now"
+  },
+  {
+   "start": 462.36,
+   "duration": 5.2,
+   "text": "remember that every message is batch"
+  },
+  {
+   "start": 464.72,
+   "duration": 4.04,
+   "text": "request that you send is associated with"
+  },
+  {
+   "start": 467.56,
+   "duration": 3.08,
+   "text": "a"
+  },
+  {
+   "start": 468.76,
+   "duration": 3.04,
+   "text": "custom ID."
+  },
+  {
+   "start": 470.64,
+   "duration": 2.92,
+   "text": "Right?"
+  },
+  {
+   "start": 471.8,
+   "duration": 4.44,
+   "text": "I mean, because we'll understand how"
+  },
+  {
+   "start": 473.56,
+   "duration": 4.76,
+   "text": "does this custom ID is necessary because"
+  },
+  {
+   "start": 476.24,
+   "duration": 3.28,
+   "text": "it's acts like an identifier for your"
+  },
+  {
+   "start": 478.32,
+   "duration": 2.68,
+   "text": "particular"
+  },
+  {
+   "start": 479.52,
+   "duration": 2.76,
+   "text": "messages, tons of messages that you're"
+  },
+  {
+   "start": 481.0,
+   "duration": 2.76,
+   "text": "sending."
+  },
+  {
+   "start": 482.28,
+   "duration": 3.92,
+   "text": "But that is the that is the catch,"
+  },
+  {
+   "start": 483.76,
+   "duration": 5.76,
+   "text": "right? Over here that you don't want the"
+  },
+  {
+   "start": 486.2,
+   "duration": 4.96,
+   "text": "requests to be processed immediately. It"
+  },
+  {
+   "start": 489.52,
+   "duration": 4.56,
+   "text": "will be processed in asynchronous"
+  },
+  {
+   "start": 491.16,
+   "duration": 3.96,
+   "text": "manner, non-blocking flexibility."
+  },
+  {
+   "start": 494.08,
+   "duration": 3.64,
+   "text": "And"
+  },
+  {
+   "start": 495.12,
+   "duration": 3.96,
+   "text": "yeah, I mean, that's how this particular"
+  },
+  {
+   "start": 497.72,
+   "duration": 3.72,
+   "text": "thing works."
+  },
+  {
+   "start": 499.08,
+   "duration": 4.2,
+   "text": "Yeah? Now the key phrase here is up to"
+  },
+  {
+   "start": 501.44,
+   "duration": 4.28,
+   "text": "24 hours."
+  },
+  {
+   "start": 503.28,
+   "duration": 4.36,
+   "text": "You know, that is the maximum window."
+  },
+  {
+   "start": 505.72,
+   "duration": 5.24,
+   "text": "Uh it means that"
+  },
+  {
+   "start": 507.64,
+   "duration": 5.48,
+   "text": "in 24 hours, it might be also that very"
+  },
+  {
+   "start": 510.96,
+   "duration": 3.16,
+   "text": "minute also or it can take up to 24"
+  },
+  {
+   "start": 513.12,
+   "duration": 3.12,
+   "text": "hours."
+  },
+  {
+   "start": 514.12,
+   "duration": 3.479,
+   "text": "When you send the message batch batch"
+  },
+  {
+   "start": 516.24,
+   "duration": 3.6,
+   "text": "request basically. You send the batch"
+  },
+  {
+   "start": 517.599,
+   "duration": 3.921,
+   "text": "request, it might get processed in 10"
+  },
+  {
+   "start": 519.84,
+   "duration": 4.44,
+   "text": "minutes, it might get processed in 12"
+  },
+  {
+   "start": 521.52,
+   "duration": 5.0,
+   "text": "hours, it might get processed in 23"
+  },
+  {
+   "start": 524.28,
+   "duration": 3.44,
+   "text": "hours 59 minutes."
+  },
+  {
+   "start": 526.52,
+   "duration": 2.6,
+   "text": "So that is the maximum time it will"
+  },
+  {
+   "start": 527.72,
+   "duration": 2.92,
+   "text": "take, not more than that. Don't think"
+  },
+  {
+   "start": 529.12,
+   "duration": 3.36,
+   "text": "that, you know, it is going to take a"
+  },
+  {
+   "start": 530.64,
+   "duration": 3.8,
+   "text": "week or something."
+  },
+  {
+   "start": 532.48,
+   "duration": 4.96,
+   "text": "Okay, I hope that is making sense."
+  },
+  {
+   "start": 534.44,
+   "duration": 6.68,
+   "text": "Um yeah."
+  },
+  {
+   "start": 537.44,
+   "duration": 5.52,
+   "text": "Let's go to the 50% discount catch,"
+  },
+  {
+   "start": 541.12,
+   "duration": 3.88,
+   "text": "standard versus batch."
+  },
+  {
+   "start": 542.96,
+   "duration": 3.48,
+   "text": "As Sorry, standard messaging versus"
+  },
+  {
+   "start": 545.0,
+   "duration": 4.0,
+   "text": "batch message."
+  },
+  {
+   "start": 546.44,
+   "duration": 4.2,
+   "text": "So we talked about this your when comes"
+  },
+  {
+   "start": 549.0,
+   "duration": 3.76,
+   "text": "to standard messages API, you pay the"
+  },
+  {
+   "start": 550.64,
+   "duration": 3.64,
+   "text": "full price."
+  },
+  {
+   "start": 552.76,
+   "duration": 3.16,
+   "text": "And uh"
+  },
+  {
+   "start": 554.28,
+   "duration": 3.76,
+   "text": "there is no guaranteed uh you know,"
+  },
+  {
+   "start": 555.92,
+   "duration": 3.84,
+   "text": "delivery time. You know, it can take up"
+  },
+  {
+   "start": 558.04,
+   "duration": 4.72,
+   "text": "to 24 hours."
+  },
+  {
+   "start": 559.76,
+   "duration": 4.48,
+   "text": "Um you simply cannot build a pipeline,"
+  },
+  {
+   "start": 562.76,
+   "duration": 3.36,
+   "text": "you know, that blocks and batch results"
+  },
+  {
+   "start": 564.24,
+   "duration": 3.72,
+   "text": "and expect it to finish at time. So if"
+  },
+  {
+   "start": 566.12,
+   "duration": 4.76,
+   "text": "you are if you are So the point is if"
+  },
+  {
+   "start": 567.96,
+   "duration": 4.08,
+   "text": "you are having critical kind of things"
+  },
+  {
+   "start": 570.88,
+   "duration": 2.64,
+   "text": "that you are doing in your CI/CD"
+  },
+  {
+   "start": 572.04,
+   "duration": 3.48,
+   "text": "pipeline, then you probably shouldn't"
+  },
+  {
+   "start": 573.52,
+   "duration": 3.68,
+   "text": "use should not use"
+  },
+  {
+   "start": 575.52,
+   "duration": 3.52,
+   "text": "the messages batches API. In that case,"
+  },
+  {
+   "start": 577.2,
+   "duration": 3.44,
+   "text": "you have to go with the real timing, but"
+  },
+  {
+   "start": 579.04,
+   "duration": 3.44,
+   "text": "there are certain scenarios where this"
+  },
+  {
+   "start": 580.64,
+   "duration": 3.8,
+   "text": "kind of works. Like the problem that we"
+  },
+  {
+   "start": 582.48,
+   "duration": 5.52,
+   "text": "discussed earlier, right? Like"
+  },
+  {
+   "start": 584.44,
+   "duration": 5.72,
+   "text": "some reviews that can be seen tomorrow."
+  },
+  {
+   "start": 588.0,
+   "duration": 3.76,
+   "text": "Or some tests that are generated for"
+  },
+  {
+   "start": 590.16,
+   "duration": 3.52,
+   "text": "your files can be checked tomorrow or"
+  },
+  {
+   "start": 591.76,
+   "duration": 3.52,
+   "text": "day after tomorrow. So, for those kind"
+  },
+  {
+   "start": 593.68,
+   "duration": 3.36,
+   "text": "of things, you can work it."
+  },
+  {
+   "start": 595.28,
+   "duration": 4.48,
+   "text": "Delivery guarantee, no SLA. Tool"
+  },
+  {
+   "start": 597.04,
+   "duration": 4.32,
+   "text": "calling, multi-turn is supported."
+  },
+  {
+   "start": 599.76,
+   "duration": 3.4,
+   "text": "But it only supports single-turn. So,"
+  },
+  {
+   "start": 601.36,
+   "duration": 3.68,
+   "text": "what does it mean that"
+  },
+  {
+   "start": 603.16,
+   "duration": 3.6,
+   "text": "once you send the messages batches API,"
+  },
+  {
+   "start": 605.04,
+   "duration": 4.12,
+   "text": "yeah, that's it."
+  },
+  {
+   "start": 606.76,
+   "duration": 5.04,
+   "text": "You can't See, we can we can interact"
+  },
+  {
+   "start": 609.16,
+   "duration": 4.92,
+   "text": "with Claude back and forth in real time,"
+  },
+  {
+   "start": 611.8,
+   "duration": 4.04,
+   "text": "like in normal scenarios. And you know,"
+  },
+  {
+   "start": 614.08,
+   "duration": 4.16,
+   "text": "if Claude does some mistake, we kind of"
+  },
+  {
+   "start": 615.84,
+   "duration": 4.72,
+   "text": "give feedback and it kind of reiterates"
+  },
+  {
+   "start": 618.24,
+   "duration": 4.0,
+   "text": "and gives us back the correct response,"
+  },
+  {
+   "start": 620.56,
+   "duration": 2.52,
+   "text": "maybe, right? The second or the third"
+  },
+  {
+   "start": 622.24,
+   "duration": 3.0,
+   "text": "time."
+  },
+  {
+   "start": 623.08,
+   "duration": 4.64,
+   "text": "But when it comes to messages batches"
+  },
+  {
+   "start": 625.24,
+   "duration": 4.8,
+   "text": "API, you send a ton of messages at once"
+  },
+  {
+   "start": 627.72,
+   "duration": 4.44,
+   "text": "and then you forget, basically."
+  },
+  {
+   "start": 630.04,
+   "duration": 5.24,
+   "text": "Now, when it comes back, that's it. That"
+  },
+  {
+   "start": 632.16,
+   "duration": 5.8,
+   "text": "is the result you have to, you know, be"
+  },
+  {
+   "start": 635.28,
+   "duration": 4.28,
+   "text": "good with. I mean, you can't interact it"
+  },
+  {
+   "start": 637.96,
+   "duration": 3.12,
+   "text": "again and again in a loop. So, that is"
+  },
+  {
+   "start": 639.56,
+   "duration": 3.8,
+   "text": "also one of the"
+  },
+  {
+   "start": 641.08,
+   "duration": 4.08,
+   "text": "drawbacks, you can say, for that 50%"
+  },
+  {
+   "start": 643.36,
+   "duration": 3.32,
+   "text": "discount that you get. Streaming is"
+  },
+  {
+   "start": 645.16,
+   "duration": 3.36,
+   "text": "supported is not supported. Obviously,"
+  },
+  {
+   "start": 646.68,
+   "duration": 3.96,
+   "text": "it makes sense, you know, streaming will"
+  },
+  {
+   "start": 648.52,
+   "duration": 3.88,
+   "text": "not be supported, you know."
+  },
+  {
+   "start": 650.64,
+   "duration": 4.96,
+   "text": "The batch can do that."
+  },
+  {
+   "start": 652.4,
+   "duration": 6.72,
+   "text": "Right? So, I hope that is making sense."
+  },
+  {
+   "start": 655.6,
+   "duration": 5.04,
+   "text": "So, the batch decision rule flowchart."
+  },
+  {
+   "start": 659.12,
+   "duration": 3.0,
+   "text": "When to use batch, basically, and when"
+  },
+  {
+   "start": 660.64,
+   "duration": 2.52,
+   "text": "not to use batch."
+  },
+  {
+   "start": 662.12,
+   "duration": 2.88,
+   "text": "So,"
+  },
+  {
+   "start": 663.16,
+   "duration": 4.32,
+   "text": "this is where it gets kind of practical."
+  },
+  {
+   "start": 665.0,
+   "duration": 5.16,
+   "text": "And let me give you a like a simple rule"
+  },
+  {
+   "start": 667.48,
+   "duration": 4.64,
+   "text": "of thumb to answer 90% of the exam"
+  },
+  {
+   "start": 670.16,
+   "duration": 4.36,
+   "text": "questions when it comes to batch"
+  },
+  {
+   "start": 672.12,
+   "duration": 5.0,
+   "text": "processing and standard processing."
+  },
+  {
+   "start": 674.52,
+   "duration": 5.48,
+   "text": "Okay. So, the thing is"
+  },
+  {
+   "start": 677.12,
+   "duration": 5.48,
+   "text": "the first thing that you need to ask"
+  },
+  {
+   "start": 680.0,
+   "duration": 4.56,
+   "text": "yourself is is anyone waiting for the"
+  },
+  {
+   "start": 682.6,
+   "duration": 4.08,
+   "text": "result right now?"
+  },
+  {
+   "start": 684.56,
+   "duration": 4.76,
+   "text": "The first question. Second question is,"
+  },
+  {
+   "start": 686.68,
+   "duration": 5.88,
+   "text": "does this need multiple back and forth"
+  },
+  {
+   "start": 689.32,
+   "duration": 3.24,
+   "text": "turns with tools?"
+  },
+  {
+   "start": 692.6,
+   "duration": 6.0,
+   "text": "So, the point is that what we discussed,"
+  },
+  {
+   "start": 694.72,
+   "duration": 7.84,
+   "text": "you know, last time. Um"
+  },
+  {
+   "start": 698.6,
+   "duration": 6.6,
+   "text": "if your CI/CD pipeline runs at real"
+  },
+  {
+   "start": 702.56,
+   "duration": 4.28,
+   "text": "time, and it needs feedback from Claude"
+  },
+  {
+   "start": 705.2,
+   "duration": 3.68,
+   "text": "immediately for its next step, for"
+  },
+  {
+   "start": 706.84,
+   "duration": 4.88,
+   "text": "example. And we had discussed that in my"
+  },
+  {
+   "start": 708.88,
+   "duration": 6.52,
+   "text": "pre- previous CI/CD pipeline lecture"
+  },
+  {
+   "start": 711.72,
+   "duration": 6.0,
+   "text": "that sometimes we need uh from you know,"
+  },
+  {
+   "start": 715.4,
+   "duration": 3.84,
+   "text": "Claude's output in one step, you know,"
+  },
+  {
+   "start": 717.72,
+   "duration": 4.0,
+   "text": "in your for example, GitHub Actions"
+  },
+  {
+   "start": 719.24,
+   "duration": 5.84,
+   "text": "file. And then that output is necessary"
+  },
+  {
+   "start": 721.72,
+   "duration": 6.32,
+   "text": "for input in the next step of the CI/CD"
+  },
+  {
+   "start": 725.08,
+   "duration": 7.48,
+   "text": "pipeline. So, in that case, you cannot"
+  },
+  {
+   "start": 728.04,
+   "duration": 7.88,
+   "text": "really really kind of rely on the batch"
+  },
+  {
+   "start": 732.56,
+   "duration": 5.44,
+   "text": "API call, because that might not be"
+  },
+  {
+   "start": 735.92,
+   "duration": 3.96,
+   "text": "returning it in 1 minute or 2 minutes."
+  },
+  {
+   "start": 738.0,
+   "duration": 3.2,
+   "text": "It will time out. Your your basically"
+  },
+  {
+   "start": 739.88,
+   "duration": 3.76,
+   "text": "GitHub Actions will time out in that"
+  },
+  {
+   "start": 741.2,
+   "duration": 5.44,
+   "text": "time. What if it returns it in 23 hours?"
+  },
+  {
+   "start": 743.64,
+   "duration": 5.0,
+   "text": "Your CI/CD single run cannot run for 23"
+  },
+  {
+   "start": 746.64,
+   "duration": 3.48,
+   "text": "hours, right? That doesn't make sense."
+  },
+  {
+   "start": 748.64,
+   "duration": 4.72,
+   "text": "So,"
+  },
+  {
+   "start": 750.12,
+   "duration": 5.12,
+   "text": "you have to ask yourself,"
+  },
+  {
+   "start": 753.36,
+   "duration": 3.84,
+   "text": "is is anyone waiting for the result"
+  },
+  {
+   "start": 755.24,
+   "duration": 4.52,
+   "text": "right now? If yes, then you should not"
+  },
+  {
+   "start": 757.2,
+   "duration": 4.8,
+   "text": "use batch API. Second thing is that if"
+  },
+  {
+   "start": 759.76,
+   "duration": 5.12,
+   "text": "there are multiple tool calls, does the"
+  },
+  {
+   "start": 762.0,
+   "duration": 4.56,
+   "text": "task require multiple turn tool call?"
+  },
+  {
+   "start": 764.88,
+   "duration": 4.0,
+   "text": "You know, because"
+  },
+  {
+   "start": 766.56,
+   "duration": 4.36,
+   "text": "uh"
+  },
+  {
+   "start": 768.88,
+   "duration": 4.12,
+   "text": "I mean,"
+  },
+  {
+   "start": 770.92,
+   "duration": 3.56,
+   "text": "it will be blocked. For example,"
+  },
+  {
+   "start": 773.0,
+   "duration": 2.56,
+   "text": "let's take an example of your agent"
+  },
+  {
+   "start": 774.48,
+   "duration": 3.4,
+   "text": "itself."
+  },
+  {
+   "start": 775.56,
+   "duration": 4.4,
+   "text": "You know, I mean, uh"
+  },
+  {
+   "start": 777.88,
+   "duration": 5.48,
+   "text": "your agent or your sub-agent does"
+  },
+  {
+   "start": 779.96,
+   "duration": 5.32,
+   "text": "multiple tool calls, right? And"
+  },
+  {
+   "start": 783.36,
+   "duration": 4.64,
+   "text": "it returns, you know, it needs the"
+  },
+  {
+   "start": 785.28,
+   "duration": 5.559,
+   "text": "results of the tool immediately. Because"
+  },
+  {
+   "start": 788.0,
+   "duration": 5.6,
+   "text": "it will your sub- your obviously the the"
+  },
+  {
+   "start": 790.839,
+   "duration": 5.361,
+   "text": "the agentic loop always works on the"
+  },
+  {
+   "start": 793.6,
+   "duration": 4.84,
+   "text": "mechanism of feedback. And when it comes"
+  },
+  {
+   "start": 796.2,
+   "duration": 3.68,
+   "text": "to feedback, you have to do multi-turn"
+  },
+  {
+   "start": 798.44,
+   "duration": 5.16,
+   "text": "tool calls."
+  },
+  {
+   "start": 799.88,
+   "duration": 6.2,
+   "text": "Right? You will append the feedback into"
+  },
+  {
+   "start": 803.6,
+   "duration": 3.88,
+   "text": "the, you know, Claude messages again and"
+  },
+  {
+   "start": 806.08,
+   "duration": 3.28,
+   "text": "send it back to Claude saying that,"
+  },
+  {
+   "start": 807.48,
+   "duration": 3.8,
+   "text": "okay, this is the mistake that you did"
+  },
+  {
+   "start": 809.36,
+   "duration": 4.36,
+   "text": "and then Claude improves it."
+  },
+  {
+   "start": 811.28,
+   "duration": 4.4,
+   "text": "And maybe calls one more tool or, you"
+  },
+  {
+   "start": 813.72,
+   "duration": 3.88,
+   "text": "know, two more tools. In that case, you"
+  },
+  {
+   "start": 815.68,
+   "duration": 4.08,
+   "text": "can't rely on the batch call."
+  },
+  {
+   "start": 817.6,
+   "duration": 4.04,
+   "text": "So, you have to go with standard API."
+  },
+  {
+   "start": 819.76,
+   "duration": 3.68,
+   "text": "Now, is a user or pipeline actively"
+  },
+  {
+   "start": 821.64,
+   "duration": 3.6,
+   "text": "blocked waiting for this? If yes, then"
+  },
+  {
+   "start": 823.44,
+   "duration": 4.08,
+   "text": "standard API. If no,"
+  },
+  {
+   "start": 825.24,
+   "duration": 4.0,
+   "text": "then you go to the multi-turn tool"
+  },
+  {
+   "start": 827.52,
+   "duration": 3.96,
+   "text": "calling that we have just discussed. If"
+  },
+  {
+   "start": 829.24,
+   "duration": 4.0,
+   "text": "yes, then standard API. If no, then"
+  },
+  {
+   "start": 831.48,
+   "duration": 4.44,
+   "text": "please use batch API."
+  },
+  {
+   "start": 833.24,
+   "duration": 2.68,
+   "text": "Right? Because"
+  },
+  {
+   "start": 836.2,
+   "duration": 3.92,
+   "text": "Um you know,"
+  },
+  {
+   "start": 837.84,
+   "duration": 3.8,
+   "text": "if overnight code review reports, all"
+  },
+  {
+   "start": 840.12,
+   "duration": 3.16,
+   "text": "these things we just discussed. Security"
+  },
+  {
+   "start": 841.64,
+   "duration": 4.36,
+   "text": "audits, nightly test generation,"
+  },
+  {
+   "start": 843.28,
+   "duration": 4.48,
+   "text": "processing 500 invoices on a Sunday."
+  },
+  {
+   "start": 846.0,
+   "duration": 3.68,
+   "text": "So, the the point is if anyone is"
+  },
+  {
+   "start": 847.76,
+   "duration": 3.6,
+   "text": "waiting right now or if the model needs"
+  },
+  {
+   "start": 849.68,
+   "duration": 4.2,
+   "text": "back and forth conversation, you cannot"
+  },
+  {
+   "start": 851.36,
+   "duration": 4.52,
+   "text": "use batch. That is the point I needed to"
+  },
+  {
+   "start": 853.88,
+   "duration": 5.04,
+   "text": "make. You can take a screenshot of this."
+  },
+  {
+   "start": 855.88,
+   "duration": 4.8,
+   "text": "Anyways, I'll share you these slides"
+  },
+  {
+   "start": 858.92,
+   "duration": 3.12,
+   "text": "as soon as possible. So, yeah, if you"
+  },
+  {
+   "start": 860.68,
+   "duration": 3.24,
+   "text": "have any questions, please put it down"
+  },
+  {
+   "start": 862.04,
+   "duration": 4.28,
+   "text": "in the comments."
+  },
+  {
+   "start": 863.92,
+   "duration": 3.76,
+   "text": "Okay, so the next point is tracking"
+  },
+  {
+   "start": 866.32,
+   "duration": 2.84,
+   "text": "requests and"
+  },
+  {
+   "start": 867.68,
+   "duration": 3.12,
+   "text": "we need that"
+  },
+  {
+   "start": 869.16,
+   "duration": 3.4,
+   "text": "custom ID thing that I just discussed,"
+  },
+  {
+   "start": 870.8,
+   "duration": 3.64,
+   "text": "right, previously."
+  },
+  {
+   "start": 872.56,
+   "duration": 4.64,
+   "text": "Yeah."
+  },
+  {
+   "start": 874.44,
+   "duration": 5.399,
+   "text": "Now, the custom ID"
+  },
+  {
+   "start": 877.2,
+   "duration": 5.2,
+   "text": "is responsible when we are sending"
+  },
+  {
+   "start": 879.839,
+   "duration": 4.681,
+   "text": "hundreds of requests in a batch."
+  },
+  {
+   "start": 882.4,
+   "duration": 3.96,
+   "text": "You must correlate which response go"
+  },
+  {
+   "start": 884.52,
+   "duration": 4.96,
+   "text": "into which request."
+  },
+  {
+   "start": 886.36,
+   "duration": 4.44,
+   "text": "Right? I mean, every request in batch is"
+  },
+  {
+   "start": 889.48,
+   "duration": 5.0,
+   "text": "needs to have a custom, you know,"
+  },
+  {
+   "start": 890.8,
+   "duration": 6.24,
+   "text": "unique, not custom, unique custom ID."
+  },
+  {
+   "start": 894.48,
+   "duration": 4.96,
+   "text": "Because it's like you have a shipment"
+  },
+  {
+   "start": 897.04,
+   "duration": 4.2,
+   "text": "of, you know, a big box and there are"
+  },
+  {
+   "start": 899.44,
+   "duration": 2.64,
+   "text": "there are there is a lot of stuff in"
+  },
+  {
+   "start": 901.24,
+   "duration": 2.44,
+   "text": "there."
+  },
+  {
+   "start": 902.08,
+   "duration": 3.52,
+   "text": "How would you know that that shipment"
+  },
+  {
+   "start": 903.68,
+   "duration": 4.92,
+   "text": "belongs to someone? Based on the"
+  },
+  {
+   "start": 905.6,
+   "duration": 5.6,
+   "text": "address, right? If the address is always"
+  },
+  {
+   "start": 908.6,
+   "duration": 4.32,
+   "text": "unique for a particular person."
+  },
+  {
+   "start": 911.2,
+   "duration": 3.6,
+   "text": "So, that shipment will go to that"
+  },
+  {
+   "start": 912.92,
+   "duration": 3.04,
+   "text": "particular person itself."
+  },
+  {
+   "start": 914.8,
+   "duration": 2.44,
+   "text": "Right? Whenever it has reached the"
+  },
+  {
+   "start": 915.96,
+   "duration": 4.2,
+   "text": "location."
+  },
+  {
+   "start": 917.24,
+   "duration": 5.36,
+   "text": "So, think of the custom ID as kind of an"
+  },
+  {
+   "start": 920.16,
+   "duration": 4.2,
+   "text": "address for that particular,"
+  },
+  {
+   "start": 922.6,
+   "duration": 2.72,
+   "text": "you know, tons of messages messages that"
+  },
+  {
+   "start": 924.36,
+   "duration": 2.4,
+   "text": "you sent."
+  },
+  {
+   "start": 925.32,
+   "duration": 3.8,
+   "text": "For example,"
+  },
+  {
+   "start": 926.76,
+   "duration": 6.16,
+   "text": "you uh this night you sent"
+  },
+  {
+   "start": 929.12,
+   "duration": 6.48,
+   "text": "a bunch of codes for review"
+  },
+  {
+   "start": 932.92,
+   "duration": 5.08,
+   "text": "as a batch messages API. So, that will"
+  },
+  {
+   "start": 935.6,
+   "duration": 4.76,
+   "text": "have one customer ID. And at the same"
+  },
+  {
+   "start": 938.0,
+   "duration": 4.36,
+   "text": "time you sent a bunch of"
+  },
+  {
+   "start": 940.36,
+   "duration": 3.36,
+   "text": "class files, for example, or your dot"
+  },
+  {
+   "start": 942.36,
+   "duration": 4.68,
+   "text": "Java files"
+  },
+  {
+   "start": 943.72,
+   "duration": 7.16,
+   "text": "um for generating the unit tests or"
+  },
+  {
+   "start": 947.04,
+   "duration": 6.08,
+   "text": "integration tests. Right? For to the"
+  },
+  {
+   "start": 950.88,
+   "duration": 4.08,
+   "text": "messages batch API. Now,"
+  },
+  {
+   "start": 953.12,
+   "duration": 4.28,
+   "text": "each of this request will be associated"
+  },
+  {
+   "start": 954.96,
+   "duration": 4.8,
+   "text": "with a particular customer ID."
+  },
+  {
+   "start": 957.4,
+   "duration": 4.0,
+   "text": "Right? So, it is like a meaningful tag"
+  },
+  {
+   "start": 959.76,
+   "duration": 3.28,
+   "text": "to each request. And it is very very"
+  },
+  {
+   "start": 961.4,
+   "duration": 3.36,
+   "text": "important to understand"
+  },
+  {
+   "start": 963.04,
+   "duration": 3.56,
+   "text": "uh when it comes"
+  },
+  {
+   "start": 964.76,
+   "duration": 3.68,
+   "text": "uh from the from the exam perspective"
+  },
+  {
+   "start": 966.6,
+   "duration": 4.08,
+   "text": "basically because"
+  },
+  {
+   "start": 968.44,
+   "duration": 4.04,
+   "text": "uh you know,"
+  },
+  {
+   "start": 970.68,
+   "duration": 4.32,
+   "text": "they will try to test you like how would"
+  },
+  {
+   "start": 972.48,
+   "duration": 5.52,
+   "text": "you how would uh you know, would you"
+  },
+  {
+   "start": 975.0,
+   "duration": 4.88,
+   "text": "identify uh the requests that you are"
+  },
+  {
+   "start": 978.0,
+   "duration": 3.24,
+   "text": "sending to the messages batch API and"
+  },
+  {
+   "start": 979.88,
+   "duration": 3.28,
+   "text": "when you are getting the result back as"
+  },
+  {
+   "start": 981.24,
+   "duration": 2.76,
+   "text": "well, how do you identify the result as"
+  },
+  {
+   "start": 983.16,
+   "duration": 2.12,
+   "text": "well?"
+  },
+  {
+   "start": 984.0,
+   "duration": 3.0,
+   "text": "So,"
+  },
+  {
+   "start": 985.28,
+   "duration": 3.36,
+   "text": "that's why this customer ID is very very"
+  },
+  {
+   "start": 987.0,
+   "duration": 3.24,
+   "text": "important."
+  },
+  {
+   "start": 988.64,
+   "duration": 3.84,
+   "text": "So, when the batch completes, the output"
+  },
+  {
+   "start": 990.24,
+   "duration": 4.72,
+   "text": "carries the same ID back to you. As I"
+  },
+  {
+   "start": 992.48,
+   "duration": 4.84,
+   "text": "told you, the result that you receive"
+  },
+  {
+   "start": 994.96,
+   "duration": 5.96,
+   "text": "should also contain a you know, that"
+  },
+  {
+   "start": 997.32,
+   "duration": 7.28,
+   "text": "same customer ID which you had sent"
+  },
+  {
+   "start": 1000.92,
+   "duration": 5.8,
+   "text": "you know, for the request as well."
+  },
+  {
+   "start": 1004.6,
+   "duration": 4.76,
+   "text": "Okay? So, exam tip, if a question asks"
+  },
+  {
+   "start": 1006.72,
+   "duration": 3.88,
+   "text": "about correlating batch request response"
+  },
+  {
+   "start": 1009.36,
+   "duration": 2.76,
+   "text": "pairs,"
+  },
+  {
+   "start": 1010.6,
+   "duration": 3.6,
+   "text": "request response pairs, the answer is"
+  },
+  {
+   "start": 1012.12,
+   "duration": 3.52,
+   "text": "always customer ID. I hope that is"
+  },
+  {
+   "start": 1014.2,
+   "duration": 4.12,
+   "text": "making sense."
+  },
+  {
+   "start": 1015.64,
+   "duration": 4.84,
+   "text": "Right? So, a good and bad example of"
+  },
+  {
+   "start": 1018.32,
+   "duration": 3.48,
+   "text": "uh a customer ID is"
+  },
+  {
+   "start": 1020.48,
+   "duration": 3.719,
+   "text": "um like"
+  },
+  {
+   "start": 1021.8,
+   "duration": 5.24,
+   "text": "random UUID. Don't please use random"
+  },
+  {
+   "start": 1024.199,
+   "duration": 4.201,
+   "text": "UUIDs because you know, it is"
+  },
+  {
+   "start": 1027.04,
+   "duration": 3.64,
+   "text": "uh it has to be unique, you know, it"
+  },
+  {
+   "start": 1028.4,
+   "duration": 4.88,
+   "text": "should should correlate with the request"
+  },
+  {
+   "start": 1030.68,
+   "duration": 3.96,
+   "text": "sent and the result received."
+  },
+  {
+   "start": 1033.28,
+   "duration": 4.36,
+   "text": "So, every time if you send a random"
+  },
+  {
+   "start": 1034.64,
+   "duration": 5.64,
+   "text": "UUID, you know, it might get lost or you"
+  },
+  {
+   "start": 1037.64,
+   "duration": 5.08,
+   "text": "might get confused like for which uh uh"
+  },
+  {
+   "start": 1040.28,
+   "duration": 4.64,
+   "text": "request this result is coming basically."
+  },
+  {
+   "start": 1042.72,
+   "duration": 4.0,
+   "text": "So, a good example will be a meaningful"
+  },
+  {
+   "start": 1044.92,
+   "duration": 3.08,
+   "text": "number which should have like a PR"
+  },
+  {
+   "start": 1046.72,
+   "duration": 3.24,
+   "text": "number. If for example, if you are"
+  },
+  {
+   "start": 1048.0,
+   "duration": 4.96,
+   "text": "sending it for a code review, it should"
+  },
+  {
+   "start": 1049.96,
+   "duration": 4.4,
+   "text": "have the PR number. Uh what what is that"
+  },
+  {
+   "start": 1052.96,
+   "duration": 4.6,
+   "text": "doing like"
+  },
+  {
+   "start": 1054.36,
+   "duration": 4.72,
+   "text": "file path and then the version of the"
+  },
+  {
+   "start": 1057.56,
+   "duration": 4.44,
+   "text": "file, something like that should be"
+  },
+  {
+   "start": 1059.08,
+   "duration": 4.4,
+   "text": "unique and meaningful. Make sure that"
+  },
+  {
+   "start": 1062.0,
+   "duration": 2.84,
+   "text": "you are following both of these"
+  },
+  {
+   "start": 1063.48,
+   "duration": 4.72,
+   "text": "conventions."
+  },
+  {
+   "start": 1064.84,
+   "duration": 5.08,
+   "text": "Right? I hope that is making sense."
+  },
+  {
+   "start": 1068.2,
+   "duration": 3.68,
+   "text": "And you know,"
+  },
+  {
+   "start": 1069.92,
+   "duration": 4.36,
+   "text": "any kind of asynchronous operation that"
+  },
+  {
+   "start": 1071.88,
+   "duration": 5.16,
+   "text": "we do, for example, if we use"
+  },
+  {
+   "start": 1074.28,
+   "duration": 6.44,
+   "text": "you know, SQS in AWS Lambda, sorry, in"
+  },
+  {
+   "start": 1077.04,
+   "duration": 6.28,
+   "text": "AWS, not Lambda. In AWS, we use SQS."
+  },
+  {
+   "start": 1080.72,
+   "duration": 4.92,
+   "text": "We are use partition IDs because that"
+  },
+  {
+   "start": 1083.32,
+   "duration": 5.08,
+   "text": "every asynchronous operation needs to"
+  },
+  {
+   "start": 1085.64,
+   "duration": 5.72,
+   "text": "have ID to relate with. Even with an"
+  },
+  {
+   "start": 1088.4,
+   "duration": 5.8,
+   "text": "asynchronous agent call, you get"
+  },
+  {
+   "start": 1091.36,
+   "duration": 4.12,
+   "text": "a ID back using which you are polling"
+  },
+  {
+   "start": 1094.2,
+   "duration": 4.32,
+   "text": "the agent."
+  },
+  {
+   "start": 1095.48,
+   "duration": 6.4,
+   "text": "So, any kind of asynchronous operation"
+  },
+  {
+   "start": 1098.52,
+   "duration": 5.36,
+   "text": "that you do anywhere would need an ID."
+  },
+  {
+   "start": 1101.88,
+   "duration": 4.72,
+   "text": "And in this case, we are using the"
+  },
+  {
+   "start": 1103.88,
+   "duration": 7.52,
+   "text": "messages batch API, you are you have to"
+  },
+  {
+   "start": 1106.6,
+   "duration": 6.68,
+   "text": "use a custom ID in this case. Right?"
+  },
+  {
+   "start": 1111.4,
+   "duration": 4.4,
+   "text": "Multi-turn tool calling limitation we"
+  },
+  {
+   "start": 1113.28,
+   "duration": 5.32,
+   "text": "already discussed that if you are using"
+  },
+  {
+   "start": 1115.8,
+   "duration": 4.68,
+   "text": "if there is a requirement of, you know,"
+  },
+  {
+   "start": 1118.6,
+   "duration": 4.08,
+   "text": "multiple tools to be called and then"
+  },
+  {
+   "start": 1120.48,
+   "duration": 3.56,
+   "text": "feedback to be collected and then you"
+  },
+  {
+   "start": 1122.68,
+   "duration": 3.96,
+   "text": "know, calling one more tool, for"
+  },
+  {
+   "start": 1124.04,
+   "duration": 4.6,
+   "text": "example, in that case, we cannot use"
+  },
+  {
+   "start": 1126.64,
+   "duration": 4.56,
+   "text": "batches API and I already gave you the"
+  },
+  {
+   "start": 1128.64,
+   "duration": 4.64,
+   "text": "example of an agentic loop where a"
+  },
+  {
+   "start": 1131.2,
+   "duration": 6.28,
+   "text": "sub-agent is running in a loop, you"
+  },
+  {
+   "start": 1133.28,
+   "duration": 6.28,
+   "text": "know, calling the tools one by one"
+  },
+  {
+   "start": 1137.48,
+   "duration": 3.88,
+   "text": "or again and again and it is interacting"
+  },
+  {
+   "start": 1139.56,
+   "duration": 4.2,
+   "text": "with Claude in real time. So, in that"
+  },
+  {
+   "start": 1141.36,
+   "duration": 4.0,
+   "text": "case, you can't really use the batch"
+  },
+  {
+   "start": 1143.76,
+   "duration": 4.52,
+   "text": "API, simple as that and it will be"
+  },
+  {
+   "start": 1145.36,
+   "duration": 5.04,
+   "text": "tested in the exam. Sometimes just and"
+  },
+  {
+   "start": 1148.28,
+   "duration": 4.84,
+   "text": "when it comes to cost, don't blindly go"
+  },
+  {
+   "start": 1150.4,
+   "duration": 5.8,
+   "text": "with the messages batch API. Clearly"
+  },
+  {
+   "start": 1153.12,
+   "duration": 5.64,
+   "text": "read the question what it asks. Whether"
+  },
+  {
+   "start": 1156.2,
+   "duration": 6.0,
+   "text": "just the cost if it is telling and it is"
+  },
+  {
+   "start": 1158.76,
+   "duration": 5.44,
+   "text": "giving a very weird scenario where it"
+  },
+  {
+   "start": 1162.2,
+   "duration": 3.4,
+   "text": "wants to use the batch API, then please"
+  },
+  {
+   "start": 1164.2,
+   "duration": 2.6,
+   "text": "don't go with it."
+  },
+  {
+   "start": 1165.6,
+   "duration": 3.4,
+   "text": "Right?"
+  },
+  {
+   "start": 1166.8,
+   "duration": 3.16,
+   "text": "So, make sure that you are aware of"
+  },
+  {
+   "start": 1169.0,
+   "duration": 1.88,
+   "text": "that."
+  },
+  {
+   "start": 1169.96,
+   "duration": 3.28,
+   "text": "So,"
+  },
+  {
+   "start": 1170.88,
+   "duration": 4.64,
+   "text": "another anti-pattern, blocking"
+  },
+  {
+   "start": 1173.24,
+   "duration": 6.16,
+   "text": "workflows. I already told you if you are"
+  },
+  {
+   "start": 1175.52,
+   "duration": 6.12,
+   "text": "writing a CI/CD pipeline, right? And"
+  },
+  {
+   "start": 1179.4,
+   "duration": 4.68,
+   "text": "and it might give you like this kind of"
+  },
+  {
+   "start": 1181.64,
+   "duration": 4.68,
+   "text": "a question, right? Your team integrates"
+  },
+  {
+   "start": 1184.08,
+   "duration": 4.16,
+   "text": "Claude into CI/CD for automated code"
+  },
+  {
+   "start": 1186.32,
+   "duration": 3.8,
+   "text": "reviews. Reviews currently block the PR"
+  },
+  {
+   "start": 1188.24,
+   "duration": 3.32,
+   "text": "merge process. To reduce cost, a"
+  },
+  {
+   "start": 1190.12,
+   "duration": 3.28,
+   "text": "developer suggests switching to message"
+  },
+  {
+   "start": 1191.56,
+   "duration": 3.2,
+   "text": "patches API."
+  },
+  {
+   "start": 1193.4,
+   "duration": 3.32,
+   "text": "What is the primary concern with this"
+  },
+  {
+   "start": 1194.76,
+   "duration": 3.92,
+   "text": "approach? The The concern is batch API"
+  },
+  {
+   "start": 1196.72,
+   "duration": 5.24,
+   "text": "has not guaranteed delivery."
+  },
+  {
+   "start": 1198.68,
+   "duration": 6.28,
+   "text": "Right? It might deliver you in 2 minutes"
+  },
+  {
+   "start": 1201.96,
+   "duration": 4.52,
+   "text": "or in 23 hours 59 minutes. It doesn't It"
+  },
+  {
+   "start": 1204.96,
+   "duration": 3.24,
+   "text": "doesn't matter"
+  },
+  {
+   "start": 1206.48,
+   "duration": 3.84,
+   "text": "when it delivers. But it will deliver"
+  },
+  {
+   "start": 1208.2,
+   "duration": 3.84,
+   "text": "within up to 24 hours, right? That is"
+  },
+  {
+   "start": 1210.32,
+   "duration": 3.24,
+   "text": "what it has told you. But we can't"
+  },
+  {
+   "start": 1212.04,
+   "duration": 3.36,
+   "text": "really depend on that. You know, your"
+  },
+  {
+   "start": 1213.56,
+   "duration": 3.44,
+   "text": "CI/CD pipeline might get timed out. Your"
+  },
+  {
+   "start": 1215.4,
+   "duration": 3.76,
+   "text": "GitHub action might get timed out in"
+  },
+  {
+   "start": 1217.0,
+   "duration": 4.32,
+   "text": "that scenario. So, and I already told"
+  },
+  {
+   "start": 1219.16,
+   "duration": 4.0,
+   "text": "you if there's a multi-step conversation"
+  },
+  {
+   "start": 1221.32,
+   "duration": 3.84,
+   "text": "or a multi-step"
+  },
+  {
+   "start": 1223.16,
+   "duration": 4.4,
+   "text": "flow happening in your CI/CD pipeline,"
+  },
+  {
+   "start": 1225.16,
+   "duration": 4.64,
+   "text": "then one output one step output goes to"
+  },
+  {
+   "start": 1227.56,
+   "duration": 4.52,
+   "text": "another out you know, step. Then in that"
+  },
+  {
+   "start": 1229.8,
+   "duration": 4.84,
+   "text": "case, we need the standard Claude"
+  },
+  {
+   "start": 1232.08,
+   "duration": 4.48,
+   "text": "interaction, the standard messages API."
+  },
+  {
+   "start": 1234.64,
+   "duration": 4.36,
+   "text": "So, in that case also, you will not be"
+  },
+  {
+   "start": 1236.56,
+   "duration": 4.64,
+   "text": "able to use the batch API, right? You"
+  },
+  {
+   "start": 1239.0,
+   "duration": 6.64,
+   "text": "cannot send it as a batch. So, make sure"
+  },
+  {
+   "start": 1241.2,
+   "duration": 6.36,
+   "text": "you are hitting the spot in the exam."
+  },
+  {
+   "start": 1245.64,
+   "duration": 3.6,
+   "text": "Now, we have discussed we have kind of"
+  },
+  {
+   "start": 1247.56,
+   "duration": 3.44,
+   "text": "completed uh discussing about the"
+  },
+  {
+   "start": 1249.24,
+   "duration": 4.28,
+   "text": "messages batch API. Now, let's talk"
+  },
+  {
+   "start": 1251.0,
+   "duration": 4.6,
+   "text": "about the self-review trap."
+  },
+  {
+   "start": 1253.52,
+   "duration": 4.2,
+   "text": "And I have already discussed about this"
+  },
+  {
+   "start": 1255.6,
+   "duration": 3.88,
+   "text": "in some of my other lecture. I remember"
+  },
+  {
+   "start": 1257.72,
+   "duration": 4.36,
+   "text": "it's just that"
+  },
+  {
+   "start": 1259.48,
+   "duration": 5.0,
+   "text": "if you are using an instance of Claude"
+  },
+  {
+   "start": 1262.08,
+   "duration": 4.72,
+   "text": "or a session of Claude"
+  },
+  {
+   "start": 1264.48,
+   "duration": 4.28,
+   "text": "for writing your code, then don't use"
+  },
+  {
+   "start": 1266.8,
+   "duration": 4.56,
+   "text": "the same session"
+  },
+  {
+   "start": 1268.76,
+   "duration": 6.68,
+   "text": "to also review your code or write the"
+  },
+  {
+   "start": 1271.36,
+   "duration": 6.56,
+   "text": "unit tests or your integration tests."
+  },
+  {
+   "start": 1275.44,
+   "duration": 4.6,
+   "text": "So, the concept is a Claude instance"
+  },
+  {
+   "start": 1277.92,
+   "duration": 3.84,
+   "text": "reviewing its own output retains its"
+  },
+  {
+   "start": 1280.04,
+   "duration": 3.96,
+   "text": "original conversation history and"
+  },
+  {
+   "start": 1281.76,
+   "duration": 4.48,
+   "text": "reasoning context. It's like you have a"
+  },
+  {
+   "start": 1284.0,
+   "duration": 4.04,
+   "text": "developer on your team"
+  },
+  {
+   "start": 1286.24,
+   "duration": 4.16,
+   "text": "and you go and tell that developer that"
+  },
+  {
+   "start": 1288.04,
+   "duration": 4.4,
+   "text": "write the tests for your code."
+  },
+  {
+   "start": 1290.4,
+   "duration": 4.08,
+   "text": "The developer might miss some things"
+  },
+  {
+   "start": 1292.44,
+   "duration": 3.68,
+   "text": "for, you know, for that particular"
+  },
+  {
+   "start": 1294.48,
+   "duration": 3.32,
+   "text": "implementation because he has the"
+  },
+  {
+   "start": 1296.12,
+   "duration": 4.16,
+   "text": "reasoning that he has written the best"
+  },
+  {
+   "start": 1297.8,
+   "duration": 4.6,
+   "text": "code and nobody can write better code"
+  },
+  {
+   "start": 1300.28,
+   "duration": 3.8,
+   "text": "than that particular person."
+  },
+  {
+   "start": 1302.4,
+   "duration": 3.2,
+   "text": "Which is"
+  },
+  {
+   "start": 1304.08,
+   "duration": 4.92,
+   "text": "which is"
+  },
+  {
+   "start": 1305.6,
+   "duration": 5.84,
+   "text": "I mean, that's why we have separate QAs."
+  },
+  {
+   "start": 1309.0,
+   "duration": 3.8,
+   "text": "So, which kind of like do some reasoning"
+  },
+  {
+   "start": 1311.44,
+   "duration": 4.24,
+   "text": "that the birth date cannot be in"
+  },
+  {
+   "start": 1312.8,
+   "duration": 5.08,
+   "text": "negative numbers, but the developer has"
+  },
+  {
+   "start": 1315.68,
+   "duration": 3.16,
+   "text": "is allowing negative numbers."
+  },
+  {
+   "start": 1317.88,
+   "duration": 2.84,
+   "text": "Right?"
+  },
+  {
+   "start": 1318.84,
+   "duration": 3.44,
+   "text": "So, that is a different perspective. You"
+  },
+  {
+   "start": 1320.72,
+   "duration": 3.36,
+   "text": "know, the the QA comes with a different"
+  },
+  {
+   "start": 1322.28,
+   "duration": 3.72,
+   "text": "perspective. The similar concept applies"
+  },
+  {
+   "start": 1324.08,
+   "duration": 5.32,
+   "text": "over here."
+  },
+  {
+   "start": 1326.0,
+   "duration": 5.76,
+   "text": "To have a unbiased kind of"
+  },
+  {
+   "start": 1329.4,
+   "duration": 4.56,
+   "text": "you know, flow over here, you can use"
+  },
+  {
+   "start": 1331.76,
+   "duration": 4.6,
+   "text": "one instance or one session of Claude,"
+  },
+  {
+   "start": 1333.96,
+   "duration": 5.32,
+   "text": "for example, for writing the code and"
+  },
+  {
+   "start": 1336.36,
+   "duration": 3.88,
+   "text": "one instance to review the code."
+  },
+  {
+   "start": 1339.28,
+   "duration": 3.08,
+   "text": "Right?"
+  },
+  {
+   "start": 1340.24,
+   "duration": 3.08,
+   "text": "So, same session review means a biased"
+  },
+  {
+   "start": 1342.36,
+   "duration": 2.44,
+   "text": "review."
+  },
+  {
+   "start": 1343.32,
+   "duration": 3.76,
+   "text": "The conversation history is in the"
+  },
+  {
+   "start": 1344.8,
+   "duration": 3.52,
+   "text": "context. But when you start a new"
+  },
+  {
+   "start": 1347.08,
+   "duration": 3.48,
+   "text": "session,"
+  },
+  {
+   "start": 1348.32,
+   "duration": 4.08,
+   "text": "it will basically start fresh. It"
+  },
+  {
+   "start": 1350.56,
+   "duration": 3.92,
+   "text": "doesn't know anything about your code or"
+  },
+  {
+   "start": 1352.4,
+   "duration": 4.32,
+   "text": "whatever it has implemented. It will"
+  },
+  {
+   "start": 1354.48,
+   "duration": 4.56,
+   "text": "write your the particular, for example,"
+  },
+  {
+   "start": 1356.72,
+   "duration": 4.84,
+   "text": "tests or review your code"
+  },
+  {
+   "start": 1359.04,
+   "duration": 4.52,
+   "text": "with a fresh mind. It will just see"
+  },
+  {
+   "start": 1361.56,
+   "duration": 3.76,
+   "text": "if everything is correct or not without"
+  },
+  {
+   "start": 1363.56,
+   "duration": 4.72,
+   "text": "any previous reasoning."
+  },
+  {
+   "start": 1365.32,
+   "duration": 5.4,
+   "text": "And that is what we want. So,"
+  },
+  {
+   "start": 1368.28,
+   "duration": 4.52,
+   "text": "if in the exam it asks you if you want"
+  },
+  {
+   "start": 1370.72,
+   "duration": 5.04,
+   "text": "to use the same session"
+  },
+  {
+   "start": 1372.8,
+   "duration": 4.84,
+   "text": "that you used for"
+  },
+  {
+   "start": 1375.76,
+   "duration": 4.24,
+   "text": "you know, writing the code, then please"
+  },
+  {
+   "start": 1377.64,
+   "duration": 5.88,
+   "text": "don't go with that. Independent review"
+  },
+  {
+   "start": 1380.0,
+   "duration": 6.2,
+   "text": "instances or sessions are better."
+  },
+  {
+   "start": 1383.52,
+   "duration": 5.16,
+   "text": "Fresh eyes win. So, I just told you"
+  },
+  {
+   "start": 1386.2,
+   "duration": 5.08,
+   "text": "self-review is kind of weak. You know,"
+  },
+  {
+   "start": 1388.68,
+   "duration": 5.24,
+   "text": "instance A writes, instance A reviews."
+  },
+  {
+   "start": 1391.28,
+   "duration": 4.68,
+   "text": "The outcome is biased, but when it comes"
+  },
+  {
+   "start": 1393.92,
+   "duration": 3.4,
+   "text": "to independent review, instance A writes"
+  },
+  {
+   "start": 1395.96,
+   "duration": 3.76,
+   "text": "the code,"
+  },
+  {
+   "start": 1397.32,
+   "duration": 4.44,
+   "text": "you know, it outputs it into a file, and"
+  },
+  {
+   "start": 1399.72,
+   "duration": 4.56,
+   "text": "then instance B is in a separate"
+  },
+  {
+   "start": 1401.76,
+   "duration": 3.76,
+   "text": "session, and it reviews them. Now, you"
+  },
+  {
+   "start": 1404.28,
+   "duration": 3.52,
+   "text": "would ask me a question, \"Sir, you"
+  },
+  {
+   "start": 1405.52,
+   "duration": 4.8,
+   "text": "previously told us do not start"
+  },
+  {
+   "start": 1407.8,
+   "duration": 4.64,
+   "text": "unnecessarily sessions like that. It"
+  },
+  {
+   "start": 1410.32,
+   "duration": 5.4,
+   "text": "will cost you a lot.\" Yes, I you are"
+  },
+  {
+   "start": 1412.44,
+   "duration": 5.08,
+   "text": "right. I just I had told you. But,"
+  },
+  {
+   "start": 1415.72,
+   "duration": 3.48,
+   "text": "what can you do to reduce costs in this"
+  },
+  {
+   "start": 1417.52,
+   "duration": 3.68,
+   "text": "case? That's a question for you. You can"
+  },
+  {
+   "start": 1419.2,
+   "duration": 5.04,
+   "text": "pause the video, and you can think about"
+  },
+  {
+   "start": 1421.2,
+   "duration": 5.56,
+   "text": "it. What can I do so that"
+  },
+  {
+   "start": 1424.24,
+   "duration": 5.0,
+   "text": "uh some kind of summary goes into this"
+  },
+  {
+   "start": 1426.76,
+   "duration": 4.24,
+   "text": "instance B or the new session, so it"
+  },
+  {
+   "start": 1429.24,
+   "duration": 3.8,
+   "text": "doesn't have to go through each and"
+  },
+  {
+   "start": 1431.0,
+   "duration": 3.76,
+   "text": "every line of the code."
+  },
+  {
+   "start": 1433.04,
+   "duration": 3.64,
+   "text": "Think about it."
+  },
+  {
+   "start": 1434.76,
+   "duration": 5.84,
+   "text": "Right? Maybe you can use some kind of a"
+  },
+  {
+   "start": 1436.68,
+   "duration": 5.56,
+   "text": "summarizers summarization or compact"
+  },
+  {
+   "start": 1440.6,
+   "duration": 4.16,
+   "text": "or some kind of"
+  },
+  {
+   "start": 1442.24,
+   "duration": 4.88,
+   "text": "uh explore sub agent."
+  },
+  {
+   "start": 1444.76,
+   "duration": 4.12,
+   "text": "You know, you can spin up some sub agent"
+  },
+  {
+   "start": 1447.12,
+   "duration": 2.96,
+   "text": "which will get a summary of what uh"
+  },
+  {
+   "start": 1448.88,
+   "duration": 4.04,
+   "text": "whatever the implementation"
+  },
+  {
+   "start": 1450.08,
+   "duration": 4.8,
+   "text": "implementation is. Then maybe you put"
+  },
+  {
+   "start": 1452.92,
+   "duration": 4.36,
+   "text": "that, you know, use that summary as kind"
+  },
+  {
+   "start": 1454.88,
+   "duration": 4.92,
+   "text": "of a context in this new"
+  },
+  {
+   "start": 1457.28,
+   "duration": 4.88,
+   "text": "uh session that you are making or the"
+  },
+  {
+   "start": 1459.8,
+   "duration": 3.64,
+   "text": "new instance that you are using."
+  },
+  {
+   "start": 1462.16,
+   "duration": 2.76,
+   "text": "And then maybe it will have a more"
+  },
+  {
+   "start": 1463.44,
+   "duration": 4.16,
+   "text": "perspective of what has happened"
+  },
+  {
+   "start": 1464.92,
+   "duration": 4.56,
+   "text": "previously. Instead of turn-by-turn"
+  },
+  {
+   "start": 1467.6,
+   "duration": 3.68,
+   "text": "conversation which, you know, Claude"
+  },
+  {
+   "start": 1469.48,
+   "duration": 4.2,
+   "text": "will think that I have done a great job,"
+  },
+  {
+   "start": 1471.28,
+   "duration": 4.12,
+   "text": "instead will have some kind of idea."
+  },
+  {
+   "start": 1473.68,
+   "duration": 3.6,
+   "text": "That's what is happening with QAs as"
+  },
+  {
+   "start": 1475.4,
+   "duration": 3.88,
+   "text": "well, right? The developer has the"
+  },
+  {
+   "start": 1477.28,
+   "duration": 3.44,
+   "text": "complete nitty-gritty on how the code is"
+  },
+  {
+   "start": 1479.28,
+   "duration": 3.84,
+   "text": "developed."
+  },
+  {
+   "start": 1480.72,
+   "duration": 5.44,
+   "text": "But, instead, the QA has complete"
+  },
+  {
+   "start": 1483.12,
+   "duration": 4.56,
+   "text": "functional knowledge. So, you just"
+  },
+  {
+   "start": 1486.16,
+   "duration": 3.16,
+   "text": "have to give some kind of functional"
+  },
+  {
+   "start": 1487.68,
+   "duration": 3.2,
+   "text": "knowledge to this new session by some"
+  },
+  {
+   "start": 1489.32,
+   "duration": 4.0,
+   "text": "kind of summary,"
+  },
+  {
+   "start": 1490.88,
+   "duration": 4.16,
+   "text": "and it will take do its job, and it will"
+  },
+  {
+   "start": 1493.32,
+   "duration": 4.64,
+   "text": "also cost you less because you didn't"
+  },
+  {
+   "start": 1495.04,
+   "duration": 5.8,
+   "text": "have to start completely uh with a blank"
+  },
+  {
+   "start": 1497.96,
+   "duration": 4.96,
+   "text": "slate. So, that is one of the"
+  },
+  {
+   "start": 1500.84,
+   "duration": 4.28,
+   "text": "I mean scenarios that might come in the"
+  },
+  {
+   "start": 1502.92,
+   "duration": 4.08,
+   "text": "exam or I don't know. But, if if it"
+  },
+  {
+   "start": 1505.12,
+   "duration": 3.32,
+   "text": "comes, then you are equipped with that"
+  },
+  {
+   "start": 1507.0,
+   "duration": 2.36,
+   "text": "knowledge."
+  },
+  {
+   "start": 1508.44,
+   "duration": 2.4,
+   "text": "Right?"
+  },
+  {
+   "start": 1509.36,
+   "duration": 3.64,
+   "text": "So, when the exam ask you how to improve"
+  },
+  {
+   "start": 1510.84,
+   "duration": 3.72,
+   "text": "code quality, the answer involves"
+  },
+  {
+   "start": 1513.0,
+   "duration": 3.64,
+   "text": "splitting the review into independent"
+  },
+  {
+   "start": 1514.56,
+   "duration": 3.72,
+   "text": "instances, not prompting the same"
+  },
+  {
+   "start": 1516.64,
+   "duration": 3.72,
+   "text": "instance to review more carefully or"
+  },
+  {
+   "start": 1518.28,
+   "duration": 4.08,
+   "text": "double-check this work. No, don't don't"
+  },
+  {
+   "start": 1520.36,
+   "duration": 4.44,
+   "text": "ask that to that particular instance."
+  },
+  {
+   "start": 1522.36,
+   "duration": 4.68,
+   "text": "Instead, go with independent sessions or"
+  },
+  {
+   "start": 1524.8,
+   "duration": 5.08,
+   "text": "instances."
+  },
+  {
+   "start": 1527.04,
+   "duration": 4.2,
+   "text": "Now, the multi-pass review or multi-pass"
+  },
+  {
+   "start": 1529.88,
+   "duration": 2.4,
+   "text": "architecture"
+  },
+  {
+   "start": 1531.24,
+   "duration": 2.28,
+   "text": "depth"
+  },
+  {
+   "start": 1532.28,
+   "duration": 2.08,
+   "text": "than breadth."
+  },
+  {
+   "start": 1533.52,
+   "duration": 2.88,
+   "text": "So,"
+  },
+  {
+   "start": 1534.36,
+   "duration": 4.08,
+   "text": "per file review, independent instances,"
+  },
+  {
+   "start": 1536.4,
+   "duration": 3.84,
+   "text": "which I just told you, right? Okay."
+  },
+  {
+   "start": 1538.44,
+   "duration": 4.16,
+   "text": "Independent instances will do"
+  },
+  {
+   "start": 1540.24,
+   "duration": 4.56,
+   "text": "independent reviews, right? It's"
+  },
+  {
+   "start": 1542.6,
+   "duration": 4.64,
+   "text": "parallel execution."
+  },
+  {
+   "start": 1544.8,
+   "duration": 4.2,
+   "text": "So, deep focus on style, bugs, and"
+  },
+  {
+   "start": 1547.24,
+   "duration": 3.52,
+   "text": "security profiles. For example, there"
+  },
+  {
+   "start": 1549.0,
+   "duration": 4.0,
+   "text": "are a lot of files,"
+  },
+  {
+   "start": 1550.76,
+   "duration": 4.76,
+   "text": "right? And for example, multiple"
+  },
+  {
+   "start": 1553.0,
+   "duration": 3.76,
+   "text": "instances are working on reviewing each"
+  },
+  {
+   "start": 1555.52,
+   "duration": 4.28,
+   "text": "and every file,"
+  },
+  {
+   "start": 1556.76,
+   "duration": 5.88,
+   "text": "right? Now, that is good. That is for"
+  },
+  {
+   "start": 1559.8,
+   "duration": 4.52,
+   "text": "the individual things for our individual"
+  },
+  {
+   "start": 1562.64,
+   "duration": 4.04,
+   "text": "files you are, you know, multiple"
+  },
+  {
+   "start": 1564.32,
+   "duration": 5.72,
+   "text": "instances are working. Now, what you do"
+  },
+  {
+   "start": 1566.68,
+   "duration": 5.96,
+   "text": "is co- collate all of your findings,"
+  },
+  {
+   "start": 1570.04,
+   "duration": 5.0,
+   "text": "right? And then what it will happen,"
+  },
+  {
+   "start": 1572.64,
+   "duration": 4.04,
+   "text": "cross-file integration review happens."
+  },
+  {
+   "start": 1575.04,
+   "duration": 3.88,
+   "text": "Now, there will be one more instance"
+  },
+  {
+   "start": 1576.68,
+   "duration": 5.52,
+   "text": "which will go through, you know, all the"
+  },
+  {
+   "start": 1578.92,
+   "duration": 6.32,
+   "text": "co- collated information that it got"
+  },
+  {
+   "start": 1582.2,
+   "duration": 5.84,
+   "text": "from each of the instances. It will kind"
+  },
+  {
+   "start": 1585.24,
+   "duration": 4.8,
+   "text": "of collect those findings, and it will"
+  },
+  {
+   "start": 1588.04,
+   "duration": 5.04,
+   "text": "see if"
+  },
+  {
+   "start": 1590.04,
+   "duration": 4.6,
+   "text": "you know, those reviews are working as a"
+  },
+  {
+   "start": 1593.08,
+   "duration": 3.24,
+   "text": "whole or not."
+  },
+  {
+   "start": 1594.64,
+   "duration": 3.56,
+   "text": "Now, take the example of an integration"
+  },
+  {
+   "start": 1596.32,
+   "duration": 3.72,
+   "text": "test."
+  },
+  {
+   "start": 1598.2,
+   "duration": 3.4,
+   "text": "The authentication service will have its"
+  },
+  {
+   "start": 1600.04,
+   "duration": 4.48,
+   "text": "own unit tests."
+  },
+  {
+   "start": 1601.6,
+   "duration": 4.84,
+   "text": "The you know, the For example, there is"
+  },
+  {
+   "start": 1604.52,
+   "duration": 4.84,
+   "text": "a cart service in your e-commerce"
+  },
+  {
+   "start": 1606.44,
+   "duration": 5.44,
+   "text": "application. It will have its own set of"
+  },
+  {
+   "start": 1609.36,
+   "duration": 4.56,
+   "text": "unit tests. Now, the integration test"
+  },
+  {
+   "start": 1611.88,
+   "duration": 4.12,
+   "text": "will make sure that"
+  },
+  {
+   "start": 1613.92,
+   "duration": 4.28,
+   "text": "the authentication service with the cart"
+  },
+  {
+   "start": 1616.0,
+   "duration": 4.12,
+   "text": "service is working or not because this"
+  },
+  {
+   "start": 1618.2,
+   "duration": 4.08,
+   "text": "the concept is if a user is not"
+  },
+  {
+   "start": 1620.12,
+   "duration": 5.2,
+   "text": "authenticated, the user should not be"
+  },
+  {
+   "start": 1622.28,
+   "duration": 4.6,
+   "text": "able to add the products to the cart,"
+  },
+  {
+   "start": 1625.32,
+   "duration": 4.32,
+   "text": "simple as that."
+  },
+  {
+   "start": 1626.88,
+   "duration": 5.68,
+   "text": "So, the same concept applies here. Once"
+  },
+  {
+   "start": 1629.64,
+   "duration": 5.52,
+   "text": "individual reviews have been happened,"
+  },
+  {
+   "start": 1632.56,
+   "duration": 4.4,
+   "text": "then you collate all the findings and"
+  },
+  {
+   "start": 1635.16,
+   "duration": 3.48,
+   "text": "there will might be another instance"
+  },
+  {
+   "start": 1636.96,
+   "duration": 4.72,
+   "text": "which will basically check"
+  },
+  {
+   "start": 1638.64,
+   "duration": 5.56,
+   "text": "interconnecting files here. The auth the"
+  },
+  {
+   "start": 1641.68,
+   "duration": 4.16,
+   "text": "user if it is properly, you know,"
+  },
+  {
+   "start": 1644.2,
+   "duration": 4.2,
+   "text": "connected or not, you know, the"
+  },
+  {
+   "start": 1645.84,
+   "duration": 4.2,
+   "text": "variables here which have been exported"
+  },
+  {
+   "start": 1648.4,
+   "duration": 2.6,
+   "text": "there or not, something like that,"
+  },
+  {
+   "start": 1650.04,
+   "duration": 3.76,
+   "text": "right?"
+  },
+  {
+   "start": 1651.0,
+   "duration": 5.08,
+   "text": "So, here we are getting more depth of"
+  },
+  {
+   "start": 1653.8,
+   "duration": 4.0,
+   "text": "review."
+  },
+  {
+   "start": 1656.08,
+   "duration": 3.6,
+   "text": "Right? This is the breadth and this is"
+  },
+  {
+   "start": 1657.8,
+   "duration": 4.24,
+   "text": "the depth. So, we are get getting both."
+  },
+  {
+   "start": 1659.68,
+   "duration": 4.88,
+   "text": "So, you kind of combining the"
+  },
+  {
+   "start": 1662.04,
+   "duration": 6.52,
+   "text": "power of, you know, independent or"
+  },
+  {
+   "start": 1664.56,
+   "duration": 6.36,
+   "text": "parallel kind of review with little bit"
+  },
+  {
+   "start": 1668.56,
+   "duration": 5.0,
+   "text": "depth in-depth review. Right? And that's"
+  },
+  {
+   "start": 1670.92,
+   "duration": 4.4,
+   "text": "what how a particular human also works."
+  },
+  {
+   "start": 1673.56,
+   "duration": 3.36,
+   "text": "First, if you give a PR to your"
+  },
+  {
+   "start": 1675.32,
+   "duration": 3.24,
+   "text": "architect, they they will check if"
+  },
+  {
+   "start": 1676.92,
+   "duration": 3.2,
+   "text": "individual files are correct or not and"
+  },
+  {
+   "start": 1678.56,
+   "duration": 3.64,
+   "text": "they will check, okay, this whole"
+  },
+  {
+   "start": 1680.12,
+   "duration": 3.76,
+   "text": "feature as a feature it has been"
+  },
+  {
+   "start": 1682.2,
+   "duration": 5.52,
+   "text": "integrated or not. That's how That's how"
+  },
+  {
+   "start": 1683.88,
+   "duration": 5.92,
+   "text": "it works, right? And once it is done,"
+  },
+  {
+   "start": 1687.72,
+   "duration": 3.92,
+   "text": "then, you know, the review is good. So,"
+  },
+  {
+   "start": 1689.8,
+   "duration": 4.32,
+   "text": "the takeaway here is per file reviews"
+  },
+  {
+   "start": 1691.64,
+   "duration": 5.28,
+   "text": "gives you depth, cross file reviews"
+  },
+  {
+   "start": 1694.12,
+   "duration": 5.16,
+   "text": "gives you breadth, and each instance"
+  },
+  {
+   "start": 1696.92,
+   "duration": 4.64,
+   "text": "starts with a clean context eliminating"
+  },
+  {
+   "start": 1699.28,
+   "duration": 5.36,
+   "text": "self-review bias."
+  },
+  {
+   "start": 1701.56,
+   "duration": 4.28,
+   "text": "I hope [snorts] that is making sense."
+  },
+  {
+   "start": 1704.64,
+   "duration": 3.24,
+   "text": "Now,"
+  },
+  {
+   "start": 1705.84,
+   "duration": 4.32,
+   "text": "putting it all together, enterprise"
+  },
+  {
+   "start": 1707.88,
+   "duration": 5.16,
+   "text": "CI/CD synthesis."
+  },
+  {
+   "start": 1710.16,
+   "duration": 4.48,
+   "text": "So, the trigger is PR open or update,"
+  },
+  {
+   "start": 1713.04,
+   "duration": 3.68,
+   "text": "for example."
+  },
+  {
+   "start": 1714.64,
+   "duration": 3.6,
+   "text": "Get a multi-pass review parallel per"
+  },
+  {
+   "start": 1716.72,
+   "duration": 3.4,
+   "text": "file, then get the cross file"
+  },
+  {
+   "start": 1718.24,
+   "duration": 4.32,
+   "text": "integration that we just saw, okay? The"
+  },
+  {
+   "start": 1720.12,
+   "duration": 4.32,
+   "text": "same thing, it's just the diagram is a"
+  },
+  {
+   "start": 1722.56,
+   "duration": 3.4,
+   "text": "bit different, and then results in"
+  },
+  {
+   "start": 1724.44,
+   "duration": 3.76,
+   "text": "minutes."
+  },
+  {
+   "start": 1725.96,
+   "duration": 3.96,
+   "text": "Right? So, includes prior review"
+  },
+  {
+   "start": 1728.2,
+   "duration": 4.08,
+   "text": "findings in the new prompts to avoid"
+  },
+  {
+   "start": 1729.92,
+   "duration": 3.96,
+   "text": "duplicate comments. Now,"
+  },
+  {
+   "start": 1732.28,
+   "duration": 3.88,
+   "text": "this this particular concept we are"
+  },
+  {
+   "start": 1733.88,
+   "duration": 3.68,
+   "text": "already discussed in the previous"
+  },
+  {
+   "start": 1736.16,
+   "duration": 3.12,
+   "text": "episode, in one of the previous"
+  },
+  {
+   "start": 1737.56,
+   "duration": 4.8,
+   "text": "episodes, where"
+  },
+  {
+   "start": 1739.28,
+   "duration": 6.36,
+   "text": "uh if uh basically if if the review has"
+  },
+  {
+   "start": 1742.36,
+   "duration": 5.32,
+   "text": "already happened, then Claude"
+  },
+  {
+   "start": 1745.64,
+   "duration": 3.48,
+   "text": "doesn't have to review it again."
+  },
+  {
+   "start": 1747.68,
+   "duration": 3.2,
+   "text": "Now, the thing is every time you run"
+  },
+  {
+   "start": 1749.12,
+   "duration": 4.08,
+   "text": "your Claude instance, uh sorry, your"
+  },
+  {
+   "start": 1750.88,
+   "duration": 3.92,
+   "text": "CI/CD pipeline, Claude starts with a"
+  },
+  {
+   "start": 1753.2,
+   "duration": 3.48,
+   "text": "fresh in- instance. So, it kind of"
+  },
+  {
+   "start": 1754.8,
+   "duration": 4.28,
+   "text": "forgets that, \"Okay, I had reviewed this"
+  },
+  {
+   "start": 1756.68,
+   "duration": 5.76,
+   "text": "earlier as well.\" So, for more context,"
+  },
+  {
+   "start": 1759.08,
+   "duration": 4.68,
+   "text": "please review that particular lecture."
+  },
+  {
+   "start": 1762.44,
+   "duration": 3.44,
+   "text": "Right?"
+  },
+  {
+   "start": 1763.76,
+   "duration": 4.44,
+   "text": "Um episode number 11 or 12, I don't"
+  },
+  {
+   "start": 1765.88,
+   "duration": 5.2,
+   "text": "remember. It was in a previous"
+  },
+  {
+   "start": 1768.2,
+   "duration": 4.76,
+   "text": "um thing. It It should be named as CI/CD"
+  },
+  {
+   "start": 1771.08,
+   "duration": 3.76,
+   "text": "architecture, so you know, it's pretty"
+  },
+  {
+   "start": 1772.96,
+   "duration": 4.12,
+   "text": "easy to find in the playlist."
+  },
+  {
+   "start": 1774.84,
+   "duration": 3.48,
+   "text": "So, here you have to have the standard"
+  },
+  {
+   "start": 1777.08,
+   "duration": 2.44,
+   "text": "messaging."
+  },
+  {
+   "start": 1778.32,
+   "duration": 3.72,
+   "text": "Right?"
+  },
+  {
+   "start": 1779.52,
+   "duration": 4.4,
+   "text": "Because, you know, you need to get the"
+  },
+  {
+   "start": 1782.04,
+   "duration": 3.72,
+   "text": "results of the previous thing that has"
+  },
+  {
+   "start": 1783.92,
+   "duration": 4.12,
+   "text": "happened, previous reviews."
+  },
+  {
+   "start": 1785.76,
+   "duration": 5.12,
+   "text": "And then feed it into the"
+  },
+  {
+   "start": 1788.04,
+   "duration": 4.32,
+   "text": "step in the CI/CD pipeline, where it"
+  },
+  {
+   "start": 1790.88,
+   "duration": 2.76,
+   "text": "will check if the previous reviews have"
+  },
+  {
+   "start": 1792.36,
+   "duration": 3.4,
+   "text": "been done or not, and it will only"
+  },
+  {
+   "start": 1793.64,
+   "duration": 3.44,
+   "text": "review the newly changed files. Okay,"
+  },
+  {
+   "start": 1795.76,
+   "duration": 3.04,
+   "text": "I've discussed this in detail, it will"
+  },
+  {
+   "start": 1797.08,
+   "duration": 3.68,
+   "text": "confuse you now. Please go to that"
+  },
+  {
+   "start": 1798.8,
+   "duration": 3.52,
+   "text": "lecture and have the"
+  },
+  {
+   "start": 1800.76,
+   "duration": 2.88,
+   "text": "uh you know, kind of understanding, so"
+  },
+  {
+   "start": 1802.32,
+   "duration": 3.84,
+   "text": "you don't get confused."
+  },
+  {
+   "start": 1803.64,
+   "duration": 3.88,
+   "text": "Then, you introduce one more cross-file"
+  },
+  {
+   "start": 1806.16,
+   "duration": 4.16,
+   "text": "integration. Now, you do that"
+  },
+  {
+   "start": 1807.52,
+   "duration": 4.92,
+   "text": "integration integrated kind of review,"
+  },
+  {
+   "start": 1810.32,
+   "duration": 4.44,
+   "text": "and then you get the results."
+  },
+  {
+   "start": 1812.44,
+   "duration": 4.72,
+   "text": "Now, the trade is blocking results in"
+  },
+  {
+   "start": 1814.76,
+   "duration": 3.84,
+   "text": "minutes, higher cost. Now, we have a"
+  },
+  {
+   "start": 1817.16,
+   "duration": 3.56,
+   "text": "nightly pipeline. So, this is the"
+  },
+  {
+   "start": 1818.6,
+   "duration": 4.88,
+   "text": "standard using the standard API, right?"
+  },
+  {
+   "start": 1820.72,
+   "duration": 5.12,
+   "text": "Because here you have to kind of use the"
+  },
+  {
+   "start": 1823.48,
+   "duration": 4.52,
+   "text": "feedback."
+  },
+  {
+   "start": 1825.84,
+   "duration": 4.28,
+   "text": "So, nightly pipeline, here is another"
+  },
+  {
+   "start": 1828.0,
+   "duration": 5.0,
+   "text": "scenario. You trigger a midnight cron"
+  },
+  {
+   "start": 1830.12,
+   "duration": 4.96,
+   "text": "job. Test generation happens."
+  },
+  {
+   "start": 1833.0,
+   "duration": 4.72,
+   "text": "Full code base security audit and"
+  },
+  {
+   "start": 1835.08,
+   "duration": 4.92,
+   "text": "document generation. All of these"
+  },
+  {
+   "start": 1837.72,
+   "duration": 5.84,
+   "text": "doesn't need to be happening in the real"
+  },
+  {
+   "start": 1840.0,
+   "duration": 6.92,
+   "text": "time. So, these are non-blocking, 24 SLA"
+  },
+  {
+   "start": 1843.56,
+   "duration": 5.84,
+   "text": "and you'll save up to 50%"
+  },
+  {
+   "start": 1846.92,
+   "duration": 4.2,
+   "text": "of your cost."
+  },
+  {
+   "start": 1849.4,
+   "duration": 3.8,
+   "text": "So, every review instance across both"
+  },
+  {
+   "start": 1851.12,
+   "duration": 4.28,
+   "text": "pipelines is an independent instance. No"
+  },
+  {
+   "start": 1853.2,
+   "duration": 4.92,
+   "text": "self-review anywhere. So, these are all"
+  },
+  {
+   "start": 1855.4,
+   "duration": 5.04,
+   "text": "independently reviewing and then as a"
+  },
+  {
+   "start": 1858.12,
+   "duration": 4.16,
+   "text": "whole this integrated review happens in"
+  },
+  {
+   "start": 1860.44,
+   "duration": 3.6,
+   "text": "the end and then you get the results."
+  },
+  {
+   "start": 1862.28,
+   "duration": 4.88,
+   "text": "For this part, this part is different."
+  },
+  {
+   "start": 1864.04,
+   "duration": 5.64,
+   "text": "This is for the message batches API."
+  },
+  {
+   "start": 1867.16,
+   "duration": 5.32,
+   "text": "Okay. So, um"
+  },
+  {
+   "start": 1869.68,
+   "duration": 4.88,
+   "text": "some questions over here?"
+  },
+  {
+   "start": 1872.48,
+   "duration": 4.36,
+   "text": "Pipeline extracts sentiment topics from"
+  },
+  {
+   "start": 1874.56,
+   "duration": 3.76,
+   "text": "2,000 customer feedback forms weekly in"
+  },
+  {
+   "start": 1876.84,
+   "duration": 3.2,
+   "text": "real time."
+  },
+  {
+   "start": 1878.32,
+   "duration": 4.36,
+   "text": "Team wants to reduce cost using a"
+  },
+  {
+   "start": 1880.04,
+   "duration": 5.36,
+   "text": "nightly batch. Each form is independent."
+  },
+  {
+   "start": 1882.68,
+   "duration": 5.16,
+   "text": "No tools are needed. So, you have to"
+  },
+  {
+   "start": 1885.4,
+   "duration": 4.2,
+   "text": "look for all of these highlighted things"
+  },
+  {
+   "start": 1887.84,
+   "duration": 5.32,
+   "text": "in the question, right?"
+  },
+  {
+   "start": 1889.6,
+   "duration": 5.36,
+   "text": "Customer feedback forms, real time."
+  },
+  {
+   "start": 1893.16,
+   "duration": 3.52,
+   "text": "Using a nightly batch, each form is"
+  },
+  {
+   "start": 1894.96,
+   "duration": 4.04,
+   "text": "independent. No tools needed. Excellent"
+  },
+  {
+   "start": 1896.68,
+   "duration": 4.8,
+   "text": "fit. Forms can wait, non-blocking. I"
+  },
+  {
+   "start": 1899.0,
+   "duration": 5.08,
+   "text": "mean, it's a non-blocking single turn,"
+  },
+  {
+   "start": 1901.48,
+   "duration": 4.36,
+   "text": "50% savings on 2,000 requests. Now, the"
+  },
+  {
+   "start": 1904.08,
+   "duration": 3.08,
+   "text": "thing that will confuse you is this real"
+  },
+  {
+   "start": 1905.84,
+   "duration": 3.76,
+   "text": "time."
+  },
+  {
+   "start": 1907.16,
+   "duration": 4.24,
+   "text": "So, pipeline extracts sentiment topics"
+  },
+  {
+   "start": 1909.6,
+   "duration": 3.8,
+   "text": "from 2,000 customer feedback forms"
+  },
+  {
+   "start": 1911.4,
+   "duration": 4.48,
+   "text": "weekly in real time. So, the extraction"
+  },
+  {
+   "start": 1913.4,
+   "duration": 5.56,
+   "text": "is happening real time. Processing might"
+  },
+  {
+   "start": 1915.88,
+   "duration": 5.32,
+   "text": "happen in batch and the hints that will"
+  },
+  {
+   "start": 1918.96,
+   "duration": 4.16,
+   "text": "tell you that should happen in uh you"
+  },
+  {
+   "start": 1921.2,
+   "duration": 3.16,
+   "text": "know, you you you should use a batch API"
+  },
+  {
+   "start": 1923.12,
+   "duration": 3.36,
+   "text": "is"
+  },
+  {
+   "start": 1924.36,
+   "duration": 4.0,
+   "text": "it's a nightly batch and there are no"
+  },
+  {
+   "start": 1926.48,
+   "duration": 4.28,
+   "text": "tools needed. So, in that case it's a"
+  },
+  {
+   "start": 1928.36,
+   "duration": 3.68,
+   "text": "perfect fit for the messages batches"
+  },
+  {
+   "start": 1930.76,
+   "duration": 2.2,
+   "text": "API."
+  },
+  {
+   "start": 1932.04,
+   "duration": 3.28,
+   "text": "Now,"
+  },
+  {
+   "start": 1932.96,
+   "duration": 4.72,
+   "text": "single cloud instance reviews entire PRs"
+  },
+  {
+   "start": 1935.32,
+   "duration": 4.6,
+   "text": "for bugs and styles, misses cross-file"
+  },
+  {
+   "start": 1937.68,
+   "duration": 4.32,
+   "text": "issues and gives shallow feedback."
+  },
+  {
+   "start": 1939.92,
+   "duration": 4.4,
+   "text": "Just we discussed. Now, implement"
+  },
+  {
+   "start": 1942.0,
+   "duration": 3.84,
+   "text": "multi-pass split into independent per"
+  },
+  {
+   "start": 1944.32,
+   "duration": 3.68,
+   "text": "file instances"
+  },
+  {
+   "start": 1945.84,
+   "duration": 4.44,
+   "text": "for depth followed by an integration"
+  },
+  {
+   "start": 1948.0,
+   "duration": 4.68,
+   "text": "pass for cross-file breadth."
+  },
+  {
+   "start": 1950.28,
+   "duration": 4.2,
+   "text": "So, vague instructions don't fix shallow"
+  },
+  {
+   "start": 1952.68,
+   "duration": 4.48,
+   "text": "feedback. We just discussed that. Your"
+  },
+  {
+   "start": 1954.48,
+   "duration": 4.24,
+   "text": "reviews should happen independently and"
+  },
+  {
+   "start": 1957.16,
+   "duration": 3.2,
+   "text": "then you should have a integrated"
+  },
+  {
+   "start": 1958.72,
+   "duration": 4.4,
+   "text": "review. And then you would get the"
+  },
+  {
+   "start": 1960.36,
+   "duration": 6.44,
+   "text": "result. And these this kind of a thing"
+  },
+  {
+   "start": 1963.12,
+   "duration": 5.96,
+   "text": "should happen in real time. It's a"
+  },
+  {
+   "start": 1966.8,
+   "duration": 5.16,
+   "text": "kind of a blocking thing, right? So,"
+  },
+  {
+   "start": 1969.08,
+   "duration": 4.84,
+   "text": "whenever your use case is a blocking"
+  },
+  {
+   "start": 1971.96,
+   "duration": 4.16,
+   "text": "kind of a use case, like your GitHub"
+  },
+  {
+   "start": 1973.92,
+   "duration": 4.52,
+   "text": "actions, which will contain your CCD"
+  },
+  {
+   "start": 1976.12,
+   "duration": 5.2,
+   "text": "pipelines, that should use the standard"
+  },
+  {
+   "start": 1978.44,
+   "duration": 5.56,
+   "text": "message API, not the batch message API."
+  },
+  {
+   "start": 1981.32,
+   "duration": 4.88,
+   "text": "I hope that is making sense."
+  },
+  {
+   "start": 1984.0,
+   "duration": 5.24,
+   "text": "Okay, so quick references over here."
+  },
+  {
+   "start": 1986.2,
+   "duration": 5.48,
+   "text": "Batch API timing up to 24 hours, SLA is"
+  },
+  {
+   "start": 1989.24,
+   "duration": 4.96,
+   "text": "unpredictable, batch API tools"
+  },
+  {
+   "start": 1991.68,
+   "duration": 4.52,
+   "text": "single turn only, no multi-turn tools,"
+  },
+  {
+   "start": 1994.2,
+   "duration": 5.48,
+   "text": "blocking workflows, never use batch if a"
+  },
+  {
+   "start": 1996.2,
+   "duration": 5.16,
+   "text": "pipeline or person is waiting, and"
+  },
+  {
+   "start": 1999.68,
+   "duration": 3.72,
+   "text": "custom ID"
+  },
+  {
+   "start": 2001.36,
+   "duration": 3.76,
+   "text": "the only way to correlate batch request"
+  },
+  {
+   "start": 2003.4,
+   "duration": 4.12,
+   "text": "and responses. So, remember the custom"
+  },
+  {
+   "start": 2005.12,
+   "duration": 4.96,
+   "text": "ID should be associated with the request"
+  },
+  {
+   "start": 2007.52,
+   "duration": 4.0,
+   "text": "and the result. Self-review, always"
+  },
+  {
+   "start": 2010.08,
+   "duration": 3.72,
+   "text": "biased because it retains its own"
+  },
+  {
+   "start": 2011.52,
+   "duration": 4.92,
+   "text": "reasoning. Independent review, separate"
+  },
+  {
+   "start": 2013.8,
+   "duration": 4.72,
+   "text": "sessions equals to fresh eyes. So, the"
+  },
+  {
+   "start": 2016.44,
+   "duration": 5.24,
+   "text": "correct architectural choice."
+  },
+  {
+   "start": 2018.52,
+   "duration": 4.72,
+   "text": "Multi-pass review per file passes plus"
+  },
+  {
+   "start": 2021.68,
+   "duration": 3.96,
+   "text": "cross-file integration will give you"
+  },
+  {
+   "start": 2023.24,
+   "duration": 3.64,
+   "text": "both breadth and depth or depth and"
+  },
+  {
+   "start": 2025.64,
+   "duration": 2.96,
+   "text": "breadth."
+  },
+  {
+   "start": 2026.88,
+   "duration": 4.6,
+   "text": "Yeah, might get confused a little bit"
+  },
+  {
+   "start": 2028.6,
+   "duration": 5.08,
+   "text": "here. But, anyways, I hope you guys"
+  },
+  {
+   "start": 2031.48,
+   "duration": 4.28,
+   "text": "enjoyed this lesson, and you understood"
+  },
+  {
+   "start": 2033.68,
+   "duration": 3.52,
+   "text": "the some of the concepts."
+  },
+  {
+   "start": 2035.76,
+   "duration": 2.88,
+   "text": "And"
+  },
+  {
+   "start": 2037.2,
+   "duration": 4.0,
+   "text": "uh I will see you in the next lesson."
+  },
+  {
+   "start": 2038.64,
+   "duration": 4.88,
+   "text": "Till then, bye-bye, take care, and"
+  },
+  {
+   "start": 2041.2,
+   "duration": 2.32,
+   "text": "ta-ta."
+  }
+ ]
+}

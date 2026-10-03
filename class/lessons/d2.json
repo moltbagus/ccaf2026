@@ -108,6 +108,47 @@
    "takeaway": "Route with the description, constrain with the schema."
   },
   {
+   "task": "2.1",
+   "kind": "teach",
+   "title": "The system prompt is a routing signal too",
+   "lead": "A support agent keeps escalating refunds a human should not see. Every tool definition is a single clean sentence, yet the agent reaches for `get_customer` when a refund is clearly needed.",
+   "points": [
+    "A generic role line like you are a customer support assistant primes some tool categories over others.",
+    "When misrouting survives clean tool descriptions, audit the system prompt next; role framing creates the bias.",
+    "State the role, the goal, and an explicit tool-use sequence: get_customer first, then lookup_order, then process_refund.",
+    "Escalate to a human only as a last resort, and say so in the prompt, so the sequence is unambiguous.",
+    "Triage: misrouting or a tool not firing is a description or name problem; a policy block is a pre-tool hook."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "takeaway": "System prompt and tool descriptions must agree, or the prompt quietly overrides a clean description."
+  },
+  {
+   "task": "2.1",
+   "kind": "check",
+   "title": "The prompt, not the tools, keeps misrouting",
+   "lead": "The tool descriptions were rewritten and are now distinct, but refunds still escalate to a human.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A customer support agent escalates auto-resolvable refunds and calls `get_customer` when `process_refund` is needed. All tool definitions have single-sentence descriptions and the system prompt reads only you are a customer support assistant. Which approach is most effective?",
+    "options": [
+     "Add a pre-routing classifier that inspects each message and picks the right agent before delegation.",
+     "Rewrite the system prompt with the role, the goal, and an explicit tool-use sequence that matches the tool descriptions.",
+     "Add few-shot examples to the system prompt showing every tool in use across all supported patterns.",
+     "Increase the retry budget so the agent has more turns to discover the refund tool on its own."
+    ],
+    "answer": 1,
+    "why": "The generic role framing primes one tool category over another, so aligning the system prompt with the descriptions removes the bias at its source. A pre-routing classifier masks the ambiguity, few-shot examples treat the symptom at token cost, and a bigger retry budget cannot repair a prompt that biases selection.",
+    "trap": "sounds-smart"
+   },
+   "takeaway": "When clean descriptions still misroute, the system prompt is the next thing to read."
+  },
+  {
    "task": "2.2",
    "kind": "teach",
    "title": "An empty array is not an error",
@@ -179,6 +220,47 @@
    "code": null,
    "ask": null,
    "takeaway": "Partial progress beats a clean abort."
+  },
+  {
+   "task": "2.2",
+   "kind": "teach",
+   "title": "An error the model reads as success",
+   "lead": "A tool times out and your framework returns the exception text as ordinary content. The agent does not crash, does not alert, and confidently reports a garbage result.",
+   "points": [
+    "The LLM has no try/catch. If a failure is not flagged, it reads the error text as a normal success message and swallows it.",
+    "Two failure modes follow: silent hallucinated success, or a hard break when the tool fails loudly enough to kill the pipeline.",
+    "Flag every failed tool result with `isError: true` plus actionable metadata, or the model cannot reason about recovery.",
+    "A generic operation-failed string is a dead end; the coordinator cannot tell retry from escalate from reroute.",
+    "Good metadata: `errorCategory`, `isRetryable`, a description, `retryAfter` (for example 2000 ms), and `alternatives` fallback tools."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "takeaway": "An unflagged failure is not an error to the model, it is a success value it will build on."
+  },
+  {
+   "task": "2.2",
+   "kind": "check",
+   "title": "The coordinator cannot tell retry from escalate",
+   "lead": "A subagent tool fails and returns `isError: true` with the content only operation failed.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A subagent tool fails and returns `isError: true` with the content only operation failed. The coordinator cannot decide whether to retry, reroute, or escalate. Which approach is most effective?",
+    "options": [
+     "Return the raw exception text so the model can parse the stack trace and infer the recovery path.",
+     "Attach structured metadata: `errorCategory`, `isRetryable`, a description, `retryAfter`, and `alternatives` fallback tools.",
+     "Retry the tool a fixed number of times regardless of the error type, then escalate if it still fails.",
+     "Log the failure and let the coordinator continue with whatever partial results it already has."
+    ],
+    "answer": 1,
+    "why": "The recovery decision needs to know what failed and whether retrying helps, which only structured metadata supplies. Raw exception text is not a contract the model can reason on, blind retries duplicate side effects and cannot repair a non-retryable fault, and continuing silently hides the gap the coordinator must annotate.",
+    "trap": "sounds-enterprise"
+   },
+   "takeaway": "Generic errors are a dead end. Carry category, retryability, and alternatives."
   },
   {
    "task": "2.3",
@@ -263,6 +345,47 @@
    "takeaway": "For must-call-X-first, reach for `tool_choice`, not a louder instruction."
   },
   {
+   "task": "2.3",
+   "kind": "teach",
+   "title": "There is no lazy loading of tools",
+   "lead": "You give one agent fifty tools, assuming the client loads only what a turn needs. It does not. Every tool description sits in context on every request.",
+   "points": [
+    "Claude loads all tools at once; there is no lazy loading. Selection latency is low, but context pollution rises with the count.",
+    "Adding tools actively degrades selection reliability, so twenty tools do not beat five.",
+    "Scope by role: the coordinator gets `get_customer` and `escalate`; the order agent gets `lookup_order` and `process_refund`.",
+    "`tool_choice` is the second lever: `auto` may skip a call, `any` must call some tool, a named tool must call that one.",
+    "For a high-frequency cross-role need, ship a constrained tool like `verify_fact(claim, max_sources=3)`, not the full set."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "takeaway": "Two levers: cap the tool count per role, and force the call you must have with tool_choice."
+  },
+  {
+   "task": "2.3",
+   "kind": "check",
+   "title": "Guaranteed structured output, one tool call",
+   "lead": "A pipeline stage must always emit a tool call, because a plain text answer breaks the next step.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A pipeline stage must always produce structured output from a tool, and a plain text answer breaks the next step. You do not care which of the five tools runs, only that one does. Which approach is most effective?",
+    "options": [
+     "Set `tool_choice` to `any` so the model must call one of the available tools.",
+     "Set `tool_choice` to `auto` and instruct the model in the prompt to always call a tool.",
+     "Set `tool_choice` to a named tool for the most likely case and accept the other cases.",
+     "Add a validation step that rejects a text answer and re-prompts the model to call a tool."
+    ],
+    "answer": 0,
+    "why": "`any` structurally forces one tool call, which is exactly the guaranteed structured output requirement. `auto` can still return prose, a named tool forces the wrong specific tool when the case varies, and post-hoc validation pays for a second pass after the turn is already wasted.",
+    "trap": "sounds-efficient"
+   },
+   "takeaway": "`any` guarantees a tool call; a named `tool` guarantees the call you meant."
+  },
+  {
    "task": "2.4",
    "kind": "teach",
    "title": "Scope decides who gets the integration",
@@ -336,6 +459,47 @@
    "code": null,
    "ask": null,
    "takeaway": "Know what a server exposes before you call it."
+  },
+  {
+   "task": "2.4",
+   "kind": "teach",
+   "title": "Where the server lives picks the transport",
+   "lead": "You add an MCP server to the team config, the entry has a url and headers, and Claude never loads it.",
+   "points": [
+    "stdio servers are local: Claude spawns them as a subprocess from `command` and `args` and speaks over standard input and output.",
+    "Remote servers use `http` (streamable-http) or legacy `sse`, with a `url` and `headers` for auth.",
+    "The choice is driven by where the server lives, not what it does; a local and a remote server can expose the same tools.",
+    "A `url` with no `type` is skipped with a warning, so always set the transport explicitly.",
+    "MCP is stateful: connect, `initialize` (session), `tools/list`, `tools/call`, over JSON-RPC 2.0."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "takeaway": "Set the transport to match where the server lives; an untyped url is a server that never loads."
+  },
+  {
+   "task": "2.4",
+   "kind": "check",
+   "title": "A url with no type never loads",
+   "lead": "A remote MCP server is added to the project config with a url and headers, and it silently does not appear.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "You add a remote MCP server to `.mcp.json` with a `url` and `headers` but no `type` field. Claude starts with a warning and the server never loads. Which approach is most effective?",
+    "options": [
+     "Add a `type` of `http` to the entry so the transport is declared explicitly.",
+     "Move the server entry to user scope so it is picked up without a type.",
+     "Convert the server to a stdio entry with a `command` and `args`.",
+     "Raise the server timeout so the connection has longer to establish."
+    ],
+    "answer": 0,
+    "why": "A url with no type is skipped, so declaring the transport is the fix at the source. User scope does not change the missing type, converting to stdio changes the deployment for no reason, and a longer timeout cannot load an entry the client already rejected.",
+    "trap": "sounds-simple"
+   },
+   "takeaway": "Always declare the transport type; a bare url is skipped, not guessed."
   },
   {
    "task": "2.5",
@@ -412,6 +576,47 @@
    "code": "export { formatDate as formatDateISO } from \"./date\";",
    "ask": null,
    "takeaway": "Grep the alias, not the origin. The original name misses alias callers."
+  },
+  {
+   "task": "2.5",
+   "kind": "teach",
+   "title": "Each built-in tool has one lane",
+   "lead": "An agent shells out with `grep -r` through Bash to find callers, then reads every file in the module to be safe.",
+   "points": [
+    "Six built-ins need no MCP, keys, or config: Read, Write, Edit, Bash, Grep, Glob.",
+    "Grep opens files and searches contents; Glob matches paths and names by pattern and never opens a file.",
+    "Running grep through Bash is a common misconception; the dedicated Grep tool exists for a reason and using Bash can cost the exam answer.",
+    "Read loads a whole file and is expensive at scale; Write creates or overwrites a whole file; Edit patches a unique anchor.",
+    "Bash is the escape hatch: run tests, install packages, call CLIs, and do git operations."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "takeaway": "Grep for contents, Glob for paths, Read to load, Write to create, Edit to fix, Bash for commands."
+  },
+  {
+   "task": "2.5",
+   "kind": "check",
+   "title": "When a surgical edit is not the answer",
+   "lead": "A legacy module needs so many changes that a targeted edit would need a dozen non-unique anchors.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A 600-line legacy module needs extensive changes across the whole file, and a targeted Edit keeps failing on non-unique anchors. A brand-new endpoint file is also needed. Which approach is most effective?",
+    "options": [
+     "Read the module, apply the changes in memory, and Write the full updated file back, and Write the new endpoint file.",
+     "Set `replace_all: true` on each Edit so every occurrence is replaced at once.",
+     "Use `sed` through Bash to rewrite both files in one pass.",
+     "Delete the legacy module and recreate it from scratch with a single Write."
+    ],
+    "answer": 0,
+    "why": "Write creates new files and replaces whole files, so it is the right tool when a surgical edit is impractical, with the new file as a normal Write. `replace_all` changes sites that should not change, `sed` is the wrong tool category, and deleting the module is destructive and loses content.",
+    "trap": "sounds-pragmatic"
+   },
+   "takeaway": "Write creates and replaces; Edit is for a targeted change with a unique anchor."
   },
   {
    "task": "2.5",

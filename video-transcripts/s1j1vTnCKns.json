@@ -1,0 +1,3292 @@
+{
+ "video_id": "s1j1vTnCKns",
+ "episode": "Ep 06",
+ "title": "Tool Descriptions & Tool Misrouting Explained",
+ "segments": [
+  {
+   "start": 3.2,
+   "duration": 3.92,
+   "text": "Guys, welcome to this lesson."
+  },
+  {
+   "start": 5.04,
+   "duration": 3.96,
+   "text": "So, in this lesson, we are going to"
+  },
+  {
+   "start": 7.12,
+   "duration": 4.56,
+   "text": "learn about something very interesting."
+  },
+  {
+   "start": 9.0,
+   "duration": 5.08,
+   "text": "And uh you know, we are going to enhance"
+  },
+  {
+   "start": 11.68,
+   "duration": 5.72,
+   "text": "something that we have already learned."
+  },
+  {
+   "start": 14.08,
+   "duration": 6.0,
+   "text": "So, we know how to create tools."
+  },
+  {
+   "start": 17.4,
+   "duration": 4.24,
+   "text": "And if you see our capstone project over"
+  },
+  {
+   "start": 20.08,
+   "duration": 4.48,
+   "text": "here, our capstone project, whatever you"
+  },
+  {
+   "start": 21.64,
+   "duration": 4.52,
+   "text": "call it, our customer support system, we"
+  },
+  {
+   "start": 24.56,
+   "duration": 4.4,
+   "text": "have implemented a lot of things over"
+  },
+  {
+   "start": 26.16,
+   "duration": 5.24,
+   "text": "here. We have like four tools over here."
+  },
+  {
+   "start": 28.96,
+   "duration": 4.72,
+   "text": "We have used hooks over there to enforce"
+  },
+  {
+   "start": 31.4,
+   "duration": 4.8,
+   "text": "policies and post-tool hooks we have"
+  },
+  {
+   "start": 33.68,
+   "duration": 4.96,
+   "text": "implemented to, you know, format the"
+  },
+  {
+   "start": 36.2,
+   "duration": 4.08,
+   "text": "output and a lot of things."
+  },
+  {
+   "start": 38.64,
+   "duration": 3.44,
+   "text": "We have also We have also have a"
+  },
+  {
+   "start": 40.28,
+   "duration": 3.72,
+   "text": "coordinator. We also have sub-agents."
+  },
+  {
+   "start": 42.08,
+   "duration": 3.84,
+   "text": "All of these sounds fancy and yeah,"
+  },
+  {
+   "start": 44.0,
+   "duration": 5.56,
+   "text": "obviously, you have done a lot of things"
+  },
+  {
+   "start": 45.92,
+   "duration": 5.68,
+   "text": "in this particular, you know, agent."
+  },
+  {
+   "start": 49.56,
+   "duration": 4.6,
+   "text": "Suddenly, you ship this to production."
+  },
+  {
+   "start": 51.6,
+   "duration": 3.8,
+   "text": "Everything is working fine."
+  },
+  {
+   "start": 54.16,
+   "duration": 4.36,
+   "text": "But,"
+  },
+  {
+   "start": 55.4,
+   "duration": 4.96,
+   "text": "those support tickets start rolling in."
+  },
+  {
+   "start": 58.52,
+   "duration": 3.48,
+   "text": "It just means that your agent is not"
+  },
+  {
+   "start": 60.36,
+   "duration": 4.839,
+   "text": "working well. You think that, \"Okay, I"
+  },
+  {
+   "start": 62.0,
+   "duration": 5.08,
+   "text": "have done everything in my power.\""
+  },
+  {
+   "start": 65.199,
+   "duration": 5.361,
+   "text": "But, sometimes what happens is, for"
+  },
+  {
+   "start": 67.08,
+   "duration": 5.4,
+   "text": "example, a query came in, the agent"
+  },
+  {
+   "start": 70.56,
+   "duration": 5.36,
+   "text": "looked up the order, for example, and"
+  },
+  {
+   "start": 72.48,
+   "duration": 5.36,
+   "text": "never processed the refund."
+  },
+  {
+   "start": 75.92,
+   "duration": 3.76,
+   "text": "You know, and sometimes what I What is"
+  },
+  {
+   "start": 77.84,
+   "duration": 3.72,
+   "text": "happening? The agent kept escalating to"
+  },
+  {
+   "start": 79.68,
+   "duration": 5.4,
+   "text": "a human for cases it should have"
+  },
+  {
+   "start": 81.56,
+   "duration": 5.88,
+   "text": "resolved itself. I mean, we had a $500"
+  },
+  {
+   "start": 85.08,
+   "duration": 4.4,
+   "text": "limit, right, in our agent, you know,"
+  },
+  {
+   "start": 87.44,
+   "duration": 4.08,
+   "text": "for processing the refund. Even if the"
+  },
+  {
+   "start": 89.48,
+   "duration": 5.24,
+   "text": "refund is less than $500, it's still"
+  },
+  {
+   "start": 91.52,
+   "duration": 4.52,
+   "text": "escalating to the human."
+  },
+  {
+   "start": 94.72,
+   "duration": 4.12,
+   "text": "I mean,"
+  },
+  {
+   "start": 96.04,
+   "duration": 4.96,
+   "text": "that can happen."
+  },
+  {
+   "start": 98.84,
+   "duration": 4.76,
+   "text": "I mean, what is the reason it can"
+  },
+  {
+   "start": 101.0,
+   "duration": 6.48,
+   "text": "happen? What is the reason?"
+  },
+  {
+   "start": 103.6,
+   "duration": 7.08,
+   "text": "The main reason that the agent is not"
+  },
+  {
+   "start": 107.48,
+   "duration": 6.68,
+   "text": "using those tools properly"
+  },
+  {
+   "start": 110.68,
+   "duration": 5.56,
+   "text": "is entirely dependent on the description"
+  },
+  {
+   "start": 114.16,
+   "duration": 3.52,
+   "text": "of the tool that you provide."
+  },
+  {
+   "start": 116.24,
+   "duration": 4.08,
+   "text": "Now, you would tell me, you know, Akash,"
+  },
+  {
+   "start": 117.68,
+   "duration": 5.44,
+   "text": "you just told me, you know, we can use"
+  },
+  {
+   "start": 120.32,
+   "duration": 5.04,
+   "text": "hooks, pre-tool hooks, post-tool hooks."
+  },
+  {
+   "start": 123.12,
+   "duration": 4.68,
+   "text": "See, pre-tool hooks"
+  },
+  {
+   "start": 125.36,
+   "duration": 4.6,
+   "text": "is for policy enforcement. It's whether"
+  },
+  {
+   "start": 127.8,
+   "duration": 4.84,
+   "text": "or not if it is going in the direction"
+  },
+  {
+   "start": 129.96,
+   "duration": 5.64,
+   "text": "of executing the tool, will it execute"
+  },
+  {
+   "start": 132.64,
+   "duration": 4.72,
+   "text": "or not? You know, the $500 thing that we"
+  },
+  {
+   "start": 135.6,
+   "duration": 3.84,
+   "text": "just did, right? If the refund is"
+  },
+  {
+   "start": 137.36,
+   "duration": 3.4,
+   "text": "greater than 500, if the customer is"
+  },
+  {
+   "start": 139.44,
+   "duration": 3.2,
+   "text": "asking for a refund which is greater"
+  },
+  {
+   "start": 140.76,
+   "duration": 3.52,
+   "text": "than 500, then it will automatically"
+  },
+  {
+   "start": 142.64,
+   "duration": 3.52,
+   "text": "reject it. The tool is Sorry, the hook"
+  },
+  {
+   "start": 144.28,
+   "duration": 3.56,
+   "text": "will reject it. The tool will not get"
+  },
+  {
+   "start": 146.16,
+   "duration": 3.4,
+   "text": "executed at all. That we already know."
+  },
+  {
+   "start": 147.84,
+   "duration": 4.36,
+   "text": "That we have already did."
+  },
+  {
+   "start": 149.56,
+   "duration": 5.4,
+   "text": "But, what if the person is eligible for"
+  },
+  {
+   "start": 152.2,
+   "duration": 4.64,
+   "text": "a refund, it needs to use the tool, but"
+  },
+  {
+   "start": 154.96,
+   "duration": 3.2,
+   "text": "somehow Claude is not figuring out,"
+  },
+  {
+   "start": 156.84,
+   "duration": 3.08,
+   "text": "\"Okay,"
+  },
+  {
+   "start": 158.16,
+   "duration": 3.52,
+   "text": "I do not use want to use the tool.\" But,"
+  },
+  {
+   "start": 159.92,
+   "duration": 4.32,
+   "text": "in fact, in that particular scenario, it"
+  },
+  {
+   "start": 161.68,
+   "duration": 5.2,
+   "text": "needs to execute the tool."
+  },
+  {
+   "start": 164.24,
+   "duration": 5.2,
+   "text": "And that just comes in,"
+  },
+  {
+   "start": 166.88,
+   "duration": 2.56,
+   "text": "you know,"
+  },
+  {
+   "start": 169.64,
+   "duration": 3.2,
+   "text": "the What What description of the tool"
+  },
+  {
+   "start": 171.36,
+   "duration": 3.28,
+   "text": "you provide."
+  },
+  {
+   "start": 172.84,
+   "duration": 4.2,
+   "text": "You know? For example, in this"
+  },
+  {
+   "start": 174.64,
+   "duration": 4.0,
+   "text": "particular uh you know, previously, I I"
+  },
+  {
+   "start": 177.04,
+   "duration": 3.8,
+   "text": "have enhanced something in our"
+  },
+  {
+   "start": 178.64,
+   "duration": 4.44,
+   "text": "description. Uh but, if you see our"
+  },
+  {
+   "start": 180.84,
+   "duration": 4.24,
+   "text": "tools over here,"
+  },
+  {
+   "start": 183.08,
+   "duration": 4.44,
+   "text": "if we go down, I'm not able to"
+  },
+  {
+   "start": 185.08,
+   "duration": 3.92,
+   "text": "find our tool um"
+  },
+  {
+   "start": 187.52,
+   "duration": 3.8,
+   "text": "Yeah, these were These are our tool"
+  },
+  {
+   "start": 189.0,
+   "duration": 4.2,
+   "text": "current tools, basically."
+  },
+  {
+   "start": 191.32,
+   "duration": 4.64,
+   "text": "Previously, if you remember, we did not"
+  },
+  {
+   "start": 193.2,
+   "duration": 5.76,
+   "text": "have that much, you know, um"
+  },
+  {
+   "start": 195.96,
+   "duration": 4.92,
+   "text": "proper description."
+  },
+  {
+   "start": 198.96,
+   "duration": 4.48,
+   "text": "But, I have enhanced the description."
+  },
+  {
+   "start": 200.88,
+   "duration": 4.88,
+   "text": "So, to teach you a lesson about how you"
+  },
+  {
+   "start": 203.44,
+   "duration": 4.48,
+   "text": "can use the particular description. Now,"
+  },
+  {
+   "start": 205.76,
+   "duration": 4.88,
+   "text": "let us understand how actually Claude"
+  },
+  {
+   "start": 207.92,
+   "duration": 4.96,
+   "text": "picks a tool."
+  },
+  {
+   "start": 210.64,
+   "duration": 3.92,
+   "text": "Okay? Now, Claude is in the middle of an"
+  },
+  {
+   "start": 212.88,
+   "duration": 4.96,
+   "text": "agentic loop."
+  },
+  {
+   "start": 214.56,
+   "duration": 5.88,
+   "text": "And uh there are numerous tools in"
+  },
+  {
+   "start": 217.84,
+   "duration": 6.08,
+   "text": "Claude's disposal, right? But, how does"
+  },
+  {
+   "start": 220.44,
+   "duration": 5.2,
+   "text": "it pick the particular tool?"
+  },
+  {
+   "start": 223.92,
+   "duration": 3.88,
+   "text": "Basically,"
+  },
+  {
+   "start": 225.64,
+   "duration": 4.52,
+   "text": "the answer it it reads the description"
+  },
+  {
+   "start": 227.8,
+   "duration": 4.36,
+   "text": "that you have wrote for that particular"
+  },
+  {
+   "start": 230.16,
+   "duration": 3.32,
+   "text": "tool use. We have that, you know, this"
+  },
+  {
+   "start": 232.16,
+   "duration": 3.64,
+   "text": "array that we have, right? Where we"
+  },
+  {
+   "start": 233.48,
+   "duration": 4.96,
+   "text": "have, you know, tool call use,"
+  },
+  {
+   "start": 235.8,
+   "duration": 4.8,
+   "text": "basically, that we have."
+  },
+  {
+   "start": 238.44,
+   "duration": 4.72,
+   "text": "We provide the name, the description."
+  },
+  {
+   "start": 240.6,
+   "duration": 6.52,
+   "text": "The description is what Claude reads to"
+  },
+  {
+   "start": 243.16,
+   "duration": 3.96,
+   "text": "understand what is the tool for."
+  },
+  {
+   "start": 247.32,
+   "duration": 4.8,
+   "text": "There is no separate routing layer."
+  },
+  {
+   "start": 248.88,
+   "duration": 5.0,
+   "text": "There is no separate fancy algorithms or"
+  },
+  {
+   "start": 252.12,
+   "duration": 4.36,
+   "text": "nothing. It's just the description that"
+  },
+  {
+   "start": 253.88,
+   "duration": 2.6,
+   "text": "you provide."
+  },
+  {
+   "start": 256.72,
+   "duration": 6.76,
+   "text": "And uh it just makes what Claude's"
+  },
+  {
+   "start": 260.359,
+   "duration": 5.481,
+   "text": "judgment is for that particular tool."
+  },
+  {
+   "start": 263.48,
+   "duration": 5.2,
+   "text": "Right? So, this means that tool"
+  },
+  {
+   "start": 265.84,
+   "duration": 4.8,
+   "text": "description at are not documentation for"
+  },
+  {
+   "start": 268.68,
+   "duration": 4.4,
+   "text": "developers. Try to understand this"
+  },
+  {
+   "start": 270.64,
+   "duration": 4.68,
+   "text": "concept. Tool description is not that"
+  },
+  {
+   "start": 273.08,
+   "duration": 4.2,
+   "text": "some other person will come and read the"
+  },
+  {
+   "start": 275.32,
+   "duration": 3.56,
+   "text": "code. Because nowadays, reading the"
+  },
+  {
+   "start": 277.28,
+   "duration": 4.56,
+   "text": "code, you don't have to read the code."
+  },
+  {
+   "start": 278.88,
+   "duration": 4.6,
+   "text": "You can just ask Claude or uh ChatGPT to"
+  },
+  {
+   "start": 281.84,
+   "duration": 3.2,
+   "text": "summarize it, right?"
+  },
+  {
+   "start": 283.48,
+   "duration": 3.24,
+   "text": "You don't have to read the code. These"
+  },
+  {
+   "start": 285.04,
+   "duration": 4.84,
+   "text": "descriptions are for Claude to"
+  },
+  {
+   "start": 286.72,
+   "duration": 5.28,
+   "text": "understand what is the tool is for."
+  },
+  {
+   "start": 289.88,
+   "duration": 5.16,
+   "text": "Right? Think of it like a restaurant"
+  },
+  {
+   "start": 292.0,
+   "duration": 6.2,
+   "text": "menu, right? I mean, you go and you see"
+  },
+  {
+   "start": 295.04,
+   "duration": 5.68,
+   "text": "the menu of that restaurant. And uh you"
+  },
+  {
+   "start": 298.2,
+   "duration": 4.84,
+   "text": "see that there is a dishes are mentioned"
+  },
+  {
+   "start": 300.72,
+   "duration": 4.48,
+   "text": "like dish A, dish B, dish C, and dish D."
+  },
+  {
+   "start": 303.04,
+   "duration": 4.4,
+   "text": "You don't understand anything. They have"
+  },
+  {
+   "start": 305.2,
+   "duration": 3.64,
+   "text": "provided dish A, dish B, dish C, and"
+  },
+  {
+   "start": 307.44,
+   "duration": 3.72,
+   "text": "dish D."
+  },
+  {
+   "start": 308.84,
+   "duration": 3.6,
+   "text": "But, you're not able to understand What"
+  },
+  {
+   "start": 311.16,
+   "duration": 3.2,
+   "text": "would you understand with those"
+  },
+  {
+   "start": 312.44,
+   "duration": 4.4,
+   "text": "alphabetical norms?"
+  },
+  {
+   "start": 314.36,
+   "duration": 3.6,
+   "text": "But, on the other hand, if the you know,"
+  },
+  {
+   "start": 316.84,
+   "duration": 2.84,
+   "text": "the"
+  },
+  {
+   "start": 317.96,
+   "duration": 3.4,
+   "text": "menu is well defined, for example,"
+  },
+  {
+   "start": 319.68,
+   "duration": 4.24,
+   "text": "paneer tikka masala or paneer butter"
+  },
+  {
+   "start": 321.36,
+   "duration": 5.2,
+   "text": "masala. Now, just uh telling all those"
+  },
+  {
+   "start": 323.92,
+   "duration": 3.6,
+   "text": "things is, you know, I want to eat them."
+  },
+  {
+   "start": 326.56,
+   "duration": 3.04,
+   "text": "You know?"
+  },
+  {
+   "start": 327.52,
+   "duration": 4.16,
+   "text": "Very tasty. I like it."
+  },
+  {
+   "start": 329.6,
+   "duration": 3.12,
+   "text": "Anyways, we are just going"
+  },
+  {
+   "start": 331.68,
+   "duration": 2.88,
+   "text": "um"
+  },
+  {
+   "start": 332.72,
+   "duration": 3.96,
+   "text": "here and there. But, that is out of the"
+  },
+  {
+   "start": 334.56,
+   "duration": 5.28,
+   "text": "question. So, that is the thing. If If"
+  },
+  {
+   "start": 336.68,
+   "duration": 5.72,
+   "text": "If the menu is well uh kind of, you"
+  },
+  {
+   "start": 339.84,
+   "duration": 5.48,
+   "text": "know, curated, then you would understand"
+  },
+  {
+   "start": 342.4,
+   "duration": 5.28,
+   "text": "which dish to order. Similarly, if your"
+  },
+  {
+   "start": 345.32,
+   "duration": 4.68,
+   "text": "tool array that we have, where we have"
+  },
+  {
+   "start": 347.68,
+   "duration": 5.28,
+   "text": "the description of the tool,"
+  },
+  {
+   "start": 350.0,
+   "duration": 3.76,
+   "text": "if the description is quite good, then"
+  },
+  {
+   "start": 352.96,
+   "duration": 2.68,
+   "text": "um"
+  },
+  {
+   "start": 353.76,
+   "duration": 4.76,
+   "text": "you are on a good path. You know, Claude"
+  },
+  {
+   "start": 355.64,
+   "duration": 4.92,
+   "text": "will exactly understand what to do."
+  },
+  {
+   "start": 358.52,
+   "duration": 4.08,
+   "text": "Right? So,"
+  },
+  {
+   "start": 360.56,
+   "duration": 4.56,
+   "text": "let's understand what is an example of a"
+  },
+  {
+   "start": 362.6,
+   "duration": 5.68,
+   "text": "very nice description, rich description,"
+  },
+  {
+   "start": 365.12,
+   "duration": 5.32,
+   "text": "I would say. Right? So, whenever you're"
+  },
+  {
+   "start": 368.28,
+   "duration": 5.04,
+   "text": "writing a description of a particular"
+  },
+  {
+   "start": 370.44,
+   "duration": 4.28,
+   "text": "tool, keep some things in mind."
+  },
+  {
+   "start": 373.32,
+   "duration": 2.92,
+   "text": "And these are the things that you need"
+  },
+  {
+   "start": 374.72,
+   "duration": 3.6,
+   "text": "to keep in mind."
+  },
+  {
+   "start": 376.24,
+   "duration": 5.04,
+   "text": "You know? And I think I have kept it in"
+  },
+  {
+   "start": 378.32,
+   "duration": 2.96,
+   "text": "my um"
+  },
+  {
+   "start": 385.88,
+   "duration": 4.24,
+   "text": "Yep."
+  },
+  {
+   "start": 387.12,
+   "duration": 4.64,
+   "text": "I have kept it here."
+  },
+  {
+   "start": 390.12,
+   "duration": 3.2,
+   "text": "So, this is what you need to keep in"
+  },
+  {
+   "start": 391.76,
+   "duration": 3.92,
+   "text": "mind when you have to keep it, you know,"
+  },
+  {
+   "start": 393.32,
+   "duration": 5.32,
+   "text": "understand how to write a description."
+  },
+  {
+   "start": 395.68,
+   "duration": 5.48,
+   "text": "You need to understand that what the"
+  },
+  {
+   "start": 398.64,
+   "duration": 5.8,
+   "text": "tool does. Basically, you need to"
+  },
+  {
+   "start": 401.16,
+   "duration": 6.08,
+   "text": "specify that. When to call that tool,"
+  },
+  {
+   "start": 404.44,
+   "duration": 4.8,
+   "text": "you need to specify that. What not to"
+  },
+  {
+   "start": 407.24,
+   "duration": 3.64,
+   "text": "use it for. That is like negative"
+  },
+  {
+   "start": 409.24,
+   "duration": 3.56,
+   "text": "prompting, and you need to do that. I'm"
+  },
+  {
+   "start": 410.88,
+   "duration": 3.88,
+   "text": "going to show you an example. And what"
+  },
+  {
+   "start": 412.8,
+   "duration": 3.68,
+   "text": "it returns. Now, if I'm going to see an"
+  },
+  {
+   "start": 414.76,
+   "duration": 3.56,
+   "text": "example over here, let's see an example"
+  },
+  {
+   "start": 416.48,
+   "duration": 4.32,
+   "text": "of get customer tool. I have enhanced"
+  },
+  {
+   "start": 418.32,
+   "duration": 4.68,
+   "text": "the description of tool. Right? Normal"
+  },
+  {
+   "start": 420.8,
+   "duration": 4.72,
+   "text": "natural language, English language you"
+  },
+  {
+   "start": 423.0,
+   "duration": 4.88,
+   "text": "have to write. So, the description is"
+  },
+  {
+   "start": 425.52,
+   "duration": 4.0,
+   "text": "retrieve a verified customer profile by"
+  },
+  {
+   "start": 427.88,
+   "duration": 5.92,
+   "text": "customer ID."
+  },
+  {
+   "start": 429.52,
+   "duration": 7.32,
+   "text": "Okay? So, what the tool does, basically."
+  },
+  {
+   "start": 433.8,
+   "duration": 5.4,
+   "text": "Return name, email, plan tier, and"
+  },
+  {
+   "start": 436.84,
+   "duration": 4.28,
+   "text": "account standing. Basically, what it"
+  },
+  {
+   "start": 439.2,
+   "duration": 3.28,
+   "text": "returns, right? That is what it is"
+  },
+  {
+   "start": 441.12,
+   "duration": 4.0,
+   "text": "answering."
+  },
+  {
+   "start": 442.48,
+   "duration": 5.16,
+   "text": "Always call this first before any other"
+  },
+  {
+   "start": 445.12,
+   "duration": 4.4,
+   "text": "tool. When to call. So, that is the"
+  },
+  {
+   "start": 447.64,
+   "duration": 4.04,
+   "text": "point which specifies when to call that"
+  },
+  {
+   "start": 449.52,
+   "duration": 4.36,
+   "text": "tool."
+  },
+  {
+   "start": 451.68,
+   "duration": 4.0,
+   "text": "This is and requires customer"
+  },
+  {
+   "start": 453.88,
+   "duration": 4.28,
+   "text": "verification before order lookups or"
+  },
+  {
+   "start": 455.68,
+   "duration": 5.24,
+   "text": "refunds, right?"
+  },
+  {
+   "start": 458.16,
+   "duration": 5.32,
+   "text": "So, that is the thing."
+  },
+  {
+   "start": 460.92,
+   "duration": 4.6,
+   "text": "So, in input schema,"
+  },
+  {
+   "start": 463.48,
+   "duration": 3.76,
+   "text": "required, whatever the inputs that is"
+  },
+  {
+   "start": 465.52,
+   "duration": 3.0,
+   "text": "required, you have to provide, right?"
+  },
+  {
+   "start": 467.24,
+   "duration": 3.64,
+   "text": "And let's let's have a look at this"
+  },
+  {
+   "start": 468.52,
+   "duration": 5.0,
+   "text": "process refund."
+  },
+  {
+   "start": 470.88,
+   "duration": 5.0,
+   "text": "So, if you see there is a requires, you"
+  },
+  {
+   "start": 473.52,
+   "duration": 5.0,
+   "text": "know, kind of I have put where call get"
+  },
+  {
+   "start": 475.88,
+   "duration": 4.6,
+   "text": "customer first to verify the identity."
+  },
+  {
+   "start": 478.52,
+   "duration": 4.72,
+   "text": "Call lookup order to confirm the order"
+  },
+  {
+   "start": 480.48,
+   "duration": 4.76,
+   "text": "exists and belongs to. Then only call"
+  },
+  {
+   "start": 483.24,
+   "duration": 4.44,
+   "text": "this after both the checks pass. So, we"
+  },
+  {
+   "start": 485.24,
+   "duration": 5.8,
+   "text": "are putting a constraint over here when"
+  },
+  {
+   "start": 487.68,
+   "duration": 6.12,
+   "text": "not to use it, kind of. Do not use it if"
+  },
+  {
+   "start": 491.04,
+   "duration": 4.8,
+   "text": "the lookup order and the get customer"
+  },
+  {
+   "start": 493.8,
+   "duration": 3.88,
+   "text": "has not been called. That is what you"
+  },
+  {
+   "start": 495.84,
+   "duration": 5.12,
+   "text": "are providing over here."
+  },
+  {
+   "start": 497.68,
+   "duration": 6.2,
+   "text": "I hope that is making sense."
+  },
+  {
+   "start": 500.96,
+   "duration": 5.76,
+   "text": "Right? So, this is a anatomy of a"
+  },
+  {
+   "start": 503.88,
+   "duration": 5.56,
+   "text": "production-grade tool description. You"
+  },
+  {
+   "start": 506.72,
+   "duration": 4.16,
+   "text": "can't go ahead and uh deploy something"
+  },
+  {
+   "start": 509.44,
+   "duration": 2.68,
+   "text": "in production with a one-line"
+  },
+  {
+   "start": 510.88,
+   "duration": 2.32,
+   "text": "description."
+  },
+  {
+   "start": 512.12,
+   "duration": 4.479,
+   "text": "Right?"
+  },
+  {
+   "start": 513.2,
+   "duration": 5.2,
+   "text": "So, that is what it means to have"
+  },
+  {
+   "start": 516.599,
+   "duration": 3.841,
+   "text": "um"
+  },
+  {
+   "start": 518.4,
+   "duration": 4.48,
+   "text": "you know, proper descriptions. And you"
+  },
+  {
+   "start": 520.44,
+   "duration": 3.44,
+   "text": "need to keep in mind, and this is a very"
+  },
+  {
+   "start": 522.88,
+   "duration": 2.88,
+   "text": "uh"
+  },
+  {
+   "start": 523.88,
+   "duration": 3.92,
+   "text": "uh you know,"
+  },
+  {
+   "start": 525.76,
+   "duration": 3.96,
+   "text": "common pattern the exam tests you on."
+  },
+  {
+   "start": 527.8,
+   "duration": 3.88,
+   "text": "It's like a scenario"
+  },
+  {
+   "start": 529.72,
+   "duration": 4.64,
+   "text": "uh you know, um question you would get"
+  },
+  {
+   "start": 531.68,
+   "duration": 5.16,
+   "text": "in the exam, and you need to specify the"
+  },
+  {
+   "start": 534.36,
+   "duration": 4.36,
+   "text": "description pretty perfectly. You know,"
+  },
+  {
+   "start": 536.84,
+   "duration": 3.32,
+   "text": "and it is not that difficult. It's just"
+  },
+  {
+   "start": 538.72,
+   "duration": 3.48,
+   "text": "plain English language. You need to"
+  },
+  {
+   "start": 540.16,
+   "duration": 3.52,
+   "text": "understand the You need to have a proper"
+  },
+  {
+   "start": 542.2,
+   "duration": 3.48,
+   "text": "functional knowledge of what you are"
+  },
+  {
+   "start": 543.68,
+   "duration": 4.76,
+   "text": "doing, and you are good to go."
+  },
+  {
+   "start": 545.68,
+   "duration": 5.24,
+   "text": "Okay? And this concept directly powers"
+  },
+  {
+   "start": 548.44,
+   "duration": 4.24,
+   "text": "sample question two in the particular"
+  },
+  {
+   "start": 550.92,
+   "duration": 3.2,
+   "text": "uh you know, uh"
+  },
+  {
+   "start": 552.68,
+   "duration": 4.0,
+   "text": "you can go ahead and look at look at the"
+  },
+  {
+   "start": 554.12,
+   "duration": 5.48,
+   "text": "syllabus, that PDF that they, you know,"
+  },
+  {
+   "start": 556.68,
+   "duration": 4.8,
+   "text": "Anthropic has given you. And it's one of"
+  },
+  {
+   "start": 559.6,
+   "duration": 5.6,
+   "text": "the 12 official sample questions in the"
+  },
+  {
+   "start": 561.48,
+   "duration": 5.44,
+   "text": "syllabus. Okay? And um yeah, so you can"
+  },
+  {
+   "start": 565.2,
+   "duration": 4.24,
+   "text": "have a look. We will also see one sample"
+  },
+  {
+   "start": 566.92,
+   "duration": 5.8,
+   "text": "question, so don't worry about it."
+  },
+  {
+   "start": 569.44,
+   "duration": 4.52,
+   "text": "Okay? So, that is about, you know,"
+  },
+  {
+   "start": 572.72,
+   "duration": 2.76,
+   "text": "the"
+  },
+  {
+   "start": 573.96,
+   "duration": 4.0,
+   "text": "how to use proper description in the"
+  },
+  {
+   "start": 575.48,
+   "duration": 5.24,
+   "text": "tool. Now, let's talk about uh the next"
+  },
+  {
+   "start": 577.96,
+   "duration": 4.92,
+   "text": "problem or the next concept that uh I"
+  },
+  {
+   "start": 580.72,
+   "duration": 4.6,
+   "text": "want to discuss is description"
+  },
+  {
+   "start": 582.88,
+   "duration": 4.24,
+   "text": "overlapping. So, let's see this uh"
+  },
+  {
+   "start": 585.32,
+   "duration": 2.96,
+   "text": "particular problem"
+  },
+  {
+   "start": 587.12,
+   "duration": 3.4,
+   "text": "um"
+  },
+  {
+   "start": 588.28,
+   "duration": 5.04,
+   "text": "of something known as description"
+  },
+  {
+   "start": 590.52,
+   "duration": 5.16,
+   "text": "overlapping. So, we all give description"
+  },
+  {
+   "start": 593.32,
+   "duration": 4.68,
+   "text": "to the tools that we use, right? I mean,"
+  },
+  {
+   "start": 595.68,
+   "duration": 5.0,
+   "text": "the tools that Claude uses, right?"
+  },
+  {
+   "start": 598.0,
+   "duration": 5.24,
+   "text": "Now, this comes up, you know, very often"
+  },
+  {
+   "start": 600.68,
+   "duration": 4.68,
+   "text": "in multi-agent research scenario."
+  },
+  {
+   "start": 603.24,
+   "duration": 3.64,
+   "text": "For example, there is a scenario"
+  },
+  {
+   "start": 605.36,
+   "duration": 3.96,
+   "text": "in the syllabus. There is a research"
+  },
+  {
+   "start": 606.88,
+   "duration": 4.12,
+   "text": "multi-agent research scenario. Uh that"
+  },
+  {
+   "start": 609.32,
+   "duration": 4.48,
+   "text": "is scenario number three to be"
+  },
+  {
+   "start": 611.0,
+   "duration": 5.16,
+   "text": "particular. Where the coordinator has"
+  },
+  {
+   "start": 613.8,
+   "duration": 5.0,
+   "text": "tools for web web search, document"
+  },
+  {
+   "start": 616.16,
+   "duration": 4.76,
+   "text": "analysis, and synthesis."
+  },
+  {
+   "start": 618.8,
+   "duration": 4.24,
+   "text": "Okay? And"
+  },
+  {
+   "start": 620.92,
+   "duration": 4.48,
+   "text": "if you don't give the description in a"
+  },
+  {
+   "start": 623.04,
+   "duration": 4.84,
+   "text": "proper manner, Claude will get confused"
+  },
+  {
+   "start": 625.4,
+   "duration": 4.72,
+   "text": "between the tools. Let me explain you by"
+  },
+  {
+   "start": 627.88,
+   "duration": 5.56,
+   "text": "using an example of which scenario I'm"
+  },
+  {
+   "start": 630.12,
+   "duration": 4.92,
+   "text": "talking about. So, if I go over here,"
+  },
+  {
+   "start": 633.44,
+   "duration": 3.08,
+   "text": "so there are the This is your tools,"
+  },
+  {
+   "start": 635.04,
+   "duration": 2.92,
+   "text": "right? This is the name and description,"
+  },
+  {
+   "start": 636.52,
+   "duration": 3.6,
+   "text": "right? You'll add your schema and all"
+  },
+  {
+   "start": 637.96,
+   "duration": 4.16,
+   "text": "later. Just for explanation purposes,"
+  },
+  {
+   "start": 640.12,
+   "duration": 3.52,
+   "text": "I'm just telling you because this is,"
+  },
+  {
+   "start": 642.12,
+   "duration": 3.04,
+   "text": "you know, comes in the exam, so you need"
+  },
+  {
+   "start": 643.64,
+   "duration": 3.04,
+   "text": "to understand what it is."
+  },
+  {
+   "start": 645.16,
+   "duration": 4.08,
+   "text": "So, you If you see over here, there are"
+  },
+  {
+   "start": 646.68,
+   "duration": 4.72,
+   "text": "three tools. And"
+  },
+  {
+   "start": 649.24,
+   "duration": 3.8,
+   "text": "the first tool says search web, and this"
+  },
+  {
+   "start": 651.4,
+   "duration": 3.32,
+   "text": "is This is the description is saying"
+  },
+  {
+   "start": 653.04,
+   "duration": 3.4,
+   "text": "search for information."
+  },
+  {
+   "start": 654.72,
+   "duration": 3.72,
+   "text": "The second tool is called search"
+  },
+  {
+   "start": 656.44,
+   "duration": 3.48,
+   "text": "documents, and this is no This is"
+  },
+  {
+   "start": 658.44,
+   "duration": 4.0,
+   "text": "called, you know, description is search"
+  },
+  {
+   "start": 659.92,
+   "duration": 4.48,
+   "text": "documents for information. And third one"
+  },
+  {
+   "start": 662.44,
+   "duration": 4.12,
+   "text": "is analyze content, and description is"
+  },
+  {
+   "start": 664.4,
+   "duration": 3.76,
+   "text": "analyze and extract information from"
+  },
+  {
+   "start": 666.56,
+   "duration": 3.4,
+   "text": "content."
+  },
+  {
+   "start": 668.16,
+   "duration": 3.72,
+   "text": "Right? Now,"
+  },
+  {
+   "start": 669.96,
+   "duration": 3.8,
+   "text": "all of these three say search or"
+  },
+  {
+   "start": 671.88,
+   "duration": 3.68,
+   "text": "information or content, right? From"
+  },
+  {
+   "start": 673.76,
+   "duration": 4.16,
+   "text": "Claude's perspective, just think about"
+  },
+  {
+   "start": 675.56,
+   "duration": 5.88,
+   "text": "it. From Claude's perspective, these are"
+  },
+  {
+   "start": 677.92,
+   "duration": 6.76,
+   "text": "practically, you know, like synonyms."
+  },
+  {
+   "start": 681.44,
+   "duration": 5.32,
+   "text": "And this will cause Claude to call a,"
+  },
+  {
+   "start": 684.68,
+   "duration": 4.56,
+   "text": "you know, maybe a"
+  },
+  {
+   "start": 686.76,
+   "duration": 4.52,
+   "text": "wrong tool or you know, some misroute"
+  },
+  {
+   "start": 689.24,
+   "duration": 4.84,
+   "text": "will happen with the Claude and the"
+  },
+  {
+   "start": 691.28,
+   "duration": 3.88,
+   "text": "tools and how it understands."
+  },
+  {
+   "start": 694.08,
+   "duration": 2.84,
+   "text": "Now,"
+  },
+  {
+   "start": 695.16,
+   "duration": 4.4,
+   "text": "you don't have to add any few-shot"
+  },
+  {
+   "start": 696.92,
+   "duration": 4.44,
+   "text": "examples or, you know, improve the"
+  },
+  {
+   "start": 699.56,
+   "duration": 3.68,
+   "text": "prompting or, you know, something like"
+  },
+  {
+   "start": 701.36,
+   "duration": 3.52,
+   "text": "that. That is important, but the main"
+  },
+  {
+   "start": 703.24,
+   "duration": 3.2,
+   "text": "issue over here is not proper"
+  },
+  {
+   "start": 704.88,
+   "duration": 3.72,
+   "text": "description."
+  },
+  {
+   "start": 706.44,
+   "duration": 4.48,
+   "text": "The fix is to make the description"
+  },
+  {
+   "start": 708.6,
+   "duration": 5.32,
+   "text": "mutually exclusive, you know, in double"
+  },
+  {
+   "start": 710.92,
+   "duration": 5.68,
+   "text": "quotes I'm telling, mutually exclusive."
+  },
+  {
+   "start": 713.92,
+   "duration": 5.48,
+   "text": "Now, let's rewrite the same thing in"
+  },
+  {
+   "start": 716.6,
+   "duration": 5.04,
+   "text": "this format and see the enhancement and"
+  },
+  {
+   "start": 719.4,
+   "duration": 4.439,
+   "text": "see Just try to understand how this will"
+  },
+  {
+   "start": 721.64,
+   "duration": 4.28,
+   "text": "enhance Claude's judgment."
+  },
+  {
+   "start": 723.839,
+   "duration": 4.521,
+   "text": "Now, the same thing, search web, I have"
+  },
+  {
+   "start": 725.92,
+   "duration": 4.6,
+   "text": "written it in a way, you know,"
+  },
+  {
+   "start": 728.36,
+   "duration": 4.44,
+   "text": "the description query live pages via the"
+  },
+  {
+   "start": 730.52,
+   "duration": 4.56,
+   "text": "search engine used for current events,"
+  },
+  {
+   "start": 732.8,
+   "duration": 4.039,
+   "text": "recent publication URLs not yet in the"
+  },
+  {
+   "start": 735.08,
+   "duration": 4.2,
+   "text": "document corpus."
+  },
+  {
+   "start": 736.839,
+   "duration": 4.721,
+   "text": "You know, I'm giving proper input a"
+  },
+  {
+   "start": 739.28,
+   "duration": 4.4,
+   "text": "query string. Returns ranked URLs plus"
+  },
+  {
+   "start": 741.56,
+   "duration": 4.68,
+   "text": "snippets. Do not use for documents"
+  },
+  {
+   "start": 743.68,
+   "duration": 4.36,
+   "text": "already looked into the research corpus."
+  },
+  {
+   "start": 746.24,
+   "duration": 4.16,
+   "text": "Similarly, for research You know, search"
+  },
+  {
+   "start": 748.04,
+   "duration": 4.36,
+   "text": "documents, you know, the name is same,"
+  },
+  {
+   "start": 750.4,
+   "duration": 4.32,
+   "text": "but if you see the description is"
+  },
+  {
+   "start": 752.4,
+   "duration": 5.32,
+   "text": "different. Full search across the"
+  },
+  {
+   "start": 754.72,
+   "duration": 4.72,
+   "text": "preloaded research corpus, okay? And for"
+  },
+  {
+   "start": 757.72,
+   "duration": 3.72,
+   "text": "analyze content, deep analysis of"
+  },
+  {
+   "start": 759.44,
+   "duration": 5.76,
+   "text": "specific piece of content already"
+  },
+  {
+   "start": 761.44,
+   "duration": 6.48,
+   "text": "retrieved. So, here if you see,"
+  },
+  {
+   "start": 765.2,
+   "duration": 5.04,
+   "text": "this is unambiguous."
+  },
+  {
+   "start": 767.92,
+   "duration": 5.28,
+   "text": "You know, web search means live"
+  },
+  {
+   "start": 770.24,
+   "duration": 5.08,
+   "text": "internet. Document search means already"
+  },
+  {
+   "start": 773.2,
+   "duration": 4.48,
+   "text": "ingested corpus, which you"
+  },
+  {
+   "start": 775.32,
+   "duration": 5.56,
+   "text": "The documents which is already there."
+  },
+  {
+   "start": 777.68,
+   "duration": 5.8,
+   "text": "And then analyze means post-retrieval"
+  },
+  {
+   "start": 780.88,
+   "duration": 5.32,
+   "text": "processing. Now, this will"
+  },
+  {
+   "start": 783.48,
+   "duration": 5.2,
+   "text": "print a, you know, very clear picture in"
+  },
+  {
+   "start": 786.2,
+   "duration": 5.2,
+   "text": "Claude's memory or context that, okay,"
+  },
+  {
+   "start": 788.68,
+   "duration": 4.88,
+   "text": "this is what I need to use at this"
+  },
+  {
+   "start": 791.4,
+   "duration": 4.24,
+   "text": "particular, you know,"
+  },
+  {
+   "start": 793.56,
+   "duration": 3.96,
+   "text": "time or at this particular point of the"
+  },
+  {
+   "start": 795.64,
+   "duration": 4.88,
+   "text": "agentic loop."
+  },
+  {
+   "start": 797.52,
+   "duration": 4.92,
+   "text": "You know? So, that is what it is. So,"
+  },
+  {
+   "start": 800.52,
+   "duration": 4.52,
+   "text": "if there is some issues related to"
+  },
+  {
+   "start": 802.44,
+   "duration": 5.6,
+   "text": "tools, you know, Claude executing a"
+  },
+  {
+   "start": 805.04,
+   "duration": 4.88,
+   "text": "wrong tool or, you know, not executing a"
+  },
+  {
+   "start": 808.04,
+   "duration": 4.36,
+   "text": "tool completely,"
+  },
+  {
+   "start": 809.92,
+   "duration": 5.56,
+   "text": "the the the the problem might be in the"
+  },
+  {
+   "start": 812.4,
+   "duration": 6.24,
+   "text": "description. So, first look, you know,"
+  },
+  {
+   "start": 815.48,
+   "duration": 5.72,
+   "text": "try to fix the descriptions first."
+  },
+  {
+   "start": 818.64,
+   "duration": 3.68,
+   "text": "Okay? This is very exam critical, guys."
+  },
+  {
+   "start": 821.2,
+   "duration": 3.52,
+   "text": "And"
+  },
+  {
+   "start": 822.32,
+   "duration": 4.24,
+   "text": "it's literally what sample question"
+  },
+  {
+   "start": 824.72,
+   "duration": 3.2,
+   "text": "number two tests."
+  },
+  {
+   "start": 826.56,
+   "duration": 4.44,
+   "text": "Okay?"
+  },
+  {
+   "start": 827.92,
+   "duration": 5.32,
+   "text": "Now, the options might try to confuse"
+  },
+  {
+   "start": 831.0,
+   "duration": 3.96,
+   "text": "you by telling, you know, add a few-shot"
+  },
+  {
+   "start": 833.24,
+   "duration": 3.56,
+   "text": "examples,"
+  },
+  {
+   "start": 834.96,
+   "duration": 3.52,
+   "text": "you know, uh"
+  },
+  {
+   "start": 836.8,
+   "duration": 3.16,
+   "text": "something like that, but the actual"
+  },
+  {
+   "start": 838.48,
+   "duration": 2.56,
+   "text": "answer is,"
+  },
+  {
+   "start": 839.96,
+   "duration": 3.76,
+   "text": "you know,"
+  },
+  {
+   "start": 841.04,
+   "duration": 5.36,
+   "text": "to redo the tool descriptions."
+  },
+  {
+   "start": 843.72,
+   "duration": 4.72,
+   "text": "And make sure that you are actually"
+  },
+  {
+   "start": 846.4,
+   "duration": 3.2,
+   "text": "understanding the gravity of the"
+  },
+  {
+   "start": 848.44,
+   "duration": 3.68,
+   "text": "particular,"
+  },
+  {
+   "start": 849.6,
+   "duration": 5.12,
+   "text": "you know, this thing."
+  },
+  {
+   "start": 852.12,
+   "duration": 5.24,
+   "text": "And if you see this example also in the"
+  },
+  {
+   "start": 854.72,
+   "duration": 5.64,
+   "text": "in the case of our customer search"
+  },
+  {
+   "start": 857.36,
+   "duration": 5.36,
+   "text": "agent, and I have already told you this,"
+  },
+  {
+   "start": 860.36,
+   "duration": 4.84,
+   "text": "you know, in the description, you can"
+  },
+  {
+   "start": 862.72,
+   "duration": 4.92,
+   "text": "mention after which tool it must be"
+  },
+  {
+   "start": 865.2,
+   "duration": 3.96,
+   "text": "used. The order also you can mention,"
+  },
+  {
+   "start": 867.64,
+   "duration": 3.0,
+   "text": "you know?"
+  },
+  {
+   "start": 869.16,
+   "duration": 3.6,
+   "text": "And um"
+  },
+  {
+   "start": 870.64,
+   "duration": 4.24,
+   "text": "it is, you know, it is it it is better."
+  },
+  {
+   "start": 872.76,
+   "duration": 5.72,
+   "text": "The more good description you keep, the"
+  },
+  {
+   "start": 874.88,
+   "duration": 3.6,
+   "text": "more better it is."
+  },
+  {
+   "start": 879.72,
+   "duration": 6.8,
+   "text": "Okay. Now, let's talk about"
+  },
+  {
+   "start": 882.839,
+   "duration": 5.681,
+   "text": "naming of the tools or, you know, tool"
+  },
+  {
+   "start": 886.52,
+   "duration": 4.16,
+   "text": "splitting."
+  },
+  {
+   "start": 888.52,
+   "duration": 4.36,
+   "text": "Sometimes,"
+  },
+  {
+   "start": 890.68,
+   "duration": 4.76,
+   "text": "the overlap is not in just the"
+  },
+  {
+   "start": 892.88,
+   "duration": 6.88,
+   "text": "descriptions, guys."
+  },
+  {
+   "start": 895.44,
+   "duration": 5.399,
+   "text": "It's baked into the tool name itself."
+  },
+  {
+   "start": 899.76,
+   "duration": 3.84,
+   "text": "Right?"
+  },
+  {
+   "start": 900.839,
+   "duration": 5.24,
+   "text": "So, sometimes, you know, a generic tool"
+  },
+  {
+   "start": 903.6,
+   "duration": 5.04,
+   "text": "is trying to do too much, and sometimes"
+  },
+  {
+   "start": 906.079,
+   "duration": 5.521,
+   "text": "those does that too much is"
+  },
+  {
+   "start": 908.64,
+   "duration": 5.04,
+   "text": "a lot for the tool to handle."
+  },
+  {
+   "start": 911.6,
+   "duration": 4.04,
+   "text": "So, we have to be careful while we are"
+  },
+  {
+   "start": 913.68,
+   "duration": 4.08,
+   "text": "creating our tools, right? We have to"
+  },
+  {
+   "start": 915.64,
+   "duration": 4.92,
+   "text": "give proper description,"
+  },
+  {
+   "start": 917.76,
+   "duration": 4.6,
+   "text": "and we have to make the tool a little"
+  },
+  {
+   "start": 920.56,
+   "duration": 4.32,
+   "text": "bit, you know,"
+  },
+  {
+   "start": 922.36,
+   "duration": 3.8,
+   "text": "non-generic or specific."
+  },
+  {
+   "start": 924.88,
+   "duration": 3.72,
+   "text": "Right?"
+  },
+  {
+   "start": 926.16,
+   "duration": 5.88,
+   "text": "So, some generic names, for example,"
+  },
+  {
+   "start": 928.6,
+   "duration": 6.68,
+   "text": "like search, get data, fetch info,"
+  },
+  {
+   "start": 932.04,
+   "duration": 5.24,
+   "text": "process, handle request."
+  },
+  {
+   "start": 935.28,
+   "duration": 5.679,
+   "text": "Now, these tools sounds very very"
+  },
+  {
+   "start": 937.28,
+   "duration": 6.52,
+   "text": "generic. Search what? Get data for what?"
+  },
+  {
+   "start": 940.959,
+   "duration": 3.88,
+   "text": "You know, fetch info for what? Process"
+  },
+  {
+   "start": 943.8,
+   "duration": 3.8,
+   "text": "what?"
+  },
+  {
+   "start": 944.839,
+   "duration": 4.441,
+   "text": "Right? Handle request what?"
+  },
+  {
+   "start": 947.6,
+   "duration": 3.44,
+   "text": "And Claude will, you know, I don't know,"
+  },
+  {
+   "start": 949.28,
+   "duration": 4.24,
+   "text": "it will get confused like,"
+  },
+  {
+   "start": 951.04,
+   "duration": 4.88,
+   "text": "you know, um"
+  },
+  {
+   "start": 953.52,
+   "duration": 4.92,
+   "text": "it has no semantic weight."
+  },
+  {
+   "start": 955.92,
+   "duration": 4.56,
+   "text": "So, how does Claude will try to"
+  },
+  {
+   "start": 958.44,
+   "duration": 4.399,
+   "text": "understand what kind of, you know, if if"
+  },
+  {
+   "start": 960.48,
+   "duration": 5.12,
+   "text": "I have to get customer ID, for example,"
+  },
+  {
+   "start": 962.839,
+   "duration": 4.881,
+   "text": "search is a generic tool name."
+  },
+  {
+   "start": 965.6,
+   "duration": 5.0,
+   "text": "It might fail in that because it's a"
+  },
+  {
+   "start": 967.72,
+   "duration": 4.08,
+   "text": "very generic-sounding tool."
+  },
+  {
+   "start": 970.6,
+   "duration": 3.04,
+   "text": "Right?"
+  },
+  {
+   "start": 971.8,
+   "duration": 4.6,
+   "text": "But in the same time at the same time,"
+  },
+  {
+   "start": 973.64,
+   "duration": 4.84,
+   "text": "if you name the search as search live"
+  },
+  {
+   "start": 976.4,
+   "duration": 4.88,
+   "text": "web, for example,"
+  },
+  {
+   "start": 978.48,
+   "duration": 5.16,
+   "text": "I mean, get data instead of get data,"
+  },
+  {
+   "start": 981.28,
+   "duration": 4.52,
+   "text": "you can put look up customer profile or"
+  },
+  {
+   "start": 983.64,
+   "duration": 4.4,
+   "text": "something like that."
+  },
+  {
+   "start": 985.8,
+   "duration": 5.039,
+   "text": "Instead of fetch info, you can put"
+  },
+  {
+   "start": 988.04,
+   "duration": 4.96,
+   "text": "something like retrieve order history."
+  },
+  {
+   "start": 990.839,
+   "duration": 4.041,
+   "text": "It is specific now."
+  },
+  {
+   "start": 993.0,
+   "duration": 3.959,
+   "text": "You know, in case of a database query,"
+  },
+  {
+   "start": 994.88,
+   "duration": 4.44,
+   "text": "for example, you can split it like just"
+  },
+  {
+   "start": 996.959,
+   "duration": 4.801,
+   "text": "get customer by ID might be one tool."
+  },
+  {
+   "start": 999.32,
+   "duration": 4.24,
+   "text": "List customer orders might be one tool."
+  },
+  {
+   "start": 1001.76,
+   "duration": 5.04,
+   "text": "Just think about it in a way you would"
+  },
+  {
+   "start": 1003.56,
+   "duration": 6.96,
+   "text": "write you know, DAO function or a DAO"
+  },
+  {
+   "start": 1006.8,
+   "duration": 6.68,
+   "text": "class in Java or a DAO layer, right? Or"
+  },
+  {
+   "start": 1010.52,
+   "duration": 5.04,
+   "text": "a repository, right? Queries, basically."
+  },
+  {
+   "start": 1013.48,
+   "duration": 4.2,
+   "text": "That is how you should imagine these"
+  },
+  {
+   "start": 1015.56,
+   "duration": 3.36,
+   "text": "tools if you want it to perform, you"
+  },
+  {
+   "start": 1017.68,
+   "duration": 3.76,
+   "text": "know,"
+  },
+  {
+   "start": 1018.92,
+   "duration": 2.52,
+   "text": "good."
+  },
+  {
+   "start": 1022.44,
+   "duration": 4.96,
+   "text": "Okay? Now, the the options will"
+  },
+  {
+   "start": 1025.72,
+   "duration": 3.32,
+   "text": "confuse you. It will It will give you"
+  },
+  {
+   "start": 1027.4,
+   "duration": 3.439,
+   "text": "some, you know, if if the tool is not"
+  },
+  {
+   "start": 1029.04,
+   "duration": 3.28,
+   "text": "executing in the exam in the scenario"
+  },
+  {
+   "start": 1030.839,
+   "duration": 3.441,
+   "text": "question, the options will try to"
+  },
+  {
+   "start": 1032.32,
+   "duration": 4.08,
+   "text": "confuse you, you know?"
+  },
+  {
+   "start": 1034.28,
+   "duration": 4.04,
+   "text": "Add few-shot examples. Few-shot"
+  },
+  {
+   "start": 1036.4,
+   "duration": 3.48,
+   "text": "prompting is a very,"
+  },
+  {
+   "start": 1038.32,
+   "duration": 2.96,
+   "text": "you know, nice way of prompting, okay?"
+  },
+  {
+   "start": 1039.88,
+   "duration": 3.12,
+   "text": "And"
+  },
+  {
+   "start": 1041.28,
+   "duration": 3.12,
+   "text": "you know, um"
+  },
+  {
+   "start": 1043.0,
+   "duration": 3.6,
+   "text": "it will try to confuse you by telling"
+  },
+  {
+   "start": 1044.4,
+   "duration": 4.52,
+   "text": "that use few-shot prompting, but you"
+  },
+  {
+   "start": 1046.6,
+   "duration": 3.84,
+   "text": "know, sometimes,"
+  },
+  {
+   "start": 1048.92,
+   "duration": 3.08,
+   "text": "prompting is not everything. And we"
+  },
+  {
+   "start": 1050.44,
+   "duration": 4.28,
+   "text": "understood that in our previous lesson"
+  },
+  {
+   "start": 1052.0,
+   "duration": 5.52,
+   "text": "about hooks, where we used programming"
+  },
+  {
+   "start": 1054.72,
+   "duration": 4.48,
+   "text": "concepts to control which tool to use"
+  },
+  {
+   "start": 1057.52,
+   "duration": 3.12,
+   "text": "when, right?"
+  },
+  {
+   "start": 1059.2,
+   "duration": 3.2,
+   "text": "So,"
+  },
+  {
+   "start": 1060.64,
+   "duration": 3.28,
+   "text": "when the tool is not getting executed or"
+  },
+  {
+   "start": 1062.4,
+   "duration": 3.16,
+   "text": "if there is some issues with the tools,"
+  },
+  {
+   "start": 1063.92,
+   "duration": 4.0,
+   "text": "you have to dig deep and see the"
+  },
+  {
+   "start": 1065.56,
+   "duration": 4.119,
+   "text": "description are perfect or not."
+  },
+  {
+   "start": 1067.92,
+   "duration": 3.2,
+   "text": "And you know, if the naming of the tool"
+  },
+  {
+   "start": 1069.679,
+   "duration": 3.561,
+   "text": "is perfect or not. That is the first"
+  },
+  {
+   "start": 1071.12,
+   "duration": 4.96,
+   "text": "things you need to check."
+  },
+  {
+   "start": 1073.24,
+   "duration": 5.64,
+   "text": "Policy violations, you can go to hooks."
+  },
+  {
+   "start": 1076.08,
+   "duration": 4.84,
+   "text": "Okay? Post-retrieval formatting, you"
+  },
+  {
+   "start": 1078.88,
+   "duration": 3.64,
+   "text": "would go to post-tool hook. So, these"
+  },
+  {
+   "start": 1080.92,
+   "duration": 4.04,
+   "text": "are the things you need to keep in mind"
+  },
+  {
+   "start": 1082.52,
+   "duration": 4.159,
+   "text": "when to use what, and the exam will test"
+  },
+  {
+   "start": 1084.96,
+   "duration": 3.84,
+   "text": "you on that."
+  },
+  {
+   "start": 1086.679,
+   "duration": 4.281,
+   "text": "Right? So, whenever there is a trouble"
+  },
+  {
+   "start": 1088.8,
+   "duration": 3.96,
+   "text": "with misrouting or"
+  },
+  {
+   "start": 1090.96,
+   "duration": 4.44,
+   "text": "tool not executing or there is issue in"
+  },
+  {
+   "start": 1092.76,
+   "duration": 4.96,
+   "text": "tools, always check the naming"
+  },
+  {
+   "start": 1095.4,
+   "duration": 5.0,
+   "text": "convention and the description of the"
+  },
+  {
+   "start": 1097.72,
+   "duration": 3.72,
+   "text": "tool that is being used."
+  },
+  {
+   "start": 1100.4,
+   "duration": 4.96,
+   "text": "Okay?"
+  },
+  {
+   "start": 1101.44,
+   "duration": 6.44,
+   "text": "So, these techniques we just saw about"
+  },
+  {
+   "start": 1105.36,
+   "duration": 5.88,
+   "text": "it, and um"
+  },
+  {
+   "start": 1107.88,
+   "duration": 3.36,
+   "text": "you should keep it in mind."
+  },
+  {
+   "start": 1111.48,
+   "duration": 3.32,
+   "text": "Okay?"
+  },
+  {
+   "start": 1112.84,
+   "duration": 4.0,
+   "text": "And this is the question that I was"
+  },
+  {
+   "start": 1114.8,
+   "duration": 3.48,
+   "text": "sample question I was talking about."
+  },
+  {
+   "start": 1116.84,
+   "duration": 2.64,
+   "text": "Customer support agent is frequently"
+  },
+  {
+   "start": 1118.28,
+   "duration": 4.2,
+   "text": "calling escalate to human for"
+  },
+  {
+   "start": 1119.48,
+   "duration": 5.48,
+   "text": "auto-resolvable cases to reroute cases."
+  },
+  {
+   "start": 1122.48,
+   "duration": 4.199,
+   "text": "All tool definition have single-sentence"
+  },
+  {
+   "start": 1124.96,
+   "duration": 4.56,
+   "text": "descriptions. So, this is where it is"
+  },
+  {
+   "start": 1126.679,
+   "duration": 4.641,
+   "text": "giving you one hint, but I guess they"
+  },
+  {
+   "start": 1129.52,
+   "duration": 3.96,
+   "text": "the the questions are all also evolving,"
+  },
+  {
+   "start": 1131.32,
+   "duration": 3.8,
+   "text": "and maybe the hints will not be there."
+  },
+  {
+   "start": 1133.48,
+   "duration": 2.8,
+   "text": "You have to figure out the hints by"
+  },
+  {
+   "start": 1135.12,
+   "duration": 2.24,
+   "text": "yourself."
+  },
+  {
+   "start": 1136.28,
+   "duration": 4.0,
+   "text": "Right?"
+  },
+  {
+   "start": 1137.36,
+   "duration": 4.64,
+   "text": "So, that is the thing."
+  },
+  {
+   "start": 1140.28,
+   "duration": 4.2,
+   "text": "The last concept that I want to discuss"
+  },
+  {
+   "start": 1142.0,
+   "duration": 5.12,
+   "text": "about is the proper use of system"
+  },
+  {
+   "start": 1144.48,
+   "duration": 3.84,
+   "text": "prompting. Now, if you go to my uh"
+  },
+  {
+   "start": 1147.12,
+   "duration": 3.52,
+   "text": "uh this"
+  },
+  {
+   "start": 1148.32,
+   "duration": 4.88,
+   "text": "agent of, you know, this customer"
+  },
+  {
+   "start": 1150.64,
+   "duration": 4.84,
+   "text": "support agent, you would see that uh if"
+  },
+  {
+   "start": 1153.2,
+   "duration": 5.8,
+   "text": "I see go to our system prompt, I don't"
+  },
+  {
+   "start": 1155.48,
+   "duration": 5.76,
+   "text": "know where it is defined. Um"
+  },
+  {
+   "start": 1159.0,
+   "duration": 4.72,
+   "text": "Let me check the"
+  },
+  {
+   "start": 1161.24,
+   "duration": 4.28,
+   "text": "system."
+  },
+  {
+   "start": 1163.72,
+   "duration": 4.16,
+   "text": "Okay, let me do a"
+  },
+  {
+   "start": 1165.52,
+   "duration": 4.96,
+   "text": "control F and system. Okay, here's a"
+  },
+  {
+   "start": 1167.88,
+   "duration": 5.32,
+   "text": "system prompt. You are the You are the"
+  },
+  {
+   "start": 1170.48,
+   "duration": 4.64,
+   "text": "sub role role of something. It's there."
+  },
+  {
+   "start": 1173.2,
+   "duration": 4.4,
+   "text": "Okay, run If this is a sub-agent system"
+  },
+  {
+   "start": 1175.12,
+   "duration": 2.48,
+   "text": "prompt."
+  },
+  {
+   "start": 1178.0,
+   "duration": 2.48,
+   "text": "Okay."
+  },
+  {
+   "start": 1185.44,
+   "duration": 3.44,
+   "text": "That is fine. Let's Let's see the a"
+  },
+  {
+   "start": 1187.36,
+   "duration": 3.24,
+   "text": "system prompt or sub-agent itself. You"
+  },
+  {
+   "start": 1188.88,
+   "duration": 3.36,
+   "text": "can just treat it"
+  },
+  {
+   "start": 1190.6,
+   "duration": 4.0,
+   "text": "for the main agent or whatever agent you"
+  },
+  {
+   "start": 1192.24,
+   "duration": 4.12,
+   "text": "are using let's see this you know for"
+  },
+  {
+   "start": 1194.6,
+   "duration": 3.64,
+   "text": "the system prompt of this particular sub"
+  },
+  {
+   "start": 1196.36,
+   "duration": 3.96,
+   "text": "you know the run sub agent thing."
+  },
+  {
+   "start": 1198.24,
+   "duration": 3.92,
+   "text": "It is putting the roles and the job"
+  },
+  {
+   "start": 1200.32,
+   "duration": 4.16,
+   "text": "description itself. So the job"
+  },
+  {
+   "start": 1202.16,
+   "duration": 4.04,
+   "text": "description can be anything."
+  },
+  {
+   "start": 1204.48,
+   "duration": 3.2,
+   "text": "So basically in the run sub agent we are"
+  },
+  {
+   "start": 1206.2,
+   "duration": 4.04,
+   "text": "getting the"
+  },
+  {
+   "start": 1207.68,
+   "duration": 6.08,
+   "text": "you know the role and and everything"
+  },
+  {
+   "start": 1210.24,
+   "duration": 5.68,
+   "text": "right and it's being used I think in the"
+  },
+  {
+   "start": 1213.76,
+   "duration": 6.04,
+   "text": "in the coordinator is calling the run"
+  },
+  {
+   "start": 1215.92,
+   "duration": 5.72,
+   "text": "sub agent. So let's have a look. So"
+  },
+  {
+   "start": 1219.8,
+   "duration": 3.6,
+   "text": "see verification finding"
+  },
+  {
+   "start": 1221.64,
+   "duration": 4.08,
+   "text": "customer verify thing right so the role"
+  },
+  {
+   "start": 1223.4,
+   "duration": 3.84,
+   "text": "is customer verify. So wherever you are"
+  },
+  {
+   "start": 1225.72,
+   "duration": 3.48,
+   "text": "writing the system prompt basically what"
+  },
+  {
+   "start": 1227.24,
+   "duration": 3.56,
+   "text": "I want to tell is"
+  },
+  {
+   "start": 1229.2,
+   "duration": 3.32,
+   "text": "and this thing doesn't doesn't come up"
+  },
+  {
+   "start": 1230.8,
+   "duration": 3.44,
+   "text": "in a lot of tutorials about this"
+  },
+  {
+   "start": 1232.52,
+   "duration": 3.96,
+   "text": "particular certification and I wanted to"
+  },
+  {
+   "start": 1234.24,
+   "duration": 4.6,
+   "text": "add this up so that this thing also gets"
+  },
+  {
+   "start": 1236.48,
+   "duration": 2.36,
+   "text": "cleared."
+  },
+  {
+   "start": 1240.64,
+   "duration": 5.48,
+   "text": "If your system prompts is very generic"
+  },
+  {
+   "start": 1243.84,
+   "duration": 5.0,
+   "text": "for example you are a customer look up"
+  },
+  {
+   "start": 1246.12,
+   "duration": 5.4,
+   "text": "assistant. You just put it for example"
+  },
+  {
+   "start": 1248.84,
+   "duration": 5.8,
+   "text": "in somewhere you have put that you know"
+  },
+  {
+   "start": 1251.52,
+   "duration": 4.44,
+   "text": "the system prompt like this."
+  },
+  {
+   "start": 1254.64,
+   "duration": 5.04,
+   "text": "That"
+  },
+  {
+   "start": 1255.96,
+   "duration": 5.8,
+   "text": "you are a customer"
+  },
+  {
+   "start": 1259.68,
+   "duration": 3.92,
+   "text": "support"
+  },
+  {
+   "start": 1261.76,
+   "duration": 2.88,
+   "text": "assistant."
+  },
+  {
+   "start": 1263.6,
+   "duration": 4.68,
+   "text": "Right?"
+  },
+  {
+   "start": 1264.64,
+   "duration": 6.84,
+   "text": "Now Claude will be primed to reach for"
+  },
+  {
+   "start": 1268.28,
+   "duration": 5.76,
+   "text": "get customer over process refund even in"
+  },
+  {
+   "start": 1271.48,
+   "duration": 4.6,
+   "text": "cases where a refund is clearly needed."
+  },
+  {
+   "start": 1274.04,
+   "duration": 4.36,
+   "text": "You know what I mean?"
+  },
+  {
+   "start": 1276.08,
+   "duration": 4.36,
+   "text": "So the role framing creates a bias"
+  },
+  {
+   "start": 1278.4,
+   "duration": 4.08,
+   "text": "towards certain tool categories. That is"
+  },
+  {
+   "start": 1280.44,
+   "duration": 3.72,
+   "text": "what I you know I wanted to see."
+  },
+  {
+   "start": 1282.48,
+   "duration": 4.48,
+   "text": "This means that"
+  },
+  {
+   "start": 1284.16,
+   "duration": 4.36,
+   "text": "system prompt and the tool description."
+  },
+  {
+   "start": 1286.96,
+   "duration": 4.16,
+   "text": "So we talked about proper use of tool"
+  },
+  {
+   "start": 1288.52,
+   "duration": 4.28,
+   "text": "description but that comes later on."
+  },
+  {
+   "start": 1291.12,
+   "duration": 3.36,
+   "text": "Right? When the tool is actually get"
+  },
+  {
+   "start": 1292.8,
+   "duration": 3.68,
+   "text": "going to be executed when the tool is"
+  },
+  {
+   "start": 1294.48,
+   "duration": 3.32,
+   "text": "going to be executed what is the purpose"
+  },
+  {
+   "start": 1296.48,
+   "duration": 2.64,
+   "text": "of that tool?"
+  },
+  {
+   "start": 1297.8,
+   "duration": 4.32,
+   "text": "But"
+  },
+  {
+   "start": 1299.12,
+   "duration": 5.48,
+   "text": "your system prompt and your descriptions"
+  },
+  {
+   "start": 1302.12,
+   "duration": 4.44,
+   "text": "of your tools must be aligned with each"
+  },
+  {
+   "start": 1304.6,
+   "duration": 4.68,
+   "text": "other."
+  },
+  {
+   "start": 1306.56,
+   "duration": 4.88,
+   "text": "Right? Now instead of just putting in"
+  },
+  {
+   "start": 1309.28,
+   "duration": 4.8,
+   "text": "that you are customer support assistant"
+  },
+  {
+   "start": 1311.44,
+   "duration": 3.56,
+   "text": "you can put in a little bit of more you"
+  },
+  {
+   "start": 1314.08,
+   "duration": 1.92,
+   "text": "know"
+  },
+  {
+   "start": 1315.0,
+   "duration": 4.32,
+   "text": "um"
+  },
+  {
+   "start": 1316.0,
+   "duration": 5.8,
+   "text": "like things over here. I mean"
+  },
+  {
+   "start": 1319.32,
+   "duration": 4.52,
+   "text": "more data for the you know Claude to"
+  },
+  {
+   "start": 1321.8,
+   "duration": 4.12,
+   "text": "process in the system prompt."
+  },
+  {
+   "start": 1323.84,
+   "duration": 4.56,
+   "text": "So you can say you are a customer"
+  },
+  {
+   "start": 1325.92,
+   "duration": 5.68,
+   "text": "support assistant apart from that you"
+  },
+  {
+   "start": 1328.4,
+   "duration": 6.64,
+   "text": "can provide something known as a tool"
+  },
+  {
+   "start": 1331.6,
+   "duration": 3.44,
+   "text": "use sequence."
+  },
+  {
+   "start": 1337.0,
+   "duration": 5.32,
+   "text": "And basically you can add a role and a"
+  },
+  {
+   "start": 1340.32,
+   "duration": 3.72,
+   "text": "goal or whatever you want to say your"
+  },
+  {
+   "start": 1342.32,
+   "duration": 2.8,
+   "text": "goal is"
+  },
+  {
+   "start": 1344.04,
+   "duration": 2.92,
+   "text": "um"
+  },
+  {
+   "start": 1345.12,
+   "duration": 5.559,
+   "text": "is first"
+  },
+  {
+   "start": 1346.96,
+   "duration": 6.92,
+   "text": "for example contract resolution"
+  },
+  {
+   "start": 1350.679,
+   "duration": 5.081,
+   "text": "of returns and refunds something like"
+  },
+  {
+   "start": 1353.88,
+   "duration": 4.799,
+   "text": "that just to clarify to Claude that this"
+  },
+  {
+   "start": 1355.76,
+   "duration": 4.48,
+   "text": "is not just a customer look up agent but"
+  },
+  {
+   "start": 1358.679,
+   "duration": 4.201,
+   "text": "instead of that this is all you know"
+  },
+  {
+   "start": 1360.24,
+   "duration": 5.12,
+   "text": "this agent is doing. So you can put a"
+  },
+  {
+   "start": 1362.88,
+   "duration": 4.28,
+   "text": "tool sequence use it sequence you can"
+  },
+  {
+   "start": 1365.36,
+   "duration": 2.64,
+   "text": "just say that you know"
+  },
+  {
+   "start": 1367.16,
+   "duration": 2.68,
+   "text": "um"
+  },
+  {
+   "start": 1368.0,
+   "duration": 4.96,
+   "text": "always call get customer first. So you"
+  },
+  {
+   "start": 1369.84,
+   "duration": 5.44,
+   "text": "can just say always call"
+  },
+  {
+   "start": 1372.96,
+   "duration": 5.56,
+   "text": "get customer"
+  },
+  {
+   "start": 1375.28,
+   "duration": 6.32,
+   "text": "first just pardon my"
+  },
+  {
+   "start": 1378.52,
+   "duration": 7.68,
+   "text": "spellings but it's okay. First then for"
+  },
+  {
+   "start": 1381.6,
+   "duration": 6.0,
+   "text": "example you can just say call look up"
+  },
+  {
+   "start": 1386.2,
+   "duration": 3.08,
+   "text": "order"
+  },
+  {
+   "start": 1387.6,
+   "duration": 4.2,
+   "text": "to look up"
+  },
+  {
+   "start": 1389.28,
+   "duration": 5.12,
+   "text": "the orders something like that."
+  },
+  {
+   "start": 1391.8,
+   "duration": 4.4,
+   "text": "Then you can say call process refund if"
+  },
+  {
+   "start": 1394.4,
+   "duration": 4.32,
+   "text": "the order is eligible and then escalate"
+  },
+  {
+   "start": 1396.2,
+   "duration": 4.24,
+   "text": "to human only as the last resort. So"
+  },
+  {
+   "start": 1398.72,
+   "duration": 3.52,
+   "text": "this sequence you can put in the system"
+  },
+  {
+   "start": 1400.44,
+   "duration": 3.36,
+   "text": "prompt so that Claude will know okay"
+  },
+  {
+   "start": 1402.24,
+   "duration": 3.76,
+   "text": "this is a sequence of tool that I need"
+  },
+  {
+   "start": 1403.8,
+   "duration": 3.64,
+   "text": "to use this is the he'll get you know"
+  },
+  {
+   "start": 1406.0,
+   "duration": 2.84,
+   "text": "Claude will get an idea okay these are"
+  },
+  {
+   "start": 1407.44,
+   "duration": 3.28,
+   "text": "the tools available and this is the"
+  },
+  {
+   "start": 1408.84,
+   "duration": 3.52,
+   "text": "sequence in which I need to execute the"
+  },
+  {
+   "start": 1410.72,
+   "duration": 4.24,
+   "text": "tool something like that."
+  },
+  {
+   "start": 1412.36,
+   "duration": 6.6,
+   "text": "Right?"
+  },
+  {
+   "start": 1414.96,
+   "duration": 5.96,
+   "text": "So rich descriptions so the the the goal"
+  },
+  {
+   "start": 1418.96,
+   "duration": 4.36,
+   "text": "of this lesson is not I have I haven't"
+  },
+  {
+   "start": 1420.92,
+   "duration": 3.721,
+   "text": "taught any new concepts in this"
+  },
+  {
+   "start": 1423.32,
+   "duration": 1.64,
+   "text": "particular"
+  },
+  {
+   "start": 1424.641,
+   "duration": 1.319,
+   "text": ">> [snorts]"
+  },
+  {
+   "start": 1424.96,
+   "duration": 2.6,
+   "text": ">> you know"
+  },
+  {
+   "start": 1425.96,
+   "duration": 4.0,
+   "text": "um"
+  },
+  {
+   "start": 1427.56,
+   "duration": 4.32,
+   "text": "uh lesson right? The the the main"
+  },
+  {
+   "start": 1429.96,
+   "duration": 3.36,
+   "text": "takeaways of this particular lesson is"
+  },
+  {
+   "start": 1431.88,
+   "duration": 3.56,
+   "text": "that"
+  },
+  {
+   "start": 1433.32,
+   "duration": 4.28,
+   "text": "you should have proper description"
+  },
+  {
+   "start": 1435.44,
+   "duration": 4.84,
+   "text": "proper naming of your tools so that"
+  },
+  {
+   "start": 1437.6,
+   "duration": 6.32,
+   "text": "there is no misrouting by Claude or"
+  },
+  {
+   "start": 1440.28,
+   "duration": 5.92,
+   "text": "there is no ambiguous ambiguation of you"
+  },
+  {
+   "start": 1443.92,
+   "duration": 4.8,
+   "text": "know tool handling by Claude."
+  },
+  {
+   "start": 1446.2,
+   "duration": 4.72,
+   "text": "You should have proper system prompts"
+  },
+  {
+   "start": 1448.72,
+   "duration": 4.92,
+   "text": "and the goal of your tool and what the"
+  },
+  {
+   "start": 1450.92,
+   "duration": 5.759,
+   "text": "tool does should be in the proper format"
+  },
+  {
+   "start": 1453.64,
+   "duration": 4.039,
+   "text": "so that you know you would have a nicely"
+  },
+  {
+   "start": 1456.679,
+   "duration": 3.241,
+   "text": "working [snorts]"
+  },
+  {
+   "start": 1457.679,
+   "duration": 5.921,
+   "text": "agent in production."
+  },
+  {
+   "start": 1459.92,
+   "duration": 6.84,
+   "text": "And this is obviously going to be tested"
+  },
+  {
+   "start": 1463.6,
+   "duration": 5.8,
+   "text": "in the exam. So I hope you guys you know"
+  },
+  {
+   "start": 1466.76,
+   "duration": 4.32,
+   "text": "practice as much questions as you want"
+  },
+  {
+   "start": 1469.4,
+   "duration": 4.04,
+   "text": "for this particular"
+  },
+  {
+   "start": 1471.08,
+   "duration": 3.76,
+   "text": "you know scenario"
+  },
+  {
+   "start": 1473.44,
+   "duration": 3.44,
+   "text": "after I'm done with this particular"
+  },
+  {
+   "start": 1474.84,
+   "duration": 4.04,
+   "text": "series I probably I will just also you"
+  },
+  {
+   "start": 1476.88,
+   "duration": 4.16,
+   "text": "know create one or two videos about some"
+  },
+  {
+   "start": 1478.88,
+   "duration": 3.48,
+   "text": "practice questions and sessions how to"
+  },
+  {
+   "start": 1481.04,
+   "duration": 3.84,
+   "text": "do all that."
+  },
+  {
+   "start": 1482.36,
+   "duration": 5.24,
+   "text": "So that was all for this lesson"
+  },
+  {
+   "start": 1484.88,
+   "duration": 5.88,
+   "text": "guys see you in the next lesson. Take"
+  },
+  {
+   "start": 1487.6,
+   "duration": 3.16,
+   "text": "care and bye-bye."
+  }
+ ]
+}

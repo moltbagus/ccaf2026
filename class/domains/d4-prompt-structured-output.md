@@ -26,6 +26,10 @@ Primary scenarios: Scenario 5 (Claude Code for CI/CD) and Scenario 6 (Structured
 - **Principle**: Anchor severity levels with real code examples, not prose. Prose definitions of severity drift across runs; code anchors do not.
 - **Principle**: A high false-positive rate in one category destroys trust in all categories, including the accurate ones. Developers dismiss the whole report.
 - **Principle**: The fix is to temporarily disable the noisy category entirely while improving its criteria, then re-enable. Do not tighten in place, because the noise keeps flowing while you iterate.
+- **Principle**: The instruction ceiling: adding words creates more surface area for ambiguity, not less. A longer prompt and a 1000-line prompt both leave the boundary to guesswork; explicit flag, severity and skip rules do not.
+- **Principle**: The first step to reduce false positives is categorical criteria (what to flag, what each severity means, what to skip). Few-shot examples are the next step, to refine the criteria, not the first move.
+- **Principle**: Give the skip list real thresholds: no style issues, no linter-approved formatting, no snake_case naming complaints, no sub-5ms micro-optimisations.
+- **Principle**: Before-and-after: the same reviewer goes from 47 findings per PR (mostly style, naming and micro-optimisations) to three real ones (a SQL injection, a missing error handler, a race condition). Better-defined, not less aggressive.
 - **Why the exam wants this**: This is the recurring "instructions exist but the output is unpredictable" stem. The tested distinction is categorical vs adjectival. Any option whose content is a confidence adjective or a threshold is a distractor.
 - **Distractors**:
   - "Lower the confidence threshold for that category" — keeps the noise flowing; the category stays untrustworthy.
@@ -33,6 +37,7 @@ Primary scenarios: Scenario 5 (Claude Code for CI/CD) and Scenario 6 (Structured
   - "Lower the temperature" — deterministic bad criteria are still bad criteria; judgement is not a randomness problem.
   - "Add a five-level severity rubric described in prose" — sounds thorough, fails because it has no code anchors.
   - "Apply a uniform strictness reduction across all categories" — suppresses true positives in the accurate categories.
+  - "Add a self-reported confidence score and report only findings above 80 percent" — not calibrated to your project standards; the model is judging its own judgement.
 - **Exact terms**: no API surface — this task is prompt content. The mandatory structure is three categories: what to flag, what to report, what to skip.
 - **Scenario tie-in**: CI/CD code review (the review bot that developers stop reading), and severity calibration in the review findings schema.
 
@@ -46,6 +51,11 @@ Primary scenarios: Scenario 5 (Claude Code for CI/CD) and Scenario 6 (Structured
 - **Principle**: Three deployment triggers: detailed instructions alone produce inconsistent formatting; the model makes inconsistent judgement calls on ambiguous cases; extraction produces empty or null fields for information that exists in the document.
 - **Principle**: Few-shot reduces hallucination in extraction when examples cover varied document structures — inline citations vs bibliographies, narrative prose vs tables, informal units. The model learns the shape of a valid extraction instead of inventing data to fit the schema.
 - **Principle**: For strict schemas, pair the schema with format normalisation rules in the prompt (ISO-8601 dates, numeric amount plus currency code, decimal fractions). The schema validates types; the prompt specifies formats.
+- **Principle**: Anatomy of a working example: input plus reasoning plus output. The output tells the model what to produce; the reasoning tells it how to decide. The answer is specific; the derivation generalises.
+- **Principle**: Examples without reasoning teach pattern matching and restrict the model to the cases shown (overfitting to familiar data). Reasoning turns a set of points into a decision surface that handles novel inputs.
+- **Principle**: Why five to eight examples fail: they bloat the context and push the model back into pattern matching, which is exactly what few-shot is meant to avoid. Two to four is the sweet spot.
+- **Principle**: Diagnostic workflow targeting the fault lines: run 10 inputs three times, find where the output flips, and write examples only for the drifting cases.
+- **Principle**: Sequence in an agent: expand the tool description first, add examples second. If the model cannot select the right tool, the few-shot examples are useless.
 - **Why the exam wants this**: the stem will already have failed the cheap fixes (more instructions, more examples of the wrong kind, temperature). The correct option names 2–4 targeted examples with rationale, or examples across varied structures.
 - **Distractors**:
   - "Add more detailed step-by-step instructions covering all edge cases" — instructions grow linearly, edge cases grow combinatorially.
@@ -53,6 +63,7 @@ Primary scenarios: Scenario 5 (Claude Code for CI/CD) and Scenario 6 (Structured
   - "Add few-shot examples of the problem pattern" when the failure is an undefined criterion — examples fix format, not an undefined target.
   - "Lower temperature to 0 and take the union of two runs" — determinism is not a judgement problem.
   - "Add a `do_not_fabricate` boolean to the schema" — sounds smart, but a flag is not a demonstration.
+  - "Add six to eight diverse examples" — pattern matching plus context bloat; the sweet spot is two to four.
 - **Exact terms**: no API surface. Count is 2–4; each example carries its rationale.
 - **Scenario tie-in**: CI review findings that are sometimes actionable and sometimes vague; extraction from documents with mixed citation styles and informal measurement units.
 
@@ -67,6 +78,10 @@ Primary scenarios: Scenario 5 (Claude Code for CI/CD) and Scenario 6 (Structured
 - **Principle**: `tool_choice` has four settings: `"auto"` (model may answer in text), `"any"` (must call some tool, model picks which), `{"type": "tool", "name": "..."}` (must call this specific tool), `"none"` (cannot call tools).
 - **Principle**: Use `"any"` when several extraction tools exist and the document type varies — guaranteed structured output without pre-selecting the schema. Use a named tool only to mandate a specific first step or a single-tool workflow.
 - **Principle**: An enum without an escape hatch creates validation failures when new categories keep appearing. Add `"other"` plus a paired `_detail` string field to capture the source's own wording, and `"unclear"` so an ambiguous case has an honest option instead of a forced wrong bucket.
+- **Principle**: The fake tool paradigm: define a tool that does no work but accepts a structured payload, so the API enforces the exact `input_schema` before the data reaches you. Read the validated result from `response.content[0].input` rather than parsing raw text.
+- **Principle**: Free-form "give me JSON" prompting is fragile: the model wraps output in markdown fences and the parser hits a backtick instead of a brace, and complex documents cause schema drift (omitted optional fields, renamed keys, changed nesting).
+- **Principle**: Syntax versus semantics. Syntax failures are malformed JSON, missing required fields, or a string where a number is expected. Semantic failures are reading the wrong table row, confusing similar terms, or hallucinating a value. Strict schemas and tool use fix syntax; business-logic validation, cross-field consistency checks and human review fix semantics.
+- **Principle**: Required plus nullable: `required` keeps the field present, a null-capable type gives the model an honest escape hatch (`null`). For numbers, a default like `0` can be a structurally valid value.
 - **Why the exam wants this**: the highest-yield task in the domain. Distractors are wrong-layer answers — asking the prompt to do what the schema must do, or asking the schema to do what validation code must do.
 - **Distractors**:
   - "Use tool_use with all fields required to guarantee complete extractions" — fabrication factory.
@@ -76,6 +91,7 @@ Primary scenarios: Scenario 5 (Claude Code for CI/CD) and Scenario 6 (Structured
   - "Use `tool_choice: "auto"` when structured output is required" — lets the model escape into prose.
   - "Add `minimum`, `maximum`, `pattern`, or `minLength` to the schema" — numeric range, string length, and regex constraints are not supported in strict mode; they belong in validation code.
   - "Use prefill to start the assistant turn with `{`" — assistant prefill is removed on modern models.
+  - "Add `minimum`/`maximum` to the schema to fix a wrong-value error" — a semantic error is not a schema problem, and range constraints are not enforced in strict mode anyway.
 - **Exact terms**:
   - `tool_use`, `input_schema`, `tool_choice`, `strict: true`, `additionalProperties: false`, `required`.
   - `output_config.format` with `{"type": "json_schema", "schema": {...}}` for a direct JSON answer.
@@ -98,6 +114,10 @@ Primary scenarios: Scenario 5 (Claude Code for CI/CD) and Scenario 6 (Structured
 - **Principle**: For fields prone to internal inconsistency, extract both values and let the mismatch surface: `stated_total` alongside `calculated_total`, plus `totals_match` or `conflict_detected` and a `conflict_note`. This catches OCR errors, extraction mistakes, and source contradictions without asking the model to reconcile figures it cannot verify.
 - **Principle**: Add `detected_pattern` (and `rule_id` or `evidence`) to each finding so dismissals can be aggregated by code construct. Without it you know "35% are dismissed" but not which constructs to suppress.
 - **Principle**: When the same defect recurs across many runs, change the prompt or schema structurally — add a few-shot example, make the field nullable, split the tool — rather than adding another retry. Prompt-level fixes generalise; per-instance retries do not.
+- **Principle**: Self-correcting retry loop mechanics: run the extraction, validate it, and on failure append the specific error into the conversation (the failed assistant turn plus the error) and call again. Cap the attempts.
+- **Principle**: A generic "validation failed" yields identical failures on every retry. Name the field and the expected format so the model can correct the format.
+- **Principle**: Retries are format correctors, not data generators. A field that is null because the source does not state it passes validation; do not treat absence as a retry failure.
+- **Principle**: When the retry threshold is reached on a genuine gap, hand off to a human instead of forcing the model to invent the value.
 - **Why the exam wants this**: stems deliberately mix two failure populations in one number (e.g. "900 of 8,000 failed"). The correct option splits them: retry the format errors, accept null for the absent values.
 - **Distractors**:
   - "Add retry-with-feedback to handle all extraction failures" — conflates output errors with source gaps.
@@ -120,6 +140,9 @@ Primary scenarios: Scenario 5 (Claude Code for CI/CD) and Scenario 6 (Structured
 - **Principle**: `custom_id` correlates request to response. Results may arrive in any order; join by `custom_id`, never by position. Use stable unique identifiers so a partial re-run is straightforward.
 - **Principle**: On partial failure, resubmit only the failures identified by `custom_id`, after fixing the cause — chunk the over-long inputs, add validation-error feedback, refine the prompt. Do not resubmit the whole batch.
 - **Principle**: Refine prompts on a small sample synchronously before submitting a large batch. Each iteration inside a batch loop costs up to 24 hours.
+- **Principle**: `custom_id` must be unique and meaningful, not a random UUID: a PR number, file path and version survive a partial re-run and a lost mapping.
+- **Principle**: Batch runs asynchronously when spare capacity allows, so a submission can complete in minutes or in up to 24 hours; there is no guaranteed delivery.
+- **Principle**: Batch accepts tool definitions in `params` but is single-turn only: no in-request tool loop and no streaming.
 - **Why the exam wants this**: the "manager proposes switching everything to batch" stem is a recurring shape. Any option that routes a blocking workflow through batch is wrong, including "batch with a synchronous fallback", because the fallback only fires after the queue delay.
 - **Distractors**:
   - "Use batch for the CI code-review bot" / "batch the pre-merge hook" — CI is blocking.
@@ -142,6 +165,8 @@ Primary scenarios: Scenario 5 (Claude Code for CI/CD) and Scenario 6 (Structured
 - **Principle**: Single-pass review of 10+ files fails on attention dilution (early files get more attention than late ones), inconsistent standards (a pattern is flagged in one file and approved in another), and missed cross-file issues. A larger context window does not cure attention dilution — it is not a token problem.
 - **Principle**: Self-reported confidence is unreliable for routing. Calibrate thresholds on a labelled validation set, and measure accuracy by segment — document type, field, source quality, confidence band — before raising an automation threshold. A pipeline that is 97% accurate overall can be 80% accurate on one field or document type.
 - **Principle**: Field-level confidence with a reason is more actionable than a bare score: `value`, `confidence`, `requires_review`, `review_reasons`. Route to human review on low calibrated confidence, ambiguous or contradictory source content, high-impact fields, failed semantic validation, or new and historically error-prone document types.
+- **Principle**: To keep independent review affordable, give the reviewing instance a summary of the implementation (a summariser, compaction, or an explore sub-agent) rather than the full turn-by-turn history. The reviewer needs functional knowledge, not the generator's reasoning.
+- **Principle**: Enterprise CI/CD synthesis: the blocking multi-pass review (per-file, then cross-file integration) runs on the standard Messages API because it needs results in minutes; nightly test generation, full-codebase security audit and documentation generation run on Batch.
 - **Why the exam wants this**: the stem describes a review that caught nothing, or a review whose depth varied across files. Options offering more deliberation, more context, or a confidence threshold in the same session are all wrong-layer.
 - **Distractors**:
   - "Ask the model to review its own findings before returning" — self-review in session; motivated reasoning.
@@ -232,6 +257,11 @@ Latency arithmetic for a batch-backed deadline:
 - Same session reviewing its own work = motivated reasoning. Use a fresh independent instance.
 - Per-file pass + separate cross-file integration pass beats one giant pass. A bigger context window does not fix attention dilution.
 - Self-reported confidence is unreliable uncalibrated. Measure by segment on a labelled validation set.
+- Instruction ceiling: more words create more ambiguity, not less. The first step to cut false positives is categorical criteria; few-shot refines them.
+- A few-shot example is input plus reasoning plus output: the output says what, the reasoning says how. Two to four with reasoning; five to eight causes pattern matching.
+- The fake tool paradigm: a no-op tool that only enforces the schema. Schemas fix structure, validation code fixes meaning.
+- `custom_id` must be unique and meaningful, not a random UUID. Batch is single-turn, no streaming.
+- Independent review can be kept cheap by feeding the reviewer a summary, not the generator's full history.
 
 ---
 
@@ -248,3 +278,7 @@ Files actually read for this note:
 - `resources/paullarionov-guide_en.md` (Chapter 1 §1.1–1.5, Chapter 2 §2.1–2.5, Chapter 6, Chapter 7, §8.3, Domain 4 key knowledge and key skills)
 - `resources/daronyondem-study-guide.md` (§1 API Fundamentals and Output Control, §4 Structured Data Extraction and Validation, §6 System Prompt Engineering, §11 Iterative Refinement/Testing/Evaluation, §12 Model Selection and Inference Controls, §14 Batch Processing, Cost, and Latency)
 - `resources/timothywarner-practice-60q.md` (Claude Code for CI scenario, questions 16–31)
+- `video-transcripts/HqwULqy1egw.json` (Ep 14, Prompt Engineering - Explicit Criteria & False Positives)
+- `video-transcripts/FbIcU6YFrhw.json` (Ep 15, Few-Shot Prompting Explained)
+- `video-transcripts/CaDaLn7DcQ0.json` (Ep 16, Structured Output & JSON Schema)
+- `video-transcripts/BXs7QoLQxX0.json` (Ep 17, Batch API & Multi-Pass Review)

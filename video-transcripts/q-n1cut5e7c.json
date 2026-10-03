@@ -1,0 +1,7077 @@
+{
+ "video_id": "q-n1cut5e7c",
+ "episode": "Ep 12",
+ "title": "Plan Mode vs Execute | Claude Code",
+ "segments": [
+  {
+   "start": 2.4,
+   "duration": 4.04,
+   "text": "Hi guys, welcome to this lesson."
+  },
+  {
+   "start": 4.72,
+   "duration": 4.16,
+   "text": "So,"
+  },
+  {
+   "start": 6.44,
+   "duration": 4.36,
+   "text": "here's the situation I want you to"
+  },
+  {
+   "start": 8.88,
+   "duration": 5.0,
+   "text": "picture, right? You are a developer, you"
+  },
+  {
+   "start": 10.8,
+   "duration": 5.28,
+   "text": "got monolithic Node.js codebase, like"
+  },
+  {
+   "start": 13.88,
+   "duration": 3.48,
+   "text": "40,000 lines of code,"
+  },
+  {
+   "start": 16.08,
+   "duration": 2.76,
+   "text": "you know,"
+  },
+  {
+   "start": 17.36,
+   "duration": 3.2,
+   "text": "tightly coupled."
+  },
+  {
+   "start": 18.84,
+   "duration": 3.72,
+   "text": "It's been running in production for 3"
+  },
+  {
+   "start": 20.56,
+   "duration": 3.68,
+   "text": "years, for example, let's say."
+  },
+  {
+   "start": 22.56,
+   "duration": 2.96,
+   "text": "You open up Claude code and you type,"
+  },
+  {
+   "start": 24.24,
+   "duration": 3.68,
+   "text": "you know,"
+  },
+  {
+   "start": 25.52,
+   "duration": 5.48,
+   "text": "\"Refactor this into an"
+  },
+  {
+   "start": 27.92,
+   "duration": 4.519,
+   "text": "microservice-based architecture.\""
+  },
+  {
+   "start": 31.0,
+   "duration": 3.4,
+   "text": "And what does Claude do? Obviously,"
+  },
+  {
+   "start": 32.439,
+   "duration": 4.241,
+   "text": "Claude has to work, right? So, it reads"
+  },
+  {
+   "start": 34.4,
+   "duration": 5.12,
+   "text": "a few files, makes some decisions, it"
+  },
+  {
+   "start": 36.68,
+   "duration": 4.64,
+   "text": "starts going, it does its job, it starts"
+  },
+  {
+   "start": 39.52,
+   "duration": 4.52,
+   "text": "rewriting things, and 10 minutes later,"
+  },
+  {
+   "start": 41.32,
+   "duration": 4.88,
+   "text": "you are looking at a codebase, right?"
+  },
+  {
+   "start": 44.04,
+   "duration": 3.88,
+   "text": "That is kind of half refactored and has"
+  },
+  {
+   "start": 46.2,
+   "duration": 3.28,
+   "text": "broken imports, and it's completely"
+  },
+  {
+   "start": 47.92,
+   "duration": 3.68,
+   "text": "messed up."
+  },
+  {
+   "start": 49.48,
+   "duration": 4.4,
+   "text": "And the original tests, you know, not"
+  },
+  {
+   "start": 51.6,
+   "duration": 4.0,
+   "text": "even one test pass anymore."
+  },
+  {
+   "start": 53.88,
+   "duration": 2.64,
+   "text": "You know, so you think, \"What went"
+  },
+  {
+   "start": 55.6,
+   "duration": 2.76,
+   "text": "wrong?\""
+  },
+  {
+   "start": 56.52,
+   "duration": 4.8,
+   "text": "Claude kind of did exactly what you"
+  },
+  {
+   "start": 58.36,
+   "duration": 6.879,
+   "text": "asked, but, you know, here's the thing."
+  },
+  {
+   "start": 61.32,
+   "duration": 6.8,
+   "text": "Not all tasks are the same."
+  },
+  {
+   "start": 65.239,
+   "duration": 7.321,
+   "text": "Some tasks, you know,"
+  },
+  {
+   "start": 68.12,
+   "duration": 6.16,
+   "text": "it needs Claude to think before it acts."
+  },
+  {
+   "start": 72.56,
+   "duration": 4.16,
+   "text": "And some tasks, you know, Claude can"
+  },
+  {
+   "start": 74.28,
+   "duration": 5.04,
+   "text": "just handle."
+  },
+  {
+   "start": 76.72,
+   "duration": 5.04,
+   "text": "And you need to know when to use what,"
+  },
+  {
+   "start": 79.32,
+   "duration": 3.92,
+   "text": "when you need Claude to think before"
+  },
+  {
+   "start": 81.76,
+   "duration": 3.32,
+   "text": "executing, and"
+  },
+  {
+   "start": 83.24,
+   "duration": 4.52,
+   "text": "and when you need Claude to just go, you"
+  },
+  {
+   "start": 85.08,
+   "duration": 3.72,
+   "text": "know, just get going."
+  },
+  {
+   "start": 87.76,
+   "duration": 2.56,
+   "text": "Right?"
+  },
+  {
+   "start": 88.8,
+   "duration": 3.48,
+   "text": "So,"
+  },
+  {
+   "start": 90.32,
+   "duration": 3.96,
+   "text": "two modes, one decision. So, in this"
+  },
+  {
+   "start": 92.28,
+   "duration": 3.64,
+   "text": "particular episode, we are going to talk"
+  },
+  {
+   "start": 94.28,
+   "duration": 3.88,
+   "text": "about"
+  },
+  {
+   "start": 95.92,
+   "duration": 4.28,
+   "text": "two modes that is very, very important"
+  },
+  {
+   "start": 98.16,
+   "duration": 4.48,
+   "text": "that you need to use while you are"
+  },
+  {
+   "start": 100.2,
+   "duration": 5.68,
+   "text": "working with Claude."
+  },
+  {
+   "start": 102.64,
+   "duration": 4.76,
+   "text": "Right? So, one mode is where Claude will"
+  },
+  {
+   "start": 105.88,
+   "duration": 3.8,
+   "text": "basically"
+  },
+  {
+   "start": 107.4,
+   "duration": 5.32,
+   "text": "analyze your codebase,"
+  },
+  {
+   "start": 109.68,
+   "duration": 5.84,
+   "text": "uh understand your user use case, for"
+  },
+  {
+   "start": 112.72,
+   "duration": 3.92,
+   "text": "example, and plan the particular course"
+  },
+  {
+   "start": 115.52,
+   "duration": 3.32,
+   "text": "of action."
+  },
+  {
+   "start": 116.64,
+   "duration": 3.72,
+   "text": "And then it will ask for your particular"
+  },
+  {
+   "start": 118.84,
+   "duration": 3.16,
+   "text": "inputs."
+  },
+  {
+   "start": 120.36,
+   "duration": 3.92,
+   "text": "Do you want to go with this particular"
+  },
+  {
+   "start": 122.0,
+   "duration": 3.92,
+   "text": "plan or not?"
+  },
+  {
+   "start": 124.28,
+   "duration": 3.88,
+   "text": "And the other"
+  },
+  {
+   "start": 125.92,
+   "duration": 4.36,
+   "text": "one is basically"
+  },
+  {
+   "start": 128.16,
+   "duration": 4.88,
+   "text": "you tell directly Claude, \"Okay, go to"
+  },
+  {
+   "start": 130.28,
+   "duration": 5.52,
+   "text": "this particular file, you know, um"
+  },
+  {
+   "start": 133.04,
+   "duration": 4.76,
+   "text": "agent.py, and modify this particular"
+  },
+  {
+   "start": 135.8,
+   "duration": 3.52,
+   "text": "function which has this tool."
+  },
+  {
+   "start": 137.8,
+   "duration": 3.44,
+   "text": "You know, instead of accepting three"
+  },
+  {
+   "start": 139.32,
+   "duration": 3.72,
+   "text": "parameters into the function, I want it"
+  },
+  {
+   "start": 141.24,
+   "duration": 4.2,
+   "text": "to accept an array and do this"
+  },
+  {
+   "start": 143.04,
+   "duration": 4.68,
+   "text": "particular thing.\" In that case,"
+  },
+  {
+   "start": 145.44,
+   "duration": 4.56,
+   "text": "Claude will just go there and, you know,"
+  },
+  {
+   "start": 147.72,
+   "duration": 3.96,
+   "text": "do the particular thing that you asked,"
+  },
+  {
+   "start": 150.0,
+   "duration": 3.48,
+   "text": "and done, that's it. That is known as"
+  },
+  {
+   "start": 151.68,
+   "duration": 4.44,
+   "text": "direct execution."
+  },
+  {
+   "start": 153.48,
+   "duration": 7.16,
+   "text": "Now, when to use what? When to use this"
+  },
+  {
+   "start": 156.12,
+   "duration": 7.04,
+   "text": "direct execution, and when to use the"
+  },
+  {
+   "start": 160.64,
+   "duration": 4.16,
+   "text": "plan mode that I told you."
+  },
+  {
+   "start": 163.16,
+   "duration": 3.72,
+   "text": "So, direct execution is basically the"
+  },
+  {
+   "start": 164.8,
+   "duration": 3.84,
+   "text": "default. You give Claude a task, Claude"
+  },
+  {
+   "start": 166.88,
+   "duration": 3.2,
+   "text": "does it, you know, no ceremonies,"
+  },
+  {
+   "start": 168.64,
+   "duration": 3.68,
+   "text": "nothing."
+  },
+  {
+   "start": 170.08,
+   "duration": 4.36,
+   "text": "That's it, no planning phase."
+  },
+  {
+   "start": 172.32,
+   "duration": 3.32,
+   "text": "So, where what is the key signal? When"
+  },
+  {
+   "start": 174.44,
+   "duration": 2.88,
+   "text": "do you go with the plan, you know,"
+  },
+  {
+   "start": 175.64,
+   "duration": 2.96,
+   "text": "direct execution? That is the point,"
+  },
+  {
+   "start": 177.32,
+   "duration": 2.8,
+   "text": "right?"
+  },
+  {
+   "start": 178.6,
+   "duration": 3.48,
+   "text": "You will go with the direct execution"
+  },
+  {
+   "start": 180.12,
+   "duration": 3.64,
+   "text": "when you already know what needs to"
+  },
+  {
+   "start": 182.08,
+   "duration": 4.04,
+   "text": "happen."
+  },
+  {
+   "start": 183.76,
+   "duration": 5.4,
+   "text": "You know, the scope is clear, the output"
+  },
+  {
+   "start": 186.12,
+   "duration": 5.08,
+   "text": "is kind of predictable, and if if even"
+  },
+  {
+   "start": 189.16,
+   "duration": 3.68,
+   "text": "if Claude gets it slightly wrong, you"
+  },
+  {
+   "start": 191.2,
+   "duration": 3.12,
+   "text": "know, fixing it very cheap. You don't"
+  },
+  {
+   "start": 192.84,
+   "duration": 4.0,
+   "text": "have to, you know,"
+  },
+  {
+   "start": 194.32,
+   "duration": 4.36,
+   "text": "go back to the last stable state, and go"
+  },
+  {
+   "start": 196.84,
+   "duration": 3.76,
+   "text": "through thousands of files."
+  },
+  {
+   "start": 198.68,
+   "duration": 3.92,
+   "text": "You know where Claude made the change,"
+  },
+  {
+   "start": 200.6,
+   "duration": 3.92,
+   "text": "and if something is broken, you can go"
+  },
+  {
+   "start": 202.6,
+   "duration": 3.2,
+   "text": "and fix it as well."
+  },
+  {
+   "start": 204.52,
+   "duration": 3.12,
+   "text": "Right?"
+  },
+  {
+   "start": 205.8,
+   "duration": 3.2,
+   "text": "So, these are the places where you"
+  },
+  {
+   "start": 207.64,
+   "duration": 2.72,
+   "text": "should use the direct execution, you"
+  },
+  {
+   "start": 209.0,
+   "duration": 3.6,
+   "text": "know, you open up your Claude session"
+  },
+  {
+   "start": 210.36,
+   "duration": 4.52,
+   "text": "and do whatever you want. When Claude"
+  },
+  {
+   "start": 212.6,
+   "duration": 3.56,
+   "text": "has a particular context about your"
+  },
+  {
+   "start": 214.88,
+   "duration": 3.32,
+   "text": "codebase,"
+  },
+  {
+   "start": 216.16,
+   "duration": 5.0,
+   "text": "and it knows about your codebase"
+  },
+  {
+   "start": 218.2,
+   "duration": 4.92,
+   "text": "already, then you can ask, \"Okay, write"
+  },
+  {
+   "start": 221.16,
+   "duration": 4.04,
+   "text": "unit tests for this particular class.\""
+  },
+  {
+   "start": 223.12,
+   "duration": 5.12,
+   "text": "Because Claude knows about it, it can do"
+  },
+  {
+   "start": 225.2,
+   "duration": 5.32,
+   "text": "it. Or, you know, fixing a small bug,"
+  },
+  {
+   "start": 228.24,
+   "duration": 5.52,
+   "text": "you know, with a clear task, you know,"
+  },
+  {
+   "start": 230.52,
+   "duration": 4.88,
+   "text": "stack trace. So, you can get the logs,"
+  },
+  {
+   "start": 233.76,
+   "duration": 3.68,
+   "text": "okay, of which is happening for"
+  },
+  {
+   "start": 235.4,
+   "duration": 4.2,
+   "text": "particular files, and you can ask Claude"
+  },
+  {
+   "start": 237.44,
+   "duration": 3.6,
+   "text": "to fix that issue. That is where Claude"
+  },
+  {
+   "start": 239.6,
+   "duration": 2.84,
+   "text": "will also direct execution will work"
+  },
+  {
+   "start": 241.04,
+   "duration": 3.44,
+   "text": "well as well."
+  },
+  {
+   "start": 242.44,
+   "duration": 4.8,
+   "text": "Writing tests for an executing existing"
+  },
+  {
+   "start": 244.48,
+   "duration": 4.36,
+   "text": "function or a class, right? That is also"
+  },
+  {
+   "start": 247.24,
+   "duration": 3.56,
+   "text": "an easier task to do."
+  },
+  {
+   "start": 248.84,
+   "duration": 3.84,
+   "text": "Updating config files, generating"
+  },
+  {
+   "start": 250.8,
+   "duration": 4.64,
+   "text": "boilerplate code, these are all direct"
+  },
+  {
+   "start": 252.68,
+   "duration": 4.36,
+   "text": "execution can handle seamlessly."
+  },
+  {
+   "start": 255.44,
+   "duration": 4.04,
+   "text": "Now, the common thread here is the"
+  },
+  {
+   "start": 257.04,
+   "duration": 4.88,
+   "text": "destination is known. This means that"
+  },
+  {
+   "start": 259.48,
+   "duration": 3.8,
+   "text": "there is not much ambiguity surrounding"
+  },
+  {
+   "start": 261.92,
+   "duration": 2.48,
+   "text": "over here."
+  },
+  {
+   "start": 263.28,
+   "duration": 2.6,
+   "text": "You know,"
+  },
+  {
+   "start": 264.4,
+   "duration": 2.44,
+   "text": "we know what the right answer looks"
+  },
+  {
+   "start": 265.88,
+   "duration": 2.88,
+   "text": "like."
+  },
+  {
+   "start": 266.84,
+   "duration": 3.24,
+   "text": "It's just that we are lazy enough to not"
+  },
+  {
+   "start": 268.76,
+   "duration": 4.04,
+   "text": "code, and you should not code all the so"
+  },
+  {
+   "start": 270.08,
+   "duration": 5.32,
+   "text": "you just have to delegate it to Claude."
+  },
+  {
+   "start": 272.8,
+   "duration": 5.44,
+   "text": "So, in those scenarios,"
+  },
+  {
+   "start": 275.4,
+   "duration": 4.64,
+   "text": "please go with direct execution."
+  },
+  {
+   "start": 278.24,
+   "duration": 3.64,
+   "text": "Now,"
+  },
+  {
+   "start": 280.04,
+   "duration": 4.6,
+   "text": "the opposite of it is when you say"
+  },
+  {
+   "start": 281.88,
+   "duration": 5.64,
+   "text": "something like, \"Make this code better."
+  },
+  {
+   "start": 284.64,
+   "duration": 5.12,
+   "text": "Refactor this authentication system.\""
+  },
+  {
+   "start": 287.52,
+   "duration": 4.0,
+   "text": "Those are plan mode tasks, and if you"
+  },
+  {
+   "start": 289.76,
+   "duration": 3.32,
+   "text": "treat them as, you know, direct"
+  },
+  {
+   "start": 291.52,
+   "duration": 3.92,
+   "text": "execution, you are going to have a very"
+  },
+  {
+   "start": 293.08,
+   "duration": 5.48,
+   "text": "bad time."
+  },
+  {
+   "start": 295.44,
+   "duration": 5.96,
+   "text": "Okay? Now, to not be in that situation,"
+  },
+  {
+   "start": 298.56,
+   "duration": 6.12,
+   "text": "Claude's way of saying is, \"Wait, before"
+  },
+  {
+   "start": 301.4,
+   "duration": 5.36,
+   "text": "I touch anything, you know,"
+  },
+  {
+   "start": 304.68,
+   "duration": 3.4,
+   "text": "let me figure out what I'm actually"
+  },
+  {
+   "start": 306.76,
+   "duration": 3.44,
+   "text": "dealing with.\""
+  },
+  {
+   "start": 308.08,
+   "duration": 3.16,
+   "text": "Simple phrase to put up with, you know,"
+  },
+  {
+   "start": 310.2,
+   "duration": 2.88,
+   "text": "there's a simple phrase you need to"
+  },
+  {
+   "start": 311.24,
+   "duration": 4.04,
+   "text": "understand."
+  },
+  {
+   "start": 313.08,
+   "duration": 4.52,
+   "text": "So, this plan mode is like an"
+  },
+  {
+   "start": 315.28,
+   "duration": 4.24,
+   "text": "investigation phase that happens, you"
+  },
+  {
+   "start": 317.6,
+   "duration": 5.12,
+   "text": "know, before any code is actually"
+  },
+  {
+   "start": 319.52,
+   "duration": 4.48,
+   "text": "written or any files, if they are"
+  },
+  {
+   "start": 322.72,
+   "duration": 3.16,
+   "text": "changed."
+  },
+  {
+   "start": 324.0,
+   "duration": 4.44,
+   "text": "So, in plan mode, Claude does a few"
+  },
+  {
+   "start": 325.88,
+   "duration": 4.8,
+   "text": "things, right? It reads broadly across"
+  },
+  {
+   "start": 328.44,
+   "duration": 5.04,
+   "text": "your codebase, you know, to understand"
+  },
+  {
+   "start": 330.68,
+   "duration": 5.08,
+   "text": "the current architecture. It identifies"
+  },
+  {
+   "start": 333.48,
+   "duration": 5.08,
+   "text": "dependencies, you know, considers"
+  },
+  {
+   "start": 335.76,
+   "duration": 4.88,
+   "text": "multiple approaches and tradeoffs and"
+  },
+  {
+   "start": 338.56,
+   "duration": 3.92,
+   "text": "all those things, and it presents the"
+  },
+  {
+   "start": 340.64,
+   "duration": 2.96,
+   "text": "plan to you."
+  },
+  {
+   "start": 342.48,
+   "duration": 2.6,
+   "text": "You know,"
+  },
+  {
+   "start": 343.6,
+   "duration": 3.84,
+   "text": "um"
+  },
+  {
+   "start": 345.08,
+   "duration": 4.92,
+   "text": "Now, why this is better?"
+  },
+  {
+   "start": 347.44,
+   "duration": 4.6,
+   "text": "In direct execution also, you can"
+  },
+  {
+   "start": 350.0,
+   "duration": 4.36,
+   "text": "uh write a very big prompt that I need"
+  },
+  {
+   "start": 352.04,
+   "duration": 5.32,
+   "text": "all these things, and uh it will"
+  },
+  {
+   "start": 354.36,
+   "duration": 5.16,
+   "text": "execute, no worries. And you can give a"
+  },
+  {
+   "start": 357.36,
+   "duration": 4.44,
+   "text": "lot of examples as well, and you are"
+  },
+  {
+   "start": 359.52,
+   "duration": 4.08,
+   "text": "sure about it, and you are giving very"
+  },
+  {
+   "start": 361.8,
+   "duration": 3.4,
+   "text": "big prompt, and, you know, the direct"
+  },
+  {
+   "start": 363.6,
+   "duration": 3.8,
+   "text": "part will also work."
+  },
+  {
+   "start": 365.2,
+   "duration": 4.44,
+   "text": "But here's the catch. In direct"
+  },
+  {
+   "start": 367.4,
+   "duration": 4.8,
+   "text": "execution, Claude, if it go if it will"
+  },
+  {
+   "start": 369.64,
+   "duration": 4.56,
+   "text": "go file by file, right? It will not kind"
+  },
+  {
+   "start": 372.2,
+   "duration": 3.68,
+   "text": "of include all of the codebase at once,"
+  },
+  {
+   "start": 374.2,
+   "duration": 4.0,
+   "text": "because it doesn't have that much"
+  },
+  {
+   "start": 375.88,
+   "duration": 5.8,
+   "text": "context, right? So, it will go to one"
+  },
+  {
+   "start": 378.2,
+   "duration": 5.56,
+   "text": "file, for example, um main controller."
+  },
+  {
+   "start": 381.68,
+   "duration": 4.56,
+   "text": "Then it will find one particular"
+  },
+  {
+   "start": 383.76,
+   "duration": 3.88,
+   "text": "service. Then, as it found one"
+  },
+  {
+   "start": 386.24,
+   "duration": 2.88,
+   "text": "dependency, it will make the change"
+  },
+  {
+   "start": 387.64,
+   "duration": 3.12,
+   "text": "there and go to that dependency, and"
+  },
+  {
+   "start": 389.12,
+   "duration": 3.24,
+   "text": "simply it will"
+  },
+  {
+   "start": 390.76,
+   "duration": 3.52,
+   "text": "keep on hopping, because it's a very"
+  },
+  {
+   "start": 392.36,
+   "duration": 4.28,
+   "text": "large change, it will keep on hopping,"
+  },
+  {
+   "start": 394.28,
+   "duration": 5.0,
+   "text": "and it will basically, as it touches one"
+  },
+  {
+   "start": 396.64,
+   "duration": 5.88,
+   "text": "one file, it will make the changes."
+  },
+  {
+   "start": 399.28,
+   "duration": 5.24,
+   "text": "But what if those changes is kind kind"
+  },
+  {
+   "start": 402.52,
+   "duration": 4.2,
+   "text": "of gets broken, or even if it works,"
+  },
+  {
+   "start": 404.52,
+   "duration": 4.36,
+   "text": "it's not the best approach."
+  },
+  {
+   "start": 406.72,
+   "duration": 3.88,
+   "text": "Right? And after making those changes,"
+  },
+  {
+   "start": 408.88,
+   "duration": 3.96,
+   "text": "you find out that, \"Okay, you know,"
+  },
+  {
+   "start": 410.6,
+   "duration": 3.64,
+   "text": "there was a better approach, and I"
+  },
+  {
+   "start": 412.84,
+   "duration": 4.04,
+   "text": "didn't go with it.\" So, in that case,"
+  },
+  {
+   "start": 414.24,
+   "duration": 5.2,
+   "text": "you have to revert the changes back. If"
+  },
+  {
+   "start": 416.88,
+   "duration": 4.48,
+   "text": "you have VCS or version control, you can"
+  },
+  {
+   "start": 419.44,
+   "duration": 4.52,
+   "text": "just, you know, do an undo over that"
+  },
+  {
+   "start": 421.36,
+   "duration": 5.56,
+   "text": "commit. But uh if you don't have that,"
+  },
+  {
+   "start": 423.96,
+   "duration": 4.8,
+   "text": "then basically Claude has to manually,"
+  },
+  {
+   "start": 426.92,
+   "duration": 3.72,
+   "text": "you know, reverse those changes. In that"
+  },
+  {
+   "start": 428.76,
+   "duration": 4.12,
+   "text": "case, it is very expensive, you know,"
+  },
+  {
+   "start": 430.64,
+   "duration": 3.68,
+   "text": "you are just spending tokens to just"
+  },
+  {
+   "start": 432.88,
+   "duration": 5.2,
+   "text": "reverse your changes."
+  },
+  {
+   "start": 434.32,
+   "duration": 5.44,
+   "text": "Why not use the plan mode first?"
+  },
+  {
+   "start": 438.08,
+   "duration": 2.68,
+   "text": "It will give you a proper plan of what"
+  },
+  {
+   "start": 439.76,
+   "duration": 2.68,
+   "text": "changes you made, it will give you"
+  },
+  {
+   "start": 440.76,
+   "duration": 3.56,
+   "text": "multiple approaches,"
+  },
+  {
+   "start": 442.44,
+   "duration": 3.84,
+   "text": "and you have to choose an approach, and"
+  },
+  {
+   "start": 444.32,
+   "duration": 3.88,
+   "text": "once you are okay with it, you give the"
+  },
+  {
+   "start": 446.28,
+   "duration": 3.84,
+   "text": "green signal to Claude, then it will go"
+  },
+  {
+   "start": 448.2,
+   "duration": 3.755,
+   "text": "with the direct execution based on the"
+  },
+  {
+   "start": 450.12,
+   "duration": 1.96,
+   "text": "plan."
+  },
+  {
+   "start": 451.955,
+   "duration": 2.325,
+   "text": ">> [snorts]"
+  },
+  {
+   "start": 452.08,
+   "duration": 4.64,
+   "text": ">> Now, one more scenario where the plan"
+  },
+  {
+   "start": 454.28,
+   "duration": 5.32,
+   "text": "mode is very, very much important is"
+  },
+  {
+   "start": 456.72,
+   "duration": 6.32,
+   "text": "whenever if you are even starting with a"
+  },
+  {
+   "start": 459.6,
+   "duration": 6.04,
+   "text": "uh with an application from the scratch."
+  },
+  {
+   "start": 463.04,
+   "duration": 4.12,
+   "text": "Now, it is very important because"
+  },
+  {
+   "start": 465.64,
+   "duration": 3.04,
+   "text": "uh as you are starting with an"
+  },
+  {
+   "start": 467.16,
+   "duration": 4.04,
+   "text": "application from the start, you can make"
+  },
+  {
+   "start": 468.68,
+   "duration": 4.4,
+   "text": "one argument saying that, you know, as"
+  },
+  {
+   "start": 471.2,
+   "duration": 4.44,
+   "text": "I'm starting from scratch, I'll make a"
+  },
+  {
+   "start": 473.08,
+   "duration": 4.64,
+   "text": "simple boilerplate code, and I can start"
+  },
+  {
+   "start": 475.64,
+   "duration": 3.76,
+   "text": "with it. I can make the blueprint, and I"
+  },
+  {
+   "start": 477.72,
+   "duration": 4.08,
+   "text": "can start with it."
+  },
+  {
+   "start": 479.4,
+   "duration": 4.48,
+   "text": "But here is the thing."
+  },
+  {
+   "start": 481.8,
+   "duration": 4.12,
+   "text": "If you go with the plan mode, you give"
+  },
+  {
+   "start": 483.88,
+   "duration": 3.56,
+   "text": "the proper requirements to Claude before"
+  },
+  {
+   "start": 485.92,
+   "duration": 4.88,
+   "text": "even starting with your application,"
+  },
+  {
+   "start": 487.44,
+   "duration": 5.96,
+   "text": "then Claude might suggest some better"
+  },
+  {
+   "start": 490.8,
+   "duration": 4.6,
+   "text": "foundations for your application, which"
+  },
+  {
+   "start": 493.4,
+   "duration": 3.4,
+   "text": "might make your application more"
+  },
+  {
+   "start": 495.4,
+   "duration": 3.6,
+   "text": "generic,"
+  },
+  {
+   "start": 496.8,
+   "duration": 4.8,
+   "text": "which might make your"
+  },
+  {
+   "start": 499.0,
+   "duration": 4.84,
+   "text": "uh you know, SonarQube findings, you"
+  },
+  {
+   "start": 501.6,
+   "duration": 4.28,
+   "text": "know, duplications less,"
+  },
+  {
+   "start": 503.84,
+   "duration": 4.32,
+   "text": "or which might"
+  },
+  {
+   "start": 505.88,
+   "duration": 3.92,
+   "text": "give you better way of exposing your"
+  },
+  {
+   "start": 508.16,
+   "duration": 3.879,
+   "text": "services, you know."
+  },
+  {
+   "start": 509.8,
+   "duration": 4.2,
+   "text": "Who knows? You might like them as well."
+  },
+  {
+   "start": 512.039,
+   "duration": 3.041,
+   "text": "So, in that case, Claude, you know, plan"
+  },
+  {
+   "start": 514.0,
+   "duration": 2.52,
+   "text": "mode is"
+  },
+  {
+   "start": 515.08,
+   "duration": 3.2,
+   "text": "um"
+  },
+  {
+   "start": 516.52,
+   "duration": 3.76,
+   "text": "the king."
+  },
+  {
+   "start": 518.28,
+   "duration": 4.12,
+   "text": "You know? So, that is where"
+  },
+  {
+   "start": 520.28,
+   "duration": 3.36,
+   "text": "you this these are the steps that plan"
+  },
+  {
+   "start": 522.4,
+   "duration": 3.44,
+   "text": "mode does, basically, whatever I have"
+  },
+  {
+   "start": 523.64,
+   "duration": 4.36,
+   "text": "explained. So, the exam triggers are"
+  },
+  {
+   "start": 525.84,
+   "duration": 3.92,
+   "text": "something like if there are large-scale"
+  },
+  {
+   "start": 528.0,
+   "duration": 2.92,
+   "text": "architectural changes, multiple valid"
+  },
+  {
+   "start": 529.76,
+   "duration": 3.0,
+   "text": "approaches, you know, you have to"
+  },
+  {
+   "start": 530.92,
+   "duration": 3.28,
+   "text": "refactor, migrate, or re-architect."
+  },
+  {
+   "start": 532.76,
+   "duration": 4.48,
+   "text": "Basically, you have to go with plan"
+  },
+  {
+   "start": 534.2,
+   "duration": 4.88,
+   "text": "mode, and in the exam scenarios or in"
+  },
+  {
+   "start": 537.24,
+   "duration": 4.04,
+   "text": "the interview questions, if something"
+  },
+  {
+   "start": 539.08,
+   "duration": 4.12,
+   "text": "like this is asked, you have a clear"
+  },
+  {
+   "start": 541.28,
+   "duration": 3.44,
+   "text": "answer in front of you, that is the plan"
+  },
+  {
+   "start": 543.2,
+   "duration": 3.88,
+   "text": "mode, guys."
+  },
+  {
+   "start": 544.72,
+   "duration": 5.2,
+   "text": "Okay, I hope that is making sense."
+  },
+  {
+   "start": 547.08,
+   "duration": 3.96,
+   "text": "So, when do you decide to go with what?"
+  },
+  {
+   "start": 549.92,
+   "duration": 2.72,
+   "text": "You know,"
+  },
+  {
+   "start": 551.04,
+   "duration": 3.88,
+   "text": "you have to ask yourself a question, \"Do"
+  },
+  {
+   "start": 552.64,
+   "duration": 4.12,
+   "text": "I need plan mode, or do I not need the"
+  },
+  {
+   "start": 554.92,
+   "duration": 2.92,
+   "text": "plan mode?\" So, here I've created a very"
+  },
+  {
+   "start": 556.76,
+   "duration": 3.76,
+   "text": "simple"
+  },
+  {
+   "start": 557.84,
+   "duration": 5.48,
+   "text": "uh decision tree that you can kind of uh"
+  },
+  {
+   "start": 560.52,
+   "duration": 4.4,
+   "text": "you know, remember to not remember, you"
+  },
+  {
+   "start": 563.32,
+   "duration": 3.32,
+   "text": "know, as you work with it, you will get"
+  },
+  {
+   "start": 564.92,
+   "duration": 5.28,
+   "text": "that particular feeling every time, \"Do"
+  },
+  {
+   "start": 566.64,
+   "duration": 5.08,
+   "text": "I need to go with the plan mode or not?\""
+  },
+  {
+   "start": 570.2,
+   "duration": 3.48,
+   "text": "So, simply,"
+  },
+  {
+   "start": 571.72,
+   "duration": 4.36,
+   "text": "if your"
+  },
+  {
+   "start": 573.68,
+   "duration": 5.04,
+   "text": "changes that you require, if it touches"
+  },
+  {
+   "start": 576.08,
+   "duration": 5.0,
+   "text": "more than one file non-trivially,"
+  },
+  {
+   "start": 578.72,
+   "duration": 4.04,
+   "text": "right? More than one file means multiple"
+  },
+  {
+   "start": 581.08,
+   "duration": 4.12,
+   "text": "files, lot of files, and you are not"
+  },
+  {
+   "start": 582.76,
+   "duration": 3.88,
+   "text": "sure about the changes, like, you know,"
+  },
+  {
+   "start": 585.2,
+   "duration": 3.16,
+   "text": "\"Go to this file, go to that file, and"
+  },
+  {
+   "start": 586.64,
+   "duration": 4.32,
+   "text": "make that change.\" There is a lot of"
+  },
+  {
+   "start": 588.36,
+   "duration": 3.92,
+   "text": "ambiguity um"
+  },
+  {
+   "start": 590.96,
+   "duration": 2.96,
+   "text": "in this particular change, obviously,"
+  },
+  {
+   "start": 592.28,
+   "duration": 3.76,
+   "text": "you will go with plan mode."
+  },
+  {
+   "start": 593.92,
+   "duration": 4.04,
+   "text": "Multiple valid approaches. Now, you have"
+  },
+  {
+   "start": 596.04,
+   "duration": 3.68,
+   "text": "a valid approach, but you think that"
+  },
+  {
+   "start": 597.96,
+   "duration": 3.48,
+   "text": "okay, there might be another valid, you"
+  },
+  {
+   "start": 599.72,
+   "duration": 3.48,
+   "text": "know, better approach. So, you're not"
+  },
+  {
+   "start": 601.44,
+   "duration": 3.48,
+   "text": "sure. In that case also, Claude will"
+  },
+  {
+   "start": 603.2,
+   "duration": 4.04,
+   "text": "present you with multiple approaches,"
+  },
+  {
+   "start": 604.92,
+   "duration": 4.68,
+   "text": "and you have to choose between them. In"
+  },
+  {
+   "start": 607.24,
+   "duration": 4.92,
+   "text": "that case as well,"
+  },
+  {
+   "start": 609.6,
+   "duration": 3.68,
+   "text": "you know, it is better to go with the"
+  },
+  {
+   "start": 612.16,
+   "duration": 2.36,
+   "text": "um"
+  },
+  {
+   "start": 613.28,
+   "duration": 2.76,
+   "text": "plan mode."
+  },
+  {
+   "start": 614.52,
+   "duration": 2.84,
+   "text": "Expensive to reverse. I gave you that"
+  },
+  {
+   "start": 616.04,
+   "duration": 2.96,
+   "text": "particular example, right? If that is"
+  },
+  {
+   "start": 617.36,
+   "duration": 2.8,
+   "text": "the case as well, you have to go with"
+  },
+  {
+   "start": 619.0,
+   "duration": 2.8,
+   "text": "the"
+  },
+  {
+   "start": 620.16,
+   "duration": 4.4,
+   "text": "plan mode."
+  },
+  {
+   "start": 621.8,
+   "duration": 4.72,
+   "text": "Alters architectural shape. You know, if"
+  },
+  {
+   "start": 624.56,
+   "duration": 4.4,
+   "text": "you know, there is a requirement of a"
+  },
+  {
+   "start": 626.52,
+   "duration": 4.4,
+   "text": "better architectural decision that needs"
+  },
+  {
+   "start": 628.96,
+   "duration": 3.48,
+   "text": "to be taken in the changes, you can't"
+  },
+  {
+   "start": 630.92,
+   "duration": 3.24,
+   "text": "blindly write code, right? You have to"
+  },
+  {
+   "start": 632.44,
+   "duration": 3.76,
+   "text": "take in in real-life scenarios also, you"
+  },
+  {
+   "start": 634.16,
+   "duration": 3.64,
+   "text": "have to take the, you know, approval of"
+  },
+  {
+   "start": 636.2,
+   "duration": 3.32,
+   "text": "your architect and then move forward"
+  },
+  {
+   "start": 637.8,
+   "duration": 4.04,
+   "text": "with it. In that case as well, you would"
+  },
+  {
+   "start": 639.52,
+   "duration": 4.48,
+   "text": "use the plan mode. If all of these"
+  },
+  {
+   "start": 641.84,
+   "duration": 3.92,
+   "text": "doesn't fall under your, you know, that"
+  },
+  {
+   "start": 644.0,
+   "duration": 3.32,
+   "text": "radar, guys, you would go with direct"
+  },
+  {
+   "start": 645.76,
+   "duration": 3.32,
+   "text": "execution."
+  },
+  {
+   "start": 647.32,
+   "duration": 4.8,
+   "text": "That's it."
+  },
+  {
+   "start": 649.08,
+   "duration": 5.24,
+   "text": "And the common mistake is basically, um"
+  },
+  {
+   "start": 652.12,
+   "duration": 4.88,
+   "text": "you know, going with direct execution"
+  },
+  {
+   "start": 654.32,
+   "duration": 4.76,
+   "text": "because it is easier. You know, to start"
+  },
+  {
+   "start": 657.0,
+   "duration": 4.4,
+   "text": "off, it is easier because it doesn't"
+  },
+  {
+   "start": 659.08,
+   "duration": 3.92,
+   "text": "involve a lot of decision-making and,"
+  },
+  {
+   "start": 661.4,
+   "duration": 3.56,
+   "text": "you know, direct prompting it is"
+  },
+  {
+   "start": 663.0,
+   "duration": 4.04,
+   "text": "involving. So, you might think that it"
+  },
+  {
+   "start": 664.96,
+   "duration": 3.72,
+   "text": "is easy, I'll keep on iterating, but"
+  },
+  {
+   "start": 667.04,
+   "duration": 3.08,
+   "text": "unknowingly, you are spending too much"
+  },
+  {
+   "start": 668.68,
+   "duration": 4.36,
+   "text": "tokens,"
+  },
+  {
+   "start": 670.12,
+   "duration": 4.8,
+   "text": "and you are not being efficient. And"
+  },
+  {
+   "start": 673.04,
+   "duration": 4.24,
+   "text": "and also, you are not striving for"
+  },
+  {
+   "start": 674.92,
+   "duration": 4.16,
+   "text": "perfection as well. And you have a lot"
+  },
+  {
+   "start": 677.28,
+   "duration": 3.6,
+   "text": "of support. You just have to take a"
+  },
+  {
+   "start": 679.08,
+   "duration": 3.44,
+   "text": "decision that will not take much time,"
+  },
+  {
+   "start": 680.88,
+   "duration": 3.64,
+   "text": "just 10 minutes more."
+  },
+  {
+   "start": 682.52,
+   "duration": 4.64,
+   "text": "And if you take that decision, you might"
+  },
+  {
+   "start": 684.52,
+   "duration": 5.36,
+   "text": "end up with It might be a more perfect,"
+  },
+  {
+   "start": 687.16,
+   "duration": 3.679,
+   "text": "near-perfect application, or"
+  },
+  {
+   "start": 689.88,
+   "duration": 2.68,
+   "text": "uh"
+  },
+  {
+   "start": 690.839,
+   "duration": 4.801,
+   "text": "you can impress and show off to your"
+  },
+  {
+   "start": 692.56,
+   "duration": 4.72,
+   "text": "colleagues that, you know, I did this."
+  },
+  {
+   "start": 695.64,
+   "duration": 3.16,
+   "text": "You know, they might be using Claude"
+  },
+  {
+   "start": 697.28,
+   "duration": 3.24,
+   "text": "code wrong, but you understood, okay, I"
+  },
+  {
+   "start": 698.8,
+   "duration": 3.8,
+   "text": "need to do use the plan mode here, and"
+  },
+  {
+   "start": 700.52,
+   "duration": 5.12,
+   "text": "you took a better decision. Maybe you"
+  },
+  {
+   "start": 702.6,
+   "duration": 4.72,
+   "text": "found a very um"
+  },
+  {
+   "start": 705.64,
+   "duration": 5.76,
+   "text": "you know, uh"
+  },
+  {
+   "start": 707.32,
+   "duration": 5.88,
+   "text": "P1 kind of a bug, very critical bug, and"
+  },
+  {
+   "start": 711.4,
+   "duration": 4.16,
+   "text": "that's it. You have to stand out in that"
+  },
+  {
+   "start": 713.2,
+   "duration": 4.28,
+   "text": "particular thing. So, yeah, that is one"
+  },
+  {
+   "start": 715.56,
+   "duration": 4.64,
+   "text": "more thing that I wanted to point out,"
+  },
+  {
+   "start": 717.48,
+   "duration": 5.08,
+   "text": "so how to take the decision."
+  },
+  {
+   "start": 720.2,
+   "duration": 2.96,
+   "text": "A very simple sample question."
+  },
+  {
+   "start": 722.56,
+   "duration": 2.12,
+   "text": "Uh"
+  },
+  {
+   "start": 723.16,
+   "duration": 3.12,
+   "text": "If you're migrating a highly coupled"
+  },
+  {
+   "start": 724.68,
+   "duration": 3.0,
+   "text": "Node.js monolith with significant"
+  },
+  {
+   "start": 726.28,
+   "duration": 3.24,
+   "text": "interdependencies, what would you do?"
+  },
+  {
+   "start": 727.68,
+   "duration": 3.68,
+   "text": "So, these are the four options, and you"
+  },
+  {
+   "start": 729.52,
+   "duration": 3.84,
+   "text": "know, you already know the answer. Use"
+  },
+  {
+   "start": 731.36,
+   "duration": 4.24,
+   "text": "plan mode to generate a phase strategy"
+  },
+  {
+   "start": 733.36,
+   "duration": 4.04,
+   "text": "before making changes."
+  },
+  {
+   "start": 735.6,
+   "duration": 3.4,
+   "text": "Guess the dependencies and migrate one"
+  },
+  {
+   "start": 737.4,
+   "duration": 3.08,
+   "text": "service at a time. Obviously, A is the"
+  },
+  {
+   "start": 739.0,
+   "duration": 3.4,
+   "text": "correct option. B says guessing"
+  },
+  {
+   "start": 740.48,
+   "duration": 3.88,
+   "text": "dependencies. Why would you guess"
+  },
+  {
+   "start": 742.4,
+   "duration": 3.84,
+   "text": "dependencies when you have Claude code"
+  },
+  {
+   "start": 744.36,
+   "duration": 4.12,
+   "text": "and plan mode? You can go through all"
+  },
+  {
+   "start": 746.24,
+   "duration": 4.4,
+   "text": "the dependencies once, you know, uh"
+  },
+  {
+   "start": 748.48,
+   "duration": 4.44,
+   "text": "Claude generates a plan, and then you"
+  },
+  {
+   "start": 750.64,
+   "duration": 3.88,
+   "text": "can execute it. Build extensive test"
+  },
+  {
+   "start": 752.92,
+   "duration": 2.68,
+   "text": "suits for all services before any"
+  },
+  {
+   "start": 754.52,
+   "duration": 2.92,
+   "text": "migration."
+  },
+  {
+   "start": 755.6,
+   "duration": 4.0,
+   "text": "That is, you know, that"
+  },
+  {
+   "start": 757.44,
+   "duration": 3.76,
+   "text": "that is not required. But on the other"
+  },
+  {
+   "start": 759.6,
+   "duration": 3.28,
+   "text": "hand, the better approach is basically,"
+  },
+  {
+   "start": 761.2,
+   "duration": 3.44,
+   "text": "you can tell Claude that, you know, go"
+  },
+  {
+   "start": 762.88,
+   "duration": 4.8,
+   "text": "through the existing test cases in plan"
+  },
+  {
+   "start": 764.64,
+   "duration": 4.56,
+   "text": "mode, and plan out the next text suit"
+  },
+  {
+   "start": 767.68,
+   "duration": 3.159,
+   "text": "test suit."
+  },
+  {
+   "start": 769.2,
+   "duration": 4.4,
+   "text": "In that case, you are planning on the"
+  },
+  {
+   "start": 770.839,
+   "duration": 5.561,
+   "text": "existing test cases, and you are"
+  },
+  {
+   "start": 773.6,
+   "duration": 5.6,
+   "text": "instructing Claude to, you know, migrate"
+  },
+  {
+   "start": 776.4,
+   "duration": 4.56,
+   "text": "those existing test sets as well, and"
+  },
+  {
+   "start": 779.2,
+   "duration": 4.36,
+   "text": "along with that, you are asking it to"
+  },
+  {
+   "start": 780.96,
+   "duration": 8.36,
+   "text": "generate more tests on top of that. So,"
+  },
+  {
+   "start": 783.56,
+   "duration": 8.36,
+   "text": "here, Claude is being more efficient"
+  },
+  {
+   "start": 789.32,
+   "duration": 4.6,
+   "text": "in test-driven development as well."
+  },
+  {
+   "start": 791.92,
+   "duration": 3.48,
+   "text": "So, this is one approach of using plan"
+  },
+  {
+   "start": 793.92,
+   "duration": 3.6,
+   "text": "mode as well. So, you have to think of"
+  },
+  {
+   "start": 795.4,
+   "duration": 5.08,
+   "text": "multiple approaches where, you know, it"
+  },
+  {
+   "start": 797.52,
+   "duration": 4.92,
+   "text": "will work even more better."
+  },
+  {
+   "start": 800.48,
+   "duration": 3.84,
+   "text": "D is doesn't make any sense. Run an"
+  },
+  {
+   "start": 802.44,
+   "duration": 4.16,
+   "text": "autonomous migration script without user"
+  },
+  {
+   "start": 804.32,
+   "duration": 4.16,
+   "text": "input. That's just stupid. So, yeah,"
+  },
+  {
+   "start": 806.6,
+   "duration": 4.2,
+   "text": "that is kind of sample question from"
+  },
+  {
+   "start": 808.48,
+   "duration": 5.44,
+   "text": "task 3.4 from the syllabus."
+  },
+  {
+   "start": 810.8,
+   "duration": 5.039,
+   "text": "I wanted to just point that out. And the"
+  },
+  {
+   "start": 813.92,
+   "duration": 3.2,
+   "text": "thing is, plan is the bridge. The plan"
+  },
+  {
+   "start": 815.839,
+   "duration": 2.881,
+   "text": "is the bridge."
+  },
+  {
+   "start": 817.12,
+   "duration": 3.12,
+   "text": "These are not rivals. One thing you need"
+  },
+  {
+   "start": 818.72,
+   "duration": 3.2,
+   "text": "to understand. You have to not choose"
+  },
+  {
+   "start": 820.24,
+   "duration": 2.84,
+   "text": "that, okay, I have to go from here or"
+  },
+  {
+   "start": 821.92,
+   "duration": 2.64,
+   "text": "there."
+  },
+  {
+   "start": 823.08,
+   "duration": 4.6,
+   "text": "Either have to choose direct execution"
+  },
+  {
+   "start": 824.56,
+   "duration": 5.8,
+   "text": "or the plan mode. See, the thing is,"
+  },
+  {
+   "start": 827.68,
+   "duration": 4.4,
+   "text": "it depends on the use case. If it"
+  },
+  {
+   "start": 830.36,
+   "duration": 3.24,
+   "text": "doesn't need the plan mode, then you"
+  },
+  {
+   "start": 832.08,
+   "duration": 3.92,
+   "text": "would not use the plan mode, you would"
+  },
+  {
+   "start": 833.6,
+   "duration": 4.84,
+   "text": "go with the direct execution. But if it"
+  },
+  {
+   "start": 836.0,
+   "duration": 4.2,
+   "text": "requires, you know, the"
+  },
+  {
+   "start": 838.44,
+   "duration": 4.16,
+   "text": "the scale, large-scale changes are"
+  },
+  {
+   "start": 840.2,
+   "duration": 5.2,
+   "text": "there, and you need to plan it out, then"
+  },
+  {
+   "start": 842.6,
+   "duration": 4.48,
+   "text": "you would use plan mode first,"
+  },
+  {
+   "start": 845.4,
+   "duration": 4.0,
+   "text": "take the decision, and then do the"
+  },
+  {
+   "start": 847.08,
+   "duration": 3.72,
+   "text": "direct execution anyways. You would not"
+  },
+  {
+   "start": 849.4,
+   "duration": 3.12,
+   "text": "just sit with the plan, right? You have"
+  },
+  {
+   "start": 850.8,
+   "duration": 4.56,
+   "text": "to execute something."
+  },
+  {
+   "start": 852.52,
+   "duration": 5.16,
+   "text": "So, you are using it sequentially here,"
+  },
+  {
+   "start": 855.36,
+   "duration": 4.12,
+   "text": "and where plan mode is not needed, you"
+  },
+  {
+   "start": 857.68,
+   "duration": 3.0,
+   "text": "are doing the direct execution. That's"
+  },
+  {
+   "start": 859.48,
+   "duration": 3.04,
+   "text": "it."
+  },
+  {
+   "start": 860.68,
+   "duration": 3.64,
+   "text": "Okay, so that is the thing."
+  },
+  {
+   "start": 862.52,
+   "duration": 3.96,
+   "text": "They are a sequential workflow. Wherever"
+  },
+  {
+   "start": 864.32,
+   "duration": 3.759,
+   "text": "there is needed, insert the plan mode."
+  },
+  {
+   "start": 866.48,
+   "duration": 3.2,
+   "text": "Wherever it is not needed, go with the"
+  },
+  {
+   "start": 868.079,
+   "duration": 4.161,
+   "text": "direct execution."
+  },
+  {
+   "start": 869.68,
+   "duration": 4.84,
+   "text": "I hope that is making sense."
+  },
+  {
+   "start": 872.24,
+   "duration": 2.96,
+   "text": "Now, before we move on to the next"
+  },
+  {
+   "start": 874.52,
+   "duration": 3.319,
+   "text": "uh"
+  },
+  {
+   "start": 875.2,
+   "duration": 5.6,
+   "text": "uh topic, uh I will I will I will show"
+  },
+  {
+   "start": 877.839,
+   "duration": 5.681,
+   "text": "you a very nice demo now, okay? And uh"
+  },
+  {
+   "start": 880.8,
+   "duration": 5.08,
+   "text": "there I will show you how I created a UI"
+  },
+  {
+   "start": 883.52,
+   "duration": 4.28,
+   "text": "application from scratch using plan"
+  },
+  {
+   "start": 885.88,
+   "duration": 5.72,
+   "text": "mode. I planned the application out, and"
+  },
+  {
+   "start": 887.8,
+   "duration": 4.76,
+   "text": "then, you know, did the execution. And"
+  },
+  {
+   "start": 891.6,
+   "duration": 2.76,
+   "text": "um"
+  },
+  {
+   "start": 892.56,
+   "duration": 4.279,
+   "text": "it will be very beneficial, guys. Please"
+  },
+  {
+   "start": 894.36,
+   "duration": 4.28,
+   "text": "have a look at it. Don't skip it. Uh at"
+  },
+  {
+   "start": 896.839,
+   "duration": 3.801,
+   "text": "least that part don't skip in this"
+  },
+  {
+   "start": 898.64,
+   "duration": 3.199,
+   "text": "video. Uh if you go through the demo"
+  },
+  {
+   "start": 900.64,
+   "duration": 4.36,
+   "text": "completely, you'll understand the"
+  },
+  {
+   "start": 901.839,
+   "duration": 6.281,
+   "text": "importance. And along with the uh that"
+  },
+  {
+   "start": 905.0,
+   "duration": 6.2,
+   "text": "as well, I have uh also, um"
+  },
+  {
+   "start": 908.12,
+   "duration": 4.76,
+   "text": "you know, explained you how to use the"
+  },
+  {
+   "start": 911.2,
+   "duration": 3.36,
+   "text": "Claude models more efficiently because"
+  },
+  {
+   "start": 912.88,
+   "duration": 2.76,
+   "text": "if you stick with Opus every time, you"
+  },
+  {
+   "start": 914.56,
+   "duration": 2.44,
+   "text": "would"
+  },
+  {
+   "start": 915.64,
+   "duration": 2.84,
+   "text": "you know, run out of context, you burn"
+  },
+  {
+   "start": 917.0,
+   "duration": 3.48,
+   "text": "through the tokens like anything."
+  },
+  {
+   "start": 918.48,
+   "duration": 4.52,
+   "text": "Sometimes, Sonnet is better. When to"
+  },
+  {
+   "start": 920.48,
+   "duration": 5.479,
+   "text": "switch between Sonnet and Opus and the"
+  },
+  {
+   "start": 923.0,
+   "duration": 5.2,
+   "text": "efforts as well, you know, the X I max"
+  },
+  {
+   "start": 925.959,
+   "duration": 4.281,
+   "text": "effort, or, you know, medium effort. All"
+  },
+  {
+   "start": 928.2,
+   "duration": 3.24,
+   "text": "of those context switching also I have"
+  },
+  {
+   "start": 930.24,
+   "duration": 4.2,
+   "text": "done there."
+  },
+  {
+   "start": 931.44,
+   "duration": 4.24,
+   "text": "And uh go through the demo, and um I"
+  },
+  {
+   "start": 934.44,
+   "duration": 3.36,
+   "text": "will see you after the demo, and we'll"
+  },
+  {
+   "start": 935.68,
+   "duration": 3.44,
+   "text": "continue with the lesson. We start with"
+  },
+  {
+   "start": 937.8,
+   "duration": 3.32,
+   "text": "Claude, uh"
+  },
+  {
+   "start": 939.12,
+   "duration": 4.04,
+   "text": "we need to install Claude code basically"
+  },
+  {
+   "start": 941.12,
+   "duration": 6.12,
+   "text": "in your terminal. You can just go go and"
+  },
+  {
+   "start": 943.16,
+   "duration": 5.52,
+   "text": "search install Claude code. Uh"
+  },
+  {
+   "start": 947.24,
+   "duration": 2.96,
+   "text": "I'm using Mac, so I'm just going to"
+  },
+  {
+   "start": 948.68,
+   "duration": 4.36,
+   "text": "search for Mac."
+  },
+  {
+   "start": 950.2,
+   "duration": 5.12,
+   "text": "Um you can run this particular uh"
+  },
+  {
+   "start": 953.04,
+   "duration": 4.44,
+   "text": "command in your particular uh terminal,"
+  },
+  {
+   "start": 955.32,
+   "duration": 4.2,
+   "text": "and it will run. For Windows, you can"
+  },
+  {
+   "start": 957.48,
+   "duration": 4.16,
+   "text": "just run the Windows command. I I mean,"
+  },
+  {
+   "start": 959.52,
+   "duration": 5.0,
+   "text": "you can ask Claude only, and it will uh"
+  },
+  {
+   "start": 961.64,
+   "duration": 4.76,
+   "text": "do these things for you. And uh the"
+  },
+  {
+   "start": 964.52,
+   "duration": 4.04,
+   "text": "second thing that we need over here is"
+  },
+  {
+   "start": 966.4,
+   "duration": 3.88,
+   "text": "the client extension, okay? That is"
+  },
+  {
+   "start": 968.56,
+   "duration": 3.92,
+   "text": "basically, uh I'll I'll tell you the"
+  },
+  {
+   "start": 970.28,
+   "duration": 4.64,
+   "text": "difference between the terminal uh"
+  },
+  {
+   "start": 972.48,
+   "duration": 4.2,
+   "text": "Claude code and the, you know, interface"
+  },
+  {
+   "start": 974.92,
+   "duration": 5.08,
+   "text": "Claude code that you get as an extension"
+  },
+  {
+   "start": 976.68,
+   "duration": 4.08,
+   "text": "in IntelliJ IDEA or in your VS code,"
+  },
+  {
+   "start": 980.0,
+   "duration": 2.72,
+   "text": "right? I'm going to tell you the"
+  },
+  {
+   "start": 980.76,
+   "duration": 3.6,
+   "text": "difference between them. So, to get"
+  },
+  {
+   "start": 982.72,
+   "duration": 3.56,
+   "text": "client, it is very simple. Go to your"
+  },
+  {
+   "start": 984.36,
+   "duration": 4.2,
+   "text": "extension place, and just search for"
+  },
+  {
+   "start": 986.28,
+   "duration": 4.6,
+   "text": "client. You can't miss it, actually. It"
+  },
+  {
+   "start": 988.56,
+   "duration": 4.6,
+   "text": "has uh about uh you know, a lot of"
+  },
+  {
+   "start": 990.88,
+   "duration": 3.72,
+   "text": "installations, millions."
+  },
+  {
+   "start": 993.16,
+   "duration": 3.28,
+   "text": "Okay."
+  },
+  {
+   "start": 994.6,
+   "duration": 4.16,
+   "text": "So, that is what it is. I'm going to"
+  },
+  {
+   "start": 996.44,
+   "duration": 4.32,
+   "text": "show you both ways, actually, to use"
+  },
+  {
+   "start": 998.76,
+   "duration": 3.72,
+   "text": "Claude code as uh you know, in the way"
+  },
+  {
+   "start": 1000.76,
+   "duration": 4.199,
+   "text": "of extension, and also in the way of"
+  },
+  {
+   "start": 1002.48,
+   "duration": 4.24,
+   "text": "terminal. Uh if you ask me which I like"
+  },
+  {
+   "start": 1004.959,
+   "duration": 4.281,
+   "text": "better, I like the terminal one better"
+  },
+  {
+   "start": 1006.72,
+   "duration": 4.48,
+   "text": "because uh the terminal one, you know,"
+  },
+  {
+   "start": 1009.24,
+   "duration": 5.04,
+   "text": "it is it sets a bare bones, right? I"
+  },
+  {
+   "start": 1011.2,
+   "duration": 4.2,
+   "text": "mean, it can access uh your um project"
+  },
+  {
+   "start": 1014.28,
+   "duration": 3.4,
+   "text": "directly because it's through the"
+  },
+  {
+   "start": 1015.4,
+   "duration": 4.04,
+   "text": "terminal. It's like you are only typing"
+  },
+  {
+   "start": 1017.68,
+   "duration": 3.96,
+   "text": "and executing the commands. But when it"
+  },
+  {
+   "start": 1019.44,
+   "duration": 3.72,
+   "text": "comes to the GUI, there is a little bit"
+  },
+  {
+   "start": 1021.64,
+   "duration": 3.199,
+   "text": "of lag, you can say, but still it is"
+  },
+  {
+   "start": 1023.16,
+   "duration": 2.48,
+   "text": "faster than many other extensions,"
+  },
+  {
+   "start": 1024.839,
+   "duration": 3.801,
+   "text": "right?"
+  },
+  {
+   "start": 1025.64,
+   "duration": 4.68,
+   "text": "So, um also, there is some kind of a I"
+  },
+  {
+   "start": 1028.64,
+   "duration": 4.6,
+   "text": "would I feel there is some kind of a"
+  },
+  {
+   "start": 1030.32,
+   "duration": 3.96,
+   "text": "limit on the tokens uh that you get from"
+  },
+  {
+   "start": 1033.24,
+   "duration": 4.439,
+   "text": "the"
+  },
+  {
+   "start": 1034.28,
+   "duration": 5.88,
+   "text": "uh you know, GUI extension. But in my"
+  },
+  {
+   "start": 1037.679,
+   "duration": 5.721,
+   "text": "opinion, extension also is very good. If"
+  },
+  {
+   "start": 1040.16,
+   "duration": 4.799,
+   "text": "you want to customize, add MCP servers,"
+  },
+  {
+   "start": 1043.4,
+   "duration": 3.0,
+   "text": "you know, do a lot of things because"
+  },
+  {
+   "start": 1044.959,
+   "duration": 3.881,
+   "text": "when you open client, you know, once you"
+  },
+  {
+   "start": 1046.4,
+   "duration": 4.52,
+   "text": "install, you'll get this robot button or"
+  },
+  {
+   "start": 1048.84,
+   "duration": 4.08,
+   "text": "agent button over here, and you'll get"
+  },
+  {
+   "start": 1050.92,
+   "duration": 4.72,
+   "text": "uh this particular interface."
+  },
+  {
+   "start": 1052.92,
+   "duration": 5.2,
+   "text": "Uh you can do a lot of things in the"
+  },
+  {
+   "start": 1055.64,
+   "duration": 4.88,
+   "text": "in a in a GUI fashion, right? Graphical"
+  },
+  {
+   "start": 1058.12,
+   "duration": 4.96,
+   "text": "user interface. I mean, uh there are a"
+  },
+  {
+   "start": 1060.52,
+   "duration": 4.0,
+   "text": "lot of settings over here, and a lot of"
+  },
+  {
+   "start": 1063.08,
+   "duration": 3.64,
+   "text": "things over here, right?"
+  },
+  {
+   "start": 1064.52,
+   "duration": 4.12,
+   "text": "Uh just you you can do much more than"
+  },
+  {
+   "start": 1066.72,
+   "duration": 3.92,
+   "text": "just doing the model selection, right?"
+  },
+  {
+   "start": 1068.64,
+   "duration": 4.12,
+   "text": "And uh you know, there is also a lot of"
+  },
+  {
+   "start": 1070.64,
+   "duration": 3.48,
+   "text": "MCP servers you can select it from."
+  },
+  {
+   "start": 1072.76,
+   "duration": 2.8,
+   "text": "Okay, remote servers configured. We're"
+  },
+  {
+   "start": 1074.12,
+   "duration": 2.8,
+   "text": "going to see all of these in action,"
+  },
+  {
+   "start": 1075.56,
+   "duration": 2.72,
+   "text": "don't worry about it. Let's click on"
+  },
+  {
+   "start": 1076.92,
+   "duration": 2.56,
+   "text": "done, and let's start with the very"
+  },
+  {
+   "start": 1078.28,
+   "duration": 3.08,
+   "text": "basic thing."
+  },
+  {
+   "start": 1079.48,
+   "duration": 3.6,
+   "text": "Okay?"
+  },
+  {
+   "start": 1081.36,
+   "duration": 3.92,
+   "text": "And uh"
+  },
+  {
+   "start": 1083.08,
+   "duration": 4.56,
+   "text": "yeah, that's that's that's what it is,"
+  },
+  {
+   "start": 1085.28,
+   "duration": 3.64,
+   "text": "okay? Now, uh for the project that we're"
+  },
+  {
+   "start": 1087.64,
+   "duration": 3.16,
+   "text": "going to develop over here, we're going"
+  },
+  {
+   "start": 1088.92,
+   "duration": 3.56,
+   "text": "to develop a very basic, not a basic,"
+  },
+  {
+   "start": 1090.8,
+   "duration": 5.879,
+   "text": "you know, a very nice Kanban app,"
+  },
+  {
+   "start": 1092.48,
+   "duration": 5.6,
+   "text": "Kanban-based app. You know, um"
+  },
+  {
+   "start": 1096.679,
+   "duration": 3.041,
+   "text": "there will be authentication, there will"
+  },
+  {
+   "start": 1098.08,
+   "duration": 3.12,
+   "text": "be drag and drop. You know, you if you"
+  },
+  {
+   "start": 1099.72,
+   "duration": 3.24,
+   "text": "have worked with Jira and all, you would"
+  },
+  {
+   "start": 1101.2,
+   "duration": 4.04,
+   "text": "understand. If you know about Kanban"
+  },
+  {
+   "start": 1102.96,
+   "duration": 4.24,
+   "text": "boards, right? You would understand what"
+  },
+  {
+   "start": 1105.24,
+   "duration": 3.679,
+   "text": "Kanban is. But don't worry about it, you"
+  },
+  {
+   "start": 1107.2,
+   "duration": 3.24,
+   "text": "can develop any app of your choice,"
+  },
+  {
+   "start": 1108.919,
+   "duration": 3.401,
+   "text": "right? It's It's don't have to follow"
+  },
+  {
+   "start": 1110.44,
+   "duration": 3.8,
+   "text": "me, or there is no point in sharing the"
+  },
+  {
+   "start": 1112.32,
+   "duration": 4.16,
+   "text": "code also, because I'm not writing the"
+  },
+  {
+   "start": 1114.24,
+   "duration": 4.439,
+   "text": "code. Claude is writing the code. Yeah,"
+  },
+  {
+   "start": 1116.48,
+   "duration": 4.04,
+   "text": "you just have to do proper prompting,"
+  },
+  {
+   "start": 1118.679,
+   "duration": 4.561,
+   "text": "and it will do the things for you."
+  },
+  {
+   "start": 1120.52,
+   "duration": 5.0,
+   "text": "Right? So, let's go to the first step"
+  },
+  {
+   "start": 1123.24,
+   "duration": 4.76,
+   "text": "that we will do. As you see, my project"
+  },
+  {
+   "start": 1125.52,
+   "duration": 4.68,
+   "text": "is empty. So, I'm going to start with"
+  },
+  {
+   "start": 1128.0,
+   "duration": 4.919,
+   "text": "very basic thing, um you know,"
+  },
+  {
+   "start": 1130.2,
+   "duration": 5.04,
+   "text": "scaffolding the app, basically. Uh"
+  },
+  {
+   "start": 1132.919,
+   "duration": 5.201,
+   "text": "scaffolding, I mean, uh we're going to"
+  },
+  {
+   "start": 1135.24,
+   "duration": 3.919,
+   "text": "just prepare the blueprint of the app,"
+  },
+  {
+   "start": 1138.12,
+   "duration": 2.44,
+   "text": "okay?"
+  },
+  {
+   "start": 1139.159,
+   "duration": 3.081,
+   "text": "And um"
+  },
+  {
+   "start": 1140.56,
+   "duration": 3.76,
+   "text": "now, what we'll do is we'll select the"
+  },
+  {
+   "start": 1142.24,
+   "duration": 4.04,
+   "text": "model to do the scaffolding of this app,"
+  },
+  {
+   "start": 1144.32,
+   "duration": 5.28,
+   "text": "right? I'm just going to go and uh"
+  },
+  {
+   "start": 1146.28,
+   "duration": 5.16,
+   "text": "select the Sonnet. You know, people, as"
+  },
+  {
+   "start": 1149.6,
+   "duration": 4.44,
+   "text": "I've told you, you know, they start with"
+  },
+  {
+   "start": 1151.44,
+   "duration": 4.84,
+   "text": "um you know, um"
+  },
+  {
+   "start": 1154.04,
+   "duration": 3.8,
+   "text": "Opus directly, but I I don't think that"
+  },
+  {
+   "start": 1156.28,
+   "duration": 3.36,
+   "text": "you need Opus for everything. I'm just"
+  },
+  {
+   "start": 1157.84,
+   "duration": 3.96,
+   "text": "going to increase the thinking to a"
+  },
+  {
+   "start": 1159.64,
+   "duration": 4.279,
+   "text": "little bit more. I'm just going to go to"
+  },
+  {
+   "start": 1161.8,
+   "duration": 4.4,
+   "text": "maybe uh"
+  },
+  {
+   "start": 1163.919,
+   "duration": 4.841,
+   "text": "2,800 tokens. I'm going to keep it in"
+  },
+  {
+   "start": 1166.2,
+   "duration": 3.84,
+   "text": "the mid mid kind of a thinking level."
+  },
+  {
+   "start": 1168.76,
+   "duration": 2.159,
+   "text": "And I'm going to select Sonnet over"
+  },
+  {
+   "start": 1170.04,
+   "duration": 2.28,
+   "text": "here."
+  },
+  {
+   "start": 1170.919,
+   "duration": 3.561,
+   "text": "Uh we're going to start with basic. We"
+  },
+  {
+   "start": 1172.32,
+   "duration": 4.12,
+   "text": "don't want to uh you know, spend too"
+  },
+  {
+   "start": 1174.48,
+   "duration": 6.24,
+   "text": "much tokens on just creating the"
+  },
+  {
+   "start": 1176.44,
+   "duration": 4.28,
+   "text": "blueprint of the app. Why? Because um"
+  },
+  {
+   "start": 1181.04,
+   "duration": 4.2,
+   "text": "Um you don't have to um actually, there"
+  },
+  {
+   "start": 1184.48,
+   "duration": 2.6,
+   "text": "there"
+  },
+  {
+   "start": 1185.24,
+   "duration": 3.48,
+   "text": "it's just it's an Angular app, right?"
+  },
+  {
+   "start": 1187.08,
+   "duration": 4.04,
+   "text": "Most of the things will be taken care by"
+  },
+  {
+   "start": 1188.72,
+   "duration": 4.04,
+   "text": "the terminal itself, right? Claude is"
+  },
+  {
+   "start": 1191.12,
+   "duration": 3.84,
+   "text": "not going to do a lot of things. So, in"
+  },
+  {
+   "start": 1192.76,
+   "duration": 4.44,
+   "text": "that case, we don't need a very,"
+  },
+  {
+   "start": 1194.96,
+   "duration": 4.04,
+   "text": "you know, high kind of an Opus model."
+  },
+  {
+   "start": 1197.2,
+   "duration": 5.24,
+   "text": "Sonnet will be enough. So,"
+  },
+  {
+   "start": 1199.0,
+   "duration": 6.6,
+   "text": "I'm going to be using that. Okay?"
+  },
+  {
+   "start": 1202.44,
+   "duration": 4.4,
+   "text": "Okay. So, now what we are going to do is"
+  },
+  {
+   "start": 1205.6,
+   "duration": 3.2,
+   "text": "if you see over here, there are two"
+  },
+  {
+   "start": 1206.84,
+   "duration": 4.28,
+   "text": "toggles over here. It's actually one"
+  },
+  {
+   "start": 1208.8,
+   "duration": 4.04,
+   "text": "toggle. And"
+  },
+  {
+   "start": 1211.12,
+   "duration": 4.48,
+   "text": "as you can see in plan mode, client will"
+  },
+  {
+   "start": 1212.84,
+   "duration": 4.32,
+   "text": "gather information to architect a plan."
+  },
+  {
+   "start": 1215.6,
+   "duration": 3.32,
+   "text": "Okay? So, this is where the thing is. We"
+  },
+  {
+   "start": 1217.16,
+   "duration": 3.6,
+   "text": "are going to first plan out what we are"
+  },
+  {
+   "start": 1218.92,
+   "duration": 3.84,
+   "text": "going to do, and then we are going to"
+  },
+  {
+   "start": 1220.76,
+   "duration": 4.96,
+   "text": "act on it, right? Because you need to"
+  },
+  {
+   "start": 1222.76,
+   "duration": 5.36,
+   "text": "review what, you know, Claude is doing."
+  },
+  {
+   "start": 1225.72,
+   "duration": 3.96,
+   "text": "Because if you see, there was a recent,"
+  },
+  {
+   "start": 1228.12,
+   "duration": 4.32,
+   "text": "you know, news which says that, you"
+  },
+  {
+   "start": 1229.68,
+   "duration": 5.4,
+   "text": "know, some some company Claude"
+  },
+  {
+   "start": 1232.44,
+   "duration": 4.2,
+   "text": "completely destroyed the database or"
+  },
+  {
+   "start": 1235.08,
+   "duration": 4.32,
+   "text": "something like that. It destroyed the"
+  },
+  {
+   "start": 1236.64,
+   "duration": 6.8,
+   "text": "data. The thing is, Claude never does"
+  },
+  {
+   "start": 1239.4,
+   "duration": 5.96,
+   "text": "anything without your consent. That you"
+  },
+  {
+   "start": 1243.44,
+   "duration": 3.56,
+   "text": "should do nothing. You know, you should"
+  },
+  {
+   "start": 1245.36,
+   "duration": 3.44,
+   "text": "always take consent, right? Similarly,"
+  },
+  {
+   "start": 1247.0,
+   "duration": 4.04,
+   "text": "Claude also takes consent. You have to"
+  },
+  {
+   "start": 1248.8,
+   "duration": 4.32,
+   "text": "review what Claude is doing. At any"
+  },
+  {
+   "start": 1251.04,
+   "duration": 4.44,
+   "text": "point of time, you can just say no, and"
+  },
+  {
+   "start": 1253.12,
+   "duration": 4.12,
+   "text": "Claude will not do it. So, people need"
+  },
+  {
+   "start": 1255.48,
+   "duration": 3.48,
+   "text": "to understand before using these AI"
+  },
+  {
+   "start": 1257.24,
+   "duration": 4.32,
+   "text": "tools that, you know, you just can't"
+  },
+  {
+   "start": 1258.96,
+   "duration": 4.4,
+   "text": "just fire one prompt and sit back and"
+  },
+  {
+   "start": 1261.56,
+   "duration": 4.56,
+   "text": "relax and have your coffee. Yes, you can"
+  },
+  {
+   "start": 1263.36,
+   "duration": 4.88,
+   "text": "have your coffee, but please just see"
+  },
+  {
+   "start": 1266.12,
+   "duration": 3.92,
+   "text": "what Claude is doing. It is doing"
+  },
+  {
+   "start": 1268.24,
+   "duration": 4.12,
+   "text": "all the heavy lifting for you. Only you"
+  },
+  {
+   "start": 1270.04,
+   "duration": 3.68,
+   "text": "need to do is just to review what it is"
+  },
+  {
+   "start": 1272.36,
+   "duration": 4.08,
+   "text": "doing, right?"
+  },
+  {
+   "start": 1273.72,
+   "duration": 7.2,
+   "text": "Just just please do that. So, I'm going"
+  },
+  {
+   "start": 1276.44,
+   "duration": 7.04,
+   "text": "to go into my plan mode. Okay? Um"
+  },
+  {
+   "start": 1280.92,
+   "duration": 4.52,
+   "text": "I'm going to write a you know, plan over"
+  },
+  {
+   "start": 1283.48,
+   "duration": 3.32,
+   "text": "here. Let's Let's Let's just think of"
+  },
+  {
+   "start": 1285.44,
+   "duration": 3.72,
+   "text": "this Kanban app or something. So, I'm"
+  },
+  {
+   "start": 1286.8,
+   "duration": 3.12,
+   "text": "just going to say, I want to"
+  },
+  {
+   "start": 1289.16,
+   "duration": 4.76,
+   "text": "um"
+  },
+  {
+   "start": 1289.92,
+   "duration": 7.36,
+   "text": "create, for example, a Kanban"
+  },
+  {
+   "start": 1293.92,
+   "duration": 7.96,
+   "text": "Kanban task management"
+  },
+  {
+   "start": 1297.28,
+   "duration": 7.2,
+   "text": "um app called, for example, TaskFlow."
+  },
+  {
+   "start": 1301.88,
+   "duration": 6.96,
+   "text": "Let's name our app like TaskFlow."
+  },
+  {
+   "start": 1304.48,
+   "duration": 6.92,
+   "text": "And I'm going to say the tech stack"
+  },
+  {
+   "start": 1308.84,
+   "duration": 4.32,
+   "text": "for this particular app is uh I am"
+  },
+  {
+   "start": 1311.4,
+   "duration": 3.72,
+   "text": "always up for, you know, good prompting,"
+  },
+  {
+   "start": 1313.16,
+   "duration": 3.32,
+   "text": "guys. I can just say create Angular app,"
+  },
+  {
+   "start": 1315.12,
+   "duration": 3.44,
+   "text": "but I just want to"
+  },
+  {
+   "start": 1316.48,
+   "duration": 4.84,
+   "text": "do proper planning over here because"
+  },
+  {
+   "start": 1318.56,
+   "duration": 4.44,
+   "text": "first plan and then execute. Okay? So,"
+  },
+  {
+   "start": 1321.32,
+   "duration": 3.0,
+   "text": "I'm going to use"
+  },
+  {
+   "start": 1323.0,
+   "duration": 3.52,
+   "text": "Angular"
+  },
+  {
+   "start": 1324.32,
+   "duration": 3.8,
+   "text": "for this. Right?"
+  },
+  {
+   "start": 1326.52,
+   "duration": 4.159,
+   "text": "Angular"
+  },
+  {
+   "start": 1328.12,
+   "duration": 4.08,
+   "text": "material. We are going to use We create"
+  },
+  {
+   "start": 1330.679,
+   "duration": 5.081,
+   "text": "awesome UI, so I'm going to use Angular"
+  },
+  {
+   "start": 1332.2,
+   "duration": 6.04,
+   "text": "material for uh the UI."
+  },
+  {
+   "start": 1335.76,
+   "duration": 3.8,
+   "text": "For UI. And"
+  },
+  {
+   "start": 1338.24,
+   "duration": 2.56,
+   "text": "a simple We're going to We're going to"
+  },
+  {
+   "start": 1339.56,
+   "duration": 3.04,
+   "text": "use for back end, we're going to use"
+  },
+  {
+   "start": 1340.8,
+   "duration": 3.52,
+   "text": "Express JS. So, I'm going to just say a"
+  },
+  {
+   "start": 1342.6,
+   "duration": 3.32,
+   "text": "simple Express"
+  },
+  {
+   "start": 1344.32,
+   "duration": 3.32,
+   "text": ".js"
+  },
+  {
+   "start": 1345.92,
+   "duration": 3.6,
+   "text": "um back end"
+  },
+  {
+   "start": 1347.64,
+   "duration": 3.28,
+   "text": "with, for example, SQLite. Let's use"
+  },
+  {
+   "start": 1349.52,
+   "duration": 5.84,
+   "text": "SQLite"
+  },
+  {
+   "start": 1350.92,
+   "duration": 7.4,
+   "text": "light SQLite for now."
+  },
+  {
+   "start": 1355.36,
+   "duration": 5.24,
+   "text": "Right? And um"
+  },
+  {
+   "start": 1358.32,
+   "duration": 4.68,
+   "text": "Let's add a drag and drop and drag and"
+  },
+  {
+   "start": 1360.6,
+   "duration": 2.4,
+   "text": "drop."
+  },
+  {
+   "start": 1364.12,
+   "duration": 6.4,
+   "text": "Going to add not frop, drop."
+  },
+  {
+   "start": 1367.0,
+   "duration": 4.8,
+   "text": "Using the, for example, Angular"
+  },
+  {
+   "start": 1370.52,
+   "duration": 3.159,
+   "text": "CDK."
+  },
+  {
+   "start": 1371.8,
+   "duration": 3.56,
+   "text": "Okay?"
+  },
+  {
+   "start": 1373.679,
+   "duration": 3.441,
+   "text": "And"
+  },
+  {
+   "start": 1375.36,
+   "duration": 3.96,
+   "text": "before We're going to We're going to"
+  },
+  {
+   "start": 1377.12,
+   "duration": 4.52,
+   "text": "give some more instructions so it plans"
+  },
+  {
+   "start": 1379.32,
+   "duration": 6.12,
+   "text": "it properly. So, before"
+  },
+  {
+   "start": 1381.64,
+   "duration": 6.36,
+   "text": "before you create anything,"
+  },
+  {
+   "start": 1385.44,
+   "duration": 4.52,
+   "text": "um outline something, right? Let's Let's"
+  },
+  {
+   "start": 1388.0,
+   "duration": 4.8,
+   "text": "say outline."
+  },
+  {
+   "start": 1389.96,
+   "duration": 6.56,
+   "text": "Um"
+  },
+  {
+   "start": 1392.8,
+   "duration": 7.04,
+   "text": "the folder structure"
+  },
+  {
+   "start": 1396.52,
+   "duration": 4.56,
+   "text": "you would"
+  },
+  {
+   "start": 1399.84,
+   "duration": 2.36,
+   "text": "create,"
+  },
+  {
+   "start": 1401.08,
+   "duration": 3.2,
+   "text": "right?"
+  },
+  {
+   "start": 1402.2,
+   "duration": 4.4,
+   "text": "Next, let's say the core modules and"
+  },
+  {
+   "start": 1404.28,
+   "duration": 3.84,
+   "text": "components. The core modules and"
+  },
+  {
+   "start": 1406.6,
+   "duration": 4.04,
+   "text": "components."
+  },
+  {
+   "start": 1408.12,
+   "duration": 6.12,
+   "text": "Next, let's say"
+  },
+  {
+   "start": 1410.64,
+   "duration": 5.64,
+   "text": "the data models."
+  },
+  {
+   "start": 1414.24,
+   "duration": 3.88,
+   "text": "And"
+  },
+  {
+   "start": 1416.28,
+   "duration": 3.48,
+   "text": "let's say the API"
+  },
+  {
+   "start": 1418.12,
+   "duration": 3.559,
+   "text": "endpoints."
+  },
+  {
+   "start": 1419.76,
+   "duration": 4.32,
+   "text": "Okay? It's going to say."
+  },
+  {
+   "start": 1421.679,
+   "duration": 7.641,
+   "text": "And I'm going to specifically mention"
+  },
+  {
+   "start": 1424.08,
+   "duration": 7.24,
+   "text": "that don't write any code"
+  },
+  {
+   "start": 1429.32,
+   "duration": 3.56,
+   "text": "Okay? This is the prompt that I'm"
+  },
+  {
+   "start": 1431.32,
+   "duration": 3.72,
+   "text": "telling for the"
+  },
+  {
+   "start": 1432.88,
+   "duration": 3.92,
+   "text": "you know,"
+  },
+  {
+   "start": 1435.04,
+   "duration": 6.0,
+   "text": "this thing."
+  },
+  {
+   "start": 1436.8,
+   "duration": 4.24,
+   "text": "So, I'm going to just fire it up."
+  },
+  {
+   "start": 1445.48,
+   "duration": 2.68,
+   "text": "Oh, it's"
+  },
+  {
+   "start": 1450.2,
+   "duration": 4.44,
+   "text": "Oh, this is"
+  },
+  {
+   "start": 1452.96,
+   "duration": 4.4,
+   "text": "Okay, it's in plan mode only. I'm"
+  },
+  {
+   "start": 1454.64,
+   "duration": 3.84,
+   "text": "getting confused. This is"
+  },
+  {
+   "start": 1457.36,
+   "duration": 3.44,
+   "text": "Okay, I've"
+  },
+  {
+   "start": 1458.48,
+   "duration": 3.96,
+   "text": "clicked on."
+  },
+  {
+   "start": 1460.8,
+   "duration": 3.32,
+   "text": "This is plan mode only, right? I'm"
+  },
+  {
+   "start": 1462.44,
+   "duration": 5.48,
+   "text": "getting confused."
+  },
+  {
+   "start": 1464.12,
+   "duration": 3.8,
+   "text": "Okay, this is plan mode only."
+  },
+  {
+   "start": 1470.32,
+   "duration": 2.44,
+   "text": "Okay."
+  },
+  {
+   "start": 1480.36,
+   "duration": 2.96,
+   "text": "So, how much"
+  },
+  {
+   "start": 1491.52,
+   "duration": 4.72,
+   "text": "It's still in thinking phase."
+  },
+  {
+   "start": 1494.48,
+   "duration": 4.24,
+   "text": "So, I'm going to pause the video, and"
+  },
+  {
+   "start": 1496.24,
+   "duration": 3.96,
+   "text": "also I want to do um"
+  },
+  {
+   "start": 1498.72,
+   "duration": 4.08,
+   "text": "what I will do is I'm not going to write"
+  },
+  {
+   "start": 1500.2,
+   "duration": 4.96,
+   "text": "the prompts in the in the Okay, it gave"
+  },
+  {
+   "start": 1502.8,
+   "duration": 3.48,
+   "text": "me the plan is created. But yeah, I'm"
+  },
+  {
+   "start": 1505.16,
+   "duration": 2.96,
+   "text": "going to pause the video. I'm going to"
+  },
+  {
+   "start": 1506.28,
+   "duration": 4.44,
+   "text": "write all the prompts at once because I"
+  },
+  {
+   "start": 1508.12,
+   "duration": 5.2,
+   "text": "don't want to actually,"
+  },
+  {
+   "start": 1510.72,
+   "duration": 2.6,
+   "text": "you know, um"
+  },
+  {
+   "start": 1514.92,
+   "duration": 2.68,
+   "text": "write all the prompts in the video"
+  },
+  {
+   "start": 1516.12,
+   "duration": 3.36,
+   "text": "because it takes a lot of time. But"
+  },
+  {
+   "start": 1517.6,
+   "duration": 4.04,
+   "text": "before I pause it and resume it again,"
+  },
+  {
+   "start": 1519.48,
+   "duration": 4.28,
+   "text": "let's see Let's see what it is It has"
+  },
+  {
+   "start": 1521.64,
+   "duration": 3.88,
+   "text": "done. So, let's see the"
+  },
+  {
+   "start": 1523.76,
+   "duration": 3.84,
+   "text": "uh things that it has done. So, it says"
+  },
+  {
+   "start": 1525.52,
+   "duration": 4.64,
+   "text": "plan has been created. So, it says"
+  },
+  {
+   "start": 1527.6,
+   "duration": 3.88,
+   "text": "TaskFlow architectural plan. So, here is"
+  },
+  {
+   "start": 1530.16,
+   "duration": 2.88,
+   "text": "the folder structure. It is telling"
+  },
+  {
+   "start": 1531.48,
+   "duration": 3.28,
+   "text": "TaskFlow front end SRC. So, it will"
+  },
+  {
+   "start": 1533.04,
+   "duration": 4.72,
+   "text": "create one front end folder inside the"
+  },
+  {
+   "start": 1534.76,
+   "duration": 5.24,
+   "text": "TaskFlow folder. And uh"
+  },
+  {
+   "start": 1537.76,
+   "duration": 3.8,
+   "text": "uh there is There are some TS files over"
+  },
+  {
+   "start": 1540.0,
+   "duration": 3.08,
+   "text": "here. There are some interceptors, it is"
+  },
+  {
+   "start": 1541.56,
+   "duration": 3.8,
+   "text": "saying, okay, for error handling and"
+  },
+  {
+   "start": 1543.08,
+   "duration": 3.599,
+   "text": "all. Uh in shared components, there will"
+  },
+  {
+   "start": 1545.36,
+   "duration": 3.8,
+   "text": "be some"
+  },
+  {
+   "start": 1546.679,
+   "duration": 3.921,
+   "text": "reusable UI components, it is telling."
+  },
+  {
+   "start": 1549.16,
+   "duration": 4.08,
+   "text": "Singleton services, guards, and"
+  },
+  {
+   "start": 1550.6,
+   "duration": 4.6,
+   "text": "interceptor. And then in the board,"
+  },
+  {
+   "start": 1553.24,
+   "duration": 3.92,
+   "text": "right? It's all inside It should be all"
+  },
+  {
+   "start": 1555.2,
+   "duration": 4.56,
+   "text": "inside the app folder. Yes, that is"
+  },
+  {
+   "start": 1557.16,
+   "duration": 5.2,
+   "text": "true. And in the features in the board,"
+  },
+  {
+   "start": 1559.76,
+   "duration": 5.919,
+   "text": "there is a board component, main Kanban"
+  },
+  {
+   "start": 1562.36,
+   "duration": 7.52,
+   "text": "board feature, and board list over here,"
+  },
+  {
+   "start": 1565.679,
+   "duration": 6.241,
+   "text": "and models. Basically, uh the the the"
+  },
+  {
+   "start": 1569.88,
+   "duration": 3.56,
+   "text": "POJO classes, I would say, that will be"
+  },
+  {
+   "start": 1571.92,
+   "duration": 4.72,
+   "text": "inside the models folder. There will be"
+  },
+  {
+   "start": 1573.44,
+   "duration": 5.2,
+   "text": "a routing module, right? Environment."
+  },
+  {
+   "start": 1576.64,
+   "duration": 4.32,
+   "text": "And then there is this back end, which"
+  },
+  {
+   "start": 1578.64,
+   "duration": 4.52,
+   "text": "will be our Express JS back end"
+  },
+  {
+   "start": 1580.96,
+   "duration": 4.48,
+   "text": "application. And uh there will be one"
+  },
+  {
+   "start": 1583.16,
+   "duration": 3.88,
+   "text": "read me file. Now, it has also uh given"
+  },
+  {
+   "start": 1585.44,
+   "duration": 3.56,
+   "text": "me the core modules and components,"
+  },
+  {
+   "start": 1587.04,
+   "duration": 3.6,
+   "text": "right? So, there will be an app module,"
+  },
+  {
+   "start": 1589.0,
+   "duration": 3.92,
+   "text": "the root module, the core module,"
+  },
+  {
+   "start": 1590.64,
+   "duration": 5.08,
+   "text": "singleton services loaded once, HTTP"
+  },
+  {
+   "start": 1592.92,
+   "duration": 5.64,
+   "text": "interceptor, shared module. Uh all these"
+  },
+  {
+   "start": 1595.72,
+   "duration": 4.72,
+   "text": "modules are there. Right? So, all the"
+  },
+  {
+   "start": 1598.56,
+   "duration": 3.24,
+   "text": "components are also there, right? There"
+  },
+  {
+   "start": 1600.44,
+   "duration": 3.04,
+   "text": "are If you know in Angular, there are"
+  },
+  {
+   "start": 1601.8,
+   "duration": 3.48,
+   "text": "components over there. We We tell it as"
+  },
+  {
+   "start": 1603.48,
+   "duration": 3.199,
+   "text": "components, right? So, board list"
+  },
+  {
+   "start": 1605.28,
+   "duration": 3.48,
+   "text": "components, app component, column"
+  },
+  {
+   "start": 1606.679,
+   "duration": 3.721,
+   "text": "component, and it is also telling what"
+  },
+  {
+   "start": 1608.76,
+   "duration": 3.28,
+   "text": "it will do actually. You know, these"
+  },
+  {
+   "start": 1610.4,
+   "duration": 5.36,
+   "text": "components, what these components are"
+  },
+  {
+   "start": 1612.04,
+   "duration": 6.32,
+   "text": "responsible for. And for core services,"
+  },
+  {
+   "start": 1615.76,
+   "duration": 4.919,
+   "text": "uh these are the services, basically. Uh"
+  },
+  {
+   "start": 1618.36,
+   "duration": 4.04,
+   "text": "board service performs a CRUD operation"
+  },
+  {
+   "start": 1620.679,
+   "duration": 4.441,
+   "text": "on the board, column service, task"
+  },
+  {
+   "start": 1622.4,
+   "duration": 4.76,
+   "text": "service, CRUD on the tasks. And HTTP"
+  },
+  {
+   "start": 1625.12,
+   "duration": 4.16,
+   "text": "error interceptor for global error"
+  },
+  {
+   "start": 1627.16,
+   "duration": 3.84,
+   "text": "handling, basically. Now, here are the"
+  },
+  {
+   "start": 1629.28,
+   "duration": 4.36,
+   "text": "data models that it is telling, right?"
+  },
+  {
+   "start": 1631.0,
+   "duration": 6.08,
+   "text": "And uh board, it has an ID, title,"
+  },
+  {
+   "start": 1633.64,
+   "duration": 5.88,
+   "text": "description, cool. Uh column."
+  },
+  {
+   "start": 1637.08,
+   "duration": 3.92,
+   "text": "There is one more, you know, table. Then"
+  },
+  {
+   "start": 1639.52,
+   "duration": 3.76,
+   "text": "we have task."
+  },
+  {
+   "start": 1641.0,
+   "duration": 4.0,
+   "text": "Okay? API endpoints also it is getting."
+  },
+  {
+   "start": 1643.28,
+   "duration": 5.28,
+   "text": "Yes, the because we have a back end"
+  },
+  {
+   "start": 1645.0,
+   "duration": 4.96,
+   "text": "also. Get, post, get, put, delete. So,"
+  },
+  {
+   "start": 1648.56,
+   "duration": 3.64,
+   "text": "basically, these are the endpoints,"
+  },
+  {
+   "start": 1649.96,
+   "duration": 4.56,
+   "text": "right? These are the methods and what it"
+  },
+  {
+   "start": 1652.2,
+   "duration": 4.479,
+   "text": "does actually. And then we have the"
+  },
+  {
+   "start": 1654.52,
+   "duration": 4.92,
+   "text": "columns over here."
+  },
+  {
+   "start": 1656.679,
+   "duration": 4.921,
+   "text": "Right? So, so this is for the boards."
+  },
+  {
+   "start": 1659.44,
+   "duration": 4.16,
+   "text": "For the boards, it is specifying all the"
+  },
+  {
+   "start": 1661.6,
+   "duration": 4.12,
+   "text": "API endpoints. For the columns, it is"
+  },
+  {
+   "start": 1663.6,
+   "duration": 4.48,
+   "text": "specifying all the API endpoints. And"
+  },
+  {
+   "start": 1665.72,
+   "duration": 5.64,
+   "text": "for the tasks, it is also specifying all"
+  },
+  {
+   "start": 1668.08,
+   "duration": 6.28,
+   "text": "the API endpoints. Okay?"
+  },
+  {
+   "start": 1671.36,
+   "duration": 4.12,
+   "text": "Uh now, it is giving us a summary."
+  },
+  {
+   "start": 1674.36,
+   "duration": 3.84,
+   "text": "Okay?"
+  },
+  {
+   "start": 1675.48,
+   "duration": 4.48,
+   "text": "And it says ready to build. Toggle to"
+  },
+  {
+   "start": 1678.2,
+   "duration": 4.32,
+   "text": "act mode, and I'll scaffold the entire"
+  },
+  {
+   "start": 1679.96,
+   "duration": 4.88,
+   "text": "project, back end and front end, step by"
+  },
+  {
+   "start": 1682.52,
+   "duration": 4.28,
+   "text": "step. Okay? So, we are done with the"
+  },
+  {
+   "start": 1684.84,
+   "duration": 5.0,
+   "text": "plan, and now we have to act on the"
+  },
+  {
+   "start": 1686.8,
+   "duration": 7.0,
+   "text": "plan, right? So, I have prepared the"
+  },
+  {
+   "start": 1689.84,
+   "duration": 5.6,
+   "text": "uh you know, the following um prompts"
+  },
+  {
+   "start": 1693.8,
+   "duration": 4.0,
+   "text": "over here. So, now we are We're going to"
+  },
+  {
+   "start": 1695.44,
+   "duration": 4.88,
+   "text": "just take this prompt, which just says,"
+  },
+  {
+   "start": 1697.8,
+   "duration": 4.84,
+   "text": "go ahead, scaffold the Angular app based"
+  },
+  {
+   "start": 1700.32,
+   "duration": 3.92,
+   "text": "on the plan that we had just prepared."
+  },
+  {
+   "start": 1702.64,
+   "duration": 4.44,
+   "text": "So, I'm just going to go over here,"
+  },
+  {
+   "start": 1704.24,
+   "duration": 5.96,
+   "text": "paste this over here, and I'm going to"
+  },
+  {
+   "start": 1707.08,
+   "duration": 4.52,
+   "text": "switch to act mode, basically, right?"
+  },
+  {
+   "start": 1710.2,
+   "duration": 4.36,
+   "text": "And"
+  },
+  {
+   "start": 1711.6,
+   "duration": 5.16,
+   "text": "now, it It is now doing it, basically."
+  },
+  {
+   "start": 1714.56,
+   "duration": 3.8,
+   "text": "The user wants me to"
+  },
+  {
+   "start": 1716.76,
+   "duration": 5.6,
+   "text": "Okay, it is asking me client wants to"
+  },
+  {
+   "start": 1718.36,
+   "duration": 5.24,
+   "text": "execute this command."
+  },
+  {
+   "start": 1722.36,
+   "duration": 2.28,
+   "text": "And"
+  },
+  {
+   "start": 1723.6,
+   "duration": 3.04,
+   "text": "okay."
+  },
+  {
+   "start": 1724.64,
+   "duration": 4.36,
+   "text": "It's in auto approve mode, so it is"
+  },
+  {
+   "start": 1726.64,
+   "duration": 4.92,
+   "text": "automatically getting approved, but you"
+  },
+  {
+   "start": 1729.0,
+   "duration": 4.8,
+   "text": "can basically"
+  },
+  {
+   "start": 1731.56,
+   "duration": 5.4,
+   "text": "see what it is doing."
+  },
+  {
+   "start": 1733.8,
+   "duration": 5.56,
+   "text": "You can just, you know, disable the auto"
+  },
+  {
+   "start": 1736.96,
+   "duration": 5.44,
+   "text": "approve thing. Now, it is doing the"
+  },
+  {
+   "start": 1739.36,
+   "duration": 5.319,
+   "text": "Angular thingies over here."
+  },
+  {
+   "start": 1742.4,
+   "duration": 6.24,
+   "text": "So,"
+  },
+  {
+   "start": 1744.679,
+   "duration": 5.921,
+   "text": "it is creating the project structure."
+  },
+  {
+   "start": 1748.64,
+   "duration": 4.36,
+   "text": "It is doing"
+  },
+  {
+   "start": 1750.6,
+   "duration": 3.72,
+   "text": "all the stuffs"
+  },
+  {
+   "start": 1753.0,
+   "duration": 2.64,
+   "text": "that it is"
+  },
+  {
+   "start": 1754.32,
+   "duration": 2.88,
+   "text": "needed to do."
+  },
+  {
+   "start": 1755.64,
+   "duration": 3.76,
+   "text": "Now, it is also installing the NPM"
+  },
+  {
+   "start": 1757.2,
+   "duration": 4.92,
+   "text": "packages as well."
+  },
+  {
+   "start": 1759.4,
+   "duration": 3.92,
+   "text": "I mean, the terminal is installing. It's"
+  },
+  {
+   "start": 1762.12,
+   "duration": 3.52,
+   "text": "just the"
+  },
+  {
+   "start": 1763.32,
+   "duration": 5.56,
+   "text": "uh Claude just ran all of these"
+  },
+  {
+   "start": 1765.64,
+   "duration": 3.24,
+   "text": "commands, you know."
+  },
+  {
+   "start": 1777.44,
+   "duration": 5.04,
+   "text": "Okay? I'm going to pause the video right"
+  },
+  {
+   "start": 1779.8,
+   "duration": 3.68,
+   "text": "now, and I'm going to display it once"
+  },
+  {
+   "start": 1782.48,
+   "duration": 2.84,
+   "text": "the"
+  },
+  {
+   "start": 1783.48,
+   "duration": 4.08,
+   "text": "uh you know, the packages are being"
+  },
+  {
+   "start": 1785.32,
+   "duration": 4.48,
+   "text": "installed and it is ready. Okay, guys."
+  },
+  {
+   "start": 1787.56,
+   "duration": 4.08,
+   "text": "So, we have kind of a hit of a road"
+  },
+  {
+   "start": 1789.8,
+   "duration": 3.48,
+   "text": "block over here and if you see what I"
+  },
+  {
+   "start": 1791.64,
+   "duration": 2.92,
+   "text": "hit is basically it is telling that you"
+  },
+  {
+   "start": 1793.28,
+   "duration": 4.68,
+   "text": "you have insufficient balance your"
+  },
+  {
+   "start": 1794.56,
+   "duration": 5.88,
+   "text": "client credits balance is 0.00. I got a"
+  },
+  {
+   "start": 1797.96,
+   "duration": 5.12,
+   "text": "bit confused because"
+  },
+  {
+   "start": 1800.44,
+   "duration": 4.44,
+   "text": "I'm kind of in a pro plan in Claude and"
+  },
+  {
+   "start": 1803.08,
+   "duration": 4.72,
+   "text": "I'm I haven't run out of anything. So,"
+  },
+  {
+   "start": 1804.88,
+   "duration": 6.04,
+   "text": "why client is telling me this basically?"
+  },
+  {
+   "start": 1807.8,
+   "duration": 5.0,
+   "text": "So, so I asked Claude itself directly."
+  },
+  {
+   "start": 1810.92,
+   "duration": 3.24,
+   "text": "So, it is telling that you are seeing"
+  },
+  {
+   "start": 1812.8,
+   "duration": 3.44,
+   "text": "this error because it is coming from"
+  },
+  {
+   "start": 1814.16,
+   "duration": 3.56,
+   "text": "client a VS code extension not from your"
+  },
+  {
+   "start": 1816.24,
+   "duration": 3.92,
+   "text": "Claude Pro subscription. These are two"
+  },
+  {
+   "start": 1817.72,
+   "duration": 4.48,
+   "text": "separate things, right? So,"
+  },
+  {
+   "start": 1820.16,
+   "duration": 4.52,
+   "text": "we have to buy client credits if you"
+  },
+  {
+   "start": 1822.2,
+   "duration": 5.28,
+   "text": "want to work with client. But, in my"
+  },
+  {
+   "start": 1824.68,
+   "duration": 5.76,
+   "text": "opinion, right? In my opinion,"
+  },
+  {
+   "start": 1827.48,
+   "duration": 5.2,
+   "text": "you can use the terminal version of"
+  },
+  {
+   "start": 1830.44,
+   "duration": 4.68,
+   "text": "Claude or you can if you have the Claude"
+  },
+  {
+   "start": 1832.68,
+   "duration": 5.6,
+   "text": "app over here that I'm using over here,"
+  },
+  {
+   "start": 1835.12,
+   "duration": 4.96,
+   "text": "this Claude app, you can use this code"
+  },
+  {
+   "start": 1838.28,
+   "duration": 3.76,
+   "text": "version as well, right? Here you can"
+  },
+  {
+   "start": 1840.08,
+   "duration": 4.84,
+   "text": "select the folder and you can"
+  },
+  {
+   "start": 1842.04,
+   "duration": 4.16,
+   "text": "run whatever task you need, right? So,"
+  },
+  {
+   "start": 1844.92,
+   "duration": 3.44,
+   "text": "um"
+  },
+  {
+   "start": 1846.2,
+   "duration": 3.52,
+   "text": "what we'll do right now is obviously"
+  },
+  {
+   "start": 1848.36,
+   "duration": 3.52,
+   "text": "we're going to continue with this thing."
+  },
+  {
+   "start": 1849.72,
+   "duration": 6.0,
+   "text": "So, I'm going to"
+  },
+  {
+   "start": 1851.88,
+   "duration": 5.52,
+   "text": "just open up a new terminal."
+  },
+  {
+   "start": 1855.72,
+   "duration": 2.6,
+   "text": "Why it is showing this?"
+  },
+  {
+   "start": 1857.4,
+   "duration": 3.0,
+   "text": "By the way,"
+  },
+  {
+   "start": 1858.32,
+   "duration": 4.6,
+   "text": "I'm going to"
+  },
+  {
+   "start": 1860.4,
+   "duration": 5.04,
+   "text": "close this up and"
+  },
+  {
+   "start": 1862.92,
+   "duration": 4.08,
+   "text": "I'm going to go for a new terminal and"
+  },
+  {
+   "start": 1865.44,
+   "duration": 3.0,
+   "text": "here"
+  },
+  {
+   "start": 1867.0,
+   "duration": 3.44,
+   "text": "I have already told you the command how"
+  },
+  {
+   "start": 1868.44,
+   "duration": 4.52,
+   "text": "we can install Claude. I'm just going to"
+  },
+  {
+   "start": 1870.44,
+   "duration": 4.0,
+   "text": "do one thing. I'm just going to run"
+  },
+  {
+   "start": 1872.96,
+   "duration": 4.28,
+   "text": "Claude right now and we're going to"
+  },
+  {
+   "start": 1874.44,
+   "duration": 4.6,
+   "text": "continue the rest of the video in the"
+  },
+  {
+   "start": 1877.24,
+   "duration": 3.52,
+   "text": "terminal itself. So, I'm just going to"
+  },
+  {
+   "start": 1879.04,
+   "duration": 3.88,
+   "text": "say Claude."
+  },
+  {
+   "start": 1880.76,
+   "duration": 4.48,
+   "text": "See, guys? I'm also trying out these"
+  },
+  {
+   "start": 1882.92,
+   "duration": 3.8,
+   "text": "things and I'm also facing whatever"
+  },
+  {
+   "start": 1885.24,
+   "duration": 3.2,
+   "text": "issues I'm facing I'm sharing it with"
+  },
+  {
+   "start": 1886.72,
+   "duration": 4.0,
+   "text": "you guys because if you also face these"
+  },
+  {
+   "start": 1888.44,
+   "duration": 4.72,
+   "text": "issues, you can come to this video and"
+  },
+  {
+   "start": 1890.72,
+   "duration": 5.88,
+   "text": "refer to it, right? So,"
+  },
+  {
+   "start": 1893.16,
+   "duration": 5.0,
+   "text": "yes, I trust this folder. Okay? Now, we"
+  },
+  {
+   "start": 1896.6,
+   "duration": 6.08,
+   "text": "are"
+  },
+  {
+   "start": 1898.16,
+   "duration": 6.56,
+   "text": "here and by default if you see um"
+  },
+  {
+   "start": 1902.68,
+   "duration": 4.52,
+   "text": "it is selected the medium effort for"
+  },
+  {
+   "start": 1904.72,
+   "duration": 3.68,
+   "text": "now, right? So, this is the effort that"
+  },
+  {
+   "start": 1907.2,
+   "duration": 3.88,
+   "text": "it is there."
+  },
+  {
+   "start": 1908.4,
+   "duration": 4.56,
+   "text": "And I'm going to go with medium for now"
+  },
+  {
+   "start": 1911.08,
+   "duration": 3.44,
+   "text": "because you know,"
+  },
+  {
+   "start": 1912.96,
+   "duration": 4.12,
+   "text": "uh this is"
+  },
+  {
+   "start": 1914.52,
+   "duration": 4.68,
+   "text": "uh okay, we're just kind of"
+  },
+  {
+   "start": 1917.08,
+   "duration": 3.76,
+   "text": "dilly-dallying around and creating our"
+  },
+  {
+   "start": 1919.2,
+   "duration": 3.36,
+   "text": "project structure. We are scaffolding"
+  },
+  {
+   "start": 1920.84,
+   "duration": 3.16,
+   "text": "our app. So, if you see the current"
+  },
+  {
+   "start": 1922.56,
+   "duration": 4.16,
+   "text": "model,"
+  },
+  {
+   "start": 1924.0,
+   "duration": 4.28,
+   "text": "so you can just say {slash} model and it"
+  },
+  {
+   "start": 1926.72,
+   "duration": 4.2,
+   "text": "will show you the current model that is"
+  },
+  {
+   "start": 1928.28,
+   "duration": 3.6,
+   "text": "selected. Current is Opus, but I'm going"
+  },
+  {
+   "start": 1930.92,
+   "duration": 3.0,
+   "text": "to"
+  },
+  {
+   "start": 1931.88,
+   "duration": 3.44,
+   "text": "go to the default model Sonnet 4.6"
+  },
+  {
+   "start": 1933.92,
+   "duration": 3.36,
+   "text": "because we're just creating the app,"
+  },
+  {
+   "start": 1935.32,
+   "duration": 4.08,
+   "text": "right? I don't want to burn down my"
+  },
+  {
+   "start": 1937.28,
+   "duration": 4.08,
+   "text": "credits. So, now what I'm going to do is"
+  },
+  {
+   "start": 1939.4,
+   "duration": 4.44,
+   "text": "obviously we have to give a reference"
+  },
+  {
+   "start": 1941.36,
+   "duration": 4.76,
+   "text": "now of the plan what it is because you"
+  },
+  {
+   "start": 1943.84,
+   "duration": 4.52,
+   "text": "have to continue whatever it has client"
+  },
+  {
+   "start": 1946.12,
+   "duration": 4.76,
+   "text": "was doing or we have to continue from"
+  },
+  {
+   "start": 1948.36,
+   "duration": 4.319,
+   "text": "here, right? So, I'm going to I have"
+  },
+  {
+   "start": 1950.88,
+   "duration": 5.0,
+   "text": "copied the plan actually. So, I'm going"
+  },
+  {
+   "start": 1952.679,
+   "duration": 7.401,
+   "text": "to go to Sublime Text over here and"
+  },
+  {
+   "start": 1955.88,
+   "duration": 4.2,
+   "text": "I'm just going to copy this entire plan."
+  },
+  {
+   "start": 1960.679,
+   "duration": 2.721,
+   "text": "Um"
+  },
+  {
+   "start": 1963.44,
+   "duration": 5.84,
+   "text": "this entire plan that it had generated."
+  },
+  {
+   "start": 1967.16,
+   "duration": 4.96,
+   "text": "Okay, and I'm going to"
+  },
+  {
+   "start": 1969.28,
+   "duration": 4.6,
+   "text": "just put"
+  },
+  {
+   "start": 1972.12,
+   "duration": 3.96,
+   "text": "it here. So,"
+  },
+  {
+   "start": 1973.88,
+   "duration": 4.96,
+   "text": "just to give it some context."
+  },
+  {
+   "start": 1976.08,
+   "duration": 4.76,
+   "text": "And then what I'm going to see is"
+  },
+  {
+   "start": 1978.84,
+   "duration": 3.48,
+   "text": "I tried"
+  },
+  {
+   "start": 1980.84,
+   "duration": 5.08,
+   "text": "I'm just going to tell the truth to"
+  },
+  {
+   "start": 1982.32,
+   "duration": 5.64,
+   "text": "Claude. I tried to generate this project"
+  },
+  {
+   "start": 1985.92,
+   "duration": 4.64,
+   "text": "structure"
+  },
+  {
+   "start": 1987.96,
+   "duration": 5.24,
+   "text": "uh using client"
+  },
+  {
+   "start": 1990.56,
+   "duration": 3.72,
+   "text": "and I ran out of"
+  },
+  {
+   "start": 1993.2,
+   "duration": 3.08,
+   "text": "client"
+  },
+  {
+   "start": 1994.28,
+   "duration": 3.72,
+   "text": "credits."
+  },
+  {
+   "start": 1996.28,
+   "duration": 4.88,
+   "text": "Can you"
+  },
+  {
+   "start": 1998.0,
+   "duration": 6.52,
+   "text": "go through this"
+  },
+  {
+   "start": 2001.16,
+   "duration": 5.76,
+   "text": "through this project and create"
+  },
+  {
+   "start": 2004.52,
+   "duration": 6.159,
+   "text": "{slash} fix"
+  },
+  {
+   "start": 2006.92,
+   "duration": 6.96,
+   "text": "what left what is left basically? And I"
+  },
+  {
+   "start": 2010.679,
+   "duration": 6.401,
+   "text": "think this should be able to"
+  },
+  {
+   "start": 2013.88,
+   "duration": 3.2,
+   "text": "do all of the stuff."
+  },
+  {
+   "start": 2025.04,
+   "duration": 4.56,
+   "text": "Okay, so it has"
+  },
+  {
+   "start": 2027.32,
+   "duration": 4.04,
+   "text": "ran out of it and it has said telling"
+  },
+  {
+   "start": 2029.6,
+   "duration": 3.92,
+   "text": "okay, list all the files in task one"
+  },
+  {
+   "start": 2031.36,
+   "duration": 4.92,
+   "text": "server directories. Okay, that is fine."
+  },
+  {
+   "start": 2033.52,
+   "duration": 2.76,
+   "text": "Let's do it."
+  },
+  {
+   "start": 2037.72,
+   "duration": 3.959,
+   "text": "For now, I'm going to close down"
+  },
+  {
+   "start": 2040.04,
+   "duration": 5.639,
+   "text": "client over here."
+  },
+  {
+   "start": 2041.679,
+   "duration": 4.0,
+   "text": "So, it is now doing the stuff."
+  },
+  {
+   "start": 2056.679,
+   "duration": 4.48,
+   "text": "So, it is also see this tip is also very"
+  },
+  {
+   "start": 2058.359,
+   "duration": 4.481,
+   "text": "nice. It's saying use BTW"
+  },
+  {
+   "start": 2061.159,
+   "duration": 3.321,
+   "text": "uh to ask"
+  },
+  {
+   "start": 2062.84,
+   "duration": 5.92,
+   "text": "uh a quick side question without"
+  },
+  {
+   "start": 2064.48,
+   "duration": 6.76,
+   "text": "interrupting Claude's current work."
+  },
+  {
+   "start": 2068.76,
+   "duration": 2.48,
+   "text": "Right?"
+  },
+  {
+   "start": 2081.72,
+   "duration": 4.24,
+   "text": "Okay, so it is working it out. So, I'm"
+  },
+  {
+   "start": 2083.32,
+   "duration": 5.0,
+   "text": "going to pause the video right now and"
+  },
+  {
+   "start": 2085.96,
+   "duration": 5.28,
+   "text": "once it is done working, I'm going to"
+  },
+  {
+   "start": 2088.32,
+   "duration": 4.76,
+   "text": "resume it and I'm going to show you"
+  },
+  {
+   "start": 2091.24,
+   "duration": 5.28,
+   "text": "what's next."
+  },
+  {
+   "start": 2093.08,
+   "duration": 5.32,
+   "text": "Finally, uh the execution of the Claude"
+  },
+  {
+   "start": 2096.52,
+   "duration": 3.6,
+   "text": "code is over and it was able to generate"
+  },
+  {
+   "start": 2098.4,
+   "duration": 3.48,
+   "text": "this whole uh"
+  },
+  {
+   "start": 2100.12,
+   "duration": 3.16,
+   "text": "as you can see the whole structure as"
+  },
+  {
+   "start": 2101.88,
+   "duration": 4.96,
+   "text": "per the plan"
+  },
+  {
+   "start": 2103.28,
+   "duration": 5.04,
+   "text": "and what I wanted, right? Now, uh let me"
+  },
+  {
+   "start": 2106.84,
+   "duration": 4.2,
+   "text": "show you something interesting, right?"
+  },
+  {
+   "start": 2108.32,
+   "duration": 4.56,
+   "text": "And I'll also show you why model"
+  },
+  {
+   "start": 2111.04,
+   "duration": 2.92,
+   "text": "switching is necessary at the particular"
+  },
+  {
+   "start": 2112.88,
+   "duration": 3.04,
+   "text": "time."
+  },
+  {
+   "start": 2113.96,
+   "duration": 3.76,
+   "text": "So, if you see"
+  },
+  {
+   "start": 2115.92,
+   "duration": 3.28,
+   "text": "uh it is telling me that you know the"
+  },
+  {
+   "start": 2117.72,
+   "duration": 4.12,
+   "text": "back end has been created, the front end"
+  },
+  {
+   "start": 2119.2,
+   "duration": 5.2,
+   "text": "has been created and this is the output,"
+  },
+  {
+   "start": 2121.84,
+   "duration": 4.84,
+   "text": "right? And these are the things that it"
+  },
+  {
+   "start": 2124.4,
+   "duration": 4.64,
+   "text": "has created, right? And all this was"
+  },
+  {
+   "start": 2126.68,
+   "duration": 6.4,
+   "text": "created the whole project was created"
+  },
+  {
+   "start": 2129.04,
+   "duration": 7.72,
+   "text": "while being on the Sonnet model, okay? I"
+  },
+  {
+   "start": 2133.08,
+   "duration": 6.08,
+   "text": "hadn't switched to Opus model at all."
+  },
+  {
+   "start": 2136.76,
+   "duration": 4.68,
+   "text": "Now, after that it told that okay,"
+  },
+  {
+   "start": 2139.16,
+   "duration": 3.8,
+   "text": "uh you can run the server and the you"
+  },
+  {
+   "start": 2141.44,
+   "duration": 3.64,
+   "text": "know front end application and it gave"
+  },
+  {
+   "start": 2142.96,
+   "duration": 3.68,
+   "text": "the respective commands for that."
+  },
+  {
+   "start": 2145.08,
+   "duration": 2.56,
+   "text": "Okay, that is fine."
+  },
+  {
+   "start": 2146.64,
+   "duration": 2.92,
+   "text": "But,"
+  },
+  {
+   "start": 2147.64,
+   "duration": 4.28,
+   "text": "I was able to run the server cleanly. It"
+  },
+  {
+   "start": 2149.56,
+   "duration": 4.68,
+   "text": "is running in port number 3000 as it had"
+  },
+  {
+   "start": 2151.92,
+   "duration": 4.52,
+   "text": "mentioned. But, there was some issues"
+  },
+  {
+   "start": 2154.24,
+   "duration": 3.84,
+   "text": "while I was running the front end"
+  },
+  {
+   "start": 2156.44,
+   "duration": 3.84,
+   "text": "application, okay?"
+  },
+  {
+   "start": 2158.08,
+   "duration": 4.64,
+   "text": "I was getting some errors and it was you"
+  },
+  {
+   "start": 2160.28,
+   "duration": 5.68,
+   "text": "know getting timed out. So, I was trying"
+  },
+  {
+   "start": 2162.72,
+   "duration": 6.52,
+   "text": "to prompt the particular um"
+  },
+  {
+   "start": 2165.96,
+   "duration": 5.2,
+   "text": "you know Claude code to fix that issue."
+  },
+  {
+   "start": 2169.24,
+   "duration": 4.16,
+   "text": "But, the thing is it was going in"
+  },
+  {
+   "start": 2171.16,
+   "duration": 4.68,
+   "text": "cycles, okay? Now, the Sonnet model here"
+  },
+  {
+   "start": 2173.4,
+   "duration": 5.04,
+   "text": "it was not able to work. It was going in"
+  },
+  {
+   "start": 2175.84,
+   "duration": 4.0,
+   "text": "cycles and it was kind of doing the same"
+  },
+  {
+   "start": 2178.44,
+   "duration": 3.88,
+   "text": "thing over and over again and it was"
+  },
+  {
+   "start": 2179.84,
+   "duration": 5.08,
+   "text": "getting stuck at that point. Now, I"
+  },
+  {
+   "start": 2182.32,
+   "duration": 4.68,
+   "text": "realized that okay, now the Sonnet model"
+  },
+  {
+   "start": 2184.92,
+   "duration": 5.0,
+   "text": "is not intelligent enough to fix this"
+  },
+  {
+   "start": 2187.0,
+   "duration": 5.88,
+   "text": "issue. So, what I did is I switched the"
+  },
+  {
+   "start": 2189.92,
+   "duration": 5.68,
+   "text": "model. Now, to switch the model you can"
+  },
+  {
+   "start": 2192.88,
+   "duration": 4.6,
+   "text": "go with the {slash} model you know"
+  },
+  {
+   "start": 2195.6,
+   "duration": 3.28,
+   "text": "command over here."
+  },
+  {
+   "start": 2197.48,
+   "duration": 5.32,
+   "text": "Okay?"
+  },
+  {
+   "start": 2198.88,
+   "duration": 6.2,
+   "text": "Now, I I set the model to 4.6 and I also"
+  },
+  {
+   "start": 2202.8,
+   "duration": 4.08,
+   "text": "kind of thought that okay, the medium"
+  },
+  {
+   "start": 2205.08,
+   "duration": 3.68,
+   "text": "effort is not going to work. So, I"
+  },
+  {
+   "start": 2206.88,
+   "duration": 3.88,
+   "text": "switched to high effort. Now, how to do"
+  },
+  {
+   "start": 2208.76,
+   "duration": 4.12,
+   "text": "that it is pretty simple. So, if you go"
+  },
+  {
+   "start": 2210.76,
+   "duration": 4.2,
+   "text": "to {slash} model"
+  },
+  {
+   "start": 2212.88,
+   "duration": 4.72,
+   "text": "right over here. Now, it will show you"
+  },
+  {
+   "start": 2214.96,
+   "duration": 4.64,
+   "text": "the correct model over here and then you"
+  },
+  {
+   "start": 2217.6,
+   "duration": 3.56,
+   "text": "can use your arrow buttons, left arrow,"
+  },
+  {
+   "start": 2219.6,
+   "duration": 3.48,
+   "text": "right arrow. So, you can if you go to"
+  },
+  {
+   "start": 2221.16,
+   "duration": 3.84,
+   "text": "left, it will it will not the effort"
+  },
+  {
+   "start": 2223.08,
+   "duration": 4.6,
+   "text": "will reduce. If you go to right, the"
+  },
+  {
+   "start": 2225.0,
+   "duration": 4.359,
+   "text": "effort will increase. And I'm not at all"
+  },
+  {
+   "start": 2227.68,
+   "duration": 4.0,
+   "text": "at the max effort right now. I am"
+  },
+  {
+   "start": 2229.359,
+   "duration": 5.201,
+   "text": "working at the high effort right now."
+  },
+  {
+   "start": 2231.68,
+   "duration": 5.8,
+   "text": "Okay. So, I thought that this will"
+  },
+  {
+   "start": 2234.56,
+   "duration": 5.04,
+   "text": "work. So, I selected the Opus model with"
+  },
+  {
+   "start": 2237.48,
+   "duration": 3.12,
+   "text": "the high effort you know thing right"
+  },
+  {
+   "start": 2239.6,
+   "duration": 3.0,
+   "text": "now. So,"
+  },
+  {
+   "start": 2240.6,
+   "duration": 3.6,
+   "text": "currently it is set at that particular"
+  },
+  {
+   "start": 2242.6,
+   "duration": 3.84,
+   "text": "level."
+  },
+  {
+   "start": 2244.2,
+   "duration": 4.4,
+   "text": "Okay. Now,"
+  },
+  {
+   "start": 2246.44,
+   "duration": 4.8,
+   "text": "let us see the app how it looks, okay?"
+  },
+  {
+   "start": 2248.6,
+   "duration": 4.48,
+   "text": "So, I I started the app and you know it"
+  },
+  {
+   "start": 2251.24,
+   "duration": 3.76,
+   "text": "is working fine. You know, this is a"
+  },
+  {
+   "start": 2253.08,
+   "duration": 4.76,
+   "text": "task flow application and this is how it"
+  },
+  {
+   "start": 2255.0,
+   "duration": 5.2,
+   "text": "created. Pretty amazing. You can add a"
+  },
+  {
+   "start": 2257.84,
+   "duration": 4.2,
+   "text": "board. I can just say you know example"
+  },
+  {
+   "start": 2260.2,
+   "duration": 4.4,
+   "text": "board."
+  },
+  {
+   "start": 2262.04,
+   "duration": 3.92,
+   "text": "And description, this is an example"
+  },
+  {
+   "start": 2264.6,
+   "duration": 3.56,
+   "text": "board. Now, the point of this video is"
+  },
+  {
+   "start": 2265.96,
+   "duration": 4.6,
+   "text": "not showing you this application. It is"
+  },
+  {
+   "start": 2268.16,
+   "duration": 4.24,
+   "text": "how Claude code works, right? So, click"
+  },
+  {
+   "start": 2270.56,
+   "duration": 3.799,
+   "text": "on create and this is our example board,"
+  },
+  {
+   "start": 2272.4,
+   "duration": 4.8,
+   "text": "okay? Now, if I go there, I can add a"
+  },
+  {
+   "start": 2274.359,
+   "duration": 4.801,
+   "text": "column and do whatever I want. So, it"
+  },
+  {
+   "start": 2277.2,
+   "duration": 4.8,
+   "text": "has created. So, the Sonnet model was"
+  },
+  {
+   "start": 2279.16,
+   "duration": 4.76,
+   "text": "able to create this entire application"
+  },
+  {
+   "start": 2282.0,
+   "duration": 4.0,
+   "text": "based on the plan that we had created,"
+  },
+  {
+   "start": 2283.92,
+   "duration": 4.24,
+   "text": "but still the back button is not"
+  },
+  {
+   "start": 2286.0,
+   "duration": 3.6,
+   "text": "working, you know? It's not completely"
+  },
+  {
+   "start": 2288.16,
+   "duration": 3.36,
+   "text": "perfect, but yeah, we can just figure"
+  },
+  {
+   "start": 2289.6,
+   "duration": 3.84,
+   "text": "out something, right? We can add more"
+  },
+  {
+   "start": 2291.52,
+   "duration": 3.56,
+   "text": "instructions. The plan didn't specify"
+  },
+  {
+   "start": 2293.44,
+   "duration": 3.84,
+   "text": "that you have to also work on the back"
+  },
+  {
+   "start": 2295.08,
+   "duration": 4.44,
+   "text": "button. This is great. We can also"
+  },
+  {
+   "start": 2297.28,
+   "duration": 3.92,
+   "text": "delete the board. It was it is all"
+  },
+  {
+   "start": 2299.52,
+   "duration": 4.0,
+   "text": "according to the plan."
+  },
+  {
+   "start": 2301.2,
+   "duration": 4.64,
+   "text": "Okay. Now, okay. So, I hope you guys"
+  },
+  {
+   "start": 2303.52,
+   "duration": 3.36,
+   "text": "like the demo about the plan mode and"
+  },
+  {
+   "start": 2305.84,
+   "duration": 2.6,
+   "text": "the"
+  },
+  {
+   "start": 2306.88,
+   "duration": 5.04,
+   "text": "you know a direct execution mode and you"
+  },
+  {
+   "start": 2308.44,
+   "duration": 5.84,
+   "text": "liked how I used it. If there is any"
+  },
+  {
+   "start": 2311.92,
+   "duration": 4.04,
+   "text": "questions or suggestions, you please put"
+  },
+  {
+   "start": 2314.28,
+   "duration": 4.44,
+   "text": "it down in the comments. So, let's"
+  },
+  {
+   "start": 2315.96,
+   "duration": 5.16,
+   "text": "continue with the lesson. So,"
+  },
+  {
+   "start": 2318.72,
+   "duration": 3.44,
+   "text": "talking about another concept here,"
+  },
+  {
+   "start": 2321.12,
+   "duration": 2.68,
+   "text": "guys."
+  },
+  {
+   "start": 2322.16,
+   "duration": 3.24,
+   "text": "The explore sub agent. Now, before"
+  },
+  {
+   "start": 2323.8,
+   "duration": 3.44,
+   "text": "talking about that, let's understand the"
+  },
+  {
+   "start": 2325.4,
+   "duration": 2.8,
+   "text": "problem that this particular thing will"
+  },
+  {
+   "start": 2327.24,
+   "duration": 4.08,
+   "text": "solve."
+  },
+  {
+   "start": 2328.2,
+   "duration": 5.52,
+   "text": "So, the problem that comes up you know"
+  },
+  {
+   "start": 2331.32,
+   "duration": 4.44,
+   "text": "the moment you your code base real you"
+  },
+  {
+   "start": 2333.72,
+   "duration": 4.12,
+   "text": "know gets real world size, you know, it"
+  },
+  {
+   "start": 2335.76,
+   "duration": 4.64,
+   "text": "it it becomes massive."
+  },
+  {
+   "start": 2337.84,
+   "duration": 5.12,
+   "text": "Right? And you you ask Claude to"
+  },
+  {
+   "start": 2340.4,
+   "duration": 4.12,
+   "text": "understand a complex system before"
+  },
+  {
+   "start": 2342.96,
+   "duration": 3.28,
+   "text": "planning a change."
+  },
+  {
+   "start": 2344.52,
+   "duration": 3.8,
+   "text": "Now, what Claude will do obviously it"
+  },
+  {
+   "start": 2346.24,
+   "duration": 4.24,
+   "text": "will start reading files, right? And"
+  },
+  {
+   "start": 2348.32,
+   "duration": 4.24,
+   "text": "then it will read dependencies."
+  },
+  {
+   "start": 2350.48,
+   "duration": 4.4,
+   "text": "It will follow import chains and where"
+  },
+  {
+   "start": 2352.56,
+   "duration": 4.56,
+   "text": "those functions are used. It will read"
+  },
+  {
+   "start": 2354.88,
+   "duration": 3.36,
+   "text": "go through the test files."
+  },
+  {
+   "start": 2357.12,
+   "duration": 2.64,
+   "text": "And"
+  },
+  {
+   "start": 2358.24,
+   "duration": 4.16,
+   "text": "you know, and suddenly your context"
+  },
+  {
+   "start": 2359.76,
+   "duration": 3.92,
+   "text": "window is full of those file contents."
+  },
+  {
+   "start": 2362.4,
+   "duration": 3.84,
+   "text": "And"
+  },
+  {
+   "start": 2363.68,
+   "duration": 4.12,
+   "text": "Claude has not even started thinking"
+  },
+  {
+   "start": 2366.24,
+   "duration": 3.52,
+   "text": "what to do. It's just reading and your"
+  },
+  {
+   "start": 2367.8,
+   "duration": 3.68,
+   "text": "context window is full."
+  },
+  {
+   "start": 2369.76,
+   "duration": 4.96,
+   "text": "Now,"
+  },
+  {
+   "start": 2371.48,
+   "duration": 4.879,
+   "text": "this is context window exhaustion,"
+  },
+  {
+   "start": 2374.72,
+   "duration": 3.56,
+   "text": "right? And it happens with a lot of"
+  },
+  {
+   "start": 2376.359,
+   "duration": 3.561,
+   "text": "people. People just start with a new"
+  },
+  {
+   "start": 2378.28,
+   "duration": 3.92,
+   "text": "session and continue and they will hit"
+  },
+  {
+   "start": 2379.92,
+   "duration": 4.28,
+   "text": "it again if the code base is really huge"
+  },
+  {
+   "start": 2382.2,
+   "duration": 4.44,
+   "text": "or they will start with 1 million"
+  },
+  {
+   "start": 2384.2,
+   "duration": 4.2,
+   "text": "context and spend more money which in my"
+  },
+  {
+   "start": 2386.64,
+   "duration": 3.28,
+   "text": "opinion why would you use that if that"
+  },
+  {
+   "start": 2388.4,
+   "duration": 2.6,
+   "text": "is not needed."
+  },
+  {
+   "start": 2389.92,
+   "duration": 2.72,
+   "text": "So"
+  },
+  {
+   "start": 2391.0,
+   "duration": 3.28,
+   "text": "and it's a real problem right for very"
+  },
+  {
+   "start": 2392.64,
+   "duration": 4.36,
+   "text": "large code bases."
+  },
+  {
+   "start": 2394.28,
+   "duration": 4.4,
+   "text": "Um now here the explore sub agent comes"
+  },
+  {
+   "start": 2397.0,
+   "duration": 4.2,
+   "text": "into the picture. So instead of doing"
+  },
+  {
+   "start": 2398.68,
+   "duration": 3.96,
+   "text": "all the code base discovery in your main"
+  },
+  {
+   "start": 2401.2,
+   "duration": 3.68,
+   "text": "Claude session"
+  },
+  {
+   "start": 2402.64,
+   "duration": 3.76,
+   "text": "you just spin up a dedicated sub agent"
+  },
+  {
+   "start": 2404.88,
+   "duration": 4.64,
+   "text": "whose job"
+  },
+  {
+   "start": 2406.4,
+   "duration": 4.96,
+   "text": "is just to do the exploration."
+  },
+  {
+   "start": 2409.52,
+   "duration": 3.68,
+   "text": "So"
+  },
+  {
+   "start": 2411.36,
+   "duration": 4.32,
+   "text": "what do I mean by that is that that sub"
+  },
+  {
+   "start": 2413.2,
+   "duration": 4.32,
+   "text": "agent reads broadly kind of forms an"
+  },
+  {
+   "start": 2415.68,
+   "duration": 4.48,
+   "text": "understanding"
+  },
+  {
+   "start": 2417.52,
+   "duration": 4.36,
+   "text": "and then returns a compact summary back"
+  },
+  {
+   "start": 2420.16,
+   "duration": 3.4,
+   "text": "to the main session."
+  },
+  {
+   "start": 2421.88,
+   "duration": 3.96,
+   "text": "You understand? So your main session"
+  },
+  {
+   "start": 2423.56,
+   "duration": 4.48,
+   "text": "context is intact."
+  },
+  {
+   "start": 2425.84,
+   "duration": 4.12,
+   "text": "You know, that agent will run"
+  },
+  {
+   "start": 2428.04,
+   "duration": 3.6,
+   "text": "independently the explore sub agent will"
+  },
+  {
+   "start": 2429.96,
+   "duration": 4.2,
+   "text": "run independently"
+  },
+  {
+   "start": 2431.64,
+   "duration": 4.2,
+   "text": "and then it will return a compact"
+  },
+  {
+   "start": 2434.16,
+   "duration": 4.04,
+   "text": "summary back to the main session. So at"
+  },
+  {
+   "start": 2435.84,
+   "duration": 4.76,
+   "text": "least you would start with some kind of"
+  },
+  {
+   "start": 2438.2,
+   "duration": 5.8,
+   "text": "a summary."
+  },
+  {
+   "start": 2440.6,
+   "duration": 4.84,
+   "text": "Right? So an exam fact, you know, uh the"
+  },
+  {
+   "start": 2444.0,
+   "duration": 3.88,
+   "text": "explore sub agent and it comes in the"
+  },
+  {
+   "start": 2445.44,
+   "duration": 6.48,
+   "text": "exam is that the explore sub agent"
+  },
+  {
+   "start": 2447.88,
+   "duration": 6.16,
+   "text": "prevents context window exhaustion."
+  },
+  {
+   "start": 2451.92,
+   "duration": 4.64,
+   "text": "So this term please kind of, you know,"
+  },
+  {
+   "start": 2454.04,
+   "duration": 5.72,
+   "text": "notice and try try to relate it with the"
+  },
+  {
+   "start": 2456.56,
+   "duration": 6.52,
+   "text": "explore sub agent. Whenever uh the the"
+  },
+  {
+   "start": 2459.76,
+   "duration": 4.88,
+   "text": "question talks about uh context um"
+  },
+  {
+   "start": 2463.08,
+   "duration": 3.8,
+   "text": "exhaustion"
+  },
+  {
+   "start": 2464.64,
+   "duration": 4.2,
+   "text": "context window ex exhaustion your answer"
+  },
+  {
+   "start": 2466.88,
+   "duration": 4.4,
+   "text": "should be also go with the"
+  },
+  {
+   "start": 2468.84,
+   "duration": 4.0,
+   "text": "you know"
+  },
+  {
+   "start": 2471.28,
+   "duration": 3.12,
+   "text": "explore sub agent. Now I probably I"
+  },
+  {
+   "start": 2472.84,
+   "duration": 3.4,
+   "text": "wouldn't have showed you how to use the"
+  },
+  {
+   "start": 2474.4,
+   "duration": 3.36,
+   "text": "explore sub agent in the demo. So"
+  },
+  {
+   "start": 2476.24,
+   "duration": 4.72,
+   "text": "quickly I'll just tell you how to use"
+  },
+  {
+   "start": 2477.76,
+   "duration": 4.76,
+   "text": "it. It is not a command or something. Um"
+  },
+  {
+   "start": 2480.96,
+   "duration": 3.76,
+   "text": "you'll just basically have to put it in"
+  },
+  {
+   "start": 2482.52,
+   "duration": 7.32,
+   "text": "the prompt something like, you know,"
+  },
+  {
+   "start": 2484.72,
+   "duration": 7.96,
+   "text": "uh use the explore sub agent to give me"
+  },
+  {
+   "start": 2489.84,
+   "duration": 3.76,
+   "text": "a summary of this project or if you have"
+  },
+  {
+   "start": 2492.68,
+   "duration": 3.04,
+   "text": "any"
+  },
+  {
+   "start": 2493.6,
+   "duration": 3.64,
+   "text": "requirement you have to ask it to do"
+  },
+  {
+   "start": 2495.72,
+   "duration": 3.88,
+   "text": "that. That's how you would do it via"
+  },
+  {
+   "start": 2497.24,
+   "duration": 4.84,
+   "text": "prompting. There is nothing like special"
+  },
+  {
+   "start": 2499.6,
+   "duration": 5.56,
+   "text": "configurations something you need to do."
+  },
+  {
+   "start": 2502.08,
+   "duration": 3.92,
+   "text": "Right? So in the end I would tell that"
+  },
+  {
+   "start": 2505.16,
+   "duration": 4.0,
+   "text": "uh"
+  },
+  {
+   "start": 2506.0,
+   "duration": 5.28,
+   "text": "planning direct execution use it as a"
+  },
+  {
+   "start": 2509.16,
+   "duration": 3.04,
+   "text": "combo like a power couple kind of a"
+  },
+  {
+   "start": 2511.28,
+   "duration": 3.52,
+   "text": "thing."
+  },
+  {
+   "start": 2512.2,
+   "duration": 4.04,
+   "text": "And whenever you need uh you know, you"
+  },
+  {
+   "start": 2514.8,
+   "duration": 2.68,
+   "text": "have to read through a very large code"
+  },
+  {
+   "start": 2516.24,
+   "duration": 3.44,
+   "text": "base and you know, you have to give"
+  },
+  {
+   "start": 2517.48,
+   "duration": 5.48,
+   "text": "Claude an idea the main session of"
+  },
+  {
+   "start": 2519.68,
+   "duration": 4.88,
+   "text": "Claude uh Claude code an idea about"
+  },
+  {
+   "start": 2522.96,
+   "duration": 3.92,
+   "text": "you know, the code base you will use the"
+  },
+  {
+   "start": 2524.56,
+   "duration": 3.4,
+   "text": "basically the"
+  },
+  {
+   "start": 2526.88,
+   "duration": 4.68,
+   "text": "sub"
+  },
+  {
+   "start": 2527.96,
+   "duration": 5.24,
+   "text": "this explore sub agent and it will also"
+  },
+  {
+   "start": 2531.56,
+   "duration": 3.92,
+   "text": "uh you know, will you will not run into"
+  },
+  {
+   "start": 2533.2,
+   "duration": 3.92,
+   "text": "this context window exhaustion problem."
+  },
+  {
+   "start": 2535.48,
+   "duration": 4.12,
+   "text": "Okay, and remember that will come in the"
+  },
+  {
+   "start": 2537.12,
+   "duration": 2.48,
+   "text": "exam."
+  },
+  {
+   "start": 2539.76,
+   "duration": 6.16,
+   "text": "Let's talk about another patterns, okay?"
+  },
+  {
+   "start": 2543.32,
+   "duration": 4.56,
+   "text": "Now uh this comes uh is part of the"
+  },
+  {
+   "start": 2545.92,
+   "duration": 4.96,
+   "text": "syllabus and"
+  },
+  {
+   "start": 2547.88,
+   "duration": 5.2,
+   "text": "this talks about um you know"
+  },
+  {
+   "start": 2550.88,
+   "duration": 4.44,
+   "text": "some patterns, okay?"
+  },
+  {
+   "start": 2553.08,
+   "duration": 4.2,
+   "text": "Now how do you perfect your changes"
+  },
+  {
+   "start": 2555.32,
+   "duration": 4.48,
+   "text": "basically? How to make the changes that"
+  },
+  {
+   "start": 2557.28,
+   "duration": 5.6,
+   "text": "Claude makes perfect, right? And one of"
+  },
+  {
+   "start": 2559.8,
+   "duration": 6.4,
+   "text": "those patterns is iterative refinement."
+  },
+  {
+   "start": 2562.88,
+   "duration": 3.32,
+   "text": "Okay? Now"
+  },
+  {
+   "start": 2566.32,
+   "duration": 5.68,
+   "text": "this is where a lot of developers kind"
+  },
+  {
+   "start": 2568.8,
+   "duration": 4.72,
+   "text": "of leave the performance on the table."
+  },
+  {
+   "start": 2572.0,
+   "duration": 4.4,
+   "text": "I mean, they get a first output from"
+  },
+  {
+   "start": 2573.52,
+   "duration": 3.88,
+   "text": "Claude that ain't like 70% right and"
+  },
+  {
+   "start": 2576.4,
+   "duration": 2.6,
+   "text": "think"
+  },
+  {
+   "start": 2577.4,
+   "duration": 2.84,
+   "text": "close enough."
+  },
+  {
+   "start": 2579.0,
+   "duration": 3.8,
+   "text": "But"
+  },
+  {
+   "start": 2580.24,
+   "duration": 4.64,
+   "text": "that is not that's why I told sometime"
+  },
+  {
+   "start": 2582.8,
+   "duration": 4.88,
+   "text": "back, you know, use these techniques to"
+  },
+  {
+   "start": 2584.88,
+   "duration": 5.44,
+   "text": "strive for perfection. If you can go to"
+  },
+  {
+   "start": 2587.68,
+   "duration": 4.04,
+   "text": "till that 99% mark, why do you stop at"
+  },
+  {
+   "start": 2590.32,
+   "duration": 3.08,
+   "text": "70?"
+  },
+  {
+   "start": 2591.72,
+   "duration": 3.72,
+   "text": "Right? So"
+  },
+  {
+   "start": 2593.4,
+   "duration": 3.72,
+   "text": "for that there is a craft to iterating"
+  },
+  {
+   "start": 2595.44,
+   "duration": 5.48,
+   "text": "with Claude, you know, that makes the"
+  },
+  {
+   "start": 2597.12,
+   "duration": 7.04,
+   "text": "difference between decent and excellent"
+  },
+  {
+   "start": 2600.92,
+   "duration": 5.72,
+   "text": "or near perfect uh you know, not even"
+  },
+  {
+   "start": 2604.16,
+   "duration": 4.72,
+   "text": "close to perfect to near perfect."
+  },
+  {
+   "start": 2606.64,
+   "duration": 6.0,
+   "text": "So these three pattern"
+  },
+  {
+   "start": 2608.88,
+   "duration": 6.12,
+   "text": "of iterative refinement, you know"
+  },
+  {
+   "start": 2612.64,
+   "duration": 3.16,
+   "text": "it is explicitly tested in the exam as"
+  },
+  {
+   "start": 2615.0,
+   "duration": 2.72,
+   "text": "well."
+  },
+  {
+   "start": 2615.8,
+   "duration": 4.36,
+   "text": "You know, the"
+  },
+  {
+   "start": 2617.72,
+   "duration": 4.64,
+   "text": "and one is the feedback loop"
+  },
+  {
+   "start": 2620.16,
+   "duration": 5.68,
+   "text": "one is the test driven iteration and the"
+  },
+  {
+   "start": 2622.36,
+   "duration": 6.16,
+   "text": "third is concrete examples."
+  },
+  {
+   "start": 2625.84,
+   "duration": 4.28,
+   "text": "Okay? So we'll go one by one what it"
+  },
+  {
+   "start": 2628.52,
+   "duration": 2.88,
+   "text": "means basically."
+  },
+  {
+   "start": 2630.12,
+   "duration": 4.12,
+   "text": "So"
+  },
+  {
+   "start": 2631.4,
+   "duration": 4.32,
+   "text": "let's see the feedback loop basically."
+  },
+  {
+   "start": 2634.24,
+   "duration": 4.0,
+   "text": "Let's first understand the feedback loop"
+  },
+  {
+   "start": 2635.72,
+   "duration": 4.84,
+   "text": "and then we'll see the other pattern."
+  },
+  {
+   "start": 2638.24,
+   "duration": 4.2,
+   "text": "So the feedback loop is basically this"
+  },
+  {
+   "start": 2640.56,
+   "duration": 4.0,
+   "text": "is like the basic version. So Claude"
+  },
+  {
+   "start": 2642.44,
+   "duration": 3.72,
+   "text": "produces an output for example, you told"
+  },
+  {
+   "start": 2644.56,
+   "duration": 4.68,
+   "text": "to do some change Claude produces an"
+  },
+  {
+   "start": 2646.16,
+   "duration": 4.4,
+   "text": "output. You review it, you give specific"
+  },
+  {
+   "start": 2649.24,
+   "duration": 4.84,
+   "text": "feedback."
+  },
+  {
+   "start": 2650.56,
+   "duration": 6.52,
+   "text": "You know, and then Claude revises."
+  },
+  {
+   "start": 2654.08,
+   "duration": 5.68,
+   "text": "Now the keyword is specific. You know,"
+  },
+  {
+   "start": 2657.08,
+   "duration": 6.04,
+   "text": "just say telling make it better is"
+  },
+  {
+   "start": 2659.76,
+   "duration": 5.48,
+   "text": "useless useless feedback. I mean"
+  },
+  {
+   "start": 2663.12,
+   "duration": 4.12,
+   "text": "make it better doesn't give Claude"
+  },
+  {
+   "start": 2665.24,
+   "duration": 4.04,
+   "text": "anything to work with. You have to give"
+  },
+  {
+   "start": 2667.24,
+   "duration": 4.08,
+   "text": "something some base based on some"
+  },
+  {
+   "start": 2669.28,
+   "duration": 3.96,
+   "text": "changes Claude made or you know, some"
+  },
+  {
+   "start": 2671.32,
+   "duration": 5.0,
+   "text": "output Claude gave. You know, you have"
+  },
+  {
+   "start": 2673.24,
+   "duration": 5.48,
+   "text": "to do that. For example, you"
+  },
+  {
+   "start": 2676.32,
+   "duration": 4.08,
+   "text": "you did some code and uh you don't like"
+  },
+  {
+   "start": 2678.72,
+   "duration": 3.84,
+   "text": "the error handling in the particular"
+  },
+  {
+   "start": 2680.4,
+   "duration": 4.04,
+   "text": "code. So you tell uh give the feedback"
+  },
+  {
+   "start": 2682.56,
+   "duration": 4.16,
+   "text": "saying that the error handling in the"
+  },
+  {
+   "start": 2684.44,
+   "duration": 4.24,
+   "text": "for example in the try catch block on"
+  },
+  {
+   "start": 2686.72,
+   "duration": 4.56,
+   "text": "line number so and so"
+  },
+  {
+   "start": 2688.68,
+   "duration": 4.64,
+   "text": "needs to log the full error object which"
+  },
+  {
+   "start": 2691.28,
+   "duration": 3.76,
+   "text": "Claude hasn't done. So that is, you"
+  },
+  {
+   "start": 2693.32,
+   "duration": 4.48,
+   "text": "know, constructive feedback you are"
+  },
+  {
+   "start": 2695.04,
+   "duration": 3.68,
+   "text": "giving to Claude in that loop."
+  },
+  {
+   "start": 2697.8,
+   "duration": 3.52,
+   "text": "Right?"
+  },
+  {
+   "start": 2698.72,
+   "duration": 5.28,
+   "text": "Second comes the test driven iteration."
+  },
+  {
+   "start": 2701.32,
+   "duration": 5.16,
+   "text": "Now give Claude the tests first."
+  },
+  {
+   "start": 2704.0,
+   "duration": 4.52,
+   "text": "Let it generate the code and run the"
+  },
+  {
+   "start": 2706.48,
+   "duration": 4.08,
+   "text": "tests and feed"
+  },
+  {
+   "start": 2708.52,
+   "duration": 4.0,
+   "text": "back when the tests fail."
+  },
+  {
+   "start": 2710.56,
+   "duration": 3.56,
+   "text": "Right? It says it is a normal test"
+  },
+  {
+   "start": 2712.52,
+   "duration": 3.24,
+   "text": "driven development. You write a set of"
+  },
+  {
+   "start": 2714.12,
+   "duration": 2.76,
+   "text": "test cases."
+  },
+  {
+   "start": 2715.76,
+   "duration": 2.28,
+   "text": "Right?"
+  },
+  {
+   "start": 2716.88,
+   "duration": 2.64,
+   "text": "And then based on that you do the"
+  },
+  {
+   "start": 2718.04,
+   "duration": 3.28,
+   "text": "development. If the test case doesn't"
+  },
+  {
+   "start": 2719.52,
+   "duration": 3.48,
+   "text": "pass then basically there is something"
+  },
+  {
+   "start": 2721.32,
+   "duration": 2.6,
+   "text": "wrong with your development and same"
+  },
+  {
+   "start": 2723.0,
+   "duration": 2.96,
+   "text": "thing"
+  },
+  {
+   "start": 2723.92,
+   "duration": 3.96,
+   "text": "where you can do with Claude. Basically"
+  },
+  {
+   "start": 2725.96,
+   "duration": 4.28,
+   "text": "Claude will you I instruct Claude to run"
+  },
+  {
+   "start": 2727.88,
+   "duration": 4.479,
+   "text": "the tests and if some test fail you tell"
+  },
+  {
+   "start": 2730.24,
+   "duration": 5.28,
+   "text": "that okay, why did this test fail? So"
+  },
+  {
+   "start": 2732.359,
+   "duration": 4.401,
+   "text": "Claude will do the particular change."
+  },
+  {
+   "start": 2735.52,
+   "duration": 4.28,
+   "text": "Next is"
+  },
+  {
+   "start": 2736.76,
+   "duration": 5.32,
+   "text": "uh mess machine generated feedback."
+  },
+  {
+   "start": 2739.8,
+   "duration": 4.4,
+   "text": "So"
+  },
+  {
+   "start": 2742.08,
+   "duration": 4.04,
+   "text": "it's like there is no ambiguity about"
+  },
+  {
+   "start": 2744.2,
+   "duration": 3.56,
+   "text": "what success means. Claude can iterate"
+  },
+  {
+   "start": 2746.12,
+   "duration": 5.36,
+   "text": "with high precision when it knows"
+  },
+  {
+   "start": 2747.76,
+   "duration": 4.8,
+   "text": "exactly which assertions need to pass."
+  },
+  {
+   "start": 2751.48,
+   "duration": 4.136,
+   "text": "So"
+  },
+  {
+   "start": 2752.56,
+   "duration": 4.48,
+   "text": "um I mean, you can give some examples to"
+  },
+  {
+   "start": 2755.616,
+   "duration": 2.864,
+   "text": "[snorts] Claude whenever you're writing"
+  },
+  {
+   "start": 2757.04,
+   "duration": 4.92,
+   "text": "the prompt."
+  },
+  {
+   "start": 2758.48,
+   "duration": 5.52,
+   "text": "You know, as I told you in uh basically"
+  },
+  {
+   "start": 2761.96,
+   "duration": 2.04,
+   "text": "um"
+  },
+  {
+   "start": 2764.48,
+   "duration": 4.76,
+   "text": "which tests failed and which based on"
+  },
+  {
+   "start": 2767.12,
+   "duration": 3.68,
+   "text": "which tests failed Claude will do the"
+  },
+  {
+   "start": 2769.24,
+   "duration": 3.24,
+   "text": "particular refinement something like"
+  },
+  {
+   "start": 2770.8,
+   "duration": 4.08,
+   "text": "that, right? And if you see concrete"
+  },
+  {
+   "start": 2772.48,
+   "duration": 4.56,
+   "text": "examples over here, transformation task"
+  },
+  {
+   "start": 2774.88,
+   "duration": 4.04,
+   "text": "for example before and this is after,"
+  },
+  {
+   "start": 2777.04,
+   "duration": 4.0,
+   "text": "you know, one concrete snippet beats a"
+  },
+  {
+   "start": 2778.92,
+   "duration": 3.28,
+   "text": "page of prose. So what do I mean by this"
+  },
+  {
+   "start": 2781.04,
+   "duration": 2.84,
+   "text": "is that"
+  },
+  {
+   "start": 2782.2,
+   "duration": 3.4,
+   "text": "is that uh whenever you're writing a"
+  },
+  {
+   "start": 2783.88,
+   "duration": 4.16,
+   "text": "prompt, right? You can give some few"
+  },
+  {
+   "start": 2785.6,
+   "duration": 5.12,
+   "text": "short examples, you know, you can"
+  },
+  {
+   "start": 2788.04,
+   "duration": 3.96,
+   "text": "combine the power of prompt engineering"
+  },
+  {
+   "start": 2790.72,
+   "duration": 3.2,
+   "text": "here as well."
+  },
+  {
+   "start": 2792.0,
+   "duration": 4.6,
+   "text": "You can tell that okay,"
+  },
+  {
+   "start": 2793.92,
+   "duration": 4.8,
+   "text": "uh this is the JSON format that I need"
+  },
+  {
+   "start": 2796.6,
+   "duration": 4.16,
+   "text": "and this is the way I need to be passed."
+  },
+  {
+   "start": 2798.72,
+   "duration": 4.24,
+   "text": "Give Claude a few examples. Let it"
+  },
+  {
+   "start": 2800.76,
+   "duration": 4.64,
+   "text": "process. Even when you're doing test"
+  },
+  {
+   "start": 2802.96,
+   "duration": 4.24,
+   "text": "driven iteration in the prompt itself,"
+  },
+  {
+   "start": 2805.4,
+   "duration": 4.04,
+   "text": "whatever test fail for example, you can"
+  },
+  {
+   "start": 2807.2,
+   "duration": 4.08,
+   "text": "give that particular logs to Claude as"
+  },
+  {
+   "start": 2809.44,
+   "duration": 3.52,
+   "text": "well. Maybe in the next iteration it"
+  },
+  {
+   "start": 2811.28,
+   "duration": 3.92,
+   "text": "will refine it."
+  },
+  {
+   "start": 2812.96,
+   "duration": 5.12,
+   "text": "So this is the iterative refinement"
+  },
+  {
+   "start": 2815.2,
+   "duration": 4.88,
+   "text": "techniques that you need to uh keep in"
+  },
+  {
+   "start": 2818.08,
+   "duration": 3.279,
+   "text": "mind."
+  },
+  {
+   "start": 2820.08,
+   "duration": 3.96,
+   "text": "Right?"
+  },
+  {
+   "start": 2821.359,
+   "duration": 5.041,
+   "text": "Next comes the interview pattern."
+  },
+  {
+   "start": 2824.04,
+   "duration": 4.28,
+   "text": "Extract what Claude needs, you know,"
+  },
+  {
+   "start": 2826.4,
+   "duration": 3.56,
+   "text": "that is what I want to say."
+  },
+  {
+   "start": 2828.32,
+   "duration": 3.24,
+   "text": "So it's it's kind of my personal"
+  },
+  {
+   "start": 2829.96,
+   "duration": 3.12,
+   "text": "favorite of the three refinement"
+  },
+  {
+   "start": 2831.56,
+   "duration": 3.44,
+   "text": "patterns. So we we we talked about the"
+  },
+  {
+   "start": 2833.08,
+   "duration": 5.24,
+   "text": "iterative refinement. Now we talk about"
+  },
+  {
+   "start": 2835.0,
+   "duration": 5.2,
+   "text": "the interview pattern. Why this is"
+  },
+  {
+   "start": 2838.32,
+   "duration": 4.48,
+   "text": "important? Because"
+  },
+  {
+   "start": 2840.2,
+   "duration": 5.8,
+   "text": "you make Claude asks you questions."
+  },
+  {
+   "start": 2842.8,
+   "duration": 3.2,
+   "text": "And what do I mean by that?"
+  },
+  {
+   "start": 2846.16,
+   "duration": 3.68,
+   "text": "And it kind of trips up people because"
+  },
+  {
+   "start": 2848.04,
+   "duration": 3.48,
+   "text": "it kind of feels like counter intuitive,"
+  },
+  {
+   "start": 2849.84,
+   "duration": 5.16,
+   "text": "but you know, it is the best thing that"
+  },
+  {
+   "start": 2851.52,
+   "duration": 5.32,
+   "text": "I that I that I think and basically"
+  },
+  {
+   "start": 2855.0,
+   "duration": 4.12,
+   "text": "let's understand what it is."
+  },
+  {
+   "start": 2856.84,
+   "duration": 4.0,
+   "text": "So the interview pattern inverts the"
+  },
+  {
+   "start": 2859.12,
+   "duration": 3.64,
+   "text": "usual flow."
+  },
+  {
+   "start": 2860.84,
+   "duration": 5.08,
+   "text": "Right? Instead of you trying to, you"
+  },
+  {
+   "start": 2862.76,
+   "duration": 5.04,
+   "text": "know, write the perfect prompt you ask"
+  },
+  {
+   "start": 2865.92,
+   "duration": 3.36,
+   "text": "Claude what it needs to know before it"
+  },
+  {
+   "start": 2867.8,
+   "duration": 3.32,
+   "text": "even starts."
+  },
+  {
+   "start": 2869.28,
+   "duration": 3.72,
+   "text": "So you kind of brief Claude on the high"
+  },
+  {
+   "start": 2871.12,
+   "duration": 4.12,
+   "text": "level goal and then you say, you know,"
+  },
+  {
+   "start": 2873.0,
+   "duration": 5.12,
+   "text": "before you start ask me any clarifying"
+  },
+  {
+   "start": 2875.24,
+   "duration": 2.88,
+   "text": "questions you need."
+  },
+  {
+   "start": 2878.16,
+   "duration": 4.88,
+   "text": "This is very powerful, guys."
+  },
+  {
+   "start": 2880.12,
+   "duration": 4.64,
+   "text": "Because you know, Claude often knows"
+  },
+  {
+   "start": 2883.04,
+   "duration": 3.8,
+   "text": "better than you"
+  },
+  {
+   "start": 2884.76,
+   "duration": 5.04,
+   "text": "do, you know, what information would"
+  },
+  {
+   "start": 2886.84,
+   "duration": 4.28,
+   "text": "most impact the particular output."
+  },
+  {
+   "start": 2889.8,
+   "duration": 3.44,
+   "text": "You know?"
+  },
+  {
+   "start": 2891.12,
+   "duration": 4.2,
+   "text": "And you might spend 10 minutes writing"
+  },
+  {
+   "start": 2893.24,
+   "duration": 4.36,
+   "text": "an elaborate prompt and still miss that"
+  },
+  {
+   "start": 2895.32,
+   "duration": 4.72,
+   "text": "one detail and it happens, you know"
+  },
+  {
+   "start": 2897.6,
+   "duration": 4.44,
+   "text": "you might not write the perfect prompt"
+  },
+  {
+   "start": 2900.04,
+   "duration": 5.2,
+   "text": "at first shot itself. It is very very"
+  },
+  {
+   "start": 2902.04,
+   "duration": 5.4,
+   "text": "difficult. So you know, why not delegate"
+  },
+  {
+   "start": 2905.24,
+   "duration": 4.96,
+   "text": "it to Claude, you know? I have given you"
+  },
+  {
+   "start": 2907.44,
+   "duration": 4.88,
+   "text": "this prompt. You ask me what else you"
+  },
+  {
+   "start": 2910.2,
+   "duration": 4.72,
+   "text": "need."
+  },
+  {
+   "start": 2912.32,
+   "duration": 4.0,
+   "text": "And um"
+  },
+  {
+   "start": 2914.92,
+   "duration": 3.68,
+   "text": "that's it. You when you answer those"
+  },
+  {
+   "start": 2916.32,
+   "duration": 4.44,
+   "text": "questions and Claude has everything."
+  },
+  {
+   "start": 2918.6,
+   "duration": 4.28,
+   "text": "And Claude is even following if you if"
+  },
+  {
+   "start": 2920.76,
+   "duration": 5.2,
+   "text": "you're using you know, sometimes if you"
+  },
+  {
+   "start": 2922.88,
+   "duration": 5.479,
+   "text": "give some particular uh in normal Claude"
+  },
+  {
+   "start": 2925.96,
+   "duration": 4.52,
+   "text": "web only I'm telling, whenever you are"
+  },
+  {
+   "start": 2928.359,
+   "duration": 4.281,
+   "text": "giving some particular um"
+  },
+  {
+   "start": 2930.48,
+   "duration": 4.44,
+   "text": "prompt and telling Claude it to do, it"
+  },
+  {
+   "start": 2932.64,
+   "duration": 3.68,
+   "text": "will ask you for some options. Do you"
+  },
+  {
+   "start": 2934.92,
+   "duration": 3.04,
+   "text": "want to go this way? Do you want to go"
+  },
+  {
+   "start": 2936.32,
+   "duration": 4.56,
+   "text": "that way? And based on your inputs it"
+  },
+  {
+   "start": 2937.96,
+   "duration": 5.32,
+   "text": "will create that particular output. Same"
+  },
+  {
+   "start": 2940.88,
+   "duration": 4.8,
+   "text": "you can, you know, kind of ask Claude"
+  },
+  {
+   "start": 2943.28,
+   "duration": 4.079,
+   "text": "only that ask me the questions, right?"
+  },
+  {
+   "start": 2945.68,
+   "duration": 3.16,
+   "text": "In Claude code or whatever. So for"
+  },
+  {
+   "start": 2947.359,
+   "duration": 4.161,
+   "text": "example, you'll say build me a REST API"
+  },
+  {
+   "start": 2948.84,
+   "duration": 4.44,
+   "text": "for user management. If you uh build a"
+  },
+  {
+   "start": 2951.52,
+   "duration": 4.24,
+   "text": "REST API for user management before you"
+  },
+  {
+   "start": 2953.28,
+   "duration": 4.56,
+   "text": "write any code for example, ask me some"
+  },
+  {
+   "start": 2955.76,
+   "duration": 5.04,
+   "text": "clarifying questions about requirements,"
+  },
+  {
+   "start": 2957.84,
+   "duration": 5.24,
+   "text": "constraints, even a preferences that"
+  },
+  {
+   "start": 2960.8,
+   "duration": 3.72,
+   "text": "would basically significantly"
+  },
+  {
+   "start": 2963.08,
+   "duration": 2.92,
+   "text": "change your approach."
+  },
+  {
+   "start": 2964.52,
+   "duration": 3.52,
+   "text": "Right? You can you can mention this in"
+  },
+  {
+   "start": 2966.0,
+   "duration": 4.0,
+   "text": "the prompt itself. So that is what the"
+  },
+  {
+   "start": 2968.04,
+   "duration": 3.44,
+   "text": "interview pattern is."
+  },
+  {
+   "start": 2970.0,
+   "duration": 3.56,
+   "text": "Right? So"
+  },
+  {
+   "start": 2971.48,
+   "duration": 4.76,
+   "text": "uh in terms of the exam, when a question"
+  },
+  {
+   "start": 2973.56,
+   "duration": 4.72,
+   "text": "asks about reducing rework or improving"
+  },
+  {
+   "start": 2976.24,
+   "duration": 4.44,
+   "text": "first pass quality in open-ended"
+  },
+  {
+   "start": 2978.28,
+   "duration": 4.24,
+   "text": "implementations. Um the interview"
+  },
+  {
+   "start": 2980.68,
+   "duration": 5.04,
+   "text": "pattern is often the correct answer,"
+  },
+  {
+   "start": 2982.52,
+   "duration": 4.0,
+   "text": "guys. So, look for that those terms and"
+  },
+  {
+   "start": 2985.72,
+   "duration": 2.52,
+   "text": "um"
+  },
+  {
+   "start": 2986.52,
+   "duration": 3.04,
+   "text": "if it's also says multiple possible"
+  },
+  {
+   "start": 2988.24,
+   "duration": 4.44,
+   "text": "iterations,"
+  },
+  {
+   "start": 2989.56,
+   "duration": 4.92,
+   "text": "uh unclear scope,"
+  },
+  {
+   "start": 2992.68,
+   "duration": 3.52,
+   "text": "yeah, then the interview pattern is what"
+  },
+  {
+   "start": 2994.48,
+   "duration": 3.56,
+   "text": "you need. Now,"
+  },
+  {
+   "start": 2996.2,
+   "duration": 4.0,
+   "text": "don't compare it with the plan mode,"
+  },
+  {
+   "start": 2998.04,
+   "duration": 3.88,
+   "text": "guys. That is different. You can use the"
+  },
+  {
+   "start": 3000.2,
+   "duration": 4.2,
+   "text": "interview pattern in the plan mode"
+  },
+  {
+   "start": 3001.92,
+   "duration": 4.96,
+   "text": "itself. This is about prompting. I mean,"
+  },
+  {
+   "start": 3004.4,
+   "duration": 4.72,
+   "text": "how you want Claude to work. It can be"
+  },
+  {
+   "start": 3006.88,
+   "duration": 5.68,
+   "text": "plan mode, it can be direct So, don't"
+  },
+  {
+   "start": 3009.12,
+   "duration": 5.24,
+   "text": "get confused saying that, you know, um"
+  },
+  {
+   "start": 3012.56,
+   "duration": 3.88,
+   "text": "in plan mode we are already doing this,"
+  },
+  {
+   "start": 3014.36,
+   "duration": 4.2,
+   "text": "then what is the use of this patterns?"
+  },
+  {
+   "start": 3016.44,
+   "duration": 4.6,
+   "text": "So, this patterns is how you approach"
+  },
+  {
+   "start": 3018.56,
+   "duration": 4.32,
+   "text": "your work with Claude Claude. You might"
+  },
+  {
+   "start": 3021.04,
+   "duration": 3.4,
+   "text": "be on the plan mode and you might be"
+  },
+  {
+   "start": 3022.88,
+   "duration": 2.88,
+   "text": "using the interview pattern, both"
+  },
+  {
+   "start": 3024.44,
+   "duration": 5.0,
+   "text": "together."
+  },
+  {
+   "start": 3025.76,
+   "duration": 5.36,
+   "text": "Right? So, you might before even trying"
+  },
+  {
+   "start": 3029.44,
+   "duration": 3.24,
+   "text": "out the plan, you want Claude Claude to"
+  },
+  {
+   "start": 3031.12,
+   "duration": 3.36,
+   "text": "ask you some questions so the plan is"
+  },
+  {
+   "start": 3032.68,
+   "duration": 3.76,
+   "text": "perfect. Now, once the plan is perfect,"
+  },
+  {
+   "start": 3034.48,
+   "duration": 4.6,
+   "text": "you go with the direct execution. So,"
+  },
+  {
+   "start": 3036.44,
+   "duration": 4.84,
+   "text": "all of these you can use hand in hand."
+  },
+  {
+   "start": 3039.08,
+   "duration": 4.76,
+   "text": "So, make sure that you understand each"
+  },
+  {
+   "start": 3041.28,
+   "duration": 3.88,
+   "text": "and every point and basically,"
+  },
+  {
+   "start": 3043.84,
+   "duration": 2.8,
+   "text": "you know,"
+  },
+  {
+   "start": 3045.16,
+   "duration": 3.36,
+   "text": "that's it."
+  },
+  {
+   "start": 3046.64,
+   "duration": 3.52,
+   "text": "So, the cheat sheet."
+  },
+  {
+   "start": 3048.52,
+   "duration": 4.28,
+   "text": "If the question says large-scale"
+  },
+  {
+   "start": 3050.16,
+   "duration": 5.32,
+   "text": "refactor, hard to reverse, plan mode."
+  },
+  {
+   "start": 3052.8,
+   "duration": 5.04,
+   "text": "Clear stack trace, obvious single file"
+  },
+  {
+   "start": 3055.48,
+   "duration": 4.4,
+   "text": "fix, direct execution. Context window"
+  },
+  {
+   "start": 3057.84,
+   "duration": 3.64,
+   "text": "filling, large code base discovery,"
+  },
+  {
+   "start": 3059.88,
+   "duration": 3.12,
+   "text": "explore sub-agent. Obviously, we have"
+  },
+  {
+   "start": 3061.48,
+   "duration": 3.2,
+   "text": "talked about all of these things."
+  },
+  {
+   "start": 3063.0,
+   "duration": 3.36,
+   "text": "Ambiguous requirements transformation"
+  },
+  {
+   "start": 3064.68,
+   "duration": 2.88,
+   "text": "task, interview pattern, concrete"
+  },
+  {
+   "start": 3066.36,
+   "duration": 4.16,
+   "text": "examples."
+  },
+  {
+   "start": 3067.56,
+   "duration": 6.28,
+   "text": "Right? So, question. Extract DB queries"
+  },
+  {
+   "start": 3070.52,
+   "duration": 4.8,
+   "text": "from a 200-file monolith to an ORM."
+  },
+  {
+   "start": 3073.84,
+   "duration": 3.2,
+   "text": "Hm."
+  },
+  {
+   "start": 3075.32,
+   "duration": 4.08,
+   "text": "So, obviously,"
+  },
+  {
+   "start": 3077.04,
+   "duration": 3.72,
+   "text": "you would use, you know, multiple files"
+  },
+  {
+   "start": 3079.4,
+   "duration": 2.72,
+   "text": "you need to read."
+  },
+  {
+   "start": 3080.76,
+   "duration": 3.64,
+   "text": "It's hard to reverse and there is"
+  },
+  {
+   "start": 3082.12,
+   "duration": 4.28,
+   "text": "architectural impact. So, you would go"
+  },
+  {
+   "start": 3084.4,
+   "duration": 3.76,
+   "text": "with plan mode in this case. Look for"
+  },
+  {
+   "start": 3086.4,
+   "duration": 3.32,
+   "text": "that particular option, guys."
+  },
+  {
+   "start": 3088.16,
+   "duration": 3.36,
+   "text": "This is the question and this is the"
+  },
+  {
+   "start": 3089.72,
+   "duration": 4.28,
+   "text": "answer."
+  },
+  {
+   "start": 3091.52,
+   "duration": 4.32,
+   "text": "That's it. So, that's all for this"
+  },
+  {
+   "start": 3094.0,
+   "duration": 4.52,
+   "text": "lesson. I will see you in the next"
+  },
+  {
+   "start": 3095.84,
+   "duration": 3.72,
+   "text": "lesson. Till then, take care. Bye-bye."
+  },
+  {
+   "start": 3098.52,
+   "duration": 3.32,
+   "text": "Ta-ta."
+  },
+  {
+   "start": 3099.56,
+   "duration": 2.28,
+   "text": "See you."
+  }
+ ]
+}

@@ -3,6 +3,11 @@
 > Imported into the class from `ccaf-exam-prep` (github.com/javiercriado/ccaf-exam-prep),
 > MIT-licensed community material, kept locally in `resources/vendor/`.
 > Not Anthropic-authored. Use it as a decision reflex, not as gospel.
+>
+> **Trap families 2–4** below (§ *Over-engineered answers*, § *Premature infrastructure*, § *Sentiment as
+> signal*) and the **"guarantee beats probability"** filter are merged from the **Peace Of Code** bonus
+> episode *Exam Questions Solved | Exam Traps* — see [`video-series.md`](./video-series.md). Also community
+> material, not Anthropic-authored.
 
 # The Distractor Heuristic — two axes for picking the right answer
 
@@ -30,6 +35,19 @@ a hook — or does it **ask the model nicely** via a prompt instruction?
 **The correct answer tends to be native and/or deterministic. The distractor is the version with
 moving parts.**
 
+### The one-line filter — guarantee beats probability
+
+When two options both look plausible, ask **"does this guarantee the outcome, or just make it more
+likely?"** Stem words **must / never / guarantee / always** are the tell. If the scenario *demands a
+guarantee*, any **probabilistic** fix — stronger wording, clearer instructions, a few-shot example — is the
+distractor, because a prompt only makes the right behaviour *likely*. The option that **guarantees** the
+outcome by construction (a hook, a code gate, a schema) wins.
+
+> This is Axis B compressed to one line, and it is the single highest-yield reflex in the bonus episode:
+> **guarantee beats probability.** The bonus names the trap it defeats the **prompt band-aid** — an option
+> that offers "stronger wording" or "clearer instructions" when the stem says a rule must *never* be broken.
+> Enforcement needs a **hook** (a PreToolUse gate), never a better prompt.
+
 ## The shapes, illustrated
 
 | Problem shape | Distractor (heavier) | Correct (native / deterministic) |
@@ -40,8 +58,11 @@ moving parts.**
 | Conventions must apply on every matching file | A skill the model must choose to load | A **rule** with a glob (automatic + deterministic by path) |
 | Customize a teammate's shared skill | `override: true` frontmatter (doesn't exist) | Personal skill with a **different name** (`/my-x`) |
 | Agent skips a required verification step | Strengthen the system prompt to say it's mandatory | A **programmatic prerequisite** that blocks the downstream tool until verification ran |
+| "Most effective **first step**" on a broken pipeline | A full architectural rebuild / a new stage | The cheap, targeted fix that addresses the stated symptom |
+| Agent fires a tool it shouldn't reach for | Add a router / spawn a sub-agent to gate it | **Scope the tool access down** (least privilege) |
+| Deciding when to escalate | Gate on a self-reported confidence score | **Explicit observable escalation criteria** |
 
-The last row is the canonical Axis-B case: a **gate/hook beats an instruction** because it holds
+The verification-step row is the canonical Axis-B case: a **gate/hook beats an instruction** because it holds
 regardless of how the model behaves. (Same lesson as enforcement-by-hook, not by prompt.)
 
 ## The caveat that stops you over-applying it
@@ -69,6 +90,61 @@ the problem, the pattern that fits the problem's shape wins.**
 And the corollary for prompting technique: **few-shot fits *patternable* gaps** (tool sequencing,
 contrastive tool choice); **self-critique fits *variable-per-case* gaps**. Same question either way —
 *which option fits the shape of the problem?*
+
+## Over-engineered answers to first-step questions (bonus trap 2)
+
+When the stem asks for the **"most effective first step"**, the correct answer is usually the **cheapest,
+simplest fix that addresses the stated symptom** — *not* the most complete or most robust solution. Watch
+for an option that is a full architectural rebuild, a whole new pipeline, or "add an LLM to check the LLM"
+when the scenario only needs a small, targeted change.
+
+- **"Most effective first step" ≠ "most complete solution."** The distractor is the option that would
+  *eventually* fix everything but ignores cost and complexity.
+- The tell is **disproportion**: the option rebuilds when it could adjust, or adds a stage when it could
+  sharpen an existing one.
+- This is Axis A applied to *sequencing*: on a first-step question, prefer the intervention that unblocks
+  the symptom now over the redesign that solves it forever.
+
+> Worked instance (bonus, D2): four MCP tools with single-sentence descriptions cause misrouting and spurious
+> escalations. The correct first step is to **expand the tool descriptions** (input formats, triggering
+> conditions, prerequisites, when-*not*-to-use). The distractor is a **tool-routing classifier** that
+> pre-selects the tool — a whole new component to do what a better description does for free.
+
+## Premature infrastructure — new moving parts before optimization (bonus trap 3)
+
+The exam leans hard on this one: an option offers a **new routing layer, classifier, microservice, or
+sub-agent** *before* the team has tried the **cheap optimization** the scenario is actually about — better
+tool descriptions, scoped tool access, or a config change.
+
+- Agent calling the wrong tool → fix the **description** or the **scope**, not add a router or a sub-agent.
+- Agent reaching for tools it shouldn't use → **scope its access down** (least privilege), not add a
+  component that gates tools for it.
+- **The cheap fix is usually already in the stem.** ("All four tool definitions use single-sentence
+  descriptions" → the answer is to expand the descriptions.) Read the stem for the optimization it points at.
+
+> Worked instance (bonus, D2): a synthesis agent whose *only* job is to combine already-gathered findings has
+> access to **all** system tools and keeps firing fresh web searches mid-synthesis. Correct fix: **scope its
+> tool access** down to what it needs. Not "add a router", not "spawn verify-a-fact as a sub-agent", and *not*
+> more tool descriptions — the agent knows what web search is *for*; it doesn't know it shouldn't reach for it.
+> See [`LEAST_PRIVILEGE.md`](./LEAST_PRIVILEGE.md).
+
+## Sentiment as signal — confidence is not a decision input (bonus trap 4)
+
+Distractors that **escalate, route, or gate on a model's self-reported confidence** ("escalate when confidence
+drops below 70%", "average two confidence scores", "lower the threshold"). Confidence is **sentiment, not
+signal**: a model can be 100% confident and still be wrong. Any option that makes a confidence score the
+decision mechanism is a distractor.
+
+- The correct pattern is **explicit, observable escalation criteria** — the customer explicitly asks for a
+  human, the case falls into a known policy gap or exception, a policy check fails, or the agent can't make
+  progress after a defined number of attempts.
+- "Add a second confidence score and average them" is the double-down distractor (jack of all trades, master
+  of none).
+- Same family as the Axis-B rule: a **gate on an observable condition** beats a **gate on the model's mood**.
+
+> Worked instance (bonus, D5): a support agent escalates on self-reported confidence < 70% and gets it wrong in
+> both directions — needless escalations on easy cases, missed escalations on genuinely hard ones. Correct fix:
+> **replace the confidence score with explicit observable criteria.** Cross-ref: Ep 18 / Ep 20 escalation rules.
 
 ## Few-shot design — when few-shot *is* the answer, what makes it the *right* few-shot
 
@@ -194,6 +270,10 @@ tight and links cleanly; this table is the front door. Sorted by the domain the 
 | `@`-import is a bare `@path`, not `@import <path>` (eager; the keyword `import` is the invented part) | D3.1 | this file, *§ Claude Code config — directives & inspectors* |
 | `/memory` + `/context` show only the always-loaded CLAUDE.md/`@import` stack; path-rules are **transient** (load on **Read**) — observe via the `InstructionsLoaded` hook or Claude's behaviour | D3.1 / 3.3 | this file, *§ Claude Code config — directives & inspectors* |
 | Compound (half-true) distractors — read every clause; absolutes are tells | all | this file, *§ Compound (half-true) distractors* |
+| Guarantee beats probability (the must / never / guarantee filter; prompt band-aid) | all | this file, *§ The one-line filter* |
+| Over-engineered first-step answers ("most effective first step" ≠ most complete solution) | all | this file, *§ Over-engineered answers to first-step questions* |
+| Premature infrastructure (router / classifier / microservice / sub-agent before the cheap optimization) | D2 / D1 | this file, *§ Premature infrastructure* |
+| Sentiment as signal — confidence is not a decision input | D5 | this file, *§ Sentiment as signal* |
 
 > **Placement rule** (keeps these from scattering): a write-up that explains a *specific exercise's
 > behavior* lives in that exercise's folder (e.g. `PARALLEL_TOOL_USE.md` next to Exercise 1's Case 1);

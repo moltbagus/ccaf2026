@@ -6,7 +6,11 @@
  "tasks": [
   "1.1",
   "1.2",
-  "1.3"
+  "1.3",
+  "1.4",
+  "1.5",
+  "1.6",
+  "1.7"
  ],
  "steps": [
   {
@@ -336,6 +340,226 @@
     "answer": 1,
     "why": "The Task tool must be in the coordinator's allowedTools or it cannot emit a spawn call at all \u2014 the capability is missing, which is exactly why no amount of prompt wording has ever worked. A and C tune instructions that were already sufficient. D adds turns in which the same absent capability stays absent.",
     "trap": "prompt_tuning"
+   }
+  },
+  {
+   "task": "1.3",
+   "kind": "teach",
+   "title": "The subagent's world is the prompt \u2014 so make the prompt structured",
+   "inshort": "A subagent inherits nothing; whatever it needs must be handed over explicitly. Pass findings as a structured object of claims each paired with its source, not as a prose summary.",
+   "lead": "A coordinator has been running for ten minutes and now spawns a synthesis subagent with \u201chere are the findings from the previous agents, please synthesize them into a report.\u201d The subagent replies, in effect, \u201cwhat findings?\u201d It has no memory of anything that happened before. It either hallucinates or produces a generic report. This is the number-one mistake in multi-agent architecture, and it looks perfectly reasonable until you watch it fail.",
+   "points": [
+    "Every subagent starts with a clean slate: its entire world is what the coordinator writes into the spawn prompt \u2014 no conversation history carries over.",
+    "Hand over findings as a structured object: a claims array where each claim carries a claim id, the claim text, a source id and a confidence, plus a sources array keyed by source id.",
+    "Pass the whole object \u2014 never extract just the claims and drop the sources; the next agent needs both to produce accurate, traceable output. The synthesis prompt should require every claim to cite its source URL and preserve the retrieved-at date.",
+    "Conflicts are annotated, never silently resolved: when two sources disagree, add a conflict object carrying both claims with their source ids, mark it unresolved, and escalate to the coordinator, which makes the final call.",
+    "Every subagent is itself a full agentic loop \u2014 the same stop_reason loop from 1.1, just spawned by the coordinator. In Claude Code and the Agent SDK the spawn is a Task tool call; the raw Anthropic SDK has no Task tool, so the same pattern is reproduced with an ordinary function plus tool schemas."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "A subagent has no channel to ask a previous subagent or the coordinator's history for missing detail. Structured, self-contained context is the only way the handoff can be accurate \u2014 and a claim that loses its source cannot be verified, so a hallucination becomes indistinguishable from a finding.",
+   "contrast": "The tempting handoff is one line of prose \u2014 \u201chere are the research notes, synthesize them\u201d \u2014 because it feels sufficient and costs nothing. It costs everything: the subagent does not know what those notes are, so it invents or generalizes, and the source attribution is already gone.",
+   "exam": "Scenario 3 (Multi-Agent Research System) tests this directly: attribution is lost because web results were summarized into prose before synthesis. The fix is a structured object with explicit claim-to-source mappings; the trap is asking a subagent to re-search or to resolve a conflict itself.",
+   "takeaway": "The subagent knows only what you hand it. Hand it structured claims with sources, not prose."
+  },
+  {
+   "task": "1.3",
+   "kind": "check",
+   "title": "Where did that claim come from?",
+   "lead": "A multi-agent research pipeline is producing a report whose claims cannot be traced.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A research coordinator has each subagent summarize its web searches into a paragraph, then passes those paragraphs to a synthesis subagent. The final report reads well, but reviewers cannot trace any claim back to a source, and two searches that disagreed were silently merged into one statement. Which approach is most effective?",
+    "options": [
+     "Instruct each subagent to append a list of source URLs at the end of its summary paragraph.",
+     "Have the synthesis subagent re-run the web searches so it can re-verify every claim before writing.",
+     "Pass findings as a structured object of claims each carrying its source id and confidence, and let the coordinator annotate conflicts and make the final call.",
+     "Add a review subagent that checks the final report for unsupported claims and rewrites them."
+    ],
+    "answer": 2,
+    "why": "A prose summary destroys provenance before synthesis, and a subagent must never silently resolve a conflict. Structured claim-to-source mappings preserve attribution, and conflicting claims are annotated and escalated to the coordinator for the final decision. A re-attaches sources only at the paragraph level, so no individual claim is traceable. B repeats work and still cannot reconstruct the original sourcing. D cleans the output after the fact, but the provenance is already gone and the merged conflict is already baked in.",
+    "trap": "prose_handoff"
+   }
+  },
+  {
+   "task": "1.4",
+   "kind": "teach",
+   "title": "Prompts are requests; hooks are guarantees",
+   "inshort": "A system-prompt rule is a request with a non-zero failure rate. When a single failure means financial loss, a security breach or a compliance violation, enforce the rule in code \u2014 a hook \u2014 not in a prompt.",
+   "lead": "A customer-support agent's system prompt says \u201conly process refunds under $500.\u201d One day a $2,000 refund comes in, the model weighs the instruction against its own judgment, and processes it anyway. The prompt said no; the model said yes. That gap is the entire reason this task exists.",
+   "points": [
+    "Language models are probabilistic: they follow an instruction most of the time, and most of the time is not a guarantee.",
+    "A hook is code that intercepts the agentic loop at a fixed moment and cannot be overridden by the model.",
+    "A prompt rule is also easy to under-specify \u2014 \u201cdon't refund over $500\u201d silently leaves the model free to decide verified customers are exempt.",
+    "Exam trigger words \u2014 guarantee, must never, policy requires \u2014 point at programmatic enforcement, which in Claude Code means a hook.",
+    "Deterministic beats probabilistic whenever one failure is unacceptable; tone, style and formatting can safely stay in prompts."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "For money, identity, safety or compliance, a 99% success rate is a loss, not a success. The model cannot be relied on to obey a rule every time, so the guarantee has to live in code where the model has no vote.",
+   "contrast": "The tempting fix is a stronger prompt \u2014 \u201cyou must NEVER process refunds above $500, this is critical\u201d \u2014 or few-shot examples of correct behaviour. Both raise the odds; neither gives a guarantee, which is exactly what a high-stakes rule needs.",
+   "exam": "The highest-frequency fork in the whole exam: a high-stakes rule with four options, three of which are prompt-strengthening moves (stronger wording, few-shot examples, a specialised subagent) and one of which is a hook. The hook is always the answer.",
+   "takeaway": "Prompts persuade. Hooks guarantee. Put money, identity, safety and compliance in code."
+  },
+  {
+   "task": "1.4",
+   "kind": "check",
+   "title": "The refund that ran before verification",
+   "lead": "A support agent is supposed to verify a customer before refunding, and occasionally does not.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A support agent's system prompt tells it to always call get_customer to verify identity before calling process_refund, and shows three worked examples of the correct order. Production logs show process_refund occasionally running first for unverified customers. Which change most reliably fixes this?",
+    "options": [
+     "Add a stronger, capitalised instruction at the top of the system prompt forbidding refunds for unverified customers.",
+     "Add more few-shot examples covering edge cases of the verification-first order.",
+     "Add a PreToolUse prerequisite gate that blocks process_refund until get_customer has run and set a verified flag.",
+     "Give the coordinator a separate verification subagent and instruct it to run first."
+    ],
+    "answer": 2,
+    "why": "Ordering that must always hold is a deterministic requirement, so it belongs in code. A PreToolUse prerequisite gate physically blocks the downstream tool until the upstream tool has succeeded and set a verified flag \u2014 the model cannot skip it. A and B add more probabilistic instruction to a rule that already had both wording and examples. D moves the check into a subagent's prompt, which is still a request the model can ignore.",
+    "trap": "prompt_tuning"
+   }
+  },
+  {
+   "task": "1.5",
+   "kind": "teach",
+   "title": "Two interception points \u2014 and the verified flag",
+   "inshort": "PreToolUse fires before a tool runs and can block or skip it \u2014 use it for policy and prerequisites. PostToolUse fires after the tool but before the model sees the result \u2014 use it to normalize, redact or enrich the raw output.",
+   "lead": "Picture the loop: the model asks for a tool, the tool runs, the result goes back. Hooks let you drop code into the two seams of that cycle. One seam catches the call on the way in; the other catches the result on the way out.",
+   "points": [
+    "PreToolUse intercepts before execution: check prerequisites, enforce a policy, or block the call outright \u2014 e.g. refuse a refund over $500 and escalate to a human instead of ever running process_refund.",
+    "PostToolUse runs on the raw result before the model reads it: map database codes (status 3/5/8) to English, convert an epoch value to a date, redact or truncate.",
+    "A hook must be a pass-through for every tool it does not care about \u2014 early-return the raw result unchanged when the tool name does not match.",
+    "Prerequisite gates are PreToolUse hooks that track session state: block a downstream tool (lookup_order, process_refund) until an upstream tool (get_customer) has succeeded and set a verified flag.",
+    "That flag is set by a companion PostToolUse hook \u2014 once get_customer finds the customer, the hook flips session.customer_verified to true, and the gate reads it before allowing anything downstream. The same precondition can be enforced one level up: the coordinator does not spawn the refund subagent if verification reported no such customer."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "The two seams are where determinism lives. Gating before execution prevents the wrong action; normalizing after execution means the model reasons over clean, consistent data instead of raw database values. The verified flag is what turns \u201cplease verify first\u201d into a rule the model cannot break.",
+   "contrast": "Teams normalize downstream in reporting code, or capture prior state in a PostToolUse hook after the mutation already happened. Both miss the seam: the model needs clean input before it reasons, and prior state has to be read before the tool changes it.",
+   "exam": "Two keyword triggers decide these items \u2014 policy / must not run / prerequisite / \u201cbefore X happens\u201d \u2192 PreToolUse; heterogeneous formats / normalize / \u201cthe model is confused by varying outputs\u201d \u2192 PostToolUse. The canonical stem is \u201cthe agent occasionally calls process_refund before get_customer.\u201d",
+   "takeaway": "Gate before the tool runs; normalize after it runs; let a verified flag decide whether a downstream tool may run at all."
+  },
+  {
+   "task": "1.5",
+   "kind": "check",
+   "title": "The tool that returns database codes",
+   "lead": "A lookup tool hands the model raw rows.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A customer-support agent's lookup_order tool returns raw database rows: numeric status codes (3, 5, 8) and an epoch timestamp. The model keeps misreading order status and occasionally reports a delivered order as pending. Which change is most effective?",
+    "options": [
+     "Add a PostToolUse hook on lookup_order that maps the status codes to readable labels and the epoch value to a date before the model sees the result.",
+     "Add a PreToolUse hook that blocks lookup_order until the database returns normalized values.",
+     "Rewrite the system prompt to explain what each numeric status code means.",
+     "Add a reporting step that translates the statuses after the agent has finished reasoning."
+    ],
+    "answer": 0,
+    "why": "This is a normalization problem at the tool boundary, which is exactly what PostToolUse is for \u2014 the hook transforms the raw result before the model reads it. B gates execution, but the tool is not the problem; its output format is, so blocking it changes nothing. C asks the model to translate codes it will still sometimes misread. D normalizes after the model has already reasoned over bad data, so the misreading has already happened.",
+    "trap": "normalize_downstream"
+   }
+  },
+  {
+   "task": "1.6",
+   "kind": "teach",
+   "title": "Do you know the steps before you start?",
+   "inshort": "If you know the exact steps up front, chain them in a fixed sequence. If the next step depends on what the last one revealed, let the agent generate the steps dynamically.",
+   "lead": "Before you design an agentic workflow, the exam asks the same question you should ask yourself: do I know the steps before I start? The answer picks the pattern, not a preference.",
+   "points": [
+    "Prompt chaining breaks the task into a predefined sequence \u2014 output of step one feeds step two, like an assembly line. Ideal for compliance, reproducibility and known pipelines (a CI/CD or PR-review flow).",
+    "Dynamic decomposition generates the next step from what was found. You supply a goal and generic tools (read logs, query DB, check config, trace request), not a fixed script \u2014 the right fit for a production incident whose cause is unknown until you look.",
+    "The warning is the exam's trap: never use prompt chaining for an open-ended task, because the predefined steps become wrong the moment findings diverge from the initial assumptions.",
+    "Chaining lives inside subagents too \u2014 a coordinator that always spawns verify \u2192 process in order is itself a chained workflow, and a subagent's own loop can be chained internally when its steps are known. The choice is per-workflow, not global.",
+    "The decision rule is one line: known path \u2192 chain; evidence-driven path \u2192 adapt."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "A fixed pipeline applied to an unknown cause walks steps that do not fit, spends the budget, and still misses the real root cause; a dynamic loop applied to a fixed compliance path is unpredictable. Match the shape of the work.",
+   "contrast": "The tempting move is to run a fixed checklist unconditionally \u201cjust in case,\u201d or to brute-force every layer in parallel. Both spend budget without following the evidence.",
+   "exam": "The discriminating scenario is always the shape of the work \u2014 \u201cevery request follows the same flow\u201d is chaining; \u201cthe cause is unknown until we investigate\u201d is dynamic decomposition.",
+   "takeaway": "Known steps \u2192 chain them. Unknown steps \u2192 let the findings decide the next step."
+  },
+  {
+   "task": "1.6",
+   "kind": "check",
+   "title": "The intermittent production bug",
+   "lead": "An agent is asked to investigate a bug nobody can reproduce.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "An agent must find the root cause of an intermittent production bug. The cause is unknown, and the next step depends on what the investigation reveals. Which decomposition strategy fits?",
+    "options": [
+     "Prompt chaining with a fixed checklist: read logs, then query the database, then check config, then write a report.",
+     "Dynamic decomposition: start from the last 24 hours of error logs and let each finding decide the next investigation step.",
+     "A fixed pipeline that runs every diagnostic step in parallel regardless of what earlier steps find.",
+     "A single-pass prompt that asks the model to output the root cause immediately."
+    ],
+    "answer": 1,
+    "why": "An unknown cause is the textbook dynamic-decomposition case: the next step depends on what the last one revealed. A is a fixed checklist run on an unknown path \u2014 the steps may not fit and the real cause can be missed. C spends budget on layers the evidence does not point to. D skips investigation entirely and invites a hallucinated root cause.",
+    "trap": "fixed_checklist"
+   }
+  },
+  {
+   "task": "1.7",
+   "kind": "teach",
+   "title": "Resume, fork, or start clean",
+   "inshort": "Resume a named session only while its context is still valid; fork a shared baseline to explore parallel approaches without touching the original; start fresh when the tool results are stale and inject a prior-findings summary as a hypothesis to validate.",
+   "lead": "You have a session that did good work, and the instinct is to keep it because it was expensive. Before you reuse it, ask two things: what changed since, and what am I about to do with it?",
+   "points": [
+    "Named resume: start a session with a name and later continue it by that name (--resume <name>; bare --resume picks the most recent). Always state explicitly what changed since \u2014 the agent cannot detect modified files, updated dependencies or new requirements on its own.",
+    "Fork: resume a session under a new id so the original is untouched, giving two branches the same expensive baseline while each explores a different approach. Fork is for parallel exploration only \u2014 not for absorbing targeted file edits.",
+    "Fresh start has two triggers: the prior tool results are fundamentally stale (a heavily changed codebase), or extended context degrades the model's reasoning capability.",
+    "When starting fresh, give the new session a structured summary of prior findings \u2014 and frame it as a hypothesis to validate, not as established fact.",
+    "Never resume a session with a heavily changed codebase, and never resume without telling the agent what changed."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "Resuming is cheaper, which is exactly why it is dangerous: acting on stale tool results produces confidently wrong work that costs more than a fresh start. The validity of the prior context \u2014 not the sunk cost \u2014 decides.",
+   "contrast": "The instinct is to resume because the work was expensive. But if most of the codebase changed, the context is no longer valid, and the cheap option is the wrong one. A fork does not help either, because both branches inherit the same stale baseline.",
+   "exam": "Scenario 2 (Code Generation) tests the fork in the road: analysis ran a few days ago and one module was refactored \u2192 resume with explicit change info; it ran long ago with several modules changed \u2192 fresh session plus a hypothesis-framed summary.",
+   "takeaway": "Resume while context is valid, fork to branch from a shared baseline, start fresh when the results are stale \u2014 and always say what changed."
+  },
+  {
+   "task": "1.7",
+   "kind": "check",
+   "title": "The session from eight months ago",
+   "lead": "A long analysis session is being considered for reuse.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A codebase-analysis session ran eight months ago and its findings are stored. Since then the team rewrote most of the service and migrated to a new framework. The agent now needs to add a feature in that service. What is the best approach?",
+    "options": [
+     "Resume the session with --resume so the agent keeps all of its earlier analysis and adds the new feature.",
+     "Fork the session so the new work shares the old session's baseline context.",
+     "Start a fresh session and inject a structured summary of the prior findings framed as hypotheses to validate against the current code.",
+     "Resume the session and trust the agent to notice the changed files as it reads them."
+    ],
+    "answer": 2,
+    "why": "The prior tool results are stale \u2014 most of the service changed \u2014 so resuming means the agent reasons over outdated analysis. A fresh session with a structured, hypothesis-framed summary keeps the valid findings without importing the stale ones. A resumes on stale context. B forks, but a fork inherits the same stale baseline, and fork is for exploring parallel approaches, not for absorbing a rewrite. D assumes the agent detects changes it cannot.",
+    "trap": "resume_stale"
    }
   },
   {

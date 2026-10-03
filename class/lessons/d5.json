@@ -467,6 +467,211 @@
    "takeaway": "Annotate the conflict with both values and attribution; reconciliation belongs to the coordinator."
   },
   {
+   "task": "5.1",
+   "kind": "teach",
+   "title": "A summary is not a deletion",
+   "lead": "Three weeks into production the support agent refunds the wrong amount - and it is not a calculation error, because it double-checks every refund. Twenty messages into the thread, the amount from the opening turn is simply gone. Whether the window dropped that turn or a summary rewrote it, the number did not survive the trip - and only one of those two is even recoverable.",
+   "points": [
+    "Two ways a fact leaves the window: a sliding window deletes the turn outright, while progressive summarization rewrites it lossily - a deleted turn cannot be recovered, and a summarised amount is distorted, not preserved",
+    "Lazy summaries vaporise the transactional spine - customer ID, order number, refund amount, dates and policy thresholds ('customer reported delivery and product issues requesting a refund' keeps none of them), so progressive summarization that drops numbers is a reliability failure mode, not an efficiency issue",
+    "Lay the prompt out in three zones: the case-facts block at the top (highest attention), trimmed tool results in the low-attention middle valley, and the critical recap plus policy line plus the final question at the end",
+    "Trim at the hook before the data is appended - a post-tool hook filters and normalises what the model sees, a pre-tool hook sanitises before the call; five tool calls run roughly 2,000-3,000 tokens per loop, which is 40,000-50,000 across 10-20 iterations",
+    "The API is stateless with no server-side memory, so send the full messages array on every call and hold the transactional spine in a block that summarization never touches"
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": "Lazy summary : 'customer reported delivery and product issues requesting a refund'\nGood summary : order #12345 | wireless earphone | $149 | delivered 3 days late\n\nTop    (highest attention) : case-facts block - customer_id, order_id, item,\n                             refund_amount, order_date, policy_window_days\nMiddle (low-attention valley): trimmed tool results - lean, immediate decision only\nEnd    : critical recap + policy line + final question",
+   "ask": null,
+   "takeaway": "A summary distorts a fact and a sliding window deletes it - keep the transactional spine in a case-facts block outside both."
+  },
+  {
+   "task": "5.1",
+   "kind": "check",
+   "title": "Gate: the prompt that keeps losing the refund amount",
+   "lead": "The facts are all present. The question is where they sit.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A support agent assembles its prompt each turn as: system prompt, a 40K-token block of raw tool outputs, the case-facts block, and the latest customer message. Monitoring shows the agent still misreads the refund amount and the policy window even though both are in the prompt. Which change is most effective?",
+    "options": [
+     "Move the case-facts block to the top of the prompt, trim the raw tool outputs to the fields the decision needs, and keep the recap, the policy line and the latest customer message at the end.",
+     "Increase the context window so the raw tool outputs and the case-facts block both fit comfortably.",
+     "Move the case-facts block into the middle, between the tool outputs, so the prompt reads in chronological order.",
+     "Instruct the model in the system prompt to pay close attention to the refund amount and the policy window."
+    ],
+    "answer": 0,
+    "why": "The facts are present but sitting in the low-attention middle behind 40K tokens of raw tool noise, so placement, not capacity, is the bug. A larger window keeps the same layout and the facts stay buried. Moving the block into the middle is exactly the low-attention valley the lost-in-the-middle effect describes. Telling the model to 'pay attention' is a best-effort prompt instruction that does not change where attention falls.",
+    "trap": "sounds-thorough"
+   },
+   "takeaway": "Placement beats capacity: case-facts at the top, trimmed tool results in the middle, recap and the live question at the end."
+  },
+  {
+   "task": "5.2",
+   "kind": "teach",
+   "title": "Escalation is not a fallback for hard problems",
+   "lead": "You tell a support bot 'connect me to a real human' and it replies with another troubleshooting step. That is the golden rule broken. Three triggers justify escalation and nothing else: the customer explicitly asks for a person, the request falls in a policy gap or needs authority the agent lacks, or the agent is stuck after exhausting its retries.",
+   "points": [
+    "Explicit human request escalates immediately - no 'let me try first', no asking why they want a human, no confirming question",
+    "Policy gap: the case combines conditions no single policy covers, or needs an exception the agent has no authority for - a human decides",
+    "Stuck: genuine inability to progress after reasonable retries (transient errors retried locally first) - then escalate",
+    "Three non-triggers, all dressed as diligence: negative sentiment alone, task complexity alone, and the model's self-reported confidence score, which is uncalibrated and can say 95% and still be wrong",
+    "Escalation is not a fallback for hard problems: if the policy covers the request, resolve confidently; escalate only on a real trigger"
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "takeaway": "Three triggers only - explicit request, policy gap, stuck. Sentiment, complexity and confidence scores are never triggers."
+  },
+  {
+   "task": "5.2",
+   "kind": "check",
+   "title": "Gate: Sarah asks for a person",
+   "lead": "The frustration is loud. Find the trigger that actually counts.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "Sarah's order is 12 months old, the damage and the late delivery are already confirmed, and she writes: 'I've been dealing with this long enough. I just want to speak to an actual person.' She is highly frustrated. What should the agent do next?",
+    "options": [
+     "Transfer to a human agent immediately with a structured handoff - no further resolution attempt.",
+     "Attempt one more resolution step first, then escalate if she is still unhappy.",
+     "Ask Sarah why she prefers a human before transferring.",
+     "Offer the self-service portal link so she can resolve it herself."
+    ],
+    "answer": 0,
+    "why": "She made an explicit human request, which is the first and strongest trigger, so the golden rule is to escalate immediately without trying one more resolution. Attempting resolution first overrides her explicit ask and is the most common wrong answer. Asking why she wants a human is the confirming question the explicit request already answered. Offering a self-service portal ignores both the request and the confirmed problem. Her frustration is present but it is not the trigger - the explicit request is.",
+    "trap": "sounds-pragmatic"
+   },
+   "takeaway": "An explicit 'I want a person' means escalate now - never resolve-first, never ask why, never redirect to self-service."
+  },
+  {
+   "task": "5.3",
+   "kind": "teach",
+   "title": "Only the coordinator terminates",
+   "lead": "An overnight multi-agent research job kicked off at 11pm should leave a full report by morning. Instead you wake to no error, no output and no report - just dead silence. You cannot tell whether the agent finished, failed, or is still running. That silence is the sneakiest failure mode in a multi-agent system, and it comes from two anti-patterns: the subagent that swallows an error and reports success, and the subagent that aborts the whole pipeline on its own.",
+   "points": [
+    "Silent suppression: a subagent catches an exception and returns status ok with empty results, so the coordinator reads an expected empty answer and confidently produces a wrong report - the worst failure, because nobody knows it happened",
+    "Immediate termination: a subagent aborts the entire pipeline on its own failure, throwing away every other subagent's work and never letting the coordinator decide",
+    "Fix: subagents never get the power to terminate the pipeline - termination is the coordinator's decision, enforced with a hook; a failing subagent propagates upward instead",
+    "Error travels up one layer at a time: a tool signals failure to its subagent (isError / errorCategory), the subagent does local recovery (1-2 retries with backoff), and only what it cannot resolve reaches the coordinator as a structured error",
+    "Every structured error carries the error category, whether it is retryable, the attempted query, and partial results plus alternatives - so the coordinator knows what to retry, what to accept and what to re-route"
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "takeaway": "Silent suppression hides the failure and termination discards the work - only the coordinator may terminate, and every subagent failure propagates as a structured error."
+  },
+  {
+   "task": "5.3",
+   "kind": "check",
+   "title": "Gate: search unavailable",
+   "lead": "The coordinator is blind. Name the fix at the reporting layer.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A multi-agent research system's web-search subagent returns a generic 'search unavailable' status. The coordinator cannot tell whether the failure is transient, whether any partial results exist, or whether a fallback source would help. Which action is most effective?",
+    "options": [
+     "Redesign the subagent to return a structured error context - error category, is retryable, attempted query, partial results and alternatives - so the coordinator can act.",
+     "Retry the subagent a fixed number of times, then terminate the pipeline if it keeps failing.",
+     "Return an empty result with a success status so the coordinator continues with the other sources.",
+     "Have the coordinator retry the entire query set, then report a generic 'incomplete' status to the user."
+    ],
+    "answer": 0,
+    "why": "A generic status strips exactly the fields the coordinator needs to decide, so the durable fix is structured error context. Retrying then terminating still ends with a killed pipeline and throws away the other subagents' partial work. Returning empty as success is silent suppression, the worst anti-pattern, with no recovery path. Re-running the whole query set wastes work on queries that already succeeded, and the generic 'incomplete' status leaves the same blind spot.",
+    "trap": "sounds-decisive"
+   },
+   "takeaway": "A generic error paralyses the coordinator - make the subagent return error category, is retryable, attempted query, partial results and alternatives."
+  },
+  {
+   "task": "5.4",
+   "kind": "teach",
+   "title": "The scratchpad does not write itself",
+   "lead": "You tell the session to 'keep findings in a scratchpad' and it works - but only because you told it. Claude Code will not create the scratchpad on its own, so a headless CI/CD run that never receives the instruction rediscovers the same files and burns the same tokens. The fix is to put the instruction where it is loaded every time.",
+   "points": [
+    "Claude Code does not create a scratchpad automatically - you must instruct it, in the session prompt, in CLAUDE.md (loaded every session, so it also covers CI/CD), or hardcoded into the subagent loop",
+    "The scratchpad is a plain markdown or JSON file of key findings and files read; when the window fills it is re-read to recover what matters, without re-reading the whole codebase",
+    "A scratchpad records findings - it is not a checkpoint; the manifest.json is the checkpoint, written before each major step at a predictable path (inside .claude) so a crashed session resumes from the last step",
+    "The manifest is the source of truth across a crash - restart and point at it to pick up where you left off, the way a Git commit rolls back to a checkpoint",
+    "`/compact` is a typed command: an interactive session runs it automatically near ~90% of the window, but it cannot be invoked in a CI/CD pipeline; three layers together - error propagation, scratchpad plus compact, and the manifest - make silent failures impossible"
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "takeaway": "Instruct the scratchpad (prompt, CLAUDE.md or subagent logic), checkpoint state to a manifest at a predictable path, and remember /compact cannot run in CI/CD."
+  },
+  {
+   "task": "5.4",
+   "kind": "check",
+   "title": "Gate: the headless refactor that must resume",
+   "lead": "No operator, no typed commands. Pick the setup that survives a crash.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A headless CI/CD job runs a Claude Code refactor over a large codebase for several hours. No operator can type commands, and the session must survive a mid-run process crash and continue from where it stopped. Which setup is most effective?",
+    "options": [
+     "Instruct the session via CLAUDE.md to maintain a scratchpad of findings and to checkpoint its state to a manifest.json at a predictable path, so a restart resumes from the last checkpoint.",
+     "Rely on Claude Code to run /compact automatically in the pipeline so the context never fills.",
+     "Restart the job from scratch after a crash, using a tighter prompt so the second run is faster.",
+     "Increase the model's context window so the whole codebase stays resident and no checkpoint is needed."
+    ],
+    "answer": 0,
+    "why": "The scratchpad keeps findings across compaction and the manifest is the checkpoint a crashed session resumes from, and CLAUDE.md is the channel that reaches a headless run. /compact is a typed command that cannot be invoked in a CI/CD pipeline, so relying on it there does not work. Restarting from scratch hits the same wall and discards hours of work. A bigger window does not fix attention dilution and does nothing for crash recovery.",
+    "trap": "sounds-efficient"
+   },
+   "takeaway": "Headless runs need the instruction in CLAUDE.md: scratchpad for findings, manifest for the checkpoint - never rely on /compact in CI/CD."
+  },
+  {
+   "task": "5.5",
+   "kind": "teach",
+   "title": "Where the failures cluster",
+   "lead": "A hospital reports a 95% recovery rate, but that number is carried by routine check-ups - cardiac cases run at 60%. A car plant cannot inspect every vehicle, so it samples each assembly line, shift and model. Both point at the same exam idea: a high-volume average hides the low-volume, high-stakes stratum where the failures actually cluster.",
+   "points": [
+    "High-volume cases dominate the average and critical categories are often low-volume but high-stakes - a 97% overall can hide 60% on handwritten receipts",
+    "Errors on an outlier type are systematic, not noise: they compound over time on the same document category, so the aggregate never surfaces them",
+    "Stratified sampling workflow: categorise documents into strata, sample a representative batch per stratum (even a 5% bucket gets its own), measure accuracy per category, then act immediately by routing the failing category to human review",
+    "Confidence lives at the field level, not the document level: invoice number 0.97 (top-right header), amount 0.91 (bottom table row 12), vendor address 0.63 (unreadable, handwritten) - only that one field routes to a human",
+    "The extracted field carries its value, its confidence and its source region as required schema fields, and thresholds are calibrated on a labelled validation set, never on the model's raw self-report"
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": "categorise  -> strata (printed PDFs | scans | handwritten | legal contracts)\nsample      -> a representative batch per stratum, even the 5% bucket\nmeasure     -> accuracy per category, not the overall average\nact         -> route the failing category to human review immediately\n\nfield: invoice_number  0.97  source_region: top-right header\nfield: amount          0.91  source_region: bottom table row 12\nfield: vendor_address  0.63  source_region: unreadable -> human review",
+   "ask": null,
+   "takeaway": "Average accuracy hides where failures cluster - sample per stratum, act on the failing category, and route at the field level with calibrated confidence."
+  },
+  {
+   "task": "5.5",
+   "kind": "check",
+   "title": "Gate: the legal contracts that keep failing",
+   "lead": "The headline number is fine. Find the measurement that is missing.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A structured extraction system processes 10,000 documents a day at 96% overall accuracy, with document-level confidence above 80%, and auto-routes to downstream systems. Persistent errors keep appearing specifically in legal contracts. What is the most likely root cause?",
+    "options": [
+     "Document-level confidence masks category-specific failures; the system needs stratified sampling so legal contracts are measured as their own stratum.",
+     "The global confidence threshold of 0.80 is set too low and should be raised.",
+     "Errors are statistically expected at 96% accuracy and need no action.",
+     "The model needs more few-shot examples for legal-contract fields."
+    ],
+    "answer": 0,
+    "why": "The system scores whole documents, so a confident-looking document hides a field that fails only in the legal-contract stratum, and the fix is to sample and measure that category on its own. A threshold problem would surface as low-confidence documents, but these pass above 80%, and confidence must be per field and calibrated rather than one global number. Accepting the errors as expected at 96% is exactly the aggregate-masks-stratum failure. More few-shot examples treats this as a prompt problem when it is a measurement and stratification problem.",
+    "trap": "sounds-simple"
+   },
+   "takeaway": "Persistent errors in one category mean the average is masking a stratum - stratify, sample per category, and route the failing one."
+  },
+  {
    "task": "5.6",
    "kind": "recap",
    "title": "Domain 5 in one pass",

@@ -106,6 +106,25 @@ Global rules that decide most Domain 1 items (hamzafarooq-cheatsheets/domain1.md
   spawn time. Fix the injection, not the subagent's wording. The same reflex resolves
   "the subagent did not know X": context does not inherit, so X had to be handed over
   explicitly and was not.
+- **Structured context, not prose**: the fix for a generic subagent is not better wording but a
+  structured handoff — pass findings as an object of *claims* (each with a claim id, the claim
+  text, a source id and a confidence) plus a *sources* array keyed by source id. Pass the whole
+  object; never extract the claims and drop the sources. Summarising results into a prose
+  paragraph before synthesis is the classic failure — it destroys provenance, so no individual
+  claim can be traced back. The synthesis prompt should require every claim to cite its source
+  URL and preserve the retrieved-at date.
+- **Conflicts are annotated, never silently resolved**: when two sources disagree, the subagent
+  adds a conflict object carrying *both* claims with their source ids, marks the resolution state
+  `unresolved`, and escalates to the coordinator, which makes the final call. Letting a subagent
+  pick a winner — or merge the two into one statement — is a direct exam distractor.
+- **Every subagent is a full agentic loop**: a subagent is just an agent spawned by the
+  coordinator, so it runs its own `stop_reason` loop. In Claude Code / the Agent SDK the spawn is
+  a Task tool call; the raw Anthropic SDK has no Task tool, so the same pattern is reproduced with
+  an ordinary function plus tool schemas. The exam tests the pattern, not the API name.
+- **Fail fast on a failed precondition**: the coordinator spawns the downstream subagent only once
+  the upstream subagent's structured finding satisfied the precondition. If customer verification
+  returns "no such customer", the refund subagent is never spawned — rather than running and
+  hallucinating a result from missing context.
 - **Distractors**: Assuming the subagent inherits the coordinator's conversation; passing
   a pointer or "the document" instead of the content; collapsing structured findings into
   prose (attribution lost); asking subagent A to hand results straight to subagent B;
@@ -131,6 +150,16 @@ Global rules that decide most Domain 1 items (hamzafarooq-cheatsheets/domain1.md
 - **Why the exam wants this**: It is the highest-frequency fork in the whole exam. The
   four-distractor pattern for high-stakes items always offers a stronger prompt, few-shot
   examples, and a specialised subagent — all three are wrong.
+- **Why a hook beats a prompt**: prompts are probabilistic — the model follows an instruction
+  *most* of the time, which is not a guarantee. A hook is code that intercepts the loop, and the
+  model cannot override it. A prompt rule is also easy to under-specify ("refunds over $500 are
+  not allowed" silently leaves verified customers exempt); the hook has no such gap. Exam trigger
+  words — *guarantee*, *must never*, *policy requires* — always resolve to programmatic
+  enforcement.
+- **The canonical example**: a support agent told "only process refunds under $500" one day
+  processes a $2,000 refund because the model weighed the instruction against its own judgement.
+  The fix is a PreToolUse gate that blocks `process_refund` when the amount exceeds the limit and
+  escalates to a human instead — the tool never runs, so there is nothing to override.
 - **Distractors**: Strengthening the system prompt ("always verify identity before
   refunding"); adding few-shot examples of correct ordering; routing to a subagent whose
   prompt emphasises the rule; dumping the full conversation transcript into a human
@@ -155,6 +184,20 @@ Global rules that decide most Domain 1 items (hamzafarooq-cheatsheets/domain1.md
 - **Why the exam wants this**: Two keyword triggers decide these items. "Prior state" /
   "pre-condition" / "before X happens" → PreToolUse. "Heterogeneous formats" /
   "normalize" / "the model is confused by varying outputs" → PostToolUse.
+- **Hooks are pass-through by default**: a hook must return the result unchanged for every tool
+  it does not care about (early-return when the tool name does not match); it transforms only the
+  tools it was written for.
+- **Prerequisite gates are the two-hook pattern**: a PreToolUse gate blocks a downstream tool
+  (`lookup_order`, `process_refund`) until session state carries a `verified` flag; a companion
+  PostToolUse hook flips that flag once the upstream tool (`get_customer`) has actually succeeded.
+  This is the programmatic answer to "the agent occasionally calls `process_refund` before
+  `get_customer`."
+- **Concrete normalisation**: PostToolUse maps raw tool output — database status codes (3/5/8) to
+  readable labels, an epoch timestamp to a date — before the model reasons over it, so the model
+  never misreads a delivered order as pending.
+- **Gate the delegation too**: the same precondition can be enforced one level up — the
+  coordinator must not spawn the refund subagent if the verification subagent reported that the
+  customer does not exist.
 - **Distractors**: Capturing prior state in PostToolUse (the mutation already happened);
   normalizing formats downstream in reporting code instead of at the tool boundary;
   reordering tool preference with a hook (use descriptions and prompts); handling a
@@ -180,6 +223,15 @@ Global rules that decide most Domain 1 items (hamzafarooq-cheatsheets/domain1.md
   "every request follows the same flow" is chaining; "the cause is unknown until we look"
   is adaptive. It also guards the over-engineering trap: if a single-agent loop works, the
   preferred answer is not to refactor to multi-agent.
+- **The one-line decision**: ask "do I know the exact steps before I start?" — yes → prompt
+  chaining (a fixed pipeline: per-file review, then cross-file integration, then a summary); no →
+  dynamic decomposition (start from the last 24h of error logs and let each finding choose the
+  next step, with generic tools like read logs / query DB / check config / trace request). Never
+  apply a fixed checklist to an open-ended task; the predefined steps become wrong the moment
+  findings diverge from the initial assumptions.
+- **Chaining lives inside subagents too**: a coordinator that always spawns verify → process in
+  order is itself a chained workflow, and a subagent's own loop can be chained internally when its
+  steps are known. The choice is per-workflow, not global.
 - **Distractors**: A fixed checklist run unconditionally on an unknown bug path (wastes
   budget, misses the actual cause); brute-force parallelization across every layer "just
   in case"; expanding the checklist for more coverage; one giant single-pass review of a
@@ -204,6 +256,18 @@ Global rules that decide most Domain 1 items (hamzafarooq-cheatsheets/domain1.md
 - **Why the exam wants this**: The trap is resuming because it is cheaper, then acting on
   stale tool results. Stale input produces confidently wrong work that costs more than a
   fresh start.
+- **Named resume**: start a session with a name and continue it later by that name (`--resume
+  <name>`; bare `--resume` takes the most recent). Always state explicitly what changed since the
+  last session — the agent cannot detect modified files, updated dependencies or new requirements
+  on its own.
+- **Fork is for parallel exploration only**: `--fork-session` gives two branches the same
+  expensive baseline so each can explore a different approach without touching the original. Do
+  not use a fork to absorb targeted file edits — that is a resume, or a fresh start if the change
+  is large.
+- **Two fresh-start triggers**: (1) the prior tool results are fundamentally stale (a heavily
+  changed codebase); (2) extended context degrades the model's reasoning capability. When starting
+  fresh, inject a structured summary of prior findings and **frame it as a hypothesis to validate,
+  not as established fact**.
 - **Distractors**: Resuming after files changed and trusting the agent to notice;
   forking to give both branches the *old* state when the state itself is the problem;
   restarting with zero context when a structured summary would preserve valid findings;
@@ -284,6 +348,9 @@ Files actually read for this note:
 - `daronyondem-study-guide.md` (§8 Agentic Patterns and Task Decomposition; §9 Customer
   Service and Production Workflow Design)
 - `timothywarner-practice-60q.md` ("Multi-agent Research System" block, Q1–Q15)
+- Peace Of Code CCAR-F series, Domain 1 episodes 03–05 — `a2N6vKdQUfE` (subagent context passing &
+  session management), `e7ijjK173zI` (multi-agent Python / Claude SDK capstone), `JJBcpwpsKzk`
+  (PreToolUse/PostToolUse hooks & task decomposition); transcripts in `ccaf2026/video-transcripts/`
 - `README.md` (scenario → domain mapping)
 
 Not stated in corpus: full content for Scenario 8 (Agentic AI Tools). The scenario is

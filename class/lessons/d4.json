@@ -27,7 +27,11 @@
    "caption": "Left is an adjective; right is a boundary. Only the right one tells the bot what qualifies.",
    "code": null,
    "ask": null,
-   "takeaway": "An undefined criterion is the bug. Vague instructions do not become precise by adding more of them."
+   "takeaway": "An undefined criterion is the bug. Vague instructions do not become precise by adding more of them.",
+   "inshort": "The bug is the instruction, not the model: 'accurate and up to date' names a quality, not a boundary, so the bot flags everything and misses what matters.",
+   "why": "The stem describes unpredictable output from instructions that already exist; the tested distinction is categorical versus adjectival, so any confidence adjective or threshold in an option is a distractor.",
+   "contrast": "Rewriting the prompt to say 'be more accurate', or adding a confidence threshold, both of which ask the model to supply judgement it does not have.",
+   "exam": "Recurring stem shape for the domain: instructions exist, output is unpredictable. Name the layer before the fix."
   },
   {
    "task": "4.1",
@@ -45,7 +49,11 @@
    "caption": "Read left to right: a finding only exists because one of these three lists claims it.",
    "code": null,
    "ask": null,
-   "takeaway": "Flag X, report Y, skip Z. Disable the noisy category rather than tightening it in place."
+   "takeaway": "Flag X, report Y, skip Z. Disable the noisy category rather than tightening it in place.",
+   "inshort": "Turn every judgement into an operational test: what to flag, what to report, what to skip, with adversarial cases and code anchors for severity.",
+   "why": "The exam wants the categorical structure, not a nicer adjective; prose severity drifts across runs while code anchors do not.",
+   "contrast": "A five-level severity rubric written in prose, or tightening the noisy category in place instead of disabling it.",
+   "exam": "Flag X, report Y, skip Z. A high false-positive rate in one category destroys trust in all of them."
   },
   {
    "task": "4.1",
@@ -71,6 +79,51 @@
    "takeaway": "Disable the noisy category, improve its criteria, re-enable. Do not tighten in place."
   },
   {
+   "task": "4.1",
+   "kind": "teach",
+   "title": "Better-defined reviewing, not less aggressive",
+   "inshort": "The same reviewer went from 47 findings per PR to three by replacing vague adjectives with explicit flag, severity and skip rules, not by becoming less aggressive.",
+   "lead": "Same repository, same reviewer, one prompt change. Before, every PR came back with 47 findings: variable-naming opinions, style the linter does not enforce, and sub-5-millisecond micro-optimisations. After, the same reviewer reports three findings, a SQL injection, a missing error handler and a race condition, and every one is real and fixable. Nobody made it less aggressive; they made it better-defined.",
+   "points": [
+    "Adding words creates more surface area for ambiguity, not less. A 500-word essay and a 1000-line prompt leave the boundary to guesswork.",
+    "Replace adjectives with explicit lists: critical is SQL injection, XSS or CSRF; an error is a missing handler or a race condition.",
+    "Give the skip list real thresholds: no style, no linter-approved formatting, no snake_case complaints, no sub-5ms micro-optimisations.",
+    "Anchor each severity with a real code example, because prose severity drifts across runs and code anchors do not.",
+    "Three code-anchored examples beat a thousand-line description. The exam asks whether to write the vague prompt, and the answer is no."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "The exam's tell is an option that adds a confidence adjective or a threshold instead of a boundary. 'Be thorough and conservative' is the prompt that produced the 47 findings, so keeping it and adding a prose rubric is the trap.",
+   "contrast": "Adding 'be thorough and conservative', or a five-level severity rubric described only in prose. It sounds more rigorous and produces exactly the same drift.",
+   "exam": "Any option whose content is 'be conservative', 'flag only high-confidence issues' or 'raise or lower the threshold' is a distractor. The first step is categorical criteria; few-shot examples refine them afterwards.",
+   "takeaway": "Do not describe the reviewer harder. Define what qualifies, what is an error, and what to skip."
+  },
+  {
+   "task": "4.1",
+   "kind": "check",
+   "title": "Gate: the first step to fewer false positives",
+   "lead": "The stem asks for the first step, and the options split into boundary-setting and threshold-fiddling.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A CI code-review bot flags about 50 items per pull request, mostly variable-naming opinions and micro-optimisations, and developers have started dismissing every finding without reading. The team wants to reduce false positives. Which approach is most effective?",
+    "options": [
+     "Replace the vague instructions with explicit categorical criteria: what to flag, what each severity means, and what to skip, each anchored with a code example.",
+     "Add 'be conservative and only flag issues you are highly confident about' to the system prompt.",
+     "Add a five-level severity rubric described in prose so the model can weigh each finding before reporting it.",
+     "Instruct the model to assign a confidence score to every finding and report only those above 80 percent."
+    ],
+    "answer": 0,
+    "why": "Explicit categorical criteria are the documented first step: they turn a quality adjective into a boundary the model can apply. A conservative or high-confidence instruction is an adjective the model cannot calibrate to your codebase, a prose rubric has no code anchors and drifts across runs, and a self-reported confidence score is not calibrated to your project standards. Few-shot examples improve the criteria afterwards, but they are not the first step.",
+    "trap": "sounds-smart"
+   },
+   "takeaway": "Categorical criteria first. Few-shot examples refine them, they do not replace them."
+  },
+  {
    "task": "4.2",
    "kind": "teach",
    "title": "Despite detailed instructions, output varies",
@@ -85,7 +138,11 @@
    "caption": "Use 2-4 of these, not 1 and not 10. The bottom band is what carries the pattern to novel cases.",
    "code": null,
    "ask": null,
-   "takeaway": "Consistency problem means 2-4 targeted examples with reasoning. Instructions grow linearly, edge cases combinatorially."
+   "takeaway": "Consistency problem means 2-4 targeted examples with reasoning. Instructions grow linearly, edge cases combinatorially.",
+   "inshort": "When instructions alone produce variable output, the fix is 2-4 targeted few-shot examples with reasoning, not more instructions or a lower temperature.",
+   "why": "The stem says instructions have already failed, which means the channel is wrong; demonstration fixes consistency where description cannot.",
+   "contrast": "Adding more explicit requirements for each part of the format, or splitting into a two-pass instruction-only pipeline.",
+   "exam": "Consistency problem means 2-4 targeted examples with reasoning; instructions grow linearly, edge cases combinatorially."
   },
   {
    "task": "4.2",
@@ -126,7 +183,56 @@
    "caption": "Cover the shapes you really receive: each spoke teaches what a valid extraction looks like.",
    "code": null,
    "ask": null,
-   "takeaway": "Varied structures, few examples, with reasoning. The schema validates types; the prompt specifies formats."
+   "takeaway": "Varied structures, few examples, with reasoning. The schema validates types; the prompt specifies formats.",
+   "inshort": "For extraction, few-shot examples must span the document structures you really receive, so the model learns the shape of a valid extraction instead of inventing data.",
+   "why": "Ten examples of one structure overfit to that structure; 2-4 spanning inline citations, bibliographies, prose, tables and informal units generalise.",
+   "contrast": "Giving many examples of the same familiar structure, which teaches pattern matching rather than the decision rule.",
+   "exam": "The schema validates types; the prompt specifies formats such as ISO-8601 dates and amount plus currency."
+  },
+  {
+   "task": "4.2",
+   "kind": "teach",
+   "title": "Output tells what, reasoning tells how",
+   "inshort": "A few-shot example carries input, reasoning and output; the output shows what to produce and the reasoning shows how to decide, which is what generalises.",
+   "lead": "You already have 400 lines of prompt telling the CI reviewer what to do and not do, and it still labels the same bug critical on one run and high on the next. The model found the bug and reasoned about it correctly; it just did not use your team's label. A worked example fixes that, but only if it carries the reasoning.",
+   "points": [
+    "An example is input plus reasoning plus output. The output tells the model what to produce; the reasoning tells it how to decide.",
+    "The answer is specific, but the reasoning behind it generalises, so the model extracts a decision rule and applies it to novel inputs.",
+    "Examples without reasoning teach pattern matching and restrict the model to the cases you showed, which is overfitting to familiar data.",
+    "Two to four examples is the sweet spot. Six to eight bloat the context and push the model back into pattern matching.",
+    "Find the fault lines first: run the same inputs several times, see where the output flips, and example only the drifting cases."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "The exam claim is that few-shot examples are explicitly more effective than detailed prose, and the mechanism is the reasoning, not the output label. A test that asks why an example works wants the derivation.",
+   "contrast": "Giving input-and-label pairs with no reasoning, or filling the prompt with many examples of the cases the model already handles.",
+   "exam": "Ideal count is two to four targeted examples with reasoning. Five to eight fails on pattern matching and context bloating. In an agent, fix the tool description first.",
+   "takeaway": "Show input, reasoning and output. The output is specific; the reasoning is what generalises."
+  },
+  {
+   "task": "4.2",
+   "kind": "check",
+   "title": "Gate: the same bug, two different labels",
+   "lead": "Apply the anatomy you just read. The stem already told you more prose has not converged.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A CI/CD review agent labels the same class of bug critical on one run and high on the next, even though the prompt has 400 lines of explicit rules. Which approach is most effective?",
+    "options": [
+     "Add two to four targeted few-shot examples that show the reasoning for each severity boundary, then the label.",
+     "Add six to eight diverse examples for each severity so the model has more coverage of the label space.",
+     "Add detailed prose definitions of critical, high and medium to the existing instruction block.",
+     "Lower the temperature so the same input always produces the same label."
+    ],
+    "answer": 0,
+    "why": "Two to four targeted examples that carry the reasoning across the ambiguous boundary teach the decision rule and are the documented fix for inconsistent classification. Six to eight examples bloat the context and trigger pattern matching, prose definitions are exactly what already failed to converge, and temperature only removes randomness, not the judgement gap.",
+    "trap": "sounds-thorough"
+   },
+   "takeaway": "Two to four examples with reasoning on the boundary cases. Not more prose, not more examples."
   },
   {
    "task": "4.3",
@@ -143,7 +249,11 @@
    "caption": "Everything under this root is a failure mode the schema cannot see; only the left child is fixed.",
    "code": null,
    "ask": null,
-   "takeaway": "tool_use kills syntax errors. It does not kill arithmetic errors, wrong-field errors, or invented values."
+   "takeaway": "tool_use kills syntax errors. It does not kill arithmetic errors, wrong-field errors, or invented values.",
+   "inshort": "tool_use with a JSON schema eliminates JSON syntax errors and nothing else; arithmetic errors, field-placement errors and fabricated values survive it.",
+   "why": "This is the highest-yield task in the domain; most distractors are wrong-layer answers that ask the prompt to do the schema's job or the schema to do validation code's job.",
+   "contrast": "Assuming schema compliance is source truth, or asking tool_use to make line items sum to the total.",
+   "exam": "Syntax validation is the first layer only. Name the layer before the fix."
   },
   {
    "task": "4.3",
@@ -178,7 +288,11 @@
    "caption": "Left manufactures the value; right lets the model say null. Wording cannot override structural pressure.",
    "code": null,
    "ask": null,
-   "takeaway": "Make it nullable and teach the model to say null. Prompt wording cannot override structural pressure."
+   "takeaway": "Make it nullable and teach the model to say null. Prompt wording cannot override structural pressure.",
+   "inshort": "A required field whose value is often absent guarantees the model invents one; make the field nullable and teach the model to return null.",
+   "why": "Required guarantees presence, not truth, and strict mode still requires the field to be listed, so nullability is the only structural escape hatch.",
+   "contrast": "Adding 'do not fabricate' to the prompt while keeping the field required; wording cannot override structural pressure.",
+   "exam": "An all-required schema is a fabrication factory; nullable fields plus a null instruction are the anti-fabrication toolkit."
   },
   {
    "task": "4.3",
@@ -219,7 +333,11 @@
    "caption": "Read down the middle column: only 'any' guarantees a call while still letting the model choose the schema.",
    "code": null,
    "ask": null,
-   "takeaway": "auto for optional, any for must-call-something, named tool for must-call-this, none to forbid."
+   "takeaway": "auto for optional, any for must-call-something, named tool for must-call-this, none to forbid.",
+   "inshort": "auto lets the model answer in text, any must call some tool and lets the model choose, a named tool must call that tool, none forbids tools.",
+   "why": "The requirement picks the setting: guaranteed structured output for an unknown document type means any, not a named tool.",
+   "contrast": "Forcing a named extraction tool for documents of unknown type, which routes every document through one schema that fits none of them.",
+   "exam": "auto for optional, any for must-call-something, named tool for must-call-this, none to forbid."
   },
   {
    "task": "4.3",
@@ -260,7 +378,56 @@
    "caption": "The right column is the strict-mode surface that accepts the key and ignores the constraint.",
    "code": "strict: true  +  additionalProperties: false  +  every property in required\nnullable field: \"null if not found\" via a null-capable type\nenum: [\"billing\", \"technical\", \"account\", \"unclear\", \"other\"]  +  category_detail\noutput_config.format: {\"type\": \"json_schema\", \"schema\": {...}}",
    "ask": null,
-   "takeaway": "Nullable fields, unclear enums, other plus detail. Range and regex belong in code. Prefill is gone."
+   "takeaway": "Nullable fields, unclear enums, other plus detail. Range and regex belong in code. Prefill is gone.",
+   "inshort": "Add unclear and other-plus-detail to enums, keep range and regex constraints in code, and use output_config.format because assistant prefill is gone.",
+   "why": "The exam can test the exact API surface: what strict mode supports, what it silently ignores, and which parameters are deprecated.",
+   "contrast": "Adding minimum, maximum, pattern or oneOf to the schema expecting enforcement, or using prefill to start the assistant turn with a brace.",
+   "exam": "Nullable fields, unclear enums, other plus detail. Range and regex belong in code. Prefill is gone."
+  },
+  {
+   "task": "4.3",
+   "kind": "teach",
+   "title": "The fake tool that only enforces a schema",
+   "inshort": "A no-op tool whose only job is to accept a structured payload makes the API enforce your schema before the model's output reaches you.",
+   "lead": "Your tools return real data but in their own shapes: some integers, some strings, some nested objects. You want one structured record for the coordinator. The model will happily answer in markdown with the data wrapped in triple backticks, so the parser hits a backtick instead of a brace. The fix is a tool that does nothing but accept the payload you want.",
+   "points": [
+    "The fake tool has no business logic. It exists so the API enforces the exact input_schema before returning data to you.",
+    "Free-form 'give me JSON' prompting is fragile: markdown wrapping breaks the parser and complex documents cause schema drift.",
+    "Read the result from response.content[0].input, the already-validated tool input, instead of parsing raw text.",
+    "Schema validity is syntax, not truth. A strict schema guarantees structure and nothing about whether the values are right.",
+    "Semantic errors survive it: reading the wrong table row, confusing similar terms, or hallucinating a value the source does not contain."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "The exam separates syntax from semantics. Strict JSON schemas and tool use fix structural failures; business-logic checks, cross-field consistency and human review fix interpretation failures.",
+   "contrast": "Asking the prompt to return JSON without a schema, then post-processing markdown fences out of the text, which fixes the symptom and not the shape.",
+   "exam": "Structural failure means schema or tool use. Semantic failure means validation code. Do not answer a semantic stem with a stricter schema.",
+   "takeaway": "A fake tool is a typed contract. Schema validity is syntax; truth is a separate layer."
+  },
+  {
+   "task": "4.3",
+   "kind": "check",
+   "title": "Gate: schema perfect, value wrong",
+   "lead": "The stem gives you a pipeline that never fails schema validation, so the defect cannot be structural.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "An extraction pipeline passes JSON schema validation on 100 percent of documents, but occasionally reports wrong monetary amounts because the model reads the wrong table row. Which approach is most effective?",
+    "options": [
+     "Add semantic validation: business-rule and cross-field consistency checks that compare the extracted values against each other.",
+     "Tighten the JSON schema further so the amounts are constrained to the expected range.",
+     "Route every document through the self-correcting retry loop until the amount stabilises.",
+     "Add a few-shot example showing the correct table row for every document layout you have seen."
+    ],
+    "answer": 0,
+    "why": "A schema-valid but wrong value is a semantic error, and only semantic validation catches reading the wrong row. A stricter schema changes structure, not interpretation, because range and cross-field constraints are not enforced in strict mode; the retry loop corrects formats, not interpretation, and would resubmit the same reading; per-layout examples do not generalise to the unseen layout that produced the error.",
+    "trap": "sounds-smart"
+   },
+   "takeaway": "Schemas fix structure. Business logic and cross-field checks fix interpretation."
   },
   {
    "task": "4.4",
@@ -278,7 +445,11 @@
    "caption": "The two segments need opposite treatments, so retrying all 900 as one population makes 700 fabrications.",
    "code": null,
    "ask": null,
-   "takeaway": "Separate absence from format error before you decide anything."
+   "takeaway": "Separate absence from format error before you decide anything.",
+   "inshort": "Separate output errors from source gaps before you decide anything: retry fixes output errors, schema design fixes source gaps.",
+   "why": "The stem deliberately mixes two failure populations in one number, and the correct option treats them differently.",
+   "contrast": "Retrying all 900 failures with the same prompt, which fabricates the 700 absent values and wastes the fixable 200.",
+   "exam": "Retry handles output errors. Schema design handles source gaps. Never retry an absent value."
   },
   {
    "task": "4.4",
@@ -319,7 +490,11 @@
    "caption": "The cycle only works on output errors. Absence, or a document never provided, never comes back fixed.",
    "code": null,
    "ask": null,
-   "takeaway": "Original document plus failed extraction plus the specific error. Recurring defect means structural fix."
+   "takeaway": "Original document plus failed extraction plus the specific error. Recurring defect means structural fix.",
+   "inshort": "A retry resends the original document, the failed extraction and the specific validation error; a recurring defect needs a structural fix instead.",
+   "why": "Targeted correction beats a blind retry, and a prompt-level fix generalises where per-instance retries do not.",
+   "contrast": "Blind retries, temperature 0, or a second call verifying every value, which adds cost and can rationalise the original answer.",
+   "exam": "Original document plus failed extraction plus the specific error. Recurring defect means structural fix."
   },
   {
    "task": "4.4",
@@ -336,7 +511,56 @@
    "caption": "Without detected_pattern you know 35% of findings are dismissed but not which constructs to suppress.",
    "code": null,
    "ask": null,
-   "takeaway": "detected_pattern turns a black-box review bot into a measurable system."
+   "takeaway": "detected_pattern turns a black-box review bot into a measurable system.",
+   "inshort": "Add detected_pattern and a rule_id or evidence field to each finding so dismissals aggregate by code construct and prompt changes stop being guesswork.",
+   "why": "Without it you know 35% of findings are dismissed but not which constructs to suppress, so you cannot target the fix.",
+   "contrast": "Editing the prompt on instinct because the dismissals cannot be attributed to a category.",
+   "exam": "detected_pattern turns a black-box review bot into a measurable system."
+  },
+  {
+   "task": "4.4",
+   "kind": "teach",
+   "title": "The self-correcting retry loop, and its limit",
+   "inshort": "A retry loop validates the output, appends the specific error to the conversation and asks again, and it corrects formats only, never absent data.",
+   "lead": "Your extraction runs, a validation gate checks the output, and it fails on a date in the wrong format. The loop appends that failure back into the conversation and calls the model again. Get this loop right and format errors converge; get it wrong and it spins forever producing the same failure.",
+   "points": [
+    "Resend three things: the original document, the failed extraction, and the specific validation error, appended in an assistant turn.",
+    "A generic 'validation failed' yields identical failures every time. Name the field and the expected format so the model can correct it.",
+    "The loop is a format corrector, not a data generator. It cannot recover information the source never contained.",
+    "If the value is genuinely absent, the fix is a nullable field, not another retry, and the loop should treat absence as success.",
+    "When the retry threshold is reached, hand off to a human rather than forcing the model to invent the missing value."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "The exam tests the retry boundary repeatedly: retry fixes output errors, schema design fixes source gaps. A stem where every retry fails is a source gap, and an option that prompts the model to look harder is the trap.",
+   "contrast": "Resending the whole batch with the same prompt, or feeding back 'validation failed' with no field detail, which reproduces the same failure.",
+   "exam": "Retry sends the document, the failed extraction and the exact error. Recurring defect means a structural fix. Absence means nullable.",
+   "takeaway": "Retry with the specific error for formats. Absent data is never a retry problem."
+  },
+  {
+   "task": "4.4",
+   "kind": "check",
+   "title": "Gate: every retry fails on the same field",
+   "lead": "Read the stem for the word the retry loop cannot fix.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "An extraction pipeline fails validation on every retry. The failing field is a tax ID that is genuinely absent from the source documents. Which approach is most effective?",
+    "options": [
+     "Change the field to a nullable string, instruct the model to return null when the source does not state it, and treat null as a valid extraction.",
+     "Raise the retry limit and include the missing field in the feedback so the model looks harder for it.",
+     "Add a few-shot example of a document that does contain a tax ID so the model learns where to find it.",
+     "Fall back to a default tax ID value so downstream validation always passes."
+    ],
+    "answer": 0,
+    "why": "The value is absent from the source, so no number of retries can recover it; a nullable field lets the first call report absence honestly. Raising the retry limit and naming the field in feedback forces the model to invent a value, a few-shot example cannot create data that is not there, and a default value fabricates an identifier that the exam treats as a correctness failure.",
+    "trap": "sounds-helpful"
+   },
+   "takeaway": "Absence is a schema problem. Make it nullable; never retry an absent value."
   },
   {
    "task": "4.5",
@@ -353,7 +577,11 @@
    "caption": "Read the middle column: a workload only tolerates the batch window when nothing is waiting on it.",
    "code": null,
    "ask": null,
-   "takeaway": "Blocking means synchronous. Latency-tolerant means batch. Match the API to whether something is waiting."
+   "takeaway": "Blocking means synchronous. Latency-tolerant means batch. Match the API to whether something is waiting.",
+   "inshort": "The Message Batches API is about 50% cheaper with a window of up to 24 hours and no latency SLA, so it fits non-blocking, deadline-flexible work only.",
+   "why": "The stem is never really about cost; it is about whether a human or a gate is waiting on the result.",
+   "contrast": "Migrating everything to batch, or batch with a synchronous fallback, which still queues the blocking job first.",
+   "exam": "Blocking means synchronous. Latency-tolerant means batch. Match the API to whether something is waiting."
   },
   {
    "task": "4.5",
@@ -415,6 +643,51 @@
    "takeaway": "In-request tool loop means synchronous, always. Never batch the pre-merge hook."
   },
   {
+   "task": "4.5",
+   "kind": "teach",
+   "title": "custom_id is an address, not a random UUID",
+   "inshort": "Every batch request carries a custom_id, and results come back in any order, so the ID is the only way to match a response to its request.",
+   "lead": "You submit a nightly batch of 500 files for review and, in the same batch, 500 files for test generation. The results arrive hours later in whatever order they finished. If a response cannot be traced back to its request, the savings are worthless. That is the job of the custom_id.",
+   "points": [
+    "Every request needs a unique custom_id, and the result carries the same ID back, so correlation is by custom_id and never by position.",
+    "Make it meaningful, not a random UUID: a PR number, file path and version survive a partial re-run and a lost mapping.",
+    "The batch is processed asynchronously when capacity allows, so a submission can finish in minutes or in up to 24 hours.",
+    "Batch accepts tool definitions in params but runs single-turn only, so there is no in-request tool loop and no streaming.",
+    "Resubmit only the failures identified by custom_id after fixing the cause, not the whole batch."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "The exam correlates batch request and response pairs, and the answer is always custom_id. A random UUID technically correlates but does not survive operational reality, which is why meaningful IDs are the documented choice.",
+   "contrast": "Matching results by their order in the batch, or using throwaway UUIDs that cannot be traced back to a PR or file.",
+   "exam": "Ask about correlating batch requests and responses and the answer is custom_id. Batch is single-turn; a tool loop means synchronous.",
+   "takeaway": "custom_id is the address on the shipment. Unique and meaningful, or you cannot rejoin the results."
+  },
+  {
+   "task": "4.5",
+   "kind": "check",
+   "title": "Gate: matching 500 results to 500 requests",
+   "lead": "The stem is about correlation, not cost.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A nightly batch submits 500 review requests and 500 test-generation requests together. Results return hours later in an arbitrary order, and each must be matched to its request. Which approach is most effective?",
+    "options": [
+     "Attach a unique, meaningful custom_id to every request and read the same custom_id from each result to rejoin them.",
+     "Keep the requests in submission order and match each result to the request at the same index in the results list.",
+     "Submit the two workloads as separate batches and rely on the batch creation order to tell them apart.",
+     "Include the file path at the start of each prompt and parse it back out of the response text."
+    ],
+    "answer": 0,
+    "why": "Results arrive in any order, so the only reliable correlation is the custom_id echoed on each result. Index matching assumes results preserve request order, which they do not; batch creation order says nothing about which result belongs to which request; and parsing a path out of free text reintroduces the fragile string handling that batch already avoids.",
+    "trap": "sounds-simple"
+   },
+   "takeaway": "Join on custom_id. Never on position, batch order or parsed text."
+  },
+  {
    "task": "4.6",
    "kind": "teach",
    "title": "The model that wrote it cannot judge it",
@@ -429,7 +702,11 @@
    "caption": "Look at what crosses the arrow: the artifact and the criteria, never the reasoning that produced them.",
    "code": null,
    "ask": null,
-   "takeaway": "Same session, same reasoning, same bias. Fresh instance, artifact and criteria only."
+   "takeaway": "Same session, same reasoning, same bias. Fresh instance, artifact and criteria only.",
+   "inshort": "A model reviewing its own output in the same session keeps the reasoning that produced it and stays biased toward its own conclusions.",
+   "why": "The fix is an independent instance receiving only the artifact and the criteria, the same reason human peer review works.",
+   "contrast": "Self-critique instructions inside the generating session, or deeper deliberation on the same chain of reasoning.",
+   "exam": "Same session, same reasoning, same bias. Fresh instance, artifact and criteria only."
   },
   {
    "task": "4.6",
@@ -488,7 +765,11 @@
    "caption": "Note what is missing: overall accuracy is not the filter, and neither is a bare 0.9 score.",
    "code": null,
    "ask": null,
-   "takeaway": "Calibrate on a labelled set and measure by segment. An uncalibrated threshold is meaningless."
+   "takeaway": "Calibrate on a labelled set and measure by segment. An uncalibrated threshold is meaningless.",
+   "inshort": "Calibrate thresholds on a labelled validation set and measure accuracy by segment, because an uncalibrated 0.9 means nothing and overall accuracy hides weak fields.",
+   "why": "Self-reported confidence is unreliable for routing; a pipeline that is 97% accurate overall can be 80% accurate on one field or document type.",
+   "contrast": "Setting a 0.9 threshold, or filtering low-confidence findings before developers see them, which hides findings instead of calibrating routing.",
+   "exam": "Calibrate on a labelled set and measure by segment. An uncalibrated threshold is meaningless."
   },
   {
    "task": "4.6",

@@ -1,0 +1,5187 @@
+{
+ "video_id": "eZj6FtTVV58",
+ "episode": "Ep 07",
+ "title": "Agent Error Handling & tool_choice Explained",
+ "segments": [
+  {
+   "start": 3.2,
+   "duration": 4.6,
+   "text": "Hi guys and welcome to this lesson."
+  },
+  {
+   "start": 5.24,
+   "duration": 4.12,
+   "text": "So in this lesson we're going to talk"
+  },
+  {
+   "start": 7.8,
+   "duration": 5.2,
+   "text": "about"
+  },
+  {
+   "start": 9.36,
+   "duration": 7.4,
+   "text": "an important aspect of you know agentic"
+  },
+  {
+   "start": 13.0,
+   "duration": 5.6,
+   "text": "AI and you know especially for the exam"
+  },
+  {
+   "start": 16.76,
+   "duration": 3.32,
+   "text": "Cloud Certified Architect and you're"
+  },
+  {
+   "start": 18.6,
+   "duration": 3.88,
+   "text": "going to be tested a lot in this"
+  },
+  {
+   "start": 20.08,
+   "duration": 3.96,
+   "text": "particular aspect and that is basically"
+  },
+  {
+   "start": 22.48,
+   "duration": 3.32,
+   "text": "error handling"
+  },
+  {
+   "start": 24.04,
+   "duration": 4.8,
+   "text": "in tools."
+  },
+  {
+   "start": 25.8,
+   "duration": 5.44,
+   "text": "So the we have to understand the"
+  },
+  {
+   "start": 28.84,
+   "duration": 4.44,
+   "text": "scenarios when your tools are going to"
+  },
+  {
+   "start": 31.24,
+   "duration": 6.24,
+   "text": "break you know"
+  },
+  {
+   "start": 33.28,
+   "duration": 5.72,
+   "text": "and you it's a very you know important"
+  },
+  {
+   "start": 37.48,
+   "duration": 3.0,
+   "text": "in this case because you know you have"
+  },
+  {
+   "start": 39.0,
+   "duration": 4.2,
+   "text": "made this"
+  },
+  {
+   "start": 40.48,
+   "duration": 5.0,
+   "text": "very wonderful agent and the agent hits"
+  },
+  {
+   "start": 43.2,
+   "duration": 4.36,
+   "text": "a tool failure and"
+  },
+  {
+   "start": 45.48,
+   "duration": 4.0,
+   "text": "it doesn't know what to do."
+  },
+  {
+   "start": 47.56,
+   "duration": 3.96,
+   "text": "So in this particular lesson we're going"
+  },
+  {
+   "start": 49.48,
+   "duration": 5.32,
+   "text": "to learn about you know building agents"
+  },
+  {
+   "start": 51.52,
+   "duration": 5.92,
+   "text": "that handle errors like pros and once"
+  },
+  {
+   "start": 54.8,
+   "duration": 6.52,
+   "text": "you understand this you would be also a"
+  },
+  {
+   "start": 57.44,
+   "duration": 6.92,
+   "text": "pro in basically passing the exam."
+  },
+  {
+   "start": 61.32,
+   "duration": 5.56,
+   "text": "So let's start with the"
+  },
+  {
+   "start": 64.36,
+   "duration": 4.84,
+   "text": "you know the silent killer of agentic"
+  },
+  {
+   "start": 66.88,
+   "duration": 5.48,
+   "text": "system and when I say the silent killer"
+  },
+  {
+   "start": 69.2,
+   "duration": 5.84,
+   "text": "of agentic system is not properly"
+  },
+  {
+   "start": 72.36,
+   "duration": 4.36,
+   "text": "handling the particular error."
+  },
+  {
+   "start": 75.04,
+   "duration": 4.32,
+   "text": "And how does that happen? How does it"
+  },
+  {
+   "start": 76.72,
+   "duration": 4.92,
+   "text": "start? Now let's take a scenario that"
+  },
+  {
+   "start": 79.36,
+   "duration": 4.28,
+   "text": "you know every developer hits eventually"
+  },
+  {
+   "start": 81.64,
+   "duration": 5.4,
+   "text": "right? You build a multi agent research"
+  },
+  {
+   "start": 83.64,
+   "duration": 5.8,
+   "text": "system for example you test it it works."
+  },
+  {
+   "start": 87.04,
+   "duration": 5.76,
+   "text": "You deploy it and then one day a tool"
+  },
+  {
+   "start": 89.44,
+   "duration": 5.72,
+   "text": "starts failing right? Maybe a database"
+  },
+  {
+   "start": 92.8,
+   "duration": 3.84,
+   "text": "time out or maybe a rate limit error or"
+  },
+  {
+   "start": 95.16,
+   "duration": 4.12,
+   "text": "something like that."
+  },
+  {
+   "start": 96.64,
+   "duration": 5.56,
+   "text": "But the thing is this is not actually"
+  },
+  {
+   "start": 99.28,
+   "duration": 5.56,
+   "text": "programming over here right where you"
+  },
+  {
+   "start": 102.2,
+   "duration": 4.88,
+   "text": "have written a exception you know block"
+  },
+  {
+   "start": 104.84,
+   "duration": 3.92,
+   "text": "or a catch block you have your try and"
+  },
+  {
+   "start": 107.08,
+   "duration": 3.6,
+   "text": "catch block you have written and then"
+  },
+  {
+   "start": 108.76,
+   "duration": 4.68,
+   "text": "you're handling the error gracefully."
+  },
+  {
+   "start": 110.68,
+   "duration": 5.2,
+   "text": "Here it is LLM. So the LLM is you know"
+  },
+  {
+   "start": 113.44,
+   "duration": 3.84,
+   "text": "intelligent it will handle it on its own"
+  },
+  {
+   "start": 115.88,
+   "duration": 3.68,
+   "text": "basically."
+  },
+  {
+   "start": 117.28,
+   "duration": 4.6,
+   "text": "So but the thing is once an error occurs"
+  },
+  {
+   "start": 119.56,
+   "duration": 4.24,
+   "text": "your agent or LLM doesn't know what"
+  },
+  {
+   "start": 121.88,
+   "duration": 4.44,
+   "text": "happened and it just silently carries"
+  },
+  {
+   "start": 123.8,
+   "duration": 4.48,
+   "text": "on. You know it doesn't crash."
+  },
+  {
+   "start": 126.32,
+   "duration": 4.32,
+   "text": "It doesn't alert you."
+  },
+  {
+   "start": 128.28,
+   "duration": 4.76,
+   "text": "You know it just confidently returns the"
+  },
+  {
+   "start": 130.64,
+   "duration": 4.28,
+   "text": "garbage result because"
+  },
+  {
+   "start": 133.04,
+   "duration": 4.44,
+   "text": "it kind of swallowed the error."
+  },
+  {
+   "start": 134.92,
+   "duration": 4.88,
+   "text": "Swallowed swallowed swallowed sorry"
+  },
+  {
+   "start": 137.48,
+   "duration": 4.24,
+   "text": "swallowed the error."
+  },
+  {
+   "start": 139.8,
+   "duration": 5.12,
+   "text": "The reason being is that it kind of"
+  },
+  {
+   "start": 141.72,
+   "duration": 4.68,
+   "text": "treats that message as also a success"
+  },
+  {
+   "start": 144.92,
+   "duration": 3.68,
+   "text": "message guys."
+  },
+  {
+   "start": 146.4,
+   "duration": 3.84,
+   "text": "It doesn't differentiate between an"
+  },
+  {
+   "start": 148.6,
+   "duration": 3.72,
+   "text": "error message because it's the message"
+  },
+  {
+   "start": 150.24,
+   "duration": 4.4,
+   "text": "that it is you know receiving right? I"
+  },
+  {
+   "start": 152.32,
+   "duration": 3.8,
+   "text": "mean from the tools."
+  },
+  {
+   "start": 154.64,
+   "duration": 4.36,
+   "text": "You know if you're not properly"
+  },
+  {
+   "start": 156.12,
+   "duration": 4.44,
+   "text": "propagating the error explicitly telling"
+  },
+  {
+   "start": 159.0,
+   "duration": 4.12,
+   "text": "that this is an error"
+  },
+  {
+   "start": 160.56,
+   "duration": 5.12,
+   "text": "then the model will hallucinate success"
+  },
+  {
+   "start": 163.12,
+   "duration": 4.96,
+   "text": "value and"
+  },
+  {
+   "start": 165.68,
+   "duration": 3.64,
+   "text": "basically it will carry on."
+  },
+  {
+   "start": 168.08,
+   "duration": 5.24,
+   "text": "Okay?"
+  },
+  {
+   "start": 169.32,
+   "duration": 7.12,
+   "text": "Now the second scenario is basically"
+  },
+  {
+   "start": 173.32,
+   "duration": 5.96,
+   "text": "you know where the entire pipeline fails"
+  },
+  {
+   "start": 176.44,
+   "duration": 6.24,
+   "text": "and that is because the tool is failing"
+  },
+  {
+   "start": 179.28,
+   "duration": 6.28,
+   "text": "in such a you know alarming manner"
+  },
+  {
+   "start": 182.68,
+   "duration": 4.76,
+   "text": "that it kind of completely breaks the"
+  },
+  {
+   "start": 185.56,
+   "duration": 4.28,
+   "text": "pipeline or breaks the complete"
+  },
+  {
+   "start": 187.44,
+   "duration": 4.44,
+   "text": "deployment and that is not what you want"
+  },
+  {
+   "start": 189.84,
+   "duration": 4.8,
+   "text": "at all in your production."
+  },
+  {
+   "start": 191.88,
+   "duration": 5.28,
+   "text": "So the model must explicitly know a"
+  },
+  {
+   "start": 194.64,
+   "duration": 4.44,
+   "text": "failure you know that has been occurred"
+  },
+  {
+   "start": 197.16,
+   "duration": 4.16,
+   "text": "in order to reason about the recovery"
+  },
+  {
+   "start": 199.08,
+   "duration": 4.92,
+   "text": "that I have put in this slide."
+  },
+  {
+   "start": 201.32,
+   "duration": 5.24,
+   "text": "Now what that we need to do to actually"
+  },
+  {
+   "start": 204.0,
+   "duration": 4.96,
+   "text": "achieve this? The very important thing"
+  },
+  {
+   "start": 206.56,
+   "duration": 5.0,
+   "text": "that we need to do to achieve this is"
+  },
+  {
+   "start": 208.96,
+   "duration": 5.56,
+   "text": "you know following a pattern is to"
+  },
+  {
+   "start": 211.56,
+   "duration": 4.44,
+   "text": "implement the is error flag."
+  },
+  {
+   "start": 214.52,
+   "duration": 3.6,
+   "text": "Okay?"
+  },
+  {
+   "start": 216.0,
+   "duration": 5.88,
+   "text": "You know"
+  },
+  {
+   "start": 218.12,
+   "duration": 6.36,
+   "text": "so MCP we have talked about MCP MCP"
+  },
+  {
+   "start": 221.88,
+   "duration": 6.28,
+   "text": "stands for model context protocol right?"
+  },
+  {
+   "start": 224.48,
+   "duration": 5.44,
+   "text": "And basically it's a way how your agents"
+  },
+  {
+   "start": 228.16,
+   "duration": 4.56,
+   "text": "discover the tools."
+  },
+  {
+   "start": 229.92,
+   "duration": 5.32,
+   "text": "Right? You know"
+  },
+  {
+   "start": 232.72,
+   "duration": 5.2,
+   "text": "you can expose anything as an MCP server"
+  },
+  {
+   "start": 235.24,
+   "duration": 4.72,
+   "text": "basically. You know you have an API you"
+  },
+  {
+   "start": 237.92,
+   "duration": 4.4,
+   "text": "can wrap it around in an MCP you know"
+  },
+  {
+   "start": 239.96,
+   "duration": 4.52,
+   "text": "mod x model context protocol you know a"
+  },
+  {
+   "start": 242.32,
+   "duration": 3.76,
+   "text": "layer and basically expose it via the"
+  },
+  {
+   "start": 244.48,
+   "duration": 3.52,
+   "text": "A2A protocol."
+  },
+  {
+   "start": 246.08,
+   "duration": 3.96,
+   "text": "Now agents are intelligent enough to"
+  },
+  {
+   "start": 248.0,
+   "duration": 4.92,
+   "text": "understand the metadata behind the A2A"
+  },
+  {
+   "start": 250.04,
+   "duration": 4.92,
+   "text": "protocol and once you"
+  },
+  {
+   "start": 252.92,
+   "duration": 4.319,
+   "text": "configure the MCP server in your agent"
+  },
+  {
+   "start": 254.96,
+   "duration": 4.6,
+   "text": "or in your assistant it will easily be"
+  },
+  {
+   "start": 257.239,
+   "duration": 4.601,
+   "text": "able to use that MCP server to fetch"
+  },
+  {
+   "start": 259.56,
+   "duration": 3.92,
+   "text": "information relevant information. And if"
+  },
+  {
+   "start": 261.84,
+   "duration": 3.52,
+   "text": "you want to understand more about MCP"
+  },
+  {
+   "start": 263.48,
+   "duration": 3.96,
+   "text": "servers I have a dedicated video on MCP"
+  },
+  {
+   "start": 265.36,
+   "duration": 5.2,
+   "text": "servers and also a dedicated video on"
+  },
+  {
+   "start": 267.44,
+   "duration": 5.76,
+   "text": "agentic AI you can go and have a look."
+  },
+  {
+   "start": 270.56,
+   "duration": 4.32,
+   "text": "But the thing is MCP has a clean answer"
+  },
+  {
+   "start": 273.2,
+   "duration": 3.56,
+   "text": "for error handling that is what I want"
+  },
+  {
+   "start": 274.88,
+   "duration": 4.44,
+   "text": "you know mean to say over here."
+  },
+  {
+   "start": 276.76,
+   "duration": 4.64,
+   "text": "That is through the is error flag. So"
+  },
+  {
+   "start": 279.32,
+   "duration": 5.2,
+   "text": "when your tool returns a result to your"
+  },
+  {
+   "start": 281.4,
+   "duration": 5.16,
+   "text": "agent you set the is error to true. So"
+  },
+  {
+   "start": 284.52,
+   "duration": 4.2,
+   "text": "like you see on the screen right? So we"
+  },
+  {
+   "start": 286.56,
+   "duration": 3.88,
+   "text": "know about the tool result right?"
+  },
+  {
+   "start": 288.72,
+   "duration": 4.56,
+   "text": "And we have we already covered that in"
+  },
+  {
+   "start": 290.44,
+   "duration": 5.4,
+   "text": "the first lesson. So if there is a error"
+  },
+  {
+   "start": 293.28,
+   "duration": 6.92,
+   "text": "is happening then you should have to you"
+  },
+  {
+   "start": 295.84,
+   "duration": 4.36,
+   "text": "know return the is error as true."
+  },
+  {
+   "start": 300.36,
+   "duration": 3.64,
+   "text": "Right? So"
+  },
+  {
+   "start": 302.16,
+   "duration": 4.16,
+   "text": "you know you're just saying you know hey"
+  },
+  {
+   "start": 304.0,
+   "duration": 4.84,
+   "text": "I ran you know the tool is saying I ran"
+  },
+  {
+   "start": 306.32,
+   "duration": 4.8,
+   "text": "but something went wrong and here is"
+  },
+  {
+   "start": 308.84,
+   "duration": 4.88,
+   "text": "what has happened."
+  },
+  {
+   "start": 311.12,
+   "duration": 4.8,
+   "text": "So what is the anti-pattern that you"
+  },
+  {
+   "start": 313.72,
+   "duration": 3.52,
+   "text": "should avoid is that tool returns an"
+  },
+  {
+   "start": 315.92,
+   "duration": 3.2,
+   "text": "empty array"
+  },
+  {
+   "start": 317.24,
+   "duration": 3.64,
+   "text": "when you know the tool call fails or"
+  },
+  {
+   "start": 319.12,
+   "duration": 4.36,
+   "text": "there is an error. So don't return that"
+  },
+  {
+   "start": 320.88,
+   "duration": 5.32,
+   "text": "don't return an empty array because that"
+  },
+  {
+   "start": 323.48,
+   "duration": 4.28,
+   "text": "also that agent will treat as a success"
+  },
+  {
+   "start": 326.2,
+   "duration": 4.48,
+   "text": "response."
+  },
+  {
+   "start": 327.76,
+   "duration": 5.32,
+   "text": "But if you are passing in is error flag"
+  },
+  {
+   "start": 330.68,
+   "duration": 4.08,
+   "text": "as true you know with error context with"
+  },
+  {
+   "start": 333.08,
+   "duration": 3.68,
+   "text": "proper context which we're going to see"
+  },
+  {
+   "start": 334.76,
+   "duration": 5.16,
+   "text": "how you can pass proper context as well"
+  },
+  {
+   "start": 336.76,
+   "duration": 5.04,
+   "text": "to the agent then in that case it will"
+  },
+  {
+   "start": 339.92,
+   "duration": 4.8,
+   "text": "you know"
+  },
+  {
+   "start": 341.8,
+   "duration": 5.12,
+   "text": "handle it gracefully."
+  },
+  {
+   "start": 344.72,
+   "duration": 4.2,
+   "text": "The key insight for the exam that I want"
+  },
+  {
+   "start": 346.92,
+   "duration": 3.52,
+   "text": "to convey over here is that the model"
+  },
+  {
+   "start": 348.92,
+   "duration": 2.72,
+   "text": "needs to know that the failure has"
+  },
+  {
+   "start": 350.44,
+   "duration": 2.92,
+   "text": "happened."
+  },
+  {
+   "start": 351.64,
+   "duration": 4.6,
+   "text": "Model in the sense the LLM which is"
+  },
+  {
+   "start": 353.36,
+   "duration": 4.24,
+   "text": "powering your agent basically."
+  },
+  {
+   "start": 356.24,
+   "duration": 4.28,
+   "text": "So"
+  },
+  {
+   "start": 357.6,
+   "duration": 5.2,
+   "text": "then it will reason for recovery and"
+  },
+  {
+   "start": 360.52,
+   "duration": 3.12,
+   "text": "you know it will work you know handle"
+  },
+  {
+   "start": 362.8,
+   "duration": 4.8,
+   "text": "the"
+  },
+  {
+   "start": 363.64,
+   "duration": 3.96,
+   "text": "error gracefully what however you want."
+  },
+  {
+   "start": 368.04,
+   "duration": 5.28,
+   "text": "So let's go to four types of tool"
+  },
+  {
+   "start": 371.52,
+   "duration": 4.76,
+   "text": "failure. Now we have understood that"
+  },
+  {
+   "start": 373.32,
+   "duration": 4.12,
+   "text": "okay the error has occurred and you have"
+  },
+  {
+   "start": 376.28,
+   "duration": 3.28,
+   "text": "used"
+  },
+  {
+   "start": 377.44,
+   "duration": 5.56,
+   "text": "you know"
+  },
+  {
+   "start": 379.56,
+   "duration": 5.12,
+   "text": "the is error flag as true to tell"
+  },
+  {
+   "start": 383.0,
+   "duration": 3.64,
+   "text": "you know the model that okay some error"
+  },
+  {
+   "start": 384.68,
+   "duration": 3.48,
+   "text": "has occurred. But which type of error"
+  },
+  {
+   "start": 386.64,
+   "duration": 5.52,
+   "text": "has occurred?"
+  },
+  {
+   "start": 388.16,
+   "duration": 6.52,
+   "text": "That also you need to inform so that"
+  },
+  {
+   "start": 392.16,
+   "duration": 4.96,
+   "text": "each type of error can be handled in a"
+  },
+  {
+   "start": 394.68,
+   "duration": 4.8,
+   "text": "separate manner. Okay you cannot handle"
+  },
+  {
+   "start": 397.12,
+   "duration": 4.72,
+   "text": "you know it's it's like you can compare"
+  },
+  {
+   "start": 399.48,
+   "duration": 5.2,
+   "text": "it to something you know your server"
+  },
+  {
+   "start": 401.84,
+   "duration": 4.68,
+   "text": "error responses. There is a you know 400"
+  },
+  {
+   "start": 404.68,
+   "duration": 3.92,
+   "text": "series error right? Like the server will"
+  },
+  {
+   "start": 406.52,
+   "duration": 3.12,
+   "text": "return right? You know unauthorized or"
+  },
+  {
+   "start": 408.6,
+   "duration": 3.08,
+   "text": "something like that. Then there are"
+  },
+  {
+   "start": 409.64,
+   "duration": 4.08,
+   "text": "internal server errors that the server"
+  },
+  {
+   "start": 411.68,
+   "duration": 6.0,
+   "text": "you know your API might return like 500"
+  },
+  {
+   "start": 413.72,
+   "duration": 6.96,
+   "text": "series errors. Similarly here as well"
+  },
+  {
+   "start": 417.68,
+   "duration": 5.28,
+   "text": "there is some kind of error types that"
+  },
+  {
+   "start": 420.68,
+   "duration": 4.68,
+   "text": "we need to understand. So to handle it"
+  },
+  {
+   "start": 422.96,
+   "duration": 6.12,
+   "text": "more gracefully. The first type is the"
+  },
+  {
+   "start": 425.36,
+   "duration": 6.64,
+   "text": "transient type. So transient you will"
+  },
+  {
+   "start": 429.08,
+   "duration": 4.84,
+   "text": "set it as error category when there is"
+  },
+  {
+   "start": 432.0,
+   "duration": 4.36,
+   "text": "some error related to for example time"
+  },
+  {
+   "start": 433.92,
+   "duration": 4.28,
+   "text": "outs or network blips or something like"
+  },
+  {
+   "start": 436.36,
+   "duration": 3.68,
+   "text": "that. The service is not temporarily"
+  },
+  {
+   "start": 438.2,
+   "duration": 4.2,
+   "text": "available or the database is down or"
+  },
+  {
+   "start": 440.04,
+   "duration": 5.52,
+   "text": "something like that. It might succeed it"
+  },
+  {
+   "start": 442.4,
+   "duration": 6.32,
+   "text": "just means that it's it might succeed if"
+  },
+  {
+   "start": 445.56,
+   "duration": 4.6,
+   "text": "you try again in a moment."
+  },
+  {
+   "start": 448.72,
+   "duration": 3.88,
+   "text": "In a moment."
+  },
+  {
+   "start": 450.16,
+   "duration": 5.08,
+   "text": "Right? Now here is very important thing"
+  },
+  {
+   "start": 452.6,
+   "duration": 4.8,
+   "text": "to understand and the exam will try to"
+  },
+  {
+   "start": 455.24,
+   "duration": 4.72,
+   "text": "test you on this okay? You know it will"
+  },
+  {
+   "start": 457.4,
+   "duration": 5.28,
+   "text": "try to test you on error types and will"
+  },
+  {
+   "start": 459.96,
+   "duration": 5.16,
+   "text": "ask you is can we retry on this"
+  },
+  {
+   "start": 462.68,
+   "duration": 4.6,
+   "text": "particular error? Is it a very valid"
+  },
+  {
+   "start": 465.12,
+   "duration": 4.28,
+   "text": "decision to have a retry on this"
+  },
+  {
+   "start": 467.28,
+   "duration": 4.08,
+   "text": "particular type of error? And in the in"
+  },
+  {
+   "start": 469.4,
+   "duration": 3.44,
+   "text": "the in the in the context of transient"
+  },
+  {
+   "start": 471.36,
+   "duration": 4.68,
+   "text": "error"
+  },
+  {
+   "start": 472.84,
+   "duration": 6.0,
+   "text": "you should do a retry. I mean you should"
+  },
+  {
+   "start": 476.04,
+   "duration": 4.04,
+   "text": "set the is retrievable flag to true"
+  },
+  {
+   "start": 478.84,
+   "duration": 3.56,
+   "text": "because"
+  },
+  {
+   "start": 480.08,
+   "duration": 3.84,
+   "text": "you know if you retried multiple times"
+  },
+  {
+   "start": 482.4,
+   "duration": 3.04,
+   "text": "it might succeed because there is a"
+  },
+  {
+   "start": 483.92,
+   "duration": 2.36,
+   "text": "database time out or something like"
+  },
+  {
+   "start": 485.44,
+   "duration": 2.84,
+   "text": "that."
+  },
+  {
+   "start": 486.28,
+   "duration": 5.4,
+   "text": "It's an intermittent issue which will"
+  },
+  {
+   "start": 488.28,
+   "duration": 4.92,
+   "text": "resolve on its own right? So retry is"
+  },
+  {
+   "start": 491.68,
+   "duration": 4.24,
+   "text": "possible over here and the exam will"
+  },
+  {
+   "start": 493.2,
+   "duration": 4.68,
+   "text": "test you on that. Can we do a retry over"
+  },
+  {
+   "start": 495.92,
+   "duration": 3.64,
+   "text": "here? You should go for yes I need to do"
+  },
+  {
+   "start": 497.88,
+   "duration": 3.72,
+   "text": "a retry."
+  },
+  {
+   "start": 499.56,
+   "duration": 4.48,
+   "text": "The second type of error is validation"
+  },
+  {
+   "start": 501.6,
+   "duration": 4.24,
+   "text": "issues. Now for example you have some"
+  },
+  {
+   "start": 504.04,
+   "duration": 3.36,
+   "text": "invalid input for example that you're"
+  },
+  {
+   "start": 505.84,
+   "duration": 3.64,
+   "text": "passing it to the tool like the"
+  },
+  {
+   "start": 507.4,
+   "duration": 4.04,
+   "text": "parameters you sent were wrong or"
+  },
+  {
+   "start": 509.48,
+   "duration": 5.439,
+   "text": "malformed or something like that. So"
+  },
+  {
+   "start": 511.44,
+   "duration": 4.68,
+   "text": "retrying will not help in this case. So"
+  },
+  {
+   "start": 514.919,
+   "duration": 3.841,
+   "text": "maybe"
+  },
+  {
+   "start": 516.12,
+   "duration": 4.96,
+   "text": "or may not be. The thing is you know you"
+  },
+  {
+   "start": 518.76,
+   "duration": 4.12,
+   "text": "have to fix it anyways but retry is"
+  },
+  {
+   "start": 521.08,
+   "duration": 4.2,
+   "text": "possible. Here is the catch."
+  },
+  {
+   "start": 522.88,
+   "duration": 5.6,
+   "text": "For example your tool is accepting"
+  },
+  {
+   "start": 525.28,
+   "duration": 5.56,
+   "text": "certain type of string right? And"
+  },
+  {
+   "start": 528.48,
+   "duration": 5.24,
+   "text": "certain type of string is"
+  },
+  {
+   "start": 530.84,
+   "duration": 5.0,
+   "text": "not supported. When you pass that"
+  },
+  {
+   "start": 533.72,
+   "duration": 3.76,
+   "text": "certain type of string it is accepting"
+  },
+  {
+   "start": 535.84,
+   "duration": 3.92,
+   "text": "but when you are not passing the certain"
+  },
+  {
+   "start": 537.48,
+   "duration": 3.76,
+   "text": "type of string it is failing. So retry"
+  },
+  {
+   "start": 539.76,
+   "duration": 3.92,
+   "text": "with a different type of string is"
+  },
+  {
+   "start": 541.24,
+   "duration": 4.88,
+   "text": "possible. So retry is possible"
+  },
+  {
+   "start": 543.68,
+   "duration": 5.32,
+   "text": "sometimes. But the thing is you have to"
+  },
+  {
+   "start": 546.12,
+   "duration": 2.88,
+   "text": "fix that issue."
+  },
+  {
+   "start": 549.12,
+   "duration": 3.12,
+   "text": "Okay?"
+  },
+  {
+   "start": 550.36,
+   "duration": 3.8,
+   "text": "Okay? But if you are retrying with the"
+  },
+  {
+   "start": 552.24,
+   "duration": 3.8,
+   "text": "same value again and again it will not"
+  },
+  {
+   "start": 554.16,
+   "duration": 3.48,
+   "text": "work. Sometimes if you retry with a"
+  },
+  {
+   "start": 556.04,
+   "duration": 3.08,
+   "text": "different value it will work. So don't"
+  },
+  {
+   "start": 557.64,
+   "duration": 3.4,
+   "text": "get confused."
+  },
+  {
+   "start": 559.12,
+   "duration": 4.2,
+   "text": "If the question ask you"
+  },
+  {
+   "start": 561.04,
+   "duration": 4.6,
+   "text": "is retrievable possible? Yes the"
+  },
+  {
+   "start": 563.32,
+   "duration": 4.36,
+   "text": "retrievable is possible but you have to"
+  },
+  {
+   "start": 565.64,
+   "duration": 4.36,
+   "text": "have a proper look at the options that"
+  },
+  {
+   "start": 567.68,
+   "duration": 4.32,
+   "text": "you get right? Retrievable is possible"
+  },
+  {
+   "start": 570.0,
+   "duration": 4.92,
+   "text": "but we need to fix the issue. We need to"
+  },
+  {
+   "start": 572.0,
+   "duration": 4.84,
+   "text": "fix that validation issue or whatever"
+  },
+  {
+   "start": 574.92,
+   "duration": 4.4,
+   "text": "your tool is receiving so that you know"
+  },
+  {
+   "start": 576.84,
+   "duration": 4.12,
+   "text": "it will work for all the inputs or all"
+  },
+  {
+   "start": 579.32,
+   "duration": 2.64,
+   "text": "the validated inputs it should work"
+  },
+  {
+   "start": 580.96,
+   "duration": 2.36,
+   "text": "with."
+  },
+  {
+   "start": 581.96,
+   "duration": 3.28,
+   "text": "So that is the second type of error"
+  },
+  {
+   "start": 583.32,
+   "duration": 3.64,
+   "text": "known as validation issue. Third time is"
+  },
+  {
+   "start": 585.24,
+   "duration": 4.32,
+   "text": "business logic"
+  },
+  {
+   "start": 586.96,
+   "duration": 3.68,
+   "text": "or policy violation."
+  },
+  {
+   "start": 589.56,
+   "duration": 3.8,
+   "text": "And"
+  },
+  {
+   "start": 590.64,
+   "duration": 5.12,
+   "text": "basically in this case"
+  },
+  {
+   "start": 593.36,
+   "duration": 4.64,
+   "text": "you know the action is not allowed due"
+  },
+  {
+   "start": 595.76,
+   "duration": 5.56,
+   "text": "to some business logic."
+  },
+  {
+   "start": 598.0,
+   "duration": 5.52,
+   "text": "Right? Example, the the the refund above"
+  },
+  {
+   "start": 601.32,
+   "duration": 3.32,
+   "text": "$500. We have created our customer"
+  },
+  {
+   "start": 603.52,
+   "duration": 3.48,
+   "text": "support agent, right? And we have"
+  },
+  {
+   "start": 604.64,
+   "duration": 4.88,
+   "text": "written already written a pre-tool hook."
+  },
+  {
+   "start": 607.0,
+   "duration": 4.48,
+   "text": "Now, if you see the pre-tool hook, you"
+  },
+  {
+   "start": 609.52,
+   "duration": 3.0,
+   "text": "can implement an error response there"
+  },
+  {
+   "start": 611.48,
+   "duration": 3.2,
+   "text": "itself."
+  },
+  {
+   "start": 612.52,
+   "duration": 4.4,
+   "text": "Telling that that is error is true."
+  },
+  {
+   "start": 614.68,
+   "duration": 4.2,
+   "text": "And there has been a policy violation,"
+  },
+  {
+   "start": 616.92,
+   "duration": 3.88,
+   "text": "and you can put the"
+  },
+  {
+   "start": 618.88,
+   "duration": 3.0,
+   "text": "category as business logic error"
+  },
+  {
+   "start": 620.8,
+   "duration": 2.6,
+   "text": "category."
+  },
+  {
+   "start": 621.88,
+   "duration": 3.24,
+   "text": "Okay."
+  },
+  {
+   "start": 623.4,
+   "duration": 4.04,
+   "text": "You know, because in our"
+  },
+  {
+   "start": 625.12,
+   "duration": 4.92,
+   "text": "code, we had not implemented that error"
+  },
+  {
+   "start": 627.44,
+   "duration": 3.84,
+   "text": "handling properly. But, I have modified"
+  },
+  {
+   "start": 630.04,
+   "duration": 4.08,
+   "text": "the code. I will show you in the"
+  },
+  {
+   "start": 631.28,
+   "duration": 6.08,
+   "text": "customer agent how I have modified it so"
+  },
+  {
+   "start": 634.12,
+   "duration": 4.8,
+   "text": "that the error handling is also done."
+  },
+  {
+   "start": 637.36,
+   "duration": 3.16,
+   "text": "But, if there is a policy violation or"
+  },
+  {
+   "start": 638.92,
+   "duration": 4.0,
+   "text": "there is a violation of your business"
+  },
+  {
+   "start": 640.52,
+   "duration": 4.36,
+   "text": "logic that you have written, then the"
+  },
+  {
+   "start": 642.92,
+   "duration": 5.16,
+   "text": "error category will be business logic,"
+  },
+  {
+   "start": 644.88,
+   "duration": 5.8,
+   "text": "and the retrievable is not possible"
+  },
+  {
+   "start": 648.08,
+   "duration": 4.68,
+   "text": "because obviously"
+  },
+  {
+   "start": 650.68,
+   "duration": 4.24,
+   "text": "there is no point in retrying because it"
+  },
+  {
+   "start": 652.76,
+   "duration": 4.0,
+   "text": "is violating some of your business"
+  },
+  {
+   "start": 654.92,
+   "duration": 3.96,
+   "text": "logic, right? So, why will you retry?"
+  },
+  {
+   "start": 656.76,
+   "duration": 3.6,
+   "text": "So, here, if the question asks, there is"
+  },
+  {
+   "start": 658.88,
+   "duration": 4.04,
+   "text": "no retry."
+  },
+  {
+   "start": 660.36,
+   "duration": 5.76,
+   "text": "Fourth Fourth thing is permission."
+  },
+  {
+   "start": 662.92,
+   "duration": 5.0,
+   "text": "So, basically authorization issues."
+  },
+  {
+   "start": 666.12,
+   "duration": 4.04,
+   "text": "So, the agent doesn't have rights to"
+  },
+  {
+   "start": 667.92,
+   "duration": 3.32,
+   "text": "call this tool or access this particular"
+  },
+  {
+   "start": 670.16,
+   "duration": 3.36,
+   "text": "resource."
+  },
+  {
+   "start": 671.24,
+   "duration": 4.599,
+   "text": "And we will see that how you can scope"
+  },
+  {
+   "start": 673.52,
+   "duration": 4.96,
+   "text": "your tools for particular agents so that"
+  },
+  {
+   "start": 675.839,
+   "duration": 4.201,
+   "text": "the agent will only have visibility to"
+  },
+  {
+   "start": 678.48,
+   "duration": 3.88,
+   "text": "those kind of tools, and that is very"
+  },
+  {
+   "start": 680.04,
+   "duration": 5.48,
+   "text": "very important because you don't want to"
+  },
+  {
+   "start": 682.36,
+   "duration": 5.32,
+   "text": "keep a lot of tools for an agent or you"
+  },
+  {
+   "start": 685.52,
+   "duration": 4.04,
+   "text": "know, overwhelm the agent. Or you don't"
+  },
+  {
+   "start": 687.68,
+   "duration": 3.88,
+   "text": "want an agent to access a tool which is"
+  },
+  {
+   "start": 689.56,
+   "duration": 3.76,
+   "text": "not authorized to, right?"
+  },
+  {
+   "start": 691.56,
+   "duration": 4.68,
+   "text": "You should have You should always work"
+  },
+  {
+   "start": 693.32,
+   "duration": 4.36,
+   "text": "on the principle of least privilege."
+  },
+  {
+   "start": 696.24,
+   "duration": 3.16,
+   "text": "So, in that case, if there is"
+  },
+  {
+   "start": 697.68,
+   "duration": 3.68,
+   "text": "authorization issue, the tool has not"
+  },
+  {
+   "start": 699.4,
+   "duration": 4.2,
+   "text": "access or it is not visible, the tool is"
+  },
+  {
+   "start": 701.36,
+   "duration": 4.2,
+   "text": "not visible to the particular uh"
+  },
+  {
+   "start": 703.6,
+   "duration": 4.44,
+   "text": "uh agent, then in that case, you would"
+  },
+  {
+   "start": 705.56,
+   "duration": 4.64,
+   "text": "go for a permission error category."
+  },
+  {
+   "start": 708.04,
+   "duration": 4.08,
+   "text": "Uh and retrievable is not possible over"
+  },
+  {
+   "start": 710.2,
+   "duration": 3.96,
+   "text": "here because"
+  },
+  {
+   "start": 712.12,
+   "duration": 3.28,
+   "text": "anyways, the tool it's not able to"
+  },
+  {
+   "start": 714.16,
+   "duration": 2.84,
+   "text": "access or something like that. So,"
+  },
+  {
+   "start": 715.4,
+   "duration": 4.04,
+   "text": "retrievable is not possible. And in the"
+  },
+  {
+   "start": 717.0,
+   "duration": 3.64,
+   "text": "exam, when it asks, retry is not"
+  },
+  {
+   "start": 719.44,
+   "duration": 2.28,
+   "text": "possible."
+  },
+  {
+   "start": 720.64,
+   "duration": 3.12,
+   "text": "Okay?"
+  },
+  {
+   "start": 721.72,
+   "duration": 3.68,
+   "text": "So, as I told you, the exam tests"
+  },
+  {
+   "start": 723.76,
+   "duration": 3.0,
+   "text": "whether you know retrievable versus"
+  },
+  {
+   "start": 725.4,
+   "duration": 3.28,
+   "text": "non-retrievable errors. Very very"
+  },
+  {
+   "start": 726.76,
+   "duration": 4.04,
+   "text": "important. So,"
+  },
+  {
+   "start": 728.68,
+   "duration": 4.84,
+   "text": "transient, retry"
+  },
+  {
+   "start": 730.8,
+   "duration": 5.08,
+   "text": "you will do. Business logic, retry not"
+  },
+  {
+   "start": 733.52,
+   "duration": 4.16,
+   "text": "possible. You know, you have to route"
+  },
+  {
+   "start": 735.88,
+   "duration": 5.64,
+   "text": "that in a different manner, but retry is"
+  },
+  {
+   "start": 737.68,
+   "duration": 5.4,
+   "text": "not possible. And you know, validation"
+  },
+  {
+   "start": 741.52,
+   "duration": 3.48,
+   "text": "kind of error, retry is sometimes"
+  },
+  {
+   "start": 743.08,
+   "duration": 3.56,
+   "text": "possible, but not in all cases, right?"
+  },
+  {
+   "start": 745.0,
+   "duration": 4.72,
+   "text": "You have to fix the error."
+  },
+  {
+   "start": 746.64,
+   "duration": 5.08,
+   "text": "And access denied or permission issues"
+  },
+  {
+   "start": 749.72,
+   "duration": 4.64,
+   "text": "or authorization issues,"
+  },
+  {
+   "start": 751.72,
+   "duration": 5.6,
+   "text": "you know, retry is not possible. I hope"
+  },
+  {
+   "start": 754.36,
+   "duration": 2.96,
+   "text": "that is making sense."
+  },
+  {
+   "start": 758.16,
+   "duration": 4.84,
+   "text": "Okay. Now, coming to"
+  },
+  {
+   "start": 760.56,
+   "duration": 4.24,
+   "text": "this something known as structured error"
+  },
+  {
+   "start": 763.0,
+   "duration": 3.8,
+   "text": "metadata."
+  },
+  {
+   "start": 764.8,
+   "duration": 3.24,
+   "text": "Now, if you see this particular slide"
+  },
+  {
+   "start": 766.8,
+   "duration": 3.52,
+   "text": "over here,"
+  },
+  {
+   "start": 768.04,
+   "duration": 4.56,
+   "text": "if you just say that, okay, is error is"
+  },
+  {
+   "start": 770.32,
+   "duration": 4.8,
+   "text": "true. You are giving the tool result as"
+  },
+  {
+   "start": 772.6,
+   "duration": 3.92,
+   "text": "is error is true. And in the content,"
+  },
+  {
+   "start": 775.12,
+   "duration": 3.68,
+   "text": "you are telling that, you know, some"
+  },
+  {
+   "start": 776.52,
+   "duration": 4.28,
+   "text": "kind of operation has failed. Only this"
+  },
+  {
+   "start": 778.8,
+   "duration": 3.76,
+   "text": "much information you are giving."
+  },
+  {
+   "start": 780.8,
+   "duration": 3.8,
+   "text": "Now, this"
+  },
+  {
+   "start": 782.56,
+   "duration": 3.84,
+   "text": "What will the coordinator understand in"
+  },
+  {
+   "start": 784.6,
+   "duration": 3.32,
+   "text": "this case? If you are telling the"
+  },
+  {
+   "start": 786.4,
+   "duration": 3.28,
+   "text": "coordinator, okay, this you know, you"
+  },
+  {
+   "start": 787.92,
+   "duration": 3.44,
+   "text": "are passing in the message to the"
+  },
+  {
+   "start": 789.68,
+   "duration": 3.92,
+   "text": "coordinator telling that, okay, some"
+  },
+  {
+   "start": 791.36,
+   "duration": 4.56,
+   "text": "kind of error has occurred, and the"
+  },
+  {
+   "start": 793.6,
+   "duration": 5.6,
+   "text": "operation has failed, and is error is"
+  },
+  {
+   "start": 795.92,
+   "duration": 5.52,
+   "text": "true. The coordinator gets this, and uh"
+  },
+  {
+   "start": 799.2,
+   "duration": 4.84,
+   "text": "it thinks, okay, something has failed."
+  },
+  {
+   "start": 801.44,
+   "duration": 4.64,
+   "text": "But, what has failed? It has no idea if"
+  },
+  {
+   "start": 804.04,
+   "duration": 4.36,
+   "text": "this is worth retrying, whether to"
+  },
+  {
+   "start": 806.08,
+   "duration": 4.2,
+   "text": "escalate, or it should route it to a"
+  },
+  {
+   "start": 808.4,
+   "duration": 4.4,
+   "text": "different sub-agent."
+  },
+  {
+   "start": 810.28,
+   "duration": 4.8,
+   "text": "Generic errors are just a dead end, like"
+  },
+  {
+   "start": 812.8,
+   "duration": 4.88,
+   "text": "you can see over here."
+  },
+  {
+   "start": 815.08,
+   "duration": 4.28,
+   "text": "So, what does a good structured error"
+  },
+  {
+   "start": 817.68,
+   "duration": 3.32,
+   "text": "response look like? If you see in this"
+  },
+  {
+   "start": 819.36,
+   "duration": 2.76,
+   "text": "particular side of the screen, right"
+  },
+  {
+   "start": 821.0,
+   "duration": 2.64,
+   "text": "side,"
+  },
+  {
+   "start": 822.12,
+   "duration": 3.4,
+   "text": "you should give some actionable"
+  },
+  {
+   "start": 823.64,
+   "duration": 4.4,
+   "text": "metadata."
+  },
+  {
+   "start": 825.52,
+   "duration": 4.24,
+   "text": "Right? Now, you see the difference over"
+  },
+  {
+   "start": 828.04,
+   "duration": 3.6,
+   "text": "here, right? Now, the coordinator knows"
+  },
+  {
+   "start": 829.76,
+   "duration": 3.68,
+   "text": "in this particular case, the coordinator"
+  },
+  {
+   "start": 831.64,
+   "duration": 3.88,
+   "text": "knows that, okay, the error category is"
+  },
+  {
+   "start": 833.44,
+   "duration": 3.6,
+   "text": "transient. Okay?"
+  },
+  {
+   "start": 835.52,
+   "duration": 3.68,
+   "text": "And it tells the coordinator which"
+  },
+  {
+   "start": 837.04,
+   "duration": 4.28,
+   "text": "recovery path or which route it has to"
+  },
+  {
+   "start": 839.2,
+   "duration": 4.32,
+   "text": "take to fix this or"
+  },
+  {
+   "start": 841.32,
+   "duration": 4.04,
+   "text": "remediate this kind of error."
+  },
+  {
+   "start": 843.52,
+   "duration": 3.68,
+   "text": "Explicitly telling that, okay,"
+  },
+  {
+   "start": 845.36,
+   "duration": 3.16,
+   "text": "retrievable is possible. You know, you"
+  },
+  {
+   "start": 847.2,
+   "duration": 2.96,
+   "text": "know the error categories for which"
+  },
+  {
+   "start": 848.52,
+   "duration": 3.52,
+   "text": "retrievable is possible."
+  },
+  {
+   "start": 850.16,
+   "duration": 3.799,
+   "text": "So, it explicitly states to the"
+  },
+  {
+   "start": 852.04,
+   "duration": 4.48,
+   "text": "coordinator, okay, please retry this."
+  },
+  {
+   "start": 853.959,
+   "duration": 4.1,
+   "text": "Okay? And it is also providing"
+  },
+  {
+   "start": 856.52,
+   "duration": 1.6,
+   "text": "alternatives."
+  },
+  {
+   "start": 858.059,
+   "duration": 3.261,
+   "text": ">> [snorts]"
+  },
+  {
+   "start": 858.12,
+   "duration": 5.719,
+   "text": ">> You know, alternatives means that uh it"
+  },
+  {
+   "start": 861.32,
+   "duration": 4.08,
+   "text": "can be an array of fallback tools. Okay,"
+  },
+  {
+   "start": 863.839,
+   "duration": 3.441,
+   "text": "it means that, okay, this tool didn't"
+  },
+  {
+   "start": 865.4,
+   "duration": 3.2,
+   "text": "work, so please try other tool."
+  },
+  {
+   "start": 867.28,
+   "duration": 2.48,
+   "text": "Something like that."
+  },
+  {
+   "start": 868.6,
+   "duration": 2.64,
+   "text": "Or"
+  },
+  {
+   "start": 869.76,
+   "duration": 3.92,
+   "text": "it might be"
+  },
+  {
+   "start": 871.24,
+   "duration": 4.68,
+   "text": "uh some kind of human-readable context"
+  },
+  {
+   "start": 873.68,
+   "duration": 5.24,
+   "text": "for debugging purpose."
+  },
+  {
+   "start": 875.92,
+   "duration": 4.44,
+   "text": "So, this thing should be there, like"
+  },
+  {
+   "start": 878.92,
+   "duration": 3.64,
+   "text": "alternatives, description you are"
+  },
+  {
+   "start": 880.36,
+   "duration": 3.96,
+   "text": "providing that, okay, this is a database"
+  },
+  {
+   "start": 882.56,
+   "duration": 3.32,
+   "text": "timeout issue."
+  },
+  {
+   "start": 884.32,
+   "duration": 3.68,
+   "text": "This is a database timeout issue. The"
+  },
+  {
+   "start": 885.88,
+   "duration": 4.32,
+   "text": "coordinator will understand, okay, I"
+  },
+  {
+   "start": 888.0,
+   "duration": 3.52,
+   "text": "have to use this alternative or I have"
+  },
+  {
+   "start": 890.2,
+   "duration": 2.84,
+   "text": "to route it differently or I have to"
+  },
+  {
+   "start": 891.52,
+   "duration": 3.28,
+   "text": "escalate it to the human. Something like"
+  },
+  {
+   "start": 893.04,
+   "duration": 3.72,
+   "text": "that. So,"
+  },
+  {
+   "start": 894.8,
+   "duration": 3.88,
+   "text": "proper metadata"
+  },
+  {
+   "start": 896.76,
+   "duration": 4.68,
+   "text": "is very very important."
+  },
+  {
+   "start": 898.68,
+   "duration": 6.76,
+   "text": "And the exam will test you on this."
+  },
+  {
+   "start": 901.44,
+   "duration": 7.2,
+   "text": "Right? So, make sure that you understand"
+  },
+  {
+   "start": 905.44,
+   "duration": 6.08,
+   "text": "this particular concept."
+  },
+  {
+   "start": 908.64,
+   "duration": 3.92,
+   "text": "Okay. So, I have put a small"
+  },
+  {
+   "start": 911.52,
+   "duration": 3.24,
+   "text": "You know,"
+  },
+  {
+   "start": 912.56,
+   "duration": 4.68,
+   "text": "snippet over here of of my"
+  },
+  {
+   "start": 914.76,
+   "duration": 4.079,
+   "text": "implementation. Okay, like how do you"
+  },
+  {
+   "start": 917.24,
+   "duration": 3.2,
+   "text": "implement in your particular Python"
+  },
+  {
+   "start": 918.839,
+   "duration": 3.481,
+   "text": "code?"
+  },
+  {
+   "start": 920.44,
+   "duration": 4.6,
+   "text": "So, if you have an if you have an"
+  },
+  {
+   "start": 922.32,
+   "duration": 4.56,
+   "text": "exception that you are seeing over here,"
+  },
+  {
+   "start": 925.04,
+   "duration": 3.84,
+   "text": "you are setting the metadata error"
+  },
+  {
+   "start": 926.88,
+   "duration": 4.12,
+   "text": "category to transient, is retrievable to"
+  },
+  {
+   "start": 928.88,
+   "duration": 4.64,
+   "text": "true, and description you are setting"
+  },
+  {
+   "start": 931.0,
+   "duration": 4.2,
+   "text": "whatever the exception you got. And then"
+  },
+  {
+   "start": 933.52,
+   "duration": 3.76,
+   "text": "you are putting is error equal to true,"
+  },
+  {
+   "start": 935.2,
+   "duration": 4.24,
+   "text": "and then in the content, you are putting"
+  },
+  {
+   "start": 937.28,
+   "duration": 4.44,
+   "text": "the metadata that you just constructed"
+  },
+  {
+   "start": 939.44,
+   "duration": 4.48,
+   "text": "based on that you know, exception. So,"
+  },
+  {
+   "start": 941.72,
+   "duration": 4.16,
+   "text": "this is how you should gracefully handle"
+  },
+  {
+   "start": 943.92,
+   "duration": 3.48,
+   "text": "the error in your code. And I'll tell"
+  },
+  {
+   "start": 945.88,
+   "duration": 4.0,
+   "text": "you I'll show you the customer support"
+  },
+  {
+   "start": 947.4,
+   "duration": 5.28,
+   "text": "agent that I just created, and how do I"
+  },
+  {
+   "start": 949.88,
+   "duration": 5.48,
+   "text": "handle the error in the code over there."
+  },
+  {
+   "start": 952.68,
+   "duration": 4.279,
+   "text": "Okay? Now, I'll just switch to"
+  },
+  {
+   "start": 955.36,
+   "duration": 3.4,
+   "text": "Visual Studio Code. And I have If you"
+  },
+  {
+   "start": 956.959,
+   "duration": 4.041,
+   "text": "see, this is my Capstone project that I"
+  },
+  {
+   "start": 958.76,
+   "duration": 4.68,
+   "text": "have created. And"
+  },
+  {
+   "start": 961.0,
+   "duration": 5.4,
+   "text": "I I have already shared this code with"
+  },
+  {
+   "start": 963.44,
+   "duration": 4.56,
+   "text": "you guys. And in this particular lesson"
+  },
+  {
+   "start": 966.4,
+   "duration": 4.32,
+   "text": "also, I will share."
+  },
+  {
+   "start": 968.0,
+   "duration": 5.32,
+   "text": "Um You can find it in the comments."
+  },
+  {
+   "start": 970.72,
+   "duration": 5.16,
+   "text": "So, I have basically created a handle"
+  },
+  {
+   "start": 973.32,
+   "duration": 4.32,
+   "text": "tool call function over here, which is"
+  },
+  {
+   "start": 975.88,
+   "duration": 4.68,
+   "text": "basically encapsulates all of the"
+  },
+  {
+   "start": 977.64,
+   "duration": 5.72,
+   "text": "pre-tool hooks and calls the tool, and"
+  },
+  {
+   "start": 980.56,
+   "duration": 5.24,
+   "text": "then basically um you know, constructs"
+  },
+  {
+   "start": 983.36,
+   "duration": 4.12,
+   "text": "the error message in case of errors."
+  },
+  {
+   "start": 985.8,
+   "duration": 4.68,
+   "text": "So, it is centralizing your pre-tool"
+  },
+  {
+   "start": 987.48,
+   "duration": 4.44,
+   "text": "hook, the dispatch, the post hook tool,"
+  },
+  {
+   "start": 990.48,
+   "duration": 3.96,
+   "text": "post-tool hook, whatever you want to"
+  },
+  {
+   "start": 991.92,
+   "duration": 4.2,
+   "text": "call, and structured error handling. So,"
+  },
+  {
+   "start": 994.44,
+   "duration": 3.16,
+   "text": "these are the error categories that we"
+  },
+  {
+   "start": 996.12,
+   "duration": 5.04,
+   "text": "already know, and based on that, you"
+  },
+  {
+   "start": 997.6,
+   "duration": 5.72,
+   "text": "should handle the errors. So, first uh"
+  },
+  {
+   "start": 1001.16,
+   "duration": 4.52,
+   "text": "the if you see this particular thing, it"
+  },
+  {
+   "start": 1003.32,
+   "duration": 4.12,
+   "text": "is applying the pre-tool hooks. And we"
+  },
+  {
+   "start": 1005.68,
+   "duration": 3.36,
+   "text": "already have you know, understood about"
+  },
+  {
+   "start": 1007.44,
+   "duration": 3.48,
+   "text": "pre-tool hooks. I mean,"
+  },
+  {
+   "start": 1009.04,
+   "duration": 3.6,
+   "text": "before the tool actually executes these"
+  },
+  {
+   "start": 1010.92,
+   "duration": 3.159,
+   "text": "hooks, these pieces of code will"
+  },
+  {
+   "start": 1012.64,
+   "duration": 3.76,
+   "text": "execute. And if there is a policy"
+  },
+  {
+   "start": 1014.079,
+   "duration": 4.601,
+   "text": "violation or something, you just kind of"
+  },
+  {
+   "start": 1016.4,
+   "duration": 4.439,
+   "text": "you know, don't execute the tool at all."
+  },
+  {
+   "start": 1018.68,
+   "duration": 3.92,
+   "text": "Something like that. If you want to"
+  },
+  {
+   "start": 1020.839,
+   "duration": 3.36,
+   "text": "understand about these hooks, I you"
+  },
+  {
+   "start": 1022.6,
+   "duration": 3.72,
+   "text": "know, I have already have a video in"
+  },
+  {
+   "start": 1024.199,
+   "duration": 3.801,
+   "text": "this particular series. You can go and"
+  },
+  {
+   "start": 1026.32,
+   "duration": 2.84,
+   "text": "have a look"
+  },
+  {
+   "start": 1028.0,
+   "duration": 4.04,
+   "text": "on that."
+  },
+  {
+   "start": 1029.16,
+   "duration": 4.0,
+   "text": "Uh it's in a previous lesson, basically."
+  },
+  {
+   "start": 1032.04,
+   "duration": 2.96,
+   "text": "So,"
+  },
+  {
+   "start": 1033.16,
+   "duration": 3.6,
+   "text": "you know, tool it is it is calling the"
+  },
+  {
+   "start": 1035.0,
+   "duration": 4.56,
+   "text": "tool, and you know, it is seeing the"
+  },
+  {
+   "start": 1036.76,
+   "duration": 4.84,
+   "text": "tool registry, and then basically it is"
+  },
+  {
+   "start": 1039.56,
+   "duration": 3.84,
+   "text": "you know, calling the tool. Then there"
+  },
+  {
+   "start": 1041.6,
+   "duration": 3.92,
+   "text": "is the result. Then we have the"
+  },
+  {
+   "start": 1043.4,
+   "duration": 5.12,
+   "text": "post-tool use. Okay?"
+  },
+  {
+   "start": 1045.52,
+   "duration": 5.12,
+   "text": "Now, if you see,"
+  },
+  {
+   "start": 1048.52,
+   "duration": 4.6,
+   "text": "uh if there is a timeout error, for"
+  },
+  {
+   "start": 1050.64,
+   "duration": 3.88,
+   "text": "example, then we are setting it to"
+  },
+  {
+   "start": 1053.12,
+   "duration": 3.44,
+   "text": "transient. So, we are putting the"
+  },
+  {
+   "start": 1054.52,
+   "duration": 4.36,
+   "text": "content as transient, retrievable as"
+  },
+  {
+   "start": 1056.56,
+   "duration": 5.0,
+   "text": "true. And in the description, we are"
+  },
+  {
+   "start": 1058.88,
+   "duration": 4.68,
+   "text": "putting the other stuffs that is you"
+  },
+  {
+   "start": 1061.56,
+   "duration": 5.56,
+   "text": "know, rely you know, relevant for the"
+  },
+  {
+   "start": 1063.56,
+   "duration": 6.119,
+   "text": "particular coordinator to uh handle. And"
+  },
+  {
+   "start": 1067.12,
+   "duration": 4.6,
+   "text": "retry after millisecond is 2,000"
+  },
+  {
+   "start": 1069.679,
+   "duration": 3.721,
+   "text": "milliseconds. I mean, retry after every"
+  },
+  {
+   "start": 1071.72,
+   "duration": 3.2,
+   "text": "2 seconds. So, we are giving some"
+  },
+  {
+   "start": 1073.4,
+   "duration": 3.56,
+   "text": "metadata to the coordinator telling"
+  },
+  {
+   "start": 1074.92,
+   "duration": 5.16,
+   "text": "that, okay, this is a retrievable kind"
+  },
+  {
+   "start": 1076.96,
+   "duration": 5.96,
+   "text": "of a category of two you know, error."
+  },
+  {
+   "start": 1080.08,
+   "duration": 4.56,
+   "text": "And you retry after 2,000 milliseconds."
+  },
+  {
+   "start": 1082.92,
+   "duration": 4.0,
+   "text": "If there is a permission error, for"
+  },
+  {
+   "start": 1084.64,
+   "duration": 4.039,
+   "text": "example, right? In that case, we are"
+  },
+  {
+   "start": 1086.92,
+   "duration": 3.96,
+   "text": "saying that the retrievable is false,"
+  },
+  {
+   "start": 1088.679,
+   "duration": 4.441,
+   "text": "and we are passing the description that"
+  },
+  {
+   "start": 1090.88,
+   "duration": 3.84,
+   "text": "access denied for particular tool name."
+  },
+  {
+   "start": 1093.12,
+   "duration": 3.559,
+   "text": "But, if you see if you if you notice"
+  },
+  {
+   "start": 1094.72,
+   "duration": 4.72,
+   "text": "over here, there is no retry after"
+  },
+  {
+   "start": 1096.679,
+   "duration": 5.561,
+   "text": "millisecond over here."
+  },
+  {
+   "start": 1099.44,
+   "duration": 5.0,
+   "text": "If the tool is, for example,"
+  },
+  {
+   "start": 1102.24,
+   "duration": 3.76,
+   "text": "you know, retrievable, then only we are"
+  },
+  {
+   "start": 1104.44,
+   "duration": 3.56,
+   "text": "putting, okay, retry over after 2"
+  },
+  {
+   "start": 1106.0,
+   "duration": 3.56,
+   "text": "seconds. But, if it is not retrievable,"
+  },
+  {
+   "start": 1108.0,
+   "duration": 4.52,
+   "text": "we are putting the is retrievable to"
+  },
+  {
+   "start": 1109.56,
+   "duration": 5.56,
+   "text": "false, and that is what it is. Value"
+  },
+  {
+   "start": 1112.52,
+   "duration": 3.8,
+   "text": "error is for validation purposes. So, we"
+  },
+  {
+   "start": 1115.12,
+   "duration": 2.84,
+   "text": "are putting"
+  },
+  {
+   "start": 1116.32,
+   "duration": 3.32,
+   "text": "validation, but here I have put is"
+  },
+  {
+   "start": 1117.96,
+   "duration": 2.68,
+   "text": "retrievable as false."
+  },
+  {
+   "start": 1119.64,
+   "duration": 3.0,
+   "text": "I mean, as I've told you, it's"
+  },
+  {
+   "start": 1120.64,
+   "duration": 3.72,
+   "text": "sometimes, right? But, basically,"
+  },
+  {
+   "start": 1122.64,
+   "duration": 4.84,
+   "text": "whenever some kind of validation issue"
+  },
+  {
+   "start": 1124.36,
+   "duration": 5.28,
+   "text": "occurs in API calls also in you know,"
+  },
+  {
+   "start": 1127.48,
+   "duration": 3.56,
+   "text": "server-side technologies also, we always"
+  },
+  {
+   "start": 1129.64,
+   "duration": 3.36,
+   "text": "return a"
+  },
+  {
+   "start": 1131.04,
+   "duration": 3.6,
+   "text": "bad request or something, right? And you"
+  },
+  {
+   "start": 1133.0,
+   "duration": 3.0,
+   "text": "should follow the same kind of principle"
+  },
+  {
+   "start": 1134.64,
+   "duration": 2.92,
+   "text": "here also."
+  },
+  {
+   "start": 1136.0,
+   "duration": 4.6,
+   "text": "In the exam prospective, yes,"
+  },
+  {
+   "start": 1137.56,
+   "duration": 4.72,
+   "text": "retrievable should be possible, but if"
+  },
+  {
+   "start": 1140.6,
+   "duration": 3.68,
+   "text": "in the option it is giving if it is"
+  },
+  {
+   "start": 1142.28,
+   "duration": 4.04,
+   "text": "should be fixed or not, then you have to"
+  },
+  {
+   "start": 1144.28,
+   "duration": 5.2,
+   "text": "fix the issue, guys. You have to be very"
+  },
+  {
+   "start": 1146.32,
+   "duration": 4.52,
+   "text": "very, you know, diligent while selecting"
+  },
+  {
+   "start": 1149.48,
+   "duration": 2.84,
+   "text": "the options."
+  },
+  {
+   "start": 1150.84,
+   "duration": 4.68,
+   "text": "The [snorts] The exam will try to trick"
+  },
+  {
+   "start": 1152.32,
+   "duration": 5.24,
+   "text": "you. Retrievable is possible, but"
+  },
+  {
+   "start": 1155.52,
+   "duration": 4.72,
+   "text": "it should be fixed. That is what I want"
+  },
+  {
+   "start": 1157.56,
+   "duration": 5.359,
+   "text": "to you know, emphasize."
+  },
+  {
+   "start": 1160.24,
+   "duration": 4.24,
+   "text": "Other exceptions, you know, you know,"
+  },
+  {
+   "start": 1162.919,
+   "duration": 3.0,
+   "text": "unexpected error occurred. We are"
+  },
+  {
+   "start": 1164.48,
+   "duration": 3.0,
+   "text": "putting retrievable is false, and"
+  },
+  {
+   "start": 1165.919,
+   "duration": 3.961,
+   "text": "description you know, we are putting"
+  },
+  {
+   "start": 1167.48,
+   "duration": 4.52,
+   "text": "unexpected error occurred. So, this is"
+  },
+  {
+   "start": 1169.88,
+   "duration": 3.68,
+   "text": "what This is a very simple"
+  },
+  {
+   "start": 1172.0,
+   "duration": 4.24,
+   "text": "you know, um"
+  },
+  {
+   "start": 1173.56,
+   "duration": 4.72,
+   "text": "function to particularly handle all the"
+  },
+  {
+   "start": 1176.24,
+   "duration": 4.48,
+   "text": "tool calls, right? And if you see, it is"
+  },
+  {
+   "start": 1178.28,
+   "duration": 3.72,
+   "text": "inside this run agentic loop. So, if you"
+  },
+  {
+   "start": 1180.72,
+   "duration": 3.68,
+   "text": "see,"
+  },
+  {
+   "start": 1182.0,
+   "duration": 4.48,
+   "text": "you know, these are the tool results,"
+  },
+  {
+   "start": 1184.4,
+   "duration": 3.519,
+   "text": "and basically it is getting the results"
+  },
+  {
+   "start": 1186.48,
+   "duration": 3.36,
+   "text": "from the handle tool call. If there is a"
+  },
+  {
+   "start": 1187.919,
+   "duration": 3.961,
+   "text": "error, it will append the errors. If it"
+  },
+  {
+   "start": 1189.84,
+   "duration": 4.44,
+   "text": "is a the message, it will just append"
+  },
+  {
+   "start": 1191.88,
+   "duration": 5.4,
+   "text": "the success messages. That's it."
+  },
+  {
+   "start": 1194.28,
+   "duration": 4.32,
+   "text": "Right? I hope that is making sense."
+  },
+  {
+   "start": 1197.28,
+   "duration": 3.6,
+   "text": "Okay, so that was about the"
+  },
+  {
+   "start": 1198.6,
+   "duration": 3.48,
+   "text": "implementation of how it changed,"
+  },
+  {
+   "start": 1200.88,
+   "duration": 4.04,
+   "text": "you know,"
+  },
+  {
+   "start": 1202.08,
+   "duration": 4.6,
+   "text": "pretty simple to understand and"
+  },
+  {
+   "start": 1204.92,
+   "duration": 3.68,
+   "text": "from for the exam perspective also it is"
+  },
+  {
+   "start": 1206.68,
+   "duration": 3.08,
+   "text": "very very important."
+  },
+  {
+   "start": 1208.6,
+   "duration": 5.36,
+   "text": "Okay."
+  },
+  {
+   "start": 1209.76,
+   "duration": 6.36,
+   "text": "Now, local recovery before escalation."
+  },
+  {
+   "start": 1213.96,
+   "duration": 4.48,
+   "text": "This is a principle that is very easy to"
+  },
+  {
+   "start": 1216.12,
+   "duration": 4.84,
+   "text": "miss, but really"
+  },
+  {
+   "start": 1218.44,
+   "duration": 4.92,
+   "text": "separates well-designed multi-agent"
+  },
+  {
+   "start": 1220.96,
+   "duration": 4.24,
+   "text": "systems for sloppy ones."
+  },
+  {
+   "start": 1223.36,
+   "duration": 3.44,
+   "text": "Why I'm telling this?"
+  },
+  {
+   "start": 1225.2,
+   "duration": 4.2,
+   "text": "So,"
+  },
+  {
+   "start": 1226.8,
+   "duration": 5.28,
+   "text": "let's take an example, right?"
+  },
+  {
+   "start": 1229.4,
+   "duration": 4.84,
+   "text": "You know, talk about customer support"
+  },
+  {
+   "start": 1232.08,
+   "duration": 4.88,
+   "text": "team at a real company, for example."
+  },
+  {
+   "start": 1234.24,
+   "duration": 4.72,
+   "text": "When a junior agent hits a minor issue,"
+  },
+  {
+   "start": 1236.96,
+   "duration": 4.84,
+   "text": "say a system is slow or something like"
+  },
+  {
+   "start": 1238.96,
+   "duration": 4.92,
+   "text": "that. They don't immediately escalate to"
+  },
+  {
+   "start": 1241.8,
+   "duration": 3.76,
+   "text": "the supervisor. And if they directly For"
+  },
+  {
+   "start": 1243.88,
+   "duration": 4.84,
+   "text": "example, you are a developer, you face"
+  },
+  {
+   "start": 1245.56,
+   "duration": 5.04,
+   "text": "some issue without doing any search on"
+  },
+  {
+   "start": 1248.72,
+   "duration": 3.64,
+   "text": "ChatGPT or cloud or something, you"
+  },
+  {
+   "start": 1250.6,
+   "duration": 3.48,
+   "text": "directly go to your architect and say I"
+  },
+  {
+   "start": 1252.36,
+   "duration": 3.52,
+   "text": "face this issue. Obviously, they will"
+  },
+  {
+   "start": 1254.08,
+   "duration": 3.56,
+   "text": "scold you because, you know, they expect"
+  },
+  {
+   "start": 1255.88,
+   "duration": 3.04,
+   "text": "you to do better."
+  },
+  {
+   "start": 1257.64,
+   "duration": 3.56,
+   "text": "So, similarly, whenever you are"
+  },
+  {
+   "start": 1258.92,
+   "duration": 3.96,
+   "text": "designing these intelligent multi-agent"
+  },
+  {
+   "start": 1261.2,
+   "duration": 2.88,
+   "text": "system, you have to think it in that"
+  },
+  {
+   "start": 1262.88,
+   "duration": 2.28,
+   "text": "direction."
+  },
+  {
+   "start": 1264.08,
+   "duration": 2.48,
+   "text": "Okay?"
+  },
+  {
+   "start": 1265.16,
+   "duration": 3.84,
+   "text": "When I say"
+  },
+  {
+   "start": 1266.56,
+   "duration": 4.88,
+   "text": "the the architect will scold you, don't"
+  },
+  {
+   "start": 1269.0,
+   "duration": 5.12,
+   "text": "think it in a toxic manner, okay?"
+  },
+  {
+   "start": 1271.44,
+   "duration": 3.84,
+   "text": "We have to stop a lot of toxicity and"
+  },
+  {
+   "start": 1274.12,
+   "duration": 2.76,
+   "text": "whenever you're designing the"
+  },
+  {
+   "start": 1275.28,
+   "duration": 4.8,
+   "text": "multi-agent systems as well, you know,"
+  },
+  {
+   "start": 1276.88,
+   "duration": 6.72,
+   "text": "don't be toxic. You know?"
+  },
+  {
+   "start": 1280.08,
+   "duration": 7.24,
+   "text": "Be good, kind, whatever. I'm just going"
+  },
+  {
+   "start": 1283.6,
+   "duration": 6.32,
+   "text": "off the topic. But the thing is"
+  },
+  {
+   "start": 1287.32,
+   "duration": 6.64,
+   "text": "that that particular junior agent should"
+  },
+  {
+   "start": 1289.92,
+   "duration": 5.64,
+   "text": "try again, you know, and"
+  },
+  {
+   "start": 1293.96,
+   "duration": 3.88,
+   "text": "they should find out some kind of"
+  },
+  {
+   "start": 1295.56,
+   "duration": 4.36,
+   "text": "solution. If it is not possible, then"
+  },
+  {
+   "start": 1297.84,
+   "duration": 4.04,
+   "text": "they should escalate the problem, which"
+  },
+  {
+   "start": 1299.92,
+   "duration": 4.6,
+   "text": "is genuinely beyond their scope to"
+  },
+  {
+   "start": 1301.88,
+   "duration": 5.68,
+   "text": "resolve. So, your sub-agent should, you"
+  },
+  {
+   "start": 1304.52,
+   "duration": 4.68,
+   "text": "know, work exactly the same way."
+  },
+  {
+   "start": 1307.56,
+   "duration": 3.32,
+   "text": "So, for example, when a tool fails with"
+  },
+  {
+   "start": 1309.2,
+   "duration": 3.0,
+   "text": "a transient error,"
+  },
+  {
+   "start": 1310.88,
+   "duration": 2.92,
+   "text": "for example, let's take a very simple"
+  },
+  {
+   "start": 1312.2,
+   "duration": 3.8,
+   "text": "example of transient error. The"
+  },
+  {
+   "start": 1313.8,
+   "duration": 5.4,
+   "text": "sub-agent should handle one or two"
+  },
+  {
+   "start": 1316.0,
+   "duration": 4.88,
+   "text": "retries locally before propagating that"
+  },
+  {
+   "start": 1319.2,
+   "duration": 3.56,
+   "text": "particular failure up to the"
+  },
+  {
+   "start": 1320.88,
+   "duration": 2.92,
+   "text": "coordinator."
+  },
+  {
+   "start": 1322.76,
+   "duration": 1.919,
+   "text": "Right?"
+  },
+  {
+   "start": 1323.8,
+   "duration": 3.0,
+   "text": "So,"
+  },
+  {
+   "start": 1324.679,
+   "duration": 3.761,
+   "text": "to if you see in this particular slide,"
+  },
+  {
+   "start": 1326.8,
+   "duration": 3.68,
+   "text": "you know, layer one tool execution"
+  },
+  {
+   "start": 1328.44,
+   "duration": 4.08,
+   "text": "fails, layer two sub-agent catches error"
+  },
+  {
+   "start": 1330.48,
+   "duration": 4.08,
+   "text": "and executes local retry for transient"
+  },
+  {
+   "start": 1332.52,
+   "duration": 4.88,
+   "text": "issues, for example. And then layer"
+  },
+  {
+   "start": 1334.56,
+   "duration": 4.52,
+   "text": "three, local retry exhausted, escalate"
+  },
+  {
+   "start": 1337.4,
+   "duration": 3.04,
+   "text": "structured error to coordinator. Now,"
+  },
+  {
+   "start": 1339.08,
+   "duration": 3.4,
+   "text": "coordinator will take the decision"
+  },
+  {
+   "start": 1340.44,
+   "duration": 3.6,
+   "text": "whether, you know, I should also retry"
+  },
+  {
+   "start": 1342.48,
+   "duration": 3.76,
+   "text": "or, you know, invoke some other"
+  },
+  {
+   "start": 1344.04,
+   "duration": 4.08,
+   "text": "sub-agent or invoke some other tool or"
+  },
+  {
+   "start": 1346.24,
+   "duration": 3.68,
+   "text": "basically escalate it to the human or"
+  },
+  {
+   "start": 1348.12,
+   "duration": 2.88,
+   "text": "something like that."
+  },
+  {
+   "start": 1349.92,
+   "duration": 2.48,
+   "text": "Okay?"
+  },
+  {
+   "start": 1351.0,
+   "duration": 2.679,
+   "text": "So, it is very very important that you"
+  },
+  {
+   "start": 1352.4,
+   "duration": 3.36,
+   "text": "do this."
+  },
+  {
+   "start": 1353.679,
+   "duration": 3.121,
+   "text": "And if you see the exam distractor over"
+  },
+  {
+   "start": 1355.76,
+   "duration": 2.68,
+   "text": "here,"
+  },
+  {
+   "start": 1356.8,
+   "duration": 3.92,
+   "text": "terminating a pipeline on a single"
+  },
+  {
+   "start": 1358.44,
+   "duration": 4.48,
+   "text": "failure is an all or nothing"
+  },
+  {
+   "start": 1360.72,
+   "duration": 4.56,
+   "text": "anti-pattern. I have noted it down over"
+  },
+  {
+   "start": 1362.92,
+   "duration": 4.28,
+   "text": "here because if in the question they say"
+  },
+  {
+   "start": 1365.28,
+   "duration": 4.0,
+   "text": "that, you know, if an error occurs,"
+  },
+  {
+   "start": 1367.2,
+   "duration": 4.24,
+   "text": "terminate the entire pipeline. And that"
+  },
+  {
+   "start": 1369.28,
+   "duration": 4.36,
+   "text": "is bad. Don't do that. You have to"
+  },
+  {
+   "start": 1371.44,
+   "duration": 3.76,
+   "text": "handle the errors gracefully and you"
+  },
+  {
+   "start": 1373.64,
+   "duration": 3.16,
+   "text": "know, there should be a proper structure"
+  },
+  {
+   "start": 1375.2,
+   "duration": 4.28,
+   "text": "on handling all the errors and how you"
+  },
+  {
+   "start": 1376.8,
+   "duration": 4.28,
+   "text": "propagate your errors, right?"
+  },
+  {
+   "start": 1379.48,
+   "duration": 3.0,
+   "text": "So,"
+  },
+  {
+   "start": 1381.08,
+   "duration": 2.64,
+   "text": "the good"
+  },
+  {
+   "start": 1382.48,
+   "duration": 3.28,
+   "text": "option that you should choose in the"
+  },
+  {
+   "start": 1383.72,
+   "duration": 4.6,
+   "text": "exam is basically sub-agent must handle"
+  },
+  {
+   "start": 1385.76,
+   "duration": 4.48,
+   "text": "their own transient failures locally."
+  },
+  {
+   "start": 1388.32,
+   "duration": 4.68,
+   "text": "The coordinator is only involved when"
+  },
+  {
+   "start": 1390.24,
+   "duration": 4.96,
+   "text": "local options are exhausted. Very very"
+  },
+  {
+   "start": 1393.0,
+   "duration": 5.0,
+   "text": "important to understand. Okay? I hope"
+  },
+  {
+   "start": 1395.2,
+   "duration": 5.24,
+   "text": "that is making sense."
+  },
+  {
+   "start": 1398.0,
+   "duration": 6.76,
+   "text": "The next problem that we I want to"
+  },
+  {
+   "start": 1400.44,
+   "duration": 6.84,
+   "text": "discuss is important and"
+  },
+  {
+   "start": 1404.76,
+   "duration": 3.68,
+   "text": "from the exam perspective and also from"
+  },
+  {
+   "start": 1407.28,
+   "duration": 2.76,
+   "text": "the"
+  },
+  {
+   "start": 1408.44,
+   "duration": 3.239,
+   "text": "you know,"
+  },
+  {
+   "start": 1410.04,
+   "duration": 3.68,
+   "text": "from your day-to-day, you know, work"
+  },
+  {
+   "start": 1411.679,
+   "duration": 3.841,
+   "text": "perspective is the tool overload"
+  },
+  {
+   "start": 1413.72,
+   "duration": 4.4,
+   "text": "problem, guys."
+  },
+  {
+   "start": 1415.52,
+   "duration": 2.6,
+   "text": "So,"
+  },
+  {
+   "start": 1418.6,
+   "duration": 3.8,
+   "text": "so we have been talking about what"
+  },
+  {
+   "start": 1420.16,
+   "duration": 5.76,
+   "text": "happens when the tool fails."
+  },
+  {
+   "start": 1422.4,
+   "duration": 3.52,
+   "text": "We talked about error handling well."
+  },
+  {
+   "start": 1426.48,
+   "duration": 5.96,
+   "text": "We have to now talk about making sure"
+  },
+  {
+   "start": 1429.679,
+   "duration": 5.201,
+   "text": "that the right tool fires in the first"
+  },
+  {
+   "start": 1432.44,
+   "duration": 2.44,
+   "text": "place."
+  },
+  {
+   "start": 1435.36,
+   "duration": 4.4,
+   "text": "So, let's let's let's"
+  },
+  {
+   "start": 1437.8,
+   "duration": 5.879,
+   "text": "let's tackle this question, right? If"
+  },
+  {
+   "start": 1439.76,
+   "duration": 8.16,
+   "text": "giving an agent one tool is good,"
+  },
+  {
+   "start": 1443.679,
+   "duration": 5.761,
+   "text": "does giving an agent 20 tools better?"
+  },
+  {
+   "start": 1447.92,
+   "duration": 3.68,
+   "text": "Think I will I'll I'll pause for some"
+  },
+  {
+   "start": 1449.44,
+   "duration": 4.239,
+   "text": "time and and let"
+  },
+  {
+   "start": 1451.6,
+   "duration": 4.88,
+   "text": "let this thing sink in."
+  },
+  {
+   "start": 1453.679,
+   "duration": 4.281,
+   "text": "You know, think about it. One agent has"
+  },
+  {
+   "start": 1456.48,
+   "duration": 3.04,
+   "text": "one tool is good, you know, using one"
+  },
+  {
+   "start": 1457.96,
+   "duration": 3.68,
+   "text": "tool is good. What if you give it 20"
+  },
+  {
+   "start": 1459.52,
+   "duration": 4.12,
+   "text": "tools? Is it better?"
+  },
+  {
+   "start": 1461.64,
+   "duration": 3.76,
+   "text": "Intuitively, you might think yes because"
+  },
+  {
+   "start": 1463.64,
+   "duration": 3.76,
+   "text": "you have more options. The agent has"
+  },
+  {
+   "start": 1465.4,
+   "duration": 3.8,
+   "text": "more options and it is a more capable"
+  },
+  {
+   "start": 1467.4,
+   "duration": 4.76,
+   "text": "agent, but"
+  },
+  {
+   "start": 1469.2,
+   "duration": 6.68,
+   "text": "no, no, no. That is not how these LLMs"
+  },
+  {
+   "start": 1472.16,
+   "duration": 6.0,
+   "text": "work or this language models work."
+  },
+  {
+   "start": 1475.88,
+   "duration": 5.64,
+   "text": "You know? When you give a model more"
+  },
+  {
+   "start": 1478.16,
+   "duration": 6.28,
+   "text": "tools, it has to choose between them,"
+  },
+  {
+   "start": 1481.52,
+   "duration": 4.68,
+   "text": "you know, at real time. Just think about"
+  },
+  {
+   "start": 1484.44,
+   "duration": 4.2,
+   "text": "it."
+  },
+  {
+   "start": 1486.2,
+   "duration": 4.479,
+   "text": "It has to choose them at inference time."
+  },
+  {
+   "start": 1488.64,
+   "duration": 3.4,
+   "text": "And when those tools have overlapping"
+  },
+  {
+   "start": 1490.679,
+   "duration": 3.201,
+   "text": "description and in the I think in the"
+  },
+  {
+   "start": 1492.04,
+   "duration": 4.6,
+   "text": "previous lesson we talked about how your"
+  },
+  {
+   "start": 1493.88,
+   "duration": 4.0,
+   "text": "tool should have proper description. So,"
+  },
+  {
+   "start": 1496.64,
+   "duration": 3.72,
+   "text": "you know, your"
+  },
+  {
+   "start": 1497.88,
+   "duration": 4.32,
+   "text": "model understands when to use which"
+  },
+  {
+   "start": 1500.36,
+   "duration": 5.4,
+   "text": "tool. We already talked about this in"
+  },
+  {
+   "start": 1502.2,
+   "duration": 5.64,
+   "text": "detail. But if you have a lot of tools"
+  },
+  {
+   "start": 1505.76,
+   "duration": 3.84,
+   "text": "which do not have proper, you know,"
+  },
+  {
+   "start": 1507.84,
+   "duration": 3.64,
+   "text": "descriptions,"
+  },
+  {
+   "start": 1509.6,
+   "duration": 4.6,
+   "text": "or it has similar sounding names, all of"
+  },
+  {
+   "start": 1511.48,
+   "duration": 5.199,
+   "text": "these problems we have discussed."
+  },
+  {
+   "start": 1514.2,
+   "duration": 4.28,
+   "text": "The model's confidence, you know, in its"
+  },
+  {
+   "start": 1516.679,
+   "duration": 3.721,
+   "text": "selection goes down. I mean, there are"
+  },
+  {
+   "start": 1518.48,
+   "duration": 4.68,
+   "text": "too many tools and it degrades tool"
+  },
+  {
+   "start": 1520.4,
+   "duration": 4.2,
+   "text": "selection reliability. Now, obviously,"
+  },
+  {
+   "start": 1523.16,
+   "duration": 3.32,
+   "text": "you should have proper names and"
+  },
+  {
+   "start": 1524.6,
+   "duration": 4.56,
+   "text": "description of the tools that we have"
+  },
+  {
+   "start": 1526.48,
+   "duration": 5.32,
+   "text": "discussed in the previous lesson."
+  },
+  {
+   "start": 1529.16,
+   "duration": 5.84,
+   "text": "But you should also make sure that your"
+  },
+  {
+   "start": 1531.8,
+   "duration": 5.76,
+   "text": "sub-agent is specific to what work it"
+  },
+  {
+   "start": 1535.0,
+   "duration": 4.56,
+   "text": "does. So, it should be visible, you"
+  },
+  {
+   "start": 1537.56,
+   "duration": 3.8,
+   "text": "know, it should be scoped to limited"
+  },
+  {
+   "start": 1539.56,
+   "duration": 3.84,
+   "text": "number of tools that it should be able"
+  },
+  {
+   "start": 1541.36,
+   "duration": 4.72,
+   "text": "to use. And this thing we have already"
+  },
+  {
+   "start": 1543.4,
+   "duration": 4.8,
+   "text": "talked about in our previous lesson that"
+  },
+  {
+   "start": 1546.08,
+   "duration": 5.16,
+   "text": "you should your sub-agent should be a"
+  },
+  {
+   "start": 1548.2,
+   "duration": 5.8,
+   "text": "specialist, not a generic."
+  },
+  {
+   "start": 1551.24,
+   "duration": 5.12,
+   "text": "Okay? If your sub you know, sub-agent is"
+  },
+  {
+   "start": 1554.0,
+   "duration": 4.52,
+   "text": "specializing writing, right? It should"
+  },
+  {
+   "start": 1556.36,
+   "duration": 4.72,
+   "text": "be only be exposed to the tools which"
+  },
+  {
+   "start": 1558.52,
+   "duration": 6.52,
+   "text": "will help the particular agent or the"
+  },
+  {
+   "start": 1561.08,
+   "duration": 6.88,
+   "text": "sub-agent to write."
+  },
+  {
+   "start": 1565.04,
+   "duration": 5.0,
+   "text": "It should not get tools to, you know,"
+  },
+  {
+   "start": 1567.96,
+   "duration": 3.719,
+   "text": "summarize Okay, summarize is also part"
+  },
+  {
+   "start": 1570.04,
+   "duration": 3.44,
+   "text": "of writing, but, you know, in my"
+  },
+  {
+   "start": 1571.679,
+   "duration": 4.961,
+   "text": "opinion, summarization should also be"
+  },
+  {
+   "start": 1573.48,
+   "duration": 4.24,
+   "text": "taken care by the coordinator."
+  },
+  {
+   "start": 1576.64,
+   "duration": 3.96,
+   "text": "If you are if you are working on a"
+  },
+  {
+   "start": 1577.72,
+   "duration": 4.56,
+   "text": "specific use case like, for example, um"
+  },
+  {
+   "start": 1580.6,
+   "duration": 2.64,
+   "text": "a research use case, something like"
+  },
+  {
+   "start": 1582.28,
+   "duration": 3.2,
+   "text": "that."
+  },
+  {
+   "start": 1583.24,
+   "duration": 3.96,
+   "text": "So, if you think in that"
+  },
+  {
+   "start": 1585.48,
+   "duration": 4.199,
+   "text": "you know, in"
+  },
+  {
+   "start": 1587.2,
+   "duration": 5.44,
+   "text": "in that particular direction, then for"
+  },
+  {
+   "start": 1589.679,
+   "duration": 5.121,
+   "text": "example, in you know,"
+  },
+  {
+   "start": 1592.64,
+   "duration": 4.56,
+   "text": "in our customer sub-agent only, the"
+  },
+  {
+   "start": 1594.8,
+   "duration": 4.8,
+   "text": "coordinator should have the access to"
+  },
+  {
+   "start": 1597.2,
+   "duration": 3.64,
+   "text": "the tools, for example, get customer and"
+  },
+  {
+   "start": 1599.6,
+   "duration": 3.76,
+   "text": "escalate."
+  },
+  {
+   "start": 1600.84,
+   "duration": 6.24,
+   "text": "The order sub-agent should have the, you"
+  },
+  {
+   "start": 1603.36,
+   "duration": 5.6,
+   "text": "know, the tools that it should use it"
+  },
+  {
+   "start": 1607.08,
+   "duration": 4.32,
+   "text": "can use, for example, look up order or"
+  },
+  {
+   "start": 1608.96,
+   "duration": 3.6,
+   "text": "process refund, these kind of tools. And"
+  },
+  {
+   "start": 1611.4,
+   "duration": 3.279,
+   "text": "the"
+  },
+  {
+   "start": 1612.56,
+   "duration": 3.52,
+   "text": "com sub-agent, like we have created one"
+  },
+  {
+   "start": 1614.679,
+   "duration": 3.361,
+   "text": "more sub-agent to, you know,"
+  },
+  {
+   "start": 1616.08,
+   "duration": 3.96,
+   "text": "communication sub-agent, should have"
+  },
+  {
+   "start": 1618.04,
+   "duration": 3.96,
+   "text": "some tools which should only be visible"
+  },
+  {
+   "start": 1620.04,
+   "duration": 4.04,
+   "text": "to the tools. So, the tools should only"
+  },
+  {
+   "start": 1622.0,
+   "duration": 4.56,
+   "text": "be visible to the com sub-agent, like"
+  },
+  {
+   "start": 1624.08,
+   "duration": 3.84,
+   "text": "send email or create ticket or something"
+  },
+  {
+   "start": 1626.56,
+   "duration": 2.88,
+   "text": "like that."
+  },
+  {
+   "start": 1627.92,
+   "duration": 4.24,
+   "text": "So, if you see this particular slide"
+  },
+  {
+   "start": 1629.44,
+   "duration": 5.84,
+   "text": "over here, so role-based distribution of"
+  },
+  {
+   "start": 1632.16,
+   "duration": 5.44,
+   "text": "tools should be the uh"
+  },
+  {
+   "start": 1635.28,
+   "duration": 4.858,
+   "text": "you know, the the way forward. This is"
+  },
+  {
+   "start": 1637.6,
+   "duration": 2.84,
+   "text": "known as scoped tool access."
+  },
+  {
+   "start": 1640.138,
+   "duration": 3.342,
+   "text": ">> [snorts]"
+  },
+  {
+   "start": 1640.44,
+   "duration": 4.96,
+   "text": ">> Each agent gets only the tools relevant"
+  },
+  {
+   "start": 1643.48,
+   "duration": 4.52,
+   "text": "to its specific role."
+  },
+  {
+   "start": 1645.4,
+   "duration": 4.48,
+   "text": "Okay? It's not about restriction. I"
+  },
+  {
+   "start": 1648.0,
+   "duration": 2.92,
+   "text": "mean, you can use it as restriction"
+  },
+  {
+   "start": 1649.88,
+   "duration": 2.799,
+   "text": "because"
+  },
+  {
+   "start": 1650.92,
+   "duration": 4.08,
+   "text": "you can implement it as a pre-tool hook"
+  },
+  {
+   "start": 1652.679,
+   "duration": 4.641,
+   "text": "as well for the restriction purpose, or"
+  },
+  {
+   "start": 1655.0,
+   "duration": 4.0,
+   "text": "you can scope it as well, but the main"
+  },
+  {
+   "start": 1657.32,
+   "duration": 4.6,
+   "text": "purpose is"
+  },
+  {
+   "start": 1659.0,
+   "duration": 5.36,
+   "text": "it's for its own good. It's for the sake"
+  },
+  {
+   "start": 1661.92,
+   "duration": 5.08,
+   "text": "of the agent itself."
+  },
+  {
+   "start": 1664.36,
+   "duration": 4.2,
+   "text": "It's about giving each agent a clear,"
+  },
+  {
+   "start": 1667.0,
+   "duration": 4.4,
+   "text": "unambiguous"
+  },
+  {
+   "start": 1668.56,
+   "duration": 4.24,
+   "text": "tool set so it can reliably select the"
+  },
+  {
+   "start": 1671.4,
+   "duration": 3.04,
+   "text": "right one."
+  },
+  {
+   "start": 1672.8,
+   "duration": 2.92,
+   "text": "So, if you see this particular thing"
+  },
+  {
+   "start": 1674.44,
+   "duration": 3.28,
+   "text": "over here"
+  },
+  {
+   "start": 1675.72,
+   "duration": 4.2,
+   "text": "and see this particular thing over here,"
+  },
+  {
+   "start": 1677.72,
+   "duration": 4.4,
+   "text": "these two diagrams. Coordinator agent"
+  },
+  {
+   "start": 1679.92,
+   "duration": 3.92,
+   "text": "having 20 tools. But here the"
+  },
+  {
+   "start": 1682.12,
+   "duration": 3.88,
+   "text": "coordinator has two tools, then order"
+  },
+  {
+   "start": 1683.84,
+   "duration": 4.44,
+   "text": "agent has two tools, com agent has two"
+  },
+  {
+   "start": 1686.0,
+   "duration": 4.52,
+   "text": "tools. Providing a model with too many"
+  },
+  {
+   "start": 1688.28,
+   "duration": 5.0,
+   "text": "tools actively degrades its selection"
+  },
+  {
+   "start": 1690.52,
+   "duration": 5.159,
+   "text": "reliability. Bloated tool sets result in"
+  },
+  {
+   "start": 1693.28,
+   "duration": 4.6,
+   "text": "wrong tools firing and hard to debug"
+  },
+  {
+   "start": 1695.679,
+   "duration": 3.401,
+   "text": "logic errors, guys. So, keep that in"
+  },
+  {
+   "start": 1697.88,
+   "duration": 4.279,
+   "text": "mind."
+  },
+  {
+   "start": 1699.08,
+   "duration": 5.04,
+   "text": "Okay? And uh"
+  },
+  {
+   "start": 1702.159,
+   "duration": 4.801,
+   "text": "it's very very important to understand"
+  },
+  {
+   "start": 1704.12,
+   "duration": 5.24,
+   "text": "that, you know, you have scoped access"
+  },
+  {
+   "start": 1706.96,
+   "duration": 4.88,
+   "text": "in practice. This is what I was talking"
+  },
+  {
+   "start": 1709.36,
+   "duration": 4.2,
+   "text": "about, guys. Each agent, for example,"
+  },
+  {
+   "start": 1711.84,
+   "duration": 4.12,
+   "text": "research sub-agent has access to web"
+  },
+  {
+   "start": 1713.56,
+   "duration": 4.48,
+   "text": "search, fetch URL, extract content."
+  },
+  {
+   "start": 1715.96,
+   "duration": 4.44,
+   "text": "Document sub-agent has read document,"
+  },
+  {
+   "start": 1718.04,
+   "duration": 5.0,
+   "text": "parse PDF, extract sections. Synthesis"
+  },
+  {
+   "start": 1720.4,
+   "duration": 5.72,
+   "text": "agent can have an access to a tool known"
+  },
+  {
+   "start": 1723.04,
+   "duration": 5.0,
+   "text": "as verify fact, but why does it needs"
+  },
+  {
+   "start": 1726.12,
+   "duration": 3.799,
+   "text": "web search? It doesn't need web search."
+  },
+  {
+   "start": 1728.04,
+   "duration": 3.68,
+   "text": "Web search is needed by the research"
+  },
+  {
+   "start": 1729.919,
+   "duration": 3.521,
+   "text": "sub-agent."
+  },
+  {
+   "start": 1731.72,
+   "duration": 5.72,
+   "text": "That is what I'm talking about, guys."
+  },
+  {
+   "start": 1733.44,
+   "duration": 4.0,
+   "text": "Have scoped tools."
+  },
+  {
+   "start": 1738.56,
+   "duration": 3.48,
+   "text": "Okay? Now,"
+  },
+  {
+   "start": 1740.52,
+   "duration": 3.12,
+   "text": "in the exam scenario, let's talk about a"
+  },
+  {
+   "start": 1742.04,
+   "duration": 3.8,
+   "text": "sample exam scenario. Which tool"
+  },
+  {
+   "start": 1743.64,
+   "duration": 5.2,
+   "text": "configuration best improves synthesis"
+  },
+  {
+   "start": 1745.84,
+   "duration": 3.0,
+   "text": "agent accuracy?"
+  },
+  {
+   "start": 1749.6,
+   "duration": 6.68,
+   "text": "Give it a scoped verify fact tool."
+  },
+  {
+   "start": 1753.96,
+   "duration": 4.68,
+   "text": "Not full web access, not more search"
+  },
+  {
+   "start": 1756.28,
+   "duration": 6.639,
+   "text": "tools, one purpose-built verification"
+  },
+  {
+   "start": 1758.64,
+   "duration": 7.92,
+   "text": "tool aligned to its role."
+  },
+  {
+   "start": 1762.919,
+   "duration": 5.201,
+   "text": "Okay? I hope that is making sense."
+  },
+  {
+   "start": 1766.56,
+   "duration": 4.68,
+   "text": "Now, the next thing that I want to talk"
+  },
+  {
+   "start": 1768.12,
+   "duration": 6.28,
+   "text": "about is controlling execution via the"
+  },
+  {
+   "start": 1771.24,
+   "duration": 4.52,
+   "text": "tool choice. Now, we talked about one,"
+  },
+  {
+   "start": 1774.4,
+   "duration": 4.32,
+   "text": "you know, for error handling we talked"
+  },
+  {
+   "start": 1775.76,
+   "duration": 5.12,
+   "text": "about one flag known as is error flag,"
+  },
+  {
+   "start": 1778.72,
+   "duration": 4.8,
+   "text": "right? Now, there is one more flag known"
+  },
+  {
+   "start": 1780.88,
+   "duration": 3.88,
+   "text": "as tool choice flag, guys."
+  },
+  {
+   "start": 1783.52,
+   "duration": 3.68,
+   "text": "Okay?"
+  },
+  {
+   "start": 1784.76,
+   "duration": 4.96,
+   "text": "Now, what is tool choice? So whenever"
+  },
+  {
+   "start": 1787.2,
+   "duration": 2.52,
+   "text": "you know"
+  },
+  {
+   "start": 1791.8,
+   "duration": 3.56,
+   "text": "you would have done the scoping of the"
+  },
+  {
+   "start": 1793.64,
+   "duration": 3.88,
+   "text": "tools, right? You have done the scoping"
+  },
+  {
+   "start": 1795.36,
+   "duration": 3.52,
+   "text": "of the tools. You have scoped the tools"
+  },
+  {
+   "start": 1797.52,
+   "duration": 3.32,
+   "text": "properly."
+  },
+  {
+   "start": 1798.88,
+   "duration": 3.92,
+   "text": "Now there are situations where you need"
+  },
+  {
+   "start": 1800.84,
+   "duration": 6.2,
+   "text": "more control. Sometimes you need to"
+  },
+  {
+   "start": 1802.8,
+   "duration": 4.24,
+   "text": "guarantee that a tool call happens."
+  },
+  {
+   "start": 1807.24,
+   "duration": 5.04,
+   "text": "Right? Or there is some scenarios where"
+  },
+  {
+   "start": 1810.16,
+   "duration": 3.96,
+   "text": "you want us just the specific tool to"
+  },
+  {
+   "start": 1812.28,
+   "duration": 4.64,
+   "text": "get executed."
+  },
+  {
+   "start": 1814.12,
+   "duration": 5.96,
+   "text": "That is where you would use the tool"
+  },
+  {
+   "start": 1816.92,
+   "duration": 6.44,
+   "text": "choice tool choice"
+  },
+  {
+   "start": 1820.08,
+   "duration": 5.92,
+   "text": "uh particular flag."
+  },
+  {
+   "start": 1823.36,
+   "duration": 5.52,
+   "text": "Now tool choice has three types of flags"
+  },
+  {
+   "start": 1826.0,
+   "duration": 5.72,
+   "text": "that you can set. One is auto, one is"
+  },
+  {
+   "start": 1828.88,
+   "duration": 4.8,
+   "text": "any, and one is tool."
+  },
+  {
+   "start": 1831.72,
+   "duration": 4.6,
+   "text": "Okay, let's go through all of these"
+  },
+  {
+   "start": 1833.68,
+   "duration": 7.16,
+   "text": "values one by one."
+  },
+  {
+   "start": 1836.32,
+   "duration": 7.96,
+   "text": "Right? Now what do I mean uh by auto?"
+  },
+  {
+   "start": 1840.84,
+   "duration": 5.48,
+   "text": "Auto means that the model decides which"
+  },
+  {
+   "start": 1844.28,
+   "duration": 5.04,
+   "text": "tool to execute. So for example, one sub"
+  },
+  {
+   "start": 1846.32,
+   "duration": 5.56,
+   "text": "agent has five tools, right? And you're"
+  },
+  {
+   "start": 1849.32,
+   "duration": 3.84,
+   "text": "passing the tool choice as auto. It just"
+  },
+  {
+   "start": 1851.88,
+   "duration": 3.96,
+   "text": "means that you're"
+  },
+  {
+   "start": 1853.16,
+   "duration": 6.08,
+   "text": "you know uh letting the model decide"
+  },
+  {
+   "start": 1855.84,
+   "duration": 5.56,
+   "text": "when to use which tool. That's it."
+  },
+  {
+   "start": 1859.24,
+   "duration": 3.64,
+   "text": "That is the thing about auto value. So"
+  },
+  {
+   "start": 1861.4,
+   "duration": 3.12,
+   "text": "tool choice, if you put tool choice as"
+  },
+  {
+   "start": 1862.88,
+   "duration": 3.96,
+   "text": "auto, this is what you are expecting"
+  },
+  {
+   "start": 1864.52,
+   "duration": 3.68,
+   "text": "from your agent from your LLM."
+  },
+  {
+   "start": 1866.84,
+   "duration": 3.08,
+   "text": "Right?"
+  },
+  {
+   "start": 1868.2,
+   "duration": 3.48,
+   "text": "Because LLM chooses basically which tool"
+  },
+  {
+   "start": 1869.92,
+   "duration": 3.36,
+   "text": "to use. The agent is just LLM is the"
+  },
+  {
+   "start": 1871.68,
+   "duration": 2.92,
+   "text": "brain of the agent, right? Pretty easy"
+  },
+  {
+   "start": 1873.28,
+   "duration": 3.88,
+   "text": "to understand."
+  },
+  {
+   "start": 1874.6,
+   "duration": 6.0,
+   "text": "Next is any."
+  },
+  {
+   "start": 1877.16,
+   "duration": 5.56,
+   "text": "Any means that the"
+  },
+  {
+   "start": 1880.6,
+   "duration": 3.92,
+   "text": "you know the you know the"
+  },
+  {
+   "start": 1882.72,
+   "duration": 6.64,
+   "text": "Claude or whatever the model that you're"
+  },
+  {
+   "start": 1884.52,
+   "duration": 7.24,
+   "text": "using must call at least one tool."
+  },
+  {
+   "start": 1889.36,
+   "duration": 4.6,
+   "text": "It chooses which one."
+  },
+  {
+   "start": 1891.76,
+   "duration": 4.84,
+   "text": "And you should use it"
+  },
+  {
+   "start": 1893.96,
+   "duration": 4.2,
+   "text": "when you always need structured output."
+  },
+  {
+   "start": 1896.6,
+   "duration": 2.6,
+   "text": "No text response is allowed, for"
+  },
+  {
+   "start": 1898.16,
+   "duration": 2.84,
+   "text": "example."
+  },
+  {
+   "start": 1899.2,
+   "duration": 4.24,
+   "text": "Now"
+  },
+  {
+   "start": 1901.0,
+   "duration": 5.36,
+   "text": "you just want one agent to use one tool"
+  },
+  {
+   "start": 1903.44,
+   "duration": 4.92,
+   "text": "at any time. Okay? You don't care about"
+  },
+  {
+   "start": 1906.36,
+   "duration": 4.48,
+   "text": "which tool. Even if for example, there"
+  },
+  {
+   "start": 1908.36,
+   "duration": 4.44,
+   "text": "are five tools and Claude decided, okay,"
+  },
+  {
+   "start": 1910.84,
+   "duration": 4.52,
+   "text": "no none of the tools match, but you want"
+  },
+  {
+   "start": 1912.8,
+   "duration": 4.44,
+   "text": "it to pick one tool and execute. In that"
+  },
+  {
+   "start": 1915.36,
+   "duration": 3.88,
+   "text": "case, you would pass the tool choice as"
+  },
+  {
+   "start": 1917.24,
+   "duration": 3.12,
+   "text": "any."
+  },
+  {
+   "start": 1919.24,
+   "duration": 2.48,
+   "text": "Okay?"
+  },
+  {
+   "start": 1920.36,
+   "duration": 3.36,
+   "text": "In that case, you would use the any"
+  },
+  {
+   "start": 1921.72,
+   "duration": 5.28,
+   "text": "value as tool choice."
+  },
+  {
+   "start": 1923.72,
+   "duration": 6.28,
+   "text": "Next is tool. So the value only is tool."
+  },
+  {
+   "start": 1927.0,
+   "duration": 6.64,
+   "text": "So the tool choice is tool. In that case"
+  },
+  {
+   "start": 1930.0,
+   "duration": 6.04,
+   "text": "Claude must call this exact tool."
+  },
+  {
+   "start": 1933.64,
+   "duration": 5.12,
+   "text": "So you use it for structured extraction"
+  },
+  {
+   "start": 1936.04,
+   "duration": 5.48,
+   "text": "where you are enforcing a specific"
+  },
+  {
+   "start": 1938.76,
+   "duration": 3.76,
+   "text": "schema or something like that."
+  },
+  {
+   "start": 1941.52,
+   "duration": 3.64,
+   "text": "Okay?"
+  },
+  {
+   "start": 1942.52,
+   "duration": 5.24,
+   "text": "So if you want one exact tool to get"
+  },
+  {
+   "start": 1945.16,
+   "duration": 5.0,
+   "text": "executed, in that case, you would use"
+  },
+  {
+   "start": 1947.76,
+   "duration": 4.32,
+   "text": "the tool value in tool choice."
+  },
+  {
+   "start": 1950.16,
+   "duration": 4.32,
+   "text": "So exam signal, select any when the"
+  },
+  {
+   "start": 1952.08,
+   "duration": 4.56,
+   "text": "requirement is guaranteed structured"
+  },
+  {
+   "start": 1954.48,
+   "duration": 4.24,
+   "text": "output generation. Whenever you see this"
+  },
+  {
+   "start": 1956.64,
+   "duration": 3.72,
+   "text": "kind of a thing in the exam, you would"
+  },
+  {
+   "start": 1958.72,
+   "duration": 3.88,
+   "text": "have to use any."
+  },
+  {
+   "start": 1960.36,
+   "duration": 4.6,
+   "text": "Because you need some kind of structured"
+  },
+  {
+   "start": 1962.6,
+   "duration": 3.56,
+   "text": "output from the particular tool or from"
+  },
+  {
+   "start": 1964.96,
+   "duration": 3.56,
+   "text": "the agent"
+  },
+  {
+   "start": 1966.16,
+   "duration": 4.36,
+   "text": "uh ultimately. Right?"
+  },
+  {
+   "start": 1968.52,
+   "duration": 3.4,
+   "text": "So three types, auto, any, tool. I'll"
+  },
+  {
+   "start": 1970.52,
+   "duration": 3.6,
+   "text": "give you an example how to do that. I"
+  },
+  {
+   "start": 1971.92,
+   "duration": 4.12,
+   "text": "haven't implemented it in my uh project,"
+  },
+  {
+   "start": 1974.12,
+   "duration": 3.36,
+   "text": "so I'm just going to create one uh new"
+  },
+  {
+   "start": 1976.04,
+   "duration": 4.08,
+   "text": "file over here, and I'm going to name it"
+  },
+  {
+   "start": 1977.48,
+   "duration": 4.48,
+   "text": "as tool choice"
+  },
+  {
+   "start": 1980.12,
+   "duration": 3.8,
+   "text": ".py. I'm just going to show you how you"
+  },
+  {
+   "start": 1981.96,
+   "duration": 5.36,
+   "text": "would use it just it so that you don't"
+  },
+  {
+   "start": 1983.92,
+   "duration": 4.68,
+   "text": "get confused. So um you can just say"
+  },
+  {
+   "start": 1987.32,
+   "duration": 5.96,
+   "text": "So basically, how do we create the"
+  },
+  {
+   "start": 1988.6,
+   "duration": 6.36,
+   "text": "response? You create client .messages"
+  },
+  {
+   "start": 1993.28,
+   "duration": 2.84,
+   "text": ".create, right? This thing you would"
+  },
+  {
+   "start": 1994.96,
+   "duration": 4.12,
+   "text": "use, and it should be there in the"
+  },
+  {
+   "start": 1996.12,
+   "duration": 5.2,
+   "text": "capstone project. I've already"
+  },
+  {
+   "start": 1999.08,
+   "duration": 4.04,
+   "text": "uh discussed this. Okay, the client"
+  },
+  {
+   "start": 2001.32,
+   "duration": 4.12,
+   "text": "messages.create, here only it is true,"
+  },
+  {
+   "start": 2003.12,
+   "duration": 3.64,
+   "text": "right? You select the model, system"
+  },
+  {
+   "start": 2005.44,
+   "duration": 4.2,
+   "text": "select the prompt, and these are the"
+  },
+  {
+   "start": 2006.76,
+   "duration": 6.56,
+   "text": "tools over here."
+  },
+  {
+   "start": 2009.64,
+   "duration": 5.88,
+   "text": "Right? Now what you want is for example,"
+  },
+  {
+   "start": 2013.32,
+   "duration": 3.44,
+   "text": "I can I can show you here or you I can"
+  },
+  {
+   "start": 2015.52,
+   "duration": 4.12,
+   "text": "show you here, wherever you want, but"
+  },
+  {
+   "start": 2016.76,
+   "duration": 6.04,
+   "text": "I'm going to show you here. So basically"
+  },
+  {
+   "start": 2019.64,
+   "duration": 6.08,
+   "text": "you can pass the tool choice tool_choice"
+  },
+  {
+   "start": 2022.8,
+   "duration": 6.04,
+   "text": "as for example um"
+  },
+  {
+   "start": 2025.72,
+   "duration": 4.28,
+   "text": "you can just pass in type"
+  },
+  {
+   "start": 2028.84,
+   "duration": 2.64,
+   "text": "Okay?"
+  },
+  {
+   "start": 2030.0,
+   "duration": 2.76,
+   "text": "Auto, I should have implemented it"
+  },
+  {
+   "start": 2031.48,
+   "duration": 3.12,
+   "text": "directly. I don't know why I'm typing"
+  },
+  {
+   "start": 2032.76,
+   "duration": 3.68,
+   "text": "the code here, but just for"
+  },
+  {
+   "start": 2034.6,
+   "duration": 4.04,
+   "text": "understanding purposes, I'm doing it."
+  },
+  {
+   "start": 2036.44,
+   "duration": 3.44,
+   "text": "Okay, tool choice is"
+  },
+  {
+   "start": 2038.64,
+   "duration": 3.84,
+   "text": "type it sort of. It just means that"
+  },
+  {
+   "start": 2039.88,
+   "duration": 5.08,
+   "text": "model decides. Then if you put type as"
+  },
+  {
+   "start": 2042.48,
+   "duration": 4.88,
+   "text": "any, then basically must call the model"
+  },
+  {
+   "start": 2044.96,
+   "duration": 4.56,
+   "text": "should call some kind of tool, right?"
+  },
+  {
+   "start": 2047.36,
+   "duration": 3.559,
+   "text": "Doesn't matter if if you know it is"
+  },
+  {
+   "start": 2049.52,
+   "duration": 3.24,
+   "text": "relevant or not. You need some kind of"
+  },
+  {
+   "start": 2050.919,
+   "duration": 4.281,
+   "text": "structured output, so you call the"
+  },
+  {
+   "start": 2052.76,
+   "duration": 5.399,
+   "text": "particular tool. You are forcing Claude"
+  },
+  {
+   "start": 2055.2,
+   "duration": 6.8,
+   "text": "basically select one tool and execute."
+  },
+  {
+   "start": 2058.159,
+   "duration": 8.841,
+   "text": "Okay. Now if you put the tool choice as"
+  },
+  {
+   "start": 2062.0,
+   "duration": 6.12,
+   "text": "as for example, you put type as"
+  },
+  {
+   "start": 2067.0,
+   "duration": 2.24,
+   "text": "as"
+  },
+  {
+   "start": 2068.12,
+   "duration": 4.08,
+   "text": "tool"
+  },
+  {
+   "start": 2069.24,
+   "duration": 4.4,
+   "text": "right? And then you're putting the name"
+  },
+  {
+   "start": 2072.2,
+   "duration": 3.64,
+   "text": "of the tool that you need to execute."
+  },
+  {
+   "start": 2073.64,
+   "duration": 4.48,
+   "text": "Obviously, if you're putting the type as"
+  },
+  {
+   "start": 2075.84,
+   "duration": 3.72,
+   "text": "tool, then obviously you have to specify"
+  },
+  {
+   "start": 2078.12,
+   "duration": 3.12,
+   "text": "which tool to execute. For example,"
+  },
+  {
+   "start": 2079.56,
+   "duration": 4.359,
+   "text": "extract"
+  },
+  {
+   "start": 2081.24,
+   "duration": 4.679,
+   "text": "order data or you can just say look up"
+  },
+  {
+   "start": 2083.919,
+   "duration": 3.681,
+   "text": "order that we already have."
+  },
+  {
+   "start": 2085.919,
+   "duration": 3.361,
+   "text": "Okay, so for a particular thing, you"
+  },
+  {
+   "start": 2087.6,
+   "duration": 4.12,
+   "text": "want to execute this particular tool"
+  },
+  {
+   "start": 2089.28,
+   "duration": 5.8,
+   "text": "only, which is look up order."
+  },
+  {
+   "start": 2091.72,
+   "duration": 5.96,
+   "text": "So this is how basically you should use"
+  },
+  {
+   "start": 2095.08,
+   "duration": 4.32,
+   "text": "you know the tool choice thingy."
+  },
+  {
+   "start": 2097.68,
+   "duration": 4.64,
+   "text": "And it is very very important in case of"
+  },
+  {
+   "start": 2099.4,
+   "duration": 6.0,
+   "text": "the exam perspective."
+  },
+  {
+   "start": 2102.32,
+   "duration": 4.84,
+   "text": "Okay? And um"
+  },
+  {
+   "start": 2105.4,
+   "duration": 3.56,
+   "text": "that's how you would use it. Let's go"
+  },
+  {
+   "start": 2107.16,
+   "duration": 4.52,
+   "text": "back to the slides."
+  },
+  {
+   "start": 2108.96,
+   "duration": 4.6,
+   "text": "So the full picture."
+  },
+  {
+   "start": 2111.68,
+   "duration": 3.88,
+   "text": "Now let's see how all of this fits"
+  },
+  {
+   "start": 2113.56,
+   "duration": 3.44,
+   "text": "together in a single agent execution"
+  },
+  {
+   "start": 2115.56,
+   "duration": 3.24,
+   "text": "flow. We talked about error handling, we"
+  },
+  {
+   "start": 2117.0,
+   "duration": 3.52,
+   "text": "talked about scoping, we talked about"
+  },
+  {
+   "start": 2118.8,
+   "duration": 4.24,
+   "text": "tool choice, and all of these things."
+  },
+  {
+   "start": 2120.52,
+   "duration": 4.72,
+   "text": "How does this all come together in one"
+  },
+  {
+   "start": 2123.04,
+   "duration": 3.36,
+   "text": "single picture?"
+  },
+  {
+   "start": 2125.24,
+   "duration": 3.88,
+   "text": "So"
+  },
+  {
+   "start": 2126.4,
+   "duration": 6.88,
+   "text": "for example, tool choice means any means"
+  },
+  {
+   "start": 2129.12,
+   "duration": 6.44,
+   "text": "it forces execution. It means that"
+  },
+  {
+   "start": 2133.28,
+   "duration": 4.96,
+   "text": "it has to use one tool. Claude has to"
+  },
+  {
+   "start": 2135.56,
+   "duration": 6.2,
+   "text": "select one tool. Forces the execution."
+  },
+  {
+   "start": 2138.24,
+   "duration": 5.52,
+   "text": "Now allowed tools, scoping guarantees"
+  },
+  {
+   "start": 2141.76,
+   "duration": 3.96,
+   "text": "correct selection. Whenever you are"
+  },
+  {
+   "start": 2143.76,
+   "duration": 4.72,
+   "text": "going to scoping that scope a tool for"
+  },
+  {
+   "start": 2145.72,
+   "duration": 5.4,
+   "text": "that particular agent it that agent is"
+  },
+  {
+   "start": 2148.48,
+   "duration": 6.32,
+   "text": "only exposed to those kind of tools."
+  },
+  {
+   "start": 2151.12,
+   "duration": 5.4,
+   "text": "Then error handling. If it is true means"
+  },
+  {
+   "start": 2154.8,
+   "duration": 3.4,
+   "text": "the error has occurred"
+  },
+  {
+   "start": 2156.52,
+   "duration": 3.839,
+   "text": "you know, construct proper error"
+  },
+  {
+   "start": 2158.2,
+   "duration": 4.159,
+   "text": "metadata and then propagate it to the"
+  },
+  {
+   "start": 2160.359,
+   "duration": 3.721,
+   "text": "higher agent in you know, maybe the"
+  },
+  {
+   "start": 2162.359,
+   "duration": 4.361,
+   "text": "coordinator or someone else."
+  },
+  {
+   "start": 2164.08,
+   "duration": 5.04,
+   "text": "Try the local recovery first. If a sub"
+  },
+  {
+   "start": 2166.72,
+   "duration": 5.68,
+   "text": "agent is fall failing with transient"
+  },
+  {
+   "start": 2169.12,
+   "duration": 5.2,
+   "text": "transient error type retry once or twice"
+  },
+  {
+   "start": 2172.4,
+   "duration": 3.76,
+   "text": "and then propagate it further. Don't"
+  },
+  {
+   "start": 2174.32,
+   "duration": 3.36,
+   "text": "directly propagate or fail the pipeline."
+  },
+  {
+   "start": 2176.16,
+   "duration": 3.72,
+   "text": "That is a common anti-pattern in the"
+  },
+  {
+   "start": 2177.68,
+   "duration": 4.679,
+   "text": "question you know, in the exam."
+  },
+  {
+   "start": 2179.88,
+   "duration": 4.16,
+   "text": "Coordinator escalation intelligent"
+  },
+  {
+   "start": 2182.359,
+   "duration": 3.201,
+   "text": "routing."
+  },
+  {
+   "start": 2184.04,
+   "duration": 3.28,
+   "text": "If none of things none of the things"
+  },
+  {
+   "start": 2185.56,
+   "duration": 3.4,
+   "text": "work, then basically escalate it the"
+  },
+  {
+   "start": 2187.32,
+   "duration": 3.16,
+   "text": "coordinator."
+  },
+  {
+   "start": 2188.96,
+   "duration": 4.04,
+   "text": "The coordinator will take care of it"
+  },
+  {
+   "start": 2190.48,
+   "duration": 5.28,
+   "text": "because it's a coordinator."
+  },
+  {
+   "start": 2193.0,
+   "duration": 4.68,
+   "text": "Three things you must know for the exam."
+  },
+  {
+   "start": 2195.76,
+   "duration": 3.4,
+   "text": "The correct answers is error plus error"
+  },
+  {
+   "start": 2197.68,
+   "duration": 4.2,
+   "text": "category plus is retrievable, the"
+  },
+  {
+   "start": 2199.16,
+   "duration": 4.76,
+   "text": "complete structured error signal. Scoped"
+  },
+  {
+   "start": 2201.88,
+   "duration": 3.8,
+   "text": "tool access improves reliability. Adding"
+  },
+  {
+   "start": 2203.92,
+   "duration": 4.4,
+   "text": "more tools actively degrades the"
+  },
+  {
+   "start": 2205.68,
+   "duration": 5.76,
+   "text": "selection. And these are taken this task"
+  },
+  {
+   "start": 2208.32,
+   "duration": 4.8,
+   "text": "2.2 2.3 2.3, whatever. It is taken from"
+  },
+  {
+   "start": 2211.44,
+   "duration": 3.84,
+   "text": "the syllabus itself, so I'm not teaching"
+  },
+  {
+   "start": 2213.12,
+   "duration": 4.12,
+   "text": "you out of syllabus things. If you"
+  },
+  {
+   "start": 2215.28,
+   "duration": 4.4,
+   "text": "follow this course, you would pass the"
+  },
+  {
+   "start": 2217.24,
+   "duration": 3.56,
+   "text": "exam 100% if you"
+  },
+  {
+   "start": 2219.68,
+   "duration": 4.0,
+   "text": "you know, understand everything"
+  },
+  {
+   "start": 2220.8,
+   "duration": 5.2,
+   "text": "attentively. Okay? That is one guarantee"
+  },
+  {
+   "start": 2223.68,
+   "duration": 4.48,
+   "text": "I will tell you."
+  },
+  {
+   "start": 2226.0,
+   "duration": 4.28,
+   "text": "So tool choice any means is required to"
+  },
+  {
+   "start": 2228.16,
+   "duration": 4.24,
+   "text": "guarantee structured output generation."
+  },
+  {
+   "start": 2230.28,
+   "duration": 4.44,
+   "text": "And I'm putting any, you know, a little"
+  },
+  {
+   "start": 2232.4,
+   "duration": 4.8,
+   "text": "bit more emphasis on this because"
+  },
+  {
+   "start": 2234.72,
+   "duration": 4.84,
+   "text": "you people get confused between auto and"
+  },
+  {
+   "start": 2237.2,
+   "duration": 4.76,
+   "text": "any. Auto means that Claude"
+  },
+  {
+   "start": 2239.56,
+   "duration": 4.2,
+   "text": "have to select one tool, but if Claude"
+  },
+  {
+   "start": 2241.96,
+   "duration": 3.68,
+   "text": "doesn't find a tool, then it might not"
+  },
+  {
+   "start": 2243.76,
+   "duration": 3.92,
+   "text": "execute the tool. Right?"
+  },
+  {
+   "start": 2245.64,
+   "duration": 4.52,
+   "text": "But if you're passing the tool choice as"
+  },
+  {
+   "start": 2247.68,
+   "duration": 3.679,
+   "text": "any, then Claude has to execute the"
+  },
+  {
+   "start": 2250.16,
+   "duration": 2.32,
+   "text": "tool."
+  },
+  {
+   "start": 2251.359,
+   "duration": 2.681,
+   "text": "That's it."
+  },
+  {
+   "start": 2252.48,
+   "duration": 4.16,
+   "text": "Because you need some structured output"
+  },
+  {
+   "start": 2254.04,
+   "duration": 4.56,
+   "text": "generation. Eliminate on site. Okay,"
+  },
+  {
+   "start": 2256.64,
+   "duration": 3.64,
+   "text": "elimination techniques. Silently"
+  },
+  {
+   "start": 2258.6,
+   "duration": 3.52,
+   "text": "returning empty arrays on failure. You"
+  },
+  {
+   "start": 2260.28,
+   "duration": 4.52,
+   "text": "don't want that. You want proper"
+  },
+  {
+   "start": 2262.12,
+   "duration": 5.16,
+   "text": "graceful handling of errors. Terminating"
+  },
+  {
+   "start": 2264.8,
+   "duration": 4.0,
+   "text": "pipelines on a single untried failure."
+  },
+  {
+   "start": 2267.28,
+   "duration": 3.6,
+   "text": "Obvi- obviously another very big"
+  },
+  {
+   "start": 2268.8,
+   "duration": 3.6,
+   "text": "anti-pattern for the exam. Don't do"
+  },
+  {
+   "start": 2270.88,
+   "duration": 3.68,
+   "text": "this."
+  },
+  {
+   "start": 2272.4,
+   "duration": 3.64,
+   "text": "Handle error gracefully. That is what I"
+  },
+  {
+   "start": 2274.56,
+   "duration": 4.16,
+   "text": "want. That is the key point of this"
+  },
+  {
+   "start": 2276.04,
+   "duration": 4.64,
+   "text": "particular lesson."
+  },
+  {
+   "start": 2278.72,
+   "duration": 4.4,
+   "text": "Okay, so that is all for this lesson,"
+  },
+  {
+   "start": 2280.68,
+   "duration": 6.32,
+   "text": "guys. See you in the next lesson. Till"
+  },
+  {
+   "start": 2283.12,
+   "duration": 3.88,
+   "text": "then, bye-bye. Tata. Take care."
+  }
+ ]
+}

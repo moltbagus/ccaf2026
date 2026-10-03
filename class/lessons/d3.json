@@ -84,9 +84,58 @@
     ],
     "answer": 1,
     "why": "Personal configuration in `~/.claude/CLAUDE.md` is never carried by git, so teammates never receive it, and team standards belong in the version-controlled project file. Deleting a section of the new developer's own file assumes a conflict where the symptom is a missing instruction, repeating the requirement assumes per-user learning the product does not do, and clearing a cache assumes a cache that does not exist.",
-    "trap": "sounds-simple"
+    "trap": "sounds_simple"
    },
    "takeaway": "Personal files never reach a teammate. Team standards go in the committed project file."
+  },
+  {
+   "task": "3.1",
+   "kind": "teach",
+   "title": "The layer nobody may opt out of",
+   "inshort": "Project file for the team; managed policy for the whole org and for rules no team can waive.",
+   "lead": "A security team mandates that every repository in the company runs the internal scan before a commit, and no team may weaken it. Reach for a project file and each team can edit or delete it in the next PR. The judgment is not only where a rule is shared, but who is allowed to not follow it.",
+   "points": [
+    "Managed policy (enterprise) sits above every other layer, is admin-controlled, and cannot be excluded or overridden.",
+    "The project `.claude/CLAUDE.md` is the team's shared layer, but the team owns it, so it can be changed in a commit.",
+    "The user file `~/.claude/CLAUDE.md` applies to all of one person's projects and reaches no teammate.",
+    "`./CLAUDE.local.md` is one person's override for one repo, gitignored, so it can never carry an org mandate.",
+    "Receipt map: managed policy reaches everyone in the org; the project file reaches everyone on the repo; user and local reach you alone."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "The exam separates 'must reach the team' from 'must reach everyone and cannot be waived'. The first is the committed project file; the second is the managed policy layer.",
+   "contrast": "Copying the mandate into each repository's project CLAUDE.md feels shared, but any team can delete it in the next commit, so it is not an org-wide requirement.",
+   "exam": "\"Applies to all repositories\", \"cannot be overridden\", \"no team may opt out\" point to managed policy, not the project file.",
+   "takeaway": "Project file for the team. Managed policy for the whole org and for anything nobody may opt out of."
+  },
+  {
+   "task": "3.1",
+   "kind": "check",
+   "title": "Gate: the rule no team may waive",
+   "inshort": "Org-wide and non-excludable means the managed policy layer.",
+   "lead": "One phrase in the stem decides it: teams must not be able to remove the requirement.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "Your organisation mandates that every repository runs the internal security scan before any commit, and individual teams must not be able to weaken or remove the requirement. Where should the instruction live?",
+    "options": [
+     "In each repository's committed `.claude/CLAUDE.md`, so every team pulls it with the code.",
+     "In the managed policy file at the OS-specific path, which is admin-controlled and cannot be excluded.",
+     "In each developer's `~/.claude/CLAUDE.md`, so it loads for every project they open.",
+     "In a `.claude/rules/` file with `paths:` frontmatter inside every repository."
+    ],
+    "answer": 1,
+    "why": "Managed policy cannot be excluded, so it holds even when a team would rather not follow it. The project file is shared but team-owned, so it can be edited or deleted in a commit; the user file reaches one developer only; and a rules file is still a project file the team controls.",
+    "trap": "sounds_shared"
+   },
+   "why": "Non-excludable org-wide rules are the one case where the answer is not the project file.",
+   "contrast": "The project file feels like the safe shared home, but 'shared' is not 'mandatory'.",
+   "exam": "\"Cannot be overridden\" or \"no team may opt out\" is the managed-policy tell.",
+   "takeaway": "Team standard goes in the project file. Org mandate that cannot be waived goes in managed policy."
   },
   {
    "task": "3.2",
@@ -143,9 +192,58 @@
     ],
     "answer": 3,
     "why": "Three problems map to three frontmatter controls: `argument-hint` for the missing argument, `context: fork` so prior conversation context does not leak in, and `allowed-tools` to make destructive tools unavailable. A description-level warning is advice rather than a restriction, splitting the skill leaves the missing-argument and context-leak problems unsolved, and prose validation is advisory where a declaration is required.",
-    "trap": "sounds-helpful"
+    "trap": "sounds_helpful"
    },
    "takeaway": "One symptom, one declaration. A warning is not a restriction."
+  },
+  {
+   "task": "3.2",
+   "kind": "teach",
+   "title": "A skill is a folder; a command is a file",
+   "inshort": "A command is one static prompt file; a skill is a directory that can carry templates, references and its own tool scope.",
+   "lead": "Both are typed as `/name`, so from the keyboard they look identical, and the exam makes you justify which one a problem calls for. The difference is what each can carry and who decides when it runs.",
+   "points": [
+    "A command is a single markdown file holding one static prompt; the same text runs every time you type its name.",
+    "A skill is a directory: `SKILL.md` is the router, and the folder can also ship `templates/` and a `reference.md` the skill pulls in, so it carries far more context.",
+    "A command runs only when a human types `/name`; a skill is also invoked on demand, but Claude can fire it automatically when its description matches the request.",
+    "Reach for a skill when the work is a multi-step procedure with its own context and tool needs; reach for a command when it is a reusable static prompt.",
+    "A fifty-step checklist sitting in `CLAUDE.md` loads into every session; the same checklist as a skill loads only when it is needed."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "The exam contrasts the three surfaces: CLAUDE.md is ambient, a command is an explicitly invoked static prompt, and a skill is an on-demand procedure that can carry supporting files and a restricted tool set.",
+   "contrast": "Dumping a long procedural checklist into CLAUDE.md feels like making it always available, but it pollutes every session with steps that rarely apply.",
+   "exam": "\"Available to all contributors\" means project scope; \"multi-step procedure\", \"needs specific tools\" or \"runs on demand\" means a skill.",
+   "takeaway": "Static reusable prompt is a command. Multi-step, tool-scoped, folder-backed procedure is a skill."
+  },
+  {
+   "task": "3.2",
+   "kind": "check",
+   "title": "Gate: static prompt or procedure",
+   "inshort": "Multi-step, tool-scoped work is a skill; a bloated checklist moves out of CLAUDE.md into one.",
+   "lead": "Two jobs in one stem: a fixed procedure the team runs every release, and a long checklist that is polluting every session.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "A team wants a reusable `/release-notes` action that reads the merged PRs, groups them by area, writes a changelog file and posts a summary, using only read and write tools. They also have a 40-step onboarding checklist currently pasted into the project `CLAUDE.md`, loaded in every session. Which approach is most effective?",
+    "options": [
+     "Make `/release-notes` a skill in `.claude/skills/` with `allowed-tools` limited to the read and write tools it needs, and move the onboarding checklist out of `CLAUDE.md` into its own skill.",
+     "Make both a single `.claude/commands/` file each, since commands and skills behave identically.",
+     "Keep the onboarding checklist in `CLAUDE.md` and add `/release-notes` as a command so it stays simple.",
+     "Put `/release-notes` in `~/.claude/skills/` so it is available across the developer's own projects."
+    ],
+    "answer": 0,
+    "why": "A fixed multi-step procedure that needs a bounded tool set is a skill, and `allowed-tools` enforces least privilege; the 40-step checklist is a procedure that belongs in a skill so it stops loading into every session. Commands cannot carry supporting files or a tool scope, and leaving the checklist in `CLAUDE.md` keeps polluting every session. User scope is not shared, so the team would not receive `/release-notes`.",
+    "trap": "sounds_simple"
+   },
+   "why": "The stem names a procedure, a tool restriction and a bloated ambient file; each maps to the same fix.",
+   "contrast": "Treating a procedure as a command is tempting because a command is quicker to write, but it cannot hold the steps, the tools or the supporting files.",
+   "exam": "\"Multi-step procedure\" plus \"only these tools\" is a skill with `allowed-tools`, not a command.",
+   "takeaway": "Procedure becomes a skill. Reusable prompt stays a command. Long checklists leave CLAUDE.md."
   },
   {
    "task": "3.3",
@@ -202,9 +300,58 @@
     ],
     "answer": 0,
     "why": "Glob-frontmatter rules apply a convention deterministically by path, including to test files distributed next to their source, which is exactly what a directory file cannot reach. Inference from headings is non-deterministic and fails when conventions overlap, a skill is opt-in so nothing applies automatically as code is generated, and one CLAUDE.md per subdirectory leaves the tests living outside those directories uncovered.",
-    "trap": "sounds-smart"
+    "trap": "sounds_smart"
    },
    "takeaway": "Globs follow the pattern. Directory files only follow the directory."
+  },
+  {
+   "task": "3.3",
+   "kind": "teach",
+   "title": "Two globs, two meanings",
+   "inshort": "`*` matches one directory level; `**` matches any depth. That one difference decides whether a rule follows the pattern everywhere.",
+   "lead": "A rule is only as precise as its glob. The exam tests `*` against `**`, and the trap is a pattern that looks like it covers the tree but stops one level down.",
+   "points": [
+    "`**` matches any number of directories, at any depth; `*` matches within a single directory level only.",
+    "`**/*.test.ts` is every test file anywhere; `src/api/*.ts` is only TypeScript files directly in `src/api`, not in its subfolders.",
+    "`terraform/**/*` is every file under `terraform` at any depth, which is why one rule covers directories that do not exist yet.",
+    "`paths:` globs are matched against the file Claude is about to work on, regardless of where in the tree it sits.",
+    "A pattern with a single `*` in the middle looks like it covers the tree but silently stops one level down."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "The conditional load is the whole value of a rule, and the glob decides which files trigger it. `**` is what lets one rule follow a pattern across the codebase; `*` anchors it to one level.",
+   "contrast": "A shorter glob such as `*/migrations/*` looks tidy, but it reaches only one directory deep and misses nested service folders.",
+   "exam": "When the stem says a pattern appears 'at any depth' or 'wherever it lives', the correct glob uses `**`.",
+   "takeaway": "`*` is one level. `**` is any depth. Use `**` when the pattern must follow the files."
+  },
+  {
+   "task": "3.3",
+   "kind": "check",
+   "title": "Gate: one directory or any depth",
+   "inshort": "The pattern must follow the files to a new, deeper location, so the glob needs `**`.",
+   "lead": "The stem tells you where the files live today and where they are about to appear. Read the depth, then choose the glob.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "Migration files currently live under `db/migrations/`, and the platform team is about to add `services/billing/db/migrations/` and `services/auth/db/migrations/`. One rule must apply to every migration file, present and future, wherever it lives. Which `paths:` entry is correct?",
+    "options": [
+     "`db/migrations/*`",
+     "`**/migrations/**/*`",
+     "`*/migrations/*`",
+     "`db/**/migrations/*.sql`"
+    ],
+    "answer": 1,
+    "why": "`**/migrations/**/*` matches a `migrations` directory at any depth and every file beneath it, so it follows the files into the new service trees automatically. `db/migrations/*` covers only the one existing tree; `*/migrations/*` reaches a single directory level, so `services/billing/db/migrations/` two levels down is missed; `db/**/migrations/*.sql` is anchored to `db/` and only matches `.sql`.",
+    "trap": "sounds_precise"
+   },
+   "why": "A glob anchored to today's path or limited to one level cannot follow a pattern the stem says will move deeper.",
+   "contrast": "The narrow glob matches everything in the repository today, which is exactly why it passes review and then fails when the new directories appear.",
+   "exam": "\"Wherever it lives\" plus \"any depth\" is the `**` tell.",
+   "takeaway": "`**` follows the pattern. A single `*` stops at one level and misses the new folders."
   },
   {
    "task": "3.4",
@@ -261,7 +408,7 @@
     ],
     "answer": 2,
     "why": "Several valid approaches with materially different architectural consequences, plus a requirement that decides nothing, is exactly the plan-mode trigger. Committing to webhooks or to bot tokens decides the trade-off before anyone reviews it, and scaffolding a class before the integration method is chosen builds structure that gets thrown away.",
-    "trap": "sounds-efficient"
+    "trap": "sounds_efficient"
    },
    "takeaway": "Undecided approach plus real consequences means plan mode, however eager the pattern match feels."
   },
@@ -282,6 +429,56 @@
    "code": null,
    "ask": null,
    "takeaway": "Noisy reconnaissance goes to Explore. The main window keeps the summary, not the search output."
+  },
+  {
+   "task": "3.4",
+   "kind": "teach",
+   "title": "Four signals that force a plan",
+   "inshort": "More than one file non-trivially, multiple valid approaches, expensive to reverse, or alters architectural shape: any one of these means plan first.",
+   "lead": "\"It is just repetitive edits\" is the sentence that gets people. Repetition is not the test; whether decisions remain is. Four signals settle it, and a greenfield build adds a fifth reason to plan.",
+   "points": [
+    "The change touches more than one file non-trivially.",
+    "There are multiple valid approaches, so a human must choose before code is written.",
+    "It is expensive to reverse, such as a half-finished refactor with broken imports and failing tests.",
+    "It alters the architectural shape of the system, which needs a decision, not an edit.",
+    "Starting an application from scratch also earns a plan: the blueprint is where better foundations get proposed before any code exists.",
+    "Plan mode is the investigation phase, and execution follows after approval. They are sequential, not rivals."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": null,
+   "why": "The exam classifies a described task as plan or execute, and the traps are scale framing ('it is mechanical') and ceremony framing ('planning always helps'). Naming the four signals lets you answer the classification and reject both traps.",
+   "contrast": "Treating a large, undecided change as direct execution because the edits repeat is the classic wrong move: the first file locks in an approach the rest then follow, and reverting is costly.",
+   "exam": "Any of the four signals, or a from-scratch build with real design choices, is a plan-mode stem.",
+   "takeaway": "If decisions remain, plan. A plan is the bridge to execution, not a rival of it."
+  },
+  {
+   "task": "3.4",
+   "kind": "check",
+   "title": "Gate: repetitive but undecided",
+   "inshort": "Repetition is not the test; the four signals are.",
+   "lead": "The word 'repetitive' is the bait. Read past it to how many files, how many approaches, and how expensive a mistake would be.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "You are asked to extract database queries scattered across a 200-file monolith and move them behind an ORM. The edits look repetitive, the queries have different shapes, and the change touches data-access code across the whole service. Which approach is most effective?",
+    "options": [
+     "Use plan mode to map the affected files and design a phased strategy, then execute the migration.",
+     "Start direct execution because the edit is repetitive and Claude can adjust as it goes.",
+     "Run an autonomous migration script across all files with no user input.",
+     "Build an extensive test suite for every service before choosing any migration approach."
+    ],
+    "answer": 0,
+    "why": "More than one file non-trivially, several valid approaches, expensive to reverse and an architectural impact: all four plan-mode signals are present. Repetition does not make the work known. An un-reviewed autonomous rewrite is the failure the plan prevents, and building tests first still leaves the open decision about the migration strategy that planning settles on top of the existing tests.",
+    "trap": "sounds_mechanical"
+   },
+   "why": "The stem supplies all four plan signals and dresses them as repetitive work.",
+   "contrast": "'The edits repeat' invites direct execution, but different query shapes mean the approach is still being decided file by file.",
+   "exam": "A large multi-file migration with architectural impact is plan mode, however mechanical the edits look.",
+   "takeaway": "Repetitive edits are not known work. Decisions remaining means plan."
   },
   {
    "task": "3.5",
@@ -415,7 +612,7 @@
     ],
     "answer": 3,
     "why": "`-p`, or `--print`, is the documented non-interactive mode: it processes the prompt, prints to stdout and exits without waiting for input. A longer timeout waits just as long because nothing will ever arrive, `/dev/null` is not the documented headless mode and skips print-mode structured output and exit behaviour, and `CLAUDE_HEADLESS` is an environment variable that does not exist.",
-    "trap": "sounds-pragmatic"
+    "trap": "sounds_pragmatic"
    },
    "takeaway": "`-p` is the fix. Every other option changes the quality of the waiting."
   },
@@ -456,7 +653,7 @@
     ],
     "answer": 0,
     "why": "The generator retains the reasoning context that produced the code and is therefore biased toward its own conclusions, so review must come from an instance without that context, which is why human peer review works. A self-review step is the same session attempting self-critique, reusing the generating session is the anti-pattern the symptom describes, and requiring a second human reviewer leaves the model's blind spot intact.",
-    "trap": "sounds-efficient"
+    "trap": "sounds_efficient"
    },
    "takeaway": "The perspective that produced the code cannot judge it. Independence is the fix."
   },
@@ -477,6 +674,55 @@
    "code": null,
    "ask": null,
    "takeaway": "Log before compaction with the PreCompact hook. Memory advises; a hook enforces."
+  },
+  {
+   "task": "3.6",
+   "kind": "teach",
+   "title": "The gate the schema unlocks",
+   "inshort": "Schema'd findings are not the end of the pipeline; a later job reads the severity field and blocks the merge without a human.",
+   "lead": "Machine-readable output is not the goal in itself; it is the input to the next step. When findings arrive as schema-constrained JSON, a downstream job can parse severity and stop a bad merge on its own.",
+   "points": [
+    "`--output-format json` with `--json-schema` makes every finding carry the same fields, so a later step can parse it with `jq` instead of reading prose.",
+    "The gate step: if any finding's severity is critical, exit non-zero and block the merge; otherwise let the pipeline continue.",
+    "Each step runs in a fresh session, seeded with prior findings, so a review never re-reviews what was already reported.",
+    "The project's standards travel into every fresh session through `CLAUDE.md`, so each step starts with review criteria, security policy and testing requirements.",
+    "The full sequence: `CLAUDE.md` for context, load prior findings, a fresh session, `-p` for non-interactive execution, `--output-format json --json-schema` for the shape, then act on the findings and block on critical."
+   ],
+   "diagram": null,
+   "caption": null,
+   "code": "claude -p \"Review this PR\" --output-format json --json-schema review-schema.json > findings.json\njq -e 'any(.findings[]; .severity == \"critical\")' findings.json && exit 1 || exit 0",
+   "ask": null,
+   "why": "Prose findings can only be read by a human; schema'd findings can be read by the next job. The exam tests the whole chain, not just the flag that produces the JSON.",
+   "contrast": "Asking CLAUDE.md to describe the output format keeps the findings readable to a person but not reliably parseable by the next job.",
+   "exam": "\"Block the merge automatically\", \"read the severity\", or \"the next step needs structured output\" points to `--output-format json` with `--json-schema`.",
+   "takeaway": "Schema'd findings let a downstream job read severity and block the merge without a human."
+  },
+  {
+   "task": "3.6",
+   "kind": "check",
+   "title": "Gate: the next step cannot read prose",
+   "inshort": "A machine gate needs schema'd output, not better paragraphs.",
+   "lead": "The later job has to make a decision on its own. Ask what it can actually read.",
+   "points": [],
+   "diagram": null,
+   "caption": null,
+   "code": null,
+   "ask": {
+    "q": "Your pipeline runs a Claude review step, and a later job must automatically block the merge when any critical finding exists. The review currently returns paragraphs of prose. Which approach is most effective?",
+    "options": [
+     "Run the review with `-p --output-format json --json-schema`, then have the later job parse the severity field and exit non-zero on any critical finding.",
+     "Keep the prose review and have the later job scan the text for the word 'critical'.",
+     "Describe the exact output format in `CLAUDE.md` so the review returns consistent paragraphs.",
+     "Increase the review step's timeout so the model has time to format the findings."
+    ],
+    "answer": 0,
+    "why": "`--json-schema` makes the shape a condition of the output, so the downstream job can read severity reliably and block the merge. Scanning prose for a keyword breaks the moment the phrasing shifts; a CLAUDE.md description is guidance rather than enforcement; and the problem is the shape of the output, not the time it has.",
+    "trap": "sounds_pragmatic"
+   },
+   "why": "The downstream job must decide on its own, which requires a shape it can parse.",
+   "contrast": "Keyword-scanning the prose is the quick fix that works until the model phrases a critical finding differently.",
+   "exam": "\"Automatically block\", \"parse the severity\", \"no human reads it\" means schema'd output.",
+   "takeaway": "A gate needs schema'd findings. Prose is for humans, not for the next job."
   },
   {
    "task": "3.6",

@@ -1,0 +1,1762 @@
+{
+ "video_id": "e7ijjK173zI",
+ "episode": "Ep 04",
+ "title": "Multi-Agent System in Python & Claude SDK (Hands On)",
+ "segments": [
+  {
+   "start": 7.84,
+   "duration": 4.88,
+   "text": "capstone project one of the capstone"
+  },
+  {
+   "start": 10.28,
+   "duration": 3.68,
+   "text": "projects for this particular"
+  },
+  {
+   "start": 12.72,
+   "duration": 3.68,
+   "text": "course"
+  },
+  {
+   "start": 13.96,
+   "duration": 5.28,
+   "text": "and this is what we are going to cover"
+  },
+  {
+   "start": 16.4,
+   "duration": 4.68,
+   "text": "in our capstone project, right?"
+  },
+  {
+   "start": 19.24,
+   "duration": 3.92,
+   "text": "So basically"
+  },
+  {
+   "start": 21.08,
+   "duration": 4.0,
+   "text": "it is marked as episodes. You can just"
+  },
+  {
+   "start": 23.16,
+   "duration": 5.04,
+   "text": "treat it as lessons. I think before this"
+  },
+  {
+   "start": 25.08,
+   "duration": 4.88,
+   "text": "we have covered three lessons, right?"
+  },
+  {
+   "start": 28.2,
+   "duration": 3.72,
+   "text": "So"
+  },
+  {
+   "start": 29.96,
+   "duration": 4.16,
+   "text": "we talked about agentic loop, we talked"
+  },
+  {
+   "start": 31.92,
+   "duration": 3.56,
+   "text": "about coordinator and multi agents and"
+  },
+  {
+   "start": 34.12,
+   "duration": 3.96,
+   "text": "we have talked about context and"
+  },
+  {
+   "start": 35.48,
+   "duration": 5.28,
+   "text": "sessions, right? So by combining all"
+  },
+  {
+   "start": 38.08,
+   "duration": 4.92,
+   "text": "these concepts I have created a simple"
+  },
+  {
+   "start": 40.76,
+   "duration": 3.96,
+   "text": "project agentic project that will help"
+  },
+  {
+   "start": 43.0,
+   "duration": 2.84,
+   "text": "you to understand where all these things"
+  },
+  {
+   "start": 44.72,
+   "duration": 2.76,
+   "text": "come into."
+  },
+  {
+   "start": 45.84,
+   "duration": 4.6,
+   "text": "So let's first understand the scenario"
+  },
+  {
+   "start": 47.48,
+   "duration": 5.4,
+   "text": "for this particular project or you know,"
+  },
+  {
+   "start": 50.44,
+   "duration": 5.92,
+   "text": "file."
+  },
+  {
+   "start": 52.88,
+   "duration": 6.8,
+   "text": "Scenario is customer C001"
+  },
+  {
+   "start": 56.36,
+   "duration": 5.32,
+   "text": "wants a refund for order 0100. So there"
+  },
+  {
+   "start": 59.68,
+   "duration": 4.2,
+   "text": "is a customer, there is a order, some"
+  },
+  {
+   "start": 61.68,
+   "duration": 5.48,
+   "text": "problem occurred and this particular"
+  },
+  {
+   "start": 63.88,
+   "duration": 6.12,
+   "text": "customer wants a refund as of now."
+  },
+  {
+   "start": 67.16,
+   "duration": 4.52,
+   "text": "Now there is a coordinator."
+  },
+  {
+   "start": 70.0,
+   "duration": 4.6,
+   "text": "There's a coordinator."
+  },
+  {
+   "start": 71.68,
+   "duration": 5.08,
+   "text": "This coordinator agent will spawn a"
+  },
+  {
+   "start": 74.6,
+   "duration": 5.44,
+   "text": "customer verify sub agent which will"
+  },
+  {
+   "start": 76.76,
+   "duration": 4.96,
+   "text": "verify if the customer exists or not or"
+  },
+  {
+   "start": 80.04,
+   "duration": 3.2,
+   "text": "if the customer is verified or not. You"
+  },
+  {
+   "start": 81.72,
+   "duration": 3.92,
+   "text": "can change the logic as much as you"
+  },
+  {
+   "start": 83.24,
+   "duration": 2.4,
+   "text": "want."
+  },
+  {
+   "start": 85.72,
+   "duration": 5.64,
+   "text": "Pass its structured finding forward."
+  },
+  {
+   "start": 89.4,
+   "duration": 3.52,
+   "text": "So that will cover context passing where"
+  },
+  {
+   "start": 91.36,
+   "duration": 4.24,
+   "text": "we talked about you know, you have to be"
+  },
+  {
+   "start": 92.92,
+   "duration": 4.68,
+   "text": "very much of structured you the context"
+  },
+  {
+   "start": 95.6,
+   "duration": 4.2,
+   "text": "whatever you passing to the next sub"
+  },
+  {
+   "start": 97.6,
+   "duration": 5.12,
+   "text": "agent should be structured. The prompt"
+  },
+  {
+   "start": 99.8,
+   "duration": 3.92,
+   "text": "should be very much of nice."
+  },
+  {
+   "start": 102.72,
+   "duration": 2.64,
+   "text": "Then"
+  },
+  {
+   "start": 103.72,
+   "duration": 4.4,
+   "text": "on the basis of that structured"
+  },
+  {
+   "start": 105.36,
+   "duration": 4.0,
+   "text": "findings, it will spawn a processor sub"
+  },
+  {
+   "start": 108.12,
+   "duration": 3.0,
+   "text": "agent."
+  },
+  {
+   "start": 109.36,
+   "duration": 3.24,
+   "text": "And"
+  },
+  {
+   "start": 111.12,
+   "duration": 3.32,
+   "text": "it's it will cover the concept of"
+  },
+  {
+   "start": 112.6,
+   "duration": 3.76,
+   "text": "delegation."
+  },
+  {
+   "start": 114.44,
+   "duration": 5.04,
+   "text": "And then we are going to aggregate the"
+  },
+  {
+   "start": 116.36,
+   "duration": 4.56,
+   "text": "results, basically, and then display the"
+  },
+  {
+   "start": 119.48,
+   "duration": 4.88,
+   "text": "output."
+  },
+  {
+   "start": 120.92,
+   "duration": 5.8,
+   "text": "Each sub-agent run its own agentic loop."
+  },
+  {
+   "start": 124.36,
+   "duration": 3.6,
+   "text": "Right? That is very much easy to"
+  },
+  {
+   "start": 126.72,
+   "duration": 2.64,
+   "text": "understand because even though they are"
+  },
+  {
+   "start": 127.96,
+   "duration": 3.12,
+   "text": "sub-agents, they are still agents,"
+  },
+  {
+   "start": 129.36,
+   "duration": 5.4,
+   "text": "right? So, obviously, they will be"
+  },
+  {
+   "start": 131.08,
+   "duration": 5.96,
+   "text": "running their own agentic loops."
+  },
+  {
+   "start": 134.76,
+   "duration": 3.96,
+   "text": "Right? So, as we saw the scenario, now"
+  },
+  {
+   "start": 137.04,
+   "duration": 3.16,
+   "text": "let's go through the code real quick,"
+  },
+  {
+   "start": 138.72,
+   "duration": 3.92,
+   "text": "and then we'll have a quick run, and"
+  },
+  {
+   "start": 140.2,
+   "duration": 4.4,
+   "text": "we'll see the results, okay?"
+  },
+  {
+   "start": 142.64,
+   "duration": 3.64,
+   "text": "So, here we are calling the coordinator."
+  },
+  {
+   "start": 144.6,
+   "duration": 3.8,
+   "text": "Basically, in this function, this is"
+  },
+  {
+   "start": 146.28,
+   "duration": 3.84,
+   "text": "basically the coordinator. Let me Why it"
+  },
+  {
+   "start": 148.4,
+   "duration": 3.92,
+   "text": "is not going inside the coordinator?"
+  },
+  {
+   "start": 150.12,
+   "duration": 5.48,
+   "text": "Okay, it's went here. So, here I have"
+  },
+  {
+   "start": 152.32,
+   "duration": 4.96,
+   "text": "just marked it. I'll also provide this"
+  },
+  {
+   "start": 155.6,
+   "duration": 3.04,
+   "text": "code as part of, you know, I'll provide"
+  },
+  {
+   "start": 157.28,
+   "duration": 2.32,
+   "text": "as a Git repository. You can have a"
+  },
+  {
+   "start": 158.64,
+   "duration": 2.4,
+   "text": "look."
+  },
+  {
+   "start": 159.6,
+   "duration": 3.08,
+   "text": "So, coordinator decomposition,"
+  },
+  {
+   "start": 161.04,
+   "duration": 3.36,
+   "text": "coordinator breaks down the request into"
+  },
+  {
+   "start": 162.68,
+   "duration": 4.4,
+   "text": "subtask, and then delegates. That is"
+  },
+  {
+   "start": 164.4,
+   "duration": 4.88,
+   "text": "what we had covered in the second lesson"
+  },
+  {
+   "start": 167.08,
+   "duration": 3.76,
+   "text": "or the second episode. And then we had"
+  },
+  {
+   "start": 169.28,
+   "duration": 3.32,
+   "text": "covered about structured context"
+  },
+  {
+   "start": 170.84,
+   "duration": 3.16,
+   "text": "passing, how"
+  },
+  {
+   "start": 172.6,
+   "duration": 3.92,
+   "text": "you know, you should pass the context to"
+  },
+  {
+   "start": 174.0,
+   "duration": 4.6,
+   "text": "the sub-agent, so it will get more idea"
+  },
+  {
+   "start": 176.52,
+   "duration": 2.92,
+   "text": "about what is happening, right?"
+  },
+  {
+   "start": 178.6,
+   "duration": 3.04,
+   "text": "So,"
+  },
+  {
+   "start": 179.44,
+   "duration": 3.72,
+   "text": "first subtask is to verify the"
+  },
+  {
+   "start": 181.64,
+   "duration": 4.04,
+   "text": "customer. Now, for that, we'll use"
+  },
+  {
+   "start": 183.16,
+   "duration": 4.92,
+   "text": "sub-agent one."
+  },
+  {
+   "start": 185.68,
+   "duration": 4.08,
+   "text": "Now, the verification task, look up"
+  },
+  {
+   "start": 188.08,
+   "duration": 3.4,
+   "text": "customer with the this particular"
+  },
+  {
+   "start": 189.76,
+   "duration": 3.28,
+   "text": "customer ID. With this customer ID,"
+  },
+  {
+   "start": 191.48,
+   "duration": 2.6,
+   "text": "we're passing inside this coordinator"
+  },
+  {
+   "start": 193.04,
+   "duration": 3.72,
+   "text": "function."
+  },
+  {
+   "start": 194.08,
+   "duration": 5.84,
+   "text": "And confirm that they exist."
+  },
+  {
+   "start": 196.76,
+   "duration": 4.84,
+   "text": "Now, we are running the sub-agent."
+  },
+  {
+   "start": 199.92,
+   "duration": 3.12,
+   "text": "We are putting the verification task."
+  },
+  {
+   "start": 201.6,
+   "duration": 4.0,
+   "text": "This is the prompt, and this is the"
+  },
+  {
+   "start": 203.04,
+   "duration": 4.96,
+   "text": "tool. So, if you go to the tools array,"
+  },
+  {
+   "start": 205.6,
+   "duration": 3.56,
+   "text": "let me go to the tools array real quick."
+  },
+  {
+   "start": 208.0,
+   "duration": 3.56,
+   "text": "So,"
+  },
+  {
+   "start": 209.16,
+   "duration": 4.2,
+   "text": "if you see over here, obviously, for"
+  },
+  {
+   "start": 211.56,
+   "duration": 4.04,
+   "text": "invoking a tool, this is the tool"
+  },
+  {
+   "start": 213.36,
+   "duration": 3.84,
+   "text": "schema, right? And we mention the"
+  },
+  {
+   "start": 215.6,
+   "duration": 3.56,
+   "text": "functions or the tools that are"
+  },
+  {
+   "start": 217.2,
+   "duration": 3.24,
+   "text": "available, so that Claude will know,"
+  },
+  {
+   "start": 219.16,
+   "duration": 3.079,
+   "text": "\"Okay, these are the tools that are"
+  },
+  {
+   "start": 220.44,
+   "duration": 4.0,
+   "text": "available, and these are the tools I"
+  },
+  {
+   "start": 222.239,
+   "duration": 4.241,
+   "text": "need to use.\" This I already discussed"
+  },
+  {
+   "start": 224.44,
+   "duration": 3.44,
+   "text": "in the first lesson. In the first"
+  },
+  {
+   "start": 226.48,
+   "duration": 3.16,
+   "text": "lesson, uh"
+  },
+  {
+   "start": 227.88,
+   "duration": 4.6,
+   "text": "we had discussed about this. So, we have"
+  },
+  {
+   "start": 229.64,
+   "duration": 4.4,
+   "text": "get customer to to verify the customer,"
+  },
+  {
+   "start": 232.48,
+   "duration": 3.16,
+   "text": "and customer ID is required for"
+  },
+  {
+   "start": 234.04,
+   "duration": 2.92,
+   "text": "verification and these are the"
+  },
+  {
+   "start": 235.64,
+   "duration": 3.76,
+   "text": "properties."
+  },
+  {
+   "start": 236.96,
+   "duration": 4.24,
+   "text": "And then we have look up order. This is"
+  },
+  {
+   "start": 239.4,
+   "duration": 4.2,
+   "text": "also one more function I'll show you,"
+  },
+  {
+   "start": 241.2,
+   "duration": 3.76,
+   "text": "but it's a tool basically to let Claude"
+  },
+  {
+   "start": 243.6,
+   "duration": 3.56,
+   "text": "know you have to"
+  },
+  {
+   "start": 244.96,
+   "duration": 4.12,
+   "text": "pass in this as a tool obviously. So it"
+  },
+  {
+   "start": 247.16,
+   "duration": 4.0,
+   "text": "will know when to use which tool. And"
+  },
+  {
+   "start": 249.08,
+   "duration": 5.8,
+   "text": "then we have one more known as process"
+  },
+  {
+   "start": 251.16,
+   "duration": 5.44,
+   "text": "refund. Issue a refund for an order."
+  },
+  {
+   "start": 254.88,
+   "duration": 4.24,
+   "text": "Now for"
+  },
+  {
+   "start": 256.6,
+   "duration": 4.24,
+   "text": "you know for demo purposes I've created"
+  },
+  {
+   "start": 259.12,
+   "duration": 4.2,
+   "text": "a simple"
+  },
+  {
+   "start": 260.84,
+   "duration": 4.48,
+   "text": "you know demo DB. Okay, a fake DB and"
+  },
+  {
+   "start": 263.32,
+   "duration": 4.72,
+   "text": "fake orders over here. So if you see I"
+  },
+  {
+   "start": 265.32,
+   "duration": 4.08,
+   "text": "think we have passed the C001"
+  },
+  {
+   "start": 268.04,
+   "duration": 2.72,
+   "text": "customer"
+  },
+  {
+   "start": 269.4,
+   "duration": 3.08,
+   "text": "with a particular"
+  },
+  {
+   "start": 270.76,
+   "duration": 4.159,
+   "text": "you know"
+  },
+  {
+   "start": 272.48,
+   "duration": 5.12,
+   "text": "0100 order ID."
+  },
+  {
+   "start": 274.919,
+   "duration": 4.361,
+   "text": "Or sorry, 0101 order ID. So it is"
+  },
+  {
+   "start": 277.6,
+   "duration": 3.319,
+   "text": "already there. So it should give us a"
+  },
+  {
+   "start": 279.28,
+   "duration": 3.84,
+   "text": "refunded status or something. Let me"
+  },
+  {
+   "start": 280.919,
+   "duration": 4.641,
+   "text": "check which order ID it was."
+  },
+  {
+   "start": 283.12,
+   "duration": 4.16,
+   "text": "Order ID 0100. So it should it should be"
+  },
+  {
+   "start": 285.56,
+   "duration": 4.16,
+   "text": "delivered I guess. Okay, the status is"
+  },
+  {
+   "start": 287.28,
+   "duration": 4.04,
+   "text": "delivered for that particular order ID."
+  },
+  {
+   "start": 289.72,
+   "duration": 3.56,
+   "text": "And these are the functions basically"
+  },
+  {
+   "start": 291.32,
+   "duration": 3.52,
+   "text": "which will execute as part of tool"
+  },
+  {
+   "start": 293.28,
+   "duration": 3.72,
+   "text": "execution."
+  },
+  {
+   "start": 294.84,
+   "duration": 4.079,
+   "text": "Okay? And then we'll append the results"
+  },
+  {
+   "start": 297.0,
+   "duration": 3.76,
+   "text": "back to Claude. Whatever we got from"
+  },
+  {
+   "start": 298.919,
+   "duration": 3.681,
+   "text": "those but whatever responses we got from"
+  },
+  {
+   "start": 300.76,
+   "duration": 3.88,
+   "text": "that particular tools obviously. That is"
+  },
+  {
+   "start": 302.6,
+   "duration": 3.84,
+   "text": "how we do, right?"
+  },
+  {
+   "start": 304.64,
+   "duration": 3.68,
+   "text": "Okay, so that is pretty simple and this"
+  },
+  {
+   "start": 306.44,
+   "duration": 3.84,
+   "text": "is the tool registry. So just to know"
+  },
+  {
+   "start": 308.32,
+   "duration": 4.32,
+   "text": "which tool is mapping to which"
+  },
+  {
+   "start": 310.28,
+   "duration": 5.32,
+   "text": "particular function."
+  },
+  {
+   "start": 312.64,
+   "duration": 6.76,
+   "text": "Okay? So that is pretty much of what we"
+  },
+  {
+   "start": 315.6,
+   "duration": 6.24,
+   "text": "are doing and if you see run sub agent,"
+  },
+  {
+   "start": 319.4,
+   "duration": 4.4,
+   "text": "it will take the role which particular"
+  },
+  {
+   "start": 321.84,
+   "duration": 4.4,
+   "text": "sub agent it has to run. This is just"
+  },
+  {
+   "start": 323.8,
+   "duration": 5.4,
+   "text": "normal logic over here and then the list"
+  },
+  {
+   "start": 326.24,
+   "duration": 5.96,
+   "text": "of tools that particular agent has to"
+  },
+  {
+   "start": 329.2,
+   "duration": 5.84,
+   "text": "you know run and the prompt. Okay,"
+  },
+  {
+   "start": 332.2,
+   "duration": 5.04,
+   "text": "pretty simple to understand."
+  },
+  {
+   "start": 335.04,
+   "duration": 3.92,
+   "text": "As we know that the sub agent is just"
+  },
+  {
+   "start": 337.24,
+   "duration": 4.28,
+   "text": "another agentic loop, right? It is"
+  },
+  {
+   "start": 338.96,
+   "duration": 4.12,
+   "text": "nothing different from a normal agent."
+  },
+  {
+   "start": 341.52,
+   "duration": 3.56,
+   "text": "It's just we name it as a sub agent"
+  },
+  {
+   "start": 343.08,
+   "duration": 4.28,
+   "text": "because it is being spawned by the"
+  },
+  {
+   "start": 345.08,
+   "duration": 4.92,
+   "text": "coordinator. Right?"
+  },
+  {
+   "start": 347.36,
+   "duration": 5.6,
+   "text": "Pretty simple to understand."
+  },
+  {
+   "start": 350.0,
+   "duration": 5.52,
+   "text": "Okay? Now, the coordinator first"
+  },
+  {
+   "start": 352.96,
+   "duration": 4.88,
+   "text": "executes the verification sub agent,"
+  },
+  {
+   "start": 355.52,
+   "duration": 4.16,
+   "text": "which will verify the customer."
+  },
+  {
+   "start": 357.84,
+   "duration": 3.52,
+   "text": "Now, once we receive the verification"
+  },
+  {
+   "start": 359.68,
+   "duration": 4.52,
+   "text": "finding, which is the basically result"
+  },
+  {
+   "start": 361.36,
+   "duration": 4.84,
+   "text": "from the sub agent number one, we"
+  },
+  {
+   "start": 364.2,
+   "duration": 3.84,
+   "text": "pass that structured finding to the next"
+  },
+  {
+   "start": 366.2,
+   "duration": 3.84,
+   "text": "sub agent."
+  },
+  {
+   "start": 368.04,
+   "duration": 3.48,
+   "text": "Okay? For now, we are not particularly"
+  },
+  {
+   "start": 370.04,
+   "duration": 3.24,
+   "text": "doing much structuring. We're just"
+  },
+  {
+   "start": 371.52,
+   "duration": 3.92,
+   "text": "passing it on to the next sub agent,"
+  },
+  {
+   "start": 373.28,
+   "duration": 3.52,
+   "text": "whatever we find over here."
+  },
+  {
+   "start": 375.44,
+   "duration": 2.84,
+   "text": "Right?"
+  },
+  {
+   "start": 376.8,
+   "duration": 4.52,
+   "text": "Okay?"
+  },
+  {
+   "start": 378.28,
+   "duration": 6.16,
+   "text": "But, if you have a complicated task, you"
+  },
+  {
+   "start": 381.32,
+   "duration": 5.599,
+   "text": "would do much more than that."
+  },
+  {
+   "start": 384.44,
+   "duration": 2.479,
+   "text": "Okay?"
+  },
+  {
+   "start": 387.36,
+   "duration": 3.52,
+   "text": "So, we are not just saying here's what"
+  },
+  {
+   "start": 389.52,
+   "duration": 4.04,
+   "text": "the last agent found, but we are"
+  },
+  {
+   "start": 390.88,
+   "duration": 4.28,
+   "text": "actually passing in a typed dict with"
+  },
+  {
+   "start": 393.56,
+   "duration": 3.48,
+   "text": "explicit fields. That is what it we're"
+  },
+  {
+   "start": 395.16,
+   "duration": 2.92,
+   "text": "telling."
+  },
+  {
+   "start": 397.04,
+   "duration": 2.08,
+   "text": "Okay?"
+  },
+  {
+   "start": 398.08,
+   "duration": 3.0,
+   "text": "Now,"
+  },
+  {
+   "start": 399.12,
+   "duration": 3.92,
+   "text": "sub agent sub task two, process the"
+  },
+  {
+   "start": 401.08,
+   "duration": 4.72,
+   "text": "refund, gets the verification finding"
+  },
+  {
+   "start": 403.04,
+   "duration": 5.32,
+   "text": "explicitly. Context must be passed."
+  },
+  {
+   "start": 405.8,
+   "duration": 5.0,
+   "text": "Now, prior verification,"
+  },
+  {
+   "start": 408.36,
+   "duration": 4.08,
+   "text": "now, this looks up the order, confirms"
+  },
+  {
+   "start": 410.8,
+   "duration": 3.72,
+   "text": "it belongs to the customer, and if"
+  },
+  {
+   "start": 412.44,
+   "duration": 3.72,
+   "text": "confirmed, processes the refund. So,"
+  },
+  {
+   "start": 414.52,
+   "duration": 4.28,
+   "text": "this is what it is doing over here. See,"
+  },
+  {
+   "start": 416.16,
+   "duration": 5.4,
+   "text": "this refund finding is also a refund"
+  },
+  {
+   "start": 418.8,
+   "duration": 4.119,
+   "text": "processor sub agent. I just showed you"
+  },
+  {
+   "start": 421.56,
+   "duration": 2.76,
+   "text": "one more"
+  },
+  {
+   "start": 422.919,
+   "duration": 3.321,
+   "text": "refund"
+  },
+  {
+   "start": 424.32,
+   "duration": 4.2,
+   "text": "function right there, right? It will"
+  },
+  {
+   "start": 426.24,
+   "duration": 4.0,
+   "text": "calculate if the customer is eligible"
+  },
+  {
+   "start": 428.52,
+   "duration": 3.24,
+   "text": "for the refund or not."
+  },
+  {
+   "start": 430.24,
+   "duration": 3.88,
+   "text": "And we are passing tools of one and"
+  },
+  {
+   "start": 431.76,
+   "duration": 3.96,
+   "text": "tools of two. If you go to tools, so,"
+  },
+  {
+   "start": 434.12,
+   "duration": 3.32,
+   "text": "this is the lookup order. It will look"
+  },
+  {
+   "start": 435.72,
+   "duration": 3.6,
+   "text": "up on the order. This tool basically"
+  },
+  {
+   "start": 437.44,
+   "duration": 4.08,
+   "text": "will look up on the order."
+  },
+  {
+   "start": 439.32,
+   "duration": 3.92,
+   "text": "Okay? And then, if it is eligible, then"
+  },
+  {
+   "start": 441.52,
+   "duration": 3.84,
+   "text": "it will process the refund. That's it."
+  },
+  {
+   "start": 443.24,
+   "duration": 3.96,
+   "text": "So, we need to connect let Claude know,"
+  },
+  {
+   "start": 445.36,
+   "duration": 4.44,
+   "text": "okay, this is the tools available for"
+  },
+  {
+   "start": 447.2,
+   "duration": 4.28,
+   "text": "this particular sub agent. Right? So, it"
+  },
+  {
+   "start": 449.8,
+   "duration": 3.56,
+   "text": "will based on the verification finding"
+  },
+  {
+   "start": 451.48,
+   "duration": 3.64,
+   "text": "of the customer, it will look up the"
+  },
+  {
+   "start": 453.36,
+   "duration": 3.92,
+   "text": "order and see if it is eligible for"
+  },
+  {
+   "start": 455.12,
+   "duration": 3.64,
+   "text": "refund or not."
+  },
+  {
+   "start": 457.28,
+   "duration": 2.84,
+   "text": "Okay? That is pretty simple to"
+  },
+  {
+   "start": 458.76,
+   "duration": 4.6,
+   "text": "understand."
+  },
+  {
+   "start": 460.12,
+   "duration": 5.6,
+   "text": "Now, if you go down over here, if you"
+  },
+  {
+   "start": 463.36,
+   "duration": 5.84,
+   "text": "see to this step is done."
+  },
+  {
+   "start": 465.72,
+   "duration": 5.24,
+   "text": "And refund finding runs up agent. Okay,"
+  },
+  {
+   "start": 469.2,
+   "duration": 4.6,
+   "text": "so it will use two tools over here"
+  },
+  {
+   "start": 470.96,
+   "duration": 5.2,
+   "text": "basically to look up the order and then"
+  },
+  {
+   "start": 473.8,
+   "duration": 4.32,
+   "text": "process the refund. That's it."
+  },
+  {
+   "start": 476.16,
+   "duration": 3.56,
+   "text": "Now coordinator aggregates the result at"
+  },
+  {
+   "start": 478.12,
+   "duration": 3.08,
+   "text": "the end. That's it."
+  },
+  {
+   "start": 479.72,
+   "duration": 2.88,
+   "text": "And then it will print the final"
+  },
+  {
+   "start": 481.2,
+   "duration": 5.08,
+   "text": "summary."
+  },
+  {
+   "start": 482.6,
+   "duration": 5.16,
+   "text": "Okay, now every sub agent will run us"
+  },
+  {
+   "start": 486.28,
+   "duration": 3.76,
+   "text": "agentic loop."
+  },
+  {
+   "start": 487.76,
+   "duration": 4.84,
+   "text": "Right, so that will be the result text"
+  },
+  {
+   "start": 490.04,
+   "duration": 5.92,
+   "text": "of that particular sub agent. That's it."
+  },
+  {
+   "start": 492.6,
+   "duration": 5.84,
+   "text": "That's it. This agentic loop is similar"
+  },
+  {
+   "start": 495.96,
+   "duration": 4.92,
+   "text": "to every agent that you run."
+  },
+  {
+   "start": 498.44,
+   "duration": 4.479,
+   "text": "Right, it will have a stop reason until"
+  },
+  {
+   "start": 500.88,
+   "duration": 4.08,
+   "text": "it is end turn of that, you know, the"
+  },
+  {
+   "start": 502.919,
+   "duration": 3.841,
+   "text": "stop reason is not end turn. It will"
+  },
+  {
+   "start": 504.96,
+   "duration": 3.72,
+   "text": "keep on running, keep on executing the"
+  },
+  {
+   "start": 506.76,
+   "duration": 3.32,
+   "text": "tools, keep on trying to find the"
+  },
+  {
+   "start": 508.68,
+   "duration": 3.12,
+   "text": "context."
+  },
+  {
+   "start": 510.08,
+   "duration": 3.76,
+   "text": "Right, we have all already discussed"
+  },
+  {
+   "start": 511.8,
+   "duration": 6.0,
+   "text": "this in lesson number one."
+  },
+  {
+   "start": 513.84,
+   "duration": 6.28,
+   "text": "Okay, so similarly if the tool if if if"
+  },
+  {
+   "start": 517.8,
+   "duration": 4.679,
+   "text": "it is end turn, it will exit using the"
+  },
+  {
+   "start": 520.12,
+   "duration": 4.32,
+   "text": "final text, will return the result and"
+  },
+  {
+   "start": 522.479,
+   "duration": 4.401,
+   "text": "then it will exit the execution."
+  },
+  {
+   "start": 524.44,
+   "duration": 4.16,
+   "text": "Otherwise, if it is tool use, append the"
+  },
+  {
+   "start": 526.88,
+   "duration": 3.959,
+   "text": "full tool assistant message. You will"
+  },
+  {
+   "start": 528.6,
+   "duration": 5.04,
+   "text": "see the tools that are available to use"
+  },
+  {
+   "start": 530.839,
+   "duration": 4.561,
+   "text": "for that sub agent. Will append it like"
+  },
+  {
+   "start": 533.64,
+   "duration": 3.4,
+   "text": "the tool result."
+  },
+  {
+   "start": 535.4,
+   "duration": 3.96,
+   "text": "And then will send it back to Claude."
+  },
+  {
+   "start": 537.04,
+   "duration": 5.32,
+   "text": "That's it. If we need more tool"
+  },
+  {
+   "start": 539.36,
+   "duration": 5.84,
+   "text": "execution or these stop, uh, you know,"
+  },
+  {
+   "start": 542.36,
+   "duration": 5.28,
+   "text": "it becomes end turn stop reason. That's"
+  },
+  {
+   "start": 545.2,
+   "duration": 5.36,
+   "text": "it. Very simple to understand. So,"
+  },
+  {
+   "start": 547.64,
+   "duration": 4.84,
+   "text": "coordinator we it had it is the customer"
+  },
+  {
+   "start": 550.56,
+   "duration": 3.84,
+   "text": "verification sub agent and then a refund"
+  },
+  {
+   "start": 552.48,
+   "duration": 3.4,
+   "text": "processor sub agent. Two sub agents we"
+  },
+  {
+   "start": 554.4,
+   "duration": 3.36,
+   "text": "executed."
+  },
+  {
+   "start": 555.88,
+   "duration": 4.959,
+   "text": "And then we returned the result. Now I"
+  },
+  {
+   "start": 557.76,
+   "duration": 6.52,
+   "text": "already ran, uh, one iteration. Okay, so"
+  },
+  {
+   "start": 560.839,
+   "duration": 5.321,
+   "text": "if you see uh, caption project that ran"
+  },
+  {
+   "start": 564.28,
+   "duration": 4.16,
+   "text": "and this is the scenario. Now these are"
+  },
+  {
+   "start": 566.16,
+   "duration": 3.84,
+   "text": "the logs coordinator decomposing task"
+  },
+  {
+   "start": 568.44,
+   "duration": 5.399,
+   "text": "sub agent customer verification"
+  },
+  {
+   "start": 570.0,
+   "duration": 6.839,
+   "text": "starting. And it says that C001 exists."
+  },
+  {
+   "start": 573.839,
+   "duration": 4.361,
+   "text": "Now name is Alice. Now passing the"
+  },
+  {
+   "start": 576.839,
+   "duration": 2.481,
+   "text": "structured finding to the next sub"
+  },
+  {
+   "start": 578.2,
+   "duration": 3.32,
+   "text": "agent."
+  },
+  {
+   "start": 579.32,
+   "duration": 4.96,
+   "text": "Sub agent role task is look up customer"
+  },
+  {
+   "start": 581.52,
+   "duration": 4.6,
+   "text": "C99 and confirm they exist. This is the"
+  },
+  {
+   "start": 584.28,
+   "duration": 3.56,
+   "text": "one. Okay, this is the refund processor"
+  },
+  {
+   "start": 586.12,
+   "duration": 3.52,
+   "text": "sub agent. This was the"
+  },
+  {
+   "start": 587.84,
+   "duration": 3.92,
+   "text": "first sub agent, which was basically"
+  },
+  {
+   "start": 589.64,
+   "duration": 4.24,
+   "text": "validating the customer."
+  },
+  {
+   "start": 591.76,
+   "duration": 4.16,
+   "text": "And then it will do you know, this is"
+  },
+  {
+   "start": 593.88,
+   "duration": 4.16,
+   "text": "basically you know, where I'm printing"
+  },
+  {
+   "start": 595.92,
+   "duration": 3.36,
+   "text": "the logs inside the agentic loop"
+  },
+  {
+   "start": 598.04,
+   "duration": 3.48,
+   "text": "function."
+  },
+  {
+   "start": 599.28,
+   "duration": 4.68,
+   "text": "Okay, now it is printing which tools it"
+  },
+  {
+   "start": 601.52,
+   "duration": 4.88,
+   "text": "is getting executed. And at the end when"
+  },
+  {
+   "start": 603.96,
+   "duration": 5.04,
+   "text": "the stop reason is end turn,"
+  },
+  {
+   "start": 606.4,
+   "duration": 4.16,
+   "text": "it is saying done and respond response"
+  },
+  {
+   "start": 609.0,
+   "duration": 5.2,
+   "text": "is refund processes processed"
+  },
+  {
+   "start": 610.56,
+   "duration": 5.92,
+   "text": "successfully for that particular order."
+  },
+  {
+   "start": 614.2,
+   "duration": 5.32,
+   "text": "And then it will aggregate the results"
+  },
+  {
+   "start": 616.48,
+   "duration": 5.122,
+   "text": "and then it will"
+  },
+  {
+   "start": 619.52,
+   "duration": 4.0,
+   "text": "I'll run it again if you want."
+  },
+  {
+   "start": 621.602,
+   "duration": 3.678,
+   "text": ">> [snorts]"
+  },
+  {
+   "start": 623.52,
+   "duration": 3.36,
+   "text": ">> You can change the order ID and you can"
+  },
+  {
+   "start": 625.28,
+   "duration": 3.4,
+   "text": "add more,"
+  },
+  {
+   "start": 626.88,
+   "duration": 3.52,
+   "text": "you know, dummy data to try, you know,"
+  },
+  {
+   "start": 628.68,
+   "duration": 3.88,
+   "text": "different scenarios. See how"
+  },
+  {
+   "start": 630.4,
+   "duration": 5.44,
+   "text": "intelligently it works."
+  },
+  {
+   "start": 632.56,
+   "duration": 5.04,
+   "text": "It says C99. These This particular"
+  },
+  {
+   "start": 635.84,
+   "duration": 4.76,
+   "text": "customer probably doesn't exist, so we"
+  },
+  {
+   "start": 637.6,
+   "duration": 5.72,
+   "text": "can try that out C99. So it will"
+  },
+  {
+   "start": 640.6,
+   "duration": 5.28,
+   "text": "basically the first agent will only tell"
+  },
+  {
+   "start": 643.32,
+   "duration": 4.24,
+   "text": "that, okay, this customer doesn't exist."
+  },
+  {
+   "start": 645.88,
+   "duration": 4.28,
+   "text": "Right? And then it should fail at that"
+  },
+  {
+   "start": 647.56,
+   "duration": 5.04,
+   "text": "point. So let's run this"
+  },
+  {
+   "start": 650.16,
+   "duration": 2.44,
+   "text": "once."
+  },
+  {
+   "start": 657.839,
+   "duration": 4.801,
+   "text": "So it is says that customer support case"
+  },
+  {
+   "start": 660.08,
+   "duration": 4.4,
+   "text": "resolved. Customer C99 does not exist."
+  },
+  {
+   "start": 662.64,
+   "duration": 4.56,
+   "text": "The lookup returned no matching customer"
+  },
+  {
+   "start": 664.48,
+   "duration": 4.88,
+   "text": "record in the system. So it didn't go"
+  },
+  {
+   "start": 667.2,
+   "duration": 4.36,
+   "text": "into the second sub agent itself because"
+  },
+  {
+   "start": 669.36,
+   "duration": 3.84,
+   "text": "it failed there."
+  },
+  {
+   "start": 671.56,
+   "duration": 3.84,
+   "text": "So if you are not providing structured"
+  },
+  {
+   "start": 673.2,
+   "duration": 5.28,
+   "text": "inputs and not providing context, then"
+  },
+  {
+   "start": 675.4,
+   "duration": 5.16,
+   "text": "the second sub agent might also execute"
+  },
+  {
+   "start": 678.48,
+   "duration": 3.84,
+   "text": "and that will return some hallucinated"
+  },
+  {
+   "start": 680.56,
+   "duration": 4.12,
+   "text": "results. You don't want that."
+  },
+  {
+   "start": 682.32,
+   "duration": 3.88,
+   "text": "So that is all about this particular"
+  },
+  {
+   "start": 684.68,
+   "duration": 4.0,
+   "text": "lesson, guys. I wanted to show you how"
+  },
+  {
+   "start": 686.2,
+   "duration": 4.639,
+   "text": "you keep everything together and"
+  },
+  {
+   "start": 688.68,
+   "duration": 4.08,
+   "text": "basically create a particular project"
+  },
+  {
+   "start": 690.839,
+   "duration": 3.321,
+   "text": "out of it. Now if you look at it"
+  },
+  {
+   "start": 692.76,
+   "duration": 4.24,
+   "text": "carefully"
+  },
+  {
+   "start": 694.16,
+   "duration": 4.0,
+   "text": "I haven't done any task tool call over"
+  },
+  {
+   "start": 697.0,
+   "duration": 3.08,
+   "text": "here."
+  },
+  {
+   "start": 698.16,
+   "duration": 5.08,
+   "text": "Now I have told you that whenever the"
+  },
+  {
+   "start": 700.08,
+   "duration": 5.8,
+   "text": "coordinator wants to spawn sub agents it"
+  },
+  {
+   "start": 703.24,
+   "duration": 5.44,
+   "text": "needs to use the task tool call."
+  },
+  {
+   "start": 705.88,
+   "duration": 4.4,
+   "text": "Now the task tool call is actually not"
+  },
+  {
+   "start": 708.68,
+   "duration": 3.72,
+   "text": "used in this code. I just use normal"
+  },
+  {
+   "start": 710.28,
+   "duration": 3.28,
+   "text": "functions to run the sub agent and but"
+  },
+  {
+   "start": 712.4,
+   "duration": 3.8,
+   "text": "the tool"
+  },
+  {
+   "start": 713.56,
+   "duration": 5.0,
+   "text": "tools definition and schema was correct."
+  },
+  {
+   "start": 716.2,
+   "duration": 4.72,
+   "text": "The task tool"
+  },
+  {
+   "start": 718.56,
+   "duration": 5.0,
+   "text": "for spawning sub agents is is a cloud"
+  },
+  {
+   "start": 720.92,
+   "duration": 5.16,
+   "text": "code or a agent SDK feature."
+  },
+  {
+   "start": 723.56,
+   "duration": 5.32,
+   "text": "Not it is not available in the raw"
+  },
+  {
+   "start": 726.08,
+   "duration": 5.4,
+   "text": "Anthropic Python SDK."
+  },
+  {
+   "start": 728.88,
+   "duration": 4.64,
+   "text": "You know, so my code was you know"
+  },
+  {
+   "start": 731.48,
+   "duration": 4.36,
+   "text": "architecturally"
+  },
+  {
+   "start": 733.52,
+   "duration": 4.24,
+   "text": "correct but it is not using the task"
+  },
+  {
+   "start": 735.84,
+   "duration": 3.44,
+   "text": "tool call."
+  },
+  {
+   "start": 737.76,
+   "duration": 3.2,
+   "text": "Right?"
+  },
+  {
+   "start": 739.28,
+   "duration": 4.52,
+   "text": "So"
+  },
+  {
+   "start": 740.96,
+   "duration": 4.92,
+   "text": "for the exam what matters is"
+  },
+  {
+   "start": 743.8,
+   "duration": 4.32,
+   "text": "the concept and the patterns that we"
+  },
+  {
+   "start": 745.88,
+   "duration": 4.08,
+   "text": "discussed and this is the patterns that"
+  },
+  {
+   "start": 748.12,
+   "duration": 4.56,
+   "text": "basically will come in the exam"
+  },
+  {
+   "start": 749.96,
+   "duration": 6.04,
+   "text": "scenarios. And that is what you need to"
+  },
+  {
+   "start": 752.68,
+   "duration": 4.8,
+   "text": "understand in double quotations."
+  },
+  {
+   "start": 756.0,
+   "duration": 3.0,
+   "text": "Okay? So that was all for this"
+  },
+  {
+   "start": 757.48,
+   "duration": 3.6,
+   "text": "particular lesson guys. See you in the"
+  },
+  {
+   "start": 759.0,
+   "duration": 5.68,
+   "text": "next lesson. Till then have a nice day."
+  },
+  {
+   "start": 761.08,
+   "duration": 3.6,
+   "text": "Take care. Bye-bye and tata."
+  }
+ ]
+}

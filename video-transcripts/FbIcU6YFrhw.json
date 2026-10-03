@@ -1,0 +1,3847 @@
+{
+ "video_id": "FbIcU6YFrhw",
+ "episode": "Ep 15",
+ "title": "Few-Shot Prompting Explained",
+ "segments": [
+  {
+   "start": 2.96,
+   "duration": 4.08,
+   "text": "Welcome to this lesson. So, we're going"
+  },
+  {
+   "start": 4.92,
+   "duration": 3.8,
+   "text": "to build on our knowledge of prompt"
+  },
+  {
+   "start": 7.04,
+   "duration": 3.52,
+   "text": "engineering from the previous lesson and"
+  },
+  {
+   "start": 8.72,
+   "duration": 4.84,
+   "text": "we're going to enhance, you know, our"
+  },
+  {
+   "start": 10.56,
+   "duration": 4.88,
+   "text": "knowledge with few-shot prompting and"
+  },
+  {
+   "start": 13.56,
+   "duration": 4.64,
+   "text": "you're going to see how it, you know,"
+  },
+  {
+   "start": 15.44,
+   "duration": 4.64,
+   "text": "drastically increases, you know, the way"
+  },
+  {
+   "start": 18.2,
+   "duration": 3.2,
+   "text": "Claude actually gives you back the"
+  },
+  {
+   "start": 20.08,
+   "duration": 3.36,
+   "text": "response."
+  },
+  {
+   "start": 21.4,
+   "duration": 4.72,
+   "text": "And uh in the end, we're going to also"
+  },
+  {
+   "start": 23.44,
+   "duration": 4.56,
+   "text": "enhance our customer support agent we"
+  },
+  {
+   "start": 26.12,
+   "duration": 4.08,
+   "text": "which we had built, you know, from the"
+  },
+  {
+   "start": 28.0,
+   "duration": 4.72,
+   "text": "start of this particular, you know,"
+  },
+  {
+   "start": 30.2,
+   "duration": 4.56,
+   "text": "lesson, right? Um of this particular"
+  },
+  {
+   "start": 32.72,
+   "duration": 3.92,
+   "text": "course, basically. And I'll show you how"
+  },
+  {
+   "start": 34.76,
+   "duration": 4.36,
+   "text": "you can incorporate"
+  },
+  {
+   "start": 36.64,
+   "duration": 4.6,
+   "text": "uh you know, few-shot examples or"
+  },
+  {
+   "start": 39.12,
+   "duration": 4.76,
+   "text": "few-shot prompting in the system prompt"
+  },
+  {
+   "start": 41.24,
+   "duration": 5.28,
+   "text": "of the customer support agent itself."
+  },
+  {
+   "start": 43.88,
+   "duration": 5.2,
+   "text": "Now, uh this is related to prompting."
+  },
+  {
+   "start": 46.52,
+   "duration": 5.88,
+   "text": "Now, you can use this anywhere in Claude"
+  },
+  {
+   "start": 49.08,
+   "duration": 4.4,
+   "text": "code or in your agents or wherever you"
+  },
+  {
+   "start": 52.4,
+   "duration": 3.36,
+   "text": "want."
+  },
+  {
+   "start": 53.48,
+   "duration": 4.64,
+   "text": "So, see this from the perspective of"
+  },
+  {
+   "start": 55.76,
+   "duration": 6.32,
+   "text": "prompting, not specifically app, you"
+  },
+  {
+   "start": 58.12,
+   "duration": 5.8,
+   "text": "know, application to specific kind of um"
+  },
+  {
+   "start": 62.08,
+   "duration": 3.0,
+   "text": "agents or, you know, Claude code or"
+  },
+  {
+   "start": 63.92,
+   "duration": 2.92,
+   "text": "something like that. You can use it"
+  },
+  {
+   "start": 65.08,
+   "duration": 3.88,
+   "text": "anywhere and the same thing I told in"
+  },
+  {
+   "start": 66.84,
+   "duration": 3.8,
+   "text": "the previous episode as well. Uh the"
+  },
+  {
+   "start": 68.96,
+   "duration": 5.04,
+   "text": "previous lesson."
+  },
+  {
+   "start": 70.64,
+   "duration": 5.96,
+   "text": "So, let's see what advantages we get uh"
+  },
+  {
+   "start": 74.0,
+   "duration": 4.32,
+   "text": "via this uh few-shot prompting, you"
+  },
+  {
+   "start": 76.6,
+   "duration": 3.44,
+   "text": "know. So,"
+  },
+  {
+   "start": 78.32,
+   "duration": 3.92,
+   "text": "if you see"
+  },
+  {
+   "start": 80.04,
+   "duration": 4.44,
+   "text": "And in the previous episode, we had we"
+  },
+  {
+   "start": 82.24,
+   "duration": 3.88,
+   "text": "had discussed that, you know, that uh"
+  },
+  {
+   "start": 84.48,
+   "duration": 4.08,
+   "text": "prompts your prompt should be very much"
+  },
+  {
+   "start": 86.12,
+   "duration": 4.52,
+   "text": "of detailed, right? You need to have"
+  },
+  {
+   "start": 88.56,
+   "duration": 5.0,
+   "text": "proper prompts. You don't You should not"
+  },
+  {
+   "start": 90.64,
+   "duration": 5.96,
+   "text": "give vague instructions to the model."
+  },
+  {
+   "start": 93.56,
+   "duration": 4.24,
+   "text": "But yeah, that is true, but the thing is"
+  },
+  {
+   "start": 96.6,
+   "duration": 3.2,
+   "text": "um"
+  },
+  {
+   "start": 97.8,
+   "duration": 4.0,
+   "text": "instruction describe what you want,"
+  },
+  {
+   "start": 99.8,
+   "duration": 3.36,
+   "text": "right? They don't show what it actually"
+  },
+  {
+   "start": 101.8,
+   "duration": 4.16,
+   "text": "looks like."
+  },
+  {
+   "start": 103.16,
+   "duration": 4.6,
+   "text": "You You will describe your wants, right?"
+  },
+  {
+   "start": 105.96,
+   "duration": 2.8,
+   "text": "Via the instructions or the prompts that"
+  },
+  {
+   "start": 107.76,
+   "duration": 3.56,
+   "text": "you give."
+  },
+  {
+   "start": 108.76,
+   "duration": 5.24,
+   "text": "But the thing is it might be"
+  },
+  {
+   "start": 111.32,
+   "duration": 4.76,
+   "text": "inconsistent, the responses that Claude"
+  },
+  {
+   "start": 114.0,
+   "duration": 4.04,
+   "text": "might give you back or any LLM model"
+  },
+  {
+   "start": 116.08,
+   "duration": 4.04,
+   "text": "will give you back might not be the"
+  },
+  {
+   "start": 118.04,
+   "duration": 3.4,
+   "text": "ones, you know, that you might be"
+  },
+  {
+   "start": 120.12,
+   "duration": 2.8,
+   "text": "expecting."
+  },
+  {
+   "start": 121.44,
+   "duration": 4.56,
+   "text": "The reason being"
+  },
+  {
+   "start": 122.92,
+   "duration": 5.68,
+   "text": "the model understands the task, but"
+  },
+  {
+   "start": 126.0,
+   "duration": 4.36,
+   "text": "it resolves the ambiguity based on"
+  },
+  {
+   "start": 128.6,
+   "duration": 3.96,
+   "text": "itself."
+  },
+  {
+   "start": 130.36,
+   "duration": 4.0,
+   "text": "Right? For example, you are running a"
+  },
+  {
+   "start": 132.56,
+   "duration": 4.36,
+   "text": "code review agent or something like"
+  },
+  {
+   "start": 134.36,
+   "duration": 6.24,
+   "text": "that. Or code review CI/CD pipeline."
+  },
+  {
+   "start": 136.92,
+   "duration": 6.36,
+   "text": "Now, you have like 400 lines of prompt"
+  },
+  {
+   "start": 140.6,
+   "duration": 3.96,
+   "text": "explicitly telling what to do and what"
+  },
+  {
+   "start": 143.28,
+   "duration": 4.4,
+   "text": "not to do."
+  },
+  {
+   "start": 144.56,
+   "duration": 5.52,
+   "text": "But the thing is um the you know, the"
+  },
+  {
+   "start": 147.68,
+   "duration": 5.72,
+   "text": "model understands what you what it needs"
+  },
+  {
+   "start": 150.08,
+   "duration": 5.56,
+   "text": "to do. But it might not classify the"
+  },
+  {
+   "start": 153.4,
+   "duration": 5.0,
+   "text": "severity of the bugs or something like"
+  },
+  {
+   "start": 155.64,
+   "duration": 5.24,
+   "text": "that based on what you want. Because you"
+  },
+  {
+   "start": 158.4,
+   "duration": 5.12,
+   "text": "haven't, you know, given some examples,"
+  },
+  {
+   "start": 160.88,
+   "duration": 4.48,
+   "text": "okay, if this kind of reasoning happens"
+  },
+  {
+   "start": 163.52,
+   "duration": 4.24,
+   "text": "or this kind of um"
+  },
+  {
+   "start": 165.36,
+   "duration": 5.4,
+   "text": "some stuff happens, you know, mark it as"
+  },
+  {
+   "start": 167.76,
+   "duration": 4.92,
+   "text": "a critical bug or a high bug, you know."
+  },
+  {
+   "start": 170.76,
+   "duration": 4.4,
+   "text": "If you're giving"
+  },
+  {
+   "start": 172.68,
+   "duration": 5.8,
+   "text": "uh not giving examples much and directly"
+  },
+  {
+   "start": 175.16,
+   "duration": 5.6,
+   "text": "putting in the, you know, like um uh"
+  },
+  {
+   "start": 178.48,
+   "duration": 4.6,
+   "text": "like a story in the prompt, then yeah,"
+  },
+  {
+   "start": 180.76,
+   "duration": 4.96,
+   "text": "Claude will understand, but"
+  },
+  {
+   "start": 183.08,
+   "duration": 6.04,
+   "text": "the response or the output format, it"
+  },
+  {
+   "start": 185.72,
+   "duration": 4.84,
+   "text": "might not be as you want, right? So,"
+  },
+  {
+   "start": 189.12,
+   "duration": 4.32,
+   "text": "that is That is the point, right? So,"
+  },
+  {
+   "start": 190.56,
+   "duration": 4.2,
+   "text": "see, uh here is an example, right? That"
+  },
+  {
+   "start": 193.44,
+   "duration": 4.48,
+   "text": "the output if you see if you go for"
+  },
+  {
+   "start": 194.76,
+   "duration": 4.88,
+   "text": "different runs, it might classify one"
+  },
+  {
+   "start": 197.92,
+   "duration": 4.4,
+   "text": "um thing as critical and one thing as"
+  },
+  {
+   "start": 199.64,
+   "duration": 4.24,
+   "text": "high because it understood See, the It"
+  },
+  {
+   "start": 202.32,
+   "duration": 4.0,
+   "text": "has done the reasoning properly. It has"
+  },
+  {
+   "start": 203.88,
+   "duration": 4.44,
+   "text": "found out the bug. It has found out what"
+  },
+  {
+   "start": 206.32,
+   "duration": 5.16,
+   "text": "it is, but it might not give you the"
+  },
+  {
+   "start": 208.32,
+   "duration": 4.76,
+   "text": "exact um kind of uh"
+  },
+  {
+   "start": 211.48,
+   "duration": 3.68,
+   "text": "label that you want, basically. That is"
+  },
+  {
+   "start": 213.08,
+   "duration": 4.24,
+   "text": "what I mean to say. And you know, try to"
+  },
+  {
+   "start": 215.16,
+   "duration": 3.44,
+   "text": "understand the concept, right? Don't get"
+  },
+  {
+   "start": 217.32,
+   "duration": 3.04,
+   "text": "confused. If you have any questions, put"
+  },
+  {
+   "start": 218.6,
+   "duration": 3.4,
+   "text": "it down in the comments."
+  },
+  {
+   "start": 220.36,
+   "duration": 4.96,
+   "text": "Okay, so what we learn in this"
+  },
+  {
+   "start": 222.0,
+   "duration": 5.04,
+   "text": "particular episode uh just one uh small"
+  },
+  {
+   "start": 225.32,
+   "duration": 4.2,
+   "text": "uh mistake I made. Uh so, this is not"
+  },
+  {
+   "start": 227.04,
+   "duration": 5.96,
+   "text": "episode 13. So, we had um"
+  },
+  {
+   "start": 229.52,
+   "duration": 5.6,
+   "text": "studied about episode 14. And then uh we"
+  },
+  {
+   "start": 233.0,
+   "duration": 4.16,
+   "text": "are studying few-shot examples in"
+  },
+  {
+   "start": 235.12,
+   "duration": 3.6,
+   "text": "episode number 15. And then in episode"
+  },
+  {
+   "start": 237.16,
+   "duration": 3.36,
+   "text": "number 16, we're going to study about"
+  },
+  {
+   "start": 238.72,
+   "duration": 4.4,
+   "text": "structured output. So, don't think that"
+  },
+  {
+   "start": 240.52,
+   "duration": 5.12,
+   "text": "this episode 13 we skipped episode 14,"
+  },
+  {
+   "start": 243.12,
+   "duration": 3.52,
+   "text": "but this is episode 14, basically."
+  },
+  {
+   "start": 245.64,
+   "duration": 2.64,
+   "text": "So,"
+  },
+  {
+   "start": 246.64,
+   "duration": 3.88,
+   "text": "the instruction ceiling."
+  },
+  {
+   "start": 248.28,
+   "duration": 4.32,
+   "text": "Right? Adding more words create more"
+  },
+  {
+   "start": 250.52,
+   "duration": 4.4,
+   "text": "surface area for ambiguity. So, the"
+  },
+  {
+   "start": 252.6,
+   "duration": 5.44,
+   "text": "thing is you might add like a story to"
+  },
+  {
+   "start": 254.92,
+   "duration": 6.76,
+   "text": "your prompt, but if your prompt is like"
+  },
+  {
+   "start": 258.04,
+   "duration": 5.88,
+   "text": "um like an essay of 500 characters with"
+  },
+  {
+   "start": 261.68,
+   "duration": 4.92,
+   "text": "unrelevant information and uh you know,"
+  },
+  {
+   "start": 263.92,
+   "duration": 4.4,
+   "text": "it might confuse the LLM. Your prompt"
+  },
+  {
+   "start": 266.6,
+   "duration": 3.16,
+   "text": "should be very straightforward, you"
+  },
+  {
+   "start": 268.32,
+   "duration": 5.0,
+   "text": "know, like an instruction, like a"
+  },
+  {
+   "start": 269.76,
+   "duration": 5.4,
+   "text": "command, you know. Don't twist and turn"
+  },
+  {
+   "start": 273.32,
+   "duration": 3.52,
+   "text": "your words and, you know, confuse the"
+  },
+  {
+   "start": 275.16,
+   "duration": 3.6,
+   "text": "model. That is what it is."
+  },
+  {
+   "start": 276.84,
+   "duration": 4.24,
+   "text": "You know, words like for example, words"
+  },
+  {
+   "start": 278.76,
+   "duration": 4.0,
+   "text": "like severe, calibrate against internet"
+  },
+  {
+   "start": 281.08,
+   "duration": 4.56,
+   "text": "training data, not your specific code"
+  },
+  {
+   "start": 282.76,
+   "duration": 5.68,
+   "text": "base. So, your specific code base might"
+  },
+  {
+   "start": 285.64,
+   "duration": 5.4,
+   "text": "have specific labels like critical or"
+  },
+  {
+   "start": 288.44,
+   "duration": 4.92,
+   "text": "high or medium, but if you are going to"
+  },
+  {
+   "start": 291.04,
+   "duration": 5.04,
+   "text": "tell if you're going to include words in"
+  },
+  {
+   "start": 293.36,
+   "duration": 4.48,
+   "text": "your prompt saying that severe, which"
+  },
+  {
+   "start": 296.08,
+   "duration": 4.44,
+   "text": "basically doesn't correlate in your code"
+  },
+  {
+   "start": 297.84,
+   "duration": 5.08,
+   "text": "base at all. So, it might classify some"
+  },
+  {
+   "start": 300.52,
+   "duration": 3.68,
+   "text": "of the bugs as severe, for example. But"
+  },
+  {
+   "start": 302.92,
+   "duration": 4.36,
+   "text": "in that case, it would should have been"
+  },
+  {
+   "start": 304.2,
+   "duration": 5.88,
+   "text": "classified as critical. So, that is what"
+  },
+  {
+   "start": 307.28,
+   "duration": 6.08,
+   "text": "it uh what I want to say is that the LLM"
+  },
+  {
+   "start": 310.08,
+   "duration": 6.0,
+   "text": "is doing its job, but not in the exact"
+  },
+  {
+   "start": 313.36,
+   "duration": 4.4,
+   "text": "format that you need. You are the person"
+  },
+  {
+   "start": 316.08,
+   "duration": 4.44,
+   "text": "who should be able to guide the"
+  },
+  {
+   "start": 317.76,
+   "duration": 4.32,
+   "text": "particular LLM to give the particular"
+  },
+  {
+   "start": 320.52,
+   "duration": 2.56,
+   "text": "response."
+  },
+  {
+   "start": 322.08,
+   "duration": 3.04,
+   "text": "So,"
+  },
+  {
+   "start": 323.08,
+   "duration": 4.04,
+   "text": "definitions cover imagine cases, code"
+  },
+  {
+   "start": 325.12,
+   "duration": 4.56,
+   "text": "evolves leaving gaps for new patterns to"
+  },
+  {
+   "start": 327.12,
+   "duration": 5.04,
+   "text": "fall through. That is why as"
+  },
+  {
+   "start": 329.68,
+   "duration": 5.4,
+   "text": "code evolves, you have to work on your"
+  },
+  {
+   "start": 332.16,
+   "duration": 4.64,
+   "text": "examples and you have to give more"
+  },
+  {
+   "start": 335.08,
+   "duration": 3.88,
+   "text": "context to the LLM, basically. And you"
+  },
+  {
+   "start": 336.8,
+   "duration": 3.52,
+   "text": "have to do it via few-shot prompting."
+  },
+  {
+   "start": 338.96,
+   "duration": 3.52,
+   "text": "And we'll understand We're going to see"
+  },
+  {
+   "start": 340.32,
+   "duration": 4.6,
+   "text": "some examples how you would"
+  },
+  {
+   "start": 342.48,
+   "duration": 5.92,
+   "text": "uh do that, right?"
+  },
+  {
+   "start": 344.92,
+   "duration": 5.24,
+   "text": "Yeah. So, you see. So, previous Just"
+  },
+  {
+   "start": 348.4,
+   "duration": 3.64,
+   "text": "let's say demonstration beats"
+  },
+  {
+   "start": 350.16,
+   "duration": 3.36,
+   "text": "description. So, let me give you an"
+  },
+  {
+   "start": 352.04,
+   "duration": 3.4,
+   "text": "example, right?"
+  },
+  {
+   "start": 353.52,
+   "duration": 3.64,
+   "text": "Uh you read You are You are trying or"
+  },
+  {
+   "start": 355.44,
+   "duration": 4.0,
+   "text": "for example, you are"
+  },
+  {
+   "start": 357.16,
+   "duration": 5.6,
+   "text": "uh doing some new workout, right? That"
+  },
+  {
+   "start": 359.44,
+   "duration": 5.28,
+   "text": "is you know, um"
+  },
+  {
+   "start": 362.76,
+   "duration": 4.32,
+   "text": "you don't know about that workout. But"
+  },
+  {
+   "start": 364.72,
+   "duration": 4.84,
+   "text": "let's say you are learning via two ways,"
+  },
+  {
+   "start": 367.08,
+   "duration": 4.16,
+   "text": "right? You go onto the internet, you"
+  },
+  {
+   "start": 369.56,
+   "duration": 4.36,
+   "text": "search about it, and there is a very"
+  },
+  {
+   "start": 371.24,
+   "duration": 5.52,
+   "text": "lengthy article on that workout, how to"
+  },
+  {
+   "start": 373.92,
+   "duration": 4.08,
+   "text": "do it. So, you read that. Okay,"
+  },
+  {
+   "start": 376.76,
+   "duration": 4.08,
+   "text": "obviously from that also you'll"
+  },
+  {
+   "start": 378.0,
+   "duration": 4.96,
+   "text": "understand how to do it, but just"
+  },
+  {
+   "start": 380.84,
+   "duration": 4.76,
+   "text": "compare it with watching a video on"
+  },
+  {
+   "start": 382.96,
+   "duration": 4.12,
+   "text": "YouTube, right? Like two or three videos"
+  },
+  {
+   "start": 385.6,
+   "duration": 3.2,
+   "text": "based on the workout you watched where"
+  },
+  {
+   "start": 387.08,
+   "duration": 3.84,
+   "text": "someone is demonstrating something,"
+  },
+  {
+   "start": 388.8,
+   "duration": 4.76,
+   "text": "right? Okay, this is how you should do"
+  },
+  {
+   "start": 390.92,
+   "duration": 4.88,
+   "text": "this workout. So, which is more easier"
+  },
+  {
+   "start": 393.56,
+   "duration": 4.36,
+   "text": "for you to understand? Where you would"
+  },
+  {
+   "start": 395.8,
+   "duration": 4.96,
+   "text": "get the perfect form for your workout?"
+  },
+  {
+   "start": 397.92,
+   "duration": 4.92,
+   "text": "Because while reading is fine, you would"
+  },
+  {
+   "start": 400.76,
+   "duration": 4.08,
+   "text": "understand, okay, this is what I need my"
+  },
+  {
+   "start": 402.84,
+   "duration": 3.96,
+   "text": "hand raised, I need my legs to be in"
+  },
+  {
+   "start": 404.84,
+   "duration": 4.6,
+   "text": "this position or something like that."
+  },
+  {
+   "start": 406.8,
+   "duration": 5.2,
+   "text": "But at which exact position?"
+  },
+  {
+   "start": 409.44,
+   "duration": 3.96,
+   "text": "How it should be positioned according to"
+  },
+  {
+   "start": 412.0,
+   "duration": 4.08,
+   "text": "your back?"
+  },
+  {
+   "start": 413.4,
+   "duration": 5.0,
+   "text": "According to your core, right? All this"
+  },
+  {
+   "start": 416.08,
+   "duration": 4.2,
+   "text": "information you would see you know,"
+  },
+  {
+   "start": 418.4,
+   "duration": 4.76,
+   "text": "productively in a particular"
+  },
+  {
+   "start": 420.28,
+   "duration": 5.88,
+   "text": "demonstration video. Similarly, if you"
+  },
+  {
+   "start": 423.16,
+   "duration": 6.0,
+   "text": "give too much information as an essay to"
+  },
+  {
+   "start": 426.16,
+   "duration": 4.72,
+   "text": "your LLM via your prompt, good, but"
+  },
+  {
+   "start": 429.16,
+   "duration": 4.36,
+   "text": "include examples like a demonstration."
+  },
+  {
+   "start": 430.88,
+   "duration": 4.28,
+   "text": "For example, if this is what happens,"
+  },
+  {
+   "start": 433.52,
+   "duration": 4.2,
+   "text": "right? You tell, okay, this is the"
+  },
+  {
+   "start": 435.16,
+   "duration": 4.4,
+   "text": "reasoning due to which, you know, you"
+  },
+  {
+   "start": 437.72,
+   "duration": 3.4,
+   "text": "will get this kind of a bug, then you"
+  },
+  {
+   "start": 439.56,
+   "duration": 4.28,
+   "text": "have to kind of"
+  },
+  {
+   "start": 441.12,
+   "duration": 4.28,
+   "text": "uh output it in this particular format."
+  },
+  {
+   "start": 443.84,
+   "duration": 3.24,
+   "text": "Okay, if this is the particular input,"
+  },
+  {
+   "start": 445.4,
+   "duration": 4.08,
+   "text": "this is the output particular output. If"
+  },
+  {
+   "start": 447.08,
+   "duration": 4.88,
+   "text": "you give some examples there, then"
+  },
+  {
+   "start": 449.48,
+   "duration": 5.68,
+   "text": "you're demonstrating to the"
+  },
+  {
+   "start": 451.96,
+   "duration": 4.84,
+   "text": "um LLM model that, okay, this is how it"
+  },
+  {
+   "start": 455.16,
+   "duration": 4.08,
+   "text": "needs to be."
+  },
+  {
+   "start": 456.8,
+   "duration": 4.16,
+   "text": "Right? So, in the exam The exam claim is"
+  },
+  {
+   "start": 459.24,
+   "duration": 3.4,
+   "text": "that few-shot examples are explicitly"
+  },
+  {
+   "start": 460.96,
+   "duration": 3.8,
+   "text": "more effective than detailed prose"
+  },
+  {
+   "start": 462.64,
+   "duration": 5.16,
+   "text": "because you are demonstrating to the"
+  },
+  {
+   "start": 464.76,
+   "duration": 4.96,
+   "text": "particular LLM like how to work. Right?"
+  },
+  {
+   "start": 467.8,
+   "duration": 3.92,
+   "text": "And that is much more effective than"
+  },
+  {
+   "start": 469.72,
+   "duration": 4.84,
+   "text": "long prose passages."
+  },
+  {
+   "start": 471.72,
+   "duration": 5.24,
+   "text": "Okay. I hope that is making sense."
+  },
+  {
+   "start": 474.56,
+   "duration": 3.92,
+   "text": "The anatomy of a perfect example. Now,"
+  },
+  {
+   "start": 476.96,
+   "duration": 2.32,
+   "text": "the thing is"
+  },
+  {
+   "start": 478.48,
+   "duration": 3.12,
+   "text": "uh"
+  },
+  {
+   "start": 479.28,
+   "duration": 4.16,
+   "text": "when I say you have to give examples to"
+  },
+  {
+   "start": 481.6,
+   "duration": 4.48,
+   "text": "your prompt whenever you're working with"
+  },
+  {
+   "start": 483.44,
+   "duration": 4.68,
+   "text": "Claude or any LLM model, I'm not saying"
+  },
+  {
+   "start": 486.08,
+   "duration": 4.48,
+   "text": "that, you know, fill it with 100 to 200"
+  },
+  {
+   "start": 488.12,
+   "duration": 4.24,
+   "text": "examples. You have to be very efficient"
+  },
+  {
+   "start": 490.56,
+   "duration": 4.12,
+   "text": "while you are also giving those few-shot"
+  },
+  {
+   "start": 492.36,
+   "duration": 4.6,
+   "text": "examples. So, let's understand it step"
+  },
+  {
+   "start": 494.68,
+   "duration": 4.2,
+   "text": "by step. So, we have input, we have the"
+  },
+  {
+   "start": 496.96,
+   "duration": 3.76,
+   "text": "reasoning, and we have the output, which"
+  },
+  {
+   "start": 498.88,
+   "duration": 5.0,
+   "text": "is the label, for example. And the"
+  },
+  {
+   "start": 500.72,
+   "duration": 5.76,
+   "text": "output tells the model what, right? The"
+  },
+  {
+   "start": 503.88,
+   "duration": 5.32,
+   "text": "reasoning tells the model how."
+  },
+  {
+   "start": 506.48,
+   "duration": 5.04,
+   "text": "So, if you give an example saying that,"
+  },
+  {
+   "start": 509.2,
+   "duration": 4.2,
+   "text": "okay, this is the If If you If you get"
+  },
+  {
+   "start": 511.52,
+   "duration": 3.68,
+   "text": "this kind of scenario, then this is the"
+  },
+  {
+   "start": 513.4,
+   "duration": 3.72,
+   "text": "particular output. And how would you"
+  },
+  {
+   "start": 515.2,
+   "duration": 3.48,
+   "text": "tell the LLM that this is the particular"
+  },
+  {
+   "start": 517.12,
+   "duration": 4.359,
+   "text": "scenario?"
+  },
+  {
+   "start": 518.68,
+   "duration": 5.16,
+   "text": "You have to tell it via a reasoning."
+  },
+  {
+   "start": 521.479,
+   "duration": 4.521,
+   "text": "Okay, if this is due to this reason you"
+  },
+  {
+   "start": 523.84,
+   "duration": 4.16,
+   "text": "are classifying it as critical, then"
+  },
+  {
+   "start": 526.0,
+   "duration": 4.0,
+   "text": "this should be the output format. That"
+  },
+  {
+   "start": 528.0,
+   "duration": 4.96,
+   "text": "is what I mean. You are giving it a"
+  },
+  {
+   "start": 530.0,
+   "duration": 5.28,
+   "text": "reason for that particular output."
+  },
+  {
+   "start": 532.96,
+   "duration": 4.48,
+   "text": "So, you have to make sure that you don't"
+  },
+  {
+   "start": 535.28,
+   "duration": 4.0,
+   "text": "just give the few-shot examples in your"
+  },
+  {
+   "start": 537.44,
+   "duration": 4.28,
+   "text": "particular system prompt or wherever you"
+  },
+  {
+   "start": 539.28,
+   "duration": 4.88,
+   "text": "are using. Along with every example, you"
+  },
+  {
+   "start": 541.72,
+   "duration": 4.84,
+   "text": "have to provide particular reasoning for"
+  },
+  {
+   "start": 544.16,
+   "duration": 4.48,
+   "text": "that particular example."
+  },
+  {
+   "start": 546.56,
+   "duration": 4.88,
+   "text": "Right? So, see, this is only output only"
+  },
+  {
+   "start": 548.64,
+   "duration": 4.72,
+   "text": "example, input label. That's it. Model"
+  },
+  {
+   "start": 551.44,
+   "duration": 3.84,
+   "text": "behavior, which example does this look"
+  },
+  {
+   "start": 553.36,
+   "duration": 3.04,
+   "text": "like? It will automatically try to"
+  },
+  {
+   "start": 555.28,
+   "duration": 3.08,
+   "text": "infer."
+  },
+  {
+   "start": 556.4,
+   "duration": 4.52,
+   "text": "Right? And result is pattern matching."
+  },
+  {
+   "start": 558.36,
+   "duration": 4.96,
+   "text": "It will try to match those examples with"
+  },
+  {
+   "start": 560.92,
+   "duration": 5.2,
+   "text": "the outputs that the LLM is generating."
+  },
+  {
+   "start": 563.32,
+   "duration": 4.96,
+   "text": "And even sometimes if it is correct"
+  },
+  {
+   "start": 566.12,
+   "duration": 3.56,
+   "text": "also, it will kind of match with the"
+  },
+  {
+   "start": 568.28,
+   "duration": 3.48,
+   "text": "examples that you gave. And if it"
+  },
+  {
+   "start": 569.68,
+   "duration": 4.8,
+   "text": "doesn't match, then it will give you a"
+  },
+  {
+   "start": 571.76,
+   "duration": 4.44,
+   "text": "error or you know, separate output. But"
+  },
+  {
+   "start": 574.48,
+   "duration": 5.8,
+   "text": "instead of that, you have to give your"
+  },
+  {
+   "start": 576.2,
+   "duration": 6.68,
+   "text": "example with reasons. So, you give an"
+  },
+  {
+   "start": 580.28,
+   "duration": 3.64,
+   "text": "input and you give the derivative and"
+  },
+  {
+   "start": 582.88,
+   "duration": 2.52,
+   "text": "it's I'm not talking about the"
+  },
+  {
+   "start": 583.92,
+   "duration": 4.48,
+   "text": "mathematics derivative, but the"
+  },
+  {
+   "start": 585.4,
+   "duration": 4.92,
+   "text": "derivative of the output. I mean, how"
+  },
+  {
+   "start": 588.4,
+   "duration": 4.84,
+   "text": "did that output derive? What is the"
+  },
+  {
+   "start": 590.32,
+   "duration": 4.72,
+   "text": "reasoning behind that output? Yeah? So,"
+  },
+  {
+   "start": 593.24,
+   "duration": 4.28,
+   "text": "what does the reasoning chain tell me"
+  },
+  {
+   "start": 595.04,
+   "duration": 4.44,
+   "text": "about this code, right? Now, the model"
+  },
+  {
+   "start": 597.52,
+   "duration": 2.68,
+   "text": "needs to understand, okay, this is the"
+  },
+  {
+   "start": 599.48,
+   "duration": 2.28,
+   "text": "um"
+  },
+  {
+   "start": 600.2,
+   "duration": 4.28,
+   "text": "you know, question I got or the query I"
+  },
+  {
+   "start": 601.76,
+   "duration": 4.76,
+   "text": "got. I have this reasoning. Does this"
+  },
+  {
+   "start": 604.48,
+   "duration": 4.28,
+   "text": "fall inside this reasoning? It will try"
+  },
+  {
+   "start": 606.52,
+   "duration": 4.36,
+   "text": "to understand. It is like simple, you"
+  },
+  {
+   "start": 608.76,
+   "duration": 5.04,
+   "text": "are a tutor. You have a child that you"
+  },
+  {
+   "start": 610.88,
+   "duration": 4.68,
+   "text": "are kind of tutoring. You you should not"
+  },
+  {
+   "start": 613.8,
+   "duration": 3.4,
+   "text": "give examples to the child and tell"
+  },
+  {
+   "start": 615.56,
+   "duration": 3.96,
+   "text": "that, okay, this will come in the exam"
+  },
+  {
+   "start": 617.2,
+   "duration": 4.4,
+   "text": "and you you just mug up, something like"
+  },
+  {
+   "start": 619.52,
+   "duration": 4.36,
+   "text": "that. So, the child will try to, you"
+  },
+  {
+   "start": 621.6,
+   "duration": 4.64,
+   "text": "know, compare those answers that you"
+  },
+  {
+   "start": 623.88,
+   "duration": 4.2,
+   "text": "gave directly with the exam in the exam"
+  },
+  {
+   "start": 626.24,
+   "duration": 3.36,
+   "text": "questions. But, that is not the correct"
+  },
+  {
+   "start": 628.08,
+   "duration": 4.36,
+   "text": "way, right? The child needs to"
+  },
+  {
+   "start": 629.6,
+   "duration": 4.48,
+   "text": "understand how did you come to that"
+  },
+  {
+   "start": 632.44,
+   "duration": 2.96,
+   "text": "particular solution, that particular"
+  },
+  {
+   "start": 634.08,
+   "duration": 3.68,
+   "text": "answer."
+  },
+  {
+   "start": 635.4,
+   "duration": 5.56,
+   "text": "Right? Then the foundation will be"
+  },
+  {
+   "start": 637.76,
+   "duration": 5.6,
+   "text": "strong. Similarly, if you give reasons"
+  },
+  {
+   "start": 640.96,
+   "duration": 4.36,
+   "text": "behind your output examples that you"
+  },
+  {
+   "start": 643.36,
+   "duration": 4.52,
+   "text": "provide in your few-shot examples in"
+  },
+  {
+   "start": 645.32,
+   "duration": 4.44,
+   "text": "your prompt, then you are giving a very"
+  },
+  {
+   "start": 647.88,
+   "duration": 4.36,
+   "text": "strong foundation"
+  },
+  {
+   "start": 649.76,
+   "duration": 5.48,
+   "text": "to your system prompt and, you know, the"
+  },
+  {
+   "start": 652.24,
+   "duration": 3.84,
+   "text": "LLM or Claude will work even better, you"
+  },
+  {
+   "start": 655.24,
+   "duration": 2.8,
+   "text": "know?"
+  },
+  {
+   "start": 656.08,
+   "duration": 3.64,
+   "text": "So, the derivation kind of generalizes."
+  },
+  {
+   "start": 658.04,
+   "duration": 5.16,
+   "text": "That is what the point is. The answer"
+  },
+  {
+   "start": 659.72,
+   "duration": 6.64,
+   "text": "doesn't always show the derivation. The"
+  },
+  {
+   "start": 663.2,
+   "duration": 5.04,
+   "text": "answer is specific, but the way, you"
+  },
+  {
+   "start": 666.36,
+   "duration": 4.28,
+   "text": "know, the reason behind that answer is"
+  },
+  {
+   "start": 668.24,
+   "duration": 4.32,
+   "text": "always genera- generally general-"
+  },
+  {
+   "start": 670.64,
+   "duration": 4.16,
+   "text": "generally, you know, general. That is"
+  },
+  {
+   "start": 672.56,
+   "duration": 5.56,
+   "text": "what I want to tell, basically."
+  },
+  {
+   "start": 674.8,
+   "duration": 6.0,
+   "text": "Yeah? So, that is the thing and the"
+  },
+  {
+   "start": 678.12,
+   "duration": 4.32,
+   "text": "geometry of generalization. So,"
+  },
+  {
+   "start": 680.8,
+   "duration": 3.64,
+   "text": "you know,"
+  },
+  {
+   "start": 682.44,
+   "duration": 4.2,
+   "text": "simple example, right?"
+  },
+  {
+   "start": 684.44,
+   "duration": 4.36,
+   "text": "Um a point, a line, like, you know, a"
+  },
+  {
+   "start": 686.64,
+   "duration": 4.96,
+   "text": "model can project to new inputs along"
+  },
+  {
+   "start": 688.8,
+   "duration": 4.84,
+   "text": "the axis, right? And a plane, a general"
+  },
+  {
+   "start": 691.6,
+   "duration": 4.56,
+   "text": "decision surface handling the full input"
+  },
+  {
+   "start": 693.64,
+   "duration": 4.8,
+   "text": "space. So, basically, what I mean is, if"
+  },
+  {
+   "start": 696.16,
+   "duration": 3.96,
+   "text": "you're over-fitting the model,"
+  },
+  {
+   "start": 698.44,
+   "duration": 3.399,
+   "text": "so, this is you can just kind kind of"
+  },
+  {
+   "start": 700.12,
+   "duration": 2.64,
+   "text": "compare it if you know about machine"
+  },
+  {
+   "start": 701.839,
+   "duration": 3.121,
+   "text": "learning, right? It is like"
+  },
+  {
+   "start": 702.76,
+   "duration": 4.56,
+   "text": "over-training your model, right? You're"
+  },
+  {
+   "start": 704.96,
+   "duration": 5.8,
+   "text": "giving it too much familiar data and"
+  },
+  {
+   "start": 707.32,
+   "duration": 4.88,
+   "text": "your accuracy is like 95%, but still it"
+  },
+  {
+   "start": 710.76,
+   "duration": 3.76,
+   "text": "is over-fitting,"
+  },
+  {
+   "start": 712.2,
+   "duration": 3.52,
+   "text": "you know? It might"
+  },
+  {
+   "start": 714.52,
+   "duration": 3.12,
+   "text": "you know, give"
+  },
+  {
+   "start": 715.72,
+   "duration": 5.24,
+   "text": "very wrong answers when there is a"
+  },
+  {
+   "start": 717.64,
+   "duration": 5.04,
+   "text": "little bit of deviation in in the input"
+  },
+  {
+   "start": 720.96,
+   "duration": 3.0,
+   "text": "that you give to your model. That is in"
+  },
+  {
+   "start": 722.68,
+   "duration": 2.72,
+   "text": "machine learning I'm talking about."
+  },
+  {
+   "start": 723.96,
+   "duration": 3.36,
+   "text": "Similarly,"
+  },
+  {
+   "start": 725.4,
+   "duration": 3.48,
+   "text": "if you're directly giving the examples"
+  },
+  {
+   "start": 727.32,
+   "duration": 3.2,
+   "text": "and without any context or reasoning"
+  },
+  {
+   "start": 728.88,
+   "duration": 3.48,
+   "text": "you're giving, you are kind of"
+  },
+  {
+   "start": 730.52,
+   "duration": 3.48,
+   "text": "restricting your model to use its full"
+  },
+  {
+   "start": 732.36,
+   "duration": 4.6,
+   "text": "capabilities. It will just try to kind"
+  },
+  {
+   "start": 734.0,
+   "duration": 5.0,
+   "text": "of match the examples with the query and"
+  },
+  {
+   "start": 736.96,
+   "duration": 3.92,
+   "text": "the you know, with the new data it"
+  },
+  {
+   "start": 739.0,
+   "duration": 4.72,
+   "text": "generates."
+  },
+  {
+   "start": 740.88,
+   "duration": 5.44,
+   "text": "If you are kind of, you know,"
+  },
+  {
+   "start": 743.72,
+   "duration": 5.56,
+   "text": "giving it more surface area to think,"
+  },
+  {
+   "start": 746.32,
+   "duration": 4.76,
+   "text": "you know, like a plane, right? A general"
+  },
+  {
+   "start": 749.28,
+   "duration": 3.88,
+   "text": "decision surface handling the full input"
+  },
+  {
+   "start": 751.08,
+   "duration": 3.68,
+   "text": "space. So, it should be able to handle"
+  },
+  {
+   "start": 753.16,
+   "duration": 4.12,
+   "text": "any kind of input because you have"
+  },
+  {
+   "start": 754.76,
+   "duration": 4.44,
+   "text": "provided proper reasoning via your"
+  },
+  {
+   "start": 757.28,
+   "duration": 3.44,
+   "text": "few-shot examples. So, that is what it"
+  },
+  {
+   "start": 759.2,
+   "duration": 2.84,
+   "text": "is. So, the model extracts the"
+  },
+  {
+   "start": 760.72,
+   "duration": 3.2,
+   "text": "underlying decision rule from the"
+  },
+  {
+   "start": 762.04,
+   "duration": 3.0,
+   "text": "examples and applies it to the novel"
+  },
+  {
+   "start": 763.92,
+   "duration": 2.8,
+   "text": "inputs"
+  },
+  {
+   "start": 765.04,
+   "duration": 4.68,
+   "text": "or the new inputs that you basically"
+  },
+  {
+   "start": 766.72,
+   "duration": 3.0,
+   "text": "give, right?"
+  },
+  {
+   "start": 770.28,
+   "duration": 4.24,
+   "text": "Yeah, let's move forward. So, the two to"
+  },
+  {
+   "start": 772.6,
+   "duration": 3.68,
+   "text": "four example rule. Now, we understood"
+  },
+  {
+   "start": 774.52,
+   "duration": 4.48,
+   "text": "that, okay, our"
+  },
+  {
+   "start": 776.28,
+   "duration": 5.68,
+   "text": "examples that we are giving,"
+  },
+  {
+   "start": 779.0,
+   "duration": 4.4,
+   "text": "those must be having some reason, right?"
+  },
+  {
+   "start": 781.96,
+   "duration": 4.04,
+   "text": "In the system prompt it should have some"
+  },
+  {
+   "start": 783.4,
+   "duration": 4.64,
+   "text": "reasoning. And I'll give you an example"
+  },
+  {
+   "start": 786.0,
+   "duration": 4.24,
+   "text": "of few-shot example that you need to"
+  },
+  {
+   "start": 788.04,
+   "duration": 5.48,
+   "text": "give, right? For example, this is the"
+  },
+  {
+   "start": 790.24,
+   "duration": 6.48,
+   "text": "system prompt for a CI/CD reviewer, you"
+  },
+  {
+   "start": 793.52,
+   "duration": 4.84,
+   "text": "know? And you give the normal prompt and"
+  },
+  {
+   "start": 796.72,
+   "duration": 3.4,
+   "text": "you're telling classify each reported"
+  },
+  {
+   "start": 798.36,
+   "duration": 3.12,
+   "text": "issue as critical, high, or medium using"
+  },
+  {
+   "start": 800.12,
+   "duration": 3.16,
+   "text": "the following examples. You give a"
+  },
+  {
+   "start": 801.48,
+   "duration": 3.2,
+   "text": "few-shot examples."
+  },
+  {
+   "start": 803.28,
+   "duration": 3.24,
+   "text": "And if you see,"
+  },
+  {
+   "start": 804.68,
+   "duration": 3.56,
+   "text": "example one, you know, critical. When"
+  },
+  {
+   "start": 806.52,
+   "duration": 4.76,
+   "text": "would you classify as critical? Code is,"
+  },
+  {
+   "start": 808.24,
+   "duration": 4.48,
+   "text": "for example, this is, you know, this is"
+  },
+  {
+   "start": 811.28,
+   "duration": 3.12,
+   "text": "one code and you're providing the"
+  },
+  {
+   "start": 812.72,
+   "duration": 4.92,
+   "text": "reasoning that authentication check"
+  },
+  {
+   "start": 814.4,
+   "duration": 5.12,
+   "text": "exists, but is silently bypassed. Any"
+  },
+  {
+   "start": 817.64,
+   "duration": 3.32,
+   "text": "request proceeds regardless of token"
+  },
+  {
+   "start": 819.52,
+   "duration": 4.16,
+   "text": "validity, right? You're giving the"
+  },
+  {
+   "start": 820.96,
+   "duration": 4.08,
+   "text": "reasoning why this is a critical bug and"
+  },
+  {
+   "start": 823.68,
+   "duration": 3.68,
+   "text": "you're putting the label as critical."
+  },
+  {
+   "start": 825.04,
+   "duration": 4.04,
+   "text": "Similarly, for two more examples, right?"
+  },
+  {
+   "start": 827.36,
+   "duration": 3.68,
+   "text": "You're giving like that. So, for high"
+  },
+  {
+   "start": 829.08,
+   "duration": 3.92,
+   "text": "and medium. So,"
+  },
+  {
+   "start": 831.04,
+   "duration": 4.44,
+   "text": "if you see over here, I've not provided"
+  },
+  {
+   "start": 833.0,
+   "duration": 4.96,
+   "text": "more than three examples. So, there is a"
+  },
+  {
+   "start": 835.48,
+   "duration": 4.48,
+   "text": "rule of two to four examples that you"
+  },
+  {
+   "start": 837.96,
+   "duration": 3.56,
+   "text": "should follow in few-shot prompting"
+  },
+  {
+   "start": 839.96,
+   "duration": 3.36,
+   "text": "because"
+  },
+  {
+   "start": 841.52,
+   "duration": 4.12,
+   "text": "giving more examples, you're in the"
+  },
+  {
+   "start": 843.32,
+   "duration": 4.68,
+   "text": "danger zone because, you know, you're"
+  },
+  {
+   "start": 845.64,
+   "duration": 5.52,
+   "text": "kind of bloating the context. You are"
+  },
+  {
+   "start": 848.0,
+   "duration": 4.88,
+   "text": "forcing the model to, you know, kind of"
+  },
+  {
+   "start": 851.16,
+   "duration": 3.12,
+   "text": "going back to the same place where we"
+  },
+  {
+   "start": 852.88,
+   "duration": 3.8,
+   "text": "started, right? You are kind of forcing"
+  },
+  {
+   "start": 854.28,
+   "duration": 4.92,
+   "text": "the model to do the example matching or"
+  },
+  {
+   "start": 856.68,
+   "duration": 6.399,
+   "text": "the pattern matching which we are"
+  },
+  {
+   "start": 859.2,
+   "duration": 5.24,
+   "text": "probably trying to avoid, right? So,"
+  },
+  {
+   "start": 863.079,
+   "duration": 3.681,
+   "text": "that is one of the things that you need"
+  },
+  {
+   "start": 864.44,
+   "duration": 3.88,
+   "text": "to keep in mind because we don't want"
+  },
+  {
+   "start": 866.76,
+   "duration": 3.76,
+   "text": "that. So, keep"
+  },
+  {
+   "start": 868.32,
+   "duration": 4.4,
+   "text": "around two to four examples in your"
+  },
+  {
+   "start": 870.52,
+   "duration": 4.16,
+   "text": "few-shot examples. So, that is the like"
+  },
+  {
+   "start": 872.72,
+   "duration": 5.68,
+   "text": "the"
+  },
+  {
+   "start": 874.68,
+   "duration": 5.52,
+   "text": "happy path, right? And those two to four"
+  },
+  {
+   "start": 878.4,
+   "duration": 4.4,
+   "text": "examples should be full of reasoning,"
+  },
+  {
+   "start": 880.2,
+   "duration": 4.12,
+   "text": "full of intuition, and it should cover a"
+  },
+  {
+   "start": 882.8,
+   "duration": 2.72,
+   "text": "lot of variety."
+  },
+  {
+   "start": 884.32,
+   "duration": 3.48,
+   "text": "So,"
+  },
+  {
+   "start": 885.52,
+   "duration": 5.16,
+   "text": "that is what you should, you know, try"
+  },
+  {
+   "start": 887.8,
+   "duration": 5.2,
+   "text": "for. And the exam also they will try to"
+  },
+  {
+   "start": 890.68,
+   "duration": 3.68,
+   "text": "ask you how many few-shot examples or,"
+  },
+  {
+   "start": 893.0,
+   "duration": 2.72,
+   "text": "you know,"
+  },
+  {
+   "start": 894.36,
+   "duration": 3.04,
+   "text": "it will give you a scenario questions"
+  },
+  {
+   "start": 895.72,
+   "duration": 3.44,
+   "text": "and it will try to, you know, ask you"
+  },
+  {
+   "start": 897.4,
+   "duration": 3.4,
+   "text": "the same question, right? Then how many"
+  },
+  {
+   "start": 899.16,
+   "duration": 3.4,
+   "text": "examples, few-shot examples are the"
+  },
+  {
+   "start": 900.8,
+   "duration": 3.88,
+   "text": "best? Then you have to"
+  },
+  {
+   "start": 902.56,
+   "duration": 4.0,
+   "text": "kind of say that two to four, you know,"
+  },
+  {
+   "start": 904.68,
+   "duration": 5.08,
+   "text": "few-shot examples are the best, right?"
+  },
+  {
+   "start": 906.56,
+   "duration": 3.2,
+   "text": "That is in the sweet space."
+  },
+  {
+   "start": 909.8,
+   "duration": 3.0,
+   "text": "Okay."
+  },
+  {
+   "start": 911.32,
+   "duration": 3.56,
+   "text": "Now,"
+  },
+  {
+   "start": 912.8,
+   "duration": 5.36,
+   "text": "diagnostic workflow targeting the fault"
+  },
+  {
+   "start": 914.88,
+   "duration": 4.88,
+   "text": "lines, right? Now, run 10 inputs 3x,"
+  },
+  {
+   "start": 918.16,
+   "duration": 3.76,
+   "text": "find the drift, identify where the"
+  },
+  {
+   "start": 919.76,
+   "duration": 4.44,
+   "text": "output flips, and example the drifting,"
+  },
+  {
+   "start": 921.92,
+   "duration": 3.44,
+   "text": "you know, cases only. So, what I mean is"
+  },
+  {
+   "start": 924.2,
+   "duration": 2.759,
+   "text": "that"
+  },
+  {
+   "start": 925.36,
+   "duration": 3.04,
+   "text": "um"
+  },
+  {
+   "start": 926.959,
+   "duration": 2.321,
+   "text": "basically,"
+  },
+  {
+   "start": 928.4,
+   "duration": 3.439,
+   "text": "um"
+  },
+  {
+   "start": 929.28,
+   "duration": 4.6,
+   "text": "you are basically not giving"
+  },
+  {
+   "start": 931.839,
+   "duration": 3.961,
+   "text": "more variety. So, in this particular"
+  },
+  {
+   "start": 933.88,
+   "duration": 4.0,
+   "text": "case, you are not giving more variety to"
+  },
+  {
+   "start": 935.8,
+   "duration": 4.12,
+   "text": "the model, right?"
+  },
+  {
+   "start": 937.88,
+   "duration": 4.079,
+   "text": "Um for example, you're giving the two to"
+  },
+  {
+   "start": 939.92,
+   "duration": 4.72,
+   "text": "four example few-shot examples, but"
+  },
+  {
+   "start": 941.959,
+   "duration": 4.761,
+   "text": "there is no variety in there."
+  },
+  {
+   "start": 944.64,
+   "duration": 5.12,
+   "text": "You know, you're exampling the obvious"
+  },
+  {
+   "start": 946.72,
+   "duration": 6.04,
+   "text": "cases which, you know, the LLM would be"
+  },
+  {
+   "start": 949.76,
+   "duration": 3.0,
+   "text": "able to understand"
+  },
+  {
+   "start": 953.24,
+   "duration": 3.44,
+   "text": "on its own."
+  },
+  {
+   "start": 954.48,
+   "duration": 4.4,
+   "text": "But, you are not giving the cases like"
+  },
+  {
+   "start": 956.68,
+   "duration": 4.56,
+   "text": "complicated cases."
+  },
+  {
+   "start": 958.88,
+   "duration": 3.88,
+   "text": "Basically, the thing is"
+  },
+  {
+   "start": 961.24,
+   "duration": 2.599,
+   "text": "you are kind of practicing the same"
+  },
+  {
+   "start": 962.76,
+   "duration": 2.36,
+   "text": "things. If you're if you're going to"
+  },
+  {
+   "start": 963.839,
+   "duration": 3.161,
+   "text": "apply it on yourself, right, this"
+  },
+  {
+   "start": 965.12,
+   "duration": 4.08,
+   "text": "concept, you're kind of practicing the"
+  },
+  {
+   "start": 967.0,
+   "duration": 3.88,
+   "text": "same things that you already know, which"
+  },
+  {
+   "start": 969.2,
+   "duration": 3.48,
+   "text": "you can already figure out. But, the"
+  },
+  {
+   "start": 970.88,
+   "duration": 4.04,
+   "text": "thing is you have to practice it on new"
+  },
+  {
+   "start": 972.68,
+   "duration": 3.84,
+   "text": "things that you need to explore."
+  },
+  {
+   "start": 974.92,
+   "duration": 3.52,
+   "text": "Similarly, the LLM works in the same"
+  },
+  {
+   "start": 976.52,
+   "duration": 4.319,
+   "text": "way. Whatever two to four few-shot"
+  },
+  {
+   "start": 978.44,
+   "duration": 4.16,
+   "text": "examples you give, right? It should be"
+  },
+  {
+   "start": 980.839,
+   "duration": 3.681,
+   "text": "full of variety. It should be handling"
+  },
+  {
+   "start": 982.6,
+   "duration": 3.68,
+   "text": "the complicated scenarios."
+  },
+  {
+   "start": 984.52,
+   "duration": 3.48,
+   "text": "You can start with a simple scenario and"
+  },
+  {
+   "start": 986.28,
+   "duration": 3.76,
+   "text": "end, you know, the fourth example might"
+  },
+  {
+   "start": 988.0,
+   "duration": 5.12,
+   "text": "be a complicated scenario. And the all"
+  },
+  {
+   "start": 990.04,
+   "duration": 5.28,
+   "text": "the reasonings must be, you know,"
+  },
+  {
+   "start": 993.12,
+   "duration": 5.959,
+   "text": "based out of that."
+  },
+  {
+   "start": 995.32,
+   "duration": 5.16,
+   "text": "Right? So, the thing is"
+  },
+  {
+   "start": 999.079,
+   "duration": 3.041,
+   "text": "you have to kind of you can you can try"
+  },
+  {
+   "start": 1000.48,
+   "duration": 3.16,
+   "text": "that out, right? You can you can, for"
+  },
+  {
+   "start": 1002.12,
+   "duration": 3.76,
+   "text": "example, um"
+  },
+  {
+   "start": 1003.64,
+   "duration": 3.96,
+   "text": "without before giving the examples, a"
+  },
+  {
+   "start": 1005.88,
+   "duration": 5.12,
+   "text": "few-shot example, you can run multiple"
+  },
+  {
+   "start": 1007.6,
+   "duration": 5.6,
+   "text": "inputs via the LLM model. You find, you"
+  },
+  {
+   "start": 1011.0,
+   "duration": 4.32,
+   "text": "know, where you you find where you get"
+  },
+  {
+   "start": 1013.2,
+   "duration": 4.08,
+   "text": "that weird output, for example. And you"
+  },
+  {
+   "start": 1015.32,
+   "duration": 4.0,
+   "text": "take that as an example. That is the"
+  },
+  {
+   "start": 1017.28,
+   "duration": 3.84,
+   "text": "opposite of, you know, test-driven"
+  },
+  {
+   "start": 1019.32,
+   "duration": 4.04,
+   "text": "development, you can say."
+  },
+  {
+   "start": 1021.12,
+   "duration": 3.88,
+   "text": "And you use those examples in your"
+  },
+  {
+   "start": 1023.36,
+   "duration": 3.8,
+   "text": "few-shot examples and you see that the"
+  },
+  {
+   "start": 1025.0,
+   "duration": 3.959,
+   "text": "next time you give, you know, some weird"
+  },
+  {
+   "start": 1027.16,
+   "duration": 4.919,
+   "text": "inputs, the"
+  },
+  {
+   "start": 1028.959,
+   "duration": 5.12,
+   "text": "the model performs flawlessly. So, that"
+  },
+  {
+   "start": 1032.079,
+   "duration": 4.88,
+   "text": "is how you should be smart about, you"
+  },
+  {
+   "start": 1034.079,
+   "duration": 4.36,
+   "text": "know, providing those few-shot examples"
+  },
+  {
+   "start": 1036.959,
+   "duration": 4.12,
+   "text": "for your particular"
+  },
+  {
+   "start": 1038.439,
+   "duration": 4.481,
+   "text": "system prompt. And, you know, that will"
+  },
+  {
+   "start": 1041.079,
+   "duration": 5.161,
+   "text": "help you a very long way. So, that is"
+  },
+  {
+   "start": 1042.92,
+   "duration": 5.4,
+   "text": "the point I wanted to make."
+  },
+  {
+   "start": 1046.24,
+   "duration": 3.84,
+   "text": "Yeah? So,"
+  },
+  {
+   "start": 1048.32,
+   "duration": 4.12,
+   "text": "if you see, this is a particular"
+  },
+  {
+   "start": 1050.08,
+   "duration": 5.68,
+   "text": "scenario, right? Of"
+  },
+  {
+   "start": 1052.44,
+   "duration": 5.64,
+   "text": "the CI/CD pipelines that I gave, right?"
+  },
+  {
+   "start": 1055.76,
+   "duration": 5.56,
+   "text": "CI/CD code reviewer, right? This is this"
+  },
+  {
+   "start": 1058.08,
+   "duration": 5.44,
+   "text": "is the example. And if you see here,"
+  },
+  {
+   "start": 1061.32,
+   "duration": 3.92,
+   "text": "I have given multiple examples and I've"
+  },
+  {
+   "start": 1063.52,
+   "duration": 3.4,
+   "text": "given particular labels. And that that"
+  },
+  {
+   "start": 1065.24,
+   "duration": 4.52,
+   "text": "is what I'm trying to tell here, right?"
+  },
+  {
+   "start": 1066.92,
+   "duration": 4.759,
+   "text": "Analyzing severity. So, it see resolved"
+  },
+  {
+   "start": 1069.76,
+   "duration": 4.2,
+   "text": "by three targeted reasoning examples"
+  },
+  {
+   "start": 1071.679,
+   "duration": 5.161,
+   "text": "mapping the severity boundary, right? If"
+  },
+  {
+   "start": 1073.96,
+   "duration": 2.88,
+   "text": "you see over here,"
+  },
+  {
+   "start": 1077.24,
+   "duration": 4.16,
+   "text": "same thing we have done, right?"
+  },
+  {
+   "start": 1078.96,
+   "duration": 4.56,
+   "text": "Critical, high, and medium. So, these"
+  },
+  {
+   "start": 1081.4,
+   "duration": 3.08,
+   "text": "are the three things, right? Three"
+  },
+  {
+   "start": 1083.52,
+   "duration": 2.6,
+   "text": "um"
+  },
+  {
+   "start": 1084.48,
+   "duration": 3.72,
+   "text": "kind of"
+  },
+  {
+   "start": 1086.12,
+   "duration": 4.28,
+   "text": "it has only three basically types of"
+  },
+  {
+   "start": 1088.2,
+   "duration": 3.4,
+   "text": "severity. And for each severity, you are"
+  },
+  {
+   "start": 1090.4,
+   "duration": 3.0,
+   "text": "giving"
+  },
+  {
+   "start": 1091.6,
+   "duration": 3.52,
+   "text": "a reasoning and an example. So, you are"
+  },
+  {
+   "start": 1093.4,
+   "duration": 2.76,
+   "text": "kind of, you know, giving more variety"
+  },
+  {
+   "start": 1095.12,
+   "duration": 2.08,
+   "text": "to the"
+  },
+  {
+   "start": 1096.16,
+   "duration": 2.8,
+   "text": "particular,"
+  },
+  {
+   "start": 1097.2,
+   "duration": 4.28,
+   "text": "you know, system prompt."
+  },
+  {
+   "start": 1098.96,
+   "duration": 4.8,
+   "text": "Sorry, to the LLM via the system prompt."
+  },
+  {
+   "start": 1101.48,
+   "duration": 4.28,
+   "text": "Yeah? So, that is what I already showed"
+  },
+  {
+   "start": 1103.76,
+   "duration": 5.08,
+   "text": "you this particular example, right? For"
+  },
+  {
+   "start": 1105.76,
+   "duration": 5.64,
+   "text": "the CI/CD pipeline example. And the next"
+  },
+  {
+   "start": 1108.84,
+   "duration": 4.72,
+   "text": "scenario is about content extraction."
+  },
+  {
+   "start": 1111.4,
+   "duration": 4.68,
+   "text": "Now, if you see, when we are talking"
+  },
+  {
+   "start": 1113.56,
+   "duration": 3.88,
+   "text": "about content extraction, guys, so the"
+  },
+  {
+   "start": 1116.08,
+   "duration": 4.12,
+   "text": "content can be structured or"
+  },
+  {
+   "start": 1117.44,
+   "duration": 4.88,
+   "text": "unstructured. You cannot just"
+  },
+  {
+   "start": 1120.2,
+   "duration": 4.36,
+   "text": "kind of restrict someone to only supply"
+  },
+  {
+   "start": 1122.32,
+   "duration": 3.8,
+   "text": "you, you know,"
+  },
+  {
+   "start": 1124.56,
+   "duration": 4.119,
+   "text": "structured content or unstructured"
+  },
+  {
+   "start": 1126.12,
+   "duration": 4.6,
+   "text": "content. So, whenever you're writing the"
+  },
+  {
+   "start": 1128.679,
+   "duration": 3.761,
+   "text": "system prompt or an agent or Claude"
+  },
+  {
+   "start": 1130.72,
+   "duration": 4.72,
+   "text": "code, wherever you're using that prompt,"
+  },
+  {
+   "start": 1132.44,
+   "duration": 5.88,
+   "text": "you mean you you have to be very much of"
+  },
+  {
+   "start": 1135.44,
+   "duration": 5.32,
+   "text": "you know, smart about telling Claude or"
+  },
+  {
+   "start": 1138.32,
+   "duration": 5.44,
+   "text": "whichever LLM model you're using"
+  },
+  {
+   "start": 1140.76,
+   "duration": 4.36,
+   "text": "what are the types it can expect while,"
+  },
+  {
+   "start": 1143.76,
+   "duration": 4.12,
+   "text": "you know, doing the extraction. For"
+  },
+  {
+   "start": 1145.12,
+   "duration": 4.68,
+   "text": "example, if you see here, two examples"
+  },
+  {
+   "start": 1147.88,
+   "duration": 3.84,
+   "text": "covering different document structures."
+  },
+  {
+   "start": 1149.8,
+   "duration": 3.92,
+   "text": "So, extract contract value, effective"
+  },
+  {
+   "start": 1151.72,
+   "duration": 5.04,
+   "text": "date, and payment terms. So, this is"
+  },
+  {
+   "start": 1153.72,
+   "duration": 5.28,
+   "text": "basically the things that you want to be"
+  },
+  {
+   "start": 1156.76,
+   "duration": 4.28,
+   "text": "extracted from the document that you"
+  },
+  {
+   "start": 1159.0,
+   "duration": 4.0,
+   "text": "get, that the agent gets, for example."
+  },
+  {
+   "start": 1161.04,
+   "duration": 3.6,
+   "text": "Let's say it's an document extraction"
+  },
+  {
+   "start": 1163.0,
+   "duration": 4.12,
+   "text": "agent. And this is the system prompt of"
+  },
+  {
+   "start": 1164.64,
+   "duration": 4.6,
+   "text": "that document extraction agent."
+  },
+  {
+   "start": 1167.12,
+   "duration": 4.28,
+   "text": "The the the end goal is that we need"
+  },
+  {
+   "start": 1169.24,
+   "duration": 5.2,
+   "text": "these three values."
+  },
+  {
+   "start": 1171.4,
+   "duration": 5.84,
+   "text": "But, you can get tabular format or you"
+  },
+  {
+   "start": 1174.44,
+   "duration": 4.84,
+   "text": "can get a paragraph format as well"
+  },
+  {
+   "start": 1177.24,
+   "duration": 4.36,
+   "text": "in the document. So, you need to tell"
+  },
+  {
+   "start": 1179.28,
+   "duration": 4.12,
+   "text": "Claude that, you know, you might get"
+  },
+  {
+   "start": 1181.6,
+   "duration": 3.52,
+   "text": "either of these types or, you know, some"
+  },
+  {
+   "start": 1183.4,
+   "duration": 3.96,
+   "text": "other type if you have."
+  },
+  {
+   "start": 1185.12,
+   "duration": 4.36,
+   "text": "So, in example one, structured table"
+  },
+  {
+   "start": 1187.36,
+   "duration": 4.12,
+   "text": "format, you know, field, value, amount,"
+  },
+  {
+   "start": 1189.48,
+   "duration": 4.52,
+   "text": "start date, terms. So, the reasoning is"
+  },
+  {
+   "start": 1191.48,
+   "duration": 5.92,
+   "text": "explicit table, it is values directly"
+  },
+  {
+   "start": 1194.0,
+   "duration": 5.44,
+   "text": "stated and no inference needed, right?"
+  },
+  {
+   "start": 1197.4,
+   "duration": 3.88,
+   "text": "And output is contract value, effective"
+  },
+  {
+   "start": 1199.44,
+   "duration": 3.24,
+   "text": "date and"
+  },
+  {
+   "start": 1201.28,
+   "duration": 3.64,
+   "text": "basically payment terms. So, from this"
+  },
+  {
+   "start": 1202.68,
+   "duration": 3.88,
+   "text": "example, it has extracted these things."
+  },
+  {
+   "start": 1204.92,
+   "duration": 3.6,
+   "text": "So, this is an example based on this"
+  },
+  {
+   "start": 1206.56,
+   "duration": 4.6,
+   "text": "reasoning. If you see example number"
+  },
+  {
+   "start": 1208.52,
+   "duration": 4.12,
+   "text": "two, it is a pro prose paragraph format."
+  },
+  {
+   "start": 1211.16,
+   "duration": 4.2,
+   "text": "So, you are telling the you know, this"
+  },
+  {
+   "start": 1212.64,
+   "duration": 4.36,
+   "text": "is the document that you get, right? And"
+  },
+  {
+   "start": 1215.36,
+   "duration": 4.32,
+   "text": "reasoning, no explicit table is there."
+  },
+  {
+   "start": 1217.0,
+   "duration": 4.36,
+   "text": "You are telling that that in this case"
+  },
+  {
+   "start": 1219.68,
+   "duration": 5.28,
+   "text": "there is no explicit table, contract"
+  },
+  {
+   "start": 1221.36,
+   "duration": 6.16,
+   "text": "value is stated in prose as $45,000. So,"
+  },
+  {
+   "start": 1224.96,
+   "duration": 4.32,
+   "text": "you're telling, okay, it is you know, it"
+  },
+  {
+   "start": 1227.52,
+   "duration": 3.36,
+   "text": "is kind of"
+  },
+  {
+   "start": 1229.28,
+   "duration": 4.04,
+   "text": "there in that particular paragraph"
+  },
+  {
+   "start": 1230.88,
+   "duration": 4.64,
+   "text": "itself that it is $45,000."
+  },
+  {
+   "start": 1233.32,
+   "duration": 4.12,
+   "text": "And payment terms is stated as within 30"
+  },
+  {
+   "start": 1235.52,
+   "duration": 4.04,
+   "text": "days. So, you're giving a reasoning"
+  },
+  {
+   "start": 1237.44,
+   "duration": 3.52,
+   "text": "that, okay, if you get get this kind of"
+  },
+  {
+   "start": 1239.56,
+   "duration": 3.44,
+   "text": "uh"
+  },
+  {
+   "start": 1240.96,
+   "duration": 3.72,
+   "text": "um document where it is you know,"
+  },
+  {
+   "start": 1243.0,
+   "duration": 4.12,
+   "text": "paragraph, so basically you would"
+  },
+  {
+   "start": 1244.68,
+   "duration": 4.52,
+   "text": "extract in this manner. And we're giving"
+  },
+  {
+   "start": 1247.12,
+   "duration": 3.56,
+   "text": "an output example as well. So, this is"
+  },
+  {
+   "start": 1249.2,
+   "duration": 3.52,
+   "text": "one of the scenarios that will come in"
+  },
+  {
+   "start": 1250.68,
+   "duration": 3.64,
+   "text": "the exam and this CI/CD scenario is one"
+  },
+  {
+   "start": 1252.72,
+   "duration": 3.72,
+   "text": "of the scenarios that will come in the"
+  },
+  {
+   "start": 1254.32,
+   "duration": 4.08,
+   "text": "exam. So, make sure that you go through"
+  },
+  {
+   "start": 1256.44,
+   "duration": 3.72,
+   "text": "these scenarios and understand how"
+  },
+  {
+   "start": 1258.4,
+   "duration": 3.32,
+   "text": "few-shot examples are being used here."
+  },
+  {
+   "start": 1260.16,
+   "duration": 2.72,
+   "text": "And this is kind of an"
+  },
+  {
+   "start": 1261.72,
+   "duration": 3.68,
+   "text": "um"
+  },
+  {
+   "start": 1262.88,
+   "duration": 4.56,
+   "text": "uh kind of like"
+  },
+  {
+   "start": 1265.4,
+   "duration": 3.64,
+   "text": "upgrade of whatever we had learned in"
+  },
+  {
+   "start": 1267.44,
+   "duration": 4.28,
+   "text": "the previous lesson, right? Or in the"
+  },
+  {
+   "start": 1269.04,
+   "duration": 4.64,
+   "text": "previous episode. So, yeah, so these are"
+  },
+  {
+   "start": 1271.72,
+   "duration": 4.12,
+   "text": "the two scenarios that you need to keep"
+  },
+  {
+   "start": 1273.68,
+   "duration": 4.4,
+   "text": "in mind and I will anyways push this"
+  },
+  {
+   "start": 1275.84,
+   "duration": 4.28,
+   "text": "code, so you would get these examples"
+  },
+  {
+   "start": 1278.08,
+   "duration": 4.36,
+   "text": "and the slides. So, yeah, should be"
+  },
+  {
+   "start": 1280.12,
+   "duration": 2.32,
+   "text": "fine."
+  },
+  {
+   "start": 1282.48,
+   "duration": 5.44,
+   "text": "Okay, so customer support scenario, you"
+  },
+  {
+   "start": 1284.64,
+   "duration": 5.48,
+   "text": "know, like if you see see severity of"
+  },
+  {
+   "start": 1287.92,
+   "duration": 4.56,
+   "text": "error, customer tenure, you know, this"
+  },
+  {
+   "start": 1290.12,
+   "duration": 4.48,
+   "text": "is the scenario basically. So, if it is"
+  },
+  {
+   "start": 1292.48,
+   "duration": 3.84,
+   "text": "repeated system failure, escalate."
+  },
+  {
+   "start": 1294.6,
+   "duration": 3.12,
+   "text": "Ambiguous decision boundary, so this is"
+  },
+  {
+   "start": 1296.32,
+   "duration": 3.24,
+   "text": "the boundary"
+  },
+  {
+   "start": 1297.72,
+   "duration": 4.04,
+   "text": "basically under which you know, the"
+  },
+  {
+   "start": 1299.56,
+   "duration": 4.12,
+   "text": "agent will be able to take the decision."
+  },
+  {
+   "start": 1301.76,
+   "duration": 3.68,
+   "text": "If it goes beyond this boundary, then"
+  },
+  {
+   "start": 1303.68,
+   "duration": 3.44,
+   "text": "you should basically escalate to human"
+  },
+  {
+   "start": 1305.44,
+   "duration": 3.84,
+   "text": "or something like that."
+  },
+  {
+   "start": 1307.12,
+   "duration": 4.8,
+   "text": "Right? If it is a trusted customer"
+  },
+  {
+   "start": 1309.28,
+   "duration": 5.52,
+   "text": "description discrepancy, then resolve,"
+  },
+  {
+   "start": 1311.92,
+   "duration": 4.64,
+   "text": "right? And I will show you how I used"
+  },
+  {
+   "start": 1314.8,
+   "duration": 4.0,
+   "text": "this kind of a"
+  },
+  {
+   "start": 1316.56,
+   "duration": 3.84,
+   "text": "thing in my customer support agent that"
+  },
+  {
+   "start": 1318.8,
+   "duration": 3.84,
+   "text": "we had created, right? From the lesson"
+  },
+  {
+   "start": 1320.4,
+   "duration": 4.0,
+   "text": "number one itself. And I'll show you how"
+  },
+  {
+   "start": 1322.64,
+   "duration": 4.28,
+   "text": "I have modified the system prompt to"
+  },
+  {
+   "start": 1324.4,
+   "duration": 5.36,
+   "text": "include you know, the severity of"
+  },
+  {
+   "start": 1326.92,
+   "duration": 4.24,
+   "text": "handling those kind of scenarios by the"
+  },
+  {
+   "start": 1329.76,
+   "duration": 2.84,
+   "text": "customers."
+  },
+  {
+   "start": 1331.16,
+   "duration": 3.28,
+   "text": "Okay?"
+  },
+  {
+   "start": 1332.6,
+   "duration": 3.52,
+   "text": "So, it is just telling that fixing"
+  },
+  {
+   "start": 1334.44,
+   "duration": 3.76,
+   "text": "borderline escalation inconsistency"
+  },
+  {
+   "start": 1336.12,
+   "duration": 3.84,
+   "text": "required two targeted examples that"
+  },
+  {
+   "start": 1338.2,
+   "duration": 4.6,
+   "text": "straddle the ambiguous boundary line."
+  },
+  {
+   "start": 1339.96,
+   "duration": 5.96,
+   "text": "So, basically it is telling that minimum"
+  },
+  {
+   "start": 1342.8,
+   "duration": 6.0,
+   "text": "two targeted examples you can give to"
+  },
+  {
+   "start": 1345.92,
+   "duration": 5.88,
+   "text": "the particular LLM to help it to make a"
+  },
+  {
+   "start": 1348.8,
+   "duration": 5.44,
+   "text": "decision whether I need to escalate the"
+  },
+  {
+   "start": 1351.8,
+   "duration": 5.08,
+   "text": "particular query that I got or it is an"
+  },
+  {
+   "start": 1354.24,
+   "duration": 4.72,
+   "text": "ambiguous um you know, or it is a"
+  },
+  {
+   "start": 1356.88,
+   "duration": 3.88,
+   "text": "resolvable query that I can resolve on"
+  },
+  {
+   "start": 1358.96,
+   "duration": 3.56,
+   "text": "my own, basically."
+  },
+  {
+   "start": 1360.76,
+   "duration": 4.04,
+   "text": "So, this is just an example, a graph you"
+  },
+  {
+   "start": 1362.52,
+   "duration": 4.64,
+   "text": "can see over here to you know, you will"
+  },
+  {
+   "start": 1364.8,
+   "duration": 4.52,
+   "text": "it will be better to understand, you"
+  },
+  {
+   "start": 1367.16,
+   "duration": 3.72,
+   "text": "know, easy to understand. So, that is"
+  },
+  {
+   "start": 1369.32,
+   "duration": 3.96,
+   "text": "one of the things."
+  },
+  {
+   "start": 1370.88,
+   "duration": 5.04,
+   "text": "So, exam question example, task"
+  },
+  {
+   "start": 1373.28,
+   "duration": 4.8,
+   "text": "statement 4.2. A CI/CD agent"
+  },
+  {
+   "start": 1375.92,
+   "duration": 4.56,
+   "text": "inconsistently assigns civility levels"
+  },
+  {
+   "start": 1378.08,
+   "duration": 4.8,
+   "text": "to the same bug class. Most effective"
+  },
+  {
+   "start": 1380.48,
+   "duration": 4.199,
+   "text": "fix. Add detailed prose definitions. We"
+  },
+  {
+   "start": 1382.88,
+   "duration": 4.4,
+   "text": "already know that you know, as much as"
+  },
+  {
+   "start": 1384.679,
+   "duration": 5.281,
+   "text": "it is good, but still if you give more"
+  },
+  {
+   "start": 1387.28,
+   "duration": 5.0,
+   "text": "examples, few-shot examples, that is"
+  },
+  {
+   "start": 1389.96,
+   "duration": 4.52,
+   "text": "even better. So, two to four targeted"
+  },
+  {
+   "start": 1392.28,
+   "duration": 4.44,
+   "text": "few-shot examples with reasoning, that"
+  },
+  {
+   "start": 1394.48,
+   "duration": 5.08,
+   "text": "is the best case scenario over here."
+  },
+  {
+   "start": 1396.72,
+   "duration": 5.4,
+   "text": "Lower the temperature. Huh, the thing is"
+  },
+  {
+   "start": 1399.56,
+   "duration": 5.68,
+   "text": "temperature lowering is related to um"
+  },
+  {
+   "start": 1402.12,
+   "duration": 4.28,
+   "text": "you know, prompting, you know, you can"
+  },
+  {
+   "start": 1405.24,
+   "duration": 4.32,
+   "text": "um"
+  },
+  {
+   "start": 1406.4,
+   "duration": 6.16,
+   "text": "you can kind of switch up the"
+  },
+  {
+   "start": 1409.56,
+   "duration": 4.88,
+   "text": "models' thinking via the temperature"
+  },
+  {
+   "start": 1412.56,
+   "duration": 3.44,
+   "text": "that we have already know from the"
+  },
+  {
+   "start": 1414.44,
+   "duration": 4.2,
+   "text": "previous lesson."
+  },
+  {
+   "start": 1416.0,
+   "duration": 4.52,
+   "text": "But here it controls the randomness, not"
+  },
+  {
+   "start": 1418.64,
+   "duration": 3.92,
+   "text": "classic you know, it just doesn't help"
+  },
+  {
+   "start": 1420.52,
+   "duration": 3.72,
+   "text": "any you know, the model in any kind of"
+  },
+  {
+   "start": 1422.56,
+   "duration": 3.88,
+   "text": "judgment, basically."
+  },
+  {
+   "start": 1424.24,
+   "duration": 3.72,
+   "text": "Add six to eight examples causes pattern"
+  },
+  {
+   "start": 1426.44,
+   "duration": 3.32,
+   "text": "matching and context bloating that we"
+  },
+  {
+   "start": 1427.96,
+   "duration": 4.44,
+   "text": "already know, the sweet spot is to go"
+  },
+  {
+   "start": 1429.76,
+   "duration": 5.32,
+   "text": "with two to four targeted few-shot"
+  },
+  {
+   "start": 1432.4,
+   "duration": 5.04,
+   "text": "examples with reasoning."
+  },
+  {
+   "start": 1435.08,
+   "duration": 4.599,
+   "text": "So, some key facts about the exam."
+  },
+  {
+   "start": 1437.44,
+   "duration": 3.92,
+   "text": "Um ideal example count is two to four"
+  },
+  {
+   "start": 1439.679,
+   "duration": 3.561,
+   "text": "targeted examples. Why five to eight"
+  },
+  {
+   "start": 1441.36,
+   "duration": 4.08,
+   "text": "fails? Triggers pattern matching, loads"
+  },
+  {
+   "start": 1443.24,
+   "duration": 4.52,
+   "text": "the context versus prose instructions."
+  },
+  {
+   "start": 1445.44,
+   "duration": 4.36,
+   "text": "Few-shot is explicitly more effective."
+  },
+  {
+   "start": 1447.76,
+   "duration": 4.24,
+   "text": "Example structure input plus reasoning"
+  },
+  {
+   "start": 1449.8,
+   "duration": 4.52,
+   "text": "plus output and targeting strategy"
+  },
+  {
+   "start": 1452.0,
+   "duration": 4.72,
+   "text": "ambiguous boundary cases and the"
+  },
+  {
+   "start": 1454.32,
+   "duration": 4.68,
+   "text": "sequence."
+  },
+  {
+   "start": 1456.72,
+   "duration": 5.04,
+   "text": "Expand tool description first and add"
+  },
+  {
+   "start": 1459.0,
+   "duration": 4.16,
+   "text": "example second. Now, why I added this"
+  },
+  {
+   "start": 1461.76,
+   "duration": 5.12,
+   "text": "line over here is that if you remember"
+  },
+  {
+   "start": 1463.16,
+   "duration": 6.24,
+   "text": "in previous lessons, I told that when"
+  },
+  {
+   "start": 1466.88,
+   "duration": 5.28,
+   "text": "you are working with an agent"
+  },
+  {
+   "start": 1469.4,
+   "duration": 5.279,
+   "text": "right? And you're using tools, you might"
+  },
+  {
+   "start": 1472.16,
+   "duration": 4.519,
+   "text": "must need to make sure that the tool"
+  },
+  {
+   "start": 1474.679,
+   "duration": 4.281,
+   "text": "description is proper."
+  },
+  {
+   "start": 1476.679,
+   "duration": 4.161,
+   "text": "Then you should go with adding few-shot"
+  },
+  {
+   "start": 1478.96,
+   "duration": 3.52,
+   "text": "examples. And I told the same thing"
+  },
+  {
+   "start": 1480.84,
+   "duration": 4.08,
+   "text": "while I was teaching that lesson as"
+  },
+  {
+   "start": 1482.48,
+   "duration": 5.08,
+   "text": "well. The reason being Claude needs to"
+  },
+  {
+   "start": 1484.92,
+   "duration": 4.48,
+   "text": "know which tool to use first."
+  },
+  {
+   "start": 1487.56,
+   "duration": 3.84,
+   "text": "If Claude doesn't know which tool to use"
+  },
+  {
+   "start": 1489.4,
+   "duration": 3.72,
+   "text": "first, then your few-shot examples that"
+  },
+  {
+   "start": 1491.4,
+   "duration": 2.96,
+   "text": "you have put there, it is practically"
+  },
+  {
+   "start": 1493.12,
+   "duration": 3.16,
+   "text": "useless."
+  },
+  {
+   "start": 1494.36,
+   "duration": 3.6,
+   "text": "Right? So, make sure that Claude at"
+  },
+  {
+   "start": 1496.28,
+   "duration": 2.92,
+   "text": "least picks the correct tool first. If"
+  },
+  {
+   "start": 1497.96,
+   "duration": 2.32,
+   "text": "you're working with an agent, I'm"
+  },
+  {
+   "start": 1499.2,
+   "duration": 3.56,
+   "text": "telling. If you're doing normal"
+  },
+  {
+   "start": 1500.28,
+   "duration": 5.32,
+   "text": "prompting, then obviously few-shot"
+  },
+  {
+   "start": 1502.76,
+   "duration": 5.16,
+   "text": "prompting is kind of the superior. But"
+  },
+  {
+   "start": 1505.6,
+   "duration": 4.2,
+   "text": "if you're working with agents and tools,"
+  },
+  {
+   "start": 1507.92,
+   "duration": 5.0,
+   "text": "make sure that the agent description is"
+  },
+  {
+   "start": 1509.8,
+   "duration": 5.56,
+   "text": "proper so that you know, Claude kind of"
+  },
+  {
+   "start": 1512.92,
+   "duration": 4.68,
+   "text": "picks the correct tool first and then it"
+  },
+  {
+   "start": 1515.36,
+   "duration": 3.96,
+   "text": "infers the few-shot examples with"
+  },
+  {
+   "start": 1517.6,
+   "duration": 3.64,
+   "text": "reasoning that you have given to"
+  },
+  {
+   "start": 1519.32,
+   "duration": 4.28,
+   "text": "actually take a decision."
+  },
+  {
+   "start": 1521.24,
+   "duration": 6.24,
+   "text": "Right? So, to make sure that that is"
+  },
+  {
+   "start": 1523.6,
+   "duration": 6.36,
+   "text": "there you know, um for your exam"
+  },
+  {
+   "start": 1527.48,
+   "duration": 4.72,
+   "text": "purpose. Okay, so let's go back to this"
+  },
+  {
+   "start": 1529.96,
+   "duration": 3.76,
+   "text": "capstone project that we were working on"
+  },
+  {
+   "start": 1532.2,
+   "duration": 3.52,
+   "text": "since very long."
+  },
+  {
+   "start": 1533.72,
+   "duration": 4.08,
+   "text": "So, here if you see I had added a few"
+  },
+  {
+   "start": 1535.72,
+   "duration": 3.959,
+   "text": "lines of code over here. So, run"
+  },
+  {
+   "start": 1537.8,
+   "duration": 3.64,
+   "text": "sub-agent, you know, here is my system"
+  },
+  {
+   "start": 1539.679,
+   "duration": 3.481,
+   "text": "prompt. You are a sub-agent in a"
+  },
+  {
+   "start": 1541.44,
+   "duration": 3.44,
+   "text": "customer support system. So, these are"
+  },
+  {
+   "start": 1543.16,
+   "duration": 4.44,
+   "text": "the few-shot examples. Resolve versus"
+  },
+  {
+   "start": 1544.88,
+   "duration": 4.88,
+   "text": "escalate reasoning. Use this to decide"
+  },
+  {
+   "start": 1547.6,
+   "duration": 4.28,
+   "text": "when to act directly and when to hand"
+  },
+  {
+   "start": 1549.76,
+   "duration": 3.4,
+   "text": "off. Always state your reasoning before"
+  },
+  {
+   "start": 1551.88,
+   "duration": 2.799,
+   "text": "your action."
+  },
+  {
+   "start": 1553.16,
+   "duration": 3.28,
+   "text": "So, example one, resolve directly. My"
+  },
+  {
+   "start": 1554.679,
+   "duration": 3.481,
+   "text": "invoice So, so the customer query is"
+  },
+  {
+   "start": 1556.44,
+   "duration": 3.76,
+   "text": "something like that. My invoice shows an"
+  },
+  {
+   "start": 1558.16,
+   "duration": 3.76,
+   "text": "extra charge for the last month. I've"
+  },
+  {
+   "start": 1560.2,
+   "duration": 4.16,
+   "text": "been a customer for 4 years. So,"
+  },
+  {
+   "start": 1561.92,
+   "duration": 4.32,
+   "text": "reasoning is billing discrepancy plus"
+  },
+  {
+   "start": 1564.36,
+   "duration": 4.96,
+   "text": "long tenure equals to high trust"
+  },
+  {
+   "start": 1566.24,
+   "duration": 5.08,
+   "text": "context, right? Amount not stated but"
+  },
+  {
+   "start": 1569.32,
+   "duration": 3.359,
+   "text": "likely small, goodwill resolution"
+  },
+  {
+   "start": 1571.32,
+   "duration": 2.48,
+   "text": "appropriate, no service failure"
+  },
+  {
+   "start": 1572.679,
+   "duration": 3.161,
+   "text": "involved. So, it's telling that you"
+  },
+  {
+   "start": 1573.8,
+   "duration": 3.96,
+   "text": "know, I can the agent would be able to"
+  },
+  {
+   "start": 1575.84,
+   "duration": 3.68,
+   "text": "resolve on its own due to these"
+  },
+  {
+   "start": 1577.76,
+   "duration": 3.68,
+   "text": "reasonings and"
+  },
+  {
+   "start": 1579.52,
+   "duration": 4.24,
+   "text": "the action is basically resolve, apply"
+  },
+  {
+   "start": 1581.44,
+   "duration": 3.32,
+   "text": "$20 credit, apologize and close the"
+  },
+  {
+   "start": 1583.76,
+   "duration": 3.24,
+   "text": "ticket."
+  },
+  {
+   "start": 1584.76,
+   "duration": 3.96,
+   "text": "Example to escalate. This is a this is a"
+  },
+  {
+   "start": 1587.0,
+   "duration": 4.16,
+   "text": "an example of escalation. So, I have"
+  },
+  {
+   "start": 1588.72,
+   "duration": 4.2,
+   "text": "four or five examples I have. Okay, my"
+  },
+  {
+   "start": 1591.16,
+   "duration": 3.92,
+   "text": "bad. Shouldn't have included five"
+  },
+  {
+   "start": 1592.92,
+   "duration": 4.4,
+   "text": "examples. I'm just going to remove this"
+  },
+  {
+   "start": 1595.08,
+   "duration": 3.92,
+   "text": "example."
+  },
+  {
+   "start": 1597.32,
+   "duration": 4.04,
+   "text": "Okay, I didn't check that it was five"
+  },
+  {
+   "start": 1599.0,
+   "duration": 4.16,
+   "text": "examples. But in any case, example"
+  },
+  {
+   "start": 1601.36,
+   "duration": 3.48,
+   "text": "number two says escalate. I've been"
+  },
+  {
+   "start": 1603.16,
+   "duration": 3.88,
+   "text": "charged three times for the same order"
+  },
+  {
+   "start": 1604.84,
+   "duration": 4.36,
+   "text": "and nobody has fixed this in 2 weeks."
+  },
+  {
+   "start": 1607.04,
+   "duration": 4.56,
+   "text": "Repeated billing failure plus failed"
+  },
+  {
+   "start": 1609.2,
+   "duration": 4.28,
+   "text": "prior support contact, not a simple"
+  },
+  {
+   "start": 1611.6,
+   "duration": 3.48,
+   "text": "discrepancy. So, this is the reasoning"
+  },
+  {
+   "start": 1613.48,
+   "duration": 3.6,
+   "text": "and this is the action."
+  },
+  {
+   "start": 1615.08,
+   "duration": 3.92,
+   "text": "Right? This is a an example of resolve"
+  },
+  {
+   "start": 1617.08,
+   "duration": 3.28,
+   "text": "directly, you know."
+  },
+  {
+   "start": 1619.0,
+   "duration": 3.4,
+   "text": "And this is also one example of"
+  },
+  {
+   "start": 1620.36,
+   "duration": 5.04,
+   "text": "escalate. So, like that you would have"
+  },
+  {
+   "start": 1622.4,
+   "duration": 5.08,
+   "text": "to give two to four examples with proper"
+  },
+  {
+   "start": 1625.4,
+   "duration": 5.0,
+   "text": "reasoning, proper output format or"
+  },
+  {
+   "start": 1627.48,
+   "duration": 4.84,
+   "text": "proper action and with the query. And"
+  },
+  {
+   "start": 1630.4,
+   "duration": 3.92,
+   "text": "that is how you would be able to achieve"
+  },
+  {
+   "start": 1632.32,
+   "duration": 5.32,
+   "text": "you know, the ideal"
+  },
+  {
+   "start": 1634.32,
+   "duration": 5.68,
+   "text": "you know, um prompting in my opinion."
+  },
+  {
+   "start": 1637.64,
+   "duration": 3.96,
+   "text": "So, as we move on with this lecture,"
+  },
+  {
+   "start": 1640.0,
+   "duration": 3.16,
+   "text": "we'll obviously"
+  },
+  {
+   "start": 1641.6,
+   "duration": 4.2,
+   "text": "you know, enhance our"
+  },
+  {
+   "start": 1643.16,
+   "duration": 5.36,
+   "text": "agent customer support agent and I'll be"
+  },
+  {
+   "start": 1645.8,
+   "duration": 4.92,
+   "text": "pushing this latest code to the repo."
+  },
+  {
+   "start": 1648.52,
+   "duration": 5.12,
+   "text": "So, make sure you start it or clone it"
+  },
+  {
+   "start": 1650.72,
+   "duration": 4.52,
+   "text": "or do whatever you want and to get the"
+  },
+  {
+   "start": 1653.64,
+   "duration": 4.0,
+   "text": "updated information."
+  },
+  {
+   "start": 1655.24,
+   "duration": 5.2,
+   "text": "So, that's it for this particular"
+  },
+  {
+   "start": 1657.64,
+   "duration": 5.24,
+   "text": "lesson. See you in the next lesson."
+  },
+  {
+   "start": 1660.44,
+   "duration": 2.44,
+   "text": "Bye-bye."
+  }
+ ]
+}

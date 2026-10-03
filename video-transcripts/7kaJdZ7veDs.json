@@ -1,0 +1,5987 @@
+{
+ "video_id": "7kaJdZ7veDs",
+ "episode": "Ep 18",
+ "title": "Why AI Agents Forget - Context Engineering",
+ "segments": [
+  {
+   "start": 3.28,
+   "duration": 4.48,
+   "text": "Hi everyone and welcome to this lesson."
+  },
+  {
+   "start": 5.68,
+   "duration": 4.72,
+   "text": "So as you can see on the screen, we're"
+  },
+  {
+   "start": 7.76,
+   "duration": 4.2,
+   "text": "going to tackle one important problem"
+  },
+  {
+   "start": 10.4,
+   "duration": 3.88,
+   "text": "which you're going to face when you are"
+  },
+  {
+   "start": 11.96,
+   "duration": 5.36,
+   "text": "going to work with agents, AI agents,"
+  },
+  {
+   "start": 14.28,
+   "duration": 5.4,
+   "text": "and also in terms of the exam as well,"
+  },
+  {
+   "start": 17.32,
+   "duration": 4.32,
+   "text": "right? So your AI agent has a memory"
+  },
+  {
+   "start": 19.68,
+   "duration": 4.44,
+   "text": "problem and how do you fix it? You're"
+  },
+  {
+   "start": 21.64,
+   "duration": 4.56,
+   "text": "you're basically kind of like picture"
+  },
+  {
+   "start": 24.12,
+   "duration": 4.12,
+   "text": "this, right? You're you've spent like"
+  },
+  {
+   "start": 26.2,
+   "duration": 3.6,
+   "text": "weeks building a customer support agent"
+  },
+  {
+   "start": 28.24,
+   "duration": 4.28,
+   "text": "like we have been building in this"
+  },
+  {
+   "start": 29.8,
+   "duration": 4.8,
+   "text": "series, right? It handles a lot of"
+  },
+  {
+   "start": 32.52,
+   "duration": 4.96,
+   "text": "problems like billing disputes,"
+  },
+  {
+   "start": 34.6,
+   "duration": 6.04,
+   "text": "processes returns, you know, it also"
+  },
+  {
+   "start": 37.48,
+   "duration": 5.6,
+   "text": "kind of escalates edge cases."
+  },
+  {
+   "start": 40.64,
+   "duration": 4.32,
+   "text": "Testing is also very solid and then you"
+  },
+  {
+   "start": 43.08,
+   "duration": 3.52,
+   "text": "ship it to production. That's that's"
+  },
+  {
+   "start": 44.96,
+   "duration": 3.36,
+   "text": "where you ship it, right?"
+  },
+  {
+   "start": 46.6,
+   "duration": 4.68,
+   "text": "You don't ship it to somewhere else,"
+  },
+  {
+   "start": 48.32,
+   "duration": 5.36,
+   "text": "right? So then 3 weeks in, right? There"
+  },
+  {
+   "start": 51.28,
+   "duration": 5.32,
+   "text": "is a like a customer complaint. The"
+  },
+  {
+   "start": 53.68,
+   "duration": 4.12,
+   "text": "agent kind of gave her the wrong refund"
+  },
+  {
+   "start": 56.6,
+   "duration": 4.32,
+   "text": "amount."
+  },
+  {
+   "start": 57.8,
+   "duration": 4.72,
+   "text": "This is the scenario."
+  },
+  {
+   "start": 60.92,
+   "duration": 4.279,
+   "text": "I mean, not because it made a"
+  },
+  {
+   "start": 62.52,
+   "duration": 4.28,
+   "text": "calculation error, right? Because it is"
+  },
+  {
+   "start": 65.199,
+   "duration": 4.241,
+   "text": "you have made it foolproof, you know, it"
+  },
+  {
+   "start": 66.8,
+   "duration": 4.6,
+   "text": "kind of processes every kind of refund,"
+  },
+  {
+   "start": 69.44,
+   "duration": 3.44,
+   "text": "it double-checks it and everything. But"
+  },
+  {
+   "start": 71.4,
+   "duration": 3.36,
+   "text": "still"
+  },
+  {
+   "start": 72.88,
+   "duration": 3.36,
+   "text": "it gave her the wrong refund amount and"
+  },
+  {
+   "start": 74.76,
+   "duration": 4.08,
+   "text": "it's very important to understand these"
+  },
+  {
+   "start": 76.24,
+   "duration": 4.72,
+   "text": "small small problems when we are kind of"
+  },
+  {
+   "start": 78.84,
+   "duration": 4.12,
+   "text": "approaching an interview or going for"
+  },
+  {
+   "start": 80.96,
+   "duration": 3.44,
+   "text": "the exam, right?"
+  },
+  {
+   "start": 82.96,
+   "duration": 3.28,
+   "text": "I mean, it did not make a calculation"
+  },
+  {
+   "start": 84.4,
+   "duration": 4.48,
+   "text": "error because"
+  },
+  {
+   "start": 86.24,
+   "duration": 4.56,
+   "text": "what it did is it kind of forgot what"
+  },
+  {
+   "start": 88.88,
+   "duration": 4.84,
+   "text": "the amount was."
+  },
+  {
+   "start": 90.8,
+   "duration": 5.96,
+   "text": "Right? So 20 messages into a long"
+  },
+  {
+   "start": 93.72,
+   "duration": 4.6,
+   "text": "conversation, the details from early on"
+  },
+  {
+   "start": 96.76,
+   "duration": 3.64,
+   "text": "just kind of"
+  },
+  {
+   "start": 98.32,
+   "duration": 4.2,
+   "text": "poof, disappeared."
+  },
+  {
+   "start": 100.4,
+   "duration": 4.28,
+   "text": "Now this is a memory problem."
+  },
+  {
+   "start": 102.52,
+   "duration": 4.36,
+   "text": "I mean, it's real and it's"
+  },
+  {
+   "start": 104.68,
+   "duration": 4.72,
+   "text": "very common. It's one of the most common"
+  },
+  {
+   "start": 106.88,
+   "duration": 5.08,
+   "text": "problems that you would see and it will"
+  },
+  {
+   "start": 109.4,
+   "duration": 4.08,
+   "text": "kind of silently break production"
+  },
+  {
+   "start": 111.96,
+   "duration": 3.64,
+   "text": "systems"
+  },
+  {
+   "start": 113.48,
+   "duration": 3.56,
+   "text": "which are kind of perfect."
+  },
+  {
+   "start": 115.6,
+   "duration": 3.32,
+   "text": "So this is one of the things that we are"
+  },
+  {
+   "start": 117.04,
+   "duration": 3.16,
+   "text": "going to tackle in this particular"
+  },
+  {
+   "start": 118.92,
+   "duration": 4.44,
+   "text": "episode."
+  },
+  {
+   "start": 120.2,
+   "duration": 5.44,
+   "text": "And the next uh thing that we're going"
+  },
+  {
+   "start": 123.36,
+   "duration": 4.56,
+   "text": "to tackle in this episode is"
+  },
+  {
+   "start": 125.64,
+   "duration": 6.24,
+   "text": "escalation patterns. So, you have an"
+  },
+  {
+   "start": 127.92,
+   "duration": 6.76,
+   "text": "automated agent, right? When does the"
+  },
+  {
+   "start": 131.88,
+   "duration": 5.079,
+   "text": "agent should escalate to a human?"
+  },
+  {
+   "start": 134.68,
+   "duration": 4.48,
+   "text": "Because at some point of time there will"
+  },
+  {
+   "start": 136.959,
+   "duration": 4.161,
+   "text": "be a barrier which the agent will not be"
+  },
+  {
+   "start": 139.16,
+   "duration": 4.6,
+   "text": "able to handle. And that time when a"
+  },
+  {
+   "start": 141.12,
+   "duration": 5.04,
+   "text": "human intervention is necessary. And I'm"
+  },
+  {
+   "start": 143.76,
+   "duration": 4.92,
+   "text": "also going to show you uh in the in our"
+  },
+  {
+   "start": 146.16,
+   "duration": 4.52,
+   "text": "this project, right?"
+  },
+  {
+   "start": 148.68,
+   "duration": 4.84,
+   "text": "that we have been building our"
+  },
+  {
+   "start": 150.68,
+   "duration": 4.64,
+   "text": "um customer support agent. And this is I"
+  },
+  {
+   "start": 153.52,
+   "duration": 3.52,
+   "text": "have built a very small escalation"
+  },
+  {
+   "start": 155.32,
+   "duration": 3.36,
+   "text": "pattern over here"
+  },
+  {
+   "start": 157.04,
+   "duration": 3.36,
+   "text": "uh when it should escalate to a human"
+  },
+  {
+   "start": 158.68,
+   "duration": 3.12,
+   "text": "agent. And we're going to discuss it as"
+  },
+  {
+   "start": 160.4,
+   "duration": 2.96,
+   "text": "well in detail."
+  },
+  {
+   "start": 161.8,
+   "duration": 3.6,
+   "text": "And it's going to be interesting. So,"
+  },
+  {
+   "start": 163.36,
+   "duration": 5.12,
+   "text": "just just stay tuned and we're going to"
+  },
+  {
+   "start": 165.4,
+   "duration": 5.08,
+   "text": "uh see a lot of things. So, as I told"
+  },
+  {
+   "start": 168.48,
+   "duration": 5.12,
+   "text": "you, in this episode we're going to uh"
+  },
+  {
+   "start": 170.48,
+   "duration": 4.96,
+   "text": "solve two problems, right? Um one is the"
+  },
+  {
+   "start": 173.6,
+   "duration": 3.92,
+   "text": "context preservation or the"
+  },
+  {
+   "start": 175.44,
+   "duration": 4.72,
+   "text": "that we just discussed. And the second"
+  },
+  {
+   "start": 177.52,
+   "duration": 4.84,
+   "text": "thing is escalation patterns. Because"
+  },
+  {
+   "start": 180.16,
+   "duration": 6.12,
+   "text": "these two halves are connected, you"
+  },
+  {
+   "start": 182.36,
+   "duration": 6.12,
+   "text": "know? So, an agent uh that can't keep"
+  },
+  {
+   "start": 186.28,
+   "duration": 4.48,
+   "text": "its memory straight can't make good"
+  },
+  {
+   "start": 188.48,
+   "duration": 4.759,
+   "text": "escalation decisions, right? Just keep"
+  },
+  {
+   "start": 190.76,
+   "duration": 4.479,
+   "text": "that in mind. Just compare it with your"
+  },
+  {
+   "start": 193.239,
+   "duration": 3.601,
+   "text": "your normal use case as well, normal"
+  },
+  {
+   "start": 195.239,
+   "duration": 3.681,
+   "text": "day-to-day use case as well. If you"
+  },
+  {
+   "start": 196.84,
+   "duration": 3.399,
+   "text": "don't remember something,"
+  },
+  {
+   "start": 198.92,
+   "duration": 2.92,
+   "text": "how would you answer it or how do you"
+  },
+  {
+   "start": 200.239,
+   "duration": 3.361,
+   "text": "escalate it, right? It's a simple"
+  },
+  {
+   "start": 201.84,
+   "duration": 3.64,
+   "text": "question you can ask yourself."
+  },
+  {
+   "start": 203.6,
+   "duration": 3.72,
+   "text": "Okay, so let's move on."
+  },
+  {
+   "start": 205.48,
+   "duration": 3.36,
+   "text": "Now, let's talk about the context"
+  },
+  {
+   "start": 207.32,
+   "duration": 4.28,
+   "text": "window. So,"
+  },
+  {
+   "start": 208.84,
+   "duration": 4.36,
+   "text": "the context window is your agent's"
+  },
+  {
+   "start": 211.6,
+   "duration": 3.68,
+   "text": "working memory,"
+  },
+  {
+   "start": 213.2,
+   "duration": 4.2,
+   "text": "right? So,"
+  },
+  {
+   "start": 215.28,
+   "duration": 4.2,
+   "text": "you need a solid mental model of what"
+  },
+  {
+   "start": 217.4,
+   "duration": 3.72,
+   "text": "the context window is. It's It's very"
+  },
+  {
+   "start": 219.48,
+   "duration": 3.52,
+   "text": "important for you to understand what it"
+  },
+  {
+   "start": 221.12,
+   "duration": 3.04,
+   "text": "is, then you're going to go and tackle"
+  },
+  {
+   "start": 223.0,
+   "duration": 3.28,
+   "text": "the problem."
+  },
+  {
+   "start": 224.16,
+   "duration": 4.079,
+   "text": "So, think of context window is like your"
+  },
+  {
+   "start": 226.28,
+   "duration": 3.48,
+   "text": "desk at work, right? You see this is"
+  },
+  {
+   "start": 228.239,
+   "duration": 4.081,
+   "text": "your desk and"
+  },
+  {
+   "start": 229.76,
+   "duration": 4.64,
+   "text": "um you go and you arrange your desk,"
+  },
+  {
+   "start": 232.32,
+   "duration": 5.2,
+   "text": "something like that, your work desk."
+  },
+  {
+   "start": 234.4,
+   "duration": 5.64,
+   "text": "Right? Everything on the desk is kind of"
+  },
+  {
+   "start": 237.52,
+   "duration": 4.72,
+   "text": "immediately accessible."
+  },
+  {
+   "start": 240.04,
+   "duration": 4.48,
+   "text": "You can see it, you can reference it,"
+  },
+  {
+   "start": 242.24,
+   "duration": 4.2,
+   "text": "and use it right away."
+  },
+  {
+   "start": 244.52,
+   "duration": 3.52,
+   "text": "You want a pen, it's there. You want"
+  },
+  {
+   "start": 246.44,
+   "duration": 3.12,
+   "text": "some documents, it's there. Something"
+  },
+  {
+   "start": 248.04,
+   "duration": 3.72,
+   "text": "like that, it's all you have arranged on"
+  },
+  {
+   "start": 249.56,
+   "duration": 4.56,
+   "text": "your desk."
+  },
+  {
+   "start": 251.76,
+   "duration": 5.039,
+   "text": "But the desk has a size limit."
+  },
+  {
+   "start": 254.12,
+   "duration": 4.6,
+   "text": "Obviously, desk has it's not a kind of"
+  },
+  {
+   "start": 256.799,
+   "duration": 3.401,
+   "text": "growing indefinitely, right? You have a"
+  },
+  {
+   "start": 258.72,
+   "duration": 2.72,
+   "text": "kind of a small desk, you have a small"
+  },
+  {
+   "start": 260.2,
+   "duration": 3.6,
+   "text": "small desk, you have a small desk, you"
+  },
+  {
+   "start": 261.44,
+   "duration": 4.36,
+   "text": "have a large desk. Each desk has its"
+  },
+  {
+   "start": 263.8,
+   "duration": 4.2,
+   "text": "size limitations, obviously."
+  },
+  {
+   "start": 265.8,
+   "duration": 4.119,
+   "text": "So, when you know, things gets full,"
+  },
+  {
+   "start": 268.0,
+   "duration": 3.08,
+   "text": "things start getting pushed off the"
+  },
+  {
+   "start": 269.919,
+   "duration": 2.961,
+   "text": "edge."
+  },
+  {
+   "start": 271.08,
+   "duration": 4.2,
+   "text": "And once something kind of slides off"
+  },
+  {
+   "start": 272.88,
+   "duration": 4.76,
+   "text": "the desk, it might as well not exist. I"
+  },
+  {
+   "start": 275.28,
+   "duration": 3.32,
+   "text": "mean, if something got you had a blue"
+  },
+  {
+   "start": 277.64,
+   "duration": 2.88,
+   "text": "pen"
+  },
+  {
+   "start": 278.6,
+   "duration": 3.319,
+   "text": "on your desk, and it"
+  },
+  {
+   "start": 280.52,
+   "duration": 2.72,
+   "text": "it fell off."
+  },
+  {
+   "start": 281.919,
+   "duration": 2.641,
+   "text": "And you didn't notice it when it fell"
+  },
+  {
+   "start": 283.24,
+   "duration": 3.28,
+   "text": "off. Now, when you are searching for the"
+  },
+  {
+   "start": 284.56,
+   "duration": 3.48,
+   "text": "blue pen, it's not there."
+  },
+  {
+   "start": 286.52,
+   "duration": 3.16,
+   "text": "And sometime after sometime you even"
+  },
+  {
+   "start": 288.04,
+   "duration": 4.16,
+   "text": "forget that I had a blue pen at all"
+  },
+  {
+   "start": 289.68,
+   "duration": 5.88,
+   "text": "together. You go and buy a new pen."
+  },
+  {
+   "start": 292.2,
+   "duration": 5.08,
+   "text": "Right? So, the same way Claude's context"
+  },
+  {
+   "start": 295.56,
+   "duration": 4.84,
+   "text": "window works."
+  },
+  {
+   "start": 297.28,
+   "duration": 6.32,
+   "text": "It holds everything in the conversation"
+  },
+  {
+   "start": 300.4,
+   "duration": 4.92,
+   "text": "simultaneously, at the same time."
+  },
+  {
+   "start": 303.6,
+   "duration": 3.28,
+   "text": "Right? So, what are the things it is"
+  },
+  {
+   "start": 305.32,
+   "duration": 3.04,
+   "text": "holding?"
+  },
+  {
+   "start": 306.88,
+   "duration": 2.96,
+   "text": "The system prompt."
+  },
+  {
+   "start": 308.36,
+   "duration": 3.16,
+   "text": "Claude's, which is which is basically"
+  },
+  {
+   "start": 309.84,
+   "duration": 4.4,
+   "text": "the Claude's instruction for the job. I"
+  },
+  {
+   "start": 311.52,
+   "duration": 4.52,
+   "text": "mean, what what the persona of Claude,"
+  },
+  {
+   "start": 314.24,
+   "duration": 3.4,
+   "text": "basically. That is what the system"
+  },
+  {
+   "start": 316.04,
+   "duration": 3.32,
+   "text": "prompt is."
+  },
+  {
+   "start": 317.64,
+   "duration": 3.68,
+   "text": "And after that, it will also hold every"
+  },
+  {
+   "start": 319.36,
+   "duration": 4.8,
+   "text": "message in the conversation, which is"
+  },
+  {
+   "start": 321.32,
+   "duration": 4.64,
+   "text": "basically from the user to Claude. You"
+  },
+  {
+   "start": 324.16,
+   "duration": 4.32,
+   "text": "go back and forth in your agentic loop,"
+  },
+  {
+   "start": 325.96,
+   "duration": 4.8,
+   "text": "right? All those messages. You kind of"
+  },
+  {
+   "start": 328.48,
+   "duration": 4.36,
+   "text": "upend and you send. So, that is also in"
+  },
+  {
+   "start": 330.76,
+   "duration": 4.48,
+   "text": "the context window."
+  },
+  {
+   "start": 332.84,
+   "duration": 4.8,
+   "text": "Then, you also make some tool calls,"
+  },
+  {
+   "start": 335.24,
+   "duration": 5.24,
+   "text": "right? That will also be part of that."
+  },
+  {
+   "start": 337.64,
+   "duration": 5.08,
+   "text": "And also the tool results as well. So,"
+  },
+  {
+   "start": 340.48,
+   "duration": 4.68,
+   "text": "all of these things, your"
+  },
+  {
+   "start": 342.72,
+   "duration": 4.16,
+   "text": "system prompt, your messages, your tool"
+  },
+  {
+   "start": 345.16,
+   "duration": 4.32,
+   "text": "calls, and your tool results. Basically,"
+  },
+  {
+   "start": 346.88,
+   "duration": 5.44,
+   "text": "these are all the things that we use in"
+  },
+  {
+   "start": 349.48,
+   "duration": 5.92,
+   "text": "a particular agentic loop, right? So,"
+  },
+  {
+   "start": 352.32,
+   "duration": 4.84,
+   "text": "that is how it would be."
+  },
+  {
+   "start": 355.4,
+   "duration": 3.44,
+   "text": "All of it counts."
+  },
+  {
+   "start": 357.16,
+   "duration": 3.6,
+   "text": "Right? And all of it kind of sits on the"
+  },
+  {
+   "start": 358.84,
+   "duration": 5.16,
+   "text": "same desk."
+  },
+  {
+   "start": 360.76,
+   "duration": 5.6,
+   "text": "And the size of that desk is measured in"
+  },
+  {
+   "start": 364.0,
+   "duration": 4.36,
+   "text": "tokens that we already know. So,"
+  },
+  {
+   "start": 366.36,
+   "duration": 4.28,
+   "text": "basically your size you know your desk"
+  },
+  {
+   "start": 368.36,
+   "duration": 4.2,
+   "text": "is the context window. All of the you"
+  },
+  {
+   "start": 370.64,
+   "duration": 4.2,
+   "text": "know the you know the size of the desk"
+  },
+  {
+   "start": 372.56,
+   "duration": 4.48,
+   "text": "is basically the tokens."
+  },
+  {
+   "start": 374.84,
+   "duration": 3.68,
+   "text": "Right? So,"
+  },
+  {
+   "start": 377.04,
+   "duration": 2.84,
+   "text": "the different subscriptions that Claude"
+  },
+  {
+   "start": 378.52,
+   "duration": 3.04,
+   "text": "provides like let's let's take this"
+  },
+  {
+   "start": 379.88,
+   "duration": 3.4,
+   "text": "mental model as well. If you take the"
+  },
+  {
+   "start": 381.56,
+   "duration": 3.56,
+   "text": "pro subscription, your desk is small."
+  },
+  {
+   "start": 383.28,
+   "duration": 3.88,
+   "text": "So, you can only keep certain things on"
+  },
+  {
+   "start": 385.12,
+   "duration": 3.44,
+   "text": "that desk. If you go for a max"
+  },
+  {
+   "start": 387.16,
+   "duration": 3.2,
+   "text": "subscription, then your desk will be"
+  },
+  {
+   "start": 388.56,
+   "duration": 3.6,
+   "text": "very large. So, you'll have a very big"
+  },
+  {
+   "start": 390.36,
+   "duration": 3.96,
+   "text": "you know context window which can hold a"
+  },
+  {
+   "start": 392.16,
+   "duration": 3.52,
+   "text": "lot of tokens basically. So, I hope that"
+  },
+  {
+   "start": 394.32,
+   "duration": 4.48,
+   "text": "is making sense."
+  },
+  {
+   "start": 395.68,
+   "duration": 6.52,
+   "text": "Right? Now, one exam inside that I want"
+  },
+  {
+   "start": 398.8,
+   "duration": 6.84,
+   "text": "to just put it out there is um"
+  },
+  {
+   "start": 402.2,
+   "duration": 5.28,
+   "text": "Claude API is stateless. So, what does"
+  },
+  {
+   "start": 405.64,
+   "duration": 3.2,
+   "text": "that mean? So, you can see it's also on"
+  },
+  {
+   "start": 407.48,
+   "duration": 3.08,
+   "text": "the screen as well."
+  },
+  {
+   "start": 408.84,
+   "duration": 3.96,
+   "text": "So, you send the full conversation from"
+  },
+  {
+   "start": 410.56,
+   "duration": 3.84,
+   "text": "scratch on every API call. That's what"
+  },
+  {
+   "start": 412.8,
+   "duration": 4.2,
+   "text": "I'm telling. In the agentic loop, you"
+  },
+  {
+   "start": 414.4,
+   "duration": 4.64,
+   "text": "keep on appending those messages, right?"
+  },
+  {
+   "start": 417.0,
+   "duration": 3.48,
+   "text": "It you know every time you send those"
+  },
+  {
+   "start": 419.04,
+   "duration": 3.04,
+   "text": "messages, you know whatever the results"
+  },
+  {
+   "start": 420.48,
+   "duration": 3.2,
+   "text": "came back, you append it and then you"
+  },
+  {
+   "start": 422.08,
+   "duration": 4.08,
+   "text": "send it back to Claude."
+  },
+  {
+   "start": 423.68,
+   "duration": 4.56,
+   "text": "There is no server-side memory. I mean,"
+  },
+  {
+   "start": 426.16,
+   "duration": 3.48,
+   "text": "there is no persistent sessions. You"
+  },
+  {
+   "start": 428.24,
+   "duration": 3.48,
+   "text": "know, it's"
+  },
+  {
+   "start": 429.64,
+   "duration": 4.88,
+   "text": "kind of like you know, context"
+  },
+  {
+   "start": 431.72,
+   "duration": 4.48,
+   "text": "management is architecturally required."
+  },
+  {
+   "start": 434.52,
+   "duration": 3.76,
+   "text": "Otherwise, it will break a lot of"
+  },
+  {
+   "start": 436.2,
+   "duration": 4.16,
+   "text": "things. And those problems that that"
+  },
+  {
+   "start": 438.28,
+   "duration": 4.32,
+   "text": "refund problems that we just discussed"
+  },
+  {
+   "start": 440.36,
+   "duration": 4.6,
+   "text": "in the start of this lecture will happen"
+  },
+  {
+   "start": 442.6,
+   "duration": 3.84,
+   "text": "more frequently because you know,"
+  },
+  {
+   "start": 444.96,
+   "duration": 3.92,
+   "text": "you need to keep in mind that Claude"
+  },
+  {
+   "start": 446.44,
+   "duration": 4.92,
+   "text": "will forget if you're not managing that"
+  },
+  {
+   "start": 448.88,
+   "duration": 4.76,
+   "text": "context properly."
+  },
+  {
+   "start": 451.36,
+   "duration": 3.92,
+   "text": "Okay. So,"
+  },
+  {
+   "start": 453.64,
+   "duration": 3.12,
+   "text": "um"
+  },
+  {
+   "start": 455.28,
+   "duration": 3.36,
+   "text": "when these kind of problems occurs,"
+  },
+  {
+   "start": 456.76,
+   "duration": 5.0,
+   "text": "right? I mean, when the context window"
+  },
+  {
+   "start": 458.64,
+   "duration": 5.32,
+   "text": "gets crowded, something has to give or"
+  },
+  {
+   "start": 461.76,
+   "duration": 5.36,
+   "text": "something has to be done."
+  },
+  {
+   "start": 463.96,
+   "duration": 5.16,
+   "text": "So, frameworks, developers, you know,"
+  },
+  {
+   "start": 467.12,
+   "duration": 4.6,
+   "text": "naturally they reach for summarization,"
+  },
+  {
+   "start": 469.12,
+   "duration": 5.0,
+   "text": "which is kind of okay. I mean, it's a"
+  },
+  {
+   "start": 471.72,
+   "duration": 4.52,
+   "text": "it's a great way of preserving context,"
+  },
+  {
+   "start": 474.12,
+   "duration": 4.08,
+   "text": "by the way. There is also one uh"
+  },
+  {
+   "start": 476.24,
+   "duration": 3.88,
+   "text": "tool uh I mean uh uh uh uh command that"
+  },
+  {
+   "start": 478.2,
+   "duration": 5.28,
+   "text": "comes in that is known as I mean, you"
+  },
+  {
+   "start": 480.12,
+   "duration": 5.52,
+   "text": "know, um this compact. You know,"
+  },
+  {
+   "start": 483.48,
+   "duration": 3.84,
+   "text": "generally used in Claude sessions. But,"
+  },
+  {
+   "start": 485.64,
+   "duration": 3.88,
+   "text": "here it is a little bit different. When"
+  },
+  {
+   "start": 487.32,
+   "duration": 4.56,
+   "text": "you are dealing with production-grade AI"
+  },
+  {
+   "start": 489.52,
+   "duration": 6.08,
+   "text": "agent systems, right? Like a customer"
+  },
+  {
+   "start": 491.88,
+   "duration": 7.0,
+   "text": "support agent, just giving a normal"
+  },
+  {
+   "start": 495.6,
+   "duration": 6.6,
+   "text": "I mean, uh kind of a summary without"
+  },
+  {
+   "start": 498.88,
+   "duration": 7.48,
+   "text": "much facts is not going to work."
+  },
+  {
+   "start": 502.2,
+   "duration": 5.8,
+   "text": "Right? Because summaries lose precision."
+  },
+  {
+   "start": 506.36,
+   "duration": 4.2,
+   "text": "Now, when you are working in a Claude"
+  },
+  {
+   "start": 508.0,
+   "duration": 3.919,
+   "text": "Claude code session, for example, yeah?"
+  },
+  {
+   "start": 510.56,
+   "duration": 2.919,
+   "text": "You are getting a summary and then you"
+  },
+  {
+   "start": 511.919,
+   "duration": 3.881,
+   "text": "are using that summary. That is okay"
+  },
+  {
+   "start": 513.479,
+   "duration": 3.841,
+   "text": "because that is a kind of a generalized"
+  },
+  {
+   "start": 515.8,
+   "duration": 3.4,
+   "text": "summary you are giving to Claude, okay,"
+  },
+  {
+   "start": 517.32,
+   "duration": 3.64,
+   "text": "this is the code that I had written and"
+  },
+  {
+   "start": 519.2,
+   "duration": 3.959,
+   "text": "these are the changes you need to make."
+  },
+  {
+   "start": 520.96,
+   "duration": 4.44,
+   "text": "But, when it comes to um"
+  },
+  {
+   "start": 523.159,
+   "duration": 5.481,
+   "text": "you know, applications where you are"
+  },
+  {
+   "start": 525.4,
+   "duration": 5.2,
+   "text": "created an AI agent which needs exactly"
+  },
+  {
+   "start": 528.64,
+   "duration": 4.36,
+   "text": "which customer was affected, which"
+  },
+  {
+   "start": 530.6,
+   "duration": 5.56,
+   "text": "refund was processed, and all of these"
+  },
+  {
+   "start": 533.0,
+   "duration": 5.68,
+   "text": "problems, they need factual data instead"
+  },
+  {
+   "start": 536.16,
+   "duration": 4.28,
+   "text": "of that okay, some customer"
+  },
+  {
+   "start": 538.68,
+   "duration": 3.159,
+   "text": "refund had happened, but which customer"
+  },
+  {
+   "start": 540.44,
+   "duration": 3.399,
+   "text": "refund had happened? That will that"
+  },
+  {
+   "start": 541.839,
+   "duration": 3.921,
+   "text": "might not be part of the summary"
+  },
+  {
+   "start": 543.839,
+   "duration": 4.161,
+   "text": "that you are generating. Right? And that"
+  },
+  {
+   "start": 545.76,
+   "duration": 3.44,
+   "text": "is a problem. So, summaries lose"
+  },
+  {
+   "start": 548.0,
+   "duration": 3.68,
+   "text": "precision."
+  },
+  {
+   "start": 549.2,
+   "duration": 4.4,
+   "text": "Specific identifiers matter. What was"
+  },
+  {
+   "start": 551.68,
+   "duration": 4.84,
+   "text": "the customer ID? What was the refund"
+  },
+  {
+   "start": 553.6,
+   "duration": 5.4,
+   "text": "amount? Numbers, dates, all of these"
+  },
+  {
+   "start": 556.52,
+   "duration": 5.04,
+   "text": "things are needed for a production-grade"
+  },
+  {
+   "start": 559.0,
+   "duration": 4.0,
+   "text": "AI agent system."
+  },
+  {
+   "start": 561.56,
+   "duration": 3.16,
+   "text": "It might also forget the policy"
+  },
+  {
+   "start": 563.0,
+   "duration": 4.0,
+   "text": "thresholds as well, you know? You don't"
+  },
+  {
+   "start": 564.72,
+   "duration": 4.119,
+   "text": "know what it will forget. So, this will"
+  },
+  {
+   "start": 567.0,
+   "duration": 3.48,
+   "text": "get vaporized by, you know, these lazy"
+  },
+  {
+   "start": 568.839,
+   "duration": 3.161,
+   "text": "summaries, right?"
+  },
+  {
+   "start": 570.48,
+   "duration": 3.48,
+   "text": "So,"
+  },
+  {
+   "start": 572.0,
+   "duration": 4.08,
+   "text": "what does a lazy summary mean? I just"
+  },
+  {
+   "start": 573.96,
+   "duration": 4.28,
+   "text": "give you an example. For example, a lazy"
+  },
+  {
+   "start": 576.08,
+   "duration": 4.52,
+   "text": "summary like customer reported delivery"
+  },
+  {
+   "start": 578.24,
+   "duration": 4.8,
+   "text": "and product issues requesting a refund."
+  },
+  {
+   "start": 580.6,
+   "duration": 5.16,
+   "text": "There is no data about which customer"
+  },
+  {
+   "start": 583.04,
+   "duration": 6.44,
+   "text": "and what product issues. But what is a"
+  },
+  {
+   "start": 585.76,
+   "duration": 4.92,
+   "text": "good summary? Order hashtag 12345, let's"
+  },
+  {
+   "start": 589.48,
+   "duration": 2.32,
+   "text": "say."
+  },
+  {
+   "start": 590.68,
+   "duration": 3.8,
+   "text": "Right?"
+  },
+  {
+   "start": 591.8,
+   "duration": 5.24,
+   "text": "And uh the the what is the product name?"
+  },
+  {
+   "start": 594.48,
+   "duration": 5.84,
+   "text": "Mm, wireless earphone, let's say."
+  },
+  {
+   "start": 597.04,
+   "duration": 5.24,
+   "text": "What was the price? $149."
+  },
+  {
+   "start": 600.32,
+   "duration": 4.0,
+   "text": "What was the problem? Delivered 3 days"
+  },
+  {
+   "start": 602.28,
+   "duration": 4.16,
+   "text": "late or something like that, you know?"
+  },
+  {
+   "start": 604.32,
+   "duration": 3.56,
+   "text": "So,"
+  },
+  {
+   "start": 606.44,
+   "duration": 3.4,
+   "text": "just if you compare both of these"
+  },
+  {
+   "start": 607.88,
+   "duration": 4.44,
+   "text": "summaries, you would know what got"
+  },
+  {
+   "start": 609.84,
+   "duration": 5.28,
+   "text": "obliterated. You know, the order number"
+  },
+  {
+   "start": 612.32,
+   "duration": 5.44,
+   "text": "needed to process the refund, the exact"
+  },
+  {
+   "start": 615.12,
+   "duration": 5.48,
+   "text": "dollar amount, all the most you know,"
+  },
+  {
+   "start": 617.76,
+   "duration": 6.24,
+   "text": "most important things got lost when you"
+  },
+  {
+   "start": 620.6,
+   "duration": 6.24,
+   "text": "just give a random you know,"
+  },
+  {
+   "start": 624.0,
+   "duration": 4.84,
+   "text": "kind of non-precise summary."
+  },
+  {
+   "start": 626.84,
+   "duration": 3.84,
+   "text": "Right? And"
+  },
+  {
+   "start": 628.84,
+   "duration": 3.92,
+   "text": "this way, even if you are generating a"
+  },
+  {
+   "start": 630.68,
+   "duration": 3.56,
+   "text": "summary, the cloud will not be able to"
+  },
+  {
+   "start": 632.76,
+   "duration": 3.4,
+   "text": "know, okay,"
+  },
+  {
+   "start": 634.24,
+   "duration": 3.24,
+   "text": "uh this for this customer I had to"
+  },
+  {
+   "start": 636.16,
+   "duration": 2.28,
+   "text": "process the refund or something like"
+  },
+  {
+   "start": 637.48,
+   "duration": 3.48,
+   "text": "that."
+  },
+  {
+   "start": 638.44,
+   "duration": 4.92,
+   "text": "Right? So, I hope you're understanding"
+  },
+  {
+   "start": 640.96,
+   "duration": 4.72,
+   "text": "why summaries are great and why in this"
+  },
+  {
+   "start": 643.36,
+   "duration": 4.8,
+   "text": "particular scenario, critical systems,"
+  },
+  {
+   "start": 645.68,
+   "duration": 4.56,
+   "text": "summaries might not work."
+  },
+  {
+   "start": 648.16,
+   "duration": 4.08,
+   "text": "So, one exam call out that I want to"
+  },
+  {
+   "start": 650.24,
+   "duration": 4.64,
+   "text": "make is that uh progressive"
+  },
+  {
+   "start": 652.24,
+   "duration": 4.48,
+   "text": "summarization that loses numerical"
+  },
+  {
+   "start": 654.88,
+   "duration": 4.2,
+   "text": "values, which is discussed this, right?"
+  },
+  {
+   "start": 656.72,
+   "duration": 5.72,
+   "text": "Specific dates or policy critical"
+  },
+  {
+   "start": 659.08,
+   "duration": 4.759,
+   "text": "thresholds is a reliability failure"
+  },
+  {
+   "start": 662.44,
+   "duration": 5.12,
+   "text": "mode."
+  },
+  {
+   "start": 663.839,
+   "duration": 6.241,
+   "text": "Right? It's not an efficiency issue."
+  },
+  {
+   "start": 667.56,
+   "duration": 5.88,
+   "text": "Here you are giving up on reliability"
+  },
+  {
+   "start": 670.08,
+   "duration": 5.88,
+   "text": "just to save some tokens, basically. If"
+  },
+  {
+   "start": 673.44,
+   "duration": 4.36,
+   "text": "here our problem is to save the token"
+  },
+  {
+   "start": 675.96,
+   "duration": 4.52,
+   "text": "that is come secondary, but the main"
+  },
+  {
+   "start": 677.8,
+   "duration": 4.68,
+   "text": "problem is that your memory is going out"
+  },
+  {
+   "start": 680.48,
+   "duration": 3.4,
+   "text": "of hand. I mean, your agent is losing"
+  },
+  {
+   "start": 682.48,
+   "duration": 2.44,
+   "text": "the memory. So, you have to solve that"
+  },
+  {
+   "start": 683.88,
+   "duration": 2.6,
+   "text": "first."
+  },
+  {
+   "start": 684.92,
+   "duration": 3.84,
+   "text": "Then we have to worry about the tokens."
+  },
+  {
+   "start": 686.48,
+   "duration": 3.72,
+   "text": "Obviously, both are interconnected, but"
+  },
+  {
+   "start": 688.76,
+   "duration": 3.36,
+   "text": "you have to understand what is the"
+  },
+  {
+   "start": 690.2,
+   "duration": 3.52,
+   "text": "motive here. Right? I hope that is"
+  },
+  {
+   "start": 692.12,
+   "duration": 4.52,
+   "text": "making sense."
+  },
+  {
+   "start": 693.72,
+   "duration": 5.4,
+   "text": "Okay, so let's move on."
+  },
+  {
+   "start": 696.64,
+   "duration": 2.48,
+   "text": "Um"
+  },
+  {
+   "start": 701.64,
+   "duration": 3.48,
+   "text": "Lost in the middle, the attention blind"
+  },
+  {
+   "start": 703.64,
+   "duration": 3.6,
+   "text": "spot."
+  },
+  {
+   "start": 705.12,
+   "duration": 4.76,
+   "text": "Now, here is something that sounds"
+  },
+  {
+   "start": 707.24,
+   "duration": 6.28,
+   "text": "surprising, but is kind of"
+  },
+  {
+   "start": 709.88,
+   "duration": 3.64,
+   "text": "um very"
+  },
+  {
+   "start": 713.76,
+   "duration": 3.36,
+   "text": "is a thing that people don't actually"
+  },
+  {
+   "start": 715.28,
+   "duration": 3.28,
+   "text": "give too much attention to. That is what"
+  },
+  {
+   "start": 717.12,
+   "duration": 3.44,
+   "text": "I wanted to frame actually. That's why I"
+  },
+  {
+   "start": 718.56,
+   "duration": 5.36,
+   "text": "took the long pause."
+  },
+  {
+   "start": 720.56,
+   "duration": 5.92,
+   "text": "So, large language models, LLMs,"
+  },
+  {
+   "start": 723.92,
+   "duration": 5.96,
+   "text": "they pay very less attention to the"
+  },
+  {
+   "start": 726.48,
+   "duration": 6.16,
+   "text": "content in the middle."
+  },
+  {
+   "start": 729.88,
+   "duration": 6.04,
+   "text": "So, what what does that mean?"
+  },
+  {
+   "start": 732.64,
+   "duration": 4.56,
+   "text": "So, you have a prompt, it has sections,"
+  },
+  {
+   "start": 735.92,
+   "duration": 3.8,
+   "text": "right?"
+  },
+  {
+   "start": 737.2,
+   "duration": 5.48,
+   "text": "It has a you know, the initial section,"
+  },
+  {
+   "start": 739.72,
+   "duration": 4.0,
+   "text": "the middle section, and then the last"
+  },
+  {
+   "start": 742.68,
+   "duration": 2.04,
+   "text": "section."
+  },
+  {
+   "start": 743.72,
+   "duration": 2.2,
+   "text": "Right?"
+  },
+  {
+   "start": 744.72,
+   "duration": 3.6,
+   "text": "Even if you're writing it in one"
+  },
+  {
+   "start": 745.92,
+   "duration": 4.76,
+   "text": "paragraph, it has these sections."
+  },
+  {
+   "start": 748.32,
+   "duration": 3.96,
+   "text": "So, LLMs and you know, general as a"
+  },
+  {
+   "start": 750.68,
+   "duration": 5.4,
+   "text": "human as well,"
+  },
+  {
+   "start": 752.28,
+   "duration": 6.2,
+   "text": "I'll tell you my thing as well. So,"
+  },
+  {
+   "start": 756.08,
+   "duration": 4.32,
+   "text": "whenever I start reading something,"
+  },
+  {
+   "start": 758.48,
+   "duration": 3.56,
+   "text": "I would pay I would pay more attention"
+  },
+  {
+   "start": 760.4,
+   "duration": 3.84,
+   "text": "to the first few lines because that will"
+  },
+  {
+   "start": 762.04,
+   "duration": 3.44,
+   "text": "contain most of the facts. Even when"
+  },
+  {
+   "start": 764.24,
+   "duration": 3.88,
+   "text": "you're using you know, reading a"
+  },
+  {
+   "start": 765.48,
+   "duration": 5.8,
+   "text": "newspaper, most of the important things"
+  },
+  {
+   "start": 768.12,
+   "duration": 5.2,
+   "text": "are there in the first page of the news,"
+  },
+  {
+   "start": 771.28,
+   "duration": 5.12,
+   "text": "which will overall give you a scenario"
+  },
+  {
+   "start": 773.32,
+   "duration": 5.04,
+   "text": "of okay, these are the important things."
+  },
+  {
+   "start": 776.4,
+   "duration": 3.76,
+   "text": "Then, the middle sections are a little"
+  },
+  {
+   "start": 778.36,
+   "duration": 4.0,
+   "text": "bit, you know, kind of you would lose"
+  },
+  {
+   "start": 780.16,
+   "duration": 3.84,
+   "text": "interest for some reason. You know, some"
+  },
+  {
+   "start": 782.36,
+   "duration": 5.44,
+   "text": "um if you're reading a newspaper, most"
+  },
+  {
+   "start": 784.0,
+   "duration": 5.72,
+   "text": "of the you know, ads and um"
+  },
+  {
+   "start": 787.8,
+   "duration": 3.64,
+   "text": "uh unnecessary things, some of the"
+  },
+  {
+   "start": 789.72,
+   "duration": 3.76,
+   "text": "unnecessary things might come in the"
+  },
+  {
+   "start": 791.44,
+   "duration": 4.08,
+   "text": "middle sections of the newspaper."
+  },
+  {
+   "start": 793.48,
+   "duration": 3.72,
+   "text": "And then, some exciting sections are"
+  },
+  {
+   "start": 795.52,
+   "duration": 3.6,
+   "text": "there in the last part, basically which"
+  },
+  {
+   "start": 797.2,
+   "duration": 4.32,
+   "text": "are sports, generally. [snorts] This is"
+  },
+  {
+   "start": 799.12,
+   "duration": 5.52,
+   "text": "the pattern followed by the newspapers."
+  },
+  {
+   "start": 801.52,
+   "duration": 6.32,
+   "text": "So, that is the attention you curve. So,"
+  },
+  {
+   "start": 804.64,
+   "duration": 5.28,
+   "text": "the LLM model will be more interested in"
+  },
+  {
+   "start": 807.84,
+   "duration": 3.84,
+   "text": "what you are giving in the start, which"
+  },
+  {
+   "start": 809.92,
+   "duration": 3.76,
+   "text": "is the first message."
+  },
+  {
+   "start": 811.68,
+   "duration": 4.52,
+   "text": "And then this becomes the blind spot."
+  },
+  {
+   "start": 813.68,
+   "duration": 4.4,
+   "text": "The It will just kind of"
+  },
+  {
+   "start": 816.2,
+   "duration": 3.68,
+   "text": "go through very fast, for example, in"
+  },
+  {
+   "start": 818.08,
+   "duration": 4.32,
+   "text": "the in the in the middle section of the"
+  },
+  {
+   "start": 819.88,
+   "duration": 5.12,
+   "text": "prompt. And then"
+  },
+  {
+   "start": 822.4,
+   "duration": 4.68,
+   "text": "what your prompt ends with, for example,"
+  },
+  {
+   "start": 825.0,
+   "duration": 4.0,
+   "text": "that will also be It will give more"
+  },
+  {
+   "start": 827.08,
+   "duration": 4.48,
+   "text": "attention to that as well."
+  },
+  {
+   "start": 829.0,
+   "duration": 4.24,
+   "text": "Right? So,"
+  },
+  {
+   "start": 831.56,
+   "duration": 5.32,
+   "text": "the point what I'm trying to make here"
+  },
+  {
+   "start": 833.24,
+   "duration": 5.96,
+   "text": "is if you put a lot of important facts"
+  },
+  {
+   "start": 836.88,
+   "duration": 4.76,
+   "text": "in the mid section, then those facts"
+  },
+  {
+   "start": 839.2,
+   "duration": 4.6,
+   "text": "might get buried."
+  },
+  {
+   "start": 841.64,
+   "duration": 3.64,
+   "text": "So, if you put the main,"
+  },
+  {
+   "start": 843.8,
+   "duration": 3.96,
+   "text": "you know, kind of components here, like"
+  },
+  {
+   "start": 845.28,
+   "duration": 4.04,
+   "text": "the customer ID or the order ID and the"
+  },
+  {
+   "start": 847.76,
+   "duration": 4.12,
+   "text": "refund amount, if you put it in this"
+  },
+  {
+   "start": 849.32,
+   "duration": 4.08,
+   "text": "section of your prompt, it might not get"
+  },
+  {
+   "start": 851.88,
+   "duration": 3.52,
+   "text": "processed. Or"
+  },
+  {
+   "start": 853.4,
+   "duration": 3.84,
+   "text": "you know, it might take more time"
+  },
+  {
+   "start": 855.4,
+   "duration": 4.04,
+   "text": "because, you know, it the LLM has to"
+  },
+  {
+   "start": 857.24,
+   "duration": 3.32,
+   "text": "find where it is. But if you put those"
+  },
+  {
+   "start": 859.44,
+   "duration": 3.16,
+   "text": "kind of"
+  },
+  {
+   "start": 860.56,
+   "duration": 4.28,
+   "text": "kind of information"
+  },
+  {
+   "start": 862.6,
+   "duration": 5.24,
+   "text": "in the, you know, kind of"
+  },
+  {
+   "start": 864.84,
+   "duration": 5.04,
+   "text": "initial thing itself, initial message"
+  },
+  {
+   "start": 867.84,
+   "duration": 5.2,
+   "text": "itself, then"
+  },
+  {
+   "start": 869.88,
+   "duration": 6.76,
+   "text": "100% of the time, mostly, it will get"
+  },
+  {
+   "start": 873.04,
+   "duration": 6.76,
+   "text": "the facts out of it straight away."
+  },
+  {
+   "start": 876.64,
+   "duration": 5.84,
+   "text": "And then the important summarizations or"
+  },
+  {
+   "start": 879.8,
+   "duration": 5.28,
+   "text": "the important facts that, you know, the"
+  },
+  {
+   "start": 882.48,
+   "duration": 5.16,
+   "text": "LLM needs to process, for example,"
+  },
+  {
+   "start": 885.08,
+   "duration": 4.48,
+   "text": "you can keep it at the end."
+  },
+  {
+   "start": 887.64,
+   "duration": 4.0,
+   "text": "Like the most recent customer message or"
+  },
+  {
+   "start": 889.56,
+   "duration": 3.68,
+   "text": "the most recent conversation, you can"
+  },
+  {
+   "start": 891.64,
+   "duration": 4.199,
+   "text": "keep it at the end so that it will"
+  },
+  {
+   "start": 893.24,
+   "duration": 4.92,
+   "text": "become one whole circle."
+  },
+  {
+   "start": 895.839,
+   "duration": 3.481,
+   "text": "The The LLM would be able to connect the"
+  },
+  {
+   "start": 898.16,
+   "duration": 3.76,
+   "text": "dots."
+  },
+  {
+   "start": 899.32,
+   "duration": 5.64,
+   "text": "It kind of got, you know,"
+  },
+  {
+   "start": 901.92,
+   "duration": 5.32,
+   "text": "the important facts which it needed."
+  },
+  {
+   "start": 904.96,
+   "duration": 5.44,
+   "text": "Then, obviously, it's not that you have"
+  },
+  {
+   "start": 907.24,
+   "duration": 5.12,
+   "text": "to leave this area blank."
+  },
+  {
+   "start": 910.4,
+   "duration": 5.16,
+   "text": "Right? You can put some tool result"
+  },
+  {
+   "start": 912.36,
+   "duration": 4.92,
+   "text": "calls or some low"
+  },
+  {
+   "start": 915.56,
+   "duration": 3.76,
+   "text": "kind of"
+  },
+  {
+   "start": 917.28,
+   "duration": 4.0,
+   "text": "requirement things over here which are"
+  },
+  {
+   "start": 919.32,
+   "duration": 5.04,
+   "text": "not much necessary, you can put it over"
+  },
+  {
+   "start": 921.28,
+   "duration": 5.28,
+   "text": "here. And then you can put the, you"
+  },
+  {
+   "start": 924.36,
+   "duration": 4.8,
+   "text": "know, the recent message or more"
+  },
+  {
+   "start": 926.56,
+   "duration": 4.92,
+   "text": "important things as well at the end."
+  },
+  {
+   "start": 929.16,
+   "duration": 4.96,
+   "text": "So, you're not kind of"
+  },
+  {
+   "start": 931.48,
+   "duration": 5.6,
+   "text": "losing the data here, but you're"
+  },
+  {
+   "start": 934.12,
+   "duration": 5.88,
+   "text": "arranging the data so that the LLM will"
+  },
+  {
+   "start": 937.08,
+   "duration": 4.0,
+   "text": "kind of perform more efficiently. And I"
+  },
+  {
+   "start": 940.0,
+   "duration": 3.16,
+   "text": "why am"
+  },
+  {
+   "start": 941.08,
+   "duration": 3.48,
+   "text": "giving more attention over here? Because"
+  },
+  {
+   "start": 943.16,
+   "duration": 3.76,
+   "text": "it is very, very important to understand"
+  },
+  {
+   "start": 944.56,
+   "duration": 3.76,
+   "text": "from the exam perspective and also how"
+  },
+  {
+   "start": 946.92,
+   "duration": 3.44,
+   "text": "you work in your day-to-day lives. How"
+  },
+  {
+   "start": 948.32,
+   "duration": 3.28,
+   "text": "you arrange your prompts in day-to-day"
+  },
+  {
+   "start": 950.36,
+   "duration": 2.6,
+   "text": "lives, right?"
+  },
+  {
+   "start": 951.6,
+   "duration": 3.24,
+   "text": "So, these are the things. Critical"
+  },
+  {
+   "start": 952.96,
+   "duration": 3.56,
+   "text": "details, order numbers, refunds amounts,"
+  },
+  {
+   "start": 954.84,
+   "duration": 4.84,
+   "text": "policy details."
+  },
+  {
+   "start": 956.52,
+   "duration": 4.2,
+   "text": "You know, you put it in the start."
+  },
+  {
+   "start": 959.68,
+   "duration": 3.12,
+   "text": "Right?"
+  },
+  {
+   "start": 960.72,
+   "duration": 5.04,
+   "text": "Then the tool results, tool messages,"
+  },
+  {
+   "start": 962.8,
+   "duration": 4.64,
+   "text": "all of these things which are kind of"
+  },
+  {
+   "start": 965.76,
+   "duration": 3.76,
+   "text": "not that much necessary, put it in the"
+  },
+  {
+   "start": 967.44,
+   "duration": 4.32,
+   "text": "middle, right in the middle."
+  },
+  {
+   "start": 969.52,
+   "duration": 5.44,
+   "text": "Right in the blind spot. And then in the"
+  },
+  {
+   "start": 971.76,
+   "duration": 6.0,
+   "text": "end, you have to put it"
+  },
+  {
+   "start": 974.96,
+   "duration": 4.88,
+   "text": "the other important things, right? So, I"
+  },
+  {
+   "start": 977.76,
+   "duration": 3.0,
+   "text": "hope that is making sense."
+  },
+  {
+   "start": 979.84,
+   "duration": 1.96,
+   "text": "Right?"
+  },
+  {
+   "start": 980.76,
+   "duration": 4.2,
+   "text": "Okay."
+  },
+  {
+   "start": 981.8,
+   "duration": 5.16,
+   "text": "So, let's talk about the next thing,"
+  },
+  {
+   "start": 984.96,
+   "duration": 4.08,
+   "text": "which is the tool results, the silent"
+  },
+  {
+   "start": 986.96,
+   "duration": 3.04,
+   "text": "context data."
+  },
+  {
+   "start": 989.04,
+   "duration": 4.799,
+   "text": "So,"
+  },
+  {
+   "start": 990.0,
+   "duration": 5.76,
+   "text": "every tool call your agent makes returns"
+  },
+  {
+   "start": 993.839,
+   "duration": 3.801,
+   "text": "data."
+  },
+  {
+   "start": 995.76,
+   "duration": 3.84,
+   "text": "So, and"
+  },
+  {
+   "start": 997.64,
+   "duration": 4.64,
+   "text": "whenever you are appending every tool"
+  },
+  {
+   "start": 999.6,
+   "duration": 4.68,
+   "text": "call and all the things that is there in"
+  },
+  {
+   "start": 1002.28,
+   "duration": 3.72,
+   "text": "the tool call,"
+  },
+  {
+   "start": 1004.28,
+   "duration": 3.48,
+   "text": "tokens are being used to process the"
+  },
+  {
+   "start": 1006.0,
+   "duration": 2.96,
+   "text": "messages. So, you are in the agentic"
+  },
+  {
+   "start": 1007.76,
+   "duration": 3.36,
+   "text": "loop. You are what you are doing is you"
+  },
+  {
+   "start": 1008.96,
+   "duration": 3.8,
+   "text": "are blindly"
+  },
+  {
+   "start": 1011.12,
+   "duration": 3.36,
+   "text": "calling, I mean, obviously the tool"
+  },
+  {
+   "start": 1012.76,
+   "duration": 4.12,
+   "text": "calls are necessary, but what you are"
+  },
+  {
+   "start": 1014.48,
+   "duration": 5.32,
+   "text": "doing is you are kind of blindly"
+  },
+  {
+   "start": 1016.88,
+   "duration": 5.08,
+   "text": "appending whatever tool message you get"
+  },
+  {
+   "start": 1019.8,
+   "duration": 4.24,
+   "text": "at every step. You are appending it"
+  },
+  {
+   "start": 1021.96,
+   "duration": 3.16,
+   "text": "directly."
+  },
+  {
+   "start": 1024.04,
+   "duration": 4.24,
+   "text": "Right?"
+  },
+  {
+   "start": 1025.12,
+   "duration": 6.92,
+   "text": "Like unnecessary details that maybe the"
+  },
+  {
+   "start": 1028.28,
+   "duration": 7.32,
+   "text": "you got that also you are appending."
+  },
+  {
+   "start": 1032.04,
+   "duration": 6.08,
+   "text": "So, in that case, obviously more tokens"
+  },
+  {
+   "start": 1035.6,
+   "duration": 4.359,
+   "text": "will be used."
+  },
+  {
+   "start": 1038.12,
+   "duration": 3.199,
+   "text": "Right? For example, get customer tool is"
+  },
+  {
+   "start": 1039.959,
+   "duration": 3.401,
+   "text": "there in our"
+  },
+  {
+   "start": 1041.319,
+   "duration": 3.281,
+   "text": "in our customer support agent, right?"
+  },
+  {
+   "start": 1043.36,
+   "duration": 4.959,
+   "text": "So,"
+  },
+  {
+   "start": 1044.6,
+   "duration": 5.84,
+   "text": "if you want to process every kind of"
+  },
+  {
+   "start": 1048.319,
+   "duration": 4.361,
+   "text": "message fully, you would use around, for"
+  },
+  {
+   "start": 1050.44,
+   "duration": 4.8,
+   "text": "example, 400 tokens. Then we have look"
+  },
+  {
+   "start": 1052.68,
+   "duration": 5.0,
+   "text": "up order. That that particular"
+  },
+  {
+   "start": 1055.24,
+   "duration": 3.6,
+   "text": "tool is also there. It might take 350"
+  },
+  {
+   "start": 1057.68,
+   "duration": 3.24,
+   "text": "tokens."
+  },
+  {
+   "start": 1058.84,
+   "duration": 4.68,
+   "text": "Check policy also is there. It might"
+  },
+  {
+   "start": 1060.92,
+   "duration": 5.96,
+   "text": "take 600 tokens. Shipping history. So,"
+  },
+  {
+   "start": 1063.52,
+   "duration": 4.84,
+   "text": "if you just add all of these"
+  },
+  {
+   "start": 1066.88,
+   "duration": 3.2,
+   "text": "um"
+  },
+  {
+   "start": 1068.36,
+   "duration": 4.12,
+   "text": "tool calls, you know, tokens used to"
+  },
+  {
+   "start": 1070.08,
+   "duration": 5.12,
+   "text": "process the tool calls all together, you"
+  },
+  {
+   "start": 1072.48,
+   "duration": 4.4,
+   "text": "would get around 2,000 to 3,000 tokens"
+  },
+  {
+   "start": 1075.2,
+   "duration": 4.04,
+   "text": "in every"
+  },
+  {
+   "start": 1076.88,
+   "duration": 4.2,
+   "text": "iteration of your agentic loop. Now, you"
+  },
+  {
+   "start": 1079.24,
+   "duration": 3.4,
+   "text": "don't have to actually process"
+  },
+  {
+   "start": 1081.08,
+   "duration": 3.96,
+   "text": "everything"
+  },
+  {
+   "start": 1082.64,
+   "duration": 5.04,
+   "text": "that comes out of every tool."
+  },
+  {
+   "start": 1085.04,
+   "duration": 3.96,
+   "text": "You can filter it."
+  },
+  {
+   "start": 1087.68,
+   "duration": 3.2,
+   "text": "Right?"
+  },
+  {
+   "start": 1089.0,
+   "duration": 3.96,
+   "text": "Now, just imagine if you're processing"
+  },
+  {
+   "start": 1090.88,
+   "duration": 4.2,
+   "text": "This is just one tool call, right? And"
+  },
+  {
+   "start": 1092.96,
+   "duration": 3.8,
+   "text": "there are five tools in one sorry one"
+  },
+  {
+   "start": 1095.08,
+   "duration": 4.08,
+   "text": "agentic loop, for example, you're"
+  },
+  {
+   "start": 1096.76,
+   "duration": 3.88,
+   "text": "calling five tools, right? And imagine"
+  },
+  {
+   "start": 1099.16,
+   "duration": 3.48,
+   "text": "it in a production grade system where"
+  },
+  {
+   "start": 1100.64,
+   "duration": 3.88,
+   "text": "every time this five tools are called,"
+  },
+  {
+   "start": 1102.64,
+   "duration": 3.92,
+   "text": "and just imagine how much tokens, even"
+  },
+  {
+   "start": 1104.52,
+   "duration": 4.16,
+   "text": "if we are calling. So, as per our"
+  },
+  {
+   "start": 1106.56,
+   "duration": 5.12,
+   "text": "calculation, every agentic loop you're"
+  },
+  {
+   "start": 1108.68,
+   "duration": 4.92,
+   "text": "using 2,000 to 2,500 tokens just to"
+  },
+  {
+   "start": 1111.68,
+   "duration": 5.16,
+   "text": "process those tool messages. Just"
+  },
+  {
+   "start": 1113.6,
+   "duration": 4.56,
+   "text": "imagine even 20 times those that agentic"
+  },
+  {
+   "start": 1116.84,
+   "duration": 3.16,
+   "text": "loop happens,"
+  },
+  {
+   "start": 1118.16,
+   "duration": 3.96,
+   "text": "then you are kind of using 40,000 to"
+  },
+  {
+   "start": 1120.0,
+   "duration": 3.24,
+   "text": "50,000 tokens, just 10 to 20 times,"
+  },
+  {
+   "start": 1122.12,
+   "duration": 2.52,
+   "text": "right?"
+  },
+  {
+   "start": 1123.24,
+   "duration": 2.8,
+   "text": "Now, that's a very big burden. Now,"
+  },
+  {
+   "start": 1124.64,
+   "duration": 4.4,
+   "text": "obviously, in production system, it will"
+  },
+  {
+   "start": 1126.04,
+   "duration": 4.96,
+   "text": "be called much more than 20 times. The"
+  },
+  {
+   "start": 1129.04,
+   "duration": 4.08,
+   "text": "agentic loop will happen, you know, much"
+  },
+  {
+   "start": 1131.0,
+   "duration": 4.36,
+   "text": "more than 20 to 30 times."
+  },
+  {
+   "start": 1133.12,
+   "duration": 4.6,
+   "text": "So, you are unnecessarily using tokens"
+  },
+  {
+   "start": 1135.36,
+   "duration": 4.04,
+   "text": "for unnecessarily processing unnecessary"
+  },
+  {
+   "start": 1137.72,
+   "duration": 3.4,
+   "text": "data. I hope that is making sense, and"
+  },
+  {
+   "start": 1139.4,
+   "duration": 2.88,
+   "text": "it's not confusing you."
+  },
+  {
+   "start": 1141.12,
+   "duration": 2.76,
+   "text": "So,"
+  },
+  {
+   "start": 1142.28,
+   "duration": 3.44,
+   "text": "what do we do"
+  },
+  {
+   "start": 1143.88,
+   "duration": 3.6,
+   "text": "in this scenario? You'd say, \"Okay, we"
+  },
+  {
+   "start": 1145.72,
+   "duration": 3.36,
+   "text": "cannot just ignore the tool results.\""
+  },
+  {
+   "start": 1147.48,
+   "duration": 3.68,
+   "text": "That is a valid question. We we should"
+  },
+  {
+   "start": 1149.08,
+   "duration": 5.08,
+   "text": "not ignore the tool results."
+  },
+  {
+   "start": 1151.16,
+   "duration": 5.0,
+   "text": "So, what extra can we do? So,"
+  },
+  {
+   "start": 1154.16,
+   "duration": 4.28,
+   "text": "I mean to kind of"
+  },
+  {
+   "start": 1156.16,
+   "duration": 4.88,
+   "text": "um"
+  },
+  {
+   "start": 1158.44,
+   "duration": 5.2,
+   "text": "you know, make that efficient. You know?"
+  },
+  {
+   "start": 1161.04,
+   "duration": 4.96,
+   "text": "And I have already given the answer in"
+  },
+  {
+   "start": 1163.64,
+   "duration": 4.08,
+   "text": "one of the previous lectures."
+  },
+  {
+   "start": 1166.0,
+   "duration": 4.12,
+   "text": "It was way back, so you have guys have"
+  },
+  {
+   "start": 1167.72,
+   "duration": 4.56,
+   "text": "to kind of remember that thing."
+  },
+  {
+   "start": 1170.12,
+   "duration": 4.12,
+   "text": "Uh any other concept that we had"
+  },
+  {
+   "start": 1172.28,
+   "duration": 3.52,
+   "text": "discussed which might help here? I've"
+  },
+  {
+   "start": 1174.24,
+   "duration": 3.88,
+   "text": "already discussed about that concept, by"
+  },
+  {
+   "start": 1175.8,
+   "duration": 2.32,
+   "text": "the way."
+  },
+  {
+   "start": 1178.36,
+   "duration": 2.72,
+   "text": "I'm going to just take a pause and you"
+  },
+  {
+   "start": 1179.88,
+   "duration": 2.76,
+   "text": "know,"
+  },
+  {
+   "start": 1181.08,
+   "duration": 4.16,
+   "text": "pause the video as well, think about it,"
+  },
+  {
+   "start": 1182.64,
+   "duration": 7.0,
+   "text": "and you can answer this over here."
+  },
+  {
+   "start": 1185.24,
+   "duration": 6.84,
+   "text": "Right? The answer is the use of pre-tool"
+  },
+  {
+   "start": 1189.64,
+   "duration": 3.88,
+   "text": "use hooks."
+  },
+  {
+   "start": 1192.08,
+   "duration": 3.72,
+   "text": "Right?"
+  },
+  {
+   "start": 1193.52,
+   "duration": 3.4,
+   "text": "Or sorry, post-tool use hooks. Both you"
+  },
+  {
+   "start": 1195.8,
+   "duration": 3.84,
+   "text": "can use."
+  },
+  {
+   "start": 1196.92,
+   "duration": 6.32,
+   "text": "Either the you know, the the the data"
+  },
+  {
+   "start": 1199.64,
+   "duration": 6.72,
+   "text": "that you get from a previous tool,"
+  },
+  {
+   "start": 1203.24,
+   "duration": 4.76,
+   "text": "right? You can use a post-tool hook to"
+  },
+  {
+   "start": 1206.36,
+   "duration": 4.52,
+   "text": "filter the data that you would need in"
+  },
+  {
+   "start": 1208.0,
+   "duration": 5.36,
+   "text": "the next iteration. Or before passing"
+  },
+  {
+   "start": 1210.88,
+   "duration": 5.48,
+   "text": "the data into the tool itself, you can"
+  },
+  {
+   "start": 1213.36,
+   "duration": 4.32,
+   "text": "use a pre-tool hook to kind of extract,"
+  },
+  {
+   "start": 1216.36,
+   "duration": 4.2,
+   "text": "you know?"
+  },
+  {
+   "start": 1217.68,
+   "duration": 4.96,
+   "text": "Uh the required fields that are needed"
+  },
+  {
+   "start": 1220.56,
+   "duration": 3.76,
+   "text": "for that particular thing."
+  },
+  {
+   "start": 1222.64,
+   "duration": 2.8,
+   "text": "Right? I'm hoping that it is making"
+  },
+  {
+   "start": 1224.32,
+   "duration": 3.56,
+   "text": "sense."
+  },
+  {
+   "start": 1225.44,
+   "duration": 4.08,
+   "text": "So, what do we know what what do we do"
+  },
+  {
+   "start": 1227.88,
+   "duration": 4.08,
+   "text": "what do we do that?"
+  },
+  {
+   "start": 1229.52,
+   "duration": 4.44,
+   "text": "How do we kind of structure it?"
+  },
+  {
+   "start": 1231.96,
+   "duration": 5.4,
+   "text": "You can structure it by using the case"
+  },
+  {
+   "start": 1233.96,
+   "duration": 4.64,
+   "text": "facts block, your agent's notepad."
+  },
+  {
+   "start": 1237.36,
+   "duration": 4.52,
+   "text": "So, what does that mean? So, I'm going"
+  },
+  {
+   "start": 1238.6,
+   "duration": 6.68,
+   "text": "to go over in my uh"
+  },
+  {
+   "start": 1241.88,
+   "duration": 5.8,
+   "text": "this over here. And I have created this"
+  },
+  {
+   "start": 1245.28,
+   "duration": 4.88,
+   "text": "small thing, a very small, you know,"
+  },
+  {
+   "start": 1247.68,
+   "duration": 5.52,
+   "text": "kind of a pojo or a"
+  },
+  {
+   "start": 1250.16,
+   "duration": 5.12,
+   "text": "model entity over here. So, for"
+  },
+  {
+   "start": 1253.2,
+   "duration": 3.88,
+   "text": "processing each case, for example, you"
+  },
+  {
+   "start": 1255.28,
+   "duration": 6.12,
+   "text": "have a customer support agent, and to"
+  },
+  {
+   "start": 1257.08,
+   "duration": 7.6,
+   "text": "process each um kind of um"
+  },
+  {
+   "start": 1261.4,
+   "duration": 6.12,
+   "text": "um case or problem or a ticket that a"
+  },
+  {
+   "start": 1264.68,
+   "duration": 5.76,
+   "text": "customer raises, you would need"
+  },
+  {
+   "start": 1267.52,
+   "duration": 4.8,
+   "text": "the data from these kind of data, right?"
+  },
+  {
+   "start": 1270.44,
+   "duration": 3.68,
+   "text": "Like what is the customer ID? What is"
+  },
+  {
+   "start": 1272.32,
+   "duration": 3.84,
+   "text": "the order ID? What is the item? What is"
+  },
+  {
+   "start": 1274.12,
+   "duration": 4.44,
+   "text": "the refund amount? What is the order"
+  },
+  {
+   "start": 1276.16,
+   "duration": 5.0,
+   "text": "date? What is the policy window days?"
+  },
+  {
+   "start": 1278.56,
+   "duration": 4.6,
+   "text": "All of these things you would need. Now,"
+  },
+  {
+   "start": 1281.16,
+   "duration": 4.48,
+   "text": "what will happen is when whenever a tool"
+  },
+  {
+   "start": 1283.16,
+   "duration": 5.68,
+   "text": "runs, for example, look up order ran or"
+  },
+  {
+   "start": 1285.64,
+   "duration": 4.84,
+   "text": "get refund you know, process refund ran."
+  },
+  {
+   "start": 1288.84,
+   "duration": 4.44,
+   "text": "It will return you in a summarized"
+  },
+  {
+   "start": 1290.48,
+   "duration": 4.16,
+   "text": "manner. Okay. So, this is the customer"
+  },
+  {
+   "start": 1293.28,
+   "duration": 3.8,
+   "text": "and this was the message that the"
+  },
+  {
+   "start": 1294.64,
+   "duration": 4.0,
+   "text": "customer told and all those things. And"
+  },
+  {
+   "start": 1297.08,
+   "duration": 3.16,
+   "text": "this was the refund amount. So, it will"
+  },
+  {
+   "start": 1298.64,
+   "duration": 2.88,
+   "text": "return you in a summarized manner as a"
+  },
+  {
+   "start": 1300.24,
+   "duration": 4.2,
+   "text": "string."
+  },
+  {
+   "start": 1301.52,
+   "duration": 5.72,
+   "text": "Now, you can have a post hook"
+  },
+  {
+   "start": 1304.44,
+   "duration": 5.32,
+   "text": "for example, like a post hook after a"
+  },
+  {
+   "start": 1307.24,
+   "duration": 4.28,
+   "text": "tool has been kind of"
+  },
+  {
+   "start": 1309.76,
+   "duration": 2.8,
+   "text": "run, you can have a post hook over"
+  },
+  {
+   "start": 1311.52,
+   "duration": 3.0,
+   "text": "there."
+  },
+  {
+   "start": 1312.56,
+   "duration": 4.2,
+   "text": "In that post hook, you can take the"
+  },
+  {
+   "start": 1314.52,
+   "duration": 3.92,
+   "text": "entire message. Okay, you can have a"
+  },
+  {
+   "start": 1316.76,
+   "duration": 4.12,
+   "text": "regex or something like that. You don't"
+  },
+  {
+   "start": 1318.44,
+   "duration": 4.0,
+   "text": "have even have to use AI over there."
+  },
+  {
+   "start": 1320.88,
+   "duration": 4.4,
+   "text": "You can have a regex over there which"
+  },
+  {
+   "start": 1322.44,
+   "duration": 4.6,
+   "text": "will just extract the information."
+  },
+  {
+   "start": 1325.28,
+   "duration": 4.44,
+   "text": "All this information, the case facts"
+  },
+  {
+   "start": 1327.04,
+   "duration": 5.44,
+   "text": "that are needed and put it in some"
+  },
+  {
+   "start": 1329.72,
+   "duration": 4.12,
+   "text": "object or something. Or an array or an"
+  },
+  {
+   "start": 1332.48,
+   "duration": 3.04,
+   "text": "object, whatever."
+  },
+  {
+   "start": 1333.84,
+   "duration": 4.88,
+   "text": "Now, whenever you are appending the"
+  },
+  {
+   "start": 1335.52,
+   "duration": 6.12,
+   "text": "message for the next I mean, tool call"
+  },
+  {
+   "start": 1338.72,
+   "duration": 5.44,
+   "text": "or the next part of the agentic loop,"
+  },
+  {
+   "start": 1341.64,
+   "duration": 5.04,
+   "text": "you actually send only the required"
+  },
+  {
+   "start": 1344.16,
+   "duration": 5.04,
+   "text": "things that are necessary. So, you are"
+  },
+  {
+   "start": 1346.68,
+   "duration": 4.72,
+   "text": "kind of you doing half enough. Like if"
+  },
+  {
+   "start": 1349.2,
+   "duration": 4.2,
+   "text": "you remember, I already talked about the"
+  },
+  {
+   "start": 1351.4,
+   "duration": 3.0,
+   "text": "post tool and the pre-tool hook things"
+  },
+  {
+   "start": 1353.4,
+   "duration": 4.16,
+   "text": "that"
+  },
+  {
+   "start": 1354.4,
+   "duration": 5.24,
+   "text": "those are normal coding that you do."
+  },
+  {
+   "start": 1357.56,
+   "duration": 4.56,
+   "text": "Those are normal functions. Like we had"
+  },
+  {
+   "start": 1359.64,
+   "duration": 5.88,
+   "text": "also written a few functions."
+  },
+  {
+   "start": 1362.12,
+   "duration": 5.0,
+   "text": "Right? If you take our post tool"
+  },
+  {
+   "start": 1365.52,
+   "duration": 4.28,
+   "text": "use hooks."
+  },
+  {
+   "start": 1367.12,
+   "duration": 4.0,
+   "text": "Right? And"
+  },
+  {
+   "start": 1369.8,
+   "duration": 3.6,
+   "text": "uh"
+  },
+  {
+   "start": 1371.12,
+   "duration": 4.28,
+   "text": "you know, post tool hooks."
+  },
+  {
+   "start": 1373.4,
+   "duration": 5.56,
+   "text": "Let me check some other places over"
+  },
+  {
+   "start": 1375.4,
+   "duration": 3.56,
+   "text": "here. We have the"
+  },
+  {
+   "start": 1379.88,
+   "duration": 2.2,
+   "text": "So, So,"
+  },
+  {
+   "start": 1382.8,
+   "duration": 3.36,
+   "text": "Yeah, so we have some"
+  },
+  {
+   "start": 1384.6,
+   "duration": 4.48,
+   "text": "kind of"
+  },
+  {
+   "start": 1386.16,
+   "duration": 4.92,
+   "text": "things over here. Okay, so see here the"
+  },
+  {
+   "start": 1389.08,
+   "duration": 4.12,
+   "text": "post tool hook will normalize this"
+  },
+  {
+   "start": 1391.08,
+   "duration": 3.56,
+   "text": "before the model is in the model sees"
+  },
+  {
+   "start": 1393.2,
+   "duration": 3.48,
+   "text": "them, basically."
+  },
+  {
+   "start": 1394.64,
+   "duration": 4.64,
+   "text": "So, if you want to"
+  },
+  {
+   "start": 1396.68,
+   "duration": 4.96,
+   "text": "filter some data or if you want to kind"
+  },
+  {
+   "start": 1399.28,
+   "duration": 4.2,
+   "text": "of um"
+  },
+  {
+   "start": 1401.64,
+   "duration": 4.28,
+   "text": "normalize the data or you want to remove"
+  },
+  {
+   "start": 1403.48,
+   "duration": 4.48,
+   "text": "unnecessary things from there so that"
+  },
+  {
+   "start": 1405.92,
+   "duration": 4.08,
+   "text": "the model doesn't suffer context"
+  },
+  {
+   "start": 1407.96,
+   "duration": 4.48,
+   "text": "exhaustion due to processing unnecessary"
+  },
+  {
+   "start": 1410.0,
+   "duration": 4.48,
+   "text": "data, you can use a post tool hook that"
+  },
+  {
+   "start": 1412.44,
+   "duration": 5.2,
+   "text": "we have already discussed. Or you can"
+  },
+  {
+   "start": 1414.48,
+   "duration": 5.12,
+   "text": "also use a pre tool hook if you want to"
+  },
+  {
+   "start": 1417.64,
+   "duration": 3.84,
+   "text": "kind of kind of do a double check on the"
+  },
+  {
+   "start": 1419.6,
+   "duration": 3.84,
+   "text": "data or sanitize the data before even"
+  },
+  {
+   "start": 1421.48,
+   "duration": 3.6,
+   "text": "the tool gets called."
+  },
+  {
+   "start": 1423.44,
+   "duration": 4.76,
+   "text": "Right? All those things we have already"
+  },
+  {
+   "start": 1425.08,
+   "duration": 5.08,
+   "text": "discussed. So, that is how what I meant"
+  },
+  {
+   "start": 1428.2,
+   "duration": 3.32,
+   "text": "in in in this scenario, for example, you"
+  },
+  {
+   "start": 1430.16,
+   "duration": 3.08,
+   "text": "have a"
+  },
+  {
+   "start": 1431.52,
+   "duration": 3.56,
+   "text": "you're doing a customer support agent"
+  },
+  {
+   "start": 1433.24,
+   "duration": 5.16,
+   "text": "thing. You kind of extract it in this"
+  },
+  {
+   "start": 1435.08,
+   "duration": 6.64,
+   "text": "format and then you use it, right? So,"
+  },
+  {
+   "start": 1438.4,
+   "duration": 5.08,
+   "text": "that is the case facts block and in the"
+  },
+  {
+   "start": 1441.72,
+   "duration": 3.36,
+   "text": "exam you will be tested on that. How do"
+  },
+  {
+   "start": 1443.48,
+   "duration": 3.2,
+   "text": "you, you know, handle this kind of"
+  },
+  {
+   "start": 1445.08,
+   "duration": 4.28,
+   "text": "scenario, right?"
+  },
+  {
+   "start": 1446.68,
+   "duration": 4.76,
+   "text": "So, it will have all the necessary data"
+  },
+  {
+   "start": 1449.36,
+   "duration": 3.72,
+   "text": "and the four rules of evidence board top"
+  },
+  {
+   "start": 1451.44,
+   "duration": 3.24,
+   "text": "placement always lives in the highest"
+  },
+  {
+   "start": 1453.08,
+   "duration": 3.44,
+   "text": "attention zone that we just discussed"
+  },
+  {
+   "start": 1454.68,
+   "duration": 2.68,
+   "text": "over here. All this data should be in"
+  },
+  {
+   "start": 1456.52,
+   "duration": 3.76,
+   "text": "the"
+  },
+  {
+   "start": 1457.36,
+   "duration": 5.4,
+   "text": "this part of your prompt. Right? Because"
+  },
+  {
+   "start": 1460.28,
+   "duration": 4.68,
+   "text": "these are critical facts that is needed,"
+  },
+  {
+   "start": 1462.76,
+   "duration": 4.12,
+   "text": "you know, to process."
+  },
+  {
+   "start": 1464.96,
+   "duration": 4.0,
+   "text": "Always fresh, dynamically updated as the"
+  },
+  {
+   "start": 1466.88,
+   "duration": 4.24,
+   "text": "conversation grows, verified only,"
+  },
+  {
+   "start": 1468.96,
+   "duration": 3.36,
+   "text": "confirmed tool data. You can That's what"
+  },
+  {
+   "start": 1471.12,
+   "duration": 3.4,
+   "text": "I told you. If you want to double check"
+  },
+  {
+   "start": 1472.32,
+   "duration": 3.84,
+   "text": "the data as well before even passing it"
+  },
+  {
+   "start": 1474.52,
+   "duration": 2.88,
+   "text": "on the tool, you can also use a pre tool"
+  },
+  {
+   "start": 1476.16,
+   "duration": 3.56,
+   "text": "hook as well."
+  },
+  {
+   "start": 1477.4,
+   "duration": 4.56,
+   "text": "Compact, distilled to around 200 tokens"
+  },
+  {
+   "start": 1479.72,
+   "duration": 4.56,
+   "text": "instead of, you know, passing the entire"
+  },
+  {
+   "start": 1481.96,
+   "duration": 5.92,
+   "text": "string that you got from the tool call,"
+  },
+  {
+   "start": 1484.28,
+   "duration": 6.04,
+   "text": "you just kind of compact it, right? And"
+  },
+  {
+   "start": 1487.88,
+   "duration": 4.88,
+   "text": "kind of pass the required data."
+  },
+  {
+   "start": 1490.32,
+   "duration": 5.24,
+   "text": "So, exam critical one thing that I want"
+  },
+  {
+   "start": 1492.76,
+   "duration": 5.4,
+   "text": "to give a shout out is basically"
+  },
+  {
+   "start": 1495.56,
+   "duration": 4.88,
+   "text": "uh extracting transactional facts into a"
+  },
+  {
+   "start": 1498.16,
+   "duration": 4.56,
+   "text": "persistent case facts block is the"
+  },
+  {
+   "start": 1500.44,
+   "duration": 5.04,
+   "text": "ultimate remedy for summarization loss"
+  },
+  {
+   "start": 1502.72,
+   "duration": 4.96,
+   "text": "and the lost in the middle effect."
+  },
+  {
+   "start": 1505.48,
+   "duration": 4.8,
+   "text": "Right? So, that is what I wanted to tell"
+  },
+  {
+   "start": 1507.68,
+   "duration": 4.6,
+   "text": "you that you have to trim it first and"
+  },
+  {
+   "start": 1510.28,
+   "duration": 3.76,
+   "text": "then pass it and we just already"
+  },
+  {
+   "start": 1512.28,
+   "duration": 4.4,
+   "text": "discussed about this, right? You have a"
+  },
+  {
+   "start": 1514.04,
+   "duration": 5.2,
+   "text": "raw tool output 400 tokens for example,"
+  },
+  {
+   "start": 1516.68,
+   "duration": 4.52,
+   "text": "you pass it into a post tool hook like"
+  },
+  {
+   "start": 1519.24,
+   "duration": 5.24,
+   "text": "this, it will do the filter, it will"
+  },
+  {
+   "start": 1521.2,
+   "duration": 4.92,
+   "text": "drop all the noise that is not necessary"
+  },
+  {
+   "start": 1524.48,
+   "duration": 4.16,
+   "text": "for, you know, that is needed for the"
+  },
+  {
+   "start": 1526.12,
+   "duration": 6.08,
+   "text": "processing. And then it will only"
+  },
+  {
+   "start": 1528.64,
+   "duration": 5.28,
+   "text": "generate this case facts block, right?"
+  },
+  {
+   "start": 1532.2,
+   "duration": 3.08,
+   "text": "And then it will pass it to the agent"
+  },
+  {
+   "start": 1533.92,
+   "duration": 4.0,
+   "text": "context."
+  },
+  {
+   "start": 1535.28,
+   "duration": 4.8,
+   "text": "So, from the exam perspective, trim"
+  },
+  {
+   "start": 1537.92,
+   "duration": 4.0,
+   "text": "verbose tool outputs before they"
+  },
+  {
+   "start": 1540.08,
+   "duration": 3.88,
+   "text": "accumulate at the hook layer. Cleaning"
+  },
+  {
+   "start": 1541.92,
+   "duration": 5.04,
+   "text": "up context after it is already bloated"
+  },
+  {
+   "start": 1543.96,
+   "duration": 5.48,
+   "text": "is a failed strategy. So, before even"
+  },
+  {
+   "start": 1546.96,
+   "duration": 5.72,
+   "text": "passing it to the agent context itself,"
+  },
+  {
+   "start": 1549.44,
+   "duration": 5.56,
+   "text": "you need to trim up and clean up the"
+  },
+  {
+   "start": 1552.68,
+   "duration": 5.24,
+   "text": "data."
+  },
+  {
+   "start": 1555.0,
+   "duration": 4.88,
+   "text": "Right? I hope that is making sense."
+  },
+  {
+   "start": 1557.92,
+   "duration": 4.08,
+   "text": "Okay, so let's move on. Structured"
+  },
+  {
+   "start": 1559.88,
+   "duration": 3.68,
+   "text": "matters as we discussed beginning and"
+  },
+  {
+   "start": 1562.0,
+   "duration": 3.08,
+   "text": "the end when we already discussed the"
+  },
+  {
+   "start": 1563.56,
+   "duration": 3.88,
+   "text": "curve, right? The attention you"
+  },
+  {
+   "start": 1565.08,
+   "duration": 5.04,
+   "text": "attention curve we discussed. So,"
+  },
+  {
+   "start": 1567.44,
+   "duration": 4.88,
+   "text": "obviously in the you know, in the prompt"
+  },
+  {
+   "start": 1570.12,
+   "duration": 4.44,
+   "text": "whatever messages you are appending,"
+  },
+  {
+   "start": 1572.32,
+   "duration": 4.6,
+   "text": "make sure that you are always, you know,"
+  },
+  {
+   "start": 1574.56,
+   "duration": 4.0,
+   "text": "keeping the case facts block"
+  },
+  {
+   "start": 1576.92,
+   "duration": 2.92,
+   "text": "in the first part that we have"
+  },
+  {
+   "start": 1578.56,
+   "duration": 3.16,
+   "text": "discussed."
+  },
+  {
+   "start": 1579.84,
+   "duration": 4.04,
+   "text": "Next, you can keep some trimmed tool"
+  },
+  {
+   "start": 1581.72,
+   "duration": 3.8,
+   "text": "results which is lean relevant to"
+  },
+  {
+   "start": 1583.88,
+   "duration": 3.6,
+   "text": "immediate decision only stripped off"
+  },
+  {
+   "start": 1585.52,
+   "duration": 3.56,
+   "text": "historical bloat resides in the low"
+  },
+  {
+   "start": 1587.48,
+   "duration": 3.8,
+   "text": "attention valley."
+  },
+  {
+   "start": 1589.08,
+   "duration": 4.8,
+   "text": "Critical recap plus four plus final"
+  },
+  {
+   "start": 1591.28,
+   "duration": 4.12,
+   "text": "question, right? I mean, it should be in"
+  },
+  {
+   "start": 1593.88,
+   "duration": 3.72,
+   "text": "the end part. So, because that is also"
+  },
+  {
+   "start": 1595.4,
+   "duration": 4.32,
+   "text": "important that what has been done, like"
+  },
+  {
+   "start": 1597.6,
+   "duration": 5.04,
+   "text": "critical recap, like very important"
+  },
+  {
+   "start": 1599.72,
+   "duration": 3.84,
+   "text": "summary line or any policy details,"
+  },
+  {
+   "start": 1602.64,
+   "duration": 3.4,
+   "text": "right?"
+  },
+  {
+   "start": 1603.56,
+   "duration": 3.96,
+   "text": "That, you know, the refund must be done"
+  },
+  {
+   "start": 1606.04,
+   "duration": 3.36,
+   "text": "within 30 days for example, if you have"
+  },
+  {
+   "start": 1607.52,
+   "duration": 3.6,
+   "text": "a policy like that, you can have it at"
+  },
+  {
+   "start": 1609.4,
+   "duration": 3.92,
+   "text": "the end part because the first part and"
+  },
+  {
+   "start": 1611.12,
+   "duration": 4.8,
+   "text": "the end part is where the attention lies"
+  },
+  {
+   "start": 1613.32,
+   "duration": 4.52,
+   "text": "for the LLM. And we had discussed that,"
+  },
+  {
+   "start": 1615.92,
+   "duration": 2.92,
+   "text": "you know, in detail in just a few slides"
+  },
+  {
+   "start": 1617.84,
+   "duration": 3.32,
+   "text": "back."
+  },
+  {
+   "start": 1618.84,
+   "duration": 4.08,
+   "text": "So, memorize these three parts. Wait,"
+  },
+  {
+   "start": 1621.16,
+   "duration": 3.44,
+   "text": "don't memorize it, in my opinion, just"
+  },
+  {
+   "start": 1622.92,
+   "duration": 4.92,
+   "text": "kind of remember it. It's very easy to"
+  },
+  {
+   "start": 1624.6,
+   "duration": 6.12,
+   "text": "remember. And we as humans also kind of"
+  },
+  {
+   "start": 1627.84,
+   "duration": 5.16,
+   "text": "do the same thing, right? So, it's kind"
+  },
+  {
+   "start": 1630.72,
+   "duration": 4.6,
+   "text": "of, you know, it's self-explanatory. I"
+  },
+  {
+   "start": 1633.0,
+   "duration": 6.04,
+   "text": "hope that is making sense."
+  },
+  {
+   "start": 1635.32,
+   "duration": 6.36,
+   "text": "Yep. So, now let's go on to the next"
+  },
+  {
+   "start": 1639.04,
+   "duration": 5.52,
+   "text": "part of this particular lecture, which"
+  },
+  {
+   "start": 1641.68,
+   "duration": 5.36,
+   "text": "is basically"
+  },
+  {
+   "start": 1644.56,
+   "duration": 5.36,
+   "text": "uh when to escalate."
+  },
+  {
+   "start": 1647.04,
+   "duration": 4.64,
+   "text": "Right? And"
+  },
+  {
+   "start": 1649.92,
+   "duration": 3.36,
+   "text": "basically"
+  },
+  {
+   "start": 1651.68,
+   "duration": 3.48,
+   "text": "we are kind of switching gears now,"
+  },
+  {
+   "start": 1653.28,
+   "duration": 3.8,
+   "text": "right? And um"
+  },
+  {
+   "start": 1655.16,
+   "duration": 4.76,
+   "text": "we are Now we're going to solve when"
+  },
+  {
+   "start": 1657.08,
+   "duration": 5.0,
+   "text": "your AI agent would stop try to solve"
+  },
+  {
+   "start": 1659.92,
+   "duration": 5.72,
+   "text": "everything on its own and then basically"
+  },
+  {
+   "start": 1662.08,
+   "duration": 5.36,
+   "text": "escalate the problem to a human."
+  },
+  {
+   "start": 1665.64,
+   "duration": 3.84,
+   "text": "Right? And"
+  },
+  {
+   "start": 1667.44,
+   "duration": 4.84,
+   "text": "you know, sometimes people don't"
+  },
+  {
+   "start": 1669.48,
+   "duration": 4.64,
+   "text": "understand when I should kind of make"
+  },
+  {
+   "start": 1672.28,
+   "duration": 3.68,
+   "text": "the agent to escalate to the you know,"
+  },
+  {
+   "start": 1674.12,
+   "duration": 3.64,
+   "text": "make the agent to escalate to the human."
+  },
+  {
+   "start": 1675.96,
+   "duration": 3.52,
+   "text": "Because I have noticed this so many"
+  },
+  {
+   "start": 1677.76,
+   "duration": 3.52,
+   "text": "times, you know, uh"
+  },
+  {
+   "start": 1679.48,
+   "duration": 4.76,
+   "text": "I've used so many um"
+  },
+  {
+   "start": 1681.28,
+   "duration": 5.08,
+   "text": "support things. Nowadays, every support"
+  },
+  {
+   "start": 1684.24,
+   "duration": 4.96,
+   "text": "that you, you know, contact as a"
+  },
+  {
+   "start": 1686.36,
+   "duration": 5.4,
+   "text": "customer are bots."
+  },
+  {
+   "start": 1689.2,
+   "duration": 4.32,
+   "text": "And many times that I use it,"
+  },
+  {
+   "start": 1691.76,
+   "duration": 3.68,
+   "text": "I kind of um"
+  },
+  {
+   "start": 1693.52,
+   "duration": 3.72,
+   "text": "get disappointed because even when I"
+  },
+  {
+   "start": 1695.44,
+   "duration": 4.16,
+   "text": "tell um"
+  },
+  {
+   "start": 1697.24,
+   "duration": 4.16,
+   "text": "you know, connect me to a explicitly"
+  },
+  {
+   "start": 1699.6,
+   "duration": 3.68,
+   "text": "tell connect me to a human support"
+  },
+  {
+   "start": 1701.4,
+   "duration": 3.76,
+   "text": "agent, still they don't do that. Still"
+  },
+  {
+   "start": 1703.28,
+   "duration": 3.52,
+   "text": "they give some automated reply or try to"
+  },
+  {
+   "start": 1705.16,
+   "duration": 3.52,
+   "text": "solve it on their own."
+  },
+  {
+   "start": 1706.8,
+   "duration": 4.24,
+   "text": "Yeah? So, but that is not the way it"
+  },
+  {
+   "start": 1708.68,
+   "duration": 3.8,
+   "text": "should be designed."
+  },
+  {
+   "start": 1711.04,
+   "duration": 3.8,
+   "text": "You know, you have to make your agent in"
+  },
+  {
+   "start": 1712.48,
+   "duration": 4.36,
+   "text": "a way that the agent knows, okay, this"
+  },
+  {
+   "start": 1714.84,
+   "duration": 4.52,
+   "text": "is the this is the line I should not"
+  },
+  {
+   "start": 1716.84,
+   "duration": 5.88,
+   "text": "cross it. And this is when I should"
+  },
+  {
+   "start": 1719.36,
+   "duration": 5.56,
+   "text": "completely escalate the case to a human."
+  },
+  {
+   "start": 1722.72,
+   "duration": 5.28,
+   "text": "And these are the three things,"
+  },
+  {
+   "start": 1724.92,
+   "duration": 5.32,
+   "text": "basically, three moments when the agent"
+  },
+  {
+   "start": 1728.0,
+   "duration": 4.48,
+   "text": "kind of understand okay, if this kind of"
+  },
+  {
+   "start": 1730.24,
+   "duration": 3.4,
+   "text": "moment comes or this kind of a"
+  },
+  {
+   "start": 1732.48,
+   "duration": 3.48,
+   "text": "um"
+  },
+  {
+   "start": 1733.64,
+   "duration": 5.12,
+   "text": "trigger comes, then this is when I need"
+  },
+  {
+   "start": 1735.96,
+   "duration": 4.84,
+   "text": "to escalate. No more questions asked."
+  },
+  {
+   "start": 1738.76,
+   "duration": 3.28,
+   "text": "So, first trigger is explicit human"
+  },
+  {
+   "start": 1740.8,
+   "duration": 3.84,
+   "text": "request."
+  },
+  {
+   "start": 1742.04,
+   "duration": 5.24,
+   "text": "So, the customer directly asks you like,"
+  },
+  {
+   "start": 1744.64,
+   "duration": 5.28,
+   "text": "\"Okay, I want a human agent at any cost."
+  },
+  {
+   "start": 1747.28,
+   "duration": 5.04,
+   "text": "Connect me to an agent. Let me talk to"
+  },
+  {
+   "start": 1749.92,
+   "duration": 6.24,
+   "text": "someone real.\" If all these things, you"
+  },
+  {
+   "start": 1752.32,
+   "duration": 6.16,
+   "text": "know, a a customer says, then"
+  },
+  {
+   "start": 1756.16,
+   "duration": 4.0,
+   "text": "you have to escalate it to the human."
+  },
+  {
+   "start": 1758.48,
+   "duration": 4.4,
+   "text": "You have to make the agent, I mean, you"
+  },
+  {
+   "start": 1760.16,
+   "duration": 4.32,
+   "text": "have to code the agent in a way that it"
+  },
+  {
+   "start": 1762.88,
+   "duration": 4.0,
+   "text": "kind of escalates to the human, no"
+  },
+  {
+   "start": 1764.48,
+   "duration": 3.8,
+   "text": "questions asked. Right? And it is very"
+  },
+  {
+   "start": 1766.88,
+   "duration": 3.52,
+   "text": "important in terms of the exam as well"
+  },
+  {
+   "start": 1768.28,
+   "duration": 4.28,
+   "text": "because you would be tested uh in"
+  },
+  {
+   "start": 1770.4,
+   "duration": 4.44,
+   "text": "certain scenarios."
+  },
+  {
+   "start": 1772.56,
+   "duration": 4.0,
+   "text": "Second trigger is policy gap or"
+  },
+  {
+   "start": 1774.84,
+   "duration": 3.44,
+   "text": "exception."
+  },
+  {
+   "start": 1776.56,
+   "duration": 3.32,
+   "text": "I mean,"
+  },
+  {
+   "start": 1778.28,
+   "duration": 4.16,
+   "text": "so for example, there is a situation"
+  },
+  {
+   "start": 1779.88,
+   "duration": 4.12,
+   "text": "which like isn't clearly covered by"
+  },
+  {
+   "start": 1782.44,
+   "duration": 3.44,
+   "text": "available policy."
+  },
+  {
+   "start": 1784.0,
+   "duration": 4.12,
+   "text": "Right? Maybe the case combines"
+  },
+  {
+   "start": 1785.88,
+   "duration": 4.68,
+   "text": "conditions that, you know, each policy"
+  },
+  {
+   "start": 1788.12,
+   "duration": 4.92,
+   "text": "kind of cover separately. That could"
+  },
+  {
+   "start": 1790.56,
+   "duration": 5.84,
+   "text": "might be the case."
+  },
+  {
+   "start": 1793.04,
+   "duration": 5.16,
+   "text": "But nothing is, you know, addressing"
+  },
+  {
+   "start": 1796.4,
+   "duration": 3.84,
+   "text": "together. The agent is not able to"
+  },
+  {
+   "start": 1798.2,
+   "duration": 4.48,
+   "text": "figure out which policy should I check"
+  },
+  {
+   "start": 1800.24,
+   "duration": 3.64,
+   "text": "or, you know, which policy it kind of"
+  },
+  {
+   "start": 1802.68,
+   "duration": 3.92,
+   "text": "falls into."
+  },
+  {
+   "start": 1803.88,
+   "duration": 5.44,
+   "text": "So, when there is no clear policy,"
+  },
+  {
+   "start": 1806.6,
+   "duration": 4.76,
+   "text": "you know, authorization, a human needs"
+  },
+  {
+   "start": 1809.32,
+   "duration": 3.72,
+   "text": "to make the call."
+  },
+  {
+   "start": 1811.36,
+   "duration": 4.6,
+   "text": "I hope that is making sense."
+  },
+  {
+   "start": 1813.04,
+   "duration": 5.44,
+   "text": "The third thing is the agent is stuck or"
+  },
+  {
+   "start": 1815.96,
+   "duration": 5.0,
+   "text": "it it's not able to progress."
+  },
+  {
+   "start": 1818.48,
+   "duration": 5.68,
+   "text": "Right? So, a genuine inability to"
+  },
+  {
+   "start": 1820.96,
+   "duration": 5.52,
+   "text": "progress after kind of reasonable"
+  },
+  {
+   "start": 1824.16,
+   "duration": 5.2,
+   "text": "exhaustive attempts like it's the agent"
+  },
+  {
+   "start": 1826.48,
+   "duration": 4.8,
+   "text": "is stuck in a loop, you know? Obviously,"
+  },
+  {
+   "start": 1829.36,
+   "duration": 3.92,
+   "text": "in that case you might might have like"
+  },
+  {
+   "start": 1831.28,
+   "duration": 3.96,
+   "text": "number of retries. We already discussed"
+  },
+  {
+   "start": 1833.28,
+   "duration": 3.52,
+   "text": "about that that you can have 20 or 30"
+  },
+  {
+   "start": 1835.24,
+   "duration": 3.4,
+   "text": "retries, for example, and then still if"
+  },
+  {
+   "start": 1836.8,
+   "duration": 4.24,
+   "text": "the agent is not able to complete it in"
+  },
+  {
+   "start": 1838.64,
+   "duration": 4.52,
+   "text": "20 or 30 retries, it just means that the"
+  },
+  {
+   "start": 1841.04,
+   "duration": 4.24,
+   "text": "agent is stuck in the agentic loop."
+  },
+  {
+   "start": 1843.16,
+   "duration": 4.04,
+   "text": "Nothing is coming out of it. So, in that"
+  },
+  {
+   "start": 1845.28,
+   "duration": 4.56,
+   "text": "case, obviously the agent should"
+  },
+  {
+   "start": 1847.2,
+   "duration": 4.64,
+   "text": "escalate to a human."
+  },
+  {
+   "start": 1849.84,
+   "duration": 4.48,
+   "text": "So, three things remember, when the"
+  },
+  {
+   "start": 1851.84,
+   "duration": 5.16,
+   "text": "agent needs to escalate it to a human,"
+  },
+  {
+   "start": 1854.32,
+   "duration": 5.72,
+   "text": "first thing is explicit request, policy"
+  },
+  {
+   "start": 1857.0,
+   "duration": 4.8,
+   "text": "gap, and if the agent is stuck, that"
+  },
+  {
+   "start": 1860.04,
+   "duration": 4.32,
+   "text": "time also the agent needs to escalate to"
+  },
+  {
+   "start": 1861.8,
+   "duration": 2.56,
+   "text": "the human."
+  },
+  {
+   "start": 1864.52,
+   "duration": 3.68,
+   "text": "Now, the next thing"
+  },
+  {
+   "start": 1866.08,
+   "duration": 5.44,
+   "text": "Now, we discuss about what should be the"
+  },
+  {
+   "start": 1868.2,
+   "duration": 5.64,
+   "text": "triggers that when the escalate the the"
+  },
+  {
+   "start": 1871.52,
+   "duration": 4.44,
+   "text": "the human escalation should happen. The"
+  },
+  {
+   "start": 1873.84,
+   "duration": 3.96,
+   "text": "second thing is what should not trigger"
+  },
+  {
+   "start": 1875.96,
+   "duration": 3.04,
+   "text": "the escalation, and these are the exam"
+  },
+  {
+   "start": 1877.8,
+   "duration": 3.28,
+   "text": "traps."
+  },
+  {
+   "start": 1879.0,
+   "duration": 3.88,
+   "text": "And these are the anti-patterns. So, you"
+  },
+  {
+   "start": 1881.08,
+   "duration": 3.72,
+   "text": "you you have to avoid that. So, the"
+  },
+  {
+   "start": 1882.88,
+   "duration": 4.6,
+   "text": "first anti-pattern is"
+  },
+  {
+   "start": 1884.8,
+   "duration": 5.72,
+   "text": "negative sentiment alone."
+  },
+  {
+   "start": 1887.48,
+   "duration": 4.92,
+   "text": "It means that the customer is frustrated"
+  },
+  {
+   "start": 1890.52,
+   "duration": 4.08,
+   "text": "using, you know, he has written it in"
+  },
+  {
+   "start": 1892.4,
+   "duration": 4.92,
+   "text": "exclamation marks, all caps, all that"
+  },
+  {
+   "start": 1894.6,
+   "duration": 3.96,
+   "text": "thing, right? And it's clearly upset,"
+  },
+  {
+   "start": 1897.32,
+   "duration": 4.44,
+   "text": "but"
+  },
+  {
+   "start": 1898.56,
+   "duration": 5.96,
+   "text": "this scenario doesn't mean that they"
+  },
+  {
+   "start": 1901.76,
+   "duration": 4.56,
+   "text": "need a human support."
+  },
+  {
+   "start": 1904.52,
+   "duration": 3.84,
+   "text": "I mean, they are they are pro-"
+  },
+  {
+   "start": 1906.32,
+   "duration": 3.92,
+   "text": "projecting themselves in a angry"
+  },
+  {
+   "start": 1908.36,
+   "duration": 4.52,
+   "text": "emotion,"
+  },
+  {
+   "start": 1910.24,
+   "duration": 4.92,
+   "text": "but the things that they are asking"
+  },
+  {
+   "start": 1912.88,
+   "duration": 4.32,
+   "text": "clearly falls in the policy and it can"
+  },
+  {
+   "start": 1915.16,
+   "duration": 4.56,
+   "text": "be clearly hand- handled by the agent."
+  },
+  {
+   "start": 1917.2,
+   "duration": 4.96,
+   "text": "For example, there is no ambiguity"
+  },
+  {
+   "start": 1919.72,
+   "duration": 5.32,
+   "text": "there. Just the way they are projecting"
+  },
+  {
+   "start": 1922.16,
+   "duration": 4.28,
+   "text": "is a little bit more negative."
+  },
+  {
+   "start": 1925.04,
+   "duration": 3.2,
+   "text": "So, that is also very important to"
+  },
+  {
+   "start": 1926.44,
+   "duration": 4.04,
+   "text": "understand that in that case as well, if"
+  },
+  {
+   "start": 1928.24,
+   "duration": 4.68,
+   "text": "that is handleable by the agent, please"
+  },
+  {
+   "start": 1930.48,
+   "duration": 5.24,
+   "text": "hand- the agent should handle it. Unless"
+  },
+  {
+   "start": 1932.92,
+   "duration": 3.96,
+   "text": "the customer clearly states, \"I have no"
+  },
+  {
+   "start": 1935.72,
+   "duration": 3.12,
+   "text": "faith"
+  },
+  {
+   "start": 1936.88,
+   "duration": 3.36,
+   "text": "that the bot will be able to help me. I"
+  },
+  {
+   "start": 1938.84,
+   "duration": 4.04,
+   "text": "need a customer, you know, human"
+  },
+  {
+   "start": 1940.24,
+   "duration": 6.56,
+   "text": "support.\" In that scenario only, you"
+  },
+  {
+   "start": 1942.88,
+   "duration": 6.24,
+   "text": "need to escalate it to the human."
+  },
+  {
+   "start": 1946.8,
+   "duration": 4.6,
+   "text": "That comes to the second part, which is"
+  },
+  {
+   "start": 1949.12,
+   "duration": 5.04,
+   "text": "task complexity alone."
+  },
+  {
+   "start": 1951.4,
+   "duration": 4.6,
+   "text": "So, even though the task that, you know,"
+  },
+  {
+   "start": 1954.16,
+   "duration": 4.76,
+   "text": "the customer is asking is a little bit"
+  },
+  {
+   "start": 1956.0,
+   "duration": 4.84,
+   "text": "complicated, but still it is not out of"
+  },
+  {
+   "start": 1958.92,
+   "duration": 3.92,
+   "text": "the hands of the bot."
+  },
+  {
+   "start": 1960.84,
+   "duration": 4.68,
+   "text": "All the tool calls that it needs to do,"
+  },
+  {
+   "start": 1962.84,
+   "duration": 4.88,
+   "text": "all the conditions are clearly matching."
+  },
+  {
+   "start": 1965.52,
+   "duration": 4.24,
+   "text": "And in that case as well, you don't need"
+  },
+  {
+   "start": 1967.72,
+   "duration": 3.72,
+   "text": "the help of a human. Even though it is a"
+  },
+  {
+   "start": 1969.76,
+   "duration": 3.96,
+   "text": "little bit complicated, but the agent is"
+  },
+  {
+   "start": 1971.44,
+   "duration": 5.12,
+   "text": "intelligent enough to handle it."
+  },
+  {
+   "start": 1973.72,
+   "duration": 4.72,
+   "text": "Now, for example, while doing it, it"
+  },
+  {
+   "start": 1976.56,
+   "duration": 3.52,
+   "text": "gets stuck in a loop. That is a separate"
+  },
+  {
+   "start": 1978.44,
+   "duration": 4.96,
+   "text": "scenario. In that case, it needs to"
+  },
+  {
+   "start": 1980.08,
+   "duration": 6.08,
+   "text": "escalate. But just seeing the It's like"
+  },
+  {
+   "start": 1983.4,
+   "duration": 5.04,
+   "text": "simple thing, right? Um a student sees a"
+  },
+  {
+   "start": 1986.16,
+   "duration": 3.72,
+   "text": "very big question in the exam."
+  },
+  {
+   "start": 1988.44,
+   "duration": 3.96,
+   "text": "And just seeing the length of the"
+  },
+  {
+   "start": 1989.88,
+   "duration": 3.68,
+   "text": "question, they might get, you know, um"
+  },
+  {
+   "start": 1992.4,
+   "duration": 2.64,
+   "text": "kind of"
+  },
+  {
+   "start": 1993.56,
+   "duration": 3.16,
+   "text": "fearful of it, and they leave the"
+  },
+  {
+   "start": 1995.04,
+   "duration": 3.0,
+   "text": "question itself."
+  },
+  {
+   "start": 1996.72,
+   "duration": 2.84,
+   "text": "Right? So, that is not the correct way."
+  },
+  {
+   "start": 1998.04,
+   "duration": 3.24,
+   "text": "They need to read the question to"
+  },
+  {
+   "start": 1999.56,
+   "duration": 2.56,
+   "text": "actually understand what needs to be"
+  },
+  {
+   "start": 2001.28,
+   "duration": 2.04,
+   "text": "done."
+  },
+  {
+   "start": 2002.12,
+   "duration": 3.32,
+   "text": "Similar"
+  },
+  {
+   "start": 2003.32,
+   "duration": 3.8,
+   "text": "uh case here as well. I hope that is"
+  },
+  {
+   "start": 2005.44,
+   "duration": 3.04,
+   "text": "making sense."
+  },
+  {
+   "start": 2007.12,
+   "duration": 3.2,
+   "text": "Third thing, very important to"
+  },
+  {
+   "start": 2008.48,
+   "duration": 5.04,
+   "text": "understand, very easily kind of"
+  },
+  {
+   "start": 2010.32,
+   "duration": 4.96,
+   "text": "neglected, is model confidence scores."
+  },
+  {
+   "start": 2013.52,
+   "duration": 4.0,
+   "text": "So,"
+  },
+  {
+   "start": 2015.28,
+   "duration": 3.96,
+   "text": "I mean, mod It's It's just the model's"
+  },
+  {
+   "start": 2017.52,
+   "duration": 3.96,
+   "text": "own confidence score."
+  },
+  {
+   "start": 2019.24,
+   "duration": 4.24,
+   "text": "So, like, I'm 70% confident that this is"
+  },
+  {
+   "start": 2021.48,
+   "duration": 5.52,
+   "text": "the correct refund amount."
+  },
+  {
+   "start": 2023.48,
+   "duration": 4.88,
+   "text": "Do not use this as an escalation gate"
+  },
+  {
+   "start": 2027.0,
+   "duration": 4.12,
+   "text": "because"
+  },
+  {
+   "start": 2028.36,
+   "duration": 5.56,
+   "text": "Claude's self-reported confidence is not"
+  },
+  {
+   "start": 2031.12,
+   "duration": 5.48,
+   "text": "calibrated to actual accuracy in a"
+  },
+  {
+   "start": 2033.92,
+   "duration": 5.76,
+   "text": "reliable, measurable way."
+  },
+  {
+   "start": 2036.6,
+   "duration": 4.36,
+   "text": "So, it can say 95% confident and can be"
+  },
+  {
+   "start": 2039.68,
+   "duration": 2.32,
+   "text": "wrong."
+  },
+  {
+   "start": 2040.96,
+   "duration": 2.96,
+   "text": "Right?"
+  },
+  {
+   "start": 2042.0,
+   "duration": 4.56,
+   "text": "And it can be 60% confident, and it can"
+  },
+  {
+   "start": 2043.92,
+   "duration": 4.4,
+   "text": "be right. So, confidence scores are not"
+  },
+  {
+   "start": 2046.56,
+   "duration": 4.359,
+   "text": "a judgmental"
+  },
+  {
+   "start": 2048.32,
+   "duration": 3.92,
+   "text": "way to escalate it to a human. You"
+  },
+  {
+   "start": 2050.919,
+   "duration": 4.041,
+   "text": "should not"
+  },
+  {
+   "start": 2052.24,
+   "duration": 4.72,
+   "text": "kind of, you know, put the judgment base"
+  },
+  {
+   "start": 2054.96,
+   "duration": 3.679,
+   "text": "on the basis of the confidence score of"
+  },
+  {
+   "start": 2056.96,
+   "duration": 4.12,
+   "text": "the model."
+  },
+  {
+   "start": 2058.639,
+   "duration": 5.201,
+   "text": "Right? It has to be coming under these"
+  },
+  {
+   "start": 2061.08,
+   "duration": 4.48,
+   "text": "three things. These three uh triggers"
+  },
+  {
+   "start": 2063.84,
+   "duration": 3.72,
+   "text": "that we just discussed, that it should"
+  },
+  {
+   "start": 2065.56,
+   "duration": 5.119,
+   "text": "escalate it to a human."
+  },
+  {
+   "start": 2067.56,
+   "duration": 4.56,
+   "text": "I hope that is making sense. Right?"
+  },
+  {
+   "start": 2070.679,
+   "duration": 3.921,
+   "text": "So, let's move on."
+  },
+  {
+   "start": 2072.12,
+   "duration": 6.0,
+   "text": "So, the golden rule, whenever"
+  },
+  {
+   "start": 2074.6,
+   "duration": 5.24,
+   "text": "uh the the you know, the"
+  },
+  {
+   "start": 2078.12,
+   "duration": 3.519,
+   "text": "um"
+  },
+  {
+   "start": 2079.84,
+   "duration": 3.48,
+   "text": "customer ask, \"I need a human.\" then"
+  },
+  {
+   "start": 2081.639,
+   "duration": 4.401,
+   "text": "escalate immediately."
+  },
+  {
+   "start": 2083.32,
+   "duration": 5.16,
+   "text": "In that case, if the if the if the if"
+  },
+  {
+   "start": 2086.04,
+   "duration": 5.24,
+   "text": "the customer itself asks that, you know,"
+  },
+  {
+   "start": 2088.48,
+   "duration": 4.56,
+   "text": "I need to escalate immediately, then do"
+  },
+  {
+   "start": 2091.28,
+   "duration": 3.44,
+   "text": "not try to resolve it."
+  },
+  {
+   "start": 2093.04,
+   "duration": 3.56,
+   "text": "Do not ask why they want a human. All"
+  },
+  {
+   "start": 2094.72,
+   "duration": 3.84,
+   "text": "these questions should not be asked. It"
+  },
+  {
+   "start": 2096.6,
+   "duration": 4.68,
+   "text": "should directly escalate."
+  },
+  {
+   "start": 2098.56,
+   "duration": 4.2,
+   "text": "And unfortunately, whatever bots I have"
+  },
+  {
+   "start": 2101.28,
+   "duration": 3.56,
+   "text": "been, you know, real-life production"
+  },
+  {
+   "start": 2102.76,
+   "duration": 4.04,
+   "text": "bots that I have been kind of"
+  },
+  {
+   "start": 2104.84,
+   "duration": 3.68,
+   "text": "interacting, they are not doing that."
+  },
+  {
+   "start": 2106.8,
+   "duration": 3.44,
+   "text": "And I'm"
+  },
+  {
+   "start": 2108.52,
+   "duration": 4.04,
+   "text": "really disappointed. Actually, they"
+  },
+  {
+   "start": 2110.24,
+   "duration": 4.4,
+   "text": "should improve basis on the basis of all"
+  },
+  {
+   "start": 2112.56,
+   "duration": 3.8,
+   "text": "these instructions."
+  },
+  {
+   "start": 2114.64,
+   "duration": 3.44,
+   "text": "Okay, whatever. That is not relevant to"
+  },
+  {
+   "start": 2116.36,
+   "duration": 3.68,
+   "text": "our exam, but if you are creating a"
+  },
+  {
+   "start": 2118.08,
+   "duration": 4.08,
+   "text": "production grade AI chatbot, make sure"
+  },
+  {
+   "start": 2120.04,
+   "duration": 3.2,
+   "text": "that all of these things are part of it,"
+  },
+  {
+   "start": 2122.16,
+   "duration": 3.64,
+   "text": "right?"
+  },
+  {
+   "start": 2123.24,
+   "duration": 4.04,
+   "text": "I hope that's making sense."
+  },
+  {
+   "start": 2125.8,
+   "duration": 3.2,
+   "text": "Okay."
+  },
+  {
+   "start": 2127.28,
+   "duration": 3.72,
+   "text": "So, we already discussed this. So,"
+  },
+  {
+   "start": 2129.0,
+   "duration": 3.92,
+   "text": "policy gap was this policy covered the"
+  },
+  {
+   "start": 2131.0,
+   "duration": 4.32,
+   "text": "decision framework. Explicit human"
+  },
+  {
+   "start": 2132.92,
+   "duration": 4.56,
+   "text": "request for human. If the customers ask"
+  },
+  {
+   "start": 2135.32,
+   "duration": 4.64,
+   "text": "it, then escalate immediately. So, if it"
+  },
+  {
+   "start": 2137.48,
+   "duration": 4.4,
+   "text": "is not, then you check the policy. I"
+  },
+  {
+   "start": 2139.96,
+   "duration": 4.0,
+   "text": "mean, the obviously the the hooks can"
+  },
+  {
+   "start": 2141.88,
+   "duration": 3.64,
+   "text": "also check the policy, by the way. So,"
+  },
+  {
+   "start": 2143.96,
+   "duration": 3.64,
+   "text": "you do a policy check, basically, in"
+  },
+  {
+   "start": 2145.52,
+   "duration": 4.56,
+   "text": "your agent equal. Does policy clearly"
+  },
+  {
+   "start": 2147.6,
+   "duration": 3.68,
+   "text": "cover this? If no,"
+  },
+  {
+   "start": 2150.08,
+   "duration": 2.88,
+   "text": "I mean,"
+  },
+  {
+   "start": 2151.28,
+   "duration": 3.44,
+   "text": "resolve autonomously. Don't escalate"
+  },
+  {
+   "start": 2152.96,
+   "duration": 4.36,
+   "text": "just in case, right?"
+  },
+  {
+   "start": 2154.72,
+   "duration": 5.28,
+   "text": "If the policy doesn't cover it, I mean,"
+  },
+  {
+   "start": 2157.32,
+   "duration": 4.36,
+   "text": "I mean, uh sorry, I just told I got"
+  },
+  {
+   "start": 2160.0,
+   "duration": 3.08,
+   "text": "confused over here. If the policy"
+  },
+  {
+   "start": 2161.68,
+   "duration": 4.0,
+   "text": "doesn't cover it, basically, then there"
+  },
+  {
+   "start": 2163.08,
+   "duration": 4.4,
+   "text": "is some gap, so escalate it. If the"
+  },
+  {
+   "start": 2165.68,
+   "duration": 3.76,
+   "text": "request comes under the policy and the"
+  },
+  {
+   "start": 2167.48,
+   "duration": 3.16,
+   "text": "agent is able to resolve the particular"
+  },
+  {
+   "start": 2169.44,
+   "duration": 3.24,
+   "text": "policy,"
+  },
+  {
+   "start": 2170.64,
+   "duration": 3.76,
+   "text": "uh okay, under this refund policy, for"
+  },
+  {
+   "start": 2172.68,
+   "duration": 4.48,
+   "text": "example, it comes under the request,"
+  },
+  {
+   "start": 2174.4,
+   "duration": 3.6,
+   "text": "then you can easily able to resolve it,"
+  },
+  {
+   "start": 2177.16,
+   "duration": 2.6,
+   "text": "right?"
+  },
+  {
+   "start": 2178.0,
+   "duration": 3.96,
+   "text": "Now, even though it comes under the"
+  },
+  {
+   "start": 2179.76,
+   "duration": 4.56,
+   "text": "policy, as I told, it might get stuck."
+  },
+  {
+   "start": 2181.96,
+   "duration": 4.08,
+   "text": "So, if it gets stuck, then obviously we"
+  },
+  {
+   "start": 2184.32,
+   "duration": 3.68,
+   "text": "have to escalate, you know?"
+  },
+  {
+   "start": 2186.04,
+   "duration": 4.36,
+   "text": "It has exhausted everything, and you"
+  },
+  {
+   "start": 2188.0,
+   "duration": 4.36,
+   "text": "have to keep kind of retries. Number of"
+  },
+  {
+   "start": 2190.4,
+   "duration": 3.92,
+   "text": "retries you have to keep and we already"
+  },
+  {
+   "start": 2192.36,
+   "duration": 4.4,
+   "text": "know how to do that. We have discussed"
+  },
+  {
+   "start": 2194.32,
+   "duration": 4.88,
+   "text": "in you know a lot of lectures back."
+  },
+  {
+   "start": 2196.76,
+   "duration": 3.44,
+   "text": "If it is not stuck, then please keep"
+  },
+  {
+   "start": 2199.2,
+   "duration": 3.16,
+   "text": "working."
+  },
+  {
+   "start": 2200.2,
+   "duration": 4.68,
+   "text": "Right? So, escalation is not a fallback"
+  },
+  {
+   "start": 2202.36,
+   "duration": 4.32,
+   "text": "for hard problems. If the policy covers"
+  },
+  {
+   "start": 2204.88,
+   "duration": 4.56,
+   "text": "it, then resolve confidently. If there"
+  },
+  {
+   "start": 2206.68,
+   "duration": 5.2,
+   "text": "is a policy gap, then escalate. Right?"
+  },
+  {
+   "start": 2209.44,
+   "duration": 4.24,
+   "text": "Only under this scenarios, you have to"
+  },
+  {
+   "start": 2211.88,
+   "duration": 4.52,
+   "text": "escalate to human."
+  },
+  {
+   "start": 2213.68,
+   "duration": 4.56,
+   "text": "If you are If you are agent has to be"
+  },
+  {
+   "start": 2216.4,
+   "duration": 4.56,
+   "text": "full proof, then make sure that it is"
+  },
+  {
+   "start": 2218.24,
+   "duration": 5.08,
+   "text": "following all of these guidelines. It's"
+  },
+  {
+   "start": 2220.96,
+   "duration": 4.24,
+   "text": "It's a It's a like a best practices of"
+  },
+  {
+   "start": 2223.32,
+   "duration": 3.36,
+   "text": "making an agent basically. Otherwise,"
+  },
+  {
+   "start": 2225.2,
+   "duration": 3.84,
+   "text": "you you would not understand what your"
+  },
+  {
+   "start": 2226.68,
+   "duration": 5.76,
+   "text": "agent is doing basically."
+  },
+  {
+   "start": 2229.04,
+   "duration": 5.16,
+   "text": "Okay. So, before we check out this um"
+  },
+  {
+   "start": 2232.44,
+   "duration": 5.72,
+   "text": "you know, this question, I just want to"
+  },
+  {
+   "start": 2234.2,
+   "duration": 6.44,
+   "text": "show you how uh I have done"
+  },
+  {
+   "start": 2238.16,
+   "duration": 4.24,
+   "text": "the um"
+  },
+  {
+   "start": 2240.64,
+   "duration": 2.96,
+   "text": "the particular um"
+  },
+  {
+   "start": 2242.4,
+   "duration": 2.84,
+   "text": "handover."
+  },
+  {
+   "start": 2243.6,
+   "duration": 3.2,
+   "text": "So, if you see we don't In this"
+  },
+  {
+   "start": 2245.24,
+   "duration": 3.52,
+   "text": "particular agent that we have done in"
+  },
+  {
+   "start": 2246.8,
+   "duration": 4.2,
+   "text": "this customer support agent, I just"
+  },
+  {
+   "start": 2248.76,
+   "duration": 7.52,
+   "text": "added on uh just a"
+  },
+  {
+   "start": 2251.0,
+   "duration": 5.28,
+   "text": "normal function handoff to the customer."
+  },
+  {
+   "start": 2258.12,
+   "duration": 4.6,
+   "text": "Yeah, short reason for the handoff. So,"
+  },
+  {
+   "start": 2259.92,
+   "duration": 4.44,
+   "text": "this is uh basically escalate to human"
+  },
+  {
+   "start": 2262.72,
+   "duration": 3.44,
+   "text": "and this is the description of the tool."
+  },
+  {
+   "start": 2264.36,
+   "duration": 4.32,
+   "text": "Hand the conversation off to a human"
+  },
+  {
+   "start": 2266.16,
+   "duration": 4.44,
+   "text": "support agent. Right? Call this"
+  },
+  {
+   "start": 2268.68,
+   "duration": 4.2,
+   "text": "immediately when the customer explicitly"
+  },
+  {
+   "start": 2270.6,
+   "duration": 4.32,
+   "text": "asks to speak. So, this is basically"
+  },
+  {
+   "start": 2272.88,
+   "duration": 3.48,
+   "text": "Claude will understand, okay. Obviously,"
+  },
+  {
+   "start": 2274.92,
+   "duration": 3.0,
+   "text": "this is the tool description, right?"
+  },
+  {
+   "start": 2276.36,
+   "duration": 3.16,
+   "text": "Because uh"
+  },
+  {
+   "start": 2277.92,
+   "duration": 4.64,
+   "text": "you need to give a proper description of"
+  },
+  {
+   "start": 2279.52,
+   "duration": 4.64,
+   "text": "the tool. Uh obviously, because um we"
+  },
+  {
+   "start": 2282.56,
+   "duration": 3.2,
+   "text": "have already discussed that, you know,"
+  },
+  {
+   "start": 2284.16,
+   "duration": 4.08,
+   "text": "tool descriptions are"
+  },
+  {
+   "start": 2285.76,
+   "duration": 4.0,
+   "text": "really important for Claude to not get"
+  },
+  {
+   "start": 2288.24,
+   "duration": 3.88,
+   "text": "confused between the tools. And I've"
+  },
+  {
+   "start": 2289.76,
+   "duration": 3.76,
+   "text": "already discussed this in detail. So,"
+  },
+  {
+   "start": 2292.12,
+   "duration": 3.56,
+   "text": "call this immediately when the customer"
+  },
+  {
+   "start": 2293.52,
+   "duration": 4.12,
+   "text": "explicitly asks to speak to a human, to"
+  },
+  {
+   "start": 2295.68,
+   "duration": 4.28,
+   "text": "a manager, or to a real person. Verify"
+  },
+  {
+   "start": 2297.64,
+   "duration": 4.84,
+   "text": "identity or resolving the issue yourself"
+  },
+  {
+   "start": 2299.96,
+   "duration": 4.64,
+   "text": "first. Also, call this when a request"
+  },
+  {
+   "start": 2302.48,
+   "duration": 5.2,
+   "text": "exceeds your authority. I mean,"
+  },
+  {
+   "start": 2304.6,
+   "duration": 5.4,
+   "text": "when when when you you are not basically"
+  },
+  {
+   "start": 2307.68,
+   "duration": 4.76,
+   "text": "in the policy. The policy"
+  },
+  {
+   "start": 2310.0,
+   "duration": 3.76,
+   "text": "it doesn't fall under the policy. Right?"
+  },
+  {
+   "start": 2312.44,
+   "duration": 2.84,
+   "text": "And returns a confirmation that a"
+  },
+  {
+   "start": 2313.76,
+   "duration": 3.84,
+   "text": "handover was created. We don't have an"
+  },
+  {
+   "start": 2315.28,
+   "duration": 5.36,
+   "text": "actual human over here. It's just a"
+  },
+  {
+   "start": 2317.6,
+   "duration": 5.24,
+   "text": "ordinary situation. So, basically,"
+  },
+  {
+   "start": 2320.64,
+   "duration": 4.76,
+   "text": "that will get executed when we give some"
+  },
+  {
+   "start": 2322.84,
+   "duration": 4.36,
+   "text": "input like basically"
+  },
+  {
+   "start": 2325.4,
+   "duration": 3.96,
+   "text": "this kind of a message. Task, handle"
+  },
+  {
+   "start": 2327.2,
+   "duration": 3.36,
+   "text": "this customer message and decide whether"
+  },
+  {
+   "start": 2329.36,
+   "duration": 2.88,
+   "text": "to resolve"
+  },
+  {
+   "start": 2330.56,
+   "duration": 3.88,
+   "text": "basically or escalate. So, customer"
+  },
+  {
+   "start": 2332.24,
+   "duration": 4.84,
+   "text": "says, \"I don't want to deal with a bot."
+  },
+  {
+   "start": 2334.44,
+   "duration": 4.36,
+   "text": "Connect me to a real human agent.\" So,"
+  },
+  {
+   "start": 2337.08,
+   "duration": 3.28,
+   "text": "we just pass it in this run sub agent."
+  },
+  {
+   "start": 2338.8,
+   "duration": 3.92,
+   "text": "So, this is the agentic loop, right? We"
+  },
+  {
+   "start": 2340.36,
+   "duration": 4.44,
+   "text": "have been doing it over here only. So,"
+  },
+  {
+   "start": 2342.72,
+   "duration": 4.2,
+   "text": "this is the agent and here we have the"
+  },
+  {
+   "start": 2344.8,
+   "duration": 4.24,
+   "text": "loop. And we have a few short examples"
+  },
+  {
+   "start": 2346.92,
+   "duration": 3.96,
+   "text": "as well. And we discussed how can we use"
+  },
+  {
+   "start": 2349.04,
+   "duration": 3.08,
+   "text": "few short examples in our system prompt"
+  },
+  {
+   "start": 2350.88,
+   "duration": 2.72,
+   "text": "as well, right?"
+  },
+  {
+   "start": 2352.12,
+   "duration": 5.36,
+   "text": "So,"
+  },
+  {
+   "start": 2353.6,
+   "duration": 6.96,
+   "text": "that is what it is basically, right? And"
+  },
+  {
+   "start": 2357.48,
+   "duration": 5.32,
+   "text": "yeah. So, I hope that is kind of making"
+  },
+  {
+   "start": 2360.56,
+   "duration": 3.84,
+   "text": "sense. So, here the agentic loop runs."
+  },
+  {
+   "start": 2362.8,
+   "duration": 3.48,
+   "text": "All this code we have already discussed,"
+  },
+  {
+   "start": 2364.4,
+   "duration": 3.2,
+   "text": "right? How it actually works. So, for"
+  },
+  {
+   "start": 2366.28,
+   "duration": 2.4,
+   "text": "now we're going to only going to discuss"
+  },
+  {
+   "start": 2367.6,
+   "duration": 3.4,
+   "text": "about the"
+  },
+  {
+   "start": 2368.68,
+   "duration": 5.12,
+   "text": "um this part, the escalation thing. And"
+  },
+  {
+   "start": 2371.0,
+   "duration": 3.96,
+   "text": "I already had ran this before. And"
+  },
+  {
+   "start": 2373.8,
+   "duration": 4.48,
+   "text": "basically,"
+  },
+  {
+   "start": 2374.96,
+   "duration": 5.24,
+   "text": "this is the message. And when it should"
+  },
+  {
+   "start": 2378.28,
+   "duration": 4.0,
+   "text": "encounter this kind of a message, it"
+  },
+  {
+   "start": 2380.2,
+   "duration": 3.4,
+   "text": "should escalate immediately, right? So,"
+  },
+  {
+   "start": 2382.28,
+   "duration": 3.72,
+   "text": "I'm going to just"
+  },
+  {
+   "start": 2383.6,
+   "duration": 5.92,
+   "text": "clear this off and I'm going to just run"
+  },
+  {
+   "start": 2386.0,
+   "duration": 5.2,
+   "text": "the code again. Right? So, if you see,"
+  },
+  {
+   "start": 2389.52,
+   "duration": 3.68,
+   "text": "all the verifications and all this will"
+  },
+  {
+   "start": 2391.2,
+   "duration": 5.32,
+   "text": "happen basically. So, coordinator is"
+  },
+  {
+   "start": 2393.2,
+   "duration": 5.88,
+   "text": "decomposing the task. And the for the"
+  },
+  {
+   "start": 2396.52,
+   "duration": 4.56,
+   "text": "for first the customer will be verified."
+  },
+  {
+   "start": 2399.08,
+   "duration": 3.64,
+   "text": "So, the obviously, it cannot just hand"
+  },
+  {
+   "start": 2401.08,
+   "duration": 3.24,
+   "text": "over to a"
+  },
+  {
+   "start": 2402.72,
+   "duration": 3.08,
+   "text": "human without verifying the customer."
+  },
+  {
+   "start": 2404.32,
+   "duration": 3.96,
+   "text": "So, this is the customer verification"
+  },
+  {
+   "start": 2405.8,
+   "duration": 3.76,
+   "text": "happening. Customer exists, so it's good"
+  },
+  {
+   "start": 2408.28,
+   "duration": 3.56,
+   "text": "standing."
+  },
+  {
+   "start": 2409.56,
+   "duration": 4.32,
+   "text": "Right? And the order is also verified."
+  },
+  {
+   "start": 2411.84,
+   "duration": 3.48,
+   "text": "And here is the action. I cannot process"
+  },
+  {
+   "start": 2413.88,
+   "duration": 3.96,
+   "text": "this refund directly. The order amount"
+  },
+  {
+   "start": 2415.32,
+   "duration": 4.84,
+   "text": "of $750 exceeds the"
+  },
+  {
+   "start": 2417.84,
+   "duration": 3.88,
+   "text": "500 authorization calling. So, this is"
+  },
+  {
+   "start": 2420.16,
+   "duration": 3.64,
+   "text": "one of the"
+  },
+  {
+   "start": 2421.72,
+   "duration": 3.88,
+   "text": "uh scenarios where it should be handed"
+  },
+  {
+   "start": 2423.8,
+   "duration": 3.2,
+   "text": "over to the human. Please contact your"
+  },
+  {
+   "start": 2425.6,
+   "duration": 3.4,
+   "text": "billing supervisor or senior support"
+  },
+  {
+   "start": 2427.0,
+   "duration": 3.68,
+   "text": "team to review. This is the thing."
+  },
+  {
+   "start": 2429.0,
+   "duration": 4.24,
+   "text": "Scenario number two. So, here we have"
+  },
+  {
+   "start": 2430.68,
+   "duration": 4.16,
+   "text": "the scenario number"
+  },
+  {
+   "start": 2433.24,
+   "duration": 3.88,
+   "text": "one and we have the scenario number two."
+  },
+  {
+   "start": 2434.84,
+   "duration": 3.76,
+   "text": "Customer explicitly asked for a human."
+  },
+  {
+   "start": 2437.12,
+   "duration": 3.64,
+   "text": "So,"
+  },
+  {
+   "start": 2438.6,
+   "duration": 4.0,
+   "text": "starting user task handle this customer"
+  },
+  {
+   "start": 2440.76,
+   "duration": 3.68,
+   "text": "message and deciding whether to think."
+  },
+  {
+   "start": 2442.6,
+   "duration": 3.32,
+   "text": "Now, here it has been escalated to a"
+  },
+  {
+   "start": 2444.44,
+   "duration": 3.44,
+   "text": "human agent. Ticket is this thing."
+  },
+  {
+   "start": 2445.92,
+   "duration": 3.84,
+   "text": "Customer obviously has been verified."
+  },
+  {
+   "start": 2447.88,
+   "duration": 4.84,
+   "text": "Customer explicitly requested a human"
+  },
+  {
+   "start": 2449.76,
+   "duration": 4.04,
+   "text": "agent. And this is the result. Tool"
+  },
+  {
+   "start": 2452.72,
+   "duration": 3.4,
+   "text": "result."
+  },
+  {
+   "start": 2453.8,
+   "duration": 5.08,
+   "text": "And it is telling escalated to ticket ID"
+  },
+  {
+   "start": 2456.12,
+   "duration": 5.88,
+   "text": "is this one. Customer ID is this one and"
+  },
+  {
+   "start": 2458.88,
+   "duration": 5.24,
+   "text": "all of these things. Right?"
+  },
+  {
+   "start": 2462.0,
+   "duration": 4.44,
+   "text": "So, if you I'll push this code, you can"
+  },
+  {
+   "start": 2464.12,
+   "duration": 5.08,
+   "text": "try all of these scenarios."
+  },
+  {
+   "start": 2466.44,
+   "duration": 5.24,
+   "text": "Right? And if if in the scenario number"
+  },
+  {
+   "start": 2469.2,
+   "duration": 3.88,
+   "text": "two, instead of telling that escalate to"
+  },
+  {
+   "start": 2471.68,
+   "duration": 3.64,
+   "text": "a human agent, you ask a normal"
+  },
+  {
+   "start": 2473.08,
+   "duration": 5.32,
+   "text": "question, then the agent will try to"
+  },
+  {
+   "start": 2475.32,
+   "duration": 5.64,
+   "text": "solve it by itself. Right? Uh but if you"
+  },
+  {
+   "start": 2478.4,
+   "duration": 4.8,
+   "text": "explicitly tell that okay, escalate it"
+  },
+  {
+   "start": 2480.96,
+   "duration": 4.12,
+   "text": "to a human, then it will escalate to a"
+  },
+  {
+   "start": 2483.2,
+   "duration": 3.96,
+   "text": "human agent. Like this message you would"
+  },
+  {
+   "start": 2485.08,
+   "duration": 3.28,
+   "text": "get. So, I'd push this code. You could"
+  },
+  {
+   "start": 2487.16,
+   "duration": 3.88,
+   "text": "try it out yourself. You can play"
+  },
+  {
+   "start": 2488.36,
+   "duration": 4.92,
+   "text": "around. Right? And"
+  },
+  {
+   "start": 2491.04,
+   "duration": 3.8,
+   "text": "yeah, I hope that is making sense."
+  },
+  {
+   "start": 2493.28,
+   "duration": 3.88,
+   "text": "Right? So, that is how you would you"
+  },
+  {
+   "start": 2494.84,
+   "duration": 4.08,
+   "text": "know, design a proper agent which can"
+  },
+  {
+   "start": 2497.16,
+   "duration": 3.12,
+   "text": "understand when to escalate to a human"
+  },
+  {
+   "start": 2498.92,
+   "duration": 2.88,
+   "text": "or something like that."
+  },
+  {
+   "start": 2500.28,
+   "duration": 4.72,
+   "text": "So, sample question number three."
+  },
+  {
+   "start": 2501.8,
+   "duration": 4.84,
+   "text": "Sarah's order 45678 12 months in highly"
+  },
+  {
+   "start": 2505.0,
+   "duration": 3.52,
+   "text": "frustrated. Damage confirmed. Late"
+  },
+  {
+   "start": 2506.64,
+   "duration": 4.4,
+   "text": "delivery confirmed. She says,"
+  },
+  {
+   "start": 2508.52,
+   "duration": 4.08,
+   "text": "\"I've been dealing with this long enough"
+  },
+  {
+   "start": 2511.04,
+   "duration": 3.2,
+   "text": "enough. I just want to speak to an"
+  },
+  {
+   "start": 2512.6,
+   "duration": 4.32,
+   "text": "actual person. Now, what should the"
+  },
+  {
+   "start": 2514.24,
+   "duration": 4.88,
+   "text": "agent do next?\" Transfer to a human"
+  },
+  {
+   "start": 2516.92,
+   "duration": 3.48,
+   "text": "immediately without attempting for the"
+  },
+  {
+   "start": 2519.12,
+   "duration": 3.04,
+   "text": "resolution."
+  },
+  {
+   "start": 2520.4,
+   "duration": 3.92,
+   "text": "So, it can also give you options like"
+  },
+  {
+   "start": 2522.16,
+   "duration": 4.44,
+   "text": "attempt one more resolution step, ask"
+  },
+  {
+   "start": 2524.32,
+   "duration": 3.64,
+   "text": "Sarah why she prefers a human, offer"
+  },
+  {
+   "start": 2526.6,
+   "duration": 3.0,
+   "text": "self-service portal and all those"
+  },
+  {
+   "start": 2527.96,
+   "duration": 3.48,
+   "text": "things. No, that is not going to work."
+  },
+  {
+   "start": 2529.6,
+   "duration": 4.12,
+   "text": "These are all traps. You should"
+  },
+  {
+   "start": 2531.44,
+   "duration": 5.48,
+   "text": "immediately see the option which says"
+  },
+  {
+   "start": 2533.72,
+   "duration": 6.76,
+   "text": "escalated to a human."
+  },
+  {
+   "start": 2536.92,
+   "duration": 5.76,
+   "text": "Right? I hope that is making sense. So,"
+  },
+  {
+   "start": 2540.48,
+   "duration": 5.08,
+   "text": "just a quick flash card or a reference"
+  },
+  {
+   "start": 2542.68,
+   "duration": 4.6,
+   "text": "card for for this particular lesson. So,"
+  },
+  {
+   "start": 2545.56,
+   "duration": 3.6,
+   "text": "context"
+  },
+  {
+   "start": 2547.28,
+   "duration": 3.72,
+   "text": "and escalation we do two things. So,"
+  },
+  {
+   "start": 2549.16,
+   "duration": 3.28,
+   "text": "beware progressive summarization loses"
+  },
+  {
+   "start": 2551.0,
+   "duration": 3.64,
+   "text": "specific numbers and dates. We already"
+  },
+  {
+   "start": 2552.44,
+   "duration": 3.32,
+   "text": "discussed about that. Use the case facts"
+  },
+  {
+   "start": 2554.64,
+   "duration": 3.08,
+   "text": "block"
+  },
+  {
+   "start": 2555.76,
+   "duration": 4.88,
+   "text": "and trim the required results that you"
+  },
+  {
+   "start": 2557.72,
+   "duration": 4.76,
+   "text": "need for the, you know, context."
+  },
+  {
+   "start": 2560.64,
+   "duration": 4.84,
+   "text": "Trim tool results via post tool use"
+  },
+  {
+   "start": 2562.48,
+   "duration": 4.72,
+   "text": "hooks cuts 95% of the bloat. Remember"
+  },
+  {
+   "start": 2565.48,
+   "duration": 4.44,
+   "text": "the U curve. Keep facts out of the"
+  },
+  {
+   "start": 2567.2,
+   "duration": 5.36,
+   "text": "middle. Escalation act two. Valid"
+  },
+  {
+   "start": 2569.92,
+   "duration": 4.6,
+   "text": "triggers, explicit request, policy gap,"
+  },
+  {
+   "start": 2572.56,
+   "duration": 4.08,
+   "text": "agent stuck. Then"
+  },
+  {
+   "start": 2574.52,
+   "duration": 4.24,
+   "text": "you would escalate to a human. Invalid"
+  },
+  {
+   "start": 2576.64,
+   "duration": 4.4,
+   "text": "traps, sentiment, complexity, confidence"
+  },
+  {
+   "start": 2578.76,
+   "duration": 5.12,
+   "text": "scores. Please don't escalate to a human"
+  },
+  {
+   "start": 2581.04,
+   "duration": 4.96,
+   "text": "based on all these traps. Golden rule,"
+  },
+  {
+   "start": 2583.88,
+   "duration": 4.44,
+   "text": "explicit human request means the human"
+  },
+  {
+   "start": 2586.0,
+   "duration": 5.08,
+   "text": "told I want to escalate, then escalate"
+  },
+  {
+   "start": 2588.32,
+   "duration": 5.08,
+   "text": "immediately. Okay, so that is all for"
+  },
+  {
+   "start": 2591.08,
+   "duration": 4.8,
+   "text": "this lesson. I will see you in the next"
+  },
+  {
+   "start": 2593.4,
+   "duration": 5.52,
+   "text": "lesson. Till then, have a nice day. Take"
+  },
+  {
+   "start": 2595.88,
+   "duration": 3.04,
+   "text": "care. Bye-bye."
+  }
+ ]
+}

@@ -48,3 +48,37 @@ paid, unverifiable, and often a violation of the exam's terms.
 Nothing was copied verbatim into the lessons or banks. The external notes were read as a second
 opinion against the corpus, and the mock exams are rendered from their own repository data with
 provenance kept on the page. Where two sources disagreed, the version matching the exam guide won.
+
+## Video series — Peace Of Code (YouTube)
+
+The lessons and domain notes were also enriched from the **CCAR-F** video series by **Peace Of Code**
+(@peaceofcode): 20 episodes plus a bonus exam-traps episode (21 videos, ≈ 14.0 h). It is a free,
+third-party course aligned to the exam guide's five domains — **not** Anthropic material. Full index
+with per-episode notes: [`video-series.md`](./video-series.md).
+
+| Episode | Video ID | Title | Domain | Covers |
+|---|---|---|---|---|
+| Ep 01 | `ldqOnljDINc` | Agentic Loops & stop_reason Explained | D1 | the agentic loop, `stop_reason` values, iteration and conversation-history handling |
+| Ep 02 | `ejPWvBcc_DU` | Multi-Agent Systems & Coordinator Patterns | D1 | why one agent fails; coordinator / sub-agent patterns and delegation |
+| Ep 03 | `a2N6vKdQUfE` | Subagent Context Passing & Session Management | D1 | passing context to sub-agents and managing session state |
+| Ep 04 | `e7ijjK173zI` | Multi-Agent System in Python & Claude SDK (Hands On) | D1 | capstone: a coordinator + sub-agent refund flow in Python |
+| Ep 05 | `JJBcpwpsKzk` | PreToolUse, PostToolUse Hooks & Task Decomposition | D1 | hooks for enforcement (gates) and proactive task decomposition |
+| Ep 06 | `s1j1vTnCKns` | Tool Descriptions & Tool Misrouting Explained | D2 | writing tool descriptions so the model picks the right tool |
+| Ep 07 | `eZj6FtTVV58` | Agent Error Handling & tool_choice Explained | D2 | tool error handling and the `tool_choice` modes |
+| Ep 08 | `IVUxGTxSuH8` | MCP Servers, Config, Cline & More | D2 | MCP servers and `.mcp.json` / `.claude.json` configuration |
+| Ep 09 | `eh-xxQpfBBY` | Claude Built-in Tools Explained | D2 | built-in tools — grep, glob, read, write, edit; incremental exploration |
+| Ep 10 | `qIee1aqSAwY` | CLAUDE.md Hierarchy & Config Rules | D3 | CLAUDE.md hierarchy, imports, `.claude/rules` with `paths:` globs, `/memory` |
+| Ep 11 | `v3tMqTmgg2Q` | Custom Slash Commands & Skills | D3 | project- vs user-level slash commands and skills |
+| Ep 12 | `q-n1cut5e7c` | Plan Mode vs Execute | D3 | plan vs direct execution and when to plan |
+| Ep 13 | `GWCnDhgH840` | Claude Code CI/CD Pipelines | D3 | wiring Claude Code into CI/CD and the `-p` non-interactive flag |
+| Ep 14 | `HqwULqy1egw` | Prompt Engineering - Explicit Criteria & False Positives | D4 | explicit criteria, false positives, prompt structure |
+| Ep 15 | `FbIcU6YFrhw` | Few-Shot Prompting Explained | D4 | few-shot examples for consistency and tool choice |
+| Ep 16 | `CaDaLn7DcQ0` | Structured Output & JSON Schema | D4 | tool-use plus JSON schema for structured extraction |
+| Ep 17 | `BXs7QoLQxX0` | Batch API & Multi-Pass Review | D4 | Batch API cost/latency trade-offs and multi-pass code review |
+| Ep 18 | `7kaJdZ7veDs` | Why AI Agents Forget - Context Engineering | D5 | context engineering, agent memory, escalation traps |
+| Ep 19 | `MqnElZw6NYk` | Subagent Error Propagation & Context Management | D2 / D5 | structured error propagation and code-based context management |
+| Ep 20 | `tsIxzFg76Nw` | When AI Needs a Human | D5 | human-in-the-loop escalation triggers |
+| Bonus | `-NymqBcFy6E` | Exam Questions Solved \| Exam Traps | all | exam-day tactics, the four distractor traps, worked questions across all five domains |
+
+The video material is third-party and read as a second opinion; where it disagreed with the exam guide,
+the guide won.

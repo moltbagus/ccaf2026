@@ -1,0 +1,5972 @@
+{
+ "video_id": "JJBcpwpsKzk",
+ "episode": "Ep 05",
+ "title": "PreToolUse, PostToolUse Hooks & Task Decomposition",
+ "segments": [
+  {
+   "start": 0.0,
+   "duration": 3.4,
+   "text": "Hi guys, welcome to this lesson and in"
+  },
+  {
+   "start": 1.8,
+   "duration": 5.48,
+   "text": "this lesson we are going to discuss"
+  },
+  {
+   "start": 3.4,
+   "duration": 6.04,
+   "text": "about hooks mostly and all of these"
+  },
+  {
+   "start": 7.28,
+   "duration": 4.0,
+   "text": "other things that you see on the screen."
+  },
+  {
+   "start": 9.44,
+   "duration": 3.88,
+   "text": "And um"
+  },
+  {
+   "start": 11.28,
+   "duration": 3.76,
+   "text": "you know, I have been talking a lot"
+  },
+  {
+   "start": 13.32,
+   "duration": 3.36,
+   "text": "about prompts, how you should be very"
+  },
+  {
+   "start": 15.04,
+   "duration": 3.68,
+   "text": "good at prompts and you should master"
+  },
+  {
+   "start": 16.68,
+   "duration": 4.04,
+   "text": "prompt engineering and all."
+  },
+  {
+   "start": 18.72,
+   "duration": 4.56,
+   "text": "You know, that is very important. Yes,"
+  },
+  {
+   "start": 20.72,
+   "duration": 3.92,
+   "text": "that is one of the most important skills"
+  },
+  {
+   "start": 23.28,
+   "duration": 3.68,
+   "text": "that you need to have in this"
+  },
+  {
+   "start": 24.64,
+   "duration": 3.56,
+   "text": "particular, you know, era."
+  },
+  {
+   "start": 26.96,
+   "duration": 2.88,
+   "text": "But"
+  },
+  {
+   "start": 28.2,
+   "duration": 3.4,
+   "text": "we are not going to forget about"
+  },
+  {
+   "start": 29.84,
+   "duration": 5.36,
+   "text": "programming, are we? Because that is"
+  },
+  {
+   "start": 31.6,
+   "duration": 5.36,
+   "text": "kind of the mother of whatever, you"
+  },
+  {
+   "start": 35.2,
+   "duration": 3.96,
+   "text": "know, we have right now. All the"
+  },
+  {
+   "start": 36.96,
+   "duration": 4.44,
+   "text": "softwares, all of these AI tools we"
+  },
+  {
+   "start": 39.16,
+   "duration": 3.84,
+   "text": "have. Programming is all where it"
+  },
+  {
+   "start": 41.4,
+   "duration": 3.84,
+   "text": "started."
+  },
+  {
+   "start": 43.0,
+   "duration": 4.04,
+   "text": "So, we're going to go back over there"
+  },
+  {
+   "start": 45.24,
+   "duration": 4.72,
+   "text": "because that is what we're going to"
+  },
+  {
+   "start": 47.04,
+   "duration": 5.72,
+   "text": "discuss in this video. How we are going"
+  },
+  {
+   "start": 49.96,
+   "duration": 5.36,
+   "text": "to integrate, you know, we're going to"
+  },
+  {
+   "start": 52.76,
+   "duration": 5.92,
+   "text": "go back to those static if-else"
+  },
+  {
+   "start": 55.32,
+   "duration": 5.04,
+   "text": "conditions inside our agentic loops. You"
+  },
+  {
+   "start": 58.68,
+   "duration": 3.88,
+   "text": "know, you will be thinking what kind of"
+  },
+  {
+   "start": 60.36,
+   "duration": 6.36,
+   "text": "a stupid thing this guy is telling"
+  },
+  {
+   "start": 62.56,
+   "duration": 6.72,
+   "text": "because last uh I think 25 30 videos of"
+  },
+  {
+   "start": 66.72,
+   "duration": 5.24,
+   "text": "this guy have been all about AI and how"
+  },
+  {
+   "start": 69.28,
+   "duration": 5.36,
+   "text": "you should uh you know, um"
+  },
+  {
+   "start": 71.96,
+   "duration": 4.84,
+   "text": "adapt AI skills and technologies as much"
+  },
+  {
+   "start": 74.64,
+   "duration": 4.08,
+   "text": "as you can and now he's telling how to"
+  },
+  {
+   "start": 76.8,
+   "duration": 4.72,
+   "text": "use if-else conditions and all those"
+  },
+  {
+   "start": 78.72,
+   "duration": 5.16,
+   "text": "things. And just stay tuned to, you"
+  },
+  {
+   "start": 81.52,
+   "duration": 4.24,
+   "text": "know, this entire video and you would"
+  },
+  {
+   "start": 83.88,
+   "duration": 3.44,
+   "text": "understand what I mean."
+  },
+  {
+   "start": 85.76,
+   "duration": 3.72,
+   "text": "Okay?"
+  },
+  {
+   "start": 87.32,
+   "duration": 5.16,
+   "text": "Now, let's let's start with a very"
+  },
+  {
+   "start": 89.48,
+   "duration": 4.84,
+   "text": "simple example, right? And um"
+  },
+  {
+   "start": 92.48,
+   "duration": 3.88,
+   "text": "imagine you're building a customer"
+  },
+  {
+   "start": 94.32,
+   "duration": 4.4,
+   "text": "support agent and the capstone project"
+  },
+  {
+   "start": 96.36,
+   "duration": 4.24,
+   "text": "that we just did in our previous lesson,"
+  },
+  {
+   "start": 98.72,
+   "duration": 5.72,
+   "text": "I guess. That is where we started,"
+  },
+  {
+   "start": 100.6,
+   "duration": 6.16,
+   "text": "right? We we, you know, um built a very"
+  },
+  {
+   "start": 104.44,
+   "duration": 5.44,
+   "text": "simple agentic loop, you know, using a"
+  },
+  {
+   "start": 106.76,
+   "duration": 5.8,
+   "text": "coordinator and all those things um"
+  },
+  {
+   "start": 109.88,
+   "duration": 5.36,
+   "text": "uh using the Claude SDK. We built that"
+  },
+  {
+   "start": 112.56,
+   "duration": 4.56,
+   "text": "particular uh you know, agentic"
+  },
+  {
+   "start": 115.24,
+   "duration": 3.72,
+   "text": "uh framework where, you know, it was a"
+  },
+  {
+   "start": 117.12,
+   "duration": 4.12,
+   "text": "customer support agent which is, you"
+  },
+  {
+   "start": 118.96,
+   "duration": 4.16,
+   "text": "know, processing refunds and all of this"
+  },
+  {
+   "start": 121.24,
+   "duration": 3.8,
+   "text": "all of those things. Obviously, I'm"
+  },
+  {
+   "start": 123.12,
+   "duration": 4.68,
+   "text": "going to enhance that particular agent"
+  },
+  {
+   "start": 125.04,
+   "duration": 4.68,
+   "text": "in this particular, you know, lesson and"
+  },
+  {
+   "start": 127.8,
+   "duration": 3.88,
+   "text": "I'm going to show where exactly I'm I"
+  },
+  {
+   "start": 129.72,
+   "duration": 4.24,
+   "text": "have made those enhancements and you're"
+  },
+  {
+   "start": 131.68,
+   "duration": 3.68,
+   "text": "going to understand these concepts a bit"
+  },
+  {
+   "start": 133.96,
+   "duration": 3.76,
+   "text": "more better."
+  },
+  {
+   "start": 135.36,
+   "duration": 5.04,
+   "text": "So, you are building a customer support"
+  },
+  {
+   "start": 137.72,
+   "duration": 4.96,
+   "text": "agent which we are doing currently. It"
+  },
+  {
+   "start": 140.4,
+   "duration": 3.32,
+   "text": "handles refunds. Yes, it is handling"
+  },
+  {
+   "start": 142.68,
+   "duration": 2.6,
+   "text": "that."
+  },
+  {
+   "start": 143.72,
+   "duration": 4.52,
+   "text": "And"
+  },
+  {
+   "start": 145.28,
+   "duration": 4.56,
+   "text": "you have we have a system prompt, right?"
+  },
+  {
+   "start": 148.24,
+   "duration": 4.4,
+   "text": "We know about these kind of prompt"
+  },
+  {
+   "start": 149.84,
+   "duration": 4.96,
+   "text": "system prompt, user prompt and assistant"
+  },
+  {
+   "start": 152.64,
+   "duration": 3.44,
+   "text": "role, basically."
+  },
+  {
+   "start": 154.8,
+   "duration": 2.76,
+   "text": "Now, I'm telling prompts. I'm just"
+  },
+  {
+   "start": 156.08,
+   "duration": 3.12,
+   "text": "skipping the role right now, but that is"
+  },
+  {
+   "start": 157.56,
+   "duration": 4.0,
+   "text": "what it means."
+  },
+  {
+   "start": 159.2,
+   "duration": 6.8,
+   "text": "I have written there, for example, only"
+  },
+  {
+   "start": 161.56,
+   "duration": 8.08,
+   "text": "process refunds under $500."
+  },
+  {
+   "start": 166.0,
+   "duration": 6.2,
+   "text": "Now, that works great. But, for example,"
+  },
+  {
+   "start": 169.64,
+   "duration": 5.36,
+   "text": "one day someone asked for a $2,000"
+  },
+  {
+   "start": 172.2,
+   "duration": 5.2,
+   "text": "refund or a $5,000 refund, the model"
+  },
+  {
+   "start": 175.0,
+   "duration": 6.04,
+   "text": "gets confused."
+  },
+  {
+   "start": 177.4,
+   "duration": 5.72,
+   "text": "And it refunds the $2,000 piece."
+  },
+  {
+   "start": 181.04,
+   "duration": 4.88,
+   "text": "I don't know why I said $2,000 rupees."
+  },
+  {
+   "start": 183.12,
+   "duration": 5.36,
+   "text": "That sounds stupid, but"
+  },
+  {
+   "start": 185.92,
+   "duration": 4.56,
+   "text": "$2,000."
+  },
+  {
+   "start": 188.48,
+   "duration": 4.48,
+   "text": "It refunds and it doesn't make sense"
+  },
+  {
+   "start": 190.48,
+   "duration": 5.6,
+   "text": "because the model gets confused."
+  },
+  {
+   "start": 192.96,
+   "duration": 4.4,
+   "text": "The prompt said no, but the model said"
+  },
+  {
+   "start": 196.08,
+   "duration": 3.04,
+   "text": "yes. Okay, I'm going to refund it"
+  },
+  {
+   "start": 197.36,
+   "duration": 3.44,
+   "text": "because I'm uh you know, I I I'm more"
+  },
+  {
+   "start": 199.12,
+   "duration": 3.44,
+   "text": "intelligent. I don't have to follow"
+  },
+  {
+   "start": 200.8,
+   "duration": 3.32,
+   "text": "someone's instructions. Why do I have to"
+  },
+  {
+   "start": 202.56,
+   "duration": 4.64,
+   "text": "follow them?"
+  },
+  {
+   "start": 204.12,
+   "duration": 5.6,
+   "text": "So, this particular lesson is to make"
+  },
+  {
+   "start": 207.2,
+   "duration": 3.8,
+   "text": "sure that never happens."
+  },
+  {
+   "start": 209.72,
+   "duration": 2.68,
+   "text": "Right?"
+  },
+  {
+   "start": 211.0,
+   "duration": 2.8,
+   "text": "Now, um"
+  },
+  {
+   "start": 212.4,
+   "duration": 3.72,
+   "text": "the let's start with a very"
+  },
+  {
+   "start": 213.8,
+   "duration": 4.8,
+   "text": "uncomfortable truth about prompt"
+  },
+  {
+   "start": 216.12,
+   "duration": 4.96,
+   "text": "instructions. When you write a rule in"
+  },
+  {
+   "start": 218.6,
+   "duration": 4.36,
+   "text": "your system prompt, never process refund"
+  },
+  {
+   "start": 221.08,
+   "duration": 5.56,
+   "text": "above $500,"
+  },
+  {
+   "start": 222.96,
+   "duration": 6.52,
+   "text": "you are making a request. It is not an,"
+  },
+  {
+   "start": 226.64,
+   "duration": 4.56,
+   "text": "you know, written in stone. Because"
+  },
+  {
+   "start": 229.48,
+   "duration": 4.68,
+   "text": "whatever prompts you give, whatever"
+  },
+  {
+   "start": 231.2,
+   "duration": 5.24,
+   "text": "constraints you give, sometimes the"
+  },
+  {
+   "start": 234.16,
+   "duration": 4.96,
+   "text": "model might hallucinate. Obviously, with"
+  },
+  {
+   "start": 236.44,
+   "duration": 5.92,
+   "text": "those uh you know, uh models of the new"
+  },
+  {
+   "start": 239.12,
+   "duration": 5.6,
+   "text": "generation, um they are making very less"
+  },
+  {
+   "start": 242.36,
+   "duration": 4.72,
+   "text": "mistakes, but they are making mistakes."
+  },
+  {
+   "start": 244.72,
+   "duration": 4.44,
+   "text": "Why? That's why in your Claude or in"
+  },
+  {
+   "start": 247.08,
+   "duration": 3.92,
+   "text": "your ChatGPT, whatever you're using,"
+  },
+  {
+   "start": 249.16,
+   "duration": 3.72,
+   "text": "below there's a disclaimer, this is AI,"
+  },
+  {
+   "start": 251.0,
+   "duration": 4.64,
+   "text": "it will make mistakes."
+  },
+  {
+   "start": 252.88,
+   "duration": 4.639,
+   "text": "It will make some mistake. Mind it or"
+  },
+  {
+   "start": 255.64,
+   "duration": 3.4,
+   "text": "not."
+  },
+  {
+   "start": 257.519,
+   "duration": 3.201,
+   "text": "So,"
+  },
+  {
+   "start": 259.04,
+   "duration": 4.84,
+   "text": "the the thing that I want to say is"
+  },
+  {
+   "start": 260.72,
+   "duration": 4.68,
+   "text": "language models are probabilistic."
+  },
+  {
+   "start": 263.88,
+   "duration": 3.64,
+   "text": "You know, they are incredible at"
+  },
+  {
+   "start": 265.4,
+   "duration": 3.92,
+   "text": "following these instructions most of the"
+  },
+  {
+   "start": 267.52,
+   "duration": 4.88,
+   "text": "time. You know, emphasis on most of the"
+  },
+  {
+   "start": 269.32,
+   "duration": 4.84,
+   "text": "time, but it is not good enough for"
+  },
+  {
+   "start": 272.4,
+   "duration": 3.24,
+   "text": "critical operations. In critical"
+  },
+  {
+   "start": 274.16,
+   "duration": 5.44,
+   "text": "operations,"
+  },
+  {
+   "start": 275.64,
+   "duration": 5.92,
+   "text": "you need that 100% guarantee."
+  },
+  {
+   "start": 279.6,
+   "duration": 4.56,
+   "text": "Now, you do not want to have a payment"
+  },
+  {
+   "start": 281.56,
+   "duration": 4.92,
+   "text": "system that works 98% of the time and"
+  },
+  {
+   "start": 284.16,
+   "duration": 4.44,
+   "text": "hope that, you know, it's best for the"
+  },
+  {
+   "start": 286.48,
+   "duration": 4.84,
+   "text": "other 2%. You know, leave that other 2%."
+  },
+  {
+   "start": 288.6,
+   "duration": 4.76,
+   "text": "If you have, you know, for example, 1"
+  },
+  {
+   "start": 291.32,
+   "duration": 6.08,
+   "text": "lakh customers,"
+  },
+  {
+   "start": 293.36,
+   "duration": 5.56,
+   "text": "who cares about the 2%? You know?"
+  },
+  {
+   "start": 297.4,
+   "duration": 3.12,
+   "text": "So, but that is not the thing. No, no,"
+  },
+  {
+   "start": 298.92,
+   "duration": 3.32,
+   "text": "no. Don't go with that business mindset."
+  },
+  {
+   "start": 300.52,
+   "duration": 4.28,
+   "text": "That's just a joke. Okay? Don't don't"
+  },
+  {
+   "start": 302.24,
+   "duration": 5.92,
+   "text": "think that, you know, you know,"
+  },
+  {
+   "start": 304.8,
+   "duration": 5.44,
+   "text": "go to go to I I can't swear any words in"
+  },
+  {
+   "start": 308.16,
+   "duration": 3.12,
+   "text": "this video because"
+  },
+  {
+   "start": 310.24,
+   "duration": 3.44,
+   "text": "I I I"
+  },
+  {
+   "start": 311.28,
+   "duration": 5.24,
+   "text": "I want to maintain a clean channel, but"
+  },
+  {
+   "start": 313.68,
+   "duration": 4.16,
+   "text": "you know what I mean, you know, go to"
+  },
+  {
+   "start": 316.52,
+   "duration": 2.84,
+   "text": "somewhere."
+  },
+  {
+   "start": 317.84,
+   "duration": 5.28,
+   "text": "You should not do that. You also have to"
+  },
+  {
+   "start": 319.36,
+   "duration": 6.04,
+   "text": "care about those 2% as well. So,"
+  },
+  {
+   "start": 323.12,
+   "duration": 5.32,
+   "text": "the rule is simple. In these kind of"
+  },
+  {
+   "start": 325.4,
+   "duration": 5.64,
+   "text": "scenarios, it must be guaranteed. And"
+  },
+  {
+   "start": 328.44,
+   "duration": 7.2,
+   "text": "when does it must be guaranteed? When"
+  },
+  {
+   "start": 331.04,
+   "duration": 6.4,
+   "text": "you enforce it in code."
+  },
+  {
+   "start": 335.64,
+   "duration": 3.32,
+   "text": "That is where hooks come into the"
+  },
+  {
+   "start": 337.44,
+   "duration": 3.88,
+   "text": "picture."
+  },
+  {
+   "start": 338.96,
+   "duration": 4.36,
+   "text": "So, prompts are probabilistic. As you"
+  },
+  {
+   "start": 341.32,
+   "duration": 3.56,
+   "text": "can see on the screen, prompts are"
+  },
+  {
+   "start": 343.32,
+   "duration": 4.48,
+   "text": "probabilistic."
+  },
+  {
+   "start": 344.88,
+   "duration": 4.44,
+   "text": "Correct? Okay, let me get get grab my"
+  },
+  {
+   "start": 347.8,
+   "duration": 4.0,
+   "text": "pen over here."
+  },
+  {
+   "start": 349.32,
+   "duration": 4.84,
+   "text": "So, as I can draw some"
+  },
+  {
+   "start": 351.8,
+   "duration": 5.2,
+   "text": "bad"
+  },
+  {
+   "start": 354.16,
+   "duration": 4.32,
+   "text": "Why it's not selecting? Let me"
+  },
+  {
+   "start": 357.0,
+   "duration": 3.6,
+   "text": "Okay."
+  },
+  {
+   "start": 358.48,
+   "duration": 4.96,
+   "text": "So, prompts are probabilistic. Hooks are"
+  },
+  {
+   "start": 360.6,
+   "duration": 5.8,
+   "text": "deterministic. These are written as code"
+  },
+  {
+   "start": 363.44,
+   "duration": 4.72,
+   "text": "and model cannot override because you"
+  },
+  {
+   "start": 366.4,
+   "duration": 3.32,
+   "text": "will know why the model cannot override,"
+  },
+  {
+   "start": 368.16,
+   "duration": 4.04,
+   "text": "but in case of"
+  },
+  {
+   "start": 369.72,
+   "duration": 5.12,
+   "text": "prompts, model should comply, but, you"
+  },
+  {
+   "start": 372.2,
+   "duration": 5.52,
+   "text": "know, it might fail sometimes."
+  },
+  {
+   "start": 374.84,
+   "duration": 6.0,
+   "text": "Okay? It has a non-zero failure rate."
+  },
+  {
+   "start": 377.72,
+   "duration": 6.4,
+   "text": "See, failure is different. It will"
+  },
+  {
+   "start": 380.84,
+   "duration": 5.92,
+   "text": "execute that prompt in some other form."
+  },
+  {
+   "start": 384.12,
+   "duration": 3.88,
+   "text": "For example, you told the prompt that,"
+  },
+  {
+   "start": 386.76,
+   "duration": 4.36,
+   "text": "you know, you told the agent that in"
+  },
+  {
+   "start": 388.0,
+   "duration": 6.4,
+   "text": "your prompt, you don't process refunds"
+  },
+  {
+   "start": 391.12,
+   "duration": 5.92,
+   "text": "which are greater than $500."
+  },
+  {
+   "start": 394.4,
+   "duration": 6.96,
+   "text": "But, you haven't told that don't process"
+  },
+  {
+   "start": 397.04,
+   "duration": 6.68,
+   "text": "refunds which are greater than $500 for"
+  },
+  {
+   "start": 401.36,
+   "duration": 3.52,
+   "text": "only for unverified customers. The model"
+  },
+  {
+   "start": 403.72,
+   "duration": 3.56,
+   "text": "might think that because it is"
+  },
+  {
+   "start": 404.88,
+   "duration": 4.44,
+   "text": "intelligent. So, for verified customers,"
+  },
+  {
+   "start": 407.28,
+   "duration": 6.08,
+   "text": "what it will do? It will process refunds"
+  },
+  {
+   "start": 409.32,
+   "duration": 6.32,
+   "text": "above $500. So, you haven't specified it"
+  },
+  {
+   "start": 413.36,
+   "duration": 5.32,
+   "text": "properly and it is very very common that"
+  },
+  {
+   "start": 415.64,
+   "duration": 4.24,
+   "text": "in prompts, we miss that kind of stuffs."
+  },
+  {
+   "start": 418.68,
+   "duration": 2.64,
+   "text": "You know?"
+  },
+  {
+   "start": 419.88,
+   "duration": 4.08,
+   "text": "So,"
+  },
+  {
+   "start": 421.32,
+   "duration": 6.24,
+   "text": "we have to enforce in code saying that"
+  },
+  {
+   "start": 423.96,
+   "duration": 7.2,
+   "text": "if the refund is greater than $500,"
+  },
+  {
+   "start": 427.56,
+   "duration": 5.4,
+   "text": "don't do it at any cost. Escalate it to"
+  },
+  {
+   "start": 431.16,
+   "duration": 4.08,
+   "text": "someone else, some kind of a human"
+  },
+  {
+   "start": 432.96,
+   "duration": 4.2,
+   "text": "agent. And we'll see that in action in a"
+  },
+  {
+   "start": 435.24,
+   "duration": 3.24,
+   "text": "minute. So, that is what I'm trying to"
+  },
+  {
+   "start": 437.16,
+   "duration": 3.0,
+   "text": "explain over here."
+  },
+  {
+   "start": 438.48,
+   "duration": 3.56,
+   "text": "So,"
+  },
+  {
+   "start": 440.16,
+   "duration": 5.08,
+   "text": "in in the exam, if you get something"
+  },
+  {
+   "start": 442.04,
+   "duration": 5.24,
+   "text": "like guarantee, must never, policy"
+  },
+  {
+   "start": 445.24,
+   "duration": 4.52,
+   "text": "requires, all of these things, the"
+  },
+  {
+   "start": 447.28,
+   "duration": 4.72,
+   "text": "answer is programmatic enforcement and"
+  },
+  {
+   "start": 449.76,
+   "duration": 4.76,
+   "text": "in other words, hooks."
+  },
+  {
+   "start": 452.0,
+   "duration": 3.96,
+   "text": "Okay? So, what are hooks basically? As"
+  },
+  {
+   "start": 454.52,
+   "duration": 4.12,
+   "text": "I've just told you, I've explained it"
+  },
+  {
+   "start": 455.96,
+   "duration": 2.68,
+   "text": "just now."
+  },
+  {
+   "start": 459.12,
+   "duration": 5.24,
+   "text": "You write code, basically."
+  },
+  {
+   "start": 462.0,
+   "duration": 4.48,
+   "text": "Right? Basically, you write code. You"
+  },
+  {
+   "start": 464.36,
+   "duration": 4.4,
+   "text": "enforce it in code"
+  },
+  {
+   "start": 466.48,
+   "duration": 4.32,
+   "text": "instead of writing prompts."
+  },
+  {
+   "start": 468.76,
+   "duration": 4.4,
+   "text": "You know? But, how do you enforce it in"
+  },
+  {
+   "start": 470.8,
+   "duration": 4.92,
+   "text": "code? That is the uh you know, primary"
+  },
+  {
+   "start": 473.16,
+   "duration": 5.36,
+   "text": "thing that we need to understand."
+  },
+  {
+   "start": 475.72,
+   "duration": 5.24,
+   "text": "Right? So, if I have to put it in a"
+  },
+  {
+   "start": 478.52,
+   "duration": 4.68,
+   "text": "definition, hooks are pieces of code"
+  },
+  {
+   "start": 480.96,
+   "duration": 4.36,
+   "text": "that intercept the flow at specific"
+  },
+  {
+   "start": 483.2,
+   "duration": 4.8,
+   "text": "moments. So, we have our agentic loop."
+  },
+  {
+   "start": 485.32,
+   "duration": 4.8,
+   "text": "It has specific parts, right? Um the"
+  },
+  {
+   "start": 488.0,
+   "duration": 5.36,
+   "text": "agentic loop starts, then, you know, the"
+  },
+  {
+   "start": 490.12,
+   "duration": 5.48,
+   "text": "stop reason comes. Uh if it is tool use,"
+  },
+  {
+   "start": 493.36,
+   "duration": 3.88,
+   "text": "you know, uh you know, the tool uh are"
+  },
+  {
+   "start": 495.6,
+   "duration": 3.36,
+   "text": "getting executed one by one. In that"
+  },
+  {
+   "start": 497.24,
+   "duration": 3.04,
+   "text": "particular flow, you introduce this"
+  },
+  {
+   "start": 498.96,
+   "duration": 4.08,
+   "text": "code."
+  },
+  {
+   "start": 500.28,
+   "duration": 5.52,
+   "text": "And you introduce it in two ways."
+  },
+  {
+   "start": 503.04,
+   "duration": 6.36,
+   "text": "One way is the pre-tool use and the"
+  },
+  {
+   "start": 505.8,
+   "duration": 6.52,
+   "text": "other way is the post-tool use."
+  },
+  {
+   "start": 509.4,
+   "duration": 6.96,
+   "text": "So, in in simple terms,"
+  },
+  {
+   "start": 512.32,
+   "duration": 6.96,
+   "text": "pre-tool use, it intercepts before the"
+  },
+  {
+   "start": 516.36,
+   "duration": 6.64,
+   "text": "tool call executes. So, for example,"
+  },
+  {
+   "start": 519.28,
+   "duration": 5.76,
+   "text": "Claude AI decided, you know,"
+  },
+  {
+   "start": 523.0,
+   "duration": 5.8,
+   "text": "that"
+  },
+  {
+   "start": 525.04,
+   "duration": 7.8,
+   "text": "I need to execute a tool."
+  },
+  {
+   "start": 528.8,
+   "duration": 6.28,
+   "text": "I need to execute a tool, for example."
+  },
+  {
+   "start": 532.84,
+   "duration": 5.44,
+   "text": "Then, before actually executing the"
+  },
+  {
+   "start": 535.08,
+   "duration": 5.0,
+   "text": "tool, the pre-tool use, that hook will"
+  },
+  {
+   "start": 538.28,
+   "duration": 4.72,
+   "text": "come into the picture. Now, you can"
+  },
+  {
+   "start": 540.08,
+   "duration": 6.88,
+   "text": "compare this to, for example, if someone"
+  },
+  {
+   "start": 543.0,
+   "duration": 6.44,
+   "text": "has uh learned about React JS, they"
+  },
+  {
+   "start": 546.96,
+   "duration": 4.56,
+   "text": "would understand the concept of hooks."
+  },
+  {
+   "start": 549.44,
+   "duration": 4.56,
+   "text": "You know, before the page mounts, after"
+  },
+  {
+   "start": 551.52,
+   "duration": 4.52,
+   "text": "the page mounts, before the component is"
+  },
+  {
+   "start": 554.0,
+   "duration": 3.64,
+   "text": "loaded, after the component is loaded,"
+  },
+  {
+   "start": 556.04,
+   "duration": 3.44,
+   "text": "something like that, related to that."
+  },
+  {
+   "start": 557.64,
+   "duration": 3.36,
+   "text": "But, here you are relating it to tool"
+  },
+  {
+   "start": 559.48,
+   "duration": 4.64,
+   "text": "usage."
+  },
+  {
+   "start": 561.0,
+   "duration": 5.64,
+   "text": "Right? So, model thinks that Claude AI"
+  },
+  {
+   "start": 564.12,
+   "duration": 4.36,
+   "text": "thinks that I need to execute one tool,"
+  },
+  {
+   "start": 566.64,
+   "duration": 4.28,
+   "text": "then comes the"
+  },
+  {
+   "start": 568.48,
+   "duration": 5.84,
+   "text": "you know, the pre-tool usage gate, for"
+  },
+  {
+   "start": 570.92,
+   "duration": 5.48,
+   "text": "example, the interception window."
+  },
+  {
+   "start": 574.32,
+   "duration": 3.56,
+   "text": "Now, here you can say that, you know,"
+  },
+  {
+   "start": 576.4,
+   "duration": 3.84,
+   "text": "some kind of"
+  },
+  {
+   "start": 577.88,
+   "duration": 4.36,
+   "text": "um inspector you can put, you know, in"
+  },
+  {
+   "start": 580.24,
+   "duration": 4.08,
+   "text": "the pre-tool because the before the tool"
+  },
+  {
+   "start": 582.24,
+   "duration": 3.6,
+   "text": "executes, you can put something over"
+  },
+  {
+   "start": 584.32,
+   "duration": 4.04,
+   "text": "here, for example, check some"
+  },
+  {
+   "start": 585.84,
+   "duration": 4.88,
+   "text": "prerequisites, enforce some policies."
+  },
+  {
+   "start": 588.36,
+   "duration": 4.48,
+   "text": "You know, you can block the tool call"
+  },
+  {
+   "start": 590.72,
+   "duration": 4.44,
+   "text": "entirely itself. I'll I'll show you how"
+  },
+  {
+   "start": 592.84,
+   "duration": 4.52,
+   "text": "to do that. You can skip the tool call,"
+  },
+  {
+   "start": 595.16,
+   "duration": 4.48,
+   "text": "also."
+  },
+  {
+   "start": 597.36,
+   "duration": 3.52,
+   "text": "After that, the tool executes. After"
+  },
+  {
+   "start": 599.64,
+   "duration": 3.8,
+   "text": "that the tool executes. After the"
+  },
+  {
+   "start": 600.88,
+   "duration": 5.08,
+   "text": "pre-tool hook executes the tool actual"
+  },
+  {
+   "start": 603.44,
+   "duration": 5.08,
+   "text": "tool executes. The agentic agent"
+  },
+  {
+   "start": 605.96,
+   "duration": 4.64,
+   "text": "whatever Claude has specified to execute"
+  },
+  {
+   "start": 608.52,
+   "duration": 4.4,
+   "text": "the tool, it executes."
+  },
+  {
+   "start": 610.6,
+   "duration": 4.32,
+   "text": "After that the post-tool use comes into"
+  },
+  {
+   "start": 612.92,
+   "duration": 7.2,
+   "text": "the picture. Basically,"
+  },
+  {
+   "start": 614.92,
+   "duration": 5.2,
+   "text": "here normally the data normalization"
+  },
+  {
+   "start": 620.84,
+   "duration": 4.16,
+   "text": "things happen. Because for example, I'll"
+  },
+  {
+   "start": 622.64,
+   "duration": 5.68,
+   "text": "give you an example. For example, a tool"
+  },
+  {
+   "start": 625.0,
+   "duration": 5.48,
+   "text": "got executed, it returned some raw data."
+  },
+  {
+   "start": 628.32,
+   "duration": 4.56,
+   "text": "Now this raw data is not suitable for"
+  },
+  {
+   "start": 630.48,
+   "duration": 5.36,
+   "text": "the end user."
+  },
+  {
+   "start": 632.88,
+   "duration": 4.96,
+   "text": "Right? So, basically, you can keep one"
+  },
+  {
+   "start": 635.84,
+   "duration": 4.04,
+   "text": "hook over here which will process this"
+  },
+  {
+   "start": 637.84,
+   "duration": 4.72,
+   "text": "raw data and then send it back to the"
+  },
+  {
+   "start": 639.88,
+   "duration": 4.36,
+   "text": "LLM. So, the LLM will structure it quite"
+  },
+  {
+   "start": 642.56,
+   "duration": 3.6,
+   "text": "beautifully."
+  },
+  {
+   "start": 644.24,
+   "duration": 4.08,
+   "text": "This is an example. We'll see some of"
+  },
+  {
+   "start": 646.16,
+   "duration": 3.16,
+   "text": "the more examples in this particular"
+  },
+  {
+   "start": 648.32,
+   "duration": 2.64,
+   "text": "video."
+  },
+  {
+   "start": 649.32,
+   "duration": 3.4,
+   "text": "So, that is the thing."
+  },
+  {
+   "start": 650.96,
+   "duration": 3.72,
+   "text": "Just understand this. This is how the"
+  },
+  {
+   "start": 652.72,
+   "duration": 3.92,
+   "text": "pre-tool use will work. And in the exam"
+  },
+  {
+   "start": 654.68,
+   "duration": 4.44,
+   "text": "also, they will test you in this thing."
+  },
+  {
+   "start": 656.64,
+   "duration": 4.8,
+   "text": "If the exam question asks you, we need"
+  },
+  {
+   "start": 659.12,
+   "duration": 4.84,
+   "text": "to enforce some policies,"
+  },
+  {
+   "start": 661.44,
+   "duration": 4.12,
+   "text": "then pre-tool because that is where you"
+  },
+  {
+   "start": 663.96,
+   "duration": 3.32,
+   "text": "would basically enforce the policies."
+  },
+  {
+   "start": 665.56,
+   "duration": 3.84,
+   "text": "Before execute something, you need to"
+  },
+  {
+   "start": 667.28,
+   "duration": 3.44,
+   "text": "check something, right? You do You"
+  },
+  {
+   "start": 669.4,
+   "duration": 3.72,
+   "text": "should not check. It's not like a"
+  },
+  {
+   "start": 670.72,
+   "duration": 4.72,
+   "text": "do-while loop. You execute it and then"
+  },
+  {
+   "start": 673.12,
+   "duration": 4.44,
+   "text": "you check. You know?"
+  },
+  {
+   "start": 675.44,
+   "duration": 4.2,
+   "text": "But in the exam, if they ask something"
+  },
+  {
+   "start": 677.56,
+   "duration": 4.24,
+   "text": "like I want to do some data conversion"
+  },
+  {
+   "start": 679.64,
+   "duration": 4.6,
+   "text": "or data normalization stuff, that will"
+  },
+  {
+   "start": 681.8,
+   "duration": 5.52,
+   "text": "come inside the post-tool hook."
+  },
+  {
+   "start": 684.24,
+   "duration": 5.0,
+   "text": "So, just remember the cycle and you are"
+  },
+  {
+   "start": 687.32,
+   "duration": 4.64,
+   "text": "good to go."
+  },
+  {
+   "start": 689.24,
+   "duration": 5.68,
+   "text": "Understood? Pretty easy to understand."
+  },
+  {
+   "start": 691.96,
+   "duration": 4.8,
+   "text": "So, let's talk about the post-tool"
+  },
+  {
+   "start": 694.92,
+   "duration": 3.48,
+   "text": "hooks. You know, the post-tool hook. We"
+  },
+  {
+   "start": 696.76,
+   "duration": 3.079,
+   "text": "just understood the post-tool use or the"
+  },
+  {
+   "start": 698.4,
+   "duration": 3.72,
+   "text": "post-tool hook."
+  },
+  {
+   "start": 699.839,
+   "duration": 4.441,
+   "text": "Let's understand and and understand as"
+  },
+  {
+   "start": 702.12,
+   "duration": 5.28,
+   "text": "part of the code."
+  },
+  {
+   "start": 704.28,
+   "duration": 5.88,
+   "text": "So, I'm going to go back, switch to"
+  },
+  {
+   "start": 707.4,
+   "duration": 4.04,
+   "text": "you know, this uh"
+  },
+  {
+   "start": 710.16,
+   "duration": 3.36,
+   "text": "uh my"
+  },
+  {
+   "start": 711.44,
+   "duration": 3.88,
+   "text": "Visual Studio Code. And you know,"
+  },
+  {
+   "start": 713.52,
+   "duration": 3.96,
+   "text": "obviously, I have"
+  },
+  {
+   "start": 715.32,
+   "duration": 4.48,
+   "text": "done some coding using Claude Code,"
+  },
+  {
+   "start": 717.48,
+   "duration": 4.16,
+   "text": "obviously, because you just have to give"
+  },
+  {
+   "start": 719.8,
+   "duration": 3.64,
+   "text": "the idea and Claude does it itself. So,"
+  },
+  {
+   "start": 721.64,
+   "duration": 3.72,
+   "text": "whatever implementation I've done, I"
+  },
+  {
+   "start": 723.44,
+   "duration": 5.12,
+   "text": "haven't coded it myself. Why would I"
+  },
+  {
+   "start": 725.36,
+   "duration": 5.04,
+   "text": "take the you know, um"
+  },
+  {
+   "start": 728.56,
+   "duration": 3.84,
+   "text": "things that I haven't done because"
+  },
+  {
+   "start": 730.4,
+   "duration": 4.36,
+   "text": "Claude Code is better at coding and it"
+  },
+  {
+   "start": 732.4,
+   "duration": 4.8,
+   "text": "is faster. I just give the idea and"
+  },
+  {
+   "start": 734.76,
+   "duration": 5.56,
+   "text": "Claude Code does it itself."
+  },
+  {
+   "start": 737.2,
+   "duration": 4.68,
+   "text": "So, the first concept I want to explain"
+  },
+  {
+   "start": 740.32,
+   "duration": 2.8,
+   "text": "in terms of"
+  },
+  {
+   "start": 741.88,
+   "duration": 3.88,
+   "text": "um"
+  },
+  {
+   "start": 743.12,
+   "duration": 4.92,
+   "text": "post-tool use is what is the idea behind"
+  },
+  {
+   "start": 745.76,
+   "duration": 4.32,
+   "text": "this code change."
+  },
+  {
+   "start": 748.04,
+   "duration": 4.68,
+   "text": "So, uh basically,"
+  },
+  {
+   "start": 750.08,
+   "duration": 4.16,
+   "text": "we have a lookup order tool which talks"
+  },
+  {
+   "start": 752.72,
+   "duration": 2.72,
+   "text": "to a database. So, if you see, we have a"
+  },
+  {
+   "start": 754.24,
+   "duration": 3.72,
+   "text": "lookup"
+  },
+  {
+   "start": 755.44,
+   "duration": 2.52,
+   "text": "order."
+  },
+  {
+   "start": 758.04,
+   "duration": 5.28,
+   "text": "Okay, so the lookup order will you know,"
+  },
+  {
+   "start": 760.24,
+   "duration": 5.52,
+   "text": "it talks to the database."
+  },
+  {
+   "start": 763.32,
+   "duration": 4.0,
+   "text": "Now, basically,"
+  },
+  {
+   "start": 765.76,
+   "duration": 4.92,
+   "text": "um what change I have done. So, if you"
+  },
+  {
+   "start": 767.32,
+   "duration": 5.12,
+   "text": "see previously in my particular lesson,"
+  },
+  {
+   "start": 770.68,
+   "duration": 2.52,
+   "text": "if you see my"
+  },
+  {
+   "start": 772.44,
+   "duration": 4.0,
+   "text": "uh"
+  },
+  {
+   "start": 773.2,
+   "duration": 5.32,
+   "text": "dummy orders over here."
+  },
+  {
+   "start": 776.44,
+   "duration": 4.08,
+   "text": "If you see fake orders, it was a little"
+  },
+  {
+   "start": 778.52,
+   "duration": 3.76,
+   "text": "bit more structured, but I have changed"
+  },
+  {
+   "start": 780.52,
+   "duration": 4.0,
+   "text": "it because this is how you will receive"
+  },
+  {
+   "start": 782.28,
+   "duration": 5.08,
+   "text": "the data from the database. It will not"
+  },
+  {
+   "start": 784.52,
+   "duration": 4.28,
+   "text": "receive the stated status as refunded or"
+  },
+  {
+   "start": 787.36,
+   "duration": 3.4,
+   "text": "delivered or something like that"
+  },
+  {
+   "start": 788.8,
+   "duration": 3.84,
+   "text": "directly from the database, right? You"
+  },
+  {
+   "start": 790.76,
+   "duration": 4.0,
+   "text": "would receive some kind of data like"
+  },
+  {
+   "start": 792.64,
+   "duration": 3.84,
+   "text": "this. Like status equals to three equals"
+  },
+  {
+   "start": 794.76,
+   "duration": 4.6,
+   "text": "to five and equals to three."
+  },
+  {
+   "start": 796.48,
+   "duration": 6.2,
+   "text": "So, it's it's a responsibility of you as"
+  },
+  {
+   "start": 799.36,
+   "duration": 5.56,
+   "text": "a developer that before this code goes"
+  },
+  {
+   "start": 802.68,
+   "duration": 4.64,
+   "text": "back to the end user,"
+  },
+  {
+   "start": 804.92,
+   "duration": 4.6,
+   "text": "you have to kind of map it to the or do"
+  },
+  {
+   "start": 807.32,
+   "duration": 3.32,
+   "text": "the proper data mapping."
+  },
+  {
+   "start": 809.52,
+   "duration": 3.8,
+   "text": "Right?"
+  },
+  {
+   "start": 810.64,
+   "duration": 3.88,
+   "text": "And uh order that, if you see, I have"
+  },
+  {
+   "start": 813.32,
+   "duration": 3.8,
+   "text": "I'm"
+  },
+  {
+   "start": 814.52,
+   "duration": 4.72,
+   "text": "uh you know, returning some epoch value"
+  },
+  {
+   "start": 817.12,
+   "duration": 3.4,
+   "text": "which basically, you know, you should"
+  },
+  {
+   "start": 819.24,
+   "duration": 3.68,
+   "text": "not show it to the user. You have to"
+  },
+  {
+   "start": 820.52,
+   "duration": 3.64,
+   "text": "show it as a date format, proper date"
+  },
+  {
+   "start": 822.92,
+   "duration": 2.36,
+   "text": "format."
+  },
+  {
+   "start": 824.16,
+   "duration": 2.28,
+   "text": "Now,"
+  },
+  {
+   "start": 825.28,
+   "duration": 4.96,
+   "text": "so"
+  },
+  {
+   "start": 826.44,
+   "duration": 6.44,
+   "text": "this you can do in your post-tool use"
+  },
+  {
+   "start": 830.24,
+   "duration": 4.36,
+   "text": "function, for example. You know, after"
+  },
+  {
+   "start": 832.88,
+   "duration": 3.88,
+   "text": "the tool the lookup order has been"
+  },
+  {
+   "start": 834.6,
+   "duration": 5.44,
+   "text": "executed, you can execute this"
+  },
+  {
+   "start": 836.76,
+   "duration": 5.8,
+   "text": "particular hook and basically process"
+  },
+  {
+   "start": 840.04,
+   "duration": 5.6,
+   "text": "the output. Now, for that, I have"
+  },
+  {
+   "start": 842.56,
+   "duration": 5.08,
+   "text": "created one or Claude Code has created"
+  },
+  {
+   "start": 845.64,
+   "duration": 3.6,
+   "text": "one normalize"
+  },
+  {
+   "start": 847.64,
+   "duration": 3.88,
+   "text": "um"
+  },
+  {
+   "start": 849.24,
+   "duration": 4.2,
+   "text": "basically, order result. So, it will"
+  },
+  {
+   "start": 851.52,
+   "duration": 4.439,
+   "text": "take the tool name and will take the raw"
+  },
+  {
+   "start": 853.44,
+   "duration": 5.84,
+   "text": "result, basically."
+  },
+  {
+   "start": 855.959,
+   "duration": 7.161,
+   "text": "Right? So, it says see the early return"
+  },
+  {
+   "start": 859.28,
+   "duration": 5.72,
+   "text": "if tool name not equals to lookup order,"
+  },
+  {
+   "start": 863.12,
+   "duration": 4.8,
+   "text": "then we return the raw result. Why?"
+  },
+  {
+   "start": 865.0,
+   "duration": 4.88,
+   "text": "Because a hook should be a pass-through"
+  },
+  {
+   "start": 867.92,
+   "duration": 4.28,
+   "text": "for everything it doesn't care about. It"
+  },
+  {
+   "start": 869.88,
+   "duration": 5.0,
+   "text": "just means that it only cares about the"
+  },
+  {
+   "start": 872.2,
+   "duration": 4.28,
+   "text": "lookup order tool. If that is related to"
+  },
+  {
+   "start": 874.88,
+   "duration": 3.8,
+   "text": "that, if the two that particular tool"
+  },
+  {
+   "start": 876.48,
+   "duration": 4.0,
+   "text": "has been executed, then only this"
+  },
+  {
+   "start": 878.68,
+   "duration": 5.279,
+   "text": "particular post-tool"
+  },
+  {
+   "start": 880.48,
+   "duration": 5.76,
+   "text": "use hook will execute. Because for that"
+  },
+  {
+   "start": 883.959,
+   "duration": 4.961,
+   "text": "particular tool, this particular"
+  },
+  {
+   "start": 886.24,
+   "duration": 3.76,
+   "text": "post-hook exists. Right? That's what I"
+  },
+  {
+   "start": 888.92,
+   "duration": 3.52,
+   "text": "mean."
+  },
+  {
+   "start": 890.0,
+   "duration": 4.56,
+   "text": "So, what it does basically, it will"
+  },
+  {
+   "start": 892.44,
+   "duration": 4.28,
+   "text": "convert the statuses to"
+  },
+  {
+   "start": 894.56,
+   "duration": 3.64,
+   "text": "you know, proper English things so that"
+  },
+  {
+   "start": 896.72,
+   "duration": 3.84,
+   "text": "the user will understand and it will"
+  },
+  {
+   "start": 898.2,
+   "duration": 4.6,
+   "text": "basically convert the date."
+  },
+  {
+   "start": 900.56,
+   "duration": 4.04,
+   "text": "Right? Now, where does this particular"
+  },
+  {
+   "start": 902.8,
+   "duration": 4.4,
+   "text": "normalize order result come into the"
+  },
+  {
+   "start": 904.6,
+   "duration": 4.88,
+   "text": "picture? Let me show you that as well."
+  },
+  {
+   "start": 907.2,
+   "duration": 4.16,
+   "text": "So, these This is where I'm storing."
+  },
+  {
+   "start": 909.48,
+   "duration": 3.68,
+   "text": "This is the you know, the post-tool"
+  },
+  {
+   "start": 911.36,
+   "duration": 3.44,
+   "text": "hooks. Basically, it is a registry of"
+  },
+  {
+   "start": 913.16,
+   "duration": 3.84,
+   "text": "post-tool hooks. Whatever post-tool"
+  },
+  {
+   "start": 914.8,
+   "duration": 3.96,
+   "text": "hooks you have, you put it inside this"
+  },
+  {
+   "start": 917.0,
+   "duration": 3.0,
+   "text": "particular array."
+  },
+  {
+   "start": 918.76,
+   "duration": 2.84,
+   "text": "Okay?"
+  },
+  {
+   "start": 920.0,
+   "duration": 3.6,
+   "text": "So, this is one more hook. We'll see,"
+  },
+  {
+   "start": 921.6,
+   "duration": 3.88,
+   "text": "you know, just leave it for now."
+  },
+  {
+   "start": 923.6,
+   "duration": 4.28,
+   "text": "Let's understand the post-tool hook by"
+  },
+  {
+   "start": 925.48,
+   "duration": 4.88,
+   "text": "only one example."
+  },
+  {
+   "start": 927.88,
+   "duration": 5.48,
+   "text": "Now see where this apply post-tool hook"
+  },
+  {
+   "start": 930.36,
+   "duration": 6.08,
+   "text": "is actually executed. So, if you see if"
+  },
+  {
+   "start": 933.36,
+   "duration": 5.4,
+   "text": "I just Okay, it's not going there."
+  },
+  {
+   "start": 936.44,
+   "duration": 5.56,
+   "text": "Okay, it came here. So, if you see, it"
+  },
+  {
+   "start": 938.76,
+   "duration": 5.84,
+   "text": "is executing inside the agentic loop."
+  },
+  {
+   "start": 942.0,
+   "duration": 5.64,
+   "text": "And where it is executing, if you see, I"
+  },
+  {
+   "start": 944.6,
+   "duration": 5.16,
+   "text": "have given some comments over here."
+  },
+  {
+   "start": 947.64,
+   "duration": 4.64,
+   "text": "So,"
+  },
+  {
+   "start": 949.76,
+   "duration": 5.8,
+   "text": "the tool gets executed. This is the raw"
+  },
+  {
+   "start": 952.28,
+   "duration": 6.28,
+   "text": "result of the tool, basically. And now"
+  },
+  {
+   "start": 955.56,
+   "duration": 5.32,
+   "text": "the post-tool hooks will execute. Okay,"
+  },
+  {
+   "start": 958.56,
+   "duration": 3.36,
+   "text": "it will pass in the raw result with the"
+  },
+  {
+   "start": 960.88,
+   "duration": 3.04,
+   "text": "tool"
+  },
+  {
+   "start": 961.92,
+   "duration": 4.159,
+   "text": "name, basically. What which tool it"
+  },
+  {
+   "start": 963.92,
+   "duration": 4.44,
+   "text": "executes executed."
+  },
+  {
+   "start": 966.079,
+   "duration": 4.441,
+   "text": "It will search the post-tool hooks array"
+  },
+  {
+   "start": 968.36,
+   "duration": 4.44,
+   "text": "and it will execute it one by one. For"
+  },
+  {
+   "start": 970.52,
+   "duration": 3.92,
+   "text": "whatever tool it needs to execute, it"
+  },
+  {
+   "start": 972.8,
+   "duration": 2.92,
+   "text": "will execute because we have a condition"
+  },
+  {
+   "start": 974.44,
+   "duration": 3.04,
+   "text": "over there. In the normalize order"
+  },
+  {
+   "start": 975.72,
+   "duration": 4.44,
+   "text": "result, we have a condition. It will"
+  },
+  {
+   "start": 977.48,
+   "duration": 3.84,
+   "text": "only execute for the"
+  },
+  {
+   "start": 980.16,
+   "duration": 4.64,
+   "text": "Answer me."
+  },
+  {
+   "start": 981.32,
+   "duration": 5.32,
+   "text": "For the lookup order tool use."
+  },
+  {
+   "start": 984.8,
+   "duration": 4.68,
+   "text": "Basically. Pretty simple to understand."
+  },
+  {
+   "start": 986.64,
+   "duration": 7.48,
+   "text": "After that, whatever post-tool hooks got"
+  },
+  {
+   "start": 989.48,
+   "duration": 6.599,
+   "text": "executed, it will just pass it on to the"
+  },
+  {
+   "start": 994.12,
+   "duration": 3.92,
+   "text": "particular LLM and then the LLM will"
+  },
+  {
+   "start": 996.079,
+   "duration": 3.601,
+   "text": "structure it and return the final result"
+  },
+  {
+   "start": 998.04,
+   "duration": 2.84,
+   "text": "that you can see over here."
+  },
+  {
+   "start": 999.68,
+   "duration": 3.159,
+   "text": "Because the final result is being"
+  },
+  {
+   "start": 1000.88,
+   "duration": 3.4,
+   "text": "returned here."
+  },
+  {
+   "start": 1002.839,
+   "duration": 3.361,
+   "text": "Because that is the step last step,"
+  },
+  {
+   "start": 1004.28,
+   "duration": 4.16,
+   "text": "right? Of the agentic loop, basically."
+  },
+  {
+   "start": 1006.2,
+   "duration": 3.72,
+   "text": "Append the tool results as a user"
+  },
+  {
+   "start": 1008.44,
+   "duration": 3.72,
+   "text": "message."
+  },
+  {
+   "start": 1009.92,
+   "duration": 4.0,
+   "text": "Great. So, I hope we have covered this"
+  },
+  {
+   "start": 1012.16,
+   "duration": 4.28,
+   "text": "thing. Okay, I will I will I will run"
+  },
+  {
+   "start": 1013.92,
+   "duration": 3.96,
+   "text": "the code after I have explained all of"
+  },
+  {
+   "start": 1016.44,
+   "duration": 3.76,
+   "text": "the concepts that I have added to this"
+  },
+  {
+   "start": 1017.88,
+   "duration": 4.6,
+   "text": "particular code and then we will see."
+  },
+  {
+   "start": 1020.2,
+   "duration": 4.639,
+   "text": "Right? So, let's Let's go back to our"
+  },
+  {
+   "start": 1022.48,
+   "duration": 4.04,
+   "text": "slides and let's continue with our"
+  },
+  {
+   "start": 1024.839,
+   "duration": 2.881,
+   "text": "explanations."
+  },
+  {
+   "start": 1026.52,
+   "duration": 3.159,
+   "text": "Okay?"
+  },
+  {
+   "start": 1027.72,
+   "duration": 5.88,
+   "text": "Now, um"
+  },
+  {
+   "start": 1029.679,
+   "duration": 5.961,
+   "text": "let's talk about the pre-tool hook,"
+  },
+  {
+   "start": 1033.6,
+   "duration": 4.32,
+   "text": "basically. And let's see where I have"
+  },
+  {
+   "start": 1035.64,
+   "duration": 3.799,
+   "text": "made the changes for the pre-tool. I"
+  },
+  {
+   "start": 1037.92,
+   "duration": 3.759,
+   "text": "have talked about the pre-tool hook. The"
+  },
+  {
+   "start": 1039.439,
+   "duration": 3.52,
+   "text": "pre-tool hook will execute"
+  },
+  {
+   "start": 1041.679,
+   "duration": 2.441,
+   "text": "before,"
+  },
+  {
+   "start": 1042.959,
+   "duration": 3.601,
+   "text": "you know,"
+  },
+  {
+   "start": 1044.12,
+   "duration": 5.0,
+   "text": "uh your um"
+  },
+  {
+   "start": 1046.56,
+   "duration": 4.28,
+   "text": "tool basically executes. So,"
+  },
+  {
+   "start": 1049.12,
+   "duration": 3.72,
+   "text": "basically, whenever in the exam, they"
+  },
+  {
+   "start": 1050.84,
+   "duration": 4.839,
+   "text": "will mostly ask about policy violations."
+  },
+  {
+   "start": 1052.84,
+   "duration": 4.6,
+   "text": "Okay, right? For example, $500."
+  },
+  {
+   "start": 1055.679,
+   "duration": 5.721,
+   "text": "That that particular"
+  },
+  {
+   "start": 1057.44,
+   "duration": 3.96,
+   "text": "condition I gave, right? So,"
+  },
+  {
+   "start": 1061.72,
+   "duration": 7.12,
+   "text": "if the refund comes as $600,"
+  },
+  {
+   "start": 1064.96,
+   "duration": 7.2,
+   "text": "the the pre-tool should basically block"
+  },
+  {
+   "start": 1068.84,
+   "duration": 6.72,
+   "text": "the execution of the refund tool itself."
+  },
+  {
+   "start": 1072.16,
+   "duration": 5.92,
+   "text": "The refund tool should not execute only."
+  },
+  {
+   "start": 1075.56,
+   "duration": 4.52,
+   "text": "Because the"
+  },
+  {
+   "start": 1078.08,
+   "duration": 4.44,
+   "text": "you know, the the money that needs to be"
+  },
+  {
+   "start": 1080.08,
+   "duration": 4.52,
+   "text": "refunded is more than $500. You don't"
+  },
+  {
+   "start": 1082.52,
+   "duration": 5.64,
+   "text": "just leave it to the model to decide if"
+  },
+  {
+   "start": 1084.6,
+   "duration": 5.56,
+   "text": "it has to refund or not. You, as the you"
+  },
+  {
+   "start": 1088.16,
+   "duration": 4.24,
+   "text": "know, the business owner or whatever,"
+  },
+  {
+   "start": 1090.16,
+   "duration": 4.2,
+   "text": "right? Has the right to block that"
+  },
+  {
+   "start": 1092.4,
+   "duration": 3.88,
+   "text": "particular thing because that is what"
+  },
+  {
+   "start": 1094.36,
+   "duration": 3.96,
+   "text": "your policy is."
+  },
+  {
+   "start": 1096.28,
+   "duration": 3.88,
+   "text": "You should not just delegate it to the"
+  },
+  {
+   "start": 1098.32,
+   "duration": 3.08,
+   "text": "model or the LLM. That is the most"
+  },
+  {
+   "start": 1100.16,
+   "duration": 3.04,
+   "text": "important thing people need to"
+  },
+  {
+   "start": 1101.4,
+   "duration": 4.84,
+   "text": "understand. Whenever it comes to"
+  },
+  {
+   "start": 1103.2,
+   "duration": 4.959,
+   "text": "business-critical solutions,"
+  },
+  {
+   "start": 1106.24,
+   "duration": 3.72,
+   "text": "you have to take matters in your own"
+  },
+  {
+   "start": 1108.159,
+   "duration": 3.161,
+   "text": "hands. Don't,"
+  },
+  {
+   "start": 1109.96,
+   "duration": 3.36,
+   "text": "you know, give it to the model to"
+  },
+  {
+   "start": 1111.32,
+   "duration": 4.72,
+   "text": "decide."
+  },
+  {
+   "start": 1113.32,
+   "duration": 4.44,
+   "text": "So, when it comes to this kind of cases,"
+  },
+  {
+   "start": 1116.04,
+   "duration": 3.24,
+   "text": "you would use a pre-tool hook. You don't"
+  },
+  {
+   "start": 1117.76,
+   "duration": 4.32,
+   "text": "want to execute the hook itself. Now,"
+  },
+  {
+   "start": 1119.28,
+   "duration": 5.2,
+   "text": "let's try to understand the concept in"
+  },
+  {
+   "start": 1122.08,
+   "duration": 5.72,
+   "text": "our code, basically."
+  },
+  {
+   "start": 1124.48,
+   "duration": 3.32,
+   "text": "Right? Now,"
+  },
+  {
+   "start": 1127.88,
+   "duration": 5.84,
+   "text": "I'll just go back over here."
+  },
+  {
+   "start": 1130.36,
+   "duration": 5.4,
+   "text": "So, let's first see the pre-tool hooks."
+  },
+  {
+   "start": 1133.72,
+   "duration": 5.08,
+   "text": "So, basically, I I'm still in the"
+  },
+  {
+   "start": 1135.76,
+   "duration": 5.12,
+   "text": "agentic loop code over here. So, if you"
+  },
+  {
+   "start": 1138.8,
+   "duration": 4.6,
+   "text": "see the pre-tool hook"
+  },
+  {
+   "start": 1140.88,
+   "duration": 5.039,
+   "text": "where I was looking at it."
+  },
+  {
+   "start": 1143.4,
+   "duration": 3.759,
+   "text": "Apply pre-tool hooks, right? So,"
+  },
+  {
+   "start": 1145.919,
+   "duration": 3.121,
+   "text": "basically,"
+  },
+  {
+   "start": 1147.159,
+   "duration": 3.561,
+   "text": "uh it's it acts like a policy gate."
+  },
+  {
+   "start": 1149.04,
+   "duration": 3.44,
+   "text": "Decide whether the tool is allowed to"
+  },
+  {
+   "start": 1150.72,
+   "duration": 3.76,
+   "text": "run or not. So, if I go inside this"
+  },
+  {
+   "start": 1152.48,
+   "duration": 4.16,
+   "text": "pre-tool hook and see where this"
+  },
+  {
+   "start": 1154.48,
+   "duration": 4.08,
+   "text": "particular pre-tool hook is executing"
+  },
+  {
+   "start": 1156.64,
+   "duration": 4.84,
+   "text": "before"
+  },
+  {
+   "start": 1158.56,
+   "duration": 4.92,
+   "text": "we are actually executing a tool."
+  },
+  {
+   "start": 1161.48,
+   "duration": 4.679,
+   "text": "Okay? Because this is where the tool"
+  },
+  {
+   "start": 1163.48,
+   "duration": 4.72,
+   "text": "calling happens. Right? And this This is"
+  },
+  {
+   "start": 1166.159,
+   "duration": 4.681,
+   "text": "where the tool returns the raw raw"
+  },
+  {
+   "start": 1168.2,
+   "duration": 4.8,
+   "text": "result after execute execution, right?"
+  },
+  {
+   "start": 1170.84,
+   "duration": 4.44,
+   "text": "And then we execute the post-tool hook."
+  },
+  {
+   "start": 1173.0,
+   "duration": 4.4,
+   "text": "Before that, we apply the pre-tool hook."
+  },
+  {
+   "start": 1175.28,
+   "duration": 3.8,
+   "text": "Now, if you go to the pre-tool hook,"
+  },
+  {
+   "start": 1177.4,
+   "duration": 3.279,
+   "text": "and if you see, we have a couple of"
+  },
+  {
+   "start": 1179.08,
+   "duration": 3.2,
+   "text": "pre-tool hooks. Like post-tool hooks, we"
+  },
+  {
+   "start": 1180.679,
+   "duration": 4.041,
+   "text": "have created an array to maintain the"
+  },
+  {
+   "start": 1182.28,
+   "duration": 4.52,
+   "text": "registry. I mean, what pre-tool hooks"
+  },
+  {
+   "start": 1184.72,
+   "duration": 4.72,
+   "text": "are there. You can make it enhance it by"
+  },
+  {
+   "start": 1186.8,
+   "duration": 4.4,
+   "text": "adding a map or whatever, right? But for"
+  },
+  {
+   "start": 1189.44,
+   "duration": 3.36,
+   "text": "simplicity, I've just put this"
+  },
+  {
+   "start": 1191.2,
+   "duration": 3.56,
+   "text": "particular thing."
+  },
+  {
+   "start": 1192.8,
+   "duration": 5.16,
+   "text": "So, if you see there are two pre-tool"
+  },
+  {
+   "start": 1194.76,
+   "duration": 5.04,
+   "text": "hooks over here and um"
+  },
+  {
+   "start": 1197.96,
+   "duration": 4.96,
+   "text": "I I'm just going to go and explain the"
+  },
+  {
+   "start": 1199.8,
+   "duration": 5.12,
+   "text": "enforce refund policy hook over here."
+  },
+  {
+   "start": 1202.92,
+   "duration": 4.04,
+   "text": "So, if you see this particular function,"
+  },
+  {
+   "start": 1204.92,
+   "duration": 5.24,
+   "text": "it obviously it accepts a tool name and"
+  },
+  {
+   "start": 1206.96,
+   "duration": 5.56,
+   "text": "tool params. Now, obviously it will only"
+  },
+  {
+   "start": 1210.16,
+   "duration": 3.84,
+   "text": "execute for the process tool process"
+  },
+  {
+   "start": 1212.52,
+   "duration": 3.68,
+   "text": "refund"
+  },
+  {
+   "start": 1214.0,
+   "duration": 3.32,
+   "text": "tool, basically."
+  },
+  {
+   "start": 1216.2,
+   "duration": 3.48,
+   "text": "And uh"
+  },
+  {
+   "start": 1217.32,
+   "duration": 4.76,
+   "text": "if it is not that, then basically true."
+  },
+  {
+   "start": 1219.68,
+   "duration": 4.36,
+   "text": "I mean, pass through, you know? It will"
+  },
+  {
+   "start": 1222.08,
+   "duration": 4.6,
+   "text": "only execute for that particular tool."
+  },
+  {
+   "start": 1224.04,
+   "duration": 5.36,
+   "text": "Okay, others you can go ahead."
+  },
+  {
+   "start": 1226.68,
+   "duration": 6.48,
+   "text": "So, here it is pretty simple."
+  },
+  {
+   "start": 1229.4,
+   "duration": 5.72,
+   "text": "If amount is greater than 500, okay?"
+  },
+  {
+   "start": 1233.16,
+   "duration": 4.4,
+   "text": "Now, what we are doing over here? Return"
+  },
+  {
+   "start": 1235.12,
+   "duration": 5.16,
+   "text": "allowed is false. I mean, don't allow"
+  },
+  {
+   "start": 1237.56,
+   "duration": 6.56,
+   "text": "the execution of the"
+  },
+  {
+   "start": 1240.28,
+   "duration": 6.72,
+   "text": "refund process tool, basically. Reason"
+  },
+  {
+   "start": 1244.12,
+   "duration": 5.44,
+   "text": "is that refund exceeds $500."
+  },
+  {
+   "start": 1247.0,
+   "duration": 4.48,
+   "text": "Action required, escalate to human."
+  },
+  {
+   "start": 1249.56,
+   "duration": 3.88,
+   "text": "Escalation tier, senior support. I have"
+  },
+  {
+   "start": 1251.48,
+   "duration": 4.72,
+   "text": "hard-coded all of these things. You can"
+  },
+  {
+   "start": 1253.44,
+   "duration": 3.84,
+   "text": "go ahead and you can have uh something"
+  },
+  {
+   "start": 1256.2,
+   "duration": 3.64,
+   "text": "um"
+  },
+  {
+   "start": 1257.28,
+   "duration": 4.92,
+   "text": "more detailed handover to the senior"
+  },
+  {
+   "start": 1259.84,
+   "duration": 3.52,
+   "text": "support or, you know, human agent,"
+  },
+  {
+   "start": 1262.2,
+   "duration": 4.0,
+   "text": "basically."
+  },
+  {
+   "start": 1263.36,
+   "duration": 5.08,
+   "text": "If the amount is less than 500, then"
+  },
+  {
+   "start": 1266.2,
+   "duration": 4.0,
+   "text": "basically we are telling execute that"
+  },
+  {
+   "start": 1268.44,
+   "duration": 4.2,
+   "text": "particular refund."
+  },
+  {
+   "start": 1270.2,
+   "duration": 4.44,
+   "text": "And uh whatever it may, then it will"
+  },
+  {
+   "start": 1272.64,
+   "duration": 5.08,
+   "text": "check for the"
+  },
+  {
+   "start": 1274.64,
+   "duration": 4.96,
+   "text": "refund uh in the orders and it will see"
+  },
+  {
+   "start": 1277.72,
+   "duration": 4.56,
+   "text": "if it has been in the refund status."
+  },
+  {
+   "start": 1279.6,
+   "duration": 5.84,
+   "text": "Whatever the logic is, it will execute."
+  },
+  {
+   "start": 1282.28,
+   "duration": 5.88,
+   "text": "But before even executing the, you know,"
+  },
+  {
+   "start": 1285.44,
+   "duration": 5.68,
+   "text": "uh tool for the refund, you know,"
+  },
+  {
+   "start": 1288.16,
+   "duration": 5.36,
+   "text": "process refund tool,"
+  },
+  {
+   "start": 1291.12,
+   "duration": 4.24,
+   "text": "we are blocking it, basically. If it is"
+  },
+  {
+   "start": 1293.52,
+   "duration": 4.0,
+   "text": "greater than 500, then don't even"
+  },
+  {
+   "start": 1295.36,
+   "duration": 3.64,
+   "text": "execute that particular"
+  },
+  {
+   "start": 1297.52,
+   "duration": 3.0,
+   "text": "tool."
+  },
+  {
+   "start": 1299.0,
+   "duration": 4.6,
+   "text": "And that is where it is very, very"
+  },
+  {
+   "start": 1300.52,
+   "duration": 5.56,
+   "text": "important to understand, you know, why"
+  },
+  {
+   "start": 1303.6,
+   "duration": 6.12,
+   "text": "this pre-tool is"
+  },
+  {
+   "start": 1306.08,
+   "duration": 3.64,
+   "text": "very, very important, basically."
+  },
+  {
+   "start": 1310.88,
+   "duration": 4.4,
+   "text": "Okay, so let's go back to our slides. I"
+  },
+  {
+   "start": 1313.12,
+   "duration": 5.72,
+   "text": "hope this is easy to understand. In the"
+  },
+  {
+   "start": 1315.28,
+   "duration": 5.48,
+   "text": "exam, whenever we talk about, you know,"
+  },
+  {
+   "start": 1318.84,
+   "duration": 3.88,
+   "text": "policy violations that, you know, we"
+  },
+  {
+   "start": 1320.76,
+   "duration": 3.72,
+   "text": "have a particular policy that needs to"
+  },
+  {
+   "start": 1322.72,
+   "duration": 2.8,
+   "text": "be adhered to and something something"
+  },
+  {
+   "start": 1324.48,
+   "duration": 3.12,
+   "text": "like that, you would go with the"
+  },
+  {
+   "start": 1325.52,
+   "duration": 4.0,
+   "text": "pre-tool use hook."
+  },
+  {
+   "start": 1327.6,
+   "duration": 4.52,
+   "text": "And if there is some data normalization"
+  },
+  {
+   "start": 1329.52,
+   "duration": 3.76,
+   "text": "thing, then you would go to the post"
+  },
+  {
+   "start": 1332.12,
+   "duration": 2.28,
+   "text": "tool hook."
+  },
+  {
+   "start": 1333.28,
+   "duration": 2.72,
+   "text": "Hm."
+  },
+  {
+   "start": 1334.4,
+   "duration": 3.12,
+   "text": "Okay."
+  },
+  {
+   "start": 1336.0,
+   "duration": 3.16,
+   "text": "Okay, let's"
+  },
+  {
+   "start": 1337.52,
+   "duration": 4.4,
+   "text": "uh go to the next concept known as"
+  },
+  {
+   "start": 1339.16,
+   "duration": 5.24,
+   "text": "prerequisite gates. So, prerequisite"
+  },
+  {
+   "start": 1341.92,
+   "duration": 4.32,
+   "text": "gates are pre-tool use hooks. Okay, this"
+  },
+  {
+   "start": 1344.4,
+   "duration": 3.92,
+   "text": "is just an uh you know, a use case of"
+  },
+  {
+   "start": 1346.24,
+   "duration": 4.32,
+   "text": "pre-tool use hooks and it comes a lot in"
+  },
+  {
+   "start": 1348.32,
+   "duration": 5.72,
+   "text": "the exam. So, I'm just, you know, kind"
+  },
+  {
+   "start": 1350.56,
+   "duration": 5.76,
+   "text": "of kept it as a separate um"
+  },
+  {
+   "start": 1354.04,
+   "duration": 5.32,
+   "text": "concept itself. And if you have seen my"
+  },
+  {
+   "start": 1356.32,
+   "duration": 5.0,
+   "text": "pre-tool use hook uh array, you would"
+  },
+  {
+   "start": 1359.36,
+   "duration": 3.36,
+   "text": "see that there was a gate kind of uh"
+  },
+  {
+   "start": 1361.32,
+   "duration": 3.0,
+   "text": "kind of something like that. And we'll"
+  },
+  {
+   "start": 1362.72,
+   "duration": 4.52,
+   "text": "understand what that is first and then"
+  },
+  {
+   "start": 1364.32,
+   "duration": 2.92,
+   "text": "we'll look at the code."
+  },
+  {
+   "start": 1368.36,
+   "duration": 5.68,
+   "text": "So, prerequisite gates are pre-tool use"
+  },
+  {
+   "start": 1371.04,
+   "duration": 5.28,
+   "text": "hooks that track the session state."
+  },
+  {
+   "start": 1374.04,
+   "duration": 5.36,
+   "text": "They block downstream tools until an"
+  },
+  {
+   "start": 1376.32,
+   "duration": 5.64,
+   "text": "upstream tool has successfully completed"
+  },
+  {
+   "start": 1379.4,
+   "duration": 3.96,
+   "text": "and set a verified flag."
+  },
+  {
+   "start": 1381.96,
+   "duration": 3.68,
+   "text": "Okay."
+  },
+  {
+   "start": 1383.36,
+   "duration": 4.76,
+   "text": "So, let's take an example of our"
+  },
+  {
+   "start": 1385.64,
+   "duration": 4.64,
+   "text": "customer support agent."
+  },
+  {
+   "start": 1388.12,
+   "duration": 4.24,
+   "text": "There is a tool A called get customer."
+  },
+  {
+   "start": 1390.28,
+   "duration": 3.92,
+   "text": "There is a tool B called process refund."
+  },
+  {
+   "start": 1392.36,
+   "duration": 3.28,
+   "text": "Both of these tool you have seen in our"
+  },
+  {
+   "start": 1394.2,
+   "duration": 2.479,
+   "text": "in my code."
+  },
+  {
+   "start": 1395.64,
+   "duration": 2.64,
+   "text": "Right?"
+  },
+  {
+   "start": 1396.679,
+   "duration": 3.121,
+   "text": "Now,"
+  },
+  {
+   "start": 1398.28,
+   "duration": 4.28,
+   "text": "tool A"
+  },
+  {
+   "start": 1399.8,
+   "duration": 4.96,
+   "text": "should execute first, then tool B, which"
+  },
+  {
+   "start": 1402.56,
+   "duration": 5.4,
+   "text": "is process refund. Process refund should"
+  },
+  {
+   "start": 1404.76,
+   "duration": 5.68,
+   "text": "not execute unless tool A has been"
+  },
+  {
+   "start": 1407.96,
+   "duration": 5.12,
+   "text": "executed. That is the"
+  },
+  {
+   "start": 1410.44,
+   "duration": 5.32,
+   "text": "policy you can say say, because or that"
+  },
+  {
+   "start": 1413.08,
+   "duration": 4.68,
+   "text": "the hard violation or the tight coupling"
+  },
+  {
+   "start": 1415.76,
+   "duration": 5.36,
+   "text": "you want, because process refund should"
+  },
+  {
+   "start": 1417.76,
+   "duration": 5.48,
+   "text": "not execute for unverified customers."
+  },
+  {
+   "start": 1421.12,
+   "duration": 3.96,
+   "text": "Right? Because that is the most"
+  },
+  {
+   "start": 1423.24,
+   "duration": 3.84,
+   "text": "reliable way of"
+  },
+  {
+   "start": 1425.08,
+   "duration": 4.88,
+   "text": "processing the refund is that at least"
+  },
+  {
+   "start": 1427.08,
+   "duration": 4.92,
+   "text": "the customer should be verified."
+  },
+  {
+   "start": 1429.96,
+   "duration": 4.08,
+   "text": "And for that,"
+  },
+  {
+   "start": 1432.0,
+   "duration": 4.12,
+   "text": "you know, you you can write a prompt"
+  },
+  {
+   "start": 1434.04,
+   "duration": 4.04,
+   "text": "saying that, you know, don't use this"
+  },
+  {
+   "start": 1436.12,
+   "duration": 4.44,
+   "text": "tool before that tool."
+  },
+  {
+   "start": 1438.08,
+   "duration": 7.28,
+   "text": "But it might or might not get enforced."
+  },
+  {
+   "start": 1440.56,
+   "duration": 7.72,
+   "text": "So, to kind of, you know, enforce it,"
+  },
+  {
+   "start": 1445.36,
+   "duration": 5.24,
+   "text": "you know, kind of like"
+  },
+  {
+   "start": 1448.28,
+   "duration": 4.12,
+   "text": "hard enforcement, then you have to use"
+  },
+  {
+   "start": 1450.6,
+   "duration": 4.36,
+   "text": "programmatic approach and basically you"
+  },
+  {
+   "start": 1452.4,
+   "duration": 5.48,
+   "text": "can put a kind of a gate kind of a thing"
+  },
+  {
+   "start": 1454.96,
+   "duration": 5.44,
+   "text": "or a or a condition that, you know,"
+  },
+  {
+   "start": 1457.88,
+   "duration": 5.0,
+   "text": "process refund should not execute unless"
+  },
+  {
+   "start": 1460.4,
+   "duration": 4.04,
+   "text": "customer has been verified. And that is"
+  },
+  {
+   "start": 1462.88,
+   "duration": 4.28,
+   "text": "what I want, you know, that that is"
+  },
+  {
+   "start": 1464.44,
+   "duration": 4.44,
+   "text": "there in my code itself. So, if I see my"
+  },
+  {
+   "start": 1467.16,
+   "duration": 4.12,
+   "text": "pre-"
+  },
+  {
+   "start": 1468.88,
+   "duration": 4.16,
+   "text": "I think tool hooks,"
+  },
+  {
+   "start": 1471.28,
+   "duration": 3.36,
+   "text": "there is a prerequisite gate over here."
+  },
+  {
+   "start": 1473.04,
+   "duration": 3.48,
+   "text": "Now, if you see the prerequisite gate"
+  },
+  {
+   "start": 1474.64,
+   "duration": 4.4,
+   "text": "over here,"
+  },
+  {
+   "start": 1476.52,
+   "duration": 4.96,
+   "text": "block refund lookup until the customer"
+  },
+  {
+   "start": 1479.04,
+   "duration": 4.92,
+   "text": "has been verified. So, if the tool name"
+  },
+  {
+   "start": 1481.48,
+   "duration": 5.48,
+   "text": "is in process refund or lookup order, if"
+  },
+  {
+   "start": 1483.96,
+   "duration": 5.52,
+   "text": "not session customer verified. So, if"
+  },
+  {
+   "start": 1486.96,
+   "duration": 4.36,
+   "text": "you see the session, customer verified"
+  },
+  {
+   "start": 1489.48,
+   "duration": 4.28,
+   "text": "is false or"
+  },
+  {
+   "start": 1491.32,
+   "duration": 4.72,
+   "text": "true. So, once the"
+  },
+  {
+   "start": 1493.76,
+   "duration": 4.0,
+   "text": "get customer, so get customer, see, if"
+  },
+  {
+   "start": 1496.04,
+   "duration": 4.04,
+   "text": "you see this get customer particular"
+  },
+  {
+   "start": 1497.76,
+   "duration": 6.44,
+   "text": "tool, it first executes, right? When it"
+  },
+  {
+   "start": 1500.08,
+   "duration": 6.04,
+   "text": "gets execute, we are returning that"
+  },
+  {
+   "start": 1504.2,
+   "duration": 3.32,
+   "text": "Okay, that, you know, we are returning"
+  },
+  {
+   "start": 1506.12,
+   "duration": 3.12,
+   "text": "an uh"
+  },
+  {
+   "start": 1507.52,
+   "duration": 4.52,
+   "text": "um"
+  },
+  {
+   "start": 1509.24,
+   "duration": 4.68,
+   "text": "kind of a object saying that the"
+  },
+  {
+   "start": 1512.04,
+   "duration": 4.92,
+   "text": "customer has been found."
+  },
+  {
+   "start": 1513.92,
+   "duration": 6.36,
+   "text": "And basically we set the session"
+  },
+  {
+   "start": 1516.96,
+   "duration": 4.8,
+   "text": "customer verified as true."
+  },
+  {
+   "start": 1520.28,
+   "duration": 4.72,
+   "text": "Okay."
+  },
+  {
+   "start": 1521.76,
+   "duration": 3.24,
+   "text": "Wait just a minute."
+  },
+  {
+   "start": 1526.04,
+   "duration": 4.0,
+   "text": "We see this particular"
+  },
+  {
+   "start": 1528.16,
+   "duration": 3.96,
+   "text": "piece of code."
+  },
+  {
+   "start": 1530.04,
+   "duration": 4.16,
+   "text": "See, here we are setting"
+  },
+  {
+   "start": 1532.12,
+   "duration": 5.32,
+   "text": "if tool name equals equals to get"
+  },
+  {
+   "start": 1534.2,
+   "duration": 5.36,
+   "text": "customer and raw you know, and raw"
+  },
+  {
+   "start": 1537.44,
+   "duration": 4.76,
+   "text": "result dot get found, then we are"
+  },
+  {
+   "start": 1539.56,
+   "duration": 4.04,
+   "text": "setting the session customer verified"
+  },
+  {
+   "start": 1542.2,
+   "duration": 3.2,
+   "text": "equals to true."
+  },
+  {
+   "start": 1543.6,
+   "duration": 4.48,
+   "text": "Right? And if you see the update"
+  },
+  {
+   "start": 1545.4,
+   "duration": 5.36,
+   "text": "verification state implementation,"
+  },
+  {
+   "start": 1548.08,
+   "duration": 4.56,
+   "text": "okay? That is basically in the post tool"
+  },
+  {
+   "start": 1550.76,
+   "duration": 4.0,
+   "text": "hooks. And if you see the update"
+  },
+  {
+   "start": 1552.64,
+   "duration": 3.96,
+   "text": "verification state over here, flip the"
+  },
+  {
+   "start": 1554.76,
+   "duration": 3.84,
+   "text": "verification flag only if the customer"
+  },
+  {
+   "start": 1556.6,
+   "duration": 5.52,
+   "text": "succeeded. So, we are using kind of a"
+  },
+  {
+   "start": 1558.6,
+   "duration": 5.72,
+   "text": "two whole hook approach over here."
+  },
+  {
+   "start": 1562.12,
+   "duration": 4.24,
+   "text": "Not whole hook approach. First, the"
+  },
+  {
+   "start": 1564.32,
+   "duration": 5.68,
+   "text": "customer gets verified and what after"
+  },
+  {
+   "start": 1566.36,
+   "duration": 6.88,
+   "text": "that tool has been executed, we are"
+  },
+  {
+   "start": 1570.0,
+   "duration": 5.44,
+   "text": "setting the update verification state as"
+  },
+  {
+   "start": 1573.24,
+   "duration": 4.08,
+   "text": "true."
+  },
+  {
+   "start": 1575.44,
+   "duration": 4.88,
+   "text": "Don't get confused."
+  },
+  {
+   "start": 1577.32,
+   "duration": 6.44,
+   "text": "Obviously, pre-tool will determine"
+  },
+  {
+   "start": 1580.32,
+   "duration": 5.4,
+   "text": "whether the lookup order and the process"
+  },
+  {
+   "start": 1583.76,
+   "duration": 2.84,
+   "text": "refund should execute or not. That is"
+  },
+  {
+   "start": 1585.72,
+   "duration": 3.4,
+   "text": "the"
+  },
+  {
+   "start": 1586.6,
+   "duration": 5.32,
+   "text": "hard violation you are putting."
+  },
+  {
+   "start": 1589.12,
+   "duration": 5.4,
+   "text": "But on what basis are you putting that"
+  },
+  {
+   "start": 1591.92,
+   "duration": 4.96,
+   "text": "hard violation? Is that the customer has"
+  },
+  {
+   "start": 1594.52,
+   "duration": 4.08,
+   "text": "been verified or not? When will you know"
+  },
+  {
+   "start": 1596.88,
+   "duration": 5.56,
+   "text": "if the customer has been verified or"
+  },
+  {
+   "start": 1598.6,
+   "duration": 5.44,
+   "text": "not? After the get customer tool has"
+  },
+  {
+   "start": 1602.44,
+   "duration": 3.56,
+   "text": "been executed. Once the customer is"
+  },
+  {
+   "start": 1604.04,
+   "duration": 4.12,
+   "text": "found in the database, you are sure"
+  },
+  {
+   "start": 1606.0,
+   "duration": 3.48,
+   "text": "that, okay, that customer has been"
+  },
+  {
+   "start": 1608.16,
+   "duration": 4.64,
+   "text": "verified."
+  },
+  {
+   "start": 1609.48,
+   "duration": 5.16,
+   "text": "And basically um"
+  },
+  {
+   "start": 1612.8,
+   "duration": 4.6,
+   "text": "you know, um"
+  },
+  {
+   "start": 1614.64,
+   "duration": 4.24,
+   "text": "I'm good to"
+  },
+  {
+   "start": 1617.4,
+   "duration": 3.08,
+   "text": "I'm sure of it and then we are setting"
+  },
+  {
+   "start": 1618.88,
+   "duration": 3.2,
+   "text": "the flag as true."
+  },
+  {
+   "start": 1620.48,
+   "duration": 3.96,
+   "text": "And on basis of that flag, we are"
+  },
+  {
+   "start": 1622.08,
+   "duration": 5.0,
+   "text": "determining in the pre-tool in the"
+  },
+  {
+   "start": 1624.44,
+   "duration": 5.96,
+   "text": "pre-tool"
+  },
+  {
+   "start": 1627.08,
+   "duration": 6.68,
+   "text": "in the pre-tool hooks, if you see,"
+  },
+  {
+   "start": 1630.4,
+   "duration": 6.08,
+   "text": "we are on basis of that flag,"
+  },
+  {
+   "start": 1633.76,
+   "duration": 4.32,
+   "text": "we are determining that, okay, if not in"
+  },
+  {
+   "start": 1636.48,
+   "duration": 3.8,
+   "text": "session customer verified, we are"
+  },
+  {
+   "start": 1638.08,
+   "duration": 4.88,
+   "text": "putting allowed as false. So, those"
+  },
+  {
+   "start": 1640.28,
+   "duration": 4.24,
+   "text": "tools cannot be executed anymore."
+  },
+  {
+   "start": 1642.96,
+   "duration": 3.68,
+   "text": "That is what I wanted to explain over"
+  },
+  {
+   "start": 1644.52,
+   "duration": 4.68,
+   "text": "here, guys."
+  },
+  {
+   "start": 1646.64,
+   "duration": 3.76,
+   "text": "Okay, so that is about prerequisite"
+  },
+  {
+   "start": 1649.2,
+   "duration": 4.24,
+   "text": "gates."
+  },
+  {
+   "start": 1650.4,
+   "duration": 5.36,
+   "text": "Now, let us execute the,"
+  },
+  {
+   "start": 1653.44,
+   "duration": 4.12,
+   "text": "you know, the code one by one, you know,"
+  },
+  {
+   "start": 1655.76,
+   "duration": 4.16,
+   "text": "of pre-tool, post-tool and how it"
+  },
+  {
+   "start": 1657.56,
+   "duration": 4.76,
+   "text": "executes and see that in action a bit."
+  },
+  {
+   "start": 1659.92,
+   "duration": 4.48,
+   "text": "Okay? Okay, so let us see this pre-tool,"
+  },
+  {
+   "start": 1662.32,
+   "duration": 4.88,
+   "text": "post-tool and this"
+  },
+  {
+   "start": 1664.4,
+   "duration": 4.36,
+   "text": "uh get prerequisite gate in action."
+  },
+  {
+   "start": 1667.2,
+   "duration": 2.92,
+   "text": "Right? So,"
+  },
+  {
+   "start": 1668.76,
+   "duration": 3.44,
+   "text": "um"
+  },
+  {
+   "start": 1670.12,
+   "duration": 4.52,
+   "text": "So, basically post-tool will execute"
+  },
+  {
+   "start": 1672.2,
+   "duration": 4.12,
+   "text": "every time whenever there is some output"
+  },
+  {
+   "start": 1674.64,
+   "duration": 2.64,
+   "text": "to be given to the user, because, you"
+  },
+  {
+   "start": 1676.32,
+   "duration": 3.04,
+   "text": "know,"
+  },
+  {
+   "start": 1677.28,
+   "duration": 4.2,
+   "text": "uh it's a post-tool, right? Basically,"
+  },
+  {
+   "start": 1679.36,
+   "duration": 4.28,
+   "text": "it will do and it will it will it will"
+  },
+  {
+   "start": 1681.48,
+   "duration": 4.56,
+   "text": "also set the session variable for the"
+  },
+  {
+   "start": 1683.64,
+   "duration": 4.12,
+   "text": "user if it is found in the DB."
+  },
+  {
+   "start": 1686.04,
+   "duration": 3.36,
+   "text": "So, let's post-tool is pretty easy to"
+  },
+  {
+   "start": 1687.76,
+   "duration": 2.84,
+   "text": "understand. Let us see the pre-tool in"
+  },
+  {
+   "start": 1689.4,
+   "duration": 4.6,
+   "text": "action."
+  },
+  {
+   "start": 1690.6,
+   "duration": 5.12,
+   "text": "So, pre-tool will execute when um"
+  },
+  {
+   "start": 1694.0,
+   "duration": 3.04,
+   "text": "you know, uh the"
+  },
+  {
+   "start": 1695.72,
+   "duration": 2.0,
+   "text": "uh you know, the"
+  },
+  {
+   "start": 1697.04,
+   "duration": 2.639,
+   "text": "uh"
+  },
+  {
+   "start": 1697.72,
+   "duration": 3.56,
+   "text": "the the session or the customer is not"
+  },
+  {
+   "start": 1699.679,
+   "duration": 2.321,
+   "text": "there or"
+  },
+  {
+   "start": 1701.28,
+   "duration": 3.04,
+   "text": "uh"
+  },
+  {
+   "start": 1702.0,
+   "duration": 3.72,
+   "text": "you know, the refund is basically, you"
+  },
+  {
+   "start": 1704.32,
+   "duration": 4.12,
+   "text": "know, um"
+  },
+  {
+   "start": 1705.72,
+   "duration": 5.52,
+   "text": "greater than 500. So, we'll try the 500"
+  },
+  {
+   "start": 1708.44,
+   "duration": 6.0,
+   "text": "thing. It's easy to understand. So, for"
+  },
+  {
+   "start": 1711.24,
+   "duration": 7.28,
+   "text": "this particular customer, okay, C001, we"
+  },
+  {
+   "start": 1714.44,
+   "duration": 7.16,
+   "text": "have a order O102, I would say, and it"
+  },
+  {
+   "start": 1718.52,
+   "duration": 4.96,
+   "text": "is $750. So, in this case the pre-tool"
+  },
+  {
+   "start": 1721.6,
+   "duration": 5.28,
+   "text": "should execute."
+  },
+  {
+   "start": 1723.48,
+   "duration": 5.199,
+   "text": "Right? So, in this particular um"
+  },
+  {
+   "start": 1726.88,
+   "duration": 4.2,
+   "text": "here thing over here, I'm calling the"
+  },
+  {
+   "start": 1728.679,
+   "duration": 4.761,
+   "text": "coordinator agent and I'm passing in the"
+  },
+  {
+   "start": 1731.08,
+   "duration": 5.599,
+   "text": "customer ID as this and order ID as"
+  },
+  {
+   "start": 1733.44,
+   "duration": 5.68,
+   "text": "this. So, this should particularly"
+  },
+  {
+   "start": 1736.679,
+   "duration": 4.081,
+   "text": "execute the"
+  },
+  {
+   "start": 1739.12,
+   "duration": 5.2,
+   "text": "you know,"
+  },
+  {
+   "start": 1740.76,
+   "duration": 6.56,
+   "text": "pre-tool hook. So, I'm just going to"
+  },
+  {
+   "start": 1744.32,
+   "duration": 4.08,
+   "text": "run the project and let's see that in"
+  },
+  {
+   "start": 1747.32,
+   "duration": 3.52,
+   "text": "action."
+  },
+  {
+   "start": 1748.4,
+   "duration": 4.08,
+   "text": "Okay."
+  },
+  {
+   "start": 1750.84,
+   "duration": 3.68,
+   "text": "Something is happening over here and let"
+  },
+  {
+   "start": 1752.48,
+   "duration": 4.56,
+   "text": "us see that particular thing. What what"
+  },
+  {
+   "start": 1754.52,
+   "duration": 4.08,
+   "text": "all things are happening."
+  },
+  {
+   "start": 1757.04,
+   "duration": 4.92,
+   "text": "Yep."
+  },
+  {
+   "start": 1758.6,
+   "duration": 3.36,
+   "text": "Yep. Yep. Yep."
+  },
+  {
+   "start": 1762.0,
+   "duration": 5.2,
+   "text": "Okay, something is happening. Okay."
+  },
+  {
+   "start": 1764.6,
+   "duration": 5.8,
+   "text": "Customer scenario is customer C001 wants"
+  },
+  {
+   "start": 1767.2,
+   "duration": 4.44,
+   "text": "a refund for uh O100."
+  },
+  {
+   "start": 1770.4,
+   "duration": 3.32,
+   "text": "So, this is the process of the"
+  },
+  {
+   "start": 1771.64,
+   "duration": 4.24,
+   "text": "coordinator agent. Obviously, we know it"
+  },
+  {
+   "start": 1773.72,
+   "duration": 3.92,
+   "text": "will spawn sub-agents, right? We have"
+  },
+  {
+   "start": 1775.88,
+   "duration": 3.36,
+   "text": "understood about the hub and spoke model"
+  },
+  {
+   "start": 1777.64,
+   "duration": 3.0,
+   "text": "in our previous lessons. If you haven't"
+  },
+  {
+   "start": 1779.24,
+   "duration": 4.24,
+   "text": "checked it out, please go and check it"
+  },
+  {
+   "start": 1780.64,
+   "duration": 4.44,
+   "text": "out. I have discussed that in in detail."
+  },
+  {
+   "start": 1783.48,
+   "duration": 4.0,
+   "text": "Then,"
+  },
+  {
+   "start": 1785.08,
+   "duration": 4.68,
+   "text": "you know, uh the customer verification"
+  },
+  {
+   "start": 1787.48,
+   "duration": 4.6,
+   "text": "tool, I mean uh it start rate. So"
+  },
+  {
+   "start": 1789.76,
+   "duration": 4.64,
+   "text": "basically each sub agent has its own sub"
+  },
+  {
+   "start": 1792.08,
+   "duration": 5.44,
+   "text": "agent group. We all know that. So when"
+  },
+  {
+   "start": 1794.4,
+   "duration": 4.6,
+   "text": "the uh stop reason is tool use. So it"
+  },
+  {
+   "start": 1797.52,
+   "duration": 3.24,
+   "text": "the first tool that we have to execute"
+  },
+  {
+   "start": 1799.0,
+   "duration": 3.96,
+   "text": "is the customer verification tool. So it"
+  },
+  {
+   "start": 1800.76,
+   "duration": 4.8,
+   "text": "verified the customer is there, verified"
+  },
+  {
+   "start": 1802.96,
+   "duration": 4.28,
+   "text": "the session, and stop reason equals to"
+  },
+  {
+   "start": 1805.56,
+   "duration": 3.56,
+   "text": "end turn and it's saying that the"
+  },
+  {
+   "start": 1807.24,
+   "duration": 5.44,
+   "text": "response is customer verification is"
+  },
+  {
+   "start": 1809.12,
+   "duration": 4.84,
+   "text": "confirmed. Customer C001 exists."
+  },
+  {
+   "start": 1812.68,
+   "duration": 3.68,
+   "text": "Now"
+  },
+  {
+   "start": 1813.96,
+   "duration": 4.32,
+   "text": "basically the customer"
+  },
+  {
+   "start": 1816.36,
+   "duration": 3.48,
+   "text": "has been executed. Now the next thing we"
+  },
+  {
+   "start": 1818.28,
+   "duration": 3.0,
+   "text": "have we have we are not done yet. We"
+  },
+  {
+   "start": 1819.84,
+   "duration": 4.92,
+   "text": "have to now process the refund for that"
+  },
+  {
+   "start": 1821.28,
+   "duration": 5.24,
+   "text": "customer, right? Now basically the"
+  },
+  {
+   "start": 1824.76,
+   "duration": 4.24,
+   "text": "customer has been verified and this is"
+  },
+  {
+   "start": 1826.52,
+   "duration": 4.92,
+   "text": "passing to the next sub agent basically"
+  },
+  {
+   "start": 1829.0,
+   "duration": 5.68,
+   "text": "to the lookup agent, right? Or the"
+  },
+  {
+   "start": 1831.44,
+   "duration": 4.8,
+   "text": "refund processor sub agent. Now if you"
+  },
+  {
+   "start": 1834.68,
+   "duration": 3.84,
+   "text": "see over here the stop reason is tool"
+  },
+  {
+   "start": 1836.24,
+   "duration": 4.32,
+   "text": "use. So now every sub agent will have"
+  },
+  {
+   "start": 1838.52,
+   "duration": 4.2,
+   "text": "its So one sub agent finished its"
+  },
+  {
+   "start": 1840.56,
+   "duration": 4.56,
+   "text": "processing when one sub agent reached"
+  },
+  {
+   "start": 1842.72,
+   "duration": 4.28,
+   "text": "that stop reason as end turn, it means"
+  },
+  {
+   "start": 1845.12,
+   "duration": 4.24,
+   "text": "that that sub agent has finished its"
+  },
+  {
+   "start": 1847.0,
+   "duration": 4.88,
+   "text": "execution. The context is passed to the"
+  },
+  {
+   "start": 1849.36,
+   "duration": 4.92,
+   "text": "next sub agent. Like the lookup order"
+  },
+  {
+   "start": 1851.88,
+   "duration": 3.88,
+   "text": "and then the pre fund processor. Now if"
+  },
+  {
+   "start": 1854.28,
+   "duration": 4.76,
+   "text": "you see"
+  },
+  {
+   "start": 1855.76,
+   "duration": 5.0,
+   "text": "calling lookup order, this is okay. So"
+  },
+  {
+   "start": 1859.04,
+   "duration": 3.68,
+   "text": "it has found some result for that"
+  },
+  {
+   "start": 1860.76,
+   "duration": 4.56,
+   "text": "particular order basically. This is the"
+  },
+  {
+   "start": 1862.72,
+   "duration": 6.08,
+   "text": "normalized result. Stop reason equals to"
+  },
+  {
+   "start": 1865.32,
+   "duration": 5.92,
+   "text": "tool use blocked process process refund."
+  },
+  {
+   "start": 1868.8,
+   "duration": 4.44,
+   "text": "Lookup order has been completed. Then"
+  },
+  {
+   "start": 1871.24,
+   "duration": 4.56,
+   "text": "blocked process process refund. Why? The"
+  },
+  {
+   "start": 1873.24,
+   "duration": 5.28,
+   "text": "reason being the refund $750 exceeds the"
+  },
+  {
+   "start": 1875.8,
+   "duration": 4.12,
+   "text": "$500 agent limit. This is where the pre"
+  },
+  {
+   "start": 1878.52,
+   "duration": 4.36,
+   "text": "tool has come into the picture. If you"
+  },
+  {
+   "start": 1879.92,
+   "duration": 5.68,
+   "text": "see after that the the stop reason is"
+  },
+  {
+   "start": 1882.88,
+   "duration": 4.0,
+   "text": "end turn and there is no response"
+  },
+  {
+   "start": 1885.6,
+   "duration": 4.96,
+   "text": "basically."
+  },
+  {
+   "start": 1886.88,
+   "duration": 5.76,
+   "text": "Right? That is what it is."
+  },
+  {
+   "start": 1890.56,
+   "duration": 5.0,
+   "text": "So customer support case is all done and"
+  },
+  {
+   "start": 1892.64,
+   "duration": 5.04,
+   "text": "the customer verification confirmed, but"
+  },
+  {
+   "start": 1895.56,
+   "duration": 4.64,
+   "text": "the refund processing result it means"
+  },
+  {
+   "start": 1897.68,
+   "duration": 5.12,
+   "text": "that it hasn't you know processed it"
+  },
+  {
+   "start": 1900.2,
+   "duration": 4.24,
+   "text": "because the refund amount exceeds agent"
+  },
+  {
+   "start": 1902.8,
+   "duration": 4.84,
+   "text": "authorization limit."
+  },
+  {
+   "start": 1904.44,
+   "duration": 5.56,
+   "text": "And escalate to senior support."
+  },
+  {
+   "start": 1907.64,
+   "duration": 4.12,
+   "text": "Now it is properly formatting. Now the"
+  },
+  {
+   "start": 1910.0,
+   "duration": 3.04,
+   "text": "LLM comes into the picture in formatting"
+  },
+  {
+   "start": 1911.76,
+   "duration": 4.2,
+   "text": "the message and all."
+  },
+  {
+   "start": 1913.04,
+   "duration": 5.6,
+   "text": "Okay? I hope that is making sense."
+  },
+  {
+   "start": 1915.96,
+   "duration": 6.16,
+   "text": "Now if you go back to my slides over"
+  },
+  {
+   "start": 1918.64,
+   "duration": 5.44,
+   "text": "here let's talk about some other stuffs."
+  },
+  {
+   "start": 1922.12,
+   "duration": 4.4,
+   "text": "I hope you have enjoyed that you know"
+  },
+  {
+   "start": 1924.08,
+   "duration": 4.76,
+   "text": "that code execution in in detail. Now"
+  },
+  {
+   "start": 1926.52,
+   "duration": 5.8,
+   "text": "let's go off and talk about something"
+  },
+  {
+   "start": 1928.84,
+   "duration": 7.12,
+   "text": "known as structured handoff summaries."
+  },
+  {
+   "start": 1932.32,
+   "duration": 6.24,
+   "text": "Now see, now if you see if you saw right"
+  },
+  {
+   "start": 1935.96,
+   "duration": 5.0,
+   "text": "now basically"
+  },
+  {
+   "start": 1938.56,
+   "duration": 6.48,
+   "text": "um"
+  },
+  {
+   "start": 1940.96,
+   "duration": 4.08,
+   "text": "you saw that you know um"
+  },
+  {
+   "start": 1947.0,
+   "duration": 4.28,
+   "text": "we saw that we have escalated it to the"
+  },
+  {
+   "start": 1949.52,
+   "duration": 4.32,
+   "text": "customer you know the human agent,"
+  },
+  {
+   "start": 1951.28,
+   "duration": 5.12,
+   "text": "right? But we haven't provided much"
+  },
+  {
+   "start": 1953.84,
+   "duration": 4.76,
+   "text": "information to the human agent."
+  },
+  {
+   "start": 1956.4,
+   "duration": 5.8,
+   "text": "You know?"
+  },
+  {
+   "start": 1958.6,
+   "duration": 5.52,
+   "text": "So basically the human for example opens"
+  },
+  {
+   "start": 1962.2,
+   "duration": 4.12,
+   "text": "up that particular response by the agent"
+  },
+  {
+   "start": 1964.12,
+   "duration": 4.6,
+   "text": "and it sees customer escalated please"
+  },
+  {
+   "start": 1966.32,
+   "duration": 3.72,
+   "text": "assist. Small message it sees."
+  },
+  {
+   "start": 1968.72,
+   "duration": 4.12,
+   "text": "That is"
+  },
+  {
+   "start": 1970.04,
+   "duration": 5.12,
+   "text": "pathetic. That is useless. The human now"
+  },
+  {
+   "start": 1972.84,
+   "duration": 4.2,
+   "text": "have to read all the conversations"
+  },
+  {
+   "start": 1975.16,
+   "duration": 4.48,
+   "text": "between the"
+  },
+  {
+   "start": 1977.04,
+   "duration": 4.44,
+   "text": "customer and the agent to understand"
+  },
+  {
+   "start": 1979.64,
+   "duration": 4.12,
+   "text": "what has happened."
+  },
+  {
+   "start": 1981.48,
+   "duration": 4.16,
+   "text": "But instead of that if the agent had"
+  },
+  {
+   "start": 1983.76,
+   "duration": 4.36,
+   "text": "provided some kind of summary to that"
+  },
+  {
+   "start": 1985.64,
+   "duration": 4.4,
+   "text": "particular agent while we we we are just"
+  },
+  {
+   "start": 1988.12,
+   "duration": 4.4,
+   "text": "escalated right now, right?"
+  },
+  {
+   "start": 1990.04,
+   "duration": 5.12,
+   "text": "If now this this response that you saw"
+  },
+  {
+   "start": 1992.52,
+   "duration": 4.76,
+   "text": "it came from the"
+  },
+  {
+   "start": 1995.16,
+   "duration": 5.04,
+   "text": "LLM itself. You know the LLM was"
+  },
+  {
+   "start": 1997.28,
+   "duration": 5.32,
+   "text": "intelligent to format it in a way."
+  },
+  {
+   "start": 2000.2,
+   "duration": 4.479,
+   "text": "But if you have strict constraints and"
+  },
+  {
+   "start": 2002.6,
+   "duration": 3.76,
+   "text": "just says please assist to the"
+  },
+  {
+   "start": 2004.679,
+   "duration": 3.961,
+   "text": "particular customer and here also it is"
+  },
+  {
+   "start": 2006.36,
+   "duration": 4.68,
+   "text": "not proper information. If you have a"
+  },
+  {
+   "start": 2008.64,
+   "duration": 4.84,
+   "text": "proper pre tool hook and all that, all"
+  },
+  {
+   "start": 2011.04,
+   "duration": 3.6,
+   "text": "those information you should cascade and"
+  },
+  {
+   "start": 2013.48,
+   "duration": 2.4,
+   "text": "actually"
+  },
+  {
+   "start": 2014.64,
+   "duration": 2.16,
+   "text": "you know"
+  },
+  {
+   "start": 2015.88,
+   "duration": 3.2,
+   "text": "um"
+  },
+  {
+   "start": 2016.8,
+   "duration": 3.24,
+   "text": "send it as like a"
+  },
+  {
+   "start": 2019.08,
+   "duration": 3.64,
+   "text": "uh"
+  },
+  {
+   "start": 2020.04,
+   "duration": 4.36,
+   "text": "summary to the particular human."
+  },
+  {
+   "start": 2022.72,
+   "duration": 4.8,
+   "text": "So"
+  },
+  {
+   "start": 2024.4,
+   "duration": 5.48,
+   "text": "escalating without a structured handoff"
+  },
+  {
+   "start": 2027.52,
+   "duration": 4.8,
+   "text": "summary forces the you know receiving"
+  },
+  {
+   "start": 2029.88,
+   "duration": 5.72,
+   "text": "agent or the human agent whoever, right?"
+  },
+  {
+   "start": 2032.32,
+   "duration": 5.8,
+   "text": "To reconstruct context from the past"
+  },
+  {
+   "start": 2035.6,
+   "duration": 4.72,
+   "text": "conversation or from the transcript and"
+  },
+  {
+   "start": 2038.12,
+   "duration": 4.32,
+   "text": "it defeats the purpose of an intelligent"
+  },
+  {
+   "start": 2040.32,
+   "duration": 4.52,
+   "text": "loop basically."
+  },
+  {
+   "start": 2042.44,
+   "duration": 4.48,
+   "text": "Right? And that is the exam it will test"
+  },
+  {
+   "start": 2044.84,
+   "duration": 3.72,
+   "text": "you. So if you're escalating to a for"
+  },
+  {
+   "start": 2046.92,
+   "duration": 4.04,
+   "text": "for example to the next sub agent or to"
+  },
+  {
+   "start": 2048.56,
+   "duration": 4.359,
+   "text": "the human agent, how you should do that?"
+  },
+  {
+   "start": 2050.96,
+   "duration": 4.64,
+   "text": "You should provide a handoff summary"
+  },
+  {
+   "start": 2052.919,
+   "duration": 4.841,
+   "text": "prompt to the particular agent so that"
+  },
+  {
+   "start": 2055.6,
+   "duration": 4.0,
+   "text": "it understand how do I escalate it to"
+  },
+  {
+   "start": 2057.76,
+   "duration": 3.88,
+   "text": "the next sub agent or to the next human"
+  },
+  {
+   "start": 2059.6,
+   "duration": 4.04,
+   "text": "agent. So if you see this"
+  },
+  {
+   "start": 2061.64,
+   "duration": 4.039,
+   "text": "um"
+  },
+  {
+   "start": 2063.64,
+   "duration": 3.6,
+   "text": "I think I have created"
+  },
+  {
+   "start": 2065.679,
+   "duration": 5.401,
+   "text": "um"
+  },
+  {
+   "start": 2067.24,
+   "duration": 3.84,
+   "text": "maybe I have pasted it here."
+  },
+  {
+   "start": 2071.399,
+   "duration": 4.401,
+   "text": "Okay, I think I forgot to paste it, but"
+  },
+  {
+   "start": 2073.159,
+   "duration": 3.921,
+   "text": "you try to understand it, right? You can"
+  },
+  {
+   "start": 2075.8,
+   "duration": 3.64,
+   "text": "you have to provide some kind of a"
+  },
+  {
+   "start": 2077.08,
+   "duration": 4.64,
+   "text": "handoff summary. For example"
+  },
+  {
+   "start": 2079.44,
+   "duration": 3.959,
+   "text": "uh let me just type it out here just to"
+  },
+  {
+   "start": 2081.72,
+   "duration": 5.28,
+   "text": "explain you how that will look. You know"
+  },
+  {
+   "start": 2083.399,
+   "duration": 6.52,
+   "text": "normal basic prompt only. Handoff"
+  },
+  {
+   "start": 2087.0,
+   "duration": 5.6,
+   "text": "for example prompt."
+  },
+  {
+   "start": 2089.919,
+   "duration": 7.521,
+   "text": "And uh"
+  },
+  {
+   "start": 2092.6,
+   "duration": 7.16,
+   "text": "I think did I Did I Did I Did I"
+  },
+  {
+   "start": 2097.44,
+   "duration": 4.84,
+   "text": "No, I didn't implement it here. No No"
+  },
+  {
+   "start": 2099.76,
+   "duration": 4.04,
+   "text": "worries. So you can just write a handoff"
+  },
+  {
+   "start": 2102.28,
+   "duration": 4.04,
+   "text": "prompt over here. You know you can just"
+  },
+  {
+   "start": 2103.8,
+   "duration": 4.36,
+   "text": "say before escalating"
+  },
+  {
+   "start": 2106.32,
+   "duration": 4.52,
+   "text": "or you can just put it in the code"
+  },
+  {
+   "start": 2108.16,
+   "duration": 5.84,
+   "text": "itself in in the capstone. Somewhere you"
+  },
+  {
+   "start": 2110.84,
+   "duration": 3.16,
+   "text": "can put it, right? Um"
+  },
+  {
+   "start": 2114.8,
+   "duration": 5.36,
+   "text": "Uh maybe"
+  },
+  {
+   "start": 2116.72,
+   "duration": 3.44,
+   "text": "it should have a system prompt."
+  },
+  {
+   "start": 2122.76,
+   "duration": 4.4,
+   "text": "Right. Where is it?"
+  },
+  {
+   "start": 2125.48,
+   "duration": 3.68,
+   "text": "Yeah, this is the system prompt. You can"
+  },
+  {
+   "start": 2127.16,
+   "duration": 5.6,
+   "text": "just put one hand over a handoff prompt"
+  },
+  {
+   "start": 2129.16,
+   "duration": 8.28,
+   "text": "over here. And before escalating"
+  },
+  {
+   "start": 2132.76,
+   "duration": 6.56,
+   "text": "uh output a structured handoff. Output"
+  },
+  {
+   "start": 2137.44,
+   "duration": 3.72,
+   "text": "uh for example"
+  },
+  {
+   "start": 2139.32,
+   "duration": 5.12,
+   "text": "structured handoff. You have to provide"
+  },
+  {
+   "start": 2141.16,
+   "duration": 6.76,
+   "text": "more details basically. I'm just um"
+  },
+  {
+   "start": 2144.44,
+   "duration": 8.32,
+   "text": "putting some points over here."
+  },
+  {
+   "start": 2147.92,
+   "duration": 4.84,
+   "text": "Right? And basically you would do that."
+  },
+  {
+   "start": 2153.0,
+   "duration": 4.0,
+   "text": "What is this?"
+  },
+  {
+   "start": 2154.92,
+   "duration": 5.32,
+   "text": "Uh there is some"
+  },
+  {
+   "start": 2157.0,
+   "duration": 3.24,
+   "text": "some problem over here."
+  },
+  {
+   "start": 2160.8,
+   "duration": 2.84,
+   "text": "Okay, sorry."
+  },
+  {
+   "start": 2163.72,
+   "duration": 3.12,
+   "text": "Uh"
+  },
+  {
+   "start": 2164.44,
+   "duration": 5.64,
+   "text": "I was telling some problem is there."
+  },
+  {
+   "start": 2166.84,
+   "duration": 5.44,
+   "text": "I was using that colon instead of equals"
+  },
+  {
+   "start": 2170.08,
+   "duration": 4.36,
+   "text": "to. And then you have to put escalate"
+  },
+  {
+   "start": 2172.28,
+   "duration": 3.24,
+   "text": "for example params."
+  },
+  {
+   "start": 2174.44,
+   "duration": 2.68,
+   "text": "Right?"
+  },
+  {
+   "start": 2175.52,
+   "duration": 4.839,
+   "text": "For example"
+  },
+  {
+   "start": 2177.12,
+   "duration": 5.96,
+   "text": "um some you can create an object you"
+  },
+  {
+   "start": 2180.359,
+   "duration": 4.961,
+   "text": "know with the handoff summary priority"
+  },
+  {
+   "start": 2183.08,
+   "duration": 4.12,
+   "text": "and for example routing tier like senior"
+  },
+  {
+   "start": 2185.32,
+   "duration": 4.039,
+   "text": "support that I have just put it there."
+  },
+  {
+   "start": 2187.2,
+   "duration": 4.4,
+   "text": "So this is how you can use this prompt"
+  },
+  {
+   "start": 2189.359,
+   "duration": 4.0,
+   "text": "and pass it on to the next agent. And it"
+  },
+  {
+   "start": 2191.6,
+   "duration": 3.72,
+   "text": "is pretty important to understand"
+  },
+  {
+   "start": 2193.359,
+   "duration": 3.641,
+   "text": "context of the exam because the exam"
+  },
+  {
+   "start": 2195.32,
+   "duration": 4.24,
+   "text": "will ask you this kind of questions. How"
+  },
+  {
+   "start": 2197.0,
+   "duration": 6.44,
+   "text": "do you handle this effectively?"
+  },
+  {
+   "start": 2199.56,
+   "duration": 3.88,
+   "text": "Right? And that is very very important."
+  },
+  {
+   "start": 2203.48,
+   "duration": 4.92,
+   "text": "Okay, so this is the format you know the"
+  },
+  {
+   "start": 2206.04,
+   "duration": 4.6,
+   "text": "agent must generate uh a self-contained"
+  },
+  {
+   "start": 2208.4,
+   "duration": 4.6,
+   "text": "handoff summary and you can put in more"
+  },
+  {
+   "start": 2210.64,
+   "duration": 4.56,
+   "text": "details of what needs to be handled by"
+  },
+  {
+   "start": 2213.0,
+   "duration": 4.32,
+   "text": "the human agent or if you want to pass"
+  },
+  {
+   "start": 2215.2,
+   "duration": 5.32,
+   "text": "it to the next sub agent for example."
+  },
+  {
+   "start": 2217.32,
+   "duration": 3.2,
+   "text": "You have to do all these things."
+  },
+  {
+   "start": 2222.44,
+   "duration": 3.919,
+   "text": ">> [sighs]"
+  },
+  {
+   "start": 2223.0,
+   "duration": 6.92,
+   "text": ">> Okay. Now task decomposition. What does"
+  },
+  {
+   "start": 2226.359,
+   "duration": 5.401,
+   "text": "task decomposition means? So let's pivot"
+  },
+  {
+   "start": 2229.92,
+   "duration": 3.439,
+   "text": "a little bit from the concept that we"
+  },
+  {
+   "start": 2231.76,
+   "duration": 3.599,
+   "text": "were just discussing and let's discuss"
+  },
+  {
+   "start": 2233.359,
+   "duration": 5.081,
+   "text": "about one more thing known as task"
+  },
+  {
+   "start": 2235.359,
+   "duration": 5.121,
+   "text": "decomposition. The two strategies"
+  },
+  {
+   "start": 2238.44,
+   "duration": 4.96,
+   "text": "I mean fundamentally different"
+  },
+  {
+   "start": 2240.48,
+   "duration": 6.16,
+   "text": "approaches that you would generally use"
+  },
+  {
+   "start": 2243.4,
+   "duration": 4.44,
+   "text": "in a multi-step agentic workflow. Okay,"
+  },
+  {
+   "start": 2246.64,
+   "duration": 2.84,
+   "text": "that's what we have been discussing,"
+  },
+  {
+   "start": 2247.84,
+   "duration": 3.6,
+   "text": "right? Agentic workflows."
+  },
+  {
+   "start": 2249.48,
+   "duration": 3.879,
+   "text": "So two approaches. One approach I want"
+  },
+  {
+   "start": 2251.44,
+   "duration": 4.88,
+   "text": "to talk about is the prompt chaining and"
+  },
+  {
+   "start": 2253.359,
+   "duration": 5.201,
+   "text": "second one is dynamic decomposition."
+  },
+  {
+   "start": 2256.32,
+   "duration": 4.64,
+   "text": "When to use what and what does these two"
+  },
+  {
+   "start": 2258.56,
+   "duration": 5.76,
+   "text": "things mean?"
+  },
+  {
+   "start": 2260.96,
+   "duration": 5.2,
+   "text": "Now before you actually start a"
+  },
+  {
+   "start": 2264.32,
+   "duration": 3.64,
+   "text": "particular agentic workflow, you have to"
+  },
+  {
+   "start": 2266.16,
+   "duration": 4.16,
+   "text": "ask yourself a question and even in the"
+  },
+  {
+   "start": 2267.96,
+   "duration": 3.92,
+   "text": "exam whenever the scenario comes up,"
+  },
+  {
+   "start": 2270.32,
+   "duration": 4.76,
+   "text": "before answering that you have to ask"
+  },
+  {
+   "start": 2271.88,
+   "duration": 8.64,
+   "text": "yourself this question. Um"
+  },
+  {
+   "start": 2275.08,
+   "duration": 7.52,
+   "text": "do you know what the steps are before"
+  },
+  {
+   "start": 2280.52,
+   "duration": 3.4,
+   "text": "you start this particular agentic"
+  },
+  {
+   "start": 2282.6,
+   "duration": 4.52,
+   "text": "workflow?"
+  },
+  {
+   "start": 2283.92,
+   "duration": 6.88,
+   "text": "Do you know exactly what you are doing?"
+  },
+  {
+   "start": 2287.12,
+   "duration": 7.44,
+   "text": "If you know exactly what you are doing"
+  },
+  {
+   "start": 2290.8,
+   "duration": 6.68,
+   "text": "you would go with prompt chaining."
+  },
+  {
+   "start": 2294.56,
+   "duration": 5.76,
+   "text": "Now if your"
+  },
+  {
+   "start": 2297.48,
+   "duration": 5.24,
+   "text": "agentic workflow is dependent on"
+  },
+  {
+   "start": 2300.32,
+   "duration": 3.72,
+   "text": "findings and explorations"
+  },
+  {
+   "start": 2302.72,
+   "duration": 4.216,
+   "text": "then you would go with the second"
+  },
+  {
+   "start": 2304.04,
+   "duration": 3.92,
+   "text": "approach known as dynamic decomposition."
+  },
+  {
+   "start": 2306.936,
+   "duration": 3.224,
+   "text": ">> [snorts]"
+  },
+  {
+   "start": 2307.96,
+   "duration": 3.64,
+   "text": ">> Okay, let's let's understand this in"
+  },
+  {
+   "start": 2310.16,
+   "duration": 4.24,
+   "text": "terms of example and then you would"
+  },
+  {
+   "start": 2311.6,
+   "duration": 5.08,
+   "text": "understand what I'm telling."
+  },
+  {
+   "start": 2314.4,
+   "duration": 5.4,
+   "text": "So basically in prompt chaining you"
+  },
+  {
+   "start": 2316.68,
+   "duration": 5.6,
+   "text": "break a task into predefined sequence."
+  },
+  {
+   "start": 2319.8,
+   "duration": 4.84,
+   "text": "So output of step one is fed into output"
+  },
+  {
+   "start": 2322.28,
+   "duration": 4.2,
+   "text": "of step two and so on and so on."
+  },
+  {
+   "start": 2324.64,
+   "duration": 3.719,
+   "text": "Right? It's like"
+  },
+  {
+   "start": 2326.48,
+   "duration": 3.879,
+   "text": "an assembly line. You know every station"
+  },
+  {
+   "start": 2328.359,
+   "duration": 3.841,
+   "text": "does exactly one focused thing in a"
+  },
+  {
+   "start": 2330.359,
+   "duration": 5.0,
+   "text": "fixed order."
+  },
+  {
+   "start": 2332.2,
+   "duration": 4.92,
+   "text": "I mean uh great for compliance and"
+  },
+  {
+   "start": 2335.359,
+   "duration": 4.121,
+   "text": "reproducibility. Some kind of these"
+  },
+  {
+   "start": 2337.12,
+   "duration": 4.08,
+   "text": "things like a CI/CD pipeline. Let's see"
+  },
+  {
+   "start": 2339.48,
+   "duration": 2.96,
+   "text": "the you know one a small example of"
+  },
+  {
+   "start": 2341.2,
+   "duration": 4.32,
+   "text": "that, you know?"
+  },
+  {
+   "start": 2342.44,
+   "duration": 3.08,
+   "text": "If you see over here"
+  },
+  {
+   "start": 2347.08,
+   "duration": 4.92,
+   "text": "per file review, you know file reviews"
+  },
+  {
+   "start": 2349.56,
+   "duration": 5.2,
+   "text": "there is an array. A file is in changed"
+  },
+  {
+   "start": 2352.0,
+   "duration": 4.92,
+   "text": "files. You will review basically that"
+  },
+  {
+   "start": 2354.76,
+   "duration": 4.2,
+   "text": "file and you append it to the reviews,"
+  },
+  {
+   "start": 2356.92,
+   "duration": 4.24,
+   "text": "right? And then first step is per file"
+  },
+  {
+   "start": 2358.96,
+   "duration": 4.2,
+   "text": "review. Next is cross file integration."
+  },
+  {
+   "start": 2361.16,
+   "duration": 4.08,
+   "text": "You know the steps what you are doing in"
+  },
+  {
+   "start": 2363.16,
+   "duration": 4.56,
+   "text": "this particular workflow. Now you are"
+  },
+  {
+   "start": 2365.24,
+   "duration": 4.72,
+   "text": "telling basically after this is executed"
+  },
+  {
+   "start": 2367.72,
+   "duration": 3.72,
+   "text": "then you are chaining one more prompt"
+  },
+  {
+   "start": 2369.96,
+   "duration": 4.16,
+   "text": "telling that given these per file"
+  },
+  {
+   "start": 2371.44,
+   "duration": 5.68,
+   "text": "reviews identify cross-cutting concerns."
+  },
+  {
+   "start": 2374.12,
+   "duration": 4.56,
+   "text": "Now whatever you are getting from here,"
+  },
+  {
+   "start": 2377.12,
+   "duration": 3.16,
+   "text": "you are generating the final report"
+  },
+  {
+   "start": 2378.68,
+   "duration": 3.72,
+   "text": "based on that. This this is an example"
+  },
+  {
+   "start": 2380.28,
+   "duration": 4.44,
+   "text": "of prompt chaining basically."
+  },
+  {
+   "start": 2382.4,
+   "duration": 4.36,
+   "text": "Right? So, generate a PR review summary,"
+  },
+  {
+   "start": 2384.72,
+   "duration": 4.48,
+   "text": "rank issues by severity. This is how you"
+  },
+  {
+   "start": 2386.76,
+   "duration": 2.44,
+   "text": "do it."
+  },
+  {
+   "start": 2389.68,
+   "duration": 5.88,
+   "text": "So, the same thing when you"
+  },
+  {
+   "start": 2392.2,
+   "duration": 4.64,
+   "text": "do by dynamic decomposition,"
+  },
+  {
+   "start": 2395.56,
+   "duration": 3.68,
+   "text": "this is how you do. For example, in"
+  },
+  {
+   "start": 2396.84,
+   "duration": 4.16,
+   "text": "dynamic decomposition, this is kind of a"
+  },
+  {
+   "start": 2399.24,
+   "duration": 3.04,
+   "text": "prompt you would write."
+  },
+  {
+   "start": 2401.0,
+   "duration": 2.92,
+   "text": "You know, you are investigating a"
+  },
+  {
+   "start": 2402.28,
+   "duration": 3.04,
+   "text": "production incident. You don't know"
+  },
+  {
+   "start": 2403.92,
+   "duration": 3.76,
+   "text": "anything about the production input. And"
+  },
+  {
+   "start": 2405.32,
+   "duration": 4.08,
+   "text": "how would you write the steps when you"
+  },
+  {
+   "start": 2407.68,
+   "duration": 3.68,
+   "text": "haven't even debugged the production"
+  },
+  {
+   "start": 2409.4,
+   "duration": 4.8,
+   "text": "incident? Right? This is the best"
+  },
+  {
+   "start": 2411.36,
+   "duration": 4.6,
+   "text": "example of dynamic decomposition. So,"
+  },
+  {
+   "start": 2414.2,
+   "duration": 3.52,
+   "text": "you would say what to do. I mean,"
+  },
+  {
+   "start": 2415.96,
+   "duration": 3.56,
+   "text": "generic steps what you need to do, but"
+  },
+  {
+   "start": 2417.72,
+   "duration": 3.56,
+   "text": "you don't know exact steps how to fix"
+  },
+  {
+   "start": 2419.52,
+   "duration": 3.2,
+   "text": "that particular production issue."
+  },
+  {
+   "start": 2421.28,
+   "duration": 3.4,
+   "text": "So, you are investigating a production"
+  },
+  {
+   "start": 2422.72,
+   "duration": 4.28,
+   "text": "incident. Start with error logs from the"
+  },
+  {
+   "start": 2424.68,
+   "duration": 4.72,
+   "text": "last 24 hours. Based on what you find,"
+  },
+  {
+   "start": 2427.0,
+   "duration": 4.44,
+   "text": "decide your next investigation step."
+  },
+  {
+   "start": 2429.4,
+   "duration": 4.8,
+   "text": "Continue until you identify root cause"
+  },
+  {
+   "start": 2431.44,
+   "duration": 5.4,
+   "text": "and remediation. Tools you can provide"
+  },
+  {
+   "start": 2434.2,
+   "duration": 5.84,
+   "text": "like generic tools like read logs, query"
+  },
+  {
+   "start": 2436.84,
+   "duration": 4.8,
+   "text": "DB, check config, and trace request."
+  },
+  {
+   "start": 2440.04,
+   "duration": 3.4,
+   "text": "Okay, so these are our examples of"
+  },
+  {
+   "start": 2441.64,
+   "duration": 3.8,
+   "text": "system prompt that you would use in your"
+  },
+  {
+   "start": 2443.44,
+   "duration": 4.44,
+   "text": "particular agentic workflow."
+  },
+  {
+   "start": 2445.44,
+   "duration": 4.96,
+   "text": "Okay? Similarly, I have used something"
+  },
+  {
+   "start": 2447.88,
+   "duration": 4.4,
+   "text": "in my capstone project in my order"
+  },
+  {
+   "start": 2450.4,
+   "duration": 4.36,
+   "text": "processing agent. If you have another"
+  },
+  {
+   "start": 2452.28,
+   "duration": 5.52,
+   "text": "agent like a CI/CD agent or a"
+  },
+  {
+   "start": 2454.76,
+   "duration": 4.24,
+   "text": "production, you know, specialist agent,"
+  },
+  {
+   "start": 2457.8,
+   "duration": 3.0,
+   "text": "you would use"
+  },
+  {
+   "start": 2459.0,
+   "duration": 4.6,
+   "text": "different approaches and different kind"
+  },
+  {
+   "start": 2460.8,
+   "duration": 5.12,
+   "text": "of stuff. For example, in my order"
+  },
+  {
+   "start": 2463.6,
+   "duration": 4.56,
+   "text": "processing agent, I was kind of using a"
+  },
+  {
+   "start": 2465.92,
+   "duration": 4.44,
+   "text": "prompt chaining concept. So, one tool"
+  },
+  {
+   "start": 2468.16,
+   "duration": 4.36,
+   "text": "will execute, then another tool, another"
+  },
+  {
+   "start": 2470.36,
+   "duration": 4.24,
+   "text": "tool, another tool. And we had multiple"
+  },
+  {
+   "start": 2472.52,
+   "duration": 3.76,
+   "text": "sub-agents also. The coordinator was"
+  },
+  {
+   "start": 2474.6,
+   "duration": 3.76,
+   "text": "spawning the sub-agent whenever it is"
+  },
+  {
+   "start": 2476.28,
+   "duration": 4.52,
+   "text": "needed. First the"
+  },
+  {
+   "start": 2478.36,
+   "duration": 4.12,
+   "text": "comes the, for example, the order, you"
+  },
+  {
+   "start": 2480.8,
+   "duration": 3.52,
+   "text": "know, customer verification sub-agent,"
+  },
+  {
+   "start": 2482.48,
+   "duration": 4.72,
+   "text": "and then the refund processing"
+  },
+  {
+   "start": 2484.32,
+   "duration": 4.36,
+   "text": "sub-agent. Now, each sub-agent will"
+  },
+  {
+   "start": 2487.2,
+   "duration": 3.24,
+   "text": "after finishes, and then the next"
+  },
+  {
+   "start": 2488.68,
+   "duration": 3.52,
+   "text": "sub-agent comes into the picture. That"
+  },
+  {
+   "start": 2490.44,
+   "duration": 3.76,
+   "text": "is also an example of prompt chaining"
+  },
+  {
+   "start": 2492.2,
+   "duration": 4.56,
+   "text": "itself."
+  },
+  {
+   "start": 2494.2,
+   "duration": 4.48,
+   "text": "Inside one sub-agent also, you can keep,"
+  },
+  {
+   "start": 2496.76,
+   "duration": 3.8,
+   "text": "you know, chaining the prompts. It"
+  },
+  {
+   "start": 2498.68,
+   "duration": 4.52,
+   "text": "depends on you how you execute an"
+  },
+  {
+   "start": 2500.56,
+   "duration": 3.88,
+   "text": "agentic loop. If that is,"
+  },
+  {
+   "start": 2503.2,
+   "duration": 2.88,
+   "text": "you know,"
+  },
+  {
+   "start": 2504.44,
+   "duration": 3.04,
+   "text": "a thing that you already know, the steps"
+  },
+  {
+   "start": 2506.08,
+   "duration": 3.28,
+   "text": "you already know, then you would go with"
+  },
+  {
+   "start": 2507.48,
+   "duration": 2.92,
+   "text": "prompt chaining. Otherwise, you would go"
+  },
+  {
+   "start": 2509.36,
+   "duration": 2.52,
+   "text": "with"
+  },
+  {
+   "start": 2510.4,
+   "duration": 3.68,
+   "text": "dynamic decomposition. And this is a"
+  },
+  {
+   "start": 2511.88,
+   "duration": 4.24,
+   "text": "very commonly occurring question in the"
+  },
+  {
+   "start": 2514.08,
+   "duration": 3.44,
+   "text": "cloud certified exam, guys. And it is"
+  },
+  {
+   "start": 2516.12,
+   "duration": 3.68,
+   "text": "very, very important that you understand"
+  },
+  {
+   "start": 2517.52,
+   "duration": 2.28,
+   "text": "it."
+  },
+  {
+   "start": 2520.72,
+   "duration": 3.32,
+   "text": "Okay."
+  },
+  {
+   "start": 2521.8,
+   "duration": 3.6,
+   "text": "So, that is about these two concepts"
+  },
+  {
+   "start": 2524.04,
+   "duration": 2.8,
+   "text": "that I wanted to discuss. And you can"
+  },
+  {
+   "start": 2525.4,
+   "duration": 2.32,
+   "text": "have you can take a screenshot of this"
+  },
+  {
+   "start": 2526.84,
+   "duration": 2.84,
+   "text": "thing."
+  },
+  {
+   "start": 2527.72,
+   "duration": 3.76,
+   "text": "Right? You know, steps up front,"
+  },
+  {
+   "start": 2529.68,
+   "duration": 3.76,
+   "text": "emergency from findings for dynamic"
+  },
+  {
+   "start": 2531.48,
+   "duration": 3.6,
+   "text": "decomposition, control level high,"
+  },
+  {
+   "start": 2533.44,
+   "duration": 4.84,
+   "text": "control level low, best for code"
+  },
+  {
+   "start": 2535.08,
+   "duration": 6.2,
+   "text": "reviews, best bug investigation."
+  },
+  {
+   "start": 2538.28,
+   "duration": 5.48,
+   "text": "Example is CI/CD review pipeline."
+  },
+  {
+   "start": 2541.28,
+   "duration": 5.16,
+   "text": "Monolithic to microservices migration."
+  },
+  {
+   "start": 2543.76,
+   "duration": 4.96,
+   "text": "All of these things kind of."
+  },
+  {
+   "start": 2546.44,
+   "duration": 4.48,
+   "text": "So, yes. I've just Whatever I just"
+  },
+  {
+   "start": 2548.72,
+   "duration": 4.32,
+   "text": "showed, it is there in the screen. So,"
+  },
+  {
+   "start": 2550.92,
+   "duration": 4.08,
+   "text": "basically, you step-by-step, you know,"
+  },
+  {
+   "start": 2553.04,
+   "duration": 3.92,
+   "text": "predefined sequential steps executed in"
+  },
+  {
+   "start": 2555.0,
+   "duration": 4.08,
+   "text": "a fixed order. So, the output of the"
+  },
+  {
+   "start": 2556.96,
+   "duration": 3.68,
+   "text": "step n feeds directly into step n plus"
+  },
+  {
+   "start": 2559.08,
+   "duration": 4.16,
+   "text": "one."
+  },
+  {
+   "start": 2560.64,
+   "duration": 4.2,
+   "text": "So, warning, and it's also a thing that"
+  },
+  {
+   "start": 2563.24,
+   "duration": 3.6,
+   "text": "comes in the exam. Do not use prompt"
+  },
+  {
+   "start": 2564.84,
+   "duration": 4.0,
+   "text": "chaining for open-ended tasks."
+  },
+  {
+   "start": 2566.84,
+   "duration": 4.04,
+   "text": "Predefined steps become wrong when the"
+  },
+  {
+   "start": 2568.84,
+   "duration": 6.36,
+   "text": "exact moment actual findings diverge"
+  },
+  {
+   "start": 2570.88,
+   "duration": 6.56,
+   "text": "from the initial assumptions. Exactly."
+  },
+  {
+   "start": 2575.2,
+   "duration": 3.48,
+   "text": "Dynamic decomposition."
+  },
+  {
+   "start": 2577.44,
+   "duration": 3.08,
+   "text": "Basically,"
+  },
+  {
+   "start": 2578.68,
+   "duration": 4.4,
+   "text": "steps are generated dynamically, right?"
+  },
+  {
+   "start": 2580.52,
+   "duration": 4.52,
+   "text": "And on basis of that, next step is"
+  },
+  {
+   "start": 2583.08,
+   "duration": 3.32,
+   "text": "executed. That is the meaning of dynamic"
+  },
+  {
+   "start": 2585.04,
+   "duration": 5.04,
+   "text": "decomposition."
+  },
+  {
+   "start": 2586.4,
+   "duration": 7.0,
+   "text": "And I've explained it when to use what."
+  },
+  {
+   "start": 2590.08,
+   "duration": 5.0,
+   "text": "Okay. So, this kind of a question you'll"
+  },
+  {
+   "start": 2593.4,
+   "duration": 4.6,
+   "text": "use. For example, support agent"
+  },
+  {
+   "start": 2595.08,
+   "duration": 5.04,
+   "text": "occasionally calls process refund before"
+  },
+  {
+   "start": 2598.0,
+   "duration": 4.16,
+   "text": "get customer despite system prompt"
+  },
+  {
+   "start": 2600.12,
+   "duration": 4.96,
+   "text": "instruction. What most reliably"
+  },
+  {
+   "start": 2602.16,
+   "duration": 4.72,
+   "text": "guarantees proper execution ordering?"
+  },
+  {
+   "start": 2605.08,
+   "duration": 4.32,
+   "text": "Obviously, there is a prerequisite gate"
+  },
+  {
+   "start": 2606.88,
+   "duration": 4.64,
+   "text": "in code because you have to do that"
+  },
+  {
+   "start": 2609.4,
+   "duration": 4.4,
+   "text": "because the process refund should not"
+  },
+  {
+   "start": 2611.52,
+   "duration": 4.2,
+   "text": "execute before the get customer"
+  },
+  {
+   "start": 2613.8,
+   "duration": 5.04,
+   "text": "particular thing."
+  },
+  {
+   "start": 2615.72,
+   "duration": 7.0,
+   "text": "Tool, right? So, that is what the root"
+  },
+  {
+   "start": 2618.84,
+   "duration": 5.96,
+   "text": "causes. And pretty simple to understand."
+  },
+  {
+   "start": 2622.72,
+   "duration": 3.56,
+   "text": "So, quick reference or a flashcard, if"
+  },
+  {
+   "start": 2624.8,
+   "duration": 3.8,
+   "text": "you want to use this, you can just take"
+  },
+  {
+   "start": 2626.28,
+   "duration": 4.0,
+   "text": "a screenshot of this. Right? And if you"
+  },
+  {
+   "start": 2628.6,
+   "duration": 3.04,
+   "text": "see, if"
+  },
+  {
+   "start": 2630.28,
+   "duration": 3.36,
+   "text": "from What is prompt instructions?"
+  },
+  {
+   "start": 2631.64,
+   "duration": 4.8,
+   "text": "Probabilistic nonzero failure. Post tool"
+  },
+  {
+   "start": 2633.64,
+   "duration": 4.88,
+   "text": "use hook. Normalization, you know,"
+  },
+  {
+   "start": 2636.44,
+   "duration": 4.32,
+   "text": "scenarios runs before the model season."
+  },
+  {
+   "start": 2638.52,
+   "duration": 4.28,
+   "text": "Just a summary of what we have discussed"
+  },
+  {
+   "start": 2640.76,
+   "duration": 4.599,
+   "text": "today. Pre-tool, prerequisite gate,"
+  },
+  {
+   "start": 2642.8,
+   "duration": 5.0,
+   "text": "handoff summary. Self-contained context"
+  },
+  {
+   "start": 2645.359,
+   "duration": 4.761,
+   "text": "with conversation transcript. What is"
+  },
+  {
+   "start": 2647.8,
+   "duration": 4.32,
+   "text": "prompt chaining? Fixed steps, known up"
+  },
+  {
+   "start": 2650.12,
+   "duration": 4.2,
+   "text": "front predictable tasks, and dynamic"
+  },
+  {
+   "start": 2652.12,
+   "duration": 3.96,
+   "text": "decomposition. Steps from discoveries,"
+  },
+  {
+   "start": 2654.32,
+   "duration": 4.2,
+   "text": "open-ended task."
+  },
+  {
+   "start": 2656.08,
+   "duration": 4.92,
+   "text": "Distractor patterns to reject."
+  },
+  {
+   "start": 2658.52,
+   "duration": 4.28,
+   "text": "Add stronger prompt instruction. Always"
+  },
+  {
+   "start": 2661.0,
+   "duration": 3.64,
+   "text": "wrong for guaranteed information. Even"
+  },
+  {
+   "start": 2662.8,
+   "duration": 4.559,
+   "text": "if the question says so, you have to go"
+  },
+  {
+   "start": 2664.64,
+   "duration": 4.36,
+   "text": "for no. It is confusing, but that is the"
+  },
+  {
+   "start": 2667.359,
+   "duration": 3.441,
+   "text": "only solution."
+  },
+  {
+   "start": 2669.0,
+   "duration": 3.48,
+   "text": "Add few-shot examples. Correct for"
+  },
+  {
+   "start": 2670.8,
+   "duration": 3.76,
+   "text": "consistency, not for compliance. Now,"
+  },
+  {
+   "start": 2672.48,
+   "duration": 5.76,
+   "text": "few-shot is a prompting technique that I"
+  },
+  {
+   "start": 2674.56,
+   "duration": 6.0,
+   "text": "have discussed extensively in my videos."
+  },
+  {
+   "start": 2678.24,
+   "duration": 4.88,
+   "text": "And"
+  },
+  {
+   "start": 2680.56,
+   "duration": 4.04,
+   "text": "Few-shot is a very good way of providing"
+  },
+  {
+   "start": 2683.12,
+   "duration": 3.32,
+   "text": "the, you know, the LLM with"
+  },
+  {
+   "start": 2684.6,
+   "duration": 4.8,
+   "text": "instructions, better instruction, but"
+  },
+  {
+   "start": 2686.44,
+   "duration": 4.36,
+   "text": "still you cannot provide thousands of"
+  },
+  {
+   "start": 2689.4,
+   "duration": 3.4,
+   "text": "examples, right?"
+  },
+  {
+   "start": 2690.8,
+   "duration": 3.72,
+   "text": "You cannot trust it that it will"
+  },
+  {
+   "start": 2692.8,
+   "duration": 3.4,
+   "text": "always, you know, follow those"
+  },
+  {
+   "start": 2694.52,
+   "duration": 2.96,
+   "text": "instructions based on those examples."
+  },
+  {
+   "start": 2696.2,
+   "duration": 3.6,
+   "text": "So,"
+  },
+  {
+   "start": 2697.48,
+   "duration": 4.6,
+   "text": "that will not work. You cannot predefine"
+  },
+  {
+   "start": 2699.8,
+   "duration": 3.92,
+   "text": "all steps. There are some open-ended"
+  },
+  {
+   "start": 2702.08,
+   "duration": 3.0,
+   "text": "tasks that might need dynamic"
+  },
+  {
+   "start": 2703.72,
+   "duration": 3.76,
+   "text": "decomposition or something like that."
+  },
+  {
+   "start": 2705.08,
+   "duration": 4.0,
+   "text": "So, cannot go with that as well."
+  },
+  {
+   "start": 2707.48,
+   "duration": 3.44,
+   "text": "So, with that,"
+  },
+  {
+   "start": 2709.08,
+   "duration": 4.48,
+   "text": "uh we are done with module one, guys,"
+  },
+  {
+   "start": 2710.92,
+   "duration": 4.6,
+   "text": "which is around 30% 27 to 30% of the"
+  },
+  {
+   "start": 2713.56,
+   "duration": 3.44,
+   "text": "exam. We are done with."
+  },
+  {
+   "start": 2715.52,
+   "duration": 2.88,
+   "text": "And we're going to continue the series"
+  },
+  {
+   "start": 2717.0,
+   "duration": 4.88,
+   "text": "pretty fast. I'm going to finish this"
+  },
+  {
+   "start": 2718.4,
+   "duration": 5.88,
+   "text": "up. And uh see you in the next lesson."
+  },
+  {
+   "start": 2721.88,
+   "duration": 2.4,
+   "text": "Bye-bye."
+  }
+ ]
+}

@@ -1,0 +1,4822 @@
+{
+ "video_id": "eh-xxQpfBBY",
+ "episode": "Ep 09",
+ "title": "Claude Built-in Tools Explained",
+ "segments": [
+  {
+   "start": 2.96,
+   "duration": 3.12,
+   "text": "And welcome to this lesson."
+  },
+  {
+   "start": 4.8,
+   "duration": 3.76,
+   "text": "So, in this lesson we're going to talk"
+  },
+  {
+   "start": 6.08,
+   "duration": 4.52,
+   "text": "about some built-in tools that Claude"
+  },
+  {
+   "start": 8.56,
+   "duration": 5.44,
+   "text": "already provides and you can directly"
+  },
+  {
+   "start": 10.6,
+   "duration": 6.16,
+   "text": "use out of the box. Right? So, let's"
+  },
+  {
+   "start": 14.0,
+   "duration": 5.16,
+   "text": "start with a very simple thing."
+  },
+  {
+   "start": 16.76,
+   "duration": 3.72,
+   "text": "So, you've got a code base, right? Let's"
+  },
+  {
+   "start": 19.16,
+   "duration": 3.36,
+   "text": "say a very"
+  },
+  {
+   "start": 20.48,
+   "duration": 5.28,
+   "text": "decent-sized one."
+  },
+  {
+   "start": 22.52,
+   "duration": 4.2,
+   "text": "Maybe for example, 50 or 100 files,"
+  },
+  {
+   "start": 25.76,
+   "duration": 3.84,
+   "text": "right?"
+  },
+  {
+   "start": 26.72,
+   "duration": 5.28,
+   "text": "You need to find, you know, every place"
+  },
+  {
+   "start": 29.6,
+   "duration": 3.72,
+   "text": "for example, a specific function is"
+  },
+  {
+   "start": 32.0,
+   "duration": 3.68,
+   "text": "called."
+  },
+  {
+   "start": 33.32,
+   "duration": 4.4,
+   "text": "You need to modify, you know, two of"
+  },
+  {
+   "start": 35.68,
+   "duration": 4.12,
+   "text": "those call sites where the function,"
+  },
+  {
+   "start": 37.72,
+   "duration": 3.88,
+   "text": "right, is called basically."
+  },
+  {
+   "start": 39.8,
+   "duration": 4.32,
+   "text": "And for example, you need to create a"
+  },
+  {
+   "start": 41.6,
+   "duration": 4.24,
+   "text": "new brand new file with a generated"
+  },
+  {
+   "start": 44.12,
+   "duration": 4.68,
+   "text": "implementation."
+  },
+  {
+   "start": 45.84,
+   "duration": 5.68,
+   "text": "How do you tell Claude to do all that?"
+  },
+  {
+   "start": 48.8,
+   "duration": 4.48,
+   "text": "Or, you know, this might be one of the"
+  },
+  {
+   "start": 51.52,
+   "duration": 4.96,
+   "text": "questions you might get in asked in an"
+  },
+  {
+   "start": 53.28,
+   "duration": 6.64,
+   "text": "interview. How does Claude code work in"
+  },
+  {
+   "start": 56.48,
+   "duration": 6.28,
+   "text": "this, you know, format? Like, how does"
+  },
+  {
+   "start": 59.92,
+   "duration": 6.36,
+   "text": "um, you know, Claude code identify where"
+  },
+  {
+   "start": 62.76,
+   "duration": 6.4,
+   "text": "it actually needs to do the edit or read"
+  },
+  {
+   "start": 66.28,
+   "duration": 4.28,
+   "text": "a particular file based on your prompt?"
+  },
+  {
+   "start": 69.16,
+   "duration": 3.32,
+   "text": "So, we're going to know all these"
+  },
+  {
+   "start": 70.56,
+   "duration": 3.6,
+   "text": "nitty-gritties and"
+  },
+  {
+   "start": 72.48,
+   "duration": 4.28,
+   "text": "you're going to see one of the scenarios"
+  },
+  {
+   "start": 74.16,
+   "duration": 5.16,
+   "text": "of the exam where, you know, they will"
+  },
+  {
+   "start": 76.76,
+   "duration": 3.6,
+   "text": "ask you to actually create a code"
+  },
+  {
+   "start": 79.32,
+   "duration": 4.16,
+   "text": "generator. You will be asked some"
+  },
+  {
+   "start": 80.36,
+   "duration": 5.2,
+   "text": "questions, you know, on a scenario of a"
+  },
+  {
+   "start": 83.48,
+   "duration": 4.28,
+   "text": "code generator agent or something like"
+  },
+  {
+   "start": 85.56,
+   "duration": 3.04,
+   "text": "that, right?"
+  },
+  {
+   "start": 87.76,
+   "duration": 2.72,
+   "text": "So, we're going to see some of the"
+  },
+  {
+   "start": 88.6,
+   "duration": 4.52,
+   "text": "built-in tools we can just directly use"
+  },
+  {
+   "start": 90.48,
+   "duration": 4.72,
+   "text": "out of the box, you know, to do a lot of"
+  },
+  {
+   "start": 93.12,
+   "duration": 3.2,
+   "text": "these kind of operations."
+  },
+  {
+   "start": 95.2,
+   "duration": 2.6,
+   "text": "Right?"
+  },
+  {
+   "start": 96.32,
+   "duration": 4.4,
+   "text": "So, we're going to"
+  },
+  {
+   "start": 97.8,
+   "duration": 5.4,
+   "text": "go deep on the six tools that you just"
+  },
+  {
+   "start": 100.72,
+   "duration": 5.24,
+   "text": "saw on the screen, okay?"
+  },
+  {
+   "start": 103.2,
+   "duration": 5.48,
+   "text": "Read, write, edit, bash, grep, and glob."
+  },
+  {
+   "start": 105.96,
+   "duration": 6.6,
+   "text": "Okay, I hope my counting is correct."
+  },
+  {
+   "start": 108.68,
+   "duration": 7.08,
+   "text": "So, yeah, these are the, you know, six"
+  },
+  {
+   "start": 112.56,
+   "duration": 4.56,
+   "text": "tools and, you know, just put some names"
+  },
+  {
+   "start": 115.76,
+   "duration": 2.48,
+   "text": "over here. These are not the actual"
+  },
+  {
+   "start": 117.12,
+   "duration": 3.64,
+   "text": "names of the tools, by the way. It's"
+  },
+  {
+   "start": 118.24,
+   "duration": 4.72,
+   "text": "just that what they do I just put it"
+  },
+  {
+   "start": 120.76,
+   "duration": 4.08,
+   "text": "down over here, right?"
+  },
+  {
+   "start": 122.96,
+   "duration": 3.24,
+   "text": "One is a for content searching, one is"
+  },
+  {
+   "start": 124.84,
+   "duration": 4.199,
+   "text": "for data interface, one is for"
+  },
+  {
+   "start": 126.2,
+   "duration": 4.96,
+   "text": "diagnostic creation, destructive, path"
+  },
+  {
+   "start": 129.039,
+   "duration": 4.041,
+   "text": "navigator. Just think about it like"
+  },
+  {
+   "start": 131.16,
+   "duration": 4.52,
+   "text": "something some kind of synonym I put"
+  },
+  {
+   "start": 133.08,
+   "duration": 5.8,
+   "text": "here, but this is not the exact names."
+  },
+  {
+   "start": 135.68,
+   "duration": 4.8,
+   "text": "These are the exact names, okay? Okay,"
+  },
+  {
+   "start": 138.88,
+   "duration": 3.32,
+   "text": "if you're getting confused, ignore that"
+  },
+  {
+   "start": 140.48,
+   "duration": 4.32,
+   "text": "part, whatever I just said."
+  },
+  {
+   "start": 142.2,
+   "duration": 6.6,
+   "text": "Okay. So, you don't need any MCP setup,"
+  },
+  {
+   "start": 144.8,
+   "duration": 6.0,
+   "text": "no API keys, no extra config, you know,"
+  },
+  {
+   "start": 148.8,
+   "duration": 4.04,
+   "text": "you just need to know where to use which"
+  },
+  {
+   "start": 150.8,
+   "duration": 4.84,
+   "text": "tool and I'm going to give you some"
+  },
+  {
+   "start": 152.84,
+   "duration": 4.52,
+   "text": "scenarios-based questions and so"
+  },
+  {
+   "start": 155.64,
+   "duration": 3.32,
+   "text": "something like that and it will be like"
+  },
+  {
+   "start": 157.36,
+   "duration": 4.04,
+   "text": "a piece of cake. It's, it's, you know,"
+  },
+  {
+   "start": 158.96,
+   "duration": 5.96,
+   "text": "we kind of did all the hard parts. This"
+  },
+  {
+   "start": 161.4,
+   "duration": 4.84,
+   "text": "is kind of an easy part of the syllabus,"
+  },
+  {
+   "start": 164.92,
+   "duration": 4.2,
+   "text": "you know?"
+  },
+  {
+   "start": 166.24,
+   "duration": 4.6,
+   "text": "So, let's talk about these things."
+  },
+  {
+   "start": 169.12,
+   "duration": 4.76,
+   "text": "So, we're going to talk about grep and"
+  },
+  {
+   "start": 170.84,
+   "duration": 5.4,
+   "text": "glob, which are basically your finders."
+  },
+  {
+   "start": 173.88,
+   "duration": 4.72,
+   "text": "You know? So,"
+  },
+  {
+   "start": 176.24,
+   "duration": 5.2,
+   "text": "grep is basically if you want to search"
+  },
+  {
+   "start": 178.6,
+   "duration": 4.36,
+   "text": "the content of a particular file,"
+  },
+  {
+   "start": 181.44,
+   "duration": 2.92,
+   "text": "not a particular file, basically you"
+  },
+  {
+   "start": 182.96,
+   "duration": 3.36,
+   "text": "want to, you know, you know the grep"
+  },
+  {
+   "start": 184.36,
+   "duration": 4.04,
+   "text": "Linux command, right? We give"
+  },
+  {
+   "start": 186.32,
+   "duration": 4.0,
+   "text": "for example, a string and it will give"
+  },
+  {
+   "start": 188.4,
+   "duration": 3.92,
+   "text": "you a search, you know, across all of"
+  },
+  {
+   "start": 190.32,
+   "duration": 3.36,
+   "text": "the files or whatever wherever you"
+  },
+  {
+   "start": 192.32,
+   "duration": 3.72,
+   "text": "mention."
+  },
+  {
+   "start": 193.68,
+   "duration": 4.88,
+   "text": "And the glob is"
+  },
+  {
+   "start": 196.04,
+   "duration": 4.12,
+   "text": "you know, it's used to find paths and"
+  },
+  {
+   "start": 198.56,
+   "duration": 3.64,
+   "text": "names by pattern and something like"
+  },
+  {
+   "start": 200.16,
+   "duration": 4.96,
+   "text": "that, right? For example, give me all"
+  },
+  {
+   "start": 202.2,
+   "duration": 4.32,
+   "text": "the type script type script test files,"
+  },
+  {
+   "start": 205.12,
+   "duration": 4.0,
+   "text": "something like that."
+  },
+  {
+   "start": 206.52,
+   "duration": 5.16,
+   "text": "It looks at like file names, you know,"
+  },
+  {
+   "start": 209.12,
+   "duration": 4.56,
+   "text": "it will not look at contents, okay? Grep"
+  },
+  {
+   "start": 211.68,
+   "duration": 4.44,
+   "text": "will look at the content."
+  },
+  {
+   "start": 213.68,
+   "duration": 5.24,
+   "text": "Now, loaders and savers, read and write,"
+  },
+  {
+   "start": 216.12,
+   "duration": 4.04,
+   "text": "for example. Read is different from grep"
+  },
+  {
+   "start": 218.92,
+   "duration": 2.8,
+   "text": "and we'll understand the difference"
+  },
+  {
+   "start": 220.16,
+   "duration": 4.36,
+   "text": "between read and grep. So, read"
+  },
+  {
+   "start": 221.72,
+   "duration": 4.92,
+   "text": "basically reads the whole file, you"
+  },
+  {
+   "start": 224.52,
+   "duration": 4.4,
+   "text": "know, you provide one file and read will"
+  },
+  {
+   "start": 226.64,
+   "duration": 3.96,
+   "text": "read all the, you know, the entire file"
+  },
+  {
+   "start": 228.92,
+   "duration": 4.28,
+   "text": "and we'll see where to use read and"
+  },
+  {
+   "start": 230.6,
+   "duration": 4.08,
+   "text": "where to use grep actually. Write, you"
+  },
+  {
+   "start": 233.2,
+   "duration": 3.36,
+   "text": "know, it's pretty simple to understand"
+  },
+  {
+   "start": 234.68,
+   "duration": 4.12,
+   "text": "the creator. You want to create a file,"
+  },
+  {
+   "start": 236.56,
+   "duration": 3.92,
+   "text": "you know, from scratch and you want to"
+  },
+  {
+   "start": 238.8,
+   "duration": 3.76,
+   "text": "insert some contents into it, then there"
+  },
+  {
+   "start": 240.48,
+   "duration": 4.36,
+   "text": "will there will be will be using right."
+  },
+  {
+   "start": 242.56,
+   "duration": 3.64,
+   "text": "And there is a, you know, a catch where"
+  },
+  {
+   "start": 244.84,
+   "duration": 3.48,
+   "text": "you will use right and where you will"
+  },
+  {
+   "start": 246.2,
+   "duration": 4.32,
+   "text": "use edit. So, we're going to answer all"
+  },
+  {
+   "start": 248.32,
+   "duration": 4.64,
+   "text": "of these questions. Now, edit, edit is"
+  },
+  {
+   "start": 250.52,
+   "duration": 4.72,
+   "text": "for specific editing at specific parts"
+  },
+  {
+   "start": 252.96,
+   "duration": 4.24,
+   "text": "of files, right? It will not create an"
+  },
+  {
+   "start": 255.24,
+   "duration": 4.48,
+   "text": "entire file or do it from scratch and"
+  },
+  {
+   "start": 257.2,
+   "duration": 3.599,
+   "text": "we'll know where to use which right and"
+  },
+  {
+   "start": 259.72,
+   "duration": 4.64,
+   "text": "edit."
+  },
+  {
+   "start": 260.799,
+   "duration": 6.761,
+   "text": "Escape hatch is bash, you know? It's"
+  },
+  {
+   "start": 264.36,
+   "duration": 5.36,
+   "text": "like executes shell commands. It is used"
+  },
+  {
+   "start": 267.56,
+   "duration": 5.36,
+   "text": "for executing shell commands like run"
+  },
+  {
+   "start": 269.72,
+   "duration": 5.64,
+   "text": "tests, install some packages,"
+  },
+  {
+   "start": 272.92,
+   "duration": 4.36,
+   "text": "call some CLIs, you know,"
+  },
+  {
+   "start": 275.36,
+   "duration": 5.0,
+   "text": "use some git operations like status and"
+  },
+  {
+   "start": 277.28,
+   "duration": 4.12,
+   "text": "all what not, right? Now, one, you know,"
+  },
+  {
+   "start": 280.36,
+   "duration": 3.2,
+   "text": "um,"
+  },
+  {
+   "start": 281.4,
+   "duration": 5.0,
+   "text": "this thing to keep on to remember is"
+  },
+  {
+   "start": 283.56,
+   "duration": 4.4,
+   "text": "that it is testable in two real exam"
+  },
+  {
+   "start": 286.4,
+   "duration": 3.08,
+   "text": "scenarios. So, this basically whatever"
+  },
+  {
+   "start": 287.96,
+   "duration": 3.72,
+   "text": "we're going to learn today, it is"
+  },
+  {
+   "start": 289.48,
+   "duration": 4.2,
+   "text": "testable in two exam scenarios. So, make"
+  },
+  {
+   "start": 291.68,
+   "duration": 3.72,
+   "text": "sure to that you don't skip this that,"
+  },
+  {
+   "start": 293.68,
+   "duration": 3.24,
+   "text": "you know, it is very easy bolke you"
+  },
+  {
+   "start": 295.4,
+   "duration": 3.0,
+   "text": "don't skip it."
+  },
+  {
+   "start": 296.92,
+   "duration": 2.8,
+   "text": "You have to know all of these built-in"
+  },
+  {
+   "start": 298.4,
+   "duration": 3.4,
+   "text": "tools and it's very, very important from"
+  },
+  {
+   "start": 299.72,
+   "duration": 3.44,
+   "text": "an interview perspective as well, right?"
+  },
+  {
+   "start": 301.8,
+   "duration": 3.6,
+   "text": "If you're going to give an interview for"
+  },
+  {
+   "start": 303.16,
+   "duration": 3.8,
+   "text": "an AI engineer, it's very, very"
+  },
+  {
+   "start": 305.4,
+   "duration": 2.96,
+   "text": "important that you know all of these"
+  },
+  {
+   "start": 306.96,
+   "duration": 3.16,
+   "text": "concepts."
+  },
+  {
+   "start": 308.36,
+   "duration": 3.72,
+   "text": "So,"
+  },
+  {
+   "start": 310.12,
+   "duration": 4.48,
+   "text": "I already told you about little bit"
+  },
+  {
+   "start": 312.08,
+   "duration": 4.4,
+   "text": "about these things. So, every tool has a"
+  },
+  {
+   "start": 314.6,
+   "duration": 5.08,
+   "text": "clear lane. Using the wrong tool wastes"
+  },
+  {
+   "start": 316.48,
+   "duration": 4.84,
+   "text": "tokens and produces unreliable results."
+  },
+  {
+   "start": 319.68,
+   "duration": 4.2,
+   "text": "Because, you know, you have to know"
+  },
+  {
+   "start": 321.32,
+   "duration": 3.96,
+   "text": "where to use which. For example, you you"
+  },
+  {
+   "start": 323.88,
+   "duration": 3.4,
+   "text": "want to do a very small edit at a"
+  },
+  {
+   "start": 325.28,
+   "duration": 3.96,
+   "text": "specific place, right? So, instead of"
+  },
+  {
+   "start": 327.28,
+   "duration": 3.52,
+   "text": "edit you use right. Just giving an"
+  },
+  {
+   "start": 329.24,
+   "duration": 3.6,
+   "text": "example. We're going to talk about it in"
+  },
+  {
+   "start": 330.8,
+   "duration": 4.52,
+   "text": "detail, but just giving an example. So,"
+  },
+  {
+   "start": 332.84,
+   "duration": 4.52,
+   "text": "instead of edit you are using right"
+  },
+  {
+   "start": 335.32,
+   "duration": 4.4,
+   "text": "tool. I mean, it will get the job done,"
+  },
+  {
+   "start": 337.36,
+   "duration": 4.84,
+   "text": "but you are unnecessarily wasting tokens"
+  },
+  {
+   "start": 339.72,
+   "duration": 5.04,
+   "text": "and all that, right? So, that's just an"
+  },
+  {
+   "start": 342.2,
+   "duration": 4.2,
+   "text": "example, right? So, every tool has a"
+  },
+  {
+   "start": 344.76,
+   "duration": 3.2,
+   "text": "proper"
+  },
+  {
+   "start": 346.4,
+   "duration": 4.76,
+   "text": "you know, thing that it will do. So, you"
+  },
+  {
+   "start": 347.96,
+   "duration": 5.4,
+   "text": "need to be completely sure of which tool"
+  },
+  {
+   "start": 351.16,
+   "duration": 5.04,
+   "text": "you are using. Okay, let's talk about"
+  },
+  {
+   "start": 353.36,
+   "duration": 5.2,
+   "text": "the grep tool. Now, grep is your content"
+  },
+  {
+   "start": 356.2,
+   "duration": 4.52,
+   "text": "detective. Why do I say content"
+  },
+  {
+   "start": 358.56,
+   "duration": 5.52,
+   "text": "detective? So,"
+  },
+  {
+   "start": 360.72,
+   "duration": 4.72,
+   "text": "grep opens files and searches inside"
+  },
+  {
+   "start": 364.08,
+   "duration": 3.48,
+   "text": "them."
+  },
+  {
+   "start": 365.44,
+   "duration": 4.84,
+   "text": "You know, it doesn't care about the file"
+  },
+  {
+   "start": 367.56,
+   "duration": 5.12,
+   "text": "names at all. It cares about what's"
+  },
+  {
+   "start": 370.28,
+   "duration": 5.0,
+   "text": "written in those files."
+  },
+  {
+   "start": 372.68,
+   "duration": 5.44,
+   "text": "So, we have all used control plus F or"
+  },
+  {
+   "start": 375.28,
+   "duration": 4.92,
+   "text": "command F, right? You know, it will, if"
+  },
+  {
+   "start": 378.12,
+   "duration": 3.76,
+   "text": "you if you do that, you know, in your,"
+  },
+  {
+   "start": 380.2,
+   "duration": 3.76,
+   "text": "for example, in your IntelliJ or VS"
+  },
+  {
+   "start": 381.88,
+   "duration": 4.16,
+   "text": "Code, it will search for that particular"
+  },
+  {
+   "start": 383.96,
+   "duration": 3.0,
+   "text": "string across all the files in a code"
+  },
+  {
+   "start": 386.04,
+   "duration": 2.24,
+   "text": "base."
+  },
+  {
+   "start": 386.96,
+   "duration": 4.24,
+   "text": "I mean, you can also search in a"
+  },
+  {
+   "start": 388.28,
+   "duration": 5.52,
+   "text": "specific file, but let's take an example"
+  },
+  {
+   "start": 391.2,
+   "duration": 4.52,
+   "text": "of grep, you know, grep normal Linux"
+  },
+  {
+   "start": 393.8,
+   "duration": 3.52,
+   "text": "command only, right? It will, what it"
+  },
+  {
+   "start": 395.72,
+   "duration": 4.08,
+   "text": "will do? It will search across the"
+  },
+  {
+   "start": 397.32,
+   "duration": 3.76,
+   "text": "entire files, a specific pattern it will"
+  },
+  {
+   "start": 399.8,
+   "duration": 4.04,
+   "text": "search."
+  },
+  {
+   "start": 401.08,
+   "duration": 4.6,
+   "text": "Right? So, to show you an example of how"
+  },
+  {
+   "start": 403.84,
+   "duration": 4.76,
+   "text": "you would use this tool, it will be like"
+  },
+  {
+   "start": 405.68,
+   "duration": 4.76,
+   "text": "normal tool usage only. Just, you know,"
+  },
+  {
+   "start": 408.6,
+   "duration": 3.0,
+   "text": "it will it is a,"
+  },
+  {
+   "start": 410.44,
+   "duration": 2.28,
+   "text": "you know,"
+  },
+  {
+   "start": 411.6,
+   "duration": 2.16,
+   "text": "uh, uh,"
+  },
+  {
+   "start": 412.72,
+   "duration": 3.2,
+   "text": "uh,"
+  },
+  {
+   "start": 413.76,
+   "duration": 4.64,
+   "text": "inbuilt tool. So, basically,"
+  },
+  {
+   "start": 415.92,
+   "duration": 4.88,
+   "text": "um, understand how, for example, if we"
+  },
+  {
+   "start": 418.4,
+   "duration": 4.52,
+   "text": "have created our code base, right? We"
+  },
+  {
+   "start": 420.8,
+   "duration": 5.16,
+   "text": "have created our agent, which is like a"
+  },
+  {
+   "start": 422.92,
+   "duration": 4.72,
+   "text": "customer support agent, right? So,"
+  },
+  {
+   "start": 425.96,
+   "duration": 3.36,
+   "text": "the task of a agent, for example,"
+  },
+  {
+   "start": 427.64,
+   "duration": 4.36,
+   "text": "understand how refunds are processed in"
+  },
+  {
+   "start": 429.32,
+   "duration": 4.76,
+   "text": "the code base. First, find the entry"
+  },
+  {
+   "start": 432.0,
+   "duration": 3.28,
+   "text": "point of where, you know, the process"
+  },
+  {
+   "start": 434.08,
+   "duration": 2.68,
+   "text": "refund"
+  },
+  {
+   "start": 435.28,
+   "duration": 3.72,
+   "text": "function is there, for example, you want"
+  },
+  {
+   "start": 436.76,
+   "duration": 4.8,
+   "text": "to find. So, in that case you can use"
+  },
+  {
+   "start": 439.0,
+   "duration": 5.44,
+   "text": "the grep command to understand where is"
+  },
+  {
+   "start": 441.56,
+   "duration": 4.84,
+   "text": "this pattern actually starts with or,"
+  },
+  {
+   "start": 444.44,
+   "duration": 3.64,
+   "text": "you know, where is this pattern"
+  },
+  {
+   "start": 446.4,
+   "duration": 4.0,
+   "text": "actually. So, you would go directly to"
+  },
+  {
+   "start": 448.08,
+   "duration": 5.28,
+   "text": "the point where the function is, right?"
+  },
+  {
+   "start": 450.4,
+   "duration": 4.96,
+   "text": "Normal command plus F thingy over here."
+  },
+  {
+   "start": 453.36,
+   "duration": 4.24,
+   "text": "So, it will, for example, it found that"
+  },
+  {
+   "start": 455.36,
+   "duration": 4.84,
+   "text": "it is in the refunds.py"
+  },
+  {
+   "start": 457.6,
+   "duration": 4.28,
+   "text": "file. So, it doesn't care about which"
+  },
+  {
+   "start": 460.2,
+   "duration": 3.48,
+   "text": "file it is searching, it will just care"
+  },
+  {
+   "start": 461.88,
+   "duration": 4.04,
+   "text": "about the pattern that you give. It will"
+  },
+  {
+   "start": 463.68,
+   "duration": 4.56,
+   "text": "just search along with that."
+  },
+  {
+   "start": 465.92,
+   "duration": 5.84,
+   "text": "So, that is about grep."
+  },
+  {
+   "start": 468.24,
+   "duration": 6.28,
+   "text": "Right? Now, talking about the next"
+  },
+  {
+   "start": 471.76,
+   "duration": 4.96,
+   "text": "something known as, um,"
+  },
+  {
+   "start": 474.52,
+   "duration": 4.12,
+   "text": "okay, before we go into glob, the second"
+  },
+  {
+   "start": 476.72,
+   "duration": 4.32,
+   "text": "tool, one more point I just remembered I"
+  },
+  {
+   "start": 478.64,
+   "duration": 4.44,
+   "text": "just want to tell you guys is that"
+  },
+  {
+   "start": 481.04,
+   "duration": 4.36,
+   "text": "there is a very common misunderstanding"
+  },
+  {
+   "start": 483.08,
+   "duration": 6.04,
+   "text": "or, you know, common questions I get a"
+  },
+  {
+   "start": 485.4,
+   "duration": 6.56,
+   "text": "lot is that, you know, why not just use"
+  },
+  {
+   "start": 489.12,
+   "duration": 4.72,
+   "text": "grep via the bash tool?"
+  },
+  {
+   "start": 491.96,
+   "duration": 3.48,
+   "text": "Right? We have a bash tool, it will run"
+  },
+  {
+   "start": 493.84,
+   "duration": 3.4,
+   "text": "the terminal command, right? Terminal"
+  },
+  {
+   "start": 495.44,
+   "duration": 2.84,
+   "text": "commands and we can easily use grep in"
+  },
+  {
+   "start": 497.24,
+   "duration": 4.32,
+   "text": "that."
+  },
+  {
+   "start": 498.28,
+   "duration": 5.6,
+   "text": "You can use that, yes, it is possible,"
+  },
+  {
+   "start": 501.56,
+   "duration": 4.36,
+   "text": "but there is a dedicated grep tool for a"
+  },
+  {
+   "start": 503.88,
+   "duration": 5.28,
+   "text": "reason. You don't have to do all that"
+  },
+  {
+   "start": 505.92,
+   "duration": 4.8,
+   "text": "complicated go like, um, catch your nose"
+  },
+  {
+   "start": 509.16,
+   "duration": 2.52,
+   "text": "like from your back of your head or"
+  },
+  {
+   "start": 510.72,
+   "duration": 3.16,
+   "text": "something like that. There's a"
+  },
+  {
+   "start": 511.68,
+   "duration": 3.76,
+   "text": "straightforward way to search for a"
+  },
+  {
+   "start": 513.88,
+   "duration": 4.24,
+   "text": "particular pattern, which is called as"
+  },
+  {
+   "start": 515.44,
+   "duration": 5.479,
+   "text": "grep. Why would you use grep via the"
+  },
+  {
+   "start": 518.12,
+   "duration": 5.24,
+   "text": "bash tool? So, that's a common"
+  },
+  {
+   "start": 520.919,
+   "duration": 4.921,
+   "text": "misunderstanding, which might get your"
+  },
+  {
+   "start": 523.36,
+   "duration": 3.88,
+   "text": "answer wrong in the exam. So, make sure"
+  },
+  {
+   "start": 525.84,
+   "duration": 3.32,
+   "text": "you are"
+  },
+  {
+   "start": 527.24,
+   "duration": 4.64,
+   "text": "pretty much of clear on that."
+  },
+  {
+   "start": 529.16,
+   "duration": 5.4,
+   "text": "Okay, so let's talk about glob. So, I"
+  },
+  {
+   "start": 531.88,
+   "duration": 4.24,
+   "text": "would say glob is like the file path"
+  },
+  {
+   "start": 534.56,
+   "duration": 5.6,
+   "text": "hunter."
+  },
+  {
+   "start": 536.12,
+   "duration": 6.68,
+   "text": "Right? So, glob is, you know, um,"
+  },
+  {
+   "start": 540.16,
+   "duration": 5.16,
+   "text": "glob does not look inside the files."
+  },
+  {
+   "start": 542.8,
+   "duration": 4.16,
+   "text": "Remember one thing. Grep looks inside"
+  },
+  {
+   "start": 545.32,
+   "duration": 4.68,
+   "text": "the files. It will not care which file"
+  },
+  {
+   "start": 546.96,
+   "duration": 6.0,
+   "text": "it is looking into. Glob will only care"
+  },
+  {
+   "start": 550.0,
+   "duration": 4.84,
+   "text": "about the file names and file path."
+  },
+  {
+   "start": 552.96,
+   "duration": 3.12,
+   "text": "Okay, it will not care what is inside"
+  },
+  {
+   "start": 554.84,
+   "duration": 3.32,
+   "text": "the file."
+  },
+  {
+   "start": 556.08,
+   "duration": 4.08,
+   "text": "So, let's understand by an example."
+  },
+  {
+   "start": 558.16,
+   "duration": 4.52,
+   "text": "Imagine your code base like a filing"
+  },
+  {
+   "start": 560.16,
+   "duration": 5.4,
+   "text": "cabinet, right? So, grep is kind of the"
+  },
+  {
+   "start": 562.68,
+   "duration": 5.0,
+   "text": "person who opens each drawer, pulls out"
+  },
+  {
+   "start": 565.56,
+   "duration": 5.32,
+   "text": "the folders, and reads through the"
+  },
+  {
+   "start": 567.68,
+   "duration": 4.44,
+   "text": "documents looking for a specific word."
+  },
+  {
+   "start": 570.88,
+   "duration": 3.0,
+   "text": "Right?"
+  },
+  {
+   "start": 572.12,
+   "duration": 2.96,
+   "text": "That is what grep is"
+  },
+  {
+   "start": 573.88,
+   "duration": 4.08,
+   "text": "grep is."
+  },
+  {
+   "start": 575.08,
+   "duration": 5.52,
+   "text": "Glob is the person who looks at the"
+  },
+  {
+   "start": 577.96,
+   "duration": 5.6,
+   "text": "labels on the folders in the filing"
+  },
+  {
+   "start": 580.6,
+   "duration": 5.72,
+   "text": "cabinet. And it finds all the ones that"
+  },
+  {
+   "start": 583.56,
+   "duration": 4.64,
+   "text": "match a naming pattern."
+  },
+  {
+   "start": 586.32,
+   "duration": 4.56,
+   "text": "It will not open any of them. It will"
+  },
+  {
+   "start": 588.2,
+   "duration": 4.68,
+   "text": "just look at the labels of the files in"
+  },
+  {
+   "start": 590.88,
+   "duration": 4.28,
+   "text": "the filing cabinet, but grep will look"
+  },
+  {
+   "start": 592.88,
+   "duration": 4.36,
+   "text": "inside each file because it is searching"
+  },
+  {
+   "start": 595.16,
+   "duration": 4.08,
+   "text": "for a particular pattern."
+  },
+  {
+   "start": 597.24,
+   "duration": 5.24,
+   "text": "Right? So, what are the use cases of"
+  },
+  {
+   "start": 599.24,
+   "duration": 5.48,
+   "text": "glob? For example, give me all dot Java"
+  },
+  {
+   "start": 602.48,
+   "duration": 5.2,
+   "text": "files in the SRC directory or dot py"
+  },
+  {
+   "start": 604.72,
+   "duration": 4.92,
+   "text": "files in the SRC directory. Right? Find"
+  },
+  {
+   "start": 607.68,
+   "duration": 4.64,
+   "text": "every test file."
+  },
+  {
+   "start": 609.64,
+   "duration": 5.24,
+   "text": "Find every model file or a POJO file."
+  },
+  {
+   "start": 612.32,
+   "duration": 4.84,
+   "text": "List all the markdown docs. These are"
+  },
+  {
+   "start": 614.88,
+   "duration": 4.0,
+   "text": "all the things that you're going to use."
+  },
+  {
+   "start": 617.16,
+   "duration": 3.48,
+   "text": "And glob also, if you you you have to"
+  },
+  {
+   "start": 618.88,
+   "duration": 4.32,
+   "text": "use in the you know, like a pattern. For"
+  },
+  {
+   "start": 620.64,
+   "duration": 4.36,
+   "text": "example, you want to uh find all the"
+  },
+  {
+   "start": 623.2,
+   "duration": 4.48,
+   "text": "TypeScript files. So, you would go uh"
+  },
+  {
+   "start": 625.0,
+   "duration": 4.6,
+   "text": "star star {slash} star.test because you"
+  },
+  {
+   "start": 627.68,
+   "duration": 4.16,
+   "text": "want to find all the TypeScript files"
+  },
+  {
+   "start": 629.6,
+   "duration": 4.64,
+   "text": "which are tests. So, you're going to go"
+  },
+  {
+   "start": 631.84,
+   "duration": 5.72,
+   "text": "dot tsx uh in the code if you want to"
+  },
+  {
+   "start": 634.24,
+   "duration": 5.76,
+   "text": "see it's uh similar like that like this."
+  },
+  {
+   "start": 637.56,
+   "duration": 2.44,
+   "text": "You know?"
+  },
+  {
+   "start": 642.52,
+   "duration": 2.36,
+   "text": "So,"
+  },
+  {
+   "start": 645.72,
+   "duration": 3.8,
+   "text": "Okay, I think uh"
+  },
+  {
+   "start": 647.44,
+   "duration": 4.24,
+   "text": "we have glob over here. Yes."
+  },
+  {
+   "start": 649.52,
+   "duration": 4.92,
+   "text": "Glob. This is how it look."
+  },
+  {
+   "start": 651.68,
+   "duration": 4.72,
+   "text": "So, file uh find all Python files in the"
+  },
+  {
+   "start": 654.44,
+   "duration": 3.32,
+   "text": "orders module, right? For example, like"
+  },
+  {
+   "start": 656.4,
+   "duration": 3.48,
+   "text": "that. It will return the list of 12"
+  },
+  {
+   "start": 657.76,
+   "duration": 4.2,
+   "text": "files. Something like that you have to"
+  },
+  {
+   "start": 659.88,
+   "duration": 3.0,
+   "text": "understand. Right?"
+  },
+  {
+   "start": 661.96,
+   "duration": 3.32,
+   "text": "Now,"
+  },
+  {
+   "start": 662.88,
+   "duration": 4.44,
+   "text": "grep versus glob."
+  },
+  {
+   "start": 665.28,
+   "duration": 3.4,
+   "text": "It is a very classic mix-up that you"
+  },
+  {
+   "start": 667.32,
+   "duration": 4.36,
+   "text": "would do."
+  },
+  {
+   "start": 668.68,
+   "duration": 4.8,
+   "text": "Um so, if the scenario, let's understand"
+  },
+  {
+   "start": 671.68,
+   "duration": 3.8,
+   "text": "scenario-wise and you would understand"
+  },
+  {
+   "start": 673.48,
+   "duration": 4.16,
+   "text": "uh where to use what. Pretty easy to"
+  },
+  {
+   "start": 675.48,
+   "duration": 4.48,
+   "text": "understand. Find every file that imports"
+  },
+  {
+   "start": 677.64,
+   "duration": 5.64,
+   "text": "React. Obviously, grep because import is"
+  },
+  {
+   "start": 679.96,
+   "duration": 5.24,
+   "text": "inside the file content. Okay? Find all"
+  },
+  {
+   "start": 683.28,
+   "duration": 3.48,
+   "text": "TypeScript files in {slash}src. It is a"
+  },
+  {
+   "start": 685.2,
+   "duration": 4.6,
+   "text": "glob because TypeScript will go through"
+  },
+  {
+   "start": 686.76,
+   "duration": 4.88,
+   "text": "file extension. It is a naming pattern."
+  },
+  {
+   "start": 689.8,
+   "duration": 4.28,
+   "text": "Find every test file in the project. It"
+  },
+  {
+   "start": 691.64,
+   "duration": 3.84,
+   "text": "is glob because test have dot test or"
+  },
+  {
+   "start": 694.08,
+   "duration": 3.56,
+   "text": "something like that, right? And that is"
+  },
+  {
+   "start": 695.48,
+   "duration": 4.52,
+   "text": "a pattern for naming the files."
+  },
+  {
+   "start": 697.64,
+   "duration": 5.52,
+   "text": "Find all calls to process refund. So,"
+  },
+  {
+   "start": 700.0,
+   "duration": 4.52,
+   "text": "that is like a inside some function name"
+  },
+  {
+   "start": 703.16,
+   "duration": 4.24,
+   "text": "is there. That is the name of the"
+  },
+  {
+   "start": 704.52,
+   "duration": 5.72,
+   "text": "function which is inside a file. In that"
+  },
+  {
+   "start": 707.4,
+   "duration": 6.04,
+   "text": "case, you would go for grep. Okay? List"
+  },
+  {
+   "start": 710.24,
+   "duration": 6.16,
+   "text": "all files in Terraform. Terraform."
+  },
+  {
+   "start": 713.44,
+   "duration": 4.92,
+   "text": "So, it is a glob uh use case because it"
+  },
+  {
+   "start": 716.4,
+   "duration": 3.2,
+   "text": "is you're discovering files with path"
+  },
+  {
+   "start": 718.36,
+   "duration": 2.28,
+   "text": "structure."
+  },
+  {
+   "start": 719.6,
+   "duration": 3.0,
+   "text": "You know?"
+  },
+  {
+   "start": 720.64,
+   "duration": 3.44,
+   "text": "Find all to-do comments. It is a grep"
+  },
+  {
+   "start": 722.6,
+   "duration": 3.8,
+   "text": "thing because you know, to-do comments"
+  },
+  {
+   "start": 724.08,
+   "duration": 3.8,
+   "text": "is inside the files itself."
+  },
+  {
+   "start": 726.4,
+   "duration": 3.08,
+   "text": "So, uh"
+  },
+  {
+   "start": 727.88,
+   "duration": 3.959,
+   "text": "confusion between these two tools is a"
+  },
+  {
+   "start": 729.48,
+   "duration": 4.28,
+   "text": "very common mistake. So, you make sure"
+  },
+  {
+   "start": 731.839,
+   "duration": 4.681,
+   "text": "that you know, you're not getting it"
+  },
+  {
+   "start": 733.76,
+   "duration": 3.88,
+   "text": "wrong in the particular exam."
+  },
+  {
+   "start": 736.52,
+   "duration": 4.64,
+   "text": "Okay."
+  },
+  {
+   "start": 737.64,
+   "duration": 5.199,
+   "text": "Read. Load it all in."
+  },
+  {
+   "start": 741.16,
+   "duration": 3.76,
+   "text": "So, these are all small small terms that"
+  },
+  {
+   "start": 742.839,
+   "duration": 4.681,
+   "text": "I'm using so that you guys will"
+  },
+  {
+   "start": 744.92,
+   "duration": 3.84,
+   "text": "uh you know, not find it difficult to"
+  },
+  {
+   "start": 747.52,
+   "duration": 3.12,
+   "text": "you know, remember. So, you can just"
+  },
+  {
+   "start": 748.76,
+   "duration": 4.44,
+   "text": "remember it at one shot."
+  },
+  {
+   "start": 750.64,
+   "duration": 5.28,
+   "text": "So, uh read it means load it all in."
+  },
+  {
+   "start": 753.2,
+   "duration": 5.44,
+   "text": "What does it mean? It's very simple."
+  },
+  {
+   "start": 755.92,
+   "duration": 5.4,
+   "text": "Read loads the full contents of a"
+  },
+  {
+   "start": 758.64,
+   "duration": 4.56,
+   "text": "specific file into Claude's context."
+  },
+  {
+   "start": 761.32,
+   "duration": 4.64,
+   "text": "Let's not"
+  },
+  {
+   "start": 763.2,
+   "duration": 4.04,
+   "text": "you know, very you know, give a very"
+  },
+  {
+   "start": 765.96,
+   "duration": 3.4,
+   "text": "kind of a"
+  },
+  {
+   "start": 767.24,
+   "duration": 5.56,
+   "text": "impression on"
+  },
+  {
+   "start": 769.36,
+   "duration": 5.76,
+   "text": "full contents of a specific file."
+  },
+  {
+   "start": 772.8,
+   "duration": 4.68,
+   "text": "Full contents of a specific file. So,"
+  },
+  {
+   "start": 775.12,
+   "duration": 4.0,
+   "text": "you would use read when?"
+  },
+  {
+   "start": 777.48,
+   "duration": 4.4,
+   "text": "You would read use"
+  },
+  {
+   "start": 779.12,
+   "duration": 4.56,
+   "text": "read when you already know which file"
+  },
+  {
+   "start": 781.88,
+   "duration": 4.24,
+   "text": "you want."
+  },
+  {
+   "start": 783.68,
+   "duration": 5.56,
+   "text": "Okay? So, for example, maybe grep just"
+  },
+  {
+   "start": 786.12,
+   "duration": 5.719,
+   "text": "told you the refunds.py file, you know,"
+  },
+  {
+   "start": 789.24,
+   "duration": 5.24,
+   "text": "at the line 42 is relevant."
+  },
+  {
+   "start": 791.839,
+   "duration": 5.241,
+   "text": "Now, you read that file"
+  },
+  {
+   "start": 794.48,
+   "duration": 4.64,
+   "text": "basically to actually see the code and"
+  },
+  {
+   "start": 797.08,
+   "duration": 4.72,
+   "text": "understand it fully."
+  },
+  {
+   "start": 799.12,
+   "duration": 4.32,
+   "text": "I hope I'm making sense. Grep finds you"
+  },
+  {
+   "start": 801.8,
+   "duration": 3.8,
+   "text": "you know, where that particular piece of"
+  },
+  {
+   "start": 803.44,
+   "duration": 3.92,
+   "text": "code is. Now, you you know, you want to"
+  },
+  {
+   "start": 805.6,
+   "duration": 3.48,
+   "text": "understand, okay, this uh this function"
+  },
+  {
+   "start": 807.36,
+   "duration": 3.6,
+   "text": "has been called at multiple parts in"
+  },
+  {
+   "start": 809.08,
+   "duration": 3.72,
+   "text": "this particular file. Now, I want to"
+  },
+  {
+   "start": 810.96,
+   "duration": 5.32,
+   "text": "read the file. So, in that case, you"
+  },
+  {
+   "start": 812.8,
+   "duration": 6.6,
+   "text": "would use the read tool."
+  },
+  {
+   "start": 816.28,
+   "duration": 4.72,
+   "text": "You know? So, if you want to see the um"
+  },
+  {
+   "start": 819.4,
+   "duration": 3.36,
+   "text": "you know, how read is used, you just see"
+  },
+  {
+   "start": 821.0,
+   "duration": 3.72,
+   "text": "this this particular read how it used."
+  },
+  {
+   "start": 822.76,
+   "duration": 4.36,
+   "text": "So, you give the file path that"
+  },
+  {
+   "start": 824.72,
+   "duration": 4.36,
+   "text": "refunds.py. So, this is how it is,"
+  },
+  {
+   "start": 827.12,
+   "duration": 4.44,
+   "text": "right? You you you would read a specific"
+  },
+  {
+   "start": 829.08,
+   "duration": 5.52,
+   "text": "file. So, it reveals it calls validate"
+  },
+  {
+   "start": 831.56,
+   "duration": 5.76,
+   "text": "customer from auth module."
+  },
+  {
+   "start": 834.6,
+   "duration": 5.28,
+   "text": "Right? For example, another read is"
+  },
+  {
+   "start": 837.32,
+   "duration": 5.16,
+   "text": "you know, understanding the key files,"
+  },
+  {
+   "start": 839.88,
+   "duration": 4.68,
+   "text": "for example. Right? For example, you"
+  },
+  {
+   "start": 842.48,
+   "duration": 4.24,
+   "text": "want to do that. So, it shows all the"
+  },
+  {
+   "start": 844.56,
+   "duration": 5.04,
+   "text": "status codes. You you read a particular"
+  },
+  {
+   "start": 846.72,
+   "duration": 5.119,
+   "text": "file, for example, processor.py."
+  },
+  {
+   "start": 849.6,
+   "duration": 4.8,
+   "text": "You know? I can show you here also."
+  },
+  {
+   "start": 851.839,
+   "duration": 5.12,
+   "text": "Something else is also there. So, here"
+  },
+  {
+   "start": 854.4,
+   "duration": 3.6,
+   "text": "if you see the read implementation over"
+  },
+  {
+   "start": 856.959,
+   "duration": 2.401,
+   "text": "here."
+  },
+  {
+   "start": 858.0,
+   "duration": 4.36,
+   "text": "You know?"
+  },
+  {
+   "start": 859.36,
+   "duration": 6.2,
+   "text": "Tool name read, input is the file path."
+  },
+  {
+   "start": 862.36,
+   "duration": 6.08,
+   "text": "It returns the full file contents as a"
+  },
+  {
+   "start": 865.56,
+   "duration": 3.88,
+   "text": "string. Okay, so understand where to use"
+  },
+  {
+   "start": 868.44,
+   "duration": 2.88,
+   "text": "you know,"
+  },
+  {
+   "start": 869.44,
+   "duration": 3.76,
+   "text": "read and where to use grep. Or you can"
+  },
+  {
+   "start": 871.32,
+   "duration": 3.84,
+   "text": "use a combination of both and we'll"
+  },
+  {
+   "start": 873.2,
+   "duration": 4.879,
+   "text": "understand the combination of tools"
+  },
+  {
+   "start": 875.16,
+   "duration": 4.48,
+   "text": "using a scenario in a like a few minutes"
+  },
+  {
+   "start": 878.079,
+   "duration": 3.041,
+   "text": "and it will give you a more clearer"
+  },
+  {
+   "start": 879.64,
+   "duration": 2.6,
+   "text": "picture."
+  },
+  {
+   "start": 881.12,
+   "duration": 2.28,
+   "text": "Right?"
+  },
+  {
+   "start": 882.24,
+   "duration": 3.48,
+   "text": "So,"
+  },
+  {
+   "start": 883.4,
+   "duration": 4.64,
+   "text": "but there is a trade-off over here. Read"
+  },
+  {
+   "start": 885.72,
+   "duration": 4.2,
+   "text": "is great for targeted file loading, but"
+  },
+  {
+   "start": 888.04,
+   "duration": 3.2,
+   "text": "it is expensive"
+  },
+  {
+   "start": 889.92,
+   "duration": 3.52,
+   "text": "you know, to keep in mind that it is"
+  },
+  {
+   "start": 891.24,
+   "duration": 3.36,
+   "text": "sometimes expensive if you do it blindly"
+  },
+  {
+   "start": 893.44,
+   "duration": 3.72,
+   "text": "at scale."
+  },
+  {
+   "start": 894.6,
+   "duration": 4.92,
+   "text": "So, if you read 50 files at the start of"
+  },
+  {
+   "start": 897.16,
+   "duration": 4.32,
+   "text": "a task, for example,"
+  },
+  {
+   "start": 899.52,
+   "duration": 3.4,
+   "text": "you have probably burned through most of"
+  },
+  {
+   "start": 901.48,
+   "duration": 3.68,
+   "text": "your tokens."
+  },
+  {
+   "start": 902.92,
+   "duration": 3.96,
+   "text": "I mean, your entire context window you"
+  },
+  {
+   "start": 905.16,
+   "duration": 3.32,
+   "text": "have burned through."
+  },
+  {
+   "start": 906.88,
+   "duration": 4.84,
+   "text": "You haven't done any actual work. You"
+  },
+  {
+   "start": 908.48,
+   "duration": 4.84,
+   "text": "just spent all that currency of AI which"
+  },
+  {
+   "start": 911.72,
+   "duration": 3.08,
+   "text": "is tokens"
+  },
+  {
+   "start": 913.32,
+   "duration": 3.759,
+   "text": "just by reading all the files. You"
+  },
+  {
+   "start": 914.8,
+   "duration": 4.68,
+   "text": "haven't even started working on it. So,"
+  },
+  {
+   "start": 917.079,
+   "duration": 5.121,
+   "text": "you have to be very intelligent in using"
+  },
+  {
+   "start": 919.48,
+   "duration": 6.24,
+   "text": "these tools efficiently. Okay? I hope"
+  },
+  {
+   "start": 922.2,
+   "duration": 3.52,
+   "text": "I'm making sense."
+  },
+  {
+   "start": 925.88,
+   "duration": 3.04,
+   "text": "So,"
+  },
+  {
+   "start": 926.76,
+   "duration": 4.4,
+   "text": "next is write."
+  },
+  {
+   "start": 928.92,
+   "duration": 4.12,
+   "text": "So, the short form or the short"
+  },
+  {
+   "start": 931.16,
+   "duration": 3.56,
+   "text": "definition of write I would say create"
+  },
+  {
+   "start": 933.04,
+   "duration": 4.36,
+   "text": "and overwrite."
+  },
+  {
+   "start": 934.72,
+   "duration": 5.08,
+   "text": "So, write does exactly what the name"
+  },
+  {
+   "start": 937.4,
+   "duration": 4.24,
+   "text": "says. It creates a new file or a"
+  },
+  {
+   "start": 939.8,
+   "duration": 3.96,
+   "text": "completely, you know, replaces an"
+  },
+  {
+   "start": 941.64,
+   "duration": 4.84,
+   "text": "existing one."
+  },
+  {
+   "start": 943.76,
+   "duration": 4.68,
+   "text": "It's an atomic operation. Okay?"
+  },
+  {
+   "start": 946.48,
+   "duration": 4.24,
+   "text": "So, the whole file it will create or it"
+  },
+  {
+   "start": 948.44,
+   "duration": 5.56,
+   "text": "will modify."
+  },
+  {
+   "start": 950.72,
+   "duration": 6.8,
+   "text": "Okay? So, what you actually pass in it"
+  },
+  {
+   "start": 954.0,
+   "duration": 5.88,
+   "text": "is what ends up on the disk, whatever."
+  },
+  {
+   "start": 957.52,
+   "duration": 4.439,
+   "text": "Right? So, if you want to see an"
+  },
+  {
+   "start": 959.88,
+   "duration": 3.64,
+   "text": "implementation of"
+  },
+  {
+   "start": 961.959,
+   "duration": 3.841,
+   "text": "read"
+  },
+  {
+   "start": 963.52,
+   "duration": 5.24,
+   "text": "uh sorry, write. So, basically I can"
+  },
+  {
+   "start": 965.8,
+   "duration": 5.6,
+   "text": "show you over here, right? So, basically"
+  },
+  {
+   "start": 968.76,
+   "duration": 4.76,
+   "text": "you would say what is the file path."
+  },
+  {
+   "start": 971.4,
+   "duration": 4.12,
+   "text": "Okay, in where you want to write it and"
+  },
+  {
+   "start": 973.52,
+   "duration": 3.68,
+   "text": "the content basically. It will write it"
+  },
+  {
+   "start": 975.52,
+   "duration": 4.16,
+   "text": "from scratch, whatever content you give."
+  },
+  {
+   "start": 977.2,
+   "duration": 6.08,
+   "text": "Right? This is how you would use the"
+  },
+  {
+   "start": 979.68,
+   "duration": 5.399,
+   "text": "right tool. So, it's also on the uh PPT"
+  },
+  {
+   "start": 983.28,
+   "duration": 3.84,
+   "text": "over here."
+  },
+  {
+   "start": 985.079,
+   "duration": 4.561,
+   "text": "Okay? So, you give the path and you give"
+  },
+  {
+   "start": 987.12,
+   "duration": 4.959,
+   "text": "the content."
+  },
+  {
+   "start": 989.64,
+   "duration": 4.48,
+   "text": "Okay? Now, the next thing that we would"
+  },
+  {
+   "start": 992.079,
+   "duration": 4.481,
+   "text": "talk about is edit. Okay, and there is a"
+  },
+  {
+   "start": 994.12,
+   "duration": 3.839,
+   "text": "common confusion."
+  },
+  {
+   "start": 996.56,
+   "duration": 3.68,
+   "text": "Like,"
+  },
+  {
+   "start": 997.959,
+   "duration": 4.201,
+   "text": "when do you reach for write over edit?"
+  },
+  {
+   "start": 1000.24,
+   "duration": 3.0,
+   "text": "Two situations."
+  },
+  {
+   "start": 1002.16,
+   "duration": 2.84,
+   "text": "First,"
+  },
+  {
+   "start": 1003.24,
+   "duration": 4.04,
+   "text": "you know, you are creating a brand new"
+  },
+  {
+   "start": 1005.0,
+   "duration": 3.88,
+   "text": "file that doesn't exist yet."
+  },
+  {
+   "start": 1007.28,
+   "duration": 3.4,
+   "text": "Write is the only option here. For"
+  },
+  {
+   "start": 1008.88,
+   "duration": 2.92,
+   "text": "example, that is the scenario."
+  },
+  {
+   "start": 1010.68,
+   "duration": 4.2,
+   "text": "Second,"
+  },
+  {
+   "start": 1011.8,
+   "duration": 5.4,
+   "text": "you need to make changes so extensive"
+  },
+  {
+   "start": 1014.88,
+   "duration": 3.88,
+   "text": "that editing just feels silly in that"
+  },
+  {
+   "start": 1017.2,
+   "duration": 4.24,
+   "text": "case."
+  },
+  {
+   "start": 1018.76,
+   "duration": 4.88,
+   "text": "So, it is cleaner in this uh"
+  },
+  {
+   "start": 1021.44,
+   "duration": 4.32,
+   "text": "you know, scenario, we just regenerate"
+  },
+  {
+   "start": 1023.64,
+   "duration": 4.48,
+   "text": "the whole file. So, you need to be very"
+  },
+  {
+   "start": 1025.76,
+   "duration": 6.4,
+   "text": "thoughtful and understand the scenario"
+  },
+  {
+   "start": 1028.12,
+   "duration": 7.04,
+   "text": "in detail where to use what actually."
+  },
+  {
+   "start": 1032.16,
+   "duration": 5.64,
+   "text": "And one more fallback mechanism is also"
+  },
+  {
+   "start": 1035.16,
+   "duration": 5.36,
+   "text": "you need to understand. Sometimes edit"
+  },
+  {
+   "start": 1037.8,
+   "duration": 5.24,
+   "text": "operation fails or edit tool fails. In"
+  },
+  {
+   "start": 1040.52,
+   "duration": 3.84,
+   "text": "that case, write is the fallback and"
+  },
+  {
+   "start": 1043.04,
+   "duration": 3.72,
+   "text": "we'll understand that scenario in a"
+  },
+  {
+   "start": 1044.36,
+   "duration": 4.92,
+   "text": "minute. So, keep that in mind."
+  },
+  {
+   "start": 1046.76,
+   "duration": 4.48,
+   "text": "When to use write and when to use edit."
+  },
+  {
+   "start": 1049.28,
+   "duration": 3.92,
+   "text": "Okay?"
+  },
+  {
+   "start": 1051.24,
+   "duration": 4.64,
+   "text": "So, let's talk about edit now. We talked"
+  },
+  {
+   "start": 1053.2,
+   "duration": 4.6,
+   "text": "about write. Now, let's talk about the"
+  },
+  {
+   "start": 1055.88,
+   "duration": 3.48,
+   "text": "edit."
+  },
+  {
+   "start": 1057.8,
+   "duration": 5.8,
+   "text": "So, edit"
+  },
+  {
+   "start": 1059.36,
+   "duration": 6.8,
+   "text": "is the most nuanced of the six tools."
+  },
+  {
+   "start": 1063.6,
+   "duration": 4.8,
+   "text": "Why do I say nuanced or nuanced? I don't"
+  },
+  {
+   "start": 1066.16,
+   "duration": 4.04,
+   "text": "know how to pronounce it. Just I'm using"
+  },
+  {
+   "start": 1068.4,
+   "duration": 3.4,
+   "text": "some terminologies, you know? Just uh"
+  },
+  {
+   "start": 1070.2,
+   "duration": 3.72,
+   "text": "learn a word"
+  },
+  {
+   "start": 1071.8,
+   "duration": 3.12,
+   "text": "in a day. Something like that. Right?"
+  },
+  {
+   "start": 1073.92,
+   "duration": 3.36,
+   "text": "So, it"
+  },
+  {
+   "start": 1074.92,
+   "duration": 5.64,
+   "text": "lets Claude"
+  },
+  {
+   "start": 1077.28,
+   "duration": 5.88,
+   "text": "uh make like targeted modifications to a"
+  },
+  {
+   "start": 1080.56,
+   "duration": 3.8,
+   "text": "specific section of a file. Understand"
+  },
+  {
+   "start": 1083.16,
+   "duration": 4.16,
+   "text": "that."
+  },
+  {
+   "start": 1084.36,
+   "duration": 4.68,
+   "text": "Targeted modifications to a specific"
+  },
+  {
+   "start": 1087.32,
+   "duration": 3.44,
+   "text": "section of a file."
+  },
+  {
+   "start": 1089.04,
+   "duration": 3.0,
+   "text": "And it does it without rewriting the"
+  },
+  {
+   "start": 1090.76,
+   "duration": 2.96,
+   "text": "entire thing."
+  },
+  {
+   "start": 1092.04,
+   "duration": 3.56,
+   "text": "You know, it's like a find and replace"
+  },
+  {
+   "start": 1093.72,
+   "duration": 4.44,
+   "text": "thing, right? We we do"
+  },
+  {
+   "start": 1095.6,
+   "duration": 5.68,
+   "text": "we do do use it extensively, you know,"
+  },
+  {
+   "start": 1098.16,
+   "duration": 5.24,
+   "text": "in our coding sessions or you know, if"
+  },
+  {
+   "start": 1101.28,
+   "duration": 4.0,
+   "text": "we do writing something, we are editing"
+  },
+  {
+   "start": 1103.4,
+   "duration": 3.4,
+   "text": "something, we use that. Find and"
+  },
+  {
+   "start": 1105.28,
+   "duration": 3.44,
+   "text": "replace."
+  },
+  {
+   "start": 1106.8,
+   "duration": 4.8,
+   "text": "So, this gives a massive advantage."
+  },
+  {
+   "start": 1108.72,
+   "duration": 4.48,
+   "text": "Like, if you got like a 500 line file"
+  },
+  {
+   "start": 1111.6,
+   "duration": 3.84,
+   "text": "and you want to change three lines in"
+  },
+  {
+   "start": 1113.2,
+   "duration": 3.68,
+   "text": "the middle, edit handles it most"
+  },
+  {
+   "start": 1115.44,
+   "duration": 2.76,
+   "text": "gracefully."
+  },
+  {
+   "start": 1116.88,
+   "duration": 4.44,
+   "text": "You don't have to rewrite the entire"
+  },
+  {
+   "start": 1118.2,
+   "duration": 4.479,
+   "text": "file for such a puny change, right? So,"
+  },
+  {
+   "start": 1121.32,
+   "duration": 2.88,
+   "text": "that is how it is. And this is how you"
+  },
+  {
+   "start": 1122.679,
+   "duration": 3.801,
+   "text": "would probably use it. So, you have to"
+  },
+  {
+   "start": 1124.2,
+   "duration": 4.52,
+   "text": "give the path. You have to give the old"
+  },
+  {
+   "start": 1126.48,
+   "duration": 4.24,
+   "text": "string, for example, const max equal to"
+  },
+  {
+   "start": 1128.72,
+   "duration": 3.88,
+   "text": "10 and you want to replace it with const"
+  },
+  {
+   "start": 1130.72,
+   "duration": 4.72,
+   "text": "max equal to 50. Now, if you want to"
+  },
+  {
+   "start": 1132.6,
+   "duration": 5.48,
+   "text": "correlate it with how Claude code works,"
+  },
+  {
+   "start": 1135.44,
+   "duration": 4.6,
+   "text": "right? You can say that uh Claude code"
+  },
+  {
+   "start": 1138.08,
+   "duration": 3.8,
+   "text": "usually uses the edit tool when you"
+  },
+  {
+   "start": 1140.04,
+   "duration": 3.8,
+   "text": "provide a specific file and say that,"
+  },
+  {
+   "start": 1141.88,
+   "duration": 4.12,
+   "text": "okay, at the specific point I need a new"
+  },
+  {
+   "start": 1143.84,
+   "duration": 4.88,
+   "text": "logic or change this logic. Then it"
+  },
+  {
+   "start": 1146.0,
+   "duration": 5.8,
+   "text": "edits the code at that particular file."
+  },
+  {
+   "start": 1148.72,
+   "duration": 3.08,
+   "text": "Right? If you are"
+  },
+  {
+   "start": 1153.08,
+   "duration": 2.16,
+   "text": "Claude to create an entire application"
+  },
+  {
+   "start": 1153.64,
+   "duration": 3.36,
+   "text": "from scratch, it creates all the files"
+  },
+  {
+   "start": 1155.24,
+   "duration": 4.439,
+   "text": "with the content, right? So, basically"
+  },
+  {
+   "start": 1157.0,
+   "duration": 4.2,
+   "text": "in that particular place, it uses the"
+  },
+  {
+   "start": 1159.679,
+   "duration": 4.24,
+   "text": "right tool."
+  },
+  {
+   "start": 1161.2,
+   "duration": 5.36,
+   "text": "If you want Claude to go to a specific"
+  },
+  {
+   "start": 1163.919,
+   "duration": 6.201,
+   "text": "file and read it and explain it, then"
+  },
+  {
+   "start": 1166.56,
+   "duration": 6.119,
+   "text": "basically it will use the read tool."
+  },
+  {
+   "start": 1170.12,
+   "duration": 5.039,
+   "text": "If Claude wants to do Claude code wants"
+  },
+  {
+   "start": 1172.679,
+   "duration": 4.561,
+   "text": "to do specific find and replace"
+  },
+  {
+   "start": 1175.159,
+   "duration": 5.0,
+   "text": "operation, it will use the"
+  },
+  {
+   "start": 1177.24,
+   "duration": 4.679,
+   "text": "probably a combination of grep and edit."
+  },
+  {
+   "start": 1180.159,
+   "duration": 4.281,
+   "text": "You know, it will find the place where"
+  },
+  {
+   "start": 1181.919,
+   "duration": 4.24,
+   "text": "you want to edit using grep and then at"
+  },
+  {
+   "start": 1184.44,
+   "duration": 4.4,
+   "text": "that particular place, it will do the"
+  },
+  {
+   "start": 1186.159,
+   "duration": 4.161,
+   "text": "edit. So, you have to understand like,"
+  },
+  {
+   "start": 1188.84,
+   "duration": 3.76,
+   "text": "you know, if this kind of scenario comes"
+  },
+  {
+   "start": 1190.32,
+   "duration": 4.24,
+   "text": "in the question about Claude code also,"
+  },
+  {
+   "start": 1192.6,
+   "duration": 4.28,
+   "text": "how it works. You have to kind of use"
+  },
+  {
+   "start": 1194.56,
+   "duration": 3.96,
+   "text": "your, you know, um"
+  },
+  {
+   "start": 1196.88,
+   "duration": 3.093,
+   "text": "uh intuitive thinking to understand"
+  },
+  {
+   "start": 1198.52,
+   "duration": 3.28,
+   "text": "where the tool is, you know, applied,"
+  },
+  {
+   "start": 1199.973,
+   "duration": 3.387,
+   "text": "[snorts] something like that."
+  },
+  {
+   "start": 1201.8,
+   "duration": 3.48,
+   "text": "Okay."
+  },
+  {
+   "start": 1203.36,
+   "duration": 4.48,
+   "text": "So, back to edit."
+  },
+  {
+   "start": 1205.28,
+   "duration": 5.72,
+   "text": "Edit is efficient. It has the minimal"
+  },
+  {
+   "start": 1207.84,
+   "duration": 6.16,
+   "text": "risk of breaking unrelated code."
+  },
+  {
+   "start": 1211.0,
+   "duration": 4.68,
+   "text": "But, here's a catch."
+  },
+  {
+   "start": 1214.0,
+   "duration": 4.12,
+   "text": "There is a catch."
+  },
+  {
+   "start": 1215.68,
+   "duration": 4.76,
+   "text": "When does edit fail?"
+  },
+  {
+   "start": 1218.12,
+   "duration": 4.2,
+   "text": "And this is exam material, and I'm"
+  },
+  {
+   "start": 1220.44,
+   "duration": 3.84,
+   "text": "telling you again and again, this will"
+  },
+  {
+   "start": 1222.32,
+   "duration": 3.88,
+   "text": "come in the exam. I'm going to tell you."
+  },
+  {
+   "start": 1224.28,
+   "duration": 4.2,
+   "text": "This is very, very, you know, uh they"
+  },
+  {
+   "start": 1226.2,
+   "duration": 6.28,
+   "text": "will test you in this case."
+  },
+  {
+   "start": 1228.48,
+   "duration": 6.48,
+   "text": "So, edit requires the old string, right,"
+  },
+  {
+   "start": 1232.48,
+   "duration": 3.56,
+   "text": "to be unique within the file."
+  },
+  {
+   "start": 1234.96,
+   "duration": 3.76,
+   "text": "This is very important to understand."
+  },
+  {
+   "start": 1236.04,
+   "duration": 4.68,
+   "text": "Whatever string you're searching over"
+  },
+  {
+   "start": 1238.72,
+   "duration": 3.08,
+   "text": "here, for example, const max equals to"
+  },
+  {
+   "start": 1240.72,
+   "duration": 4.08,
+   "text": "10,"
+  },
+  {
+   "start": 1241.8,
+   "duration": 4.32,
+   "text": "you know, it must be 100% unique. I've"
+  },
+  {
+   "start": 1244.8,
+   "duration": 4.04,
+   "text": "already mentioned over here. It must be"
+  },
+  {
+   "start": 1246.12,
+   "duration": 5.76,
+   "text": "100% unique."
+  },
+  {
+   "start": 1248.84,
+   "duration": 5.08,
+   "text": "So, if that exact text appears more than"
+  },
+  {
+   "start": 1251.88,
+   "duration": 4.84,
+   "text": "once,"
+  },
+  {
+   "start": 1253.92,
+   "duration": 5.48,
+   "text": "so, in that case, edit doesn't know"
+  },
+  {
+   "start": 1256.72,
+   "duration": 4.2,
+   "text": "which occurrence to replace."
+  },
+  {
+   "start": 1259.4,
+   "duration": 4.0,
+   "text": "You know, that is a good catch, right?"
+  },
+  {
+   "start": 1260.92,
+   "duration": 4.76,
+   "text": "You have to be very intuitive over here"
+  },
+  {
+   "start": 1263.4,
+   "duration": 3.8,
+   "text": "to understand that edit only works if"
+  },
+  {
+   "start": 1265.68,
+   "duration": 4.52,
+   "text": "there's only one occurrence of that"
+  },
+  {
+   "start": 1267.2,
+   "duration": 5.04,
+   "text": "particular old, you know, string,"
+  },
+  {
+   "start": 1270.2,
+   "duration": 4.8,
+   "text": "uh which you want to replace in the"
+  },
+  {
+   "start": 1272.24,
+   "duration": 2.76,
+   "text": "particular file."
+  },
+  {
+   "start": 1275.2,
+   "duration": 4.8,
+   "text": "So, when that happens, there is a"
+  },
+  {
+   "start": 1277.24,
+   "duration": 3.76,
+   "text": "reliable solution."
+  },
+  {
+   "start": 1280.0,
+   "duration": 2.92,
+   "text": "You know?"
+  },
+  {
+   "start": 1281.0,
+   "duration": 4.04,
+   "text": "And that is where the fallback comes"
+  },
+  {
+   "start": 1282.92,
+   "duration": 5.56,
+   "text": "into the picture, the right fallback"
+  },
+  {
+   "start": 1285.04,
+   "duration": 5.36,
+   "text": "that I was talking about before."
+  },
+  {
+   "start": 1288.48,
+   "duration": 3.24,
+   "text": "Okay?"
+  },
+  {
+   "start": 1290.4,
+   "duration": 3.2,
+   "text": "So, what is the right fallback,"
+  },
+  {
+   "start": 1291.72,
+   "duration": 3.884,
+   "text": "basically?"
+  },
+  {
+   "start": 1293.6,
+   "duration": 2.16,
+   "text": "So, edit fails"
+  },
+  {
+   "start": 1295.604,
+   "duration": 3.436,
+   "text": ">> [snorts]"
+  },
+  {
+   "start": 1295.76,
+   "duration": 5.96,
+   "text": ">> when your anchor text or the old string,"
+  },
+  {
+   "start": 1299.04,
+   "duration": 4.0,
+   "text": "right, it is not unique. Right, it is"
+  },
+  {
+   "start": 1301.72,
+   "duration": 3.52,
+   "text": "not unique."
+  },
+  {
+   "start": 1303.04,
+   "duration": 5.24,
+   "text": "So, what do you do in that case? You"
+  },
+  {
+   "start": 1305.24,
+   "duration": 4.88,
+   "text": "fall back to read plus write."
+  },
+  {
+   "start": 1308.28,
+   "duration": 2.84,
+   "text": "Okay, and here is a pattern that you"
+  },
+  {
+   "start": 1310.12,
+   "duration": 3.92,
+   "text": "see."
+  },
+  {
+   "start": 1311.12,
+   "duration": 4.96,
+   "text": "First, you read, I mean, load the full"
+  },
+  {
+   "start": 1314.04,
+   "duration": 3.64,
+   "text": "file into context."
+  },
+  {
+   "start": 1316.08,
+   "duration": 4.36,
+   "text": "Okay?"
+  },
+  {
+   "start": 1317.68,
+   "duration": 5.999,
+   "text": "Then, you reason. Agent modifies code in"
+  },
+  {
+   "start": 1320.44,
+   "duration": 6.04,
+   "text": "memory, and then write"
+  },
+  {
+   "start": 1323.679,
+   "duration": 5.881,
+   "text": "the updated file. Override the updated"
+  },
+  {
+   "start": 1326.48,
+   "duration": 5.8,
+   "text": "file. Override with updated file."
+  },
+  {
+   "start": 1329.56,
+   "duration": 5.64,
+   "text": "So, this is the cycle that you would do"
+  },
+  {
+   "start": 1332.28,
+   "duration": 4.56,
+   "text": "when the edit fails."
+  },
+  {
+   "start": 1335.2,
+   "duration": 3.64,
+   "text": "You would read the context, you know,"
+  },
+  {
+   "start": 1336.84,
+   "duration": 3.88,
+   "text": "all the file, basically. You will"
+  },
+  {
+   "start": 1338.84,
+   "duration": 4.0,
+   "text": "reason. Agent modifies the code in"
+  },
+  {
+   "start": 1340.72,
+   "duration": 4.6,
+   "text": "memory, and then basically overwrite"
+  },
+  {
+   "start": 1342.84,
+   "duration": 5.2,
+   "text": "that file."
+  },
+  {
+   "start": 1345.32,
+   "duration": 2.72,
+   "text": "And that's what"
+  },
+  {
+   "start": 1348.8,
+   "duration": 4.04,
+   "text": "finds multiple occurrences, it might,"
+  },
+  {
+   "start": 1350.4,
+   "duration": 4.0,
+   "text": "you know, redo the whole file. In the in"
+  },
+  {
+   "start": 1352.84,
+   "duration": 3.8,
+   "text": "the memory, it generates a new file, and"
+  },
+  {
+   "start": 1354.4,
+   "duration": 5.44,
+   "text": "then basically updates the existing file"
+  },
+  {
+   "start": 1356.64,
+   "duration": 5.32,
+   "text": "that you have. Sometimes it does that."
+  },
+  {
+   "start": 1359.84,
+   "duration": 5.08,
+   "text": "But, what is the trade-off in this? Is"
+  },
+  {
+   "start": 1361.96,
+   "duration": 5.88,
+   "text": "that read plus write is less elegant"
+  },
+  {
+   "start": 1364.92,
+   "duration": 7.4,
+   "text": "than edit. You are kind of rewriting the"
+  },
+  {
+   "start": 1367.84,
+   "duration": 6.28,
+   "text": "whole file instead of just a fragment."
+  },
+  {
+   "start": 1372.32,
+   "duration": 3.96,
+   "text": "But, it always works. You know, there is"
+  },
+  {
+   "start": 1374.12,
+   "duration": 4.72,
+   "text": "no unique requirement in this, like like"
+  },
+  {
+   "start": 1376.28,
+   "duration": 4.2,
+   "text": "edit requires a unique string to be"
+  },
+  {
+   "start": 1378.84,
+   "duration": 4.12,
+   "text": "there to replace."
+  },
+  {
+   "start": 1380.48,
+   "duration": 4.68,
+   "text": "This whole file gets replaced in the in"
+  },
+  {
+   "start": 1382.96,
+   "duration": 3.44,
+   "text": "the case of read plus write fallback"
+  },
+  {
+   "start": 1385.16,
+   "duration": 2.76,
+   "text": "technique."
+  },
+  {
+   "start": 1386.4,
+   "duration": 2.84,
+   "text": "And you control exactly what it"
+  },
+  {
+   "start": 1387.92,
+   "duration": 3.08,
+   "text": "contains."
+  },
+  {
+   "start": 1389.24,
+   "duration": 2.84,
+   "text": "And this is a very important exam"
+  },
+  {
+   "start": 1391.0,
+   "duration": 4.56,
+   "text": "signal,"
+  },
+  {
+   "start": 1392.08,
+   "duration": 6.72,
+   "text": "okay, that edit always requires"
+  },
+  {
+   "start": 1395.56,
+   "duration": 6.24,
+   "text": "a unique anchor text. When it fails, the"
+  },
+  {
+   "start": 1398.8,
+   "duration": 6.44,
+   "text": "correct recovery technique is read the"
+  },
+  {
+   "start": 1401.8,
+   "duration": 7.08,
+   "text": "full file, make the change, write the"
+  },
+  {
+   "start": 1405.24,
+   "duration": 6.56,
+   "text": "updated file back. This is the canonical"
+  },
+  {
+   "start": 1408.88,
+   "duration": 6.76,
+   "text": "fallback pattern that you need to know."
+  },
+  {
+   "start": 1411.8,
+   "duration": 5.84,
+   "text": "And it will be tested in the exam."
+  },
+  {
+   "start": 1415.64,
+   "duration": 3.84,
+   "text": "Okay? So, what I'm going to give you a"
+  },
+  {
+   "start": 1417.64,
+   "duration": 3.36,
+   "text": "one pro tip, okay? And it might come in"
+  },
+  {
+   "start": 1419.48,
+   "duration": 4.04,
+   "text": "the exam as well. This is what I have"
+  },
+  {
+   "start": 1421.0,
+   "duration": 4.8,
+   "text": "figured out. For example, to make edit"
+  },
+  {
+   "start": 1423.52,
+   "duration": 4.8,
+   "text": "more likely to succeed,"
+  },
+  {
+   "start": 1425.8,
+   "duration": 6.24,
+   "text": "you know, use a longer, more specific"
+  },
+  {
+   "start": 1428.32,
+   "duration": 5.8,
+   "text": "old string. For example, here const max,"
+  },
+  {
+   "start": 1432.04,
+   "duration": 5.04,
+   "text": "if you are giving only const max, there"
+  },
+  {
+   "start": 1434.12,
+   "duration": 5.2,
+   "text": "might be a lot of variable declarations"
+  },
+  {
+   "start": 1437.08,
+   "duration": 4.4,
+   "text": "of max in the particular file. But, if"
+  },
+  {
+   "start": 1439.32,
+   "duration": 4.56,
+   "text": "you are telling, okay, I want to"
+  },
+  {
+   "start": 1441.48,
+   "duration": 5.08,
+   "text": "replace only the specific declaration of"
+  },
+  {
+   "start": 1443.88,
+   "duration": 4.0,
+   "text": "max where const max equals to 10, then"
+  },
+  {
+   "start": 1446.56,
+   "duration": 3.36,
+   "text": "that might be unique, because you"
+  },
+  {
+   "start": 1447.88,
+   "duration": 5.04,
+   "text": "wouldn't have defined const max equals"
+  },
+  {
+   "start": 1449.92,
+   "duration": 7.28,
+   "text": "to 10 like more more than one, I would"
+  },
+  {
+   "start": 1452.92,
+   "duration": 4.28,
+   "text": "suggest. So, a pro tip will be what?"
+  },
+  {
+   "start": 1457.44,
+   "duration": 2.72,
+   "text": "Search for a"
+  },
+  {
+   "start": 1458.92,
+   "duration": 3.64,
+   "text": "longer"
+  },
+  {
+   "start": 1460.16,
+   "duration": 5.16,
+   "text": "text, basically."
+  },
+  {
+   "start": 1462.56,
+   "duration": 4.64,
+   "text": "Okay? I hope that is making sense."
+  },
+  {
+   "start": 1465.32,
+   "duration": 7.56,
+   "text": "Now, talking about the incremental"
+  },
+  {
+   "start": 1467.2,
+   "duration": 7.6,
+   "text": "exploration pattern, grep, read, trace."
+  },
+  {
+   "start": 1472.88,
+   "duration": 3.799,
+   "text": "So,"
+  },
+  {
+   "start": 1474.8,
+   "duration": 3.72,
+   "text": "here is the principle that ties"
+  },
+  {
+   "start": 1476.679,
+   "duration": 5.121,
+   "text": "everything together, right? Incremental"
+  },
+  {
+   "start": 1478.52,
+   "duration": 5.04,
+   "text": "exploration beats bulk reading every"
+  },
+  {
+   "start": 1481.8,
+   "duration": 2.84,
+   "text": "time."
+  },
+  {
+   "start": 1483.56,
+   "duration": 4.92,
+   "text": "So,"
+  },
+  {
+   "start": 1484.64,
+   "duration": 6.12,
+   "text": "let's take a an example to understand."
+  },
+  {
+   "start": 1488.48,
+   "duration": 4.64,
+   "text": "A naive agent,"
+  },
+  {
+   "start": 1490.76,
+   "duration": 4.36,
+   "text": "when it is given, like, for example,"
+  },
+  {
+   "start": 1493.12,
+   "duration": 3.96,
+   "text": "\"Explore this codebase and understand"
+  },
+  {
+   "start": 1495.12,
+   "duration": 4.72,
+   "text": "the billing system.\" Even with Claude"
+  },
+  {
+   "start": 1497.08,
+   "duration": 4.4,
+   "text": "code, let's say. That's also agentic AI"
+  },
+  {
+   "start": 1499.84,
+   "duration": 3.2,
+   "text": "development, right?"
+  },
+  {
+   "start": 1501.48,
+   "duration": 3.36,
+   "text": "So, in that case, what happened? It it"
+  },
+  {
+   "start": 1503.04,
+   "duration": 3.639,
+   "text": "might just read every file in"
+  },
+  {
+   "start": 1504.84,
+   "duration": 5.48,
+   "text": "/src//billing,"
+  },
+  {
+   "start": 1506.679,
+   "duration": 6.521,
+   "text": "for example, all at once. 20 files, 30"
+  },
+  {
+   "start": 1510.32,
+   "duration": 4.359,
+   "text": "files. The entire context window is gone"
+  },
+  {
+   "start": 1513.2,
+   "duration": 3.64,
+   "text": "before any real reasoning happens, and"
+  },
+  {
+   "start": 1514.679,
+   "duration": 6.121,
+   "text": "that is the same example I told you when"
+  },
+  {
+   "start": 1516.84,
+   "duration": 5.8,
+   "text": "I talked about using read efficiently."
+  },
+  {
+   "start": 1520.8,
+   "duration": 4.879,
+   "text": "That is one of the anti-patterns that"
+  },
+  {
+   "start": 1522.64,
+   "duration": 4.84,
+   "text": "you need to avoid for the exam."
+  },
+  {
+   "start": 1525.679,
+   "duration": 5.161,
+   "text": "So,"
+  },
+  {
+   "start": 1527.48,
+   "duration": 4.88,
+   "text": "a well-designed agent does this instead."
+  },
+  {
+   "start": 1530.84,
+   "duration": 3.839,
+   "text": "Grep."
+  },
+  {
+   "start": 1532.36,
+   "duration": 3.4,
+   "text": "Search for the entry point or a key"
+  },
+  {
+   "start": 1534.679,
+   "duration": 2.561,
+   "text": "function,"
+  },
+  {
+   "start": 1535.76,
+   "duration": 3.8,
+   "text": "right?"
+  },
+  {
+   "start": 1537.24,
+   "duration": 4.72,
+   "text": "Then, read."
+  },
+  {
+   "start": 1539.56,
+   "duration": 4.48,
+   "text": "Load, for example, the specific file,"
+  },
+  {
+   "start": 1541.96,
+   "duration": 3.6,
+   "text": "whatever grep has identified. I I gave"
+  },
+  {
+   "start": 1544.04,
+   "duration": 4.2,
+   "text": "you an example, right? Grep has"
+  },
+  {
+   "start": 1545.56,
+   "duration": 5.2,
+   "text": "identified process refund definition."
+  },
+  {
+   "start": 1548.24,
+   "duration": 5.04,
+   "text": "Def process refund, it has identified."
+  },
+  {
+   "start": 1550.76,
+   "duration": 3.68,
+   "text": "Now, you will read that particular file"
+  },
+  {
+   "start": 1553.28,
+   "duration": 3.08,
+   "text": "where that particular function"
+  },
+  {
+   "start": 1554.44,
+   "duration": 2.96,
+   "text": "declaration is there."
+  },
+  {
+   "start": 1556.36,
+   "duration": 2.12,
+   "text": "Right?"
+  },
+  {
+   "start": 1557.4,
+   "duration": 2.72,
+   "text": "Then,"
+  },
+  {
+   "start": 1558.48,
+   "duration": 4.12,
+   "text": "what you would do?"
+  },
+  {
+   "start": 1560.12,
+   "duration": 5.04,
+   "text": "Trace the call chain."
+  },
+  {
+   "start": 1562.6,
+   "duration": 4.64,
+   "text": "And then find the next dependency."
+  },
+  {
+   "start": 1565.16,
+   "duration": 5.4,
+   "text": "I just mean that, you know,"
+  },
+  {
+   "start": 1567.24,
+   "duration": 5.08,
+   "text": "again, trace it. I mean, where all the"
+  },
+  {
+   "start": 1570.56,
+   "duration": 5.0,
+   "text": "particular implementation of the"
+  },
+  {
+   "start": 1572.32,
+   "duration": 5.359,
+   "text": "particular def process refund is used."
+  },
+  {
+   "start": 1575.56,
+   "duration": 5.08,
+   "text": "And then again, read it. So,"
+  },
+  {
+   "start": 1577.679,
+   "duration": 5.321,
+   "text": "incrementally, you are gaining knowledge"
+  },
+  {
+   "start": 1580.64,
+   "duration": 4.96,
+   "text": "on a specific thing that you identified"
+  },
+  {
+   "start": 1583.0,
+   "duration": 4.76,
+   "text": "first, and then you are kind of growing"
+  },
+  {
+   "start": 1585.6,
+   "duration": 4.68,
+   "text": "your knowledge based on that single"
+  },
+  {
+   "start": 1587.76,
+   "duration": 3.6,
+   "text": "point where you started. Def process"
+  },
+  {
+   "start": 1590.28,
+   "duration": 3.64,
+   "text": "refund."
+  },
+  {
+   "start": 1591.36,
+   "duration": 4.28,
+   "text": "Grep it. Read that file. Find other"
+  },
+  {
+   "start": 1593.92,
+   "duration": 4.64,
+   "text": "places. Trace where it has been used"
+  },
+  {
+   "start": 1595.64,
+   "duration": 5.4,
+   "text": "again. And then grep it again."
+  },
+  {
+   "start": 1598.56,
+   "duration": 6.24,
+   "text": "And then read it again, basically."
+  },
+  {
+   "start": 1601.04,
+   "duration": 6.92,
+   "text": "So, the cycle is a smart approach. So,"
+  },
+  {
+   "start": 1604.8,
+   "duration": 5.4,
+   "text": "each grep call informs the next read."
+  },
+  {
+   "start": 1607.96,
+   "duration": 3.56,
+   "text": "Each read reveals the next thing to grep"
+  },
+  {
+   "start": 1610.2,
+   "duration": 3.44,
+   "text": "for."
+  },
+  {
+   "start": 1611.52,
+   "duration": 5.2,
+   "text": "Let me let me repeat it again."
+  },
+  {
+   "start": 1613.64,
+   "duration": 5.76,
+   "text": "Like, each grep that you use, it will"
+  },
+  {
+   "start": 1616.72,
+   "duration": 3.84,
+   "text": "inform the next read operation. Because"
+  },
+  {
+   "start": 1619.4,
+   "duration": 2.76,
+   "text": "wherever you have grepped, you would"
+  },
+  {
+   "start": 1620.56,
+   "duration": 3.88,
+   "text": "read, right?"
+  },
+  {
+   "start": 1622.16,
+   "duration": 4.519,
+   "text": "And then each read that you do, you"
+  },
+  {
+   "start": 1624.44,
+   "duration": 3.84,
+   "text": "would find more occurrences of that"
+  },
+  {
+   "start": 1626.679,
+   "duration": 5.441,
+   "text": "function which you had grepped. So, you"
+  },
+  {
+   "start": 1628.28,
+   "duration": 5.04,
+   "text": "grep it again to find more traces."
+  },
+  {
+   "start": 1632.12,
+   "duration": 3.4,
+   "text": "So, you are kind of building"
+  },
+  {
+   "start": 1633.32,
+   "duration": 5.92,
+   "text": "understanding incrementally, loading"
+  },
+  {
+   "start": 1635.52,
+   "duration": 5.56,
+   "text": "only the files, you know, that are"
+  },
+  {
+   "start": 1639.24,
+   "duration": 4.28,
+   "text": "actually relevant, keeping your context"
+  },
+  {
+   "start": 1641.08,
+   "duration": 6.76,
+   "text": "window efficient. Now, let's see a"
+  },
+  {
+   "start": 1643.52,
+   "duration": 5.64,
+   "text": "particular scenario in code directly,"
+  },
+  {
+   "start": 1647.84,
+   "duration": 4.44,
+   "text": "right? Uh"
+  },
+  {
+   "start": 1649.16,
+   "duration": 5.4,
+   "text": "known as developer productivity. Okay?"
+  },
+  {
+   "start": 1652.28,
+   "duration": 4.8,
+   "text": "So, phase one is discovery. Use glob to"
+  },
+  {
+   "start": 1654.56,
+   "duration": 5.04,
+   "text": "So, just let's let's see the"
+  },
+  {
+   "start": 1657.08,
+   "duration": 4.68,
+   "text": "uh slide first, and then go back to the"
+  },
+  {
+   "start": 1659.6,
+   "duration": 4.2,
+   "text": "code where I have just given an example"
+  },
+  {
+   "start": 1661.76,
+   "duration": 4.32,
+   "text": "of how to do this developer productivity"
+  },
+  {
+   "start": 1663.8,
+   "duration": 4.04,
+   "text": "use case. So, first phase is discovery."
+  },
+  {
+   "start": 1666.08,
+   "duration": 3.24,
+   "text": "Use glob to map out the folder"
+  },
+  {
+   "start": 1667.84,
+   "duration": 3.52,
+   "text": "architecture."
+  },
+  {
+   "start": 1669.32,
+   "duration": 4.84,
+   "text": "For example, you're reading a codebase,"
+  },
+  {
+   "start": 1671.36,
+   "duration": 4.2,
+   "text": "right? Uh like, understand how refunds"
+  },
+  {
+   "start": 1674.16,
+   "duration": 2.56,
+   "text": "are processed in the codebase. For"
+  },
+  {
+   "start": 1675.56,
+   "duration": 3.04,
+   "text": "example, you're reading the You know,"
+  },
+  {
+   "start": 1676.72,
+   "duration": 3.12,
+   "text": "you are uh kind of finding that in the"
+  },
+  {
+   "start": 1678.6,
+   "duration": 2.92,
+   "text": "codebase itself. So, first is the"
+  },
+  {
+   "start": 1679.84,
+   "duration": 3.16,
+   "text": "discovery. Use glob to map out the"
+  },
+  {
+   "start": 1681.52,
+   "duration": 4.28,
+   "text": "entire folder structure. Now, you know"
+  },
+  {
+   "start": 1683.0,
+   "duration": 4.36,
+   "text": "what all files are there, you know, in"
+  },
+  {
+   "start": 1685.8,
+   "duration": 3.64,
+   "text": "the folder structure."
+  },
+  {
+   "start": 1687.36,
+   "duration": 6.319,
+   "text": "Phase two is understanding. Use grep to"
+  },
+  {
+   "start": 1689.44,
+   "duration": 6.08,
+   "text": "pinpoint functions. Read to load them."
+  },
+  {
+   "start": 1693.679,
+   "duration": 4.281,
+   "text": "Phase three, create. Use write to"
+  },
+  {
+   "start": 1695.52,
+   "duration": 5.64,
+   "text": "generate new boiler point endpoints."
+  },
+  {
+   "start": 1697.96,
+   "duration": 5.28,
+   "text": "Right? Based on information that you got"
+  },
+  {
+   "start": 1701.16,
+   "duration": 4.2,
+   "text": "using grep plus read that we just"
+  },
+  {
+   "start": 1703.24,
+   "duration": 4.32,
+   "text": "understood how to do that incremental"
+  },
+  {
+   "start": 1705.36,
+   "duration": 4.799,
+   "text": "exploration, then you, based on that"
+  },
+  {
+   "start": 1707.56,
+   "duration": 4.28,
+   "text": "information, you create something. Use"
+  },
+  {
+   "start": 1710.159,
+   "duration": 2.921,
+   "text": "write to generate new boilerplate"
+  },
+  {
+   "start": 1711.84,
+   "duration": 2.36,
+   "text": "endpoints."
+  },
+  {
+   "start": 1713.08,
+   "duration": 3.32,
+   "text": "And then,"
+  },
+  {
+   "start": 1714.2,
+   "duration": 4.6,
+   "text": "edit to surgically patch legacy issues."
+  },
+  {
+   "start": 1716.4,
+   "duration": 4.279,
+   "text": "Now, this is not like every time it"
+  },
+  {
+   "start": 1718.8,
+   "duration": 3.92,
+   "text": "happens. You might If you're creating a"
+  },
+  {
+   "start": 1720.679,
+   "duration": 4.521,
+   "text": "new file, you might start with"
+  },
+  {
+   "start": 1722.72,
+   "duration": 4.199,
+   "text": "discovery, understanding, and create."
+  },
+  {
+   "start": 1725.2,
+   "duration": 3.88,
+   "text": "Right? Now, if you find some bug"
+  },
+  {
+   "start": 1726.919,
+   "duration": 3.601,
+   "text": "somewhere, then maybe this whole process"
+  },
+  {
+   "start": 1729.08,
+   "duration": 3.52,
+   "text": "will repeat where you have to fix that"
+  },
+  {
+   "start": 1730.52,
+   "duration": 4.04,
+   "text": "particular bug because it has occurred a"
+  },
+  {
+   "start": 1732.6,
+   "duration": 4.48,
+   "text": "specific point in your file, which you"
+  },
+  {
+   "start": 1734.56,
+   "duration": 4.88,
+   "text": "want to replace. So, this is how Claude"
+  },
+  {
+   "start": 1737.08,
+   "duration": 5.079,
+   "text": "code or other AI coding assistants also"
+  },
+  {
+   "start": 1739.44,
+   "duration": 4.44,
+   "text": "work, kind of."
+  },
+  {
+   "start": 1742.159,
+   "duration": 3.76,
+   "text": "So,"
+  },
+  {
+   "start": 1743.88,
+   "duration": 4.0,
+   "text": "that is what it is. And the key point"
+  },
+  {
+   "start": 1745.919,
+   "duration": 5.161,
+   "text": "that I want to point out over here is"
+  },
+  {
+   "start": 1747.88,
+   "duration": 6.6,
+   "text": "that all six tools have clear roles."
+  },
+  {
+   "start": 1751.08,
+   "duration": 6.32,
+   "text": "Glob, grep, find, read, loads, write,"
+  },
+  {
+   "start": 1754.48,
+   "duration": 5.08,
+   "text": "creates, and edit, fixes."
+  },
+  {
+   "start": 1757.4,
+   "duration": 4.16,
+   "text": "Simple as that."
+  },
+  {
+   "start": 1759.56,
+   "duration": 4.48,
+   "text": "Right? So, if you want to see a little"
+  },
+  {
+   "start": 1761.56,
+   "duration": 5.92,
+   "text": "bit of glimpse of the code, I would just"
+  },
+  {
+   "start": 1764.04,
+   "duration": 5.16,
+   "text": "uh show you a developer productivity."
+  },
+  {
+   "start": 1767.48,
+   "duration": 2.96,
+   "text": "Right?"
+  },
+  {
+   "start": 1769.2,
+   "duration": 2.84,
+   "text": "So,"
+  },
+  {
+   "start": 1770.44,
+   "duration": 3.68,
+   "text": "find all the Python files in the orders"
+  },
+  {
+   "start": 1772.04,
+   "duration": 4.72,
+   "text": "module. So, this is where glob is coming"
+  },
+  {
+   "start": 1774.12,
+   "duration": 4.48,
+   "text": "into the picture. Then, grep."
+  },
+  {
+   "start": 1776.76,
+   "duration": 4.6,
+   "text": "Find the main order processing entry"
+  },
+  {
+   "start": 1778.6,
+   "duration": 5.84,
+   "text": "point, right? So, class order processor,"
+  },
+  {
+   "start": 1781.36,
+   "duration": 5.16,
+   "text": "and path is, for example, uh dot slash"
+  },
+  {
+   "start": 1784.44,
+   "duration": 3.92,
+   "text": "src/orders, which you already got from"
+  },
+  {
+   "start": 1786.52,
+   "duration": 3.72,
+   "text": "glob, right?"
+  },
+  {
+   "start": 1788.36,
+   "duration": 3.6,
+   "text": "Uh so, the path of the file."
+  },
+  {
+   "start": 1790.24,
+   "duration": 5.32,
+   "text": "Then read. Read that particular"
+  },
+  {
+   "start": 1791.96,
+   "duration": 6.28,
+   "text": "processor.py file, right? Because grep"
+  },
+  {
+   "start": 1795.56,
+   "duration": 5.12,
+   "text": "got you, okay, that this class order"
+  },
+  {
+   "start": 1798.24,
+   "duration": 5.4,
+   "text": "processor is there in the particular"
+  },
+  {
+   "start": 1800.68,
+   "duration": 4.96,
+   "text": "file, which is processor.py."
+  },
+  {
+   "start": 1803.64,
+   "duration": 4.6,
+   "text": "Now, understanding the you know, you"
+  },
+  {
+   "start": 1805.64,
+   "duration": 5.48,
+   "text": "have to read to understand, right? So,"
+  },
+  {
+   "start": 1808.24,
+   "duration": 5.72,
+   "text": "processor.py you read and it shows it"
+  },
+  {
+   "start": 1811.12,
+   "duration": 3.92,
+   "text": "uses status code dict, calls notify"
+  },
+  {
+   "start": 1813.96,
+   "duration": 2.6,
+   "text": "customer."
+  },
+  {
+   "start": 1815.04,
+   "duration": 3.92,
+   "text": "Now, you trace it."
+  },
+  {
+   "start": 1816.56,
+   "duration": 4.44,
+   "text": "Right? You trace the status codes. So,"
+  },
+  {
+   "start": 1818.96,
+   "duration": 3.04,
+   "text": "this is how generally a human also does"
+  },
+  {
+   "start": 1821.0,
+   "duration": 2.88,
+   "text": "the"
+  },
+  {
+   "start": 1822.0,
+   "duration": 4.56,
+   "text": "uh debugging or understanding the code"
+  },
+  {
+   "start": 1823.88,
+   "duration": 4.92,
+   "text": "base, right? And similarly, the coding"
+  },
+  {
+   "start": 1826.56,
+   "duration": 4.64,
+   "text": "assistants or whatever are there. For"
+  },
+  {
+   "start": 1828.8,
+   "duration": 3.88,
+   "text": "example, in the interview,"
+  },
+  {
+   "start": 1831.2,
+   "duration": 4.16,
+   "text": "uh you know, in a you know, you're in"
+  },
+  {
+   "start": 1832.68,
+   "duration": 4.6,
+   "text": "your AI interview, someone asks how uh"
+  },
+  {
+   "start": 1835.36,
+   "duration": 4.52,
+   "text": "you know,"
+  },
+  {
+   "start": 1837.28,
+   "duration": 5.08,
+   "text": "Claude code works, basically. Or, you"
+  },
+  {
+   "start": 1839.88,
+   "duration": 4.6,
+   "text": "know, or how Codex works. Uh so,"
+  },
+  {
+   "start": 1842.36,
+   "duration": 4.12,
+   "text": "basically, this you have to, you know,"
+  },
+  {
+   "start": 1844.48,
+   "duration": 4.2,
+   "text": "answer in this way. In this format, you"
+  },
+  {
+   "start": 1846.48,
+   "duration": 4.24,
+   "text": "have to give small snippets of this"
+  },
+  {
+   "start": 1848.68,
+   "duration": 4.96,
+   "text": "inbuilt tools, for example."
+  },
+  {
+   "start": 1850.72,
+   "duration": 4.72,
+   "text": "And then uh you trace it. So, uh you"
+  },
+  {
+   "start": 1853.64,
+   "duration": 3.64,
+   "text": "trace it back to constants.py. So, you"
+  },
+  {
+   "start": 1855.44,
+   "duration": 3.88,
+   "text": "could say that, \"Okay, status code is"
+  },
+  {
+   "start": 1857.28,
+   "duration": 3.52,
+   "text": "there in constants.py.\" Then you read"
+  },
+  {
+   "start": 1859.32,
+   "duration": 3.84,
+   "text": "it. You know,"
+  },
+  {
+   "start": 1860.8,
+   "duration": 4.84,
+   "text": "uh read the constant constants.py and it"
+  },
+  {
+   "start": 1863.16,
+   "duration": 5.4,
+   "text": "reveals legacy numeric status codes 1 2"
+  },
+  {
+   "start": 1865.64,
+   "duration": 4.44,
+   "text": "3, not descriptive things. Now, you go"
+  },
+  {
+   "start": 1868.56,
+   "duration": 3.84,
+   "text": "to phase three, which is action."
+  },
+  {
+   "start": 1870.08,
+   "duration": 3.32,
+   "text": "Generate the new endpoint boilerplate."
+  },
+  {
+   "start": 1872.4,
+   "duration": 3.24,
+   "text": "Now,"
+  },
+  {
+   "start": 1873.4,
+   "duration": 4.76,
+   "text": "you are generating an endpoint known as"
+  },
+  {
+   "start": 1875.64,
+   "duration": 4.24,
+   "text": "order status. So, the file path you"
+  },
+  {
+   "start": 1878.16,
+   "duration": 3.4,
+   "text": "gave, order status.py, and you have to"
+  },
+  {
+   "start": 1879.88,
+   "duration": 3.12,
+   "text": "write because it's a brand new thing"
+  },
+  {
+   "start": 1881.56,
+   "duration": 3.76,
+   "text": "that you are implementing, boilerplate,"
+  },
+  {
+   "start": 1883.0,
+   "duration": 5.56,
+   "text": "right? So, this is the content from src"
+  },
+  {
+   "start": 1885.32,
+   "duration": 5.08,
+   "text": "constants, import status code, and then"
+  },
+  {
+   "start": 1888.56,
+   "duration": 3.56,
+   "text": "class order status endpoint, and then"
+  },
+  {
+   "start": 1890.4,
+   "duration": 4.08,
+   "text": "you are doing some stuff."
+  },
+  {
+   "start": 1892.12,
+   "duration": 4.0,
+   "text": "Right? Now, um"
+  },
+  {
+   "start": 1894.48,
+   "duration": 2.88,
+   "text": "you are done with, you know, creating"
+  },
+  {
+   "start": 1896.12,
+   "duration": 4.0,
+   "text": "that particular thing, right? You you"
+  },
+  {
+   "start": 1897.36,
+   "duration": 4.72,
+   "text": "are done with this step. Now, fix a"
+  },
+  {
+   "start": 1900.12,
+   "duration": 4.6,
+   "text": "specific legacy issue Claude found,"
+  },
+  {
+   "start": 1902.08,
+   "duration": 5.6,
+   "text": "right? So, in that case, it found, you"
+  },
+  {
+   "start": 1904.72,
+   "duration": 4.96,
+   "text": "know, uh you found the S issue. The file"
+  },
+  {
+   "start": 1907.68,
+   "duration": 4.04,
+   "text": "path is constants.py."
+  },
+  {
+   "start": 1909.68,
+   "duration": 3.56,
+   "text": "The old string is status code uh this"
+  },
+  {
+   "start": 1911.72,
+   "duration": 3.76,
+   "text": "was the old status code, and you just"
+  },
+  {
+   "start": 1913.24,
+   "duration": 5.4,
+   "text": "replace it with the new special uh"
+  },
+  {
+   "start": 1915.48,
+   "duration": 4.8,
+   "text": "status code and some other items it. You"
+  },
+  {
+   "start": 1918.64,
+   "duration": 4.44,
+   "text": "know, that is how a developer"
+  },
+  {
+   "start": 1920.28,
+   "duration": 4.88,
+   "text": "productivity tool or"
+  },
+  {
+   "start": 1923.08,
+   "duration": 4.08,
+   "text": "you know, a kind of a developer"
+  },
+  {
+   "start": 1925.16,
+   "duration": 3.4,
+   "text": "assistant works, right? Like Claude code"
+  },
+  {
+   "start": 1927.16,
+   "duration": 3.84,
+   "text": "or ChatGPT or something like that. Oh,"
+  },
+  {
+   "start": 1928.56,
+   "duration": 4.6,
+   "text": "sorry, uh Codex or Cursor or something"
+  },
+  {
+   "start": 1931.0,
+   "duration": 5.44,
+   "text": "like that, right? So, yeah, you need to"
+  },
+  {
+   "start": 1933.16,
+   "duration": 5.4,
+   "text": "understand this scenario."
+  },
+  {
+   "start": 1936.44,
+   "duration": 4.32,
+   "text": "Um and uh it is very, very important to"
+  },
+  {
+   "start": 1938.56,
+   "duration": 5.48,
+   "text": "understand the scenario and also the"
+  },
+  {
+   "start": 1940.76,
+   "duration": 5.32,
+   "text": "anti-pattern as well. Don't bulk read"
+  },
+  {
+   "start": 1944.04,
+   "duration": 4.44,
+   "text": "large codebases. I've already told you"
+  },
+  {
+   "start": 1946.08,
+   "duration": 5.08,
+   "text": "from the start, you know, and I want to"
+  },
+  {
+   "start": 1948.48,
+   "duration": 3.44,
+   "text": "make this anti-pattern really, really"
+  },
+  {
+   "start": 1951.16,
+   "duration": 2.8,
+   "text": "um"
+  },
+  {
+   "start": 1951.92,
+   "duration": 4.32,
+   "text": "um"
+  },
+  {
+   "start": 1953.96,
+   "duration": 4.08,
+   "text": "important, right?"
+  },
+  {
+   "start": 1956.24,
+   "duration": 3.32,
+   "text": "Context window is consumed before any"
+  },
+  {
+   "start": 1958.04,
+   "duration": 3.56,
+   "text": "reasoning occurs because you are reading"
+  },
+  {
+   "start": 1959.56,
+   "duration": 4.44,
+   "text": "the entire codebase. Always use a"
+  },
+  {
+   "start": 1961.6,
+   "duration": 5.48,
+   "text": "mixture of tools that I told you, right?"
+  },
+  {
+   "start": 1964.0,
+   "duration": 4.76,
+   "text": "And uh this is very wrong"
+  },
+  {
+   "start": 1967.08,
+   "duration": 3.84,
+   "text": "that for you are reading through the"
+  },
+  {
+   "start": 1968.76,
+   "duration": 4.04,
+   "text": "whole codebase, right? You are reading"
+  },
+  {
+   "start": 1970.92,
+   "duration": 4.64,
+   "text": "irrelevant files wherever you don't"
+  },
+  {
+   "start": 1972.8,
+   "duration": 5.4,
+   "text": "want. You just want only uh explicit"
+  },
+  {
+   "start": 1975.56,
+   "duration": 4.64,
+   "text": "files that is relevant to your use case."
+  },
+  {
+   "start": 1978.2,
+   "duration": 4.64,
+   "text": "Agent quality degrades rapidly as"
+  },
+  {
+   "start": 1980.2,
+   "duration": 4.32,
+   "text": "context fills up. You know, it is"
+  },
+  {
+   "start": 1982.84,
+   "duration": 3.44,
+   "text": "if the agent is working and iterating"
+  },
+  {
+   "start": 1984.52,
+   "duration": 3.0,
+   "text": "over and over again, you know, context"
+  },
+  {
+   "start": 1986.28,
+   "duration": 3.36,
+   "text": "will get filled up, it will not be able"
+  },
+  {
+   "start": 1987.52,
+   "duration": 3.52,
+   "text": "to reason properly, you know? You will"
+  },
+  {
+   "start": 1989.64,
+   "duration": 3.88,
+   "text": "also get overwhelmed, right? When you"
+  },
+  {
+   "start": 1991.04,
+   "duration": 4.56,
+   "text": "are uh going through a codebase, you you"
+  },
+  {
+   "start": 1993.52,
+   "duration": 4.24,
+   "text": "know, via irrelevant files, you also get"
+  },
+  {
+   "start": 1995.6,
+   "duration": 4.079,
+   "text": "riled up and you want to just punch"
+  },
+  {
+   "start": 1997.76,
+   "duration": 3.8,
+   "text": "someone, right? And something like that."
+  },
+  {
+   "start": 1999.679,
+   "duration": 3.161,
+   "text": "You break the monitor or something like"
+  },
+  {
+   "start": 2001.56,
+   "duration": 3.32,
+   "text": "that. Don't do that. Don't break"
+  },
+  {
+   "start": 2002.84,
+   "duration": 3.4,
+   "text": "monitors and you know, it's not needed"
+  },
+  {
+   "start": 2004.88,
+   "duration": 3.16,
+   "text": "anymore. You have Claude code and all"
+  },
+  {
+   "start": 2006.24,
+   "duration": 4.88,
+   "text": "those things. You have these exceptional"
+  },
+  {
+   "start": 2008.04,
+   "duration": 5.76,
+   "text": "tools that you can use, you know?"
+  },
+  {
+   "start": 2011.12,
+   "duration": 4.4,
+   "text": "So, that is the thing. So,"
+  },
+  {
+   "start": 2013.8,
+   "duration": 4.04,
+   "text": "So, key point is that bulk reading is an"
+  },
+  {
+   "start": 2015.52,
+   "duration": 4.24,
+   "text": "anti-pattern. If an exam answer says,"
+  },
+  {
+   "start": 2017.84,
+   "duration": 4.72,
+   "text": "\"Read all files first,\" it is almost"
+  },
+  {
+   "start": 2019.76,
+   "duration": 5.52,
+   "text": "certainly wrong. So, look for this"
+  },
+  {
+   "start": 2022.56,
+   "duration": 5.28,
+   "text": "pattern and avoid it."
+  },
+  {
+   "start": 2025.28,
+   "duration": 4.2,
+   "text": "Okay? Don't go with it. That's what I"
+  },
+  {
+   "start": 2027.84,
+   "duration": 4.76,
+   "text": "want to say."
+  },
+  {
+   "start": 2029.48,
+   "duration": 5.0,
+   "text": "So, quick reference card. Grep contents,"
+  },
+  {
+   "start": 2032.6,
+   "duration": 3.8,
+   "text": "not for finding files by name. Glob"
+  },
+  {
+   "start": 2034.48,
+   "duration": 4.8,
+   "text": "means paths and names, doesn't look"
+  },
+  {
+   "start": 2036.4,
+   "duration": 4.68,
+   "text": "inside files. Read means specific files."
+  },
+  {
+   "start": 2039.28,
+   "duration": 4.28,
+   "text": "It reads a specific file. Expensive at"
+  },
+  {
+   "start": 2041.08,
+   "duration": 4.84,
+   "text": "scale if you do it more. Uh just use it"
+  },
+  {
+   "start": 2043.56,
+   "duration": 5.28,
+   "text": "effectively. Write creates and replaces."
+  },
+  {
+   "start": 2045.92,
+   "duration": 5.04,
+   "text": "Destructive, old contents are lost. But,"
+  },
+  {
+   "start": 2048.84,
+   "duration": 5.36,
+   "text": "you know, sometimes read plus write is a"
+  },
+  {
+   "start": 2050.96,
+   "duration": 5.76,
+   "text": "fallback to edit. And edit means it is"
+  },
+  {
+   "start": 2054.2,
+   "duration": 5.76,
+   "text": "kind of a, you know, want to replace a"
+  },
+  {
+   "start": 2056.72,
+   "duration": 4.84,
+   "text": "specific part, a unique part with one,"
+  },
+  {
+   "start": 2059.96,
+   "duration": 3.76,
+   "text": "you know, with a with a replacement. In"
+  },
+  {
+   "start": 2061.56,
+   "duration": 4.04,
+   "text": "that case, you would use edit. Bash is"
+  },
+  {
+   "start": 2063.72,
+   "duration": 4.439,
+   "text": "for cell commands. I I didn't explain"
+  },
+  {
+   "start": 2065.6,
+   "duration": 4.0,
+   "text": "bash in detail because bash is just like"
+  },
+  {
+   "start": 2068.159,
+   "duration": 3.401,
+   "text": "you are running commands in the"
+  },
+  {
+   "start": 2069.6,
+   "duration": 4.2,
+   "text": "terminal. Whatever terminal commands you"
+  },
+  {
+   "start": 2071.56,
+   "duration": 3.4,
+   "text": "know, you can you can execute it using"
+  },
+  {
+   "start": 2073.8,
+   "duration": 2.76,
+   "text": "bash."
+  },
+  {
+   "start": 2074.96,
+   "duration": 3.0,
+   "text": "So, memorize this table. Don't have to"
+  },
+  {
+   "start": 2076.56,
+   "duration": 3.56,
+   "text": "memorize it. It's pretty much a, you"
+  },
+  {
+   "start": 2077.96,
+   "duration": 3.84,
+   "text": "know, straightforward thing to remember."
+  },
+  {
+   "start": 2080.12,
+   "duration": 4.64,
+   "text": "Any exam questions about the codebase"
+  },
+  {
+   "start": 2081.8,
+   "duration": 5.24,
+   "text": "navigation runs through these six tools."
+  },
+  {
+   "start": 2084.76,
+   "duration": 4.48,
+   "text": "Any question regarding about developer"
+  },
+  {
+   "start": 2087.04,
+   "duration": 4.4,
+   "text": "productivity or coding assistants goes"
+  },
+  {
+   "start": 2089.24,
+   "duration": 4.48,
+   "text": "through these tools. So, make sure"
+  },
+  {
+   "start": 2091.44,
+   "duration": 3.36,
+   "text": "that whatever uh you know,"
+  },
+  {
+   "start": 2093.72,
+   "duration": 2.8,
+   "text": "questions you get, you answer it"
+  },
+  {
+   "start": 2094.8,
+   "duration": 4.96,
+   "text": "properly."
+  },
+  {
+   "start": 2096.52,
+   "duration": 5.12,
+   "text": "Exam tips. Um task statement 2.5"
+  },
+  {
+   "start": 2099.76,
+   "duration": 4.04,
+   "text": "according to the syllabus. Grep is"
+  },
+  {
+   "start": 2101.64,
+   "duration": 4.52,
+   "text": "contents, glob is paths. Edit requires"
+  },
+  {
+   "start": 2103.8,
+   "duration": 5.68,
+   "text": "unique anchor text. Incremental"
+  },
+  {
+   "start": 2106.16,
+   "duration": 5.12,
+   "text": "exploration always beats bulk reasoning."
+  },
+  {
+   "start": 2109.48,
+   "duration": 3.879,
+   "text": "Okay?"
+  },
+  {
+   "start": 2111.28,
+   "duration": 3.96,
+   "text": "So, key point is three facts that I just"
+  },
+  {
+   "start": 2113.359,
+   "duration": 4.241,
+   "text": "told you."
+  },
+  {
+   "start": 2115.24,
+   "duration": 4.24,
+   "text": "Just remember it and you are good to go."
+  },
+  {
+   "start": 2117.6,
+   "duration": 3.92,
+   "text": "And some glossary, if you want to take a"
+  },
+  {
+   "start": 2119.48,
+   "duration": 4.36,
+   "text": "screenshot of this, you know, about"
+  },
+  {
+   "start": 2121.52,
+   "duration": 4.8,
+   "text": "grep, glob, read, write, edit,"
+  },
+  {
+   "start": 2123.84,
+   "duration": 4.48,
+   "text": "incremental exploration, anchor text."
+  },
+  {
+   "start": 2126.32,
+   "duration": 3.52,
+   "text": "So,"
+  },
+  {
+   "start": 2128.32,
+   "duration": 5.0,
+   "text": "that's all we have covered for this"
+  },
+  {
+   "start": 2129.84,
+   "duration": 5.96,
+   "text": "particular lesson. And"
+  },
+  {
+   "start": 2133.32,
+   "duration": 6.68,
+   "text": "that is it for this lesson."
+  },
+  {
+   "start": 2135.8,
+   "duration": 4.2,
+   "text": "See you in the next lesson."
+  }
+ ]
+}
