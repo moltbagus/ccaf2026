@@ -41,6 +41,13 @@
 - [x] Official CCDV-F and CCAR-P exam guides filed under `class/external/` and in the Obsidian vault.
 - [x] Braindump survey for both exams (neon-dumps/pass4success/dumpsbase/examtopics etc.) — reported, not ingested.
 
+### 🟡 In progress 2026-10-04: drills + mocks for the three newer lanes
+- [x] 19 of 22 domain drill banks authored and parent-verified (380 questions).
+- [ ] Re-author the three D1 banks (`o1`, `dev1`, `pro1`) — destroyed by an accidental fixture cleanup in the parent session, not by their authors.
+- [x] CCAO-F timed mock (60 Q, weight-matched) live and walked in the browser.
+- [ ] CCDV-F timed mock (53 Q) and CCAR-P timed mock (63 Q) still being authored.
+- [ ] After the mocks land: rename to `mocks/mock-<lane>-1.json`, rebuild, walk all three live, push.
+
 ### ⏸ Deferred
 - [ ] Refresh the Obsidian `Learning/CCAF/Class/` master-note mirrors — they were mirrored 2026-09-19 and predate the video-series merges (D1 17->27 steps etc.)
 
