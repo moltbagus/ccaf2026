@@ -293,7 +293,7 @@ code catches the final exception and returns an empty result with HTTP 200, so t
   <li><span class="ltr">C</span><span>Swallow the error and increment a counter that nobody reads.</span></li>
   <li><span class="ltr">D</span><span>When the budget is exhausted, surface the error with its context — request id, error class, and attempts made — instead of silently returning empty or partial results.</span></li>
 </ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> When the retry budget is gone, the failure must be heard: surfacing it with its context lets the caller decide and keeps the outage visible. Returning an empty success hides a real failure and pushes it into silent downstream corruption; DEBUG logging buries it below the level anyone watches; an unread counter is not an alert.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 4.1<br><strong>Source:</strong> newly written</p></div></details>
-<div class="foot">Built 2026-10-03 15:55 · source: banks/dev4-questions.md</div></main></div>
+<div class="foot">Built 2026-10-03 17:01 · source: banks/dev4-questions.md</div></main></div>
 <div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
 <script>
 const q=document.getElementById('q');

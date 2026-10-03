@@ -278,7 +278,7 @@ forecast.</p>
   <li><span class="ltr">C</span><span>Reduce cost by deleting context from the prompt regardless of what the model needs.</span></li>
   <li><span class="ltr">D</span><span>Move every request to the cheapest model regardless of the task's quality bar.</span></li>
 </ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> <code>max_tokens</code> is a per-request output budget, and an unbounded value invites long, expensive completions; budgeting it against expected output and measuring actual usage is how cost stays predictable. Leaving it maxed relies on the model to self-limit, which it does not always do. Deleting needed context degrades answers, and downgrading every task ignores quality requirements — both are quality-for-cost trades the exam penalises.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 5.4<br><strong>Source:</strong> newly written</p></div></details>
-<div class="foot">Built 2026-10-03 15:55 · source: banks/dev5-questions.md</div></main></div>
+<div class="foot">Built 2026-10-03 17:01 · source: banks/dev5-questions.md</div></main></div>
 <div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
 <script>
 const q=document.getElementById('q');

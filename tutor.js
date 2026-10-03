@@ -10289,6 +10289,7 @@
   var page = document.getElementById('tutor');
   if (!page) return;
   var domainId = page.getAttribute('data-lesson');   // e.g. "d1"
+  var cert = page.getAttribute('data-cert') || '';    // e.g. "CCAO-F"
   var storeKey = 'ccaf.lesson.v1.' + domainId;
 
   var S = { i: 0, answers: {}, right: 0, wrong: 0, traps: {}, done: false };
@@ -10309,8 +10310,9 @@
 
   function start(L) {
     var steps = L.steps || [];
-    document.getElementById('dtitle').textContent = L.title || domainId;
-    document.getElementById('dweight').textContent = L.weight ? L.weight + ' of the exam' : '';
+    document.getElementById('dtitle').textContent = (cert ? cert + ' \u00b7 ' : '') + (L.title || domainId);
+    var wt = String(L.weight || '').replace(/\s*of the exam\s*$/i, '');
+    document.getElementById('dweight').textContent = wt ? wt + ' of the exam' : '';
     document.getElementById('dgoal').textContent = L.goal || '';
 
     function render() {

@@ -288,7 +288,7 @@ paragraph.</p>
   <li><span class="ltr">C</span><span>Ask the model in prose to also mention the value inside the JSON block.</span></li>
   <li><span class="ltr">D</span><span>Extract the value from the prose with a lightweight regex and, where that fails, fall back to a second model call.</span></li>
 </ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Do not parse prose you could have constrained — put the field in the schema and the value arrives typed and validated. A regex over free text is brittle and fails silently; a prose request to duplicate the value is still prose; a second model call to parse prose adds cost and a new failure surface to work around a missing field.<br><strong>Trap:</strong> sounds-efficient<br><strong>Task:</strong> 6.3<br><strong>Source:</strong> newly written</p></div></details>
-<div class="foot">Built 2026-10-03 15:55 · source: banks/dev6-questions.md</div></main></div>
+<div class="foot">Built 2026-10-03 17:01 · source: banks/dev6-questions.md</div></main></div>
 <div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
 <script>
 const q=document.getElementById('q');
