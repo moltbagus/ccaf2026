@@ -283,7 +283,7 @@ the same file conflict with team settings.</p>
   <li><span class="ltr">C</span><span>Email the settings file with the key to the team so everyone uses the same configuration.</span></li>
   <li><span class="ltr">D</span><span>Keep shared behavior (permissions, hooks, environment variables) in the checked-in <code>.claude/settings.json</code>, personal overrides in a gitignored <code>.claude/settings.local.json</code>, and secrets in environment variables or a secret store — never in committed configuration.</span></li>
 </ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Shared behavior belongs in the checked-in settings, personal overrides in the gitignored local file, and secrets in the environment or a secret store — never committed. Committing the key (A) leaks a credential into version control. Hard-coding it (B) does the same in source. Emailing it (C) spreads the secret further.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 2.6<br><strong>Source:</strong> newly written</p></div></details>
-<div class="foot">Built 2026-10-03 15:53 · source: banks/dev2-questions.md</div></main></div>
+<div class="foot">Built 2026-10-03 15:55 · source: banks/dev2-questions.md</div></main></div>
 <div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
 <script>
 const q=document.getElementById('q');

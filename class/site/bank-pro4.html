@@ -298,7 +298,7 @@ together.</p>
   <li><span class="ltr">C</span><span>Add a retry loop after generation so obviously wrong answers are regenerated.</span></li>
   <li><span class="ltr">D</span><span>Ask the model to explain its reasoning so the error can be read from the output.</span></li>
 </ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> A<br><strong>Why:</strong> Without a request-level identifier the stages cannot be correlated, so tracing with a shared trace ID is what makes attribution possible. Option B adds aggregate views that still cannot follow one request; Option C masks the error rather than locating it; Option D inspects only the generation stage and cannot reveal an upstream retrieval or rerank fault.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 4.5<br><strong>Source:</strong> newly written</p></div></details>
-<div class="foot">Built 2026-10-03 15:53 · source: banks/pro4-questions.md</div></main></div>
+<div class="foot">Built 2026-10-03 15:55 · source: banks/pro4-questions.md</div></main></div>
 <div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
 <script>
 const q=document.getElementById('q');

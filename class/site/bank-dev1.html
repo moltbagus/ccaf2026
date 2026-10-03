@@ -250,7 +250,7 @@ with a general tool set &quot;so it can handle anything.&quot;</p>
   <li><span class="ltr">C</span><span>Mark the second result <code>is_error: true</code> so the model stops calling the tool again.</span></li>
   <li><span class="ltr">D</span><span>Append one <code>tool_result</code> block per tool call, all in a single <code>role: "user"</code> message, each carrying its matching <code>tool_use_id</code>.</span></li>
 </ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> D<br><strong>Why:</strong> Every <code>tool_use</code> must be answered by a <code>tool_result</code> carrying the exact matching <code>tool_use_id</code>; parallel calls require multiple blocks in the same user turn so the loop can pair results to requests. Splitting them across messages leaves the pairing ambiguous; collapsing them leaves requests unanswered and the loop re-fires; and a spurious <code>is_error</code> misrepresents a valid result.<br><strong>Trap:</strong> sounds-thorough<br><strong>Task:</strong> 1.3<br><strong>Source:</strong> newly written</p></div></details>
-<div class="foot">Built 2026-10-03 15:53 · source: banks/dev1-questions.md</div></main></div>
+<div class="foot">Built 2026-10-03 15:55 · source: banks/dev1-questions.md</div></main></div>
 <div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
 <script>
 const q=document.getElementById('q');

@@ -300,7 +300,7 @@ agent is never blocked&quot;. Context budget and latency both matter.</p>
   <li><span class="ltr">C</span><span>Front-load everything but enable prompt caching to offset the cost.</span></li>
   <li><span class="ltr">D</span><span>Add a routing agent that selects among the eighty tools on each turn.</span></li>
 </ul><details class="key"><summary>Show answer &amp; rationale</summary><div class="keybody"><p><strong>Answer:</strong> B<br><strong>Why:</strong> Progressive discovery is a means to keep context lean; where the task is narrow and stable, loading its three tools and small policy directly is the leaner design, and the monolithic alternative is capability bloat wearing a protocol badge. Front-loading eighty tools plus the whole knowledge base inflates every turn, caching does not remove the bloat, and a routing agent adds a layer to solve a problem the narrow task does not have.<br><strong>Trap:</strong> sounds-pragmatic<br><strong>Task:</strong> 3.8<br><strong>Source:</strong> newly written</p></div></details>
-<div class="foot">Built 2026-10-03 15:53 · source: banks/pro3-questions.md</div></main></div>
+<div class="foot">Built 2026-10-03 15:55 · source: banks/pro3-questions.md</div></main></div>
 <div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
 <script>
 const q=document.getElementById('q');
