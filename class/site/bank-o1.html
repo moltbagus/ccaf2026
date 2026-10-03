@@ -1,0 +1,371 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain 1 — Prompting and Task Execution (14%) — Question Bank (20 questions) — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style>
+<style>
+/* Theme overrides. Higher specificity than :root, so an explicit choice always
+   beats the prefers-color-scheme default. data-theme absent = follow the OS. */
+html[data-theme="light"]{color-scheme:light;
+ --bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#d6d0c7;--acc:#b4531f;--card:#fff;
+ --ok:#1f7a4d;--okbg:#eef7f1;--bad:#b03024;--badbg:#fbeeec;--warn:#8a6d1f;--warnbg:#fdf6e3;--dia:#f4f1ec}
+html[data-theme="dark"]{color-scheme:dark;
+ --bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#4a4750;--acc:#e08a5a;--card:#1d1c22;
+ --ok:#6dd39b;--okbg:#12251b;--bad:#f08a80;--badbg:#2a1614;--warn:#e0c07a;--warnbg:#25200f;--dia:#1a191f}
+#themebtn{font:inherit;font-size:12.5px;line-height:1;background:var(--card);color:var(--fg);
+ border:1px solid var(--line);border-radius:8px;padding:7px 11px;cursor:pointer;white-space:nowrap}
+#themebtn:hover{color:var(--acc);border-color:var(--acc)}
+header.top #themebtn{margin-left:10px;align-self:center;margin-bottom:3px}
+.themetop{display:flex;justify-content:flex-end;margin:0 0 6px}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · CCAR-F (Architect)</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Tutor · CCAO-F (Associate)</div><a href="lesson-o1.html" data-t="o1 · prompting &amp; task execution — lesson">O1 · Prompting &amp; Task Execution — lesson</a><a href="lesson-o2.html" data-t="o2 · output evaluation &amp; validation — lesson">O2 · Output Evaluation &amp; Validation — lesson</a><a href="lesson-o3.html" data-t="o3 · product &amp; model selection — lesson">O3 · Product &amp; Model Selection — lesson</a><a href="lesson-o4.html" data-t="o4 · workflow integration &amp; solution design — lesson">O4 · Workflow Integration &amp; Solution Design — lesson</a><a href="lesson-o5.html" data-t="o5 · configuration &amp; knowledge management — lesson">O5 · Configuration &amp; Knowledge Management — lesson</a><a href="lesson-o6.html" data-t="o6 · governance, risk &amp; responsible use — lesson">O6 · Governance, Risk &amp; Responsible Use — lesson</a><a href="lesson-o7.html" data-t="o7 · troubleshooting &amp; optimization — lesson">O7 · Troubleshooting &amp; Optimization — lesson</a><div class="grp">Tutor · CCDV-F (Developer)</div><a href="lesson-dev1.html" data-t="v1 · agents and workflows — lesson">V1 · Agents and Workflows — lesson</a><a href="lesson-dev2.html" data-t="v2 · applications and integration — lesson">V2 · Applications and Integration — lesson</a><a href="lesson-dev3.html" data-t="v3 · claude code — lesson">V3 · Claude Code — lesson</a><a href="lesson-dev4.html" data-t="v4 · eval, testing &amp; debugging — lesson">V4 · Eval, Testing &amp; Debugging — lesson</a><a href="lesson-dev5.html" data-t="v5 · model selection &amp; optimization — lesson">V5 · Model Selection &amp; Optimization — lesson</a><a href="lesson-dev6.html" data-t="v6 · prompt &amp; context engineering — lesson">V6 · Prompt &amp; Context Engineering — lesson</a><a href="lesson-dev7.html" data-t="v7 · security and safety — lesson">V7 · Security and Safety — lesson</a><a href="lesson-dev8.html" data-t="v8 · tools and mcps — lesson">V8 · Tools and MCPs — lesson</a><div class="grp">Tutor · CCAR-P (Professional)</div><a href="lesson-pro1.html" data-t="p1 · solution design &amp; architecture — lesson">P1 · Solution Design &amp; Architecture — lesson</a><a href="lesson-pro2.html" data-t="p2 · models, prompting &amp; context engineering — lesson">P2 · Models, Prompting &amp; Context Engineering — lesson</a><a href="lesson-pro3.html" data-t="p3 · integration — lesson">P3 · Integration — lesson</a><a href="lesson-pro4.html" data-t="p4 · evaluation, testing &amp; optimization — lesson">P4 · Evaluation, Testing &amp; Optimization — lesson</a><a href="lesson-pro5.html" data-t="p5 · governance, safety &amp; risk management — lesson">P5 · Governance, Safety &amp; Risk Management — lesson</a><a href="lesson-pro6.html" data-t="p6 · stakeholder communication &amp; lifecycle — lesson">P6 · Stakeholder Communication &amp; Lifecycle — lesson</a><a href="lesson-pro7.html" data-t="p7 · developer productivity &amp; enablement — lesson">P7 · Developer Productivity &amp; Enablement — lesson</a><div class="grp">CCAO-F · Associate</div><a href="ccao-f.html" data-t="ccao-f · exam facts &amp; blueprint">CCAO-F · exam facts &amp; blueprint</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">CCAO-F · drills & mock</div><a href="mock-ccao-f-1.html" data-t="ccao-f · timed mock (60 q)">CCAO-F · timed mock (60 Q)</a><a href="bank-o1.html" data-t="bank · o1 (20 q)">Bank · O1 (20 Q)</a><a href="bank-o2.html" data-t="bank · o2 (20 q)">Bank · O2 (20 Q)</a><a href="bank-o3.html" data-t="bank · o3 (20 q)">Bank · O3 (20 Q)</a><a href="bank-o4.html" data-t="bank · o4 (20 q)">Bank · O4 (20 Q)</a><a href="bank-o5.html" data-t="bank · o5 (20 q)">Bank · O5 (20 Q)</a><a href="bank-o6.html" data-t="bank · o6 (20 q)">Bank · O6 (20 Q)</a><a href="bank-o7.html" data-t="bank · o7 (20 q)">Bank · O7 (20 Q)</a><div class="grp">CCDV-F · drills & mock</div><a href="mock-ccdv-f-1.html" data-t="ccdv-f · timed mock (53 q)">CCDV-F · timed mock (53 Q)</a><a href="bank-dev1.html" data-t="bank · v1 (20 q)">Bank · V1 (20 Q)</a><a href="bank-dev2.html" data-t="bank · v2 (20 q)">Bank · V2 (20 Q)</a><a href="bank-dev3.html" data-t="bank · v3 (20 q)">Bank · V3 (20 Q)</a><a href="bank-dev4.html" data-t="bank · v4 (20 q)">Bank · V4 (20 Q)</a><a href="bank-dev5.html" data-t="bank · v5 (20 q)">Bank · V5 (20 Q)</a><a href="bank-dev6.html" data-t="bank · v6 (20 q)">Bank · V6 (20 Q)</a><a href="bank-dev7.html" data-t="bank · v7 (20 q)">Bank · V7 (20 Q)</a><a href="bank-dev8.html" data-t="bank · v8 (20 q)">Bank · V8 (20 Q)</a><div class="grp">CCAR-P · drills & mock</div><a href="mock-ccar-p-1.html" data-t="ccar-p · timed mock (63 q)">CCAR-P · timed mock (63 Q)</a><a href="bank-pro2.html" data-t="bank · p2 (20 q)">Bank · P2 (20 Q)</a><a href="bank-pro3.html" data-t="bank · p3 (20 q)">Bank · P3 (20 Q)</a><a href="bank-pro4.html" data-t="bank · p4 (20 q)">Bank · P4 (20 Q)</a><a href="bank-pro5.html" data-t="bank · p5 (20 q)">Bank · P5 (20 Q)</a><a href="bank-pro6.html" data-t="bank · p6 (20 q)">Bank · P6 (20 Q)</a><a href="bank-pro7.html" data-t="bank · p7 (20 q)">Bank · P7 (20 Q)</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="video-series.html" data-t="the video series (ep 01-20)">The video series (Ep 01-20)</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><h1>Domain 1 — Prompting and Task Execution (14%) — Question Bank (20 questions)</h1>
+<p>Coverage: 1.1 ×5, 1.2 ×4, 1.3 ×4, 1.4 ×3, 1.5 ×4.
+Trap types used: sounds-simple, sounds-efficient, sounds-helpful, sounds-pragmatic,
+sounds-thorough, sounds-smart, sounds-enterprise.</p>
+<hr>
+<h3>Q1</h3>
+<p>A sales director at a B2B software firm asks Claude to &quot;write an email to the client about the project delay.&quot; The note that comes back is bland and interchangeable, reading like a generic template. She has the project status details in hand and knows the client is a long-standing account that is already frustrated.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Keep the one-line prompt and add "make it sound more professional and sincere" until the tone improves.</span></li>
+  <li><span class="ltr">B</span><span>Switch to the most capable Claude model and re-send the same one-line request.</span></li>
+  <li><span class="ltr">C</span><span>Rewrite the prompt to supply the status facts, name the client's history and frustration, set a 150-word limit, and specify a non-defensive tone with a clear recovery plan.</span></li>
+  <li><span class="ltr">D</span><span>Ask Claude to review its own draft and revise whatever seems weak.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> The credited prompt fills in the missing inputs — source material, audience, format, and constraints — which is the only thing that changes the output. Adding &quot;more professional&quot; (A) is emphasis, not new information; changing the model (B) executes the same under-specified request; self-review (D) delegates quality control to the model that produced the generic draft.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 1.1
+<strong>Source:</strong> newly written</p>
+<h3>Q2</h3>
+<p>A project manager needs a one-page status summary for a client who is frustrated about delays, and she has ten pages of raw meeting notes to work from.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Ask for "a professional one-page summary of our project status" and edit whatever comes back.</span></li>
+  <li><span class="ltr">B</span><span>Paste the meeting notes and ask for a one-page summary written for a frustrated client: acknowledge the delays, explain the recovery plan, end with next steps, calm and non-defensive tone.</span></li>
+  <li><span class="ltr">C</span><span>Ask Claude to draft the summary, then rate its own draft for client-readiness and revise accordingly.</span></li>
+  <li><span class="ltr">D</span><span>Use the most capable model available to produce the best possible summary of the project.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> The credited prompt supplies the source material, the audience and its emotional state, the structure, and the tone — everything that determines whether the summary lands. A vague &quot;professional summary&quot; (A) leaves audience and sensitivity to guesswork; self-rating (C) is not a quality control; the top model (D) executes the same missing-inputs request with more polish but the same gaps.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 1.1
+<strong>Source:</strong> newly written</p>
+<h3>Q3</h3>
+<p>A team lead pastes the same one-line prompt — &quot;summarize this for me&quot; — for a board memo, a Slack status update, and a new-hire training doc. All three come back in the same generic register, none of them suited to its reader.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Specify the role, audience, format, and constraints for each document separately, so each prompt states what its output is for.</span></li>
+  <li><span class="ltr">B</span><span>Add "make this the best possible summary" to each request so Claude understands quality matters.</span></li>
+  <li><span class="ltr">C</span><span>Ask Claude to choose the appropriate audience and format for each document on its own.</span></li>
+  <li><span class="ltr">D</span><span>Keep the single prompt but ask Claude to produce three versions and pick the best.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> The credited move supplies the per-task inputs that were missing, which is what makes each summary fit its reader. Adding a quality adjective (B) changes emphasis, not inputs; letting Claude choose the audience (C) outsources the spec the human owns; asking for three versions of one vague request (D) just multiplies the same generic output.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 1.1
+<strong>Source:</strong> newly written</p>
+<h3>Q4</h3>
+<p>A consultant wants a proposal section written in her firm&#39;s voice. She has two past proposals she liked and can state the audience and word count.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Describe the desired voice with a long list of adjectives — confident, warm, authoritative, precise.</span></li>
+  <li><span class="ltr">B</span><span>Ask Claude to "write like a top-tier consulting firm would."</span></li>
+  <li><span class="ltr">C</span><span>Give Claude the audience and word count but no examples, then edit the tone herself afterward.</span></li>
+  <li><span class="ltr">D</span><span>Paste the two past proposals as examples and ask Claude to write the new section in that style, for the stated audience and length.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> The credited option supplies evidence — real samples — plus audience and length, so the model has a concrete target for both content and voice. Adjective lists (A) and &quot;write like a top-tier firm&quot; (B) describe style abstractly with nothing to match; giving audience and length but no examples (C) leaves the voice unspecified and guarantees manual rework.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 1.1
+<strong>Source:</strong> newly written</p>
+<h3>Q5</h3>
+<p>An operations lead asks Claude to draft a process-change announcement. The draft reads well but includes two cost-saving claims the team has not verified, and it names a vendor the company is not ready to disclose publicly.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Ask Claude to make the announcement more detailed and comprehensive so nothing important is left out.</span></li>
+  <li><span class="ltr">B</span><span>Rewrite the prompt to state the constraints explicitly — which figures may be used, the vendor that must not be named, and the sections that must appear — then re-run it.</span></li>
+  <li><span class="ltr">C</span><span>Have Claude fact-check its own draft and remove anything it cannot confirm.</span></li>
+  <li><span class="ltr">D</span><span>Accept the draft and manually delete the two claims and the vendor name before sending.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Constraints are a prompt element, and stating them up front is what prevents the problems recurring. Adding length (A) adds surface without control; self-fact-checking (C) asks the model to catch its own unverified claims; hand-patching this draft (D) fixes one instance without fixing the prompt, so the next draft repeats the same errors.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 1.1
+<strong>Source:</strong> newly written</p>
+<h3>Q6</h3>
+<p>An operations lead pastes forty pages of scattered interview notes and asks for &quot;a complete training guide for new support hires, with modules, quizzes, and role-plays.&quot; The reply is a plausible skeleton with invented details wherever the notes ran thin.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Decompose the work: have Claude extract and organize the source facts, review that extraction, approve an outline, then draft one module at a time.</span></li>
+  <li><span class="ltr">B</span><span>Re-send the same request but ask for the guide in one very detailed pass to save round-trips.</span></li>
+  <li><span class="ltr">C</span><span>Ask Claude to review its own guide against the notes and produce an improved full version.</span></li>
+  <li><span class="ltr">D</span><span>Start a fresh chat and re-ask the original request for a different result.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> The credited option sequences the work with checkpoints, so invented facts and a bad structure surface while they are cheap to fix. Asking for one detailed pass (B) is the same monolithic request with more words; self-review (C) is a single-shot gamble with an extra step; a fresh chat (D) re-rolls the same overloaded request from zero.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 1.2
+<strong>Source:</strong> newly written</p>
+<h3>Q7</h3>
+<p>A marketing team asks Claude for a full campaign plan in one request — audience research, messaging, channel plan, and a content calendar. The output is coherent, but the messaging contradicts the audience analysis that sits above it.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Regenerate the whole plan, hoping the sections line up this time.</span></li>
+  <li><span class="ltr">B</span><span>Add "make sure all sections are consistent with each other" to the same request.</span></li>
+  <li><span class="ltr">C</span><span>Split the request: first agree the audience analysis, then build messaging from it, then the channel plan and calendar — checking each step against the last.</span></li>
+  <li><span class="ltr">D</span><span>Ask Claude to output its reasoning so you can spot where the inconsistency came from.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> The credited option sequences dependent work so each later step inherits a verified input, which is what removes the contradiction at its source. Regenerating (A) re-rolls the dice; adding a consistency instruction (B) is emphasis, not structure; asking for reasoning (D) exposes the inconsistency after the fact but does not prevent it.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 1.2
+<strong>Source:</strong> newly written</p>
+<h3>Q8</h3>
+<p>A delivery lead is buried by a large request — build a client onboarding playbook from scattered emails, a policy document, and a spreadsheet. A colleague proposes standing up a multi-step AI workflow with a planning agent, a drafting agent, and a QA agent so each part gets a specialist.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Build the multi-agent workflow with planning, drafting, and QA agents so every part is handled by a specialist.</span></li>
+  <li><span class="ltr">B</span><span>Ask Claude for the playbook in one comprehensive pass and fix the weak sections yourself.</span></li>
+  <li><span class="ltr">C</span><span>Have Claude produce three independent drafts and merge the best parts of each.</span></li>
+  <li><span class="ltr">D</span><span>Decompose into clear steps in a single conversation — extract the source facts, agree an outline, draft each section, then run a consistency pass — with checkpoints you review.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> The credited option adds the structure and checkpoints the task actually needs without overhead. Standing up a multi-agent workflow (A) is over-engineering a job a structured single conversation handles; one comprehensive pass (B) is the monolithic request that already fails on big builds; merging three independent drafts (C) blends incompatible content with no shared outline.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 1.2
+<strong>Source:</strong> newly written</p>
+<h3>Q9</h3>
+<p>A PM is drafting a product requirements document from a long discovery-call transcript. She asks Claude to &quot;turn this transcript into a requirements doc,&quot; and it invents requirements the call never discussed.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Sequence it: first have Claude extract the decisions and open questions from the transcript, check that list against the call, then draft the doc from the verified list.</span></li>
+  <li><span class="ltr">B</span><span>Re-ask with the transcript and add "only include what was actually discussed in the call."</span></li>
+  <li><span class="ltr">C</span><span>Ask Claude to mark which requirements it is unsure about so she can review those.</span></li>
+  <li><span class="ltr">D</span><span>Ask Claude to summarize the transcript first and then write the doc from the summary, all in the same request.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> The credited option grounds the document in a human-verified extraction, so invention is caught before it enters the draft. Adding &quot;only include what was discussed&quot; (B) is emphasis; asking the model to flag its own uncertainties (C) relies on it catching its own fabrications; summarizing and drafting in one unverified pass (D) still lets invented requirements into the final text.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 1.2
+<strong>Source:</strong> newly written</p>
+<h3>Q10</h3>
+<p>A consultant&#39;s client update comes back stiff and three times too long. The content is roughly right; the shape is wrong.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Open a new chat and re-run the original prompt to get a cleaner version.</span></li>
+  <li><span class="ltr">B</span><span>Stay in the conversation and write: "Cut to one page. Open with the delay and what it costs the client. Drop the methodology paragraph. Write as if briefing a busy CFO."</span></li>
+  <li><span class="ltr">C</span><span>Ask Claude to rate its own update out of ten and revise anything scoring below an eight.</span></li>
+  <li><span class="ltr">D</span><span>Tell Claude the update is "not good enough" and ask it to try again with more care.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> The credited follow-up carries specific new direction — length, structure, cut, audience — which is the only kind of instruction that narrows the output. Starting over (A) discards the content that was right; self-rating (C) invites a polite score; &quot;not good enough, try harder&quot; (D) is a complaint with no actionable instruction.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 1.3
+<strong>Source:</strong> newly written</p>
+<h3>Q11</h3>
+<p>A product marketer asked Claude for a launch announcement. The content is right, but the tone is stiff and corporate while the company&#39;s voice is casual and direct. Two past announcements in the right voice exist.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Regenerate the announcement from the original prompt in a new conversation.</span></li>
+  <li><span class="ltr">B</span><span>Ask Claude to review its draft and improve the tone to match the brand's casual, direct voice.</span></li>
+  <li><span class="ltr">C</span><span>Rewrite the tone yourself by editing the draft line by line.</span></li>
+  <li><span class="ltr">D</span><span>In the same conversation, paste the two past announcements and ask Claude to rewrite the draft in that style.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Style is learned from examples, so pasting real announcements gives a concrete target while staying in the conversation preserves the content the marketer already likes. Regenerating (A) discards good content to re-solve a style problem; &quot;improve the tone&quot; (B) names the goal but supplies no reference for &quot;casual and direct&quot;; hand-editing (C) treats a durable style fix as a one-off chore.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 1.3
+<strong>Source:</strong> newly written</p>
+<h3>Q12</h3>
+<p>A researcher asked Claude to draft an executive brief. The draft is close, but it buries the main finding in paragraph four and uses jargon the audience will not know.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Accept the draft and fix the order and wording yourself.</span></li>
+  <li><span class="ltr">B</span><span>Start a new chat and re-ask with a more detailed description of the audience.</span></li>
+  <li><span class="ltr">C</span><span>In the same conversation, ask Claude to lead with the main finding, define the jargon in plain language, and cut the background section — then review the revision.</span></li>
+  <li><span class="ltr">D</span><span>Ask Claude to rewrite the brief so it is more thorough and reader-friendly.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> The credited option gives specific corrective instructions — structure, language, and a cut — and iterates in place. Hand-fixing (A) abandons iteration for work the model can do; restarting (B) throws away context for a fix that only needs a follow-up; &quot;more thorough and reader-friendly&quot; (D) is a vague verdict with no direction, and &quot;more thorough&quot; is the opposite of the trim the brief needs.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 1.3
+<strong>Source:</strong> newly written</p>
+<h3>Q13</h3>
+<p>A consultant has iterated on a proposal three times and each round improved it. The latest version is nearly there, but the pricing table has a formatting glitch and one client name is misspelled.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Make the final corrections herself and send it — the model has done its part and she owns the deliverable.</span></li>
+  <li><span class="ltr">B</span><span>Ask Claude to rate the proposal out of ten and keep revising until it scores a nine or higher.</span></li>
+  <li><span class="ltr">C</span><span>Run one more full regeneration to get a fresh version that might come back cleaner.</span></li>
+  <li><span class="ltr">D</span><span>Ask Claude to explain each of its formatting choices so she can decide what to change.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Iteration has a stopping point, and last-mile edits are fastest and safest done by hand on a draft that is already good. An open-ended self-scoring loop (B) has no reliable stopping rule; regenerating (C) risks losing the content that three rounds improved; asking for an explanation of formatting (D) adds analysis where a two-second correction suffices.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 1.3
+<strong>Source:</strong> newly written</p>
+<h3>Q14</h3>
+<p>A new hire at a consulting firm asks Claude to &quot;write a client report in our firm&#39;s style.&quot; Claude has never seen a single report from the firm, and the draft arrives in competent but generic consulting-cliché style.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Instruct Claude to "write in our firm's distinctive, professional house style" and re-run.</span></li>
+  <li><span class="ltr">B</span><span>Ask Claude to research how top consulting firms write and imitate that style.</span></li>
+  <li><span class="ltr">C</span><span>Describe the firm's style in a detailed paragraph of adjectives.</span></li>
+  <li><span class="ltr">D</span><span>Add three redacted past reports to a Project and ask for the new report using them as the style reference.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> The credited option supplies real examples of the target voice inside a reusable Project, so the style is evidenced rather than guessed. A &quot;distinctive house style&quot; instruction (A) and a paragraph of adjectives (C) describe the style abstractly; imitating famous firms (B) imports someone else&#39;s voice entirely.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 1.4
+<strong>Source:</strong> newly written</p>
+<h3>Q15</h3>
+<p>A communications lead wants a weekly update email that sounds like the company&#39;s CEO. Several authentic past weekly emails from the CEO exist.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Instruct Claude to "write in a confident, visionary, executive tone" and provide the weekly facts.</span></li>
+  <li><span class="ltr">B</span><span>Ask Claude to imitate how well-known CEOs write their weekly updates.</span></li>
+  <li><span class="ltr">C</span><span>Add three of the CEO's past emails to a Project along with a note on the recurring structure, then ask for this week's update from the same bullet-point facts.</span></li>
+  <li><span class="ltr">D</span><span>Describe the desired tone in fine detail — sentence length, vocabulary, rhythm — without providing any sample emails.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Real samples of the target voice are the only reliable style evidence, and a Project makes them reusable every week. A tone instruction (A) and a detailed tone spec (D) describe style abstractly and still leave the model guessing what this CEO actually sounds like; imitating famous CEOs (B) supplies the wrong voice.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 1.4
+<strong>Source:</strong> newly written</p>
+<h3>Q16</h3>
+<p>A PM wants Claude to draft a risk register for a specific client engagement, but the output is a list of generic risks that match neither the client&#39;s industry nor the project&#39;s constraints. The team holds the client&#39;s contract summary and last quarter&#39;s issue log.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Ask Claude to produce a more comprehensive risk register covering every standard risk category.</span></li>
+  <li><span class="ltr">B</span><span>Give Claude the contract summary and issue log, state the client's industry and the project's constraints, and ask for risks tied to that material.</span></li>
+  <li><span class="ltr">C</span><span>Build a Project containing every risk register the company has ever produced and ask Claude to synthesize the new one from that whole archive.</span></li>
+  <li><span class="ltr">D</span><span>Ask Claude to identify which of its generic risks are most likely to apply and expand on those.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> The credited option supplies the specific source material the task requires, which is what ties the risks to this engagement. Asking for more categories (A) adds volume, not relevance; a Project stuffed with every historical register (C) is over-provisioning with unrelated documents; expanding the invented generic risks (D) builds on content that was never grounded.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 1.4
+<strong>Source:</strong> newly written</p>
+<h3>Q17</h3>
+<p>An analyst uploads a spreadsheet of regional sales figures and asks Claude to &quot;find insights.&quot; The response contains several confident, actionable-sounding claims about customer behaviour.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Ask Claude to find the most interesting and actionable insights and highlight anything surprising.</span></li>
+  <li><span class="ltr">B</span><span>Use the most capable model available so the analysis is as deep as possible, with the same one-line request.</span></li>
+  <li><span class="ltr">C</span><span>Ask Claude to flag any errors or unsupported numbers in its own analysis before delivering it.</span></li>
+  <li><span class="ltr">D</span><span>Ask Claude first to summarize what the data contains and which questions it can answer, run the analyses that matter, then check the key figures against the spreadsheet before using them.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Analysis starts from what the data actually contains, so a structure-first pass with human verification anchors the work in real numbers. &quot;Find interesting insights&quot; (A) invites plausible but unsupported claims; the top model (B) deepens whatever direction it guesses at without changing the missing specification; self-flagging (C) asks the model to catch its own fabrications, which is not a reliable check.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 1.5
+<strong>Source:</strong> newly written</p>
+<h3>Q18</h3>
+<p>A researcher needs current market data on a fast-moving industry and wants a summary she can cite in a client deck.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use research mode, ask for a source with each claim, and spot-check the key citations before using them.</span></li>
+  <li><span class="ltr">B</span><span>Ask Claude to compile the most important market figures and note that accuracy is critical.</span></li>
+  <li><span class="ltr">C</span><span>Ask Claude to produce the summary and then rate its own confidence in each figure.</span></li>
+  <li><span class="ltr">D</span><span>Ask Claude for the summary and plan to verify the numbers later if any of them look off.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Research is where confident fabrication does the most damage, so the credited approach uses research mode and requires sources with spot-checks. Telling Claude accuracy is critical (B) is emphasis; self-rated confidence (C) is not an accuracy signal; deferring verification to a vague &quot;if it looks off&quot; trigger (D) leaves the deck resting on unverified figures.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 1.5
+<strong>Source:</strong> newly written</p>
+<h3>Q19</h3>
+<p>A strategist wants campaign name ideas. Claude&#39;s first ten suggestions are safe, forgettable, and nearly interchangeable.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Ask Claude to generate ten more names, this time being creative.</span></li>
+  <li><span class="ltr">B</span><span>Ask for twenty names including deliberately odd options, then a second pass to critique and shortlist — and ask for the ideas Claude thinks she will reject.</span></li>
+  <li><span class="ltr">C</span><span>Ask Claude to explain why its first ten names are weak so it can do better.</span></li>
+  <li><span class="ltr">D</span><span>Switch to the most capable model and re-ask for the best campaign names.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Brainstorming wants quantity and deliberate strangeness first, then a critique pass, because the first ideas are the average ones. Asking for ten more &quot;creative&quot; names (A) re-rolls the same request; asking the model to analyze why the names are weak (C) substitutes meta-analysis for more diverse output; a stronger model (D) changes the engine without changing the ask.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 1.5
+<strong>Source:</strong> newly written</p>
+<h3>Q20</h3>
+<p>A delivery lead needs three things this week: a routine client status update, a deep competitive analysis, and a set of onboarding checklist items extracted from a handbook. The team has one Claude plan.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use the most capable model for all three tasks so nothing is underpowered.</span></li>
+  <li><span class="ltr">B</span><span>Use the fastest model for all three tasks to save time and cost.</span></li>
+  <li><span class="ltr">C</span><span>Match the model to the job: the fast model for the routine update and checklist extraction, the most capable model for the competitive analysis.</span></li>
+  <li><span class="ltr">D</span><span>Ask the most capable model to do the competitive analysis and then reuse its output for the other two tasks.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Task-execution economics means scaling the model to the job — routine drafts and extraction run fine on the fast model, while deep analysis benefits from the most capable one. Top-model-everything (A) wastes cost and latency; fastest-model-everything (B) under-powers the analysis; reusing analysis output for unrelated tasks (D) misapplies content to the wrong purpose.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 1.5
+<strong>Source:</strong> newly written</p>
+<div class="foot">Built 2026-10-03 15:42 · source: banks/o1-questions.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script>
+<script>
+(function(){
+  var KEY='ccaf.theme', modes=['auto','light','dark'], labels={auto:'Auto',light:'Daylight',dark:'Night'};
+  var cur='auto';
+  try{ var v=localStorage.getItem(KEY); if(v && modes.indexOf(v)>=0) cur=v; }catch(e){}
+  function apply(m){
+    if(m==='auto') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme',m);
+    var b=document.getElementById('themebtn');
+    if(b){ b.textContent='Theme: '+labels[m]; b.title='Theme: '+labels[m]+' — click for '+
+      labels[modes[(modes.indexOf(m)+1)%modes.length]]; }
+  }
+  function init(){
+    if(document.getElementById('themebtn')) return;
+    var b=document.createElement('button');
+    b.id='themebtn'; b.type='button';
+    b.addEventListener('click',function(){
+      cur=modes[(modes.indexOf(cur)+1)%modes.length];
+      try{ localStorage.setItem(KEY,cur); }catch(e){}
+      apply(cur);
+    });
+    // top-right of the page: inside the sticky header where there is one,
+    // otherwise a right-aligned strip at the top of the content column
+    var head=document.querySelector('header.top .row'), main=document.querySelector('main');
+    if(head) head.appendChild(b);
+    else if(main){ var w=document.createElement('div'); w.className='themetop'; w.appendChild(b); main.insertBefore(w, main.firstChild); }
+    else { b.style.position='fixed'; b.style.top='12px'; b.style.right='16px'; b.style.zIndex='60'; document.body.appendChild(b); }
+    apply(cur);
+  }
+  apply(cur);
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script></body></html>

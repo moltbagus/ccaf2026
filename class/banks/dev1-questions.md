@@ -117,7 +117,7 @@ D) Skip tools entirely and ask the model to output file edits as text for the de
 ### Q8
 An agent with shell access must be prevented from running destructive commands like `rm -rf` or pushing to a protected branch — no matter what a prompt or a retrieved document says.
 
-**Which mechanism is most effective?**
+**Which approach is most effective?**
 A) Add "never run destructive commands or push to protected branches" to the system prompt.
 B) Switch to a more capable model, which follows safety instructions more reliably.
 C) Register a `PreToolUse` hook that inspects the command and blocks destructive patterns and protected-branch pushes before they execute.
@@ -222,7 +222,7 @@ D) Treat any response whose first content block is type `"text"` as complete.
 ### Q15
 A multi-step agent that processes support tickets runs 30 or more tool calls per ticket. Its per-ticket cost and latency keep rising, and late in each run it ignores formatting rules set at the start.
 
-**Which change is most effective?**
+**Which approach is most effective?**
 A) Increase `max_tokens` so the model has more room to think on each call.
 B) Switch to a larger-context model and keep the full history for every ticket.
 C) Compact the conversation as it grows — summarize completed steps, prune stale tool output, cache the stable prefix — and offload bulky sub-tasks to subagents.

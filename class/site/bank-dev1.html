@@ -1,0 +1,374 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain 1 — Agents and Workflows (14.7%) — Question Bank (20 questions) — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style>
+<style>
+/* Theme overrides. Higher specificity than :root, so an explicit choice always
+   beats the prefers-color-scheme default. data-theme absent = follow the OS. */
+html[data-theme="light"]{color-scheme:light;
+ --bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#d6d0c7;--acc:#b4531f;--card:#fff;
+ --ok:#1f7a4d;--okbg:#eef7f1;--bad:#b03024;--badbg:#fbeeec;--warn:#8a6d1f;--warnbg:#fdf6e3;--dia:#f4f1ec}
+html[data-theme="dark"]{color-scheme:dark;
+ --bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#4a4750;--acc:#e08a5a;--card:#1d1c22;
+ --ok:#6dd39b;--okbg:#12251b;--bad:#f08a80;--badbg:#2a1614;--warn:#e0c07a;--warnbg:#25200f;--dia:#1a191f}
+#themebtn{font:inherit;font-size:12.5px;line-height:1;background:var(--card);color:var(--fg);
+ border:1px solid var(--line);border-radius:8px;padding:7px 11px;cursor:pointer;white-space:nowrap}
+#themebtn:hover{color:var(--acc);border-color:var(--acc)}
+header.top #themebtn{margin-left:10px;align-self:center;margin-bottom:3px}
+.themetop{display:flex;justify-content:flex-end;margin:0 0 6px}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · CCAR-F (Architect)</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Tutor · CCAO-F (Associate)</div><a href="lesson-o1.html" data-t="o1 · prompting &amp; task execution — lesson">O1 · Prompting &amp; Task Execution — lesson</a><a href="lesson-o2.html" data-t="o2 · output evaluation &amp; validation — lesson">O2 · Output Evaluation &amp; Validation — lesson</a><a href="lesson-o3.html" data-t="o3 · product &amp; model selection — lesson">O3 · Product &amp; Model Selection — lesson</a><a href="lesson-o4.html" data-t="o4 · workflow integration &amp; solution design — lesson">O4 · Workflow Integration &amp; Solution Design — lesson</a><a href="lesson-o5.html" data-t="o5 · configuration &amp; knowledge management — lesson">O5 · Configuration &amp; Knowledge Management — lesson</a><a href="lesson-o6.html" data-t="o6 · governance, risk &amp; responsible use — lesson">O6 · Governance, Risk &amp; Responsible Use — lesson</a><a href="lesson-o7.html" data-t="o7 · troubleshooting &amp; optimization — lesson">O7 · Troubleshooting &amp; Optimization — lesson</a><div class="grp">Tutor · CCDV-F (Developer)</div><a href="lesson-dev1.html" data-t="v1 · agents and workflows — lesson">V1 · Agents and Workflows — lesson</a><a href="lesson-dev2.html" data-t="v2 · applications and integration — lesson">V2 · Applications and Integration — lesson</a><a href="lesson-dev3.html" data-t="v3 · claude code — lesson">V3 · Claude Code — lesson</a><a href="lesson-dev4.html" data-t="v4 · eval, testing &amp; debugging — lesson">V4 · Eval, Testing &amp; Debugging — lesson</a><a href="lesson-dev5.html" data-t="v5 · model selection &amp; optimization — lesson">V5 · Model Selection &amp; Optimization — lesson</a><a href="lesson-dev6.html" data-t="v6 · prompt &amp; context engineering — lesson">V6 · Prompt &amp; Context Engineering — lesson</a><a href="lesson-dev7.html" data-t="v7 · security and safety — lesson">V7 · Security and Safety — lesson</a><a href="lesson-dev8.html" data-t="v8 · tools and mcps — lesson">V8 · Tools and MCPs — lesson</a><div class="grp">Tutor · CCAR-P (Professional)</div><a href="lesson-pro1.html" data-t="p1 · solution design &amp; architecture — lesson">P1 · Solution Design &amp; Architecture — lesson</a><a href="lesson-pro2.html" data-t="p2 · models, prompting &amp; context engineering — lesson">P2 · Models, Prompting &amp; Context Engineering — lesson</a><a href="lesson-pro3.html" data-t="p3 · integration — lesson">P3 · Integration — lesson</a><a href="lesson-pro4.html" data-t="p4 · evaluation, testing &amp; optimization — lesson">P4 · Evaluation, Testing &amp; Optimization — lesson</a><a href="lesson-pro5.html" data-t="p5 · governance, safety &amp; risk management — lesson">P5 · Governance, Safety &amp; Risk Management — lesson</a><a href="lesson-pro6.html" data-t="p6 · stakeholder communication &amp; lifecycle — lesson">P6 · Stakeholder Communication &amp; Lifecycle — lesson</a><a href="lesson-pro7.html" data-t="p7 · developer productivity &amp; enablement — lesson">P7 · Developer Productivity &amp; Enablement — lesson</a><div class="grp">CCAO-F · Associate</div><a href="ccao-f.html" data-t="ccao-f · exam facts &amp; blueprint">CCAO-F · exam facts &amp; blueprint</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">CCAO-F · drills & mock</div><a href="mock-ccao-f-1.html" data-t="ccao-f · timed mock (60 q)">CCAO-F · timed mock (60 Q)</a><a href="bank-o1.html" data-t="bank · o1 (20 q)">Bank · O1 (20 Q)</a><a href="bank-o2.html" data-t="bank · o2 (20 q)">Bank · O2 (20 Q)</a><a href="bank-o3.html" data-t="bank · o3 (20 q)">Bank · O3 (20 Q)</a><a href="bank-o4.html" data-t="bank · o4 (20 q)">Bank · O4 (20 Q)</a><a href="bank-o5.html" data-t="bank · o5 (20 q)">Bank · O5 (20 Q)</a><a href="bank-o6.html" data-t="bank · o6 (20 q)">Bank · O6 (20 Q)</a><a href="bank-o7.html" data-t="bank · o7 (20 q)">Bank · O7 (20 Q)</a><div class="grp">CCDV-F · drills & mock</div><a href="mock-ccdv-f-1.html" data-t="ccdv-f · timed mock (53 q)">CCDV-F · timed mock (53 Q)</a><a href="bank-dev1.html" data-t="bank · v1 (20 q)">Bank · V1 (20 Q)</a><a href="bank-dev2.html" data-t="bank · v2 (20 q)">Bank · V2 (20 Q)</a><a href="bank-dev3.html" data-t="bank · v3 (20 q)">Bank · V3 (20 Q)</a><a href="bank-dev4.html" data-t="bank · v4 (20 q)">Bank · V4 (20 Q)</a><a href="bank-dev5.html" data-t="bank · v5 (20 q)">Bank · V5 (20 Q)</a><a href="bank-dev6.html" data-t="bank · v6 (20 q)">Bank · V6 (20 Q)</a><a href="bank-dev7.html" data-t="bank · v7 (20 q)">Bank · V7 (20 Q)</a><a href="bank-dev8.html" data-t="bank · v8 (20 q)">Bank · V8 (20 Q)</a><div class="grp">CCAR-P · drills & mock</div><a href="mock-ccar-p-1.html" data-t="ccar-p · timed mock (63 q)">CCAR-P · timed mock (63 Q)</a><a href="bank-pro2.html" data-t="bank · p2 (20 q)">Bank · P2 (20 Q)</a><a href="bank-pro3.html" data-t="bank · p3 (20 q)">Bank · P3 (20 Q)</a><a href="bank-pro4.html" data-t="bank · p4 (20 q)">Bank · P4 (20 Q)</a><a href="bank-pro5.html" data-t="bank · p5 (20 q)">Bank · P5 (20 Q)</a><a href="bank-pro6.html" data-t="bank · p6 (20 q)">Bank · P6 (20 Q)</a><a href="bank-pro7.html" data-t="bank · p7 (20 q)">Bank · P7 (20 Q)</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="video-series.html" data-t="the video series (ep 01-20)">The video series (Ep 01-20)</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><h1>Domain 1 — Agents and Workflows (14.7%) — Question Bank (20 questions)</h1>
+<p>Coverage: 1.1 ×6, 1.2 ×7, 1.3 ×7.
+Trap types used: sounds-enterprise, sounds-efficient, sounds-helpful, sounds-pragmatic,
+sounds-simple, sounds-smart, sounds-thorough.</p>
+<hr>
+<h3>Q1</h3>
+<p>A support feature reads a customer email, classifies it into one of five fixed
+categories, routes it to a category-specific prompt, and returns a templated reply. The
+path is fully known in advance, yet the team proposes building a fully autonomous agent
+with a general tool set &quot;so it can handle anything.&quot;</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Build a workflow: classify with one call, route to the category-specific prompt, and return the templated reply.</span></li>
+  <li><span class="ltr">B</span><span>Build an autonomous agent with all five reply prompts exposed as tools so it can choose a path.</span></li>
+  <li><span class="ltr">C</span><span>Build an autonomous agent and put a router agent in front of it to pick the category first.</span></li>
+  <li><span class="ltr">D</span><span>Build the autonomous agent but cap it at ten iterations to bound the cost.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> The sequence is fixed and drawable, so a workflow is predictable, cheap, and testable. Exposing the five prompts as tools hands the model a decision it never needed to make and makes output nondeterministic; a router agent in front is just the workflow&#39;s router with an agent wrapped around it; and an iteration cap bounds runaway cost but leaves the unnecessary nondeterminism in place.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 1.1
+<strong>Source:</strong> newly written</p>
+<h3>Q2</h3>
+<p>A research coordinator is asked for &quot;AI&#39;s impact on creative industries.&quot; Every subagent completes successfully, yet the final report covers only visual art and misses music, literature, and film. Logs show the coordinator decomposed the topic into &quot;AI in digital art,&quot; &quot;AI in graphic design,&quot; and &quot;AI in photography.&quot;</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add coverage-gap detection instructions to the synthesis agent so it flags missing areas.</span></li>
+  <li><span class="ltr">B</span><span>Fix the root cause: the coordinator's task decomposition is too narrow and must partition the space to cover all relevant areas.</span></li>
+  <li><span class="ltr">C</span><span>Loosen the document-analysis agent's relevance criteria so it stops filtering non-visual sources.</span></li>
+  <li><span class="ltr">D</span><span>Broaden the web-search agent's queries to sweep more industry sectors.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> The subagents executed their briefs correctly, so the defect is upstream at the coordinator&#39;s decomposition — a synthesis gap-detector only sees what upstream returned and cannot recover topics never assigned, and no query rewrite covers sectors absent from the decomposition. Loosening relevance or widening queries cannot add a category the plan never named.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 1.1
+<strong>Source:</strong> newly written</p>
+<h3>Q3</h3>
+<p>A long-running agent must research a topic across dozens of pages and then write a report. Its single context fills with raw page text and it begins to lose the original instructions. A teammate suggests switching to a larger-context model.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Switch to a larger-context, more capable model so the single agent can hold everything.</span></li>
+  <li><span class="ltr">B</span><span>Give the single agent a summarization tool and instruct it to summarize each page before reading the next.</span></li>
+  <li><span class="ltr">C</span><span>Use an orchestrator that dispatches a research subagent per source; each subagent returns only the extracted facts, and the orchestrator writes the report from those.</span></li>
+  <li><span class="ltr">D</span><span>Split into one subagent per page but give every subagent the full tool set so any of them can write the report.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Subagents isolate context: each research subagent absorbs the raw page text and returns a distilled fact, so the orchestrator&#39;s context holds only what the report needs. A larger-context model just delays the overflow and costs more; a self-summarization instruction is non-deterministic and still grows the same single context; and one subagent per page with the full tool set multiplies cost and hands report-writing authority to every worker.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 1.1
+<strong>Source:</strong> newly written</p>
+<h3>Q4</h3>
+<p>A single-agent loop already resolves 84% of support tickets; the remainder are mostly policy gaps that escalate to humans. A proposal recommends refactoring into a coordinator with four specialist subagents plus an evaluator–optimizer quality loop.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Refactor to a coordinator with four subagents so each concern type gets a specialist.</span></li>
+  <li><span class="ltr">B</span><span>Refactor to subagents but give every subagent the identical prompt so behavior stays consistent.</span></li>
+  <li><span class="ltr">C</span><span>Wrap the existing agent in an evaluator–optimizer loop that iterates until quality criteria pass.</span></li>
+  <li><span class="ltr">D</span><span>Keep the single agent, and add subagents only where a task floods the coordinator's context, needs a genuinely different prompt or tool set, or can run in parallel.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Multi-agent adds latency, cost, and failure surface, so delegate only when a single agent genuinely cannot do the job. Refactoring a working loop is the over-engineering trap; identical prompts across subagents isolate nothing; and an evaluator–optimizer spins when the evaluator cannot reliably distinguish good output from bad.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 1.1
+<strong>Source:</strong> newly written</p>
+<h3>Q5</h3>
+<p>While researching a broad topic, the web-search agent and the document-analysis agent investigate the same subtopics, producing substantial duplication. Token usage nearly doubles with no proportional increase in breadth or depth.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Let both agents finish in parallel, then have the coordinator deduplicate overlapping results before synthesis.</span></li>
+  <li><span class="ltr">B</span><span>Have the coordinator explicitly partition the research space before delegating, assigning each agent distinct subtopics or source types.</span></li>
+  <li><span class="ltr">C</span><span>Add a shared live focus log so the agents can dynamically avoid duplication while running.</span></li>
+  <li><span class="ltr">D</span><span>Switch to sequential execution, running document analysis only after web search so it can reuse the results.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Partitioning before delegation fixes the root cause (unclear task boundaries) while preserving parallelism. Post-hoc deduplication still pays the token cost of the duplicated work; a shared live focus log assumes isolated subagents can watch each other mid-run; and forcing sequential execution discards the parallelism that justifies the design.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 1.1
+<strong>Source:</strong> newly written</p>
+<h3>Q6</h3>
+<p>A research system&#39;s fact-checking subagent was granted the full production tool set, including a <code>write_record</code> tool, &quot;so it can fix problems it finds.&quot; An audit flags the agent&#39;s ability to mutate production data.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Remove the write tool and grant the fact-checker only the read-only lookup tools it needs, following least privilege.</span></li>
+  <li><span class="ltr">B</span><span>Keep the write tool but add a system-prompt instruction never to write production records.</span></li>
+  <li><span class="ltr">C</span><span>Keep the write tool and add logging on every write so mutations can be reviewed.</span></li>
+  <li><span class="ltr">D</span><span>Give every subagent the full tool set so all of them can act consistently.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Constrain capability at the interface so the unwanted action is impossible rather than discouraged — a fact-checker needs to read, not write. A prompt instruction leaves the over-broad capability intact and can be overridden; logging is detective, not preventive; and giving everyone the full tool set multiplies both cost and the permission surface.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 1.1
+<strong>Source:</strong> newly written</p>
+<h3>Q7</h3>
+<p>A developer needs an agent that reads files, runs tests, and edits code in a repository, with a permission prompt before any write. They plan to write a custom while-loop over the Messages API that parses <code>tool_use</code> blocks and implements its own approval flow.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Build the custom loop so the approval flow can be tuned exactly as needed.</span></li>
+  <li><span class="ltr">B</span><span>Use the Claude Agent SDK: configure the built-in file and test tools and a permission mode so writes require approval, and write only the logic unique to their task.</span></li>
+  <li><span class="ltr">C</span><span>Build the custom loop but reuse the SDK's tool schemas by copy-pasting them into the code.</span></li>
+  <li><span class="ltr">D</span><span>Skip tools entirely and ask the model to output file edits as text for the developer to apply by hand.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> The SDK already ships the loop, the built-in file and test tools, and a permission system, so the team writes only what is unique to their task. A custom loop reimplements all of it and inherits the maintenance; copy-pasting schemas still leaves the loop, dispatch, and approvals hand-rolled; and abandoning tools for text output throws away the agentic capability the task requires.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 1.2
+<strong>Source:</strong> newly written</p>
+<h3>Q8</h3>
+<p>An agent with shell access must be prevented from running destructive commands like <code>rm -rf</code> or pushing to a protected branch — no matter what a prompt or a retrieved document says.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add "never run destructive commands or push to protected branches" to the system prompt.</span></li>
+  <li><span class="ltr">B</span><span>Switch to a more capable model, which follows safety instructions more reliably.</span></li>
+  <li><span class="ltr">C</span><span>Register a <code>PreToolUse</code> hook that inspects the command and blocks destructive patterns and protected-branch pushes before they execute.</span></li>
+  <li><span class="ltr">D</span><span>Log every command the agent runs so violations can be reviewed afterward.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> A hook is deterministic code that runs on the tool call before execution, so the block holds regardless of what the model was told or ingested. A prompt line is only a request that injected content or a confused model can override; a more capable model improves compliance but still gives no guarantee; and logging is detective, not preventive — by the time the log is read, the destructive command has already run.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 1.2
+<strong>Source:</strong> newly written</p>
+<h3>Q9</h3>
+<p>A regulated team must run an agent that touches customer PII. Data residency and network isolation are hard requirements, and API credentials must never leave their own VPC. They are choosing between an Anthropic-hosted managed agent and running the loop themselves.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use the managed/hosted agent because it ships fastest with the least operational burden.</span></li>
+  <li><span class="ltr">B</span><span>Use the managed agent and add a prompt instruction to avoid processing PII.</span></li>
+  <li><span class="ltr">C</span><span>Use the managed agent with a redaction step before any content leaves their environment.</span></li>
+  <li><span class="ltr">D</span><span>Self-host the agent (the Agent SDK on their own compute) so secrets, network egress, data residency, and audit stay under their control.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> When residency, secret handling, and network isolation are hard constraints, self-hosting is the choice that satisfies them, at the cost of operating the infrastructure. A managed agent routes data through the vendor&#39;s environment; a prompt instruction is not an isolation control; and redaction cannot guarantee the residency and egress requirements the team must meet.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 1.2
+<strong>Source:</strong> newly written</p>
+<h3>Q10</h3>
+<p>A developer needs a long-lived interactive agent that holds a session across many user turns, plus a small one-shot script that runs a single agent prompt and exits. They want to use the Claude Agent SDK for both.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use <code>ClaudeSDKClient</code> for the multi-turn session and <code>query()</code> for the one-shot script, configuring both with <code>ClaudeAgentOptions</code>.</span></li>
+  <li><span class="ltr">B</span><span>Hand-roll a while-loop over the Messages API for both cases.</span></li>
+  <li><span class="ltr">C</span><span>Use <code>query()</code> for both, re-passing the entire prior conversation on every turn.</span></li>
+  <li><span class="ltr">D</span><span>Use <code>ClaudeSDKClient</code> for both, opening and closing a fresh client for each one-shot call.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> <code>query()</code> runs a one-shot agent loop and <code>ClaudeSDKClient</code> holds a session for multi-turn interaction, so each tool matches its case. Hand-rolling discards the SDK&#39;s loop and dispatch; driving a multi-turn session through repeated <code>query()</code> calls means manually re-feeding history the client would manage; and wrapping a single-shot call in a client is unnecessary ceremony.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 1.2
+<strong>Source:</strong> newly written</p>
+<h3>Q11</h3>
+<p>A team needs a custom tool available to their Agent SDK agent, and they want it versioned and deployed together with the agent code rather than as a separate process or network service.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Stand up a separate MCP server over HTTP and register it with the agent.</span></li>
+  <li><span class="ltr">B</span><span>Hard-code the tool's logic into the system prompt so the model performs it inline.</span></li>
+  <li><span class="ltr">C</span><span>Define the tool in-process with the SDK's tool decorator and register it via an in-process SDK MCP server (for example <code>create_sdk_mcp_server</code>) so it ships with the code.</span></li>
+  <li><span class="ltr">D</span><span>Give the model a generic <code>Bash</code> tool and let it invoke a script on disk.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> An in-process SDK MCP server lets the custom tool ship and version with the agent code, with no separate service to operate. A standalone HTTP server is exactly the extra deployment the team wants to avoid; putting logic in the prompt removes the tool contract and makes behavior nondeterministic; and a generic <code>Bash</code> escape hatch is an over-broad capability that bypasses the tool&#39;s schema and approval path.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 1.2
+<strong>Source:</strong> newly written</p>
+<h3>Q12</h3>
+<p>Three MCP servers return dates differently: one as Unix epoch integers, one as &quot;Mar 5, 2025&quot;, and one as ISO 8601. The agent frequently misreads the values and creates duplicate records. A colleague proposes normalizing the formats in the downstream reporting code.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add a prompt instruction listing the three formats the model may encounter.</span></li>
+  <li><span class="ltr">B</span><span>Add a <code>PostToolUse</code> hook that normalizes every tool result to ISO 8601 before the model sees it.</span></li>
+  <li><span class="ltr">C</span><span>Add few-shot examples showing one correctly parsed value in each format.</span></li>
+  <li><span class="ltr">D</span><span>Handle all format conversion in the downstream reporting pipeline and leave tool results untouched.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Intercept the result before the model reasons over it — <code>PostToolUse</code> is the boundary for normalizing timestamps, dates, and status codes. Prompt guidance and few-shot examples are probabilistic; and downstream normalization leaves the model working with inconsistent values for the rest of the loop, which is where the duplicate records originate.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 1.2
+<strong>Source:</strong> newly written</p>
+<h3>Q13</h3>
+<p>A team must interleave bespoke deterministic domain logic between every model turn and control exactly how messages are constructed — validation, retries, and state transitions the SDK&#39;s turn loop does not expose. They are deciding whether the Agent SDK still fits.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use the Agent SDK anyway and move the domain logic into hook callbacks and prompt instructions.</span></li>
+  <li><span class="ltr">B</span><span>Adopt a heavyweight multi-agent graph framework to gain the missing control.</span></li>
+  <li><span class="ltr">C</span><span>Use <code>ClaudeSDKClient</code> and describe the interleaved logic in the system prompt so the model performs it.</span></li>
+  <li><span class="ltr">D</span><span>Hand-roll a custom loop over the Messages API when the required control flow genuinely cannot be expressed with the SDK.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> The SDK-first rule has an explicit exception: when the control flow truly cannot be expressed in the SDK, a custom loop over the Messages API is the right tool. Forcing the logic into hooks and prompts distorts both; a graph framework adds a dependency without providing this specific interleaving; and asking the model to perform deterministic logic is nondeterministic by construction.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 1.2
+<strong>Source:</strong> newly written</p>
+<h3>Q14</h3>
+<p>A customer-support agent runs a manual loop over <code>client.messages.create</code> with tools. A teammate proposes exiting the loop when the assistant&#39;s text contains &quot;resolved&quot; or &quot;done,&quot; to avoid an extra API call. Production shows the agent sometimes presents a partial answer and stops before finishing.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Branch on <code>stop_reason</code>: keep looping while it is <code>"tool_use"</code>, and present the final text when it is <code>"end_turn"</code>.</span></li>
+  <li><span class="ltr">B</span><span>Keep the phrase check but expand the list of completion words to cover more cases.</span></li>
+  <li><span class="ltr">C</span><span>Exit after a fixed maximum of eight iterations so the loop is always bounded.</span></li>
+  <li><span class="ltr">D</span><span>Treat any response whose first content block is type <code>"text"</code> as complete.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> <code>stop_reason</code> is the only authoritative termination signal. A response can contain both a text block and a <code>tool_use</code> block, so text heuristics misfire; an iteration cap is a safety net, not the stopping mechanism; and &quot;first block is text&quot; ignores the case where more tool work follows.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 1.3
+<strong>Source:</strong> newly written</p>
+<h3>Q15</h3>
+<p>A multi-step agent that processes support tickets runs 30 or more tool calls per ticket. Its per-ticket cost and latency keep rising, and late in each run it ignores formatting rules set at the start.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Increase <code>max_tokens</code> so the model has more room to think on each call.</span></li>
+  <li><span class="ltr">B</span><span>Switch to a larger-context model and keep the full history for every ticket.</span></li>
+  <li><span class="ltr">C</span><span>Compact the conversation as it grows — summarize completed steps, prune stale tool output, cache the stable prefix — and offload bulky sub-tasks to subagents.</span></li>
+  <li><span class="ltr">D</span><span>Reduce the agent to a single tool call per ticket so the context never grows.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Rising cost and ignored early instructions are the classic symptoms of context bloat, so the fix is active context management: compact, prune, cache, and isolate. Raising <code>max_tokens</code> adds output room but no context hygiene; a bigger window only lets the bloat grow larger before it fails the same way; and collapsing to one tool call removes the multi-step capability the task requires.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 1.3
+<strong>Source:</strong> newly written</p>
+<h3>Q16</h3>
+<p>An agent must remember a customer&#39;s stated preferences and prior resolutions across separate runs that happen days apart. Each run today starts with an empty conversation.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Keep appending to the conversation and resume the same session indefinitely so nothing is lost.</span></li>
+  <li><span class="ltr">B</span><span>Rely on prompt caching, which persists the preferences across runs.</span></li>
+  <li><span class="ltr">C</span><span>Store everything in the system prompt, growing it on every run so all history is always present.</span></li>
+  <li><span class="ltr">D</span><span>Use a long-term memory store (an external file, database, or memory tool) that survives across sessions, loading the relevant items into context each run.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Short-term memory is the context window and long-term memory is an external store that outlives a session, which is what cross-session recall requires. Resuming one session forever accumulates unbounded bloat; prompt caching only makes a stable prefix cheaper within its lifetime and does not persist state across runs; and stuffing all history into the system prompt grows cost and drifts.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 1.3
+<strong>Source:</strong> newly written</p>
+<h3>Q17</h3>
+<p>A team is building a multi-agent system where the workflow has cycles, must resume after a pause, and must hold a human-approval checkpoint before the final step. Each step&#39;s state must be inspectable.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use a single agent with a large system prompt describing all the steps and let it decide the order.</span></li>
+  <li><span class="ltr">B</span><span>Use an abstraction framework that models the workflow as a stateful graph with checkpointing and human-in-the-loop support (for example LangGraph).</span></li>
+  <li><span class="ltr">C</span><span>Hand-roll the orchestration on the raw Messages API so nothing is constrained by a framework.</span></li>
+  <li><span class="ltr">D</span><span>Give every agent the full tool set and let them message each other freely until the task completes.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Explicit state, resumability, cycles, and human-in-the-loop are exactly what a stateful graph framework provides out of the box. A single mega-prompt agent enforces no ordering and cannot resume; hand-rolling reimplements checkpointing and approvals and maintains them yourself; and free-form agent-to-agent messaging with full tool sets removes the guarantees the requirements demand.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 1.3
+<strong>Source:</strong> newly written</p>
+<h3>Q18</h3>
+<p>A pipeline passes structured data between agent steps. Each step must emit a schema-validated object consumed by the next, and an invalid object must be rejected and retried at the boundary rather than silently flowing downstream.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use a type-safe framework where inputs, dependencies, and outputs are validated models (for example PydanticAI).</span></li>
+  <li><span class="ltr">B</span><span>Use a graph framework with untyped dict state and no validation at step boundaries.</span></li>
+  <li><span class="ltr">C</span><span>Ask the model in the prompt to always emit valid JSON, and parse with a bare <code>try/except</code>.</span></li>
+  <li><span class="ltr">D</span><span>Let each agent write free text and pass the prose along to the next step.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Validated, typed contracts between steps are the defining strength of a type-safe agent framework, which rejects and retries invalid output at the boundary. Untyped dict state offers no validation; a prompt request plus a bare <code>try/except</code> is probabilistic and swallows failures; and free-text handoff removes the structure the pipeline depends on.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 1.3
+<strong>Source:</strong> newly written</p>
+<h3>Q19</h3>
+<p>A long tool-use loop resends the same large system prompt and tool definitions on every iteration. The content of that prefix never changes, yet per-iteration cost keeps climbing as the loop runs.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Shorten the system prompt by removing the tool descriptions so the prefix is smaller.</span></li>
+  <li><span class="ltr">B</span><span>Reduce <code>max_tokens</code> so each call costs less.</span></li>
+  <li><span class="ltr">C</span><span>Use prompt caching on the stable prefix (system prompt plus tool definitions) so it stays cheap across iterations, keeping cache checkpoints aligned to stable content.</span></li>
+  <li><span class="ltr">D</span><span>Switch to a cheaper model for the whole loop.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Prompt caching keeps a stable prefix cheap across loop iterations, which is exactly the recurring cost being paid. Trimming tool descriptions degrades the model&#39;s ability to call tools correctly; lowering <code>max_tokens</code> caps output but not input cost; and dropping to a cheaper model trades away quality the task needs rather than fixing the repeated-prefix cost.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 1.3
+<strong>Source:</strong> newly written</p>
+<h3>Q20</h3>
+<p>A coordinator response emits two parallel <code>tool_use</code> blocks in one turn. The harness appends a single <code>tool_result</code> block summarizing both, and the agent now re-calls the same tools repeatedly instead of continuing.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Send each <code>tool_result</code> in its own separate user message, one after the other.</span></li>
+  <li><span class="ltr">B</span><span>Combine both results into one prose <code>tool_result</code> block and let the model split them.</span></li>
+  <li><span class="ltr">C</span><span>Mark the second result <code>is_error: true</code> so the model stops calling the tool again.</span></li>
+  <li><span class="ltr">D</span><span>Append one <code>tool_result</code> block per tool call, all in a single <code>role: "user"</code> message, each carrying its matching <code>tool_use_id</code>.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Every <code>tool_use</code> must be answered by a <code>tool_result</code> carrying the exact matching <code>tool_use_id</code>; parallel calls require multiple blocks in the same user turn so the loop can pair results to requests. Splitting them across messages leaves the pairing ambiguous; collapsing them leaves requests unanswered and the loop re-fires; and a spurious <code>is_error</code> misrepresents a valid result.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 1.3
+<strong>Source:</strong> newly written</p>
+<div class="foot">Built 2026-10-03 15:42 · source: banks/dev1-questions.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script>
+<script>
+(function(){
+  var KEY='ccaf.theme', modes=['auto','light','dark'], labels={auto:'Auto',light:'Daylight',dark:'Night'};
+  var cur='auto';
+  try{ var v=localStorage.getItem(KEY); if(v && modes.indexOf(v)>=0) cur=v; }catch(e){}
+  function apply(m){
+    if(m==='auto') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme',m);
+    var b=document.getElementById('themebtn');
+    if(b){ b.textContent='Theme: '+labels[m]; b.title='Theme: '+labels[m]+' — click for '+
+      labels[modes[(modes.indexOf(m)+1)%modes.length]]; }
+  }
+  function init(){
+    if(document.getElementById('themebtn')) return;
+    var b=document.createElement('button');
+    b.id='themebtn'; b.type='button';
+    b.addEventListener('click',function(){
+      cur=modes[(modes.indexOf(cur)+1)%modes.length];
+      try{ localStorage.setItem(KEY,cur); }catch(e){}
+      apply(cur);
+    });
+    // top-right of the page: inside the sticky header where there is one,
+    // otherwise a right-aligned strip at the top of the content column
+    var head=document.querySelector('header.top .row'), main=document.querySelector('main');
+    if(head) head.appendChild(b);
+    else if(main){ var w=document.createElement('div'); w.className='themetop'; w.appendChild(b); main.insertBefore(w, main.firstChild); }
+    else { b.style.position='fixed'; b.style.top='12px'; b.style.right='16px'; b.style.zIndex='60'; document.body.appendChild(b); }
+    apply(cur);
+  }
+  apply(cur);
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script></body></html>
