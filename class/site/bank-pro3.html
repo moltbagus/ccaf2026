@@ -1,0 +1,424 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain 3 — Integration (19%) — Question Bank (20 questions) — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style>
+<style>
+/* Theme overrides. Higher specificity than :root, so an explicit choice always
+   beats the prefers-color-scheme default. data-theme absent = follow the OS. */
+html[data-theme="light"]{color-scheme:light;
+ --bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#d6d0c7;--acc:#b4531f;--card:#fff;
+ --ok:#1f7a4d;--okbg:#eef7f1;--bad:#b03024;--badbg:#fbeeec;--warn:#8a6d1f;--warnbg:#fdf6e3;--dia:#f4f1ec}
+html[data-theme="dark"]{color-scheme:dark;
+ --bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#4a4750;--acc:#e08a5a;--card:#1d1c22;
+ --ok:#6dd39b;--okbg:#12251b;--bad:#f08a80;--badbg:#2a1614;--warn:#e0c07a;--warnbg:#25200f;--dia:#1a191f}
+#themebtn{font:inherit;font-size:12.5px;line-height:1;background:var(--card);color:var(--fg);
+ border:1px solid var(--line);border-radius:8px;padding:7px 11px;cursor:pointer;white-space:nowrap}
+#themebtn:hover{color:var(--acc);border-color:var(--acc)}
+header.top #themebtn{margin-left:10px;align-self:center;margin-bottom:3px}
+.themetop{display:flex;justify-content:flex-end;margin:0 0 6px}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · CCAR-F (Architect)</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Tutor · CCAO-F (Associate)</div><a href="lesson-o1.html" data-t="o1 · prompting &amp; task execution — lesson">O1 · Prompting &amp; Task Execution — lesson</a><a href="lesson-o2.html" data-t="o2 · output evaluation &amp; validation — lesson">O2 · Output Evaluation &amp; Validation — lesson</a><a href="lesson-o3.html" data-t="o3 · product &amp; model selection — lesson">O3 · Product &amp; Model Selection — lesson</a><a href="lesson-o4.html" data-t="o4 · workflow integration &amp; solution design — lesson">O4 · Workflow Integration &amp; Solution Design — lesson</a><a href="lesson-o5.html" data-t="o5 · configuration &amp; knowledge management — lesson">O5 · Configuration &amp; Knowledge Management — lesson</a><a href="lesson-o6.html" data-t="o6 · governance, risk &amp; responsible use — lesson">O6 · Governance, Risk &amp; Responsible Use — lesson</a><a href="lesson-o7.html" data-t="o7 · troubleshooting &amp; optimization — lesson">O7 · Troubleshooting &amp; Optimization — lesson</a><div class="grp">Tutor · CCDV-F (Developer)</div><a href="lesson-dev1.html" data-t="v1 · agents and workflows — lesson">V1 · Agents and Workflows — lesson</a><a href="lesson-dev2.html" data-t="v2 · applications and integration — lesson">V2 · Applications and Integration — lesson</a><a href="lesson-dev3.html" data-t="v3 · claude code — lesson">V3 · Claude Code — lesson</a><a href="lesson-dev4.html" data-t="v4 · eval, testing &amp; debugging — lesson">V4 · Eval, Testing &amp; Debugging — lesson</a><a href="lesson-dev5.html" data-t="v5 · model selection &amp; optimization — lesson">V5 · Model Selection &amp; Optimization — lesson</a><a href="lesson-dev6.html" data-t="v6 · prompt &amp; context engineering — lesson">V6 · Prompt &amp; Context Engineering — lesson</a><a href="lesson-dev7.html" data-t="v7 · security and safety — lesson">V7 · Security and Safety — lesson</a><a href="lesson-dev8.html" data-t="v8 · tools and mcps — lesson">V8 · Tools and MCPs — lesson</a><div class="grp">Tutor · CCAR-P (Professional)</div><a href="lesson-pro1.html" data-t="p1 · solution design &amp; architecture — lesson">P1 · Solution Design &amp; Architecture — lesson</a><a href="lesson-pro2.html" data-t="p2 · models, prompting &amp; context engineering — lesson">P2 · Models, Prompting &amp; Context Engineering — lesson</a><a href="lesson-pro3.html" data-t="p3 · integration — lesson">P3 · Integration — lesson</a><a href="lesson-pro4.html" data-t="p4 · evaluation, testing &amp; optimization — lesson">P4 · Evaluation, Testing &amp; Optimization — lesson</a><a href="lesson-pro5.html" data-t="p5 · governance, safety &amp; risk management — lesson">P5 · Governance, Safety &amp; Risk Management — lesson</a><a href="lesson-pro6.html" data-t="p6 · stakeholder communication &amp; lifecycle — lesson">P6 · Stakeholder Communication &amp; Lifecycle — lesson</a><a href="lesson-pro7.html" data-t="p7 · developer productivity &amp; enablement — lesson">P7 · Developer Productivity &amp; Enablement — lesson</a><div class="grp">CCAO-F · Associate</div><a href="ccao-f.html" data-t="ccao-f · exam facts &amp; blueprint">CCAO-F · exam facts &amp; blueprint</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">CCAO-F · drills & mock</div><a href="bank-o2.html" data-t="bank · o2 (20 q)">Bank · O2 (20 Q)</a><a href="bank-o3.html" data-t="bank · o3 (20 q)">Bank · O3 (20 Q)</a><a href="bank-o4.html" data-t="bank · o4 (20 q)">Bank · O4 (20 Q)</a><a href="bank-o5.html" data-t="bank · o5 (20 q)">Bank · O5 (20 Q)</a><a href="bank-o6.html" data-t="bank · o6 (20 q)">Bank · O6 (20 Q)</a><a href="bank-o7.html" data-t="bank · o7 (20 q)">Bank · O7 (20 Q)</a><div class="grp">CCDV-F · drills & mock</div><a href="bank-dev2.html" data-t="bank · v2 (20 q)">Bank · V2 (20 Q)</a><a href="bank-dev3.html" data-t="bank · v3 (20 q)">Bank · V3 (20 Q)</a><a href="bank-dev4.html" data-t="bank · v4 (20 q)">Bank · V4 (20 Q)</a><a href="bank-dev5.html" data-t="bank · v5 (20 q)">Bank · V5 (20 Q)</a><a href="bank-dev6.html" data-t="bank · v6 (20 q)">Bank · V6 (20 Q)</a><a href="bank-dev7.html" data-t="bank · v7 (20 q)">Bank · V7 (20 Q)</a><a href="bank-dev8.html" data-t="bank · v8 (20 q)">Bank · V8 (20 Q)</a><div class="grp">CCAR-P · drills & mock</div><a href="bank-pro2.html" data-t="bank · p2 (20 q)">Bank · P2 (20 Q)</a><a href="bank-pro3.html" data-t="bank · p3 (20 q)">Bank · P3 (20 Q)</a><a href="bank-pro4.html" data-t="bank · p4 (20 q)">Bank · P4 (20 Q)</a><a href="bank-pro5.html" data-t="bank · p5 (20 q)">Bank · P5 (20 Q)</a><a href="bank-pro6.html" data-t="bank · p6 (20 q)">Bank · P6 (20 Q)</a><a href="bank-pro7.html" data-t="bank · p7 (20 q)">Bank · P7 (20 Q)</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="video-series.html" data-t="the video series (ep 01-20)">The video series (Ep 01-20)</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><h1>Domain 3 — Integration (19%) — Question Bank (20 questions)</h1>
+<p>Coverage: 3.1 ×3, 3.2 ×2, 3.3 ×3, 3.4 ×2, 3.5 ×3, 3.6 ×2, 3.7 ×3, 3.8 ×2.
+Trap types used: sounds-enterprise, sounds-efficient, sounds-helpful, sounds-pragmatic,
+sounds-simple, sounds-smart, sounds-thorough.</p>
+<hr>
+<h3>Q1</h3>
+<p>A field-service agent is provisioned with 22 tools, including <code>update_contract_price</code>,
+<code>issue_credit</code>, and <code>close_account</code>. Technicians only ever need to read job orders and
+attach photos. A platform team proposes putting an enterprise SSO-gated human approval
+workflow and full audit logging in front of the three write tools, keeping them reachable
+for &quot;exceptional cases&quot;. The auditor notes the agent&#39;s scope is broader than any
+technician&#39;s role.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add the approval workflow and audit logging, keeping the three write tools reachable for exceptions.</span></li>
+  <li><span class="ltr">B</span><span>Remove the three write tools from the agent's configuration and expose a read-and-attach tool set only.</span></li>
+  <li><span class="ltr">C</span><span>Keep the tools but require a second technician to co-approve each write.</span></li>
+  <li><span class="ltr">D</span><span>Replace the model with a larger one that follows the "never write" instruction more reliably.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Least privilege eliminates the capability rather than guarding it: a tool the role never needs should not exist, so a bypass or prompt injection has nothing to reach. An approval gate and audit logging are compensating and detective controls — they change what you notice, not what the agent may do — and a larger model holds exactly the same write scope.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q2</h3>
+<p>An operations agent has a <code>run_shell</code> tool that accepts an unconstrained command string;
+it is used to check disk usage and restart services. Audit shows the model has invoked it
+to edit configuration files and list secrets. The team must keep the restart capability.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add a prompt instruction listing the shell commands the agent is permitted to run.</span></li>
+  <li><span class="ltr">B</span><span>Keep <code>run_shell</code> but block the specific dangerous binaries with a denylist.</span></li>
+  <li><span class="ltr">C</span><span>Replace <code>run_shell</code> with two narrow tools — <code>check_disk</code> and <code>restart_service</code> — whose input schemas accept only a validated service name.</span></li>
+  <li><span class="ltr">D</span><span>Increase logging on <code>run_shell</code> and alert on any configuration-file edit.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Constrain capability at the interface, following least privilege, so the unwanted behaviour is impossible rather than discouraged: a schema that accepts only a service name cannot express &quot;edit config&quot;. A prompt instruction is probabilistic, a binary denylist is brittle and bypassable, and logging only records the misuse after it has happened.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q3</h3>
+<p>A procurement agent&#39;s tool list grew from 6 to 41 tools as teams each added &quot;just one
+more&quot; integration. Latency is up 30% and the agent increasingly selects the wrong tool
+among near-duplicates (<code>get_invoice</code>, <code>fetch_invoice</code>, <code>lookup_invoice</code>). The binding
+constraint is decision noise and turn latency.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Prune to the tools the role actually needs, deduplicate the overlapping tools, and move the rest behind progressive discovery.</span></li>
+  <li><span class="ltr">B</span><span>Keep all 41 tools but improve each description so the model can disambiguate.</span></li>
+  <li><span class="ltr">C</span><span>Add a routing classifier in front that selects the correct tool before the model sees them.</span></li>
+  <li><span class="ltr">D</span><span>Move to a larger model so it can hold all 41 tool definitions reliably.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Capability bloat widens the model&#39;s decision space and blast radius, so the fix is to remove tools the role never uses, collapse the near-duplicates, and load the remainder on demand — reducing both latency and mis-selection at the source. Better descriptions and a larger model still present 41 choices, and a routing classifier adds a layer and a new failure mode without shrinking the surface the model reasons over.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q4</h3>
+<p>A support agent acts on behalf of end users and calls the ticketing API with a shared
+service account that holds broad scope, so any customer&#39;s ticket is reachable regardless
+of who is chatting. Security demonstrates a user can prompt the agent into reading
+another customer&#39;s ticket. The requirement is that the agent only accesses data the
+requesting user is entitled to.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add a prompt instruction telling the agent to fetch only the current user's tickets.</span></li>
+  <li><span class="ltr">B</span><span>Log every ticket read and alert when a session reads more than one account.</span></li>
+  <li><span class="ltr">C</span><span>Keep the shared service account but add a per-request rate limit.</span></li>
+  <li><span class="ltr">D</span><span>Replace the shared service account with per-user delegated (on-behalf-of) tokens scoped to the requesting user's entitlements.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> The gap is that the agent&#39;s identity is broader than the user&#39;s, so authorization must be enforced at the token boundary — per-user delegated tokens make the over-reach impossible, not merely discouraged. A prompt instruction is probabilistic, alerting is detective, and a rate limit changes volume rather than scope.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 3.2
+<strong>Source:</strong> newly written</p>
+<h3>Q5</h3>
+<p>An integration authenticates to three SaaS APIs with long-lived static keys stored in an
+env file shared across dev, staging, and production. Each key carries every scope the
+provider offers. A review asks to close the authorization gaps without redesigning the
+agent&#39;s behaviour.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Rotate the static keys quarterly and move them into a secrets manager.</span></li>
+  <li><span class="ltr">B</span><span>Move to short-lived OAuth tokens scoped to only the operations the agent performs, with separate per-environment credentials.</span></li>
+  <li><span class="ltr">C</span><span>Put an API gateway in front that logs every call and rate-limits per key.</span></li>
+  <li><span class="ltr">D</span><span>Encrypt the env file and restrict read access to the deploy pipeline.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> The gap is standing, over-scoped, shared-across-environment privilege; short-lived least-scope tokens per environment shrink both the window and the breadth of exposure. Rotating a static key still leaves it long-lived, over-scoped, and shared; a gateway and encryption are protective layers that do not reduce the scope the credential actually holds.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 3.2
+<strong>Source:</strong> newly written</p>
+<h3>Q6</h3>
+<p>A customer-facing answer service has an SLA of 1.2 s at p95 and a quality bar of 90%.
+A retrieval-heavy configuration with a large model and eight retrieved chunks reaches 95%
+quality at 3.1 s p95. A single-pass configuration with three chunks reaches 90% at 0.9 s
+p95. The two designs are the ones on the table.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Ship the single-pass configuration: it clears the 90% quality bar while respecting the 1.2 s p95 SLA, and document the trade-off.</span></li>
+  <li><span class="ltr">B</span><span>Ship the retrieval-heavy configuration because 95% quality is worth the extra latency.</span></li>
+  <li><span class="ltr">C</span><span>Ship the retrieval-heavy configuration but add caching to bring the mean latency down.</span></li>
+  <li><span class="ltr">D</span><span>Ship the retrieval-heavy configuration and renegotiate the SLA up to 3.5 s.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Name the binding constraint — the 1.2 s p95 SLA with a 90% quality floor — and choose the cheapest configuration that clears it; the single pass does, and the extra seven quality points are not worth breaching a stated SLA. B treats accuracy as unconditional, C optimises the mean while the SLA is set at p95, and D changes the requirement instead of meeting it.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 3.3
+<strong>Source:</strong> newly written</p>
+<h3>Q7</h3>
+<p>A triage agent must decide within 900 ms at p95. About 80% of cases are simple and a
+small model resolves them at 400 ms; the remaining 20% are ambiguous and a large model
+resolves them at 2.8 s. The team wants one configuration for all cases.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use the large model for every case so accuracy is uniform.</span></li>
+  <li><span class="ltr">B</span><span>Use the small model for every case to guarantee the SLA.</span></li>
+  <li><span class="ltr">C</span><span>Use the large model and add few-shot examples to make it faster.</span></li>
+  <li><span class="ltr">D</span><span>Use a cascade: run the small model first and escalate only the ambiguous 20% to the large model, keeping the p95 under budget while hard cases still get depth.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Right-size each step against the binding constraint: the cascade keeps the p95 inside 900 ms because only a fifth of traffic pays the large-model cost, and hard cases still get the reasoning they need. A single large model blows the SLA on every case, a single small model sacrifices accuracy on the ambiguous fifth, and few-shot examples do not remove the large model&#39;s per-call latency.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 3.3
+<strong>Source:</strong> newly written</p>
+<h3>Q8</h3>
+<p>A nightly batch enrichment job processes 5 million records under a fixed cost ceiling.
+A deep multi-pass configuration costs four times the single-pass configuration and would
+breach the ceiling; the single-pass configuration fits. The accuracy floor is 88%:
+single-pass delivers 89%, deep delivers 96%.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use the deep configuration and request a budget increase, since 96% accuracy is materially better.</span></li>
+  <li><span class="ltr">B</span><span>Use the deep configuration only on weekends when spend is less scrutinised.</span></li>
+  <li><span class="ltr">C</span><span>Use the single-pass configuration: it clears the 88% accuracy floor within the fixed cost ceiling, and the extra seven points are not worth breaching the binding constraint.</span></li>
+  <li><span class="ltr">D</span><span>Add a third pass to the deep configuration to push accuracy above 96%.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> The binding constraint is cost, and the accuracy floor is already met, so the defensible choice is the cheapest configuration that clears the bar — spending 4× for quality beyond the requirement is not architecture. A and B breach the ceiling, and D spends even more in the direction already over budget.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 3.3
+<strong>Source:</strong> newly written</p>
+<h3>Q9</h3>
+<p>An agent platform runs three million requests a day across forty tools. A silent
+regression in tool selection — the agent calls <code>refund</code> where it should call <code>void</code> —
+produces no errors and normal latency, and is only noticed when support complaints spike
+weeks later. Observability cost must stay bounded.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Emit structured decision logs (chosen tool, arguments, trace ID), aggregate tool-selection distribution as a metric and alert on shifts, and score a sampled fraction of runs against a rubric.</span></li>
+  <li><span class="ltr">B</span><span>Store every full prompt and response and have an engineer review a daily sample.</span></li>
+  <li><span class="ltr">C</span><span>Raise the log level to debug across all services to capture more detail.</span></li>
+  <li><span class="ltr">D</span><span>Add error-rate alerting only, on the assumption that regressions surface as errors.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> At volume you cannot read traces by hand, so the strategy is decision-level structured logs aggregated into metrics you can alert on, plus sampled rubric scoring for the quality signal metrics cannot express. Full capture does not scale and carries PII risk, debug verbosity raises cost without adding a signal, and error-only alerting assumes exactly the error signal the scenario says is absent.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 3.4
+<strong>Source:</strong> newly written</p>
+<h3>Q10</h3>
+<p>Multi-hop runs (agent → tool → API → agent) fail intermittently, and support cannot
+reconstruct what happened across the hops. The platform must be able to reconstruct a run
+end to end without capturing full request and response payloads, which contain PII.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Log full request and response bodies at every hop so nothing is missing.</span></li>
+  <li><span class="ltr">B</span><span>Add a separate debug agent that watches the queue and reports anomalies.</span></li>
+  <li><span class="ltr">C</span><span>Reduce the number of hops by merging the downstream services.</span></li>
+  <li><span class="ltr">D</span><span>Propagate a correlation/trace ID through every hop and log structured decision metadata — not full payloads — so runs are reconstructable without PII exposure.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> A trace ID threads the hops into one reconstructable run, and structured decision metadata gives the signal without copying PII into the log. Full payload logging is exactly the PII exposure the constraint forbids, a watcher agent adds a second moving part without end-to-end linkage, and merging services is a redesign that does not by itself make runs traceable.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 3.4
+<strong>Source:</strong> newly written</p>
+<h3>Q11</h3>
+<p>A legal RAG system indexes 400,000 contracts and must answer two very different
+questions: &quot;what is the liability cap in this MSA?&quot; (semantic) and &quot;which clauses changed
+in Q3?&quot; (exact term plus a date filter). Fixed 512-token chunks over a single vector index
+keep returning the wrong passages.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Increase the embedding model size to improve semantic similarity.</span></li>
+  <li><span class="ltr">B</span><span>Chunk on document structure (sections and clauses), keep provenance, and add a hybrid index — vectors plus keyword — with metadata filters for clause ID and date.</span></li>
+  <li><span class="ltr">C</span><span>Halve the chunk size to 256 tokens for finer granularity.</span></li>
+  <li><span class="ltr">D</span><span>Raise top-k to 50 and let the model locate the clause itself.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> The data shape is structured clauses and the query pattern spans semantic, exact, and filtered asks, so chunk boundaries should follow document structure and the index should carry the representations each query needs. A bigger embedding model helps only the semantic half, halving the window changes granularity without respecting structure, and a larger top-k raises recall of noise rather than precision on an exact identifier.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 3.5
+<strong>Source:</strong> newly written</p>
+<h3>Q12</h3>
+<p>A policy RAG system&#39;s chunks routinely cut a rule in half, so a retrieved passage states a
+condition but not its exception, and answers misstate policy. Retrieved units must be
+self-contained and attributable to their source section.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add a reranker over the existing fixed-window chunks.</span></li>
+  <li><span class="ltr">B</span><span>Reduce the chunk size so each chunk is more focused.</span></li>
+  <li><span class="ltr">C</span><span>Chunk on document structure (headings and rules) with overlap only where sentences genuinely span boundaries, and store section provenance so each retrieved unit is self-contained and attributable.</span></li>
+  <li><span class="ltr">D</span><span>Increase top-k so both halves of a rule are usually retrieved together.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Chunk boundaries set by document structure keep a rule with its exception, and provenance makes each unit attributable — the two properties the constraint names. A reranker reorders the same severed chunks, smaller chunks worsen the amputation, and a larger top-k hopes both halves appear and leaves attribution unsolved.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 3.5
+<strong>Source:</strong> newly written</p>
+<h3>Q13</h3>
+<p>A RAG corpus is refreshed daily, but after each refresh answers become confidently wrong
+and cite content that was deleted. Latency and model version are unchanged. Retrieval
+must reflect the current documents.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Raise the temperature so the model is less confident in its answers.</span></li>
+  <li><span class="ltr">B</span><span>Add a prompt instruction telling the model to prefer recent content.</span></li>
+  <li><span class="ltr">C</span><span>Re-embed the entire corpus every hour to keep it fresh.</span></li>
+  <li><span class="ltr">D</span><span>Fix the indexing/refresh pipeline so stale chunks are deleted and re-indexed with versioned provenance, then verify retrieval returns the current versions.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> The symptom points at stale indexing, so the fix is in the pipeline: delete superseded chunks, re-index, and carry versioned provenance so freshness is verifiable. Temperature and a &quot;prefer recent&quot; instruction change nothing about what is retrieved, and hourly full re-embeds cost far more while still not deleting the deleted content.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 3.5
+<strong>Source:</strong> newly written</p>
+<h3>Q14</h3>
+<p>One assistant must answer three queries: (a) &quot;summarize our refund policy&quot; (prose),
+(b) &quot;status of order 88213-B&quot; (an exact identifier), and (c) &quot;what depends on service
+payments-api?&quot; (a relationship question). The team proposes a single large vector index
+over everything.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Route by shape: vectors for the prose, lexical/ID lookup for the order, and graph traversal for the dependency question — hybrid-fused where the patterns mix.</span></li>
+  <li><span class="ltr">B</span><span>Use one vector index with a larger embedding model.</span></li>
+  <li><span class="ltr">C</span><span>Fine-tune the model on all three corpora so retrieval becomes unnecessary.</span></li>
+  <li><span class="ltr">D</span><span>Increase top-k and raise temperature so the model can handle all three query types.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Retrieval quality is a function of fit — prose suits vectors, an exact ID suits lexical lookup, and a dependency question suits graph traversal — which is what matching retrieval to data shape and query pattern means. A single vector index chosen by fashion cannot resolve exact identifiers or relationships, fine-tuning cannot supply live order status, and raising top-k and temperature increases confident errors.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 3.6
+<strong>Source:</strong> newly written</p>
+<h3>Q15</h3>
+<p>A product catalog holds two million structured rows (SKU, price, stock, category). Users
+ask filtered and aggregate questions such as &quot;in-stock laptops under $900 with 16GB RAM&quot;.
+A vendor pitches a vector database for the catalog.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Load the whole catalog into the model's context so it can filter directly.</span></li>
+  <li><span class="ltr">B</span><span>Build a vector index over the rows and rely on semantic similarity for the filters.</span></li>
+  <li><span class="ltr">C</span><span>Query the catalog with SQL and filters (exposed as a structured tool), and reserve vectors for the prose policy content rather than the rows.</span></li>
+  <li><span class="ltr">D</span><span>Embed each row and raise top-k to 1000.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Structured rows are queried with SQL and filters — exact, cheap, and correct for aggregates — while vectors are reserved for the prose where similarity actually helps, which is matching retrieval to data shape. Loading two million rows overflows context, and embedding the rows plus a large top-k approximates an exact filter with a fashionable method that cannot guarantee it.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 3.6
+<strong>Source:</strong> newly written</p>
+<h3>Q16</h3>
+<p>An agent needs one stable call to an internal HR API, plus access to a 200-tool partner
+ecosystem that changes frequently. Neither context bloat nor protocol overhead where it is
+unneeded is acceptable.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Wrap the HR call and all 200 partner tools as up-front MCP tools loaded on every turn.</span></li>
+  <li><span class="ltr">B</span><span>Call the HR API directly (a single stable call) and use MCP with progressive discovery for the partner ecosystem.</span></li>
+  <li><span class="ltr">C</span><span>Replace the HR call with a dedicated agent-to-agent delegation.</span></li>
+  <li><span class="ltr">D</span><span>Expose everything through a single CLI wrapper to avoid protocols altogether.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Match the mechanism to the boundary and lifecycle: a single stable call is cheapest as a direct API call, while a large, changing ecosystem fits MCP with progressive discovery so tool definitions load on demand instead of bloating every turn. A front-loads 200 tools, C adds an agent hop for what is one function call, and D hides many tools behind a CLI that still lacks per-tool auth and discovery.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 3.7
+<strong>Source:</strong> newly written</p>
+<h3>Q17</h3>
+<p>A research coordinator must delegate to a peer research agent that owns its own context,
+its own tools, and its own policy, and that returns findings over time. The team proposes
+wrapping the peer as a single function call.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Wrap the peer as a single tool with a fixed input schema.</span></li>
+  <li><span class="ltr">B</span><span>Give the coordinator the peer's full tool set directly.</span></li>
+  <li><span class="ltr">C</span><span>Expose the peer through a CLI wrapper.</span></li>
+  <li><span class="ltr">D</span><span>Use agent-to-agent delegation, because the peer owns its own context, tools, and policy rather than being a single function call.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Protocol choice is governed by the boundary the integration crosses: an autonomous peer that owns its own context, tools, and policy is reached by agent-to-agent delegation, not by pretending it is one deterministic function. A single-schema tool and a CLI wrapper both erase the peer&#39;s own agency and policy, and handing the coordinator the peer&#39;s tools ignores that the peer, not the coordinator, owns them.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 3.7
+<strong>Source:</strong> newly written</p>
+<h3>Q18</h3>
+<p>Fourteen internal teams each maintain their own tools, changing weekly, and each needs
+per-tool authentication. Leadership wants Claude agents to reach all of them through one
+integration surface with discovery as the ecosystem evolves.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Adopt MCP: a common protocol with discovery and auth so many tools sharing a lifecycle reach the agent through one surface.</span></li>
+  <li><span class="ltr">B</span><span>Have each team write bespoke function-calling glue for every agent.</span></li>
+  <li><span class="ltr">C</span><span>Build one large CLI that fronts every service.</span></li>
+  <li><span class="ltr">D</span><span>Give every agent a static list of all tools, refreshed manually each week.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> MCP standardises how the model reaches tools with a common protocol, discovery, and auth — the fit when many tools share a lifecycle and you want one integration surface. Bespoke glue multiplies maintenance, a single CLI still lacks per-tool auth and discovery, and a manually refreshed static list drifts out of date against a weekly-changing ecosystem.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 3.7
+<strong>Source:</strong> newly written</p>
+<h3>Q19</h3>
+<p>An agent has access to a large tool ecosystem. Today all tool definitions and a
+60k-token knowledge base are loaded on every turn, inflating cost and causing the model to
+lose focus. Context must stay lean while the agent retains access to the capabilities it
+actually needs.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Compress the knowledge base so more fits in the context window.</span></li>
+  <li><span class="ltr">B</span><span>Load everything but move to a larger model with a bigger window.</span></li>
+  <li><span class="ltr">C</span><span>Load capabilities progressively: expose a search-and-select step so tool definitions and context load on demand, keeping the working context small.</span></li>
+  <li><span class="ltr">D</span><span>Cache the full context so repeat turns are cheaper.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Progressive discovery loads capabilities on demand and keeps the working context small, which is the direct answer to context bloat and attention dilution. Compression loses fidelity, a bigger window still front-loads everything and does not fix focus, and caching reduces repeat-turn cost without shrinking the context the model must reason over.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 3.8
+<strong>Source:</strong> newly written</p>
+<h3>Q20</h3>
+<p>A narrow, stable workflow uses only three tools and a fixed 2k-token policy. A redesign is
+proposed that front-loads eighty tool definitions and the entire knowledge base &quot;so the
+agent is never blocked&quot;. Context budget and latency both matter.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Front-load all eighty tools and the knowledge base so the agent is never blocked.</span></li>
+  <li><span class="ltr">B</span><span>Load the three tools and the 2k policy directly: the task is narrow and stable, so progressive discovery would add machinery with no benefit here.</span></li>
+  <li><span class="ltr">C</span><span>Front-load everything but enable prompt caching to offset the cost.</span></li>
+  <li><span class="ltr">D</span><span>Add a routing agent that selects among the eighty tools on each turn.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Progressive discovery is a means to keep context lean; where the task is narrow and stable, loading its three tools and small policy directly is the leaner design, and the monolithic alternative is capability bloat wearing a protocol badge. Front-loading eighty tools plus the whole knowledge base inflates every turn, caching does not remove the bloat, and a routing agent adds a layer to solve a problem the narrow task does not have.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 3.8
+<strong>Source:</strong> newly written</p>
+<div class="foot">Built 2026-10-03 15:36 · source: banks/pro3-questions.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script>
+<script>
+(function(){
+  var KEY='ccaf.theme', modes=['auto','light','dark'], labels={auto:'Auto',light:'Daylight',dark:'Night'};
+  var cur='auto';
+  try{ var v=localStorage.getItem(KEY); if(v && modes.indexOf(v)>=0) cur=v; }catch(e){}
+  function apply(m){
+    if(m==='auto') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme',m);
+    var b=document.getElementById('themebtn');
+    if(b){ b.textContent='Theme: '+labels[m]; b.title='Theme: '+labels[m]+' — click for '+
+      labels[modes[(modes.indexOf(m)+1)%modes.length]]; }
+  }
+  function init(){
+    if(document.getElementById('themebtn')) return;
+    var b=document.createElement('button');
+    b.id='themebtn'; b.type='button';
+    b.addEventListener('click',function(){
+      cur=modes[(modes.indexOf(cur)+1)%modes.length];
+      try{ localStorage.setItem(KEY,cur); }catch(e){}
+      apply(cur);
+    });
+    // top-right of the page: inside the sticky header where there is one,
+    // otherwise a right-aligned strip at the top of the content column
+    var head=document.querySelector('header.top .row'), main=document.querySelector('main');
+    if(head) head.appendChild(b);
+    else if(main){ var w=document.createElement('div'); w.className='themetop'; w.appendChild(b); main.insertBefore(w, main.firstChild); }
+    else { b.style.position='fixed'; b.style.top='12px'; b.style.right='16px'; b.style.zIndex='60'; document.body.appendChild(b); }
+    apply(cur);
+  }
+  apply(cur);
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script></body></html>

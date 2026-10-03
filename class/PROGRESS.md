@@ -65,3 +65,40 @@ Opened 2026-10-02. Same rule: mastered = answered correctly twice, on separate d
 
 Notes: the tutor page records right/wrong and trap counts per lesson in the browser
 (`ccaf.lesson.v1.oN`); send the trap list to Hermes to fold into this table.
+
+## CCDV-F (Developer) lane — mastery
+
+Opened 2026-10-03. Built from the official exam guide; 86 steps, 39 answer gates.
+Same rule: mastered = answered correctly twice, on separate days, without notes.
+
+| # | Domain | Weight | Steps | Gates | Gates right | Mastery % | Weakest task |
+|---|---|---|---|---|---|---|---|
+| Agents & Workflows | 14.7% | 13 | 6 | 0 | 0% | — |
+| Applications & Integration | 33.1% | 15 | 7 | 0 | 0% | — |
+| Claude Code | 3.1% | 7 | 3 | 0 | 0% | — |
+| Eval, Testing & Debugging | 2.6% | 7 | 3 | 0 | 0% | — |
+| Model Selection & Optimization | 16.8% | 11 | 5 | 0 | 0% | — |
+| Prompt & Context Engineering | 11.0% | 11 | 5 | 0 | 0% | — |
+| Security and Safety | 8.1% | 11 | 5 | 0 | 0% | — |
+| Tools and MCPs | 10.6% | 11 | 5 | 0 | 0% | — |
+
+Notes: the tutor records right/wrong and trap counts per lesson in the browser
+(`ccaf.lesson.v1.devN`); send the trap list to Hermes to fold into this table.
+
+## CCAR-P (Architect Professional) lane — mastery
+
+Opened 2026-10-03. Built from the official exam guide; 79 steps, 36 answer gates.
+Same rule: mastered = answered correctly twice, on separate days, without notes.
+
+| # | Domain | Weight | Steps | Gates | Gates right | Mastery % | Weakest task |
+|---|---|---|---|---|---|---|---|
+| Solution Design & Architecture | 17% | 13 | 6 | 0 | 0% | — |
+| Claude Models, Prompting & Context Engineering | 13% | 11 | 5 | 0 | 0% | — |
+| Integration | 19% | 13 | 6 | 0 | 0% | — |
+| Evaluation, Testing & Optimization | 16% | 11 | 5 | 0 | 0% | — |
+| Governance, Safety & Risk Management | 14% | 11 | 5 | 0 | 0% | — |
+| Stakeholder Communication & Lifecycle Management | 14% | 11 | 5 | 0 | 0% | — |
+| Developer Productivity & Operational Enablement | 7% | 9 | 4 | 0 | 0% | — |
+
+Notes: the tutor records right/wrong and trap counts per lesson in the browser
+(`ccaf.lesson.v1.proN`); send the trap list to Hermes to fold into this table.

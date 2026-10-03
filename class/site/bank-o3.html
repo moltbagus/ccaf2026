@@ -1,0 +1,373 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain 3 — Product and Model Selection (12%) — Question Bank (20 questions) — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style>
+<style>
+/* Theme overrides. Higher specificity than :root, so an explicit choice always
+   beats the prefers-color-scheme default. data-theme absent = follow the OS. */
+html[data-theme="light"]{color-scheme:light;
+ --bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#d6d0c7;--acc:#b4531f;--card:#fff;
+ --ok:#1f7a4d;--okbg:#eef7f1;--bad:#b03024;--badbg:#fbeeec;--warn:#8a6d1f;--warnbg:#fdf6e3;--dia:#f4f1ec}
+html[data-theme="dark"]{color-scheme:dark;
+ --bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#4a4750;--acc:#e08a5a;--card:#1d1c22;
+ --ok:#6dd39b;--okbg:#12251b;--bad:#f08a80;--badbg:#2a1614;--warn:#e0c07a;--warnbg:#25200f;--dia:#1a191f}
+#themebtn{font:inherit;font-size:12.5px;line-height:1;background:var(--card);color:var(--fg);
+ border:1px solid var(--line);border-radius:8px;padding:7px 11px;cursor:pointer;white-space:nowrap}
+#themebtn:hover{color:var(--acc);border-color:var(--acc)}
+header.top #themebtn{margin-left:10px;align-self:center;margin-bottom:3px}
+.themetop{display:flex;justify-content:flex-end;margin:0 0 6px}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · CCAR-F (Architect)</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Tutor · CCAO-F (Associate)</div><a href="lesson-o1.html" data-t="o1 · prompting &amp; task execution — lesson">O1 · Prompting &amp; Task Execution — lesson</a><a href="lesson-o2.html" data-t="o2 · output evaluation &amp; validation — lesson">O2 · Output Evaluation &amp; Validation — lesson</a><a href="lesson-o3.html" data-t="o3 · product &amp; model selection — lesson">O3 · Product &amp; Model Selection — lesson</a><a href="lesson-o4.html" data-t="o4 · workflow integration &amp; solution design — lesson">O4 · Workflow Integration &amp; Solution Design — lesson</a><a href="lesson-o5.html" data-t="o5 · configuration &amp; knowledge management — lesson">O5 · Configuration &amp; Knowledge Management — lesson</a><a href="lesson-o6.html" data-t="o6 · governance, risk &amp; responsible use — lesson">O6 · Governance, Risk &amp; Responsible Use — lesson</a><a href="lesson-o7.html" data-t="o7 · troubleshooting &amp; optimization — lesson">O7 · Troubleshooting &amp; Optimization — lesson</a><div class="grp">Tutor · CCDV-F (Developer)</div><a href="lesson-dev1.html" data-t="v1 · agents and workflows — lesson">V1 · Agents and Workflows — lesson</a><a href="lesson-dev2.html" data-t="v2 · applications and integration — lesson">V2 · Applications and Integration — lesson</a><a href="lesson-dev3.html" data-t="v3 · claude code — lesson">V3 · Claude Code — lesson</a><a href="lesson-dev4.html" data-t="v4 · eval, testing &amp; debugging — lesson">V4 · Eval, Testing &amp; Debugging — lesson</a><a href="lesson-dev5.html" data-t="v5 · model selection &amp; optimization — lesson">V5 · Model Selection &amp; Optimization — lesson</a><a href="lesson-dev6.html" data-t="v6 · prompt &amp; context engineering — lesson">V6 · Prompt &amp; Context Engineering — lesson</a><a href="lesson-dev7.html" data-t="v7 · security and safety — lesson">V7 · Security and Safety — lesson</a><a href="lesson-dev8.html" data-t="v8 · tools and mcps — lesson">V8 · Tools and MCPs — lesson</a><div class="grp">Tutor · CCAR-P (Professional)</div><a href="lesson-pro1.html" data-t="p1 · solution design &amp; architecture — lesson">P1 · Solution Design &amp; Architecture — lesson</a><a href="lesson-pro2.html" data-t="p2 · models, prompting &amp; context engineering — lesson">P2 · Models, Prompting &amp; Context Engineering — lesson</a><a href="lesson-pro3.html" data-t="p3 · integration — lesson">P3 · Integration — lesson</a><a href="lesson-pro4.html" data-t="p4 · evaluation, testing &amp; optimization — lesson">P4 · Evaluation, Testing &amp; Optimization — lesson</a><a href="lesson-pro5.html" data-t="p5 · governance, safety &amp; risk management — lesson">P5 · Governance, Safety &amp; Risk Management — lesson</a><a href="lesson-pro6.html" data-t="p6 · stakeholder communication &amp; lifecycle — lesson">P6 · Stakeholder Communication &amp; Lifecycle — lesson</a><a href="lesson-pro7.html" data-t="p7 · developer productivity &amp; enablement — lesson">P7 · Developer Productivity &amp; Enablement — lesson</a><div class="grp">CCAO-F · Associate</div><a href="ccao-f.html" data-t="ccao-f · exam facts &amp; blueprint">CCAO-F · exam facts &amp; blueprint</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">CCAO-F · drills & mock</div><a href="bank-o2.html" data-t="bank · o2 (20 q)">Bank · O2 (20 Q)</a><a href="bank-o3.html" data-t="bank · o3 (20 q)">Bank · O3 (20 Q)</a><a href="bank-o4.html" data-t="bank · o4 (20 q)">Bank · O4 (20 Q)</a><a href="bank-o5.html" data-t="bank · o5 (20 q)">Bank · O5 (20 Q)</a><a href="bank-o6.html" data-t="bank · o6 (20 q)">Bank · O6 (20 Q)</a><a href="bank-o7.html" data-t="bank · o7 (20 q)">Bank · O7 (20 Q)</a><div class="grp">CCDV-F · drills & mock</div><a href="bank-dev2.html" data-t="bank · v2 (20 q)">Bank · V2 (20 Q)</a><a href="bank-dev3.html" data-t="bank · v3 (20 q)">Bank · V3 (20 Q)</a><a href="bank-dev4.html" data-t="bank · v4 (20 q)">Bank · V4 (20 Q)</a><a href="bank-dev5.html" data-t="bank · v5 (20 q)">Bank · V5 (20 Q)</a><a href="bank-dev6.html" data-t="bank · v6 (20 q)">Bank · V6 (20 Q)</a><a href="bank-dev7.html" data-t="bank · v7 (20 q)">Bank · V7 (20 Q)</a><a href="bank-dev8.html" data-t="bank · v8 (20 q)">Bank · V8 (20 Q)</a><div class="grp">CCAR-P · drills & mock</div><a href="bank-pro2.html" data-t="bank · p2 (20 q)">Bank · P2 (20 Q)</a><a href="bank-pro3.html" data-t="bank · p3 (20 q)">Bank · P3 (20 Q)</a><a href="bank-pro4.html" data-t="bank · p4 (20 q)">Bank · P4 (20 Q)</a><a href="bank-pro5.html" data-t="bank · p5 (20 q)">Bank · P5 (20 Q)</a><a href="bank-pro6.html" data-t="bank · p6 (20 q)">Bank · P6 (20 Q)</a><a href="bank-pro7.html" data-t="bank · p7 (20 q)">Bank · P7 (20 Q)</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="video-series.html" data-t="the video series (ep 01-20)">The video series (Ep 01-20)</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><h1>Domain 3 — Product and Model Selection (12%) — Question Bank (20 questions)</h1>
+<p>Coverage: 3.1 ×5, 3.2 ×5, 3.3 ×6, 3.4 ×4.
+Trap types used: sounds-enterprise, sounds-efficient, sounds-helpful,
+sounds-pragmatic, sounds-simple, sounds-smart, sounds-thorough.</p>
+<hr>
+<h3>Q1</h3>
+<p>A compliance team starts every conversation by pasting the same 30-page policy manual and a
+set of tone rules, and each session ends with the manual pasted again so the next analyst can
+pick it up. The manual almost never changes.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Keep pasting the manual each session but compress it to a summary first.</span></li>
+  <li><span class="ltr">B</span><span>Switch the team to the most capable model so it retains the manual across sessions.</span></li>
+  <li><span class="ltr">C</span><span>Create a Project for the policy work, upload the manual and tone rules as project knowledge, and run every conversation inside it.</span></li>
+  <li><span class="ltr">D</span><span>Save the manual to a shared drive and link it at the top of each new chat.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Recurring context belongs in a Project, where it is loaded once and every conversation inside starts already primed. Compressing still repeats the manual work, a more capable model does not carry memory across separate chats, and a link on a shared drive leaves the manual outside the conversation.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q2</h3>
+<p>A strategy lead must survey the current landscape of a fast-moving market — many sources, no single answer — and wants the findings cited before drafting a brief.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Ask chat to draft the brief directly from the lead's existing knowledge.</span></li>
+  <li><span class="ltr">B</span><span>Use research mode to search broadly and return cited findings, then draft the brief from them.</span></li>
+  <li><span class="ltr">C</span><span>Ask Claude to list every source it can recall from training on the topic.</span></li>
+  <li><span class="ltr">D</span><span>Paste three articles into chat and ask for a summary.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Research mode is built for breadth with sources: it searches extensively and returns cited findings, at the cost of taking longer. Recall from training fabricates sources, three pasted articles narrow the survey, and drafting from existing knowledge supplies no sourcing at all.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q3</h3>
+<p>A consultant drafts a client proposal over many rounds of edits. The client wants to see each revision and compare versions, and the consultant keeps losing track of the latest draft in the scrollback.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Develop the proposal as an artifact so each revision stays editable and versioned in one place.</span></li>
+  <li><span class="ltr">B</span><span>Keep drafting in chat and scroll back to copy the latest version each time.</span></li>
+  <li><span class="ltr">C</span><span>Restart a fresh chat for every revision so the versions stay separate.</span></li>
+  <li><span class="ltr">D</span><span>Ask Claude to reprint the entire proposal at the end of every message.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Artifacts are the editable output layer: a deliverable lives in a panel you revise version by version instead of hunting through scrollback. Scrolling back is exactly the failure being described, splitting revisions across chats severs the comparison, and reprinting the whole document each turn bloats the conversation.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q4</h3>
+<p>An associate needs one quick answer to a single factual question about a public policy and will not return to the topic afterward.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Build a Project with uploaded policy documents to house the question.</span></li>
+  <li><span class="ltr">B</span><span>Run research mode to produce a sourced report on the topic.</span></li>
+  <li><span class="ltr">C</span><span>Set up a reusable artifact to store the answer for future reference.</span></li>
+  <li><span class="ltr">D</span><span>Ask the question in a regular chat, since it is a one-off with no recurring context.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Chat is the default surface for one conversation and one task with nothing carried over. Standing up a Project, a research report, or an artifact for a single throwaway question spends setup on context that never recurs.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q5</h3>
+<p>A product team runs weekly review conversations against the same product spec and needs a living &quot;known issues&quot; document that everyone edits between sessions.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Paste the spec into each weekly chat and keep the issues in a chat message.</span></li>
+  <li><span class="ltr">B</span><span>Put the spec in a Project as project knowledge and maintain the known-issues document as an artifact.</span></li>
+  <li><span class="ltr">C</span><span>Email the spec before each meeting and draft issues in a fresh chat.</span></li>
+  <li><span class="ltr">D</span><span>Use research mode each week to rediscover the spec from the web.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Two recurring patterns, two surfaces: the unchanged spec belongs in a Project, and the living deliverable belongs in an artifact that stays editable across sessions. Re-pasting and emailing repeat work, and rediscovering the spec from the web adds sourced breadth nobody asked for.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q6</h3>
+<p>A support operation must classify thousands of incoming messages into categories overnight. Speed and cost matter, and the categories are well defined.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use the fast, low-cost tier for the classification and reserve the most capable tier for cases that genuinely need judgment.</span></li>
+  <li><span class="ltr">B</span><span>Use the most capable tier for all messages so the classification is as accurate as possible.</span></li>
+  <li><span class="ltr">C</span><span>Run every message through two tiers and reconcile the results.</span></li>
+  <li><span class="ltr">D</span><span>Switch to a different platform that advertises cheaper generation.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> The task is high-volume and shallow, so the fast tier fits and the capable tier is reserved for the judgment cases. The top tier by reflex pays premium reasoning across the whole batch, a double pass doubles the cost for no gain, and switching platforms abandons a trade-off that exists everywhere.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 3.2
+<strong>Source:</strong> newly written</p>
+<h3>Q7</h3>
+<p>A general counsel must analyze a complex, ambiguous contract clause with significant legal exposure and produce a nuanced risk assessment.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use the fast tier to save time, then have a junior lawyer review the output.</span></li>
+  <li><span class="ltr">B</span><span>Use the balanced tier, since most business work is balanced.</span></li>
+  <li><span class="ltr">C</span><span>Use the most capable tier, because complex reasoning and high-stakes judgment justify the extra cost and latency.</span></li>
+  <li><span class="ltr">D</span><span>Use the fast tier with a longer, more detailed prompt to make up for the depth.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> This is the deep, low-volume corner where the extra capability earns its cost and wait. A fast tier plus junior review still starts from a shallow analysis, &quot;most work is balanced&quot; ignores this task&#39;s specific demand, and a longer prompt does not add reasoning depth.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 3.2
+<strong>Source:</strong> newly written</p>
+<h3>Q8</h3>
+<p>A marketing manager drafts weekly campaign briefs and short competitive analyses — routine business writing where quality and speed both matter and the volume is moderate.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use the fast tier for everything to keep costs low.</span></li>
+  <li><span class="ltr">B</span><span>Use the most capable tier for every brief to guarantee quality.</span></li>
+  <li><span class="ltr">C</span><span>Use research mode for every brief to add sources.</span></li>
+  <li><span class="ltr">D</span><span>Use the balanced tier as the default, escalating only briefs that prove unusually complex.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Everyday business work is the balanced tier&#39;s home: it holds quality and speed together and escalates only the outliers. The fast tier risks quality on work that is not purely volume, the top tier overspends by reflex, and research mode adds sourced breadth this drafting task never asked for.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 3.2
+<strong>Source:</strong> newly written</p>
+<h3>Q9</h3>
+<p>A team lead believes the Claude models are effectively interchangeable, picks whichever is the default each time, and is puzzled that some tasks feel slow while others feel shallow.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Always pick the most capable model so the differences stop mattering.</span></li>
+  <li><span class="ltr">B</span><span>Match the tier to the task: fast tier for high-volume simple work, balanced for everyday work, most capable for complex or high-stakes reasoning.</span></li>
+  <li><span class="ltr">C</span><span>Pick the fastest tier for everything to avoid slowness.</span></li>
+  <li><span class="ltr">D</span><span>Alternate tiers randomly so the load stays even.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> The three tiers trade capability against speed and cost, and the exam tests naming that trade. A single tier for everything is exactly the reflex causing the mixed results; the top tier overspends and the fast tier underserves, and random selection is not selection at all.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 3.2
+<strong>Source:</strong> newly written</p>
+<h3>Q10</h3>
+<p>An operations manager routes every task — ticket triage, one-page summaries, and a client-recovery plan — through the most capable model. The queue is falling behind and costs are climbing.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Move routine triage and short summaries to the fast tier and keep the most capable tier for the client-recovery plan.</span></li>
+  <li><span class="ltr">B</span><span>Keep everything on the most capable tier but instruct it to answer faster.</span></li>
+  <li><span class="ltr">C</span><span>Move everything to the fast tier, including the recovery plan, to clear the queue.</span></li>
+  <li><span class="ltr">D</span><span>Open more parallel conversations on the most capable tier to catch up.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Match tiers per task, not per person: the shallow high-volume work drops to the fast tier while the high-stakes deliverable keeps the depth it needs. A speed instruction does not change what the top tier costs, moving everything to the fast tier risks the recovery plan, and adding parallel top-tier conversations multiplies the waste.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 3.2
+<strong>Source:</strong> newly written</p>
+<h3>Q11</h3>
+<p>A PM must turn 40 internal team emails into a daily leadership digest by 9 a.m. The content is routine and internal.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Run the digest on the most capable tier so nothing is missed.</span></li>
+  <li><span class="ltr">B</span><span>Have a person read all 40 emails to be safe.</span></li>
+  <li><span class="ltr">C</span><span>Use the fast tier, because high volume and a tight turnaround with low per-item risk make speed and cost the binding constraints.</span></li>
+  <li><span class="ltr">D</span><span>Use research mode to source background on each email's topic.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Name the binding constraint first: here it is speed and cost, so the fast tier protects the corner the task cannot lose. The top tier overspends on routine internal work, manual reading is the throughput bottleneck itself, and research mode adds sourced breadth while letting the digest slip.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 3.3
+<strong>Source:</strong> newly written</p>
+<h3>Q12</h3>
+<p>The same PM must also produce a client-facing strategy narrative that will anchor a seven-figure renewal discussion.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Draft it with the fast tier and patch it manually if time allows.</span></li>
+  <li><span class="ltr">B</span><span>Reuse the internal digest's fast-tier output as the narrative.</span></li>
+  <li><span class="ltr">C</span><span>Use the balanced tier because it is the safe middle.</span></li>
+  <li><span class="ltr">D</span><span>Develop it with the most capable tier, because one weak deliverable costs more than the extra usage ever will.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Here the binding constraint is quality, so the capable tier is the fit. A fast-tier draft patched by hand risks the renewal on cleanup, the internal digest was written for a different audience, and &quot;the safe middle&quot; is a reflex, not a reading of this task&#39;s stakes.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 3.3
+<strong>Source:</strong> newly written</p>
+<h3>Q13</h3>
+<p>A team runs a broad mix of everyday work — drafting, analysis, routine summaries — with occasional complex items. Today everything goes through the most capable tier.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Keep the top tier for all tasks to maintain a single standard.</span></li>
+  <li><span class="ltr">B</span><span>Default to the balanced tier and escalate only the items that prove they need more depth.</span></li>
+  <li><span class="ltr">C</span><span>Move everything to the fast tier to cut cost.</span></li>
+  <li><span class="ltr">D</span><span>Build a separate workflow for every task type before doing any work.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Mixed everyday work defaults to the balanced tier, escalating only the items that earn it. A single top-tier standard overspends by reflex, moving everything to the fast tier underserves the complex items, and pre-building a workflow per task type is setup the work has not yet justified.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 3.3
+<strong>Source:</strong> newly written</p>
+<h3>Q14</h3>
+<p>A nonprofit must respond to a high volume of short donor thank-you notes on a tight budget. A template plus light personalization is enough.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use the fast, low-cost tier for the bulk, since per-item depth adds little and the cost multiplies across the volume.</span></li>
+  <li><span class="ltr">B</span><span>Use the most capable tier so every donor gets the best possible note.</span></li>
+  <li><span class="ltr">C</span><span>Use the most capable tier but shorten the prompts to control cost.</span></li>
+  <li><span class="ltr">D</span><span>Switch to a different platform to find cheaper generation.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Cost is the binding constraint and the work is shallow, so the fast tier fits and depth adds little. The top tier spends premium reasoning on templated notes, shortening prompts does not change the tier&#39;s price, and switching platforms dodges a trade-off that exists on every platform.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 3.3
+<strong>Source:</strong> newly written</p>
+<h3>Q15</h3>
+<p>A board-facing risk memo will be read by regulators and must be precise. There is no hard deadline pressure and the volume is a single document.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use the fast tier, since only one document is needed.</span></li>
+  <li><span class="ltr">B</span><span>Split the memo across the fast tier and stitch the sections together.</span></li>
+  <li><span class="ltr">C</span><span>Use the most capable tier, because quality is the binding constraint and one weak sentence carries real cost.</span></li>
+  <li><span class="ltr">D</span><span>Use the balanced tier and hope it is enough.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Low volume plus high stakes points at the capable tier, where depth is worth the cost and wait. Low volume is not a reason to under-serve it, stitching fast-tier sections loses the through-line, and &quot;hope it is enough&quot; is not alignment with a regulator-facing standard.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 3.3
+<strong>Source:</strong> newly written</p>
+<h3>Q16</h3>
+<p>A week-long working thread has accumulated research notes, abandoned drafts, and side questions. Claude now contradicts instructions set early on, but the analysis must continue with the agreed constraints.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Switch to the most capable model in the same thread so it holds the history more reliably.</span></li>
+  <li><span class="ltr">B</span><span>Ask Claude to summarize the decisions, constraints, and next steps, then continue in a fresh chat from that summary.</span></li>
+  <li><span class="ltr">C</span><span>Keep the thread and re-paste the original instructions at the bottom of each new message.</span></li>
+  <li><span class="ltr">D</span><span>Start a completely fresh chat with no summary and restate the task from memory.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> The work must continue with established decisions, so summarize to compress what matters and restart to restore usable context. A model upgrade does not recover instructions crowded out of a full thread, re-pasting adds load to the very overload causing the failures, and a bare restart discards the constraints the continuation depends on.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 3.4
+<strong>Source:</strong> newly written</p>
+<h3>Q17</h3>
+<p>A conversation that began as a market analysis has drifted into unrelated drafting and side questions. The original analysis is finished and will not be revisited.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Keep the thread and paste the analysis conclusion again to anchor it.</span></li>
+  <li><span class="ltr">B</span><span>Upgrade to the most capable model within the thread.</span></li>
+  <li><span class="ltr">C</span><span>Summarize the entire thread before continuing in a new chat.</span></li>
+  <li><span class="ltr">D</span><span>Start a fresh chat for the new work, since the original task is done and the thread has drifted.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Restart is the move when the task has changed or the thread has hopelessly drifted and nothing needs carrying forward. Re-pasting anchors the drift, a model upgrade does not clear the thread, and summarizing spends effort compressing history the new task does not need.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 3.4
+<strong>Source:</strong> newly written</p>
+<h3>Q18</h3>
+<p>Every new chat a consultant starts requires re-establishing the same brand voice and client background. The material almost never changes.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Move the stable brand voice and client background into a Project so no conversation has to re-establish it.</span></li>
+  <li><span class="ltr">B</span><span>Paste the background into each new chat but keep it in a saved note.</span></li>
+  <li><span class="ltr">C</span><span>Ask the most capable model to remember it between chats.</span></li>
+  <li><span class="ltr">D</span><span>Summarize the background at the start of every chat.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> When context recurs across sessions, persist it: a Project loads stable instructions and knowledge once for every conversation inside it. A saved note still requires the pasting, a more capable model does not remember across separate chats, and summarizing every time is the recurring cost the Project removes.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 3.4
+<strong>Source:</strong> newly written</p>
+<h3>Q19</h3>
+<p>A long thread keeps forgetting constraints set early on. A teammate suggests switching to the most capable model to fix it.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Switch to the most capable model and continue in the same thread.</span></li>
+  <li><span class="ltr">B</span><span>Paste the constraints again at the bottom of each message.</span></li>
+  <li><span class="ltr">C</span><span>Treat it as a memory problem: summarize the constraints and continue in a fresh chat, since a more capable model does not restore context crowded out of a full thread.</span></li>
+  <li><span class="ltr">D</span><span>Increase the length limit so more of the thread fits.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> A degraded long conversation is a memory problem, not a model problem. Depth does not restore forgotten instructions, re-pasting adds load to an already-full context, and more capacity for a crowded thread keeps the drift rather than clearing it.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 3.4
+<strong>Source:</strong> newly written</p>
+<h3>Q20</h3>
+<p>A manager wants Claude to make the final hiring decision for a candidate and to sign off on the legal sufficiency of a contract, with no human review.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use the most capable tier so the decisions are as reliable as possible.</span></li>
+  <li><span class="ltr">B</span><span>Recognize these are tasks requiring human accountability and judgment — use Claude to organize information and draft, but keep the hiring decision and legal sign-off with a person.</span></li>
+  <li><span class="ltr">C</span><span>Use research mode to gather more sources before deciding.</span></li>
+  <li><span class="ltr">D</span><span>Split the decision across two models and go with the majority.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Some tasks carry accountability and judgment that must stay with a person; the model can assist by organizing information and drafting, but not own the decision. A more capable tier does not transfer accountability, more sources do not make a hiring call the model&#39;s to make, and a two-model majority vote is still an unreviewed automated decision.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 3.3
+<strong>Source:</strong> newly written</p>
+<div class="foot">Built 2026-10-03 15:36 · source: banks/o3-questions.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script>
+<script>
+(function(){
+  var KEY='ccaf.theme', modes=['auto','light','dark'], labels={auto:'Auto',light:'Daylight',dark:'Night'};
+  var cur='auto';
+  try{ var v=localStorage.getItem(KEY); if(v && modes.indexOf(v)>=0) cur=v; }catch(e){}
+  function apply(m){
+    if(m==='auto') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme',m);
+    var b=document.getElementById('themebtn');
+    if(b){ b.textContent='Theme: '+labels[m]; b.title='Theme: '+labels[m]+' — click for '+
+      labels[modes[(modes.indexOf(m)+1)%modes.length]]; }
+  }
+  function init(){
+    if(document.getElementById('themebtn')) return;
+    var b=document.createElement('button');
+    b.id='themebtn'; b.type='button';
+    b.addEventListener('click',function(){
+      cur=modes[(modes.indexOf(cur)+1)%modes.length];
+      try{ localStorage.setItem(KEY,cur); }catch(e){}
+      apply(cur);
+    });
+    // top-right of the page: inside the sticky header where there is one,
+    // otherwise a right-aligned strip at the top of the content column
+    var head=document.querySelector('header.top .row'), main=document.querySelector('main');
+    if(head) head.appendChild(b);
+    else if(main){ var w=document.createElement('div'); w.className='themetop'; w.appendChild(b); main.insertBefore(w, main.firstChild); }
+    else { b.style.position='fixed'; b.style.top='12px'; b.style.right='16px'; b.style.zIndex='60'; document.body.appendChild(b); }
+    apply(cur);
+  }
+  apply(cur);
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script></body></html>

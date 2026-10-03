@@ -1,0 +1,408 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain 7 — Troubleshooting and Optimization (10%) — Question Bank (20 questions) — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style>
+<style>
+/* Theme overrides. Higher specificity than :root, so an explicit choice always
+   beats the prefers-color-scheme default. data-theme absent = follow the OS. */
+html[data-theme="light"]{color-scheme:light;
+ --bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#d6d0c7;--acc:#b4531f;--card:#fff;
+ --ok:#1f7a4d;--okbg:#eef7f1;--bad:#b03024;--badbg:#fbeeec;--warn:#8a6d1f;--warnbg:#fdf6e3;--dia:#f4f1ec}
+html[data-theme="dark"]{color-scheme:dark;
+ --bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#4a4750;--acc:#e08a5a;--card:#1d1c22;
+ --ok:#6dd39b;--okbg:#12251b;--bad:#f08a80;--badbg:#2a1614;--warn:#e0c07a;--warnbg:#25200f;--dia:#1a191f}
+#themebtn{font:inherit;font-size:12.5px;line-height:1;background:var(--card);color:var(--fg);
+ border:1px solid var(--line);border-radius:8px;padding:7px 11px;cursor:pointer;white-space:nowrap}
+#themebtn:hover{color:var(--acc);border-color:var(--acc)}
+header.top #themebtn{margin-left:10px;align-self:center;margin-bottom:3px}
+.themetop{display:flex;justify-content:flex-end;margin:0 0 6px}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · CCAR-F (Architect)</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Tutor · CCAO-F (Associate)</div><a href="lesson-o1.html" data-t="o1 · prompting &amp; task execution — lesson">O1 · Prompting &amp; Task Execution — lesson</a><a href="lesson-o2.html" data-t="o2 · output evaluation &amp; validation — lesson">O2 · Output Evaluation &amp; Validation — lesson</a><a href="lesson-o3.html" data-t="o3 · product &amp; model selection — lesson">O3 · Product &amp; Model Selection — lesson</a><a href="lesson-o4.html" data-t="o4 · workflow integration &amp; solution design — lesson">O4 · Workflow Integration &amp; Solution Design — lesson</a><a href="lesson-o5.html" data-t="o5 · configuration &amp; knowledge management — lesson">O5 · Configuration &amp; Knowledge Management — lesson</a><a href="lesson-o6.html" data-t="o6 · governance, risk &amp; responsible use — lesson">O6 · Governance, Risk &amp; Responsible Use — lesson</a><a href="lesson-o7.html" data-t="o7 · troubleshooting &amp; optimization — lesson">O7 · Troubleshooting &amp; Optimization — lesson</a><div class="grp">Tutor · CCDV-F (Developer)</div><a href="lesson-dev1.html" data-t="v1 · agents and workflows — lesson">V1 · Agents and Workflows — lesson</a><a href="lesson-dev2.html" data-t="v2 · applications and integration — lesson">V2 · Applications and Integration — lesson</a><a href="lesson-dev3.html" data-t="v3 · claude code — lesson">V3 · Claude Code — lesson</a><a href="lesson-dev4.html" data-t="v4 · eval, testing &amp; debugging — lesson">V4 · Eval, Testing &amp; Debugging — lesson</a><a href="lesson-dev5.html" data-t="v5 · model selection &amp; optimization — lesson">V5 · Model Selection &amp; Optimization — lesson</a><a href="lesson-dev6.html" data-t="v6 · prompt &amp; context engineering — lesson">V6 · Prompt &amp; Context Engineering — lesson</a><a href="lesson-dev7.html" data-t="v7 · security and safety — lesson">V7 · Security and Safety — lesson</a><a href="lesson-dev8.html" data-t="v8 · tools and mcps — lesson">V8 · Tools and MCPs — lesson</a><div class="grp">Tutor · CCAR-P (Professional)</div><a href="lesson-pro1.html" data-t="p1 · solution design &amp; architecture — lesson">P1 · Solution Design &amp; Architecture — lesson</a><a href="lesson-pro2.html" data-t="p2 · models, prompting &amp; context engineering — lesson">P2 · Models, Prompting &amp; Context Engineering — lesson</a><a href="lesson-pro3.html" data-t="p3 · integration — lesson">P3 · Integration — lesson</a><a href="lesson-pro4.html" data-t="p4 · evaluation, testing &amp; optimization — lesson">P4 · Evaluation, Testing &amp; Optimization — lesson</a><a href="lesson-pro5.html" data-t="p5 · governance, safety &amp; risk management — lesson">P5 · Governance, Safety &amp; Risk Management — lesson</a><a href="lesson-pro6.html" data-t="p6 · stakeholder communication &amp; lifecycle — lesson">P6 · Stakeholder Communication &amp; Lifecycle — lesson</a><a href="lesson-pro7.html" data-t="p7 · developer productivity &amp; enablement — lesson">P7 · Developer Productivity &amp; Enablement — lesson</a><div class="grp">CCAO-F · Associate</div><a href="ccao-f.html" data-t="ccao-f · exam facts &amp; blueprint">CCAO-F · exam facts &amp; blueprint</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">CCAO-F · drills & mock</div><a href="bank-o2.html" data-t="bank · o2 (20 q)">Bank · O2 (20 Q)</a><a href="bank-o3.html" data-t="bank · o3 (20 q)">Bank · O3 (20 Q)</a><a href="bank-o4.html" data-t="bank · o4 (20 q)">Bank · O4 (20 Q)</a><a href="bank-o5.html" data-t="bank · o5 (20 q)">Bank · O5 (20 Q)</a><a href="bank-o6.html" data-t="bank · o6 (20 q)">Bank · O6 (20 Q)</a><a href="bank-o7.html" data-t="bank · o7 (20 q)">Bank · O7 (20 Q)</a><div class="grp">CCDV-F · drills & mock</div><a href="bank-dev2.html" data-t="bank · v2 (20 q)">Bank · V2 (20 Q)</a><a href="bank-dev3.html" data-t="bank · v3 (20 q)">Bank · V3 (20 Q)</a><a href="bank-dev4.html" data-t="bank · v4 (20 q)">Bank · V4 (20 Q)</a><a href="bank-dev5.html" data-t="bank · v5 (20 q)">Bank · V5 (20 Q)</a><a href="bank-dev6.html" data-t="bank · v6 (20 q)">Bank · V6 (20 Q)</a><a href="bank-dev7.html" data-t="bank · v7 (20 q)">Bank · V7 (20 Q)</a><a href="bank-dev8.html" data-t="bank · v8 (20 q)">Bank · V8 (20 Q)</a><div class="grp">CCAR-P · drills & mock</div><a href="bank-pro2.html" data-t="bank · p2 (20 q)">Bank · P2 (20 Q)</a><a href="bank-pro3.html" data-t="bank · p3 (20 q)">Bank · P3 (20 Q)</a><a href="bank-pro4.html" data-t="bank · p4 (20 q)">Bank · P4 (20 Q)</a><a href="bank-pro5.html" data-t="bank · p5 (20 q)">Bank · P5 (20 Q)</a><a href="bank-pro6.html" data-t="bank · p6 (20 q)">Bank · P6 (20 Q)</a><a href="bank-pro7.html" data-t="bank · p7 (20 q)">Bank · P7 (20 Q)</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="video-series.html" data-t="the video series (ep 01-20)">The video series (Ep 01-20)</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><h1>Domain 7 — Troubleshooting and Optimization (10%) — Question Bank (20 questions)</h1>
+<p>Coverage: 7.1 ×8, 7.2 ×6, 7.3 ×6.</p>
+<p>Trap types used: sounds-enterprise, sounds-efficient, sounds-helpful,
+sounds-pragmatic, sounds-simple, sounds-smart, sounds-thorough.</p>
+<hr>
+<h3>Q1</h3>
+<p>A monthly client-update summary produced sharp, specific drafts for months. This month
+every draft is generic filler that could apply to any client. The prompt text itself has
+not been edited, but last week the source report it summarizes was reorganized into a new
+section layout.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Rewrite the prompt from scratch with fresh wording until the summaries sharpen again.</span></li>
+  <li><span class="ltr">B</span><span>Compare last month's good draft with this month's failing one, identify that the reorganized source is the cause, and update the prompt to match the new layout.</span></li>
+  <li><span class="ltr">C</span><span>Switch to a more capable model so the summaries recover their specificity.</span></li>
+  <li><span class="ltr">D</span><span>Assign a person to enrich each month's draft by hand before it is sent.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Output changed exactly when the source&#39;s structure changed, so the root cause is the mismatch between the prompt and the reorganized report; comparing the last good output against the failing one isolates that and points at the small fix. A full rewrite discards months of working instructions and replaces one unknown with another, a model switch spends cost on a problem the model did not cause, and hand-enriching every draft pays the same cost forever without removing the cause.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 7.1
+<strong>Source:</strong> newly written</p>
+<h3>Q2</h3>
+<p>An associate keeps asking Claude to &quot;improve this proposal,&quot; and each revision comes back
+polished but still missing the client&#39;s decision criteria and a clear recommendation. The
+proposal text itself is complete and accurate.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>State the audience, the decision the reader must make, and the required recommendation and length directly in the prompt.</span></li>
+  <li><span class="ltr">B</span><span>Keep asking for "improve this even more" and repeat until the result happens to land.</span></li>
+  <li><span class="ltr">C</span><span>Switch to a more capable model to infer what the reader needs.</span></li>
+  <li><span class="ltr">D</span><span>Ask a colleague to rewrite the request for the associate.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> The output is polished but off-target because the ask was vague — it never named the audience or the decision the reader must make, so the model cannot supply them. Adding those specifics to the prompt fixes the cause. Repeating the same vague ask produces the same gap, a stronger model still has no audience to aim at, and having a colleague rewrite the request is a one-off workaround rather than a change to what generates the output.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 7.1
+<strong>Source:</strong> newly written</p>
+<h3>Q3</h3>
+<p>A research assistant asked Claude to summarize &quot;the attached findings,&quot; but attached an
+early internal draft instead of the final reviewed version. Claude&#39;s summary is coherent
+and confident, but it states figures that were revised before the report was finalized.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add an instruction telling Claude to flag any figures it is uncertain about.</span></li>
+  <li><span class="ltr">B</span><span>Ask Claude to double-check its own summary for accuracy before returning it.</span></li>
+  <li><span class="ltr">C</span><span>Recognize that the wrong document was supplied, attach the final reviewed version, and regenerate the summary from it.</span></li>
+  <li><span class="ltr">D</span><span>Switch to a more capable model to produce a more accurate summary.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> The summary is wrong because the input was wrong — an early draft, not the final report — so the fix is to supply the correct source and regenerate. An instruction to flag uncertainty cannot make revised figures disappear, self-checking runs against the same flawed input, and a stronger model would faithfully summarize the same outdated draft.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 7.1
+<strong>Source:</strong> newly written</p>
+<h3>Q4</h3>
+<p>An employee pastes a question about the company&#39;s current expense policy into a plain chat
+with no company documents attached. The answer describes a generic expense process that
+does not match the company&#39;s actual policy.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add "use the company policy" to the message and resend it in the same chat.</span></li>
+  <li><span class="ltr">B</span><span>Recognize that the answer came from general knowledge because the policy was never provided, and ask the question in the configured Project that holds the current policy documents.</span></li>
+  <li><span class="ltr">C</span><span>Switch to a more capable model so it can recall the company's policy.</span></li>
+  <li><span class="ltr">D</span><span>Paste the policy in by hand each time and edit the answer to match.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> The output is off because it was produced on the wrong surface — a bare chat with no access to the company&#39;s documents — so moving the question to the configured Project that holds the current policy fixes the cause. Adding a phrase to a chat with no policy attached cannot conjure the document, a stronger model still has no company policy to read, and pasting and editing by hand leaves the wrong surface in place for every future question.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 7.1
+<strong>Source:</strong> newly written</p>
+<h3>Q5</h3>
+<p>A project is connected to the team&#39;s shared drive so Claude can answer policy questions
+from the latest documents. A key policy was updated in the drive last month, but Claude&#39;s
+answers still describe the old process, and staff have started second-guessing every
+answer.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add an instruction telling Claude to always use the newest policy version.</span></li>
+  <li><span class="ltr">B</span><span>Switch to a more capable model to reason about which version is correct.</span></li>
+  <li><span class="ltr">C</span><span>Recognize that the connected source has not been refreshed to the updated document, update the connection so Claude reads the current version, and re-test a policy question.</span></li>
+  <li><span class="ltr">D</span><span>Have staff manually correct answers until the old policy stops appearing.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Claude answers from the material it is connected to, and the connection is still serving the pre-update document, so refreshing the source to the current version fixes every future answer at once. An instruction to &quot;use the newest&quot; cannot supply a document the source has not updated, a stronger model would read the same stale copy, and correcting answers by hand repeats the same cost indefinitely.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 7.1
+<strong>Source:</strong> newly written</p>
+<h3>Q6</h3>
+<p>Output from a long-standing saved prompt dropped sharply this week, and no one can say
+why. A colleague wants to start editing the prompt immediately.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Rewrite the prompt's wording and keep editing until quality returns.</span></li>
+  <li><span class="ltr">B</span><span>Add more detail and constraints to strengthen the prompt.</span></li>
+  <li><span class="ltr">C</span><span>Switch to a more capable model tier to lift quality.</span></li>
+  <li><span class="ltr">D</span><span>Compare the most recent good output with the failing one to isolate exactly what changed, then fix only that.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> When output that used to work fails, the reliable first move is diagnosis — comparing the last good run against the failing one names the actual cause and points at the smallest fix. Rewriting, adding constraints, and switching models are all remedies chosen before any cause is known, so they spend effort while leaving the real failure in place.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 7.1
+<strong>Source:</strong> newly written</p>
+<h3>Q7</h3>
+<p>A single saved prompt asks Claude to research a topic, outline a document, draft it, format
+it to the team template, and check every claim. The drafts come back long, and the middle
+sections are consistently the weakest.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Split the work into separate reviewed steps — research, outline, draft, format, verify — so each job gets full attention.</span></li>
+  <li><span class="ltr">B</span><span>Add stronger wording demanding high quality and thoroughness across all five tasks.</span></li>
+  <li><span class="ltr">C</span><span>Switch to the most capable model and keep the single five-task prompt.</span></li>
+  <li><span class="ltr">D</span><span>Run the prompt twice and merge the strongest sections by hand.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> The weak middle is a structural signal: five jobs are competing inside one response, so early requirements get attention and later ones get squeezed. Splitting the work into separate reviewed steps removes the competition and makes the weak step obvious. Demanding thoroughness asks the same single response to do more, not less; a stronger model raises the ceiling while the overload stays; running twice pays double for manual patchwork that leaves the structure failing.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 7.1
+<strong>Source:</strong> newly written</p>
+<h3>Q8</h3>
+<p>A weekly report is assembled in several steps, and only the &quot;key risks&quot; section has gone
+wrong — the rest of the report is fine. A teammate proposes rebuilding the whole workflow
+from the beginning.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Rebuild the entire workflow from the start to be safe.</span></li>
+  <li><span class="ltr">B</span><span>Diagnose the single failing step — check whether its input or its instruction changed — and fix only that step.</span></li>
+  <li><span class="ltr">C</span><span>Add a reviewer to check the whole report every week.</span></li>
+  <li><span class="ltr">D</span><span>Add extra instructions to every step so no part is missed.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> One section failing while the rest is fine localizes the fault to that step, so the efficient fix is to inspect that step&#39;s input and instruction and repair only it. Rebuilding the whole workflow throws away the parts that are working, a standing reviewer pays a permanent cost for a single-step problem, and adding instructions everywhere raises the competition between steps instead of removing the fault.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 7.1
+<strong>Source:</strong> newly written</p>
+<h3>Q9</h3>
+<p>A sales team reports that Claude&#39;s weekly product-update drafts read like engineering
+documentation. The drafts are generated by a saved prompt in the team&#39;s project.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Simplify this week's draft by hand before it goes out to the team.</span></li>
+  <li><span class="ltr">B</span><span>Ask each salesperson to rewrite their own portion before the update is sent.</span></li>
+  <li><span class="ltr">C</span><span>Update the saved prompt and the project instructions to name the customer audience and plain language, then regenerate the next draft to confirm the fix.</span></li>
+  <li><span class="ltr">D</span><span>Switch to a faster model tier so drafts arrive earlier and the team has more time to edit.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> The feedback points at the saved prompt&#39;s missing audience definition, so changing the prompt and project instructions makes the fix apply to every future draft, and regenerating confirms it worked. Hand-simplifying only this week&#39;s draft leaves next week&#39;s batch with the identical problem, having each salesperson rewrite their own part multiplies the manual effort, and a faster model changes when the draft arrives, not whether it fits the audience.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 7.2
+<strong>Source:</strong> newly written</p>
+<h3>Q10</h3>
+<p>The same report is generated every Monday, but its format varies from week to week —
+sometimes tight bullets, sometimes long paragraphs — so downstream staff reformat it every
+time before it can be used.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Ask staff to standardize each report by hand as it arrives.</span></li>
+  <li><span class="ltr">B</span><span>Add "be consistent" to the prompt and hope the format settles.</span></li>
+  <li><span class="ltr">C</span><span>Switch models until one happens to produce a steady format.</span></li>
+  <li><span class="ltr">D</span><span>Specify the exact required format in the saved prompt — the section order and the bullet style — so every run produces the same structure.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Variable format is a missing-specification problem, so naming the exact structure in the saved prompt makes every run match and ends the manual reformatting. Asking staff to standardize by hand leaves the cause untouched, a vague &quot;be consistent&quot; gives the model nothing concrete to follow, and shopping for a model that happens to be steady is luck rather than a defined requirement.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 7.2
+<strong>Source:</strong> newly written</p>
+<h3>Q11</h3>
+<p>A saved prompt consistently omits the required &quot;next steps&quot; section, no matter how many
+times the associate rephrases the other parts of the prompt.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Make the missing requirement explicit and specific in the saved prompt — name the section, its position, and what it must contain — rather than rephrasing unrelated parts.</span></li>
+  <li><span class="ltr">B</span><span>Keep rephrasing the whole prompt each run until the section appears.</span></li>
+  <li><span class="ltr">C</span><span>Add a general instruction to "include everything important."</span></li>
+  <li><span class="ltr">D</span><span>Ask a colleague to add the section to each output afterward.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> The prompt keeps missing the same requirement because that requirement is never stated specifically, so making it explicit — the section, its place, its contents — fixes the cause. Rephrasing unrelated parts changes nothing about the missing section, a vague &quot;include everything&quot; gives the model no target, and having a colleague patch each output forever leaves the prompt producing the same gap.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 7.2
+<strong>Source:</strong> newly written</p>
+<h3>Q12</h3>
+<p>After an hour of back-and-forth corrections, a chat&#39;s output keeps contradicting earlier
+instructions, and every new fix introduces another problem. The conversation has
+accumulated many corrections and several reversed decisions.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Keep patching with more corrections in the same conversation until it settles.</span></li>
+  <li><span class="ltr">B</span><span>Start a fresh conversation and provide a clean summary of the confirmed requirements and decisions.</span></li>
+  <li><span class="ltr">C</span><span>Switch to a more capable model inside the same conversation.</span></li>
+  <li><span class="ltr">D</span><span>Ask the assistant to "forget everything and start over" within the same chat.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> When a conversation has accumulated contradictory corrections and reversed decisions, more patching adds to the conflict, so a clean restart that carries only the confirmed requirements removes it. Continuing to patch compounds the contradiction, a stronger model still reads the tangled history, and telling the assistant to &quot;forget everything&quot; inside the same chat leaves the conflicting record in place.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 7.2
+<strong>Source:</strong> newly written</p>
+<h3>Q13</h3>
+<p>A long drafting session began with an outline that has since been revised three times. New
+output still reflects the old structure and ignores the revisions. The work is far enough
+along that restarting feels wasteful.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Keep correcting the output until it matches the current outline.</span></li>
+  <li><span class="ltr">B</span><span>Add an instruction to "use the latest outline" and continue.</span></li>
+  <li><span class="ltr">C</span><span>Switch to a more capable model to reconcile the versions.</span></li>
+  <li><span class="ltr">D</span><span>Restart with a clean prompt built from the current outline, carrying forward only the confirmed content.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> The session&#39;s output keeps reverting to a superseded structure, so continuing to correct it fights the accumulated context; restarting from the current outline with only the confirmed content forward fixes the cause. Correcting indefinitely repeats the same failure, a single instruction cannot outweigh the stale structure already in the conversation, and a stronger model would still be working from the outdated outline.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 7.2
+<strong>Source:</strong> newly written</p>
+<h3>Q14</h3>
+<p>A team retypes the same background, tone, and format instructions into the chat at the
+start of every task, and results still vary from one team member to the next.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Move the recurring background, tone, and format into saved project instructions so every task starts from the same defined setup.</span></li>
+  <li><span class="ltr">B</span><span>Have each member write a better one-off prompt each time.</span></li>
+  <li><span class="ltr">C</span><span>Switch the whole team to the most capable model.</span></li>
+  <li><span class="ltr">D</span><span>Accept the variation and fix outputs by hand as they arrive.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Consistency comes from a single defined setup that every run reads, so moving the recurring instructions into saved project instructions removes the person-to-person variation at its source. One-off prompts re-introduce variation each time, a stronger model does not standardize instructions that differ between users, and fixing outputs by hand leaves the inconsistency in place.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 7.2
+<strong>Source:</strong> newly written</p>
+<h3>Q15</h3>
+<p>A research team routes every question through the same heavyweight process — a deep
+analysis on the most capable model with a ten-section output — including quick one-line
+checks. Costs and turnaround keep climbing.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Keep the heavyweight process for everything so quality never drops.</span></li>
+  <li><span class="ltr">B</span><span>Cut the process down for every task, including genuinely complex analysis.</span></li>
+  <li><span class="ltr">C</span><span>Match the treatment to the task: quick questions get a short prompt and a fast model, and only genuinely complex analysis gets the deep treatment.</span></li>
+  <li><span class="ltr">D</span><span>Add more reviewers to the heavyweight process to speed it up.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> The cost and delay come from a mismatch — heavyweight treatment applied to trivial questions — so matching the approach to the task removes the waste while preserving depth where it matters. Keeping the heavy process for everything preserves the waste, flattening everything to shallow treatment starves the complex work, and adding reviewers to a process that is already too heavy only adds cost.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 7.3
+<strong>Source:</strong> newly written</p>
+<h3>Q16</h3>
+<p>To cut costs, a team switched all requests — including complex multi-source analysis — to
+the fastest model with a short one-paragraph format. Turnaround improved, but the complex
+analyses now miss key findings and are being redone.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Keep the fast model for everything and accept weaker analyses.</span></li>
+  <li><span class="ltr">B</span><span>Return every task, simple or complex, to the most capable model.</span></li>
+  <li><span class="ltr">C</span><span>Add a reviewer to catch weak analyses after the fact.</span></li>
+  <li><span class="ltr">D</span><span>Match the treatment to the task: keep the fast model for simple requests and route genuinely complex analysis to the deeper treatment.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> The redesign overcorrected — flattening complex analysis to a fast, shallow path starves it — so matching treatment to task keeps the savings on simple work while restoring depth for the analyses that need it. Keeping the fast model for everything accepts the rework, sending everything back to the top model restores the original cost problem, and a reviewer catches failures after they have already cost a redo.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 7.3
+<strong>Source:</strong> newly written</p>
+<h3>Q17</h3>
+<p>A weekly analysis is delivered as a ten-section document, but staff report they only ever
+read the first two sections. The remaining eight sections add cost and delay with no
+reader.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Redesign the output to what the audience actually reads — lead with the two sections they use and drop or condense the rest.</span></li>
+  <li><span class="ltr">B</span><span>Keep all ten sections and instruct readers to skim faster.</span></li>
+  <li><span class="ltr">C</span><span>Add a summary section on top of the ten existing sections.</span></li>
+  <li><span class="ltr">D</span><span>Switch to a faster model to reduce the delay.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Effectiveness means the output fits its audience, and eight unread sections are pure cost, so redesigning the output to what readers use removes the waste at the source. Keeping the sections and asking readers to skim leaves the cost in place, adding a summary on top increases the volume nobody reads, and a faster model shortens the delay without removing the unread work.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 7.3
+<strong>Source:</strong> newly written</p>
+<h3>Q18</h3>
+<p>A knowledge assistant&#39;s answers are accurate but built on a process document that was
+replaced two months ago, so its guidance quietly drifts from current practice. The
+outdated document is still the one in the project&#39;s knowledge.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add an instruction telling Claude to prefer current practice over the document.</span></li>
+  <li><span class="ltr">B</span><span>Recognize the stale source and update the project's knowledge with the current process document, then re-test.</span></li>
+  <li><span class="ltr">C</span><span>Move the assistant to a more capable model.</span></li>
+  <li><span class="ltr">D</span><span>Have staff flag outdated answers as they appear.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Claude can only be as current as the material it is given, so the replaced document is the root cause and updating the project&#39;s knowledge fixes every future answer at once. An instruction to &quot;prefer current practice&quot; cannot supply information the source lacks, a stronger model would read the same outdated document, and flagging answers after they appear is a permanent manual tax on a problem that a source update removes.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 7.3
+<strong>Source:</strong> newly written</p>
+<h3>Q19</h3>
+<p>A workflow includes a manual approval step that every output passes through. Data shows
+the approval has never changed an output in six months, but it adds two days to every
+request.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Keep the step in place to be safe.</span></li>
+  <li><span class="ltr">B</span><span>Add a second reviewer to the step to make it worthwhile.</span></li>
+  <li><span class="ltr">C</span><span>Remove the step that adds delay without value, and confirm outputs are still acceptable.</span></li>
+  <li><span class="ltr">D</span><span>Replace the step with a faster model.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> A step that never changes an output and costs two days is pure overhead, so removing it optimizes the workflow, with a confirmation that outputs are still acceptable. Keeping it &quot;to be safe&quot; preserves a cost with no demonstrated benefit, adding a reviewer doubles down on the same waste, and a faster model does not address a step whose value is the problem.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 7.3
+<strong>Source:</strong> newly written</p>
+<h3>Q20</h3>
+<p>A team simplified its workflow — shorter prompts, a faster model for routine tasks, a
+trimmed output. Leadership asks whether the change actually helped.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Assume the change helped because the workflow feels lighter than before.</span></li>
+  <li><span class="ltr">B</span><span>Ask the team whether it seems faster now.</span></li>
+  <li><span class="ltr">C</span><span>Add a new review step to double-check the results.</span></li>
+  <li><span class="ltr">D</span><span>Measure after the change — compare turnaround, cost, and output quality against the previous workflow — to confirm the optimization worked.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> An optimization is verified by measurement, so comparing turnaround, cost, and output quality against the previous workflow confirms whether the change actually helped. Assuming it helped from a feeling and asking the team for an impression both substitute belief for evidence, and adding a review step adds cost without answering whether the optimization worked.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 7.3
+<strong>Source:</strong> newly written</p>
+<div class="foot">Built 2026-10-03 15:36 · source: banks/o7-questions.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script>
+<script>
+(function(){
+  var KEY='ccaf.theme', modes=['auto','light','dark'], labels={auto:'Auto',light:'Daylight',dark:'Night'};
+  var cur='auto';
+  try{ var v=localStorage.getItem(KEY); if(v && modes.indexOf(v)>=0) cur=v; }catch(e){}
+  function apply(m){
+    if(m==='auto') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme',m);
+    var b=document.getElementById('themebtn');
+    if(b){ b.textContent='Theme: '+labels[m]; b.title='Theme: '+labels[m]+' — click for '+
+      labels[modes[(modes.indexOf(m)+1)%modes.length]]; }
+  }
+  function init(){
+    if(document.getElementById('themebtn')) return;
+    var b=document.createElement('button');
+    b.id='themebtn'; b.type='button';
+    b.addEventListener('click',function(){
+      cur=modes[(modes.indexOf(cur)+1)%modes.length];
+      try{ localStorage.setItem(KEY,cur); }catch(e){}
+      apply(cur);
+    });
+    // top-right of the page: inside the sticky header where there is one,
+    // otherwise a right-aligned strip at the top of the content column
+    var head=document.querySelector('header.top .row'), main=document.querySelector('main');
+    if(head) head.appendChild(b);
+    else if(main){ var w=document.createElement('div'); w.className='themetop'; w.appendChild(b); main.insertBefore(w, main.firstChild); }
+    else { b.style.position='fixed'; b.style.top='12px'; b.style.right='16px'; b.style.zIndex='60'; document.body.appendChild(b); }
+    apply(cur);
+  }
+  apply(cur);
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script></body></html>

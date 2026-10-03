@@ -1,0 +1,371 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain 7 — Developer Productivity &amp; Operational Enablement (7%) — Question Bank (20 questions) — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style>
+<style>
+/* Theme overrides. Higher specificity than :root, so an explicit choice always
+   beats the prefers-color-scheme default. data-theme absent = follow the OS. */
+html[data-theme="light"]{color-scheme:light;
+ --bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#d6d0c7;--acc:#b4531f;--card:#fff;
+ --ok:#1f7a4d;--okbg:#eef7f1;--bad:#b03024;--badbg:#fbeeec;--warn:#8a6d1f;--warnbg:#fdf6e3;--dia:#f4f1ec}
+html[data-theme="dark"]{color-scheme:dark;
+ --bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#4a4750;--acc:#e08a5a;--card:#1d1c22;
+ --ok:#6dd39b;--okbg:#12251b;--bad:#f08a80;--badbg:#2a1614;--warn:#e0c07a;--warnbg:#25200f;--dia:#1a191f}
+#themebtn{font:inherit;font-size:12.5px;line-height:1;background:var(--card);color:var(--fg);
+ border:1px solid var(--line);border-radius:8px;padding:7px 11px;cursor:pointer;white-space:nowrap}
+#themebtn:hover{color:var(--acc);border-color:var(--acc)}
+header.top #themebtn{margin-left:10px;align-self:center;margin-bottom:3px}
+.themetop{display:flex;justify-content:flex-end;margin:0 0 6px}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · CCAR-F (Architect)</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Tutor · CCAO-F (Associate)</div><a href="lesson-o1.html" data-t="o1 · prompting &amp; task execution — lesson">O1 · Prompting &amp; Task Execution — lesson</a><a href="lesson-o2.html" data-t="o2 · output evaluation &amp; validation — lesson">O2 · Output Evaluation &amp; Validation — lesson</a><a href="lesson-o3.html" data-t="o3 · product &amp; model selection — lesson">O3 · Product &amp; Model Selection — lesson</a><a href="lesson-o4.html" data-t="o4 · workflow integration &amp; solution design — lesson">O4 · Workflow Integration &amp; Solution Design — lesson</a><a href="lesson-o5.html" data-t="o5 · configuration &amp; knowledge management — lesson">O5 · Configuration &amp; Knowledge Management — lesson</a><a href="lesson-o6.html" data-t="o6 · governance, risk &amp; responsible use — lesson">O6 · Governance, Risk &amp; Responsible Use — lesson</a><a href="lesson-o7.html" data-t="o7 · troubleshooting &amp; optimization — lesson">O7 · Troubleshooting &amp; Optimization — lesson</a><div class="grp">Tutor · CCDV-F (Developer)</div><a href="lesson-dev1.html" data-t="v1 · agents and workflows — lesson">V1 · Agents and Workflows — lesson</a><a href="lesson-dev2.html" data-t="v2 · applications and integration — lesson">V2 · Applications and Integration — lesson</a><a href="lesson-dev3.html" data-t="v3 · claude code — lesson">V3 · Claude Code — lesson</a><a href="lesson-dev4.html" data-t="v4 · eval, testing &amp; debugging — lesson">V4 · Eval, Testing &amp; Debugging — lesson</a><a href="lesson-dev5.html" data-t="v5 · model selection &amp; optimization — lesson">V5 · Model Selection &amp; Optimization — lesson</a><a href="lesson-dev6.html" data-t="v6 · prompt &amp; context engineering — lesson">V6 · Prompt &amp; Context Engineering — lesson</a><a href="lesson-dev7.html" data-t="v7 · security and safety — lesson">V7 · Security and Safety — lesson</a><a href="lesson-dev8.html" data-t="v8 · tools and mcps — lesson">V8 · Tools and MCPs — lesson</a><div class="grp">Tutor · CCAR-P (Professional)</div><a href="lesson-pro1.html" data-t="p1 · solution design &amp; architecture — lesson">P1 · Solution Design &amp; Architecture — lesson</a><a href="lesson-pro2.html" data-t="p2 · models, prompting &amp; context engineering — lesson">P2 · Models, Prompting &amp; Context Engineering — lesson</a><a href="lesson-pro3.html" data-t="p3 · integration — lesson">P3 · Integration — lesson</a><a href="lesson-pro4.html" data-t="p4 · evaluation, testing &amp; optimization — lesson">P4 · Evaluation, Testing &amp; Optimization — lesson</a><a href="lesson-pro5.html" data-t="p5 · governance, safety &amp; risk management — lesson">P5 · Governance, Safety &amp; Risk Management — lesson</a><a href="lesson-pro6.html" data-t="p6 · stakeholder communication &amp; lifecycle — lesson">P6 · Stakeholder Communication &amp; Lifecycle — lesson</a><a href="lesson-pro7.html" data-t="p7 · developer productivity &amp; enablement — lesson">P7 · Developer Productivity &amp; Enablement — lesson</a><div class="grp">CCAO-F · Associate</div><a href="ccao-f.html" data-t="ccao-f · exam facts &amp; blueprint">CCAO-F · exam facts &amp; blueprint</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">CCAO-F · drills & mock</div><a href="bank-o2.html" data-t="bank · o2 (20 q)">Bank · O2 (20 Q)</a><a href="bank-o3.html" data-t="bank · o3 (20 q)">Bank · O3 (20 Q)</a><a href="bank-o4.html" data-t="bank · o4 (20 q)">Bank · O4 (20 Q)</a><a href="bank-o5.html" data-t="bank · o5 (20 q)">Bank · O5 (20 Q)</a><a href="bank-o6.html" data-t="bank · o6 (20 q)">Bank · O6 (20 Q)</a><a href="bank-o7.html" data-t="bank · o7 (20 q)">Bank · O7 (20 Q)</a><div class="grp">CCDV-F · drills & mock</div><a href="bank-dev2.html" data-t="bank · v2 (20 q)">Bank · V2 (20 Q)</a><a href="bank-dev3.html" data-t="bank · v3 (20 q)">Bank · V3 (20 Q)</a><a href="bank-dev4.html" data-t="bank · v4 (20 q)">Bank · V4 (20 Q)</a><a href="bank-dev5.html" data-t="bank · v5 (20 q)">Bank · V5 (20 Q)</a><a href="bank-dev6.html" data-t="bank · v6 (20 q)">Bank · V6 (20 Q)</a><a href="bank-dev7.html" data-t="bank · v7 (20 q)">Bank · V7 (20 Q)</a><a href="bank-dev8.html" data-t="bank · v8 (20 q)">Bank · V8 (20 Q)</a><div class="grp">CCAR-P · drills & mock</div><a href="bank-pro2.html" data-t="bank · p2 (20 q)">Bank · P2 (20 Q)</a><a href="bank-pro3.html" data-t="bank · p3 (20 q)">Bank · P3 (20 Q)</a><a href="bank-pro4.html" data-t="bank · p4 (20 q)">Bank · P4 (20 Q)</a><a href="bank-pro5.html" data-t="bank · p5 (20 q)">Bank · P5 (20 Q)</a><a href="bank-pro6.html" data-t="bank · p6 (20 q)">Bank · P6 (20 Q)</a><a href="bank-pro7.html" data-t="bank · p7 (20 q)">Bank · P7 (20 Q)</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="video-series.html" data-t="the video series (ep 01-20)">The video series (Ep 01-20)</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><h1>Domain 7 — Developer Productivity &amp; Operational Enablement (7%) — Question Bank (20 questions)</h1>
+<p>Coverage: 7.1 ×5, 7.2 ×5, 7.3 ×5, 7.4 ×5.
+Trap types used: sounds-enterprise, sounds-efficient, sounds-smart, sounds-helpful,
+sounds-thorough, sounds-simple, sounds-pragmatic.</p>
+<hr>
+<h3>Q1</h3>
+<p>A platform team has rolled Claude Code out to fourteen product teams using a shared repository. The first team asks for a custom CLAUDE.md and an extra MCP server.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Put both in the requesting engineer's personal local settings so the other thirteen teams are unaffected.</span></li>
+  <li><span class="ltr">B</span><span>Commit both to the shared, version-controlled repository configuration and route them through the normal review, so every team inherits them.</span></li>
+  <li><span class="ltr">C</span><span>Record the custom CLAUDE.md on the team wiki and ask the team to copy it into their local settings when they clone.</span></li>
+  <li><span class="ltr">D</span><span>Keep the changes on a private branch of the shared config that the team merges only when it is convenient.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Shared, version-controlled configuration is the inheritance mechanism — a committed CLAUDE.md and .mcp.json mean every developer who clones gets the same conventions, tools, and guardrails. A personal settings file hides the change, a wiki page is documentation rather than enforcement, and an unmerged branch forks the standard silently.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 7.1
+<strong>Source:</strong> newly written</p>
+<h3>Q2</h3>
+<p>A platform team needs non-negotiable rules — denied tools and network policy — that an individual project must not be able to loosen on its own.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Place the rules in each project's .claude/settings.json, so every team controls its own rules.</span></li>
+  <li><span class="ltr">B</span><span>Place the rules in the shared CLAUDE.md, listed as instructions the model should follow.</span></li>
+  <li><span class="ltr">C</span><span>Place the rules in a system prompt that tells Claude which tools it may not use.</span></li>
+  <li><span class="ltr">D</span><span>Place the rules in managed (organization-level) settings, which take precedence and cannot be loosened by an individual project.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Managed settings are the enforcement layer for the non-negotiables. Project settings, a shared CLAUDE.md, and a system prompt can all be edited or ignored at the project level, so they are advisory rather than binding.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 7.1
+<strong>Source:</strong> newly written</p>
+<h3>Q3</h3>
+<p>A team requests a change to the shared platform configuration. The architect must decide how to handle it.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Convene a cross-functional governance board to review every configuration change before any team may proceed.</span></li>
+  <li><span class="ltr">B</span><span>Let the requesting team own the change and document it, since only that team was affected.</span></li>
+  <li><span class="ltr">C</span><span>Ask whether every team should inherit the change; if yes, land it in the shared, reviewed config, and if no, keep it local and scoped.</span></li>
+  <li><span class="ltr">D</span><span>Give every team its own settings file so no team is ever blocked by another team's request.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> The test is inheritance — anything the team should get belongs in the shared, version-controlled layers under review. A heavyweight board for every change is enterprise theater, letting the team self-own the change forks the standard, and per-team files end the shared standard altogether.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 7.1
+<strong>Source:</strong> newly written</p>
+<h3>Q4</h3>
+<p>One engineer adds an MCP server to their local config. CI that relies on the same tool now fails for teammates who never had it, and the tool is missing from a fresh clone.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Tell every developer to add the server to their own local config by following the README.</span></li>
+  <li><span class="ltr">B</span><span>Keep the server local and add a fallback path so builds stop failing.</span></li>
+  <li><span class="ltr">C</span><span>Move the MCP server into the checked-in .mcp.json so every developer who clones the repository gets the same tool.</span></li>
+  <li><span class="ltr">D</span><span>Pin the server to one machine and have the team SSH into it when needed.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> The repository-level .mcp.json is the shared inheritance point, so the tool becomes part of the standard for everyone. A README instruction is documentation rather than enforcement, a fallback hides the divergence instead of fixing it, and SSH pinning is a bespoke workaround outside the standard.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 7.1
+<strong>Source:</strong> newly written</p>
+<h3>Q5</h3>
+<p>A team, blocked by the repo-wide config, maintains a forked copy of the platform configuration with a couple of rules removed. After a quarter the fork has drifted and missed two security updates.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Retire the fork: reconcile the team's legitimate needs into the shared config under review, so the standard stays single-source and inherits future updates.</span></li>
+  <li><span class="ltr">B</span><span>Keep the fork and set a reminder to diff it against the upstream config each quarter.</span></li>
+  <li><span class="ltr">C</span><span>Keep the fork and copy security updates across manually whenever someone remembers.</span></li>
+  <li><span class="ltr">D</span><span>Merge the fork back once, then let the team resume forking for future changes.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> A fork is a divergent standard that silently misses updates. A periodic manual diff and a manual copy are not enforcement and drift again; merging once does not prevent the next fork, so the single-source fix is the only durable one.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 7.1
+<strong>Source:</strong> newly written</p>
+<h3>Q6</h3>
+<p>A team has adopted Claude for code review and test generation, but results vary widely between developers, and the most effective prompts live in one engineer&#39;s chat history.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Distribute a shared document of the best prompts so developers can paste them when needed.</span></li>
+  <li><span class="ltr">B</span><span>Capture the effective prompts as versioned commands, hooks, and skills committed to the repository, so every developer runs the same workflow.</span></li>
+  <li><span class="ltr">C</span><span>Buy licenses for the rest of the team and ask everyone to experiment until they find what works.</span></li>
+  <li><span class="ltr">D</span><span>Loosen the code-review requirement so AI-generated changes ship faster.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> This turns tribal knowledge into an executable, versioned standard the tooling runs for everyone. A prompt document depends on each developer remembering to paste it and decays as prompts evolve; more licenses without a shared workflow multiply inconsistency; loosening review trades governance for speed and does nothing for consistency.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 7.2
+<strong>Source:</strong> newly written</p>
+<h3>Q7</h3>
+<p>A team wants consistent gains from Claude, but drafting PR descriptions, generating tests, and triaging failing CI are done ad hoc, with quality depending on who is typing.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Ask each developer to keep their own prompt library and share tips in standup.</span></li>
+  <li><span class="ltr">B</span><span>Add a system prompt that reminds developers to use Claude for these steps.</span></li>
+  <li><span class="ltr">C</span><span>Buy a larger model so the results improve regardless of workflow.</span></li>
+  <li><span class="ltr">D</span><span>Codify the routine steps as repo hooks and commands — a hook that drafts the PR description on push, a command that triages CI failures — so the gain is consistent for everyone.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Workflow-embedded tooling runs identically for every developer, so the gain compounds. Personal libraries and prompt reminders depend on individual discipline and evaporate when a developer changes teams, and a larger model does not standardize the workflow.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 7.2
+<strong>Source:</strong> newly written</p>
+<h3>Q8</h3>
+<p>A team has automated drafting pull requests and tests with Claude. To remove the review bottleneck, a proposal would auto-merge AI-generated changes whenever the generated tests pass.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Keep the human at the merge gate — the agent drafts, the developer reviews and merges — and automate the drafting and review preparation, not the approval.</span></li>
+  <li><span class="ltr">B</span><span>Auto-merge AI-generated changes when the generated tests pass, to clear the review queue.</span></li>
+  <li><span class="ltr">C</span><span>Auto-merge only changes below a size threshold.</span></li>
+  <li><span class="ltr">D</span><span>Let a second Claude instance approve the first one's changes so no human is needed.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Keep the human at the gate for anything that ships. Generated tests and a size threshold do not replace review, and model self-approval removes the control entirely.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 7.2
+<strong>Source:</strong> newly written</p>
+<h3>Q9</h3>
+<p>A team&#39;s Claude adoption is enthusiastic, and leadership asks for evidence that the workflow change actually improved delivery.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Survey the developers on how much they like Claude.</span></li>
+  <li><span class="ltr">B</span><span>Instrument every prompt and report the total volume run this quarter.</span></li>
+  <li><span class="ltr">C</span><span>Track cycle time, review latency, and rework before and after the workflow change, so the gain is justified with evidence rather than enthusiasm.</span></li>
+  <li><span class="ltr">D</span><span>Report the number of licenses activated across the team.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Measure the effect on delivery, not activity. Prompt volume and license counts measure usage, and a satisfaction survey measures sentiment — none of them shows whether the workflow change improved outcomes.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 7.2
+<strong>Source:</strong> newly written</p>
+<h3>Q10</h3>
+<p>Developers copy prompts between a chat window and their editor; the prompts that work live in individual chat histories and evaporate when a developer changes teams.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Standardize on a shared chat workspace where all prompts are visible to the team.</span></li>
+  <li><span class="ltr">B</span><span>Move the repeated prompts into the repository as slash commands, hooks, and skills, so the workflow runs inside the toolchain for everyone.</span></li>
+  <li><span class="ltr">C</span><span>Procure an enterprise prompt-management platform to store and share prompts centrally.</span></li>
+  <li><span class="ltr">D</span><span>Require developers to log every prompt in a shared spreadsheet.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> The fix is embedding the workflow in the repo so it runs the same way for everyone. A shared chat workspace, an enterprise prompt platform, and a spreadsheet all keep the AI beside the workflow rather than in it.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 7.2
+<strong>Source:</strong> newly written</p>
+<h3>Q11</h3>
+<p>An operations team wants Claude to assist with production incident triage. They already have runbooks, centralized logs and metrics, and a change-management process.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Give the agent read-only access to logs, metrics, and recent change history, have it work from the existing runbooks, and require human approval before any remediation action.</span></li>
+  <li><span class="ltr">B</span><span>Give the agent administrative credentials to production so it can apply fixes directly and reduce mean time to resolution.</span></li>
+  <li><span class="ltr">C</span><span>Have the agent summarize incidents after the fact from exported logs, without live access to the environment.</span></li>
+  <li><span class="ltr">D</span><span>Disable the change-management gate during incidents so remediation can proceed without delay.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Match the agent&#39;s access to the diagnostic task and keep a human gate on every state change. Admin credentials let a wrong action escalate one incident into two, post-hoc summaries give no live triage capability, and disabling the change gate removes the control exactly when a wrong action is most costly.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 7.3
+<strong>Source:</strong> newly written</p>
+<h3>Q12</h3>
+<p>A triage agent keeps proposing fixes without enough context. A teammate suggests giving it broad production access so it can gather whatever data it needs.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Give the agent broad production write access so it can gather any data and fix issues directly.</span></li>
+  <li><span class="ltr">B</span><span>Have the agent ask an engineer for each log line it needs.</span></li>
+  <li><span class="ltr">C</span><span>Let the agent work from the incident ticket alone and guess at the rest.</span></li>
+  <li><span class="ltr">D</span><span>Grant scoped, read-only access to the specific observability sources the runbook references — logs, traces, metrics, and topology — and gate any write behind human approval.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Scope production access to the diagnostic task. Broad write access converts a diagnosis problem into a second incident, asking an engineer per log line defeats the purpose, and guessing from the ticket produces ungrounded fixes.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 7.3
+<strong>Source:</strong> newly written</p>
+<h3>Q13</h3>
+<p>After an incident, the root cause is well understood, but the same class of incident has already recurred at two other teams.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Send a postmortem email to leadership describing the root cause.</span></li>
+  <li><span class="ltr">B</span><span>Add the finding to the incident ticket and close it.</span></li>
+  <li><span class="ltr">C</span><span>Hold a one-time training session for the on-call team.</span></li>
+  <li><span class="ltr">D</span><span>Feed the root cause back into the runbook and the shared configuration so the next team inherits the lesson instead of rediscovering it.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> The loop closes only when the lesson lands in the runbook and the shared configuration. An email, a closed ticket, and a one-time session are not inherited by the next team, so the recurrence continues.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 7.3
+<strong>Source:</strong> newly written</p>
+<h3>Q14</h3>
+<p>An operations team hands the agent a static checklist to follow during incidents, but gives it no access to logs, traces, or metrics.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Give the agent administrative access so it can bypass the checklist and act directly.</span></li>
+  <li><span class="ltr">B</span><span>Replace the runbook with a longer, more detailed document.</span></li>
+  <li><span class="ltr">C</span><span>Pair the runbook with the observability access it needs — logs, traces, metrics, and service topology — so the agent can actually follow it, and keep the human gate on writes.</span></li>
+  <li><span class="ltr">D</span><span>Have the agent memorize the runbook and skip the steps it judges unnecessary.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> A runbook the agent cannot execute against is theater. Admin access bypasses the control instead of enabling diagnosis, a longer document adds no capability, and skipping steps abandons the runbook that keeps remediation consistent.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 7.3
+<strong>Source:</strong> newly written</p>
+<h3>Q15</h3>
+<p>A team proposes giving the agent only a nightly batch of exported logs, summarized the next day, arguing it is safer to keep the agent out of the live environment.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Provide scoped, read-only live access so the agent can diagnose during the incident, with every write gated by a human.</span></li>
+  <li><span class="ltr">B</span><span>Keep the post-hoc batch only, since keeping the agent out of the live environment is the safer default.</span></li>
+  <li><span class="ltr">C</span><span>Run the batch every hour so the summary arrives sooner.</span></li>
+  <li><span class="ltr">D</span><span>Grant write access so the agent can both diagnose and remediate live.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Post-hoc summarization gives no live triage capability, so it does not help resolve the incident. A faster batch is still after the fact, and write access over-provisions the role beyond diagnosis.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 7.3
+<strong>Source:</strong> newly written</p>
+<h3>Q16</h3>
+<p>Two days before a release, a product team is blocked by a platform security guardrail and asks the architect to disable it just for them. The guardrail protects data handling across all teams.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Keep the guardrail, identify whether the shared standard can be refined to meet the team's legitimate need, and if it cannot, grant a scoped, time-boxed, reviewed exception through the governed process.</span></li>
+  <li><span class="ltr">B</span><span>Disable the guardrail for that team only so they can make the release, and note the exception in the team's documentation.</span></li>
+  <li><span class="ltr">C</span><span>Let the team maintain a forked copy of the platform configuration with the guardrail removed.</span></li>
+  <li><span class="ltr">D</span><span>Escalate to leadership to waive the guardrail permanently, since the deadline is business-critical.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Keep the control and either fix the standard for everyone or grant an exception that is scoped, reviewed, and expires. A per-team disabled guardrail is a silent hole, a fork breaks the shared standard for every downstream team, and a permanent waiver trades the platform&#39;s safety for one team&#39;s deadline.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 7.4
+<strong>Source:</strong> newly written</p>
+<h3>Q17</h3>
+<p>Adoption is surging and several teams complain the compliant path is slow; some have started bypassing the platform guardrails to keep shipping.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Relax the guardrails so adoption is not slowed.</span></li>
+  <li><span class="ltr">B</span><span>Let teams bypass a guardrail with a manager's approval email.</span></li>
+  <li><span class="ltr">C</span><span>Keep the controls and make the compliant path faster — better templates, self-service onboarding, and clearer defaults — so adoption scales without weakening governance.</span></li>
+  <li><span class="ltr">D</span><span>Pause adoption across the company until governance catches up.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Adoption pressure is a reason to make the compliant path faster, not to weaken the control. Relaxing guardrails or approving email bypasses trades the platform&#39;s safety for speed, and pausing adoption forfeits the enablement.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 7.4
+<strong>Source:</strong> newly written</p>
+<h3>Q18</h3>
+<p>Governance of the shared platform currently depends on memory and goodwill; teams drift from the standard between audits.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Hire a governance team to manually review every team's configuration each quarter.</span></li>
+  <li><span class="ltr">B</span><span>Automate the standard: put policy in the shared configuration and CI checks, so the standard enforces itself across every team instead of relying on memory or goodwill.</span></li>
+  <li><span class="ltr">C</span><span>Publish a governance handbook that teams are expected to follow.</span></li>
+  <li><span class="ltr">D</span><span>Send a monthly reminder email about the standard to all teams.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Governance that scales is automated. A manual review team, a handbook, and reminder emails are all documentation or periodic human effort that the tooling never enforces, so drift returns between checks.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 7.4
+<strong>Source:</strong> newly written</p>
+<h3>Q19</h3>
+<p>A team&#39;s bespoke setup was approved verbally and recorded on a wiki page. A later audit finds the exception is invisible to the platform tooling, which keeps treating the team as non-compliant.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add more detail to the wiki page and require teams to read it before making changes.</span></li>
+  <li><span class="ltr">B</span><span>Move the wiki page to a more prominent location.</span></li>
+  <li><span class="ltr">C</span><span>Ask managers to confirm their teams have followed the wiki.</span></li>
+  <li><span class="ltr">D</span><span>Replace the informal record with an enforced standard — the change lives in shared, reviewed configuration, or as a scoped, expiring exception the tooling enforces — so the platform sees it automatically.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Documentation is not enforcement. More detail, a more prominent page, and manager confirmations all rely on people, while the tooling that gates changes never sees any of them — so the exception stays invisible.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 7.4
+<strong>Source:</strong> newly written</p>
+<h3>Q20</h3>
+<p>A platform team is deciding how to expose a new guardrail to product teams. One team offers to build its own version, arguing it knows its own needs best.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Let the team build its own guardrail; the platform can adopt it later if it works well.</span></li>
+  <li><span class="ltr">B</span><span>Define the guardrail once in the shared platform standard so every team inherits the same protection, and route refinements through review.</span></li>
+  <li><span class="ltr">C</span><span>Let each team implement its own version and compare results at the next quarterly review.</span></li>
+  <li><span class="ltr">D</span><span>Have the team build it and mark it experimental so other teams can copy it if they want.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> A standard other teams inherit must be defined once in the shared platform. A team-built one-off, per-team implementations, and an experimental copy all fork the standard and leave the protection uneven across teams.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 7.4
+<strong>Source:</strong> newly written</p>
+<div class="foot">Built 2026-10-03 15:36 · source: banks/pro7-questions.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script>
+<script>
+(function(){
+  var KEY='ccaf.theme', modes=['auto','light','dark'], labels={auto:'Auto',light:'Daylight',dark:'Night'};
+  var cur='auto';
+  try{ var v=localStorage.getItem(KEY); if(v && modes.indexOf(v)>=0) cur=v; }catch(e){}
+  function apply(m){
+    if(m==='auto') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme',m);
+    var b=document.getElementById('themebtn');
+    if(b){ b.textContent='Theme: '+labels[m]; b.title='Theme: '+labels[m]+' — click for '+
+      labels[modes[(modes.indexOf(m)+1)%modes.length]]; }
+  }
+  function init(){
+    if(document.getElementById('themebtn')) return;
+    var b=document.createElement('button');
+    b.id='themebtn'; b.type='button';
+    b.addEventListener('click',function(){
+      cur=modes[(modes.indexOf(cur)+1)%modes.length];
+      try{ localStorage.setItem(KEY,cur); }catch(e){}
+      apply(cur);
+    });
+    // top-right of the page: inside the sticky header where there is one,
+    // otherwise a right-aligned strip at the top of the content column
+    var head=document.querySelector('header.top .row'), main=document.querySelector('main');
+    if(head) head.appendChild(b);
+    else if(main){ var w=document.createElement('div'); w.className='themetop'; w.appendChild(b); main.insertBefore(w, main.firstChild); }
+    else { b.style.position='fixed'; b.style.top='12px'; b.style.right='16px'; b.style.zIndex='60'; document.body.appendChild(b); }
+    apply(cur);
+  }
+  apply(cur);
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script></body></html>

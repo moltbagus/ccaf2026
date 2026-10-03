@@ -1,0 +1,422 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain 4 — Evaluation, Testing &amp; Optimization (16%) — Question Bank (20 questions) — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style>
+<style>
+/* Theme overrides. Higher specificity than :root, so an explicit choice always
+   beats the prefers-color-scheme default. data-theme absent = follow the OS. */
+html[data-theme="light"]{color-scheme:light;
+ --bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#d6d0c7;--acc:#b4531f;--card:#fff;
+ --ok:#1f7a4d;--okbg:#eef7f1;--bad:#b03024;--badbg:#fbeeec;--warn:#8a6d1f;--warnbg:#fdf6e3;--dia:#f4f1ec}
+html[data-theme="dark"]{color-scheme:dark;
+ --bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#4a4750;--acc:#e08a5a;--card:#1d1c22;
+ --ok:#6dd39b;--okbg:#12251b;--bad:#f08a80;--badbg:#2a1614;--warn:#e0c07a;--warnbg:#25200f;--dia:#1a191f}
+#themebtn{font:inherit;font-size:12.5px;line-height:1;background:var(--card);color:var(--fg);
+ border:1px solid var(--line);border-radius:8px;padding:7px 11px;cursor:pointer;white-space:nowrap}
+#themebtn:hover{color:var(--acc);border-color:var(--acc)}
+header.top #themebtn{margin-left:10px;align-self:center;margin-bottom:3px}
+.themetop{display:flex;justify-content:flex-end;margin:0 0 6px}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · CCAR-F (Architect)</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Tutor · CCAO-F (Associate)</div><a href="lesson-o1.html" data-t="o1 · prompting &amp; task execution — lesson">O1 · Prompting &amp; Task Execution — lesson</a><a href="lesson-o2.html" data-t="o2 · output evaluation &amp; validation — lesson">O2 · Output Evaluation &amp; Validation — lesson</a><a href="lesson-o3.html" data-t="o3 · product &amp; model selection — lesson">O3 · Product &amp; Model Selection — lesson</a><a href="lesson-o4.html" data-t="o4 · workflow integration &amp; solution design — lesson">O4 · Workflow Integration &amp; Solution Design — lesson</a><a href="lesson-o5.html" data-t="o5 · configuration &amp; knowledge management — lesson">O5 · Configuration &amp; Knowledge Management — lesson</a><a href="lesson-o6.html" data-t="o6 · governance, risk &amp; responsible use — lesson">O6 · Governance, Risk &amp; Responsible Use — lesson</a><a href="lesson-o7.html" data-t="o7 · troubleshooting &amp; optimization — lesson">O7 · Troubleshooting &amp; Optimization — lesson</a><div class="grp">Tutor · CCDV-F (Developer)</div><a href="lesson-dev1.html" data-t="v1 · agents and workflows — lesson">V1 · Agents and Workflows — lesson</a><a href="lesson-dev2.html" data-t="v2 · applications and integration — lesson">V2 · Applications and Integration — lesson</a><a href="lesson-dev3.html" data-t="v3 · claude code — lesson">V3 · Claude Code — lesson</a><a href="lesson-dev4.html" data-t="v4 · eval, testing &amp; debugging — lesson">V4 · Eval, Testing &amp; Debugging — lesson</a><a href="lesson-dev5.html" data-t="v5 · model selection &amp; optimization — lesson">V5 · Model Selection &amp; Optimization — lesson</a><a href="lesson-dev6.html" data-t="v6 · prompt &amp; context engineering — lesson">V6 · Prompt &amp; Context Engineering — lesson</a><a href="lesson-dev7.html" data-t="v7 · security and safety — lesson">V7 · Security and Safety — lesson</a><a href="lesson-dev8.html" data-t="v8 · tools and mcps — lesson">V8 · Tools and MCPs — lesson</a><div class="grp">Tutor · CCAR-P (Professional)</div><a href="lesson-pro1.html" data-t="p1 · solution design &amp; architecture — lesson">P1 · Solution Design &amp; Architecture — lesson</a><a href="lesson-pro2.html" data-t="p2 · models, prompting &amp; context engineering — lesson">P2 · Models, Prompting &amp; Context Engineering — lesson</a><a href="lesson-pro3.html" data-t="p3 · integration — lesson">P3 · Integration — lesson</a><a href="lesson-pro4.html" data-t="p4 · evaluation, testing &amp; optimization — lesson">P4 · Evaluation, Testing &amp; Optimization — lesson</a><a href="lesson-pro5.html" data-t="p5 · governance, safety &amp; risk management — lesson">P5 · Governance, Safety &amp; Risk Management — lesson</a><a href="lesson-pro6.html" data-t="p6 · stakeholder communication &amp; lifecycle — lesson">P6 · Stakeholder Communication &amp; Lifecycle — lesson</a><a href="lesson-pro7.html" data-t="p7 · developer productivity &amp; enablement — lesson">P7 · Developer Productivity &amp; Enablement — lesson</a><div class="grp">CCAO-F · Associate</div><a href="ccao-f.html" data-t="ccao-f · exam facts &amp; blueprint">CCAO-F · exam facts &amp; blueprint</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">CCAO-F · drills & mock</div><a href="bank-o2.html" data-t="bank · o2 (20 q)">Bank · O2 (20 Q)</a><a href="bank-o3.html" data-t="bank · o3 (20 q)">Bank · O3 (20 Q)</a><a href="bank-o4.html" data-t="bank · o4 (20 q)">Bank · O4 (20 Q)</a><a href="bank-o5.html" data-t="bank · o5 (20 q)">Bank · O5 (20 Q)</a><a href="bank-o6.html" data-t="bank · o6 (20 q)">Bank · O6 (20 Q)</a><a href="bank-o7.html" data-t="bank · o7 (20 q)">Bank · O7 (20 Q)</a><div class="grp">CCDV-F · drills & mock</div><a href="bank-dev2.html" data-t="bank · v2 (20 q)">Bank · V2 (20 Q)</a><a href="bank-dev3.html" data-t="bank · v3 (20 q)">Bank · V3 (20 Q)</a><a href="bank-dev4.html" data-t="bank · v4 (20 q)">Bank · V4 (20 Q)</a><a href="bank-dev5.html" data-t="bank · v5 (20 q)">Bank · V5 (20 Q)</a><a href="bank-dev6.html" data-t="bank · v6 (20 q)">Bank · V6 (20 Q)</a><a href="bank-dev7.html" data-t="bank · v7 (20 q)">Bank · V7 (20 Q)</a><a href="bank-dev8.html" data-t="bank · v8 (20 q)">Bank · V8 (20 Q)</a><div class="grp">CCAR-P · drills & mock</div><a href="bank-pro2.html" data-t="bank · p2 (20 q)">Bank · P2 (20 Q)</a><a href="bank-pro3.html" data-t="bank · p3 (20 q)">Bank · P3 (20 Q)</a><a href="bank-pro4.html" data-t="bank · p4 (20 q)">Bank · P4 (20 Q)</a><a href="bank-pro5.html" data-t="bank · p5 (20 q)">Bank · P5 (20 Q)</a><a href="bank-pro6.html" data-t="bank · p6 (20 q)">Bank · P6 (20 Q)</a><a href="bank-pro7.html" data-t="bank · p7 (20 q)">Bank · P7 (20 Q)</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="video-series.html" data-t="the video series (ep 01-20)">The video series (Ep 01-20)</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><h1>Domain 4 — Evaluation, Testing &amp; Optimization (16%) — Question Bank (20 questions)</h1>
+<p>Coverage: 4.1 ×4, 4.2 ×4, 4.3 ×4, 4.4 ×4, 4.5 ×4.
+Trap types used: sounds-enterprise, sounds-efficient, sounds-helpful, sounds-smart,
+sounds-thorough, sounds-simple, sounds-pragmatic.</p>
+<hr>
+<h3>Q1</h3>
+<p>A fraud-screening assistant reports 97% precision on its evaluation set and clears launch
+review. Two weeks in, the high-value transfer segment — transfers over $50k — produces most
+of the confirmed missed-fraud complaints. The overall precision figure has not moved, and
+latency and cost are flat.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Accept the 97% precision figure as validated, since the model has not changed since review, and treat the complaints as expected noise from a small segment.</span></li>
+  <li><span class="ltr">B</span><span>Re-run the evaluation set; if precision still reads 97%, add a retry loop so flagged-then-cleared transactions are re-scored until they pass.</span></li>
+  <li><span class="ltr">C</span><span>Report precision, recall, and false-negative rate by segment (transfer value band), rebuild the evaluation set to include high-value cases, and state the precision/recall trade-off before deciding.</span></li>
+  <li><span class="ltr">D</span><span>Upgrade to the most capable model so the high-value segment improves, then confirm the overall precision still meets the bar.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Only the segment-aware response finds the real number, exposes the coverage gap in the evaluation set, and forces an explicit precision/recall decision. Option A trusts an aggregate that has already demonstrably failed and blames the users; Option B&#39;s retry loop raises cost and latency while hiding the failure instead of measuring it; Option D upgrades by reflex without measuring the segment first, and re-checking only the overall average repeats the original mistake.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 4.1
+<strong>Source:</strong> newly written</p>
+<h3>Q2</h3>
+<p>A team scores a summarization system only with an LLM-as-judge, which rates it 4.6/5.
+Downstream consumers nonetheless report broken citation formats and a handful of
+unsupported claims. No deterministic checks and no human review exist.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Retune the judge prompt until its scores correlate with the consumer complaints.</span></li>
+  <li><span class="ltr">B</span><span>Adopt a mixed methodology: deterministic assertions for what has a right answer (citation format, schema, length), human review for judgment-heavy quality, and model-graded scoring for scale — each method covering the others' blind spots.</span></li>
+  <li><span class="ltr">C</span><span>Drop the LLM-as-judge entirely and route every output through human review so quality is never inferred.</span></li>
+  <li><span class="ltr">D</span><span>Raise the judge to the most capable model and re-score the full set to get more reliable numbers.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> The judge missed format and grounding failures because a single method has blind spots; a mixed methodology covers them. Option A tunes the same flawed instrument to the complaint set rather than adding an independent check; Option C is unusably slow and expensive at scale and still leaves no deterministic format gate; Option D swaps one model-graded method for another, leaving the format and grounding failures undetected.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 4.1
+<strong>Source:</strong> newly written</p>
+<h3>Q3</h3>
+<p>A support assistant&#39;s evaluation set is 500 tickets drawn from the last 30 days of routine,
+well-formed English tickets, and it scores 96%. A pilot with a multilingual enterprise
+customer produces frequent failures on short, code-switched, and adversarial tickets that
+never appear in the set.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add more routine tickets to the set so the sample size is larger and the 96% is more statistically stable.</span></li>
+  <li><span class="ltr">B</span><span>Lower the pass threshold so the current set reflects real-world conditions more fairly.</span></li>
+  <li><span class="ltr">C</span><span>Add a retry loop in production so unusual tickets are resubmitted until they produce acceptable output.</span></li>
+  <li><span class="ltr">D</span><span>Rebuild the evaluation set as a versioned golden set that deliberately includes the hard, rare, and adversarial cases — multilingual, code-switched, malformed — and measure results by segment.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> The set measures the wrong population, so only rebuilding it to include the cases that actually fail — and reporting by segment — makes the number honest. Option A grows the easy majority and reinforces the blind spot; Option B moves the bar instead of improving the system; Option C masks the failures with retries while inflating cost and latency.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 4.1
+<strong>Source:</strong> newly written</p>
+<h3>Q4</h3>
+<p>An internal agent that reads documents and executes actions is evaluated on task accuracy
+and latency only; both are excellent. A red-team exercise shows a crafted document can make
+the agent ignore its instructions and call a destructive tool. Leadership asks how to close
+the gap.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add explicit security and safety metrics — prompt-injection resistance, unauthorized-action rate, and data-leakage checks — to the evaluation set and gate releases on them alongside accuracy and latency.</span></li>
+  <li><span class="ltr">B</span><span>Add a few prompt-injection examples to the training documentation and re-run the existing accuracy evaluation.</span></li>
+  <li><span class="ltr">C</span><span>Stand up a dedicated safety-review subagent that inspects every response before it is returned to the user, so unsafe outputs are filtered.</span></li>
+  <li><span class="ltr">D</span><span>Increase the retry count so a request that produces a suspicious action is regenerated until it looks safe.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Accuracy and latency are two of five metric classes, and the untested classes are exactly where the red-team finding lives; the fix is to define and gate on safety and security metrics. Option B leaves them unmeasured; Option C adds a costly component without a metric to prove it works or a gate to stop the release; Option D hides unsafe actions behind retries instead of measuring them.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 4.1
+<strong>Source:</strong> newly written</p>
+<h3>Q5</h3>
+<p>A team replaces a summarization prompt and rolls it to 100% of production because it scored
+8% higher on the offline evaluation set. Within three days the support escalation rate climbs
+20% — the new summaries are more fluent but drop the policy exceptions agents relied on.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Roll the prompt back only for the customers who complained, and keep the new prompt everywhere else.</span></li>
+  <li><span class="ltr">B</span><span>Revert to the previous prompt, then run a controlled A/B test with a randomly assigned control group, judging the variant on the primary metric plus guardrail metrics such as escalation rate, latency, and cost.</span></li>
+  <li><span class="ltr">C</span><span>Keep the new prompt and add a second model pass that re-checks each summary for missing policy exceptions before it is shown.</span></li>
+  <li><span class="ltr">D</span><span>Roll the new prompt out to a small percentage of traffic and watch the overall average quality score.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Offline scores are a hypothesis, not evidence, and the change silently regressed a guardrail the business depends on; a controlled test judged on the primary metric plus guardrails is the proof. Option A leaves the regression in place for everyone who did not complain; Option C adds cost and latency to patch a symptom rather than testing the change; Option D keeps watching a blended average that would not reveal the escalation regression.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 4.2
+<strong>Source:</strong> newly written</p>
+<h3>Q6</h3>
+<p>Quality has dropped, and an engineer proposes to fix it by upgrading the model tier,
+rewriting the retrieval chunking, and adding a new system prompt — all in one release, since
+each change is believed to help.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Ship all three changes together and roll back the whole release if quality does not improve.</span></li>
+  <li><span class="ltr">B</span><span>Ship all three but add extensive logging so the team can infer afterwards which change mattered.</span></li>
+  <li><span class="ltr">C</span><span>Change one variable at a time against a stable control, measuring the full metric set after each, so the effect of every change is attributable.</span></li>
+  <li><span class="ltr">D</span><span>Ship only the model upgrade, since the other two changes are cheaper to defer indefinitely.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Bundling three changes makes attribution impossible, so a win cannot be kept and a regression cannot be located; one variable at a time against a control preserves attribution. Option A can only accept or reject the bundle; Option B collects data it cannot disambiguate because the variables moved together; Option D abandons two candidate fixes without measuring them.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 4.2
+<strong>Source:</strong> newly written</p>
+<h3>Q7</h3>
+<p>A variant raises measured answer accuracy from 88% to 93% on the golden set. The team wants
+to ship immediately, but p95 latency rises from 1.2s to 3.4s, crossing the 2s interactive SLA
+the product depends on. No control group was run; the accuracy number comes from the offline
+set.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Ship it — a five-point accuracy gain outweighs a latency regression, and users will adapt to slower responses.</span></li>
+  <li><span class="ltr">B</span><span>Ship it but add a loading spinner and a progress message so the extra latency feels shorter.</span></li>
+  <li><span class="ltr">C</span><span>Trim the golden set to the cases the variant handles well so the accuracy gain is reported more cleanly.</span></li>
+  <li><span class="ltr">D</span><span>Hold the rollout: the change regresses a guardrail the business depends on, so run a controlled test, measure accuracy and p95 latency together, and ship only a variant that clears both the primary metric and the SLA.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> An optimisation that lifts accuracy while breaking the interactive SLA has not improved the system, and the offline number is unproven without a control. Option A trades a business-critical guarantee for a metric in isolation; Option B disguises the regression rather than resolving it; Option C corrupts the evaluation set to make the result look better.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 4.2
+<strong>Source:</strong> newly written</p>
+<h3>Q8</h3>
+<p>A team is three weeks into an A/B test of a new retrieval strategy. Early data shows a small
+accuracy gain but a growing cost per task; the engineer who built the change wants to let it
+run to significance regardless. There is no pre-agreed rule for when to stop.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Define the kill criteria and guardrail thresholds the test should have had up front — the cost and latency ceilings that trigger a stop — and decide against those numbers rather than continuing open-endedly.</span></li>
+  <li><span class="ltr">B</span><span>Let the test run until the accuracy difference reaches statistical significance, then decide, since cost can be optimised later.</span></li>
+  <li><span class="ltr">C</span><span>Stop the test now and ship the change, because an accuracy gain is the goal and the cost increase is small in absolute terms.</span></li>
+  <li><span class="ltr">D</span><span>Extend the test indefinitely and add a second variant so the comparison set is richer.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Without pre-agreed kill criteria the decision drifts to whoever is most attached to the change; setting cost and latency ceilings makes the stop condition objective. Option B commits to running past a guardrail breach; Option C ships without evidence and ignores the cost trend; Option D expands a test that has already lost its stop rule.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 4.2
+<strong>Source:</strong> newly written</p>
+<h3>Q9</h3>
+<p>A policy assistant built on RAG begins giving confident but incorrect answers about refund
+eligibility right after the source document library is re-indexed. The model version,
+temperature, and latency are all unchanged from the week before.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Upgrade to a larger model, since confident errors usually mean the current model is under-powered.</span></li>
+  <li><span class="ltr">B</span><span>Investigate the retrieval stage first — inspect which chunks the re-index is returning for the failing queries, and check for stale, missing, or mis-chunked documents — before changing the prompt or model.</span></li>
+  <li><span class="ltr">C</span><span>Add a system-prompt instruction telling the model never to state eligibility unless it is certain.</span></li>
+  <li><span class="ltr">D</span><span>Raise the temperature so the model explores more of the retrieved context before answering.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> A quality drop that tracks a data change, with model version and latency unchanged, points at retrieval — the model is faithfully grounding its answer in bad chunks. Option A changes the wrong layer by reflex; Option C patches the symptom with a probabilistic instruction; Option D is backwards, since higher temperature increases variance and does not fix ungrounded context.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 4.3
+<strong>Source:</strong> newly written</p>
+<h3>Q10</h3>
+<p>A data-extraction assistant is instructed to return a JSON object with a fixed schema. Audits
+show roughly one in ten responses wraps the JSON in prose, sometimes adds extra keys, and
+occasionally returns valid JSON that violates the required types. The retrieved source
+documents are correct in every failing case.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Replace the model with a more capable tier so it follows the schema more reliably.</span></li>
+  <li><span class="ltr">B</span><span>Add a retry loop that re-sends any response that fails to parse until valid JSON is returned.</span></li>
+  <li><span class="ltr">C</span><span>Treat it as a prompt/format-enforcement failure: tighten the instruction and apply a structured-output constraint so the schema is enforced, then re-measure the format-failure rate.</span></li>
+  <li><span class="ltr">D</span><span>Post-process every response with a regex that strips the prose wrapper before the JSON is parsed.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> The retrieved context is correct and the failures are format violations, so the defect is prompt and format enforcement — enforce the schema rather than ask for it. Option A changes the model when the model is not the cause; Option B masks the failures and inflates cost and latency; Option D strips the wrapper but leaves the extra keys and type violations untouched.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 4.3
+<strong>Source:</strong> newly written</p>
+<h3>Q11</h3>
+<p>A reasoning-heavy assistant must reconcile multi-page contracts. On the failing cases the
+retrieved context is correct and the prompt is unambiguous, yet the answers miss multi-step
+dependencies. The same failing inputs, run through a more capable model tier, produce correct
+answers.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Rewrite the prompt to be longer and more emphatic, since more instruction should fix the misses.</span></li>
+  <li><span class="ltr">B</span><span>Add few-shot examples of correct multi-step reasoning so the current model can imitate them.</span></li>
+  <li><span class="ltr">C</span><span>Accept the failures as edge cases and add a retry loop for low-confidence answers.</span></li>
+  <li><span class="ltr">D</span><span>Diagnose it as a model mismatch: the task exceeds the deployed tier's capability, so route these cases to the capable tier and confirm the fix on the same failing inputs, stating the cost/latency trade-off.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> The controlled comparison already shows the capability gap — same inputs, capable tier succeeds — so the diagnosis is a model mismatch and the fix is routing with the trade-off named. Option A and Option B change the wrong layer, since the prompt was unambiguous and retrieval was correct; Option C leaves the failures in place and adds cost.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 4.3
+<strong>Source:</strong> newly written</p>
+<h3>Q12</h3>
+<p>A nightly batch job fails on about 6% of records. The current handling re-runs each failed
+record up to five times and reports success if any attempt passes. Over a quarter, cost has
+risen sharply and the same records keep failing — the retries succeed only intermittently and
+the underlying cause has never been found.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Stop masking the failure: capture the failing records and the pipeline stage where each breaks, localize the cause (retrieval, prompt, or model), and fix that stage so the record passes deterministically.</span></li>
+  <li><span class="ltr">B</span><span>Raise the retry count to ten so more records eventually pass.</span></li>
+  <li><span class="ltr">C</span><span>Lower the batch's success threshold so a record is marked complete after fewer attempts.</span></li>
+  <li><span class="ltr">D</span><span>Move the retry loop inside the model call so failures are handled faster.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Retry-until-it-passes hides an unreproducible cause while inflating cost and latency; the fix is to localize the failing stage and repair it. Option B and Option C both lean harder on the masking mechanism; Option D relocates the retries without finding the cause.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 4.3
+<strong>Source:</strong> newly written</p>
+<h3>Q13</h3>
+<p>To hit a 40% cost-reduction target, all traffic is moved to the smallest model tier. Cost per
+task falls 42% and average latency improves, but golden-set accuracy for the complex-contract
+segment falls from 90% to 73% while the overall average still looks acceptable.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Keep the change — the overall average meets the bar, and complex contracts are a small share of traffic.</span></li>
+  <li><span class="ltr">B</span><span>Keep the change but add a retry loop for complex contracts so weak answers are regenerated until they pass.</span></li>
+  <li><span class="ltr">C</span><span>Measure per segment and route by task difficulty — fast tier for simple requests, capable tier for complex contracts — then report the cost/quality trade-off with the measured numbers.</span></li>
+  <li><span class="ltr">D</span><span>Upgrade the entire workload to the largest model so no segment is under-served, accepting the higher cost.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> The saving is real where the fast tier holds quality and a failure where it does not, so the answer is to measure by segment and route on that evidence, preserving both objectives. Option A accepts a hidden segment failure because the average looks fine; Option B masks the regression with retries while inflating latency and cost; Option D abandons the cost objective and over-provisions.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 4.4
+<strong>Source:</strong> newly written</p>
+<h3>Q14</h3>
+<p>Every request sends the same 6,000-token policy document and 2,000-token system prompt before
+a short, varying user question. Latency and cost are both over budget, and the static portion
+never changes between calls.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Truncate the policy document to its first 1,000 tokens so each request carries less text.</span></li>
+  <li><span class="ltr">B</span><span>Place the static system prompt and policy document first and enable prompt caching, so the repeated prefix is served cheaper and faster with no change to output quality.</span></li>
+  <li><span class="ltr">C</span><span>Move the policy document into a few-shot example block so it is processed differently.</span></li>
+  <li><span class="ltr">D</span><span>Switch to the smallest model tier so the whole request is cheaper regardless of the prefix.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> A stable, repeated prefix is exactly what prompt caching is for: it cuts cost and latency with no quality change. Option A discards policy content the task may depend on; Option C relocates the same tokens without caching them; Option D changes model capability to fix a token-cost problem, trading quality for a saving caching would have delivered for free.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 4.4
+<strong>Source:</strong> newly written</p>
+<h3>Q15</h3>
+<p>A document-QA assistant is given the entire 200-page manual on every query. Answer quality on
+questions whose evidence sits mid-document is noticeably worse than for evidence near the
+start or end, and token cost is high. A proposal is to double the context window to fit even
+more.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Double the context window so all pages fit with more room, since a larger window cannot hurt.</span></li>
+  <li><span class="ltr">B</span><span>Keep the full manual but move it to the end of the prompt so the model reads it last.</span></li>
+  <li><span class="ltr">C</span><span>Compress the manual into a single dense paragraph so it uses fewer tokens.</span></li>
+  <li><span class="ltr">D</span><span>Retrieve and include only the passages relevant to the query, trimming the context so the model reasons over a focused set — improving quality and cost together.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> A bloated context costs tokens and degrades quality through the lost-in-the-middle effect, so trimming to the relevant passages helps both metrics. Option A adds cost and worsens the middle-loss; Option B shuffles the ordering without reducing the dilution; Option C compresses aggressively and risks discarding the evidence the answer needs.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 4.4
+<strong>Source:</strong> newly written</p>
+<h3>Q16</h3>
+<p>A team runs two workloads: an interactive chat assistant that users wait on, and an overnight
+job that re-scores historical records with no deadline. To cut cost, a proposal suggests
+batching both workloads through the batch API.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Batch only the overnight re-scoring job, which has no latency SLA, and keep the interactive assistant on the real-time path; report the latency/cost trade-off for each.</span></li>
+  <li><span class="ltr">B</span><span>Batch both workloads so the cost saving applies everywhere.</span></li>
+  <li><span class="ltr">C</span><span>Keep both workloads real-time so no user ever waits longer, and absorb the cost.</span></li>
+  <li><span class="ltr">D</span><span>Batch the interactive assistant only, since users are already used to occasional delays.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Batching trades latency for cost, so it is sound only where no one is waiting — the overnight job — and wrong where it blocks a user. Option B applies the saving to a workload that cannot absorb the latency; Option C abandons a legitimate cost win; Option D batches the one workload that must not be batched.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 4.4
+<strong>Source:</strong> newly written</p>
+<h3>Q17</h3>
+<p>A production assistant&#39;s dashboards show 99.9% uptime and flat average latency for three
+months. After an upstream model update, output quality on one customer segment degrades for
+three weeks before anyone notices — because the only monitored signals are availability and
+average latency.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add more frequent uptime probes and a tighter latency alert so anomalies surface sooner.</span></li>
+  <li><span class="ltr">B</span><span>Add structured per-request logging (prompt and model version, retrieved IDs, token counts, cost, outcome, trace ID), end-to-end tracing by stage, continuous sampling and scoring of output quality, and segment-level drift alerts.</span></li>
+  <li><span class="ltr">C</span><span>Ask customers to report bad outputs through a feedback form so regressions are caught by the people who notice them.</span></li>
+  <li><span class="ltr">D</span><span>Pin the model to a fixed version and stop monitoring, since the version can no longer change.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> The failure was in output quality, which nothing was watching; logging, tracing, quality sampling, and segment-level alerts monitor the thing that actually broke. Option A strengthens the two signals that stayed green; Option C outsources detection to users who see the damage only after the fact; Option D removes one drift source but monitoring nothing is not observability and cannot catch retrieval or data drift.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 4.5
+<strong>Source:</strong> newly written</p>
+<h3>Q18</h3>
+<p>A vendor silently updates a model version behind an unchanged API alias. The team&#39;s dashboards
+stay green, and the only way they eventually learned of the change was a customer complaint
+about a shift in tone and factuality.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add a note to the runbook asking engineers to check the vendor's release notes weekly.</span></li>
+  <li><span class="ltr">B</span><span>Switch to the largest model so version changes matter less.</span></li>
+  <li><span class="ltr">C</span><span>Log and pin the exact model version on every request, alert on any version change, and include the model version in the quality-sampling records so drift becomes visible rather than silent.</span></li>
+  <li><span class="ltr">D</span><span>Rely on the vendor's status page and trust that breaking changes will be announced.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> A silent external change is only visible if the version is recorded and monitored; pinning plus alerting turns an invisible drift into a detectable event. Option A depends on a human remembering to look; Option B changes capability without making the change observable; Option D trusts an external process that already failed.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 4.5
+<strong>Source:</strong> newly written</p>
+<h3>Q19</h3>
+<p>A monitoring system alerts whenever the global average quality score drops more than 2 points.
+A regression in the medical-terminology segment cuts that segment&#39;s score by 20 points, but
+its share of traffic is small enough that the global average moves only 0.4 points, so no
+alert fires for two weeks.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Lower the global alert threshold to 0.2 points so smaller shifts trigger an alert.</span></li>
+  <li><span class="ltr">B</span><span>Increase the sample size of scored outputs so the global average is more sensitive.</span></li>
+  <li><span class="ltr">C</span><span>Alert on uptime and cost instead, since those are more stable signals.</span></li>
+  <li><span class="ltr">D</span><span>Add segment-level alerting — monitor each segment's quality against its own threshold — so a small segment's regression fires even when the blended average barely moves.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> The blended average is precisely what hid the failure, so the fix is to alert per segment against segment thresholds. Option A makes the global alert noisier without addressing the masking; Option B sharpens a statistic that is structurally blind to the segment; Option C swaps in signals unrelated to output quality.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 4.5
+<strong>Source:</strong> newly written</p>
+<h3>Q20</h3>
+<p>A multi-stage pipeline (retrieve → rerank → generate → post-process) produces a wrong answer.
+The team has aggregate dashboards but no way to see which stage introduced the error; each
+stage logs only its own summary, with no shared identifier linking a single request&#39;s stages
+together.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add end-to-end tracing with a shared trace ID per request and stage-level spans, so a failure can be attributed to the specific stage that introduced it.</span></li>
+  <li><span class="ltr">B</span><span>Add more dashboards showing each stage's average latency and throughput.</span></li>
+  <li><span class="ltr">C</span><span>Add a retry loop after generation so obviously wrong answers are regenerated.</span></li>
+  <li><span class="ltr">D</span><span>Ask the model to explain its reasoning so the error can be read from the output.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Without a request-level identifier the stages cannot be correlated, so tracing with a shared trace ID is what makes attribution possible. Option B adds aggregate views that still cannot follow one request; Option C masks the error rather than locating it; Option D inspects only the generation stage and cannot reveal an upstream retrieval or rerank fault.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 4.5
+<strong>Source:</strong> newly written</p>
+<div class="foot">Built 2026-10-03 15:36 · source: banks/pro4-questions.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script>
+<script>
+(function(){
+  var KEY='ccaf.theme', modes=['auto','light','dark'], labels={auto:'Auto',light:'Daylight',dark:'Night'};
+  var cur='auto';
+  try{ var v=localStorage.getItem(KEY); if(v && modes.indexOf(v)>=0) cur=v; }catch(e){}
+  function apply(m){
+    if(m==='auto') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme',m);
+    var b=document.getElementById('themebtn');
+    if(b){ b.textContent='Theme: '+labels[m]; b.title='Theme: '+labels[m]+' — click for '+
+      labels[modes[(modes.indexOf(m)+1)%modes.length]]; }
+  }
+  function init(){
+    if(document.getElementById('themebtn')) return;
+    var b=document.createElement('button');
+    b.id='themebtn'; b.type='button';
+    b.addEventListener('click',function(){
+      cur=modes[(modes.indexOf(cur)+1)%modes.length];
+      try{ localStorage.setItem(KEY,cur); }catch(e){}
+      apply(cur);
+    });
+    // top-right of the page: inside the sticky header where there is one,
+    // otherwise a right-aligned strip at the top of the content column
+    var head=document.querySelector('header.top .row'), main=document.querySelector('main');
+    if(head) head.appendChild(b);
+    else if(main){ var w=document.createElement('div'); w.className='themetop'; w.appendChild(b); main.insertBefore(w, main.firstChild); }
+    else { b.style.position='fixed'; b.style.top='12px'; b.style.right='16px'; b.style.zIndex='60'; document.body.appendChild(b); }
+    apply(cur);
+  }
+  apply(cur);
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script></body></html>

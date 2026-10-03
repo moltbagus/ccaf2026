@@ -20,7 +20,7 @@ Coach: Hermes (Claude Code Architect Foundations tutor)
 
 ## Certification family
 
-The Claude Certified Architect / Developer / Associate track (four exams). Our target is **bolded**.
+The Claude Certified Architect / Developer / Associate track (four exams). All four now have a tutor lane here; our own target is **bolded**.
 
 | Code | Level | Fee (USD) | Items | Domains | Character |
 |---|---|---|---|---|---|
@@ -72,6 +72,71 @@ recalled questions can invalidate a result, revoke the credential and ban future
 written from the public blueprint and the official free prep path on the Partner Academy.
 
 ---
+
+## Third lane: CCDV-F Developer (technical)
+
+Added 2026-10-03. The builder's exam: hands-on work with the Claude API, agents, tools and MCP,
+and application security. Code, SDK shapes and API names are fair game here, so the lessons carry
+real snippets. **Built from the official exam guide** (`external/ccdv-f-exam-guide.pdf`) — 8 lessons,
+86 steps, every step with a diagram.
+
+| Parameter | Value |
+|---|---|
+| Code | CCDV-F |
+| Items | 53 (multiple choice + multiple response) |
+| Duration | 120 minutes |
+| Scoring | Scaled 100–1000, **pass = 720** |
+| Fee | USD 125 |
+| Validity | 12 months |
+
+### Developer domains (Exam Guide v1.0, July 2026)
+
+| # | Domain | Weight | Lesson |
+|---|---|---|---|
+| 1 | Agents and Workflows | **14.7%** | [lesson-dev1.html](lesson-dev1.html) |
+| 2 | Applications and Integration | **33.1%** | [lesson-dev2.html](lesson-dev2.html) |
+| 3 | Claude Code | **3.1%** | [lesson-dev3.html](lesson-dev3.html) |
+| 4 | Eval, Testing, and Debugging | **2.6%** | [lesson-dev4.html](lesson-dev4.html) |
+| 5 | Model Selection and Optimization | **16.8%** | [lesson-dev5.html](lesson-dev5.html) |
+| 6 | Prompt and Context Engineering | **11.0%** | [lesson-dev6.html](lesson-dev6.html) |
+| 7 | Security and Safety | **8.1%** | [lesson-dev7.html](lesson-dev7.html) |
+| 8 | Tools and MCPs | **10.6%** | [lesson-dev8.html](lesson-dev8.html) |
+
+**Applications and Integration alone is 33.1%** — a third of the exam, and broad (requirements, life
+cycle, API mechanics, software engineering foundations, application design, config management).
+Claude Code (3.1%) and Eval/Testing/Debugging (2.6%) are worth about one item each — do not over-invest.
+
+## Fourth lane: CCAR-P Architect Professional (senior)
+
+Added 2026-10-03. The senior exam: items ask you to **analyse, evaluate and justify** architecture
+decisions at enterprise scale, with longer stems and a trade-off between two defensible options.
+**Built from the official exam guide** (`external/ccar-p-exam-guide.pdf`) — 7 lessons, 79 steps,
+every step with a diagram.
+
+| Parameter | Value |
+|---|---|
+| Code | CCAR-P |
+| Items | 63 (multiple choice + multiple response) |
+| Duration | 120 minutes |
+| Scoring | Scaled 100–1000, **pass = 720** |
+| Fee | USD 175 |
+| Validity | 12 months |
+
+### Professional domains (Exam Guide v1.0, July 2026)
+
+| # | Domain | Weight | Lesson |
+|---|---|---|---|
+| 1 | Solution Design & Architecture | **17.0%** | [lesson-pro1.html](lesson-pro1.html) |
+| 2 | Claude Models, Prompting & Context Engineering | **13.0%** | [lesson-pro2.html](lesson-pro2.html) |
+| 3 | Integration | **19.0%** | [lesson-pro3.html](lesson-pro3.html) |
+| 4 | Evaluation, Testing & Optimization | **16.0%** | [lesson-pro4.html](lesson-pro4.html) |
+| 5 | Governance, Safety & Risk Management | **14.0%** | [lesson-pro5.html](lesson-pro5.html) |
+| 6 | Stakeholder Communication & Lifecycle Management | **14.0%** | [lesson-pro6.html](lesson-pro6.html) |
+| 7 | Developer Productivity & Operational Enablement | **7.0%** | [lesson-pro7.html](lesson-pro7.html) |
+
+Integration (19%) and Solution Design (17%) are the spine — 36% between them. Note this is not simply
+"the architect exam, harder": the domain split is different from CCAR-F, and the reasoning bar is the
+real step up.
 
 ## Domain weights (drives session time, not just order)
 

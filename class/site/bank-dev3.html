@@ -1,0 +1,370 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Domain 3 — Claude Code (3.1%) — Question Bank (20 questions) — CCAF Class</title>
+<style>
+:root{--bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#e4e0da;--acc:#b4531f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#2e2c33;--acc:#e08a5a;--card:#1d1c22}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{display:flex;min-height:100vh}
+nav{width:270px;flex:0 0 270px;border-right:1px solid var(--line);padding:20px 16px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav h1{font-size:15px;margin:0 0 4px;letter-spacing:.02em}
+nav .sub{font-size:12px;color:var(--mut);margin-bottom:16px}
+nav input{width:100%;padding:7px 9px;margin-bottom:14px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);font-size:13px}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:16px 0 6px}
+nav a{display:block;padding:6px 9px;border-radius:7px;color:var(--fg);text-decoration:none;font-size:14px}
+nav a:hover{background:var(--card);color:var(--acc)}
+nav a.on{background:var(--card);color:var(--acc);font-weight:600;box-shadow:inset 2px 0 0 var(--acc)}
+main{flex:1;min-width:0;padding:40px 48px 120px;max-width:900px}
+h1,h2,h3{line-height:1.25}
+h1{font-size:30px;margin:0 0 20px;padding-bottom:12px;border-bottom:2px solid var(--line)}
+h2{font-size:22px;margin:38px 0 12px}
+h3{font-size:17px;margin:28px 0 8px;color:var(--acc)}
+p,li{max-width:74ch}
+code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:13.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto}
+pre code{border:0;background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--acc);background:var(--card);border-radius:0 7px 7px 0}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+ul.opts{list-style:none;margin:12px 0 18px;padding:0;display:flex;flex-direction:column;gap:14px}
+ul.opts li{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:9px;padding:12px 14px;max-width:74ch}
+ul.opts li .ltr{flex:0 0 26px;height:26px;border-radius:6px;background:var(--bg);border:1px solid var(--line);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+details.key{margin:10px 0 22px;border:1px solid var(--line);border-radius:9px;background:var(--card);padding:4px 14px}
+details.key summary{cursor:pointer;font-size:13.5px;color:var(--acc);font-weight:600;padding:7px 0}
+details.key[open] summary{border-bottom:1px solid var(--line);margin-bottom:8px}
+details.key .keybody p{margin:6px 0;font-size:14.5px}
+.callout{margin:0 0 26px;padding:14px 17px;border:1px solid var(--acc);border-radius:10px;background:var(--card)}
+.callout b{display:block;margin-bottom:5px}
+.callout a{color:var(--acc);font-weight:600}
+.tools{position:fixed;bottom:16px;right:20px;display:flex;gap:8px}
+.tools button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 13px;font-size:13px;cursor:pointer}
+.tools button:hover{color:var(--acc);border-color:var(--acc)}
+.foot{color:var(--mut);font-size:12.5px;margin-top:40px}
+@media (max-width:820px){nav{display:none}main{padding:24px 18px 100px}}
+</style>
+<style>
+/* Theme overrides. Higher specificity than :root, so an explicit choice always
+   beats the prefers-color-scheme default. data-theme absent = follow the OS. */
+html[data-theme="light"]{color-scheme:light;
+ --bg:#fbfaf8;--fg:#1d1b19;--mut:#6b6560;--line:#d6d0c7;--acc:#b4531f;--card:#fff;
+ --ok:#1f7a4d;--okbg:#eef7f1;--bad:#b03024;--badbg:#fbeeec;--warn:#8a6d1f;--warnbg:#fdf6e3;--dia:#f4f1ec}
+html[data-theme="dark"]{color-scheme:dark;
+ --bg:#16151a;--fg:#e8e5e0;--mut:#9c9aa2;--line:#4a4750;--acc:#e08a5a;--card:#1d1c22;
+ --ok:#6dd39b;--okbg:#12251b;--bad:#f08a80;--badbg:#2a1614;--warn:#e0c07a;--warnbg:#25200f;--dia:#1a191f}
+#themebtn{font:inherit;font-size:12.5px;line-height:1;background:var(--card);color:var(--fg);
+ border:1px solid var(--line);border-radius:8px;padding:7px 11px;cursor:pointer;white-space:nowrap}
+#themebtn:hover{color:var(--acc);border-color:var(--acc)}
+header.top #themebtn{margin-left:10px;align-self:center;margin-bottom:3px}
+.themetop{display:flex;justify-content:flex-end;margin:0 0 6px}
+</style></head><body>
+<div class="wrap"><nav><h1>CCAF Class</h1><div class="sub">Claude Certified Architect — Foundations</div>
+<input id="q" type="search" placeholder="Filter pages…" autocomplete="off"><div class="grp">Overview</div><a href="index.html" data-t="syllabus">Syllabus</a><a href="progress.html" data-t="progress tracker">Progress tracker</a><div class="grp">Sessions</div><a href="s00-diagnostic.html" data-t="s0 — diagnostic">S0 — Diagnostic</a><div class="grp">Tutor · CCAR-F (Architect)</div><a href="lesson-d1.html" data-t="d1 · agentic architecture — lesson">D1 · Agentic Architecture — lesson</a><a href="lesson-d2.html" data-t="d2 · tool design &amp; mcp — lesson">D2 · Tool Design &amp; MCP — lesson</a><a href="lesson-d3.html" data-t="d3 · claude code config — lesson">D3 · Claude Code Config — lesson</a><a href="lesson-d4.html" data-t="d4 · prompt &amp; structured output — lesson">D4 · Prompt &amp; Structured Output — lesson</a><a href="lesson-d5.html" data-t="d5 · context &amp; reliability — lesson">D5 · Context &amp; Reliability — lesson</a><div class="grp">Tutor · CCAO-F (Associate)</div><a href="lesson-o1.html" data-t="o1 · prompting &amp; task execution — lesson">O1 · Prompting &amp; Task Execution — lesson</a><a href="lesson-o2.html" data-t="o2 · output evaluation &amp; validation — lesson">O2 · Output Evaluation &amp; Validation — lesson</a><a href="lesson-o3.html" data-t="o3 · product &amp; model selection — lesson">O3 · Product &amp; Model Selection — lesson</a><a href="lesson-o4.html" data-t="o4 · workflow integration &amp; solution design — lesson">O4 · Workflow Integration &amp; Solution Design — lesson</a><a href="lesson-o5.html" data-t="o5 · configuration &amp; knowledge management — lesson">O5 · Configuration &amp; Knowledge Management — lesson</a><a href="lesson-o6.html" data-t="o6 · governance, risk &amp; responsible use — lesson">O6 · Governance, Risk &amp; Responsible Use — lesson</a><a href="lesson-o7.html" data-t="o7 · troubleshooting &amp; optimization — lesson">O7 · Troubleshooting &amp; Optimization — lesson</a><div class="grp">Tutor · CCDV-F (Developer)</div><a href="lesson-dev1.html" data-t="v1 · agents and workflows — lesson">V1 · Agents and Workflows — lesson</a><a href="lesson-dev2.html" data-t="v2 · applications and integration — lesson">V2 · Applications and Integration — lesson</a><a href="lesson-dev3.html" data-t="v3 · claude code — lesson">V3 · Claude Code — lesson</a><a href="lesson-dev4.html" data-t="v4 · eval, testing &amp; debugging — lesson">V4 · Eval, Testing &amp; Debugging — lesson</a><a href="lesson-dev5.html" data-t="v5 · model selection &amp; optimization — lesson">V5 · Model Selection &amp; Optimization — lesson</a><a href="lesson-dev6.html" data-t="v6 · prompt &amp; context engineering — lesson">V6 · Prompt &amp; Context Engineering — lesson</a><a href="lesson-dev7.html" data-t="v7 · security and safety — lesson">V7 · Security and Safety — lesson</a><a href="lesson-dev8.html" data-t="v8 · tools and mcps — lesson">V8 · Tools and MCPs — lesson</a><div class="grp">Tutor · CCAR-P (Professional)</div><a href="lesson-pro1.html" data-t="p1 · solution design &amp; architecture — lesson">P1 · Solution Design &amp; Architecture — lesson</a><a href="lesson-pro2.html" data-t="p2 · models, prompting &amp; context engineering — lesson">P2 · Models, Prompting &amp; Context Engineering — lesson</a><a href="lesson-pro3.html" data-t="p3 · integration — lesson">P3 · Integration — lesson</a><a href="lesson-pro4.html" data-t="p4 · evaluation, testing &amp; optimization — lesson">P4 · Evaluation, Testing &amp; Optimization — lesson</a><a href="lesson-pro5.html" data-t="p5 · governance, safety &amp; risk management — lesson">P5 · Governance, Safety &amp; Risk Management — lesson</a><a href="lesson-pro6.html" data-t="p6 · stakeholder communication &amp; lifecycle — lesson">P6 · Stakeholder Communication &amp; Lifecycle — lesson</a><a href="lesson-pro7.html" data-t="p7 · developer productivity &amp; enablement — lesson">P7 · Developer Productivity &amp; Enablement — lesson</a><div class="grp">CCAO-F · Associate</div><a href="ccao-f.html" data-t="ccao-f · exam facts &amp; blueprint">CCAO-F · exam facts &amp; blueprint</a><div class="grp">Mock exams</div><a href="mocks.html" data-t="all mock exams">All mock exams</a><a href="mock-1.html" data-t="mock exam 1 · 60 q">Mock Exam 1 · 60 Q</a><a href="mock-2.html" data-t="mock exam 2 · 60 q">Mock Exam 2 · 60 Q</a><a href="mock-3.html" data-t="mock exam 3 · 60 q">Mock Exam 3 · 60 Q</a><a href="mock-4.html" data-t="mock exam 4 · 60 q">Mock Exam 4 · 60 Q</a><a href="mock-5.html" data-t="mock exam 5 · 60 q">Mock Exam 5 · 60 Q</a><a href="mock-6.html" data-t="mock exam 6 · 60 q">Mock Exam 6 · 60 Q</a><a href="mock-log.html" data-t="mock log + booking gate">Mock log + booking gate</a><div class="grp">Drill banks</div><a href="bank-d1.html" data-t="bank · d1 (20 q)">Bank · D1 (20 Q)</a><a href="bank-d2.html" data-t="bank · d2 (20 q)">Bank · D2 (20 Q)</a><a href="bank-d3.html" data-t="bank · d3 (20 q)">Bank · D3 (20 Q)</a><a href="bank-d4.html" data-t="bank · d4 (20 q)">Bank · D4 (20 Q)</a><a href="bank-d5.html" data-t="bank · d5 (20 q)">Bank · D5 (20 Q)</a><div class="grp">CCAO-F · drills & mock</div><a href="bank-o2.html" data-t="bank · o2 (20 q)">Bank · O2 (20 Q)</a><a href="bank-o3.html" data-t="bank · o3 (20 q)">Bank · O3 (20 Q)</a><a href="bank-o4.html" data-t="bank · o4 (20 q)">Bank · O4 (20 Q)</a><a href="bank-o5.html" data-t="bank · o5 (20 q)">Bank · O5 (20 Q)</a><a href="bank-o6.html" data-t="bank · o6 (20 q)">Bank · O6 (20 Q)</a><a href="bank-o7.html" data-t="bank · o7 (20 q)">Bank · O7 (20 Q)</a><div class="grp">CCDV-F · drills & mock</div><a href="bank-dev2.html" data-t="bank · v2 (20 q)">Bank · V2 (20 Q)</a><a href="bank-dev3.html" data-t="bank · v3 (20 q)">Bank · V3 (20 Q)</a><a href="bank-dev4.html" data-t="bank · v4 (20 q)">Bank · V4 (20 Q)</a><a href="bank-dev5.html" data-t="bank · v5 (20 q)">Bank · V5 (20 Q)</a><a href="bank-dev6.html" data-t="bank · v6 (20 q)">Bank · V6 (20 Q)</a><a href="bank-dev7.html" data-t="bank · v7 (20 q)">Bank · V7 (20 Q)</a><a href="bank-dev8.html" data-t="bank · v8 (20 q)">Bank · V8 (20 Q)</a><div class="grp">CCAR-P · drills & mock</div><a href="bank-pro2.html" data-t="bank · p2 (20 q)">Bank · P2 (20 Q)</a><a href="bank-pro3.html" data-t="bank · p3 (20 q)">Bank · P3 (20 Q)</a><a href="bank-pro4.html" data-t="bank · p4 (20 q)">Bank · P4 (20 Q)</a><a href="bank-pro5.html" data-t="bank · p5 (20 q)">Bank · P5 (20 Q)</a><a href="bank-pro6.html" data-t="bank · p6 (20 q)">Bank · P6 (20 Q)</a><a href="bank-pro7.html" data-t="bank · p7 (20 q)">Bank · P7 (20 Q)</a><div class="grp">Domains</div><a href="d1.html" data-t="d1 · agentic architecture">D1 · Agentic Architecture</a><a href="d2.html" data-t="d2 · tool design &amp; mcp">D2 · Tool Design &amp; MCP</a><a href="d3.html" data-t="d3 · claude code config">D3 · Claude Code Config</a><a href="d4.html" data-t="d4 · prompt &amp; structured output">D4 · Prompt &amp; Structured Output</a><a href="d5.html" data-t="d5 · context &amp; reliability">D5 · Context &amp; Reliability</a><div class="grp">External notes</div><a href="distractor-heuristic.html" data-t="the distractor heuristic">The distractor heuristic</a><a href="video-series.html" data-t="the video series (ep 01-20)">The video series (Ep 01-20)</a><a href="sources.html" data-t="where the material came from">Where the material came from</a></nav>
+<main><h1>Domain 3 — Claude Code (3.1%) — Question Bank (20 questions)</h1>
+<p>Coverage: 3.1 ×20 (CLAUDE.md memory hierarchy ×5, settings.json configuration ×4, component set ×5, session management ×3, execution modes ×3).
+Trap types used: sounds-enterprise ×3, sounds-efficient ×2, sounds-helpful ×4, sounds-pragmatic ×3, sounds-simple ×4, sounds-smart ×2, sounds-thorough ×2.</p>
+<hr>
+<h3>Q1</h3>
+<p>A repo needs a coding standard that applies to every teammate who clones it, plus a private style note that must never be committed. A teammate suggests keeping both in <code>./CLAUDE.md</code> so there is only one file to manage.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Put both the shared standard and the private note in <code>./CLAUDE.md</code>, since one file is simpler to maintain.</span></li>
+  <li><span class="ltr">B</span><span>Put both in <code>~/.claude/CLAUDE.md</code> so neither is committed to the repo.</span></li>
+  <li><span class="ltr">C</span><span>Commit the shared standard to <code>./CLAUDE.md</code> and keep the private note in <code>./CLAUDE.local.md</code>.</span></li>
+  <li><span class="ltr">D</span><span>Put the shared standard in <code>./CLAUDE.local.md</code> and the private note in <code>./CLAUDE.md</code>.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> <code>./CLAUDE.md</code> is committed and reaches every teammate; <code>./CLAUDE.local.md</code> is gitignored and reaches only your working copy. Combining them either commits the private note or hides the shared standard, and putting both in user memory reaches no teammate while following you into every other repo.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q2</h3>
+<p>A platform team must ensure every developer in the organization inherits a mandatory security instruction that individual projects cannot disable.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Copy the instruction into every repository's <code>./CLAUDE.md</code> so it is present on each checkout.</span></li>
+  <li><span class="ltr">B</span><span>Place it in the enterprise managed CLAUDE.md file (e.g. <code>/etc/claude-code/CLAUDE.md</code>), which applies org-wide and cannot be overridden by lower layers.</span></li>
+  <li><span class="ltr">C</span><span>Add it to each developer's <code>~/.claude/CLAUDE.md</code> user memory.</span></li>
+  <li><span class="ltr">D</span><span>Put it in <code>./CLAUDE.local.md</code> in each working copy.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> The per-repo copy is editable and must be maintained in every project, so nothing enforces it; user memory is per-developer and each person can edit or remove it; a local file is gitignored and reaches no one else. The managed enterprise file is deployed centrally and takes precedence over every lower layer.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q3</h3>
+<p>A developer wants a personal preference (a preferred response style) to apply in every project they work in, without committing it anywhere.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span><code>~/.claude/CLAUDE.md</code>, the user memory layer that applies in all of your projects and is not committed.</span></li>
+  <li><span class="ltr">B</span><span><code>./CLAUDE.md</code> in each repo, committed so it travels with the project.</span></li>
+  <li><span class="ltr">C</span><span><code>./CLAUDE.local.md</code>, so it stays out of git.</span></li>
+  <li><span class="ltr">D</span><span><code>settings.json</code>, under an "instructions" field.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> User memory is the layer scoped to you across every project and is not committed. A project file reaches teammates who did not ask for the preference, <code>CLAUDE.local.md</code> is scoped to one repo rather than all of them, and natural-language guidance belongs in memory, not in <code>settings.json</code>.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q4</h3>
+<p>A repo&#39;s root <code>./CLAUDE.md</code> says &quot;use two-space indentation.&quot; A <code>./frontend/CLAUDE.md</code> says &quot;use four-space indentation.&quot; You ask Claude to edit a component under <code>frontend/</code>, and the two instructions conflict.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>The root file always wins because it was read first.</span></li>
+  <li><span class="ltr">B</span><span>Claude merges the two files and applies the average indentation.</span></li>
+  <li><span class="ltr">C</span><span>The root file wins because it is committed.</span></li>
+  <li><span class="ltr">D</span><span>The frontend file wins because deeper, more specific memory files are read later and take precedence on conflict.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Claude Code walks parent and subdirectory CLAUDE.md files, and the more specific (deeper) file is read later and wins on conflict. Read order is not authority, merging is not defined behavior, and commit status does not affect precedence.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q5</h3>
+<p>You join a fresh repository with no CLAUDE.md and want Claude Code to follow the project&#39;s conventions in future sessions.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Create <code>settings.json</code> with an "instructions" field listing the conventions.</span></li>
+  <li><span class="ltr">B</span><span>Run <code>/init</code> to scaffold a starter CLAUDE.md, then refine it for the project.</span></li>
+  <li><span class="ltr">C</span><span>Add the conventions to <code>~/.claude/CLAUDE.md</code> so they apply everywhere.</span></li>
+  <li><span class="ltr">D</span><span>Put them in <code>.claude/commands/conventions.md</code>.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> <code>/init</code> scaffolds a project CLAUDE.md, the correct committed home for project conventions. Natural-language guidance does not belong in <code>settings.json</code>; user memory would follow the developer into unrelated repos and never reach teammates; a command file defines a slash command, not standing guidance.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q6</h3>
+<p>The same setting is present with different values in <code>.claude/settings.json</code> (committed) and <code>.claude/settings.local.json</code> (not committed).</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>The value in <code>.claude/settings.local.json</code>, because local settings outrank committed project settings in the precedence order.</span></li>
+  <li><span class="ltr">B</span><span>The value in <code>.claude/settings.json</code>, because committed settings are authoritative.</span></li>
+  <li><span class="ltr">C</span><span>Neither; conflicting settings make Claude Code error out.</span></li>
+  <li><span class="ltr">D</span><span>Whichever file was modified most recently.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> The settings.json precedence order is enterprise managed &gt; command-line arguments &gt; <code>.claude/settings.local.json</code> &gt; <code>.claude/settings.json</code> &gt; <code>~/.claude/settings.json</code>, so the uncommitted local file wins over the committed project file. Commit status does not raise precedence, conflicts do not error out, and modification time is irrelevant.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q7</h3>
+<p>A developer needs a personal permission allow-rule that must not be committed, while the team&#39;s shared default model must apply to everyone who clones the repo.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Put both in <code>~/.claude/settings.json</code>.</span></li>
+  <li><span class="ltr">B</span><span>Put both in <code>./CLAUDE.md</code>.</span></li>
+  <li><span class="ltr">C</span><span>Put the permission rule in <code>.claude/settings.json</code> and the model default in <code>.claude/settings.local.json</code>.</span></li>
+  <li><span class="ltr">D</span><span>Put the permission rule in <code>.claude/settings.local.json</code> and the model default in <code>.claude/settings.json</code>.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> The uncommitted personal rule belongs in the local settings file and the shared committed model belongs in the project settings file. User settings would scope the rule to every project and keep the model private; CLAUDE.md carries guidance, not enforced permission config; option C swaps the layers, committing the personal rule and hiding the shared model.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q8</h3>
+<p>A team writes &quot;never run <code>rm -rf</code> on the data directory&quot; in <code>./CLAUDE.md</code>. A destructive command still runs, because CLAUDE.md is guidance the model may not follow every time.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Strengthen the wording in CLAUDE.md to make the prohibition explicit.</span></li>
+  <li><span class="ltr">B</span><span>Repeat the prohibition in every subdirectory CLAUDE.md.</span></li>
+  <li><span class="ltr">C</span><span>Add a deny permission rule for that command in <code>settings.json</code>, which is enforced configuration that blocks the command regardless of CLAUDE.md guidance.</span></li>
+  <li><span class="ltr">D</span><span>Ask each developer to confirm before destructive commands.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> <code>settings.json</code> is enforced configuration; a deny rule blocks the command even if CLAUDE.md asked for it, whereas stronger wording, repetition, and manual confirmation are all probabilistic or human-dependent. Guidance shapes intent; permissions enforce it.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q9</h3>
+<p>After every file edit, a team wants a formatter to run deterministically, not only when Claude remembers to.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Add an instruction to CLAUDE.md telling Claude to run the formatter after each edit.</span></li>
+  <li><span class="ltr">B</span><span>Configure a hook in <code>settings.json</code> that runs the formatter on the edit event, since hooks are deterministic shell handlers.</span></li>
+  <li><span class="ltr">C</span><span>Add a <code>/format</code> command in <code>.claude/commands/</code> and rely on Claude to invoke it.</span></li>
+  <li><span class="ltr">D</span><span>Package the formatter as a Skill so Claude loads it on demand.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Hooks are deterministic shell handlers bound to events, so they fire every time. A CLAUDE.md instruction, a slash command, and a Skill all depend on the model choosing to act, which is probabilistic.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q10</h3>
+<p>A repo has a 4,000-line style guide. Putting all of it in CLAUDE.md means every session loads it at start, but most sessions never need it.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Package it as a Skill (SKILL.md under <code>.claude/skills/&lt;name&gt;/</code>) that Claude loads on demand, keeping CLAUDE.md for short always-on rules.</span></li>
+  <li><span class="ltr">B</span><span>Keep the whole guide in CLAUDE.md so it is always available.</span></li>
+  <li><span class="ltr">C</span><span>Split it across ten CLAUDE.md files in subdirectories.</span></li>
+  <li><span class="ltr">D</span><span>Put it in <code>.claude/commands/</code> so it is available as a slash command.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Skills use progressive disclosure — Claude loads them only when relevant, so a large reference does not tax every session. Keeping everything in memory bloats context on every run, scattering it across files still loads it wherever those files are read, and a command file is for an invoked action, not standing reference.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q11</h3>
+<p>The team pastes the same 15-line review prompt into Claude Code several times a day.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Save the prompt in CLAUDE.md so Claude always has it.</span></li>
+  <li><span class="ltr">B</span><span>Add it to <code>~/.claude/CLAUDE.md</code>.</span></li>
+  <li><span class="ltr">C</span><span>Create a custom slash command as a markdown file in <code>.claude/commands/*.md</code>, invoked as <code>/name</code>, so the prompt is reusable and shareable.</span></li>
+  <li><span class="ltr">D</span><span>Put the prompt in a hook.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Custom slash commands are markdown files under <code>.claude/commands/</code> that become <code>/name</code>, the intended home for a reusable, invocable prompt. Standing memory is for always-on guidance rather than an on-demand prompt, and a hook runs shell logic on events and does not take a prompt.
+<strong>Trap:</strong> sounds-smart
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q12</h3>
+<p>A task needs a focused subagent with its own context and tool set, defined so the team can reuse it.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span><code>.claude/commands/*.md</code></span></li>
+  <li><span class="ltr">B</span><span><code>.claude/agents/*.md</code>, as a subagent definition.</span></li>
+  <li><span class="ltr">C</span><span>A SKILL.md under <code>.claude/skills/</code>.</span></li>
+  <li><span class="ltr">D</span><span><code>~/.claude/CLAUDE.md</code>.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Agents are subagent definitions in <code>.claude/agents/*.md</code>, which is where an isolated context and tool set are declared. Commands define slash commands, Skills are on-demand knowledge packages, and memory files carry guidance rather than an agent definition.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q13</h3>
+<p>A team wants project facts and decisions to persist and be available in future sessions without being re-explained each time.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Agent Memory — the persistent memory layer (the CLAUDE.md hierarchy plus memory files) that survives across sessions.</span></li>
+  <li><span class="ltr">B</span><span>A custom slash command.</span></li>
+  <li><span class="ltr">C</span><span>A hook.</span></li>
+  <li><span class="ltr">D</span><span><code>settings.json</code> env entries.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Agent Memory is the persistent layer that carries project knowledge across sessions. A command is invoked on demand, a hook runs shell logic on events, and env entries are configuration values, none of which preserve project knowledge between sessions.
+<strong>Trap:</strong> sounds-enterprise
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q14</h3>
+<p>You need to express a natural-language coding convention that shapes how Claude writes code in this project.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span><code>settings.json</code> permissions.</span></li>
+  <li><span class="ltr">B</span><span>A hook.</span></li>
+  <li><span class="ltr">C</span><span>A Skill.</span></li>
+  <li><span class="ltr">D</span><span>Rules — the CLAUDE.md memory and instruction files that shape behavior.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Natural-language guidance that shapes behavior belongs in Rules (the CLAUDE.md files). Permissions are enforced allow/deny config, hooks run shell logic on events, and a Skill is on-demand knowledge — none is the home for standing coding conventions.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q15</h3>
+<p>You want to pick up the most recent interactive Claude Code session.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Start a new session and paste the old transcript.</span></li>
+  <li><span class="ltr">B</span><span>Run <code>claude --resume</code> and browse the list of past sessions to find it.</span></li>
+  <li><span class="ltr">C</span><span>Run <code>claude --continue</code> to resume the most recent session.</span></li>
+  <li><span class="ltr">D</span><span>Add the transcript to CLAUDE.md.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> <code>--continue</code> resumes the most recent session directly; <code>--resume</code> is for choosing among past sessions when the target is not simply the latest. Pasting a transcript is not a session, and memory files are not a conversation log.
+<strong>Trap:</strong> sounds-thorough
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q16</h3>
+<p>A long session is running low on context window, but the work and findings so far are still needed to continue.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span><code>/clear</code> to drop context so the window resets.</span></li>
+  <li><span class="ltr">B</span><span>Start a brand-new session and re-run everything.</span></li>
+  <li><span class="ltr">C</span><span>Raise <code>max_tokens</code> to fit more.</span></li>
+  <li><span class="ltr">D</span><span><code>/compact</code> to summarize and compress the conversation so the work continues with a smaller context.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> <code>/compact</code> summarizes and compresses the existing conversation, preserving the work while reclaiming context. <code>/clear</code> drops the context entirely, a fresh session discards the findings, and <code>max_tokens</code> does not enlarge the context window.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q17</h3>
+<p>You resume a session from yesterday. Since then, a key module was refactored, so the earlier tool results describe the old code.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Resume and explicitly state what changed since the last session, or start fresh with a structured summary of prior findings.</span></li>
+  <li><span class="ltr">B</span><span>Resume unchanged and trust Claude to notice the file changed.</span></li>
+  <li><span class="ltr">C</span><span><code>/clear</code> and re-run the entire investigation from scratch with no context.</span></li>
+  <li><span class="ltr">D</span><span>Fork the session so both the old and new results stay available.</span></li>
+</ul><p><strong>Answer:</strong> A
+<strong>Why:</strong> Resumed tool results are only valid while they still match the files; when code changed, tell Claude what changed or restart with a summary of findings that remain true. Claude will not notice on its own, discarding all context throws away valid findings, and forking preserves the stale state.
+<strong>Trap:</strong> sounds-simple
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q18</h3>
+<p>A CI pipeline must run Claude Code on every pull request with no human at the keyboard and parse a machine-readable result.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Run <code>claude</code> interactively and pipe keystrokes into it.</span></li>
+  <li><span class="ltr">B</span><span>Run headless mode: <code>claude -p "..."</code> with <code>--output-format json</code>.</span></li>
+  <li><span class="ltr">C</span><span>Run <code>claude --resume</code> and wait for a human to approve edits.</span></li>
+  <li><span class="ltr">D</span><span>Put the review instructions in CLAUDE.md and run <code>claude</code> with no flags.</span></li>
+</ul><p><strong>Answer:</strong> B
+<strong>Why:</strong> Headless mode (<code>claude -p</code> / <code>--print</code>) runs one non-interactive turn and exits, and <code>--output-format json</code> yields a parseable result — purpose-built for CI. Interactive mode expects a terminal; <code>--resume</code> restores a session for a person to drive; CLAUDE.md shapes behavior but does not make the run non-interactive.
+<strong>Trap:</strong> sounds-pragmatic
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q19</h3>
+<p>A program needs to consume Claude Code&#39;s output incrementally as events while the run proceeds, rather than waiting for one final result.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Use headless <code>-p</code> and buffer the whole output until the process exits.</span></li>
+  <li><span class="ltr">B</span><span>Run interactively and scrape the terminal.</span></li>
+  <li><span class="ltr">C</span><span>Use streaming mode: <code>--output-format stream-json</code> so events are emitted for a programmatic consumer.</span></li>
+  <li><span class="ltr">D</span><span>Write the events to CLAUDE.md.</span></li>
+</ul><p><strong>Answer:</strong> C
+<strong>Why:</strong> Streaming mode emits events (<code>--output-format stream-json</code>, with <code>--input-format stream-json</code> to consume them) for a programmatic consumer that needs incremental output. Buffering defeats the incremental requirement, scraping a terminal is not programmatic, and memory files are not an event channel.
+<strong>Trap:</strong> sounds-efficient
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<h3>Q20</h3>
+<p>During a trusted, well-scoped refactor you want Claude to apply edits without a prompt for every change, but you must still prevent destructive commands.</p>
+<p><strong>Which approach is most effective?</strong></p>
+<ul class="opts">
+  <li><span class="ltr">A</span><span>Enable auto-accept edits and rely on the model to avoid dangerous commands.</span></li>
+  <li><span class="ltr">B</span><span>Keep per-change approval and accept the slowdown.</span></li>
+  <li><span class="ltr">C</span><span>Disable edits and apply every change by hand.</span></li>
+  <li><span class="ltr">D</span><span>Enable auto mode (acceptEdits) to apply edits without per-change prompts, paired with deny rules in <code>settings.json</code> so destructive commands remain blocked.</span></li>
+</ul><p><strong>Answer:</strong> D
+<strong>Why:</strong> Auto mode speeds up trusted edits but removes a safety gate, so it should be paired with deny rules that deterministically block destructive commands. Relying on the model is probabilistic, and abandoning automation or doing everything by hand discards the benefit the mode exists to provide.
+<strong>Trap:</strong> sounds-helpful
+<strong>Task:</strong> 3.1
+<strong>Source:</strong> newly written</p>
+<div class="foot">Built 2026-10-03 15:36 · source: banks/dev3-questions.md</div></main></div>
+<div class="tools"><button id="openall">Open all keys</button><button id="closeall">Close all</button></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const v=q.value.toLowerCase();document.querySelectorAll('nav a').forEach(a=>{a.style.display=a.dataset.t.includes(v)?'block':'none'})});
+document.getElementById('openall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=true);
+document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.key').forEach(d=>d.open=false);
+document.querySelectorAll('nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('on')});
+</script>
+<script>
+(function(){
+  var KEY='ccaf.theme', modes=['auto','light','dark'], labels={auto:'Auto',light:'Daylight',dark:'Night'};
+  var cur='auto';
+  try{ var v=localStorage.getItem(KEY); if(v && modes.indexOf(v)>=0) cur=v; }catch(e){}
+  function apply(m){
+    if(m==='auto') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme',m);
+    var b=document.getElementById('themebtn');
+    if(b){ b.textContent='Theme: '+labels[m]; b.title='Theme: '+labels[m]+' — click for '+
+      labels[modes[(modes.indexOf(m)+1)%modes.length]]; }
+  }
+  function init(){
+    if(document.getElementById('themebtn')) return;
+    var b=document.createElement('button');
+    b.id='themebtn'; b.type='button';
+    b.addEventListener('click',function(){
+      cur=modes[(modes.indexOf(cur)+1)%modes.length];
+      try{ localStorage.setItem(KEY,cur); }catch(e){}
+      apply(cur);
+    });
+    // top-right of the page: inside the sticky header where there is one,
+    // otherwise a right-aligned strip at the top of the content column
+    var head=document.querySelector('header.top .row'), main=document.querySelector('main');
+    if(head) head.appendChild(b);
+    else if(main){ var w=document.createElement('div'); w.className='themetop'; w.appendChild(b); main.insertBefore(w, main.firstChild); }
+    else { b.style.position='fixed'; b.style.top='12px'; b.style.right='16px'; b.style.zIndex='60'; document.body.appendChild(b); }
+    apply(cur);
+  }
+  apply(cur);
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script></body></html>
