@@ -23,9 +23,9 @@
 - [x] Theme toggle: Auto → Daylight → Night, top right of every page (from build_ccaf_site.mjs shared shell)
 
 ### 🐛 Queued (found by visual QA of the night theme)
-- [ ] Night theme: D2–D5 domain chips and the `teach` badge are near-black on near-black — give inactive chips a visible border
-- [ ] Night theme: keyboard hints in the lesson footer are too dim to read
-- [ ] Lesson pages: sticky answer bar clips the last line of prose at some scroll positions
+- [x] Night theme chips/badges: fixed 2026-10-04 — dark `--line` was #2e2c33 (1.32:1 border contrast, i.e. invisible). Raised to #4a4750 (2.0:1) and gave chips/kbd a card fill. Measured in-browser, both themes.
+- [x] Night theme keyboard hints: fixed 2026-10-04 — same root cause (`--line`). The hint TEXT was always 6.5:1; it was the key outlines at 1.32:1. Now 2.0:1 plus a fill.
+- [~] Lesson pages: "sticky answer bar clips the last line" — NOT REPRODUCED 2026-10-04. Measured all 32 steps of d2 at 1280x800 plus 390x700 and 320x568 (footer grows to 85px there): clearance is a consistent ~35-49px, no negative gap. Only fixed elements are the sticky header and `.foot`; there is no separate answer bar. Leaving open pending a screenshot of the actual case.
 
 ### 🎓 CCAO-F Associate lane (second lane, opened 2 Oct)
 - [x] Official exam guide + Certification Exam Policy PDFs filed under class/external/, plus the ccao-f.html overview page (facts, eligibility, retakes, full blueprint)
