@@ -4,7 +4,9 @@
  "weight": "27%",
  "goal": "Given a production scenario, decide the architecture that actually fits: a stop_reason-driven loop, a hub-and-spoke coordinator, a prompt or a programmatic gate, and the right resume, fork or fresh-start call. The loop must branch on stop_reason, preserve history mutations, and handle pause_turn, max_tokens, stop_sequence, refusal, and model_context_window_exceeded.",
  "tasks": [
-  "1.1"
+  "1.1",
+  "1.2",
+  "1.3"
  ],
  "steps": [
   {
@@ -207,13 +209,143 @@
    "takeaway": "Structured signal over prose, one authoritative field over three proxies."
   },
   {
+   "task": "1.2",
+   "kind": "teach",
+   "title": "When one agent stops being enough",
+   "inshort": "A single agent fails in two named ways: its context window fills before the work finishes, and it produces generic output because one agent cannot specialise.",
+   "lead": "A research analyst runs one Claude agent that plans the search, reads the sources, synthesises and writes the deck. On a two-source brief it is excellent. On a forty-source engagement it starts strong, then repeats searches it already ran, forgets findings it made an hour ago, and delivers a summary that could have been written without reading anything. Nothing crashed. It hit two ceilings at once.",
+   "points": [
+    "The context ceiling: the window fills before the task completes, so earlier findings fall out and the agent loses the thread of its own work.",
+    "The specialization gap: one agent carrying every role produces generic work, because it cannot be tuned for discovery and for synthesis at the same time.",
+    "The exam's first move is always to test whether either trigger is really present \u2014 if neither is, a single agent is the correct answer.",
+    "Splitting is not free: each subagent is another context to fill, another failure to handle, another result to reconcile."
+   ],
+   "diagram": "d1-10",
+   "caption": "Both halves of the failure are present at once \u2014 relieving only one ceiling leaves the agent still broken.",
+   "code": null,
+   "ask": null,
+   "why": "Those two triggers are the justification the exam expects. \"The task felt big\" is not a trigger; a measured context ceiling or a demonstrable specialization gap is.",
+   "contrast": "Teams split into multi-agent because the task sounds impressive, then spend the budget on orchestration instead of work. The distractors here are usually proportionate-looking fixes to a system that should never have been split, or a split that was never given a coordinator.",
+   "exam": "Scenario items hand you a failing single agent and ask what to change first. The answer names the trigger \u2014 relieve the context, or split the role \u2014 never \"add more agents\" as a reflex.",
+   "takeaway": "Split for a named reason: a context ceiling or a specialization gap."
+  },
+  {
+   "task": "1.2",
+   "kind": "check",
+   "title": "Which fix actually addresses the failure?",
+   "lead": "You are reviewing the failing engagement above and must choose the remediation.",
+   "points": [],
+   "diagram": "d1-11",
+   "caption": "The left column asks the agent to recover or outlast lost context; only the right column keeps each context small.",
+   "code": null,
+   "ask": {
+    "q": "A single Claude agent handles a competitive-research engagement: it plans the search, reads sources, synthesises and writes the deck. Late in the engagement it starts repeating searches it already ran, and its final synthesis misses two topics it had covered early on. Which approach is most effective?",
+    "options": [
+     "Increase the agent's iteration cap so it keeps working until every topic is covered.",
+     "Raise the model tier for the whole run so the agent reasons better across the long engagement.",
+     "Split the work so a coordinator holds the topic plan and spawns scoped subagents that return structured findings.",
+     "Add a prompt instruction telling the agent to re-read its earlier findings before synthesising."
+    ],
+    "answer": 2,
+    "why": "The signature is a context ceiling: work done early has fallen out of the window, so it is repeated and then missed. A coordinator holding the plan centrally, with scoped subagents keeping each context small, fixes the cause. A (a larger iteration cap) lets it work longer inside a broken context. B (a higher model tier) does not change window pressure and spends cost. D asks the agent to recover material that is no longer in its context \u2014 it cannot.",
+    "trap": "symptom_patch"
+   }
+  },
+  {
+   "task": "1.2",
+   "kind": "teach",
+   "title": "Hub-and-spoke: one control point",
+   "inshort": "One coordinator decomposes, selects, passes context, aggregates, validates and recovers. Subagents never talk to each other.",
+   "lead": "The coordinator is the only component that sees the whole job. It decides whether to spawn at all, how many subagents, which ones, and what each is told. Results come back to it, and it is the component that reconciles contradictions before anything reaches the user.",
+   "points": [
+    "Every hop routes through the coordinator \u2014 a subagent handing results straight to another subagent removes the one place where errors are handled uniformly.",
+    "Decomposition quality is the coordinator's job: a narrow plan produces missing topics no matter how good the subagents are.",
+    "Aggregation means synthesis, not concatenation \u2014 raw subagent outputs pasted together carry contradictions and overlap into the deliverable.",
+    "Hierarchy is permitted: a subagent may spawn its own subagents when its definition allows it, and the control-point rule still holds at every level."
+   ],
+   "diagram": "d1-12",
+   "caption": "Watch the absence of arrows between the spokes \u2014 subagents never talk to each other; every hop routes through the hub.",
+   "code": null,
+   "ask": null,
+   "why": "A single control point is what makes partial failure visible and error handling uniform. Remove it and failures stay invisible until the output is already wrong.",
+   "contrast": "The tempting design is peer-to-peer subagents \"collaborating\" through shared live state to avoid duplicate work. Subagents run in isolated contexts and cannot watch each other mid-flight, so the mechanism cannot do what it promises.",
+   "exam": "Multi-agent items are usually scope failures at the coordinator, not execution failures at the subagents. The question tests whether you blame the right component.",
+   "takeaway": "One coordinator, many isolated subagents, everything routed through the hub."
+  },
+  {
+   "task": "1.3",
+   "kind": "check",
+   "title": "The subagent that returns something generic",
+   "lead": "A coordinator has just spawned a subagent and received a disappointing result.",
+   "points": [],
+   "diagram": "d1-13",
+   "caption": "The subagent sees only these children \u2014 any fact the coordinator leaves out of the spawn is invisible to it.",
+   "code": null,
+   "ask": {
+    "q": "A coordinator spawns a market-analysis subagent with the instruction \"analyse the market for our new product\". The subagent returns a generic essay that ignores the client's segment, the two competitors already identified, and the pricing constraint. Which approach is most effective?",
+    "options": [
+     "Rewrite the subagent's instruction to demand specific, data-backed analysis in a stricter tone.",
+     "Give the subagent web search and a document reader so it can find the missing detail itself.",
+     "Put the segment, the two named competitors and the pricing constraint into the subagent's agent definition at spawn time.",
+     "Add a coordinator step that reviews each subagent output and re-prompts it until it becomes specific."
+    ],
+    "answer": 2,
+    "why": "Context does not inherit: a subagent knows only what its definition carries, so missing detail is an injection failure at the coordinator and the fix belongs there. A (stricter wording) asks the subagent to produce facts it was never given. B (more tools) adds capability without adding context. D (review and re-prompt) pays a round trip to recover information that should have been in the spawn.",
+    "trap": "prompt_tuning"
+   }
+  },
+  {
+   "task": "1.3",
+   "kind": "teach",
+   "title": "Spawning: the Task tool and the agent definition",
+   "inshort": "The coordinator spawns subagents by calling the Task tool with a strict agent definition \u2014 description, prompt, tools, optionally model. Without Task in allowedTools, delegation is physically impossible.",
+   "lead": "In Claude Code and the Agent SDK the mechanism is a tool call: the coordinator emits a Task (Agent) call carrying a definition object. Everything about the subagent is decided at that moment \u2014 what it is for, what it is told, what it may touch, and which model runs it.",
+   "points": [
+    "The definition's description is the selection signal \u2014 write it like a function docstring, because the coordinator chooses subagents by it.",
+    "The prompt is the subagent's entire universe: it inherits no conversation, so every fact it needs must be written into the definition.",
+    "Tools are scoped per subagent: a synthesis agent that only checks facts gets a narrow verify tool, not web search.",
+    "Task must appear in the coordinator's allowedTools; subagents need it only when they spawn their own.",
+    "Parallel spawning means several spawn calls in ONE coordinator response \u2014 separate turns run them sequentially."
+   ],
+   "diagram": "d1-14",
+   "caption": "Read top down: without the first band nothing spawns, and the middle bands are the entire world the subagent will know.",
+   "code": null,
+   "ask": null,
+   "why": "Delegation is a tool call, so it obeys tool-call rules: an unavailable tool cannot be called, and a subagent's behaviour is bounded by the definition it was spawned with.",
+   "contrast": "The tempting fix for \"the orchestrator never delegates\" is a prompt instruction to delegate more. If Task is absent from allowedTools, no wording can help \u2014 the capability is missing, not the intention.",
+   "exam": "\"The orchestrator never delegates\" and \"the subagent returned something generic\" are single-cause items: a missing allowedTools entry, and missing injected context.",
+   "takeaway": "Delegation is a tool call with a definition object: allowedTools decides whether it can happen, the definition decides what happens."
+  },
+  {
+   "task": "1.3",
+   "kind": "check",
+   "title": "Diagnose the orchestrator that never delegates",
+   "lead": "A coordinator in production is not doing the job its prompt describes.",
+   "points": [],
+   "diagram": "d1-15",
+   "caption": "The only branch that reaches delegation is the pass exit \u2014 prompt wording, prompt length and iteration caps never cross this gate.",
+   "code": null,
+   "ask": {
+    "q": "A production coordinator is supposed to fan work out to three specialised subagents. Logs show it answers every request itself and has never issued a single spawn call, although its system prompt describes the delegation pattern in detail. Which approach is most effective?",
+    "options": [
+     "Strengthen the prompt with an explicit rule to delegate any request covering more than one research topic.",
+     "Add \"Task\" to the coordinator's allowedTools.",
+     "Shorten the coordinator's system prompt so the delegation instructions stand out more.",
+     "Raise the coordinator's iteration cap so it has more turns in which to delegate."
+    ],
+    "answer": 1,
+    "why": "The Task tool must be in the coordinator's allowedTools or it cannot emit a spawn call at all \u2014 the capability is missing, which is exactly why no amount of prompt wording has ever worked. A and C tune instructions that were already sufficient. D adds turns in which the same absent capability stays absent.",
+    "trap": "prompt_tuning"
+   }
+  },
+  {
    "task": "1.1",
    "kind": "ask",
    "title": "Check your understanding",
    "inshort": "An agent occasionally returns an empty or half-written answer. Its loop ends as soon as the assistant response includes any text content block.",
    "lead": "Identify the anti-pattern and the fix.",
    "points": [],
-   "diagram": "d1-10",
+   "diagram": "d1-16",
    "caption": "Follow the narrowing: only the bottom band touches the root cause \u2014 the other three options leave the completion logic untouched.",
    "code": null,
    "ask": {
@@ -243,7 +375,7 @@
     "Content-type check \u2192 less dependent on stop_reason \u2192 wrong",
     "Branch on stop_reason, cap as guardrail \u2192 more dependent on stop_reason \u2192 correct"
    ],
-   "diagram": "d1-11",
+   "diagram": "d1-17",
    "caption": "Send every option through this gate: pass if it branches on stop_reason, fail if it trusts a proxy for the field.",
    "code": null,
    "ask": null,

@@ -58,6 +58,18 @@ Global rules that decide most Domain 1 items (hamzafarooq-cheatsheets/domain1.md
   subagents are needed, partitions scope, passes context, aggregates and validates
   results, handles errors, and iteratively refines. Subagents never talk to each other;
   all communication routes through the coordinator.
+- **When a single agent stops being enough** (two named triggers, both worth stating in
+  your own words): the **context ceiling** — one agent's window fills before the task
+  finishes, so it loses the thread of its own work; and the **specialization gap** — one
+  agent doing everything produces generic results, because it cannot be specialised for
+  every part of the job. If neither is true, a single agent beats multi-agent.
+- **Hierarchy is permitted, not required**: a subagent may itself spawn subagents when its
+  own definition allows it (sub-coordinator). The control-point rule still holds — every
+  hop still routes through a coordinator, so visibility and error handling stay uniform.
+- **Parallel vs sequential spawning is a cost decision**: parallel means emitting several
+  spawn calls in ONE coordinator response; sequential means one per turn. Parallel buys
+  latency but enlarges the coordinator's payload and output, so a coordinator that spends
+  its budget spawning has less left to aggregate and validate.
 - **Why the exam wants this**: Most multi-agent failures in the corpus are *scope*
   failures at the coordinator, not execution failures at the subagents. The exam tests
   whether you blame the right component.
@@ -88,6 +100,12 @@ Global rules that decide most Domain 1 items (hamzafarooq-cheatsheets/domain1.md
 - **Why the exam wants this**: "The subagent returned something generic" and "the
   orchestrator never delegates" are both single-cause items — missing explicit context,
   and a missing `"Task"` entry in `allowedTools`.
+- **The diagnostic that settles most of these items**: when a subagent returns something
+  generic, wrong, or off-scope, the cause is almost never the subagent's own prompt — it is
+  the coordinator failing to inject what that subagent needed into its agent definition at
+  spawn time. Fix the injection, not the subagent's wording. The same reflex resolves
+  "the subagent did not know X": context does not inherit, so X had to be handed over
+  explicitly and was not.
 - **Distractors**: Assuming the subagent inherits the coordinator's conversation; passing
   a pointer or "the document" instead of the content; collapsing structured findings into
   prose (attribution lost); asking subagent A to hand results straight to subagent B;
