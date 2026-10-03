@@ -101,8 +101,8 @@
     "`./CLAUDE.local.md` is one person's override for one repo, gitignored, so it can never carry an org mandate.",
     "Receipt map: managed policy reaches everyone in the org; the project file reaches everyone on the repo; user and local reach you alone."
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d3-5",
+   "caption": "Trace it downward: only the top band is admin-controlled and cannot be waived; each lower band is owned by fewer people.",
    "code": null,
    "ask": null,
    "why": "The exam separates 'must reach the team' from 'must reach everyone and cannot be waived'. The first is the committed project file; the second is the managed policy layer.",
@@ -117,8 +117,8 @@
    "inshort": "Org-wide and non-excludable means the managed policy layer.",
    "lead": "One phrase in the stem decides it: teams must not be able to remove the requirement.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d3-6",
+   "caption": "One phrase decides it: teams must not be able to remove the requirement, so the shared project file is the wrong exit.",
    "code": null,
    "ask": {
     "q": "Your organisation mandates that every repository runs the internal security scan before any commit, and individual teams must not be able to weaken or remove the requirement. Where should the instruction live?",
@@ -149,7 +149,7 @@
     "A skill body enters the conversation once, as standing instruction, and is not re-read on later turns. Write policy, not one-time steps.",
     "Location and isolation are separate axes: a skill can be project-scoped and forked, or personal and unforked."
    ],
-   "diagram": "d3-5",
+   "diagram": "d3-7",
    "caption": "The left column loads itself and the right column waits to be invoked; only the top row is what the team receives.",
    "code": null,
    "ask": null,
@@ -167,7 +167,7 @@
     "Personal variant of a team skill: a new name under `~/.claude/skills/`. Editing the team skill changes everyone.",
     "A warning in the description is not a restriction, and prose validation inside `SKILL.md` is advisory, not enforcement."
    ],
-   "diagram": "d3-6",
+   "diagram": "d3-8",
    "caption": "Noisy means context: fork, unsafe means allowed-tools, missing input means argument-hint \u2014 and a warning is none of the three.",
    "code": null,
    "ask": null,
@@ -179,7 +179,7 @@
    "title": "Gate: the skill with three symptoms",
    "lead": "Three problems in one stem, which usually means three controls in one answer. Watch for the option that offers a warning instead of a restriction.",
    "points": [],
-   "diagram": "d3-7",
+   "diagram": "d3-9",
    "caption": "Three symptoms, three declarations: the left column restricts what can happen, the right column only asks nicely.",
    "code": null,
    "ask": {
@@ -209,8 +209,8 @@
     "Reach for a skill when the work is a multi-step procedure with its own context and tool needs; reach for a command when it is a reusable static prompt.",
     "A fifty-step checklist sitting in `CLAUDE.md` loads into every session; the same checklist as a skill loads only when it is needed."
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d3-10",
+   "caption": "Read down the columns: the skill carries templates, references and a tool scope the single command file cannot.",
    "code": null,
    "ask": null,
    "why": "The exam contrasts the three surfaces: CLAUDE.md is ambient, a command is an explicitly invoked static prompt, and a skill is an on-demand procedure that can carry supporting files and a restricted tool set.",
@@ -225,8 +225,8 @@
    "inshort": "Multi-step, tool-scoped work is a skill; a bloated checklist moves out of CLAUDE.md into one.",
    "lead": "Two jobs in one stem: a fixed procedure the team runs every release, and a long checklist that is polluting every session.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d3-11",
+   "caption": "The right panel fixes both jobs once: a bounded skill for /release-notes and the checklist moved out of CLAUDE.md.",
    "code": null,
    "ask": {
     "q": "A team wants a reusable `/release-notes` action that reads the merged PRs, groups them by area, writes a changelog file and posts a summary, using only read and write tools. They also have a 40-step onboarding checklist currently pasted into the project `CLAUDE.md`, loaded in every session. Which approach is most effective?",
@@ -257,7 +257,7 @@
     "One glob-keyed rule applies to new directories automatically and cannot drift into several copies.",
     "The example that keeps returning: one rule with `**/migrations/**/*` covers every current and future migrations directory."
    ],
-   "diagram": "d3-8",
+   "diagram": "d3-12",
    "caption": "Follow the globs: the rule fires only when Claude is about to work on a matching file, wherever that file lives.",
    "code": "---\npaths:\n  - \"**/*.test.ts\"\n  - \"**/migrations/**/*\"\n---\nMigration rules: naming, reversibility, no data backfills in the same PR.",
    "ask": null,
@@ -275,7 +275,7 @@
     "A skill per code type: opt-in again, so the convention does not apply automatically as code is generated.",
     "Reach for a rule when a path pattern decides; reach for a skill when a task, not a path, is the trigger."
    ],
-   "diagram": "d3-9",
+   "diagram": "d3-13",
    "caption": "Scan the right column: every alternative either loads where it is irrelevant or waits for someone to remember it.",
    "code": null,
    "ask": null,
@@ -287,7 +287,7 @@
    "title": "Gate: conventions per code type",
    "lead": "The stem gives you the decisive detail in its last sentence: identical conventions wherever the test files live. Now answer.",
    "points": [],
-   "diagram": "d3-10",
+   "diagram": "d3-14",
    "caption": "Watch it narrow: only the bottom stage reaches identical conventions wherever the test files happen to live.",
    "code": null,
    "ask": {
@@ -317,8 +317,8 @@
     "`paths:` globs are matched against the file Claude is about to work on, regardless of where in the tree it sits.",
     "A pattern with a single `*` in the middle looks like it covers the tree but silently stops one level down."
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d3-15",
+   "caption": "Compare the middle column: only ** reaches a pattern wherever the files live, at any depth, including future directories.",
    "code": null,
    "ask": null,
    "why": "The conditional load is the whole value of a rule, and the glob decides which files trigger it. `**` is what lets one rule follow a pattern across the codebase; `*` anchors it to one level.",
@@ -333,8 +333,8 @@
    "inshort": "The pattern must follow the files to a new, deeper location, so the glob needs `**`.",
    "lead": "The stem tells you where the files live today and where they are about to appear. Read the depth, then choose the glob.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d3-16",
+   "caption": "Watch it narrow to the bottom stage: only **/migrations/**/* matches a migrations directory at any depth, present and future.",
    "code": null,
    "ask": {
     "q": "Migration files currently live under `db/migrations/`, and the platform team is about to add `services/billing/db/migrations/` and `services/auth/db/migrations/`. One rule must apply to every migration file, present and future, wherever it lives. Which `paths:` entry is correct?",
@@ -365,7 +365,7 @@
     "The hybrid is valid and commonly tested: plan to investigate and design, get approval, then execute file by file.",
     "Plan mode is workflow control gating thinking to doing. It is not extended thinking, which is a reasoning budget."
    ],
-   "diagram": "d3-11",
+   "diagram": "d3-17",
    "caption": "The dividing line runs across the top: decisions still to be made put you in plan mode whatever the size of the change.",
    "code": null,
    "ask": null,
@@ -383,7 +383,7 @@
     "Custom subagents live under `.claude/agents/` and are what `context: fork` and `--agent` run.",
     "In CI, plan mode is also the safe posture: explore and report without any edit capability."
    ],
-   "diagram": "d3-12",
+   "diagram": "d3-18",
    "caption": "Plan mode is one row in this table, not a separate feature \u2014 the exam tests the flag as much as the behaviour.",
    "code": null,
    "ask": null,
@@ -395,7 +395,7 @@
    "title": "Gate: add Slack, method undecided",
    "lead": "Read what the stem does not say. Three integration methods, materially different consequences, and a task statement that names none of them.",
    "points": [],
-   "diagram": "d3-13",
+   "diagram": "d3-19",
    "caption": "Three integration approaches with different consequences and a task statement that names none: that is the plan-mode trigger.",
    "code": null,
    "ask": {
@@ -444,8 +444,8 @@
     "Starting an application from scratch also earns a plan: the blueprint is where better foundations get proposed before any code exists.",
     "Plan mode is the investigation phase, and execution follows after approval. They are sequential, not rivals."
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d3-21",
+   "caption": "Any one spoke is enough: repetition is not the test, whether decisions remain is.",
    "code": null,
    "ask": null,
    "why": "The exam classifies a described task as plan or execute, and the traps are scale framing ('it is mechanical') and ceremony framing ('planning always helps'). Naming the four signals lets you answer the classification and reject both traps.",
@@ -460,8 +460,8 @@
    "inshort": "Repetition is not the test; the four signals are.",
    "lead": "The word 'repetitive' is the bait. Read past it to how many files, how many approaches, and how expensive a mistake would be.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d3-22",
+   "caption": "The word repetitive is the bait: four plan signals are present, so the exit is plan mode, not direct execution.",
    "code": null,
    "ask": {
     "q": "You are asked to extract database queries scattered across a 200-file monolith and move them behind an ORM. The edits look repetitive, the queries have different shapes, and the change touches data-access code across the whole service. Which approach is most effective?",
@@ -492,7 +492,7 @@
     "Test-first wins when requirements are settled but the implementation is wrong. The interview wins when requirements are the gap.",
     "More adjectives, an added reminder and a raised temperature are all the same category of non-fix."
    ],
-   "diagram": "d3-15",
+   "diagram": "d3-23",
    "caption": "Rewriting prose produces different misinterpretations rather than fewer; only the right panel changes the kind of input.",
    "code": null,
    "ask": null,
@@ -510,7 +510,7 @@
     "Input and output examples constrain the shape of the output, which is a different problem from an unknown requirement.",
     "Choose by the gap you have: unknown requirements means interview, known requirements means examples or a failing test."
    ],
-   "diagram": "d3-16",
+   "diagram": "d3-24",
    "caption": "Follow the cycle: each pass turns an unknown requirement into a known one, which is why a prose spec written first fails.",
    "code": null,
    "ask": null,
@@ -522,7 +522,7 @@
    "title": "Drill: coupled defects and stray typos",
    "lead": "The stem tells you the two middleware defects interact. That word decides the shape of your feedback. Answer.",
    "points": [],
-   "diagram": "d3-17",
+   "diagram": "d3-25",
    "caption": "Read it left to right: the word interacting puts both defects in a single message and the typos in their own turns.",
    "code": null,
    "ask": {
@@ -551,7 +551,7 @@
     "CLAUDE.md and rules load as context, with no compliance guarantee, so anything that must always apply needs hooks or `permissions.deny`.",
     "That distinction is the whole enforcement story for this domain: memory advises, configuration enforces."
    ],
-   "diagram": "d3-18",
+   "diagram": "d3-26",
    "caption": "Only the top-right corner enforces anything; banning a mechanism in a rule file leaves the standard itself unstated.",
    "code": null,
    "ask": null,
@@ -569,7 +569,7 @@
     "`CLAUDE_HEADLESS=true` does not exist, and there is no `--batch` flag.",
     "Guardrails for a run with no human present: `--max-turns`, `--max-budget-usd`, `--permission-prompts none`, `--no-session-persistence`."
    ],
-   "diagram": "d3-19",
+   "diagram": "d3-27",
    "caption": "The left column ends the run by itself; the right column either waits longer or reaches for undocumented surface.",
    "code": "claude -p \"Analyze this pull request for security issues\"\nclaude -p --max-turns 20 --max-budget-usd 2 --permission-prompts none",
    "ask": null,
@@ -587,7 +587,7 @@
     "A regex extractor over narrative is brittle and breaks the moment the phrasing shifts.",
     "`--output-format stream-json` is the streaming variant when the CI consumer wants records as they arrive."
    ],
-   "diagram": "d3-20",
+   "diagram": "d3-28",
    "caption": "Both panels want the same shape of finding; only the right one makes that shape a condition of the output.",
    "code": "claude -p --output-format json --json-schema '{\"type\":\"object\",\"properties\":{\"path\":{},\"line\":{},\"severity\":{},\"fix\":{}}}'",
    "ask": null,
@@ -599,7 +599,7 @@
    "title": "Gate: the job that never finishes",
    "lead": "One flag. The other options treat the symptom or invent surface that does not exist.",
    "points": [],
-   "diagram": "d3-21",
+   "diagram": "d3-29",
    "caption": "Trace the two exits: only the -p branch ends in an exit, and every other option changes the quality of the waiting.",
    "code": null,
    "ask": {
@@ -628,7 +628,7 @@
     "Full-file review still covers unchanged code: a diff-only pass misses pre-existing issues, and prior findings handle deduplication.",
     "Low-value tests need testing standards and fixtures in `.claude/CLAUDE.md`; duplicate tests need the existing test files in context."
    ],
-   "diagram": "d3-22",
+   "diagram": "d3-30",
    "caption": "Follow the handoff left to right: the reviewer never sees the reasoning that produced the code.",
    "code": null,
    "ask": null,
@@ -640,7 +640,7 @@
    "title": "Gate: caught only by a colleague",
    "lead": "Answer the stem you just read. Every wrong option keeps the same perspective in place and changes something else about it.",
    "points": [],
-   "diagram": "d3-23",
+   "diagram": "d3-31",
    "caption": "The gate is a different perspective, not more effort: re-checking in the same session passes through the same reasoning.",
    "code": null,
    "ask": {
@@ -688,8 +688,8 @@
     "The project's standards travel into every fresh session through `CLAUDE.md`, so each step starts with review criteria, security policy and testing requirements.",
     "The full sequence: `CLAUDE.md` for context, load prior findings, a fresh session, `-p` for non-interactive execution, `--output-format json --json-schema` for the shape, then act on the findings and block on critical."
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d3-33",
+   "caption": "Follow it left to right: schema'd findings are the input the downstream job reads to block on critical without a human.",
    "code": "claude -p \"Review this PR\" --output-format json --json-schema review-schema.json > findings.json\njq -e 'any(.findings[]; .severity == \"critical\")' findings.json && exit 1 || exit 0",
    "ask": null,
    "why": "Prose findings can only be read by a human; schema'd findings can be read by the next job. The exam tests the whole chain, not just the flag that produces the JSON.",
@@ -704,8 +704,8 @@
    "inshort": "A machine gate needs schema'd output, not better paragraphs.",
    "lead": "The later job has to make a decision on its own. Ask what it can actually read.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d3-34",
+   "caption": "Ask what the later job can actually read: only the schema'd branch gives it a severity field to act on.",
    "code": null,
    "ask": {
     "q": "Your pipeline runs a Claude review step, and a later job must automatically block the merge when any critical finding exists. The review currently returns paragraphs of prose. Which approach is most effective?",
@@ -736,7 +736,7 @@
     "Decisions remaining means plan mode; noisy reconnaissance goes to Explore; prose that fails means examples or a failing test.",
     "A hanging CI job needs `-p`; inline comments need `--output-format json` with `--json-schema`; never self-review."
    ],
-   "diagram": "d3-25",
+   "diagram": "d3-35",
    "caption": "Three questions in order \u2014 who receives it, ambient or invoked, enforce or advise \u2014 settle most Domain 3 stems.",
    "code": null,
    "ask": null,

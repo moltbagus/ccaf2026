@@ -478,8 +478,8 @@
     "Trim at the hook before the data is appended - a post-tool hook filters and normalises what the model sees, a pre-tool hook sanitises before the call; five tool calls run roughly 2,000-3,000 tokens per loop, which is 40,000-50,000 across 10-20 iterations",
     "The API is stateless with no server-side memory, so send the full messages array on every call and hold the transactional spine in a block that summarization never touches"
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d5-24",
+   "caption": "Two exits, one outcome: whether the window deletes the turn or a summary rewrites it, only the case-facts block keeps the spine.",
    "code": "Lazy summary : 'customer reported delivery and product issues requesting a refund'\nGood summary : order #12345 | wireless earphone | $149 | delivered 3 days late\n\nTop    (highest attention) : case-facts block - customer_id, order_id, item,\n                             refund_amount, order_date, policy_window_days\nMiddle (low-attention valley): trimmed tool results - lean, immediate decision only\nEnd    : critical recap + policy line + final question",
    "ask": null,
    "takeaway": "A summary distorts a fact and a sliding window deletes it - keep the transactional spine in a case-facts block outside both."
@@ -490,8 +490,8 @@
    "title": "Gate: the prompt that keeps losing the refund amount",
    "lead": "The facts are all present. The question is where they sit.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d5-25",
+   "caption": "The facts sit in the prompt either way \u2014 this layout decides whether the refund amount lands where attention actually falls.",
    "code": null,
    "ask": {
     "q": "A support agent assembles its prompt each turn as: system prompt, a 40K-token block of raw tool outputs, the case-facts block, and the latest customer message. Monitoring shows the agent still misreads the refund amount and the policy window even though both are in the prompt. Which change is most effective?",
@@ -519,8 +519,8 @@
     "Three non-triggers, all dressed as diligence: negative sentiment alone, task complexity alone, and the model's self-reported confidence score, which is uncalibrated and can say 95% and still be wrong",
     "Escalation is not a fallback for hard problems: if the policy covers the request, resolve confidently; escalate only on a real trigger"
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d5-26",
+   "caption": "Three triggers on top, three diligence-shaped non-triggers below: escalation is never a fallback for a hard problem.",
    "code": null,
    "ask": null,
    "takeaway": "Three triggers only - explicit request, policy gap, stuck. Sentiment, complexity and confidence scores are never triggers."
@@ -531,8 +531,8 @@
    "title": "Gate: Sarah asks for a person",
    "lead": "The frustration is loud. Find the trigger that actually counts.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d5-27",
+   "caption": "Frustration is loud but it is not the trigger \u2014 the explicit request is, and it fires before any resolution attempt.",
    "code": null,
    "ask": {
     "q": "Sarah's order is 12 months old, the damage and the late delivery are already confirmed, and she writes: 'I've been dealing with this long enough. I just want to speak to an actual person.' She is highly frustrated. What should the agent do next?",
@@ -560,8 +560,8 @@
     "Error travels up one layer at a time: a tool signals failure to its subagent (isError / errorCategory), the subagent does local recovery (1-2 retries with backoff), and only what it cannot resolve reaches the coordinator as a structured error",
     "Every structured error carries the error category, whether it is retryable, the attempted query, and partial results plus alternatives - so the coordinator knows what to retry, what to accept and what to re-route"
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d5-28",
+   "caption": "Silent suppression hides the failure and self-termination discards the work \u2014 termination is the coordinator's call.",
    "code": null,
    "ask": null,
    "takeaway": "Silent suppression hides the failure and termination discards the work - only the coordinator may terminate, and every subagent failure propagates as a structured error."
@@ -572,8 +572,8 @@
    "title": "Gate: search unavailable",
    "lead": "The coordinator is blind. Name the fix at the reporting layer.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d5-29",
+   "caption": "A generic status paralyses the coordinator; the structured payload is what lets it retry, accept or re-route.",
    "code": null,
    "ask": {
     "q": "A multi-agent research system's web-search subagent returns a generic 'search unavailable' status. The coordinator cannot tell whether the failure is transient, whether any partial results exist, or whether a fallback source would help. Which action is most effective?",
@@ -601,8 +601,8 @@
     "The manifest is the source of truth across a crash - restart and point at it to pick up where you left off, the way a Git commit rolls back to a checkpoint",
     "`/compact` is a typed command: an interactive session runs it automatically near ~90% of the window, but it cannot be invoked in a CI/CD pipeline; three layers together - error propagation, scratchpad plus compact, and the manifest - make silent failures impossible"
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d5-30",
+   "caption": "Claude Code will not create the scratchpad on its own \u2014 instruct it where it loads every time, since /compact cannot run headless.",
    "code": null,
    "ask": null,
    "takeaway": "Instruct the scratchpad (prompt, CLAUDE.md or subagent logic), checkpoint state to a manifest at a predictable path, and remember /compact cannot run in CI/CD."
@@ -613,8 +613,8 @@
    "title": "Gate: the headless refactor that must resume",
    "lead": "No operator, no typed commands. Pick the setup that survives a crash.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d5-31",
+   "caption": "No operator and no typed commands: only CLAUDE.md reaches a headless run, so the scratchpad and manifest must live there.",
    "code": null,
    "ask": {
     "q": "A headless CI/CD job runs a Claude Code refactor over a large codebase for several hours. No operator can type commands, and the session must survive a mid-run process crash and continue from where it stopped. Which setup is most effective?",
@@ -642,8 +642,8 @@
     "Confidence lives at the field level, not the document level: invoice number 0.97 (top-right header), amount 0.91 (bottom table row 12), vendor address 0.63 (unreadable, handwritten) - only that one field routes to a human",
     "The extracted field carries its value, its confidence and its source region as required schema fields, and thresholds are calibrated on a labelled validation set, never on the model's raw self-report"
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d5-32",
+   "caption": "Follow the average down: the failures cluster in the low-volume, high-stakes stratum that the aggregate never surfaces.",
    "code": "categorise  -> strata (printed PDFs | scans | handwritten | legal contracts)\nsample      -> a representative batch per stratum, even the 5% bucket\nmeasure     -> accuracy per category, not the overall average\nact         -> route the failing category to human review immediately\n\nfield: invoice_number  0.97  source_region: top-right header\nfield: amount          0.91  source_region: bottom table row 12\nfield: vendor_address  0.63  source_region: unreadable -> human review",
    "ask": null,
    "takeaway": "Average accuracy hides where failures cluster - sample per stratum, act on the failing category, and route at the field level with calibrated confidence."
@@ -654,8 +654,8 @@
    "title": "Gate: the legal contracts that keep failing",
    "lead": "The headline number is fine. Find the measurement that is missing.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d5-33",
+   "caption": "The document score hides a field that fails in one stratum \u2014 errors in one category are systematic, so the average masks them.",
    "code": null,
    "ask": {
     "q": "A structured extraction system processes 10,000 documents a day at 96% overall accuracy, with document-level confidence above 80%, and auto-routes to downstream systems. Persistent errors keep appearing specifically in legal contracts. What is the most likely root cause?",
@@ -683,7 +683,7 @@
     "5.4 - scratchpad, subagent isolation, phase summaries, manifest checkpoint, proactive `/compact`; a bigger window is never the fix",
     "5.5 and 5.6 - validate per document type and field; every claim carries a source and date; conflicts keep both values for the coordinator"
    ],
-   "diagram": "d5-24",
+   "diagram": "d5-34",
    "caption": "Wrong answers here are diligence in costume \u2014 a threshold, a classifier, a bigger window \u2014 so name the failing layer first.",
    "code": null,
    "ask": null,

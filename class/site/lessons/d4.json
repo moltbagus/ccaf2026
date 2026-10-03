@@ -91,8 +91,8 @@
     "Anchor each severity with a real code example, because prose severity drifts across runs and code anchors do not.",
     "Three code-anchored examples beat a thousand-line description. The exam asks whether to write the vague prompt, and the answer is no."
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d4-4",
+   "caption": "Left describes the reviewer harder; right defines what qualifies. Same reviewer, one prompt change.",
    "code": null,
    "ask": null,
    "why": "The exam's tell is an option that adds a confidence adjective or a threshold instead of a boundary. 'Be thorough and conservative' is the prompt that produced the 47 findings, so keeping it and adding a prose rubric is the trap.",
@@ -106,8 +106,8 @@
    "title": "Gate: the first step to fewer false positives",
    "lead": "The stem asks for the first step, and the options split into boundary-setting and threshold-fiddling.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d4-5",
+   "caption": "Take the right exit: explicit criteria are the documented first step, not another adjective.",
    "code": null,
    "ask": {
     "q": "A CI code-review bot flags about 50 items per pull request, mostly variable-naming opinions and micro-optimisations, and developers have started dismissing every finding without reading. The team wants to reduce false positives. Which approach is most effective?",
@@ -134,7 +134,7 @@
     "Each example shows input, output, and the reasoning for why that output is correct over plausible alternatives.",
     "The reasoning is what makes the pattern generalise to novel cases."
    ],
-   "diagram": "d4-4",
+   "diagram": "d4-6",
    "caption": "Use 2-4 of these, not 1 and not 10. The bottom band is what carries the pattern to novel cases.",
    "code": null,
    "ask": null,
@@ -150,7 +150,7 @@
    "title": "Gate: vague feedback, again",
    "lead": "The bot finds real issues, but developers cannot act on them. The stem explicitly closes the door on one option before you start.",
    "points": [],
-   "diagram": "d4-5",
+   "diagram": "d4-7",
    "caption": "Look at the left column: the fix is a demonstration, not a more precise description.",
    "code": null,
    "ask": {
@@ -179,7 +179,7 @@
     "10 examples of one structure overfits to that structure. Use 2-4 examples spanning the structures you really receive.",
     "For strict schemas, put format normalisation in the prompt: ISO-8601 dates, amount plus currency code, decimal fractions."
    ],
-   "diagram": "d4-6",
+   "diagram": "d4-8",
    "caption": "Cover the shapes you really receive: each spoke teaches what a valid extraction looks like.",
    "code": null,
    "ask": null,
@@ -202,8 +202,8 @@
     "Two to four examples is the sweet spot. Six to eight bloat the context and push the model back into pattern matching.",
     "Find the fault lines first: run the same inputs several times, see where the output flips, and example only the drifting cases."
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d4-9",
+   "caption": "Row two is the anatomy: the output is specific, the reasoning is what carries the pattern.",
    "code": null,
    "ask": null,
    "why": "The exam claim is that few-shot examples are explicitly more effective than detailed prose, and the mechanism is the reasoning, not the output label. A test that asks why an example works wants the derivation.",
@@ -217,8 +217,8 @@
    "title": "Gate: the same bug, two different labels",
    "lead": "Apply the anatomy you just read. The stem already told you more prose has not converged.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d4-10",
+   "caption": "Read top to bottom: the first row is the fix; the rest are options the stem has already ruled out.",
    "code": null,
    "ask": {
     "q": "A CI/CD review agent labels the same class of bug critical on one run and high on the next, even though the prompt has 400 lines of explicit rules. Which approach is most effective?",
@@ -245,7 +245,7 @@
     "Schema compliance is not source truth. Syntax validation is the first layer only.",
     "Most distractors here are wrong-layer answers: asking the prompt to do the schema's job, or the schema to do validation code's job."
    ],
-   "diagram": "d4-7",
+   "diagram": "d4-11",
    "caption": "Everything under this root is a failure mode the schema cannot see; only the left child is fixed.",
    "code": null,
    "ask": null,
@@ -284,7 +284,7 @@
     "Use a nullable type such as `[\"string\", \"null\"]` and instruct the model to return null when the source does not state the value.",
     "An all-required schema is a fabrication factory."
    ],
-   "diagram": "d4-9",
+   "diagram": "d4-13",
    "caption": "Left manufactures the value; right lets the model say null. Wording cannot override structural pressure.",
    "code": null,
    "ask": null,
@@ -300,7 +300,7 @@
    "title": "Gate: required field, absent data",
    "lead": "Apply the mechanism you were just handed. Note which option changes the structure and which ones change only the wording.",
    "points": [],
-   "diagram": "d4-10",
+   "diagram": "d4-14",
    "caption": "Take the right exit: the nullable field tells the truth instead of filling the gap.",
    "code": null,
    "ask": {
@@ -329,7 +329,7 @@
     "`none`: cannot call tools.",
     "A named tool routes heterogeneous documents through one schema that fits none of them."
    ],
-   "diagram": "d4-11",
+   "diagram": "d4-15",
    "caption": "Read down the middle column: only 'any' guarantees a call while still letting the model choose the schema.",
    "code": null,
    "ask": null,
@@ -345,7 +345,7 @@
    "title": "Gate: unknown document type",
    "lead": "Use the setting you just learned. The stem will tempt you with a single named tool because it sounds like a guarantee, but it guarantees the wrong thing.",
    "points": [],
-   "diagram": "d4-12",
+   "diagram": "d4-16",
    "caption": "The document is untyped at the door and typed by the time validation runs.",
    "code": null,
    "ask": {
@@ -374,7 +374,7 @@
     "Not supported: `minimum`/`maximum`, `minLength`/`maxLength`, `pattern`, `oneOf`, `if`/`then`/`else`, recursive schemas.",
     "For a direct JSON answer use `output_config.format` with a `json_schema` type; `client.messages.parse()` returns `response.parsed_output`."
    ],
-   "diagram": "d4-13",
+   "diagram": "d4-17",
    "caption": "The right column is the strict-mode surface that accepts the key and ignores the constraint.",
    "code": "strict: true  +  additionalProperties: false  +  every property in required\nnullable field: \"null if not found\" via a null-capable type\nenum: [\"billing\", \"technical\", \"account\", \"unclear\", \"other\"]  +  category_detail\noutput_config.format: {\"type\": \"json_schema\", \"schema\": {...}}",
    "ask": null,
@@ -397,8 +397,8 @@
     "Schema validity is syntax, not truth. A strict schema guarantees structure and nothing about whether the values are right.",
     "Semantic errors survive it: reading the wrong table row, confusing similar terms, or hallucinating a value the source does not contain."
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d4-18",
+   "caption": "The hub does nothing; its job is to make the API enforce the schema before you parse anything.",
    "code": null,
    "ask": null,
    "why": "The exam separates syntax from semantics. Strict JSON schemas and tool use fix structural failures; business-logic checks, cross-field consistency and human review fix interpretation failures.",
@@ -412,8 +412,8 @@
    "title": "Gate: schema perfect, value wrong",
    "lead": "The stem gives you a pipeline that never fails schema validation, so the defect cannot be structural.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d4-19",
+   "caption": "The pipeline passes every schema check, so the defect cannot be structural - take the semantic exit.",
    "code": null,
    "ask": {
     "q": "An extraction pipeline passes JSON schema validation on 100 percent of documents, but occasionally reports wrong monetary amounts because the model reads the wrong table row. Which approach is most effective?",
@@ -441,7 +441,7 @@
     "A field that is null because the contract does not state it is a correct extraction.",
     "More retries on absent data produce more fabrications, not more accuracy."
    ],
-   "diagram": "d4-14",
+   "diagram": "d4-20",
    "caption": "The two segments need opposite treatments, so retrying all 900 as one population makes 700 fabrications.",
    "code": null,
    "ask": null,
@@ -457,7 +457,7 @@
    "title": "Gate: the 900 of 8,000 stem",
    "lead": "Now answer it. The options differ in whether they treat both populations the same way or split them.",
    "points": [],
-   "diagram": "d4-15",
+   "diagram": "d4-21",
    "caption": "Row three is the trap: a single fix for both populations either fabricates or discards the fixable 200.",
    "code": null,
    "ask": {
@@ -486,7 +486,7 @@
     "Prompt-level fixes generalise; per-instance retries do not.",
     "A second call verifying every value adds cost and can rationalise the original answer. Use it as a sampling audit instead."
    ],
-   "diagram": "d4-16",
+   "diagram": "d4-22",
    "caption": "The cycle only works on output errors. Absence, or a document never provided, never comes back fixed.",
    "code": null,
    "ask": null,
@@ -507,7 +507,7 @@
     "Extract both `stated_total` and `calculated_total` plus `totals_match`, so the mismatch surfaces for validation.",
     "Routing fields: per-field `confidence` with `value`, plus `requires_review` and `review_reasons`."
    ],
-   "diagram": "d4-17",
+   "diagram": "d4-23",
    "caption": "Without detected_pattern you know 35% of findings are dismissed but not which constructs to suppress.",
    "code": null,
    "ask": null,
@@ -530,8 +530,8 @@
     "If the value is genuinely absent, the fix is a nullable field, not another retry, and the loop should treat absence as success.",
     "When the retry threshold is reached, hand off to a human rather than forcing the model to invent the missing value."
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d4-24",
+   "caption": "Follow the cycle to the bottom: it corrects formats and stops where the source holds no data.",
    "code": null,
    "ask": null,
    "why": "The exam tests the retry boundary repeatedly: retry fixes output errors, schema design fixes source gaps. A stem where every retry fails is a source gap, and an option that prompts the model to look harder is the trap.",
@@ -545,8 +545,8 @@
    "title": "Gate: every retry fails on the same field",
    "lead": "Read the stem for the word the retry loop cannot fix.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d4-25",
+   "caption": "Left forces a value that does not exist; right lets the model report absence honestly.",
    "code": null,
    "ask": {
     "q": "An extraction pipeline fails validation on every retry. The failing field is a tax ID that is genuinely absent from the source documents. Which approach is most effective?",
@@ -573,7 +573,7 @@
     "Right for high-volume, non-blocking, independent, deadline-flexible work: overnight reports, weekly audits, nightly tests.",
     "Wrong whenever a human or a gate is waiting, and never migrate everything. The correct answer is the mixed strategy."
    ],
-   "diagram": "d4-18",
+   "diagram": "d4-26",
    "caption": "Read the middle column: a workload only tolerates the batch window when nothing is waiting on it.",
    "code": null,
    "ask": null,
@@ -607,7 +607,7 @@
    "title": "Drill: the manager's 50% proposal",
    "lead": "Apply the split. Two workflows, one blocking and one overnight, and one option that sounds like it hedges.",
    "points": [],
-   "diagram": "d4-20",
+   "diagram": "d4-28",
    "caption": "The first two rows never move to batch, whatever the saving; the third one always does.",
    "code": null,
    "ask": {
@@ -655,8 +655,8 @@
     "Batch accepts tool definitions in params but runs single-turn only, so there is no in-request tool loop and no streaming.",
     "Resubmit only the failures identified by custom_id after fixing the cause, not the whole batch."
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d4-30",
+   "caption": "The right column all assume position; only the custom_id survives results arriving in any order.",
    "code": null,
    "ask": null,
    "why": "The exam correlates batch request and response pairs, and the answer is always custom_id. A random UUID technically correlates but does not survive operational reality, which is why meaningful IDs are the documented choice.",
@@ -670,8 +670,8 @@
    "title": "Gate: matching 500 results to 500 requests",
    "lead": "The stem is about correlation, not cost.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d4-31",
+   "caption": "The stem is about correlation, not cost - take the exit that echoes an identifier back.",
    "code": null,
    "ask": {
     "q": "A nightly batch submits 500 review requests and 500 test-generation requests together. Results return hours later in an arbitrary order, and each must be matched to its request. Which approach is most effective?",
@@ -698,7 +698,7 @@
     "The fix is an independent instance: a fresh session receiving only the artifact and the criteria.",
     "Self-critique instructions inside the generating session are the failure mode, not the fix."
    ],
-   "diagram": "d4-22",
+   "diagram": "d4-32",
    "caption": "Look at what crosses the arrow: the artifact and the criteria, never the reasoning that produced them.",
    "code": null,
    "ask": null,
@@ -714,7 +714,7 @@
    "title": "Gate: caught only by a colleague",
    "lead": "Answer the stem you just read. Every wrong option keeps the same perspective in place and changes something else.",
    "points": [],
-   "diagram": "d4-23",
+   "diagram": "d4-33",
    "caption": "Every item on the right keeps one perspective in place and changes something else.",
    "code": null,
    "ask": {
@@ -761,7 +761,7 @@
     "Route to humans on low calibrated confidence, contradictory sources, high-impact fields and failed semantic validation.",
     "Filtering low-confidence findings before developers see them hides findings instead of calibrating routing."
    ],
-   "diagram": "d4-25",
+   "diagram": "d4-35",
    "caption": "Note what is missing: overall accuracy is not the filter, and neither is a bare 0.9 score.",
    "code": null,
    "ask": null,
@@ -783,7 +783,7 @@
     "Retry fixes output errors, schema design fixes source gaps. Retry sends the document, the failed extraction and the exact error.",
     "Batch suits flexible work, never a blocking gate or an in-request tool loop, and the instance that produced output must not review it."
    ],
-   "diagram": "d4-26",
+   "diagram": "d4-36",
    "caption": "Follow the chain: the wrong options all describe a fix that belongs one layer to the left or right.",
    "code": null,
    "ask": null,

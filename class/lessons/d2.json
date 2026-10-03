@@ -119,8 +119,8 @@
     "Escalate to a human only as a last resort, and say so in the prompt, so the sequence is unambiguous.",
     "Triage: misrouting or a tool not firing is a description or name problem; a policy block is a pre-tool hook."
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d2-6",
+   "caption": "Generic role framing primes one tool category; align the prompt's role, goal and sequence with the descriptions.",
    "code": null,
    "ask": null,
    "takeaway": "System prompt and tool descriptions must agree, or the prompt quietly overrides a clean description."
@@ -131,8 +131,8 @@
    "title": "The prompt, not the tools, keeps misrouting",
    "lead": "The tool descriptions were rewritten and are now distinct, but refunds still escalate to a human.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d2-7",
+   "caption": "Only rewriting the system prompt removes the bias that the generic role line injects into selection.",
    "code": null,
    "ask": {
     "q": "A customer support agent escalates auto-resolvable refunds and calls `get_customer` when `process_refund` is needed. All tool definitions have single-sentence descriptions and the system prompt reads only you are a customer support assistant. Which approach is most effective?",
@@ -158,7 +158,7 @@
     "A genuine access failure must not be able to masquerade as an empty result. This is the canonical trap in this task.",
     "Returning an empty array while the backend is down converts I could not search into I searched and there is nothing."
    ],
-   "diagram": "d2-6",
+   "diagram": "d2-8",
    "caption": "Same shape, two realities: only isError and errorCategory tell the agent which one it got.",
    "code": null,
    "ask": null,
@@ -170,7 +170,7 @@
    "title": "Two empty arrays, two meanings",
    "lead": "One tool, one return shape, two completely different realities behind it.",
    "points": [],
-   "diagram": "d2-7",
+   "diagram": "d2-9",
    "caption": "The contract, not the agent's prose, has to say which empty result it just returned.",
    "code": null,
    "ask": {
@@ -199,7 +199,7 @@
     "`permission`: 401, 403, missing scope. Never retryable, so the agent escalates.",
     "A write that times out after submission is an uncertain outcome, not a retry. Protocol errors mean the request never ran."
    ],
-   "diagram": "d2-8",
+   "diagram": "d2-10",
    "caption": "Each category answers what happened, whether retrying helps, and what was attempted.",
    "code": null,
    "ask": null,
@@ -233,8 +233,8 @@
     "A generic operation-failed string is a dead end; the coordinator cannot tell retry from escalate from reroute.",
     "Good metadata: `errorCategory`, `isRetryable`, a description, `retryAfter` (for example 2000 ms), and `alternatives` fallback tools."
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d2-12",
+   "caption": "An error the model never sees flagged becomes a success value it builds on; isError plus metadata makes it recoverable.",
    "code": null,
    "ask": null,
    "takeaway": "An unflagged failure is not an error to the model, it is a success value it will build on."
@@ -245,8 +245,8 @@
    "title": "The coordinator cannot tell retry from escalate",
    "lead": "A subagent tool fails and returns `isError: true` with the content only operation failed.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d2-13",
+   "caption": "A generic failure string is a dead end; only structured metadata lets the coordinator choose retry, reroute or escalate.",
    "code": null,
    "ask": {
     "q": "A subagent tool fails and returns `isError: true` with the content only operation failed. The coordinator cannot decide whether to retry, reroute, or escalate. Which approach is most effective?",
@@ -274,7 +274,7 @@
     "`tool_choice: \"any\"` forces a tool call. It does not force a specific tool.",
     "High-frequency simple cross-role need: ship a constrained tool with an escalation boundary, e.g. `verify_fact(claim, max_sources=3)`."
    ],
-   "diagram": "d2-10",
+   "diagram": "d2-14",
    "caption": "Cap each agent at four or five role-relevant tools; the count itself is the failure.",
    "code": null,
    "ask": null,
@@ -286,7 +286,7 @@
    "title": "Eighteen tools is the failure",
    "lead": "A capability count problem is being misdiagnosed as a wording problem.",
    "points": [],
-   "diagram": "d2-11",
+   "diagram": "d2-15",
    "caption": "Only one approach changes the number of tools the model has to choose between.",
    "code": null,
    "ask": {
@@ -315,7 +315,7 @@
     "Constraining capability at the interface makes the wrong behaviour impossible rather than discouraged.",
     "Constrained replacements: `fetch_url(url)` becomes `load_document(document_url)`; `run_sql(query)` becomes `query_orders(filters)`."
    ],
-   "diagram": "d2-12",
+   "diagram": "d2-16",
    "caption": "Prompts only make a call probable; tool_choice and a constrained interface make it structural.",
    "code": "{\"tool_choice\": {\"type\": \"tool\", \"name\": \"extract_intent\"}}",
    "ask": null,
@@ -327,7 +327,7 @@
    "title": "Making the first call mandatory",
    "lead": "The instruction is already imperative and it still fails one turn in seven.",
    "points": [],
-   "diagram": "d2-13",
+   "diagram": "d2-17",
    "caption": "The gate is the tool_choice field: it makes the skipped first call structurally impossible.",
    "code": null,
    "ask": {
@@ -356,8 +356,8 @@
     "`tool_choice` is the second lever: `auto` may skip a call, `any` must call some tool, a named tool must call that one.",
     "For a high-frequency cross-role need, ship a constrained tool like `verify_fact(claim, max_sources=3)`, not the full set."
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d2-18",
+   "caption": "There is no lazy loading: every tool description is loaded on every request, so the count is the cost.",
    "code": null,
    "ask": null,
    "takeaway": "Two levers: cap the tool count per role, and force the call you must have with tool_choice."
@@ -368,8 +368,8 @@
    "title": "Guaranteed structured output, one tool call",
    "lead": "A pipeline stage must always emit a tool call, because a plain text answer breaks the next step.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d2-19",
+   "caption": "Set tool_choice to any to make a tool call structural; auto leaves the model free to answer in prose.",
    "code": null,
    "ask": {
     "q": "A pipeline stage must always produce structured output from a tool, and a plain text answer breaks the next step. You do not care which of the five tools runs, only that one does. Which approach is most effective?",
@@ -397,7 +397,7 @@
     "When a token leaks, parameterise it and rotate it. Never relocate the file or gitignore `.mcp.json`; that ends team sharing.",
     "On a name collision the precedence is local, then project, then user. The whole entry wins, fields are not merged."
    ],
-   "diagram": "d2-14",
+   "diagram": "d2-20",
    "caption": "Project scope for the team, user scope for the individual, ${VAR} for every secret.",
    "code": null,
    "ask": null,
@@ -409,7 +409,7 @@
    "title": "Six developers, one token each",
    "lead": "The requirement is shared tooling plus per-developer credentials.",
    "points": [],
-   "diagram": "d2-15",
+   "diagram": "d2-21",
    "caption": "One shared source of truth for the config, one personal secret for each developer.",
    "code": null,
    "ask": {
@@ -438,7 +438,7 @@
     "When a capable MCP tool keeps losing to a built-in, strengthen the MCP tool's description. Do not delete the built-in.",
     "MCP annotations such as `readOnlyHint` are untrusted hints, never a security boundary."
    ],
-   "diagram": "d2-16",
+   "diagram": "d2-22",
    "caption": "Read the catalogue once instead of probing the server a dozen times before real work.",
    "code": null,
    "ask": null,
@@ -472,8 +472,8 @@
     "A `url` with no `type` is skipped with a warning, so always set the transport explicitly.",
     "MCP is stateful: connect, `initialize` (session), `tools/list`, `tools/call`, over JSON-RPC 2.0."
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d2-24",
+   "caption": "stdio for local subprocesses, http or sse for remote servers; the transport is set by location, not capability.",
    "code": null,
    "ask": null,
    "takeaway": "Set the transport to match where the server lives; an untyped url is a server that never loads."
@@ -484,8 +484,8 @@
    "title": "A url with no type never loads",
    "lead": "A remote MCP server is added to the project config with a url and headers, and it silently does not appear.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d2-25",
+   "caption": "The missing type is the whole failure; declare the transport and the entry loads instead of being skipped.",
    "code": null,
    "ask": {
     "q": "You add a remote MCP server to `.mcp.json` with a `url` and `headers` but no `type` field. Claude starts with a warning and the server never loads. Which approach is most effective?",
@@ -513,7 +513,7 @@
     "Path-seeded is the mirror: you already know the file set, so Glob first and Grep to check contents.",
     "Asking which files exist is a path question, so Glob. Grepping `import React` to find components is the wrong direction."
    ],
-   "diagram": "d2-18",
+   "diagram": "d2-26",
    "caption": "Find your seed first; the other tool is the filter that follows.",
    "code": null,
    "ask": null,
@@ -531,7 +531,7 @@
     "A shell text tool is the wrong category, and so is deleting and rewriting the file.",
     "Build understanding incrementally: Grep entry points, Read those, Grep the identifiers you found. Never read every file upfront."
    ],
-   "diagram": "d2-19",
+   "diagram": "d2-27",
    "caption": "The failure is structural, so widen the anchor before you change tools.",
    "code": null,
    "ask": null,
@@ -543,7 +543,7 @@
    "title": "Six identical matches, one target",
    "lead": "The tool is working correctly. The anchor is the problem.",
    "points": [],
-   "diagram": "d2-20",
+   "diagram": "d2-28",
    "caption": "replace_all rewrites five sites that should not change; widen the anchor instead.",
    "code": null,
    "ask": {
@@ -589,8 +589,8 @@
     "Read loads a whole file and is expensive at scale; Write creates or overwrites a whole file; Edit patches a unique anchor.",
     "Bash is the escape hatch: run tests, install packages, call CLIs, and do git operations."
    ],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d2-30",
+   "caption": "Grep for contents, Glob for paths, Read to load, Write to create, Edit to fix, Bash for commands.",
    "code": null,
    "ask": null,
    "takeaway": "Grep for contents, Glob for paths, Read to load, Write to create, Edit to fix, Bash for commands."
@@ -601,8 +601,8 @@
    "title": "When a surgical edit is not the answer",
    "lead": "A legacy module needs so many changes that a targeted edit would need a dozen non-unique anchors.",
    "points": [],
-   "diagram": null,
-   "caption": null,
+   "diagram": "d2-31",
+   "caption": "When a surgical edit is impractical, Read the file, apply changes in memory and Write the whole thing back.",
    "code": null,
    "ask": {
     "q": "A 600-line legacy module needs extensive changes across the whole file, and a targeted Edit keeps failing on non-unique anchors. A brand-new endpoint file is also needed. Which approach is most effective?",
@@ -633,7 +633,7 @@
     "Expose MCP resources as catalogues. When an MCP tool loses to a built-in, fix the description, do not remove the built-in.",
     "Grep is contents, Glob is paths. Edit needs a unique anchor; widen it before reaching for Read and Write."
    ],
-   "diagram": "d2-22",
+   "diagram": "d2-32",
    "caption": "Read left to right: each stage decides one thing the next stage cannot repair.",
    "code": null,
    "ask": null,
