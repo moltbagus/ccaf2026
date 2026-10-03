@@ -41,12 +41,12 @@
 - [x] Official CCDV-F and CCAR-P exam guides filed under `class/external/` and in the Obsidian vault.
 - [x] Braindump survey for both exams (neon-dumps/pass4success/dumpsbase/examtopics etc.) — reported, not ingested.
 
-### 🟡 In progress 2026-10-04: drills + mocks for the three newer lanes
-- [x] 19 of 22 domain drill banks authored and parent-verified (380 questions).
-- [ ] Re-author the three D1 banks (`o1`, `dev1`, `pro1`) — destroyed by an accidental fixture cleanup in the parent session, not by their authors.
-- [x] CCAO-F timed mock (60 Q, weight-matched) live and walked in the browser.
-- [ ] CCDV-F timed mock (53 Q) and CCAR-P timed mock (63 Q) still being authored.
-- [ ] After the mocks land: rename to `mocks/mock-<lane>-1.json`, rebuild, walk all three live, push.
+### ✅ Shipped 2026-10-04: drills + mocks for the three newer lanes
+- [x] **22 domain drill banks, 440 questions** (CCAO-F 7, CCDV-F 8, CCAR-P 7), parent-verified: 20 blocks each, letters near-even, every trap term used at least twice. Live at `bank-o1.html` … `bank-pro7.html`.
+- [x] **Three timed mocks, weight-matched to the real exams**: CCAO-F 60 Q, CCDV-F 53 Q (D2 gets 17), CCAR-P 63 Q (D3 gets 12). Live at `mock-ccao-f-1.html`, `mock-ccdv-f-1.html`, `mock-ccar-p-1.html`.
+- [x] Answer keys collapse behind "Show answer & rationale" on all 26 bank pages.
+- [x] Verified live on Vercel: all routes 200, nav groups present, bank and mock walked in the browser.
+- Note: the parent's fixture cleanup deleted `o1`/`dev1`/`pro1` after their authors had written them; all three were re-authored. Pitfall recorded in the `cert-lane-tutorial` skill.
 
 ### ⏸ Deferred
 - [ ] Refresh the Obsidian `Learning/CCAF/Class/` master-note mirrors — they were mirrored 2026-09-19 and predate the video-series merges (D1 17->27 steps etc.)
