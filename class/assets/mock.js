@@ -28,7 +28,7 @@
   function boot(M) {
     var Q = M.questions || [];
     var timerId = null;
-    document.getElementById('etitle').textContent = 'Mock Exam ' + M.exam;
+    document.getElementById('etitle').textContent = M.title || ('Mock Exam ' + M.exam);
     document.getElementById('esource').textContent = M.source || '';
 
     try {
@@ -40,7 +40,7 @@
     function seal() { S.done = true; S.submitted = true; save(); }
 
     function startScreen() {
-      var h = '<div class="start"><h2>Mock Exam ' + M.exam + '</h2>' +
+      var h = '<div class="start"><h2>' + esc(M.title || ('Mock Exam ' + M.exam)) + '</h2>' +
         '<p>' + Q.length + ' questions, ' + M.minutes + ' minutes, scored overall and by domain. ' +
         'It mirrors the real sitting: no notes, no search, no assistant.</p><ul>' +
         '<li>The clock starts when you press begin and runs until you submit or it expires.</li>' +
