@@ -35,6 +35,11 @@
 - [ ] Push the lane to origin main + Vercel and walk it live
 - [ ] Associate drill banks + a 60-question timed mock, matching the CCAR-F lane
 
+### ⏸ Deferred (explicitly held for later)
+- [ ] **CCDV-F Developer lane** — build out from the Peace Of Code "Claude Certified Developer" series (Ep 01-12, on the same channel, transcripts not yet fetched). Needs its own exam-guide research first (8 domains, 53 items, $125).
+- [ ] **CCAR-P Architect-Professional lane** — build out from the "Claude Certified Architect Professional" series (Ep 01-08, same channel, not fetched). Needs its own exam-guide research first (7 domains, 63 items, $175).
+- [ ] Refresh the Obsidian `Learning/CCAF/Class/` master-note mirrors — they were mirrored 2026-09-19 and predate the video-series merges (D1 17->27 steps etc.)
+
 ### 🔜 Next Steps
 - [ ] Custom domain for Vercel (ccaf2026.com)
 - [ ] CI/CD pipeline setup
