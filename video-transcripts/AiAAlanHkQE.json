@@ -1,0 +1,6693 @@
+{
+ "video_id": "AiAAlanHkQE",
+ "episode": "Ep 08",
+ "title": "Agent Observability, Monitoring & Latency Tradeoffs",
+ "lane": "ccar-p",
+ "segments": [
+  {
+   "start": 1.68,
+   "duration": 5.76,
+   "text": "Welcome to this lesson. So, you know,"
+  },
+  {
+   "start": 5.2,
+   "duration": 4.64,
+   "text": "here's something that sounds a bit"
+  },
+  {
+   "start": 7.44,
+   "duration": 5.199,
+   "text": "strange if you come from traditional"
+  },
+  {
+   "start": 9.84,
+   "duration": 5.679,
+   "text": "backend kind of a work because your"
+  },
+  {
+   "start": 12.639,
+   "duration": 6.64,
+   "text": "clawed system can return a 200 on every"
+  },
+  {
+   "start": 15.519,
+   "duration": 7.361,
+   "text": "single request, keeping its P95 latency."
+  },
+  {
+   "start": 19.279,
+   "duration": 7.76,
+   "text": "That's the response time 95 out of 100"
+  },
+  {
+   "start": 22.88,
+   "duration": 6.96,
+   "text": "requests beat dead flat. Show zero"
+  },
+  {
+   "start": 27.039,
+   "duration": 6.001,
+   "text": "errors on every dashboard you own. and"
+  },
+  {
+   "start": 29.84,
+   "duration": 6.0,
+   "text": "still be wrong on let's say a third of"
+  },
+  {
+   "start": 33.04,
+   "duration": 6.56,
+   "text": "its answers. And nobody finds out until"
+  },
+  {
+   "start": 35.84,
+   "duration": 5.92,
+   "text": "a customer does because think about how"
+  },
+  {
+   "start": 39.6,
+   "duration": 5.2,
+   "text": "regular software fails, right? A a"
+  },
+  {
+   "start": 41.76,
+   "duration": 5.76,
+   "text": "service crashes, a status code kind of"
+  },
+  {
+   "start": 44.8,
+   "duration": 6.16,
+   "text": "goes red, somebody's pager goes off,"
+  },
+  {
+   "start": 47.52,
+   "duration": 6.24,
+   "text": "failure is loud, but with LLM systems,"
+  },
+  {
+   "start": 50.96,
+   "duration": 6.88,
+   "text": "failure is, I would say this as"
+  },
+  {
+   "start": 53.76,
+   "duration": 6.16,
+   "text": "something I would quote it, fluent."
+  },
+  {
+   "start": 57.84,
+   "duration": 4.399,
+   "text": "Now it shows up as a confident"
+  },
+  {
+   "start": 59.92,
+   "duration": 6.4,
+   "text": "beautifully formatted completely wrong"
+  },
+  {
+   "start": 62.239,
+   "duration": 6.24,
+   "text": "answer delivered right on time."
+  },
+  {
+   "start": 66.32,
+   "duration": 5.119,
+   "text": "So that's why what we are going to do"
+  },
+  {
+   "start": 68.479,
+   "duration": 4.96,
+   "text": "today right that how you actually know"
+  },
+  {
+   "start": 71.439,
+   "duration": 5.521,
+   "text": "your system works and how you justify"
+  },
+  {
+   "start": 73.439,
+   "duration": 5.36,
+   "text": "the tradeoffs you make to keep it fast."
+  },
+  {
+   "start": 76.96,
+   "duration": 4.64,
+   "text": "So let's get into it. I hope you"
+  },
+  {
+   "start": 78.799,
+   "duration": 4.881,
+   "text": "understood what I'm talking about over"
+  },
+  {
+   "start": 81.6,
+   "duration": 5.36,
+   "text": "here."
+  },
+  {
+   "start": 83.68,
+   "duration": 5.759,
+   "text": "Now with this we are closing out domain"
+  },
+  {
+   "start": 86.96,
+   "duration": 4.72,
+   "text": "number three. So this is episode number"
+  },
+  {
+   "start": 89.439,
+   "duration": 4.161,
+   "text": "eight and it completes domain three"
+  },
+  {
+   "start": 91.68,
+   "duration": 5.28,
+   "text": "integration which is the heaviest domain"
+  },
+  {
+   "start": 93.6,
+   "duration": 5.44,
+   "text": "on the exam at 19%."
+  },
+  {
+   "start": 96.96,
+   "duration": 4.24,
+   "text": "So we've got three objectives today and"
+  },
+  {
+   "start": 99.04,
+   "duration": 5.039,
+   "text": "you know they they they fit together"
+  },
+  {
+   "start": 101.2,
+   "duration": 5.84,
+   "text": "more tightly than they look on paper."
+  },
+  {
+   "start": 104.079,
+   "duration": 5.04,
+   "text": "Okay. First there's observability."
+  },
+  {
+   "start": 107.04,
+   "duration": 4.48,
+   "text": "basically being able to tell what your"
+  },
+  {
+   "start": 109.119,
+   "duration": 6.0,
+   "text": "system is doing and why from from the"
+  },
+  {
+   "start": 111.52,
+   "duration": 6.639,
+   "text": "outside and specifically what makes it"
+  },
+  {
+   "start": 115.119,
+   "duration": 5.761,
+   "text": "you know hard for LLM systems and which"
+  },
+  {
+   "start": 118.159,
+   "duration": 6.0,
+   "text": "monitoring strategy you pick at scale"
+  },
+  {
+   "start": 120.88,
+   "duration": 5.839,
+   "text": "then accuracy latency trade-offs that is"
+  },
+  {
+   "start": 124.159,
+   "duration": 5.041,
+   "text": "part number two that you see over here"
+  },
+  {
+   "start": 126.719,
+   "duration": 5.681,
+   "text": "where the exam doesn't just want you to"
+  },
+  {
+   "start": 129.2,
+   "duration": 5.84,
+   "text": "make a trade it wants you to justify it"
+  },
+  {
+   "start": 132.4,
+   "duration": 5.12,
+   "text": "and then progressive discovery versus"
+  },
+  {
+   "start": 135.04,
+   "duration": 5.279,
+   "text": "monolithic context which we kind of"
+  },
+  {
+   "start": 137.52,
+   "duration": 5.6,
+   "text": "previewed last episode and we would"
+  },
+  {
+   "start": 140.319,
+   "duration": 7.041,
+   "text": "properly finish that today in this"
+  },
+  {
+   "start": 143.12,
+   "duration": 6.8,
+   "text": "episode. So we are covering uh 3 3.4 3.3"
+  },
+  {
+   "start": 147.36,
+   "duration": 4.8,
+   "text": "and 3.8 of the domain number three."
+  },
+  {
+   "start": 149.92,
+   "duration": 4.64,
+   "text": "These are the objectives. So 3.4 says"
+  },
+  {
+   "start": 152.16,
+   "duration": 5.04,
+   "text": "analyze observability challenges and"
+  },
+  {
+   "start": 154.56,
+   "duration": 5.2,
+   "text": "select monitoring strategies at scale."
+  },
+  {
+   "start": 157.2,
+   "duration": 4.72,
+   "text": "3.3 says evaluate accuracy latency"
+  },
+  {
+   "start": 159.76,
+   "duration": 5.92,
+   "text": "trade-offs and justify configuration"
+  },
+  {
+   "start": 161.92,
+   "duration": 6.0,
+   "text": "decisions. And 3.8 eight says evaluate"
+  },
+  {
+   "start": 165.68,
+   "duration": 5.04,
+   "text": "progressive discovery versus monolithic"
+  },
+  {
+   "start": 167.92,
+   "duration": 6.0,
+   "text": "context strategy. Okay, that's the"
+  },
+  {
+   "start": 170.72,
+   "duration": 6.08,
+   "text": "mapping of the domains uh objectives of"
+  },
+  {
+   "start": 173.92,
+   "duration": 5.36,
+   "text": "the domain and and here's the the thread"
+  },
+  {
+   "start": 176.8,
+   "duration": 6.079,
+   "text": "that ties all three together. You can't"
+  },
+  {
+   "start": 179.28,
+   "duration": 6.64,
+   "text": "justify a trade-off. You can't measure."
+  },
+  {
+   "start": 182.879,
+   "duration": 4.881,
+   "text": "Okay, so we start with observability"
+  },
+  {
+   "start": 185.92,
+   "duration": 4.64,
+   "text": "because it is the thing that makes the"
+  },
+  {
+   "start": 187.76,
+   "duration": 5.839,
+   "text": "other two defensible."
+  },
+  {
+   "start": 190.56,
+   "duration": 5.12,
+   "text": "I hope that's making sense, right?"
+  },
+  {
+   "start": 193.599,
+   "duration": 4.881,
+   "text": "Now loud failures versus fluent"
+  },
+  {
+   "start": 195.68,
+   "duration": 6.0,
+   "text": "failures. So let's start with an analogy"
+  },
+  {
+   "start": 198.48,
+   "duration": 6.56,
+   "text": "or analogy. Think about two ways a car"
+  },
+  {
+   "start": 201.68,
+   "duration": 5.36,
+   "text": "trip can go wrong. I I am a very uh I"
+  },
+  {
+   "start": 205.04,
+   "duration": 5.52,
+   "text": "like road trips and car trips a lot. So"
+  },
+  {
+   "start": 207.04,
+   "duration": 6.32,
+   "text": "that's why this analogy. So see a flat"
+  },
+  {
+   "start": 210.56,
+   "duration": 5.84,
+   "text": "tire is loud. You feel it instantly and"
+  },
+  {
+   "start": 213.36,
+   "duration": 6.4,
+   "text": "you pull over. But a GPS with an"
+  },
+  {
+   "start": 216.4,
+   "duration": 6.0,
+   "text": "outdated map or with regular kind of a"
+  },
+  {
+   "start": 219.76,
+   "duration": 4.64,
+   "text": "failures that we face with Google maps"
+  },
+  {
+   "start": 222.4,
+   "duration": 5.6,
+   "text": "sometimes when you are in the out in the"
+  },
+  {
+   "start": 224.4,
+   "duration": 5.68,
+   "text": "exploring. So I I feel the frustration."
+  },
+  {
+   "start": 228.0,
+   "duration": 5.04,
+   "text": "I know a lot of people do but this"
+  },
+  {
+   "start": 230.08,
+   "duration": 5.519,
+   "text": "example will like help you understand in"
+  },
+  {
+   "start": 233.04,
+   "duration": 4.08,
+   "text": "this context. So but if you have a GPS"
+  },
+  {
+   "start": 235.599,
+   "duration": 3.761,
+   "text": "with an outdated map it gives you"
+  },
+  {
+   "start": 237.12,
+   "duration": 4.96,
+   "text": "turnbyturn instructions in a calm"
+  },
+  {
+   "start": 239.36,
+   "duration": 5.84,
+   "text": "confident voice. turn left, turn right,"
+  },
+  {
+   "start": 242.08,
+   "duration": 5.12,
+   "text": "and keep on following it. And you only"
+  },
+  {
+   "start": 245.2,
+   "duration": 4.319,
+   "text": "found out it is it was wrong when you"
+  },
+  {
+   "start": 247.2,
+   "duration": 5.92,
+   "text": "you've parked in front of a lake instead"
+  },
+  {
+   "start": 249.519,
+   "duration": 5.92,
+   "text": "of the mountain you wanted to visit."
+  },
+  {
+   "start": 253.12,
+   "duration": 6.079,
+   "text": "And yeah, LLM failures are like the GPS,"
+  },
+  {
+   "start": 255.439,
+   "duration": 5.92,
+   "text": "not like the flat tire. Yeah. Now that's"
+  },
+  {
+   "start": 259.199,
+   "duration": 5.521,
+   "text": "exactly why observability for clawed"
+  },
+  {
+   "start": 261.359,
+   "duration": 6.56,
+   "text": "system is its own problem. It's known"
+  },
+  {
+   "start": 264.72,
+   "duration": 7.199,
+   "text": "problem itself and not just add some"
+  },
+  {
+   "start": 267.919,
+   "duration": 6.241,
+   "text": "logging. It won't help. There are um so"
+  },
+  {
+   "start": 271.919,
+   "duration": 4.881,
+   "text": "four challenges that makes it different"
+  },
+  {
+   "start": 274.16,
+   "duration": 5.92,
+   "text": "and they are the list the exam is"
+  },
+  {
+   "start": 276.8,
+   "duration": 6.08,
+   "text": "pointing at when it says analyze"
+  },
+  {
+   "start": 280.08,
+   "duration": 4.48,
+   "text": "observability challenges very simple"
+  },
+  {
+   "start": 282.88,
+   "duration": 3.599,
+   "text": "term but it comes with a lot of"
+  },
+  {
+   "start": 284.56,
+   "duration": 7.199,
+   "text": "complexities."
+  },
+  {
+   "start": 286.479,
+   "duration": 8.561,
+   "text": "So fluent failures a wrong answer still"
+  },
+  {
+   "start": 291.759,
+   "duration": 5.921,
+   "text": "returns 200 with no exception and no"
+  },
+  {
+   "start": 295.04,
+   "duration": 5.599,
+   "text": "error code like the GPS you would you"
+  },
+  {
+   "start": 297.68,
+   "duration": 4.56,
+   "text": "would follow it you would not kind of"
+  },
+  {
+   "start": 300.639,
+   "duration": 3.12,
+   "text": "know it until you are at the wrong"
+  },
+  {
+   "start": 302.24,
+   "duration": 4.64,
+   "text": "location right so that's that's that's"
+  },
+  {
+   "start": 303.759,
+   "duration": 6.401,
+   "text": "the thing nondeterminism"
+  },
+  {
+   "start": 306.88,
+   "duration": 6.319,
+   "text": "that you see over here is the same input"
+  },
+  {
+   "start": 310.16,
+   "duration": 6.0,
+   "text": "can produce different outputs so"
+  },
+  {
+   "start": 313.199,
+   "duration": 5.121,
+   "text": "reproducing one request proves less than"
+  },
+  {
+   "start": 316.16,
+   "duration": 4.0,
+   "text": "you would think and that's the problem"
+  },
+  {
+   "start": 318.32,
+   "duration": 5.439,
+   "text": "that comes with LLM. We all know about"
+  },
+  {
+   "start": 320.16,
+   "duration": 5.92,
+   "text": "that. Fan out. What is fan out? Fan out"
+  },
+  {
+   "start": 323.759,
+   "duration": 5.041,
+   "text": "is one user request becomes retrieval."
+  },
+  {
+   "start": 326.08,
+   "duration": 5.36,
+   "text": "Several model calls and tool calls."
+  },
+  {
+   "start": 328.8,
+   "duration": 4.72,
+   "text": "Yeah. And the failures can hide in any"
+  },
+  {
+   "start": 331.44,
+   "duration": 4.24,
+   "text": "step because a lot of things are"
+  },
+  {
+   "start": 333.52,
+   "duration": 3.679,
+   "text": "happening. Next comes sensitive"
+  },
+  {
+   "start": 335.68,
+   "duration": 4.16,
+   "text": "payloads."
+  },
+  {
+   "start": 337.199,
+   "duration": 5.84,
+   "text": "The most useful debugging data. The"
+  },
+  {
+   "start": 339.84,
+   "duration": 6.96,
+   "text": "prompt and the response is also the most"
+  },
+  {
+   "start": 343.039,
+   "duration": 5.841,
+   "text": "sensitive data you hold."
+  },
+  {
+   "start": 346.8,
+   "duration": 5.6,
+   "text": "Right. So I hope you're making sense in"
+  },
+  {
+   "start": 348.88,
+   "duration": 7.68,
+   "text": "all of these four points. Now that's the"
+  },
+  {
+   "start": 352.4,
+   "duration": 6.16,
+   "text": "last one's a real tension I would say."
+  },
+  {
+   "start": 356.56,
+   "duration": 5.6,
+   "text": "Don't you think? Because the data you"
+  },
+  {
+   "start": 358.56,
+   "duration": 6.079,
+   "text": "most want to look at is exactly the data"
+  },
+  {
+   "start": 362.16,
+   "duration": 5.92,
+   "text": "you are least allowed to keep lying"
+  },
+  {
+   "start": 364.639,
+   "duration": 6.801,
+   "text": "around. But we'll deal with it head on"
+  },
+  {
+   "start": 368.08,
+   "duration": 5.92,
+   "text": "in a couple of more time or minutes. So"
+  },
+  {
+   "start": 371.44,
+   "duration": 4.96,
+   "text": "hold on to that thought. So here the"
+  },
+  {
+   "start": 374.0,
+   "duration": 7.28,
+   "text": "mental model that I want to present is"
+  },
+  {
+   "start": 376.4,
+   "duration": 8.239,
+   "text": "it works in quotations is a demo claim."
+  },
+  {
+   "start": 381.28,
+   "duration": 6.56,
+   "text": "We know it works in quotations is a"
+  },
+  {
+   "start": 384.639,
+   "duration": 5.761,
+   "text": "production claim and only the telemetry"
+  },
+  {
+   "start": 387.84,
+   "duration": 4.32,
+   "text": "data backs it up or telemetry backs it"
+  },
+  {
+   "start": 390.4,
+   "duration": 3.28,
+   "text": "up and what telemetries and all that"
+  },
+  {
+   "start": 392.16,
+   "duration": 3.44,
+   "text": "jargon you would understand in a minute."
+  },
+  {
+   "start": 393.68,
+   "duration": 3.359,
+   "text": "So don't worry about that. So I hope you"
+  },
+  {
+   "start": 395.6,
+   "duration": 3.68,
+   "text": "understand the difference between loud"
+  },
+  {
+   "start": 397.039,
+   "duration": 4.081,
+   "text": "failures versus fluent failures and why"
+  },
+  {
+   "start": 399.28,
+   "duration": 4.96,
+   "text": "fluent failures are common in the world"
+  },
+  {
+   "start": 401.12,
+   "duration": 4.72,
+   "text": "of agents and LLMs."
+  },
+  {
+   "start": 404.24,
+   "duration": 4.799,
+   "text": "Yeah."
+  },
+  {
+   "start": 405.84,
+   "duration": 6.079,
+   "text": "Now let's talk about anatomy of a trace"
+  },
+  {
+   "start": 409.039,
+   "duration": 5.44,
+   "text": "following one request."
+  },
+  {
+   "start": 411.919,
+   "duration": 6.081,
+   "text": "So how do you actually see inside a"
+  },
+  {
+   "start": 414.479,
+   "duration": 5.84,
+   "text": "system like that? You trace it."
+  },
+  {
+   "start": 418.0,
+   "duration": 4.319,
+   "text": "Think about tracking a parcel, right?"
+  },
+  {
+   "start": 420.319,
+   "duration": 5.6,
+   "text": "You don't just get delivered at the end."
+  },
+  {
+   "start": 422.319,
+   "duration": 6.401,
+   "text": "you get every scan along the way"
+  },
+  {
+   "start": 425.919,
+   "duration": 4.4,
+   "text": "picked up, you know, sorted out for"
+  },
+  {
+   "start": 428.72,
+   "duration": 4.8,
+   "text": "delivery, all of these things. A trace"
+  },
+  {
+   "start": 430.319,
+   "duration": 6.561,
+   "text": "is that for one user request."
+  },
+  {
+   "start": 433.52,
+   "duration": 5.44,
+   "text": "So, let me kind of picture that in your"
+  },
+  {
+   "start": 436.88,
+   "duration": 5.12,
+   "text": "minds."
+  },
+  {
+   "start": 438.96,
+   "duration": 6.88,
+   "text": "So, here's the key idea. Every step"
+  },
+  {
+   "start": 442.0,
+   "duration": 6.319,
+   "text": "becomes a span, a timed label box inside"
+  },
+  {
+   "start": 445.84,
+   "duration": 5.359,
+   "text": "the trace."
+  },
+  {
+   "start": 448.319,
+   "duration": 6.481,
+   "text": "Okay, picture it like that. And they all"
+  },
+  {
+   "start": 451.199,
+   "duration": 6.481,
+   "text": "share one trace ID."
+  },
+  {
+   "start": 454.8,
+   "duration": 6.72,
+   "text": "This one over here that you see"
+  },
+  {
+   "start": 457.68,
+   "duration": 6.56,
+   "text": "the model call spans carry the details"
+  },
+  {
+   "start": 461.52,
+   "duration": 5.04,
+   "text": "that matter which model the effort"
+  },
+  {
+   "start": 464.24,
+   "duration": 5.2,
+   "text": "setting input and output tokens how many"
+  },
+  {
+   "start": 466.56,
+   "duration": 5.039,
+   "text": "tokens came from the prompt cache time"
+  },
+  {
+   "start": 469.44,
+   "duration": 4.64,
+   "text": "to the first token"
+  },
+  {
+   "start": 471.599,
+   "duration": 4.88,
+   "text": "the stop reason and the API's request"
+  },
+  {
+   "start": 474.08,
+   "duration": 4.48,
+   "text": "ID. So these are all the relevant"
+  },
+  {
+   "start": 476.479,
+   "duration": 5.201,
+   "text": "details that you want. And honestly,"
+  },
+  {
+   "start": 478.56,
+   "duration": 7.6,
+   "text": "this isn't hypothetical because Claude"
+  },
+  {
+   "start": 481.68,
+   "duration": 7.44,
+   "text": "code's own open telemetry export"
+  },
+  {
+   "start": 486.16,
+   "duration": 5.599,
+   "text": "which is open telemetry basically being"
+  },
+  {
+   "start": 489.12,
+   "duration": 6.479,
+   "text": "the open standard most monitoring tools"
+  },
+  {
+   "start": 491.759,
+   "duration": 6.401,
+   "text": "speak works exactly this way."
+  },
+  {
+   "start": 495.599,
+   "duration": 6.32,
+   "text": "Yeah. So everything is associated back"
+  },
+  {
+   "start": 498.16,
+   "duration": 6.319,
+   "text": "to a trace and a trace ID."
+  },
+  {
+   "start": 501.919,
+   "duration": 5.68,
+   "text": "Yeah. Now"
+  },
+  {
+   "start": 504.479,
+   "duration": 5.521,
+   "text": "the thing is a root. So it works exactly"
+  },
+  {
+   "start": 507.599,
+   "duration": 5.12,
+   "text": "this way right that open telem thing. So"
+  },
+  {
+   "start": 510.0,
+   "duration": 6.0,
+   "text": "a root span per user prompt child spans"
+  },
+  {
+   "start": 512.719,
+   "duration": 6.961,
+   "text": "for each model request and each tool"
+  },
+  {
+   "start": 516.0,
+   "duration": 7.68,
+   "text": "call and a prompt ID that ties every"
+  },
+  {
+   "start": 519.68,
+   "duration": 6.96,
+   "text": "agent from one prompt together."
+  },
+  {
+   "start": 523.68,
+   "duration": 4.88,
+   "text": "So tracing there is still marked beta"
+  },
+  {
+   "start": 526.64,
+   "duration": 5.04,
+   "text": "but the shape is the lesson that we want"
+  },
+  {
+   "start": 528.56,
+   "duration": 5.839,
+   "text": "to kind of catch it over here."
+  },
+  {
+   "start": 531.68,
+   "duration": 7.279,
+   "text": "Yeah. So in your own app, the messages"
+  },
+  {
+   "start": 534.399,
+   "duration": 6.241,
+   "text": "API hands you a usage block, right? I I"
+  },
+  {
+   "start": 538.959,
+   "duration": 4.721,
+   "text": "would obviously show you the messages"
+  },
+  {
+   "start": 540.64,
+   "duration": 4.96,
+   "text": "API. So it would be um kind of a footage"
+  },
+  {
+   "start": 543.68,
+   "duration": 4.0,
+   "text": "from my clot developer series, but you"
+  },
+  {
+   "start": 545.6,
+   "duration": 4.0,
+   "text": "would actually know the the blocks that"
+  },
+  {
+   "start": 547.68,
+   "duration": 3.44,
+   "text": "you receive from the raw messages API"
+  },
+  {
+   "start": 549.6,
+   "duration": 3.6,
+   "text": "and you would understand it much more"
+  },
+  {
+   "start": 551.12,
+   "duration": 4.88,
+   "text": "better. It's not needed for this"
+  },
+  {
+   "start": 553.2,
+   "duration": 5.04,
+   "text": "examination for this particular um"
+  },
+  {
+   "start": 556.0,
+   "duration": 5.36,
+   "text": "certification, but still knowing more is"
+  },
+  {
+   "start": 558.24,
+   "duration": 6.64,
+   "text": "always the better, right? Anyways, so"
+  },
+  {
+   "start": 561.36,
+   "duration": 5.36,
+   "text": "back to it. So, um, so there is a prompt"
+  },
+  {
+   "start": 564.88,
+   "duration": 5.04,
+   "text": "ID that I discussed that ties every"
+  },
+  {
+   "start": 566.72,
+   "duration": 6.64,
+   "text": "event from one prompt together and"
+  },
+  {
+   "start": 569.92,
+   "duration": 5.28,
+   "text": "tracing is still marked as beta. But as"
+  },
+  {
+   "start": 573.36,
+   "duration": 4.479,
+   "text": "I mentioned in your own app, the"
+  },
+  {
+   "start": 575.2,
+   "duration": 4.88,
+   "text": "messages API hands you a usage block,"
+  },
+  {
+   "start": 577.839,
+   "duration": 5.12,
+   "text": "right? And a request ID on every"
+  },
+  {
+   "start": 580.08,
+   "duration": 4.319,
+   "text": "response. So log both every time and"
+  },
+  {
+   "start": 582.959,
+   "duration": 3.761,
+   "text": "that will help you in your"
+  },
+  {
+   "start": 584.399,
+   "duration": 5.601,
+   "text": "observability."
+  },
+  {
+   "start": 586.72,
+   "duration": 5.92,
+   "text": "So what does I I so I explained to you"
+  },
+  {
+   "start": 590.0,
+   "duration": 5.12,
+   "text": "there is a trace and each step is a span"
+  },
+  {
+   "start": 592.64,
+   "duration": 5.12,
+   "text": "you know retrieval model calls tool"
+  },
+  {
+   "start": 595.12,
+   "duration": 5.2,
+   "text": "calls validation then there is one more"
+  },
+  {
+   "start": 597.76,
+   "duration": 4.56,
+   "text": "thing that is model call spans right"
+  },
+  {
+   "start": 600.32,
+   "duration": 3.76,
+   "text": "because see this is this is model calls"
+  },
+  {
+   "start": 602.32,
+   "duration": 5.199,
+   "text": "and there is one more model call just"
+  },
+  {
+   "start": 604.08,
+   "duration": 5.52,
+   "text": "imagine it like a child of this right so"
+  },
+  {
+   "start": 607.519,
+   "duration": 4.241,
+   "text": "model calls if it is an array then each"
+  },
+  {
+   "start": 609.6,
+   "duration": 4.72,
+   "text": "model call would be an object I would"
+  },
+  {
+   "start": 611.76,
+   "duration": 4.72,
+   "text": "say so model call spans model effort"
+  },
+  {
+   "start": 614.32,
+   "duration": 4.88,
+   "text": "tokens cache reads time to first token"
+  },
+  {
+   "start": 616.48,
+   "duration": 5.28,
+   "text": "stop reason and request ID and the real"
+  },
+  {
+   "start": 619.2,
+   "duration": 6.079,
+   "text": "example of this structure that whoever"
+  },
+  {
+   "start": 621.76,
+   "duration": 5.04,
+   "text": "is using is the open telemetry"
+  },
+  {
+   "start": 625.279,
+   "duration": 3.521,
+   "text": "I hope that's making sense I'm repeating"
+  },
+  {
+   "start": 626.8,
+   "duration": 5.12,
+   "text": "it again and again so it kind of builds"
+  },
+  {
+   "start": 628.8,
+   "duration": 5.599,
+   "text": "a picture in your mind so what does it"
+  },
+  {
+   "start": 631.92,
+   "duration": 4.4,
+   "text": "mean it means when latency spikes the"
+  },
+  {
+   "start": 634.399,
+   "duration": 4.161,
+   "text": "waterfall shows you this is by the way"
+  },
+  {
+   "start": 636.32,
+   "duration": 4.079,
+   "text": "is the waterfall this is in a waterfall"
+  },
+  {
+   "start": 638.56,
+   "duration": 4.48,
+   "text": "kind of a format so I'm just mentioning"
+  },
+  {
+   "start": 640.399,
+   "duration": 6.081,
+   "text": "it as waterfall so the waterfall shows"
+  },
+  {
+   "start": 643.04,
+   "duration": 5.28,
+   "text": "you which span grew Right? And when an"
+  },
+  {
+   "start": 646.48,
+   "duration": 4.88,
+   "text": "answer is wrong, the trace tells you"
+  },
+  {
+   "start": 648.32,
+   "duration": 5.36,
+   "text": "whether retrieval fed the model garbage"
+  },
+  {
+   "start": 651.36,
+   "duration": 5.039,
+   "text": "or the model ignored good context."
+  },
+  {
+   "start": 653.68,
+   "duration": 5.599,
+   "text": "That's the investigate retrieval first"
+  },
+  {
+   "start": 656.399,
+   "duration": 5.44,
+   "text": "in quotations. Move from episode number"
+  },
+  {
+   "start": 659.279,
+   "duration": 8.401,
+   "text": "six if you remember. And you can only"
+  },
+  {
+   "start": 661.839,
+   "duration": 8.321,
+   "text": "make it if retrieval is its own span."
+  },
+  {
+   "start": 667.68,
+   "duration": 5.52,
+   "text": "Yeah, that I hope that's making sense."
+  },
+  {
+   "start": 670.16,
+   "duration": 6.0,
+   "text": "Now the key fact is correlation ids are"
+  },
+  {
+   "start": 673.2,
+   "duration": 6.079,
+   "text": "the backbone of LLM observability."
+  },
+  {
+   "start": 676.16,
+   "duration": 5.919,
+   "text": "Okay, one trace ID per user request plus"
+  },
+  {
+   "start": 679.279,
+   "duration": 5.761,
+   "text": "the API's request ID for every model"
+  },
+  {
+   "start": 682.079,
+   "duration": 4.721,
+   "text": "call inside it. Okay, so I hope that's"
+  },
+  {
+   "start": 685.04,
+   "duration": 3.84,
+   "text": "making sense. You would learn more as we"
+  },
+  {
+   "start": 686.8,
+   "duration": 4.56,
+   "text": "move forward. But I hope that paints a"
+  },
+  {
+   "start": 688.88,
+   "duration": 5.199,
+   "text": "picture what to log and what never to"
+  },
+  {
+   "start": 691.36,
+   "duration": 5.36,
+   "text": "log. So now that we know the shape of a"
+  },
+  {
+   "start": 694.079,
+   "duration": 7.2,
+   "text": "trace, what actually goes inside each"
+  },
+  {
+   "start": 696.72,
+   "duration": 8.0,
+   "text": "span? Now I had covered something in my"
+  },
+  {
+   "start": 701.279,
+   "duration": 5.201,
+   "text": "cloud developer series right uh course"
+  },
+  {
+   "start": 704.72,
+   "duration": 3.28,
+   "text": "and I'm going to show you that right now"
+  },
+  {
+   "start": 706.48,
+   "duration": 4.799,
+   "text": "so you don't have to worry about going"
+  },
+  {
+   "start": 708.0,
+   "duration": 6.64,
+   "text": "and watching that particular uh video."
+  },
+  {
+   "start": 711.279,
+   "duration": 6.481,
+   "text": "So I had already shown the seed of this"
+  },
+  {
+   "start": 714.64,
+   "duration": 6.08,
+   "text": "okay we tracked the token cost per run"
+  },
+  {
+   "start": 717.76,
+   "duration": 5.199,
+   "text": "at production scale and that seed grows"
+  },
+  {
+   "start": 720.72,
+   "duration": 4.799,
+   "text": "into a proper logging contract. So what"
+  },
+  {
+   "start": 722.959,
+   "duration": 4.32,
+   "text": "I have done is I have taken a very small"
+  },
+  {
+   "start": 725.519,
+   "duration": 3.12,
+   "text": "screenshot from that particular video"
+  },
+  {
+   "start": 727.279,
+   "duration": 5.201,
+   "text": "because this is what you need to"
+  },
+  {
+   "start": 728.639,
+   "duration": 6.241,
+   "text": "understand. So here if you see uh as I"
+  },
+  {
+   "start": 732.48,
+   "duration": 5.919,
+   "text": "was explaining the claude agent SDK I"
+  },
+  {
+   "start": 734.88,
+   "duration": 6.399,
+   "text": "had ran very simple code snippet where I"
+  },
+  {
+   "start": 738.399,
+   "duration": 4.481,
+   "text": "just ran a query using the query method"
+  },
+  {
+   "start": 741.279,
+   "duration": 4.481,
+   "text": "which is imported from the cloud agent"
+  },
+  {
+   "start": 742.88,
+   "duration": 5.68,
+   "text": "SDK. So I just said as a send the prompt"
+  },
+  {
+   "start": 745.76,
+   "duration": 5.6,
+   "text": "in what is 2 +2 and then I printed the"
+  },
+  {
+   "start": 748.56,
+   "duration": 6.88,
+   "text": "message. Now this this section that you"
+  },
+  {
+   "start": 751.36,
+   "duration": 6.159,
+   "text": "see is a a load of information and it"
+  },
+  {
+   "start": 755.44,
+   "duration": 4.079,
+   "text": "will help you in this tracking as well"
+  },
+  {
+   "start": 757.519,
+   "duration": 4.161,
+   "text": "that we are discussing. You can also"
+  },
+  {
+   "start": 759.519,
+   "duration": 5.12,
+   "text": "calculate token usage per run and all"
+  },
+  {
+   "start": 761.68,
+   "duration": 4.88,
+   "text": "lot of things. So if you have uh see"
+  },
+  {
+   "start": 764.639,
+   "duration": 5.281,
+   "text": "over here there are a lot of blocks over"
+  },
+  {
+   "start": 766.56,
+   "duration": 4.8,
+   "text": "here. There is system message block"
+  },
+  {
+   "start": 769.92,
+   "duration": 3.44,
+   "text": "there is assistant message block"
+  },
+  {
+   "start": 771.36,
+   "duration": 4.4,
+   "text": "basically what the assistant or the LLM"
+  },
+  {
+   "start": 773.36,
+   "duration": 4.4,
+   "text": "returned back to you. And if you see"
+  },
+  {
+   "start": 775.76,
+   "duration": 4.079,
+   "text": "there is also some nested blocks and"
+  },
+  {
+   "start": 777.76,
+   "duration": 5.6,
+   "text": "inside the assistant message block there"
+  },
+  {
+   "start": 779.839,
+   "duration": 6.401,
+   "text": "is a text block which says the answer is"
+  },
+  {
+   "start": 783.36,
+   "duration": 4.719,
+   "text": "four. Obviously 2 + 2 is four. So that"
+  },
+  {
+   "start": 786.24,
+   "duration": 4.159,
+   "text": "is the answer of the prompt that"
+  },
+  {
+   "start": 788.079,
+   "duration": 6.0,
+   "text": "actually got returned back. This is the"
+  },
+  {
+   "start": 790.399,
+   "duration": 6.481,
+   "text": "model information and uh there if there"
+  },
+  {
+   "start": 794.079,
+   "duration": 5.361,
+   "text": "are any tool usage then there is this"
+  },
+  {
+   "start": 796.88,
+   "duration": 6.48,
+   "text": "tokens usage that you see over here and"
+  },
+  {
+   "start": 799.44,
+   "duration": 6.16,
+   "text": "it also shows the output tokens u the"
+  },
+  {
+   "start": 803.36,
+   "duration": 4.32,
+   "text": "service tier and the stop reason"
+  },
+  {
+   "start": 805.6,
+   "duration": 7.679,
+   "text": "information that we talked about right"
+  },
+  {
+   "start": 807.68,
+   "duration": 7.92,
+   "text": "and um the total cost in USD and if you"
+  },
+  {
+   "start": 813.279,
+   "duration": 7.041,
+   "text": "see it also gives you information about"
+  },
+  {
+   "start": 815.6,
+   "duration": 7.2,
+   "text": "the cash you know cash red inut tokens."
+  },
+  {
+   "start": 820.32,
+   "duration": 4.319,
+   "text": "Basically, these are if if the cache was"
+  },
+  {
+   "start": 822.8,
+   "duration": 3.92,
+   "text": "hit or not. I think we had discussed"
+  },
+  {
+   "start": 824.639,
+   "duration": 4.401,
+   "text": "about prompt caching a few episodes back"
+  },
+  {
+   "start": 826.72,
+   "duration": 3.919,
+   "text": "or previously in this course only. So,"
+  },
+  {
+   "start": 829.04,
+   "duration": 3.359,
+   "text": "you would have more information. It also"
+  },
+  {
+   "start": 830.639,
+   "duration": 3.681,
+   "text": "gives you information about the session"
+  },
+  {
+   "start": 832.399,
+   "duration": 4.321,
+   "text": "ID."
+  },
+  {
+   "start": 834.32,
+   "duration": 4.4,
+   "text": "Everything is over here."
+  },
+  {
+   "start": 836.72,
+   "duration": 5.2,
+   "text": "Now, why I'm showing you this message"
+  },
+  {
+   "start": 838.72,
+   "duration": 5.52,
+   "text": "block? Why it is necessary?"
+  },
+  {
+   "start": 841.92,
+   "duration": 4.64,
+   "text": "Because that connects back to what we"
+  },
+  {
+   "start": 844.24,
+   "duration": 4.159,
+   "text": "are discussing over here. If you see"
+  },
+  {
+   "start": 846.56,
+   "duration": 4.0,
+   "text": "this table,"
+  },
+  {
+   "start": 848.399,
+   "duration": 4.56,
+   "text": "you would understand what do you log on"
+  },
+  {
+   "start": 850.56,
+   "duration": 4.8,
+   "text": "every request."
+  },
+  {
+   "start": 852.959,
+   "duration": 4.481,
+   "text": "So if you talk about trace ID plus API"
+  },
+  {
+   "start": 855.36,
+   "duration": 4.479,
+   "text": "request ID,"
+  },
+  {
+   "start": 857.44,
+   "duration": 4.72,
+   "text": "it earns its place in the logging"
+  },
+  {
+   "start": 859.839,
+   "duration": 3.521,
+   "text": "because it kind of stitch steps"
+  },
+  {
+   "start": 862.16,
+   "duration": 4.88,
+   "text": "together. If you remember this"
+  },
+  {
+   "start": 863.36,
+   "duration": 6.88,
+   "text": "waterfall, you need the trace ID, right?"
+  },
+  {
+   "start": 867.04,
+   "duration": 5.68,
+   "text": "So you need because it kind of keeps"
+  },
+  {
+   "start": 870.24,
+   "duration": 4.56,
+   "text": "everything together. Hand request ID to"
+  },
+  {
+   "start": 872.72,
+   "duration": 4.559,
+   "text": "support when something's off. then they"
+  },
+  {
+   "start": 874.8,
+   "duration": 6.479,
+   "text": "will be able to trace it back."
+  },
+  {
+   "start": 877.279,
+   "duration": 7.761,
+   "text": "Yeah. Model effort and prompt config"
+  },
+  {
+   "start": 881.279,
+   "duration": 5.761,
+   "text": "version it is necessary because it"
+  },
+  {
+   "start": 885.04,
+   "duration": 6.08,
+   "text": "explain a behavior change after a"
+  },
+  {
+   "start": 887.04,
+   "duration": 7.12,
+   "text": "deploy. So that is also needs to be log"
+  },
+  {
+   "start": 891.12,
+   "duration": 5.2,
+   "text": "log on every request and you will you"
+  },
+  {
+   "start": 894.16,
+   "duration": 4.64,
+   "text": "will able to get a lot of information in"
+  },
+  {
+   "start": 896.32,
+   "duration": 5.519,
+   "text": "every request from this block itself."
+  },
+  {
+   "start": 898.8,
+   "duration": 6.24,
+   "text": "Maybe other stuffs you need to append to"
+  },
+  {
+   "start": 901.839,
+   "duration": 6.081,
+   "text": "the log but 90% of the information you"
+  },
+  {
+   "start": 905.04,
+   "duration": 5.12,
+   "text": "would get from this piece of"
+  },
+  {
+   "start": 907.92,
+   "duration": 4.96,
+   "text": "information. Okay. So this is nothing"
+  },
+  {
+   "start": 910.16,
+   "duration": 4.64,
+   "text": "but every run right every call to the"
+  },
+  {
+   "start": 912.88,
+   "duration": 5.04,
+   "text": "LLM you are getting this information."
+  },
+  {
+   "start": 914.8,
+   "duration": 5.52,
+   "text": "That's it simple to understand. Now"
+  },
+  {
+   "start": 917.92,
+   "duration": 4.56,
+   "text": "talking about tokens, we we saw the"
+  },
+  {
+   "start": 920.32,
+   "duration": 5.04,
+   "text": "input output tokens, if the cash was hit"
+  },
+  {
+   "start": 922.48,
+   "duration": 5.919,
+   "text": "or not, all these things, right? We need"
+  },
+  {
+   "start": 925.36,
+   "duration": 5.76,
+   "text": "that because cost per request and cache"
+  },
+  {
+   "start": 928.399,
+   "duration": 5.44,
+   "text": "health. Yeah, if it is using too much"
+  },
+  {
+   "start": 931.12,
+   "duration": 5.44,
+   "text": "tokens, we need to know the reason why,"
+  },
+  {
+   "start": 933.839,
+   "duration": 4.641,
+   "text": "right? And we also need to see the cache"
+  },
+  {
+   "start": 936.56,
+   "duration": 3.36,
+   "text": "health if it is being misused or there"
+  },
+  {
+   "start": 938.48,
+   "duration": 3.12,
+   "text": "is stale information or something like"
+  },
+  {
+   "start": 939.92,
+   "duration": 4.8,
+   "text": "that."
+  },
+  {
+   "start": 941.6,
+   "duration": 6.72,
+   "text": "Next comes latency per step plus time to"
+  },
+  {
+   "start": 944.72,
+   "duration": 5.84,
+   "text": "the first token. So we will find the"
+  },
+  {
+   "start": 948.32,
+   "duration": 6.639,
+   "text": "slow span. That's why it is necessary"
+  },
+  {
+   "start": 950.56,
+   "duration": 6.8,
+   "text": "for logging. Tool calls name, success,"
+  },
+  {
+   "start": 954.959,
+   "duration": 4.161,
+   "text": "duration, error type. Tool calls is the"
+  },
+  {
+   "start": 957.36,
+   "duration": 3.76,
+   "text": "most important information to log"
+  },
+  {
+   "start": 959.12,
+   "duration": 5.519,
+   "text": "because it will help you in failure"
+  },
+  {
+   "start": 961.12,
+   "duration": 5.6,
+   "text": "analysis and usage audits. If you"
+  },
+  {
+   "start": 964.639,
+   "duration": 4.56,
+   "text": "remember episode number seven, you would"
+  },
+  {
+   "start": 966.72,
+   "duration": 4.64,
+   "text": "get the answer to the question has this"
+  },
+  {
+   "start": 969.199,
+   "duration": 3.921,
+   "text": "tool has been used. You would get that"
+  },
+  {
+   "start": 971.36,
+   "duration": 4.159,
+   "text": "information because it all the tool"
+  },
+  {
+   "start": 973.12,
+   "duration": 4.88,
+   "text": "information also comes in every request."
+  },
+  {
+   "start": 975.519,
+   "duration": 4.961,
+   "text": "I think I had shown you that somewhere."
+  },
+  {
+   "start": 978.0,
+   "duration": 5.36,
+   "text": "It's kind of messed around there. So I"
+  },
+  {
+   "start": 980.48,
+   "duration": 5.52,
+   "text": "showed you but you would get that. Now"
+  },
+  {
+   "start": 983.36,
+   "duration": 5.44,
+   "text": "talking about retrieval doc ID scores"
+  },
+  {
+   "start": 986.0,
+   "duration": 5.199,
+   "text": "index version. Do you need to log that?"
+  },
+  {
+   "start": 988.8,
+   "duration": 4.719,
+   "text": "Yes. It earns its place because you"
+  },
+  {
+   "start": 991.199,
+   "duration": 6.601,
+   "text": "would be able to diagnose rag"
+  },
+  {
+   "start": 993.519,
+   "duration": 4.281,
+   "text": "degradation after a requ."
+  },
+  {
+   "start": 998.8,
+   "duration": 4.64,
+   "text": "Yeah, because if you remember for"
+  },
+  {
+   "start": 1000.72,
+   "duration": 4.239,
+   "text": "debugging a rag pipeline, we had"
+  },
+  {
+   "start": 1003.44,
+   "duration": 2.959,
+   "text": "discussed that how to do that in the"
+  },
+  {
+   "start": 1004.959,
+   "duration": 3.521,
+   "text": "previous episode. I think previous or"
+  },
+  {
+   "start": 1006.399,
+   "duration": 4.401,
+   "text": "previous to previous episode when we"
+  },
+  {
+   "start": 1008.48,
+   "duration": 5.039,
+   "text": "were discussing about rag pipelines. I"
+  },
+  {
+   "start": 1010.8,
+   "duration": 5.36,
+   "text": "think it was episode number six I guess."
+  },
+  {
+   "start": 1013.519,
+   "duration": 4.56,
+   "text": "Yeah, just have a look in the playlist."
+  },
+  {
+   "start": 1016.16,
+   "duration": 4.239,
+   "text": "So it's very important for that. Next"
+  },
+  {
+   "start": 1018.079,
+   "duration": 4.401,
+   "text": "talking about stop, reason, refusal and"
+  },
+  {
+   "start": 1020.399,
+   "duration": 5.92,
+   "text": "retries. It's very very important"
+  },
+  {
+   "start": 1022.48,
+   "duration": 6.8,
+   "text": "because you can catch truncation and"
+  },
+  {
+   "start": 1026.319,
+   "duration": 4.961,
+   "text": "edge case behavior. So these are all the"
+  },
+  {
+   "start": 1029.28,
+   "duration": 5.039,
+   "text": "information that you would if you log on"
+  },
+  {
+   "start": 1031.28,
+   "duration": 5.279,
+   "text": "every request you would be your your"
+  },
+  {
+   "start": 1034.319,
+   "duration": 4.0,
+   "text": "debugging and your tracing becomes a lot"
+  },
+  {
+   "start": 1036.559,
+   "duration": 4.561,
+   "text": "easier."
+  },
+  {
+   "start": 1038.319,
+   "duration": 4.88,
+   "text": "Now here's the part people skip a lot."
+  },
+  {
+   "start": 1041.12,
+   "duration": 4.0,
+   "text": "Now you understood this logic and how it"
+  },
+  {
+   "start": 1043.199,
+   "duration": 4.321,
+   "text": "connected back and everything. Right?"
+  },
+  {
+   "start": 1045.12,
+   "duration": 4.559,
+   "text": "See raw personal data doesn't belong in"
+  },
+  {
+   "start": 1047.52,
+   "duration": 4.56,
+   "text": "your general logs."
+  },
+  {
+   "start": 1049.679,
+   "duration": 4.24,
+   "text": "That is true for any API logs or any"
+  },
+  {
+   "start": 1052.08,
+   "duration": 5.599,
+   "text": "kind of cloud logging or whatever."
+  },
+  {
+   "start": 1053.919,
+   "duration": 6.241,
+   "text": "Right? Simple and straight. You do not"
+  },
+  {
+   "start": 1057.679,
+   "duration": 4.88,
+   "text": "add names, not emails, no account"
+  },
+  {
+   "start": 1060.16,
+   "duration": 4.72,
+   "text": "numbers, and not full prompts and"
+  },
+  {
+   "start": 1062.559,
+   "duration": 4.0,
+   "text": "responses sitting in a log index. Half"
+  },
+  {
+   "start": 1064.88,
+   "duration": 5.52,
+   "text": "the company can search. You don't do"
+  },
+  {
+   "start": 1066.559,
+   "duration": 7.36,
+   "text": "that. Instead, you redact or hash"
+  },
+  {
+   "start": 1070.4,
+   "duration": 6.639,
+   "text": "identifiers. You log lengths and IDs"
+  },
+  {
+   "start": 1073.919,
+   "duration": 5.601,
+   "text": "rather than content. And when you truly"
+  },
+  {
+   "start": 1077.039,
+   "duration": 4.961,
+   "text": "need full conversations for you know"
+  },
+  {
+   "start": 1079.52,
+   "duration": 5.279,
+   "text": "debugging you capture them on a separate"
+  },
+  {
+   "start": 1082.0,
+   "duration": 6.24,
+   "text": "path that's sampled access controlled"
+  },
+  {
+   "start": 1084.799,
+   "duration": 5.281,
+   "text": "and deleted on a schedule."
+  },
+  {
+   "start": 1088.24,
+   "duration": 4.24,
+   "text": "Okay."
+  },
+  {
+   "start": 1090.08,
+   "duration": 7.2,
+   "text": "So the thing is you need to understand"
+  },
+  {
+   "start": 1092.48,
+   "duration": 7.76,
+   "text": "is metadata always content by exception"
+  },
+  {
+   "start": 1097.28,
+   "duration": 5.2,
+   "text": "content should not go there. Anyways you"
+  },
+  {
+   "start": 1100.24,
+   "duration": 4.72,
+   "text": "know what I like here cloud code does"
+  },
+  {
+   "start": 1102.48,
+   "duration": 5.68,
+   "text": "this by default. So it's telemetry"
+  },
+  {
+   "start": 1104.96,
+   "duration": 6.079,
+   "text": "redacts prompt text and tool details"
+  },
+  {
+   "start": 1108.16,
+   "duration": 5.44,
+   "text": "unless you know someone explicitly opts"
+  },
+  {
+   "start": 1111.039,
+   "duration": 4.481,
+   "text": "it in. That's the posture to copy."
+  },
+  {
+   "start": 1113.6,
+   "duration": 6.0,
+   "text": "Content capture should be a decision"
+  },
+  {
+   "start": 1115.52,
+   "duration": 5.68,
+   "text": "somebody makes on purpose. It's not by"
+  },
+  {
+   "start": 1119.6,
+   "duration": 3.6,
+   "text": "default."
+  },
+  {
+   "start": 1121.2,
+   "duration": 4.479,
+   "text": "Yeah. So if you compare it to the exam"
+  },
+  {
+   "start": 1123.2,
+   "duration": 4.24,
+   "text": "map 3.4 says analyze observability"
+  },
+  {
+   "start": 1125.679,
+   "duration": 3.601,
+   "text": "challenges all the things that we kind"
+  },
+  {
+   "start": 1127.44,
+   "duration": 4.8,
+   "text": "of discussed right now and select"
+  },
+  {
+   "start": 1129.28,
+   "duration": 4.88,
+   "text": "monitoring strategies at scale."
+  },
+  {
+   "start": 1132.24,
+   "duration": 5.84,
+   "text": "term domain number three it's"
+  },
+  {
+   "start": 1134.16,
+   "duration": 6.24,
+   "text": "integration. So the don't log raw PII"
+  },
+  {
+   "start": 1138.08,
+   "duration": 5.839,
+   "text": "rule that is personal information is"
+  },
+  {
+   "start": 1140.4,
+   "duration": 5.68,
+   "text": "where observability meets 5.4 from"
+  },
+  {
+   "start": 1143.919,
+   "duration": 4.801,
+   "text": "domain number five and objective number"
+  },
+  {
+   "start": 1146.08,
+   "duration": 4.64,
+   "text": "four it says ensure compliance with"
+  },
+  {
+   "start": 1148.72,
+   "duration": 4.16,
+   "text": "regulation. So everything is"
+  },
+  {
+   "start": 1150.72,
+   "duration": 4.319,
+   "text": "interconnected."
+  },
+  {
+   "start": 1152.88,
+   "duration": 4.24,
+   "text": "Okay. And domain number five we're going"
+  },
+  {
+   "start": 1155.039,
+   "duration": 3.921,
+   "text": "to obviously cover that in the later"
+  },
+  {
+   "start": 1157.12,
+   "duration": 3.76,
+   "text": "episodes. Domain number five is"
+  },
+  {
+   "start": 1158.96,
+   "duration": 6.16,
+   "text": "governance, safety and risk management."
+  },
+  {
+   "start": 1160.88,
+   "duration": 5.76,
+   "text": "and it covers 14% of the exam. So, make"
+  },
+  {
+   "start": 1165.12,
+   "duration": 3.76,
+   "text": "sure that you are understanding this"
+  },
+  {
+   "start": 1166.64,
+   "duration": 3.84,
+   "text": "concept as we move in to the further"
+  },
+  {
+   "start": 1168.88,
+   "duration": 4.48,
+   "text": "domains."
+  },
+  {
+   "start": 1170.48,
+   "duration": 6.24,
+   "text": "Got it? Cool. Now, talking about"
+  },
+  {
+   "start": 1173.36,
+   "duration": 5.439,
+   "text": "monitoring at scale, traces, metrics,"
+  },
+  {
+   "start": 1176.72,
+   "duration": 4.16,
+   "text": "quality. Okay. So, you've got a good"
+  },
+  {
+   "start": 1178.799,
+   "duration": 4.641,
+   "text": "data per request, but at scale with"
+  },
+  {
+   "start": 1180.88,
+   "duration": 5.76,
+   "text": "millions of requests, you can't read"
+  },
+  {
+   "start": 1183.44,
+   "duration": 5.119,
+   "text": "traces one by one, right? So, think"
+  },
+  {
+   "start": 1186.64,
+   "duration": 4.399,
+   "text": "about a hospital. There's individual"
+  },
+  {
+   "start": 1188.559,
+   "duration": 4.641,
+   "text": "patient chart. There's the ward board"
+  },
+  {
+   "start": 1191.039,
+   "duration": 4.161,
+   "text": "showing everyone's vitals at glance. And"
+  },
+  {
+   "start": 1193.2,
+   "duration": 4.88,
+   "text": "there's the audit where a senior doctor"
+  },
+  {
+   "start": 1195.2,
+   "duration": 5.04,
+   "text": "pulls a sample of cases and checks the"
+  },
+  {
+   "start": 1198.08,
+   "duration": 7.599,
+   "text": "calls for right. You need all three of"
+  },
+  {
+   "start": 1200.24,
+   "duration": 8.96,
+   "text": "them. Traces, metrics, and quality."
+  },
+  {
+   "start": 1205.679,
+   "duration": 5.201,
+   "text": "So traces are the chart. If you compare"
+  },
+  {
+   "start": 1209.2,
+   "duration": 5.359,
+   "text": "it with the example that I just gave,"
+  },
+  {
+   "start": 1210.88,
+   "duration": 7.52,
+   "text": "they explain one request. Metrics are"
+  },
+  {
+   "start": 1214.559,
+   "duration": 6.161,
+   "text": "the wad board, right? And they are"
+  },
+  {
+   "start": 1218.4,
+   "duration": 4.399,
+   "text": "cheap. So you keep all of them. Just"
+  },
+  {
+   "start": 1220.72,
+   "duration": 5.52,
+   "text": "watch cardality which is basically the"
+  },
+  {
+   "start": 1222.799,
+   "duration": 5.841,
+   "text": "number of unique label combinations."
+  },
+  {
+   "start": 1226.24,
+   "duration": 7.52,
+   "text": "Put something like a user ID on a metric"
+  },
+  {
+   "start": 1228.64,
+   "duration": 7.84,
+   "text": "label and your metric bill explodes."
+  },
+  {
+   "start": 1233.76,
+   "duration": 6.08,
+   "text": "Yeah. So traces you understood right?"
+  },
+  {
+   "start": 1236.48,
+   "duration": 6.079,
+   "text": "That's the chart. So it will explain why"
+  },
+  {
+   "start": 1239.84,
+   "duration": 5.6,
+   "text": "one request behave the way it did in"
+  },
+  {
+   "start": 1242.559,
+   "duration": 6.081,
+   "text": "simple words. So keep every error and"
+  },
+  {
+   "start": 1245.44,
+   "duration": 4.719,
+   "text": "every slow trace sample the healthy"
+  },
+  {
+   "start": 1248.64,
+   "duration": 4.24,
+   "text": "ones."
+  },
+  {
+   "start": 1250.159,
+   "duration": 6.241,
+   "text": "Now metrics as I told you it's the ward"
+  },
+  {
+   "start": 1252.88,
+   "duration": 5.919,
+   "text": "board. P95 latency per step, error and"
+  },
+  {
+   "start": 1256.4,
+   "duration": 5.519,
+   "text": "refusal rates, tokens and cost per"
+  },
+  {
+   "start": 1258.799,
+   "duration": 6.641,
+   "text": "request, cash hit ratio, tool error"
+  },
+  {
+   "start": 1261.919,
+   "duration": 7.361,
+   "text": "rate, keep all of them metrics quality"
+  },
+  {
+   "start": 1265.44,
+   "duration": 6.0,
+   "text": "is the audit. Yeah. So what is that?"
+  },
+  {
+   "start": 1269.28,
+   "duration": 5.519,
+   "text": "Sampled automated grading of production"
+  },
+  {
+   "start": 1271.44,
+   "duration": 6.08,
+   "text": "outputs. user feedbacks, human override"
+  },
+  {
+   "start": 1274.799,
+   "duration": 4.481,
+   "text": "and escalation rates, retrieval scores"
+  },
+  {
+   "start": 1277.52,
+   "duration": 5.6,
+   "text": "drift. So understand the difference"
+  },
+  {
+   "start": 1279.28,
+   "duration": 6.32,
+   "text": "between traces, metrics and quality."
+  },
+  {
+   "start": 1283.12,
+   "duration": 6.96,
+   "text": "Yeah. So I hope that's making sense. And"
+  },
+  {
+   "start": 1285.6,
+   "duration": 6.72,
+   "text": "also a quick scope note, right? And also"
+  },
+  {
+   "start": 1290.08,
+   "duration": 6.0,
+   "text": "one more thing I just want to point out,"
+  },
+  {
+   "start": 1292.32,
+   "duration": 7.599,
+   "text": "the audit layer is not as you know just"
+  },
+  {
+   "start": 1296.08,
+   "duration": 5.839,
+   "text": "feedback as it seems to your mind. Um"
+  },
+  {
+   "start": 1299.919,
+   "duration": 5.361,
+   "text": "here's the thing. It's the only layer"
+  },
+  {
+   "start": 1301.919,
+   "duration": 5.601,
+   "text": "that caches fluent failures."
+  },
+  {
+   "start": 1305.28,
+   "duration": 5.36,
+   "text": "Traces and metrics will stay green when"
+  },
+  {
+   "start": 1307.52,
+   "duration": 5.2,
+   "text": "the answers go wrong"
+  },
+  {
+   "start": 1310.64,
+   "duration": 3.919,
+   "text": "obviously because I have already"
+  },
+  {
+   "start": 1312.72,
+   "duration": 5.439,
+   "text": "explained that in LLM the failures are"
+  },
+  {
+   "start": 1314.559,
+   "duration": 6.161,
+   "text": "not loud. They are fluent failures. So"
+  },
+  {
+   "start": 1318.159,
+   "duration": 5.201,
+   "text": "traces and metrics I mean you can trace"
+  },
+  {
+   "start": 1320.72,
+   "duration": 4.16,
+   "text": "it back when you know that it's an it's"
+  },
+  {
+   "start": 1323.36,
+   "duration": 6.0,
+   "text": "an error. But if you don't know what is"
+  },
+  {
+   "start": 1324.88,
+   "duration": 6.159,
+   "text": "there to trace simple as that. So"
+  },
+  {
+   "start": 1329.36,
+   "duration": 3.52,
+   "text": "as I told traces and metrics will stay"
+  },
+  {
+   "start": 1331.039,
+   "duration": 3.841,
+   "text": "green when the answers go wrong because"
+  },
+  {
+   "start": 1332.88,
+   "duration": 4.88,
+   "text": "nothing about a wrong answer is slow or"
+  },
+  {
+   "start": 1334.88,
+   "duration": 6.48,
+   "text": "erroring. So you so you alert on what"
+  },
+  {
+   "start": 1337.76,
+   "duration": 6.08,
+   "text": "users actually feel. SLA breaches, error"
+  },
+  {
+   "start": 1341.36,
+   "duration": 4.96,
+   "text": "spikes, quality drops."
+  },
+  {
+   "start": 1343.84,
+   "duration": 4.4,
+   "text": "You would not get a more complete"
+  },
+  {
+   "start": 1346.32,
+   "duration": 3.52,
+   "text": "description of an error that has"
+  },
+  {
+   "start": 1348.24,
+   "duration": 3.36,
+   "text": "happened"
+  },
+  {
+   "start": 1349.84,
+   "duration": 3.6,
+   "text": "if it comes from the user because the"
+  },
+  {
+   "start": 1351.6,
+   "duration": 5.12,
+   "text": "user will give you the honest feedback"
+  },
+  {
+   "start": 1353.44,
+   "duration": 5.28,
+   "text": "for your thing and users will s no it's"
+  },
+  {
+   "start": 1356.72,
+   "duration": 4.16,
+   "text": "not working then you would know okay"
+  },
+  {
+   "start": 1358.72,
+   "duration": 4.4,
+   "text": "this is what it is not working so I need"
+  },
+  {
+   "start": 1360.88,
+   "duration": 4.0,
+   "text": "to trace it back"
+  },
+  {
+   "start": 1363.12,
+   "duration": 4.16,
+   "text": "but a quick scope note over here the"
+  },
+  {
+   "start": 1364.88,
+   "duration": 4.64,
+   "text": "episode about picking the strategy"
+  },
+  {
+   "start": 1367.28,
+   "duration": 5.2,
+   "text": "episode 11 builds the dashboards and"
+  },
+  {
+   "start": 1369.52,
+   "duration": 4.96,
+   "text": "alert thresholds in detail and episode 9"
+  },
+  {
+   "start": 1372.48,
+   "duration": 3.76,
+   "text": "builds the grading pipeline that powers"
+  },
+  {
+   "start": 1374.48,
+   "duration": 4.24,
+   "text": "that quality layer. So there's a lot to"
+  },
+  {
+   "start": 1376.24,
+   "duration": 4.48,
+   "text": "learn for now just understand what are"
+  },
+  {
+   "start": 1378.72,
+   "duration": 4.24,
+   "text": "these three things traces, metrics and"
+  },
+  {
+   "start": 1380.72,
+   "duration": 5.36,
+   "text": "quality."
+  },
+  {
+   "start": 1382.96,
+   "duration": 6.32,
+   "text": "Okay, that's what it is. One also one"
+  },
+  {
+   "start": 1386.08,
+   "duration": 5.12,
+   "text": "thing to flag um don't wait in"
+  },
+  {
+   "start": 1389.28,
+   "duration": 4.0,
+   "text": "production so the users will give you"
+  },
+  {
+   "start": 1391.2,
+   "duration": 3.68,
+   "text": "the feedback and depend on the auditing"
+  },
+  {
+   "start": 1393.28,
+   "duration": 3.2,
+   "text": "and then trace it back. Obviously you"
+  },
+  {
+   "start": 1394.88,
+   "duration": 4.08,
+   "text": "would have other landscapes also right"
+  },
+  {
+   "start": 1396.48,
+   "duration": 4.48,
+   "text": "like in test or in dev there also"
+  },
+  {
+   "start": 1398.96,
+   "duration": 4.32,
+   "text": "feedback is important. So if you catch"
+  },
+  {
+   "start": 1400.96,
+   "duration": 4.56,
+   "text": "it early, trace it back to the source"
+  },
+  {
+   "start": 1403.28,
+   "duration": 4.08,
+   "text": "using the metrics and the traces and you"
+  },
+  {
+   "start": 1405.52,
+   "duration": 4.24,
+   "text": "fix it, then obviously the error will"
+  },
+  {
+   "start": 1407.36,
+   "duration": 4.4,
+   "text": "not occur in your production landscape."
+  },
+  {
+   "start": 1409.76,
+   "duration": 3.919,
+   "text": "Okay? So I'm making that that thing"
+  },
+  {
+   "start": 1411.76,
+   "duration": 4.0,
+   "text": "clear. So nobody will quote saying that"
+  },
+  {
+   "start": 1413.679,
+   "duration": 5.041,
+   "text": "you know he's talking about direct"
+  },
+  {
+   "start": 1415.76,
+   "duration": 4.799,
+   "text": "failures uh and feedbacks of users uh"
+  },
+  {
+   "start": 1418.72,
+   "duration": 3.52,
+   "text": "from the production landscape. No, that"
+  },
+  {
+   "start": 1420.559,
+   "duration": 3.201,
+   "text": "is not the case."
+  },
+  {
+   "start": 1422.24,
+   "duration": 4.88,
+   "text": "So the mental model that you need to"
+  },
+  {
+   "start": 1423.76,
+   "duration": 9.2,
+   "text": "make here back to the story over here is"
+  },
+  {
+   "start": 1427.12,
+   "duration": 8.96,
+   "text": "that traces explain metrics detect and"
+  },
+  {
+   "start": 1432.96,
+   "duration": 5.839,
+   "text": "quality signals judge."
+  },
+  {
+   "start": 1436.08,
+   "duration": 5.68,
+   "text": "So a key fact is that infrastructure"
+  },
+  {
+   "start": 1438.799,
+   "duration": 5.201,
+   "text": "metrics catch loud failures only a"
+  },
+  {
+   "start": 1441.76,
+   "duration": 5.12,
+   "text": "quality layer sampled grading feedback"
+  },
+  {
+   "start": 1444.0,
+   "duration": 4.559,
+   "text": "and escalation rates catch fluent ones."
+  },
+  {
+   "start": 1446.88,
+   "duration": 4.32,
+   "text": "So make sure you make the most out of"
+  },
+  {
+   "start": 1448.559,
+   "duration": 5.041,
+   "text": "it."
+  },
+  {
+   "start": 1451.2,
+   "duration": 4.16,
+   "text": "Let's talk about an exam drill. Okay."
+  },
+  {
+   "start": 1453.6,
+   "duration": 4.64,
+   "text": "So, I'm going to ask you the question"
+  },
+  {
+   "start": 1455.36,
+   "duration": 5.28,
+   "text": "and please select the option."
+  },
+  {
+   "start": 1458.24,
+   "duration": 6.16,
+   "text": "Uh, a cloud powered support assistant"
+  },
+  {
+   "start": 1460.64,
+   "duration": 6.399,
+   "text": "has run for 3 months. Last Tuesday, the"
+  },
+  {
+   "start": 1464.4,
+   "duration": 6.159,
+   "text": "knowledge base was kind of reindexed."
+  },
+  {
+   "start": 1467.039,
+   "duration": 6.561,
+   "text": "Okay. Since then, HTTP error rate, P95"
+  },
+  {
+   "start": 1470.559,
+   "duration": 6.161,
+   "text": "latency, and cost per request are all"
+  },
+  {
+   "start": 1473.6,
+   "duration": 6.4,
+   "text": "unchanged, but escalations to human"
+  },
+  {
+   "start": 1476.72,
+   "duration": 6.8,
+   "text": "agents are up very sharply. and"
+  },
+  {
+   "start": 1480.0,
+   "duration": 5.52,
+   "text": "satisfaction scores have dipped. The"
+  },
+  {
+   "start": 1483.52,
+   "duration": 4.32,
+   "text": "team monitors infrastructure metrics"
+  },
+  {
+   "start": 1485.52,
+   "duration": 5.279,
+   "text": "only which monitoring change would have"
+  },
+  {
+   "start": 1487.84,
+   "duration": 6.079,
+   "text": "caught this earliest."
+  },
+  {
+   "start": 1490.799,
+   "duration": 5.521,
+   "text": "So in simple terms"
+  },
+  {
+   "start": 1493.919,
+   "duration": 4.721,
+   "text": "there is the knowledge based reindex the"
+  },
+  {
+   "start": 1496.32,
+   "duration": 4.56,
+   "text": "Tuesday errors P95 latency cost per"
+  },
+  {
+   "start": 1498.64,
+   "duration": 4.48,
+   "text": "request all are unchanged and"
+  },
+  {
+   "start": 1500.88,
+   "duration": 4.72,
+   "text": "escalations are up. human agents are"
+  },
+  {
+   "start": 1503.12,
+   "duration": 5.039,
+   "text": "kind of getting new requests. So there"
+  },
+  {
+   "start": 1505.6,
+   "duration": 4.24,
+   "text": "so somewhere somewhere it is wrong and"
+  },
+  {
+   "start": 1508.159,
+   "duration": 4.081,
+   "text": "you know monitoring is kind of"
+  },
+  {
+   "start": 1509.84,
+   "duration": 3.68,
+   "text": "infrastructure only. So which monitoring"
+  },
+  {
+   "start": 1512.24,
+   "duration": 3.679,
+   "text": "change would have caught at the"
+  },
+  {
+   "start": 1513.52,
+   "duration": 5.279,
+   "text": "earliest. Now if you talk about the"
+  },
+  {
+   "start": 1515.919,
+   "duration": 6.161,
+   "text": "options first option is tighten the P95"
+  },
+  {
+   "start": 1518.799,
+   "duration": 5.681,
+   "text": "latency alert threshold. B says add"
+  },
+  {
+   "start": 1522.08,
+   "duration": 5.599,
+   "text": "sampled quality evaluation of production"
+  },
+  {
+   "start": 1524.48,
+   "duration": 6.72,
+   "text": "responses plus retrieval score tracking"
+  },
+  {
+   "start": 1527.679,
+   "duration": 5.201,
+   "text": "with alerts on drift. C says log every"
+  },
+  {
+   "start": 1531.2,
+   "duration": 3.359,
+   "text": "prompt and response indefinitely so"
+  },
+  {
+   "start": 1532.88,
+   "duration": 5.679,
+   "text": "engineers can review them. And D says"
+  },
+  {
+   "start": 1534.559,
+   "duration": 6.0,
+   "text": "alert on any increase in HTTP 500"
+  },
+  {
+   "start": 1538.559,
+   "duration": 4.72,
+   "text": "errors."
+  },
+  {
+   "start": 1540.559,
+   "duration": 5.521,
+   "text": "Now take a moment to pause and think and"
+  },
+  {
+   "start": 1543.279,
+   "duration": 7.121,
+   "text": "answer and then we'll discuss."
+  },
+  {
+   "start": 1546.08,
+   "duration": 7.36,
+   "text": "So in my opinion the answer is B because"
+  },
+  {
+   "start": 1550.4,
+   "duration": 6.56,
+   "text": "nothing loud changed over here. Latency"
+  },
+  {
+   "start": 1553.44,
+   "duration": 6.4,
+   "text": "errors and costs are all flat. This is a"
+  },
+  {
+   "start": 1556.96,
+   "duration": 5.68,
+   "text": "fluent failure. So only a quality layer"
+  },
+  {
+   "start": 1559.84,
+   "duration": 5.36,
+   "text": "sees it as discussed earlier right and"
+  },
+  {
+   "start": 1562.64,
+   "duration": 5.039,
+   "text": "retrieval score drift points straight at"
+  },
+  {
+   "start": 1565.2,
+   "duration": 3.68,
+   "text": "the reindexing that has happened and it"
+  },
+  {
+   "start": 1567.679,
+   "duration": 4.0,
+   "text": "is already mentioned in the question"
+  },
+  {
+   "start": 1568.88,
+   "duration": 5.52,
+   "text": "right that last Tuesday it was reindexed"
+  },
+  {
+   "start": 1571.679,
+   "duration": 4.24,
+   "text": "now that's episode number six rule that"
+  },
+  {
+   "start": 1574.4,
+   "duration": 3.68,
+   "text": "we discussed in rack pipeline right when"
+  },
+  {
+   "start": 1575.919,
+   "duration": 6.561,
+   "text": "a rack system degrades after a data"
+  },
+  {
+   "start": 1578.08,
+   "duration": 7.199,
+   "text": "refresh investigate the retrieval first"
+  },
+  {
+   "start": 1582.48,
+   "duration": 5.439,
+   "text": "you already know that right now if you"
+  },
+  {
+   "start": 1585.279,
+   "duration": 4.64,
+   "text": "talk about other things if you talk"
+  },
+  {
+   "start": 1587.919,
+   "duration": 3.521,
+   "text": "about C. Log every prompt and response"
+  },
+  {
+   "start": 1589.919,
+   "duration": 4.321,
+   "text": "indefinitely. That's a tempting"
+  },
+  {
+   "start": 1591.44,
+   "duration": 4.88,
+   "text": "distractor. It stores data but detects"
+  },
+  {
+   "start": 1594.24,
+   "duration": 5.52,
+   "text": "nothing on its own. And also you should"
+  },
+  {
+   "start": 1596.32,
+   "duration": 6.0,
+   "text": "not log prompts unless necessary. Um it"
+  },
+  {
+   "start": 1599.76,
+   "duration": 4.799,
+   "text": "also creates a compliance problems. And"
+  },
+  {
+   "start": 1602.32,
+   "duration": 5.2,
+   "text": "if you talk about options number A and"
+  },
+  {
+   "start": 1604.559,
+   "duration": 6.801,
+   "text": "D, they just watch the signals that"
+  },
+  {
+   "start": 1607.52,
+   "duration": 6.32,
+   "text": "never moved because P95 latency and any"
+  },
+  {
+   "start": 1611.36,
+   "duration": 4.559,
+   "text": "rise in 500 there is there is no change"
+  },
+  {
+   "start": 1613.84,
+   "duration": 4.16,
+   "text": "in that. Right? It says in the question"
+  },
+  {
+   "start": 1615.919,
+   "duration": 3.441,
+   "text": "errors P95 latency cost per request are"
+  },
+  {
+   "start": 1618.0,
+   "duration": 3.679,
+   "text": "all unchanged. It's already in the"
+  },
+  {
+   "start": 1619.36,
+   "duration": 5.04,
+   "text": "question. So by that principle you kind"
+  },
+  {
+   "start": 1621.679,
+   "duration": 5.041,
+   "text": "of just delete A and D options"
+  },
+  {
+   "start": 1624.4,
+   "duration": 5.68,
+   "text": "altogether. I hope that's making sense."
+  },
+  {
+   "start": 1626.72,
+   "duration": 5.439,
+   "text": "B is the correct option."
+  },
+  {
+   "start": 1630.08,
+   "duration": 4.4,
+   "text": "Now let's talk about the accuracy"
+  },
+  {
+   "start": 1632.159,
+   "duration": 4.561,
+   "text": "latency dial."
+  },
+  {
+   "start": 1634.48,
+   "duration": 4.799,
+   "text": "So observability tells you where you"
+  },
+  {
+   "start": 1636.72,
+   "duration": 6.88,
+   "text": "are. Now let's talk about the decisions"
+  },
+  {
+   "start": 1639.279,
+   "duration": 6.721,
+   "text": "that kind of move you. Yeah. And every"
+  },
+  {
+   "start": 1643.6,
+   "duration": 4.8,
+   "text": "one of them is a dial between accuracy"
+  },
+  {
+   "start": 1646.0,
+   "duration": 5.52,
+   "text": "and latency. Think about a doctor. For a"
+  },
+  {
+   "start": 1648.4,
+   "duration": 5.36,
+   "text": "sprained ankle, a quick look and an ice"
+  },
+  {
+   "start": 1651.52,
+   "duration": 4.96,
+   "text": "pack is the right call, right? But for"
+  },
+  {
+   "start": 1653.76,
+   "duration": 5.36,
+   "text": "chest pain, you run the full workup even"
+  },
+  {
+   "start": 1656.48,
+   "duration": 5.12,
+   "text": "when it takes hours. So neither of this"
+  },
+  {
+   "start": 1659.12,
+   "duration": 4.24,
+   "text": "thing is better. It just depends on the"
+  },
+  {
+   "start": 1661.6,
+   "duration": 4.319,
+   "text": "situation."
+  },
+  {
+   "start": 1663.36,
+   "duration": 6.24,
+   "text": "So let's talk about this kind of a"
+  },
+  {
+   "start": 1665.919,
+   "duration": 6.161,
+   "text": "decision matrix. What is the knob?"
+  },
+  {
+   "start": 1669.6,
+   "duration": 3.76,
+   "text": "Turn it up accuracy and the price. So"
+  },
+  {
+   "start": 1672.08,
+   "duration": 4.079,
+   "text": "there are three columns over here,"
+  },
+  {
+   "start": 1673.36,
+   "duration": 6.24,
+   "text": "right? And let's discuss. So knob let's"
+  },
+  {
+   "start": 1676.159,
+   "duration": 5.681,
+   "text": "say larger model tier."
+  },
+  {
+   "start": 1679.6,
+   "duration": 4.88,
+   "text": "So what is it?"
+  },
+  {
+   "start": 1681.84,
+   "duration": 5.12,
+   "text": "If you do a larger model tier or turn it"
+  },
+  {
+   "start": 1684.48,
+   "duration": 5.84,
+   "text": "up, you basically get stronger reasoning"
+  },
+  {
+   "start": 1686.96,
+   "duration": 9.439,
+   "text": "on hard tasks, right? The price you pay"
+  },
+  {
+   "start": 1690.32,
+   "duration": 8.239,
+   "text": "is slower, more expensive per tokens."
+  },
+  {
+   "start": 1696.399,
+   "duration": 3.841,
+   "text": "Now higher effort or more thinking. We"
+  },
+  {
+   "start": 1698.559,
+   "duration": 5.521,
+   "text": "discussed about this effort and thinking"
+  },
+  {
+   "start": 1700.24,
+   "duration": 5.439,
+   "text": "parameters, right? So it will be more"
+  },
+  {
+   "start": 1704.08,
+   "duration": 5.12,
+   "text": "thorough. Your LLM will be more thorough"
+  },
+  {
+   "start": 1705.679,
+   "duration": 7.761,
+   "text": "on complex problems. But the price is"
+  },
+  {
+   "start": 1709.2,
+   "duration": 6.479,
+   "text": "more output tokens and longer responses."
+  },
+  {
+   "start": 1713.44,
+   "duration": 6.32,
+   "text": "If the knob is more retrieval, more"
+  },
+  {
+   "start": 1715.679,
+   "duration": 5.921,
+   "text": "chunks, reranking, second pass, then the"
+  },
+  {
+   "start": 1719.76,
+   "duration": 3.6,
+   "text": "accuracy, the turn it up, you know, the"
+  },
+  {
+   "start": 1721.6,
+   "duration": 3.36,
+   "text": "accuracy"
+  },
+  {
+   "start": 1723.36,
+   "duration": 3.84,
+   "text": "is basically better recall and"
+  },
+  {
+   "start": 1724.96,
+   "duration": 4.319,
+   "text": "precision, but the price you pay is"
+  },
+  {
+   "start": 1727.2,
+   "duration": 4.959,
+   "text": "extra calls and bigger context. The"
+  },
+  {
+   "start": 1729.279,
+   "duration": 6.4,
+   "text": "context will increase. Now, validation"
+  },
+  {
+   "start": 1732.159,
+   "duration": 6.161,
+   "text": "step, schema check, checker model,"
+  },
+  {
+   "start": 1735.679,
+   "duration": 6.0,
+   "text": "something like that. Then in that case,"
+  },
+  {
+   "start": 1738.32,
+   "duration": 4.8,
+   "text": "fewer errors reach the users. Yeah."
+  },
+  {
+   "start": 1741.679,
+   "duration": 2.88,
+   "text": "Because if you have more validations"
+  },
+  {
+   "start": 1743.12,
+   "duration": 4.08,
+   "text": "obviously the errors would be filtered"
+  },
+  {
+   "start": 1744.559,
+   "duration": 4.881,
+   "text": "out more but the price is an extra step"
+  },
+  {
+   "start": 1747.2,
+   "duration": 5.199,
+   "text": "on every request."
+  },
+  {
+   "start": 1749.44,
+   "duration": 5.119,
+   "text": "If you have multi- aent hops"
+  },
+  {
+   "start": 1752.399,
+   "duration": 4.481,
+   "text": "then you turn the generalization into"
+  },
+  {
+   "start": 1754.559,
+   "duration": 5.12,
+   "text": "specialization because as you divide"
+  },
+  {
+   "start": 1756.88,
+   "duration": 5.84,
+   "text": "into multiple sub aents it every sub"
+  },
+  {
+   "start": 1759.679,
+   "duration": 5.921,
+   "text": "aent would be more uh you know"
+  },
+  {
+   "start": 1762.72,
+   "duration": 5.28,
+   "text": "specialized in a particular thing."
+  },
+  {
+   "start": 1765.6,
+   "duration": 4.48,
+   "text": "But the price is a round trip per hop"
+  },
+  {
+   "start": 1768.0,
+   "duration": 4.08,
+   "text": "and it will also increase latency and we"
+  },
+  {
+   "start": 1770.08,
+   "duration": 5.199,
+   "text": "also discussed what would be the problem"
+  },
+  {
+   "start": 1772.08,
+   "duration": 8.0,
+   "text": "in episode number two. Now if you have"
+  },
+  {
+   "start": 1775.279,
+   "duration": 6.88,
+   "text": "very layman thing like bigger context"
+  },
+  {
+   "start": 1780.08,
+   "duration": 4.959,
+   "text": "you have more stuff to work with. You"
+  },
+  {
+   "start": 1782.159,
+   "duration": 5.041,
+   "text": "have larger context but it will the"
+  },
+  {
+   "start": 1785.039,
+   "duration": 5.601,
+   "text": "price has more input tokens and past a"
+  },
+  {
+   "start": 1787.2,
+   "duration": 4.88,
+   "text": "point dilution happens and the problem"
+  },
+  {
+   "start": 1790.64,
+   "duration": 3.919,
+   "text": "of that dilution we have already"
+  },
+  {
+   "start": 1792.08,
+   "duration": 4.24,
+   "text": "discussed in episode number five in this"
+  },
+  {
+   "start": 1794.559,
+   "duration": 4.48,
+   "text": "course only."
+  },
+  {
+   "start": 1796.32,
+   "duration": 4.56,
+   "text": "Now here's what's easy to miss. every"
+  },
+  {
+   "start": 1799.039,
+   "duration": 3.441,
+   "text": "knob on the table that we discussed"
+  },
+  {
+   "start": 1800.88,
+   "duration": 4.799,
+   "text": "right"
+  },
+  {
+   "start": 1802.48,
+   "duration": 5.52,
+   "text": "buys quality with time or money"
+  },
+  {
+   "start": 1805.679,
+   "duration": 5.441,
+   "text": "right that's all"
+  },
+  {
+   "start": 1808.0,
+   "duration": 6.0,
+   "text": "that includes kind of effort by the way"
+  },
+  {
+   "start": 1811.12,
+   "duration": 5.12,
+   "text": "that's the API setting that controls how"
+  },
+  {
+   "start": 1814.0,
+   "duration": 4.799,
+   "text": "much work claude puts into a response"
+  },
+  {
+   "start": 1816.24,
+   "duration": 4.64,
+   "text": "that we all know the effort parameter"
+  },
+  {
+   "start": 1818.799,
+   "duration": 4.88,
+   "text": "and none of these options are free by"
+  },
+  {
+   "start": 1820.88,
+   "duration": 5.36,
+   "text": "the way so when the exam hands you a"
+  },
+  {
+   "start": 1823.679,
+   "duration": 5.36,
+   "text": "scenario it almost never asks which"
+  },
+  {
+   "start": 1826.24,
+   "duration": 5.439,
+   "text": "option is the fastest it asks asks which"
+  },
+  {
+   "start": 1829.039,
+   "duration": 5.921,
+   "text": "configuration is justified given the"
+  },
+  {
+   "start": 1831.679,
+   "duration": 5.681,
+   "text": "constraint in the question stem."
+  },
+  {
+   "start": 1834.96,
+   "duration": 5.92,
+   "text": "Yeah, that one word is doing all the"
+  },
+  {
+   "start": 1837.36,
+   "duration": 6.88,
+   "text": "work in objective number 3.3"
+  },
+  {
+   "start": 1840.88,
+   "duration": 5.2,
+   "text": "and 3.3 says evaluate accuracy latency"
+  },
+  {
+   "start": 1844.24,
+   "duration": 3.52,
+   "text": "tradeoffs that the trade-offs that you"
+  },
+  {
+   "start": 1846.08,
+   "duration": 3.68,
+   "text": "saw these two columns are the trade-offs"
+  },
+  {
+   "start": 1847.76,
+   "duration": 3.68,
+   "text": "what is the advantage and what is a"
+  },
+  {
+   "start": 1849.76,
+   "duration": 4.639,
+   "text": "trade-off"
+  },
+  {
+   "start": 1851.44,
+   "duration": 5.28,
+   "text": "and you justify configuration decisions."
+  },
+  {
+   "start": 1854.399,
+   "duration": 4.561,
+   "text": "So the mental model there is no free"
+  },
+  {
+   "start": 1856.72,
+   "duration": 4.64,
+   "text": "accuracy there is nothing [snorts] free"
+  },
+  {
+   "start": 1858.96,
+   "duration": 7.92,
+   "text": "but there is free latency and you take"
+  },
+  {
+   "start": 1861.36,
+   "duration": 9.36,
+   "text": "it first okay I hope that's making sense"
+  },
+  {
+   "start": 1866.88,
+   "duration": 6.88,
+   "text": "now justify the trade latency budgets so"
+  },
+  {
+   "start": 1870.72,
+   "duration": 6.24,
+   "text": "how do you actually justify a trade-off"
+  },
+  {
+   "start": 1873.76,
+   "duration": 5.76,
+   "text": "you start from the SLA the service level"
+  },
+  {
+   "start": 1876.96,
+   "duration": 4.48,
+   "text": "agreement the performance promise you"
+  },
+  {
+   "start": 1879.52,
+   "duration": 4.56,
+   "text": "made back when we aligned to the"
+  },
+  {
+   "start": 1881.44,
+   "duration": 6.0,
+   "text": "business value pillars in episode number"
+  },
+  {
+   "start": 1884.08,
+   "duration": 5.199,
+   "text": "and you turn it into a latency budget."
+  },
+  {
+   "start": 1887.44,
+   "duration": 4.4,
+   "text": "See how everything is kind of connecting"
+  },
+  {
+   "start": 1889.279,
+   "duration": 6.161,
+   "text": "it all together. Right?"
+  },
+  {
+   "start": 1891.84,
+   "duration": 5.839,
+   "text": "So now once the budgets is on the wall,"
+  },
+  {
+   "start": 1895.44,
+   "duration": 5.04,
+   "text": "every proposal"
+  },
+  {
+   "start": 1897.679,
+   "duration": 4.561,
+   "text": "becomes a simple question and what is"
+  },
+  {
+   "start": 1900.48,
+   "duration": 5.12,
+   "text": "the question?"
+  },
+  {
+   "start": 1902.24,
+   "duration": 6.08,
+   "text": "Which slice does it spend and what does"
+  },
+  {
+   "start": 1905.6,
+   "duration": 5.6,
+   "text": "it buy? And that's where this sentence"
+  },
+  {
+   "start": 1908.32,
+   "duration": 4.8,
+   "text": "comes in. We accept"
+  },
+  {
+   "start": 1911.2,
+   "duration": 4.56,
+   "text": "cost in"
+  },
+  {
+   "start": 1913.12,
+   "duration": 5.76,
+   "text": "milliseconds or dollars or whatever the"
+  },
+  {
+   "start": 1915.76,
+   "duration": 5.519,
+   "text": "currency to gain"
+  },
+  {
+   "start": 1918.88,
+   "duration": 5.919,
+   "text": "the measured improvement"
+  },
+  {
+   "start": 1921.279,
+   "duration": 6.321,
+   "text": "because of this constraint. For example,"
+  },
+  {
+   "start": 1924.799,
+   "duration": 5.681,
+   "text": "let's put uh an example into this"
+  },
+  {
+   "start": 1927.6,
+   "duration": 6.4,
+   "text": "sentence or this quote whatever. We"
+  },
+  {
+   "start": 1930.48,
+   "duration": 7.199,
+   "text": "accept an extra 300 milliseconds at P95"
+  },
+  {
+   "start": 1934.0,
+   "duration": 8.96,
+   "text": "for reranking because it lifted accuracy"
+  },
+  {
+   "start": 1937.679,
+   "duration": 7.84,
+   "text": "on our eval set from 82 to 91%."
+  },
+  {
+   "start": 1942.96,
+   "duration": 6.16,
+   "text": "And a wrong answer here triggers a"
+  },
+  {
+   "start": 1945.519,
+   "duration": 5.921,
+   "text": "refund. Those numbers are illustrative"
+  },
+  {
+   "start": 1949.12,
+   "duration": 5.919,
+   "text": "by the way. But notice there is a number"
+  },
+  {
+   "start": 1951.44,
+   "duration": 6.88,
+   "text": "on both sides. The cost side comes from"
+  },
+  {
+   "start": 1955.039,
+   "duration": 5.12,
+   "text": "your traces. The benefit side comes from"
+  },
+  {
+   "start": 1958.32,
+   "duration": 5.68,
+   "text": "your eval set."
+  },
+  {
+   "start": 1960.159,
+   "duration": 5.601,
+   "text": "And without both of them, we added"
+  },
+  {
+   "start": 1964.0,
+   "duration": 4.0,
+   "text": "re-ranking because it's better. It's"
+  },
+  {
+   "start": 1965.76,
+   "duration": 6.72,
+   "text": "just an opinion,"
+  },
+  {
+   "start": 1968.0,
+   "duration": 8.159,
+   "text": "you know, not a fact. So that's why, you"
+  },
+  {
+   "start": 1972.48,
+   "duration": 7.28,
+   "text": "know, we have to kind of weigh in like a"
+  },
+  {
+   "start": 1976.159,
+   "duration": 6.321,
+   "text": "scale. What is the constraint and what"
+  },
+  {
+   "start": 1979.76,
+   "duration": 4.96,
+   "text": "do we gain from it?"
+  },
+  {
+   "start": 1982.48,
+   "duration": 5.28,
+   "text": "But wait, where which latency does your"
+  },
+  {
+   "start": 1984.72,
+   "duration": 5.36,
+   "text": "SLA even mean? For a chat user, it's"
+  },
+  {
+   "start": 1987.76,
+   "duration": 5.36,
+   "text": "mostly timed to the first token. The"
+  },
+  {
+   "start": 1990.08,
+   "duration": 5.12,
+   "text": "moment text starts appearing, right? For"
+  },
+  {
+   "start": 1993.12,
+   "duration": 3.6,
+   "text": "a downstream system, waiting on a JSON"
+  },
+  {
+   "start": 1995.2,
+   "duration": 3.28,
+   "text": "payload."
+  },
+  {
+   "start": 1996.72,
+   "duration": 3.28,
+   "text": "Yeah, these are different scenarios for"
+  },
+  {
+   "start": 1998.48,
+   "duration": 4.559,
+   "text": "SLA."
+  },
+  {
+   "start": 2000.0,
+   "duration": 5.279,
+   "text": "Um, it's total completion time."
+  },
+  {
+   "start": 2003.039,
+   "duration": 5.281,
+   "text": "Streaming helps the first one that is"
+  },
+  {
+   "start": 2005.279,
+   "duration": 6.161,
+   "text": "your chat users uh the first token and"
+  },
+  {
+   "start": 2008.32,
+   "duration": 5.52,
+   "text": "does nothing for the second. So pin that"
+  },
+  {
+   "start": 2011.44,
+   "duration": 5.04,
+   "text": "down before you start cutting because"
+  },
+  {
+   "start": 2013.84,
+   "duration": 6.16,
+   "text": "not everywhere you would fit the same"
+  },
+  {
+   "start": 2016.48,
+   "duration": 6.64,
+   "text": "kind of a solution. So the key fact is"
+  },
+  {
+   "start": 2020.0,
+   "duration": 5.12,
+   "text": "define which latency the SLA measures."
+  },
+  {
+   "start": 2023.12,
+   "duration": 5.2,
+   "text": "That question that we saw we accept this"
+  },
+  {
+   "start": 2025.12,
+   "duration": 4.88,
+   "text": "to gain this because of this constraint"
+  },
+  {
+   "start": 2028.32,
+   "duration": 3.199,
+   "text": "talk in numbers like I gave you the"
+  },
+  {
+   "start": 2030.0,
+   "duration": 3.6,
+   "text": "example"
+  },
+  {
+   "start": 2031.519,
+   "duration": 4.961,
+   "text": "right. So define which latency the SLA"
+  },
+  {
+   "start": 2033.6,
+   "duration": 6.24,
+   "text": "measures time to the first token which"
+  },
+  {
+   "start": 2036.48,
+   "duration": 5.36,
+   "text": "what a chat user feels basically or"
+  },
+  {
+   "start": 2039.84,
+   "duration": 3.839,
+   "text": "total completion time what a downstream"
+  },
+  {
+   "start": 2041.84,
+   "duration": 3.76,
+   "text": "system waits for. So these are only the"
+  },
+  {
+   "start": 2043.679,
+   "duration": 3.441,
+   "text": "two cases."
+  },
+  {
+   "start": 2045.6,
+   "duration": 2.799,
+   "text": "See I will give you a very simple"
+  },
+  {
+   "start": 2047.12,
+   "duration": 4.239,
+   "text": "example when you are when you are"
+  },
+  {
+   "start": 2048.399,
+   "duration": 4.96,
+   "text": "chatting in claw code right and you give"
+  },
+  {
+   "start": 2051.359,
+   "duration": 3.841,
+   "text": "a task"
+  },
+  {
+   "start": 2053.359,
+   "duration": 3.76,
+   "text": "when the first kind of a response comes"
+  },
+  {
+   "start": 2055.2,
+   "duration": 3.919,
+   "text": "in you are excited okay the the"
+  },
+  {
+   "start": 2057.119,
+   "duration": 4.161,
+   "text": "reasoning deep reasoning whatever it is"
+  },
+  {
+   "start": 2059.119,
+   "duration": 4.24,
+   "text": "doing is it has gone and now I'm getting"
+  },
+  {
+   "start": 2061.28,
+   "duration": 3.76,
+   "text": "the first parts of my response you are"
+  },
+  {
+   "start": 2063.359,
+   "duration": 3.601,
+   "text": "most excited at that point then you"
+  },
+  {
+   "start": 2065.04,
+   "duration": 4.16,
+   "text": "start reading even if the when the chat"
+  },
+  {
+   "start": 2066.96,
+   "duration": 5.52,
+   "text": "is kind of finished and it's streaming"
+  },
+  {
+   "start": 2069.2,
+   "duration": 6.639,
+   "text": "there but that doesn't apply to a"
+  },
+  {
+   "start": 2072.48,
+   "duration": 4.96,
+   "text": "downstream system it needs the full file"
+  },
+  {
+   "start": 2075.839,
+   "duration": 4.881,
+   "text": "If there is a requirement for a file, I"
+  },
+  {
+   "start": 2077.44,
+   "duration": 6.639,
+   "text": "hope that's making sense."
+  },
+  {
+   "start": 2080.72,
+   "duration": 5.52,
+   "text": "Then let's talk about free latency."
+  },
+  {
+   "start": 2084.079,
+   "duration": 5.361,
+   "text": "So remember, take the free latency"
+  },
+  {
+   "start": 2086.24,
+   "duration": 5.119,
+   "text": "first. I was discussing this back uh a"
+  },
+  {
+   "start": 2089.44,
+   "duration": 4.8,
+   "text": "minute ago or 5 minutes ago, I don't"
+  },
+  {
+   "start": 2091.359,
+   "duration": 5.32,
+   "text": "remember the time. Free here means"
+  },
+  {
+   "start": 2094.24,
+   "duration": 3.359,
+   "text": "faster without giving up accuracy."
+  },
+  {
+   "start": 2096.679,
+   "duration": 4.521,
+   "text": "[snorts]"
+  },
+  {
+   "start": 2097.599,
+   "duration": 6.961,
+   "text": "And there are four moves to that."
+  },
+  {
+   "start": 2101.2,
+   "duration": 6.399,
+   "text": "First move, order plus cache. Static"
+  },
+  {
+   "start": 2104.56,
+   "duration": 6.64,
+   "text": "content first, dynamic content last,"
+  },
+  {
+   "start": 2107.599,
+   "duration": 5.201,
+   "text": "cache the stable prefix. If you remember"
+  },
+  {
+   "start": 2111.2,
+   "duration": 5.6,
+   "text": "episode number five, we had discussed"
+  },
+  {
+   "start": 2112.8,
+   "duration": 7.36,
+   "text": "about caching properly. Route the second"
+  },
+  {
+   "start": 2116.8,
+   "duration": 6.4,
+   "text": "thing simple high volume requests to a"
+  },
+  {
+   "start": 2120.16,
+   "duration": 6.48,
+   "text": "smaller faster tier. Episode number"
+  },
+  {
+   "start": 2123.2,
+   "duration": 6.24,
+   "text": "four, we had discussed this right. Third"
+  },
+  {
+   "start": 2126.64,
+   "duration": 7.36,
+   "text": "is parallelize independent lookups and"
+  },
+  {
+   "start": 2129.44,
+   "duration": 7.84,
+   "text": "tool calls which run at the same time."
+  },
+  {
+   "start": 2134.0,
+   "duration": 5.92,
+   "text": "And fourth is stream. Nothing finishes"
+  },
+  {
+   "start": 2137.28,
+   "duration": 5.44,
+   "text": "sooner. The wait just feels shorter. The"
+  },
+  {
+   "start": 2139.92,
+   "duration": 5.919,
+   "text": "example that I gave you for the chat"
+  },
+  {
+   "start": 2142.72,
+   "duration": 5.28,
+   "text": "completion in cloud code. Now the first"
+  },
+  {
+   "start": 2145.839,
+   "duration": 4.0,
+   "text": "one order plus cache we covered in"
+  },
+  {
+   "start": 2148.0,
+   "duration": 4.16,
+   "text": "episode number five as I mentioned. So"
+  },
+  {
+   "start": 2149.839,
+   "duration": 4.881,
+   "text": "here's the headline."
+  },
+  {
+   "start": 2152.16,
+   "duration": 5.919,
+   "text": "Prompt caching matches the prefix in"
+  },
+  {
+   "start": 2154.72,
+   "duration": 5.359,
+   "text": "fixed order. Tools then systems then"
+  },
+  {
+   "start": 2158.079,
+   "duration": 4.961,
+   "text": "messages. I had shown you that pyramid,"
+  },
+  {
+   "start": 2160.079,
+   "duration": 6.481,
+   "text": "right? So static content goes first and"
+  },
+  {
+   "start": 2163.04,
+   "duration": 5.76,
+   "text": "anything that changes goes last. Put"
+  },
+  {
+   "start": 2166.56,
+   "duration": 4.32,
+   "text": "today's date inside your system prompt"
+  },
+  {
+   "start": 2168.8,
+   "duration": 3.52,
+   "text": "and yeah you've just broken the cache on"
+  },
+  {
+   "start": 2170.88,
+   "duration": 3.44,
+   "text": "every single request and that's the"
+  },
+  {
+   "start": 2172.32,
+   "duration": 5.2,
+   "text": "problem also we had discussed properly"
+  },
+  {
+   "start": 2174.32,
+   "duration": 5.2,
+   "text": "in that episode. Routing we covered in"
+  },
+  {
+   "start": 2177.52,
+   "duration": 4.559,
+   "text": "episode number four. But here's the"
+  },
+  {
+   "start": 2179.52,
+   "duration": 5.44,
+   "text": "thing. Routing is only free if the"
+  },
+  {
+   "start": 2182.079,
+   "duration": 5.441,
+   "text": "smaller tier passes your evals on those"
+  },
+  {
+   "start": 2184.96,
+   "duration": 6.56,
+   "text": "requests. And if it doesn't, it's a"
+  },
+  {
+   "start": 2187.52,
+   "duration": 6.4,
+   "text": "trade and you are back to justifying it."
+  },
+  {
+   "start": 2191.52,
+   "duration": 5.36,
+   "text": "And talking about parallelizing or"
+  },
+  {
+   "start": 2193.92,
+   "duration": 4.56,
+   "text": "parallelization is it's simpler. It if"
+  },
+  {
+   "start": 2196.88,
+   "duration": 3.36,
+   "text": "three lookups don't depend on each"
+  },
+  {
+   "start": 2198.48,
+   "duration": 3.84,
+   "text": "other, don't run them one after the"
+  },
+  {
+   "start": 2200.24,
+   "duration": 3.839,
+   "text": "other. Don't make it sequential. And"
+  },
+  {
+   "start": 2202.32,
+   "duration": 3.84,
+   "text": "streaming doesn't make anything finish"
+  },
+  {
+   "start": 2204.079,
+   "duration": 4.0,
+   "text": "sooner. It just makes the weight feel"
+  },
+  {
+   "start": 2206.16,
+   "duration": 4.48,
+   "text": "shorter."
+  },
+  {
+   "start": 2208.079,
+   "duration": 5.52,
+   "text": "Now, here's a gotcha that connects"
+  },
+  {
+   "start": 2210.64,
+   "duration": 5.199,
+   "text": "straight back to observability."
+  },
+  {
+   "start": 2213.599,
+   "duration": 5.121,
+   "text": "Changing the effort level between"
+  },
+  {
+   "start": 2215.839,
+   "duration": 5.921,
+   "text": "requests doesn't preserve your cached"
+  },
+  {
+   "start": 2218.72,
+   "duration": 5.52,
+   "text": "prefix either. You would see every one"
+  },
+  {
+   "start": 2221.76,
+   "duration": 5.76,
+   "text": "of these as the cache read token count"
+  },
+  {
+   "start": 2224.24,
+   "duration": 6.48,
+   "text": "in your usage data failing to sorry"
+  },
+  {
+   "start": 2227.52,
+   "duration": 5.28,
+   "text": "falling to zero. And anthropics API also"
+  },
+  {
+   "start": 2230.72,
+   "duration": 4.56,
+   "text": "offers a cache diagnostic diagnostics"
+  },
+  {
+   "start": 2232.8,
+   "duration": 5.84,
+   "text": "feature that reports where two"
+  },
+  {
+   "start": 2235.28,
+   "duration": 5.2,
+   "text": "consecutive requests kind of diverged."
+  },
+  {
+   "start": 2238.64,
+   "duration": 4.32,
+   "text": "And some of the information you also"
+  },
+  {
+   "start": 2240.48,
+   "duration": 5.04,
+   "text": "show I also showed you in the messages"
+  },
+  {
+   "start": 2242.96,
+   "duration": 5.28,
+   "text": "blog that we were seeing a few minutes"
+  },
+  {
+   "start": 2245.52,
+   "duration": 5.2,
+   "text": "ago. So the key fact here is order"
+  },
+  {
+   "start": 2248.24,
+   "duration": 5.359,
+   "text": "static content first then enable prompt"
+  },
+  {
+   "start": 2250.72,
+   "duration": 4.8,
+   "text": "caching and it's a known correct answer"
+  },
+  {
+   "start": 2253.599,
+   "duration": 4.161,
+   "text": "pattern for latency based question and"
+  },
+  {
+   "start": 2255.52,
+   "duration": 4.319,
+   "text": "you would see this pattern in a lot of"
+  },
+  {
+   "start": 2257.76,
+   "duration": 3.92,
+   "text": "questions in this exam. Whenever you see"
+  },
+  {
+   "start": 2259.839,
+   "duration": 4.481,
+   "text": "there's a latency based issue and you"
+  },
+  {
+   "start": 2261.68,
+   "duration": 5.36,
+   "text": "see static content first and then enable"
+  },
+  {
+   "start": 2264.32,
+   "duration": 6.0,
+   "text": "prompt caching, it is 90% of the times"
+  },
+  {
+   "start": 2267.04,
+   "duration": 6.24,
+   "text": "it is the correct answer."
+  },
+  {
+   "start": 2270.32,
+   "duration": 5.44,
+   "text": "Yeah, I hope that's making sense."
+  },
+  {
+   "start": 2273.28,
+   "duration": 4.16,
+   "text": "Okay, now let's talk about a case study"
+  },
+  {
+   "start": 2275.76,
+   "duration": 5.52,
+   "text": "because in every episode we talk about a"
+  },
+  {
+   "start": 2277.44,
+   "duration": 7.36,
+   "text": "case study. So the situation is pretty"
+  },
+  {
+   "start": 2281.28,
+   "duration": 8.079,
+   "text": "simple. An insurer runs a claims triage"
+  },
+  {
+   "start": 2284.8,
+   "duration": 8.4,
+   "text": "assistant that adjusters use live on the"
+  },
+  {
+   "start": 2289.359,
+   "duration": 6.321,
+   "text": "phone with customers. SLA is P95 under 4"
+  },
+  {
+   "start": 2293.2,
+   "duration": 6.24,
+   "text": "seconds time to first token. Right."
+  },
+  {
+   "start": 2295.68,
+   "duration": 5.76,
+   "text": "Current P95 is 9 seconds. The VP's"
+  },
+  {
+   "start": 2299.44,
+   "duration": 4.399,
+   "text": "proposal switch everything to the"
+  },
+  {
+   "start": 2301.44,
+   "duration": 4.8,
+   "text": "smallest model. The constraint that"
+  },
+  {
+   "start": 2303.839,
+   "duration": 5.76,
+   "text": "decides it is accuracy on coverage"
+  },
+  {
+   "start": 2306.24,
+   "duration": 5.839,
+   "text": "decisions cannot drop because a wrong"
+  },
+  {
+   "start": 2309.599,
+   "duration": 4.24,
+   "text": "call means a wrong payout. So it's very"
+  },
+  {
+   "start": 2312.079,
+   "duration": 3.681,
+   "text": "important."
+  },
+  {
+   "start": 2313.839,
+   "duration": 4.801,
+   "text": "Now the tempting move is to start"
+  },
+  {
+   "start": 2315.76,
+   "duration": 6.319,
+   "text": "changing things but I would say don't."
+  },
+  {
+   "start": 2318.64,
+   "duration": 6.64,
+   "text": "Step one is to read the trace."
+  },
+  {
+   "start": 2322.079,
+   "duration": 6.481,
+   "text": "Trace reading is important."
+  },
+  {
+   "start": 2325.28,
+   "duration": 5.36,
+   "text": "So let's talk about it. Uh the"
+  },
+  {
+   "start": 2328.56,
+   "duration": 4.64,
+   "text": "constraint is coverage decision accuracy"
+  },
+  {
+   "start": 2330.64,
+   "duration": 5.439,
+   "text": "cannot drop. the solution path as I was"
+  },
+  {
+   "start": 2333.2,
+   "duration": 5.68,
+   "text": "told trace first."
+  },
+  {
+   "start": 2336.079,
+   "duration": 5.76,
+   "text": "Now let's talk about free latency that I"
+  },
+  {
+   "start": 2338.88,
+   "duration": 5.44,
+   "text": "was talking about right move the date"
+  },
+  {
+   "start": 2341.839,
+   "duration": 5.361,
+   "text": "and adjuster name out of the system"
+  },
+  {
+   "start": 2344.32,
+   "duration": 7.039,
+   "text": "prompt into the user turn so the prefix"
+  },
+  {
+   "start": 2347.2,
+   "duration": 7.52,
+   "text": "catches caches sorry run the three"
+  },
+  {
+   "start": 2351.359,
+   "duration": 6.161,
+   "text": "lookups in parallel route status"
+  },
+  {
+   "start": 2354.72,
+   "duration": 5.6,
+   "text": "requests which turn out to be the most"
+  },
+  {
+   "start": 2357.52,
+   "duration": 5.36,
+   "text": "of the traffic right"
+  },
+  {
+   "start": 2360.32,
+   "duration": 5.44,
+   "text": "and you do it to a smaller tier once the"
+  },
+  {
+   "start": 2362.88,
+   "duration": 6.719,
+   "text": "eval set confirms they hold up so that"
+  },
+  {
+   "start": 2365.76,
+   "duration": 5.599,
+   "text": "the free latency that you can use."
+  },
+  {
+   "start": 2369.599,
+   "duration": 3.601,
+   "text": "Yeah. Because when you move the date and"
+  },
+  {
+   "start": 2371.359,
+   "duration": 5.441,
+   "text": "adjust name out of the system prompt"
+  },
+  {
+   "start": 2373.2,
+   "duration": 6.72,
+   "text": "into the user turn, so you are pushing"
+  },
+  {
+   "start": 2376.8,
+   "duration": 6.48,
+   "text": "more static content and the prompt"
+  },
+  {
+   "start": 2379.92,
+   "duration": 6.0,
+   "text": "system prompt is kind of static now."
+  },
+  {
+   "start": 2383.28,
+   "duration": 5.44,
+   "text": "So this will actually give you some more"
+  },
+  {
+   "start": 2385.92,
+   "duration": 5.84,
+   "text": "latency that that P95 drops in this"
+  },
+  {
+   "start": 2388.72,
+   "duration": 4.8,
+   "text": "case, right? because you are not you are"
+  },
+  {
+   "start": 2391.76,
+   "duration": 4.24,
+   "text": "using using the caching more effectively"
+  },
+  {
+   "start": 2393.52,
+   "duration": 6.079,
+   "text": "as if you remember the logic or the"
+  },
+  {
+   "start": 2396.0,
+   "duration": 6.4,
+   "text": "formula is static content for first and"
+  },
+  {
+   "start": 2399.599,
+   "duration": 4.321,
+   "text": "then enable prompt caching."
+  },
+  {
+   "start": 2402.4,
+   "duration": 4.4,
+   "text": "Now we talked about this free latency"
+  },
+  {
+   "start": 2403.92,
+   "duration": 5.52,
+   "text": "for this problem, right? Um what is the"
+  },
+  {
+   "start": 2406.8,
+   "duration": 5.279,
+   "text": "justified trade? Keep validation but"
+  },
+  {
+   "start": 2409.44,
+   "duration": 5.04,
+   "text": "only on coverage decisions. We accept"
+  },
+  {
+   "start": 2412.079,
+   "duration": 4.881,
+   "text": "roughly 600 millisecond on coverage"
+  },
+  {
+   "start": 2414.48,
+   "duration": 4.96,
+   "text": "decisions because a wrong call there"
+  },
+  {
+   "start": 2416.96,
+   "duration": 4.48,
+   "text": "costs a claim playout."
+  },
+  {
+   "start": 2419.44,
+   "duration": 5.04,
+   "text": "So that's a justified trade right"
+  },
+  {
+   "start": 2421.44,
+   "duration": 5.52,
+   "text": "because it's a it's a kind of a critical"
+  },
+  {
+   "start": 2424.48,
+   "duration": 4.48,
+   "text": "job over here and"
+  },
+  {
+   "start": 2426.96,
+   "duration": 5.68,
+   "text": "600 millisecond is nothing compared to"
+  },
+  {
+   "start": 2428.96,
+   "duration": 5.52,
+   "text": "millions in wrong payouts right now in"
+  },
+  {
+   "start": 2432.64,
+   "duration": 4.719,
+   "text": "this example and these numbers are"
+  },
+  {
+   "start": 2434.48,
+   "duration": 5.359,
+   "text": "illustrative P95 lands around 3.5"
+  },
+  {
+   "start": 2437.359,
+   "duration": 5.041,
+   "text": "seconds because it it was 9 seconds"
+  },
+  {
+   "start": 2439.839,
+   "duration": 4.801,
+   "text": "before after we did all that stuff that"
+  },
+  {
+   "start": 2442.4,
+   "duration": 4.48,
+   "text": "we talked about 3.5 seconds and accuracy"
+  },
+  {
+   "start": 2444.64,
+   "duration": 4.56,
+   "text": "on the coverage eval doesn't move and"
+  },
+  {
+   "start": 2446.88,
+   "duration": 5.84,
+   "text": "the VP's plan what What had the VP"
+  },
+  {
+   "start": 2449.2,
+   "duration": 6.48,
+   "text": "suggested? It would have hit the SLA 2"
+  },
+  {
+   "start": 2452.72,
+   "duration": 5.2,
+   "text": "while quietly degrading coverage"
+  },
+  {
+   "start": 2455.68,
+   "duration": 4.24,
+   "text": "decisions. That's a fluent failure. And"
+  },
+  {
+   "start": 2457.92,
+   "duration": 4.48,
+   "text": "you'd only would have caught it with the"
+  },
+  {
+   "start": 2459.92,
+   "duration": 4.24,
+   "text": "quality layer. And by the time you"
+  },
+  {
+   "start": 2462.4,
+   "duration": 3.52,
+   "text": "caught it by the quality layer, it would"
+  },
+  {
+   "start": 2464.16,
+   "duration": 4.08,
+   "text": "have been late because quality layer"
+  },
+  {
+   "start": 2465.92,
+   "duration": 5.36,
+   "text": "means user feedbacks or the payout has"
+  },
+  {
+   "start": 2468.24,
+   "duration": 5.44,
+   "text": "already failed and whatnot."
+  },
+  {
+   "start": 2471.28,
+   "duration": 4.48,
+   "text": "Right? So what's the what's the lesson?"
+  },
+  {
+   "start": 2473.68,
+   "duration": 5.28,
+   "text": "What's the exam lesson you get in here?"
+  },
+  {
+   "start": 2475.76,
+   "duration": 6.24,
+   "text": "When two answers both fix latency, the"
+  },
+  {
+   "start": 2478.96,
+   "duration": 6.159,
+   "text": "one that preserves the accuracy wins."
+  },
+  {
+   "start": 2482.0,
+   "duration": 5.2,
+   "text": "Unless the stem, the question stem tells"
+  },
+  {
+   "start": 2485.119,
+   "duration": 5.041,
+   "text": "you accuracy is negotiable. But here it"
+  },
+  {
+   "start": 2487.2,
+   "duration": 5.52,
+   "text": "is not negotiable. And you know the VP"
+  },
+  {
+   "start": 2490.16,
+   "duration": 5.04,
+   "text": "who wants it fast, perfect and cheap all"
+  },
+  {
+   "start": 2492.72,
+   "duration": 4.08,
+   "text": "at once is a conversation"
+  },
+  {
+   "start": 2495.2,
+   "duration": 5.84,
+   "text": "we would probably have in episode number"
+  },
+  {
+   "start": 2496.8,
+   "duration": 6.64,
+   "text": "14. We'll we'll put the VP on the the"
+  },
+  {
+   "start": 2501.04,
+   "duration": 4.079,
+   "text": "stands of the judge and we will judge"
+  },
+  {
+   "start": 2503.44,
+   "duration": 4.56,
+   "text": "the VP."
+  },
+  {
+   "start": 2505.119,
+   "duration": 5.281,
+   "text": "This is a bad kind of a joke but we"
+  },
+  {
+   "start": 2508.0,
+   "duration": 5.52,
+   "text": "would see to it. So the mental model"
+  },
+  {
+   "start": 2510.4,
+   "duration": 6.16,
+   "text": "trace first take the free wins in this"
+  },
+  {
+   "start": 2513.52,
+   "duration": 5.52,
+   "text": "case the free latency and the spend"
+  },
+  {
+   "start": 2516.56,
+   "duration": 4.64,
+   "text": "latency only where the stakes justify"
+  },
+  {
+   "start": 2519.04,
+   "duration": 4.079,
+   "text": "it."
+  },
+  {
+   "start": 2521.2,
+   "duration": 3.52,
+   "text": "Cool. I hope that's making sense. Now"
+  },
+  {
+   "start": 2523.119,
+   "duration": 4.401,
+   "text": "talking about the decision matrix which"
+  },
+  {
+   "start": 2524.72,
+   "duration": 4.639,
+   "text": "knob do you turn? So let's turn that"
+  },
+  {
+   "start": 2527.52,
+   "duration": 3.68,
+   "text": "into something you can actually carry it"
+  },
+  {
+   "start": 2529.359,
+   "duration": 5.041,
+   "text": "into the exam. Whatever we learned from"
+  },
+  {
+   "start": 2531.2,
+   "duration": 5.6,
+   "text": "the exam case study, read this as if the"
+  },
+  {
+   "start": 2534.4,
+   "duration": 6.64,
+   "text": "stem says this, turn this knob, not that"
+  },
+  {
+   "start": 2536.8,
+   "duration": 6.16,
+   "text": "one. And we already kind of map the stem"
+  },
+  {
+   "start": 2541.04,
+   "duration": 3.92,
+   "text": "to constraints and from the constraints"
+  },
+  {
+   "start": 2542.96,
+   "duration": 3.92,
+   "text": "we derive the solutions. Same thing"
+  },
+  {
+   "start": 2544.96,
+   "duration": 4.0,
+   "text": "we're going to do it over here as well."
+  },
+  {
+   "start": 2546.88,
+   "duration": 6.08,
+   "text": "So the constraint in the stem if it is"
+  },
+  {
+   "start": 2548.96,
+   "duration": 7.2,
+   "text": "can't tell why it is slow H turn this"
+  },
+  {
+   "start": 2552.96,
+   "duration": 5.84,
+   "text": "trace it first find the slow span and"
+  },
+  {
+   "start": 2556.16,
+   "duration": 4.56,
+   "text": "don't do this change everything. That's"
+  },
+  {
+   "start": 2558.8,
+   "duration": 3.519,
+   "text": "what the VP has suggested right in the"
+  },
+  {
+   "start": 2560.72,
+   "duration": 4.0,
+   "text": "previous exam study they just change"
+  },
+  {
+   "start": 2562.319,
+   "duration": 5.441,
+   "text": "everything just put it in the cheaper"
+  },
+  {
+   "start": 2564.72,
+   "duration": 5.44,
+   "text": "model don't care about the accuracy"
+  },
+  {
+   "start": 2567.76,
+   "duration": 6.079,
+   "text": "now in the if the constraint in the stem"
+  },
+  {
+   "start": 2570.16,
+   "duration": 6.48,
+   "text": "says over the SLA large repeated prefix"
+  },
+  {
+   "start": 2573.839,
+   "duration": 5.441,
+   "text": "so it's pretty simple if this is the"
+  },
+  {
+   "start": 2576.64,
+   "duration": 4.959,
+   "text": "case then static first ordering plus"
+  },
+  {
+   "start": 2579.28,
+   "duration": 4.48,
+   "text": "prompt caching and some part of it we"
+  },
+  {
+   "start": 2581.599,
+   "duration": 4.321,
+   "text": "did in the case study as well we remove"
+  },
+  {
+   "start": 2583.76,
+   "duration": 4.559,
+   "text": "removed that uh thing from the system"
+  },
+  {
+   "start": 2585.92,
+   "duration": 4.0,
+   "text": "prompt making it static and put it in"
+  },
+  {
+   "start": 2588.319,
+   "duration": 5.841,
+   "text": "the user turn instead because they were"
+  },
+  {
+   "start": 2589.92,
+   "duration": 8.24,
+   "text": "dynamic uh things which was the"
+  },
+  {
+   "start": 2594.16,
+   "duration": 7.28,
+   "text": "um what what we did uh we kind of huh we"
+  },
+  {
+   "start": 2598.16,
+   "duration": 5.36,
+   "text": "we we moved the date and the adjusters's"
+  },
+  {
+   "start": 2601.44,
+   "duration": 4.72,
+   "text": "name out of the system prompt and we put"
+  },
+  {
+   "start": 2603.52,
+   "duration": 5.04,
+   "text": "it in the user turn so the prompt is"
+  },
+  {
+   "start": 2606.16,
+   "duration": 4.56,
+   "text": "kind of static now and then we kind of"
+  },
+  {
+   "start": 2608.56,
+   "duration": 4.559,
+   "text": "use the cache same thing is happening"
+  },
+  {
+   "start": 2610.72,
+   "duration": 5.2,
+   "text": "over here now talking about chat field"
+  },
+  {
+   "start": 2613.119,
+   "duration": 4.96,
+   "text": "slow total time within SLA if this is in"
+  },
+  {
+   "start": 2615.92,
+   "duration": 5.52,
+   "text": "the question uh stem"
+  },
+  {
+   "start": 2618.079,
+   "duration": 7.04,
+   "text": "Then streaming is the answer because"
+  },
+  {
+   "start": 2621.44,
+   "duration": 6.24,
+   "text": "that is a chat response right but don't"
+  },
+  {
+   "start": 2625.119,
+   "duration": 5.2,
+   "text": "cut the retrieval depth"
+  },
+  {
+   "start": 2627.68,
+   "duration": 5.52,
+   "text": "that would be a antiattern."
+  },
+  {
+   "start": 2630.319,
+   "duration": 6.0,
+   "text": "Next high volume simple queries small"
+  },
+  {
+   "start": 2633.2,
+   "duration": 5.76,
+   "text": "tier passes evals"
+  },
+  {
+   "start": 2636.319,
+   "duration": 6.561,
+   "text": "and if you if you get this in the stem"
+  },
+  {
+   "start": 2638.96,
+   "duration": 6.32,
+   "text": "route to a smaller tier because but"
+  },
+  {
+   "start": 2642.88,
+   "duration": 6.88,
+   "text": "don't do this one big model for"
+  },
+  {
+   "start": 2645.28,
+   "duration": 7.839,
+   "text": "everything use um a particular model for"
+  },
+  {
+   "start": 2649.76,
+   "duration": 6.4,
+   "text": "a particular scenario. Right? Next is"
+  },
+  {
+   "start": 2653.119,
+   "duration": 5.921,
+   "text": "wrong answers are costly. Users can"
+  },
+  {
+   "start": 2656.16,
+   "duration": 5.84,
+   "text": "wait. So if you see this in the exam"
+  },
+  {
+   "start": 2659.04,
+   "duration": 6.319,
+   "text": "stem then what you do is you do more"
+  },
+  {
+   "start": 2662.0,
+   "duration": 6.64,
+   "text": "retrieval re-ranking and validation. So"
+  },
+  {
+   "start": 2665.359,
+   "duration": 5.201,
+   "text": "it kind of adds latency but the question"
+  },
+  {
+   "start": 2668.64,
+   "duration": 4.88,
+   "text": "stem says users don't care about the"
+  },
+  {
+   "start": 2670.56,
+   "duration": 5.68,
+   "text": "latency but more accurate information."
+  },
+  {
+   "start": 2673.52,
+   "duration": 5.28,
+   "text": "So you do this but you don't do"
+  },
+  {
+   "start": 2676.24,
+   "duration": 4.72,
+   "text": "optimization for speed it's not needed."
+  },
+  {
+   "start": 2678.8,
+   "duration": 4.559,
+   "text": "Why to do that?"
+  },
+  {
+   "start": 2680.96,
+   "duration": 5.44,
+   "text": "If the question stem says over the SLA"
+  },
+  {
+   "start": 2683.359,
+   "duration": 4.881,
+   "text": "accuracy already at the floor then you"
+  },
+  {
+   "start": 2686.4,
+   "duration": 4.64,
+   "text": "do parallelization"
+  },
+  {
+   "start": 2688.24,
+   "duration": 5.44,
+   "text": "and then you cash it then renegotiate"
+  },
+  {
+   "start": 2691.04,
+   "duration": 5.64,
+   "text": "the SLA but don't quietly trade away"
+  },
+  {
+   "start": 2693.68,
+   "duration": 3.0,
+   "text": "accuracy"
+  },
+  {
+   "start": 2696.96,
+   "duration": 3.92,
+   "text": "and"
+  },
+  {
+   "start": 2698.8,
+   "duration": 5.039,
+   "text": "the row I'd underlined twice is the last"
+  },
+  {
+   "start": 2700.88,
+   "duration": 5.04,
+   "text": "one. Sorry I took a break uh you know um"
+  },
+  {
+   "start": 2703.839,
+   "duration": 5.801,
+   "text": "kind of I'm just going to have a little"
+  },
+  {
+   "start": 2705.92,
+   "duration": 3.72,
+   "text": "sip of my water."
+  },
+  {
+   "start": 2710.4,
+   "duration": 5.52,
+   "text": "Okay, I've been speaking for a long"
+  },
+  {
+   "start": 2711.76,
+   "duration": 6.079,
+   "text": "time. So anyways, so out of these um uh"
+  },
+  {
+   "start": 2715.92,
+   "duration": 4.24,
+   "text": "decision rows that you saw over here and"
+  },
+  {
+   "start": 2717.839,
+   "duration": 5.041,
+   "text": "the row that I underlined twice is the"
+  },
+  {
+   "start": 2720.16,
+   "duration": 4.72,
+   "text": "last one because when you are over the"
+  },
+  {
+   "start": 2722.88,
+   "duration": 5.68,
+   "text": "SLA and accuracy is already on the"
+  },
+  {
+   "start": 2724.88,
+   "duration": 6.4,
+   "text": "floor, you don't quietly trade it away."
+  },
+  {
+   "start": 2728.56,
+   "duration": 4.559,
+   "text": "You take every free win and then you go"
+  },
+  {
+   "start": 2731.28,
+   "duration": 4.96,
+   "text": "back to the stakeholders and renegotiate"
+  },
+  {
+   "start": 2733.119,
+   "duration": 5.441,
+   "text": "the SLA which is domain six territory"
+  },
+  {
+   "start": 2736.24,
+   "duration": 4.8,
+   "text": "and yeah it's kind of coming. So the key"
+  },
+  {
+   "start": 2738.56,
+   "duration": 5.12,
+   "text": "fact to derive from here is a reliable"
+  },
+  {
+   "start": 2741.04,
+   "duration": 4.88,
+   "text": "tiebreaker is when two options both cut"
+  },
+  {
+   "start": 2743.68,
+   "duration": 4.72,
+   "text": "latency prefer the one that preserves"
+  },
+  {
+   "start": 2745.92,
+   "duration": 4.64,
+   "text": "the accuracy. I've been telling this"
+  },
+  {
+   "start": 2748.4,
+   "duration": 4.959,
+   "text": "again and again so it kind of paints a"
+  },
+  {
+   "start": 2750.56,
+   "duration": 5.12,
+   "text": "picture in your mind unless the stem"
+  },
+  {
+   "start": 2753.359,
+   "duration": 5.361,
+   "text": "explicitly says that accuracy is ne negl"
+  },
+  {
+   "start": 2755.68,
+   "duration": 5.04,
+   "text": "negligible which negotiable which I"
+  },
+  {
+   "start": 2758.72,
+   "duration": 3.76,
+   "text": "don't think you would see more but"
+  },
+  {
+   "start": 2760.72,
+   "duration": 4.639,
+   "text": "anyways"
+  },
+  {
+   "start": 2762.48,
+   "duration": 5.839,
+   "text": "I hope that's making sense."
+  },
+  {
+   "start": 2765.359,
+   "duration": 5.281,
+   "text": "Now let's talk about another drill. Two"
+  },
+  {
+   "start": 2768.319,
+   "duration": 4.641,
+   "text": "defensible answers I would say this exam"
+  },
+  {
+   "start": 2770.64,
+   "duration": 4.479,
+   "text": "drill. So here's the question and you"
+  },
+  {
+   "start": 2772.96,
+   "duration": 4.8,
+   "text": "can pause and then uh check the answer."
+  },
+  {
+   "start": 2775.119,
+   "duration": 5.521,
+   "text": "So an investments firm research"
+  },
+  {
+   "start": 2777.76,
+   "duration": 5.68,
+   "text": "assistant uh writes over overnight"
+  },
+  {
+   "start": 2780.64,
+   "duration": 5.76,
+   "text": "company briefs from regulatory filings."
+  },
+  {
+   "start": 2783.44,
+   "duration": 6.48,
+   "text": "Analysts read them the next morning and"
+  },
+  {
+   "start": 2786.4,
+   "duration": 5.919,
+   "text": "errors in figures are costly. Each brief"
+  },
+  {
+   "start": 2789.92,
+   "duration": 4.48,
+   "text": "takes about 90 seconds end to end,"
+  },
+  {
+   "start": 2792.319,
+   "duration": 4.641,
+   "text": "including a re-ranking step and a"
+  },
+  {
+   "start": 2794.4,
+   "duration": 5.28,
+   "text": "verification pass that checks every"
+  },
+  {
+   "start": 2796.96,
+   "duration": 6.08,
+   "text": "figure against the source. An engineer"
+  },
+  {
+   "start": 2799.68,
+   "duration": 6.56,
+   "text": "proposes removing both to cut generation"
+  },
+  {
+   "start": 2803.04,
+   "duration": 5.36,
+   "text": "time to 25 seconds."
+  },
+  {
+   "start": 2806.24,
+   "duration": 5.76,
+   "text": "What's the best response?"
+  },
+  {
+   "start": 2808.4,
+   "duration": 6.0,
+   "text": "Okay, here if you see option number A"
+  },
+  {
+   "start": 2812.0,
+   "duration": 5.28,
+   "text": "says approve it because it's more than"
+  },
+  {
+   "start": 2814.4,
+   "duration": 5.6,
+   "text": "70% faster. Option number B says keep"
+  },
+  {
+   "start": 2817.28,
+   "duration": 5.2,
+   "text": "both. Latency isn't a binding constraint"
+  },
+  {
+   "start": 2820.0,
+   "duration": 5.599,
+   "text": "for an overnight job and verification"
+  },
+  {
+   "start": 2822.48,
+   "duration": 7.599,
+   "text": "protects the costliest failure. So keep"
+  },
+  {
+   "start": 2825.599,
+   "duration": 7.121,
+   "text": "both. C says uh remove verification but"
+  },
+  {
+   "start": 2830.079,
+   "duration": 4.561,
+   "text": "keep reranking as a compromise. And D"
+  },
+  {
+   "start": 2832.72,
+   "duration": 5.84,
+   "text": "says switch to streaming output as"
+  },
+  {
+   "start": 2834.64,
+   "duration": 6.08,
+   "text": "analysts C text sooner. So what would be"
+  },
+  {
+   "start": 2838.56,
+   "duration": 4.96,
+   "text": "the answer? Pause it and take a look and"
+  },
+  {
+   "start": 2840.72,
+   "duration": 5.68,
+   "text": "then uh we'll be back. So in my opinion"
+  },
+  {
+   "start": 2843.52,
+   "duration": 5.76,
+   "text": "the answer is B. So the constraints"
+  },
+  {
+   "start": 2846.4,
+   "duration": 6.16,
+   "text": "decides right it's an overnight job so"
+  },
+  {
+   "start": 2849.28,
+   "duration": 5.52,
+   "text": "shaving 65 seconds buys almost nothing"
+  },
+  {
+   "start": 2852.56,
+   "duration": 6.16,
+   "text": "while a wrong figure is the expensive"
+  },
+  {
+   "start": 2854.8,
+   "duration": 7.44,
+   "text": "failure in a live chat product might be"
+  },
+  {
+   "start": 2858.72,
+   "duration": 10.08,
+   "text": "right a might be right which is it is"
+  },
+  {
+   "start": 2862.24,
+   "duration": 8.8,
+   "text": "70% faster which is a but here it is not"
+  },
+  {
+   "start": 2868.8,
+   "duration": 4.24,
+   "text": "now if you talk about cs remove"
+  },
+  {
+   "start": 2871.04,
+   "duration": 4.24,
+   "text": "verification but keep reranking as a"
+  },
+  {
+   "start": 2873.04,
+   "duration": 5.92,
+   "text": "compromise c gives away exactly the step"
+  },
+  {
+   "start": 2875.28,
+   "duration": 7.28,
+   "text": "that protects the costliest error"
+  },
+  {
+   "start": 2878.96,
+   "duration": 5.6,
+   "text": "you know so that's the thing D says"
+  },
+  {
+   "start": 2882.56,
+   "duration": 5.279,
+   "text": "switch to streaming output as I already"
+  },
+  {
+   "start": 2884.56,
+   "duration": 4.96,
+   "text": "mentioned this is not chat"
+  },
+  {
+   "start": 2887.839,
+   "duration": 3.201,
+   "text": "it is not a problem over here because"
+  },
+  {
+   "start": 2889.52,
+   "duration": 4.24,
+   "text": "nobody is watching the brief generated"
+  },
+  {
+   "start": 2891.04,
+   "duration": 4.799,
+   "text": "it's an overnight job and if cost ever"
+  },
+  {
+   "start": 2893.76,
+   "duration": 4.559,
+   "text": "becomes the pressure that's a batch"
+  },
+  {
+   "start": 2895.839,
+   "duration": 4.961,
+   "text": "shaped workload and that we'll cover in"
+  },
+  {
+   "start": 2898.319,
+   "duration": 4.161,
+   "text": "episode number 11 first of all"
+  },
+  {
+   "start": 2900.8,
+   "duration": 3.92,
+   "text": "understand what kind of a job it is and"
+  },
+  {
+   "start": 2902.48,
+   "duration": 5.28,
+   "text": "what's the stem of the question it it is"
+  },
+  {
+   "start": 2904.72,
+   "duration": 5.76,
+   "text": "asking and then you can map and relate"
+  },
+  {
+   "start": 2907.76,
+   "duration": 5.04,
+   "text": "to the answers. I hope it's making"
+  },
+  {
+   "start": 2910.48,
+   "duration": 5.839,
+   "text": "sense."
+  },
+  {
+   "start": 2912.8,
+   "duration": 6.0,
+   "text": "Okay. Now let's talk about um"
+  },
+  {
+   "start": 2916.319,
+   "duration": 5.28,
+   "text": "progressive discovery versus monolithic"
+  },
+  {
+   "start": 2918.8,
+   "duration": 5.36,
+   "text": "context. So last episode I left you with"
+  },
+  {
+   "start": 2921.599,
+   "duration": 5.201,
+   "text": "one line. Progressive discovery fixes"
+  },
+  {
+   "start": 2924.16,
+   "duration": 5.36,
+   "text": "the context cost of breath not the"
+  },
+  {
+   "start": 2926.8,
+   "duration": 4.72,
+   "text": "security cost of bloat. I remember that."
+  },
+  {
+   "start": 2929.52,
+   "duration": 4.16,
+   "text": "So today we finish that thought because"
+  },
+  {
+   "start": 2931.52,
+   "duration": 5.76,
+   "text": "once the bloat is gone, you still have"
+  },
+  {
+   "start": 2933.68,
+   "duration": 6.08,
+   "text": "to decide how to load what legitimately"
+  },
+  {
+   "start": 2937.28,
+   "duration": 5.12,
+   "text": "remains. Think of it this way, right?"
+  },
+  {
+   "start": 2939.76,
+   "duration": 4.319,
+   "text": "Monolithic is a buffet."
+  },
+  {
+   "start": 2942.4,
+   "duration": 4.64,
+   "text": "Previously, I used to spell it as"
+  },
+  {
+   "start": 2944.079,
+   "duration": 7.441,
+   "text": "buffet. Yeah, but now I I know that it's"
+  },
+  {
+   "start": 2947.04,
+   "duration": 6.96,
+   "text": "buffet. Anyways, so as it's a buffet,"
+  },
+  {
+   "start": 2951.52,
+   "duration": 4.4,
+   "text": "everything's laid out. You grab what you"
+  },
+  {
+   "start": 2954.0,
+   "duration": 4.72,
+   "text": "want instantly, but the table is huge"
+  },
+  {
+   "start": 2955.92,
+   "duration": 5.28,
+   "text": "and you pay for all of it."
+  },
+  {
+   "start": 2958.72,
+   "duration": 4.32,
+   "text": "That's that's the thing. Monolithic"
+  },
+  {
+   "start": 2961.2,
+   "duration": 5.04,
+   "text": "progressive discovery is a restaurant"
+  },
+  {
+   "start": 2963.04,
+   "duration": 5.92,
+   "text": "with a short menu and a waiter. You ask"
+  },
+  {
+   "start": 2966.24,
+   "duration": 5.44,
+   "text": "for what you need and it arrives. So the"
+  },
+  {
+   "start": 2968.96,
+   "duration": 5.76,
+   "text": "table stays clean but every order is a"
+  },
+  {
+   "start": 2971.68,
+   "duration": 6.24,
+   "text": "round trip to the kitchen."
+  },
+  {
+   "start": 2974.72,
+   "duration": 5.359,
+   "text": "I hope you understand the analogy. So"
+  },
+  {
+   "start": 2977.92,
+   "duration": 4.56,
+   "text": "monolithic context progressive discovery"
+  },
+  {
+   "start": 2980.079,
+   "duration": 5.201,
+   "text": "what it is monolithic context is load"
+  },
+  {
+   "start": 2982.48,
+   "duration": 5.599,
+   "text": "all the tools instructions and reference"
+  },
+  {
+   "start": 2985.28,
+   "duration": 4.72,
+   "text": "material upfront every request"
+  },
+  {
+   "start": 2988.079,
+   "duration": 4.721,
+   "text": "progressive discovery is start with a"
+  },
+  {
+   "start": 2990.0,
+   "duration": 5.28,
+   "text": "small core plus a way to find more load"
+  },
+  {
+   "start": 2992.8,
+   "duration": 4.319,
+   "text": "the rest on demand"
+  },
+  {
+   "start": 2995.28,
+   "duration": 4.319,
+   "text": "what are the wins that you get in"
+  },
+  {
+   "start": 2997.119,
+   "duration": 5.2,
+   "text": "monolithic context"
+  },
+  {
+   "start": 2999.599,
+   "duration": 5.121,
+   "text": "one pass predictable whole prefix is"
+  },
+  {
+   "start": 3002.319,
+   "duration": 5.201,
+   "text": "cachable easy to audit when the model"
+  },
+  {
+   "start": 3004.72,
+   "duration": 5.76,
+   "text": "saw or what the model saw"
+  },
+  {
+   "start": 3007.52,
+   "duration": 6.559,
+   "text": "Progressive discovery is lean context"
+  },
+  {
+   "start": 3010.48,
+   "duration": 6.8,
+   "text": "scales to very large cataloges right"
+  },
+  {
+   "start": 3014.079,
+   "duration": 6.0,
+   "text": "because nothing is predefined you just"
+  },
+  {
+   "start": 3017.28,
+   "duration": 6.24,
+   "text": "you just do the discovery as you go on"
+  },
+  {
+   "start": 3020.079,
+   "duration": 5.52,
+   "text": "now talking about the costs"
+  },
+  {
+   "start": 3023.52,
+   "duration": 4.88,
+   "text": "obviously obviously it's not a it's a"
+  },
+  {
+   "start": 3025.599,
+   "duration": 5.76,
+   "text": "no-brainer that monolithic context is"
+  },
+  {
+   "start": 3028.4,
+   "duration": 6.32,
+   "text": "tokenheavy big cataloges dilute tool"
+  },
+  {
+   "start": 3031.359,
+   "duration": 5.521,
+   "text": "sections hits limits as you grow but"
+  },
+  {
+   "start": 3034.72,
+   "duration": 4.48,
+   "text": "progressive discovery extra Discovery"
+  },
+  {
+   "start": 3036.88,
+   "duration": 5.36,
+   "text": "adds latency."
+  },
+  {
+   "start": 3039.2,
+   "duration": 6.56,
+   "text": "Discovery can miss harder to reason"
+  },
+  {
+   "start": 3042.24,
+   "duration": 5.68,
+   "text": "about. So you win in cost but you add"
+  },
+  {
+   "start": 3045.76,
+   "duration": 4.96,
+   "text": "more latency"
+  },
+  {
+   "start": 3047.92,
+   "duration": 4.399,
+   "text": "and maybe sometime you miss out on a"
+  },
+  {
+   "start": 3050.72,
+   "duration": 3.28,
+   "text": "tool or something like that but it's"
+  },
+  {
+   "start": 3052.319,
+   "duration": 3.921,
+   "text": "fine."
+  },
+  {
+   "start": 3054.0,
+   "duration": 4.24,
+   "text": "So you you understood these things right"
+  },
+  {
+   "start": 3056.24,
+   "duration": 3.359,
+   "text": "uh these three points about both of"
+  },
+  {
+   "start": 3058.24,
+   "duration": 3.44,
+   "text": "monolithic context and progressive"
+  },
+  {
+   "start": 3059.599,
+   "duration": 4.801,
+   "text": "discovery. But let's talk about a real"
+  },
+  {
+   "start": 3061.68,
+   "duration": 5.36,
+   "text": "example. The claude API's tool search"
+  },
+  {
+   "start": 3064.4,
+   "duration": 5.199,
+   "text": "works exactly like the menu. That is the"
+  },
+  {
+   "start": 3067.04,
+   "duration": 5.039,
+   "text": "progressive discovery. You mark tools"
+  },
+  {
+   "start": 3069.599,
+   "duration": 4.0,
+   "text": "with defer loading colon true. And I"
+  },
+  {
+   "start": 3072.079,
+   "duration": 4.641,
+   "text": "talked about this differ loading column"
+  },
+  {
+   "start": 3073.599,
+   "duration": 5.281,
+   "text": "true previously as well."
+  },
+  {
+   "start": 3076.72,
+   "duration": 5.2,
+   "text": "Claude starts out seeing only the search"
+  },
+  {
+   "start": 3078.88,
+   "duration": 6.0,
+   "text": "tool plus anything you did not differ."
+  },
+  {
+   "start": 3081.92,
+   "duration": 5.76,
+   "text": "It searches when it needs something and"
+  },
+  {
+   "start": 3084.88,
+   "duration": 5.6,
+   "text": "the API expands the most relevant"
+  },
+  {
+   "start": 3087.68,
+   "duration": 5.679,
+   "text": "matches into full definitions."
+  },
+  {
+   "start": 3090.48,
+   "duration": 5.76,
+   "text": "The docs recommend keeping you your"
+  },
+  {
+   "start": 3093.359,
+   "duration": 6.0,
+   "text": "three to five mostus tools on you know"
+  },
+  {
+   "start": 3096.24,
+   "duration": 5.119,
+   "text": "non-deferred so that at least these"
+  },
+  {
+   "start": 3099.359,
+   "duration": 4.24,
+   "text": "limited number of tools are available"
+  },
+  {
+   "start": 3101.359,
+   "duration": 4.081,
+   "text": "and deferred tools are kept out of the"
+  },
+  {
+   "start": 3103.599,
+   "duration": 4.96,
+   "text": "cache prefix so adding them doesn't"
+  },
+  {
+   "start": 3105.44,
+   "duration": 4.96,
+   "text": "break your cache anyways uh and you know"
+  },
+  {
+   "start": 3108.559,
+   "duration": 4.881,
+   "text": "you've already met this pattern twice in"
+  },
+  {
+   "start": 3110.4,
+   "duration": 5.84,
+   "text": "this series u uh skills in episode 5 are"
+  },
+  {
+   "start": 3113.44,
+   "duration": 4.8,
+   "text": "progressive discovery for procedures and"
+  },
+  {
+   "start": 3116.24,
+   "duration": 4.16,
+   "text": "rag in episode number six is progressive"
+  },
+  {
+   "start": 3118.24,
+   "duration": 5.119,
+   "text": "discovery for knowledge so you have"
+  },
+  {
+   "start": 3120.4,
+   "duration": 5.199,
+   "text": "already been using an um using this"
+  },
+  {
+   "start": 3123.359,
+   "duration": 4.641,
+   "text": "progressive discovery principle but now"
+  },
+  {
+   "start": 3125.599,
+   "duration": 5.681,
+   "text": "you know why."
+  },
+  {
+   "start": 3128.0,
+   "duration": 5.68,
+   "text": "Okay. So uh this covers objective number"
+  },
+  {
+   "start": 3131.28,
+   "duration": 4.88,
+   "text": "3.8 progressive evaluate progressive"
+  },
+  {
+   "start": 3133.68,
+   "duration": 4.399,
+   "text": "discovery versus monolithic context"
+  },
+  {
+   "start": 3136.16,
+   "duration": 4.56,
+   "text": "strategy. Everything over here is"
+  },
+  {
+   "start": 3138.079,
+   "duration": 4.401,
+   "text": "related to context."
+  },
+  {
+   "start": 3140.72,
+   "duration": 4.48,
+   "text": "Okay"
+  },
+  {
+   "start": 3142.48,
+   "duration": 5.92,
+   "text": "great. Now the context strategy"
+  },
+  {
+   "start": 3145.2,
+   "duration": 5.6,
+   "text": "decision. So how do you choose? Um"
+  },
+  {
+   "start": 3148.4,
+   "duration": 5.439,
+   "text": "there's here are the five questions I"
+  },
+  {
+   "start": 3150.8,
+   "duration": 5.68,
+   "text": "would like to ask and each one leans you"
+  },
+  {
+   "start": 3153.839,
+   "duration": 4.561,
+   "text": "uh one way or the other. So if the"
+  },
+  {
+   "start": 3156.48,
+   "duration": 3.839,
+   "text": "question ask yourself how big is the"
+  },
+  {
+   "start": 3158.4,
+   "duration": 4.24,
+   "text": "catalog?"
+  },
+  {
+   "start": 3160.319,
+   "duration": 6.081,
+   "text": "If it is small and stable then you might"
+  },
+  {
+   "start": 3162.64,
+   "duration": 6.8,
+   "text": "lean towards monolithic. If it is large"
+  },
+  {
+   "start": 3166.4,
+   "duration": 5.04,
+   "text": "and growing then you lean towards"
+  },
+  {
+   "start": 3169.44,
+   "duration": 4.24,
+   "text": "progressive."
+  },
+  {
+   "start": 3171.44,
+   "duration": 4.879,
+   "text": "How is it used?"
+  },
+  {
+   "start": 3173.68,
+   "duration": 5.2,
+   "text": "If most tools are on most requests, then"
+  },
+  {
+   "start": 3176.319,
+   "duration": 4.561,
+   "text": "you lean towards monolithic. If it is a"
+  },
+  {
+   "start": 3178.88,
+   "duration": 4.64,
+   "text": "long tail, each request touches a few"
+  },
+  {
+   "start": 3180.88,
+   "duration": 4.4,
+   "text": "tools, then you lean towards progressive"
+  },
+  {
+   "start": 3183.52,
+   "duration": 4.24,
+   "text": "because as you need, you discover more"
+  },
+  {
+   "start": 3185.28,
+   "duration": 4.4,
+   "text": "tools and use."
+  },
+  {
+   "start": 3187.76,
+   "duration": 6.0,
+   "text": "Now, how tight is the latency budget?"
+  },
+  {
+   "start": 3189.68,
+   "duration": 7.439,
+   "text": "Ask yourself if every round trip hurts,"
+  },
+  {
+   "start": 3193.76,
+   "duration": 5.68,
+   "text": "then you lean towards monolithic."
+  },
+  {
+   "start": 3197.119,
+   "duration": 5.041,
+   "text": "But if it can absorb a discovery step"
+  },
+  {
+   "start": 3199.44,
+   "duration": 4.0,
+   "text": "and there is no no problem in adding a"
+  },
+  {
+   "start": 3202.16,
+   "duration": 3.919,
+   "text": "little bit more latency then you can"
+  },
+  {
+   "start": 3203.44,
+   "duration": 5.119,
+   "text": "lean towards progressive. How about how"
+  },
+  {
+   "start": 3206.079,
+   "duration": 4.721,
+   "text": "much context headroom? If you have a lot"
+  },
+  {
+   "start": 3208.559,
+   "duration": 4.961,
+   "text": "of context headroom, plenty of it, then"
+  },
+  {
+   "start": 3210.8,
+   "duration": 5.36,
+   "text": "you lean towards monolithic. But if you"
+  },
+  {
+   "start": 3213.52,
+   "duration": 4.48,
+   "text": "have less context headroom, then"
+  },
+  {
+   "start": 3216.16,
+   "duration": 3.52,
+   "text": "definitions kind of crowd out the task"
+  },
+  {
+   "start": 3218.0,
+   "duration": 4.64,
+   "text": "and your context should be filled by"
+  },
+  {
+   "start": 3219.68,
+   "duration": 5.2,
+   "text": "just your tools."
+  },
+  {
+   "start": 3222.64,
+   "duration": 5.199,
+   "text": "How much predictability predictability"
+  },
+  {
+   "start": 3224.88,
+   "duration": 4.8,
+   "text": "do you need? Yeah. If you if you if you"
+  },
+  {
+   "start": 3227.839,
+   "duration": 4.161,
+   "text": "must know exactly what the model had,"
+  },
+  {
+   "start": 3229.68,
+   "duration": 4.8,
+   "text": "then you would go towards monolithic."
+  },
+  {
+   "start": 3232.0,
+   "duration": 4.8,
+   "text": "But if discovery is traced and"
+  },
+  {
+   "start": 3234.48,
+   "duration": 4.56,
+   "text": "reviewable, then you lean towards"
+  },
+  {
+   "start": 3236.8,
+   "duration": 4.799,
+   "text": "progressive."
+  },
+  {
+   "start": 3239.04,
+   "duration": 5.92,
+   "text": "In practice, I would say at scale, the"
+  },
+  {
+   "start": 3241.599,
+   "duration": 6.24,
+   "text": "default is a hybrid. Okay? An always"
+  },
+  {
+   "start": 3244.96,
+   "duration": 4.72,
+   "text": "loaded core for the handful of things"
+  },
+  {
+   "start": 3247.839,
+   "duration": 5.441,
+   "text": "nearly every request needs and a"
+  },
+  {
+   "start": 3249.68,
+   "duration": 5.2,
+   "text": "deferred long tail behind search. But"
+  },
+  {
+   "start": 3253.28,
+   "duration": 4.48,
+   "text": "but here's the thing, right? Progressive"
+  },
+  {
+   "start": 3254.88,
+   "duration": 6.0,
+   "text": "discovery adds a new way to fail and you"
+  },
+  {
+   "start": 3257.76,
+   "duration": 5.92,
+   "text": "measure it. Log every discover discovery"
+  },
+  {
+   "start": 3260.88,
+   "duration": 4.64,
+   "text": "call. How about a search came back empty"
+  },
+  {
+   "start": 3263.68,
+   "duration": 3.84,
+   "text": "or missed the tool that was actually"
+  },
+  {
+   "start": 3265.52,
+   "duration": 4.799,
+   "text": "needed and how much latency the extra"
+  },
+  {
+   "start": 3267.52,
+   "duration": 6.559,
+   "text": "step added. So you would get more"
+  },
+  {
+   "start": 3270.319,
+   "duration": 5.52,
+   "text": "flexibility in tracing and you know you"
+  },
+  {
+   "start": 3274.079,
+   "duration": 4.161,
+   "text": "would know why was this tool used when"
+  },
+  {
+   "start": 3275.839,
+   "duration": 4.161,
+   "text": "you go for progressive discovery. If you"
+  },
+  {
+   "start": 3278.24,
+   "duration": 4.079,
+   "text": "are okay with the latency it will not"
+  },
+  {
+   "start": 3280.0,
+   "duration": 4.8,
+   "text": "hurt your accuracy at all. If you're"
+  },
+  {
+   "start": 3282.319,
+   "duration": 4.561,
+   "text": "okay with the latency, then you can go"
+  },
+  {
+   "start": 3284.8,
+   "duration": 4.4,
+   "text": "for it."
+  },
+  {
+   "start": 3286.88,
+   "duration": 4.239,
+   "text": "And one last time for the exam, it wants"
+  },
+  {
+   "start": 3289.2,
+   "duration": 4.96,
+   "text": "you to know the trade-off, not to pick a"
+  },
+  {
+   "start": 3291.119,
+   "duration": 5.601,
+   "text": "side. Okay, the constraint in the stem"
+  },
+  {
+   "start": 3294.16,
+   "duration": 4.959,
+   "text": "decides. So the mental model is"
+  },
+  {
+   "start": 3296.72,
+   "duration": 4.72,
+   "text": "monolithic by speed and predictability"
+  },
+  {
+   "start": 3299.119,
+   "duration": 3.921,
+   "text": "with tokens, progressive by scale with"
+  },
+  {
+   "start": 3301.44,
+   "duration": 4.383,
+   "text": "round trips and also better"
+  },
+  {
+   "start": 3303.04,
+   "duration": 6.48,
+   "text": "auditability."
+  },
+  {
+   "start": 3305.823,
+   "duration": 5.617,
+   "text": "[snorts] Okay, so the last drill. Okay."
+  },
+  {
+   "start": 3309.52,
+   "duration": 4.079,
+   "text": "And this one runs the other direction"
+  },
+  {
+   "start": 3311.44,
+   "duration": 4.24,
+   "text": "from the one in episode number seven"
+  },
+  {
+   "start": 3313.599,
+   "duration": 3.841,
+   "text": "that we did. So the question goes like"
+  },
+  {
+   "start": 3315.68,
+   "duration": 4.8,
+   "text": "this. A restaurant's chain voice"
+  },
+  {
+   "start": 3317.44,
+   "duration": 5.6,
+   "text": "ordering agent has nine tools."
+  },
+  {
+   "start": 3320.48,
+   "duration": 5.92,
+   "text": "Okay. Menu lookup, add item, remove"
+  },
+  {
+   "start": 3323.04,
+   "duration": 4.799,
+   "text": "item, apply coupon, um, and blah blah"
+  },
+  {
+   "start": 3326.4,
+   "duration": 6.159,
+   "text": "blah. Weight, estimate, confirm order."
+  },
+  {
+   "start": 3327.839,
+   "duration": 8.081,
+   "text": "Nine tools it has. And nearly every call"
+  },
+  {
+   "start": 3332.559,
+   "duration": 6.401,
+   "text": "uses six or more of them. Okay. The"
+  },
+  {
+   "start": 3335.92,
+   "duration": 5.52,
+   "text": "system prompt and tool definitions. um"
+  },
+  {
+   "start": 3338.96,
+   "duration": 5.599,
+   "text": "are identical across calls and already"
+  },
+  {
+   "start": 3341.44,
+   "duration": 6.159,
+   "text": "cached. Uh customers are on the phone so"
+  },
+  {
+   "start": 3344.559,
+   "duration": 5.04,
+   "text": "latency is critical. A teammate proposes"
+  },
+  {
+   "start": 3347.599,
+   "duration": 4.561,
+   "text": "moving to progressive discovery with the"
+  },
+  {
+   "start": 3349.599,
+   "duration": 6.081,
+   "text": "tool search tool to save tokens. What"
+  },
+  {
+   "start": 3352.16,
+   "duration": 6.159,
+   "text": "should you do? A is adapt tool search"
+  },
+  {
+   "start": 3355.68,
+   "duration": 5.119,
+   "text": "and defer all nine tools."
+  },
+  {
+   "start": 3358.319,
+   "duration": 5.121,
+   "text": "Okay. B says keep the monolithic"
+  },
+  {
+   "start": 3360.799,
+   "duration": 5.28,
+   "text": "loading. It's a small catalog almost"
+  },
+  {
+   "start": 3363.44,
+   "duration": 4.48,
+   "text": "fully used on every call already cached"
+  },
+  {
+   "start": 3366.079,
+   "duration": 4.0,
+   "text": "and discovery adds latency on the voice"
+  },
+  {
+   "start": 3367.92,
+   "duration": 4.48,
+   "text": "path I would say. So keep the monolithic"
+  },
+  {
+   "start": 3370.079,
+   "duration": 3.841,
+   "text": "loading. C says adopt tool search but"
+  },
+  {
+   "start": 3372.4,
+   "duration": 4.24,
+   "text": "keep the three most used tools"
+  },
+  {
+   "start": 3373.92,
+   "duration": 4.399,
+   "text": "non-deferred. And D says remove the"
+  },
+  {
+   "start": 3376.64,
+   "duration": 3.04,
+   "text": "least used tools to shrink the context"
+  },
+  {
+   "start": 3378.319,
+   "duration": 3.76,
+   "text": "and it's pretty straightforward. It"
+  },
+  {
+   "start": 3379.68,
+   "duration": 4.56,
+   "text": "should be B because every factor on the"
+  },
+  {
+   "start": 3382.079,
+   "duration": 4.401,
+   "text": "decision table points to monolithic a"
+  },
+  {
+   "start": 3384.24,
+   "duration": 4.079,
+   "text": "small catalog heavy usage on every call"
+  },
+  {
+   "start": 3386.48,
+   "duration": 4.0,
+   "text": "a tight latency budget and a prefix"
+  },
+  {
+   "start": 3388.319,
+   "duration": 4.641,
+   "text": "that's already cached. So the tokens are"
+  },
+  {
+   "start": 3390.48,
+   "duration": 6.72,
+   "text": "already cheap. So there is nothing to"
+  },
+  {
+   "start": 3392.96,
+   "duration": 6.08,
+   "text": "save tokens. C is a trap and D confuses"
+  },
+  {
+   "start": 3397.2,
+   "duration": 6.96,
+   "text": "breath with bloat from episode number"
+  },
+  {
+   "start": 3399.04,
+   "duration": 6.64,
+   "text": "seven because if if out of nine six or"
+  },
+  {
+   "start": 3404.16,
+   "duration": 4.399,
+   "text": "more tools are used then that is not"
+  },
+  {
+   "start": 3405.68,
+   "duration": 4.639,
+   "text": "capability bloat. If there are 50 tools"
+  },
+  {
+   "start": 3408.559,
+   "duration": 3.441,
+   "text": "and out of that six is being used and"
+  },
+  {
+   "start": 3410.319,
+   "duration": 4.24,
+   "text": "you are using a monolithic context"
+  },
+  {
+   "start": 3412.0,
+   "duration": 5.2,
+   "text": "approach that is capability bloat. So"
+  },
+  {
+   "start": 3414.559,
+   "duration": 4.641,
+   "text": "understand the difference. Okay. I hope"
+  },
+  {
+   "start": 3417.2,
+   "duration": 4.399,
+   "text": "that's making sense."
+  },
+  {
+   "start": 3419.2,
+   "duration": 4.159,
+   "text": "Okay, so that was all about the lessons."
+  },
+  {
+   "start": 3421.599,
+   "duration": 4.081,
+   "text": "So some key takeaways, five key"
+  },
+  {
+   "start": 3423.359,
+   "duration": 5.041,
+   "text": "takeaways from this. First is LLM"
+  },
+  {
+   "start": 3425.68,
+   "duration": 5.2,
+   "text": "failures are fluent not loud."
+  },
+  {
+   "start": 3428.4,
+   "duration": 5.28,
+   "text": "Infrastructure metrics stay green with"
+  },
+  {
+   "start": 3430.88,
+   "duration": 6.16,
+   "text": "answers go wrong. [snorts] So while"
+  },
+  {
+   "start": 3433.68,
+   "duration": 5.84,
+   "text": "answers go wrong, my bad. Two is trace"
+  },
+  {
+   "start": 3437.04,
+   "duration": 4.88,
+   "text": "every request end to end. IDs, tokens,"
+  },
+  {
+   "start": 3439.52,
+   "duration": 5.12,
+   "text": "latency and we saw that waterfall model,"
+  },
+  {
+   "start": 3441.92,
+   "duration": 4.8,
+   "text": "right? And check that out and keep that"
+  },
+  {
+   "start": 3444.64,
+   "duration": 5.199,
+   "text": "and it will be a piece of cake for you."
+  },
+  {
+   "start": 3446.72,
+   "duration": 6.639,
+   "text": "Three says monitor in three layers."
+  },
+  {
+   "start": 3449.839,
+   "duration": 6.96,
+   "text": "Yeah. Traces explain metrics detect and"
+  },
+  {
+   "start": 3453.359,
+   "duration": 7.121,
+   "text": "quality signals judge. Take free latency"
+  },
+  {
+   "start": 3456.799,
+   "duration": 6.32,
+   "text": "first. Number four because first you do"
+  },
+  {
+   "start": 3460.48,
+   "duration": 4.8,
+   "text": "caching. You do the static first caching"
+  },
+  {
+   "start": 3463.119,
+   "duration": 4.081,
+   "text": "then routing then parallel parallelism"
+  },
+  {
+   "start": 3465.28,
+   "duration": 4.319,
+   "text": "and streaming. Then justify every"
+  },
+  {
+   "start": 3467.2,
+   "duration": 4.639,
+   "text": "remaining trade with the numbers on both"
+  },
+  {
+   "start": 3469.599,
+   "duration": 4.24,
+   "text": "side. We took an example. How do you"
+  },
+  {
+   "start": 3471.839,
+   "duration": 4.321,
+   "text": "calculate the numbers right? And that is"
+  },
+  {
+   "start": 3473.839,
+   "duration": 4.48,
+   "text": "how you would use it. Five says"
+  },
+  {
+   "start": 3476.16,
+   "duration": 5.679,
+   "text": "progressive versus monolithic is a"
+  },
+  {
+   "start": 3478.319,
+   "duration": 6.0,
+   "text": "trade-off not a winner. Okay. Catalog"
+  },
+  {
+   "start": 3481.839,
+   "duration": 4.321,
+   "text": "size, usage pattern and latency, budget"
+  },
+  {
+   "start": 3484.319,
+   "duration": 5.681,
+   "text": "decide."
+  },
+  {
+   "start": 3486.16,
+   "duration": 5.6,
+   "text": "And if you only want to remember and"
+  },
+  {
+   "start": 3490.0,
+   "duration": 4.24,
+   "text": "don't only remember one sentence, but"
+  },
+  {
+   "start": 3491.76,
+   "duration": 5.039,
+   "text": "the most important sentence from today,"
+  },
+  {
+   "start": 3494.24,
+   "duration": 5.04,
+   "text": "make it this one. You can't justify a"
+  },
+  {
+   "start": 3496.799,
+   "duration": 7.201,
+   "text": "trade-off. You can't measure. So always"
+  },
+  {
+   "start": 3499.28,
+   "duration": 7.68,
+   "text": "measure and then justify the trade-off."
+  },
+  {
+   "start": 3504.0,
+   "duration": 6.24,
+   "text": "So that's it. So we're going to uh we"
+  },
+  {
+   "start": 3506.96,
+   "duration": 4.72,
+   "text": "have completed domain number three and"
+  },
+  {
+   "start": 3510.24,
+   "duration": 2.96,
+   "text": "in episode number nine we're going to"
+  },
+  {
+   "start": 3511.68,
+   "duration": 3.679,
+   "text": "talk about evaluation metrics and"
+  },
+  {
+   "start": 3513.2,
+   "duration": 3.76,
+   "text": "frameworks and that with that we will"
+  },
+  {
+   "start": 3515.359,
+   "duration": 7.521,
+   "text": "start with domain number four which"
+  },
+  {
+   "start": 3516.96,
+   "duration": 8.24,
+   "text": "would be 16% of the exam."
+  },
+  {
+   "start": 3522.88,
+   "duration": 5.439,
+   "text": "Okay"
+  },
+  {
+   "start": 3525.2,
+   "duration": 4.639,
+   "text": "cool. So that's all about it where I'll"
+  },
+  {
+   "start": 3528.319,
+   "duration": 3.681,
+   "text": "see you in the next lesson. Till then"
+  },
+  {
+   "start": 3529.839,
+   "duration": 4.72,
+   "text": "have a nice day. Take care. Bye-bye and"
+  },
+  {
+   "start": 3532.0,
+   "duration": 2.559,
+   "text": "best of luck."
+  }
+ ]
+}

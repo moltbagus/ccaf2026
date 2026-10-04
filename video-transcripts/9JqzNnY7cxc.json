@@ -1,0 +1,7728 @@
+{
+ "video_id": "9JqzNnY7cxc",
+ "episode": "Ep 05",
+ "title": "Prompt Engineering, Context Windows & Caching",
+ "lane": "ccar-p",
+ "segments": [
+  {
+   "start": 1.52,
+   "duration": 6.64,
+   "text": "everyone and welcome to this lesson. So,"
+  },
+  {
+   "start": 4.72,
+   "duration": 6.4,
+   "text": "your prompts are costing 10 times what"
+  },
+  {
+   "start": 8.16,
+   "duration": 6.479,
+   "text": "they should. Yeah. And here's a number"
+  },
+  {
+   "start": 11.12,
+   "duration": 6.48,
+   "text": "that should bother you, 90%."
+  },
+  {
+   "start": 14.639,
+   "duration": 5.601,
+   "text": "So, that's how much you can cut from"
+  },
+  {
+   "start": 17.6,
+   "duration": 6.0,
+   "text": "your input token bill on a production"
+  },
+  {
+   "start": 20.24,
+   "duration": 7.199,
+   "text": "cloud system. Now there is a feature"
+  },
+  {
+   "start": 23.6,
+   "duration": 6.56,
+   "text": "that's been GA over a year that most of"
+  },
+  {
+   "start": 27.439,
+   "duration": 4.881,
+   "text": "the teams are not even using it and you"
+  },
+  {
+   "start": 30.16,
+   "duration": 5.52,
+   "text": "would be really surprised of how you"
+  },
+  {
+   "start": 32.32,
+   "duration": 5.84,
+   "text": "know how easy it is to use. Okay. And"
+  },
+  {
+   "start": 35.68,
+   "duration": 5.12,
+   "text": "it's not just about the cost the way you"
+  },
+  {
+   "start": 38.16,
+   "duration": 4.64,
+   "text": "structure your prompts the way you place"
+  },
+  {
+   "start": 40.8,
+   "duration": 4.48,
+   "text": "information inside a context window and"
+  },
+  {
+   "start": 42.8,
+   "duration": 4.64,
+   "text": "whether you build your prompts as you"
+  },
+  {
+   "start": 45.28,
+   "duration": 4.24,
+   "text": "know monolithic walls of text or as"
+  },
+  {
+   "start": 47.44,
+   "duration": 4.959,
+   "text": "clean reusable models. All of this"
+  },
+  {
+   "start": 49.52,
+   "duration": 5.679,
+   "text": "directly affects output quality,"
+  },
+  {
+   "start": 52.399,
+   "duration": 5.601,
+   "text": "consistency and latency at you know"
+  },
+  {
+   "start": 55.199,
+   "duration": 5.36,
+   "text": "production scale. This is not kind of"
+  },
+  {
+   "start": 58.0,
+   "duration": 4.16,
+   "text": "like a beginner's course in uh prompt"
+  },
+  {
+   "start": 60.559,
+   "duration": 4.32,
+   "text": "engineering. Today we are talking about"
+  },
+  {
+   "start": 62.16,
+   "duration": 5.76,
+   "text": "the architect's view of prompts. So how"
+  },
+  {
+   "start": 64.879,
+   "duration": 5.521,
+   "text": "you design system prompts, prompt"
+  },
+  {
+   "start": 67.92,
+   "duration": 5.519,
+   "text": "systems that scale across thousands of"
+  },
+  {
+   "start": 70.4,
+   "duration": 5.84,
+   "text": "requests uh stay maintainable as well"
+  },
+  {
+   "start": 73.439,
+   "duration": 6.561,
+   "text": "and the best part is it doesn't burn a"
+  },
+  {
+   "start": 76.24,
+   "duration": 7.6,
+   "text": "lot of money. Yeah. So that is what it"
+  },
+  {
+   "start": 80.0,
+   "duration": 6.24,
+   "text": "is. So what we are going to cover today"
+  },
+  {
+   "start": 83.84,
+   "duration": 4.56,
+   "text": "let's have a glance. So this is episode"
+  },
+  {
+   "start": 86.24,
+   "duration": 4.16,
+   "text": "five of claude certified architect"
+  },
+  {
+   "start": 88.4,
+   "duration": 4.96,
+   "text": "professional series and we are closing"
+  },
+  {
+   "start": 90.4,
+   "duration": 4.64,
+   "text": "out domain number two which is claude"
+  },
+  {
+   "start": 93.36,
+   "duration": 3.92,
+   "text": "models prompting and context"
+  },
+  {
+   "start": 95.04,
+   "duration": 4.32,
+   "text": "engineering. So last episode we kind of"
+  },
+  {
+   "start": 97.28,
+   "duration": 5.519,
+   "text": "covered model selection and system"
+  },
+  {
+   "start": 99.36,
+   "duration": 6.0,
+   "text": "prompt. Uh today we're going to go more"
+  },
+  {
+   "start": 102.799,
+   "duration": 4.96,
+   "text": "in depth or go deeper into the prompt"
+  },
+  {
+   "start": 105.36,
+   "duration": 5.759,
+   "text": "layer itself and we're going to hit"
+  },
+  {
+   "start": 107.759,
+   "duration": 6.801,
+   "text": "three objectives from the CCAP exam"
+  },
+  {
+   "start": 111.119,
+   "duration": 5.28,
+   "text": "guide. Um so so do do just for"
+  },
+  {
+   "start": 114.56,
+   "duration": 5.199,
+   "text": "information you already know this domain"
+  },
+  {
+   "start": 116.399,
+   "duration": 6.641,
+   "text": "2 is 13% of the exam. So in this video"
+  },
+  {
+   "start": 119.759,
+   "duration": 4.96,
+   "text": "we're going to cover 2.3 2.3 objective"
+  },
+  {
+   "start": 123.04,
+   "duration": 3.6,
+   "text": "which is apply prompt engineering"
+  },
+  {
+   "start": 124.719,
+   "duration": 4.641,
+   "text": "technique zero shot few shot and chain"
+  },
+  {
+   "start": 126.64,
+   "duration": 4.239,
+   "text": "of thought. Okay. Objective number 2.4"
+  },
+  {
+   "start": 129.36,
+   "duration": 3.36,
+   "text": "Four, we're going to cover that is"
+  },
+  {
+   "start": 130.879,
+   "duration": 4.161,
+   "text": "optimizing you know context windows and"
+  },
+  {
+   "start": 132.72,
+   "duration": 5.36,
+   "text": "manage token usage and objective number"
+  },
+  {
+   "start": 135.04,
+   "duration": 6.64,
+   "text": "2.5 which is basically implementing"
+  },
+  {
+   "start": 138.08,
+   "duration": 6.879,
+   "text": "prompt reuse strategies like caching"
+  },
+  {
+   "start": 141.68,
+   "duration": 7.199,
+   "text": "modular prompts and skills."
+  },
+  {
+   "start": 144.959,
+   "duration": 5.441,
+   "text": "And um here's the plan from my side."
+  },
+  {
+   "start": 148.879,
+   "duration": 3.44,
+   "text": "What we're going to do here is we're"
+  },
+  {
+   "start": 150.4,
+   "duration": 4.0,
+   "text": "going to start with a decision matrix"
+  },
+  {
+   "start": 152.319,
+   "duration": 4.481,
+   "text": "for picking the right prompt technique."
+  },
+  {
+   "start": 154.4,
+   "duration": 4.64,
+   "text": "Then we'll talk uh you know context"
+  },
+  {
+   "start": 156.8,
+   "duration": 5.2,
+   "text": "window strategy where to put things and"
+  },
+  {
+   "start": 159.04,
+   "duration": 4.479,
+   "text": "why placement matters. And after that uh"
+  },
+  {
+   "start": 162.0,
+   "duration": 4.239,
+   "text": "the big one okay we're going to close"
+  },
+  {
+   "start": 163.519,
+   "duration": 4.8,
+   "text": "out with prompt caching as the"
+  },
+  {
+   "start": 166.239,
+   "duration": 5.041,
+   "text": "architectural discipline and how to"
+  },
+  {
+   "start": 168.319,
+   "duration": 5.361,
+   "text": "structure your prompts as modular cache"
+  },
+  {
+   "start": 171.28,
+   "duration": 5.12,
+   "text": "layers. Okay. And we're going to also"
+  },
+  {
+   "start": 173.68,
+   "duration": 6.639,
+   "text": "learn about skills as that is part of"
+  },
+  {
+   "start": 176.4,
+   "duration": 6.559,
+   "text": "this domain. Okay. So I hope you are"
+  },
+  {
+   "start": 180.319,
+   "duration": 4.481,
+   "text": "clear with the exam map and what we're"
+  },
+  {
+   "start": 182.959,
+   "duration": 4.64,
+   "text": "going to cover and we're going to move"
+  },
+  {
+   "start": 184.8,
+   "duration": 6.159,
+   "text": "forward now. Okay. So let's talk about"
+  },
+  {
+   "start": 187.599,
+   "duration": 5.92,
+   "text": "the prompt technique decision matrix. So"
+  },
+  {
+   "start": 190.959,
+   "duration": 5.36,
+   "text": "at the foundations level you learned"
+  },
+  {
+   "start": 193.519,
+   "duration": 5.44,
+   "text": "what zeros, few shot and chain of"
+  },
+  {
+   "start": 196.319,
+   "duration": 4.801,
+   "text": "thought or meta prompting are right. So"
+  },
+  {
+   "start": 198.959,
+   "duration": 5.681,
+   "text": "at the professional level the exam"
+  },
+  {
+   "start": 201.12,
+   "duration": 5.52,
+   "text": "doesn't ask what is few shot or what is"
+  },
+  {
+   "start": 204.64,
+   "duration": 4.879,
+   "text": "chain of thought. It asks given this"
+  },
+  {
+   "start": 206.64,
+   "duration": 5.44,
+   "text": "constraint which technique fits."
+  },
+  {
+   "start": 209.519,
+   "duration": 5.041,
+   "text": "So let's build the decision matrix you"
+  },
+  {
+   "start": 212.08,
+   "duration": 5.12,
+   "text": "would use on the exam day and also you"
+  },
+  {
+   "start": 214.56,
+   "duration": 4.8,
+   "text": "would use that in production."
+  },
+  {
+   "start": 217.2,
+   "duration": 5.039,
+   "text": "Okay. So if you're going to have a look"
+  },
+  {
+   "start": 219.36,
+   "duration": 6.32,
+   "text": "at this decision matrix. So let's talk"
+  },
+  {
+   "start": 222.239,
+   "duration": 5.841,
+   "text": "about the constraint and which"
+  },
+  {
+   "start": 225.68,
+   "duration": 5.76,
+   "text": "particular prompting technique fits over"
+  },
+  {
+   "start": 228.08,
+   "duration": 6.48,
+   "text": "here. So if the constraint is latency"
+  },
+  {
+   "start": 231.44,
+   "duration": 5.439,
+   "text": "budget is tight. So the constraint you"
+  },
+  {
+   "start": 234.56,
+   "duration": 3.92,
+   "text": "would found obviously when you read the"
+  },
+  {
+   "start": 236.879,
+   "duration": 3.44,
+   "text": "question it is in the question stem and"
+  },
+  {
+   "start": 238.48,
+   "duration": 3.92,
+   "text": "that is what I have been discussing"
+  },
+  {
+   "start": 240.319,
+   "duration": 6.64,
+   "text": "throughout this entire series. So when"
+  },
+  {
+   "start": 242.4,
+   "duration": 6.24,
+   "text": "the latency budget is tight what is the"
+  },
+  {
+   "start": 246.959,
+   "duration": 4.721,
+   "text": "prompting strategy you would use. So"
+  },
+  {
+   "start": 248.64,
+   "duration": 4.879,
+   "text": "let's say zeroshot zero shot is the best"
+  },
+  {
+   "start": 251.68,
+   "duration": 4.399,
+   "text": "fit over here because it will cost you"
+  },
+  {
+   "start": 253.519,
+   "duration": 5.761,
+   "text": "very minimal tokens."
+  },
+  {
+   "start": 256.079,
+   "duration": 6.081,
+   "text": "Yeah. What about fshot?"
+  },
+  {
+   "start": 259.28,
+   "duration": 5.12,
+   "text": "Now f short would add more tokens to"
+  },
+  {
+   "start": 262.16,
+   "duration": 4.24,
+   "text": "your budget because it has more"
+  },
+  {
+   "start": 264.4,
+   "duration": 3.84,
+   "text": "examples."
+  },
+  {
+   "start": 266.4,
+   "duration": 4.32,
+   "text": "Okay, just let's go through this matrix"
+  },
+  {
+   "start": 268.24,
+   "duration": 5.28,
+   "text": "first and let's understand uh you know"
+  },
+  {
+   "start": 270.72,
+   "duration": 6.32,
+   "text": "properly where it fits. Now chain of"
+  },
+  {
+   "start": 273.52,
+   "duration": 6.32,
+   "text": "thought will add more reasoning and"
+  },
+  {
+   "start": 277.04,
+   "duration": 5.12,
+   "text": "reasoning adds more latency. So when the"
+  },
+  {
+   "start": 279.84,
+   "duration": 5.52,
+   "text": "latency budget is tight, you can't go"
+  },
+  {
+   "start": 282.16,
+   "duration": 6.16,
+   "text": "for chain of thought or few short"
+  },
+  {
+   "start": 285.36,
+   "duration": 4.96,
+   "text": "because it adds more tokens. Zero shot"
+  },
+  {
+   "start": 288.32,
+   "duration": 5.2,
+   "text": "is like you know question and answer"
+  },
+  {
+   "start": 290.32,
+   "duration": 5.84,
+   "text": "right so that is minimal tokens so that"
+  },
+  {
+   "start": 293.52,
+   "duration": 5.04,
+   "text": "fits really well in this case let's go"
+  },
+  {
+   "start": 296.16,
+   "duration": 6.16,
+   "text": "to the next constraint what about output"
+  },
+  {
+   "start": 298.56,
+   "duration": 6.88,
+   "text": "format output format must be exact so if"
+  },
+  {
+   "start": 302.32,
+   "duration": 6.159,
+   "text": "we talk about output format it always"
+  },
+  {
+   "start": 305.44,
+   "duration": 5.44,
+   "text": "depends on examples example format as"
+  },
+  {
+   "start": 308.479,
+   "duration": 5.041,
+   "text": "much examples as you give in the system"
+  },
+  {
+   "start": 310.88,
+   "duration": 5.52,
+   "text": "prompt okay this is the output format I"
+  },
+  {
+   "start": 313.52,
+   "duration": 5.28,
+   "text": "need then the claude will understand"
+  },
+  {
+   "start": 316.4,
+   "duration": 4.799,
+   "text": "okay I have to return the output in this"
+  },
+  {
+   "start": 318.8,
+   "duration": 4.64,
+   "text": "format. Let's say JSON. But when we talk"
+  },
+  {
+   "start": 321.199,
+   "duration": 4.401,
+   "text": "about zeroshot prompting, we are not"
+  },
+  {
+   "start": 323.44,
+   "duration": 3.68,
+   "text": "providing examples at all. So that is"
+  },
+  {
+   "start": 325.6,
+   "duration": 4.0,
+   "text": "very less reliable. You're just going to"
+  },
+  {
+   "start": 327.12,
+   "duration": 5.919,
+   "text": "say okay, I want this output in JSON,"
+  },
+  {
+   "start": 329.6,
+   "duration": 5.2,
+   "text": "but it will not understand okay what"
+  },
+  {
+   "start": 333.039,
+   "duration": 4.081,
+   "text": "JSON what will be the fields for"
+  },
+  {
+   "start": 334.8,
+   "duration": 4.16,
+   "text": "example. So zero shot will not work out"
+  },
+  {
+   "start": 337.12,
+   "duration": 4.0,
+   "text": "here. When the output format must be"
+  },
+  {
+   "start": 338.96,
+   "duration": 5.84,
+   "text": "exact, you have to provide a few short"
+  },
+  {
+   "start": 341.12,
+   "duration": 6.0,
+   "text": "examples in your prompt. So examples"
+  },
+  {
+   "start": 344.8,
+   "duration": 5.28,
+   "text": "would anchor the format. So few short is"
+  },
+  {
+   "start": 347.12,
+   "duration": 5.12,
+   "text": "the best fit over here. Chain of thought"
+  },
+  {
+   "start": 350.08,
+   "duration": 4.16,
+   "text": "obviously it can drift because it will"
+  },
+  {
+   "start": 352.24,
+   "duration": 4.56,
+   "text": "think it's a very straightforward thing."
+  },
+  {
+   "start": 354.24,
+   "duration": 4.56,
+   "text": "Why do you need chain of thought uh you"
+  },
+  {
+   "start": 356.8,
+   "duration": 4.08,
+   "text": "know reasoning over here? So that"
+  },
+  {
+   "start": 358.8,
+   "duration": 5.679,
+   "text": "doesn't make sense. Okay. The next"
+  },
+  {
+   "start": 360.88,
+   "duration": 6.0,
+   "text": "constraint is task is complex or task is"
+  },
+  {
+   "start": 364.479,
+   "duration": 4.945,
+   "text": "multi-step. For example, let's say you"
+  },
+  {
+   "start": 366.88,
+   "duration": 4.319,
+   "text": "understood from the question. Now zero"
+  },
+  {
+   "start": 369.424,
+   "duration": 3.456,
+   "text": "[snorts] shot will not work out at all"
+  },
+  {
+   "start": 371.199,
+   "duration": 3.761,
+   "text": "over here because it is really really"
+  },
+  {
+   "start": 372.88,
+   "duration": 4.48,
+   "text": "underpowered."
+  },
+  {
+   "start": 374.96,
+   "duration": 5.44,
+   "text": "talk about few short depends on the"
+  },
+  {
+   "start": 377.36,
+   "duration": 5.92,
+   "text": "examples. If the multi-step reasoning or"
+  },
+  {
+   "start": 380.4,
+   "duration": 6.4,
+   "text": "the task complicacy depends on examples"
+  },
+  {
+   "start": 383.28,
+   "duration": 6.4,
+   "text": "and few short might work over here but"
+  },
+  {
+   "start": 386.8,
+   "duration": 5.119,
+   "text": "chain of thought would would be the best"
+  },
+  {
+   "start": 389.68,
+   "duration": 4.4,
+   "text": "in this scenario because as the task is"
+  },
+  {
+   "start": 391.919,
+   "duration": 4.0,
+   "text": "complicated and it is multi-step the"
+  },
+  {
+   "start": 394.08,
+   "duration": 4.64,
+   "text": "reasoning power would come into the"
+  },
+  {
+   "start": 395.919,
+   "duration": 5.84,
+   "text": "picture right and it would work the best"
+  },
+  {
+   "start": 398.72,
+   "duration": 5.12,
+   "text": "because there might be some dynamis"
+  },
+  {
+   "start": 401.759,
+   "duration": 4.0,
+   "text": "dynamic things that that might be"
+  },
+  {
+   "start": 403.84,
+   "duration": 4.079,
+   "text": "happening over here which zero shot and"
+  },
+  {
+   "start": 405.759,
+   "duration": 5.28,
+   "text": "few shot which are kind of a little It's"
+  },
+  {
+   "start": 407.919,
+   "duration": 5.12,
+   "text": "static, right? In this case, chain of"
+  },
+  {
+   "start": 411.039,
+   "duration": 5.361,
+   "text": "thought would work the best if the task"
+  },
+  {
+   "start": 413.039,
+   "duration": 5.201,
+   "text": "is complex or multi-step."
+  },
+  {
+   "start": 416.4,
+   "duration": 4.48,
+   "text": "Let's talk about some other constraints."
+  },
+  {
+   "start": 418.24,
+   "duration": 4.959,
+   "text": "If the constraint is input variety is"
+  },
+  {
+   "start": 420.88,
+   "duration": 5.28,
+   "text": "high,"
+  },
+  {
+   "start": 423.199,
+   "duration": 5.84,
+   "text": "will zero short prompt work here? Yes,"
+  },
+  {
+   "start": 426.16,
+   "duration": 6.159,
+   "text": "it will work as well over here because"
+  },
+  {
+   "start": 429.039,
+   "duration": 5.121,
+   "text": "it kind of generalizes it. Well, if"
+  },
+  {
+   "start": 432.319,
+   "duration": 3.841,
+   "text": "you're giving you you are working, let's"
+  },
+  {
+   "start": 434.16,
+   "duration": 4.64,
+   "text": "say a very simple example, you have you"
+  },
+  {
+   "start": 436.16,
+   "duration": 5.84,
+   "text": "have just opened up a new chat in claude"
+  },
+  {
+   "start": 438.8,
+   "duration": 5.119,
+   "text": "and u you are working on something,"
+  },
+  {
+   "start": 442.0,
+   "duration": 5.199,
+   "text": "right? And you are giving different"
+  },
+  {
+   "start": 443.919,
+   "duration": 6.481,
+   "text": "input variables over there, right? If"
+  },
+  {
+   "start": 447.199,
+   "duration": 5.921,
+   "text": "you are going to give a few short"
+  },
+  {
+   "start": 450.4,
+   "duration": 5.28,
+   "text": "examples on some work that you are doing"
+  },
+  {
+   "start": 453.12,
+   "duration": 4.72,
+   "text": "where your input has a lot of variety,"
+  },
+  {
+   "start": 455.68,
+   "duration": 4.56,
+   "text": "you can't cover all of the varieties"
+  },
+  {
+   "start": 457.84,
+   "duration": 5.12,
+   "text": "using a few short examples. See always"
+  },
+  {
+   "start": 460.24,
+   "duration": 5.28,
+   "text": "remember the sweet spot for few short"
+  },
+  {
+   "start": 462.96,
+   "duration": 4.639,
+   "text": "examples is always three to five. You"
+  },
+  {
+   "start": 465.52,
+   "duration": 6.399,
+   "text": "give more than that you would be"
+  },
+  {
+   "start": 467.599,
+   "duration": 6.481,
+   "text": "basically uh kind of underfitting. Okay."
+  },
+  {
+   "start": 471.919,
+   "duration": 4.641,
+   "text": "uh you are just saying okay this 10"
+  },
+  {
+   "start": 474.08,
+   "duration": 4.72,
+   "text": "examples you are increasing the context"
+  },
+  {
+   "start": 476.56,
+   "duration": 3.919,
+   "text": "window size which it holds in at the end"
+  },
+  {
+   "start": 478.8,
+   "duration": 4.239,
+   "text": "of the day because the system prompt is"
+  },
+  {
+   "start": 480.479,
+   "duration": 4.481,
+   "text": "also uh part of the context window right"
+  },
+  {
+   "start": 483.039,
+   "duration": 5.44,
+   "text": "you are increasing the context window"
+  },
+  {
+   "start": 484.96,
+   "duration": 6.4,
+   "text": "you are overfitting I mean you are not"
+  },
+  {
+   "start": 488.479,
+   "duration": 4.481,
+   "text": "providing any room for the LLM to think"
+  },
+  {
+   "start": 491.36,
+   "duration": 3.839,
+   "text": "so in that case if you are giving more"
+  },
+  {
+   "start": 492.96,
+   "duration": 5.84,
+   "text": "variety of input then few short example"
+  },
+  {
+   "start": 495.199,
+   "duration": 6.0,
+   "text": "will not work over here because"
+  },
+  {
+   "start": 498.8,
+   "duration": 4.079,
+   "text": "how many examples would you"
+  },
+  {
+   "start": 501.199,
+   "duration": 4.881,
+   "text": "at some point of time it will just get"
+  },
+  {
+   "start": 502.879,
+   "duration": 5.921,
+   "text": "saturated. So zero shot will also work"
+  },
+  {
+   "start": 506.08,
+   "duration": 4.32,
+   "text": "really well over here. Chain of thought"
+  },
+  {
+   "start": 508.8,
+   "duration": 4.56,
+   "text": "will also work really over here because"
+  },
+  {
+   "start": 510.4,
+   "duration": 5.199,
+   "text": "there is variety. So it will adapt per"
+  },
+  {
+   "start": 513.36,
+   "duration": 5.2,
+   "text": "input. But there is a catch over here."
+  },
+  {
+   "start": 515.599,
+   "duration": 5.281,
+   "text": "If the input variety is high, latency"
+  },
+  {
+   "start": 518.56,
+   "duration": 4.959,
+   "text": "budget is also tight. So you kind of are"
+  },
+  {
+   "start": 520.88,
+   "duration": 4.24,
+   "text": "combining uh two constraints over here."
+  },
+  {
+   "start": 523.519,
+   "duration": 3.201,
+   "text": "So you cannot go with chain of thought"
+  },
+  {
+   "start": 525.12,
+   "duration": 3.92,
+   "text": "over here because it will increase the"
+  },
+  {
+   "start": 526.72,
+   "duration": 4.48,
+   "text": "latency. So in this case you would stick"
+  },
+  {
+   "start": 529.04,
+   "duration": 4.799,
+   "text": "with zero shot. So that is the thing"
+  },
+  {
+   "start": 531.2,
+   "duration": 5.92,
+   "text": "okay even though I'm giving you this u"
+  },
+  {
+   "start": 533.839,
+   "duration": 5.841,
+   "text": "kind of um uh matrix over here decision"
+  },
+  {
+   "start": 537.12,
+   "duration": 4.0,
+   "text": "matrix there might be a combination of"
+  },
+  {
+   "start": 539.68,
+   "duration": 4.24,
+   "text": "constraints as well and that is where"
+  },
+  {
+   "start": 541.12,
+   "duration": 6.0,
+   "text": "you need to think okay I hope I'm making"
+  },
+  {
+   "start": 543.92,
+   "duration": 4.72,
+   "text": "sense now if the token budget is limited"
+  },
+  {
+   "start": 547.12,
+   "duration": 4.0,
+   "text": "if there is a constraint okay there is a"
+  },
+  {
+   "start": 548.64,
+   "duration": 4.72,
+   "text": "there is a very um thing about you know"
+  },
+  {
+   "start": 551.12,
+   "duration": 3.68,
+   "text": "token budget it's very limited the"
+  },
+  {
+   "start": 553.36,
+   "duration": 4.479,
+   "text": "company is not giving you much token"
+  },
+  {
+   "start": 554.8,
+   "duration": 4.88,
+   "text": "budget in that case zero shot is like"
+  },
+  {
+   "start": 557.839,
+   "duration": 4.161,
+   "text": "the best winner because it is the"
+  },
+  {
+   "start": 559.68,
+   "duration": 5.68,
+   "text": "cheapest test and I already mentioned"
+  },
+  {
+   "start": 562.0,
+   "duration": 5.6,
+   "text": "that in fshot as well it will always"
+  },
+  {
+   "start": 565.36,
+   "duration": 4.64,
+   "text": "occupy the context window it will add up"
+  },
+  {
+   "start": 567.6,
+   "duration": 5.359,
+   "text": "more tokens so fshot also will not is"
+  },
+  {
+   "start": 570.0,
+   "duration": 5.04,
+   "text": "the best chance over here chain of"
+  },
+  {
+   "start": 572.959,
+   "duration": 4.56,
+   "text": "thought no chance at all because it is"
+  },
+  {
+   "start": 575.04,
+   "duration": 4.56,
+   "text": "the most expensive so the key insight"
+  },
+  {
+   "start": 577.519,
+   "duration": 5.121,
+   "text": "for the exam is these are not ranked"
+  },
+  {
+   "start": 579.6,
+   "duration": 4.799,
+   "text": "from worst to best okay these are just"
+  },
+  {
+   "start": 582.64,
+   "duration": 4.08,
+   "text": "like a toolbox you have all of these"
+  },
+  {
+   "start": 584.399,
+   "duration": 4.56,
+   "text": "tools in the toolbox the constraint is"
+  },
+  {
+   "start": 586.72,
+   "duration": 4.08,
+   "text": "in your question stem and as I mentioned"
+  },
+  {
+   "start": 588.959,
+   "duration": 4.401,
+   "text": "there might be a combination of"
+  },
+  {
+   "start": 590.8,
+   "duration": 5.84,
+   "text": "constraints that you need to identify in"
+  },
+  {
+   "start": 593.36,
+   "duration": 6.0,
+   "text": "the question step. Okay, I hope that's"
+  },
+  {
+   "start": 596.64,
+   "duration": 5.199,
+   "text": "making sense. Yeah. So the mental model"
+  },
+  {
+   "start": 599.36,
+   "duration": 5.44,
+   "text": "that I want to leave you with is uh"
+  },
+  {
+   "start": 601.839,
+   "duration": 5.44,
+   "text": "prompt technique selection is equals to"
+  },
+  {
+   "start": 604.8,
+   "duration": 5.28,
+   "text": "match the technique to the constraint"
+  },
+  {
+   "start": 607.279,
+   "duration": 4.961,
+   "text": "not to the task because any of the"
+  },
+  {
+   "start": 610.08,
+   "duration": 5.199,
+   "text": "prompting techniques might resolve the"
+  },
+  {
+   "start": 612.24,
+   "duration": 5.599,
+   "text": "task but it might not fit the"
+  },
+  {
+   "start": 615.279,
+   "duration": 5.68,
+   "text": "constraint. So always remember to match"
+  },
+  {
+   "start": 617.839,
+   "duration": 6.0,
+   "text": "it with the constraint. Okay, I hope"
+  },
+  {
+   "start": 620.959,
+   "duration": 4.721,
+   "text": "that's making sense."
+  },
+  {
+   "start": 623.839,
+   "duration": 4.321,
+   "text": "Okay, so let's talk about few short"
+  },
+  {
+   "start": 625.68,
+   "duration": 4.08,
+   "text": "prompting fundamentals. Okay, now a few"
+  },
+  {
+   "start": 628.16,
+   "duration": 3.44,
+   "text": "short prompting deserves special"
+  },
+  {
+   "start": 629.76,
+   "duration": 4.8,
+   "text": "attention because it's the technique"
+  },
+  {
+   "start": 631.6,
+   "duration": 5.919,
+   "text": "most architects underestimate. Remember"
+  },
+  {
+   "start": 634.56,
+   "duration": 5.279,
+   "text": "that word underestimate and the one that"
+  },
+  {
+   "start": 637.519,
+   "duration": 3.921,
+   "text": "often gives you the best consistency per"
+  },
+  {
+   "start": 639.839,
+   "duration": 4.321,
+   "text": "token"
+  },
+  {
+   "start": 641.44,
+   "duration": 4.88,
+   "text": "tradeoff in production. Now I covered"
+  },
+  {
+   "start": 644.16,
+   "duration": 4.4,
+   "text": "this in depth in the architect"
+  },
+  {
+   "start": 646.32,
+   "duration": 5.44,
+   "text": "foundation series in episode number 14"
+  },
+  {
+   "start": 648.56,
+   "duration": 5.44,
+   "text": "or 15 but uh what I will do is I will"
+  },
+  {
+   "start": 651.76,
+   "duration": 4.72,
+   "text": "attach that footage in this video. So"
+  },
+  {
+   "start": 654.0,
+   "duration": 5.12,
+   "text": "after this part you would see that few"
+  },
+  {
+   "start": 656.48,
+   "duration": 4.56,
+   "text": "short um ex you know prompting in"
+  },
+  {
+   "start": 659.12,
+   "duration": 4.48,
+   "text": "detail. Okay. And then we're going to"
+  },
+  {
+   "start": 661.04,
+   "duration": 4.239,
+   "text": "come back and we'll have a very small"
+  },
+  {
+   "start": 663.6,
+   "duration": 3.6,
+   "text": "recap of what you have learned and we're"
+  },
+  {
+   "start": 665.279,
+   "duration": 4.0,
+   "text": "going to continue with this video. Okay."
+  },
+  {
+   "start": 667.2,
+   "duration": 4.639,
+   "text": "I'll see you after that footage. The"
+  },
+  {
+   "start": 669.279,
+   "duration": 6.24,
+   "text": "anatomy of a perfect example. Now the"
+  },
+  {
+   "start": 671.839,
+   "duration": 5.601,
+   "text": "thing is uh when I say you have to give"
+  },
+  {
+   "start": 675.519,
+   "duration": 4.32,
+   "text": "examples to your prompt whenever you are"
+  },
+  {
+   "start": 677.44,
+   "duration": 4.16,
+   "text": "working with claude or any LLM model."
+  },
+  {
+   "start": 679.839,
+   "duration": 4.481,
+   "text": "I'm not saying that you know fill it"
+  },
+  {
+   "start": 681.6,
+   "duration": 4.72,
+   "text": "with 100 to 200 examples. You have to be"
+  },
+  {
+   "start": 684.32,
+   "duration": 4.16,
+   "text": "very efficient while you are also giving"
+  },
+  {
+   "start": 686.32,
+   "duration": 4.16,
+   "text": "those few short examples. So let's"
+  },
+  {
+   "start": 688.48,
+   "duration": 4.08,
+   "text": "understand it step by step. So we have"
+  },
+  {
+   "start": 690.48,
+   "duration": 3.84,
+   "text": "input, we have the reasoning and we have"
+  },
+  {
+   "start": 692.56,
+   "duration": 4.399,
+   "text": "the output which is the label for"
+  },
+  {
+   "start": 694.32,
+   "duration": 5.199,
+   "text": "example. And the output tells the model"
+  },
+  {
+   "start": 696.959,
+   "duration": 6.481,
+   "text": "what right? The reasoning tells the"
+  },
+  {
+   "start": 699.519,
+   "duration": 6.081,
+   "text": "model how. So if you give an example"
+  },
+  {
+   "start": 703.44,
+   "duration": 4.24,
+   "text": "saying that okay this is the if you if"
+  },
+  {
+   "start": 705.6,
+   "duration": 3.919,
+   "text": "you get say this kind of scenario then"
+  },
+  {
+   "start": 707.68,
+   "duration": 3.76,
+   "text": "this is the particular output and how"
+  },
+  {
+   "start": 709.519,
+   "duration": 3.841,
+   "text": "would you tell the LM that this is the"
+  },
+  {
+   "start": 711.44,
+   "duration": 4.639,
+   "text": "particular scenario."
+  },
+  {
+   "start": 713.36,
+   "duration": 5.12,
+   "text": "You have to tell it via a reasoning."
+  },
+  {
+   "start": 716.079,
+   "duration": 4.801,
+   "text": "Okay. If this is due to this reason you"
+  },
+  {
+   "start": 718.48,
+   "duration": 4.24,
+   "text": "are classifying it as critical then this"
+  },
+  {
+   "start": 720.88,
+   "duration": 4.32,
+   "text": "should be the output format. That is"
+  },
+  {
+   "start": 722.72,
+   "duration": 5.919,
+   "text": "what I mean. You are giving it a reason"
+  },
+  {
+   "start": 725.2,
+   "duration": 5.12,
+   "text": "for that particular output. So you have"
+  },
+  {
+   "start": 728.639,
+   "duration": 3.521,
+   "text": "to make sure that you don't just give"
+  },
+  {
+   "start": 730.32,
+   "duration": 3.6,
+   "text": "the few short examples in your"
+  },
+  {
+   "start": 732.16,
+   "duration": 4.32,
+   "text": "particular system prompt or wherever you"
+  },
+  {
+   "start": 733.92,
+   "duration": 4.88,
+   "text": "are using along with every example you"
+  },
+  {
+   "start": 736.48,
+   "duration": 5.68,
+   "text": "have to provide particular reasoning for"
+  },
+  {
+   "start": 738.8,
+   "duration": 5.52,
+   "text": "that particular example right so see"
+  },
+  {
+   "start": 742.16,
+   "duration": 4.64,
+   "text": "this is only output only example input"
+  },
+  {
+   "start": 744.32,
+   "duration": 4.639,
+   "text": "label that's it model behavior which"
+  },
+  {
+   "start": 746.8,
+   "duration": 5.039,
+   "text": "example does this look like it will"
+  },
+  {
+   "start": 748.959,
+   "duration": 4.481,
+   "text": "automatically try to infer right and"
+  },
+  {
+   "start": 751.839,
+   "duration": 4.721,
+   "text": "result is pattern matching it will try"
+  },
+  {
+   "start": 753.44,
+   "duration": 5.76,
+   "text": "to match those examples with the outputs"
+  },
+  {
+   "start": 756.56,
+   "duration": 5.2,
+   "text": "that the LLM is generating and even"
+  },
+  {
+   "start": 759.2,
+   "duration": 4.56,
+   "text": "sometimes if it is correct also it will"
+  },
+  {
+   "start": 761.76,
+   "duration": 3.68,
+   "text": "kind of match with the examples that you"
+  },
+  {
+   "start": 763.76,
+   "duration": 3.759,
+   "text": "gave and if it doesn't match then it"
+  },
+  {
+   "start": 765.44,
+   "duration": 4.72,
+   "text": "will give you a error or you know or"
+  },
+  {
+   "start": 767.519,
+   "duration": 5.841,
+   "text": "separate output but instead of that you"
+  },
+  {
+   "start": 770.16,
+   "duration": 6.239,
+   "text": "have to give your example with reasons"
+  },
+  {
+   "start": 773.36,
+   "duration": 5.039,
+   "text": "so you give an input and you give the"
+  },
+  {
+   "start": 776.399,
+   "duration": 3.68,
+   "text": "derivative it's I'm not talking about"
+  },
+  {
+   "start": 778.399,
+   "duration": 4.88,
+   "text": "the mathematics derivative but the"
+  },
+  {
+   "start": 780.079,
+   "duration": 5.361,
+   "text": "derivative of the output I mean how did"
+  },
+  {
+   "start": 783.279,
+   "duration": 3.601,
+   "text": "that output derive what is the reasoning"
+  },
+  {
+   "start": 785.44,
+   "duration": 3.76,
+   "text": "behind that output"
+  },
+  {
+   "start": 786.88,
+   "duration": 4.88,
+   "text": "Yeah. So what does the reasoning chain"
+  },
+  {
+   "start": 789.2,
+   "duration": 4.16,
+   "text": "tell me about this code? Right? Now the"
+  },
+  {
+   "start": 791.76,
+   "duration": 4.24,
+   "text": "model needs to understand okay this is"
+  },
+  {
+   "start": 793.36,
+   "duration": 5.44,
+   "text": "the um uh you know question I got or the"
+  },
+  {
+   "start": 796.0,
+   "duration": 4.959,
+   "text": "query I got. I have this reasoning. Does"
+  },
+  {
+   "start": 798.8,
+   "duration": 4.4,
+   "text": "this fall inside this reasoning? It will"
+  },
+  {
+   "start": 800.959,
+   "duration": 4.32,
+   "text": "try to understand. It is like simple."
+  },
+  {
+   "start": 803.2,
+   "duration": 4.8,
+   "text": "You are a tutor. You have a child that"
+  },
+  {
+   "start": 805.279,
+   "duration": 4.8,
+   "text": "you are kind of tutoring. You you should"
+  },
+  {
+   "start": 808.0,
+   "duration": 4.16,
+   "text": "not give examples to the child and tell"
+  },
+  {
+   "start": 810.079,
+   "duration": 4.241,
+   "text": "that okay this will come in the exam and"
+  },
+  {
+   "start": 812.16,
+   "duration": 4.4,
+   "text": "you you just mug up something like that."
+  },
+  {
+   "start": 814.32,
+   "duration": 4.48,
+   "text": "So the child will try to you know"
+  },
+  {
+   "start": 816.56,
+   "duration": 4.32,
+   "text": "compare those answers that you gave"
+  },
+  {
+   "start": 818.8,
+   "duration": 3.839,
+   "text": "directly with the exam in the exam"
+  },
+  {
+   "start": 820.88,
+   "duration": 4.399,
+   "text": "questions but that is not the correct"
+  },
+  {
+   "start": 822.639,
+   "duration": 4.88,
+   "text": "way right the child needs to understand"
+  },
+  {
+   "start": 825.279,
+   "duration": 5.36,
+   "text": "how did you come to that particular"
+  },
+  {
+   "start": 827.519,
+   "duration": 5.281,
+   "text": "solution that particular answer right"
+  },
+  {
+   "start": 830.639,
+   "duration": 5.601,
+   "text": "then the foundation will be strong"
+  },
+  {
+   "start": 832.8,
+   "duration": 5.92,
+   "text": "similarly if you give reason behind your"
+  },
+  {
+   "start": 836.24,
+   "duration": 4.8,
+   "text": "output examples that you provide in your"
+  },
+  {
+   "start": 838.72,
+   "duration": 5.52,
+   "text": "few short examples in your prompt then"
+  },
+  {
+   "start": 841.04,
+   "duration": 5.76,
+   "text": "you are giving a very strong foundation"
+  },
+  {
+   "start": 844.24,
+   "duration": 5.68,
+   "text": "to your system prompt and you know the"
+  },
+  {
+   "start": 846.8,
+   "duration": 4.96,
+   "text": "LLM or claude will work even better you"
+  },
+  {
+   "start": 849.92,
+   "duration": 3.919,
+   "text": "know so the derivation kind of"
+  },
+  {
+   "start": 851.76,
+   "duration": 4.639,
+   "text": "generalizes that is what the point is"
+  },
+  {
+   "start": 853.839,
+   "duration": 5.841,
+   "text": "the answer doesn't always show the"
+  },
+  {
+   "start": 856.399,
+   "duration": 5.921,
+   "text": "derivation the answer is specific but"
+  },
+  {
+   "start": 859.68,
+   "duration": 5.599,
+   "text": "the way you know the reason behind that"
+  },
+  {
+   "start": 862.32,
+   "duration": 4.959,
+   "text": "answer is always gener general general"
+  },
+  {
+   "start": 865.279,
+   "duration": 6.0,
+   "text": "generally you know general that is what"
+  },
+  {
+   "start": 867.279,
+   "duration": 6.161,
+   "text": "I want to tell basically yeah so that is"
+  },
+  {
+   "start": 871.279,
+   "duration": 6.081,
+   "text": "the thing and the geometry of"
+  },
+  {
+   "start": 873.44,
+   "duration": 5.839,
+   "text": "generalization. So you know simple"
+  },
+  {
+   "start": 877.36,
+   "duration": 4.24,
+   "text": "example right"
+  },
+  {
+   "start": 879.279,
+   "duration": 4.881,
+   "text": "um a point a line like you know a model"
+  },
+  {
+   "start": 881.6,
+   "duration": 5.12,
+   "text": "can project to new inputs along the axis"
+  },
+  {
+   "start": 884.16,
+   "duration": 4.72,
+   "text": "right and a plane a general decision"
+  },
+  {
+   "start": 886.72,
+   "duration": 4.32,
+   "text": "surface handling the full input space."
+  },
+  {
+   "start": 888.88,
+   "duration": 4.88,
+   "text": "So basically what I mean is if you're"
+  },
+  {
+   "start": 891.04,
+   "duration": 4.72,
+   "text": "overfitting the model so this is you can"
+  },
+  {
+   "start": 893.76,
+   "duration": 3.6,
+   "text": "just kind of compare it if you know"
+  },
+  {
+   "start": 895.76,
+   "duration": 3.92,
+   "text": "about machine learning right it is like"
+  },
+  {
+   "start": 897.36,
+   "duration": 4.56,
+   "text": "overtraining your model right you're"
+  },
+  {
+   "start": 899.68,
+   "duration": 5.76,
+   "text": "giving it too much familiar data and"
+  },
+  {
+   "start": 901.92,
+   "duration": 7.359,
+   "text": "your accuracy is like 95% but still it"
+  },
+  {
+   "start": 905.44,
+   "duration": 6.639,
+   "text": "is overfitting you know it might uh you"
+  },
+  {
+   "start": 909.279,
+   "duration": 5.761,
+   "text": "know give very wrong answers when there"
+  },
+  {
+   "start": 912.079,
+   "duration": 4.88,
+   "text": "is a little bit of deviation in in the"
+  },
+  {
+   "start": 915.04,
+   "duration": 3.599,
+   "text": "input that you give to your model that"
+  },
+  {
+   "start": 916.959,
+   "duration": 4.0,
+   "text": "is in machine learning I'm talking"
+  },
+  {
+   "start": 918.639,
+   "duration": 4.56,
+   "text": "Similarly, if you are directly giving"
+  },
+  {
+   "start": 920.959,
+   "duration": 3.921,
+   "text": "the examples and without any context or"
+  },
+  {
+   "start": 923.199,
+   "duration": 3.601,
+   "text": "reasoning you are giving, you are kind"
+  },
+  {
+   "start": 924.88,
+   "duration": 3.44,
+   "text": "of restricting your model to use its"
+  },
+  {
+   "start": 926.8,
+   "duration": 4.24,
+   "text": "full capabilities. If it will just try"
+  },
+  {
+   "start": 928.32,
+   "duration": 5.12,
+   "text": "to kind of match the examples with the"
+  },
+  {
+   "start": 931.04,
+   "duration": 4.4,
+   "text": "query and the you know with the new data"
+  },
+  {
+   "start": 933.44,
+   "duration": 5.44,
+   "text": "it generates."
+  },
+  {
+   "start": 935.44,
+   "duration": 6.399,
+   "text": "If you are kind of you know giving it"
+  },
+  {
+   "start": 938.88,
+   "duration": 5.84,
+   "text": "more surface area to think you know like"
+  },
+  {
+   "start": 941.839,
+   "duration": 4.641,
+   "text": "a plane right a general decision service"
+  },
+  {
+   "start": 944.72,
+   "duration": 3.6,
+   "text": "handling the full input space. So it"
+  },
+  {
+   "start": 946.48,
+   "duration": 3.84,
+   "text": "should be able to handle any kind of"
+  },
+  {
+   "start": 948.32,
+   "duration": 4.8,
+   "text": "input because you have provided proper"
+  },
+  {
+   "start": 950.32,
+   "duration": 4.48,
+   "text": "reasoning via few short examples. So"
+  },
+  {
+   "start": 953.12,
+   "duration": 3.279,
+   "text": "that is what it is. So the model"
+  },
+  {
+   "start": 954.8,
+   "duration": 3.36,
+   "text": "extracts the underlying decision rule"
+  },
+  {
+   "start": 956.399,
+   "duration": 4.56,
+   "text": "from the examples and applies it to the"
+  },
+  {
+   "start": 958.16,
+   "duration": 6.72,
+   "text": "novel inputs or the new inputs that you"
+  },
+  {
+   "start": 960.959,
+   "duration": 6.32,
+   "text": "basically give. Right?"
+  },
+  {
+   "start": 964.88,
+   "duration": 4.24,
+   "text": "Yeah. Let's move forward. So the two to"
+  },
+  {
+   "start": 967.279,
+   "duration": 4.721,
+   "text": "four example rule. Now we understood"
+  },
+  {
+   "start": 969.12,
+   "duration": 4.48,
+   "text": "that okay our uh examples that we are"
+  },
+  {
+   "start": 972.0,
+   "duration": 4.48,
+   "text": "giving"
+  },
+  {
+   "start": 973.6,
+   "duration": 4.4,
+   "text": "those must be having some reason right"
+  },
+  {
+   "start": 976.48,
+   "duration": 4.159,
+   "text": "in the system prompt it should have some"
+  },
+  {
+   "start": 978.0,
+   "duration": 4.72,
+   "text": "reasoning and I will give you an example"
+  },
+  {
+   "start": 980.639,
+   "duration": 4.32,
+   "text": "of a few short example that you need to"
+  },
+  {
+   "start": 982.72,
+   "duration": 5.52,
+   "text": "give right for example this is the"
+  },
+  {
+   "start": 984.959,
+   "duration": 6.32,
+   "text": "system prompt for a CI/CD reviewer you"
+  },
+  {
+   "start": 988.24,
+   "duration": 4.719,
+   "text": "know and you give the normal prompt and"
+  },
+  {
+   "start": 991.279,
+   "duration": 3.441,
+   "text": "you're telling classify each reported"
+  },
+  {
+   "start": 992.959,
+   "duration": 3.44,
+   "text": "issue as critical high or medium using"
+  },
+  {
+   "start": 994.72,
+   "duration": 5.039,
+   "text": "the following examples you gave a few"
+  },
+  {
+   "start": 996.399,
+   "duration": 5.041,
+   "text": "short examples And if you see uh example"
+  },
+  {
+   "start": 999.759,
+   "duration": 3.681,
+   "text": "one you know critical when would you"
+  },
+  {
+   "start": 1001.44,
+   "duration": 5.12,
+   "text": "classify as critical code is for example"
+  },
+  {
+   "start": 1003.44,
+   "duration": 4.639,
+   "text": "this is you know uh this is one code and"
+  },
+  {
+   "start": 1006.56,
+   "duration": 4.0,
+   "text": "you are providing the reasoning that"
+  },
+  {
+   "start": 1008.079,
+   "duration": 5.12,
+   "text": "authentication check exists but is"
+  },
+  {
+   "start": 1010.56,
+   "duration": 4.48,
+   "text": "silently bypassed any request proceeds"
+  },
+  {
+   "start": 1013.199,
+   "duration": 3.281,
+   "text": "regardless of token validity right"
+  },
+  {
+   "start": 1015.04,
+   "duration": 3.919,
+   "text": "you're giving the reasoning why this is"
+  },
+  {
+   "start": 1016.48,
+   "duration": 4.32,
+   "text": "a critical bug and you are putting the"
+  },
+  {
+   "start": 1018.959,
+   "duration": 4.0,
+   "text": "label as critical similarly for two more"
+  },
+  {
+   "start": 1020.8,
+   "duration": 5.2,
+   "text": "examples right you are giving like that"
+  },
+  {
+   "start": 1022.959,
+   "duration": 5.12,
+   "text": "so for high and medium so if you see"
+  },
+  {
+   "start": 1026.0,
+   "duration": 4.64,
+   "text": "over here I have not provided more than"
+  },
+  {
+   "start": 1028.079,
+   "duration": 4.72,
+   "text": "three examples. So there is a rule of"
+  },
+  {
+   "start": 1030.64,
+   "duration": 5.52,
+   "text": "two to four examples that you should"
+  },
+  {
+   "start": 1032.799,
+   "duration": 5.28,
+   "text": "follow in few short prompting because"
+  },
+  {
+   "start": 1036.16,
+   "duration": 4.159,
+   "text": "giving more examples you are in the"
+  },
+  {
+   "start": 1038.079,
+   "duration": 4.561,
+   "text": "danger zone because you know you are"
+  },
+  {
+   "start": 1040.319,
+   "duration": 5.441,
+   "text": "kind of bloating the context you are"
+  },
+  {
+   "start": 1042.64,
+   "duration": 4.88,
+   "text": "forcing the model to you know kind of"
+  },
+  {
+   "start": 1045.76,
+   "duration": 3.12,
+   "text": "going back to the same place where we"
+  },
+  {
+   "start": 1047.52,
+   "duration": 3.84,
+   "text": "started right you are kind of forcing"
+  },
+  {
+   "start": 1048.88,
+   "duration": 4.96,
+   "text": "the model to do the example matching or"
+  },
+  {
+   "start": 1051.36,
+   "duration": 6.48,
+   "text": "the pattern matching which we are"
+  },
+  {
+   "start": 1053.84,
+   "duration": 5.44,
+   "text": "probably trying to avoid right so that"
+  },
+  {
+   "start": 1057.84,
+   "duration": 3.839,
+   "text": "is one of the things that you need to"
+  },
+  {
+   "start": 1059.28,
+   "duration": 5.68,
+   "text": "keep in mind because we don't want that."
+  },
+  {
+   "start": 1061.679,
+   "duration": 5.36,
+   "text": "So keep around two to four examples in"
+  },
+  {
+   "start": 1064.96,
+   "duration": 4.32,
+   "text": "your few short examples. So that is the"
+  },
+  {
+   "start": 1067.039,
+   "duration": 6.0,
+   "text": "like the"
+  },
+  {
+   "start": 1069.28,
+   "duration": 5.519,
+   "text": "happy path right and those two to four"
+  },
+  {
+   "start": 1073.039,
+   "duration": 4.481,
+   "text": "examples should be full of reasoning,"
+  },
+  {
+   "start": 1074.799,
+   "duration": 6.24,
+   "text": "full of intuition and it should cover a"
+  },
+  {
+   "start": 1077.52,
+   "duration": 6.64,
+   "text": "lot of variety. So that is what you"
+  },
+  {
+   "start": 1081.039,
+   "duration": 5.441,
+   "text": "should you know try for and the exam"
+  },
+  {
+   "start": 1084.16,
+   "duration": 4.879,
+   "text": "also they will try to ask you how many"
+  },
+  {
+   "start": 1086.48,
+   "duration": 4.0,
+   "text": "few short examples or you know uh it"
+  },
+  {
+   "start": 1089.039,
+   "duration": 3.361,
+   "text": "will give you a scenario questions and"
+  },
+  {
+   "start": 1090.48,
+   "duration": 3.76,
+   "text": "it will try to you know ask you the same"
+  },
+  {
+   "start": 1092.4,
+   "duration": 3.68,
+   "text": "question right then how many examples"
+  },
+  {
+   "start": 1094.24,
+   "duration": 4.64,
+   "text": "few short examples are the best then you"
+  },
+  {
+   "start": 1096.08,
+   "duration": 5.28,
+   "text": "have to kind of say that two to four you"
+  },
+  {
+   "start": 1098.88,
+   "duration": 5.44,
+   "text": "know few short examples are the best so"
+  },
+  {
+   "start": 1101.36,
+   "duration": 5.76,
+   "text": "welcome back and to give a recap few"
+  },
+  {
+   "start": 1104.32,
+   "duration": 5.76,
+   "text": "short prompting means giving the model"
+  },
+  {
+   "start": 1107.12,
+   "duration": 5.84,
+   "text": "two to four as I told 3 to five or 2 to"
+  },
+  {
+   "start": 1110.08,
+   "duration": 5.68,
+   "text": "5 is the sweet spot for few short"
+  },
+  {
+   "start": 1112.96,
+   "duration": 5.2,
+   "text": "examples. Now, so you give two to four"
+  },
+  {
+   "start": 1115.76,
+   "duration": 5.36,
+   "text": "concrete input output examples before"
+  },
+  {
+   "start": 1118.16,
+   "duration": 6.0,
+   "text": "your actual request. The magic is that"
+  },
+  {
+   "start": 1121.12,
+   "duration": 5.919,
+   "text": "those example do two things at once. So"
+  },
+  {
+   "start": 1124.16,
+   "duration": 5.6,
+   "text": "they define the expected output format"
+  },
+  {
+   "start": 1127.039,
+   "duration": 6.801,
+   "text": "and then they calibrate the model's"
+  },
+  {
+   "start": 1129.76,
+   "duration": 7.76,
+   "text": "judgment on edge cases. So a wellchosen"
+  },
+  {
+   "start": 1133.84,
+   "duration": 6.48,
+   "text": "set of examples often beats a page of"
+  },
+  {
+   "start": 1137.52,
+   "duration": 4.72,
+   "text": "pros instructions. So the key to"
+  },
+  {
+   "start": 1140.32,
+   "duration": 6.0,
+   "text": "designing you know good few short"
+  },
+  {
+   "start": 1142.24,
+   "duration": 7.52,
+   "text": "examples is choosing diverse edge case"
+  },
+  {
+   "start": 1146.32,
+   "duration": 5.52,
+   "text": "heavy examples right and don't use easy"
+  },
+  {
+   "start": 1149.76,
+   "duration": 4.56,
+   "text": "or obvious examples that will anyways"
+  },
+  {
+   "start": 1151.84,
+   "duration": 5.68,
+   "text": "crowd the context window and it will not"
+  },
+  {
+   "start": 1154.32,
+   "duration": 6.96,
+   "text": "get you anything out of it as well."
+  },
+  {
+   "start": 1157.52,
+   "duration": 6.64,
+   "text": "Okay. So that is the foundation of uh"
+  },
+  {
+   "start": 1161.28,
+   "duration": 4.88,
+   "text": "few short prompting. But now how to"
+  },
+  {
+   "start": 1164.16,
+   "duration": 4.56,
+   "text": "design few short examples. Now here's"
+  },
+  {
+   "start": 1166.16,
+   "duration": 6.16,
+   "text": "where professional goes further. So at"
+  },
+  {
+   "start": 1168.72,
+   "duration": 7.04,
+   "text": "production scale the question isn't just"
+  },
+  {
+   "start": 1172.32,
+   "duration": 6.56,
+   "text": "should I use few short. It's how do I"
+  },
+  {
+   "start": 1175.76,
+   "duration": 5.039,
+   "text": "reuse those examples efficiently across"
+  },
+  {
+   "start": 1178.88,
+   "duration": 5.2,
+   "text": "you know thousands of requests without"
+  },
+  {
+   "start": 1180.799,
+   "duration": 4.641,
+   "text": "paying for them every time."
+  },
+  {
+   "start": 1184.08,
+   "duration": 4.32,
+   "text": "That is a question you should ask"
+  },
+  {
+   "start": 1185.44,
+   "duration": 5.04,
+   "text": "yourself. How should I efficiently use"
+  },
+  {
+   "start": 1188.4,
+   "duration": 5.279,
+   "text": "this examples across thousands of"
+  },
+  {
+   "start": 1190.48,
+   "duration": 6.8,
+   "text": "examples? So, thousands of requests. So,"
+  },
+  {
+   "start": 1193.679,
+   "duration": 6.161,
+   "text": "if you have a 3,000 token system prompt"
+  },
+  {
+   "start": 1197.28,
+   "duration": 5.84,
+   "text": "uh packed with few short examples and"
+  },
+  {
+   "start": 1199.84,
+   "duration": 5.839,
+   "text": "you are sending it identically on every"
+  },
+  {
+   "start": 1203.12,
+   "duration": 5.439,
+   "text": "request, that's a caching opportunity,"
+  },
+  {
+   "start": 1205.679,
+   "duration": 4.961,
+   "text": "not a prompting problem. Right? I hope"
+  },
+  {
+   "start": 1208.559,
+   "duration": 4.641,
+   "text": "that's making sense. So the examples"
+  },
+  {
+   "start": 1210.64,
+   "duration": 5.279,
+   "text": "don't change, the format anchoring don't"
+  },
+  {
+   "start": 1213.2,
+   "duration": 4.24,
+   "text": "change, only the user query changes and"
+  },
+  {
+   "start": 1215.919,
+   "duration": 4.561,
+   "text": "we'll come back to this when we hit"
+  },
+  {
+   "start": 1217.44,
+   "duration": 4.96,
+   "text": "prompt caching in this video itself. But"
+  },
+  {
+   "start": 1220.48,
+   "duration": 3.68,
+   "text": "that is the distinction that you need to"
+  },
+  {
+   "start": 1222.4,
+   "duration": 6.08,
+   "text": "make."
+  },
+  {
+   "start": 1224.16,
+   "duration": 7.12,
+   "text": "Yeah. Okay. Now context window"
+  },
+  {
+   "start": 1228.48,
+   "duration": 5.12,
+   "text": "management at production scale. Let's"
+  },
+  {
+   "start": 1231.28,
+   "duration": 4.639,
+   "text": "talk about context window not as a"
+  },
+  {
+   "start": 1233.6,
+   "duration": 4.8,
+   "text": "technical spec because we know what a"
+  },
+  {
+   "start": 1235.919,
+   "duration": 5.601,
+   "text": "context window is, right? But as a"
+  },
+  {
+   "start": 1238.4,
+   "duration": 6.24,
+   "text": "budget you are managing. So think of"
+  },
+  {
+   "start": 1241.52,
+   "duration": 5.519,
+   "text": "context window as a hotel conference"
+  },
+  {
+   "start": 1244.64,
+   "duration": 5.2,
+   "text": "room or a hotel mundap or something like"
+  },
+  {
+   "start": 1247.039,
+   "duration": 5.281,
+   "text": "that. Now the room seats about two lakh"
+  },
+  {
+   "start": 1249.84,
+   "duration": 4.64,
+   "text": "people and you are hosting a marriage"
+  },
+  {
+   "start": 1252.32,
+   "duration": 4.4,
+   "text": "for yourself. But that doesn't mean you"
+  },
+  {
+   "start": 1254.48,
+   "duration": 4.079,
+   "text": "should invite two lakh people. That's"
+  },
+  {
+   "start": 1256.72,
+   "duration": 4.0,
+   "text": "that's that's that's a waste and"
+  },
+  {
+   "start": 1258.559,
+   "duration": 3.921,
+   "text": "actually you should not actually invite"
+  },
+  {
+   "start": 1260.72,
+   "duration": 4.0,
+   "text": "so many people to a marriage. You go and"
+  },
+  {
+   "start": 1262.48,
+   "duration": 4.64,
+   "text": "get married peacefully in my opinion."
+  },
+  {
+   "start": 1264.72,
+   "duration": 4.0,
+   "text": "Okay. I'm getting out of the context."
+  },
+  {
+   "start": 1267.12,
+   "duration": 4.48,
+   "text": "when I'm talking about context window"
+  },
+  {
+   "start": 1268.72,
+   "duration": 4.88,
+   "text": "that's a pun but you know I am very bad"
+  },
+  {
+   "start": 1271.6,
+   "duration": 4.4,
+   "text": "at making jokes so I hope you got it"
+  },
+  {
+   "start": 1273.6,
+   "duration": 4.48,
+   "text": "anyways so the the more the people in"
+  },
+  {
+   "start": 1276.0,
+   "duration": 6.08,
+   "text": "the room the harder it is for everyone"
+  },
+  {
+   "start": 1278.08,
+   "duration": 6.079,
+   "text": "to hear the speaker yeah so the model"
+  },
+  {
+   "start": 1282.08,
+   "duration": 4.56,
+   "text": "works the same way more tokens doesn't"
+  },
+  {
+   "start": 1284.159,
+   "duration": 5.041,
+   "text": "mean better answers that is the main"
+  },
+  {
+   "start": 1286.64,
+   "duration": 4.96,
+   "text": "thing you need to understand over here"
+  },
+  {
+   "start": 1289.2,
+   "duration": 6.64,
+   "text": "now as an architect here's your token"
+  },
+  {
+   "start": 1291.6,
+   "duration": 7.199,
+   "text": "budget framework first is system prompt"
+  },
+  {
+   "start": 1295.84,
+   "duration": 4.319,
+   "text": "and instruction instructions. So these"
+  },
+  {
+   "start": 1298.799,
+   "duration": 3.681,
+   "text": "things the system prompt and"
+  },
+  {
+   "start": 1300.159,
+   "duration": 4.64,
+   "text": "instructions these go at the very top."
+  },
+  {
+   "start": 1302.48,
+   "duration": 5.04,
+   "text": "They set the behavioral frame and get"
+  },
+  {
+   "start": 1304.799,
+   "duration": 5.12,
+   "text": "the most attention from the model. Okay?"
+  },
+  {
+   "start": 1307.52,
+   "duration": 5.2,
+   "text": "Because the upper part of the prompt"
+  },
+  {
+   "start": 1309.919,
+   "duration": 6.481,
+   "text": "gets the maximum attention from the"
+  },
+  {
+   "start": 1312.72,
+   "duration": 6.24,
+   "text": "model. So uh let's say you are kind of"
+  },
+  {
+   "start": 1316.4,
+   "duration": 5.6,
+   "text": "reading an article in the newspaper,"
+  },
+  {
+   "start": 1318.96,
+   "duration": 4.719,
+   "text": "right? Your attention will will be the"
+  },
+  {
+   "start": 1322.0,
+   "duration": 4.08,
+   "text": "most when you are reading the"
+  },
+  {
+   "start": 1323.679,
+   "duration": 4.321,
+   "text": "introduction of that article. the body"
+  },
+  {
+   "start": 1326.08,
+   "duration": 4.32,
+   "text": "you would probably skim past and then"
+  },
+  {
+   "start": 1328.0,
+   "duration": 5.76,
+   "text": "you end it with the conclusion which"
+  },
+  {
+   "start": 1330.4,
+   "duration": 5.279,
+   "text": "also gets most of the attention as well."
+  },
+  {
+   "start": 1333.76,
+   "duration": 4.48,
+   "text": "So that is how the LLM as well"
+  },
+  {
+   "start": 1335.679,
+   "duration": 4.161,
+   "text": "functions. So in that case the first"
+  },
+  {
+   "start": 1338.24,
+   "duration": 4.64,
+   "text": "part is the system prompt and the"
+  },
+  {
+   "start": 1339.84,
+   "duration": 5.6,
+   "text": "instructions and it is the you know that"
+  },
+  {
+   "start": 1342.88,
+   "duration": 4.4,
+   "text": "that those go at the very top. Yeah"
+  },
+  {
+   "start": 1345.44,
+   "duration": 3.359,
+   "text": "because they set the behavioral frame"
+  },
+  {
+   "start": 1347.28,
+   "duration": 4.24,
+   "text": "and get the most attention as I"
+  },
+  {
+   "start": 1348.799,
+   "duration": 5.201,
+   "text": "mentioned. Second is few short examples"
+  },
+  {
+   "start": 1351.52,
+   "duration": 5.12,
+   "text": "now right after the system prompt. So"
+  },
+  {
+   "start": 1354.0,
+   "duration": 4.88,
+   "text": "these anchor the output format and"
+  },
+  {
+   "start": 1356.64,
+   "duration": 5.68,
+   "text": "quality expectations."
+  },
+  {
+   "start": 1358.88,
+   "duration": 5.919,
+   "text": "Now the third is retrieved context."
+  },
+  {
+   "start": 1362.32,
+   "duration": 5.2,
+   "text": "Let's say uh rag results or tool"
+  },
+  {
+   "start": 1364.799,
+   "duration": 4.561,
+   "text": "outputs. So place you know the most"
+  },
+  {
+   "start": 1367.52,
+   "duration": 4.96,
+   "text": "relevant chunks closest to the user"
+  },
+  {
+   "start": 1369.36,
+   "duration": 7.679,
+   "text": "query put supplementary context earlier."
+  },
+  {
+   "start": 1372.48,
+   "duration": 6.48,
+   "text": "So that is the goes in the third because"
+  },
+  {
+   "start": 1377.039,
+   "duration": 3.601,
+   "text": "obviously the LLM would put what is"
+  },
+  {
+   "start": 1378.96,
+   "duration": 4.0,
+   "text": "there it would put the attention over"
+  },
+  {
+   "start": 1380.64,
+   "duration": 4.08,
+   "text": "there. Okay, this is what it is but not"
+  },
+  {
+   "start": 1382.96,
+   "duration": 3.76,
+   "text": "in the same way as the first and the"
+  },
+  {
+   "start": 1384.72,
+   "duration": 4.56,
+   "text": "second parts as I gave you the example"
+  },
+  {
+   "start": 1386.72,
+   "duration": 4.88,
+   "text": "of an article. Right? So that is the"
+  },
+  {
+   "start": 1389.28,
+   "duration": 5.68,
+   "text": "third part. Now the fourth thing is last"
+  },
+  {
+   "start": 1391.6,
+   "duration": 5.84,
+   "text": "part is the user's actual query always"
+  },
+  {
+   "start": 1394.96,
+   "duration": 6.8,
+   "text": "at the bottom of the context window."
+  },
+  {
+   "start": 1397.44,
+   "duration": 8.64,
+   "text": "This gets the recency benefit."
+  },
+  {
+   "start": 1401.76,
+   "duration": 8.159,
+   "text": "Right? I hope that's making sense now."
+  },
+  {
+   "start": 1406.08,
+   "duration": 7.12,
+   "text": "Uh so just keep this diagram in your"
+  },
+  {
+   "start": 1409.919,
+   "duration": 5.361,
+   "text": "mind that will kind of put you at the"
+  },
+  {
+   "start": 1413.2,
+   "duration": 4.719,
+   "text": "spot uh and you would remember it"
+  },
+  {
+   "start": 1415.28,
+   "duration": 4.639,
+   "text": "better. Yeah. 1 2 3 4 like that you can"
+  },
+  {
+   "start": 1417.919,
+   "duration": 4.081,
+   "text": "just remember. But if you are going to"
+  },
+  {
+   "start": 1419.919,
+   "duration": 4.721,
+   "text": "compare it with an example just remember"
+  },
+  {
+   "start": 1422.0,
+   "duration": 4.72,
+   "text": "this article example that I gave you."
+  },
+  {
+   "start": 1424.64,
+   "duration": 4.72,
+   "text": "Okay. So"
+  },
+  {
+   "start": 1426.72,
+   "duration": 4.959,
+   "text": "I already gave you something about this"
+  },
+  {
+   "start": 1429.36,
+   "duration": 5.84,
+   "text": "lost in the middle effect. An example of"
+  },
+  {
+   "start": 1431.679,
+   "duration": 5.681,
+   "text": "an article I gave you. But uh this is"
+  },
+  {
+   "start": 1435.2,
+   "duration": 4.16,
+   "text": "known as lost in the middle effect."
+  },
+  {
+   "start": 1437.36,
+   "duration": 4.319,
+   "text": "Yeah, the middle zone that I have"
+  },
+  {
+   "start": 1439.36,
+   "duration": 4.0,
+   "text": "marked. That's a well doumented"
+  },
+  {
+   "start": 1441.679,
+   "duration": 4.401,
+   "text": "phenomenon called lost in the middle"
+  },
+  {
+   "start": 1443.36,
+   "duration": 4.799,
+   "text": "effect. It's well documented. Now models"
+  },
+  {
+   "start": 1446.08,
+   "duration": 4.16,
+   "text": "including claude tend to pay more"
+  },
+  {
+   "start": 1448.159,
+   "duration": 4.161,
+   "text": "attention to information near the"
+  },
+  {
+   "start": 1450.24,
+   "duration": 4.559,
+   "text": "beginning and the end of their context"
+  },
+  {
+   "start": 1452.32,
+   "duration": 4.239,
+   "text": "that I've already mentioned and less to"
+  },
+  {
+   "start": 1454.799,
+   "duration": 4.401,
+   "text": "what's buried in the middle. Now I have"
+  },
+  {
+   "start": 1456.559,
+   "duration": 4.48,
+   "text": "covered this also as well in the"
+  },
+  {
+   "start": 1459.2,
+   "duration": 4.4,
+   "text": "architect foundation series in episode"
+  },
+  {
+   "start": 1461.039,
+   "duration": 4.161,
+   "text": "number 17 or 18. I don't remember the"
+  },
+  {
+   "start": 1463.6,
+   "duration": 3.12,
+   "text": "exact number, but anyways, I'll attach"
+  },
+  {
+   "start": 1465.2,
+   "duration": 3.76,
+   "text": "that footage in this video. So, that"
+  },
+  {
+   "start": 1466.72,
+   "duration": 4.16,
+   "text": "doesn't matter. So, um I'm going to"
+  },
+  {
+   "start": 1468.96,
+   "duration": 3.52,
+   "text": "attach it right now and then going to"
+  },
+  {
+   "start": 1470.88,
+   "duration": 3.52,
+   "text": "have a quick recap and we're going to"
+  },
+  {
+   "start": 1472.48,
+   "duration": 4.4,
+   "text": "continue with this video. So, see you"
+  },
+  {
+   "start": 1474.4,
+   "duration": 6.08,
+   "text": "after the footage. Middle the attention"
+  },
+  {
+   "start": 1476.88,
+   "duration": 10.24,
+   "text": "blind spot. Now, here is something that"
+  },
+  {
+   "start": 1480.48,
+   "duration": 8.319,
+   "text": "sounds surprising but is kind of um very"
+  },
+  {
+   "start": 1487.12,
+   "duration": 3.52,
+   "text": "is a thing that people don't actually"
+  },
+  {
+   "start": 1488.799,
+   "duration": 3.36,
+   "text": "give too much attention to. That is what"
+  },
+  {
+   "start": 1490.64,
+   "duration": 5.039,
+   "text": "I wanted to frame actually. That's why I"
+  },
+  {
+   "start": 1492.159,
+   "duration": 6.64,
+   "text": "took the long pause. So large language"
+  },
+  {
+   "start": 1495.679,
+   "duration": 5.521,
+   "text": "models, LLMs, [snorts] they pay very"
+  },
+  {
+   "start": 1498.799,
+   "duration": 4.641,
+   "text": "less attention to the content in the"
+  },
+  {
+   "start": 1501.2,
+   "duration": 5.599,
+   "text": "middle."
+  },
+  {
+   "start": 1503.44,
+   "duration": 7.44,
+   "text": "So what what does that mean? So you have"
+  },
+  {
+   "start": 1506.799,
+   "duration": 7.12,
+   "text": "a prompt, it has sections, right? It"
+  },
+  {
+   "start": 1510.88,
+   "duration": 5.36,
+   "text": "has, you know, the initial section, the"
+  },
+  {
+   "start": 1513.919,
+   "duration": 5.041,
+   "text": "middle section, and then the last"
+  },
+  {
+   "start": 1516.24,
+   "duration": 4.319,
+   "text": "section, right? Even if you are writing"
+  },
+  {
+   "start": 1518.96,
+   "duration": 4.88,
+   "text": "it in one paragraph, it has these"
+  },
+  {
+   "start": 1520.559,
+   "duration": 6.24,
+   "text": "sections. So, LLMs and you know general"
+  },
+  {
+   "start": 1523.84,
+   "duration": 5.76,
+   "text": "as a human as well, I will tell you my"
+  },
+  {
+   "start": 1526.799,
+   "duration": 5.36,
+   "text": "thing as well. So,"
+  },
+  {
+   "start": 1529.6,
+   "duration": 4.48,
+   "text": "whenever I start reading something, I"
+  },
+  {
+   "start": 1532.159,
+   "duration": 3.52,
+   "text": "would pay I would pay more attention to"
+  },
+  {
+   "start": 1534.08,
+   "duration": 3.76,
+   "text": "the first few lines because that will"
+  },
+  {
+   "start": 1535.679,
+   "duration": 3.441,
+   "text": "contain most of the facts. Even when"
+  },
+  {
+   "start": 1537.84,
+   "duration": 3.839,
+   "text": "you're using you know reading a"
+  },
+  {
+   "start": 1539.12,
+   "duration": 5.679,
+   "text": "newspaper most of the important things"
+  },
+  {
+   "start": 1541.679,
+   "duration": 5.12,
+   "text": "are there in the first page of the news"
+  },
+  {
+   "start": 1544.799,
+   "duration": 5.12,
+   "text": "which will overall give you a scenario"
+  },
+  {
+   "start": 1546.799,
+   "duration": 5.521,
+   "text": "of okay these are the important things"
+  },
+  {
+   "start": 1549.919,
+   "duration": 4.161,
+   "text": "then the middle sections are little bit"
+  },
+  {
+   "start": 1552.32,
+   "duration": 4.08,
+   "text": "you know kind of you would lose interest"
+  },
+  {
+   "start": 1554.08,
+   "duration": 4.24,
+   "text": "for some reason you know some um if"
+  },
+  {
+   "start": 1556.4,
+   "duration": 5.92,
+   "text": "you're reading a newspaper most of the"
+  },
+  {
+   "start": 1558.32,
+   "duration": 5.599,
+   "text": "you know ads and um uh unnecessary"
+  },
+  {
+   "start": 1562.32,
+   "duration": 3.599,
+   "text": "things some of the unnecessary things"
+  },
+  {
+   "start": 1563.919,
+   "duration": 4.64,
+   "text": "might come in the middle sections of the"
+  },
+  {
+   "start": 1565.919,
+   "duration": 4.24,
+   "text": "newspaper And then some exciting"
+  },
+  {
+   "start": 1568.559,
+   "duration": 3.841,
+   "text": "sections are there in the last part"
+  },
+  {
+   "start": 1570.159,
+   "duration": 3.681,
+   "text": "basically which are sports generally."
+  },
+  {
+   "start": 1572.4,
+   "duration": 4.48,
+   "text": "This is the pattern followed by the"
+  },
+  {
+   "start": 1573.84,
+   "duration": 6.8,
+   "text": "newspapers. So that is the attention U"
+  },
+  {
+   "start": 1576.88,
+   "duration": 6.08,
+   "text": "curve. So the LLM model will be more"
+  },
+  {
+   "start": 1580.64,
+   "duration": 4.88,
+   "text": "interested in what you are giving in the"
+  },
+  {
+   "start": 1582.96,
+   "duration": 4.4,
+   "text": "start which is the first message and"
+  },
+  {
+   "start": 1585.52,
+   "duration": 4.8,
+   "text": "then this becomes the blind spot. the"
+  },
+  {
+   "start": 1587.36,
+   "duration": 4.88,
+   "text": "the it will just kind of uh go through"
+  },
+  {
+   "start": 1590.32,
+   "duration": 4.4,
+   "text": "very fast for example in the in the in"
+  },
+  {
+   "start": 1592.24,
+   "duration": 6.0,
+   "text": "the middle section of the prompt and"
+  },
+  {
+   "start": 1594.72,
+   "duration": 5.76,
+   "text": "then what your prompt ends with for"
+  },
+  {
+   "start": 1598.24,
+   "duration": 6.799,
+   "text": "example that will also be it will give"
+  },
+  {
+   "start": 1600.48,
+   "duration": 6.24,
+   "text": "more attention to that as well right so"
+  },
+  {
+   "start": 1605.039,
+   "duration": 5.281,
+   "text": "the point what I'm trying to make here"
+  },
+  {
+   "start": 1606.72,
+   "duration": 6.4,
+   "text": "is if you put a lot of important facts"
+  },
+  {
+   "start": 1610.32,
+   "duration": 4.64,
+   "text": "in the midsection then those facts might"
+  },
+  {
+   "start": 1613.12,
+   "duration": 4.72,
+   "text": "get buried"
+  },
+  {
+   "start": 1614.96,
+   "duration": 5.12,
+   "text": "so if you put the main um you know kind"
+  },
+  {
+   "start": 1617.84,
+   "duration": 4.319,
+   "text": "of components here like the customer ID"
+  },
+  {
+   "start": 1620.08,
+   "duration": 3.68,
+   "text": "or the order ID and the refund amount if"
+  },
+  {
+   "start": 1622.159,
+   "duration": 4.961,
+   "text": "you put it in this section of your"
+  },
+  {
+   "start": 1623.76,
+   "duration": 6.0,
+   "text": "prompt it might not get processed or you"
+  },
+  {
+   "start": 1627.12,
+   "duration": 4.559,
+   "text": "know it might take more time because you"
+  },
+  {
+   "start": 1629.76,
+   "duration": 5.12,
+   "text": "know it the LLM has to find where it is"
+  },
+  {
+   "start": 1631.679,
+   "duration": 6.721,
+   "text": "but if you put those kind of kind of"
+  },
+  {
+   "start": 1634.88,
+   "duration": 6.48,
+   "text": "information in the you know kind of"
+  },
+  {
+   "start": 1638.4,
+   "duration": 7.279,
+   "text": "initial thing itself initial message"
+  },
+  {
+   "start": 1641.36,
+   "duration": 7.36,
+   "text": "itself then 100% of the time mostly it"
+  },
+  {
+   "start": 1645.679,
+   "duration": 6.48,
+   "text": "will get the facts out of it straight"
+  },
+  {
+   "start": 1648.72,
+   "duration": 6.16,
+   "text": "away and then the important"
+  },
+  {
+   "start": 1652.159,
+   "duration": 5.12,
+   "text": "summarizations or the important facts"
+  },
+  {
+   "start": 1654.88,
+   "duration": 6.24,
+   "text": "that you know the LLM needs to process"
+  },
+  {
+   "start": 1657.279,
+   "duration": 5.921,
+   "text": "for example you can keep it at the end"
+  },
+  {
+   "start": 1661.12,
+   "duration": 4.08,
+   "text": "like the most recent customer message or"
+  },
+  {
+   "start": 1663.2,
+   "duration": 3.68,
+   "text": "the most recent conversation you can"
+  },
+  {
+   "start": 1665.2,
+   "duration": 5.44,
+   "text": "keep it at the end so that it will"
+  },
+  {
+   "start": 1666.88,
+   "duration": 6.399,
+   "text": "become one whole circle the the LLM"
+  },
+  {
+   "start": 1670.64,
+   "duration": 5.84,
+   "text": "would be able to connect the dots it"
+  },
+  {
+   "start": 1673.279,
+   "duration": 6.561,
+   "text": "kind of got you know uh the important"
+  },
+  {
+   "start": 1676.48,
+   "duration": 5.36,
+   "text": "facts which it needed. Then obviously"
+  },
+  {
+   "start": 1679.84,
+   "duration": 4.079,
+   "text": "it's not that you have to leave this"
+  },
+  {
+   "start": 1681.84,
+   "duration": 4.079,
+   "text": "area blank,"
+  },
+  {
+   "start": 1683.919,
+   "duration": 6.961,
+   "text": "right? You can put some tool result"
+  },
+  {
+   "start": 1685.919,
+   "duration": 7.041,
+   "text": "calls or some low um kind of um"
+  },
+  {
+   "start": 1690.88,
+   "duration": 4.0,
+   "text": "requirement things over here which are"
+  },
+  {
+   "start": 1692.96,
+   "duration": 5.12,
+   "text": "not much necessary. You can put it over"
+  },
+  {
+   "start": 1694.88,
+   "duration": 5.679,
+   "text": "here and then you can put the you know"
+  },
+  {
+   "start": 1698.08,
+   "duration": 5.68,
+   "text": "the recent message or more important"
+  },
+  {
+   "start": 1700.559,
+   "duration": 6.961,
+   "text": "things as well at the end. So you're not"
+  },
+  {
+   "start": 1703.76,
+   "duration": 6.32,
+   "text": "kind of uh losing the data here but you"
+  },
+  {
+   "start": 1707.52,
+   "duration": 5.68,
+   "text": "are arranging the data so that the LLM"
+  },
+  {
+   "start": 1710.08,
+   "duration": 5.44,
+   "text": "will kind of perform more efficiently"
+  },
+  {
+   "start": 1713.2,
+   "duration": 4.16,
+   "text": "and why I'm uh uh giving more attention"
+  },
+  {
+   "start": 1715.52,
+   "duration": 3.2,
+   "text": "over here because it is very very"
+  },
+  {
+   "start": 1717.36,
+   "duration": 3.6,
+   "text": "important to understand from the exam"
+  },
+  {
+   "start": 1718.72,
+   "duration": 3.76,
+   "text": "perspective and also how you work in"
+  },
+  {
+   "start": 1720.96,
+   "duration": 4.079,
+   "text": "your day-to-day lives how you arrange"
+  },
+  {
+   "start": 1722.48,
+   "duration": 4.48,
+   "text": "your prompts in day-to-day lives right"
+  },
+  {
+   "start": 1725.039,
+   "duration": 3.841,
+   "text": "so these are the things critical details"
+  },
+  {
+   "start": 1726.96,
+   "duration": 4.959,
+   "text": "order numbers refunds amounts policy"
+  },
+  {
+   "start": 1728.88,
+   "duration": 6.64,
+   "text": "details you know you put it in the"
+  },
+  {
+   "start": 1731.919,
+   "duration": 5.36,
+   "text": "chart, right? Then the tool results,"
+  },
+  {
+   "start": 1735.52,
+   "duration": 5.039,
+   "text": "tool messages, all of these things which"
+  },
+  {
+   "start": 1737.279,
+   "duration": 4.961,
+   "text": "are kind of um not that much necessary,"
+  },
+  {
+   "start": 1740.559,
+   "duration": 4.161,
+   "text": "put it in the middle, right in the"
+  },
+  {
+   "start": 1742.24,
+   "duration": 6.799,
+   "text": "middle, right? In the blind spot and"
+  },
+  {
+   "start": 1744.72,
+   "duration": 6.72,
+   "text": "then in the end you have to put it the"
+  },
+  {
+   "start": 1749.039,
+   "duration": 4.0,
+   "text": "other important things, right? So I hope"
+  },
+  {
+   "start": 1751.44,
+   "duration": 4.0,
+   "text": "that is making sense. So welcome back"
+  },
+  {
+   "start": 1753.039,
+   "duration": 5.041,
+   "text": "and I hope you liked that footage and I"
+  },
+  {
+   "start": 1755.44,
+   "duration": 5.28,
+   "text": "hope you understood that. So a brief"
+  },
+  {
+   "start": 1758.08,
+   "duration": 5.36,
+   "text": "recap is that when you stuff a long"
+  },
+  {
+   "start": 1760.72,
+   "duration": 5.28,
+   "text": "context window with many documents or"
+  },
+  {
+   "start": 1763.44,
+   "duration": 5.44,
+   "text": "chunks, the model's attention is not"
+  },
+  {
+   "start": 1766.0,
+   "duration": 4.48,
+   "text": "uniform. Okay. So information placed in"
+  },
+  {
+   "start": 1768.88,
+   "duration": 4.96,
+   "text": "the very beginning and the very end of"
+  },
+  {
+   "start": 1770.48,
+   "duration": 5.679,
+   "text": "the prompt gets reliably processed. But"
+  },
+  {
+   "start": 1773.84,
+   "duration": 5.28,
+   "text": "information in the middle, especially in"
+  },
+  {
+   "start": 1776.159,
+   "duration": 5.601,
+   "text": "prompts over 50,000 tokens, I would say"
+  },
+  {
+   "start": 1779.12,
+   "duration": 5.6,
+   "text": "is at risk of being overloaded. And this"
+  },
+  {
+   "start": 1781.76,
+   "duration": 6.24,
+   "text": "is not a bug. It's how attention"
+  },
+  {
+   "start": 1784.72,
+   "duration": 6.559,
+   "text": "mechanisms work at scale. Yeah. So the"
+  },
+  {
+   "start": 1788.0,
+   "duration": 5.52,
+   "text": "practical fix is put your uh most"
+  },
+  {
+   "start": 1791.279,
+   "duration": 5.361,
+   "text": "critical information at the top or the"
+  },
+  {
+   "start": 1793.52,
+   "duration": 6.48,
+   "text": "bottom and accept that the middle is"
+  },
+  {
+   "start": 1796.64,
+   "duration": 6.8,
+   "text": "like the economy section of the plane. I"
+  },
+  {
+   "start": 1800.0,
+   "duration": 5.36,
+   "text": "hope that makes sense you know. So um"
+  },
+  {
+   "start": 1803.44,
+   "duration": 4.64,
+   "text": "now let's talk about that's so whatever"
+  },
+  {
+   "start": 1805.36,
+   "duration": 4.799,
+   "text": "you saw is the foundation. Okay. And now"
+  },
+  {
+   "start": 1808.08,
+   "duration": 4.4,
+   "text": "here where the professional takes it"
+  },
+  {
+   "start": 1810.159,
+   "duration": 4.801,
+   "text": "further. Okay. So at production scale"
+  },
+  {
+   "start": 1812.48,
+   "duration": 5.36,
+   "text": "you don't just know about lost in the"
+  },
+  {
+   "start": 1814.96,
+   "duration": 6.0,
+   "text": "middle you design kind of around it. So"
+  },
+  {
+   "start": 1817.84,
+   "duration": 5.76,
+   "text": "three moves I would tell you one is"
+  },
+  {
+   "start": 1820.96,
+   "duration": 4.56,
+   "text": "token budgeting."
+  },
+  {
+   "start": 1823.6,
+   "duration": 4.48,
+   "text": "So what is token budgeting? So for each"
+  },
+  {
+   "start": 1825.52,
+   "duration": 5.759,
+   "text": "component of your prompt set a hard"
+  },
+  {
+   "start": 1828.08,
+   "duration": 5.92,
+   "text": "token budget. So let's say system prompt"
+  },
+  {
+   "start": 1831.279,
+   "duration": 5.361,
+   "text": "should be x number of tokens. Uh"
+  },
+  {
+   "start": 1834.0,
+   "duration": 4.64,
+   "text": "examples should be y number of tokens."
+  },
+  {
+   "start": 1836.64,
+   "duration": 3.84,
+   "text": "Retrieved context which is rag and all"
+  },
+  {
+   "start": 1838.64,
+   "duration": 4.08,
+   "text": "those things right? We we discussed"
+  },
+  {
+   "start": 1840.48,
+   "duration": 4.319,
+   "text": "about those sections just previously,"
+  },
+  {
+   "start": 1842.72,
+   "duration": 5.6,
+   "text": "right? So retrieved context Z number of"
+  },
+  {
+   "start": 1844.799,
+   "duration": 7.041,
+   "text": "tokens. Don't let any one component kind"
+  },
+  {
+   "start": 1848.32,
+   "duration": 6.56,
+   "text": "of get bloated or goes unchecked. And"
+  },
+  {
+   "start": 1851.84,
+   "duration": 5.92,
+   "text": "that that's the idea. Next is context"
+  },
+  {
+   "start": 1854.88,
+   "duration": 5.84,
+   "text": "trimming. Okay, what is context"
+  },
+  {
+   "start": 1857.76,
+   "duration": 5.44,
+   "text": "trimming? When when tool outputs or"
+  },
+  {
+   "start": 1860.72,
+   "duration": 5.36,
+   "text": "let's say rag results exceed their"
+  },
+  {
+   "start": 1863.2,
+   "duration": 4.88,
+   "text": "budget, you need a trimming strategy. So"
+  },
+  {
+   "start": 1866.08,
+   "duration": 4.4,
+   "text": "you kind of summarize intermediate"
+  },
+  {
+   "start": 1868.08,
+   "duration": 3.839,
+   "text": "results. Truncate tool output to let's"
+  },
+  {
+   "start": 1870.48,
+   "duration": 4.799,
+   "text": "say relevant fields because the tool"
+  },
+  {
+   "start": 1871.919,
+   "duration": 5.36,
+   "text": "output is very long. Uh don't just you"
+  },
+  {
+   "start": 1875.279,
+   "duration": 4.64,
+   "text": "know dump everything into the window and"
+  },
+  {
+   "start": 1877.279,
+   "duration": 4.241,
+   "text": "hope that it will work out. So context"
+  },
+  {
+   "start": 1879.919,
+   "duration": 4.0,
+   "text": "trimming is also very very important and"
+  },
+  {
+   "start": 1881.52,
+   "duration": 5.44,
+   "text": "the you you can do the trimming to the"
+  },
+  {
+   "start": 1883.919,
+   "duration": 5.921,
+   "text": "to the most efficiently I would say in"
+  },
+  {
+   "start": 1886.96,
+   "duration": 4.4,
+   "text": "the middle sections because uh there is"
+  },
+  {
+   "start": 1889.84,
+   "duration": 3.04,
+   "text": "very less attention right lost in the"
+  },
+  {
+   "start": 1891.36,
+   "duration": 3.199,
+   "text": "middle. So don't dump a lot of things"
+  },
+  {
+   "start": 1892.88,
+   "duration": 5.36,
+   "text": "there. Just put relevant details over"
+  },
+  {
+   "start": 1894.559,
+   "duration": 7.36,
+   "text": "there. Now the third thing is called the"
+  },
+  {
+   "start": 1898.24,
+   "duration": 5.2,
+   "text": "bookend pattern. Okay. And I don't know"
+  },
+  {
+   "start": 1901.919,
+   "duration": 4.0,
+   "text": "many people have heard of this the"
+  },
+  {
+   "start": 1903.44,
+   "duration": 4.959,
+   "text": "bookend pattern. So what you do is you"
+  },
+  {
+   "start": 1905.919,
+   "duration": 5.921,
+   "text": "put your extraction target or key"
+  },
+  {
+   "start": 1908.399,
+   "duration": 6.801,
+   "text": "instructions both in the system prompt"
+  },
+  {
+   "start": 1911.84,
+   "duration": 6.4,
+   "text": "which is primacy and repeated as a short"
+  },
+  {
+   "start": 1915.2,
+   "duration": 6.0,
+   "text": "reminder near the user query which is"
+  },
+  {
+   "start": 1918.24,
+   "duration": 6.799,
+   "text": "recency. There are two things primacy"
+  },
+  {
+   "start": 1921.2,
+   "duration": 7.12,
+   "text": "and recency. Primacy is like a system"
+  },
+  {
+   "start": 1925.039,
+   "duration": 4.721,
+   "text": "prompt the header or something. So the"
+  },
+  {
+   "start": 1928.32,
+   "duration": 4.32,
+   "text": "key instruction should be there"
+  },
+  {
+   "start": 1929.76,
+   "duration": 4.72,
+   "text": "obviously but you put a short reminder"
+  },
+  {
+   "start": 1932.64,
+   "duration": 3.759,
+   "text": "near the user query. For example, you"
+  },
+  {
+   "start": 1934.48,
+   "duration": 4.64,
+   "text": "wrote all of these things and then you"
+  },
+  {
+   "start": 1936.399,
+   "duration": 5.201,
+   "text": "put the user query and say process this"
+  },
+  {
+   "start": 1939.12,
+   "duration": 4.88,
+   "text": "report based on the instructions that"
+  },
+  {
+   "start": 1941.6,
+   "duration": 4.16,
+   "text": "were given earlier in the system prompt."
+  },
+  {
+   "start": 1944.0,
+   "duration": 4.32,
+   "text": "So that is how you put a short reminder"
+  },
+  {
+   "start": 1945.76,
+   "duration": 5.68,
+   "text": "near the user query. Now this dual"
+  },
+  {
+   "start": 1948.32,
+   "duration": 7.04,
+   "text": "placement significantly kind of improves"
+  },
+  {
+   "start": 1951.44,
+   "duration": 5.92,
+   "text": "reliability on long context."
+  },
+  {
+   "start": 1955.36,
+   "duration": 4.799,
+   "text": "Okay. So I hope that's making sense. So"
+  },
+  {
+   "start": 1957.36,
+   "duration": 5.039,
+   "text": "token budgeting, context trimming and"
+  },
+  {
+   "start": 1960.159,
+   "duration": 6.481,
+   "text": "the bookend pattern. I don't think it's"
+  },
+  {
+   "start": 1962.399,
+   "duration": 7.441,
+   "text": "there in this um slide but just remember"
+  },
+  {
+   "start": 1966.64,
+   "duration": 6.0,
+   "text": "it. Now the exam map is 2.4 objective."
+  },
+  {
+   "start": 1969.84,
+   "duration": 4.8,
+   "text": "Objective number 2.4 uh which says"
+  },
+  {
+   "start": 1972.64,
+   "duration": 4.399,
+   "text": "optimize context windows and how to"
+  },
+  {
+   "start": 1974.64,
+   "duration": 4.48,
+   "text": "manage token usage. So the so the exam"
+  },
+  {
+   "start": 1977.039,
+   "duration": 5.76,
+   "text": "expects you to know that context"
+  },
+  {
+   "start": 1979.12,
+   "duration": 6.32,
+   "text": "optimization is about placement strategy"
+  },
+  {
+   "start": 1982.799,
+   "duration": 5.041,
+   "text": "not just token counting. So you know"
+  },
+  {
+   "start": 1985.44,
+   "duration": 4.4,
+   "text": "budgeting trimming and placing that's"
+  },
+  {
+   "start": 1987.84,
+   "duration": 3.679,
+   "text": "the particular production workflow and"
+  },
+  {
+   "start": 1989.84,
+   "duration": 5.839,
+   "text": "that is the thing that you should know"
+  },
+  {
+   "start": 1991.519,
+   "duration": 6.0,
+   "text": "before attempting the exam as well. Okay"
+  },
+  {
+   "start": 1995.679,
+   "duration": 3.441,
+   "text": "that's why just before starting this"
+  },
+  {
+   "start": 1997.519,
+   "duration": 3.76,
+   "text": "video I told you this is not a normal"
+  },
+  {
+   "start": 1999.12,
+   "duration": 4.72,
+   "text": "prompt engineering beginner video. We"
+  },
+  {
+   "start": 2001.279,
+   "duration": 4.961,
+   "text": "talk about a lot of different integrate"
+  },
+  {
+   "start": 2003.84,
+   "duration": 6.48,
+   "text": "things, intricate things, whatever I"
+  },
+  {
+   "start": 2006.24,
+   "duration": 6.0,
+   "text": "don't know things that actually u people"
+  },
+  {
+   "start": 2010.32,
+   "duration": 5.68,
+   "text": "don't know in depth and that is what the"
+  },
+  {
+   "start": 2012.24,
+   "duration": 7.679,
+   "text": "exam kind of tests. Okay, let's talk"
+  },
+  {
+   "start": 2016.0,
+   "duration": 6.32,
+   "text": "about prompt caching now. Okay, now this"
+  },
+  {
+   "start": 2019.919,
+   "duration": 5.281,
+   "text": "is the feature that can save you the"
+  },
+  {
+   "start": 2022.32,
+   "duration": 4.56,
+   "text": "most money on production clot systems."
+  },
+  {
+   "start": 2025.2,
+   "duration": 4.0,
+   "text": "That is known as prompt caching. Now,"
+  },
+  {
+   "start": 2026.88,
+   "duration": 5.039,
+   "text": "here's the analogy, right? to walk into"
+  },
+  {
+   "start": 2029.2,
+   "duration": 6.4,
+   "text": "a restaurant every day and order the"
+  },
+  {
+   "start": 2031.919,
+   "duration": 5.921,
+   "text": "same appetizer before your entry. Now,"
+  },
+  {
+   "start": 2035.6,
+   "duration": 4.48,
+   "text": "without cashing, the kitchen kind of"
+  },
+  {
+   "start": 2037.84,
+   "duration": 5.28,
+   "text": "prepares that appetizer from scratch"
+  },
+  {
+   "start": 2040.08,
+   "duration": 6.0,
+   "text": "every single time, even though it's kind"
+  },
+  {
+   "start": 2043.12,
+   "duration": 5.279,
+   "text": "of identical. With with cashing, the"
+  },
+  {
+   "start": 2046.08,
+   "duration": 4.559,
+   "text": "kitchen, let's say, it says, \"Oh, we"
+  },
+  {
+   "start": 2048.399,
+   "duration": 4.561,
+   "text": "already made this exact appetizer 5"
+  },
+  {
+   "start": 2050.639,
+   "duration": 4.081,
+   "text": "minutes ago. Here, take this one.\" It's"
+  },
+  {
+   "start": 2052.96,
+   "duration": 3.919,
+   "text": "the same thing, and it will cost you"
+  },
+  {
+   "start": 2054.72,
+   "duration": 4.399,
+   "text": "almost nothing."
+  },
+  {
+   "start": 2056.879,
+   "duration": 4.48,
+   "text": "So that's prompt caching very simple in"
+  },
+  {
+   "start": 2059.119,
+   "duration": 4.56,
+   "text": "simple terms. So when you need when you"
+  },
+  {
+   "start": 2061.359,
+   "duration": 4.961,
+   "text": "send a request to claude API the prompt"
+  },
+  {
+   "start": 2063.679,
+   "duration": 4.561,
+   "text": "prefix what is a prompt prefix that is"
+  },
+  {
+   "start": 2066.32,
+   "duration": 4.48,
+   "text": "your tools your system prompt and the"
+  },
+  {
+   "start": 2068.24,
+   "duration": 4.56,
+   "text": "beginning of your messages. So it gets"
+  },
+  {
+   "start": 2070.8,
+   "duration": 4.72,
+   "text": "processed into an internal"
+  },
+  {
+   "start": 2072.8,
+   "duration": 6.0,
+   "text": "representation. If your next request"
+  },
+  {
+   "start": 2075.52,
+   "duration": 5.52,
+   "text": "starts with the exact same prefix claude"
+  },
+  {
+   "start": 2078.8,
+   "duration": 5.599,
+   "text": "can reuse that processed representation"
+  },
+  {
+   "start": 2081.04,
+   "duration": 7.2,
+   "text": "instead of recomputing it from scratch."
+  },
+  {
+   "start": 2084.399,
+   "duration": 7.041,
+   "text": "Now I have covered this uh like I I have"
+  },
+  {
+   "start": 2088.24,
+   "duration": 4.879,
+   "text": "showed you the the different uh parts"
+  },
+  {
+   "start": 2091.44,
+   "duration": 5.36,
+   "text": "when you when you when you call the"
+  },
+  {
+   "start": 2093.119,
+   "duration": 5.921,
+   "text": "cloud API. Yeah, I have showed you the"
+  },
+  {
+   "start": 2096.8,
+   "duration": 4.0,
+   "text": "different parameters like cache control"
+  },
+  {
+   "start": 2099.04,
+   "duration": 3.68,
+   "text": "all of these things in the developer one"
+  },
+  {
+   "start": 2100.8,
+   "duration": 4.24,
+   "text": "of the episodes in the developer series."
+  },
+  {
+   "start": 2102.72,
+   "duration": 6.16,
+   "text": "So I will attach that footage here so"
+  },
+  {
+   "start": 2105.04,
+   "duration": 6.319,
+   "text": "you would understand um okay how it"
+  },
+  {
+   "start": 2108.88,
+   "duration": 5.52,
+   "text": "works. Yeah, what are the parameters"
+  },
+  {
+   "start": 2111.359,
+   "duration": 5.201,
+   "text": "that are in the action and you will have"
+  },
+  {
+   "start": 2114.4,
+   "duration": 4.4,
+   "text": "a better picture. So I will attach that"
+  },
+  {
+   "start": 2116.56,
+   "duration": 4.64,
+   "text": "footage and we'll continue after there."
+  },
+  {
+   "start": 2118.8,
+   "duration": 4.16,
+   "text": "So see you tracking what you spend."
+  },
+  {
+   "start": 2121.2,
+   "duration": 4.48,
+   "text": "Okay. So you understand tokens, you"
+  },
+  {
+   "start": 2122.96,
+   "duration": 6.08,
+   "text": "understand caching now. Yeah. But how do"
+  },
+  {
+   "start": 2125.68,
+   "duration": 5.679,
+   "text": "you actually see what a run costs on the"
+  },
+  {
+   "start": 2129.04,
+   "duration": 5.6,
+   "text": "on the ROM is this API? Every response"
+  },
+  {
+   "start": 2131.359,
+   "duration": 5.76,
+   "text": "includes a usage object. Yeah. And let's"
+  },
+  {
+   "start": 2134.64,
+   "duration": 4.8,
+   "text": "let's see the usage object. So I already"
+  },
+  {
+   "start": 2137.119,
+   "duration": 5.361,
+   "text": "ran uh this code, right? So I I will get"
+  },
+  {
+   "start": 2139.44,
+   "duration": 5.2,
+   "text": "the usage object. So uh I will I'll just"
+  },
+  {
+   "start": 2142.48,
+   "duration": 5.84,
+   "text": "kind of print that probably. Yeah. So"
+  },
+  {
+   "start": 2144.64,
+   "duration": 6.479,
+   "text": "I'm just going to say print um"
+  },
+  {
+   "start": 2148.32,
+   "duration": 4.64,
+   "text": "uh inside of it I'm going to say it's a"
+  },
+  {
+   "start": 2151.119,
+   "duration": 3.921,
+   "text": "response"
+  },
+  {
+   "start": 2152.96,
+   "duration": 5.04,
+   "text": "response"
+  },
+  {
+   "start": 2155.04,
+   "duration": 5.52,
+   "text": "dot usage. I guess that is the thing."
+  },
+  {
+   "start": 2158.0,
+   "duration": 5.359,
+   "text": "Yeah. So if I print this so it will give"
+  },
+  {
+   "start": 2160.56,
+   "duration": 4.24,
+   "text": "me a usage object. So this is the usage"
+  },
+  {
+   "start": 2163.359,
+   "duration": 3.521,
+   "text": "block. I would say there are a lot of"
+  },
+  {
+   "start": 2164.8,
+   "duration": 3.68,
+   "text": "blocks in our response right and we have"
+  },
+  {
+   "start": 2166.88,
+   "duration": 4.479,
+   "text": "already discussed about those. So I'm"
+  },
+  {
+   "start": 2168.48,
+   "duration": 4.8,
+   "text": "not going to go inside that. So um here"
+  },
+  {
+   "start": 2171.359,
+   "duration": 4.48,
+   "text": "if you see you will get all of these"
+  },
+  {
+   "start": 2173.28,
+   "duration": 5.44,
+   "text": "stuffs right you would say um you would"
+  },
+  {
+   "start": 2175.839,
+   "duration": 4.721,
+   "text": "see the input tokens yeah that says 20"
+  },
+  {
+   "start": 2178.72,
+   "duration": 6.639,
+   "text": "you would see the output tokens which is"
+  },
+  {
+   "start": 2180.56,
+   "duration": 7.519,
+   "text": "saying it is 12 um but see those last uh"
+  },
+  {
+   "start": 2185.359,
+   "duration": 4.881,
+   "text": "fields that you see um which is"
+  },
+  {
+   "start": 2188.079,
+   "duration": 5.76,
+   "text": "basically the cache fields where I can"
+  },
+  {
+   "start": 2190.24,
+   "duration": 9.2,
+   "text": "see the cache read input tokens that you"
+  },
+  {
+   "start": 2193.839,
+   "duration": 7.76,
+   "text": "see over here and one more is the cash"
+  },
+  {
+   "start": 2199.44,
+   "duration": 4.8,
+   "text": "read"
+  },
+  {
+   "start": 2201.599,
+   "duration": 4.561,
+   "text": "cache creation I am not huh the cache"
+  },
+  {
+   "start": 2204.24,
+   "duration": 3.92,
+   "text": "creation input tokens and the cache read"
+  },
+  {
+   "start": 2206.16,
+   "duration": 4.88,
+   "text": "input tokens so these are the two fields"
+  },
+  {
+   "start": 2208.16,
+   "duration": 6.72,
+   "text": "that you have to be concerned about for"
+  },
+  {
+   "start": 2211.04,
+   "duration": 6.88,
+   "text": "for now so these fields uh cache created"
+  },
+  {
+   "start": 2214.88,
+   "duration": 4.479,
+   "text": "creation input tokens uh and cache read"
+  },
+  {
+   "start": 2217.92,
+   "duration": 4.48,
+   "text": "input tokens so what are they so the"
+  },
+  {
+   "start": 2219.359,
+   "duration": 5.601,
+   "text": "cache creation input tokens tells you"
+  },
+  {
+   "start": 2222.4,
+   "duration": 5.199,
+   "text": "how many tokens were written to the"
+  },
+  {
+   "start": 2224.96,
+   "duration": 6.08,
+   "text": "cache on this call"
+  },
+  {
+   "start": 2227.599,
+   "duration": 5.681,
+   "text": "okay so That's a one-time cost, slightly"
+  },
+  {
+   "start": 2231.04,
+   "duration": 5.92,
+   "text": "more expensive than the regular input."
+  },
+  {
+   "start": 2233.28,
+   "duration": 6.4,
+   "text": "And the cash read input tokens tells you"
+  },
+  {
+   "start": 2236.96,
+   "duration": 4.32,
+   "text": "how many were read from the cache. So"
+  },
+  {
+   "start": 2239.68,
+   "duration": 5.84,
+   "text": "understand the difference. So the cache"
+  },
+  {
+   "start": 2241.28,
+   "duration": 6.48,
+   "text": "creation is how many uh you know um"
+  },
+  {
+   "start": 2245.52,
+   "duration": 5.839,
+   "text": "tokens were written into the cache and"
+  },
+  {
+   "start": 2247.76,
+   "duration": 5.68,
+   "text": "cash read is how many tokens were read"
+  },
+  {
+   "start": 2251.359,
+   "duration": 4.881,
+   "text": "from the cache"
+  },
+  {
+   "start": 2253.44,
+   "duration": 4.24,
+   "text": "and that is the 90% discount that I am"
+  },
+  {
+   "start": 2256.24,
+   "duration": 3.28,
+   "text": "talking about. Understand the"
+  },
+  {
+   "start": 2257.68,
+   "duration": 3.2,
+   "text": "difference. Okay, just it's not like you"
+  },
+  {
+   "start": 2259.52,
+   "duration": 2.96,
+   "text": "are sending one request and you're"
+  },
+  {
+   "start": 2260.88,
+   "duration": 2.88,
+   "text": "getting 90% discount where you are"
+  },
+  {
+   "start": 2262.48,
+   "duration": 3.52,
+   "text": "getting that is also important to"
+  },
+  {
+   "start": 2263.76,
+   "duration": 5.28,
+   "text": "understand and for now if you see it is"
+  },
+  {
+   "start": 2266.0,
+   "duration": 4.8,
+   "text": "zero because for I have already told"
+  },
+  {
+   "start": 2269.04,
+   "duration": 4.0,
+   "text": "that the limit is thousand at least"
+  },
+  {
+   "start": 2270.8,
+   "duration": 5.6,
+   "text": "thousand tokens you have to write uh it"
+  },
+  {
+   "start": 2273.04,
+   "duration": 6.24,
+   "text": "it is needed to write into the cache u"
+  },
+  {
+   "start": 2276.4,
+   "duration": 4.48,
+   "text": "and probably it will need uh you know uh"
+  },
+  {
+   "start": 2279.28,
+   "duration": 4.88,
+   "text": "you will not see that on the first call"
+  },
+  {
+   "start": 2280.88,
+   "duration": 6.16,
+   "text": "itself even if it writes um on the first"
+  },
+  {
+   "start": 2284.16,
+   "duration": 7.28,
+   "text": "call you see the cache creation hit but"
+  },
+  {
+   "start": 2287.04,
+   "duration": 6.72,
+   "text": "here um it is actually very less so it's"
+  },
+  {
+   "start": 2291.44,
+   "duration": 4.24,
+   "text": "not creating the cache but in a general"
+  },
+  {
+   "start": 2293.76,
+   "duration": 3.599,
+   "text": "scenario"
+  },
+  {
+   "start": 2295.68,
+   "duration": 5.84,
+   "text": "uh in the first call you will see the"
+  },
+  {
+   "start": 2297.359,
+   "duration": 7.921,
+   "text": "cash creation hit okay one um on calls"
+  },
+  {
+   "start": 2301.52,
+   "duration": 6.4,
+   "text": "two through above you know you see the"
+  },
+  {
+   "start": 2305.28,
+   "duration": 4.64,
+   "text": "same amount shift to cash red because"
+  },
+  {
+   "start": 2307.92,
+   "duration": 4.56,
+   "text": "the same consecutive calls will happen"
+  },
+  {
+   "start": 2309.92,
+   "duration": 5.84,
+   "text": "after the first call for example at that"
+  },
+  {
+   "start": 2312.48,
+   "duration": 5.28,
+   "text": "time if the prefix matches yeah in that"
+  },
+  {
+   "start": 2315.76,
+   "duration": 5.12,
+   "text": "case it will be read from the cache. So"
+  },
+  {
+   "start": 2317.76,
+   "duration": 5.28,
+   "text": "that is why the cache red input tokens"
+  },
+  {
+   "start": 2320.88,
+   "duration": 3.68,
+   "text": "will get populated. So how many tokens"
+  },
+  {
+   "start": 2323.04,
+   "duration": 3.76,
+   "text": "were read from the cache basically on"
+  },
+  {
+   "start": 2324.56,
+   "duration": 5.76,
+   "text": "the subsequent calls."
+  },
+  {
+   "start": 2326.8,
+   "duration": 5.52,
+   "text": "Yeah. So um that that is the thing."
+  },
+  {
+   "start": 2330.32,
+   "duration": 4.96,
+   "text": "Yeah. So but but you cannot do this on"
+  },
+  {
+   "start": 2332.32,
+   "duration": 4.799,
+   "text": "the SDK um on the agent SDK you don't"
+  },
+  {
+   "start": 2335.28,
+   "duration": 3.76,
+   "text": "get this per call usage breakdown"
+  },
+  {
+   "start": 2337.119,
+   "duration": 4.081,
+   "text": "directly from the query method that we"
+  },
+  {
+   "start": 2339.04,
+   "duration": 4.319,
+   "text": "use in the agent SDK. The SDK runs the"
+  },
+  {
+   "start": 2341.2,
+   "duration": 4.24,
+   "text": "agentic loop for you which means the"
+  },
+  {
+   "start": 2343.359,
+   "duration": 4.081,
+   "text": "individual API calls and the usage"
+  },
+  {
+   "start": 2345.44,
+   "duration": 3.44,
+   "text": "objects are kind of abstracted away. So"
+  },
+  {
+   "start": 2347.44,
+   "duration": 4.48,
+   "text": "that's the trade-off for convenience"
+  },
+  {
+   "start": 2348.88,
+   "duration": 6.16,
+   "text": "that I already told for but the thing is"
+  },
+  {
+   "start": 2351.92,
+   "duration": 6.0,
+   "text": "for per run per run cost visibility in"
+  },
+  {
+   "start": 2355.04,
+   "duration": 5.039,
+   "text": "SDK if you want your best options are"
+  },
+  {
+   "start": 2357.92,
+   "duration": 4.56,
+   "text": "the anthropic console dashboard that"
+  },
+  {
+   "start": 2360.079,
+   "duration": 5.361,
+   "text": "I've been talking about uh a few times"
+  },
+  {
+   "start": 2362.48,
+   "duration": 5.119,
+   "text": "in this uh lesson which uh the that"
+  },
+  {
+   "start": 2365.44,
+   "duration": 5.44,
+   "text": "dashboard shows you know aggregated"
+  },
+  {
+   "start": 2367.599,
+   "duration": 6.48,
+   "text": "usage by API key and if you need"
+  },
+  {
+   "start": 2370.88,
+   "duration": 5.52,
+   "text": "granular per run tracking um"
+  },
+  {
+   "start": 2374.079,
+   "duration": 6.241,
+   "text": "instrumenting at the API layer or using"
+  },
+  {
+   "start": 2376.4,
+   "duration": 6.8,
+   "text": "managed agent and audit trail um is also"
+  },
+  {
+   "start": 2380.32,
+   "duration": 5.039,
+   "text": "you can something you can do uh but"
+  },
+  {
+   "start": 2383.2,
+   "duration": 3.84,
+   "text": "we'll see all about those concepts in"
+  },
+  {
+   "start": 2385.359,
+   "duration": 3.841,
+   "text": "episode number 12 which is the next"
+  },
+  {
+   "start": 2387.04,
+   "duration": 4.559,
+   "text": "episode. Yeah, for now just understand"
+  },
+  {
+   "start": 2389.2,
+   "duration": 4.96,
+   "text": "that using the ROMs API you can do this"
+  },
+  {
+   "start": 2391.599,
+   "duration": 5.76,
+   "text": "directly but with agents uh you know"
+  },
+  {
+   "start": 2394.16,
+   "duration": 4.959,
+   "text": "with SDK agent SDK it's a little bit you"
+  },
+  {
+   "start": 2397.359,
+   "duration": 4.401,
+   "text": "know abstracted"
+  },
+  {
+   "start": 2399.119,
+   "duration": 5.681,
+   "text": "but it also has its advantages. So I"
+  },
+  {
+   "start": 2401.76,
+   "duration": 4.96,
+   "text": "hope that is making sense to you. Yeah."
+  },
+  {
+   "start": 2404.8,
+   "duration": 4.88,
+   "text": "And if you if you see uh this is how you"
+  },
+  {
+   "start": 2406.72,
+   "duration": 6.16,
+   "text": "would the the red input tokens would be"
+  },
+  {
+   "start": 2409.68,
+   "duration": 6.159,
+   "text": "populated after the subsequent calls. So"
+  },
+  {
+   "start": 2412.88,
+   "duration": 5.28,
+   "text": "welcome back. I hope you understood the"
+  },
+  {
+   "start": 2415.839,
+   "duration": 4.561,
+   "text": "structure and the different parameters"
+  },
+  {
+   "start": 2418.16,
+   "duration": 5.12,
+   "text": "which are used in the prompt caching"
+  },
+  {
+   "start": 2420.4,
+   "duration": 6.16,
+   "text": "whenever you use the cloud SDK or use"
+  },
+  {
+   "start": 2423.28,
+   "duration": 4.96,
+   "text": "the cloud API basically. So a key fact"
+  },
+  {
+   "start": 2426.56,
+   "duration": 4.16,
+   "text": "that I want to point out right now is"
+  },
+  {
+   "start": 2428.24,
+   "duration": 5.359,
+   "text": "prompt caching is GA on all active cloud"
+  },
+  {
+   "start": 2430.72,
+   "duration": 5.92,
+   "text": "models. Okay, just want to point out uh"
+  },
+  {
+   "start": 2433.599,
+   "duration": 6.961,
+   "text": "cash reads cost 90% less than standard"
+  },
+  {
+   "start": 2436.64,
+   "duration": 5.84,
+   "text": "input tokens and cash rights cost 25%"
+  },
+  {
+   "start": 2440.56,
+   "duration": 6.0,
+   "text": "more than the standard input for a"
+  },
+  {
+   "start": 2442.48,
+   "duration": 7.76,
+   "text": "5minut TTL. So also available that I"
+  },
+  {
+   "start": 2446.56,
+   "duration": 6.4,
+   "text": "would say is 1 hour TTL at 2x base input"
+  },
+  {
+   "start": 2450.24,
+   "duration": 5.92,
+   "text": "price for lower traffic scenarios. Now"
+  },
+  {
+   "start": 2452.96,
+   "duration": 5.68,
+   "text": "the math works kind of overwhelmingly in"
+  },
+  {
+   "start": 2456.16,
+   "duration": 4.159,
+   "text": "your favor on any prompt reused more"
+  },
+  {
+   "start": 2458.64,
+   "duration": 4.8,
+   "text": "than a few times. So don't worry about"
+  },
+  {
+   "start": 2460.319,
+   "duration": 5.04,
+   "text": "these costs as of now. So that is the"
+  },
+  {
+   "start": 2463.44,
+   "duration": 4.8,
+   "text": "information that I wanted to give. Now"
+  },
+  {
+   "start": 2465.359,
+   "duration": 6.401,
+   "text": "the critical details that an architect"
+  },
+  {
+   "start": 2468.24,
+   "duration": 6.0,
+   "text": "needs to internalize. So we talked about"
+  },
+  {
+   "start": 2471.76,
+   "duration": 4.88,
+   "text": "the TTL time to live. So by default a"
+  },
+  {
+   "start": 2474.24,
+   "duration": 6.24,
+   "text": "cacheed entry lives for 5 minutes. Every"
+  },
+  {
+   "start": 2476.64,
+   "duration": 6.959,
+   "text": "cache hit refreshes that timer. So let's"
+  },
+  {
+   "start": 2480.48,
+   "duration": 6.48,
+   "text": "say a prompt handling steady traffic uh"
+  },
+  {
+   "start": 2483.599,
+   "duration": 6.321,
+   "text": "effectively stays cached forever. Right?"
+  },
+  {
+   "start": 2486.96,
+   "duration": 5.76,
+   "text": "The 1 hour TTL is useful for agentic"
+  },
+  {
+   "start": 2489.92,
+   "duration": 5.199,
+   "text": "workflows where a sub agent let's say"
+  },
+  {
+   "start": 2492.72,
+   "duration": 5.92,
+   "text": "might take longer than 5 minutes between"
+  },
+  {
+   "start": 2495.119,
+   "duration": 6.24,
+   "text": "calls as an example. Minimum cachable"
+  },
+  {
+   "start": 2498.64,
+   "duration": 5.84,
+   "text": "size now it varies by model for set 5"
+  },
+  {
+   "start": 2501.359,
+   "duration": 4.96,
+   "text": "and opus 4.8 it's,024 tokens as you"
+  },
+  {
+   "start": 2504.48,
+   "duration": 6.16,
+   "text": "would have seen in that footage for"
+  },
+  {
+   "start": 2506.319,
+   "duration": 7.201,
+   "text": "haiku 4.5 it's 4,96 tokens your prompt"
+  },
+  {
+   "start": 2510.64,
+   "duration": 5.199,
+   "text": "prefix has to be at least this long to"
+  },
+  {
+   "start": 2513.52,
+   "duration": 4.799,
+   "text": "be cached. That's why in that footage as"
+  },
+  {
+   "start": 2515.839,
+   "duration": 6.48,
+   "text": "I had used a very small message there"
+  },
+  {
+   "start": 2518.319,
+   "duration": 5.76,
+   "text": "was nothing that was cached. Uh but uh"
+  },
+  {
+   "start": 2522.319,
+   "duration": 3.441,
+   "text": "the point was you we already know the"
+  },
+  {
+   "start": 2524.079,
+   "duration": 4.401,
+   "text": "caching strategy. I just wanted to show"
+  },
+  {
+   "start": 2525.76,
+   "duration": 4.96,
+   "text": "you which parameters were being used. So"
+  },
+  {
+   "start": 2528.48,
+   "duration": 6.24,
+   "text": "that's why I attached that footage from"
+  },
+  {
+   "start": 2530.72,
+   "duration": 7.68,
+   "text": "the video. Now the hierarchy cache"
+  },
+  {
+   "start": 2534.72,
+   "duration": 6.399,
+   "text": "prefixes are built in order. Okay. So"
+  },
+  {
+   "start": 2538.4,
+   "duration": 5.04,
+   "text": "tools first then system prompt and then"
+  },
+  {
+   "start": 2541.119,
+   "duration": 4.561,
+   "text": "messages. That's how it goes. tools,"
+  },
+  {
+   "start": 2543.44,
+   "duration": 4.8,
+   "text": "system prompts, messages. So if you"
+  },
+  {
+   "start": 2545.68,
+   "duration": 5.52,
+   "text": "change your tools, everything after that"
+  },
+  {
+   "start": 2548.24,
+   "duration": 5.44,
+   "text": "is invalidated. If you change just the"
+  },
+  {
+   "start": 2551.2,
+   "duration": 5.36,
+   "text": "last user message, all the previous"
+  },
+  {
+   "start": 2553.68,
+   "duration": 5.679,
+   "text": "content can still be a cache hit. So"
+  },
+  {
+   "start": 2556.56,
+   "duration": 6.4,
+   "text": "that's what you need to keep in mind."
+  },
+  {
+   "start": 2559.359,
+   "duration": 6.24,
+   "text": "And you can have up to four cache break"
+  },
+  {
+   "start": 2562.96,
+   "duration": 5.76,
+   "text": "points per user and each breakpoint"
+  },
+  {
+   "start": 2565.599,
+   "duration": 6.561,
+   "text": "defines a layer boundary. Uh and that's"
+  },
+  {
+   "start": 2568.72,
+   "duration": 7.52,
+   "text": "where the architecture thinking starts."
+  },
+  {
+   "start": 2572.16,
+   "duration": 7.6,
+   "text": "So always remember the hierarchy"
+  },
+  {
+   "start": 2576.24,
+   "duration": 5.599,
+   "text": "remember that tools system prompts and"
+  },
+  {
+   "start": 2579.76,
+   "duration": 4.72,
+   "text": "then messages."
+  },
+  {
+   "start": 2581.839,
+   "duration": 4.961,
+   "text": "I hope it's making sense."
+  },
+  {
+   "start": 2584.48,
+   "duration": 4.48,
+   "text": "So modular prompt architecture for cache"
+  },
+  {
+   "start": 2586.8,
+   "duration": 3.76,
+   "text": "efficiency. Now we all have seen this"
+  },
+  {
+   "start": 2588.96,
+   "duration": 3.2,
+   "text": "right? So we have when you're going to"
+  },
+  {
+   "start": 2590.56,
+   "duration": 4.559,
+   "text": "talk about layering of the prompt the"
+  },
+  {
+   "start": 2592.16,
+   "duration": 4.32,
+   "text": "four parts we have four layers tool"
+  },
+  {
+   "start": 2595.119,
+   "duration": 3.281,
+   "text": "definitions then comes the system"
+  },
+  {
+   "start": 2596.48,
+   "duration": 3.68,
+   "text": "instructions for examples and then then"
+  },
+  {
+   "start": 2598.4,
+   "duration": 3.84,
+   "text": "comes the rack context or background"
+  },
+  {
+   "start": 2600.16,
+   "duration": 4.0,
+   "text": "documentation which is supplementary and"
+  },
+  {
+   "start": 2602.24,
+   "duration": 3.52,
+   "text": "then we have the user query. So usually"
+  },
+  {
+   "start": 2604.16,
+   "duration": 3.36,
+   "text": "the most attention goes to the tool"
+  },
+  {
+   "start": 2605.76,
+   "duration": 4.24,
+   "text": "definitions and system instructions and"
+  },
+  {
+   "start": 2607.52,
+   "duration": 4.799,
+   "text": "the user query. The middle part is a"
+  },
+  {
+   "start": 2610.0,
+   "duration": 4.72,
+   "text": "little bit less attentive. It it gets"
+  },
+  {
+   "start": 2612.319,
+   "duration": 5.28,
+   "text": "the less less attention."
+  },
+  {
+   "start": 2614.72,
+   "duration": 4.56,
+   "text": "So what does so this is what actually"
+  },
+  {
+   "start": 2617.599,
+   "duration": 3.201,
+   "text": "modular prompts means at the"
+  },
+  {
+   "start": 2619.28,
+   "duration": 5.36,
+   "text": "professional level you are not just"
+  },
+  {
+   "start": 2620.8,
+   "duration": 7.36,
+   "text": "organizing text for readability you are"
+  },
+  {
+   "start": 2624.64,
+   "duration": 5.92,
+   "text": "designing cache layers so each module"
+  },
+  {
+   "start": 2628.16,
+   "duration": 4.4,
+   "text": "changes its its own frequency it changes"
+  },
+  {
+   "start": 2630.56,
+   "duration": 4.559,
+   "text": "at its own frequency and the cache"
+  },
+  {
+   "start": 2632.56,
+   "duration": 5.44,
+   "text": "breakpoint structure lets the system"
+  },
+  {
+   "start": 2635.119,
+   "duration": 5.761,
+   "text": "reuse everything that has not changed"
+  },
+  {
+   "start": 2638.0,
+   "duration": 6.16,
+   "text": "now here's the connection back to fuse"
+  },
+  {
+   "start": 2640.88,
+   "duration": 5.6,
+   "text": "short those carefully designed examples"
+  },
+  {
+   "start": 2644.16,
+   "duration": 4.959,
+   "text": "Les that you saw saw earlier for few"
+  },
+  {
+   "start": 2646.48,
+   "duration": 4.56,
+   "text": "short prompting they they live in block"
+  },
+  {
+   "start": 2649.119,
+   "duration": 5.041,
+   "text": "number two"
+  },
+  {
+   "start": 2651.04,
+   "duration": 5.68,
+   "text": "the stable cache layer which is this one"
+  },
+  {
+   "start": 2654.16,
+   "duration": 5.199,
+   "text": "basically right so you invest the effort"
+  },
+  {
+   "start": 2656.72,
+   "duration": 6.0,
+   "text": "once to design great examples and then"
+  },
+  {
+   "start": 2659.359,
+   "duration": 6.48,
+   "text": "every subsequent request reuses them at"
+  },
+  {
+   "start": 2662.72,
+   "duration": 6.399,
+   "text": "10% of the input cost that's the"
+  },
+  {
+   "start": 2665.839,
+   "duration": 4.961,
+   "text": "production payoff of good prompt design"
+  },
+  {
+   "start": 2669.119,
+   "duration": 4.24,
+   "text": "now the mental model that you need to"
+  },
+  {
+   "start": 2670.8,
+   "duration": 5.44,
+   "text": "make here is modular prompt is equals to"
+  },
+  {
+   "start": 2673.359,
+   "duration": 6.24,
+   "text": "cash layers separate your prompt"
+  },
+  {
+   "start": 2676.24,
+   "duration": 6.48,
+   "text": "components by change frequency I would"
+  },
+  {
+   "start": 2679.599,
+   "duration": 5.601,
+   "text": "say put cache break points between them"
+  },
+  {
+   "start": 2682.72,
+   "duration": 4.48,
+   "text": "and the cache system does the rest so"
+  },
+  {
+   "start": 2685.2,
+   "duration": 4.8,
+   "text": "this is not just you know arranging so"
+  },
+  {
+   "start": 2687.2,
+   "duration": 4.08,
+   "text": "it looks beautiful you know it is it is"
+  },
+  {
+   "start": 2690.0,
+   "duration": 4.48,
+   "text": "also [clears throat] for for your prompt"
+  },
+  {
+   "start": 2691.28,
+   "duration": 6.799,
+   "text": "caching purposes as well I hope that's"
+  },
+  {
+   "start": 2694.48,
+   "duration": 7.44,
+   "text": "making sense now let's also talk about"
+  },
+  {
+   "start": 2698.079,
+   "duration": 6.0,
+   "text": "when prompt caching breaks so it sounds"
+  },
+  {
+   "start": 2701.92,
+   "duration": 5.04,
+   "text": "magical but in production teams"
+  },
+  {
+   "start": 2704.079,
+   "duration": 6.0,
+   "text": "routinely break their caches without"
+  },
+  {
+   "start": 2706.96,
+   "duration": 5.119,
+   "text": "even realizing it. And here are the top"
+  },
+  {
+   "start": 2710.079,
+   "duration": 4.401,
+   "text": "cash killers that I'm going to mention"
+  },
+  {
+   "start": 2712.079,
+   "duration": 6.801,
+   "text": "over here. And this is exactly the kind"
+  },
+  {
+   "start": 2714.48,
+   "duration": 6.4,
+   "text": "of what went wrong in quotations"
+  },
+  {
+   "start": 2718.88,
+   "duration": 5.36,
+   "text": "that is a diagnostic the exam loves to"
+  },
+  {
+   "start": 2720.88,
+   "duration": 5.68,
+   "text": "test basically. Now the first thing is"
+  },
+  {
+   "start": 2724.24,
+   "duration": 4.879,
+   "text": "timestamps in the system prompt. Now, if"
+  },
+  {
+   "start": 2726.56,
+   "duration": 6.0,
+   "text": "your system prompt uh starts with, let's"
+  },
+  {
+   "start": 2729.119,
+   "duration": 6.96,
+   "text": "say, today's date is September uh 18th"
+  },
+  {
+   "start": 2732.56,
+   "duration": 6.88,
+   "text": "or 19th, 2026, congratulations. You've"
+  },
+  {
+   "start": 2736.079,
+   "duration": 6.641,
+   "text": "just ensured that every single day your"
+  },
+  {
+   "start": 2739.44,
+   "duration": 5.679,
+   "text": "cache invalidates at midnight."
+  },
+  {
+   "start": 2742.72,
+   "duration": 5.119,
+   "text": "Move timestamps into the user message or"
+  },
+  {
+   "start": 2745.119,
+   "duration": 4.881,
+   "text": "a separate uncashed block at the end of"
+  },
+  {
+   "start": 2747.839,
+   "duration": 4.881,
+   "text": "the system array. So, that is why it"
+  },
+  {
+   "start": 2750.0,
+   "duration": 5.2,
+   "text": "breaks one of the things timestamps."
+  },
+  {
+   "start": 2752.72,
+   "duration": 5.599,
+   "text": "Second is tool definition reordering."
+  },
+  {
+   "start": 2755.2,
+   "duration": 5.6,
+   "text": "Now tool definitions are part of the"
+  },
+  {
+   "start": 2758.319,
+   "duration": 4.8,
+   "text": "cache prefix right because they sit at"
+  },
+  {
+   "start": 2760.8,
+   "duration": 5.2,
+   "text": "the top. Now if your code builds the"
+  },
+  {
+   "start": 2763.119,
+   "duration": 5.041,
+   "text": "tools list from a dictionary or a set"
+  },
+  {
+   "start": 2766.0,
+   "duration": 5.04,
+   "text": "which may not preserve the insertion"
+  },
+  {
+   "start": 2768.16,
+   "duration": 5.28,
+   "text": "order the tools you know could arrive in"
+  },
+  {
+   "start": 2771.04,
+   "duration": 5.039,
+   "text": "a different order on different requests."
+  },
+  {
+   "start": 2773.44,
+   "duration": 5.12,
+   "text": "I mean they are the same tools"
+  },
+  {
+   "start": 2776.079,
+   "duration": 5.601,
+   "text": "different hash"
+  },
+  {
+   "start": 2778.56,
+   "duration": 5.039,
+   "text": "broken cache. I hope it's rhyming so you"
+  },
+  {
+   "start": 2781.68,
+   "duration": 3.919,
+   "text": "understood. same number of tools because"
+  },
+  {
+   "start": 2783.599,
+   "duration": 4.561,
+   "text": "the ordering is different. So they have"
+  },
+  {
+   "start": 2785.599,
+   "duration": 4.72,
+   "text": "a different hash and the cache is"
+  },
+  {
+   "start": 2788.16,
+   "duration": 4.8,
+   "text": "broken. So sort your tools"
+  },
+  {
+   "start": 2790.319,
+   "duration": 6.161,
+   "text": "deterministically. So it always follows"
+  },
+  {
+   "start": 2792.96,
+   "duration": 5.44,
+   "text": "a very specific order."
+  },
+  {
+   "start": 2796.48,
+   "duration": 4.4,
+   "text": "Changing the thinking parameters cache"
+  },
+  {
+   "start": 2798.4,
+   "duration": 4.16,
+   "text": "killer three. So if you flip extended"
+  },
+  {
+   "start": 2800.88,
+   "duration": 4.56,
+   "text": "thinking"
+  },
+  {
+   "start": 2802.56,
+   "duration": 5.279,
+   "text": "on and off between requests let's say or"
+  },
+  {
+   "start": 2805.44,
+   "duration": 4.8,
+   "text": "change the thinking budget. So the cache"
+  },
+  {
+   "start": 2807.839,
+   "duration": 4.561,
+   "text": "invalidates over there. The thinking"
+  },
+  {
+   "start": 2810.24,
+   "duration": 4.879,
+   "text": "configuration is rendered into the"
+  },
+  {
+   "start": 2812.4,
+   "duration": 5.52,
+   "text": "prompt. So pick a thinking config and"
+  },
+  {
+   "start": 2815.119,
+   "duration": 5.841,
+   "text": "keep it consistent across the request"
+  },
+  {
+   "start": 2817.92,
+   "duration": 5.199,
+   "text": "that kind of share a cache. Okay, so"
+  },
+  {
+   "start": 2820.96,
+   "duration": 6.399,
+   "text": "that is number three. Number four is the"
+  },
+  {
+   "start": 2823.119,
+   "duration": 6.48,
+   "text": "fiveinut cliff. Yeah, the TTL. So low"
+  },
+  {
+   "start": 2827.359,
+   "duration": 5.281,
+   "text": "traffic prompts, you know, may never get"
+  },
+  {
+   "start": 2829.599,
+   "duration": 5.201,
+   "text": "cash hit because the entry expires"
+  },
+  {
+   "start": 2832.64,
+   "duration": 4.24,
+   "text": "between kind of requests. So if your"
+  },
+  {
+   "start": 2834.8,
+   "duration": 4.559,
+   "text": "requests come every 6 minutes, you are"
+  },
+  {
+   "start": 2836.88,
+   "duration": 5.36,
+   "text": "paying the right premium every time. and"
+  },
+  {
+   "start": 2839.359,
+   "duration": 4.561,
+   "text": "never getting a read. So it is getting"
+  },
+  {
+   "start": 2842.24,
+   "duration": 4.96,
+   "text": "written but you are not actually using"
+  },
+  {
+   "start": 2843.92,
+   "duration": 5.6,
+   "text": "the cache right. So either increase the"
+  },
+  {
+   "start": 2847.2,
+   "duration": 5.28,
+   "text": "traffic the batch request or switch to"
+  },
+  {
+   "start": 2849.52,
+   "duration": 5.04,
+   "text": "the 1 hour TTL if they are kind of"
+  },
+  {
+   "start": 2852.48,
+   "duration": 3.92,
+   "text": "infrequent and they are not the the same"
+  },
+  {
+   "start": 2854.56,
+   "duration": 3.84,
+   "text": "requests are not going back and forth in"
+  },
+  {
+   "start": 2856.4,
+   "duration": 4.4,
+   "text": "5 minutes then you should consider"
+  },
+  {
+   "start": 2858.4,
+   "duration": 5.199,
+   "text": "increasing the TTL so that you can be"
+  },
+  {
+   "start": 2860.8,
+   "duration": 4.559,
+   "text": "able to use your cache efficiently. Now"
+  },
+  {
+   "start": 2863.599,
+   "duration": 4.321,
+   "text": "what is the mental model over here is"
+  },
+  {
+   "start": 2865.359,
+   "duration": 5.041,
+   "text": "that a cash miss on you know obviously"
+  },
+  {
+   "start": 2867.92,
+   "duration": 5.679,
+   "text": "identical prompt is almost always one of"
+  },
+  {
+   "start": 2870.4,
+   "duration": 7.52,
+   "text": "timestamps tool ordering thinking config"
+  },
+  {
+   "start": 2873.599,
+   "duration": 6.72,
+   "text": "drift or the TTL expiry so debug in that"
+  },
+  {
+   "start": 2877.92,
+   "duration": 4.8,
+   "text": "particular order if you have any cache"
+  },
+  {
+   "start": 2880.319,
+   "duration": 6.081,
+   "text": "problems right and the exam also it will"
+  },
+  {
+   "start": 2882.72,
+   "duration": 7.119,
+   "text": "try to test you on these things"
+  },
+  {
+   "start": 2886.4,
+   "duration": 5.439,
+   "text": "okay now uh now we talked about how"
+  },
+  {
+   "start": 2889.839,
+   "duration": 4.721,
+   "text": "prompt caching is helpful when does"
+  },
+  {
+   "start": 2891.839,
+   "duration": 5.28,
+   "text": "prompt caching breaks and now when"
+  },
+  {
+   "start": 2894.56,
+   "duration": 5.279,
+   "text": "prompt caching doesn't help. Now the"
+  },
+  {
+   "start": 2897.119,
+   "duration": 5.281,
+   "text": "exam loves testing your judgment about"
+  },
+  {
+   "start": 2899.839,
+   "duration": 4.801,
+   "text": "when not to use something as much as"
+  },
+  {
+   "start": 2902.4,
+   "duration": 4.959,
+   "text": "when to use it. So let's talk about when"
+  },
+  {
+   "start": 2904.64,
+   "duration": 5.04,
+   "text": "prompt caching provides minimal value."
+  },
+  {
+   "start": 2907.359,
+   "duration": 4.401,
+   "text": "Now short prompts below the minimum"
+  },
+  {
+   "start": 2909.68,
+   "duration": 5.36,
+   "text": "threshold. Now if your system prompt is"
+  },
+  {
+   "start": 2911.76,
+   "duration": 6.16,
+   "text": "under,24 tokens on sonnet 5, it won't"
+  },
+  {
+   "start": 2915.04,
+   "duration": 4.24,
+   "text": "cache. So no error. It's there is no"
+  },
+  {
+   "start": 2917.92,
+   "duration": 3.76,
+   "text": "error. Basically it just silently"
+  },
+  {
+   "start": 2919.28,
+   "duration": 4.72,
+   "text": "doesn't cache it. So always check your"
+  },
+  {
+   "start": 2921.68,
+   "duration": 6.08,
+   "text": "usage fields to verify caching is"
+  },
+  {
+   "start": 2924.0,
+   "duration": 6.8,
+   "text": "actually working. Okay. Uh low traffic"
+  },
+  {
+   "start": 2927.76,
+   "duration": 5.2,
+   "text": "endpoints. Uh if the if prompt is used"
+  },
+  {
+   "start": 2930.8,
+   "duration": 3.519,
+   "text": "less than once every 5 minutes, the cash"
+  },
+  {
+   "start": 2932.96,
+   "duration": 4.56,
+   "text": "expires and that is the same problem"
+  },
+  {
+   "start": 2934.319,
+   "duration": 5.841,
+   "text": "that I discussed previous um minutes ago"
+  },
+  {
+   "start": 2937.52,
+   "duration": 4.319,
+   "text": "as well. So you pay the right premium"
+  },
+  {
+   "start": 2940.16,
+   "duration": 4.88,
+   "text": "but you never get a read. That's the"
+  },
+  {
+   "start": 2941.839,
+   "duration": 5.441,
+   "text": "same issue over here. Highly dynamic"
+  },
+  {
+   "start": 2945.04,
+   "duration": 4.319,
+   "text": "prompts. So what is that? So if every"
+  },
+  {
+   "start": 2947.28,
+   "duration": 3.6,
+   "text": "part of your prompt changes on every"
+  },
+  {
+   "start": 2949.359,
+   "duration": 2.881,
+   "text": "request,"
+  },
+  {
+   "start": 2950.88,
+   "duration": 3.28,
+   "text": "different tools, different system"
+  },
+  {
+   "start": 2952.24,
+   "duration": 6.16,
+   "text": "instructions, different context, there"
+  },
+  {
+   "start": 2954.16,
+   "duration": 8.0,
+   "text": "is nothing stable to cache. Caching"
+  },
+  {
+   "start": 2958.4,
+   "duration": 5.52,
+   "text": "optimizes the static prefix, right? If"
+  },
+  {
+   "start": 2962.16,
+   "duration": 4.32,
+   "text": "nothing is static, there is nothing to"
+  },
+  {
+   "start": 2963.92,
+   "duration": 6.56,
+   "text": "optimize. So understand the question if"
+  },
+  {
+   "start": 2966.48,
+   "duration": 7.119,
+   "text": "it actually dictates a caching solution"
+  },
+  {
+   "start": 2970.48,
+   "duration": 5.2,
+   "text": "or not. Batch API workloads. Now the"
+  },
+  {
+   "start": 2973.599,
+   "duration": 5.041,
+   "text": "batch API already gives you a 50%"
+  },
+  {
+   "start": 2975.68,
+   "duration": 5.679,
+   "text": "discount on input tokens right caching"
+  },
+  {
+   "start": 2978.64,
+   "duration": 5.52,
+   "text": "stacks with this but batch requests"
+  },
+  {
+   "start": 2981.359,
+   "duration": 5.041,
+   "text": "don't have a predictable timing remember"
+  },
+  {
+   "start": 2984.16,
+   "duration": 4.88,
+   "text": "uh so cash hits are very less reliable"
+  },
+  {
+   "start": 2986.4,
+   "duration": 5.199,
+   "text": "so you can use a pre-warming to mitigate"
+  },
+  {
+   "start": 2989.04,
+   "duration": 5.44,
+   "text": "this but it adds lot of operational"
+  },
+  {
+   "start": 2991.599,
+   "duration": 5.441,
+   "text": "complexity because if you remember you"
+  },
+  {
+   "start": 2994.48,
+   "duration": 4.24,
+   "text": "know batch API"
+  },
+  {
+   "start": 2997.04,
+   "duration": 4.319,
+   "text": "we it will you will not get a prompt"
+  },
+  {
+   "start": 2998.72,
+   "duration": 4.8,
+   "text": "response like normal um calls that you"
+  },
+  {
+   "start": 3001.359,
+   "duration": 4.96,
+   "text": "do with cloud it will not be a back and"
+  },
+  {
+   "start": 3003.52,
+   "duration": 5.68,
+   "text": "forth kind of a thing. So it will it"
+  },
+  {
+   "start": 3006.319,
+   "duration": 4.561,
+   "text": "will respond you within 24 hours but you"
+  },
+  {
+   "start": 3009.2,
+   "duration": 5.6,
+   "text": "don't know when so you don't know when"
+  },
+  {
+   "start": 3010.88,
+   "duration": 5.6,
+   "text": "to actually cache it right. So that's"
+  },
+  {
+   "start": 3014.8,
+   "duration": 3.68,
+   "text": "also becomes a problem over there. So"
+  },
+  {
+   "start": 3016.48,
+   "duration": 5.28,
+   "text": "make sure that you also understand this"
+  },
+  {
+   "start": 3018.48,
+   "duration": 6.16,
+   "text": "concern as well. Now for the exam map"
+  },
+  {
+   "start": 3021.76,
+   "duration": 5.359,
+   "text": "objective number 2.5 this the exam test"
+  },
+  {
+   "start": 3024.64,
+   "duration": 5.04,
+   "text": "whether you know caching limitations not"
+  },
+  {
+   "start": 3027.119,
+   "duration": 4.641,
+   "text": "just its benefits. Okay, short prompts,"
+  },
+  {
+   "start": 3029.68,
+   "duration": 4.639,
+   "text": "low traffic and dynamic context are the"
+  },
+  {
+   "start": 3031.76,
+   "duration": 4.88,
+   "text": "three, you know, big scenarios where"
+  },
+  {
+   "start": 3034.319,
+   "duration": 4.881,
+   "text": "caching provides minimal value. So you"
+  },
+  {
+   "start": 3036.64,
+   "duration": 5.04,
+   "text": "need to avoid in those scenarios, right?"
+  },
+  {
+   "start": 3039.2,
+   "duration": 5.119,
+   "text": "I hope that's making sense. Okay, so"
+  },
+  {
+   "start": 3041.68,
+   "duration": 4.8,
+   "text": "let's talk about skills. Now the other"
+  },
+  {
+   "start": 3044.319,
+   "duration": 5.52,
+   "text": "prompt reuse mechanisms. Now the prompt"
+  },
+  {
+   "start": 3046.48,
+   "duration": 5.599,
+   "text": "caching handles reuse at the API level."
+  },
+  {
+   "start": 3049.839,
+   "duration": 3.921,
+   "text": "Identical prefixes get cheaper on repeat"
+  },
+  {
+   "start": 3052.079,
+   "duration": 3.841,
+   "text": "because that is what is gets cached,"
+  },
+  {
+   "start": 3053.76,
+   "duration": 4.799,
+   "text": "right? But there's another prompt reuse"
+  },
+  {
+   "start": 3055.92,
+   "duration": 4.56,
+   "text": "mechanism that works at the developer"
+  },
+  {
+   "start": 3058.559,
+   "duration": 5.121,
+   "text": "workflow level that is known as skills."
+  },
+  {
+   "start": 3060.48,
+   "duration": 7.04,
+   "text": "Now I covered skills in the developer"
+  },
+  {
+   "start": 3063.68,
+   "duration": 5.919,
+   "text": "series uh in episode number eight but uh"
+  },
+  {
+   "start": 3067.52,
+   "duration": 3.92,
+   "text": "it it includes the file structure the"
+  },
+  {
+   "start": 3069.599,
+   "duration": 3.76,
+   "text": "front matter and how they actually work"
+  },
+  {
+   "start": 3071.44,
+   "duration": 4.0,
+   "text": "in practice. So what we're going to do"
+  },
+  {
+   "start": 3073.359,
+   "duration": 3.281,
+   "text": "is I'm going to attach that footage over"
+  },
+  {
+   "start": 3075.44,
+   "duration": 3.36,
+   "text": "here so you would get better"
+  },
+  {
+   "start": 3076.64,
+   "duration": 4.32,
+   "text": "understanding how to work with the skill"
+  },
+  {
+   "start": 3078.8,
+   "duration": 4.08,
+   "text": "the format and what not right and then"
+  },
+  {
+   "start": 3080.96,
+   "duration": 5.2,
+   "text": "going to come back again the same format"
+  },
+  {
+   "start": 3082.88,
+   "duration": 4.719,
+   "text": "and discuss um later on for this"
+  },
+  {
+   "start": 3086.16,
+   "duration": 4.64,
+   "text": "professional course. So I'll see you"
+  },
+  {
+   "start": 3087.599,
+   "duration": 5.441,
+   "text": "after the footage. Okay. So what a skill"
+  },
+  {
+   "start": 3090.8,
+   "duration": 4.24,
+   "text": "actually. Now coming to the main kind of"
+  },
+  {
+   "start": 3093.04,
+   "duration": 5.92,
+   "text": "the discussion that we all have been"
+  },
+  {
+   "start": 3095.04,
+   "duration": 6.079,
+   "text": "waiting for. Right. So mechanically as"
+  },
+  {
+   "start": 3098.96,
+   "duration": 5.599,
+   "text": "you saw in the project structure a skill"
+  },
+  {
+   "start": 3101.119,
+   "duration": 5.681,
+   "text": "is just a folder. Yeah. So if you see it"
+  },
+  {
+   "start": 3104.559,
+   "duration": 5.28,
+   "text": "completely from a developer perspective"
+  },
+  {
+   "start": 3106.8,
+   "duration": 5.759,
+   "text": "is just a folder and inside that folder"
+  },
+  {
+   "start": 3109.839,
+   "duration": 5.76,
+   "text": "one required file. Yeah. That is known"
+  },
+  {
+   "start": 3112.559,
+   "duration": 6.961,
+   "text": "as the skill.md file."
+  },
+  {
+   "start": 3115.599,
+   "duration": 6.881,
+   "text": "two parts. Yeah. And it has two parts. A"
+  },
+  {
+   "start": 3119.52,
+   "duration": 5.52,
+   "text": "little YAML block,"
+  },
+  {
+   "start": 3122.48,
+   "duration": 4.72,
+   "text": "you know, uh at the top that is known as"
+  },
+  {
+   "start": 3125.04,
+   "duration": 3.76,
+   "text": "the front matter."
+  },
+  {
+   "start": 3127.2,
+   "duration": 5.119,
+   "text": "Okay."
+  },
+  {
+   "start": 3128.8,
+   "duration": 5.92,
+   "text": "And then plain markdown instructions"
+  },
+  {
+   "start": 3132.319,
+   "duration": 4.24,
+   "text": "underneath."
+  },
+  {
+   "start": 3134.72,
+   "duration": 3.839,
+   "text": "Two parts only you have to remember. One"
+  },
+  {
+   "start": 3136.559,
+   "duration": 5.441,
+   "text": "is the front matter that that is always"
+  },
+  {
+   "start": 3138.559,
+   "duration": 5.681,
+   "text": "at the top up top and then we have plain"
+  },
+  {
+   "start": 3142.0,
+   "duration": 4.48,
+   "text": "markdown instructions underneath. So at"
+  },
+  {
+   "start": 3144.24,
+   "duration": 4.319,
+   "text": "the start of a session, Claude doesn't"
+  },
+  {
+   "start": 3146.48,
+   "duration": 5.359,
+   "text": "read the whole thing for every"
+  },
+  {
+   "start": 3148.559,
+   "duration": 6.481,
+   "text": "discovered skill. It kind of you know"
+  },
+  {
+   "start": 3151.839,
+   "duration": 5.681,
+   "text": "always sees the lightweight bit, the"
+  },
+  {
+   "start": 3155.04,
+   "duration": 4.16,
+   "text": "name and the description. So that is"
+  },
+  {
+   "start": 3157.52,
+   "duration": 5.2,
+   "text": "what you can see over here. Claude"
+  },
+  {
+   "start": 3159.2,
+   "duration": 6.8,
+   "text": "always reads this first."
+  },
+  {
+   "start": 3162.72,
+   "duration": 7.44,
+   "text": "Yeah. So basically it's it's like a"
+  },
+  {
+   "start": 3166.0,
+   "duration": 6.0,
+   "text": "oneline you know business card. So"
+  },
+  {
+   "start": 3170.16,
+   "duration": 4.32,
+   "text": "here's a specialist you can you could"
+  },
+  {
+   "start": 3172.0,
+   "duration": 4.64,
+   "text": "call if uh the situation comes up. Here"
+  },
+  {
+   "start": 3174.48,
+   "duration": 4.32,
+   "text": "is here is a business card of the"
+  },
+  {
+   "start": 3176.64,
+   "duration": 6.479,
+   "text": "plumber if you need some plumbing uh"
+  },
+  {
+   "start": 3178.8,
+   "duration": 6.319,
+   "text": "stuffs right so only claude decides yeah"
+  },
+  {
+   "start": 3183.119,
+   "duration": 4.401,
+   "text": "this is the situation and does the full"
+  },
+  {
+   "start": 3185.119,
+   "duration": 4.0,
+   "text": "body you know actually load into the"
+  },
+  {
+   "start": 3187.52,
+   "duration": 3.2,
+   "text": "context and claude decides okay I need"
+  },
+  {
+   "start": 3189.119,
+   "duration": 4.081,
+   "text": "to use the skill based on the name and"
+  },
+  {
+   "start": 3190.72,
+   "duration": 5.119,
+   "text": "description based on the business card."
+  },
+  {
+   "start": 3193.2,
+   "duration": 6.159,
+   "text": "Now that stage loading has a name that"
+  },
+  {
+   "start": 3195.839,
+   "duration": 4.961,
+   "text": "is known as progressive disclosure."
+  },
+  {
+   "start": 3199.359,
+   "duration": 3.361,
+   "text": "Remember this term it might come in the"
+  },
+  {
+   "start": 3200.8,
+   "duration": 3.2,
+   "text": "exam what is what which part of the"
+  },
+  {
+   "start": 3202.72,
+   "duration": 5.28,
+   "text": "skill is known as a progressive"
+  },
+  {
+   "start": 3204.0,
+   "duration": 6.64,
+   "text": "disclosure. Yeah. And here is a very"
+  },
+  {
+   "start": 3208.0,
+   "duration": 5.52,
+   "text": "nice bonus right. Agent skills is an"
+  },
+  {
+   "start": 3210.64,
+   "duration": 6.64,
+   "text": "actual open standard now published by"
+  },
+  {
+   "start": 3213.52,
+   "duration": 7.12,
+   "text": "anthropic in December 2025. Okay. Same"
+  },
+  {
+   "start": 3217.28,
+   "duration": 7.92,
+   "text": "skill.md format works across clawed"
+  },
+  {
+   "start": 3220.64,
+   "duration": 7.52,
+   "text": "apps. Yeah. cloud code and also the API."
+  },
+  {
+   "start": 3225.2,
+   "duration": 6.879,
+   "text": "Okay, the exact mechanics of how it gets"
+  },
+  {
+   "start": 3228.16,
+   "duration": 6.56,
+   "text": "loaded kind of differs a bit. Yeah, for"
+  },
+  {
+   "start": 3232.079,
+   "duration": 5.76,
+   "text": "cloud code it's file system folders and"
+  },
+  {
+   "start": 3234.72,
+   "duration": 4.879,
+   "text": "the you know agent file system folders"
+  },
+  {
+   "start": 3237.839,
+   "duration": 6.48,
+   "text": "actually works for cloud code and the"
+  },
+  {
+   "start": 3239.599,
+   "duration": 8.24,
+   "text": "agent SDK um but uh uh in code execution"
+  },
+  {
+   "start": 3244.319,
+   "duration": 6.481,
+   "text": "tool um you have to upload a skill kind"
+  },
+  {
+   "start": 3247.839,
+   "duration": 5.52,
+   "text": "of that right but the format itself is"
+  },
+  {
+   "start": 3250.8,
+   "duration": 4.24,
+   "text": "kind of uh portable right uh we're doing"
+  },
+  {
+   "start": 3253.359,
+   "duration": 3.921,
+   "text": "the file system version today because we"
+  },
+  {
+   "start": 3255.04,
+   "duration": 4.0,
+   "text": "are working with the cloud agent SDK"
+  },
+  {
+   "start": 3257.28,
+   "duration": 3.92,
+   "text": "right so you just have to need to have"
+  },
+  {
+   "start": 3259.04,
+   "duration": 5.12,
+   "text": "the skill on the file system and this is"
+  },
+  {
+   "start": 3261.2,
+   "duration": 4.879,
+   "text": "the same for claude code as well. People"
+  },
+  {
+   "start": 3264.16,
+   "duration": 3.919,
+   "text": "who work with claude code, they can also"
+  },
+  {
+   "start": 3266.079,
+   "duration": 4.881,
+   "text": "have claude skills which they can invoke"
+  },
+  {
+   "start": 3268.079,
+   "duration": 5.361,
+   "text": "via their claude code if they have a"
+  },
+  {
+   "start": 3270.96,
+   "duration": 4.08,
+   "text": "skill folder and it has a lot of skills."
+  },
+  {
+   "start": 3273.44,
+   "duration": 3.84,
+   "text": "Same thing happens with the agent. There"
+  },
+  {
+   "start": 3275.04,
+   "duration": 4.24,
+   "text": "is no difference between them. Yeah. So"
+  },
+  {
+   "start": 3277.28,
+   "duration": 5.52,
+   "text": "the mental model that you need to have"
+  },
+  {
+   "start": 3279.28,
+   "duration": 5.039,
+   "text": "is um kind of um name plus description"
+  },
+  {
+   "start": 3282.8,
+   "duration": 4.24,
+   "text": "equals to the business card of the"
+  },
+  {
+   "start": 3284.319,
+   "duration": 5.361,
+   "text": "skill. Like everyone in the room has"
+  },
+  {
+   "start": 3287.04,
+   "duration": 5.039,
+   "text": "read your business card. Nobody's read"
+  },
+  {
+   "start": 3289.68,
+   "duration": 5.04,
+   "text": "your whole resume. That is nothing but"
+  },
+  {
+   "start": 3292.079,
+   "duration": 5.681,
+   "text": "your um what we talked about that part"
+  },
+  {
+   "start": 3294.72,
+   "duration": 6.639,
+   "text": "is known as progressive loads which only"
+  },
+  {
+   "start": 3297.76,
+   "duration": 6.64,
+   "text": "loads uh sorry uh progressive disclosure"
+  },
+  {
+   "start": 3301.359,
+   "duration": 5.041,
+   "text": "which only loads when claude actually"
+  },
+  {
+   "start": 3304.4,
+   "duration": 3.84,
+   "text": "wants to use the skill or your agent"
+  },
+  {
+   "start": 3306.4,
+   "duration": 3.28,
+   "text": "actually wants to use the skill. I hope"
+  },
+  {
+   "start": 3308.24,
+   "duration": 2.96,
+   "text": "that is making sense. If you have any"
+  },
+  {
+   "start": 3309.68,
+   "duration": 3.679,
+   "text": "questions please put it down in the"
+  },
+  {
+   "start": 3311.2,
+   "duration": 5.52,
+   "text": "comments. So now let us understand the"
+  },
+  {
+   "start": 3313.359,
+   "duration": 7.521,
+   "text": "anatomy of a skill.mdile. So before we"
+  },
+  {
+   "start": 3316.72,
+   "duration": 6.879,
+   "text": "write our real skill or any real ones,"
+  },
+  {
+   "start": 3320.88,
+   "duration": 5.52,
+   "text": "let's look at an annotated example over"
+  },
+  {
+   "start": 3323.599,
+   "duration": 5.441,
+   "text": "here. Uh this isn't part of our project"
+  },
+  {
+   "start": 3326.4,
+   "duration": 5.6,
+   "text": "or agent. It's just one example to show"
+  },
+  {
+   "start": 3329.04,
+   "duration": 4.88,
+   "text": "what each fields mean. Okay. So I think"
+  },
+  {
+   "start": 3332.0,
+   "duration": 3.76,
+   "text": "I have pretty much cleared about name"
+  },
+  {
+   "start": 3333.92,
+   "duration": 4.24,
+   "text": "and description. Right? These are the"
+  },
+  {
+   "start": 3335.76,
+   "duration": 5.359,
+   "text": "two fields Claude always kind of sees"
+  },
+  {
+   "start": 3338.16,
+   "duration": 5.04,
+   "text": "for every skill, you know, uh before it"
+  },
+  {
+   "start": 3341.119,
+   "duration": 3.361,
+   "text": "picks one. It it already the the name"
+  },
+  {
+   "start": 3343.2,
+   "duration": 2.96,
+   "text": "and description is already in the"
+  },
+  {
+   "start": 3344.48,
+   "duration": 5.68,
+   "text": "context that we already know and based"
+  },
+  {
+   "start": 3346.16,
+   "duration": 5.6,
+   "text": "on situation it picks the skill and the"
+  },
+  {
+   "start": 3350.16,
+   "duration": 3.76,
+   "text": "last next portion of the skill which is"
+  },
+  {
+   "start": 3351.76,
+   "duration": 6.319,
+   "text": "the description or instructions gets"
+  },
+  {
+   "start": 3353.92,
+   "duration": 7.36,
+   "text": "loaded. Yeah. Argument hint. Argument"
+  },
+  {
+   "start": 3358.079,
+   "duration": 5.841,
+   "text": "hint makes a kind of like a makes a"
+  },
+  {
+   "start": 3361.28,
+   "duration": 4.559,
+   "text": "nicer autocomplete when a human types a"
+  },
+  {
+   "start": 3363.92,
+   "duration": 5.76,
+   "text": "slash command."
+  },
+  {
+   "start": 3365.839,
+   "duration": 6.161,
+   "text": "Yeah. Since basically our two skills"
+  },
+  {
+   "start": 3369.68,
+   "duration": 4.72,
+   "text": "today get invoked by claude deciding on"
+  },
+  {
+   "start": 3372.0,
+   "duration": 6.0,
+   "text": "its own, it's not a human typing"
+  },
+  {
+   "start": 3374.4,
+   "duration": 5.679,
+   "text": "command. The fields um that fields along"
+  },
+  {
+   "start": 3378.0,
+   "duration": 3.92,
+   "text": "for for the right rather than doing real"
+  },
+  {
+   "start": 3380.079,
+   "duration": 3.841,
+   "text": "work for us here. Right? It's it's"
+  },
+  {
+   "start": 3381.92,
+   "duration": 5.76,
+   "text": "beneficial if you are kind of invoking"
+  },
+  {
+   "start": 3383.92,
+   "duration": 6.639,
+   "text": "it via claw code for example using a"
+  },
+  {
+   "start": 3387.68,
+   "duration": 5.439,
+   "text": "slash command. Right? In that scenario,"
+  },
+  {
+   "start": 3390.559,
+   "duration": 4.641,
+   "text": "uh if you put a argument hit, so the"
+  },
+  {
+   "start": 3393.119,
+   "duration": 4.96,
+   "text": "human can actually invoke that skill"
+  },
+  {
+   "start": 3395.2,
+   "duration": 5.68,
+   "text": "using that slash command. Yeah. So I"
+  },
+  {
+   "start": 3398.079,
+   "duration": 7.76,
+   "text": "hope that is making sense."
+  },
+  {
+   "start": 3400.88,
+   "duration": 7.52,
+   "text": "Okay. Allowed tools restricts tool"
+  },
+  {
+   "start": 3405.839,
+   "duration": 6.24,
+   "text": "access. Welcome back and I hope you"
+  },
+  {
+   "start": 3408.4,
+   "duration": 6.719,
+   "text": "understood what a skill uh skill.mds and"
+  },
+  {
+   "start": 3412.079,
+   "duration": 5.52,
+   "text": "whatever. Right? So in a in a nutshell,"
+  },
+  {
+   "start": 3415.119,
+   "duration": 4.72,
+   "text": "skills are reusable instruction sets for"
+  },
+  {
+   "start": 3417.599,
+   "duration": 4.641,
+   "text": "claw code. They live as skill.md files"
+  },
+  {
+   "start": 3419.839,
+   "duration": 4.24,
+   "text": "in your projects dotcloud as skill"
+  },
+  {
+   "start": 3422.24,
+   "duration": 4.64,
+   "text": "directory. Not just for cloud code. You"
+  },
+  {
+   "start": 3424.079,
+   "duration": 6.24,
+   "text": "can even use it in your claude agent SDK"
+  },
+  {
+   "start": 3426.88,
+   "duration": 5.76,
+   "text": "as well uh for your agents. Now each"
+  },
+  {
+   "start": 3430.319,
+   "duration": 4.8,
+   "text": "file as you saw has a front matter that"
+  },
+  {
+   "start": 3432.64,
+   "duration": 6.0,
+   "text": "controls everything the the execution"
+  },
+  {
+   "start": 3435.119,
+   "duration": 6.401,
+   "text": "basically. So the context fork runs the"
+  },
+  {
+   "start": 3438.64,
+   "duration": 5.04,
+   "text": "skill in an isolated sub aent context."
+  },
+  {
+   "start": 3441.52,
+   "duration": 3.92,
+   "text": "So it so its output doesn't flood your"
+  },
+  {
+   "start": 3443.68,
+   "duration": 4.879,
+   "text": "main session. So I hope you understood"
+  },
+  {
+   "start": 3445.44,
+   "duration": 5.28,
+   "text": "that as well. and allow tools that is"
+  },
+  {
+   "start": 3448.559,
+   "duration": 4.56,
+   "text": "one of the parameters restricts which"
+  },
+  {
+   "start": 3450.72,
+   "duration": 4.639,
+   "text": "tools the skill can use. Yeah."
+  },
+  {
+   "start": 3453.119,
+   "duration": 4.881,
+   "text": "Capability containment at the skill"
+  },
+  {
+   "start": 3455.359,
+   "duration": 4.881,
+   "text": "level. Argument hint prompts the user"
+  },
+  {
+   "start": 3458.0,
+   "duration": 5.52,
+   "text": "for a required parameter if they invoke"
+  },
+  {
+   "start": 3460.24,
+   "duration": 4.64,
+   "text": "the skill without one. Okay. So that's"
+  },
+  {
+   "start": 3463.52,
+   "duration": 3.2,
+   "text": "the mechanics. Now here's the"
+  },
+  {
+   "start": 3464.88,
+   "duration": 4.56,
+   "text": "professional level distinction the exam"
+  },
+  {
+   "start": 3466.72,
+   "duration": 4.32,
+   "text": "cares about. Skills is equals to"
+  },
+  {
+   "start": 3469.44,
+   "duration": 4.24,
+   "text": "ondemand."
+  },
+  {
+   "start": 3471.04,
+   "duration": 5.36,
+   "text": "Okay. It's invoked when a specific task"
+  },
+  {
+   "start": 3473.68,
+   "duration": 4.399,
+   "text": "comes up. the task specific instructions"
+  },
+  {
+   "start": 3476.4,
+   "duration": 3.36,
+   "text": "that shouldn't pollute every"
+  },
+  {
+   "start": 3478.079,
+   "duration": 3.52,
+   "text": "interaction."
+  },
+  {
+   "start": 3479.76,
+   "duration": 4.799,
+   "text": "I I discussed that in that footage as"
+  },
+  {
+   "start": 3481.599,
+   "duration": 6.0,
+   "text": "well. Right now clouded MD is equals to"
+  },
+  {
+   "start": 3484.559,
+   "duration": 5.76,
+   "text": "always loaded. It's present in every"
+  },
+  {
+   "start": 3487.599,
+   "duration": 4.561,
+   "text": "single interaction. Uh teamwide rules,"
+  },
+  {
+   "start": 3490.319,
+   "duration": 3.201,
+   "text": "code style guides, architectural"
+  },
+  {
+   "start": 3492.16,
+   "duration": 3.84,
+   "text": "constraints that always apply. So"
+  },
+  {
+   "start": 3493.52,
+   "duration": 5.12,
+   "text": "cloudMD is always there in the context."
+  },
+  {
+   "start": 3496.0,
+   "duration": 4.88,
+   "text": "Now the architectural decision is what"
+  },
+  {
+   "start": 3498.64,
+   "duration": 5.52,
+   "text": "we have to do here is what goes in"
+  },
+  {
+   "start": 3500.88,
+   "duration": 4.8,
+   "text": "cloudm and what goes in the skill file."
+  },
+  {
+   "start": 3504.16,
+   "duration": 3.6,
+   "text": "So the rule of the thumb is pretty"
+  },
+  {
+   "start": 3505.68,
+   "duration": 5.36,
+   "text": "simple. If it applies to every"
+  },
+  {
+   "start": 3507.76,
+   "duration": 6.16,
+   "text": "interaction, it's claw.md. If it applies"
+  },
+  {
+   "start": 3511.04,
+   "duration": 6.319,
+   "text": "to a specific type of task or a kind of"
+  },
+  {
+   "start": 3513.92,
+   "duration": 6.159,
+   "text": "task, it's skill. And context fork is"
+  },
+  {
+   "start": 3517.359,
+   "duration": 5.44,
+   "text": "the key lever. It keeps the skills"
+  },
+  {
+   "start": 3520.079,
+   "duration": 6.081,
+   "text": "execution in an isolated context. Which"
+  },
+  {
+   "start": 3522.799,
+   "duration": 6.641,
+   "text": "means the output comes back as a summary"
+  },
+  {
+   "start": 3526.16,
+   "duration": 6.88,
+   "text": "rather than raw context. So it protects"
+  },
+  {
+   "start": 3529.44,
+   "duration": 5.919,
+   "text": "your main sessions token budget. So that"
+  },
+  {
+   "start": 3533.04,
+   "duration": 4.88,
+   "text": "is all the distinctions you need to know"
+  },
+  {
+   "start": 3535.359,
+   "duration": 5.281,
+   "text": "before uh the exam so you properly"
+  },
+  {
+   "start": 3537.92,
+   "duration": 6.24,
+   "text": "figure out what to use when. Now a key"
+  },
+  {
+   "start": 3540.64,
+   "duration": 6.719,
+   "text": "fact is skills versus cloud MD is an"
+  },
+  {
+   "start": 3544.16,
+   "duration": 6.0,
+   "text": "exam topic. Always remember skills is on"
+  },
+  {
+   "start": 3547.359,
+   "duration": 5.2,
+   "text": "demand task specific and optionally"
+  },
+  {
+   "start": 3550.16,
+   "duration": 5.36,
+   "text": "forked context. Yeah by using the"
+  },
+  {
+   "start": 3552.559,
+   "duration": 5.201,
+   "text": "context fork. Uh cloud MD is always"
+  },
+  {
+   "start": 3555.52,
+   "duration": 4.4,
+   "text": "loaded and it's a teamwide rules"
+  },
+  {
+   "start": 3557.76,
+   "duration": 4.16,
+   "text": "instructions all those house rules"
+  },
+  {
+   "start": 3559.92,
+   "duration": 5.76,
+   "text": "basically. Now the difference is about"
+  },
+  {
+   "start": 3561.92,
+   "duration": 5.28,
+   "text": "scope and context budget management."
+  },
+  {
+   "start": 3565.68,
+   "duration": 4.08,
+   "text": "Okay."
+  },
+  {
+   "start": 3567.2,
+   "duration": 4.48,
+   "text": "Okay. Now let's let's talk about a case"
+  },
+  {
+   "start": 3569.76,
+   "duration": 4.64,
+   "text": "study and let's talk about this case"
+  },
+  {
+   "start": 3571.68,
+   "duration": 4.639,
+   "text": "study of a document processing pipeline."
+  },
+  {
+   "start": 3574.4,
+   "duration": 4.399,
+   "text": "So let's kind of tie it all together"
+  },
+  {
+   "start": 3576.319,
+   "duration": 4.0,
+   "text": "with a production case study and you"
+  },
+  {
+   "start": 3578.799,
+   "duration": 3.841,
+   "text": "this is a kind of a scenario you would"
+  },
+  {
+   "start": 3580.319,
+   "duration": 4.48,
+   "text": "see actually in the exam. Now the"
+  },
+  {
+   "start": 3582.64,
+   "duration": 5.04,
+   "text": "scenario is pretty simple. uh your"
+  },
+  {
+   "start": 3584.799,
+   "duration": 6.0,
+   "text": "company processes 500 insurance claim"
+  },
+  {
+   "start": 3587.68,
+   "duration": 6.159,
+   "text": "documents per day through a claudebased"
+  },
+  {
+   "start": 3590.799,
+   "duration": 4.961,
+   "text": "extraction pipeline right each document"
+  },
+  {
+   "start": 3593.839,
+   "duration": 4.72,
+   "text": "runs through the same system prompt"
+  },
+  {
+   "start": 3595.76,
+   "duration": 4.72,
+   "text": "2,000 tokens of instructions plus few"
+  },
+  {
+   "start": 3598.559,
+   "duration": 5.601,
+   "text": "short examples now the same tool"
+  },
+  {
+   "start": 3600.48,
+   "duration": 6.4,
+   "text": "definitions around 800 tokens and a per"
+  },
+  {
+   "start": 3604.16,
+   "duration": 5.52,
+   "text": "document chunk of around chunk of text"
+  },
+  {
+   "start": 3606.88,
+   "duration": 6.16,
+   "text": "around 3,000 tokens now current monthly"
+  },
+  {
+   "start": 3609.68,
+   "duration": 6.639,
+   "text": "API cost is around $12,000 a month on"
+  },
+  {
+   "start": 3613.04,
+   "duration": 5.759,
+   "text": "input tokens tokens alone. Now before"
+  },
+  {
+   "start": 3616.319,
+   "duration": 5.52,
+   "text": "optimization, the knife implementation"
+  },
+  {
+   "start": 3618.799,
+   "duration": 5.921,
+   "text": "sends the full system prompt plus tools"
+  },
+  {
+   "start": 3621.839,
+   "duration": 5.921,
+   "text": "plus document as fresh input every time."
+  },
+  {
+   "start": 3624.72,
+   "duration": 5.52,
+   "text": "500 requests per day, 500 insurance"
+  },
+  {
+   "start": 3627.76,
+   "duration": 6.24,
+   "text": "claims, right? So 500 requests per day"
+  },
+  {
+   "start": 3630.24,
+   "duration": 7.52,
+   "text": "uh into 5,800 tokens because the total"
+  },
+  {
+   "start": 3634.0,
+   "duration": 6.72,
+   "text": "amount is 2,000 plus 3,000 uh that you"
+  },
+  {
+   "start": 3637.76,
+   "duration": 6.64,
+   "text": "would see total is 5,800 tokens. 2,000 +"
+  },
+  {
+   "start": 3640.72,
+   "duration": 9.52,
+   "text": "3,000 plus 800 tokens. So 5,800 tokens."
+  },
+  {
+   "start": 3644.4,
+   "duration": 9.84,
+   "text": "So 500 into 5,800 tokens is roughly"
+  },
+  {
+   "start": 3650.24,
+   "duration": 6.879,
+   "text": "87 million input tokens per month at"
+  },
+  {
+   "start": 3654.24,
+   "duration": 5.92,
+   "text": "full price. So what do we do after"
+  },
+  {
+   "start": 3657.119,
+   "duration": 6.561,
+   "text": "optimization? Apply the modular prompt"
+  },
+  {
+   "start": 3660.16,
+   "duration": 8.08,
+   "text": "architecture we just drew. So layer one"
+  },
+  {
+   "start": 3663.68,
+   "duration": 6.48,
+   "text": "is cached or which is rarely changed. So"
+  },
+  {
+   "start": 3668.24,
+   "duration": 4.0,
+   "text": "which what are the components that are"
+  },
+  {
+   "start": 3670.16,
+   "duration": 4.159,
+   "text": "cached and rarely changed? tool"
+  },
+  {
+   "start": 3672.24,
+   "duration": 5.52,
+   "text": "definitions plus system instructions"
+  },
+  {
+   "start": 3674.319,
+   "duration": 7.441,
+   "text": "plus few short examples. So that is"
+  },
+  {
+   "start": 3677.76,
+   "duration": 5.76,
+   "text": "around 2,800 tokens. Now there is a"
+  },
+  {
+   "start": 3681.76,
+   "duration": 6.48,
+   "text": "cache break point here. This gets"
+  },
+  {
+   "start": 3683.52,
+   "duration": 6.88,
+   "text": "written once and read 499 times per day."
+  },
+  {
+   "start": 3688.24,
+   "duration": 5.839,
+   "text": "So once it is written the other times it"
+  },
+  {
+   "start": 3690.4,
+   "duration": 6.0,
+   "text": "just read like 499 times per day. So you"
+  },
+  {
+   "start": 3694.079,
+   "duration": 5.361,
+   "text": "are kind kind of getting 90% savings on"
+  },
+  {
+   "start": 3696.4,
+   "duration": 4.8,
+   "text": "these tokens. Now layer two is fresh"
+  },
+  {
+   "start": 3699.44,
+   "duration": 4.24,
+   "text": "changes every request. What are the"
+  },
+  {
+   "start": 3701.2,
+   "duration": 4.399,
+   "text": "fresh changes? The document chunk plus"
+  },
+  {
+   "start": 3703.68,
+   "duration": 4.879,
+   "text": "the user query which is around 3,000"
+  },
+  {
+   "start": 3705.599,
+   "duration": 5.52,
+   "text": "tokens paid at full price but it's only"
+  },
+  {
+   "start": 3708.559,
+   "duration": 6.401,
+   "text": "about half the total tokens. Now the"
+  },
+  {
+   "start": 3711.119,
+   "duration": 7.121,
+   "text": "previously the total tokens were 5,800"
+  },
+  {
+   "start": 3714.96,
+   "duration": 5.76,
+   "text": "which was completely it was sent every"
+  },
+  {
+   "start": 3718.24,
+   "duration": 5.2,
+   "text": "time because there was not no caching."
+  },
+  {
+   "start": 3720.72,
+   "duration": 4.8,
+   "text": "Now we are caching around 2,800 tokens"
+  },
+  {
+   "start": 3723.44,
+   "duration": 4.08,
+   "text": "for the tool definitions and for the"
+  },
+  {
+   "start": 3725.52,
+   "duration": 4.559,
+   "text": "system instructions and the few short"
+  },
+  {
+   "start": 3727.52,
+   "duration": 6.0,
+   "text": "examples. Now we are sending only 3,000"
+  },
+  {
+   "start": 3730.079,
+   "duration": 6.48,
+   "text": "tokens which is nearly half."
+  },
+  {
+   "start": 3733.52,
+   "duration": 5.279,
+   "text": "So the the math is the roughly 48% of"
+  },
+  {
+   "start": 3736.559,
+   "duration": 5.28,
+   "text": "your input tokens are now cashed at"
+  },
+  {
+   "start": 3738.799,
+   "duration": 5.28,
+   "text": "onetenth the price. So in this example"
+  },
+  {
+   "start": 3741.839,
+   "duration": 5.681,
+   "text": "that cuts input token cost by"
+  },
+  {
+   "start": 3744.079,
+   "duration": 5.121,
+   "text": "approximately 40%. And that's an"
+  },
+  {
+   "start": 3747.52,
+   "duration": 3.44,
+   "text": "illustration. Your actual savings depend"
+  },
+  {
+   "start": 3749.2,
+   "duration": 3.919,
+   "text": "on your prompt structure and traffic"
+  },
+  {
+   "start": 3750.96,
+   "duration": 4.48,
+   "text": "patterns. But the order of the magnitude"
+  },
+  {
+   "start": 3753.119,
+   "duration": 5.601,
+   "text": "is real. There might be a 10% delta over"
+  },
+  {
+   "start": 3755.44,
+   "duration": 5.6,
+   "text": "here, but still 30 to 40% savings is"
+  },
+  {
+   "start": 3758.72,
+   "duration": 6.0,
+   "text": "quite a lot providing that you were"
+  },
+  {
+   "start": 3761.04,
+   "duration": 5.759,
+   "text": "giving around $12,000 a month. Okay, so"
+  },
+  {
+   "start": 3764.72,
+   "duration": 4.56,
+   "text": "I hope that's making sense. Now the exam"
+  },
+  {
+   "start": 3766.799,
+   "duration": 5.52,
+   "text": "map is kind of covers objective number"
+  },
+  {
+   "start": 3769.28,
+   "duration": 5.12,
+   "text": "2.5. Implement prompt reuse strategies."
+  },
+  {
+   "start": 3772.319,
+   "duration": 4.321,
+   "text": "The exam will give you a scenario like"
+  },
+  {
+   "start": 3774.4,
+   "duration": 4.32,
+   "text": "this and ask which optimization strategy"
+  },
+  {
+   "start": 3776.64,
+   "duration": 5.28,
+   "text": "has the highest leverage. Now prompt"
+  },
+  {
+   "start": 3778.72,
+   "duration": 5.599,
+   "text": "caching on a stable uh prefix with high"
+  },
+  {
+   "start": 3781.92,
+   "duration": 5.04,
+   "text": "traffic volume is almost always the"
+  },
+  {
+   "start": 3784.319,
+   "duration": 5.04,
+   "text": "answer when the prompt has a large"
+  },
+  {
+   "start": 3786.96,
+   "duration": 5.119,
+   "text": "static component. So always look for"
+  },
+  {
+   "start": 3789.359,
+   "duration": 5.361,
+   "text": "that in the question. Okay. I hope"
+  },
+  {
+   "start": 3792.079,
+   "duration": 4.881,
+   "text": "that's making sense."
+  },
+  {
+   "start": 3794.72,
+   "duration": 6.079,
+   "text": "Okay. So very uh simple interactive"
+  },
+  {
+   "start": 3796.96,
+   "duration": 6.56,
+   "text": "drill over here. So um uh scenario"
+  },
+  {
+   "start": 3800.799,
+   "duration": 4.961,
+   "text": "pretty simple. Uh a customer support"
+  },
+  {
+   "start": 3803.52,
+   "duration": 5.039,
+   "text": "agent handles 200 requests per hour."
+  },
+  {
+   "start": 3805.76,
+   "duration": 5.2,
+   "text": "system prompts uh which is instructions"
+  },
+  {
+   "start": 3808.559,
+   "duration": 4.24,
+   "text": "plus few short examples is 3,000 tokens."
+  },
+  {
+   "start": 3810.96,
+   "duration": 3.92,
+   "text": "Each request also includes the"
+  },
+  {
+   "start": 3812.799,
+   "duration": 4.481,
+   "text": "customer's conversion conversation"
+  },
+  {
+   "start": 3814.88,
+   "duration": 4.56,
+   "text": "history 2,000 tokens unique per"
+  },
+  {
+   "start": 3817.28,
+   "duration": 4.16,
+   "text": "customer. The team wants to reduce the"
+  },
+  {
+   "start": 3819.44,
+   "duration": 4.48,
+   "text": "input token cost. Which approach is the"
+  },
+  {
+   "start": 3821.44,
+   "duration": 4.24,
+   "text": "most effective? I just discussed it in"
+  },
+  {
+   "start": 3823.92,
+   "duration": 3.52,
+   "text": "the case study just to kind of tease"
+  },
+  {
+   "start": 3825.68,
+   "duration": 4.0,
+   "text": "your brain. I just wanted to do this"
+  },
+  {
+   "start": 3827.44,
+   "duration": 5.84,
+   "text": "drill and obviously it is enable prompt"
+  },
+  {
+   "start": 3829.68,
+   "duration": 5.84,
+   "text": "caching. Um the 3,000 token system"
+  },
+  {
+   "start": 3833.28,
+   "duration": 3.6,
+   "text": "prompt stays cached across all the"
+  },
+  {
+   "start": 3835.52,
+   "duration": 3.279,
+   "text": "requests. Only the per customer"
+  },
+  {
+   "start": 3836.88,
+   "duration": 3.36,
+   "text": "conversation is fresh. We discussed that"
+  },
+  {
+   "start": 3838.799,
+   "duration": 3.76,
+   "text": "in detail. So I'm not going to cover"
+  },
+  {
+   "start": 3840.24,
+   "duration": 4.96,
+   "text": "other options. But that is how you would"
+  },
+  {
+   "start": 3842.559,
+   "duration": 4.721,
+   "text": "get a question in the exam. Okay. I hope"
+  },
+  {
+   "start": 3845.2,
+   "duration": 4.879,
+   "text": "that's making sense."
+  },
+  {
+   "start": 3847.28,
+   "duration": 4.96,
+   "text": "Now that was all about uh I just wanted"
+  },
+  {
+   "start": 3850.079,
+   "duration": 3.921,
+   "text": "to discuss for this video. So let's talk"
+  },
+  {
+   "start": 3852.24,
+   "duration": 4.48,
+   "text": "about the key takeaways. So number one,"
+  },
+  {
+   "start": 3854.0,
+   "duration": 4.72,
+   "text": "prompt technique equals to match the"
+  },
+  {
+   "start": 3856.72,
+   "duration": 4.24,
+   "text": "constraint. The exam doesn't ask which"
+  },
+  {
+   "start": 3858.72,
+   "duration": 3.76,
+   "text": "technique is the best. It gives you a"
+  },
+  {
+   "start": 3860.96,
+   "duration": 4.56,
+   "text": "question stem. You need to understand"
+  },
+  {
+   "start": 3862.48,
+   "duration": 5.119,
+   "text": "the constraint and then match with the"
+  },
+  {
+   "start": 3865.52,
+   "duration": 4.96,
+   "text": "prompt technique. Context window"
+  },
+  {
+   "start": 3867.599,
+   "duration": 5.841,
+   "text": "placement matters. Privacy primacy not"
+  },
+  {
+   "start": 3870.48,
+   "duration": 4.24,
+   "text": "privacy sorry privacy and recency jones"
+  },
+  {
+   "start": 3873.44,
+   "duration": 4.0,
+   "text": "get the most attention which is"
+  },
+  {
+   "start": 3874.72,
+   "duration": 5.04,
+   "text": "basically the start and the end part."
+  },
+  {
+   "start": 3877.44,
+   "duration": 6.639,
+   "text": "Basically the middle part gets less"
+  },
+  {
+   "start": 3879.76,
+   "duration": 7.68,
+   "text": "attention right. Um so you need to just"
+  },
+  {
+   "start": 3884.079,
+   "duration": 6.161,
+   "text": "work on that. Prompt caching is 90%"
+  },
+  {
+   "start": 3887.44,
+   "duration": 5.359,
+   "text": "savings on cache reads and it's G on all"
+  },
+  {
+   "start": 3890.24,
+   "duration": 5.92,
+   "text": "active cloud models. So structure your"
+  },
+  {
+   "start": 3892.799,
+   "duration": 5.361,
+   "text": "prompts as modular layers so that you"
+  },
+  {
+   "start": 3896.16,
+   "duration": 4.879,
+   "text": "know you would be using the best out of"
+  },
+  {
+   "start": 3898.16,
+   "duration": 4.8,
+   "text": "the caching. know what breaks caching"
+  },
+  {
+   "start": 3901.039,
+   "duration": 4.8,
+   "text": "timestamps and system prompts tool"
+  },
+  {
+   "start": 3902.96,
+   "duration": 5.359,
+   "text": "reordering thinking config changes and a"
+  },
+  {
+   "start": 3905.839,
+   "duration": 5.441,
+   "text": "five minute TTL is there right so that's"
+  },
+  {
+   "start": 3908.319,
+   "duration": 4.961,
+   "text": "all you have to know skills versus"
+  },
+  {
+   "start": 3911.28,
+   "duration": 4.799,
+   "text": "claude when to use what that's very"
+  },
+  {
+   "start": 3913.28,
+   "duration": 6.24,
+   "text": "important I hope that's making sense"
+  },
+  {
+   "start": 3916.079,
+   "duration": 5.52,
+   "text": "okay so that's domain two uh we wrap up"
+  },
+  {
+   "start": 3919.52,
+   "duration": 4.16,
+   "text": "domain two claude models prompting and"
+  },
+  {
+   "start": 3921.599,
+   "duration": 3.841,
+   "text": "context engineering between last episode"
+  },
+  {
+   "start": 3923.68,
+   "duration": 4.24,
+   "text": "and today you've covered all five"
+  },
+  {
+   "start": 3925.44,
+   "duration": 4.32,
+   "text": "objectives in this domain uh model"
+  },
+  {
+   "start": 3927.92,
+   "duration": 3.6,
+   "text": "selection system prompt design, prompt"
+  },
+  {
+   "start": 3929.76,
+   "duration": 4.4,
+   "text": "techniques, context, windows, caching,"
+  },
+  {
+   "start": 3931.52,
+   "duration": 5.839,
+   "text": "modular prompts and skills. That's 13%"
+  },
+  {
+   "start": 3934.16,
+   "duration": 5.04,
+   "text": "of the exam. Now, um next episode we"
+  },
+  {
+   "start": 3937.359,
+   "duration": 4.081,
+   "text": "move into domain number three, which is"
+  },
+  {
+   "start": 3939.2,
+   "duration": 4.96,
+   "text": "integration. And this is the big one,"
+  },
+  {
+   "start": 3941.44,
+   "duration": 5.28,
+   "text": "19% of the exam, the heaviest single"
+  },
+  {
+   "start": 3944.16,
+   "duration": 5.36,
+   "text": "domain. So, we we are starting with rack"
+  },
+  {
+   "start": 3946.72,
+   "duration": 5.04,
+   "text": "pipeline design, chunking, indexing, and"
+  },
+  {
+   "start": 3949.52,
+   "duration": 5.92,
+   "text": "uh retrieval strategies. Uh that one"
+  },
+  {
+   "start": 3951.76,
+   "duration": 6.319,
+   "text": "will have a live demo. Uh rag is uh I"
+  },
+  {
+   "start": 3955.44,
+   "duration": 5.119,
+   "text": "haven't I I have done rag demos on this"
+  },
+  {
+   "start": 3958.079,
+   "duration": 4.24,
+   "text": "channel but I think uh using claude I"
+  },
+  {
+   "start": 3960.559,
+   "duration": 5.04,
+   "text": "haven't done any demos. I'll try to do"
+  },
+  {
+   "start": 3962.319,
+   "duration": 5.76,
+   "text": "that. Um so I'll see you there. Yeah."
+  },
+  {
+   "start": 3965.599,
+   "duration": 4.641,
+   "text": "And uh till then have a nice day. Take"
+  },
+  {
+   "start": 3968.079,
+   "duration": 5.76,
+   "text": "care. Best of luck for your preparation"
+  },
+  {
+   "start": 3970.24,
+   "duration": 3.599,
+   "text": "and I'll see you. Bye-bye."
+  }
+ ]
+}

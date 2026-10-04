@@ -1,0 +1,5323 @@
+{
+ "video_id": "JY0M4RZKh9c",
+ "episode": "Ep 01",
+ "title": "Solution Design & Architecture",
+ "lane": "ccar-p",
+ "segments": [
+  {
+   "start": 1.64,
+   "duration": 3.8,
+   "text": "and welcome [snorts] to this lesson."
+  },
+  {
+   "start": 4.16,
+   "duration": 3.56,
+   "text": "So,"
+  },
+  {
+   "start": 5.44,
+   "duration": 3.72,
+   "text": "as we have discussed in the previous"
+  },
+  {
+   "start": 7.72,
+   "duration": 4.36,
+   "text": "episode,"
+  },
+  {
+   "start": 9.16,
+   "duration": 4.2,
+   "text": "what catches off guard about this exam"
+  },
+  {
+   "start": 12.08,
+   "duration": 3.6,
+   "text": "is that"
+  },
+  {
+   "start": 13.36,
+   "duration": 3.64,
+   "text": "the professional tier questions don't"
+  },
+  {
+   "start": 15.68,
+   "duration": 2.96,
+   "text": "ask like"
+  },
+  {
+   "start": 17.0,
+   "duration": 3.84,
+   "text": "what is cloud?"
+  },
+  {
+   "start": 18.64,
+   "duration": 5.28,
+   "text": "Yeah, they don't ask you to name API"
+  },
+  {
+   "start": 20.84,
+   "duration": 5.12,
+   "text": "endpoints, reside model specs, or you"
+  },
+  {
+   "start": 23.92,
+   "duration": 3.72,
+   "text": "know, define what a large language model"
+  },
+  {
+   "start": 25.96,
+   "duration": 3.68,
+   "text": "or an LLM is. That's that's the"
+  },
+  {
+   "start": 27.64,
+   "duration": 4.799,
+   "text": "foundation's territory."
+  },
+  {
+   "start": 29.64,
+   "duration": 4.76,
+   "text": "This professional level exam exists and"
+  },
+  {
+   "start": 32.439,
+   "duration": 3.481,
+   "text": "it asks, given these business"
+  },
+  {
+   "start": 34.4,
+   "duration": 3.88,
+   "text": "constraints,"
+  },
+  {
+   "start": 35.92,
+   "duration": 4.6,
+   "text": "which architecture?"
+  },
+  {
+   "start": 38.28,
+   "duration": 5.08,
+   "text": "So, before going into this course and"
+  },
+  {
+   "start": 40.52,
+   "duration": 4.96,
+   "text": "going into this exam, that is what needs"
+  },
+  {
+   "start": 43.36,
+   "duration": 4.72,
+   "text": "to be set in your mind. And I also kind"
+  },
+  {
+   "start": 45.48,
+   "duration": 5.2,
+   "text": "of clarified that in my previous episode"
+  },
+  {
+   "start": 48.08,
+   "duration": 4.4,
+   "text": "as well for of this course."
+  },
+  {
+   "start": 50.68,
+   "duration": 4.12,
+   "text": "So, because it asks, given these"
+  },
+  {
+   "start": 52.48,
+   "duration": 5.24,
+   "text": "business constraints, which architecture"
+  },
+  {
+   "start": 54.8,
+   "duration": 4.48,
+   "text": "kind of questions, that is fundamentally"
+  },
+  {
+   "start": 57.72,
+   "duration": 4.56,
+   "text": "a different question."
+  },
+  {
+   "start": 59.28,
+   "duration": 5.2,
+   "text": "So, it means you have to start from the"
+  },
+  {
+   "start": 62.28,
+   "duration": 3.76,
+   "text": "business problem and work your Sorry,"
+  },
+  {
+   "start": 64.48,
+   "duration": 3.2,
+   "text": "work your way"
+  },
+  {
+   "start": 66.04,
+   "duration": 3.96,
+   "text": "towards cloud."
+  },
+  {
+   "start": 67.68,
+   "duration": 4.56,
+   "text": "Yeah, not the other way around."
+  },
+  {
+   "start": 70.0,
+   "duration": 4.76,
+   "text": "And that's exactly what this episode is"
+  },
+  {
+   "start": 72.24,
+   "duration": 4.96,
+   "text": "about. So, today we are going to learn"
+  },
+  {
+   "start": 74.76,
+   "duration": 5.52,
+   "text": "how to translate a business problem into"
+  },
+  {
+   "start": 77.2,
+   "duration": 5.2,
+   "text": "a cloud-based solution. And we are going"
+  },
+  {
+   "start": 80.28,
+   "duration": 3.72,
+   "text": "to build the material framework the exam"
+  },
+  {
+   "start": 82.4,
+   "duration": 3.72,
+   "text": "is actually testing on. So, it's"
+  },
+  {
+   "start": 84.0,
+   "duration": 5.16,
+   "text": "completely in the format of the exam,"
+  },
+  {
+   "start": 86.12,
+   "duration": 4.4,
+   "text": "right? It's not just uh is the topic and"
+  },
+  {
+   "start": 89.16,
+   "duration": 3.28,
+   "text": "this is the information because"
+  },
+  {
+   "start": 90.52,
+   "duration": 4.44,
+   "text": "everything every course that I you know,"
+  },
+  {
+   "start": 92.44,
+   "duration": 5.48,
+   "text": "I design, I design it specially for the"
+  },
+  {
+   "start": 94.96,
+   "duration": 4.16,
+   "text": "exam and how you can easily crack it,"
+  },
+  {
+   "start": 97.92,
+   "duration": 3.12,
+   "text": "right?"
+  },
+  {
+   "start": 99.12,
+   "duration": 3.4,
+   "text": "So,"
+  },
+  {
+   "start": 101.04,
+   "duration": 5.4,
+   "text": "what we are covering today is that this"
+  },
+  {
+   "start": 102.52,
+   "duration": 5.48,
+   "text": "is uh the episode one of this series. Uh"
+  },
+  {
+   "start": 106.44,
+   "duration": 3.64,
+   "text": "you know, in terms of numbers, it's the"
+  },
+  {
+   "start": 108.0,
+   "duration": 3.64,
+   "text": "second episode. The first episode was"
+  },
+  {
+   "start": 110.08,
+   "duration": 4.4,
+   "text": "episode number zero."
+  },
+  {
+   "start": 111.64,
+   "duration": 5.32,
+   "text": "And we are kicking off domain one in"
+  },
+  {
+   "start": 114.48,
+   "duration": 6.68,
+   "text": "this episode, solution design and"
+  },
+  {
+   "start": 116.96,
+   "duration": 6.28,
+   "text": "architecture, which is 17% of your exam."
+  },
+  {
+   "start": 121.16,
+   "duration": 4.88,
+   "text": "And what we're going to do today is we"
+  },
+  {
+   "start": 123.24,
+   "duration": 4.96,
+   "text": "are going to understand the uh CCARP"
+  },
+  {
+   "start": 126.04,
+   "duration": 3.96,
+   "text": "question style. So, CCARP is nothing but"
+  },
+  {
+   "start": 128.2,
+   "duration": 3.759,
+   "text": "Cloud Certified Architect Professional"
+  },
+  {
+   "start": 130.0,
+   "duration": 4.4,
+   "text": "exam. I'm just shortening it so that I"
+  },
+  {
+   "start": 131.959,
+   "duration": 4.201,
+   "text": "don't have to say the whole word again"
+  },
+  {
+   "start": 134.4,
+   "duration": 3.52,
+   "text": "and again. So, we're going to understand"
+  },
+  {
+   "start": 136.16,
+   "duration": 3.52,
+   "text": "the question style, how the exam"
+  },
+  {
+   "start": 137.92,
+   "duration": 2.84,
+   "text": "actually phrases things, and why it"
+  },
+  {
+   "start": 139.68,
+   "duration": 3.04,
+   "text": "matters."
+  },
+  {
+   "start": 140.76,
+   "duration": 3.68,
+   "text": "Uh we're going to understand the you"
+  },
+  {
+   "start": 142.72,
+   "duration": 3.96,
+   "text": "know how to transform the business"
+  },
+  {
+   "start": 144.44,
+   "duration": 4.76,
+   "text": "problem and map it to the cloud problem."
+  },
+  {
+   "start": 146.68,
+   "duration": 3.52,
+   "text": "Yeah, how to do that kind of translation"
+  },
+  {
+   "start": 149.2,
+   "duration": 3.52,
+   "text": "over there."
+  },
+  {
+   "start": 150.2,
+   "duration": 4.92,
+   "text": "Yeah, and most people skip it, and that"
+  },
+  {
+   "start": 152.72,
+   "duration": 4.0,
+   "text": "is the most important part of the exam."
+  },
+  {
+   "start": 155.12,
+   "duration": 3.64,
+   "text": "The four-part architecture you're going"
+  },
+  {
+   "start": 156.72,
+   "duration": 4.88,
+   "text": "to understand, yeah, like input,"
+  },
+  {
+   "start": 158.76,
+   "duration": 4.199,
+   "text": "processing, output, and"
+  },
+  {
+   "start": 161.6,
+   "duration": 3.68,
+   "text": "the most important thing that people"
+  },
+  {
+   "start": 162.959,
+   "duration": 5.121,
+   "text": "forget is the feedback loop."
+  },
+  {
+   "start": 165.28,
+   "duration": 4.24,
+   "text": "Cloud can versus cloud should. We'll"
+  },
+  {
+   "start": 168.08,
+   "duration": 4.48,
+   "text": "understand what is the difference"
+  },
+  {
+   "start": 169.52,
+   "duration": 4.8,
+   "text": "between these two kind of scenarios."
+  },
+  {
+   "start": 172.56,
+   "duration": 3.8,
+   "text": "And the five business value pillars"
+  },
+  {
+   "start": 174.32,
+   "duration": 4.76,
+   "text": "we're going to understand, yeah. This is"
+  },
+  {
+   "start": 176.36,
+   "duration": 4.64,
+   "text": "what the exam uses to decide between two"
+  },
+  {
+   "start": 179.08,
+   "duration": 4.48,
+   "text": "valid architectures."
+  },
+  {
+   "start": 181.0,
+   "duration": 4.72,
+   "text": "And we're going to understand one exam"
+  },
+  {
+   "start": 183.56,
+   "duration": 4.28,
+   "text": "drill, yeah. I'm going to go you let you"
+  },
+  {
+   "start": 185.72,
+   "duration": 4.799,
+   "text": "know take you guys through a full"
+  },
+  {
+   "start": 187.84,
+   "duration": 5.28,
+   "text": "production case study where we diagram a"
+  },
+  {
+   "start": 190.519,
+   "duration": 5.481,
+   "text": "real system end to end. Okay? So, you"
+  },
+  {
+   "start": 193.12,
+   "duration": 5.64,
+   "text": "would understand from the start how this"
+  },
+  {
+   "start": 196.0,
+   "duration": 4.08,
+   "text": "thing works. This exam works."
+  },
+  {
+   "start": 198.76,
+   "duration": 3.16,
+   "text": "So, um"
+  },
+  {
+   "start": 200.08,
+   "duration": 3.439,
+   "text": "with that out of the picture, I hope"
+  },
+  {
+   "start": 201.92,
+   "duration": 3.96,
+   "text": "that you will get an idea how much we"
+  },
+  {
+   "start": 203.519,
+   "duration": 5.161,
+   "text": "are going to cover for the syllabus. And"
+  },
+  {
+   "start": 205.88,
+   "duration": 5.639,
+   "text": "with that, let's move forward. How this"
+  },
+  {
+   "start": 208.68,
+   "duration": 4.44,
+   "text": "exam actually tests you."
+  },
+  {
+   "start": 211.519,
+   "duration": 3.321,
+   "text": "So, before we go into the content, let's"
+  },
+  {
+   "start": 213.12,
+   "duration": 3.0,
+   "text": "talk about how you'll be tested. And"
+  },
+  {
+   "start": 214.84,
+   "duration": 2.92,
+   "text": "this I already covered in the previous"
+  },
+  {
+   "start": 216.12,
+   "duration": 3.839,
+   "text": "episode, so we're going to spend around"
+  },
+  {
+   "start": 217.76,
+   "duration": 4.92,
+   "text": "a few seconds over here. So, it has 63"
+  },
+  {
+   "start": 219.959,
+   "duration": 5.041,
+   "text": "seconds in 120 minutes. That is under 2"
+  },
+  {
+   "start": 222.68,
+   "duration": 4.2,
+   "text": "minutes per question, right? So, it"
+  },
+  {
+   "start": 225.0,
+   "duration": 4.48,
+   "text": "contains both single answer and multiple"
+  },
+  {
+   "start": 226.88,
+   "duration": 5.24,
+   "text": "response items, uh you know, those"
+  },
+  {
+   "start": 229.48,
+   "duration": 4.2,
+   "text": "format of questions. Um"
+  },
+  {
+   "start": 232.12,
+   "duration": 3.88,
+   "text": "and we already know that the multiple"
+  },
+  {
+   "start": 233.68,
+   "duration": 4.04,
+   "text": "response items are all or nothing."
+  },
+  {
+   "start": 236.0,
+   "duration": 3.76,
+   "text": "Yeah? So, if the question says select"
+  },
+  {
+   "start": 237.72,
+   "duration": 3.88,
+   "text": "two and you get one right, then gone."
+  },
+  {
+   "start": 239.76,
+   "duration": 3.76,
+   "text": "The whole question is wrong. But, here's"
+  },
+  {
+   "start": 241.6,
+   "duration": 3.72,
+   "text": "what really matters about the question"
+  },
+  {
+   "start": 243.52,
+   "duration": 3.96,
+   "text": "style. Right? All of this information I"
+  },
+  {
+   "start": 245.32,
+   "duration": 4.16,
+   "text": "already covered. So, here is what"
+  },
+  {
+   "start": 247.48,
+   "duration": 4.72,
+   "text": "matters about the question style. The"
+  },
+  {
+   "start": 249.48,
+   "duration": 5.6,
+   "text": "foundation level question sound like,"
+  },
+  {
+   "start": 252.2,
+   "duration": 5.72,
+   "text": "\"Which pattern describes an autonomous"
+  },
+  {
+   "start": 255.08,
+   "duration": 4.56,
+   "text": "tool using loop?\" That is a definition"
+  },
+  {
+   "start": 257.92,
+   "duration": 3.2,
+   "text": "question. Try to understand the types of"
+  },
+  {
+   "start": 259.64,
+   "duration": 2.72,
+   "text": "question."
+  },
+  {
+   "start": 261.12,
+   "duration": 3.12,
+   "text": "Yeah?"
+  },
+  {
+   "start": 262.36,
+   "duration": 3.8,
+   "text": "Now, the professional level question"
+  },
+  {
+   "start": 264.24,
+   "duration": 4.0,
+   "text": "would sound like,"
+  },
+  {
+   "start": 266.16,
+   "duration": 5.759,
+   "text": "\"Let's say a financial services company"
+  },
+  {
+   "start": 268.24,
+   "duration": 5.8,
+   "text": "needs sub-200 millisecond response times"
+  },
+  {
+   "start": 271.919,
+   "duration": 5.161,
+   "text": "for our customer-facing queries with"
+  },
+  {
+   "start": 274.04,
+   "duration": 6.16,
+   "text": "maintaining full audit trails.\" The team"
+  },
+  {
+   "start": 277.08,
+   "duration": 5.28,
+   "text": "purposes an agentic architecture with,"
+  },
+  {
+   "start": 280.2,
+   "duration": 4.08,
+   "text": "let's say, an autonomous tool use."
+  },
+  {
+   "start": 282.36,
+   "duration": 3.64,
+   "text": "\"What is the most effective"
+  },
+  {
+   "start": 284.28,
+   "duration": 4.0,
+   "text": "recommendation?\""
+  },
+  {
+   "start": 286.0,
+   "duration": 4.76,
+   "text": "You can see the pointers over here for"
+  },
+  {
+   "start": 288.28,
+   "duration": 4.36,
+   "text": "that anatomy. So, understand the"
+  },
+  {
+   "start": 290.76,
+   "duration": 3.159,
+   "text": "difference. There's a constraint in the"
+  },
+  {
+   "start": 292.64,
+   "duration": 4.88,
+   "text": "stem."
+  },
+  {
+   "start": 293.919,
+   "duration": 5.321,
+   "text": "Sub-200 millisecond latency plus audit"
+  },
+  {
+   "start": 297.52,
+   "duration": 5.0,
+   "text": "requirements."
+  },
+  {
+   "start": 299.24,
+   "duration": 5.76,
+   "text": "And the answer is whatever addresses"
+  },
+  {
+   "start": 302.52,
+   "duration": 5.56,
+   "text": "that specific constraint."
+  },
+  {
+   "start": 305.0,
+   "duration": 5.04,
+   "text": "Not whatever sounds the most impressive."
+  },
+  {
+   "start": 308.08,
+   "duration": 4.52,
+   "text": "This is the distinction that you need to"
+  },
+  {
+   "start": 310.04,
+   "duration": 4.6,
+   "text": "make in your mind before actually"
+  },
+  {
+   "start": 312.6,
+   "duration": 3.52,
+   "text": "studying for this exam."
+  },
+  {
+   "start": 314.64,
+   "duration": 2.84,
+   "text": "Yeah?"
+  },
+  {
+   "start": 316.12,
+   "duration": 4.24,
+   "text": "The exam"
+  },
+  {
+   "start": 317.48,
+   "duration": 5.68,
+   "text": "kind of rewards the root cause thinking"
+  },
+  {
+   "start": 320.36,
+   "duration": 3.84,
+   "text": "and punishes compensating control"
+  },
+  {
+   "start": 323.16,
+   "duration": 3.759,
+   "text": "theater."
+  },
+  {
+   "start": 324.2,
+   "duration": 5.08,
+   "text": "I mean, most effective is the option"
+  },
+  {
+   "start": 326.919,
+   "duration": 4.601,
+   "text": "that addresses the actual constraint,"
+  },
+  {
+   "start": 329.28,
+   "duration": 3.28,
+   "text": "not the most impressive-sounding option."
+  },
+  {
+   "start": 331.52,
+   "duration": 2.52,
+   "text": "You have to understand the difference"
+  },
+  {
+   "start": 332.56,
+   "duration": 4.52,
+   "text": "between both."
+  },
+  {
+   "start": 334.04,
+   "duration": 5.08,
+   "text": "The the most efficient solution might"
+  },
+  {
+   "start": 337.08,
+   "duration": 4.28,
+   "text": "not be the most impressive one. I'm"
+  },
+  {
+   "start": 339.12,
+   "duration": 4.56,
+   "text": "going to give you an example of very"
+  },
+  {
+   "start": 341.36,
+   "duration": 4.48,
+   "text": "simple example. And I'm going to relate"
+  },
+  {
+   "start": 343.68,
+   "duration": 3.92,
+   "text": "it to football. And because, you know,"
+  },
+  {
+   "start": 345.84,
+   "duration": 3.84,
+   "text": "Messi kind of retired from international"
+  },
+  {
+   "start": 347.6,
+   "duration": 3.84,
+   "text": "football. I'm kind of very sad about it."
+  },
+  {
+   "start": 349.68,
+   "duration": 3.72,
+   "text": "But it's the it's a very simple thing."
+  },
+  {
+   "start": 351.44,
+   "duration": 4.08,
+   "text": "There's a difference between Messi's"
+  },
+  {
+   "start": 353.4,
+   "duration": 4.68,
+   "text": "dribbling and Neymar's dribbling. Both"
+  },
+  {
+   "start": 355.52,
+   "duration": 4.84,
+   "text": "are impressive. But Messi does not use"
+  },
+  {
+   "start": 358.08,
+   "duration": 4.56,
+   "text": "tricks. Just goes and does does some"
+  },
+  {
+   "start": 360.36,
+   "duration": 3.68,
+   "text": "faints and, you know, four or five"
+  },
+  {
+   "start": 362.64,
+   "duration": 4.2,
+   "text": "defenders gone."
+  },
+  {
+   "start": 364.04,
+   "duration": 5.2,
+   "text": "But Neymar uses a lot of tricks. With"
+  },
+  {
+   "start": 366.84,
+   "duration": 4.16,
+   "text": "that looks impressive, but in my opinion"
+  },
+  {
+   "start": 369.24,
+   "duration": 3.92,
+   "text": "that is not the most efficient form of"
+  },
+  {
+   "start": 371.0,
+   "duration": 4.08,
+   "text": "dribbling. Yeah? That's just a"
+  },
+  {
+   "start": 373.16,
+   "duration": 3.96,
+   "text": "distinction. If someone watches"
+  },
+  {
+   "start": 375.08,
+   "duration": 4.4,
+   "text": "football, they will understand it. But I"
+  },
+  {
+   "start": 377.12,
+   "duration": 4.68,
+   "text": "hope you got the point."
+  },
+  {
+   "start": 379.48,
+   "duration": 5.28,
+   "text": "Okay? So, the mental model is read the"
+  },
+  {
+   "start": 381.8,
+   "duration": 5.44,
+   "text": "stem, circle the constraint,"
+  },
+  {
+   "start": 384.76,
+   "duration": 3.96,
+   "text": "and then see the options which is"
+  },
+  {
+   "start": 387.24,
+   "duration": 3.08,
+   "text": "actually the answer, not the most"
+  },
+  {
+   "start": 388.72,
+   "duration": 3.72,
+   "text": "impressive one. And we'll understand,"
+  },
+  {
+   "start": 390.32,
+   "duration": 4.36,
+   "text": "you know, how it works and how those"
+  },
+  {
+   "start": 392.44,
+   "duration": 3.88,
+   "text": "options might trick you. So, yeah. So,"
+  },
+  {
+   "start": 394.68,
+   "duration": 3.72,
+   "text": "keep that in mind."
+  },
+  {
+   "start": 396.32,
+   "duration": 4.36,
+   "text": "Okay. Now, from business problem to"
+  },
+  {
+   "start": 398.4,
+   "duration": 5.6,
+   "text": "cloud problem, this translation step,"
+  },
+  {
+   "start": 400.68,
+   "duration": 6.88,
+   "text": "okay? And let's get into it because the"
+  },
+  {
+   "start": 404.0,
+   "duration": 6.0,
+   "text": "objective 1.1 of the syllabus, it says,"
+  },
+  {
+   "start": 407.56,
+   "duration": 5.2,
+   "text": "\"Translate business problems into"
+  },
+  {
+   "start": 410.0,
+   "duration": 4.84,
+   "text": "cloud-based AI solutions.\" That is the"
+  },
+  {
+   "start": 412.76,
+   "duration": 4.12,
+   "text": "exact wording which it says."
+  },
+  {
+   "start": 414.84,
+   "duration": 4.6,
+   "text": "Now, think about this like hiring,"
+  },
+  {
+   "start": 416.88,
+   "duration": 5.24,
+   "text": "another example. When a company comes to"
+  },
+  {
+   "start": 419.44,
+   "duration": 4.92,
+   "text": "you and says, \"We want AI.\""
+  },
+  {
+   "start": 422.12,
+   "duration": 3.96,
+   "text": "Like that's like someone walking into a"
+  },
+  {
+   "start": 424.36,
+   "duration": 3.16,
+   "text": "staffing agency and saying, \"We want an"
+  },
+  {
+   "start": 426.08,
+   "duration": 4.12,
+   "text": "employee.\""
+  },
+  {
+   "start": 427.52,
+   "duration": 5.6,
+   "text": "But the question is to do what? Under"
+  },
+  {
+   "start": 430.2,
+   "duration": 4.76,
+   "text": "what constraints? Under what budget?"
+  },
+  {
+   "start": 433.12,
+   "duration": 4.2,
+   "text": "So, the translation step is figuring out"
+  },
+  {
+   "start": 434.96,
+   "duration": 3.48,
+   "text": "what the actual job is, and it works"
+  },
+  {
+   "start": 437.32,
+   "duration": 4.16,
+   "text": "like this."
+  },
+  {
+   "start": 438.44,
+   "duration": 5.72,
+   "text": "So, you you have a business problem, you"
+  },
+  {
+   "start": 441.48,
+   "duration": 4.8,
+   "text": "see what is the input, what processing"
+  },
+  {
+   "start": 444.16,
+   "duration": 5.08,
+   "text": "it does, what is the output, and how do"
+  },
+  {
+   "start": 446.28,
+   "duration": 5.04,
+   "text": "we know it's working. I hope this kind"
+  },
+  {
+   "start": 449.24,
+   "duration": 4.32,
+   "text": "of a you know, this"
+  },
+  {
+   "start": 451.32,
+   "duration": 3.84,
+   "text": "does it this this diagram over here."
+  },
+  {
+   "start": 453.56,
+   "duration": 3.48,
+   "text": "Because every single cloud-based"
+  },
+  {
+   "start": 455.16,
+   "duration": 4.72,
+   "text": "solution, no matter how complex is"
+  },
+  {
+   "start": 457.04,
+   "duration": 5.32,
+   "text": "answering these four questions. So, the"
+  },
+  {
+   "start": 459.88,
+   "duration": 3.68,
+   "text": "business gives you the problem."
+  },
+  {
+   "start": 462.36,
+   "duration": 2.84,
+   "text": "Obviously, the business will give you"
+  },
+  {
+   "start": 463.56,
+   "duration": 4.2,
+   "text": "the problem and your job as the"
+  },
+  {
+   "start": 465.2,
+   "duration": 4.56,
+   "text": "architect is to decompose that into"
+  },
+  {
+   "start": 467.76,
+   "duration": 4.0,
+   "text": "those four buckets."
+  },
+  {
+   "start": 469.76,
+   "duration": 3.32,
+   "text": "So, let's give a concrete example and"
+  },
+  {
+   "start": 471.76,
+   "duration": 3.92,
+   "text": "try to understand. A company says a"
+  },
+  {
+   "start": 473.08,
+   "duration": 4.52,
+   "text": "support team is drowning. Yeah, tickets"
+  },
+  {
+   "start": 475.68,
+   "duration": 4.12,
+   "text": "kind of takes 4 hours on an average to"
+  },
+  {
+   "start": 477.6,
+   "duration": 4.92,
+   "text": "resolve. We need to cut that to under 30"
+  },
+  {
+   "start": 479.8,
+   "duration": 4.8,
+   "text": "minutes for the common ones. Okay, now"
+  },
+  {
+   "start": 482.52,
+   "duration": 3.64,
+   "text": "that's the business problem. Now, watch"
+  },
+  {
+   "start": 484.6,
+   "duration": 2.8,
+   "text": "this translation. Okay, this is how I"
+  },
+  {
+   "start": 486.16,
+   "duration": 2.8,
+   "text": "would do it."
+  },
+  {
+   "start": 487.4,
+   "duration": 4.2,
+   "text": "So, input is"
+  },
+  {
+   "start": 488.96,
+   "duration": 4.36,
+   "text": "ticket text plus customer history from"
+  },
+  {
+   "start": 491.6,
+   "duration": 4.36,
+   "text": "the CRM."
+  },
+  {
+   "start": 493.32,
+   "duration": 4.12,
+   "text": "Okay, that is the input. Processing."
+  },
+  {
+   "start": 495.96,
+   "duration": 3.52,
+   "text": "What is the processing do we need to do?"
+  },
+  {
+   "start": 497.44,
+   "duration": 3.68,
+   "text": "Try to try to understand."
+  },
+  {
+   "start": 499.48,
+   "duration": 4.0,
+   "text": "So, the processing in my opinion should"
+  },
+  {
+   "start": 501.12,
+   "duration": 4.84,
+   "text": "be classifying the intent, pick the"
+  },
+  {
+   "start": 503.48,
+   "duration": 4.16,
+   "text": "right resolution path, and draft a"
+  },
+  {
+   "start": 505.96,
+   "duration": 4.08,
+   "text": "response."
+  },
+  {
+   "start": 507.64,
+   "duration": 4.2,
+   "text": "Correct? Because that is what was the"
+  },
+  {
+   "start": 510.04,
+   "duration": 3.119,
+   "text": "problem that was happening with those"
+  },
+  {
+   "start": 511.84,
+   "duration": 3.24,
+   "text": "tickets, right?"
+  },
+  {
+   "start": 513.159,
+   "duration": 4.801,
+   "text": "Now, output. What is the output? Try to"
+  },
+  {
+   "start": 515.08,
+   "duration": 5.04,
+   "text": "understand. A response to the customer."
+  },
+  {
+   "start": 517.96,
+   "duration": 4.04,
+   "text": "Or any back-end actions like refund,"
+  },
+  {
+   "start": 520.12,
+   "duration": 4.28,
+   "text": "reset, escalate. Because at the end of"
+  },
+  {
+   "start": 522.0,
+   "duration": 4.4,
+   "text": "the day, the end user is your customer"
+  },
+  {
+   "start": 524.4,
+   "duration": 3.48,
+   "text": "and they have you know, kind of given"
+  },
+  {
+   "start": 526.4,
+   "duration": 3.52,
+   "text": "you the input which is the ticket. You"
+  },
+  {
+   "start": 527.88,
+   "duration": 3.68,
+   "text": "have processed it, but anyways, we have"
+  },
+  {
+   "start": 529.92,
+   "duration": 2.48,
+   "text": "to give a response back to the customer,"
+  },
+  {
+   "start": 531.56,
+   "duration": 3.279,
+   "text": "right?"
+  },
+  {
+   "start": 532.4,
+   "duration": 4.76,
+   "text": "Which generally is a resolution and"
+  },
+  {
+   "start": 534.839,
+   "duration": 4.921,
+   "text": "resolution might be a refund, a reset,"
+  },
+  {
+   "start": 537.16,
+   "duration": 5.16,
+   "text": "or escalation, or whatever."
+  },
+  {
+   "start": 539.76,
+   "duration": 4.36,
+   "text": "Now comes the feedback. Did the actual"
+  },
+  {
+   "start": 542.32,
+   "duration": 5.8,
+   "text": "did did the ticket actually get"
+  },
+  {
+   "start": 544.12,
+   "duration": 6.16,
+   "text": "resolved? Did the customer reopen it?"
+  },
+  {
+   "start": 548.12,
+   "duration": 4.76,
+   "text": "The last one, actually the feedback is"
+  },
+  {
+   "start": 550.28,
+   "duration": 4.88,
+   "text": "what separates a prototype from a"
+  },
+  {
+   "start": 552.88,
+   "duration": 4.08,
+   "text": "production system and it's what"
+  },
+  {
+   "start": 555.16,
+   "duration": 3.92,
+   "text": "separates a professional exam from the"
+  },
+  {
+   "start": 556.96,
+   "duration": 3.48,
+   "text": "foundation exam. So, that is very"
+  },
+  {
+   "start": 559.08,
+   "duration": 3.92,
+   "text": "important to understand and we'll have"
+  },
+  {
+   "start": 560.44,
+   "duration": 4.12,
+   "text": "more examples on that. So, I hope this"
+  },
+  {
+   "start": 563.0,
+   "duration": 4.2,
+   "text": "kind of uh"
+  },
+  {
+   "start": 564.56,
+   "duration": 4.56,
+   "text": "scenario you are getting, you know?"
+  },
+  {
+   "start": 567.2,
+   "duration": 4.92,
+   "text": "So, moving on."
+  },
+  {
+   "start": 569.12,
+   "duration": 6.16,
+   "text": "The four-part end-to-end architecture."
+  },
+  {
+   "start": 572.12,
+   "duration": 5.44,
+   "text": "Now, objective number 1.2."
+  },
+  {
+   "start": 575.28,
+   "duration": 3.72,
+   "text": "Okay, it says design end-to-end"
+  },
+  {
+   "start": 577.56,
+   "duration": 3.8,
+   "text": "architecture."
+  },
+  {
+   "start": 579.0,
+   "duration": 4.96,
+   "text": "And the exam is very specific about what"
+  },
+  {
+   "start": 581.36,
+   "duration": 5.52,
+   "text": "end-to-end means. Okay, it's not just"
+  },
+  {
+   "start": 583.96,
+   "duration": 5.92,
+   "text": "prompt in, text out. It's actually four"
+  },
+  {
+   "start": 586.88,
+   "duration": 4.52,
+   "text": "parts and all the four parts matter."
+  },
+  {
+   "start": 589.88,
+   "duration": 3.64,
+   "text": "Yeah, so let's break down each one of"
+  },
+  {
+   "start": 591.4,
+   "duration": 5.32,
+   "text": "them. So, input injection, as I was"
+  },
+  {
+   "start": 593.52,
+   "duration": 5.16,
+   "text": "giving an example last kind of"
+  },
+  {
+   "start": 596.72,
+   "duration": 3.96,
+   "text": "few seconds back. Input injection is"
+  },
+  {
+   "start": 598.68,
+   "duration": 3.92,
+   "text": "everything that happens before Claude"
+  },
+  {
+   "start": 600.68,
+   "duration": 4.72,
+   "text": "sees the request. You know, pulling data"
+  },
+  {
+   "start": 602.6,
+   "duration": 5.68,
+   "text": "from CRM, parsing a PDF, chunking a"
+  },
+  {
+   "start": 605.4,
+   "duration": 5.08,
+   "text": "document for retrieval, validating that"
+  },
+  {
+   "start": 608.28,
+   "duration": 4.92,
+   "text": "the request even makes sense in"
+  },
+  {
+   "start": 610.48,
+   "duration": 5.2,
+   "text": "production. That is often 40% of your"
+  },
+  {
+   "start": 613.2,
+   "duration": 4.2,
+   "text": "engineering effort. That is what you we"
+  },
+  {
+   "start": 615.68,
+   "duration": 3.6,
+   "text": "are doing, input injection."
+  },
+  {
+   "start": 617.4,
+   "duration": 3.84,
+   "text": "Then comes the processing. Processing is"
+  },
+  {
+   "start": 619.28,
+   "duration": 5.12,
+   "text": "actually the Claude layer."
+  },
+  {
+   "start": 621.24,
+   "duration": 5.36,
+   "text": "But it's not just one API call. It might"
+  },
+  {
+   "start": 624.4,
+   "duration": 5.28,
+   "text": "be, you know, intent classification with"
+  },
+  {
+   "start": 626.6,
+   "duration": 5.4,
+   "text": "Haiku, you know, followed by reasoning"
+  },
+  {
+   "start": 629.68,
+   "duration": 4.6,
+   "text": "with Sonnet, followed by a tool call,"
+  },
+  {
+   "start": 632.0,
+   "duration": 4.16,
+   "text": "followed by a response generation. The"
+  },
+  {
+   "start": 634.28,
+   "duration": 4.48,
+   "text": "The processing layer is where your"
+  },
+  {
+   "start": 636.16,
+   "duration": 5.16,
+   "text": "architectural pattern lives. Like your"
+  },
+  {
+   "start": 638.76,
+   "duration": 4.56,
+   "text": "workflow, your agentic system, or your"
+  },
+  {
+   "start": 641.32,
+   "duration": 3.56,
+   "text": "augmented LLM. These all things we're"
+  },
+  {
+   "start": 643.32,
+   "duration": 3.6,
+   "text": "going to learn in the next episode."
+  },
+  {
+   "start": 644.88,
+   "duration": 4.2,
+   "text": "Okay, just for For now, understand the"
+  },
+  {
+   "start": 646.92,
+   "duration": 3.68,
+   "text": "upper layer of things. Input injection,"
+  },
+  {
+   "start": 649.08,
+   "duration": 4.96,
+   "text": "then processing. I hope that's making"
+  },
+  {
+   "start": 650.6,
+   "duration": 5.08,
+   "text": "sense. Third is output. Output is not"
+  },
+  {
+   "start": 654.04,
+   "duration": 4.799,
+   "text": "just text."
+  },
+  {
+   "start": 655.68,
+   "duration": 6.12,
+   "text": "Okay, it also contains actions."
+  },
+  {
+   "start": 658.839,
+   "duration": 5.0,
+   "text": "Did we fire a webhook?"
+  },
+  {
+   "start": 661.8,
+   "duration": 3.8,
+   "text": "Update a database or trigger an"
+  },
+  {
+   "start": 663.839,
+   "duration": 3.681,
+   "text": "escalation? These are all the things."
+  },
+  {
+   "start": 665.6,
+   "duration": 4.28,
+   "text": "The output layer kind of includes"
+  },
+  {
+   "start": 667.52,
+   "duration": 4.6,
+   "text": "post-processing, formatting, safety"
+  },
+  {
+   "start": 669.88,
+   "duration": 4.84,
+   "text": "checks, you know, content filtering,"
+  },
+  {
+   "start": 672.12,
+   "duration": 4.56,
+   "text": "everything that happens between Claude's"
+  },
+  {
+   "start": 674.72,
+   "duration": 3.4,
+   "text": "raw response and what the end user"
+  },
+  {
+   "start": 676.68,
+   "duration": 2.48,
+   "text": "actually sees."
+  },
+  {
+   "start": 678.12,
+   "duration": 3.76,
+   "text": "Yeah?"
+  },
+  {
+   "start": 679.16,
+   "duration": 5.12,
+   "text": "Next comes the feedback. And"
+  },
+  {
+   "start": 681.88,
+   "duration": 4.68,
+   "text": "it is a loop that makes the system gets"
+  },
+  {
+   "start": 684.28,
+   "duration": 3.92,
+   "text": "get better over over the time. You know,"
+  },
+  {
+   "start": 686.56,
+   "duration": 4.2,
+   "text": "resolution rates,"
+  },
+  {
+   "start": 688.2,
+   "duration": 4.04,
+   "text": "accuracy metrics, user satisfaction"
+  },
+  {
+   "start": 690.76,
+   "duration": 3.76,
+   "text": "scores, very very important. And the"
+  },
+  {
+   "start": 692.24,
+   "duration": 4.28,
+   "text": "exam will test you on that. Then comes"
+  },
+  {
+   "start": 694.52,
+   "duration": 4.8,
+   "text": "the escalation tracking. Without"
+  },
+  {
+   "start": 696.52,
+   "duration": 5.48,
+   "text": "feedback, you kind of built a demo with"
+  },
+  {
+   "start": 699.32,
+   "duration": 4.68,
+   "text": "with the feedback, you built a"
+  },
+  {
+   "start": 702.0,
+   "duration": 3.8,
+   "text": "production system which actually works"
+  },
+  {
+   "start": 704.0,
+   "duration": 3.56,
+   "text": "with customers. And that is very"
+  },
+  {
+   "start": 705.8,
+   "duration": 3.2,
+   "text": "important to understand."
+  },
+  {
+   "start": 707.56,
+   "duration": 4.24,
+   "text": "I hope this four-part end-to-end"
+  },
+  {
+   "start": 709.0,
+   "duration": 4.56,
+   "text": "architecture is making sense now."
+  },
+  {
+   "start": 711.8,
+   "duration": 4.56,
+   "text": "Now, let's"
+  },
+  {
+   "start": 713.56,
+   "duration": 5.32,
+   "text": "talk about a live diagram, I mean, or a"
+  },
+  {
+   "start": 716.36,
+   "duration": 4.04,
+   "text": "live case study. Okay, customer support"
+  },
+  {
+   "start": 718.88,
+   "duration": 3.44,
+   "text": "resolution system. Let's put this"
+  },
+  {
+   "start": 720.4,
+   "duration": 4.12,
+   "text": "framework into practice."
+  },
+  {
+   "start": 722.32,
+   "duration": 4.76,
+   "text": "So, um here you can see a real"
+  },
+  {
+   "start": 724.52,
+   "duration": 3.76,
+   "text": "production system, as you can see on the"
+  },
+  {
+   "start": 727.08,
+   "duration": 3.36,
+   "text": "screen,"
+  },
+  {
+   "start": 728.28,
+   "duration": 4.88,
+   "text": "uh a customer support resolution engine,"
+  },
+  {
+   "start": 730.44,
+   "duration": 4.36,
+   "text": "and we're going to build each box as we"
+  },
+  {
+   "start": 733.16,
+   "duration": 2.52,
+   "text": "talk through it."
+  },
+  {
+   "start": 734.8,
+   "duration": 2.16,
+   "text": "Okay?"
+  },
+  {
+   "start": 735.68,
+   "duration": 3.32,
+   "text": "Now,"
+  },
+  {
+   "start": 736.96,
+   "duration": 2.8,
+   "text": "let picture this. Okay, a ticket comes"
+  },
+  {
+   "start": 739.0,
+   "duration": 2.8,
+   "text": "in."
+  },
+  {
+   "start": 739.76,
+   "duration": 4.12,
+   "text": "So, obviously it's in the input layer,"
+  },
+  {
+   "start": 741.8,
+   "duration": 3.52,
+   "text": "yeah, along with the customer's history"
+  },
+  {
+   "start": 743.88,
+   "duration": 4.28,
+   "text": "from the CRM."
+  },
+  {
+   "start": 745.32,
+   "duration": 5.96,
+   "text": "Uh we pre-process it, you know, um"
+  },
+  {
+   "start": 748.16,
+   "duration": 6.64,
+   "text": "normalize the text, extract metadata"
+  },
+  {
+   "start": 751.28,
+   "duration": 6.92,
+   "text": "like account year, um product, or, you"
+  },
+  {
+   "start": 754.8,
+   "duration": 6.76,
+   "text": "know, some urgency signals, because the"
+  },
+  {
+   "start": 758.2,
+   "duration": 5.88,
+   "text": "uh the the priority of the ticket is is"
+  },
+  {
+   "start": 761.56,
+   "duration": 4.16,
+   "text": "on the basis of what the customer needs"
+  },
+  {
+   "start": 764.08,
+   "duration": 3.28,
+   "text": "and in which what time. What is the"
+  },
+  {
+   "start": 765.72,
+   "duration": 2.96,
+   "text": "resolution time, right? So, that is also"
+  },
+  {
+   "start": 767.36,
+   "duration": 3.479,
+   "text": "important."
+  },
+  {
+   "start": 768.68,
+   "duration": 4.32,
+   "text": "So, then after the input, we do all this"
+  },
+  {
+   "start": 770.839,
+   "duration": 3.201,
+   "text": "pre-processing, we hit the processing"
+  },
+  {
+   "start": 773.0,
+   "duration": 2.32,
+   "text": "layer."
+  },
+  {
+   "start": 774.04,
+   "duration": 4.24,
+   "text": "First,"
+  },
+  {
+   "start": 775.32,
+   "duration": 5.2,
+   "text": "a fast, cheap classification pass."
+  },
+  {
+   "start": 778.28,
+   "duration": 4.12,
+   "text": "Haiku is perfect here. And we can"
+  },
+  {
+   "start": 780.52,
+   "duration": 3.88,
+   "text": "understand where to use which model in"
+  },
+  {
+   "start": 782.4,
+   "duration": 4.08,
+   "text": "this kind of decision making later on,"
+  },
+  {
+   "start": 784.4,
+   "duration": 4.36,
+   "text": "but for now, just understand Haiku is"
+  },
+  {
+   "start": 786.48,
+   "duration": 4.04,
+   "text": "perfect here. Why? Because to figure out"
+  },
+  {
+   "start": 788.76,
+   "duration": 3.72,
+   "text": "the intent,"
+  },
+  {
+   "start": 790.52,
+   "duration": 3.72,
+   "text": "is this a billing issue, a technical"
+  },
+  {
+   "start": 792.48,
+   "duration": 3.88,
+   "text": "problem, a complaint? That"
+  },
+  {
+   "start": 794.24,
+   "duration": 5.32,
+   "text": "classification decides the routing."
+  },
+  {
+   "start": 796.36,
+   "duration": 5.04,
+   "text": "Which tool does the system need?"
+  },
+  {
+   "start": 799.56,
+   "duration": 4.88,
+   "text": "Then the heavy lifting."
+  },
+  {
+   "start": 801.4,
+   "duration": 5.0,
+   "text": "Sonnet takes the classified intent,"
+  },
+  {
+   "start": 804.44,
+   "duration": 4.12,
+   "text": "which was given back by Haiku, the"
+  },
+  {
+   "start": 806.4,
+   "duration": 3.72,
+   "text": "customer context it takes and the"
+  },
+  {
+   "start": 808.56,
+   "duration": 3.72,
+   "text": "relevant tools and generates a"
+  },
+  {
+   "start": 810.12,
+   "duration": 5.16,
+   "text": "resolution."
+  },
+  {
+   "start": 812.28,
+   "duration": 5.64,
+   "text": "Which can be a response draft plus any"
+  },
+  {
+   "start": 815.28,
+   "duration": 4.4,
+   "text": "back-end actions like firing a refund or"
+  },
+  {
+   "start": 817.92,
+   "duration": 4.36,
+   "text": "resetting an account."
+  },
+  {
+   "start": 819.68,
+   "duration": 4.36,
+   "text": "Yeah? And with all of these happening,"
+  },
+  {
+   "start": 822.28,
+   "duration": 4.72,
+   "text": "the foundation level concepts that we"
+  },
+  {
+   "start": 824.04,
+   "duration": 4.68,
+   "text": "had learned like having hooks pre-tool"
+  },
+  {
+   "start": 827.0,
+   "duration": 3.8,
+   "text": "hook or post-tool hook, it actually"
+  },
+  {
+   "start": 828.72,
+   "duration": 3.24,
+   "text": "comes when you code this solution."
+  },
+  {
+   "start": 830.8,
+   "duration": 3.52,
+   "text": "Because"
+  },
+  {
+   "start": 831.96,
+   "duration": 4.6,
+   "text": "the Sonnet or LLM or Claude cannot issue"
+  },
+  {
+   "start": 834.32,
+   "duration": 3.72,
+   "text": "a refund when there is a clause over"
+  },
+  {
+   "start": 836.56,
+   "duration": 3.16,
+   "text": "there that the refund cannot be more"
+  },
+  {
+   "start": 838.04,
+   "duration": 4.12,
+   "text": "than $500."
+  },
+  {
+   "start": 839.72,
+   "duration": 4.56,
+   "text": "Right? This is where the business"
+  },
+  {
+   "start": 842.16,
+   "duration": 4.08,
+   "text": "requirement comes in. This is the upper"
+  },
+  {
+   "start": 844.28,
+   "duration": 4.16,
+   "text": "layer, but the foundation in the"
+  },
+  {
+   "start": 846.24,
+   "duration": 3.6,
+   "text": "foundation we are using the hooks and"
+  },
+  {
+   "start": 848.44,
+   "duration": 3.12,
+   "text": "all those things. That is what we learn"
+  },
+  {
+   "start": 849.84,
+   "duration": 3.36,
+   "text": "first there. It doesn't mean that it is"
+  },
+  {
+   "start": 851.56,
+   "duration": 4.52,
+   "text": "not included in the professional level"
+  },
+  {
+   "start": 853.2,
+   "duration": 5.0,
+   "text": "exam. Those concepts are also there, but"
+  },
+  {
+   "start": 856.08,
+   "duration": 3.92,
+   "text": "you need to understand that the bigger"
+  },
+  {
+   "start": 858.2,
+   "duration": 4.12,
+   "text": "picture. That is why we are learning all"
+  },
+  {
+   "start": 860.0,
+   "duration": 4.64,
+   "text": "of these things. Yeah? So, I hope that"
+  },
+  {
+   "start": 862.32,
+   "duration": 4.28,
+   "text": "distinction makes sense now that we are"
+  },
+  {
+   "start": 864.64,
+   "duration": 3.88,
+   "text": "learning all of these things. Okay. Now,"
+  },
+  {
+   "start": 866.6,
+   "duration": 5.0,
+   "text": "coming back to the topic at hand. So,"
+  },
+  {
+   "start": 868.52,
+   "duration": 5.68,
+   "text": "Sonnet does all of these actions for the"
+  },
+  {
+   "start": 871.6,
+   "duration": 4.84,
+   "text": "you know, resolution. Now, the output"
+  },
+  {
+   "start": 874.2,
+   "duration": 4.24,
+   "text": "goes to the customer, but here's where"
+  },
+  {
+   "start": 876.44,
+   "duration": 5.08,
+   "text": "production thinking kicks in. We track"
+  },
+  {
+   "start": 878.44,
+   "duration": 5.399,
+   "text": "everything. Did the ticket close? Did"
+  },
+  {
+   "start": 881.52,
+   "duration": 5.28,
+   "text": "the customer reopen? Was there an"
+  },
+  {
+   "start": 883.839,
+   "duration": 5.841,
+   "text": "escalation? The feedback data flows back"
+  },
+  {
+   "start": 886.8,
+   "duration": 5.88,
+   "text": "into prompt iteration and you know, the"
+  },
+  {
+   "start": 889.68,
+   "duration": 4.84,
+   "text": "model selection decisions."
+  },
+  {
+   "start": 892.68,
+   "duration": 4.0,
+   "text": "Yeah, all of these decisions that was"
+  },
+  {
+   "start": 894.52,
+   "duration": 3.64,
+   "text": "done by the model. So, the feedback loop"
+  },
+  {
+   "start": 896.68,
+   "duration": 3.12,
+   "text": "is what makes this a production"
+  },
+  {
+   "start": 898.16,
+   "duration": 3.679,
+   "text": "architecture instead of a demo. So,"
+  },
+  {
+   "start": 899.8,
+   "duration": 3.84,
+   "text": "that's the whole point, right?"
+  },
+  {
+   "start": 901.839,
+   "duration": 3.761,
+   "text": "Now,"
+  },
+  {
+   "start": 903.64,
+   "duration": 3.52,
+   "text": "Claude can do this versus Claude should"
+  },
+  {
+   "start": 905.6,
+   "duration": 3.84,
+   "text": "do this. This is one of the most"
+  },
+  {
+   "start": 907.16,
+   "duration": 4.44,
+   "text": "important judgment calls the exam tests"
+  },
+  {
+   "start": 909.44,
+   "duration": 3.52,
+   "text": "and honestly, one of the most important"
+  },
+  {
+   "start": 911.6,
+   "duration": 3.6,
+   "text": "skills you would develop as an"
+  },
+  {
+   "start": 912.96,
+   "duration": 4.96,
+   "text": "architect. Yeah? Claude is incredibly"
+  },
+  {
+   "start": 915.2,
+   "duration": 4.52,
+   "text": "capable. It can do anything, right?"
+  },
+  {
+   "start": 917.92,
+   "duration": 3.16,
+   "text": "Summarize documents, write code, analyze"
+  },
+  {
+   "start": 919.72,
+   "duration": 4.08,
+   "text": "data, generate content, and make"
+  },
+  {
+   "start": 921.08,
+   "duration": 5.6,
+   "text": "decisions with tools. But, can is not"
+  },
+  {
+   "start": 923.8,
+   "duration": 4.88,
+   "text": "should. There's a very thin line between"
+  },
+  {
+   "start": 926.68,
+   "duration": 3.36,
+   "text": "can and should that we need to"
+  },
+  {
+   "start": 928.68,
+   "duration": 2.76,
+   "text": "understand."
+  },
+  {
+   "start": 930.04,
+   "duration": 3.84,
+   "text": "It's Think of it like this. Another"
+  },
+  {
+   "start": 931.44,
+   "duration": 5.04,
+   "text": "example, I hope it's not a lame example."
+  },
+  {
+   "start": 933.88,
+   "duration": 4.84,
+   "text": "A Formula 1 car can drive you to a"
+  },
+  {
+   "start": 936.48,
+   "duration": 4.24,
+   "text": "grocery store, obviously."
+  },
+  {
+   "start": 938.72,
+   "duration": 3.96,
+   "text": "But, should you use one?"
+  },
+  {
+   "start": 940.72,
+   "duration": 4.48,
+   "text": "Probably not, right? A regular car is"
+  },
+  {
+   "start": 942.68,
+   "duration": 4.52,
+   "text": "cheaper, simpler, and"
+  },
+  {
+   "start": 945.2,
+   "duration": 4.04,
+   "text": "it has I don't think I need to give more"
+  },
+  {
+   "start": 947.2,
+   "duration": 3.64,
+   "text": "reasons about that. And it gets the job"
+  },
+  {
+   "start": 949.24,
+   "duration": 3.48,
+   "text": "done. Both of them gets the job done, by"
+  },
+  {
+   "start": 950.84,
+   "duration": 3.64,
+   "text": "the way. But, why would you use a"
+  },
+  {
+   "start": 952.72,
+   "duration": 3.64,
+   "text": "Formula 1 car"
+  },
+  {
+   "start": 954.48,
+   "duration": 3.64,
+   "text": "to get groceries?"
+  },
+  {
+   "start": 956.36,
+   "duration": 3.76,
+   "text": "So, here's the situation where Claude is"
+  },
+  {
+   "start": 958.12,
+   "duration": 4.84,
+   "text": "probably the wrong tool. Yeah?"
+  },
+  {
+   "start": 960.12,
+   "duration": 4.68,
+   "text": "Deterministic lookups, one of the thing."
+  },
+  {
+   "start": 962.96,
+   "duration": 4.56,
+   "text": "Uh if the answer is always a database"
+  },
+  {
+   "start": 964.8,
+   "duration": 5.08,
+   "text": "query, use the database. Don't run an"
+  },
+  {
+   "start": 967.52,
+   "duration": 4.64,
+   "text": "like a LLM to decide what query to run"
+  },
+  {
+   "start": 969.88,
+   "duration": 4.84,
+   "text": "if the mapping is always the same."
+  },
+  {
+   "start": 972.16,
+   "duration": 5.12,
+   "text": "Yeah, it's kind of stupid."
+  },
+  {
+   "start": 974.72,
+   "duration": 4.2,
+   "text": "Let's say another case would be hard"
+  },
+  {
+   "start": 977.28,
+   "duration": 5.12,
+   "text": "real-time constraints. If you need"
+  },
+  {
+   "start": 978.92,
+   "duration": 6.24,
+   "text": "guaranteed sub-50 millisecond responses,"
+  },
+  {
+   "start": 982.4,
+   "duration": 4.96,
+   "text": "an LLM adds latency you can't afford."
+  },
+  {
+   "start": 985.16,
+   "duration": 4.04,
+   "text": "A rules engine or a lookup table is kind"
+  },
+  {
+   "start": 987.36,
+   "duration": 3.72,
+   "text": "of a right tool."
+  },
+  {
+   "start": 989.2,
+   "duration": 4.48,
+   "text": "Uh then comes, let's say, perfect"
+  },
+  {
+   "start": 991.08,
+   "duration": 4.48,
+   "text": "accuracy requirements. Um Claude is very"
+  },
+  {
+   "start": 993.68,
+   "duration": 4.8,
+   "text": "probabilistic, right? If if if the task"
+  },
+  {
+   "start": 995.56,
+   "duration": 5.12,
+   "text": "demands 100% accuracy, zero tolerance"
+  },
+  {
+   "start": 998.48,
+   "duration": 3.92,
+   "text": "for any hallucination, the LLM can"
+  },
+  {
+   "start": 1000.68,
+   "duration": 3.2,
+   "text": "assist but shouldn't be the sole"
+  },
+  {
+   "start": 1002.4,
+   "duration": 2.52,
+   "text": "decision-maker."
+  },
+  {
+   "start": 1003.88,
+   "duration": 4.0,
+   "text": "You know?"
+  },
+  {
+   "start": 1004.92,
+   "duration": 5.6,
+   "text": "Trivial classification. So, if if if a"
+  },
+  {
+   "start": 1007.88,
+   "duration": 4.16,
+   "text": "regex or a simple rule engine solves it"
+  },
+  {
+   "start": 1010.52,
+   "duration": 4.12,
+   "text": "reliably, adding an LLM is"
+  },
+  {
+   "start": 1012.04,
+   "duration": 5.36,
+   "text": "over-engineering. Yeah? More expensive"
+  },
+  {
+   "start": 1014.64,
+   "duration": 3.76,
+   "text": "and more latency. And maybe more failure"
+  },
+  {
+   "start": 1017.4,
+   "duration": 2.08,
+   "text": "modes."
+  },
+  {
+   "start": 1018.4,
+   "duration": 2.76,
+   "text": "So,"
+  },
+  {
+   "start": 1019.48,
+   "duration": 3.24,
+   "text": "the exam kind of loves giving you a"
+  },
+  {
+   "start": 1021.16,
+   "duration": 3.6,
+   "text": "scenario where Claude could solve the"
+  },
+  {
+   "start": 1022.72,
+   "duration": 5.119,
+   "text": "problem, but a simpler approach is is"
+  },
+  {
+   "start": 1024.76,
+   "duration": 5.8,
+   "text": "more appropriate appropriate. So, also I"
+  },
+  {
+   "start": 1027.839,
+   "duration": 4.641,
+   "text": "got one more word which I can't uh kind"
+  },
+  {
+   "start": 1030.56,
+   "duration": 4.519,
+   "text": "of pronounce. Okay, anyways. So, the"
+  },
+  {
+   "start": 1032.48,
+   "duration": 4.76,
+   "text": "correct answer is the simpler one."
+  },
+  {
+   "start": 1035.079,
+   "duration": 3.76,
+   "text": "Yeah? So, the mental model that you need"
+  },
+  {
+   "start": 1037.24,
+   "duration": 3.48,
+   "text": "to keep is the architect's question"
+  },
+  {
+   "start": 1038.839,
+   "duration": 3.441,
+   "text": "isn't can Claude handle this? Obviously,"
+  },
+  {
+   "start": 1040.72,
+   "duration": 3.4,
+   "text": "Claude can handle this."
+  },
+  {
+   "start": 1042.28,
+   "duration": 3.919,
+   "text": "It's does this task needs the"
+  },
+  {
+   "start": 1044.12,
+   "duration": 4.0,
+   "text": "flexibility of an LLM? That is what the"
+  },
+  {
+   "start": 1046.199,
+   "duration": 4.121,
+   "text": "question should be. Does a deterministic"
+  },
+  {
+   "start": 1048.12,
+   "duration": 5.96,
+   "text": "system gives you the same outcome with"
+  },
+  {
+   "start": 1050.32,
+   "duration": 6.56,
+   "text": "less risk and overall less cost?"
+  },
+  {
+   "start": 1054.08,
+   "duration": 5.72,
+   "text": "That's the question you should ask."
+  },
+  {
+   "start": 1056.88,
+   "duration": 5.44,
+   "text": "So, let's talk about the five business"
+  },
+  {
+   "start": 1059.8,
+   "duration": 4.32,
+   "text": "value pillars. Yeah? So, here's where"
+  },
+  {
+   "start": 1062.32,
+   "duration": 2.72,
+   "text": "the exam gets really interesting, okay?"
+  },
+  {
+   "start": 1064.12,
+   "duration": 2.72,
+   "text": "The"
+  },
+  {
+   "start": 1065.04,
+   "duration": 4.24,
+   "text": "It doesn't just test whether your"
+  },
+  {
+   "start": 1066.84,
+   "duration": 4.32,
+   "text": "architecture works, it tests whether"
+  },
+  {
+   "start": 1069.28,
+   "duration": 4.72,
+   "text": "your architecture is aligned to the"
+  },
+  {
+   "start": 1071.16,
+   "duration": 4.68,
+   "text": "right business outcomes."
+  },
+  {
+   "start": 1074.0,
+   "duration": 3.56,
+   "text": "So, these are five value pillars that"
+  },
+  {
+   "start": 1075.84,
+   "duration": 3.32,
+   "text": "the exam uses to frame business"
+  },
+  {
+   "start": 1077.56,
+   "duration": 3.28,
+   "text": "problems, okay? And when two"
+  },
+  {
+   "start": 1079.16,
+   "duration": 4.0,
+   "text": "architectures are both technically"
+  },
+  {
+   "start": 1080.84,
+   "duration": 5.24,
+   "text": "valid, the pillar the stakeholder"
+  },
+  {
+   "start": 1083.16,
+   "duration": 3.96,
+   "text": "prioritizes is what decides between"
+  },
+  {
+   "start": 1086.08,
+   "duration": 2.92,
+   "text": "them."
+  },
+  {
+   "start": 1087.12,
+   "duration": 4.04,
+   "text": "Okay, so let's make this concrete, yeah?"
+  },
+  {
+   "start": 1089.0,
+   "duration": 4.36,
+   "text": "Two companies come to you with the same"
+  },
+  {
+   "start": 1091.16,
+   "duration": 4.48,
+   "text": "surface-level request. Help us handle"
+  },
+  {
+   "start": 1093.36,
+   "duration": 4.56,
+   "text": "customer support with AI."
+  },
+  {
+   "start": 1095.64,
+   "duration": 4.28,
+   "text": "Now, company A says, \"We are spending 2"
+  },
+  {
+   "start": 1097.92,
+   "duration": 5.24,
+   "text": "million a year on tier one support. We"
+  },
+  {
+   "start": 1099.92,
+   "duration": 4.76,
+   "text": "want to cut that by 60%.\" Yeah? That's"
+  },
+  {
+   "start": 1103.16,
+   "duration": 3.08,
+   "text": "the cost pillar driving the"
+  },
+  {
+   "start": 1104.68,
+   "duration": 4.08,
+   "text": "architecture."
+  },
+  {
+   "start": 1106.24,
+   "duration": 5.6,
+   "text": "Now, company B says, \"Uh we want to"
+  },
+  {
+   "start": 1108.76,
+   "duration": 5.4,
+   "text": "offer 24/7 multilingual support in 12"
+  },
+  {
+   "start": 1111.84,
+   "duration": 3.92,
+   "text": "languages, let's say. Something we've"
+  },
+  {
+   "start": 1114.16,
+   "duration": 3.64,
+   "text": "never been able to do.\" And that is"
+  },
+  {
+   "start": 1115.76,
+   "duration": 5.6,
+   "text": "transformation."
+  },
+  {
+   "start": 1117.8,
+   "duration": 5.68,
+   "text": "Yeah? Same surface problem, completely"
+  },
+  {
+   "start": 1121.36,
+   "duration": 5.36,
+   "text": "different architectural priorities."
+  },
+  {
+   "start": 1123.48,
+   "duration": 5.32,
+   "text": "Company A optimizes for automation rate"
+  },
+  {
+   "start": 1126.72,
+   "duration": 5.28,
+   "text": "and cost for a per resolution, let's"
+  },
+  {
+   "start": 1128.8,
+   "duration": 5.48,
+   "text": "say. Company B uh optimizes for language"
+  },
+  {
+   "start": 1132.0,
+   "duration": 5.2,
+   "text": "coverage and quality across all 12"
+  },
+  {
+   "start": 1134.28,
+   "duration": 4.36,
+   "text": "languages. Even if it costs more per"
+  },
+  {
+   "start": 1137.2,
+   "duration": 3.88,
+   "text": "interaction."
+  },
+  {
+   "start": 1138.64,
+   "duration": 4.76,
+   "text": "On the exam, uh the business value"
+  },
+  {
+   "start": 1141.08,
+   "duration": 4.28,
+   "text": "pillar is usually embedded in the stem,"
+  },
+  {
+   "start": 1143.4,
+   "duration": 3.48,
+   "text": "and you'll uh you would have already"
+  },
+  {
+   "start": 1145.36,
+   "duration": 2.84,
+   "text": "seen that in the example that we saw"
+  },
+  {
+   "start": 1146.88,
+   "duration": 3.88,
+   "text": "from the start."
+  },
+  {
+   "start": 1148.2,
+   "duration": 4.8,
+   "text": "Yeah? If you spot it, you you already"
+  },
+  {
+   "start": 1150.76,
+   "duration": 4.96,
+   "text": "eliminated half of the options."
+  },
+  {
+   "start": 1153.0,
+   "duration": 4.16,
+   "text": "So, the main thing is actually spotting"
+  },
+  {
+   "start": 1155.72,
+   "duration": 2.84,
+   "text": "the business problem, which is in the"
+  },
+  {
+   "start": 1157.16,
+   "duration": 4.4,
+   "text": "stem."
+  },
+  {
+   "start": 1158.56,
+   "duration": 5.48,
+   "text": "Yeah? So, I hope that is making sense."
+  },
+  {
+   "start": 1161.56,
+   "duration": 4.32,
+   "text": "So, other things like efficiency, which"
+  },
+  {
+   "start": 1164.04,
+   "duration": 4.84,
+   "text": "is basically reduce time or cost per"
+  },
+  {
+   "start": 1165.88,
+   "duration": 5.24,
+   "text": "unit of work. Um we already talked about"
+  },
+  {
+   "start": 1168.88,
+   "duration": 4.72,
+   "text": "transformation, then comes productivity,"
+  },
+  {
+   "start": 1171.12,
+   "duration": 4.48,
+   "text": "multiple multiply individual or team"
+  },
+  {
+   "start": 1173.6,
+   "duration": 4.24,
+   "text": "output, some kind of other stuffs like"
+  },
+  {
+   "start": 1175.6,
+   "duration": 4.72,
+   "text": "that. Cost we have already talked about."
+  },
+  {
+   "start": 1177.84,
+   "duration": 5.24,
+   "text": "And performance SLAs. So, it's nothing"
+  },
+  {
+   "start": 1180.32,
+   "duration": 4.84,
+   "text": "but meet, you know, specific latency"
+  },
+  {
+   "start": 1183.08,
+   "duration": 3.32,
+   "text": "throughput, accuracy targets, all of"
+  },
+  {
+   "start": 1185.16,
+   "duration": 3.24,
+   "text": "those stuffs."
+  },
+  {
+   "start": 1186.4,
+   "duration": 4.48,
+   "text": "So, these are the pillars."
+  },
+  {
+   "start": 1188.4,
+   "duration": 3.76,
+   "text": "Now, mapping pillars to architecture"
+  },
+  {
+   "start": 1190.88,
+   "duration": 3.24,
+   "text": "decisions."
+  },
+  {
+   "start": 1192.16,
+   "duration": 4.04,
+   "text": "So, let's kind of build this decision"
+  },
+  {
+   "start": 1194.12,
+   "duration": 3.76,
+   "text": "matrix. We already kind of saw the five"
+  },
+  {
+   "start": 1196.2,
+   "duration": 3.72,
+   "text": "pillars. Let Let's build the decision"
+  },
+  {
+   "start": 1197.88,
+   "duration": 3.96,
+   "text": "matrix together. This is the kind of"
+  },
+  {
+   "start": 1199.92,
+   "duration": 5.24,
+   "text": "table the exam wants you to have"
+  },
+  {
+   "start": 1201.84,
+   "duration": 5.4,
+   "text": "internalized. Okay? You You won't see it"
+  },
+  {
+   "start": 1205.16,
+   "duration": 3.4,
+   "text": "written out. You won't see it like it's"
+  },
+  {
+   "start": 1207.24,
+   "duration": 2.84,
+   "text": "a pillar over there. Obviously, you need"
+  },
+  {
+   "start": 1208.56,
+   "duration": 3.64,
+   "text": "to identify it."
+  },
+  {
+   "start": 1210.08,
+   "duration": 3.68,
+   "text": "But, the logic behind it is exactly what"
+  },
+  {
+   "start": 1212.2,
+   "duration": 3.68,
+   "text": "the question tests."
+  },
+  {
+   "start": 1213.76,
+   "duration": 4.4,
+   "text": "So, let's talk about the pillars now."
+  },
+  {
+   "start": 1215.88,
+   "duration": 4.64,
+   "text": "Okay. Efficiency."
+  },
+  {
+   "start": 1218.16,
+   "duration": 4.92,
+   "text": "Uh architectural priority is basically"
+  },
+  {
+   "start": 1220.52,
+   "duration": 5.64,
+   "text": "automate repetitive tasks, minimum human"
+  },
+  {
+   "start": 1223.08,
+   "duration": 4.48,
+   "text": "handoffs. Yeah? Uh minimize the routine"
+  },
+  {
+   "start": 1226.16,
+   "duration": 3.28,
+   "text": "tasks that are being handled by the"
+  },
+  {
+   "start": 1227.56,
+   "duration": 3.72,
+   "text": "humans or something like that. So, the"
+  },
+  {
+   "start": 1229.44,
+   "duration": 4.24,
+   "text": "typical trade-off"
+  },
+  {
+   "start": 1231.28,
+   "duration": 4.6,
+   "text": "is basically accept lower accuracy on"
+  },
+  {
+   "start": 1233.68,
+   "duration": 3.76,
+   "text": "edge cases for faster throughput. So,"
+  },
+  {
+   "start": 1235.88,
+   "duration": 3.2,
+   "text": "that is one of the typical trade-offs."
+  },
+  {
+   "start": 1237.44,
+   "duration": 3.8,
+   "text": "So, I'm just giving you examples so that"
+  },
+  {
+   "start": 1239.08,
+   "duration": 3.8,
+   "text": "you can quickly identify those"
+  },
+  {
+   "start": 1241.24,
+   "duration": 3.52,
+   "text": "trade-offs and the architectural"
+  },
+  {
+   "start": 1242.88,
+   "duration": 5.28,
+   "text": "priority in those questions."
+  },
+  {
+   "start": 1244.76,
+   "duration": 5.36,
+   "text": "Now, if you map with transformation,"
+  },
+  {
+   "start": 1248.16,
+   "duration": 4.32,
+   "text": "yeah, the architectural priority would"
+  },
+  {
+   "start": 1250.12,
+   "duration": 4.76,
+   "text": "might be, you know, new capabilities"
+  },
+  {
+   "start": 1252.48,
+   "duration": 5.72,
+   "text": "like multilingual support, multimodal"
+  },
+  {
+   "start": 1254.88,
+   "duration": 5.28,
+   "text": "support, 24/7, um you know, systems or"
+  },
+  {
+   "start": 1258.2,
+   "duration": 4.8,
+   "text": "something like that. But, the typical"
+  },
+  {
+   "start": 1260.16,
+   "duration": 4.76,
+   "text": "trade-off would be accepting higher cost"
+  },
+  {
+   "start": 1263.0,
+   "duration": 3.96,
+   "text": "for capabilities that didn't exist"
+  },
+  {
+   "start": 1264.92,
+   "duration": 4.0,
+   "text": "before. Obviously, that's a very known"
+  },
+  {
+   "start": 1266.96,
+   "duration": 3.96,
+   "text": "trade-off when you build a new system or"
+  },
+  {
+   "start": 1268.92,
+   "duration": 3.36,
+   "text": "transform a system. Next comes"
+  },
+  {
+   "start": 1270.92,
+   "duration": 3.36,
+   "text": "productivity."
+  },
+  {
+   "start": 1272.28,
+   "duration": 3.96,
+   "text": "So, what can be the architectural"
+  },
+  {
+   "start": 1274.28,
+   "duration": 4.72,
+   "text": "priority for that? Like, augment human"
+  },
+  {
+   "start": 1276.24,
+   "duration": 4.72,
+   "text": "workers, uh drafts, suggestions,"
+  },
+  {
+   "start": 1279.0,
+   "duration": 3.8,
+   "text": "summaries, all of these things. But, the"
+  },
+  {
+   "start": 1280.96,
+   "duration": 3.4,
+   "text": "typical trade-off would be like human"
+  },
+  {
+   "start": 1282.8,
+   "duration": 3.48,
+   "text": "stays in the loop"
+  },
+  {
+   "start": 1284.36,
+   "duration": 3.36,
+   "text": "throughout gains, not throughout the"
+  },
+  {
+   "start": 1286.28,
+   "duration": 2.76,
+   "text": "full automation."
+  },
+  {
+   "start": 1287.72,
+   "duration": 3.04,
+   "text": "Decision-making might be with the"
+  },
+  {
+   "start": 1289.04,
+   "duration": 3.04,
+   "text": "humans."
+  },
+  {
+   "start": 1290.76,
+   "duration": 3.84,
+   "text": "Now, here's"
+  },
+  {
+   "start": 1292.08,
+   "duration": 5.24,
+   "text": "uh the critical insight, okay? The"
+  },
+  {
+   "start": 1294.6,
+   "duration": 4.84,
+   "text": "trade-off column is where the questions"
+  },
+  {
+   "start": 1297.32,
+   "duration": 3.76,
+   "text": "exam questions live. That's why it's"
+  },
+  {
+   "start": 1299.44,
+   "duration": 4.08,
+   "text": "been marked like this."
+  },
+  {
+   "start": 1301.08,
+   "duration": 5.32,
+   "text": "The exam gives you a scenario, embeds a"
+  },
+  {
+   "start": 1303.52,
+   "duration": 5.48,
+   "text": "pillar, and then asks which trade-off"
+  },
+  {
+   "start": 1306.4,
+   "duration": 4.32,
+   "text": "is the right one to make."
+  },
+  {
+   "start": 1309.0,
+   "duration": 5.12,
+   "text": "If the pillar is performance SLAs and"
+  },
+  {
+   "start": 1310.72,
+   "duration": 6.36,
+   "text": "the and the constraint is sub-200 second"
+  },
+  {
+   "start": 1314.12,
+   "duration": 4.88,
+   "text": "latency, the answer is almost never use"
+  },
+  {
+   "start": 1317.08,
+   "duration": 4.0,
+   "text": "an agentic architecture with multi-step"
+  },
+  {
+   "start": 1319.0,
+   "duration": 4.52,
+   "text": "reasoning. That's That's what bits beats"
+  },
+  {
+   "start": 1321.08,
+   "duration": 3.88,
+   "text": "the purpose."
+  },
+  {
+   "start": 1323.52,
+   "duration": 3.12,
+   "text": "That's slow."
+  },
+  {
+   "start": 1324.96,
+   "duration": 3.48,
+   "text": "The answer is probably like a simpler"
+  },
+  {
+   "start": 1326.64,
+   "duration": 6.08,
+   "text": "workflow pattern or a pre-computed"
+  },
+  {
+   "start": 1328.44,
+   "duration": 6.52,
+   "text": "lookup with Claude maybe as a fallback."
+  },
+  {
+   "start": 1332.72,
+   "duration": 3.68,
+   "text": "Yeah? And we already talked about other"
+  },
+  {
+   "start": 1334.96,
+   "duration": 3.8,
+   "text": "pillars. So, you have to kind of map"
+  },
+  {
+   "start": 1336.4,
+   "duration": 3.56,
+   "text": "this and understand it internally with,"
+  },
+  {
+   "start": 1338.76,
+   "duration": 4.96,
+   "text": "you know, the question will not be"
+  },
+  {
+   "start": 1339.96,
+   "duration": 6.72,
+   "text": "upfront about these uh kind of pillars."
+  },
+  {
+   "start": 1343.72,
+   "duration": 4.8,
+   "text": "So, the exam map is objective number 1.6"
+  },
+  {
+   "start": 1346.68,
+   "duration": 4.16,
+   "text": "for this you know,"
+  },
+  {
+   "start": 1348.52,
+   "duration": 3.64,
+   "text": "uh which is align solutions to business"
+  },
+  {
+   "start": 1350.84,
+   "duration": 3.88,
+   "text": "value pillars, efficiency,"
+  },
+  {
+   "start": 1352.16,
+   "duration": 4.96,
+   "text": "transformation, productivity, cost, and"
+  },
+  {
+   "start": 1354.72,
+   "duration": 4.16,
+   "text": "performance SLAs. This is how the exam"
+  },
+  {
+   "start": 1357.12,
+   "duration": 3.72,
+   "text": "differentiates between two valid"
+  },
+  {
+   "start": 1358.88,
+   "duration": 3.12,
+   "text": "architectures. The pillar kind of"
+  },
+  {
+   "start": 1360.84,
+   "duration": 3.36,
+   "text": "decides."
+  },
+  {
+   "start": 1362.0,
+   "duration": 4.52,
+   "text": "And this is direct mapping with the"
+  },
+  {
+   "start": 1364.2,
+   "duration": 4.2,
+   "text": "exam. I'm not just giving you additional"
+  },
+  {
+   "start": 1366.52,
+   "duration": 4.76,
+   "text": "information. It This is actually kind of"
+  },
+  {
+   "start": 1368.4,
+   "duration": 4.96,
+   "text": "the main part of the exam, right? This"
+  },
+  {
+   "start": 1371.28,
+   "duration": 3.08,
+   "text": "kind of decision-making."
+  },
+  {
+   "start": 1373.36,
+   "duration": 3.08,
+   "text": "So,"
+  },
+  {
+   "start": 1374.36,
+   "duration": 4.32,
+   "text": "two valid architectures and one"
+  },
+  {
+   "start": 1376.44,
+   "duration": 3.92,
+   "text": "constraint. Okay, let's walk through a"
+  },
+  {
+   "start": 1378.68,
+   "duration": 3.8,
+   "text": "scenario that's exactly the kind of"
+  },
+  {
+   "start": 1380.36,
+   "duration": 5.48,
+   "text": "thing you'll see in the exam. Okay?"
+  },
+  {
+   "start": 1382.48,
+   "duration": 5.04,
+   "text": "Scenario is like, yeah, a legal tech"
+  },
+  {
+   "start": 1385.84,
+   "duration": 2.48,
+   "text": "startup"
+  },
+  {
+   "start": 1387.52,
+   "duration": 4.36,
+   "text": "uh"
+  },
+  {
+   "start": 1388.32,
+   "duration": 5.2,
+   "text": "wants to build a contract review system."
+  },
+  {
+   "start": 1391.88,
+   "duration": 3.64,
+   "text": "Uh the associates are there which"
+  },
+  {
+   "start": 1393.52,
+   "duration": 3.96,
+   "text": "currently they spend around 6 hours per"
+  },
+  {
+   "start": 1395.52,
+   "duration": 3.6,
+   "text": "contract identifying, you know, risk"
+  },
+  {
+   "start": 1397.48,
+   "duration": 3.84,
+   "text": "clauses."
+  },
+  {
+   "start": 1399.12,
+   "duration": 4.28,
+   "text": "The CEO kind of wants to cut that to"
+  },
+  {
+   "start": 1401.32,
+   "duration": 3.6,
+   "text": "under 1 hour."
+  },
+  {
+   "start": 1403.4,
+   "duration": 3.12,
+   "text": "So, you are being proposed with two"
+  },
+  {
+   "start": 1404.92,
+   "duration": 3.08,
+   "text": "kinds of architectures. I hope you got"
+  },
+  {
+   "start": 1406.52,
+   "duration": 3.48,
+   "text": "the question."
+  },
+  {
+   "start": 1408.0,
+   "duration": 5.08,
+   "text": "Cut the time from 6 hours to 1 hour for"
+  },
+  {
+   "start": 1410.0,
+   "duration": 5.6,
+   "text": "those contract identifying."
+  },
+  {
+   "start": 1413.08,
+   "duration": 3.84,
+   "text": "Now, option A is augmented LLM approach,"
+  },
+  {
+   "start": 1415.6,
+   "duration": 3.0,
+   "text": "which we're going to learn in detail in"
+  },
+  {
+   "start": 1416.92,
+   "duration": 3.68,
+   "text": "the, you know, subsequent episode, but"
+  },
+  {
+   "start": 1418.6,
+   "duration": 3.08,
+   "text": "for now just understand it in the the"
+  },
+  {
+   "start": 1420.6,
+   "duration": 3.4,
+   "text": "high level."
+  },
+  {
+   "start": 1421.68,
+   "duration": 4.64,
+   "text": "So, augmented LLM approach says, upload"
+  },
+  {
+   "start": 1424.0,
+   "duration": 5.08,
+   "text": "the contract, Claude reads the full"
+  },
+  {
+   "start": 1426.32,
+   "duration": 5.16,
+   "text": "document, highlights risk clauses known"
+  },
+  {
+   "start": 1429.08,
+   "duration": 4.44,
+   "text": "as known checklist, outputs like a"
+  },
+  {
+   "start": 1431.48,
+   "duration": 4.64,
+   "text": "structured risk report, one API call,"
+  },
+  {
+   "start": 1433.52,
+   "duration": 4.36,
+   "text": "maybe two with extended thinking."
+  },
+  {
+   "start": 1436.12,
+   "duration": 4.12,
+   "text": "For simple, fast, predictable, the"
+  },
+  {
+   "start": 1437.88,
+   "duration": 5.0,
+   "text": "associate reviews the Claude's flagged"
+  },
+  {
+   "start": 1440.24,
+   "duration": 6.28,
+   "text": "clauses. So, that is option number A."
+  },
+  {
+   "start": 1442.88,
+   "duration": 5.84,
+   "text": "Option number B is agentic approach. An"
+  },
+  {
+   "start": 1446.52,
+   "duration": 4.4,
+   "text": "agent that reads the contract, compares"
+  },
+  {
+   "start": 1448.72,
+   "duration": 4.96,
+   "text": "it against the database of, uh let's"
+  },
+  {
+   "start": 1450.92,
+   "duration": 5.32,
+   "text": "say, precedent contracts, calls out to a"
+  },
+  {
+   "start": 1453.68,
+   "duration": 5.8,
+   "text": "legal research tool for case law,"
+  },
+  {
+   "start": 1456.24,
+   "duration": 5.64,
+   "text": "iterates on its analysis, and produces a"
+  },
+  {
+   "start": 1459.48,
+   "duration": 5.44,
+   "text": "comprehensive brief with citations. It's"
+  },
+  {
+   "start": 1461.88,
+   "duration": 5.36,
+   "text": "a multi-step, multi-tool, more thorough,"
+  },
+  {
+   "start": 1464.92,
+   "duration": 5.2,
+   "text": "but slower and more expensive. See, in"
+  },
+  {
+   "start": 1467.24,
+   "duration": 5.08,
+   "text": "the exam you would not get these kind of"
+  },
+  {
+   "start": 1470.12,
+   "duration": 3.72,
+   "text": "hints in the back saying that slower but"
+  },
+  {
+   "start": 1472.32,
+   "duration": 3.4,
+   "text": "more expensive. You have to figure that"
+  },
+  {
+   "start": 1473.84,
+   "duration": 4.24,
+   "text": "out. But for as we are starting out, I'm"
+  },
+  {
+   "start": 1475.72,
+   "duration": 4.04,
+   "text": "just kind of keeping it there."
+  },
+  {
+   "start": 1478.08,
+   "duration": 2.84,
+   "text": "Which one is correct? You take a pause"
+  },
+  {
+   "start": 1479.76,
+   "duration": 2.72,
+   "text": "and you think."
+  },
+  {
+   "start": 1480.92,
+   "duration": 3.28,
+   "text": "See, the thing is"
+  },
+  {
+   "start": 1482.48,
+   "duration": 3.36,
+   "text": "both are valid. It's a trick question."
+  },
+  {
+   "start": 1484.2,
+   "duration": 4.24,
+   "text": "Both are valid, but the answer depends"
+  },
+  {
+   "start": 1485.84,
+   "duration": 5.04,
+   "text": "on the constraint. If the CEO's primary"
+  },
+  {
+   "start": 1488.44,
+   "duration": 5.04,
+   "text": "concern is efficiency, you know, cutting"
+  },
+  {
+   "start": 1490.88,
+   "duration": 4.6,
+   "text": "those hours, keep associates productive,"
+  },
+  {
+   "start": 1493.48,
+   "duration": 4.44,
+   "text": "option A is the clear winner because"
+  },
+  {
+   "start": 1495.48,
+   "duration": 3.88,
+   "text": "it's faster, cheaper, and the associate"
+  },
+  {
+   "start": 1497.92,
+   "duration": 3.96,
+   "text": "still validates."
+  },
+  {
+   "start": 1499.36,
+   "duration": 3.64,
+   "text": "The 6-hour task becomes maximum like 45"
+  },
+  {
+   "start": 1501.88,
+   "duration": 2.56,
+   "text": "minutes"
+  },
+  {
+   "start": 1503.0,
+   "duration": 2.96,
+   "text": "of review."
+  },
+  {
+   "start": 1504.44,
+   "duration": 2.96,
+   "text": "If the CEO's primary concern is"
+  },
+  {
+   "start": 1505.96,
+   "duration": 3.16,
+   "text": "transformation,"
+  },
+  {
+   "start": 1507.4,
+   "duration": 3.6,
+   "text": "build a system that can eventually"
+  },
+  {
+   "start": 1509.12,
+   "duration": 4.36,
+   "text": "handle contract review with minimal"
+  },
+  {
+   "start": 1511.0,
+   "duration": 5.6,
+   "text": "human oversight, creating a new service"
+  },
+  {
+   "start": 1513.48,
+   "duration": 5.04,
+   "text": "line, then option B wins. More expensive"
+  },
+  {
+   "start": 1516.6,
+   "duration": 4.48,
+   "text": "per contract, but it's building towards"
+  },
+  {
+   "start": 1518.52,
+   "duration": 4.12,
+   "text": "a capability the firm or the company"
+  },
+  {
+   "start": 1521.08,
+   "duration": 3.8,
+   "text": "never had."
+  },
+  {
+   "start": 1522.64,
+   "duration": 3.68,
+   "text": "Now, the cons constraint is in the stem"
+  },
+  {
+   "start": 1524.88,
+   "duration": 3.68,
+   "text": "that"
+  },
+  {
+   "start": 1526.32,
+   "duration": 4.08,
+   "text": "the stem decides. You know, the stem."
+  },
+  {
+   "start": 1528.56,
+   "duration": 3.68,
+   "text": "Not the technical impressiveness of the"
+  },
+  {
+   "start": 1530.4,
+   "duration": 5.0,
+   "text": "solution. Obviously, option number B is"
+  },
+  {
+   "start": 1532.24,
+   "duration": 4.04,
+   "text": "a very good option. You know, like you"
+  },
+  {
+   "start": 1535.4,
+   "duration": 2.92,
+   "text": "are"
+  },
+  {
+   "start": 1536.28,
+   "duration": 4.24,
+   "text": "exploring something new. But, in the"
+  },
+  {
+   "start": 1538.32,
+   "duration": 4.04,
+   "text": "scenario itself, it says the stem is cut"
+  },
+  {
+   "start": 1540.52,
+   "duration": 3.84,
+   "text": "time from 6 hours to 1 hour. So, it's"
+  },
+  {
+   "start": 1542.36,
+   "duration": 3.68,
+   "text": "about efficiency. So, obviously, option"
+  },
+  {
+   "start": 1544.36,
+   "duration": 3.96,
+   "text": "number A wins over here, the augmented"
+  },
+  {
+   "start": 1546.04,
+   "duration": 4.16,
+   "text": "LLM approach."
+  },
+  {
+   "start": 1548.32,
+   "duration": 3.52,
+   "text": "Right? I hope that is making sense. One"
+  },
+  {
+   "start": 1550.2,
+   "duration": 3.08,
+   "text": "of the you know, things that will come"
+  },
+  {
+   "start": 1551.84,
+   "duration": 3.76,
+   "text": "in the exam."
+  },
+  {
+   "start": 1553.28,
+   "duration": 4.56,
+   "text": "Um so, scenarios."
+  },
+  {
+   "start": 1555.6,
+   "duration": 4.08,
+   "text": "I hope that's making sense."
+  },
+  {
+   "start": 1557.84,
+   "duration": 3.32,
+   "text": "So, the constraints decides the"
+  },
+  {
+   "start": 1559.68,
+   "duration": 3.92,
+   "text": "architecture."
+  },
+  {
+   "start": 1561.16,
+   "duration": 4.8,
+   "text": "So, this is a decision tree I want you"
+  },
+  {
+   "start": 1563.6,
+   "duration": 3.28,
+   "text": "to kind of remember, yeah? Or kind of"
+  },
+  {
+   "start": 1565.96,
+   "duration": 2.32,
+   "text": "like"
+  },
+  {
+   "start": 1566.88,
+   "duration": 3.36,
+   "text": "think in your mind. Don't have to mug it"
+  },
+  {
+   "start": 1568.28,
+   "duration": 3.4,
+   "text": "up. It will it will eventually kind of"
+  },
+  {
+   "start": 1570.24,
+   "duration": 3.16,
+   "text": "strengthen up as you solve more"
+  },
+  {
+   "start": 1571.68,
+   "duration": 3.32,
+   "text": "questions and go through more concepts"
+  },
+  {
+   "start": 1573.4,
+   "duration": 3.36,
+   "text": "throughout this course."
+  },
+  {
+   "start": 1575.0,
+   "duration": 4.36,
+   "text": "Yeah?"
+  },
+  {
+   "start": 1576.76,
+   "duration": 4.96,
+   "text": "When you read an exam stem, you are"
+  },
+  {
+   "start": 1579.36,
+   "duration": 4.16,
+   "text": "scanning for three things, okay? That's"
+  },
+  {
+   "start": 1581.72,
+   "duration": 3.72,
+   "text": "very important to understand."
+  },
+  {
+   "start": 1583.52,
+   "duration": 3.84,
+   "text": "First, what is the input? Where does the"
+  },
+  {
+   "start": 1585.44,
+   "duration": 3.48,
+   "text": "data come from and what preprocessing"
+  },
+  {
+   "start": 1587.36,
+   "duration": 3.8,
+   "text": "does it need?"
+  },
+  {
+   "start": 1588.92,
+   "duration": 3.72,
+   "text": "That is the first thing. Second, what's"
+  },
+  {
+   "start": 1591.16,
+   "duration": 2.96,
+   "text": "the constraint?"
+  },
+  {
+   "start": 1592.64,
+   "duration": 3.48,
+   "text": "What's the constraint?"
+  },
+  {
+   "start": 1594.12,
+   "duration": 4.32,
+   "text": "Which business value pillar is the"
+  },
+  {
+   "start": 1596.12,
+   "duration": 4.6,
+   "text": "stakeholder prioritizing? This is the"
+  },
+  {
+   "start": 1598.44,
+   "duration": 4.52,
+   "text": "decisive signal, and we we already know"
+  },
+  {
+   "start": 1600.72,
+   "duration": 4.12,
+   "text": "about the five distinctive pillars,"
+  },
+  {
+   "start": 1602.96,
+   "duration": 4.92,
+   "text": "right? Business pillars."
+  },
+  {
+   "start": 1604.84,
+   "duration": 5.08,
+   "text": "Next comes, you know, what feedback loop"
+  },
+  {
+   "start": 1607.88,
+   "duration": 3.8,
+   "text": "closes the system?"
+  },
+  {
+   "start": 1609.92,
+   "duration": 3.44,
+   "text": "What metric tells you the architecture"
+  },
+  {
+   "start": 1611.68,
+   "duration": 3.68,
+   "text": "is actually working?"
+  },
+  {
+   "start": 1613.36,
+   "duration": 4.2,
+   "text": "So, if you can answer those three"
+  },
+  {
+   "start": 1615.36,
+   "duration": 4.08,
+   "text": "questions from the stem, you can"
+  },
+  {
+   "start": 1617.56,
+   "duration": 3.76,
+   "text": "eliminate at least two options"
+  },
+  {
+   "start": 1619.44,
+   "duration": 3.48,
+   "text": "immediately without knowing any further"
+  },
+  {
+   "start": 1621.32,
+   "duration": 3.72,
+   "text": "concepts."
+  },
+  {
+   "start": 1622.92,
+   "duration": 4.2,
+   "text": "Yeah, the remaining two are where your"
+  },
+  {
+   "start": 1625.04,
+   "duration": 4.0,
+   "text": "architectural judgment kicks in and it's"
+  },
+  {
+   "start": 1627.12,
+   "duration": 4.24,
+   "text": "usually the constraint that breaks the"
+  },
+  {
+   "start": 1629.04,
+   "duration": 4.64,
+   "text": "tie. And that you would learn eventually"
+  },
+  {
+   "start": 1631.36,
+   "duration": 3.96,
+   "text": "as you move throughout the course."
+  },
+  {
+   "start": 1633.68,
+   "duration": 3.68,
+   "text": "But just by going through this episode,"
+  },
+  {
+   "start": 1635.32,
+   "duration": 4.0,
+   "text": "you by identifying the business pillars,"
+  },
+  {
+   "start": 1637.36,
+   "duration": 4.12,
+   "text": "you would eliminate at least two or"
+  },
+  {
+   "start": 1639.32,
+   "duration": 3.44,
+   "text": "three options out of those"
+  },
+  {
+   "start": 1641.48,
+   "duration": 3.4,
+   "text": "questions."
+  },
+  {
+   "start": 1642.76,
+   "duration": 3.96,
+   "text": "So, this is kind of the"
+  },
+  {
+   "start": 1644.88,
+   "duration": 3.84,
+   "text": "decision framework that, you know, you"
+  },
+  {
+   "start": 1646.72,
+   "duration": 3.52,
+   "text": "can keep in mind."
+  },
+  {
+   "start": 1648.72,
+   "duration": 3.8,
+   "text": "Yeah?"
+  },
+  {
+   "start": 1650.24,
+   "duration": 3.88,
+   "text": "Now, another interactive drill. Yeah,"
+  },
+  {
+   "start": 1652.52,
+   "duration": 4.04,
+   "text": "because we want to keep it as exam"
+  },
+  {
+   "start": 1654.12,
+   "duration": 4.4,
+   "text": "focused as possible. So,"
+  },
+  {
+   "start": 1656.56,
+   "duration": 3.6,
+   "text": "a healthcare company this in the slides"
+  },
+  {
+   "start": 1658.52,
+   "duration": 3.24,
+   "text": "you would see probably a summarized"
+  },
+  {
+   "start": 1660.16,
+   "duration": 3.76,
+   "text": "version of the question so that you"
+  },
+  {
+   "start": 1661.76,
+   "duration": 4.2,
+   "text": "don't won't have to go through the whole"
+  },
+  {
+   "start": 1663.92,
+   "duration": 4.16,
+   "text": "question. I will kind of tell you the"
+  },
+  {
+   "start": 1665.96,
+   "duration": 4.84,
+   "text": "question. So, a healthcare company kind"
+  },
+  {
+   "start": 1668.08,
+   "duration": 6.08,
+   "text": "of proposes processes, sorry, processes"
+  },
+  {
+   "start": 1670.8,
+   "duration": 5.92,
+   "text": "around 50,000 insurance claim summaries"
+  },
+  {
+   "start": 1674.16,
+   "duration": 5.24,
+   "text": "per day. Okay? Each summary must be"
+  },
+  {
+   "start": 1676.72,
+   "duration": 4.8,
+   "text": "generated with 3 seconds within 3"
+  },
+  {
+   "start": 1679.4,
+   "duration": 4.68,
+   "text": "seconds. Yeah,"
+  },
+  {
+   "start": 1681.52,
+   "duration": 4.8,
+   "text": "and match a standardized format."
+  },
+  {
+   "start": 1684.08,
+   "duration": 4.48,
+   "text": "Accuracy is very critical over here, you"
+  },
+  {
+   "start": 1686.32,
+   "duration": 4.32,
+   "text": "know, because errors kind of trigger"
+  },
+  {
+   "start": 1688.56,
+   "duration": 4.88,
+   "text": "compliance reviews. So, the VP of the"
+  },
+  {
+   "start": 1690.64,
+   "duration": 6.0,
+   "text": "operations says the priority is meeting"
+  },
+  {
+   "start": 1693.44,
+   "duration": 5.88,
+   "text": "the 3-second SLA while maintaining"
+  },
+  {
+   "start": 1696.64,
+   "duration": 4.2,
+   "text": "accuracy over 95%."
+  },
+  {
+   "start": 1699.32,
+   "duration": 3.84,
+   "text": "Which architecture is the most"
+  },
+  {
+   "start": 1700.84,
+   "duration": 5.44,
+   "text": "effective? I hope that's making sense."
+  },
+  {
+   "start": 1703.16,
+   "duration": 5.6,
+   "text": "So, to summarize it, 50,000 claim"
+  },
+  {
+   "start": 1706.28,
+   "duration": 5.24,
+   "text": "summaries a day and the CEO needs"
+  },
+  {
+   "start": 1708.76,
+   "duration": 5.36,
+   "text": "3-second SLA in a standardized format."
+  },
+  {
+   "start": 1711.52,
+   "duration": 4.84,
+   "text": "So, this is the stem. Yeah, that's why"
+  },
+  {
+   "start": 1714.12,
+   "duration": 3.28,
+   "text": "it is marked in this orange color over"
+  },
+  {
+   "start": 1716.36,
+   "duration": 3.16,
+   "text": "here."
+  },
+  {
+   "start": 1717.4,
+   "duration": 3.84,
+   "text": "So, let's go through the options. A says"
+  },
+  {
+   "start": 1719.52,
+   "duration": 4.28,
+   "text": "an agentic system that autonomous"
+  },
+  {
+   "start": 1721.24,
+   "duration": 5.28,
+   "text": "autonomously kind of, you know,"
+  },
+  {
+   "start": 1723.8,
+   "duration": 4.76,
+   "text": "retrieves patient records,"
+  },
+  {
+   "start": 1726.52,
+   "duration": 3.8,
+   "text": "cross-references billing codes, and"
+  },
+  {
+   "start": 1728.56,
+   "duration": 3.36,
+   "text": "generates a summary with a multi-step"
+  },
+  {
+   "start": 1730.32,
+   "duration": 3.44,
+   "text": "reasoning for Let's say that's one of"
+  },
+  {
+   "start": 1731.92,
+   "duration": 4.44,
+   "text": "the options, option number A. It's like"
+  },
+  {
+   "start": 1733.76,
+   "duration": 5.36,
+   "text": "an agentic system. Option number B says"
+  },
+  {
+   "start": 1736.36,
+   "duration": 5.04,
+   "text": "that a workflow pipeline, structured"
+  },
+  {
+   "start": 1739.12,
+   "duration": 5.2,
+   "text": "data extraction, template-based"
+  },
+  {
+   "start": 1741.4,
+   "duration": 5.32,
+   "text": "formatting, Claude fills the narrative"
+  },
+  {
+   "start": 1744.32,
+   "duration": 4.12,
+   "text": "sections, and deterministic"
+  },
+  {
+   "start": 1746.72,
+   "duration": 3.32,
+   "text": "validation checks."
+  },
+  {
+   "start": 1748.44,
+   "duration": 3.04,
+   "text": "Now, for in my opinion, that is the"
+  },
+  {
+   "start": 1750.04,
+   "duration": 3.8,
+   "text": "correct option, but also let's go"
+  },
+  {
+   "start": 1751.48,
+   "duration": 5.2,
+   "text": "through the other options. C says an"
+  },
+  {
+   "start": 1753.84,
+   "duration": 4.6,
+   "text": "augmented LLM that, you know, takes the"
+  },
+  {
+   "start": 1756.68,
+   "duration": 3.64,
+   "text": "raw claim data and generates a full"
+  },
+  {
+   "start": 1758.44,
+   "duration": 4.36,
+   "text": "summary in a single call with extended"
+  },
+  {
+   "start": 1760.32,
+   "duration": 4.24,
+   "text": "thinking enabled. Yeah, and D says a"
+  },
+  {
+   "start": 1762.8,
+   "duration": 3.92,
+   "text": "multi-agent system where one agent"
+  },
+  {
+   "start": 1764.56,
+   "duration": 3.88,
+   "text": "extracts, one formats, one validates,"
+  },
+  {
+   "start": 1766.72,
+   "duration": 3.76,
+   "text": "each running in parallel."
+  },
+  {
+   "start": 1768.44,
+   "duration": 3.64,
+   "text": "Now, why did I say that the B is the"
+  },
+  {
+   "start": 1770.48,
+   "duration": 3.12,
+   "text": "correct option? Let's first eliminate"
+  },
+  {
+   "start": 1772.08,
+   "duration": 3.68,
+   "text": "the other options. Now, for option"
+  },
+  {
+   "start": 1773.6,
+   "duration": 4.08,
+   "text": "number A, which is agentic, it's"
+  },
+  {
+   "start": 1775.76,
+   "duration": 4.6,
+   "text": "multi-step reasoning, and we have a"
+  },
+  {
+   "start": 1777.68,
+   "duration": 4.32,
+   "text": "3-second SLA, so automatically it gets"
+  },
+  {
+   "start": 1780.36,
+   "duration": 3.32,
+   "text": "eliminated. So, there is nothing more to"
+  },
+  {
+   "start": 1782.0,
+   "duration": 4.8,
+   "text": "discuss over there."
+  },
+  {
+   "start": 1783.68,
+   "duration": 5.2,
+   "text": "Option number C says, you know,"
+  },
+  {
+   "start": 1786.8,
+   "duration": 4.12,
+   "text": "augmented LLM single call with extended"
+  },
+  {
+   "start": 1788.88,
+   "duration": 4.52,
+   "text": "thinking. Now, extended thinking adds"
+  },
+  {
+   "start": 1790.92,
+   "duration": 4.52,
+   "text": "latency. Yeah, for because we have a"
+  },
+  {
+   "start": 1793.4,
+   "duration": 3.68,
+   "text": "format that's standardized. For that, we"
+  },
+  {
+   "start": 1795.44,
+   "duration": 3.36,
+   "text": "don't need extended thinking. That is"
+  },
+  {
+   "start": 1797.08,
+   "duration": 4.36,
+   "text": "just additional latency over there. So,"
+  },
+  {
+   "start": 1798.8,
+   "duration": 4.92,
+   "text": "that will also not work out. Mhm."
+  },
+  {
+   "start": 1801.44,
+   "duration": 4.52,
+   "text": "Option number D says multi-agent in"
+  },
+  {
+   "start": 1803.72,
+   "duration": 3.84,
+   "text": "parallel. Now, we don't want a single"
+  },
+  {
+   "start": 1805.96,
+   "duration": 3.96,
+   "text": "agent and multi-step reasoning. Why do"
+  },
+  {
+   "start": 1807.56,
+   "duration": 4.56,
+   "text": "we need multi-agent parallel systems?"
+  },
+  {
+   "start": 1809.92,
+   "duration": 3.56,
+   "text": "That is also very stupid. Now, that"
+  },
+  {
+   "start": 1812.12,
+   "duration": 3.16,
+   "text": "leaves us with option number B, which is"
+  },
+  {
+   "start": 1813.48,
+   "duration": 4.72,
+   "text": "workflow pipeline, because it is a"
+  },
+  {
+   "start": 1815.28,
+   "duration": 5.04,
+   "text": "deterministic extraction. Yeah, because"
+  },
+  {
+   "start": 1818.2,
+   "duration": 4.4,
+   "text": "we are extracting the data, we are"
+  },
+  {
+   "start": 1820.32,
+   "duration": 3.6,
+   "text": "structured data extraction we are doing,"
+  },
+  {
+   "start": 1822.6,
+   "duration": 2.96,
+   "text": "and there is a template-based"
+  },
+  {
+   "start": 1823.92,
+   "duration": 3.52,
+   "text": "formatting, right? Which is which is"
+  },
+  {
+   "start": 1825.56,
+   "duration": 3.56,
+   "text": "should be under a standardized format,"
+  },
+  {
+   "start": 1827.44,
+   "duration": 3.6,
+   "text": "right? Because in the question only it"
+  },
+  {
+   "start": 1829.12,
+   "duration": 3.48,
+   "text": "says standardized format. So, it's"
+  },
+  {
+   "start": 1831.04,
+   "duration": 3.92,
+   "text": "already there."
+  },
+  {
+   "start": 1832.6,
+   "duration": 4.76,
+   "text": "Yeah, and it kind of handles the"
+  },
+  {
+   "start": 1834.96,
+   "duration": 4.96,
+   "text": "structured parts very cheaply and fast."
+  },
+  {
+   "start": 1837.36,
+   "duration": 5.52,
+   "text": "Claude kind of only handles the"
+  },
+  {
+   "start": 1839.92,
+   "duration": 4.56,
+   "text": "narrative sections where LLM flexibility"
+  },
+  {
+   "start": 1842.88,
+   "duration": 4.72,
+   "text": "is actually needed."
+  },
+  {
+   "start": 1844.48,
+   "duration": 5.96,
+   "text": "So, validation is kind of deterministic."
+  },
+  {
+   "start": 1847.6,
+   "duration": 5.24,
+   "text": "There is no hallucination risk on the"
+  },
+  {
+   "start": 1850.44,
+   "duration": 5.72,
+   "text": "format checks. The architecture meets"
+  },
+  {
+   "start": 1852.84,
+   "duration": 6.36,
+   "text": "the SLA and keeps accuracy very high"
+  },
+  {
+   "start": 1856.16,
+   "duration": 5.96,
+   "text": "through deterministic guardrails, like"
+  },
+  {
+   "start": 1859.2,
+   "duration": 5.12,
+   "text": "hooks, for example. And uses cloud only"
+  },
+  {
+   "start": 1862.12,
+   "duration": 4.44,
+   "text": "where it earns the latency budget. So,"
+  },
+  {
+   "start": 1864.32,
+   "duration": 3.28,
+   "text": "that is the perfect option for this"
+  },
+  {
+   "start": 1866.56,
+   "duration": 3.12,
+   "text": "question, [snorts] scenario-based"
+  },
+  {
+   "start": 1867.6,
+   "duration": 3.48,
+   "text": "question. I hope that's making sense."
+  },
+  {
+   "start": 1869.68,
+   "duration": 3.08,
+   "text": "So, these kind of questions you would"
+  },
+  {
+   "start": 1871.08,
+   "duration": 3.44,
+   "text": "get in the exam and as we go through the"
+  },
+  {
+   "start": 1872.76,
+   "duration": 3.36,
+   "text": "course, you would see even more"
+  },
+  {
+   "start": 1874.52,
+   "duration": 3.76,
+   "text": "complicated question where we are kind"
+  },
+  {
+   "start": 1876.12,
+   "duration": 4.04,
+   "text": "of integrating with a lot of different"
+  },
+  {
+   "start": 1878.28,
+   "duration": 3.44,
+   "text": "concepts."
+  },
+  {
+   "start": 1880.16,
+   "duration": 3.92,
+   "text": "Yeah."
+  },
+  {
+   "start": 1881.72,
+   "duration": 5.96,
+   "text": "Now, let's talk about feedback loops,"
+  },
+  {
+   "start": 1884.08,
+   "duration": 5.76,
+   "text": "the part most people forget. See, let's"
+  },
+  {
+   "start": 1887.68,
+   "duration": 4.08,
+   "text": "spend a moment on feedback loops because"
+  },
+  {
+   "start": 1889.84,
+   "duration": 4.92,
+   "text": "it's where the professional exam goes"
+  },
+  {
+   "start": 1891.76,
+   "duration": 5.48,
+   "text": "deeper into the you know, sorry, goes"
+  },
+  {
+   "start": 1894.76,
+   "duration": 4.04,
+   "text": "deeper than the foundations, yeah?"
+  },
+  {
+   "start": 1897.24,
+   "duration": 3.32,
+   "text": "So, at the foundation level, feedback"
+  },
+  {
+   "start": 1898.8,
+   "duration": 3.16,
+   "text": "means log your outputs and check them,"
+  },
+  {
+   "start": 1900.56,
+   "duration": 3.2,
+   "text": "kind of that."
+  },
+  {
+   "start": 1901.96,
+   "duration": 4.68,
+   "text": "But at professional level, feedback is"
+  },
+  {
+   "start": 1903.76,
+   "duration": 4.76,
+   "text": "an architectural component with its own"
+  },
+  {
+   "start": 1906.64,
+   "duration": 3.56,
+   "text": "design decisions."
+  },
+  {
+   "start": 1908.52,
+   "duration": 4.16,
+   "text": "So, here are the dimensions of a"
+  },
+  {
+   "start": 1910.2,
+   "duration": 4.8,
+   "text": "production feedback loop."
+  },
+  {
+   "start": 1912.68,
+   "duration": 3.44,
+   "text": "Yeah. So, first is"
+  },
+  {
+   "start": 1915.0,
+   "duration": 2.96,
+   "text": "feed So, let's talk about the"
+  },
+  {
+   "start": 1916.12,
+   "duration": 5.08,
+   "text": "dimensions. The first is outcome"
+  },
+  {
+   "start": 1917.96,
+   "duration": 5.6,
+   "text": "tracking. Did the output kind of achieve"
+  },
+  {
+   "start": 1921.2,
+   "duration": 3.32,
+   "text": "the business goal?"
+  },
+  {
+   "start": 1923.56,
+   "duration": 3.48,
+   "text": "Yeah."
+  },
+  {
+   "start": 1924.52,
+   "duration": 4.44,
+   "text": "And where it feeds back into, like"
+  },
+  {
+   "start": 1927.04,
+   "duration": 3.96,
+   "text": "prompt iteration or model selection. So,"
+  },
+  {
+   "start": 1928.96,
+   "duration": 4.56,
+   "text": "based on the based on the feedback that"
+  },
+  {
+   "start": 1931.0,
+   "duration": 4.08,
+   "text": "we receive, if it if it did not receive"
+  },
+  {
+   "start": 1933.52,
+   "duration": 3.72,
+   "text": "the business goal or did not achieve the"
+  },
+  {
+   "start": 1935.08,
+   "duration": 4.08,
+   "text": "business goal, then maybe we have to do"
+  },
+  {
+   "start": 1937.24,
+   "duration": 3.8,
+   "text": "some prompt iterations or change the"
+  },
+  {
+   "start": 1939.16,
+   "duration": 4.16,
+   "text": "model selection. So, that is outcome"
+  },
+  {
+   "start": 1941.04,
+   "duration": 4.36,
+   "text": "tracking, one dimension."
+  },
+  {
+   "start": 1943.32,
+   "duration": 5.28,
+   "text": "Quality metrics."
+  },
+  {
+   "start": 1945.4,
+   "duration": 5.4,
+   "text": "So, that is basically the"
+  },
+  {
+   "start": 1948.6,
+   "duration": 4.4,
+   "text": "what it measures is, you know, the"
+  },
+  {
+   "start": 1950.8,
+   "duration": 5.84,
+   "text": "accuracy, the hallucination rate, and"
+  },
+  {
+   "start": 1953.0,
+   "duration": 6.56,
+   "text": "the format uh you know, compliance."
+  },
+  {
+   "start": 1956.64,
+   "duration": 4.72,
+   "text": "And where it feeds back into, you would"
+  },
+  {
+   "start": 1959.56,
+   "duration": 3.96,
+   "text": "say that, you know, evaluation pipeline"
+  },
+  {
+   "start": 1961.36,
+   "duration": 4.28,
+   "text": "and let's say guardrail tuning."
+  },
+  {
+   "start": 1963.52,
+   "duration": 4.64,
+   "text": "Because compliance issues has occurred"
+  },
+  {
+   "start": 1965.64,
+   "duration": 5.72,
+   "text": "and that is part of the feedback."
+  },
+  {
+   "start": 1968.16,
+   "duration": 5.96,
+   "text": "Coming to operational metrics."
+  },
+  {
+   "start": 1971.36,
+   "duration": 4.56,
+   "text": "So, it could be like latency, cost per"
+  },
+  {
+   "start": 1974.12,
+   "duration": 3.48,
+   "text": "request and throughput. And based on"
+  },
+  {
+   "start": 1975.92,
+   "duration": 5.0,
+   "text": "that, you would maybe optimize your"
+  },
+  {
+   "start": 1977.6,
+   "duration": 5.0,
+   "text": "architecture or can you can do a model"
+  },
+  {
+   "start": 1980.92,
+   "duration": 3.64,
+   "text": "tearing or something like that. That is"
+  },
+  {
+   "start": 1982.6,
+   "duration": 4.32,
+   "text": "what it feeds back into."
+  },
+  {
+   "start": 1984.56,
+   "duration": 4.52,
+   "text": "So, it measures, you know, latency, cost"
+  },
+  {
+   "start": 1986.92,
+   "duration": 4.24,
+   "text": "per request and all of those things."
+  },
+  {
+   "start": 1989.08,
+   "duration": 3.84,
+   "text": "User signals. So, what does this"
+  },
+  {
+   "start": 1991.16,
+   "duration": 4.2,
+   "text": "measure? User signals coming directly"
+  },
+  {
+   "start": 1992.92,
+   "duration": 4.36,
+   "text": "from the user. So, it's like a thumbs up"
+  },
+  {
+   "start": 1995.36,
+   "duration": 4.12,
+   "text": "or thumbs down. Generally, when you talk"
+  },
+  {
+   "start": 1997.28,
+   "duration": 4.16,
+   "text": "about you order something on Zomato or"
+  },
+  {
+   "start": 1999.48,
+   "duration": 3.36,
+   "text": "some other apps, you would they would"
+  },
+  {
+   "start": 2001.44,
+   "duration": 3.72,
+   "text": "ask you for a thumbs up or a thumbs"
+  },
+  {
+   "start": 2002.84,
+   "duration": 5.28,
+   "text": "down. That is counted as feedback. You"
+  },
+  {
+   "start": 2005.16,
+   "duration": 5.88,
+   "text": "know, you can also give feedback as as a"
+  },
+  {
+   "start": 2008.12,
+   "duration": 4.76,
+   "text": "message. So, it will track escalations."
+  },
+  {
+   "start": 2011.04,
+   "duration": 3.64,
+   "text": "It will track tickets. It will track the"
+  },
+  {
+   "start": 2012.88,
+   "duration": 4.52,
+   "text": "edits and all those things."
+  },
+  {
+   "start": 2014.68,
+   "duration": 5.16,
+   "text": "And where it feeds back into, training"
+  },
+  {
+   "start": 2017.4,
+   "duration": 5.44,
+   "text": "data selection or prompt refinement or"
+  },
+  {
+   "start": 2019.84,
+   "duration": 4.84,
+   "text": "maybe improving the workflow."
+  },
+  {
+   "start": 2022.84,
+   "duration": 2.8,
+   "text": "You know, or the the SLAs, something"
+  },
+  {
+   "start": 2024.68,
+   "duration": 3.16,
+   "text": "like that."
+  },
+  {
+   "start": 2025.64,
+   "duration": 4.8,
+   "text": "Now comes the drift detection. What does"
+  },
+  {
+   "start": 2027.84,
+   "duration": 4.16,
+   "text": "it measure? This drift detection kind of"
+  },
+  {
+   "start": 2030.44,
+   "duration": 4.6,
+   "text": "this pillar"
+  },
+  {
+   "start": 2032.0,
+   "duration": 5.64,
+   "text": "or sorry, dimension, feedback dimension."
+  },
+  {
+   "start": 2035.04,
+   "duration": 4.8,
+   "text": "The drift detection kind of checks, are"
+  },
+  {
+   "start": 2037.64,
+   "duration": 3.84,
+   "text": "the outputs degrading over time?"
+  },
+  {
+   "start": 2039.84,
+   "duration": 3.96,
+   "text": "Degrading."
+  },
+  {
+   "start": 2041.48,
+   "duration": 4.36,
+   "text": "Yeah. And what can we improve on this?"
+  },
+  {
+   "start": 2043.8,
+   "duration": 4.4,
+   "text": "Where does it feeds into? We can do"
+  },
+  {
+   "start": 2045.84,
+   "duration": 5.24,
+   "text": "model updates, maybe switch it back to a"
+  },
+  {
+   "start": 2048.2,
+   "duration": 5.719,
+   "text": "proper model, updated model, or we do"
+  },
+  {
+   "start": 2051.08,
+   "duration": 5.4,
+   "text": "some data pipelines. Is the Is the data"
+  },
+  {
+   "start": 2053.919,
+   "duration": 6.681,
+   "text": "ingestion is kind of not handling what"
+  },
+  {
+   "start": 2056.48,
+   "duration": 5.88,
+   "text": "it used to or improve on those lines."
+  },
+  {
+   "start": 2060.6,
+   "duration": 4.24,
+   "text": "So, here's what the exam is really"
+  },
+  {
+   "start": 2062.36,
+   "duration": 5.039,
+   "text": "testing. Can you design a feedback loop"
+  },
+  {
+   "start": 2064.84,
+   "duration": 4.44,
+   "text": "that's specific to the business pillar?"
+  },
+  {
+   "start": 2067.399,
+   "duration": 3.601,
+   "text": "Which feedback dimension are you going"
+  },
+  {
+   "start": 2069.28,
+   "duration": 3.879,
+   "text": "to use?"
+  },
+  {
+   "start": 2071.0,
+   "duration": 4.52,
+   "text": "If the pillar is cost, your feedback"
+  },
+  {
+   "start": 2073.159,
+   "duration": 4.921,
+   "text": "loop tracks cost per resolution and kind"
+  },
+  {
+   "start": 2075.52,
+   "duration": 5.04,
+   "text": "of surfaces optimization opportunities."
+  },
+  {
+   "start": 2078.08,
+   "duration": 4.68,
+   "text": "Maybe caching, maybe model tearing. If"
+  },
+  {
+   "start": 2080.56,
+   "duration": 4.76,
+   "text": "the pillar is performance SLAs, kind of"
+  },
+  {
+   "start": 2082.76,
+   "duration": 5.08,
+   "text": "related, you know, your feedback loop"
+  },
+  {
+   "start": 2085.32,
+   "duration": 4.319,
+   "text": "tracks the P95 latency and let's say"
+  },
+  {
+   "start": 2087.84,
+   "duration": 4.039,
+   "text": "fires alerts when you have approached"
+  },
+  {
+   "start": 2089.639,
+   "duration": 4.561,
+   "text": "the ceiling."
+  },
+  {
+   "start": 2091.879,
+   "duration": 5.04,
+   "text": "The feedback loop is not generic, okay?"
+  },
+  {
+   "start": 2094.2,
+   "duration": 4.92,
+   "text": "It is shaped by the same constraint that"
+  },
+  {
+   "start": 2096.919,
+   "duration": 4.441,
+   "text": "shaped the architecture."
+  },
+  {
+   "start": 2099.12,
+   "duration": 4.84,
+   "text": "So, what you do is what you get."
+  },
+  {
+   "start": 2101.36,
+   "duration": 4.32,
+   "text": "Tit for tat or something like that."
+  },
+  {
+   "start": 2103.96,
+   "duration": 3.8,
+   "text": "So, the mental model should be a"
+  },
+  {
+   "start": 2105.68,
+   "duration": 4.28,
+   "text": "production architecture without a"
+  },
+  {
+   "start": 2107.76,
+   "duration": 4.48,
+   "text": "feedback loop is a demo that we have"
+  },
+  {
+   "start": 2109.96,
+   "duration": 4.64,
+   "text": "already established. A feedback loop"
+  },
+  {
+   "start": 2112.24,
+   "duration": 4.76,
+   "text": "without alignment to the business pillar"
+  },
+  {
+   "start": 2114.6,
+   "duration": 3.88,
+   "text": "is just logging."
+  },
+  {
+   "start": 2117.0,
+   "duration": 3.76,
+   "text": "I hope you are now understanding the"
+  },
+  {
+   "start": 2118.48,
+   "duration": 4.0,
+   "text": "difference between just logging the"
+  },
+  {
+   "start": 2120.76,
+   "duration": 3.88,
+   "text": "output and"
+  },
+  {
+   "start": 2122.48,
+   "duration": 4.48,
+   "text": "working on the feedback loop."
+  },
+  {
+   "start": 2124.64,
+   "duration": 4.16,
+   "text": "And the exam kind of tests both of these"
+  },
+  {
+   "start": 2126.96,
+   "duration": 4.4,
+   "text": "scenarios."
+  },
+  {
+   "start": 2128.8,
+   "duration": 4.12,
+   "text": "Okay? I hope that's making sense."
+  },
+  {
+   "start": 2131.36,
+   "duration": 3.76,
+   "text": "I know these are some things that might"
+  },
+  {
+   "start": 2132.92,
+   "duration": 5.16,
+   "text": "be new to the people who are completely"
+  },
+  {
+   "start": 2135.12,
+   "duration": 5.36,
+   "text": "technical, but if you want to go beyond"
+  },
+  {
+   "start": 2138.08,
+   "duration": 4.12,
+   "text": "the step of just using cloud code to"
+  },
+  {
+   "start": 2140.48,
+   "duration": 3.88,
+   "text": "make something, these are the decisions"
+  },
+  {
+   "start": 2142.2,
+   "duration": 3.56,
+   "text": "that you need to make where AI doesn't"
+  },
+  {
+   "start": 2144.36,
+   "duration": 4.4,
+   "text": "have to do anything."
+  },
+  {
+   "start": 2145.76,
+   "duration": 5.24,
+   "text": "This is where you would rise beyond, you"
+  },
+  {
+   "start": 2148.76,
+   "duration": 5.72,
+   "text": "know, people who just"
+  },
+  {
+   "start": 2151.0,
+   "duration": 5.68,
+   "text": "depend on AI for everything. But at at"
+  },
+  {
+   "start": 2154.48,
+   "duration": 5.16,
+   "text": "the same time fail to kind of, uh, you"
+  },
+  {
+   "start": 2156.68,
+   "duration": 5.08,
+   "text": "know, derive these business outcomes."
+  },
+  {
+   "start": 2159.64,
+   "duration": 3.56,
+   "text": "Okay, so that was all I wanted to teach"
+  },
+  {
+   "start": 2161.76,
+   "duration": 4.64,
+   "text": "for this lesson and what are the key"
+  },
+  {
+   "start": 2163.2,
+   "duration": 4.72,
+   "text": "takeaways for this lesson are, uh, the"
+  },
+  {
+   "start": 2166.4,
+   "duration": 4.76,
+   "text": "the five things I would say the key"
+  },
+  {
+   "start": 2167.92,
+   "duration": 5.68,
+   "text": "takeaways. Uh, the CCARP exam tests"
+  },
+  {
+   "start": 2171.16,
+   "duration": 4.24,
+   "text": "constraint-driven decisions, yeah? Not"
+  },
+  {
+   "start": 2173.6,
+   "duration": 4.96,
+   "text": "definitions."
+  },
+  {
+   "start": 2175.4,
+   "duration": 5.24,
+   "text": "Read the stem of the of the question for"
+  },
+  {
+   "start": 2178.56,
+   "duration": 4.6,
+   "text": "the constraint first and then evaluate"
+  },
+  {
+   "start": 2180.64,
+   "duration": 4.28,
+   "text": "options against it. Uh, every cloud"
+  },
+  {
+   "start": 2183.16,
+   "duration": 3.92,
+   "text": "architecture has four parts: input,"
+  },
+  {
+   "start": 2184.92,
+   "duration": 3.64,
+   "text": "processing, output, and feedback. So, if"
+  },
+  {
+   "start": 2187.08,
+   "duration": 3.88,
+   "text": "your design is missing the feedback"
+  },
+  {
+   "start": 2188.56,
+   "duration": 4.12,
+   "text": "loop, it's incomplete."
+  },
+  {
+   "start": 2190.96,
+   "duration": 3.24,
+   "text": "Understand the difference between cloud"
+  },
+  {
+   "start": 2192.68,
+   "duration": 4.72,
+   "text": "can and cloud should. I gave you the"
+  },
+  {
+   "start": 2194.2,
+   "duration": 5.12,
+   "text": "example of the formula for F1 car."
+  },
+  {
+   "start": 2197.4,
+   "duration": 4.2,
+   "text": "The five business pillars: efficiency,"
+  },
+  {
+   "start": 2199.32,
+   "duration": 4.96,
+   "text": "transformation, productivity, cost, and"
+  },
+  {
+   "start": 2201.6,
+   "duration": 4.6,
+   "text": "performance as a list. Yeah? The"
+  },
+  {
+   "start": 2204.28,
+   "duration": 3.64,
+   "text": "This is how the exam decides between two"
+  },
+  {
+   "start": 2206.2,
+   "duration": 3.84,
+   "text": "valid architectures."
+  },
+  {
+   "start": 2207.92,
+   "duration": 3.76,
+   "text": "We already know that. Feedback loops are"
+  },
+  {
+   "start": 2210.04,
+   "duration": 3.6,
+   "text": "shaped by business pillar. They are not"
+  },
+  {
+   "start": 2211.68,
+   "duration": 4.24,
+   "text": "generally, you know, general or generic"
+  },
+  {
+   "start": 2213.64,
+   "duration": 4.96,
+   "text": "logging. They measure what matters for"
+  },
+  {
+   "start": 2215.92,
+   "duration": 6.28,
+   "text": "that specific business outcome."
+  },
+  {
+   "start": 2218.6,
+   "duration": 6.6,
+   "text": "So, we have mapped the exam, you know,"
+  },
+  {
+   "start": 2222.2,
+   "duration": 4.6,
+   "text": "domains over here. So, domain one, 17%"
+  },
+  {
+   "start": 2225.2,
+   "duration": 6.72,
+   "text": "covered objectives. We have covered"
+  },
+  {
+   "start": 2226.8,
+   "duration": 6.48,
+   "text": "objectives 1.1, 1.2, and 1.6. These are"
+  },
+  {
+   "start": 2231.92,
+   "duration": 3.92,
+   "text": "the three objectives that we have"
+  },
+  {
+   "start": 2233.28,
+   "duration": 4.16,
+   "text": "covered. And the next"
+  },
+  {
+   "start": 2235.84,
+   "duration": 3.32,
+   "text": "episode we're going to"
+  },
+  {
+   "start": 2237.44,
+   "duration": 4.56,
+   "text": "learn about choosing the right"
+  },
+  {
+   "start": 2239.16,
+   "duration": 4.28,
+   "text": "architectural pattern. And"
+  },
+  {
+   "start": 2242.0,
+   "duration": 3.4,
+   "text": "so, the episode number two we're going"
+  },
+  {
+   "start": 2243.44,
+   "duration": 4.16,
+   "text": "to cover workflow versus agentic versus"
+  },
+  {
+   "start": 2245.4,
+   "duration": 4.04,
+   "text": "augmented element. What actually is"
+  },
+  {
+   "start": 2247.6,
+   "duration": 3.64,
+   "text": "these three things that we were kind of"
+  },
+  {
+   "start": 2249.44,
+   "duration": 3.84,
+   "text": "discussing in this episode."
+  },
+  {
+   "start": 2251.24,
+   "duration": 4.0,
+   "text": "Yeah? So, if this episode helped you"
+  },
+  {
+   "start": 2253.28,
+   "duration": 3.2,
+   "text": "think differently about how to approach"
+  },
+  {
+   "start": 2255.24,
+   "duration": 3.36,
+   "text": "the exam,"
+  },
+  {
+   "start": 2256.48,
+   "duration": 3.96,
+   "text": "please follow the series."
+  },
+  {
+   "start": 2258.6,
+   "duration": 3.48,
+   "text": "Uh also, follow my other serieses as"
+  },
+  {
+   "start": 2260.44,
+   "duration": 4.24,
+   "text": "well if you're interested in the"
+  },
+  {
+   "start": 2262.08,
+   "duration": 4.12,
+   "text": "architect foundations and the developer,"
+  },
+  {
+   "start": 2264.68,
+   "duration": 3.72,
+   "text": "you know, cloud certified developer"
+  },
+  {
+   "start": 2266.2,
+   "duration": 4.64,
+   "text": "exam. Both the playlists are kind of"
+  },
+  {
+   "start": 2268.4,
+   "duration": 3.76,
+   "text": "complete at least for the"
+  },
+  {
+   "start": 2270.84,
+   "duration": 3.48,
+   "text": "um"
+  },
+  {
+   "start": 2272.16,
+   "duration": 3.72,
+   "text": "syllabus. But, I would be posting bonus"
+  },
+  {
+   "start": 2274.32,
+   "duration": 3.2,
+   "text": "episodes like questions and all those"
+  },
+  {
+   "start": 2275.88,
+   "duration": 4.4,
+   "text": "things. So, you can"
+  },
+  {
+   "start": 2277.52,
+   "duration": 4.6,
+   "text": "follow that and subscribe. Yeah, if it's"
+  },
+  {
+   "start": 2280.28,
+   "duration": 3.68,
+   "text": "helping you and if you are liking it."
+  },
+  {
+   "start": 2282.12,
+   "duration": 2.72,
+   "text": "Okay, I'll see you in episode number"
+  },
+  {
+   "start": 2283.96,
+   "duration": 2.96,
+   "text": "two."
+  },
+  {
+   "start": 2284.84,
+   "duration": 4.48,
+   "text": "Um till then, have a nice day. Take"
+  },
+  {
+   "start": 2286.92,
+   "duration": 4.68,
+   "text": "care. Bye-bye."
+  },
+  {
+   "start": 2289.32,
+   "duration": 2.28,
+   "text": "Yeah."
+  }
+ ]
+}

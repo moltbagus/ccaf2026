@@ -1,0 +1,6163 @@
+{
+ "video_id": "M3zvzzwzZSY",
+ "episode": "Ep 09",
+ "title": "How AI Agents Actually Use MCP",
+ "lane": "ccdv-f",
+ "segments": [
+  {
+   "start": 1.64,
+   "duration": 4.28,
+   "text": "Everyone and welcome to this lesson. So,"
+  },
+  {
+   "start": 3.96,
+   "duration": 5.6,
+   "text": "this is episode number nine of the"
+  },
+  {
+   "start": 5.92,
+   "duration": 4.88,
+   "text": "Claude developer certification series."
+  },
+  {
+   "start": 9.56,
+   "duration": 2.92,
+   "text": "And"
+  },
+  {
+   "start": 10.8,
+   "duration": 3.88,
+   "text": "today I'm going to talk about something"
+  },
+  {
+   "start": 12.48,
+   "duration": 6.04,
+   "text": "that we have been ignoring since episode"
+  },
+  {
+   "start": 14.68,
+   "duration": 7.24,
+   "text": "number four, right? So, if we go and"
+  },
+  {
+   "start": 18.52,
+   "duration": 5.96,
+   "text": "open our tools.py and you would see this"
+  },
+  {
+   "start": 21.92,
+   "duration": 4.12,
+   "text": "comment over here, right? And you know,"
+  },
+  {
+   "start": 24.48,
+   "duration": 2.56,
+   "text": "the previous episodes are already there"
+  },
+  {
+   "start": 26.04,
+   "duration": 3.48,
+   "text": "in my"
+  },
+  {
+   "start": 27.04,
+   "duration": 4.56,
+   "text": "repo. You can go and have a look. So,"
+  },
+  {
+   "start": 29.52,
+   "duration": 4.28,
+   "text": "in the publish review,"
+  },
+  {
+   "start": 31.6,
+   "duration": 4.48,
+   "text": "yeah, here I had written posting is a"
+  },
+  {
+   "start": 33.8,
+   "duration": 4.12,
+   "text": "front formatted return value for this"
+  },
+  {
+   "start": 36.08,
+   "duration": 4.52,
+   "text": "build along. Swap this line for a real"
+  },
+  {
+   "start": 37.92,
+   "duration": 4.84,
+   "text": "API call when this leaves the demo. So,"
+  },
+  {
+   "start": 40.6,
+   "duration": 5.6,
+   "text": "if you go and have a look over here,"
+  },
+  {
+   "start": 42.76,
+   "duration": 5.96,
+   "text": "so this is where you would find it."
+  },
+  {
+   "start": 46.2,
+   "duration": 4.08,
+   "text": "Yeah? So, we wrote that comment in"
+  },
+  {
+   "start": 48.72,
+   "duration": 2.64,
+   "text": "episode number four or lesson number"
+  },
+  {
+   "start": 50.28,
+   "duration": 3.56,
+   "text": "four."
+  },
+  {
+   "start": 51.36,
+   "duration": 4.6,
+   "text": "Yeah? That was around five episodes ago,"
+  },
+  {
+   "start": 53.84,
+   "duration": 3.08,
+   "text": "right? And every single review since"
+  },
+  {
+   "start": 55.96,
+   "duration": 3.68,
+   "text": "then,"
+  },
+  {
+   "start": 56.92,
+   "duration": 4.96,
+   "text": "like episode number five's sub agents,"
+  },
+  {
+   "start": 59.64,
+   "duration": 3.92,
+   "text": "episode number six memory that we"
+  },
+  {
+   "start": 61.88,
+   "duration": 3.48,
+   "text": "learned, and in episode number seven we"
+  },
+  {
+   "start": 63.56,
+   "duration": 3.56,
+   "text": "learned about structured output, and"
+  },
+  {
+   "start": 65.36,
+   "duration": 4.28,
+   "text": "finally in episode number eight we"
+  },
+  {
+   "start": 67.12,
+   "duration": 5.48,
+   "text": "learned about skills, right? Now, every"
+  },
+  {
+   "start": 69.64,
+   "duration": 4.64,
+   "text": "one of them has been reviewing the"
+  },
+  {
+   "start": 72.6,
+   "duration": 3.64,
+   "text": "exact"
+  },
+  {
+   "start": 74.28,
+   "duration": 5.04,
+   "text": "fake pull requests that we have in"
+  },
+  {
+   "start": 76.24,
+   "duration": 4.56,
+   "text": "tools.py. If you see our fake pull"
+  },
+  {
+   "start": 79.32,
+   "duration": 3.04,
+   "text": "requests are these. These are the mock"
+  },
+  {
+   "start": 80.8,
+   "duration": 3.08,
+   "text": "PRs, and we have been working on mock"
+  },
+  {
+   "start": 82.36,
+   "duration": 3.72,
+   "text": "data."
+  },
+  {
+   "start": 83.88,
+   "duration": 4.32,
+   "text": "Right? Because"
+  },
+  {
+   "start": 86.08,
+   "duration": 3.28,
+   "text": "honestly, you know, that was the right"
+  },
+  {
+   "start": 88.2,
+   "duration": 4.6,
+   "text": "call."
+  },
+  {
+   "start": 89.36,
+   "duration": 5.96,
+   "text": "Fake deterministic offline data, yeah?"
+  },
+  {
+   "start": 92.8,
+   "duration": 5.6,
+   "text": "Based on that, we learned, you know, in"
+  },
+  {
+   "start": 95.32,
+   "duration": 5.12,
+   "text": "a smoother way the concepts, right? Like"
+  },
+  {
+   "start": 98.4,
+   "duration": 3.92,
+   "text": "hooks, sub agents, schemas, memory, and"
+  },
+  {
+   "start": 100.44,
+   "duration": 3.36,
+   "text": "all those things. We are not worrying"
+  },
+  {
+   "start": 102.32,
+   "duration": 3.8,
+   "text": "about, you know, if this network call"
+  },
+  {
+   "start": 103.8,
+   "duration": 5.36,
+   "text": "fails or some kind of"
+  },
+  {
+   "start": 106.12,
+   "duration": 5.0,
+   "text": "ridiculous data comes in via the the the"
+  },
+  {
+   "start": 109.16,
+   "duration": 4.04,
+   "text": "actual real call or something like that."
+  },
+  {
+   "start": 111.12,
+   "duration": 4.4,
+   "text": "So, we understood that, okay, this is"
+  },
+  {
+   "start": 113.2,
+   "duration": 4.24,
+   "text": "what the real data would be."
+  },
+  {
+   "start": 115.52,
+   "duration": 3.88,
+   "text": "Let's focus on understanding the concept"
+  },
+  {
+   "start": 117.44,
+   "duration": 4.88,
+   "text": "and keep on you know enhancing our"
+  },
+  {
+   "start": 119.4,
+   "duration": 6.44,
+   "text": "agent. That was the thing that I thought"
+  },
+  {
+   "start": 122.32,
+   "duration": 5.44,
+   "text": "about. That's why I was keeping it mock"
+  },
+  {
+   "start": 125.84,
+   "duration": 4.04,
+   "text": "till the till the eighth episode, but I"
+  },
+  {
+   "start": 127.76,
+   "duration": 3.4,
+   "text": "was obviously telling every time that"
+  },
+  {
+   "start": 129.88,
+   "duration": 2.96,
+   "text": "you know you can replace it and we're"
+  },
+  {
+   "start": 131.16,
+   "duration": 3.799,
+   "text": "going to replace this with real API"
+  },
+  {
+   "start": 132.84,
+   "duration": 4.16,
+   "text": "calls in the future. And this is the"
+  },
+  {
+   "start": 134.959,
+   "duration": 4.081,
+   "text": "episode from where we're going to start"
+  },
+  {
+   "start": 137.0,
+   "duration": 3.76,
+   "text": "doing it. Yeah, we're going to not"
+  },
+  {
+   "start": 139.04,
+   "duration": 3.0,
+   "text": "rewrite that mock."
+  },
+  {
+   "start": 140.76,
+   "duration": 3.48,
+   "text": "Okay, we're going to leave it alone"
+  },
+  {
+   "start": 142.04,
+   "duration": 4.32,
+   "text": "because sometimes you want to just play"
+  },
+  {
+   "start": 144.24,
+   "duration": 5.48,
+   "text": "around that uh using some other"
+  },
+  {
+   "start": 146.36,
+   "duration": 5.4,
+   "text": "concepts. Uh but we're going to plug in"
+  },
+  {
+   "start": 149.72,
+   "duration": 3.2,
+   "text": "like using a feature toggle or"
+  },
+  {
+   "start": 151.76,
+   "duration": 2.88,
+   "text": "something. We're going to plug in the"
+  },
+  {
+   "start": 152.92,
+   "duration": 3.4,
+   "text": "real GitHub"
+  },
+  {
+   "start": 154.64,
+   "duration": 4.319,
+   "text": "um API"
+  },
+  {
+   "start": 156.32,
+   "duration": 4.52,
+   "text": "or MCP server, sorry, uh this episode"
+  },
+  {
+   "start": 158.959,
+   "duration": 4.401,
+   "text": "and we are going to review real pull"
+  },
+  {
+   "start": 160.84,
+   "duration": 5.24,
+   "text": "requests, right? So that is the idea and"
+  },
+  {
+   "start": 163.36,
+   "duration": 4.44,
+   "text": "that was what I wanted to clarify"
+  },
+  {
+   "start": 166.08,
+   "duration": 3.72,
+   "text": "uh before we start."
+  },
+  {
+   "start": 167.8,
+   "duration": 4.64,
+   "text": "Okay, so what we are covering today?"
+  },
+  {
+   "start": 169.8,
+   "duration": 5.28,
+   "text": "Uh today is all about MCP, the Model"
+  },
+  {
+   "start": 172.44,
+   "duration": 5.8,
+   "text": "Context Protocol. It's a very kind of a"
+  },
+  {
+   "start": 175.08,
+   "duration": 5.08,
+   "text": "buzzword sorry, buzzword right now. Not"
+  },
+  {
+   "start": 178.24,
+   "duration": 4.96,
+   "text": "Buzz Lightyear, by the way. Mhm, one of"
+  },
+  {
+   "start": 180.16,
+   "duration": 5.56,
+   "text": "my favorite characters. Anyways, so um"
+  },
+  {
+   "start": 183.2,
+   "duration": 4.4,
+   "text": "and specifically the two things uh we"
+  },
+  {
+   "start": 185.72,
+   "duration": 2.64,
+   "text": "have not done"
+  },
+  {
+   "start": 187.6,
+   "duration": 3.16,
+   "text": "um"
+  },
+  {
+   "start": 188.36,
+   "duration": 4.32,
+   "text": "with the MCP server till now. Yeah? So"
+  },
+  {
+   "start": 190.76,
+   "duration": 3.759,
+   "text": "if you want to have a quick recap so"
+  },
+  {
+   "start": 192.68,
+   "duration": 3.04,
+   "text": "this doesn't sound like a new word out"
+  },
+  {
+   "start": 194.519,
+   "duration": 3.041,
+   "text": "of nowhere."
+  },
+  {
+   "start": 195.72,
+   "duration": 4.6,
+   "text": "Uh in episode number three, we gave this"
+  },
+  {
+   "start": 197.56,
+   "duration": 5.04,
+   "text": "agent custom tools using the @tool"
+  },
+  {
+   "start": 200.32,
+   "duration": 4.0,
+   "text": "decorator. Right? If you remember, we we"
+  },
+  {
+   "start": 202.6,
+   "duration": 4.12,
+   "text": "that's how we create custom tools,"
+  },
+  {
+   "start": 204.32,
+   "duration": 5.0,
+   "text": "right? It turns out um"
+  },
+  {
+   "start": 206.72,
+   "duration": 4.96,
+   "text": "and I promise this pays off in a second"
+  },
+  {
+   "start": 209.32,
+   "duration": 4.6,
+   "text": "that was already MCP under the hood."
+  },
+  {
+   "start": 211.68,
+   "duration": 4.36,
+   "text": "Yeah? We just never called it that. And"
+  },
+  {
+   "start": 213.92,
+   "duration": 3.52,
+   "text": "I also mentioned it's like a in-process"
+  },
+  {
+   "start": 216.04,
+   "duration": 4.24,
+   "text": "MCP server or something, if you"
+  },
+  {
+   "start": 217.44,
+   "duration": 4.64,
+   "text": "remember. We kind of ran it uh you know,"
+  },
+  {
+   "start": 220.28,
+   "duration": 3.88,
+   "text": "in-process MCP server for those custom"
+  },
+  {
+   "start": 222.08,
+   "duration": 3.92,
+   "text": "tools. And we also understood how the"
+  },
+  {
+   "start": 224.16,
+   "duration": 4.48,
+   "text": "notation um"
+  },
+  {
+   "start": 226.0,
+   "duration": 5.88,
+   "text": "how you you know, Claude identifies a"
+  },
+  {
+   "start": 228.64,
+   "duration": 5.4,
+   "text": "particular tool inside a MCP server and"
+  },
+  {
+   "start": 231.88,
+   "duration": 4.16,
+   "text": "we are going to revisit that also in"
+  },
+  {
+   "start": 234.04,
+   "duration": 4.44,
+   "text": "this particular episode."
+  },
+  {
+   "start": 236.04,
+   "duration": 5.2,
+   "text": "So, today's two new moves are basically"
+  },
+  {
+   "start": 238.48,
+   "duration": 4.68,
+   "text": "first connecting to somebody's else MCP"
+  },
+  {
+   "start": 241.24,
+   "duration": 3.96,
+   "text": "server and as I I I've already mentioned"
+  },
+  {
+   "start": 243.16,
+   "duration": 3.76,
+   "text": "that we're going to use the GitHub MCP"
+  },
+  {
+   "start": 245.2,
+   "duration": 5.28,
+   "text": "server to review our pull request and do"
+  },
+  {
+   "start": 246.92,
+   "duration": 5.72,
+   "text": "a lot of stuff. Right? Uh"
+  },
+  {
+   "start": 250.48,
+   "duration": 3.52,
+   "text": "and then we're going to build our own"
+  },
+  {
+   "start": 252.64,
+   "duration": 3.92,
+   "text": "MCP server."
+  },
+  {
+   "start": 254.0,
+   "duration": 4.84,
+   "text": "Okay, but this time as a genuinely"
+  },
+  {
+   "start": 256.56,
+   "duration": 4.36,
+   "text": "separate standalone program, not like a"
+  },
+  {
+   "start": 258.84,
+   "duration": 5.28,
+   "text": "in-process because you might say that"
+  },
+  {
+   "start": 260.92,
+   "duration": 5.36,
+   "text": "you already uh built MCP servers when"
+  },
+  {
+   "start": 264.12,
+   "duration": 3.4,
+   "text": "you were talking about custom tools, but"
+  },
+  {
+   "start": 266.28,
+   "duration": 3.36,
+   "text": "this time it will be completely"
+  },
+  {
+   "start": 267.52,
+   "duration": 4.68,
+   "text": "different standalone."
+  },
+  {
+   "start": 269.64,
+   "duration": 3.68,
+   "text": "Yeah? And it's a kind of a thing you"
+  },
+  {
+   "start": 272.2,
+   "duration": 3.24,
+   "text": "would"
+  },
+  {
+   "start": 273.32,
+   "duration": 4.0,
+   "text": "hand to a teammate, a standalone MCP"
+  },
+  {
+   "start": 275.44,
+   "duration": 4.72,
+   "text": "server. For example, you build"
+  },
+  {
+   "start": 277.32,
+   "duration": 5.28,
+   "text": "um who's using any other"
+  },
+  {
+   "start": 280.16,
+   "duration": 4.2,
+   "text": "um you know, um"
+  },
+  {
+   "start": 282.6,
+   "duration": 4.6,
+   "text": "agentic"
+  },
+  {
+   "start": 284.36,
+   "duration": 6.88,
+   "text": "system or software like Cursor, Cloud"
+  },
+  {
+   "start": 287.2,
+   "duration": 5.68,
+   "text": "Code, or you know, um"
+  },
+  {
+   "start": 291.24,
+   "duration": 3.72,
+   "text": "Codex or something like that, or their"
+  },
+  {
+   "start": 292.88,
+   "duration": 3.64,
+   "text": "own agent, you know, in let's say it's"
+  },
+  {
+   "start": 294.96,
+   "duration": 3.959,
+   "text": "your own team and you're sharing it with"
+  },
+  {
+   "start": 296.52,
+   "duration": 5.0,
+   "text": "your team member, right? So, think it in"
+  },
+  {
+   "start": 298.919,
+   "duration": 4.721,
+   "text": "that way. That way it will be different."
+  },
+  {
+   "start": 301.52,
+   "duration": 3.44,
+   "text": "And along the way, we are going to hit a"
+  },
+  {
+   "start": 303.64,
+   "duration": 4.08,
+   "text": "real"
+  },
+  {
+   "start": 304.96,
+   "duration": 6.16,
+   "text": "kind of a open bug as of the date I'm"
+  },
+  {
+   "start": 307.72,
+   "duration": 5.04,
+   "text": "recording this. Yeah? And in how, you"
+  },
+  {
+   "start": 311.12,
+   "duration": 3.84,
+   "text": "know, one specific"
+  },
+  {
+   "start": 312.76,
+   "duration": 2.92,
+   "text": "piece of this gets configured."
+  },
+  {
+   "start": 314.96,
+   "duration": 3.52,
+   "text": "Um"
+  },
+  {
+   "start": 315.68,
+   "duration": 5.239,
+   "text": "it's not like a gotcha for some drama."
+  },
+  {
+   "start": 318.48,
+   "duration": 4.48,
+   "text": "It's actually a known bug that I I will"
+  },
+  {
+   "start": 320.919,
+   "duration": 4.241,
+   "text": "discuss later on in this"
+  },
+  {
+   "start": 322.96,
+   "duration": 4.32,
+   "text": "um lesson, right? So, stay tuned for"
+  },
+  {
+   "start": 325.16,
+   "duration": 3.92,
+   "text": "that as well."
+  },
+  {
+   "start": 327.28,
+   "duration": 3.56,
+   "text": "So, where this fits in the build along?"
+  },
+  {
+   "start": 329.08,
+   "duration": 4.92,
+   "text": "Yeah? We started from episode number"
+  },
+  {
+   "start": 330.84,
+   "duration": 4.96,
+   "text": "one. We hand rolled the agentic loop on"
+  },
+  {
+   "start": 334.0,
+   "duration": 4.4,
+   "text": "the raw messages API. In episode number"
+  },
+  {
+   "start": 335.8,
+   "duration": 5.0,
+   "text": "two, we graduated to agent SDK. Episode"
+  },
+  {
+   "start": 338.4,
+   "duration": 4.36,
+   "text": "three and four, custom tools plus hooks"
+  },
+  {
+   "start": 340.8,
+   "duration": 4.04,
+   "text": "and guardrails we explored. Episode"
+  },
+  {
+   "start": 342.76,
+   "duration": 4.12,
+   "text": "number five, sub agents."
+  },
+  {
+   "start": 344.84,
+   "duration": 4.76,
+   "text": "Uh we we we kind of created two sub"
+  },
+  {
+   "start": 346.88,
+   "duration": 4.84,
+   "text": "agents. and in episode number six, we"
+  },
+  {
+   "start": 349.6,
+   "duration": 3.8,
+   "text": "talked about memory and sessions."
+  },
+  {
+   "start": 351.72,
+   "duration": 4.12,
+   "text": "Episode number seven, we talked about"
+  },
+  {
+   "start": 353.4,
+   "duration": 3.92,
+   "text": "structured output, and you can actually"
+  },
+  {
+   "start": 355.84,
+   "duration": 3.84,
+   "text": "trust in episode number eight, we"
+  },
+  {
+   "start": 357.32,
+   "duration": 4.28,
+   "text": "actually created skills that can be used"
+  },
+  {
+   "start": 359.68,
+   "duration": 4.4,
+   "text": "by the agent. It was pretty awesome. You"
+  },
+  {
+   "start": 361.6,
+   "duration": 4.24,
+   "text": "can go and check out that video. And"
+  },
+  {
+   "start": 364.08,
+   "duration": 3.6,
+   "text": "then, basically, today we are going to"
+  },
+  {
+   "start": 365.84,
+   "duration": 3.6,
+   "text": "build our own MCP server and use a"
+  },
+  {
+   "start": 367.68,
+   "duration": 4.12,
+   "text": "GitHub MCP server."
+  },
+  {
+   "start": 369.44,
+   "duration": 4.24,
+   "text": "So, step by step, we are enhancing our"
+  },
+  {
+   "start": 371.8,
+   "duration": 4.64,
+   "text": "agent, and at the same time, all of"
+  },
+  {
+   "start": 373.68,
+   "duration": 4.08,
+   "text": "these concepts are for your exam as"
+  },
+  {
+   "start": 376.44,
+   "duration": 3.56,
+   "text": "well, your Cloud Certified Developer"
+  },
+  {
+   "start": 377.76,
+   "duration": 3.88,
+   "text": "exam. And also, some of those concepts"
+  },
+  {
+   "start": 380.0,
+   "duration": 3.44,
+   "text": "also kind of overlap with the Cloud"
+  },
+  {
+   "start": 381.64,
+   "duration": 3.279,
+   "text": "Certified Architect and the Cloud"
+  },
+  {
+   "start": 383.44,
+   "duration": 3.56,
+   "text": "Certified Architect Professional as"
+  },
+  {
+   "start": 384.919,
+   "duration": 3.401,
+   "text": "well. So, you are kind of learning, you"
+  },
+  {
+   "start": 387.0,
+   "duration": 3.919,
+   "text": "know, at one shot, you are learning"
+  },
+  {
+   "start": 388.32,
+   "duration": 5.0,
+   "text": "three or for for three or four different"
+  },
+  {
+   "start": 390.919,
+   "duration": 3.521,
+   "text": "things, right? And that's awesome."
+  },
+  {
+   "start": 393.32,
+   "duration": 3.36,
+   "text": "Okay."
+  },
+  {
+   "start": 394.44,
+   "duration": 4.84,
+   "text": "So, just had to have a look at the"
+  },
+  {
+   "start": 396.68,
+   "duration": 4.12,
+   "text": "project structure. So, currently, we"
+  },
+  {
+   "start": 399.28,
+   "duration": 4.76,
+   "text": "will we will be doing everything in"
+  },
+  {
+   "start": 400.8,
+   "duration": 5.8,
+   "text": "episode number nine thingies, right?"
+  },
+  {
+   "start": 404.04,
+   "duration": 4.879,
+   "text": "The only new things that is going to be"
+  },
+  {
+   "start": 406.6,
+   "duration": 4.24,
+   "text": "added is the dot MCP"
+  },
+  {
+   "start": 408.919,
+   "duration": 3.841,
+   "text": "JSON, right? Where our MCP server is"
+  },
+  {
+   "start": 410.84,
+   "duration": 5.48,
+   "text": "configured. We're going to change our"
+  },
+  {
+   "start": 412.76,
+   "duration": 5.28,
+   "text": "agent.py to kind of work around with it."
+  },
+  {
+   "start": 416.32,
+   "duration": 3.36,
+   "text": "And we're going to create our own MCP"
+  },
+  {
+   "start": 418.04,
+   "duration": 3.4,
+   "text": "server, standalone MCP server, which"
+  },
+  {
+   "start": 419.68,
+   "duration": 4.12,
+   "text": "will be this one. Other files, like"
+  },
+  {
+   "start": 421.44,
+   "duration": 3.64,
+   "text": "tools, hooks, sub agents, schemas,"
+  },
+  {
+   "start": 423.8,
+   "duration": 2.64,
+   "text": "session index, we're not going to touch"
+  },
+  {
+   "start": 425.08,
+   "duration": 3.92,
+   "text": "it. So,"
+  },
+  {
+   "start": 426.44,
+   "duration": 4.92,
+   "text": "just clarifying it, right?"
+  },
+  {
+   "start": 429.0,
+   "duration": 4.32,
+   "text": "And all the previous episode files also,"
+  },
+  {
+   "start": 431.36,
+   "duration": 3.24,
+   "text": "we are not going to touch it."
+  },
+  {
+   "start": 433.32,
+   "duration": 3.28,
+   "text": "So, that is all about the project"
+  },
+  {
+   "start": 434.6,
+   "duration": 3.2,
+   "text": "structure that I wanted to talk about."
+  },
+  {
+   "start": 436.6,
+   "duration": 2.72,
+   "text": "Um"
+  },
+  {
+   "start": 437.8,
+   "duration": 3.32,
+   "text": "Yeah."
+  },
+  {
+   "start": 439.32,
+   "duration": 4.52,
+   "text": "Okay. So, three ways we've given Cloud"
+  },
+  {
+   "start": 441.12,
+   "duration": 3.68,
+   "text": "capabilities and a confession."
+  },
+  {
+   "start": 443.84,
+   "duration": 2.48,
+   "text": "So,"
+  },
+  {
+   "start": 444.8,
+   "duration": 3.96,
+   "text": "um so, let's line up everything we've"
+  },
+  {
+   "start": 446.32,
+   "duration": 5.4,
+   "text": "handed this agent so far, because today"
+  },
+  {
+   "start": 448.76,
+   "duration": 3.96,
+   "text": "adds two more rows to this kind of a"
+  },
+  {
+   "start": 451.72,
+   "duration": 3.28,
+   "text": "table."
+  },
+  {
+   "start": 452.72,
+   "duration": 4.08,
+   "text": "And the table is about to get a footnote"
+  },
+  {
+   "start": 455.0,
+   "duration": 4.4,
+   "text": "that changes how you read the first two"
+  },
+  {
+   "start": 456.8,
+   "duration": 4.32,
+   "text": "rows. So, consider all of those things"
+  },
+  {
+   "start": 459.4,
+   "duration": 3.48,
+   "text": "that I've been adding to the agent"
+  },
+  {
+   "start": 461.12,
+   "duration": 3.6,
+   "text": "table. In a table, we are kind of adding"
+  },
+  {
+   "start": 462.88,
+   "duration": 4.56,
+   "text": "it and now we're adding more rows to it,"
+  },
+  {
+   "start": 464.72,
+   "duration": 4.16,
+   "text": "basically, you know, in simple terms."
+  },
+  {
+   "start": 467.44,
+   "duration": 4.08,
+   "text": "So,"
+  },
+  {
+   "start": 468.88,
+   "duration": 5.84,
+   "text": "here is a confession, okay?"
+  },
+  {
+   "start": 471.52,
+   "duration": 8.12,
+   "text": "The create SD key SDK MCP server, the"
+  },
+  {
+   "start": 474.72,
+   "duration": 7.2,
+   "text": "function name has three letters, M C"
+  },
+  {
+   "start": 479.64,
+   "duration": 5.24,
+   "text": "P sitting right in it."
+  },
+  {
+   "start": 481.92,
+   "duration": 5.64,
+   "text": "Because it is one MCP server."
+  },
+  {
+   "start": 484.88,
+   "duration": 4.8,
+   "text": "When we build PR tools, PR tools in"
+  },
+  {
+   "start": 487.56,
+   "duration": 4.24,
+   "text": "episode number two, you can go and check"
+  },
+  {
+   "start": 489.68,
+   "duration": 4.96,
+   "text": "out"
+  },
+  {
+   "start": 491.8,
+   "duration": 5.2,
+   "text": "Do we build that in episode number two?"
+  },
+  {
+   "start": 494.64,
+   "duration": 3.24,
+   "text": "Uh or episode number three we built."
+  },
+  {
+   "start": 497.0,
+   "duration": 2.68,
+   "text": "Hm."
+  },
+  {
+   "start": 497.88,
+   "duration": 3.32,
+   "text": "Did we build a"
+  },
+  {
+   "start": 499.68,
+   "duration": 3.08,
+   "text": "It's"
+  },
+  {
+   "start": 501.2,
+   "duration": 4.4,
+   "text": "Okay, we built the tools over here,"
+  },
+  {
+   "start": 502.76,
+   "duration": 4.4,
+   "text": "right? Um"
+  },
+  {
+   "start": 505.6,
+   "duration": 2.76,
+   "text": "Yeah, so this is where it is, right? We"
+  },
+  {
+   "start": 507.16,
+   "duration": 4.04,
+   "text": "built it in episode number three, my"
+  },
+  {
+   "start": 508.36,
+   "duration": 5.679,
+   "text": "bad. Not episode number two, I guess."
+  },
+  {
+   "start": 511.2,
+   "duration": 5.24,
+   "text": "So, create SDK MCP server, right? Um"
+  },
+  {
+   "start": 514.039,
+   "duration": 4.0,
+   "text": "When we built this tools back in episode"
+  },
+  {
+   "start": 516.44,
+   "duration": 4.0,
+   "text": "number three, my bad, I was saying"
+  },
+  {
+   "start": 518.039,
+   "duration": 4.44,
+   "text": "episode number two, we weren't inventing"
+  },
+  {
+   "start": 520.44,
+   "duration": 4.52,
+   "text": "some SDK specific shortcut that's"
+  },
+  {
+   "start": 522.479,
+   "duration": 5.36,
+   "text": "separate from the real MCP, right? We We"
+  },
+  {
+   "start": 524.96,
+   "duration": 4.36,
+   "text": "are building an actual honest-to-good"
+  },
+  {
+   "start": 527.839,
+   "duration": 4.121,
+   "text": "MCP server."
+  },
+  {
+   "start": 529.32,
+   "duration": 5.04,
+   "text": "Yeah? It just happens to be a special"
+  },
+  {
+   "start": 531.96,
+   "duration": 4.84,
+   "text": "kind of MCP server. That's why I wanted"
+  },
+  {
+   "start": 534.36,
+   "duration": 5.76,
+   "text": "to clarify this from the start."
+  },
+  {
+   "start": 536.8,
+   "duration": 6.039,
+   "text": "Okay? So, one that runs in the same"
+  },
+  {
+   "start": 540.12,
+   "duration": 4.92,
+   "text": "Python process as the agent. That is why"
+  },
+  {
+   "start": 542.839,
+   "duration": 4.601,
+   "text": "it is known as a in-process MCP server."
+  },
+  {
+   "start": 545.04,
+   "duration": 5.36,
+   "text": "That's why this if you see this this"
+  },
+  {
+   "start": 547.44,
+   "duration": 5.72,
+   "text": "particular thing, this this create SDK"
+  },
+  {
+   "start": 550.4,
+   "duration": 4.76,
+   "text": "MCP server, this method over here, oh,"
+  },
+  {
+   "start": 553.16,
+   "duration": 4.72,
+   "text": "where did kind of went out? Okay."
+  },
+  {
+   "start": 555.16,
+   "duration": 4.679,
+   "text": "Yeah. Yeah. So, it it literally says"
+  },
+  {
+   "start": 557.88,
+   "duration": 4.68,
+   "text": "create an in-process MCP server that"
+  },
+  {
+   "start": 559.839,
+   "duration": 3.641,
+   "text": "runs within your Python application."
+  },
+  {
+   "start": 562.56,
+   "duration": 2.96,
+   "text": "Yeah?"
+  },
+  {
+   "start": 563.48,
+   "duration": 3.04,
+   "text": "And I didn't mention this I I was just"
+  },
+  {
+   "start": 565.52,
+   "duration": 3.24,
+   "text": "mentioning that, you know, you have to"
+  },
+  {
+   "start": 566.52,
+   "duration": 4.68,
+   "text": "expose custom tools as a MCP server, but"
+  },
+  {
+   "start": 568.76,
+   "duration": 3.76,
+   "text": "I was not putting more kind of a focus"
+  },
+  {
+   "start": 571.2,
+   "duration": 3.12,
+   "text": "on the MCP server because I knew that"
+  },
+  {
+   "start": 572.52,
+   "duration": 4.72,
+   "text": "I'm going to cover this in detail in a"
+  },
+  {
+   "start": 574.32,
+   "duration": 5.08,
+   "text": "later episode or lesson, right?"
+  },
+  {
+   "start": 577.24,
+   "duration": 4.56,
+   "text": "Because new things we are going to learn"
+  },
+  {
+   "start": 579.4,
+   "duration": 4.68,
+   "text": "now and the old things you have already"
+  },
+  {
+   "start": 581.8,
+   "duration": 4.76,
+   "text": "been clarified, so this one will not be"
+  },
+  {
+   "start": 584.08,
+   "duration": 4.92,
+   "text": "too much of a foreign thing to you."
+  },
+  {
+   "start": 586.56,
+   "duration": 5.8,
+   "text": "Yeah? So, this episode isn't really"
+  },
+  {
+   "start": 589.0,
+   "duration": 5.84,
+   "text": "introducing something very brand new,"
+  },
+  {
+   "start": 592.36,
+   "duration": 4.44,
+   "text": "but it's revealing the other three"
+  },
+  {
+   "start": 594.84,
+   "duration": 4.52,
+   "text": "quarters of something that you already"
+  },
+  {
+   "start": 596.8,
+   "duration": 3.88,
+   "text": "kind of know, but you have kind of a"
+  },
+  {
+   "start": 599.36,
+   "duration": 3.44,
+   "text": "half knowledge that we're going to"
+  },
+  {
+   "start": 600.68,
+   "duration": 4.96,
+   "text": "complete it today. So, I hope this"
+  },
+  {
+   "start": 602.8,
+   "duration": 5.0,
+   "text": "clears up any questions regarding why"
+  },
+  {
+   "start": 605.64,
+   "duration": 5.08,
+   "text": "are we having a separate kind of a"
+  },
+  {
+   "start": 607.8,
+   "duration": 4.2,
+   "text": "episode or something for"
+  },
+  {
+   "start": 610.72,
+   "duration": 3.08,
+   "text": "MCPs."
+  },
+  {
+   "start": 612.0,
+   "duration": 4.48,
+   "text": "Okay. Now, going back"
+  },
+  {
+   "start": 613.8,
+   "duration": 3.88,
+   "text": "two new patterns for today that we're"
+  },
+  {
+   "start": 616.48,
+   "duration": 2.96,
+   "text": "going to discuss."
+  },
+  {
+   "start": 617.68,
+   "duration": 4.64,
+   "text": "Uh so, we already know, you know, two"
+  },
+  {
+   "start": 619.44,
+   "duration": 5.08,
+   "text": "patterns. Uh pattern number three is"
+  },
+  {
+   "start": 622.32,
+   "duration": 4.92,
+   "text": "basically connecting to somebody else's"
+  },
+  {
+   "start": 624.52,
+   "duration": 3.88,
+   "text": "MCP server and pattern number four is"
+  },
+  {
+   "start": 627.24,
+   "duration": 2.88,
+   "text": "build"
+  },
+  {
+   "start": 628.4,
+   "duration": 4.2,
+   "text": "our own. So, pattern number one and two"
+  },
+  {
+   "start": 630.12,
+   "duration": 4.2,
+   "text": "is basically create your own in-process"
+  },
+  {
+   "start": 632.6,
+   "duration": 2.8,
+   "text": "MCP server that I already discussed,"
+  },
+  {
+   "start": 634.32,
+   "duration": 2.64,
+   "text": "right?"
+  },
+  {
+   "start": 635.4,
+   "duration": 3.28,
+   "text": "So, connect to somebody else's MCP"
+  },
+  {
+   "start": 636.96,
+   "duration": 3.96,
+   "text": "server. Somebody else wrote it, somebody"
+  },
+  {
+   "start": 638.68,
+   "duration": 3.92,
+   "text": "else runs it, or somebody else at least"
+  },
+  {
+   "start": 640.92,
+   "duration": 3.4,
+   "text": "maintains the code. We just point our"
+  },
+  {
+   "start": 642.6,
+   "duration": 2.64,
+   "text": "agent to it. That is all we are going to"
+  },
+  {
+   "start": 644.32,
+   "duration": 2.68,
+   "text": "do."
+  },
+  {
+   "start": 645.24,
+   "duration": 3.44,
+   "text": "We are going to do configuration. We are"
+  },
+  {
+   "start": 647.0,
+   "duration": 3.88,
+   "text": "not going to do any coding. So, that is"
+  },
+  {
+   "start": 648.68,
+   "duration": 3.6,
+   "text": "the That is the difference you need to"
+  },
+  {
+   "start": 650.88,
+   "duration": 2.24,
+   "text": "understand."
+  },
+  {
+   "start": 652.28,
+   "duration": 2.04,
+   "text": "Yeah?"
+  },
+  {
+   "start": 653.12,
+   "duration": 3.16,
+   "text": "Because"
+  },
+  {
+   "start": 654.32,
+   "duration": 3.68,
+   "text": "every time when we say to a developer,"
+  },
+  {
+   "start": 656.28,
+   "duration": 3.28,
+   "text": "you know, we need an MCP server, they"
+  },
+  {
+   "start": 658.0,
+   "duration": 3.52,
+   "text": "kind of respond, \"Okay, we need to"
+  },
+  {
+   "start": 659.56,
+   "duration": 3.76,
+   "text": "create a fast MCP server.\" No, you don't"
+  },
+  {
+   "start": 661.52,
+   "duration": 4.16,
+   "text": "have to do that. Maybe there is"
+  },
+  {
+   "start": 663.32,
+   "duration": 4.88,
+   "text": "something that is already there. You"
+  },
+  {
+   "start": 665.68,
+   "duration": 4.36,
+   "text": "just need to add it in your .mcp.json"
+  },
+  {
+   "start": 668.2,
+   "duration": 2.72,
+   "text": "file and it will work out of the box."
+  },
+  {
+   "start": 670.04,
+   "duration": 3.799,
+   "text": "You just need to take care of the"
+  },
+  {
+   "start": 670.92,
+   "duration": 3.919,
+   "text": "authentication, maybe, max to max."
+  },
+  {
+   "start": 673.839,
+   "duration": 2.361,
+   "text": "So, that is the thing. So, that is"
+  },
+  {
+   "start": 674.839,
+   "duration": 4.041,
+   "text": "pattern number three. Pattern number"
+  },
+  {
+   "start": 676.2,
+   "duration": 4.4,
+   "text": "four is basically building our own MCP"
+  },
+  {
+   "start": 678.88,
+   "duration": 3.8,
+   "text": "server that we already discussed. So,"
+  },
+  {
+   "start": 680.6,
+   "duration": 4.28,
+   "text": "not wasting much time over here."
+  },
+  {
+   "start": 682.68,
+   "duration": 4.2,
+   "text": "And we're going to first"
+  },
+  {
+   "start": 684.88,
+   "duration": 4.36,
+   "text": "uh you know, uh"
+  },
+  {
+   "start": 686.88,
+   "duration": 4.88,
+   "text": "plug So, plugging into an MCP server is,"
+  },
+  {
+   "start": 689.24,
+   "duration": 4.84,
+   "text": "as I mentioned, it's like a it think of"
+  },
+  {
+   "start": 691.76,
+   "duration": 4.36,
+   "text": "it like a port, right? It's not a"
+  },
+  {
+   "start": 694.08,
+   "duration": 4.44,
+   "text": "specific cable, not a specific device,"
+  },
+  {
+   "start": 696.12,
+   "duration": 6.12,
+   "text": "the port. Any device that speaks the"
+  },
+  {
+   "start": 698.52,
+   "duration": 5.8,
+   "text": "right protocol just plugs in."
+  },
+  {
+   "start": 702.24,
+   "duration": 4.96,
+   "text": "Yeah, and your laptop or something"
+  },
+  {
+   "start": 704.32,
+   "duration": 4.68,
+   "text": "doesn't need any custom drivers for"
+  },
+  {
+   "start": 707.2,
+   "duration": 5.16,
+   "text": "every single mouse and keyboard ever"
+  },
+  {
+   "start": 709.0,
+   "duration": 6.08,
+   "text": "made because MCP is kind of like that,"
+  },
+  {
+   "start": 712.36,
+   "duration": 5.64,
+   "text": "you know? But it is for AI agents. So,"
+  },
+  {
+   "start": 715.08,
+   "duration": 4.16,
+   "text": "this is my cursor and this is my"
+  },
+  {
+   "start": 718.0,
+   "duration": 3.04,
+   "text": "keyboard."
+  },
+  {
+   "start": 719.24,
+   "duration": 3.68,
+   "text": "Yeah, previously you there used to have"
+  },
+  {
+   "start": 721.04,
+   "duration": 3.52,
+   "text": "be a lot of drivers, driver updates, and"
+  },
+  {
+   "start": 722.92,
+   "duration": 4.44,
+   "text": "external things that but now in my"
+  },
+  {
+   "start": 724.56,
+   "duration": 4.04,
+   "text": "laptop it's just built in because"
+  },
+  {
+   "start": 727.36,
+   "duration": 4.24,
+   "text": "the"
+  },
+  {
+   "start": 728.6,
+   "duration": 6.08,
+   "text": "the kind of protocol is there. How do"
+  },
+  {
+   "start": 731.6,
+   "duration": 6.24,
+   "text": "the the the laptop or your system would"
+  },
+  {
+   "start": 734.68,
+   "duration": 4.4,
+   "text": "register the key clicks or your mouse"
+  },
+  {
+   "start": 737.84,
+   "duration": 3.4,
+   "text": "clicks or something like that. You don't"
+  },
+  {
+   "start": 739.08,
+   "duration": 4.72,
+   "text": "have to worry about that."
+  },
+  {
+   "start": 741.24,
+   "duration": 4.48,
+   "text": "So, that is what the AI agents and the"
+  },
+  {
+   "start": 743.8,
+   "duration": 5.52,
+   "text": "MCP servers communicate with each other."
+  },
+  {
+   "start": 745.72,
+   "duration": 5.64,
+   "text": "They communicate using the MCP protocol."
+  },
+  {
+   "start": 749.32,
+   "duration": 3.68,
+   "text": "Right? So, GitHub in the other end that"
+  },
+  {
+   "start": 751.36,
+   "duration": 5.04,
+   "text": "we're going to just plug it in in a"
+  },
+  {
+   "start": 753.0,
+   "duration": 4.76,
+   "text": "second is the same thing. So, MCP we're"
+  },
+  {
+   "start": 756.4,
+   "duration": 3.64,
+   "text": "going to use and connect to that"
+  },
+  {
+   "start": 757.76,
+   "duration": 5.0,
+   "text": "particular MCP server."
+  },
+  {
+   "start": 760.04,
+   "duration": 5.92,
+   "text": "Okay, so that was just"
+  },
+  {
+   "start": 762.76,
+   "duration": 6.48,
+   "text": "a thing. Okay, so the four shapes an MCP"
+  },
+  {
+   "start": 765.96,
+   "duration": 6.6,
+   "text": "server config can take. So, basically"
+  },
+  {
+   "start": 769.24,
+   "duration": 5.52,
+   "text": "the four ways an MCP server can be made"
+  },
+  {
+   "start": 772.56,
+   "duration": 3.56,
+   "text": "available for the agent or something"
+  },
+  {
+   "start": 774.76,
+   "duration": 4.48,
+   "text": "like that."
+  },
+  {
+   "start": 776.12,
+   "duration": 5.64,
+   "text": "So, the first way is STDIO format. It's"
+  },
+  {
+   "start": 779.24,
+   "duration": 4.84,
+   "text": "a common you know, input output format"
+  },
+  {
+   "start": 781.76,
+   "duration": 4.04,
+   "text": "like STD in and STD"
+  },
+  {
+   "start": 784.08,
+   "duration": 3.4,
+   "text": "out that we're going to see that. We're"
+  },
+  {
+   "start": 785.8,
+   "duration": 4.32,
+   "text": "going to create a"
+  },
+  {
+   "start": 787.48,
+   "duration": 5.24,
+   "text": "repo fact server, our own standalone MCP"
+  },
+  {
+   "start": 790.12,
+   "duration": 4.4,
+   "text": "server and it will use STDIO."
+  },
+  {
+   "start": 792.72,
+   "duration": 4.92,
+   "text": "I just wanted to explain this concept so"
+  },
+  {
+   "start": 794.52,
+   "duration": 4.4,
+   "text": "we kind of embedded it in our own MCP"
+  },
+  {
+   "start": 797.64,
+   "duration": 4.199,
+   "text": "server so you're going to understand in"
+  },
+  {
+   "start": 798.92,
+   "duration": 5.48,
+   "text": "in detail but for you know, for"
+  },
+  {
+   "start": 801.839,
+   "duration": 4.321,
+   "text": "understanding purposes it's a kind of a"
+  },
+  {
+   "start": 804.4,
+   "duration": 3.68,
+   "text": "command plus"
+  },
+  {
+   "start": 806.16,
+   "duration": 4.72,
+   "text": "arguments. It would use arguments and"
+  },
+  {
+   "start": 808.08,
+   "duration": 4.96,
+   "text": "environment variables to actually, you"
+  },
+  {
+   "start": 810.88,
+   "duration": 4.48,
+   "text": "know, uh feed the data into the MCP"
+  },
+  {
+   "start": 813.04,
+   "duration": 5.24,
+   "text": "server, basically. So, that is the STDIO"
+  },
+  {
+   "start": 815.36,
+   "duration": 5.24,
+   "text": "format. Second is the HTTP format. It's"
+  },
+  {
+   "start": 818.28,
+   "duration": 4.36,
+   "text": "pretty easy to understand, right? Any"
+  },
+  {
+   "start": 820.6,
+   "duration": 4.2,
+   "text": "remote server somewhere on the internet,"
+  },
+  {
+   "start": 822.64,
+   "duration": 4.6,
+   "text": "you want to make it available to a"
+  },
+  {
+   "start": 824.8,
+   "duration": 5.6,
+   "text": "larger audience. You would basically use"
+  },
+  {
+   "start": 827.24,
+   "duration": 5.64,
+   "text": "HTTP, all right? And it will support"
+  },
+  {
+   "start": 830.4,
+   "duration": 4.16,
+   "text": "everything that comes with HTTP. URL,"
+  },
+  {
+   "start": 832.88,
+   "duration": 3.48,
+   "text": "optional headers,"
+  },
+  {
+   "start": 834.56,
+   "duration": 4.08,
+   "text": "what not, right? These are all the basic"
+  },
+  {
+   "start": 836.36,
+   "duration": 3.92,
+   "text": "things that we use in HTTP. There is no"
+  },
+  {
+   "start": 838.64,
+   "duration": 4.44,
+   "text": "rocket science or something, uh you"
+  },
+  {
+   "start": 840.28,
+   "duration": 4.28,
+   "text": "know, associated with it. And the the"
+  },
+  {
+   "start": 843.08,
+   "duration": 3.2,
+   "text": "the the thing is you can also use the"
+  },
+  {
+   "start": 844.56,
+   "duration": 5.44,
+   "text": "same kind of authentication principles"
+  },
+  {
+   "start": 846.28,
+   "duration": 6.48,
+   "text": "like OAuth, um SAML assertion, uh basic"
+  },
+  {
+   "start": 850.0,
+   "duration": 4.04,
+   "text": "auth, bearer token, whatever, you know,"
+  },
+  {
+   "start": 852.76,
+   "duration": 3.16,
+   "text": "you were using in a standard"
+  },
+  {
+   "start": 854.04,
+   "duration": 4.2,
+   "text": "server-client communication, you would"
+  },
+  {
+   "start": 855.92,
+   "duration": 5.2,
+   "text": "be using there. It's just the MCP server"
+  },
+  {
+   "start": 858.24,
+   "duration": 4.36,
+   "text": "is made wrapped around an HTTP protocol."
+  },
+  {
+   "start": 861.12,
+   "duration": 6.32,
+   "text": "That's it."
+  },
+  {
+   "start": 862.6,
+   "duration": 7.6,
+   "text": "Third is SSE. So, it is the same idea,"
+  },
+  {
+   "start": 867.44,
+   "duration": 4.24,
+   "text": "but it's a older streaming style of"
+  },
+  {
+   "start": 870.2,
+   "duration": 4.04,
+   "text": "communication."
+  },
+  {
+   "start": 871.68,
+   "duration": 4.0,
+   "text": "Right? So, in HTTP, you would basically"
+  },
+  {
+   "start": 874.24,
+   "duration": 3.28,
+   "text": "request something to the server and you"
+  },
+  {
+   "start": 875.68,
+   "duration": 3.48,
+   "text": "would get a response. That's a simple"
+  },
+  {
+   "start": 877.52,
+   "duration": 4.44,
+   "text": "handshake principle or something like"
+  },
+  {
+   "start": 879.16,
+   "duration": 5.6,
+   "text": "that, right, in HTTP? But in SSE, it's"
+  },
+  {
+   "start": 881.96,
+   "duration": 6.28,
+   "text": "continuous streaming of data. Nowadays,"
+  },
+  {
+   "start": 884.76,
+   "duration": 5.04,
+   "text": "people prefer the HTTP format when uh an"
+  },
+  {
+   "start": 888.24,
+   "duration": 4.92,
+   "text": "agent is, you know, kind of connected to"
+  },
+  {
+   "start": 889.8,
+   "duration": 4.96,
+   "text": "an MCP server. It's more reliable or"
+  },
+  {
+   "start": 893.16,
+   "duration": 4.52,
+   "text": "something like that. People still use"
+  },
+  {
+   "start": 894.76,
+   "duration": 5.84,
+   "text": "the SSE thing. We are not going to use"
+  },
+  {
+   "start": 897.68,
+   "duration": 5.92,
+   "text": "SSE at all. We are We will be using"
+  },
+  {
+   "start": 900.6,
+   "duration": 6.2,
+   "text": "STDIO and HTTP in this episode. Right?"
+  },
+  {
+   "start": 903.6,
+   "duration": 5.0,
+   "text": "So, SSE just for information purposes."
+  },
+  {
+   "start": 906.8,
+   "duration": 3.4,
+   "text": "It's a older kind of streaming style"
+  },
+  {
+   "start": 908.6,
+   "duration": 4.88,
+   "text": "that was used."
+  },
+  {
+   "start": 910.2,
+   "duration": 6.36,
+   "text": "Next comes the SDK. So, we have already"
+  },
+  {
+   "start": 913.48,
+   "duration": 5.76,
+   "text": "used SDK, if you remember. We were using"
+  },
+  {
+   "start": 916.56,
+   "duration": 5.08,
+   "text": "the create SDK MCP server method that I"
+  },
+  {
+   "start": 919.24,
+   "duration": 4.4,
+   "text": "just showed you. So, it's it's it's a"
+  },
+  {
+   "start": 921.64,
+   "duration": 4.36,
+   "text": "life in process server,"
+  },
+  {
+   "start": 923.64,
+   "duration": 4.24,
+   "text": "right? Which will run like beside your"
+  },
+  {
+   "start": 926.0,
+   "duration": 3.96,
+   "text": "agent in process."
+  },
+  {
+   "start": 927.88,
+   "duration": 4.44,
+   "text": "Yeah. So, it's like a personal thingy"
+  },
+  {
+   "start": 929.96,
+   "duration": 4.92,
+   "text": "that you are using for your own"
+  },
+  {
+   "start": 932.32,
+   "duration": 4.92,
+   "text": "personal project or something like that."
+  },
+  {
+   "start": 934.88,
+   "duration": 5.8,
+   "text": "So, that is the SDK format. And that"
+  },
+  {
+   "start": 937.24,
+   "duration": 5.08,
+   "text": "example we have already seen that"
+  },
+  {
+   "start": 940.68,
+   "duration": 4.12,
+   "text": "for the for the PR tools and all those"
+  },
+  {
+   "start": 942.32,
+   "duration": 4.76,
+   "text": "things, right? We have I just showed"
+  },
+  {
+   "start": 944.8,
+   "duration": 4.64,
+   "text": "you, right? Just going to show you again"
+  },
+  {
+   "start": 947.08,
+   "duration": 4.52,
+   "text": "if you want."
+  },
+  {
+   "start": 949.44,
+   "duration": 5.52,
+   "text": "Uh this is the thing. This is how you"
+  },
+  {
+   "start": 951.6,
+   "duration": 5.0,
+   "text": "would create a SDK type MCP server. And"
+  },
+  {
+   "start": 954.96,
+   "duration": 4.6,
+   "text": "all these things, right? All these"
+  },
+  {
+   "start": 956.6,
+   "duration": 6.0,
+   "text": "things are read this straight out of the"
+  },
+  {
+   "start": 959.56,
+   "duration": 5.2,
+   "text": "installed SDK source before scripting"
+  },
+  {
+   "start": 962.6,
+   "duration": 4.52,
+   "text": "this episode. This is not nothing that I"
+  },
+  {
+   "start": 964.76,
+   "duration": 4.24,
+   "text": "have invented or you know"
+  },
+  {
+   "start": 967.12,
+   "duration": 3.4,
+   "text": "uh just fabricated or something. This is"
+  },
+  {
+   "start": 969.0,
+   "duration": 3.4,
+   "text": "a real current ship and not a"
+  },
+  {
+   "start": 970.52,
+   "duration": 3.4,
+   "text": "simplification. And it comes in the exam"
+  },
+  {
+   "start": 972.4,
+   "duration": 3.44,
+   "text": "about various"
+  },
+  {
+   "start": 973.92,
+   "duration": 3.64,
+   "text": "ways in which you would make the MCP"
+  },
+  {
+   "start": 975.84,
+   "duration": 3.72,
+   "text": "server available. So, make sure that you"
+  },
+  {
+   "start": 977.56,
+   "duration": 5.8,
+   "text": "know about these things."
+  },
+  {
+   "start": 979.56,
+   "duration": 7.56,
+   "text": "Okay. So, moving on, meet GitHub's"
+  },
+  {
+   "start": 983.36,
+   "duration": 5.72,
+   "text": "official MCP server. So, um"
+  },
+  {
+   "start": 987.12,
+   "duration": 4.4,
+   "text": "GitHub builds and maintains their own"
+  },
+  {
+   "start": 989.08,
+   "duration": 4.72,
+   "text": "MCP server. Yeah, it's real. It's"
+  },
+  {
+   "start": 991.52,
+   "duration": 4.48,
+   "text": "official. It's the same one that powers"
+  },
+  {
+   "start": 993.8,
+   "duration": 3.88,
+   "text": "a lot of Cloud,"
+  },
+  {
+   "start": 996.0,
+   "duration": 4.12,
+   "text": "you know, for example, you ask you in a"
+  },
+  {
+   "start": 997.68,
+   "duration": 4.4,
+   "text": "Cloud server, \"Hey, look at this PR.\""
+  },
+  {
+   "start": 1000.12,
+   "duration": 4.88,
+   "text": "Raise a PR or something like that. You"
+  },
+  {
+   "start": 1002.08,
+   "duration": 5.96,
+   "text": "say people use Cloud for pushing and"
+  },
+  {
+   "start": 1005.0,
+   "duration": 4.92,
+   "text": "pulling as well, creating PRs, reviewing"
+  },
+  {
+   "start": 1008.04,
+   "duration": 4.56,
+   "text": "PRs, all of these things, right?"
+  },
+  {
+   "start": 1009.92,
+   "duration": 5.44,
+   "text": "So, um it's it it's kind of exposes"
+  },
+  {
+   "start": 1012.6,
+   "duration": 4.88,
+   "text": "GitHub's own platform, repos, issues,"
+  },
+  {
+   "start": 1015.36,
+   "duration": 4.32,
+   "text": "pull request, actions, and a bunch more"
+  },
+  {
+   "start": 1017.48,
+   "duration": 4.88,
+   "text": "lot of tools, right? Via that MCP"
+  },
+  {
+   "start": 1019.68,
+   "duration": 4.759,
+   "text": "server. Yeah? And it comes in two two"
+  },
+  {
+   "start": 1022.36,
+   "duration": 4.16,
+   "text": "flavors."
+  },
+  {
+   "start": 1024.439,
+   "duration": 5.041,
+   "text": "One is a remote"
+  },
+  {
+   "start": 1026.52,
+   "duration": 5.6,
+   "text": "hosted version. You just point to a URL,"
+  },
+  {
+   "start": 1029.48,
+   "duration": 4.479,
+   "text": "nothing to install, and there is another"
+  },
+  {
+   "start": 1032.12,
+   "duration": 5.199,
+   "text": "way that is also known as a local"
+  },
+  {
+   "start": 1033.959,
+   "duration": 6.88,
+   "text": "version that you run yourself, usually"
+  },
+  {
+   "start": 1037.319,
+   "duration": 6.921,
+   "text": "via Docker that basically reads a token"
+  },
+  {
+   "start": 1040.839,
+   "duration": 6.201,
+   "text": "from your own environment. Okay? But for"
+  },
+  {
+   "start": 1044.24,
+   "duration": 4.56,
+   "text": "today we are going to use the remote"
+  },
+  {
+   "start": 1047.04,
+   "duration": 4.0,
+   "text": "technique. Yeah, because"
+  },
+  {
+   "start": 1048.8,
+   "duration": 5.84,
+   "text": "it's just one config block and zero"
+  },
+  {
+   "start": 1051.04,
+   "duration": 5.04,
+   "text": "installs. It says exactly the story this"
+  },
+  {
+   "start": 1054.64,
+   "duration": 2.8,
+   "text": "pattern is supposed to tell. So we're"
+  },
+  {
+   "start": 1056.08,
+   "duration": 3.28,
+   "text": "going to use that."
+  },
+  {
+   "start": 1057.44,
+   "duration": 4.4,
+   "text": "Okay? And just to clarify one thing,"
+  },
+  {
+   "start": 1059.36,
+   "duration": 5.92,
+   "text": "this is the official remote endpoint."
+  },
+  {
+   "start": 1061.84,
+   "duration": 6.56,
+   "text": "Yeah, so api.githubcopilot.com/mcp."
+  },
+  {
+   "start": 1065.28,
+   "duration": 4.48,
+   "text": "Um that is the that is the host. So you"
+  },
+  {
+   "start": 1068.4,
+   "duration": 3.92,
+   "text": "may make sure that you know about the"
+  },
+  {
+   "start": 1069.76,
+   "duration": 4.24,
+   "text": "host. And it is not github.com. That is"
+  },
+  {
+   "start": 1072.32,
+   "duration": 5.0,
+   "text": "the wrong host."
+  },
+  {
+   "start": 1074.0,
+   "duration": 5.04,
+   "text": "So make sure that you're not um"
+  },
+  {
+   "start": 1077.32,
+   "duration": 3.88,
+   "text": "you know, working with the wrong host."
+  },
+  {
+   "start": 1079.04,
+   "duration": 3.72,
+   "text": "So just clarifying that. You know, a lot"
+  },
+  {
+   "start": 1081.2,
+   "duration": 4.56,
+   "text": "of people ask me this question, so I"
+  },
+  {
+   "start": 1082.76,
+   "duration": 6.92,
+   "text": "just wanted to do that."
+  },
+  {
+   "start": 1085.76,
+   "duration": 5.64,
+   "text": "Okay, so writing mcp.json."
+  },
+  {
+   "start": 1089.68,
+   "duration": 3.56,
+   "text": "So that is the that's where we start"
+  },
+  {
+   "start": 1091.4,
+   "duration": 3.68,
+   "text": "actually with the practical side of this"
+  },
+  {
+   "start": 1093.24,
+   "duration": 3.72,
+   "text": "lesson. So"
+  },
+  {
+   "start": 1095.08,
+   "duration": 4.64,
+   "text": "here's the whole thing, right?"
+  },
+  {
+   "start": 1096.96,
+   "duration": 5.8,
+   "text": "And notice what is not here. There is no"
+  },
+  {
+   "start": 1099.72,
+   "duration": 4.84,
+   "text": "Python that is involved over here. Okay?"
+  },
+  {
+   "start": 1102.76,
+   "duration": 4.36,
+   "text": "No import, no function definition. This"
+  },
+  {
+   "start": 1104.56,
+   "duration": 4.88,
+   "text": "is pure configuration. So if if I go"
+  },
+  {
+   "start": 1107.12,
+   "duration": 3.84,
+   "text": "back, let's create that particular thing"
+  },
+  {
+   "start": 1109.44,
+   "duration": 4.04,
+   "text": "over here."
+  },
+  {
+   "start": 1110.96,
+   "duration": 5.2,
+   "text": "And uh"
+  },
+  {
+   "start": 1113.48,
+   "duration": 4.8,
+   "text": "we are going to create it inside episode"
+  },
+  {
+   "start": 1116.16,
+   "duration": 3.68,
+   "text": "number nine. So let's just"
+  },
+  {
+   "start": 1118.28,
+   "duration": 3.68,
+   "text": "close everything. We need the snippets"
+  },
+  {
+   "start": 1119.84,
+   "duration": 5.88,
+   "text": "file, obviously. So"
+  },
+  {
+   "start": 1121.96,
+   "duration": 5.6,
+   "text": "uh here I'm just going to say"
+  },
+  {
+   "start": 1125.72,
+   "duration": 3.36,
+   "text": "create a new file and we're going to"
+  },
+  {
+   "start": 1127.56,
+   "duration": 4.36,
+   "text": "name it as"
+  },
+  {
+   "start": 1129.08,
+   "duration": 4.8,
+   "text": "uh dot mcp"
+  },
+  {
+   "start": 1131.92,
+   "duration": 4.4,
+   "text": ".json."
+  },
+  {
+   "start": 1133.88,
+   "duration": 3.44,
+   "text": "Oh, my bad."
+  },
+  {
+   "start": 1136.32,
+   "duration": 4.32,
+   "text": "Yeah."
+  },
+  {
+   "start": 1137.32,
+   "duration": 5.28,
+   "text": "And here if I go to the snippets file,"
+  },
+  {
+   "start": 1140.64,
+   "duration": 3.6,
+   "text": "I'm going to just say"
+  },
+  {
+   "start": 1142.6,
+   "duration": 5.2,
+   "text": "format it a bit."
+  },
+  {
+   "start": 1144.24,
+   "duration": 5.28,
+   "text": "Yeah. So okay, before I even"
+  },
+  {
+   "start": 1147.8,
+   "duration": 4.0,
+   "text": "you know, talk about this"
+  },
+  {
+   "start": 1149.52,
+   "duration": 4.56,
+   "text": "um there should there there there is one"
+  },
+  {
+   "start": 1151.8,
+   "duration": 3.68,
+   "text": "thing that you to set it up before we"
+  },
+  {
+   "start": 1154.08,
+   "duration": 3.24,
+   "text": "actually do it. You need to set up a"
+  },
+  {
+   "start": 1155.48,
+   "duration": 3.8,
+   "text": "GitHub token."
+  },
+  {
+   "start": 1157.32,
+   "duration": 3.68,
+   "text": "Personal access token. It's pretty easy"
+  },
+  {
+   "start": 1159.28,
+   "duration": 3.92,
+   "text": "to generate. I will show you in a minute"
+  },
+  {
+   "start": 1161.0,
+   "duration": 2.96,
+   "text": "how to do that. But"
+  },
+  {
+   "start": 1163.2,
+   "duration": 2.68,
+   "text": "uh"
+  },
+  {
+   "start": 1163.96,
+   "duration": 4.84,
+   "text": "this this basically a personal access"
+  },
+  {
+   "start": 1165.88,
+   "duration": 6.08,
+   "text": "token is used when you want to work with"
+  },
+  {
+   "start": 1168.8,
+   "duration": 5.04,
+   "text": "GitHub APIs or MCP server via your"
+  },
+  {
+   "start": 1171.96,
+   "duration": 4.44,
+   "text": "application or something, right? Because"
+  },
+  {
+   "start": 1173.84,
+   "duration": 4.28,
+   "text": "every time you want to do some GitHub um"
+  },
+  {
+   "start": 1176.4,
+   "duration": 4.84,
+   "text": "operation via your application, you"
+  },
+  {
+   "start": 1178.12,
+   "duration": 4.52,
+   "text": "cannot enter the username and password,"
+  },
+  {
+   "start": 1181.24,
+   "duration": 2.72,
+   "text": "right? So, that is not going to work."
+  },
+  {
+   "start": 1182.64,
+   "duration": 2.92,
+   "text": "So, you're going to use a personal"
+  },
+  {
+   "start": 1183.96,
+   "duration": 5.64,
+   "text": "access token."
+  },
+  {
+   "start": 1185.56,
+   "duration": 5.72,
+   "text": "Yeah. And uh if I just go over here and"
+  },
+  {
+   "start": 1189.6,
+   "duration": 6.0,
+   "text": "I'll just copy this"
+  },
+  {
+   "start": 1191.28,
+   "duration": 7.84,
+   "text": "code from here and put it in mcp.json."
+  },
+  {
+   "start": 1195.6,
+   "duration": 5.32,
+   "text": "And uh if you see"
+  },
+  {
+   "start": 1199.12,
+   "duration": 3.6,
+   "text": "the headers"
+  },
+  {
+   "start": 1200.92,
+   "duration": 3.44,
+   "text": "for this communication. So, this is"
+  },
+  {
+   "start": 1202.72,
+   "duration": 5.04,
+   "text": "basically how"
+  },
+  {
+   "start": 1204.36,
+   "duration": 4.44,
+   "text": "uh the anatomy of your uh .mcp.json"
+  },
+  {
+   "start": 1207.76,
+   "duration": 3.44,
+   "text": "looks."
+  },
+  {
+   "start": 1208.8,
+   "duration": 5.6,
+   "text": "Right? So, the server name is GitHub"
+  },
+  {
+   "start": 1211.2,
+   "duration": 6.32,
+   "text": "Copilot. That I already clarified. Okay?"
+  },
+  {
+   "start": 1214.4,
+   "duration": 5.68,
+   "text": "And if you see"
+  },
+  {
+   "start": 1217.52,
+   "duration": 5.04,
+   "text": "X-MCP tool sets is basically what we are"
+  },
+  {
+   "start": 1220.08,
+   "duration": 4.8,
+   "text": "providing as pull request."
+  },
+  {
+   "start": 1222.56,
+   "duration": 4.6,
+   "text": "And if you see this is type as HTTP"
+  },
+  {
+   "start": 1224.88,
+   "duration": 5.32,
+   "text": "because it's the HTTP remote server."
+  },
+  {
+   "start": 1227.16,
+   "duration": 6.12,
+   "text": "Now, coming to this thing, okay?"
+  },
+  {
+   "start": 1230.2,
+   "duration": 5.6,
+   "text": "This dollar GitHub PAT is not a"
+  },
+  {
+   "start": 1233.28,
+   "duration": 4.84,
+   "text": "placeholder that I will kind of forgot"
+  },
+  {
+   "start": 1235.8,
+   "duration": 4.6,
+   "text": "to fill in or I will do it later."
+  },
+  {
+   "start": 1238.12,
+   "duration": 4.0,
+   "text": "It's actually the final syntax. This is"
+  },
+  {
+   "start": 1240.4,
+   "duration": 4.12,
+   "text": "all you would need to connect to that"
+  },
+  {
+   "start": 1242.12,
+   "duration": 4.72,
+   "text": "particular GitHub MCP server. Okay, let"
+  },
+  {
+   "start": 1244.52,
+   "duration": 3.68,
+   "text": "me expand that."
+  },
+  {
+   "start": 1246.84,
+   "duration": 3.48,
+   "text": "Right?"
+  },
+  {
+   "start": 1248.2,
+   "duration": 4.32,
+   "text": "Now, it has a variable name that is has"
+  },
+  {
+   "start": 1250.32,
+   "duration": 4.52,
+   "text": "saying GitHub PAT because you should not"
+  },
+  {
+   "start": 1252.52,
+   "duration": 4.24,
+   "text": "copy your uh personal access token and"
+  },
+  {
+   "start": 1254.84,
+   "duration": 4.52,
+   "text": "paste it over here. That is not a very"
+  },
+  {
+   "start": 1256.76,
+   "duration": 6.16,
+   "text": "good way of doing it. Instead, what you"
+  },
+  {
+   "start": 1259.36,
+   "duration": 5.28,
+   "text": "would do is basically export your"
+  },
+  {
+   "start": 1262.92,
+   "duration": 3.64,
+   "text": "uh personal access token that I'll show"
+  },
+  {
+   "start": 1264.64,
+   "duration": 4.8,
+   "text": "you how to generate in a minute. And"
+  },
+  {
+   "start": 1266.56,
+   "duration": 3.92,
+   "text": "then you provide the it as a variable."
+  },
+  {
+   "start": 1269.44,
+   "duration": 3.08,
+   "text": "So, it will pick it up from your"
+  },
+  {
+   "start": 1270.48,
+   "duration": 5.52,
+   "text": "environment variable and then it will"
+  },
+  {
+   "start": 1272.52,
+   "duration": 5.96,
+   "text": "basically establish the connection um"
+  },
+  {
+   "start": 1276.0,
+   "duration": 4.24,
+   "text": "with GitHub, basically."
+  },
+  {
+   "start": 1278.48,
+   "duration": 3.28,
+   "text": "Yeah. And before a very quick"
+  },
+  {
+   "start": 1280.24,
+   "duration": 2.88,
+   "text": "recommendation that I'm going to tell"
+  },
+  {
+   "start": 1281.76,
+   "duration": 3.44,
+   "text": "you, right?"
+  },
+  {
+   "start": 1283.12,
+   "duration": 5.16,
+   "text": "Uh use a fine-grained personal access"
+  },
+  {
+   "start": 1285.2,
+   "duration": 5.16,
+   "text": "token which only has kind of read-only"
+  },
+  {
+   "start": 1288.28,
+   "duration": 3.56,
+   "text": "uh access and it is scoped down to just"
+  },
+  {
+   "start": 1290.36,
+   "duration": 2.28,
+   "text": "pull requests"
+  },
+  {
+   "start": 1291.84,
+   "duration": 3.88,
+   "text": "um"
+  },
+  {
+   "start": 1292.64,
+   "duration": 4.92,
+   "text": "and only on one repo, right? Because uh"
+  },
+  {
+   "start": 1295.72,
+   "duration": 3.84,
+   "text": "sometimes there are a lot of checks that"
+  },
+  {
+   "start": 1297.56,
+   "duration": 4.88,
+   "text": "I we would see uh while creating the"
+  },
+  {
+   "start": 1299.56,
+   "duration": 5.28,
+   "text": "personal access token. Um"
+  },
+  {
+   "start": 1302.44,
+   "duration": 3.92,
+   "text": "there everyone just checks everything."
+  },
+  {
+   "start": 1304.84,
+   "duration": 3.68,
+   "text": "Gives right access, delete repo,"
+  },
+  {
+   "start": 1306.36,
+   "duration": 5.24,
+   "text": "everything. And if your Claude agent"
+  },
+  {
+   "start": 1308.52,
+   "duration": 5.32,
+   "text": "kind of has the personal access token"
+  },
+  {
+   "start": 1311.6,
+   "duration": 4.6,
+   "text": "uh with all of these accesses and if it"
+  },
+  {
+   "start": 1313.84,
+   "duration": 4.64,
+   "text": "for example, by mistakenly deletes your"
+  },
+  {
+   "start": 1316.2,
+   "duration": 4.56,
+   "text": "repo and you just go and scold Claude"
+  },
+  {
+   "start": 1318.48,
+   "duration": 4.16,
+   "text": "for that, but it's not Claude's fault."
+  },
+  {
+   "start": 1320.76,
+   "duration": 2.88,
+   "text": "It is your fault that you gave so much"
+  },
+  {
+   "start": 1322.64,
+   "duration": 2.52,
+   "text": "power"
+  },
+  {
+   "start": 1323.64,
+   "duration": 3.4,
+   "text": "and now that it has done something you"
+  },
+  {
+   "start": 1325.16,
+   "duration": 4.0,
+   "text": "are going to shout. So, that is not the"
+  },
+  {
+   "start": 1327.04,
+   "duration": 3.68,
+   "text": "particular way of doing things. You"
+  },
+  {
+   "start": 1329.16,
+   "duration": 2.72,
+   "text": "should follow the principle of least"
+  },
+  {
+   "start": 1330.72,
+   "duration": 3.16,
+   "text": "privilege."
+  },
+  {
+   "start": 1331.88,
+   "duration": 3.48,
+   "text": "Okay. So, keeping our keeping that out"
+  },
+  {
+   "start": 1333.88,
+   "duration": 3.32,
+   "text": "of the way, let's see how you can"
+  },
+  {
+   "start": 1335.36,
+   "duration": 3.48,
+   "text": "generate a personal access token. Okay."
+  },
+  {
+   "start": 1337.2,
+   "duration": 3.36,
+   "text": "So, now I'm going to show you how you"
+  },
+  {
+   "start": 1338.84,
+   "duration": 3.72,
+   "text": "can create your own personal access"
+  },
+  {
+   "start": 1340.56,
+   "duration": 4.36,
+   "text": "token. And if you're wondering who is"
+  },
+  {
+   "start": 1342.56,
+   "duration": 4.36,
+   "text": "this handsome-looking guy, that's me"
+  },
+  {
+   "start": 1344.92,
+   "duration": 4.08,
+   "text": "in college. Yeah."
+  },
+  {
+   "start": 1346.92,
+   "duration": 3.16,
+   "text": "So, don't please don't make fun of me."
+  },
+  {
+   "start": 1349.0,
+   "duration": 3.92,
+   "text": "Anyways,"
+  },
+  {
+   "start": 1350.08,
+   "duration": 4.6,
+   "text": "I didn't bother to change my profile"
+  },
+  {
+   "start": 1352.92,
+   "duration": 3.88,
+   "text": "picture after"
+  },
+  {
+   "start": 1354.68,
+   "duration": 5.08,
+   "text": "pass passing out of college, actually."
+  },
+  {
+   "start": 1356.8,
+   "duration": 5.96,
+   "text": "So, um I need to change that. Anyways,"
+  },
+  {
+   "start": 1359.76,
+   "duration": 5.68,
+   "text": "uh so, you can go to your settings. It"
+  },
+  {
+   "start": 1362.76,
+   "duration": 3.72,
+   "text": "just keeps popping up everywhere, no?"
+  },
+  {
+   "start": 1365.44,
+   "duration": 3.68,
+   "text": "Okay."
+  },
+  {
+   "start": 1366.48,
+   "duration": 3.6,
+   "text": "And you have to go to credentials,"
+  },
+  {
+   "start": 1369.12,
+   "duration": 2.88,
+   "text": "right?"
+  },
+  {
+   "start": 1370.08,
+   "duration": 4.08,
+   "text": "And um"
+  },
+  {
+   "start": 1372.0,
+   "duration": 4.2,
+   "text": "you can I have I you can see that uh you"
+  },
+  {
+   "start": 1374.16,
+   "duration": 3.48,
+   "text": "can generate a fine-grained personal"
+  },
+  {
+   "start": 1376.2,
+   "duration": 2.84,
+   "text": "access token, fine-grained personal"
+  },
+  {
+   "start": 1377.64,
+   "duration": 3.24,
+   "text": "access token generated by a personal"
+  },
+  {
+   "start": 1379.04,
+   "duration": 4.84,
+   "text": "account, or you can go for a personal"
+  },
+  {
+   "start": 1380.88,
+   "duration": 5.0,
+   "text": "access token classic, right? So,"
+  },
+  {
+   "start": 1383.88,
+   "duration": 4.2,
+   "text": "uh I have already created this"
+  },
+  {
+   "start": 1385.88,
+   "duration": 5.32,
+   "text": "particular token. You have to generate a"
+  },
+  {
+   "start": 1388.08,
+   "duration": 5.08,
+   "text": "new token, and then you have to give the"
+  },
+  {
+   "start": 1391.2,
+   "duration": 4.16,
+   "text": "scopes that you would want to give to"
+  },
+  {
+   "start": 1393.16,
+   "duration": 4.08,
+   "text": "that token. I mean, what actions can"
+  },
+  {
+   "start": 1395.36,
+   "duration": 3.52,
+   "text": "someone perform by using that token,"
+  },
+  {
+   "start": 1397.24,
+   "duration": 3.64,
+   "text": "right? You have to kind of"
+  },
+  {
+   "start": 1398.88,
+   "duration": 3.8,
+   "text": "uh assign that yourself. You just There"
+  },
+  {
+   "start": 1400.88,
+   "duration": 4.2,
+   "text": "will be one checkbox, and that's all you"
+  },
+  {
+   "start": 1402.68,
+   "duration": 4.32,
+   "text": "have to do. Check the things that you"
+  },
+  {
+   "start": 1405.08,
+   "duration": 3.56,
+   "text": "want the personal access token to do."
+  },
+  {
+   "start": 1407.0,
+   "duration": 4.8,
+   "text": "Now, I have already created that as"
+  },
+  {
+   "start": 1408.64,
+   "duration": 4.84,
+   "text": "shown, and I have set this uh particular"
+  },
+  {
+   "start": 1411.8,
+   "duration": 5.0,
+   "text": "GitHub PAT,"
+  },
+  {
+   "start": 1413.48,
+   "duration": 5.12,
+   "text": "yeah, as the environment variable."
+  },
+  {
+   "start": 1416.8,
+   "duration": 4.4,
+   "text": "But, before we actually move forward,"
+  },
+  {
+   "start": 1418.6,
+   "duration": 3.6,
+   "text": "right? I just want to clarify one simple"
+  },
+  {
+   "start": 1421.2,
+   "duration": 2.84,
+   "text": "thing."
+  },
+  {
+   "start": 1422.2,
+   "duration": 4.56,
+   "text": "Uh there is one gotcha."
+  },
+  {
+   "start": 1424.04,
+   "duration": 3.68,
+   "text": "Okay, the headers expansion bug."
+  },
+  {
+   "start": 1426.76,
+   "duration": 3.36,
+   "text": "Okay?"
+  },
+  {
+   "start": 1427.72,
+   "duration": 4.96,
+   "text": "Now, this is the one I promised from the"
+  },
+  {
+   "start": 1430.12,
+   "duration": 5.68,
+   "text": "start that I would talk about. Okay, so"
+  },
+  {
+   "start": 1432.68,
+   "duration": 5.16,
+   "text": "Anthropic's own current doc says plainly"
+  },
+  {
+   "start": 1435.8,
+   "duration": 5.12,
+   "text": "that, you know, if you are going to go"
+  },
+  {
+   "start": 1437.84,
+   "duration": 5.6,
+   "text": "for a dollar var expansion,"
+  },
+  {
+   "start": 1440.92,
+   "duration": 5.04,
+   "text": "uh you know, it works in headers for"
+  },
+  {
+   "start": 1443.44,
+   "duration": 5.56,
+   "text": "HTTP type servers, same as it works in"
+  },
+  {
+   "start": 1445.96,
+   "duration": 5.64,
+   "text": "ENV for STDIO servers. That's the"
+  },
+  {
+   "start": 1449.0,
+   "duration": 4.84,
+   "text": "documented behavior. But,"
+  },
+  {
+   "start": 1451.6,
+   "duration": 4.88,
+   "text": "that is what it says, right? It works in"
+  },
+  {
+   "start": 1453.84,
+   "duration": 6.12,
+   "text": "headers for HTTP type servers, and also"
+  },
+  {
+   "start": 1456.48,
+   "duration": 6.08,
+   "text": "for STDIO type servers."
+  },
+  {
+   "start": 1459.96,
+   "duration": 4.64,
+   "text": "But, there is a still one open GitHub"
+  },
+  {
+   "start": 1462.56,
+   "duration": 4.92,
+   "text": "issue as of like few months ago. I don't"
+  },
+  {
+   "start": 1464.6,
+   "duration": 5.92,
+   "text": "know if it has been closed or not, that"
+  },
+  {
+   "start": 1467.48,
+   "duration": 5.48,
+   "text": "multiple people have reported that on"
+  },
+  {
+   "start": 1470.52,
+   "duration": 5.4,
+   "text": "some kind of setups, the substitution"
+  },
+  {
+   "start": 1472.96,
+   "duration": 5.64,
+   "text": "silently does not happen."
+  },
+  {
+   "start": 1475.92,
+   "duration": 4.32,
+   "text": "I mean, specifically for headers on HTTP"
+  },
+  {
+   "start": 1478.6,
+   "duration": 3.44,
+   "text": "transport"
+  },
+  {
+   "start": 1480.24,
+   "duration": 3.04,
+   "text": "servers, basically."
+  },
+  {
+   "start": 1482.04,
+   "duration": 4.0,
+   "text": "So, what I What is happening is the"
+  },
+  {
+   "start": 1483.28,
+   "duration": 4.88,
+   "text": "literal, you know, dollar GitHub PAT,"
+  },
+  {
+   "start": 1486.04,
+   "duration": 4.44,
+   "text": "right? That we have over here."
+  },
+  {
+   "start": 1488.16,
+   "duration": 3.6,
+   "text": "It gets sent instead of the actual"
+  },
+  {
+   "start": 1490.48,
+   "duration": 2.68,
+   "text": "value."
+  },
+  {
+   "start": 1491.76,
+   "duration": 4.56,
+   "text": "Yeah?"
+  },
+  {
+   "start": 1493.16,
+   "duration": 6.36,
+   "text": "Now, same syntax, it's working fine in"
+  },
+  {
+   "start": 1496.32,
+   "duration": 6.28,
+   "text": "ENV for STDIO servers, just not always"
+  },
+  {
+   "start": 1499.52,
+   "duration": 4.96,
+   "text": "reaching HTTP headers. So, that is one"
+  },
+  {
+   "start": 1502.6,
+   "duration": 3.52,
+   "text": "thing that you need to keep in mind. And"
+  },
+  {
+   "start": 1504.48,
+   "duration": 3.2,
+   "text": "I'm not going to pretend that I went"
+  },
+  {
+   "start": 1506.12,
+   "duration": 3.56,
+   "text": "ahead and tested it out and all those"
+  },
+  {
+   "start": 1507.68,
+   "duration": 4.84,
+   "text": "things. I'm doing everything live as of"
+  },
+  {
+   "start": 1509.68,
+   "duration": 4.36,
+   "text": "now. I'm also going to run the Python"
+  },
+  {
+   "start": 1512.52,
+   "duration": 3.84,
+   "text": "script with you guys and see if it is"
+  },
+  {
+   "start": 1514.04,
+   "duration": 3.88,
+   "text": "working or not. If it is not working,"
+  },
+  {
+   "start": 1516.36,
+   "duration": 4.2,
+   "text": "then probably we have to find another"
+  },
+  {
+   "start": 1517.92,
+   "duration": 5.52,
+   "text": "way to pass it uh using some ENV"
+  },
+  {
+   "start": 1520.56,
+   "duration": 5.6,
+   "text": "variables. Uh some ENV file or something"
+  },
+  {
+   "start": 1523.44,
+   "duration": 5.32,
+   "text": "we have to kind of figure it out. But,"
+  },
+  {
+   "start": 1526.16,
+   "duration": 6.96,
+   "text": "you know, docs say the header support"
+  },
+  {
+   "start": 1528.76,
+   "duration": 7.72,
+   "text": "this dollar var expansion or expression."
+  },
+  {
+   "start": 1533.12,
+   "duration": 5.16,
+   "text": "But, open bug reports um say it doesn't"
+  },
+  {
+   "start": 1536.48,
+   "duration": 3.24,
+   "text": "always reach the HTTP transport headers"
+  },
+  {
+   "start": 1538.28,
+   "duration": 3.44,
+   "text": "in practice."
+  },
+  {
+   "start": 1539.72,
+   "duration": 4.32,
+   "text": "Um so, that's what we're going to do."
+  },
+  {
+   "start": 1541.72,
+   "duration": 3.84,
+   "text": "We're going to verify this fact live on"
+  },
+  {
+   "start": 1544.04,
+   "duration": 2.56,
+   "text": "camera."
+  },
+  {
+   "start": 1545.56,
+   "duration": 5.08,
+   "text": "So,"
+  },
+  {
+   "start": 1546.6,
+   "duration": 7.36,
+   "text": "now what we need to do is basically"
+  },
+  {
+   "start": 1550.64,
+   "duration": 6.16,
+   "text": "first, incorporate this kind of uh you"
+  },
+  {
+   "start": 1553.96,
+   "duration": 4.8,
+   "text": "know, this the server this MCP server"
+  },
+  {
+   "start": 1556.8,
+   "duration": 3.72,
+   "text": "logic in our agent.py. Then, we're going"
+  },
+  {
+   "start": 1558.76,
+   "duration": 4.36,
+   "text": "to run it and we're going to see if it"
+  },
+  {
+   "start": 1560.52,
+   "duration": 5.16,
+   "text": "is reaching the server or not."
+  },
+  {
+   "start": 1563.12,
+   "duration": 5.48,
+   "text": "So, uh this configuration we are already"
+  },
+  {
+   "start": 1565.68,
+   "duration": 4.52,
+   "text": "done with. Now, we have to wire it in"
+  },
+  {
+   "start": 1568.6,
+   "duration": 2.52,
+   "text": "agent.py."
+  },
+  {
+   "start": 1570.2,
+   "duration": 2.6,
+   "text": "Okay?"
+  },
+  {
+   "start": 1571.12,
+   "duration": 4.44,
+   "text": "Now, nothing will change as I had"
+  },
+  {
+   "start": 1572.8,
+   "duration": 6.0,
+   "text": "mentioned. I am not going to kind of"
+  },
+  {
+   "start": 1575.56,
+   "duration": 5.72,
+   "text": "override the code that we have been kind"
+  },
+  {
+   "start": 1578.8,
+   "duration": 5.2,
+   "text": "of building since episode 1 to episode 8"
+  },
+  {
+   "start": 1581.28,
+   "duration": 5.48,
+   "text": "where we had some mock PRs in our tools"
+  },
+  {
+   "start": 1584.0,
+   "duration": 6.2,
+   "text": "file. So, till now we have been working"
+  },
+  {
+   "start": 1586.76,
+   "duration": 5.68,
+   "text": "with these mock PRs because we wanted"
+  },
+  {
+   "start": 1590.2,
+   "duration": 4.8,
+   "text": "to, you know, understand the concept"
+  },
+  {
+   "start": 1592.44,
+   "duration": 4.52,
+   "text": "first before working with real data. So,"
+  },
+  {
+   "start": 1595.0,
+   "duration": 3.96,
+   "text": "I'm going to keep it the same way as it"
+  },
+  {
+   "start": 1596.96,
+   "duration": 4.08,
+   "text": "is. The only thing that I'm going to"
+  },
+  {
+   "start": 1598.96,
+   "duration": 3.16,
+   "text": "introduce is this kind of a toggle"
+  },
+  {
+   "start": 1601.04,
+   "duration": 5.16,
+   "text": "switch."
+  },
+  {
+   "start": 1602.12,
+   "duration": 6.64,
+   "text": "Okay? So, it's just scope to exactly one"
+  },
+  {
+   "start": 1606.2,
+   "duration": 5.0,
+   "text": "read-only tool, right? That is going to"
+  },
+  {
+   "start": 1608.76,
+   "duration": 5.6,
+   "text": "be the pull request rate. If the include"
+  },
+  {
+   "start": 1611.2,
+   "duration": 5.4,
+   "text": "GitHub switch is on, basically, this"
+  },
+  {
+   "start": 1614.36,
+   "duration": 4.08,
+   "text": "tool that"
+  },
+  {
+   "start": 1616.6,
+   "duration": 5.04,
+   "text": "XMCP tool sets that we have seen that"
+  },
+  {
+   "start": 1618.44,
+   "duration": 5.24,
+   "text": "pull requests, right? This tool, I'm"
+  },
+  {
+   "start": 1621.64,
+   "duration": 5.24,
+   "text": "giving a cloud the free hand, you know,"
+  },
+  {
+   "start": 1623.68,
+   "duration": 5.04,
+   "text": "you go ahead and use this tool."
+  },
+  {
+   "start": 1626.88,
+   "duration": 3.96,
+   "text": "Right? So, that is what going to happen"
+  },
+  {
+   "start": 1628.72,
+   "duration": 4.36,
+   "text": "over here. So, if this"
+  },
+  {
+   "start": 1630.84,
+   "duration": 3.44,
+   "text": "toggle is on, yeah,"
+  },
+  {
+   "start": 1633.08,
+   "duration": 2.88,
+   "text": "uh uh"
+  },
+  {
+   "start": 1634.28,
+   "duration": 3.48,
+   "text": "it's scoped to exactly one read-only"
+  },
+  {
+   "start": 1635.96,
+   "duration": 4.56,
+   "text": "tool because GitHub server exposes"
+  },
+  {
+   "start": 1637.76,
+   "duration": 5.0,
+   "text": "dozens of tools across tool sets. And"
+  },
+  {
+   "start": 1640.52,
+   "duration": 4.72,
+   "text": "episode 6 already talked we are already"
+  },
+  {
+   "start": 1642.76,
+   "duration": 4.52,
+   "text": "kind of discussed in episode 6 that why"
+  },
+  {
+   "start": 1645.24,
+   "duration": 5.2,
+   "text": "we don't hand the model all of them. We"
+  },
+  {
+   "start": 1647.28,
+   "duration": 4.8,
+   "text": "only give scoped tools that the model"
+  },
+  {
+   "start": 1650.44,
+   "duration": 3.64,
+   "text": "needs at that particular point of time."
+  },
+  {
+   "start": 1652.08,
+   "duration": 4.4,
+   "text": "So, it will only be able to"
+  },
+  {
+   "start": 1654.08,
+   "duration": 5.0,
+   "text": "read I mean use this pull request read"
+  },
+  {
+   "start": 1656.48,
+   "duration": 4.84,
+   "text": "tool from the GitHub MCP server. So, if"
+  },
+  {
+   "start": 1659.08,
+   "duration": 4.76,
+   "text": "include GitHub allowed tools.dot.append"
+  },
+  {
+   "start": 1661.32,
+   "duration": 4.24,
+   "text": "this tool. This is one change. Second"
+  },
+  {
+   "start": 1663.84,
+   "duration": 4.92,
+   "text": "change is this build options. There will"
+  },
+  {
+   "start": 1665.56,
+   "duration": 6.16,
+   "text": "be one method, build options, will uh"
+  },
+  {
+   "start": 1668.76,
+   "duration": 5.84,
+   "text": "kind of put the GitHub include GitHub"
+  },
+  {
+   "start": 1671.72,
+   "duration": 4.84,
+   "text": "should be false from the default, right?"
+  },
+  {
+   "start": 1674.6,
+   "duration": 4.72,
+   "text": "Unless it is set to true."
+  },
+  {
+   "start": 1676.56,
+   "duration": 4.92,
+   "text": "Yeah? And uh everything would be the"
+  },
+  {
+   "start": 1679.32,
+   "duration": 5.16,
+   "text": "same as of now. And there would be a new"
+  },
+  {
+   "start": 1681.48,
+   "duration": 6.0,
+   "text": "entry point in agent.py. Now, I'm I'm"
+  },
+  {
+   "start": 1684.48,
+   "duration": 5.4,
+   "text": "showing you individual methods because"
+  },
+  {
+   "start": 1687.48,
+   "duration": 4.72,
+   "text": "currently, as we kept on adding the code"
+  },
+  {
+   "start": 1689.88,
+   "duration": 4.44,
+   "text": "to our agent.py file, it has become very"
+  },
+  {
+   "start": 1692.2,
+   "duration": 3.2,
+   "text": "large. So, I don't want to confuse you"
+  },
+  {
+   "start": 1694.32,
+   "duration": 2.92,
+   "text": "guys and"
+  },
+  {
+   "start": 1695.4,
+   "duration": 4.32,
+   "text": "explain the previous codes that we have"
+  },
+  {
+   "start": 1697.24,
+   "duration": 5.0,
+   "text": "already done again and again. We just"
+  },
+  {
+   "start": 1699.72,
+   "duration": 6.2,
+   "text": "only need to understand what is"
+  },
+  {
+   "start": 1702.24,
+   "duration": 6.04,
+   "text": "happening right now. So, this is the one"
+  },
+  {
+   "start": 1705.92,
+   "duration": 5.44,
+   "text": "entry point that got introduced."
+  },
+  {
+   "start": 1708.28,
+   "duration": 4.36,
+   "text": "It's a separate entry point if we are"
+  },
+  {
+   "start": 1711.36,
+   "duration": 4.56,
+   "text": "opting"
+  },
+  {
+   "start": 1712.64,
+   "duration": 5.64,
+   "text": "for calling the live GitHub MCP server."
+  },
+  {
+   "start": 1715.92,
+   "duration": 4.48,
+   "text": "We are kind of enabling that switch."
+  },
+  {
+   "start": 1718.28,
+   "duration": 4.48,
+   "text": "This is the entry point that"
+  },
+  {
+   "start": 1720.4,
+   "duration": 4.08,
+   "text": "you know, will kind of activate once we"
+  },
+  {
+   "start": 1722.76,
+   "duration": 3.84,
+   "text": "pass in the parameter that is the"
+  },
+  {
+   "start": 1724.48,
+   "duration": 4.56,
+   "text": "question. It is separate one of entry"
+  },
+  {
+   "start": 1726.6,
+   "duration": 4.48,
+   "text": "point that turns GitHub on. So, options"
+  },
+  {
+   "start": 1729.04,
+   "duration": 3.88,
+   "text": "equal to build options and here we are"
+  },
+  {
+   "start": 1731.08,
+   "duration": 5.32,
+   "text": "kind of kind of setting the include"
+  },
+  {
+   "start": 1732.92,
+   "duration": 5.32,
+   "text": "GitHub switch to true. Yeah? And then"
+  },
+  {
+   "start": 1736.4,
+   "duration": 3.44,
+   "text": "everything else is basically, you know,"
+  },
+  {
+   "start": 1738.24,
+   "duration": 3.72,
+   "text": "um"
+  },
+  {
+   "start": 1739.84,
+   "duration": 4.76,
+   "text": "uh you know, other things will work out."
+  },
+  {
+   "start": 1741.96,
+   "duration": 5.04,
+   "text": "Claude will use that tool and blah blah"
+  },
+  {
+   "start": 1744.6,
+   "duration": 3.4,
+   "text": "blah all those messages will be returned"
+  },
+  {
+   "start": 1747.0,
+   "duration": 2.4,
+   "text": "by Claude and then we're going to"
+  },
+  {
+   "start": 1748.0,
+   "duration": 3.24,
+   "text": "process it and we're going to finally"
+  },
+  {
+   "start": 1749.4,
+   "duration": 3.8,
+   "text": "display the summary. All of these things"
+  },
+  {
+   "start": 1751.24,
+   "duration": 5.4,
+   "text": "you understand. The only thing is that"
+  },
+  {
+   "start": 1753.2,
+   "duration": 5.72,
+   "text": "how we wired in that particular tool of"
+  },
+  {
+   "start": 1756.64,
+   "duration": 3.56,
+   "text": "GitHub MCP server without messing up our"
+  },
+  {
+   "start": 1758.92,
+   "duration": 3.04,
+   "text": "existing"
+  },
+  {
+   "start": 1760.2,
+   "duration": 4.2,
+   "text": "uh state of the project, right? I hope"
+  },
+  {
+   "start": 1761.96,
+   "duration": 3.92,
+   "text": "that is making sense. And I have made"
+  },
+  {
+   "start": 1764.4,
+   "duration": 3.84,
+   "text": "the change. I have put the change over"
+  },
+  {
+   "start": 1765.88,
+   "duration": 4.28,
+   "text": "here and there is a lot of reading that"
+  },
+  {
+   "start": 1768.24,
+   "duration": 3.12,
+   "text": "you can do that I have put in so that"
+  },
+  {
+   "start": 1770.16,
+   "duration": 2.24,
+   "text": "you would understand what is happening"
+  },
+  {
+   "start": 1771.36,
+   "duration": 2.72,
+   "text": "over here."
+  },
+  {
+   "start": 1772.4,
+   "duration": 3.92,
+   "text": "Yeah? So,"
+  },
+  {
+   "start": 1774.08,
+   "duration": 5.2,
+   "text": "uh GitHub it lives in mcp.json not in"
+  },
+  {
+   "start": 1776.32,
+   "duration": 6.96,
+   "text": "build option, yeah? But there would be"
+  },
+  {
+   "start": 1779.28,
+   "duration": 5.4,
+   "text": "one uh place where you see this is the"
+  },
+  {
+   "start": 1783.28,
+   "duration": 3.6,
+   "text": "build options that I just showed you in"
+  },
+  {
+   "start": 1784.68,
+   "duration": 5.32,
+   "text": "the snippets. And here by default we are"
+  },
+  {
+   "start": 1786.88,
+   "duration": 5.84,
+   "text": "setting get include GitHub is false. And"
+  },
+  {
+   "start": 1790.0,
+   "duration": 4.92,
+   "text": "if you see if the include GitHub is"
+  },
+  {
+   "start": 1792.72,
+   "duration": 5.0,
+   "text": "turned on to true, then we are going to"
+  },
+  {
+   "start": 1794.92,
+   "duration": 4.56,
+   "text": "append this particular MCP tool from"
+  },
+  {
+   "start": 1797.72,
+   "duration": 3.8,
+   "text": "GitHub server and we're going to give a"
+  },
+  {
+   "start": 1799.48,
+   "duration": 4.36,
+   "text": "free hand that without my permission"
+  },
+  {
+   "start": 1801.52,
+   "duration": 4.2,
+   "text": "also read this pull request and give me"
+  },
+  {
+   "start": 1803.84,
+   "duration": 2.84,
+   "text": "the insights. And I'm going to tell I'm"
+  },
+  {
+   "start": 1805.72,
+   "duration": 2.76,
+   "text": "going to"
+  },
+  {
+   "start": 1806.68,
+   "duration": 4.44,
+   "text": "give Claude that particular"
+  },
+  {
+   "start": 1808.48,
+   "duration": 6.12,
+   "text": "thing, right? And other things are good."
+  },
+  {
+   "start": 1811.12,
+   "duration": 5.96,
+   "text": "I mean MCP servers are good. Agents uh"
+  },
+  {
+   "start": 1814.6,
+   "duration": 4.28,
+   "text": "this thing allow tools, you already know"
+  },
+  {
+   "start": 1817.08,
+   "duration": 4.44,
+   "text": "what that is. We already have two"
+  },
+  {
+   "start": 1818.88,
+   "duration": 4.32,
+   "text": "skills, okay? Now, this is very"
+  },
+  {
+   "start": 1821.52,
+   "duration": 3.4,
+   "text": "important to understand that I wanted to"
+  },
+  {
+   "start": 1823.2,
+   "duration": 4.4,
+   "text": "point out right now. Setting sources"
+  },
+  {
+   "start": 1824.92,
+   "duration": 4.56,
+   "text": "equal to project. If you remember"
+  },
+  {
+   "start": 1827.6,
+   "duration": 4.96,
+   "text": "set when you set the setting sources to"
+  },
+  {
+   "start": 1829.48,
+   "duration": 5.24,
+   "text": "project, it will your agent will read"
+  },
+  {
+   "start": 1832.56,
+   "duration": 4.92,
+   "text": "all of your project level configuration"
+  },
+  {
+   "start": 1834.72,
+   "duration": 4.92,
+   "text": "files including your Claude.empty file,"
+  },
+  {
+   "start": 1837.48,
+   "duration": 3.48,
+   "text": "including your skills and all of those"
+  },
+  {
+   "start": 1839.64,
+   "duration": 4.4,
+   "text": "things, right?"
+  },
+  {
+   "start": 1840.96,
+   "duration": 6.16,
+   "text": "Now, if you skip it as empty, then Cloud"
+  },
+  {
+   "start": 1844.04,
+   "duration": 5.08,
+   "text": "will not consider any of the files."
+  },
+  {
+   "start": 1847.12,
+   "duration": 3.24,
+   "text": "Configuration files, including cloud.md"
+  },
+  {
+   "start": 1849.12,
+   "duration": 3.8,
+   "text": "and skills."
+  },
+  {
+   "start": 1850.36,
+   "duration": 4.48,
+   "text": "Now, the same thing goes for your"
+  },
+  {
+   "start": 1852.92,
+   "duration": 3.16,
+   "text": "mcp.mcp.json"
+  },
+  {
+   "start": 1854.84,
+   "duration": 3.96,
+   "text": "as well."
+  },
+  {
+   "start": 1856.08,
+   "duration": 4.56,
+   "text": "Right? I mean,"
+  },
+  {
+   "start": 1858.8,
+   "duration": 4.16,
+   "text": "if there is some kind of MCP server"
+  },
+  {
+   "start": 1860.64,
+   "duration": 4.36,
+   "text": "configuration as well, here you should"
+  },
+  {
+   "start": 1862.96,
+   "duration": 3.92,
+   "text": "set the setting sources as project so"
+  },
+  {
+   "start": 1865.0,
+   "duration": 4.0,
+   "text": "that, you know, your agent will know,"
+  },
+  {
+   "start": 1866.88,
+   "duration": 4.8,
+   "text": "okay, there is one configuration for MCP"
+  },
+  {
+   "start": 1869.0,
+   "duration": 4.92,
+   "text": "server from where I would need to get"
+  },
+  {
+   "start": 1871.68,
+   "duration": 3.84,
+   "text": "the tools from. If you don't set this,"
+  },
+  {
+   "start": 1873.92,
+   "duration": 4.08,
+   "text": "then it will not know that there is some"
+  },
+  {
+   "start": 1875.52,
+   "duration": 4.0,
+   "text": "MCP server that it needs to work on."
+  },
+  {
+   "start": 1878.0,
+   "duration": 3.4,
+   "text": "Right? I hope that's making sense. We"
+  },
+  {
+   "start": 1879.52,
+   "duration": 3.8,
+   "text": "already know about the permission mode,"
+  },
+  {
+   "start": 1881.4,
+   "duration": 4.88,
+   "text": "don't ask, basically,"
+  },
+  {
+   "start": 1883.32,
+   "duration": 5.48,
+   "text": "um for the skills. Yeah, the review runs"
+  },
+  {
+   "start": 1886.28,
+   "duration": 4.4,
+   "text": "headless. Nobody's at the terminal, so"
+  },
+  {
+   "start": 1888.8,
+   "duration": 3.2,
+   "text": "we don't don't ask for any permission,"
+  },
+  {
+   "start": 1890.68,
+   "duration": 2.68,
+   "text": "basically."
+  },
+  {
+   "start": 1892.0,
+   "duration": 3.64,
+   "text": "These are the hooks. I hope that's"
+  },
+  {
+   "start": 1893.36,
+   "duration": 5.36,
+   "text": "making sense. All these things are"
+  },
+  {
+   "start": 1895.64,
+   "duration": 5.04,
+   "text": "basically same from the previous"
+  },
+  {
+   "start": 1898.72,
+   "duration": 4.64,
+   "text": "episodes. This is the one thing that got"
+  },
+  {
+   "start": 1900.68,
+   "duration": 4.28,
+   "text": "introduced, ask about live repo. Yeah?"
+  },
+  {
+   "start": 1903.36,
+   "duration": 4.04,
+   "text": "It's a separate one-off entry point that"
+  },
+  {
+   "start": 1904.96,
+   "duration": 4.44,
+   "text": "turns GitHub on, and all these things"
+  },
+  {
+   "start": 1907.4,
+   "duration": 3.44,
+   "text": "are this thing, and it turns that toggle"
+  },
+  {
+   "start": 1909.4,
+   "duration": 3.28,
+   "text": "on. Right?"
+  },
+  {
+   "start": 1910.84,
+   "duration": 4.52,
+   "text": "Okay, so I hope"
+  },
+  {
+   "start": 1912.68,
+   "duration": 3.76,
+   "text": "uh that is a kind of making sense over"
+  },
+  {
+   "start": 1915.36,
+   "duration": 4.56,
+   "text": "here."
+  },
+  {
+   "start": 1916.44,
+   "duration": 5.64,
+   "text": "Yeah? And uh for for uh the demo"
+  },
+  {
+   "start": 1919.92,
+   "duration": 4.88,
+   "text": "purpose, what I have done is I have"
+  },
+  {
+   "start": 1922.08,
+   "duration": 3.88,
+   "text": "created, okay, again my photo came."
+  },
+  {
+   "start": 1924.8,
+   "duration": 2.68,
+   "text": "That's a"
+  },
+  {
+   "start": 1925.96,
+   "duration": 4.0,
+   "text": "different thing. So, I'm going to go to"
+  },
+  {
+   "start": 1927.48,
+   "duration": 5.12,
+   "text": "my um Cloud API master class uh"
+  },
+  {
+   "start": 1929.96,
+   "duration": 5.52,
+   "text": "repository, and um"
+  },
+  {
+   "start": 1932.6,
+   "duration": 5.72,
+   "text": "I had created one pull request uh just"
+  },
+  {
+   "start": 1935.48,
+   "duration": 4.56,
+   "text": "for this um demo purpose. Yeah? That our"
+  },
+  {
+   "start": 1938.32,
+   "duration": 3.52,
+   "text": "agent will read. And I've already"
+  },
+  {
+   "start": 1940.04,
+   "duration": 4.36,
+   "text": "mentioned that, you know, uh intent as a"
+  },
+  {
+   "start": 1941.84,
+   "duration": 5.16,
+   "text": "smoke test target for PR and repo review"
+  },
+  {
+   "start": 1944.4,
+   "duration": 4.84,
+   "text": "agent. Okay, I hope that's making sense."
+  },
+  {
+   "start": 1947.0,
+   "duration": 4.04,
+   "text": "Now, I hope the setup is done. You"
+  },
+  {
+   "start": 1949.24,
+   "duration": 4.68,
+   "text": "understood what changes we made into the"
+  },
+  {
+   "start": 1951.04,
+   "duration": 5.04,
+   "text": "agent, and how did we set up the MCP,"
+  },
+  {
+   "start": 1953.92,
+   "duration": 5.12,
+   "text": "and now is the time to"
+  },
+  {
+   "start": 1956.08,
+   "duration": 4.6,
+   "text": "run the agent. So, I ran this and uh as"
+  },
+  {
+   "start": 1959.04,
+   "duration": 4.0,
+   "text": "you can see over here,"
+  },
+  {
+   "start": 1960.68,
+   "duration": 4.04,
+   "text": "just one thing to uh point here is that"
+  },
+  {
+   "start": 1963.04,
+   "duration": 4.52,
+   "text": "you have to pass this {hyphen} {hyphen}"
+  },
+  {
+   "start": 1964.72,
+   "duration": 4.8,
+   "text": "live parameter so that toggle gets on"
+  },
+  {
+   "start": 1967.56,
+   "duration": 4.52,
+   "text": "and it goes into that particular method"
+  },
+  {
+   "start": 1969.52,
+   "duration": 4.36,
+   "text": "that I showed the new entry point and uh"
+  },
+  {
+   "start": 1972.08,
+   "duration": 3.72,
+   "text": "it actually interacts with the real"
+  },
+  {
+   "start": 1973.88,
+   "duration": 3.32,
+   "text": "GitHub MCP server, right? So, that is"
+  },
+  {
+   "start": 1975.8,
+   "duration": 4.4,
+   "text": "one thing that I wanted to point out."
+  },
+  {
+   "start": 1977.2,
+   "duration": 6.24,
+   "text": "Another thing is that um previously we"
+  },
+  {
+   "start": 1980.2,
+   "duration": 5.56,
+   "text": "had this pull request read tool, but"
+  },
+  {
+   "start": 1983.44,
+   "duration": 4.64,
+   "text": "what was happening is um I was getting"
+  },
+  {
+   "start": 1985.76,
+   "duration": 3.08,
+   "text": "an error that was saying that, you know,"
+  },
+  {
+   "start": 1988.08,
+   "duration": 2.32,
+   "text": "um"
+  },
+  {
+   "start": 1988.84,
+   "duration": 2.48,
+   "text": "doesn't have permission to read that"
+  },
+  {
+   "start": 1990.4,
+   "duration": 3.6,
+   "text": "tool."
+  },
+  {
+   "start": 1991.32,
+   "duration": 5.32,
+   "text": "So, I checked the uh personal access"
+  },
+  {
+   "start": 1994.0,
+   "duration": 5.44,
+   "text": "token and all those things. It was okay."
+  },
+  {
+   "start": 1996.64,
+   "duration": 4.44,
+   "text": "So, I thought maybe the tool name I"
+  },
+  {
+   "start": 1999.44,
+   "duration": 3.92,
+   "text": "would have put wrong. So, I just went"
+  },
+  {
+   "start": 2001.08,
+   "duration": 4.2,
+   "text": "into Google and just searched GitHub"
+  },
+  {
+   "start": 2003.36,
+   "duration": 4.56,
+   "text": "list pull request MCP tool name, but"
+  },
+  {
+   "start": 2005.28,
+   "duration": 5.76,
+   "text": "instead of pull request read it is list"
+  },
+  {
+   "start": 2007.92,
+   "duration": 6.4,
+   "text": "pull requests, right? So, I changed it"
+  },
+  {
+   "start": 2011.04,
+   "duration": 5.6,
+   "text": "to list pull request and uh I appended"
+  },
+  {
+   "start": 2014.32,
+   "duration": 4.84,
+   "text": "it to allow tools,"
+  },
+  {
+   "start": 2016.64,
+   "duration": 3.8,
+   "text": "and it started working out. Now, you can"
+  },
+  {
+   "start": 2019.16,
+   "duration": 3.48,
+   "text": "make"
+  },
+  {
+   "start": 2020.44,
+   "duration": 3.76,
+   "text": "you know, the you can give access to all"
+  },
+  {
+   "start": 2022.64,
+   "duration": 4.68,
+   "text": "of the tools that is there in that MCP"
+  },
+  {
+   "start": 2024.2,
+   "duration": 6.24,
+   "text": "server by using a wild card or like star"
+  },
+  {
+   "start": 2027.32,
+   "duration": 3.8,
+   "text": "or something. So, now uh you're giving"
+  },
+  {
+   "start": 2030.44,
+   "duration": 4.36,
+   "text": "uh"
+  },
+  {
+   "start": 2031.12,
+   "duration": 6.68,
+   "text": "the your uh agent to actually invoke any"
+  },
+  {
+   "start": 2034.8,
+   "duration": 4.48,
+   "text": "kind of tool uh in the GitHub MCP"
+  },
+  {
+   "start": 2037.8,
+   "duration": 3.68,
+   "text": "server, but that is not the way you"
+  },
+  {
+   "start": 2039.28,
+   "duration": 3.52,
+   "text": "should actually do. Instead of that, you"
+  },
+  {
+   "start": 2041.48,
+   "duration": 5.28,
+   "text": "should only give access to the"
+  },
+  {
+   "start": 2042.8,
+   "duration": 4.84,
+   "text": "particular um you know, um tool that is"
+  },
+  {
+   "start": 2046.76,
+   "duration": 2.48,
+   "text": "there."
+  },
+  {
+   "start": 2047.64,
+   "duration": 4.08,
+   "text": "That is needed to be used for your"
+  },
+  {
+   "start": 2049.24,
+   "duration": 4.679,
+   "text": "particular use case. So, when I put that"
+  },
+  {
+   "start": 2051.72,
+   "duration": 4.48,
+   "text": "and I ran it here, and I the question is"
+  },
+  {
+   "start": 2053.919,
+   "duration": 5.24,
+   "text": "what are the three most recently updated"
+  },
+  {
+   "start": 2056.2,
+   "duration": 5.08,
+   "text": "open pull request, and it very correctly"
+  },
+  {
+   "start": 2059.159,
+   "duration": 4.76,
+   "text": "gave me add sample for review py with"
+  },
+  {
+   "start": 2061.28,
+   "duration": 4.0,
+   "text": "one documented and one undocumented"
+  },
+  {
+   "start": 2063.919,
+   "duration": 3.0,
+   "text": "function, something like that. And this"
+  },
+  {
+   "start": 2065.28,
+   "duration": 3.48,
+   "text": "is the author and all these pull request"
+  },
+  {
+   "start": 2066.919,
+   "duration": 3.401,
+   "text": "details, and this is the link."
+  },
+  {
+   "start": 2068.76,
+   "duration": 4.04,
+   "text": "And as you can see that this is the"
+  },
+  {
+   "start": 2070.32,
+   "duration": 6.68,
+   "text": "particular pull request."
+  },
+  {
+   "start": 2072.8,
+   "duration": 6.44,
+   "text": "Okay? So, that was about this thing and"
+  },
+  {
+   "start": 2077.0,
+   "duration": 4.24,
+   "text": "I think all of these things are kind of"
+  },
+  {
+   "start": 2079.24,
+   "duration": 4.2,
+   "text": "explained. We already"
+  },
+  {
+   "start": 2081.24,
+   "duration": 4.32,
+   "text": "saw"
+  },
+  {
+   "start": 2083.44,
+   "duration": 3.64,
+   "text": "Uh I actually have put a slide over"
+  },
+  {
+   "start": 2085.56,
+   "duration": 4.56,
+   "text": "here. Now,"
+  },
+  {
+   "start": 2087.08,
+   "duration": 4.4,
+   "text": "it is actually pull request. No, no. Uh"
+  },
+  {
+   "start": 2090.12,
+   "duration": 4.4,
+   "text": "This is actually wrong. This slide I"
+  },
+  {
+   "start": 2091.48,
+   "duration": 5.76,
+   "text": "need to change. I would change if I see."
+  },
+  {
+   "start": 2094.52,
+   "duration": 4.4,
+   "text": "Otherwise, I already told you that the"
+  },
+  {
+   "start": 2097.24,
+   "duration": 3.68,
+   "text": "uh tool that we need to use is list pull"
+  },
+  {
+   "start": 2098.92,
+   "duration": 3.92,
+   "text": "request, right? So, you just"
+  },
+  {
+   "start": 2100.92,
+   "duration": 4.2,
+   "text": "work with that."
+  },
+  {
+   "start": 2102.84,
+   "duration": 4.6,
+   "text": "Okay."
+  },
+  {
+   "start": 2105.12,
+   "duration": 2.32,
+   "text": "So,"
+  },
+  {
+   "start": 2108.12,
+   "duration": 4.8,
+   "text": "we're going to we also did we wired it"
+  },
+  {
+   "start": 2110.52,
+   "duration": 5.04,
+   "text": "into the agent and"
+  },
+  {
+   "start": 2112.92,
+   "duration": 4.92,
+   "text": "we kind of ran the coordinator and now"
+  },
+  {
+   "start": 2115.56,
+   "duration": 5.0,
+   "text": "we're going to start with pattern number"
+  },
+  {
+   "start": 2117.84,
+   "duration": 6.08,
+   "text": "four, where we are going to build our"
+  },
+  {
+   "start": 2120.56,
+   "duration": 5.12,
+   "text": "own truly portable MCP server. And it's"
+  },
+  {
+   "start": 2123.92,
+   "duration": 4.08,
+   "text": "going to be amazing and we're going to"
+  },
+  {
+   "start": 2125.68,
+   "duration": 3.88,
+   "text": "learn a lot of things. So, let's start."
+  },
+  {
+   "start": 2128.0,
+   "duration": 2.76,
+   "text": "So, let's look at pattern number four,"
+  },
+  {
+   "start": 2129.56,
+   "duration": 2.96,
+   "text": "which is The last thing we're going to"
+  },
+  {
+   "start": 2130.76,
+   "duration": 4.28,
+   "text": "discuss is we're going to build our"
+  },
+  {
+   "start": 2132.52,
+   "duration": 5.4,
+   "text": "truly portable MCP server and we had"
+  },
+  {
+   "start": 2135.04,
+   "duration": 5.96,
+   "text": "discussed that it would be a STDIO based"
+  },
+  {
+   "start": 2137.92,
+   "duration": 5.64,
+   "text": "MCP server. Now, you can very much of go"
+  },
+  {
+   "start": 2141.0,
+   "duration": 4.32,
+   "text": "ahead and kind of make it available to"
+  },
+  {
+   "start": 2143.56,
+   "duration": 3.6,
+   "text": "the general public or to your own"
+  },
+  {
+   "start": 2145.32,
+   "duration": 4.68,
+   "text": "corporate network using the HTTP"
+  },
+  {
+   "start": 2147.16,
+   "duration": 6.12,
+   "text": "protocol, but now we're going to see how"
+  },
+  {
+   "start": 2150.0,
+   "duration": 4.56,
+   "text": "we can use the fast MCP server by Python"
+  },
+  {
+   "start": 2153.28,
+   "duration": 3.4,
+   "text": "and"
+  },
+  {
+   "start": 2154.56,
+   "duration": 5.04,
+   "text": "just create an MCP server. My fast MCP"
+  },
+  {
+   "start": 2156.68,
+   "duration": 5.84,
+   "text": "is nothing but like the replica or kind"
+  },
+  {
+   "start": 2159.6,
+   "duration": 5.48,
+   "text": "of the twin brother of fast API. We know"
+  },
+  {
+   "start": 2162.52,
+   "duration": 4.96,
+   "text": "we can use fast API in Python, right?"
+  },
+  {
+   "start": 2165.08,
+   "duration": 3.76,
+   "text": "That is Here we have fast MCP. Nothing"
+  },
+  {
+   "start": 2167.48,
+   "duration": 3.36,
+   "text": "but a server."
+  },
+  {
+   "start": 2168.84,
+   "duration": 4.96,
+   "text": "Okay. Now, if you"
+  },
+  {
+   "start": 2170.84,
+   "duration": 5.92,
+   "text": "going to see, we're going to build one"
+  },
+  {
+   "start": 2173.8,
+   "duration": 4.84,
+   "text": "PY file over here, repo facts"
+  },
+  {
+   "start": 2176.76,
+   "duration": 4.44,
+   "text": "server.py. This is what we're going to"
+  },
+  {
+   "start": 2178.64,
+   "duration": 4.36,
+   "text": "build. So, I'm just going to copy this"
+  },
+  {
+   "start": 2181.2,
+   "duration": 3.96,
+   "text": "file name and we're going to create this"
+  },
+  {
+   "start": 2183.0,
+   "duration": 4.8,
+   "text": "file name inside of"
+  },
+  {
+   "start": 2185.16,
+   "duration": 4.64,
+   "text": "our episode nine."
+  },
+  {
+   "start": 2187.8,
+   "duration": 4.32,
+   "text": "So, I'm just going to create a new file"
+  },
+  {
+   "start": 2189.8,
+   "duration": 5.0,
+   "text": "over here and I'm going to name it as"
+  },
+  {
+   "start": 2192.12,
+   "duration": 5.0,
+   "text": "repofacserver.py."
+  },
+  {
+   "start": 2194.8,
+   "duration": 4.12,
+   "text": "And I'm going to go back to the"
+  },
+  {
+   "start": 2197.12,
+   "duration": 5.0,
+   "text": "snippets and let's try to understand"
+  },
+  {
+   "start": 2198.92,
+   "duration": 4.52,
+   "text": "what's happening there, right? And if I"
+  },
+  {
+   "start": 2202.12,
+   "duration": 3.24,
+   "text": "go back"
+  },
+  {
+   "start": 2203.44,
+   "duration": 3.48,
+   "text": "there's a lot of files opened up over"
+  },
+  {
+   "start": 2205.36,
+   "duration": 3.84,
+   "text": "here, okay. I'm going to just paste it"
+  },
+  {
+   "start": 2206.92,
+   "duration": 5.2,
+   "text": "here. Now, if you see"
+  },
+  {
+   "start": 2209.2,
+   "duration": 4.68,
+   "text": "this is just a pure server. That's all"
+  },
+  {
+   "start": 2212.12,
+   "duration": 4.84,
+   "text": "we are doing. There is no cloud agent"
+  },
+  {
+   "start": 2213.88,
+   "duration": 5.4,
+   "text": "SDK import. There is nothing. It is just"
+  },
+  {
+   "start": 2216.96,
+   "duration": 6.84,
+   "text": "importing fast MCP"
+  },
+  {
+   "start": 2219.28,
+   "duration": 6.96,
+   "text": "uh the library and it's just creating"
+  },
+  {
+   "start": 2223.8,
+   "duration": 4.92,
+   "text": "the fast MCP server. That's it. And if"
+  },
+  {
+   "start": 2226.24,
+   "duration": 5.72,
+   "text": "you see there is just only one tool over"
+  },
+  {
+   "start": 2228.72,
+   "duration": 5.36,
+   "text": "here, which is count to do's,"
+  },
+  {
+   "start": 2231.96,
+   "duration": 4.96,
+   "text": "okay? So, count to do and fix me"
+  },
+  {
+   "start": 2234.08,
+   "duration": 5.24,
+   "text": "comments across every dot py file under"
+  },
+  {
+   "start": 2236.92,
+   "duration": 5.92,
+   "text": "the directory. Returns a plain text"
+  },
+  {
+   "start": 2239.32,
+   "duration": 7.0,
+   "text": "report how many were found and"
+  },
+  {
+   "start": 2242.84,
+   "duration": 5.04,
+   "text": "blah blah, all these things. Right? Now,"
+  },
+  {
+   "start": 2246.32,
+   "duration": 3.36,
+   "text": "this is the thing. It's just a count to"
+  },
+  {
+   "start": 2247.88,
+   "duration": 4.6,
+   "text": "do's method, just one tool, just like in"
+  },
+  {
+   "start": 2249.68,
+   "duration": 6.36,
+   "text": "for name six we have put. And uh that's"
+  },
+  {
+   "start": 2252.48,
+   "duration": 5.04,
+   "text": "it, mcp.run. That is all it needs to be"
+  },
+  {
+   "start": 2256.04,
+   "duration": 4.48,
+   "text": "done."
+  },
+  {
+   "start": 2257.52,
+   "duration": 5.64,
+   "text": "Right? So, this is known as like a"
+  },
+  {
+   "start": 2260.52,
+   "duration": 6.4,
+   "text": "standalone server, standalone MCP"
+  },
+  {
+   "start": 2263.16,
+   "duration": 5.6,
+   "text": "server. Right? And we had built uh"
+  },
+  {
+   "start": 2266.92,
+   "duration": 4.44,
+   "text": "in-process MCP server, if you remember,"
+  },
+  {
+   "start": 2268.76,
+   "duration": 5.08,
+   "text": "in episode three and four, where uh we"
+  },
+  {
+   "start": 2271.36,
+   "duration": 5.12,
+   "text": "we had built that create SDK MCP server"
+  },
+  {
+   "start": 2273.84,
+   "duration": 4.8,
+   "text": "that I showed you previous in the video."
+  },
+  {
+   "start": 2276.48,
+   "duration": 4.72,
+   "text": "And then we kind of interacted with the"
+  },
+  {
+   "start": 2278.64,
+   "duration": 5.04,
+   "text": "HTTP-based MCP server."
+  },
+  {
+   "start": 2281.2,
+   "duration": 5.28,
+   "text": "Right? So, a lot of types of MCP server"
+  },
+  {
+   "start": 2283.68,
+   "duration": 6.48,
+   "text": "we had kind of have it, um you know,"
+  },
+  {
+   "start": 2286.48,
+   "duration": 6.32,
+   "text": "across our belt and um that is very"
+  },
+  {
+   "start": 2290.16,
+   "duration": 5.8,
+   "text": "nice. Okay? Now, if I go back to my"
+  },
+  {
+   "start": 2292.8,
+   "duration": 6.28,
+   "text": "snippets.md file, there is uh one more"
+  },
+  {
+   "start": 2295.96,
+   "duration": 5.52,
+   "text": "uh thing that I would just needs to uh"
+  },
+  {
+   "start": 2299.08,
+   "duration": 3.96,
+   "text": "check it out. So, I'm just going to"
+  },
+  {
+   "start": 2301.48,
+   "duration": 3.24,
+   "text": "see"
+  },
+  {
+   "start": 2303.04,
+   "duration": 3.52,
+   "text": "this particular command, I'm just going"
+  },
+  {
+   "start": 2304.72,
+   "duration": 3.16,
+   "text": "to run it and then I'm going to explain"
+  },
+  {
+   "start": 2306.56,
+   "duration": 5.04,
+   "text": "what is happening over here, right? So,"
+  },
+  {
+   "start": 2307.88,
+   "duration": 7.0,
+   "text": "previously I had run the agent with our"
+  },
+  {
+   "start": 2311.6,
+   "duration": 6.72,
+   "text": "real uh GitHub MCP call."
+  },
+  {
+   "start": 2314.88,
+   "duration": 3.44,
+   "text": "In case you have missed it."
+  },
+  {
+   "start": 2322.0,
+   "duration": 3.4,
+   "text": "Oh, it's not there. So, I'm just We have"
+  },
+  {
+   "start": 2323.52,
+   "duration": 3.6,
+   "text": "to create that. My bad. So, I'm going to"
+  },
+  {
+   "start": 2325.4,
+   "duration": 5.44,
+   "text": "say touch"
+  },
+  {
+   "start": 2327.12,
+   "duration": 6.48,
+   "text": "um MCP test input"
+  },
+  {
+   "start": 2330.84,
+   "duration": 7.08,
+   "text": ".jsonl."
+  },
+  {
+   "start": 2333.6,
+   "duration": 4.32,
+   "text": "Yeah, and let me run this command."
+  },
+  {
+   "start": 2338.04,
+   "duration": 3.08,
+   "text": "Okay."
+  },
+  {
+   "start": 2338.96,
+   "duration": 5.16,
+   "text": "Now, what is the reason I ran this"
+  },
+  {
+   "start": 2341.12,
+   "duration": 5.64,
+   "text": "command, right? So, the thing is I'm"
+  },
+  {
+   "start": 2344.12,
+   "duration": 5.72,
+   "text": "just kind of proving to you that this"
+  },
+  {
+   "start": 2346.76,
+   "duration": 5.52,
+   "text": "Repofax server that I just ran, it is"
+  },
+  {
+   "start": 2349.84,
+   "duration": 3.6,
+   "text": "just you know, JSON."
+  },
+  {
+   "start": 2352.28,
+   "duration": 3.76,
+   "text": "Okay?"
+  },
+  {
+   "start": 2353.44,
+   "duration": 6.12,
+   "text": "I'm I want to demystify this MCP for a"
+  },
+  {
+   "start": 2356.04,
+   "duration": 5.36,
+   "text": "second now because protocol can sound"
+  },
+  {
+   "start": 2359.56,
+   "duration": 3.72,
+   "text": "really intimidating, okay? And you guys"
+  },
+  {
+   "start": 2361.4,
+   "duration": 4.08,
+   "text": "would think that, you know, it's uh it's"
+  },
+  {
+   "start": 2363.28,
+   "duration": 4.68,
+   "text": "it's an MCP server, but at the end of"
+  },
+  {
+   "start": 2365.48,
+   "duration": 4.8,
+   "text": "the day, it's nothing but a server that"
+  },
+  {
+   "start": 2367.96,
+   "duration": 5.0,
+   "text": "is providing you the tools. It's like a"
+  },
+  {
+   "start": 2370.28,
+   "duration": 5.36,
+   "text": "server with an API, but here as the"
+  },
+  {
+   "start": 2372.96,
+   "duration": 5.24,
+   "text": "agent is going to use it, it's a server"
+  },
+  {
+   "start": 2375.64,
+   "duration": 4.36,
+   "text": "with some tools. That's it. Right?"
+  },
+  {
+   "start": 2378.2,
+   "duration": 7.2,
+   "text": "Underneath everything we have done, an"
+  },
+  {
+   "start": 2380.0,
+   "duration": 7.04,
+   "text": "MCP server over STDIO is just JSON-RPC."
+  },
+  {
+   "start": 2385.4,
+   "duration": 5.08,
+   "text": "One line at a time, right? If you see,"
+  },
+  {
+   "start": 2387.04,
+   "duration": 5.76,
+   "text": "JSON-RPC 2.0 result is this tools, this"
+  },
+  {
+   "start": 2390.48,
+   "duration": 3.96,
+   "text": "is the count to-dos, description, count"
+  },
+  {
+   "start": 2392.8,
+   "duration": 2.96,
+   "text": "to-dos, and fix me comments. So, this is"
+  },
+  {
+   "start": 2394.44,
+   "duration": 3.68,
+   "text": "just"
+  },
+  {
+   "start": 2395.76,
+   "duration": 3.92,
+   "text": "throwing metadata about what tools are"
+  },
+  {
+   "start": 2398.12,
+   "duration": 3.2,
+   "text": "there in that particular standalone"
+  },
+  {
+   "start": 2399.68,
+   "duration": 3.76,
+   "text": "server."
+  },
+  {
+   "start": 2401.32,
+   "duration": 4.36,
+   "text": "Right? So,"
+  },
+  {
+   "start": 2403.44,
+   "duration": 3.88,
+   "text": "it's just how, you know, the agent and"
+  },
+  {
+   "start": 2405.68,
+   "duration": 2.84,
+   "text": "the MCP tool communicate with each"
+  },
+  {
+   "start": 2407.32,
+   "duration": 4.6,
+   "text": "other."
+  },
+  {
+   "start": 2408.52,
+   "duration": 5.64,
+   "text": "Right? And this is the actual response."
+  },
+  {
+   "start": 2411.92,
+   "duration": 3.28,
+   "text": "I hope that is making sense."
+  },
+  {
+   "start": 2414.16,
+   "duration": 1.96,
+   "text": "Okay?"
+  },
+  {
+   "start": 2415.2,
+   "duration": 3.68,
+   "text": "Now,"
+  },
+  {
+   "start": 2416.12,
+   "duration": 5.44,
+   "text": "uh the next thing that we want to do is"
+  },
+  {
+   "start": 2418.88,
+   "duration": 4.96,
+   "text": "uh the practical thing to do is we can"
+  },
+  {
+   "start": 2421.56,
+   "duration": 7.04,
+   "text": "kind of you know put this repo fact"
+  },
+  {
+   "start": 2423.84,
+   "duration": 6.76,
+   "text": "server in our MCP configuration, right?"
+  },
+  {
+   "start": 2428.6,
+   "duration": 4.32,
+   "text": "That's all you need to do. So, we have"
+  },
+  {
+   "start": 2430.6,
+   "duration": 4.2,
+   "text": "GitHub over here, right? And you can"
+  },
+  {
+   "start": 2432.92,
+   "duration": 4.48,
+   "text": "just put a comma over here. You can just"
+  },
+  {
+   "start": 2434.8,
+   "duration": 5.04,
+   "text": "put a list of MCP servers and you are"
+  },
+  {
+   "start": 2437.4,
+   "duration": 5.0,
+   "text": "good to go. Now, the agent would be able"
+  },
+  {
+   "start": 2439.84,
+   "duration": 5.88,
+   "text": "to discover this MCP server as well."
+  },
+  {
+   "start": 2442.4,
+   "duration": 5.2,
+   "text": "That's all you need to do. Yeah, and"
+  },
+  {
+   "start": 2445.72,
+   "duration": 3.76,
+   "text": "then obviously you need to put"
+  },
+  {
+   "start": 2447.6,
+   "duration": 4.76,
+   "text": "the the tool inside your allowed tools."
+  },
+  {
+   "start": 2449.48,
+   "duration": 6.08,
+   "text": "That is pretty much a self-explanatory."
+  },
+  {
+   "start": 2452.36,
+   "duration": 5.24,
+   "text": "So, that is all about this and that is"
+  },
+  {
+   "start": 2455.56,
+   "duration": 3.88,
+   "text": "how you can build your own, you know,"
+  },
+  {
+   "start": 2457.6,
+   "duration": 6.0,
+   "text": "MCP server."
+  },
+  {
+   "start": 2459.44,
+   "duration": 6.48,
+   "text": "Yeah? The rule is the Python object is"
+  },
+  {
+   "start": 2463.6,
+   "duration": 3.88,
+   "text": "in the code like we built this in"
+  },
+  {
+   "start": 2465.92,
+   "duration": 2.88,
+   "text": "Python, but everything else, the"
+  },
+  {
+   "start": 2467.48,
+   "duration": 4.2,
+   "text": "communication, everything, the"
+  },
+  {
+   "start": 2468.8,
+   "duration": 4.24,
+   "text": "configurations, everything is in plain"
+  },
+  {
+   "start": 2471.68,
+   "duration": 4.28,
+   "text": "JSON."
+  },
+  {
+   "start": 2473.04,
+   "duration": 5.32,
+   "text": "So, we are kind of moving from a really"
+  },
+  {
+   "start": 2475.96,
+   "duration": 4.36,
+   "text": "coupled kind of a"
+  },
+  {
+   "start": 2478.36,
+   "duration": 3.92,
+   "text": "coding framework to a configuration"
+  },
+  {
+   "start": 2480.32,
+   "duration": 3.36,
+   "text": "framework, which in some terms is also"
+  },
+  {
+   "start": 2482.28,
+   "duration": 3.44,
+   "text": "good."
+  },
+  {
+   "start": 2483.68,
+   "duration": 3.56,
+   "text": "Yeah, I would say. But still you need"
+  },
+  {
+   "start": 2485.72,
+   "duration": 4.04,
+   "text": "some of the coding while creating the"
+  },
+  {
+   "start": 2487.24,
+   "duration": 4.52,
+   "text": "servers and all, which Cloud Code can or"
+  },
+  {
+   "start": 2489.76,
+   "duration": 3.4,
+   "text": "any other coding agent probably will be"
+  },
+  {
+   "start": 2491.76,
+   "duration": 4.08,
+   "text": "able to do. But you need to understand"
+  },
+  {
+   "start": 2493.16,
+   "duration": 4.12,
+   "text": "how it works. I just going blindly and"
+  },
+  {
+   "start": 2495.84,
+   "duration": 3.12,
+   "text": "creating an MCP server and you don't"
+  },
+  {
+   "start": 2497.28,
+   "duration": 3.64,
+   "text": "know how it works. Even in interviews"
+  },
+  {
+   "start": 2498.96,
+   "duration": 4.28,
+   "text": "they might ask, \"How does this MCP"
+  },
+  {
+   "start": 2500.92,
+   "duration": 5.76,
+   "text": "server communicate?\" So, make sure that"
+  },
+  {
+   "start": 2503.24,
+   "duration": 5.48,
+   "text": "you have decent um"
+  },
+  {
+   "start": 2506.68,
+   "duration": 3.48,
+   "text": "kind of an idea."
+  },
+  {
+   "start": 2508.72,
+   "duration": 4.84,
+   "text": "Okay?"
+  },
+  {
+   "start": 2510.16,
+   "duration": 6.0,
+   "text": "So, um all these things we are just we"
+  },
+  {
+   "start": 2513.56,
+   "duration": 5.2,
+   "text": "did just did and um"
+  },
+  {
+   "start": 2516.16,
+   "duration": 4.68,
+   "text": "a bonus fact that I want to just talk"
+  },
+  {
+   "start": 2518.76,
+   "duration": 5.68,
+   "text": "about. We are almost at the end of this"
+  },
+  {
+   "start": 2520.84,
+   "duration": 5.88,
+   "text": "lesson. Um"
+  },
+  {
+   "start": 2524.44,
+   "duration": 5.04,
+   "text": "when you plug in, for example,"
+  },
+  {
+   "start": 2526.72,
+   "duration": 5.32,
+   "text": "real-world MCP servers, right? Because,"
+  },
+  {
+   "start": 2529.48,
+   "duration": 4.36,
+   "text": "you know, real APIs sometimes return a"
+  },
+  {
+   "start": 2532.04,
+   "duration": 4.8,
+   "text": "lot of data."
+  },
+  {
+   "start": 2533.84,
+   "duration": 6.56,
+   "text": "Okay? Um Now, if any single tool result"
+  },
+  {
+   "start": 2536.84,
+   "duration": 6.72,
+   "text": "comes back larger than 25,000 tokens,"
+  },
+  {
+   "start": 2540.4,
+   "duration": 6.08,
+   "text": "the SDK doesn't just cram all of it into"
+  },
+  {
+   "start": 2543.56,
+   "duration": 5.24,
+   "text": "the conversation. It saves the full"
+  },
+  {
+   "start": 2546.48,
+   "duration": 5.16,
+   "text": "output to a file."
+  },
+  {
+   "start": 2548.8,
+   "duration": 4.48,
+   "text": "And it hands the model back a short"
+  },
+  {
+   "start": 2551.64,
+   "duration": 3.68,
+   "text": "error."
+  },
+  {
+   "start": 2553.28,
+   "duration": 5.2,
+   "text": "Right? It's nothing but a message. That"
+  },
+  {
+   "start": 2555.32,
+   "duration": 5.44,
+   "text": "error is a message. Um and it names that"
+  },
+  {
+   "start": 2558.48,
+   "duration": 3.96,
+   "text": "file path instead where it saves that"
+  },
+  {
+   "start": 2560.76,
+   "duration": 3.0,
+   "text": "file that I just told the full output to"
+  },
+  {
+   "start": 2562.44,
+   "duration": 3.68,
+   "text": "a file."
+  },
+  {
+   "start": 2563.76,
+   "duration": 4.48,
+   "text": "So, what the agent can do is the agent"
+  },
+  {
+   "start": 2566.12,
+   "duration": 4.96,
+   "text": "can actually read the output back in"
+  },
+  {
+   "start": 2568.24,
+   "duration": 4.32,
+   "text": "portions, right? If it actually needs"
+  },
+  {
+   "start": 2571.08,
+   "duration": 4.2,
+   "text": "to."
+  },
+  {
+   "start": 2572.56,
+   "duration": 5.64,
+   "text": "Yeah? And you can raise this that"
+  },
+  {
+   "start": 2575.28,
+   "duration": 5.48,
+   "text": "ceiling with kind of a thing known as"
+  },
+  {
+   "start": 2578.2,
+   "duration": 4.68,
+   "text": "this particular max MCP output tokens"
+  },
+  {
+   "start": 2580.76,
+   "duration": 3.68,
+   "text": "environment variable."
+  },
+  {
+   "start": 2582.88,
+   "duration": 3.88,
+   "text": "Yeah, if you know, for example, a"
+  },
+  {
+   "start": 2584.44,
+   "duration": 6.44,
+   "text": "particular integration legitimately"
+  },
+  {
+   "start": 2586.76,
+   "duration": 5.6,
+   "text": "needs bigger responses, I mean, um"
+  },
+  {
+   "start": 2590.88,
+   "duration": 3.4,
+   "text": "you know, good thing to file away. If"
+  },
+  {
+   "start": 2592.36,
+   "duration": 4.36,
+   "text": "you ever see an agent gets a cryptic"
+  },
+  {
+   "start": 2594.28,
+   "duration": 5.24,
+   "text": "output save to a file message instead of"
+  },
+  {
+   "start": 2596.72,
+   "duration": 5.04,
+   "text": "real data, you would know why it is like"
+  },
+  {
+   "start": 2599.52,
+   "duration": 3.48,
+   "text": "that because it's more than 25,000"
+  },
+  {
+   "start": 2601.76,
+   "duration": 2.68,
+   "text": "tokens."
+  },
+  {
+   "start": 2603.0,
+   "duration": 3.12,
+   "text": "Yeah?"
+  },
+  {
+   "start": 2604.44,
+   "duration": 4.88,
+   "text": "Okay? I hope that's making sense. It"
+  },
+  {
+   "start": 2606.12,
+   "duration": 6.16,
+   "text": "might also come in the exam. So, um"
+  },
+  {
+   "start": 2609.32,
+   "duration": 5.08,
+   "text": "please, please, please, uh keep that in"
+  },
+  {
+   "start": 2612.28,
+   "duration": 3.6,
+   "text": "your mind."
+  },
+  {
+   "start": 2614.4,
+   "duration": 4.88,
+   "text": "Okay?"
+  },
+  {
+   "start": 2615.88,
+   "duration": 6.92,
+   "text": "So, that's that's all. Now, we can"
+  },
+  {
+   "start": 2619.28,
+   "duration": 6.24,
+   "text": "we have our I think repo fact server. We"
+  },
+  {
+   "start": 2622.8,
+   "duration": 2.72,
+   "text": "have our"
+  },
+  {
+   "start": 2625.56,
+   "duration": 5.96,
+   "text": "this MCP as well, I think. Yeah. Dot MCP"
+  },
+  {
+   "start": 2629.36,
+   "duration": 5.56,
+   "text": "JSON is also complete."
+  },
+  {
+   "start": 2631.52,
+   "duration": 4.24,
+   "text": "Um we also have complete agent.py as"
+  },
+  {
+   "start": 2634.92,
+   "duration": 3.16,
+   "text": "well."
+  },
+  {
+   "start": 2635.76,
+   "duration": 5.72,
+   "text": "Let me check if they have It has also in"
+  },
+  {
+   "start": 2638.08,
+   "duration": 4.64,
+   "text": "my snippets I have also integrated the"
+  },
+  {
+   "start": 2641.48,
+   "duration": 3.16,
+   "text": "um"
+  },
+  {
+   "start": 2642.72,
+   "duration": 3.92,
+   "text": "repo fact server as well. Okay, it has"
+  },
+  {
+   "start": 2644.64,
+   "duration": 3.32,
+   "text": "been integrated. So, I'm going to"
+  },
+  {
+   "start": 2646.64,
+   "duration": 3.84,
+   "text": "copy-paste. It's nothing. It's"
+  },
+  {
+   "start": 2647.96,
+   "duration": 5.28,
+   "text": "integration is pretty simple. Like how"
+  },
+  {
+   "start": 2650.48,
+   "duration": 4.76,
+   "text": "you would add another tool into your,"
+  },
+  {
+   "start": 2653.24,
+   "duration": 6.6,
+   "text": "you know, particular agent. That's it."
+  },
+  {
+   "start": 2655.24,
+   "duration": 4.6,
+   "text": "So, let's first copy-paste this nine."
+  },
+  {
+   "start": 2661.56,
+   "duration": 7.16,
+   "text": "Right? And uh if I go up top"
+  },
+  {
+   "start": 2665.72,
+   "duration": 5.36,
+   "text": "um"
+  },
+  {
+   "start": 2668.72,
+   "duration": 5.56,
+   "text": "Where is that allowed tools? Uh if you"
+  },
+  {
+   "start": 2671.08,
+   "duration": 6.32,
+   "text": "see, here MCP repo facts count to-dos,"
+  },
+  {
+   "start": 2674.28,
+   "duration": 5.24,
+   "text": "right? So, it is already included here."
+  },
+  {
+   "start": 2677.4,
+   "duration": 4.28,
+   "text": "So, uh it's not under a toggle or"
+  },
+  {
+   "start": 2679.52,
+   "duration": 5.04,
+   "text": "anything because it's it just works on"
+  },
+  {
+   "start": 2681.68,
+   "duration": 5.16,
+   "text": "your, uh you know, fake data or the mock"
+  },
+  {
+   "start": 2684.56,
+   "duration": 4.4,
+   "text": "data that we have. So,"
+  },
+  {
+   "start": 2686.84,
+   "duration": 3.72,
+   "text": "you know, it's just our own standalone"
+  },
+  {
+   "start": 2688.96,
+   "duration": 4.28,
+   "text": "server. It doesn't do much. Just counts"
+  },
+  {
+   "start": 2690.56,
+   "duration": 8.28,
+   "text": "the number of to-dos. So, it is there."
+  },
+  {
+   "start": 2693.24,
+   "duration": 7.52,
+   "text": "Um yeah, that's all it is about this"
+  },
+  {
+   "start": 2698.84,
+   "duration": 3.08,
+   "text": "lesson, I would say."
+  },
+  {
+   "start": 2700.76,
+   "duration": 5.0,
+   "text": "Yeah?"
+  },
+  {
+   "start": 2701.92,
+   "duration": 5.88,
+   "text": "Okay. So, we have to just"
+  },
+  {
+   "start": 2705.76,
+   "duration": 4.44,
+   "text": "say these are all the final files. Okay."
+  },
+  {
+   "start": 2707.8,
+   "duration": 4.72,
+   "text": "Key takeaways. What are the key"
+  },
+  {
+   "start": 2710.2,
+   "duration": 5.28,
+   "text": "takeaways that I want to just give you"
+  },
+  {
+   "start": 2712.52,
+   "duration": 4.88,
+   "text": "in this lesson? Okay. So, MCP servers,"
+  },
+  {
+   "start": 2715.48,
+   "duration": 2.88,
+   "text": "they come in four shapes. We all know"
+  },
+  {
+   "start": 2717.4,
+   "duration": 1.92,
+   "text": "that."
+  },
+  {
+   "start": 2718.36,
+   "duration": 5.04,
+   "text": "Yeah?"
+  },
+  {
+   "start": 2719.32,
+   "duration": 6.16,
+   "text": "Uh stdio, http, SSC, and SDK. So, the"
+  },
+  {
+   "start": 2723.4,
+   "duration": 3.56,
+   "text": "SDK we kind of did it in episode number"
+  },
+  {
+   "start": 2725.48,
+   "duration": 4.12,
+   "text": "three and four."
+  },
+  {
+   "start": 2726.96,
+   "duration": 4.36,
+   "text": "Um and now we kind of explored the other"
+  },
+  {
+   "start": 2729.6,
+   "duration": 3.56,
+   "text": "ones, right?"
+  },
+  {
+   "start": 2731.32,
+   "duration": 3.8,
+   "text": "You can connect to somebody else's MCP"
+  },
+  {
+   "start": 2733.16,
+   "duration": 3.6,
+   "text": "server. It is ex- if it is exposed via"
+  },
+  {
+   "start": 2735.12,
+   "duration": 2.84,
+   "text": "some kind of authentication mechanism or"
+  },
+  {
+   "start": 2736.76,
+   "duration": 3.28,
+   "text": "something like that. If you have all"
+  },
+  {
+   "start": 2737.96,
+   "duration": 3.56,
+   "text": "those credentials or if it is no"
+  },
+  {
+   "start": 2740.04,
+   "duration": 5.48,
+   "text": "authentication, then you can easily"
+  },
+  {
+   "start": 2741.52,
+   "duration": 5.48,
+   "text": "connect it in the way that we just saw."
+  },
+  {
+   "start": 2745.52,
+   "duration": 4.28,
+   "text": "Um"
+  },
+  {
+   "start": 2747.0,
+   "duration": 5.24,
+   "text": "you can build your own external server."
+  },
+  {
+   "start": 2749.8,
+   "duration": 4.64,
+   "text": "Right? Like using fast MCP or something."
+  },
+  {
+   "start": 2752.24,
+   "duration": 5.04,
+   "text": "It's nothing but a server which serves"
+  },
+  {
+   "start": 2754.44,
+   "duration": 4.84,
+   "text": "tools for your agent. The war expansion"
+  },
+  {
+   "start": 2757.28,
+   "duration": 4.48,
+   "text": "keeps secrets out of the Git, but verify"
+  },
+  {
+   "start": 2759.28,
+   "duration": 4.76,
+   "text": "it. Sometimes it might send that"
+  },
+  {
+   "start": 2761.76,
+   "duration": 4.68,
+   "text": "particular variable name itself."
+  },
+  {
+   "start": 2764.04,
+   "duration": 4.8,
+   "text": "The rule, Python object is in the code"
+  },
+  {
+   "start": 2766.44,
+   "duration": 5.24,
+   "text": "URL command or anything configuration"
+  },
+  {
+   "start": 2768.84,
+   "duration": 5.0,
+   "text": "related is goes under the dot mcp.json,"
+  },
+  {
+   "start": 2771.68,
+   "duration": 3.88,
+   "text": "right? Like we configured two mcp"
+  },
+  {
+   "start": 2773.84,
+   "duration": 4.32,
+   "text": "servers in this lesson, right? One that"
+  },
+  {
+   "start": 2775.56,
+   "duration": 4.08,
+   "text": "we built and one that of GitHub's. So"
+  },
+  {
+   "start": 2778.16,
+   "duration": 4.24,
+   "text": "that is where you're going to configure"
+  },
+  {
+   "start": 2779.64,
+   "duration": 4.72,
+   "text": "for your agent as well."
+  },
+  {
+   "start": 2782.4,
+   "duration": 3.68,
+   "text": "So next, we're going to come up with"
+  },
+  {
+   "start": 2784.36,
+   "duration": 4.2,
+   "text": "choosing your model. The next lesson is"
+  },
+  {
+   "start": 2786.08,
+   "duration": 4.08,
+   "text": "all about choosing the correct model and"
+  },
+  {
+   "start": 2788.56,
+   "duration": 4.0,
+   "text": "see you there."
+  },
+  {
+   "start": 2790.16,
+   "duration": 4.96,
+   "text": "Till then, have a nice day. Take care"
+  },
+  {
+   "start": 2792.56,
+   "duration": 2.56,
+   "text": "and bye-bye."
+  }
+ ]
+}

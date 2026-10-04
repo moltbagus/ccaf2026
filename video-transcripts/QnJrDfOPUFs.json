@@ -1,0 +1,6383 @@
+{
+ "video_id": "QnJrDfOPUFs",
+ "episode": "Ep 03",
+ "title": "Custom Tools & MCP",
+ "lane": "ccdv-f",
+ "segments": [
+  {
+   "start": 2.96,
+   "duration": 4.72,
+   "text": "And welcome to this lesson. So,"
+  },
+  {
+   "start": 5.92,
+   "duration": 3.8,
+   "text": "as we start with every video, we're"
+  },
+  {
+   "start": 7.68,
+   "duration": 4.52,
+   "text": "going to see where we are"
+  },
+  {
+   "start": 9.72,
+   "duration": 6.24,
+   "text": "currently. Yeah, what we had done in the"
+  },
+  {
+   "start": 12.2,
+   "duration": 5.24,
+   "text": "previous episode, and where we'll be in"
+  },
+  {
+   "start": 15.96,
+   "duration": 4.84,
+   "text": "this particular episode. What we're"
+  },
+  {
+   "start": 17.44,
+   "duration": 4.88,
+   "text": "going to learn. So, um"
+  },
+  {
+   "start": 20.8,
+   "duration": 3.76,
+   "text": "if you had followed the previous"
+  },
+  {
+   "start": 22.32,
+   "duration": 4.64,
+   "text": "episode, we had created a very simple"
+  },
+  {
+   "start": 24.56,
+   "duration": 4.76,
+   "text": "agent using the Claude Agent SDK, and"
+  },
+  {
+   "start": 26.96,
+   "duration": 3.36,
+   "text": "then we used one of the built-in tools"
+  },
+  {
+   "start": 29.32,
+   "duration": 3.439,
+   "text": "of"
+  },
+  {
+   "start": 30.32,
+   "duration": 4.16,
+   "text": "uh Claude Agent SDK that it provides out"
+  },
+  {
+   "start": 32.759,
+   "duration": 5.761,
+   "text": "of the box, which is the read tool,"
+  },
+  {
+   "start": 34.48,
+   "duration": 6.84,
+   "text": "right? But, as your business logic, uh"
+  },
+  {
+   "start": 38.52,
+   "duration": 4.44,
+   "text": "you know, and gets enhanced, and there"
+  },
+  {
+   "start": 41.32,
+   "duration": 5.12,
+   "text": "are a lot of new features gets added,"
+  },
+  {
+   "start": 42.96,
+   "duration": 5.88,
+   "text": "and you would realize that, you know, um"
+  },
+  {
+   "start": 46.44,
+   "duration": 5.52,
+   "text": "not everything you can achieve just by"
+  },
+  {
+   "start": 48.84,
+   "duration": 5.6,
+   "text": "using the built-in tools that Claude"
+  },
+  {
+   "start": 51.96,
+   "duration": 4.16,
+   "text": "Agent SDK provides, actually."
+  },
+  {
+   "start": 54.44,
+   "duration": 3.92,
+   "text": "So, in that case, what you need to do is"
+  },
+  {
+   "start": 56.12,
+   "duration": 4.2,
+   "text": "you have to create some kind of your own"
+  },
+  {
+   "start": 58.36,
+   "duration": 3.36,
+   "text": "custom tool. And that is what we are"
+  },
+  {
+   "start": 60.32,
+   "duration": 5.16,
+   "text": "going to learn"
+  },
+  {
+   "start": 61.72,
+   "duration": 5.48,
+   "text": "in this particular, um video. And we're"
+  },
+  {
+   "start": 65.48,
+   "duration": 4.32,
+   "text": "going to see how you're going to easily"
+  },
+  {
+   "start": 67.2,
+   "duration": 5.96,
+   "text": "create a very custom tool, and you can"
+  },
+  {
+   "start": 69.8,
+   "duration": 5.12,
+   "text": "plug it in in Claude Agent SDK, and uh"
+  },
+  {
+   "start": 73.16,
+   "duration": 3.44,
+   "text": "Claude Agent SDK would be able to figure"
+  },
+  {
+   "start": 74.92,
+   "duration": 3.76,
+   "text": "out that, okay, I need to use this tool"
+  },
+  {
+   "start": 76.6,
+   "duration": 5.96,
+   "text": "at this particular moment, and it will"
+  },
+  {
+   "start": 78.68,
+   "duration": 5.52,
+   "text": "use your particular tool. So, we"
+  },
+  {
+   "start": 82.56,
+   "duration": 3.8,
+   "text": "uh are in the starting point, we are"
+  },
+  {
+   "start": 84.2,
+   "duration": 5.6,
+   "text": "here. We're going to see how we're going"
+  },
+  {
+   "start": 86.36,
+   "duration": 5.72,
+   "text": "to create the particular tool, yeah, the"
+  },
+  {
+   "start": 89.8,
+   "duration": 4.68,
+   "text": "blueprint, and then the finish line. You"
+  },
+  {
+   "start": 92.08,
+   "duration": 5.6,
+   "text": "would have your tools.py,"
+  },
+  {
+   "start": 94.48,
+   "duration": 4.76,
+   "text": "and obviously we have our agent.py, and"
+  },
+  {
+   "start": 97.68,
+   "duration": 4.2,
+   "text": "we're going to see"
+  },
+  {
+   "start": 99.24,
+   "duration": 4.76,
+   "text": "availability versus permission, uh what"
+  },
+  {
+   "start": 101.88,
+   "duration": 3.6,
+   "text": "all tools are there, what default tools"
+  },
+  {
+   "start": 104.0,
+   "duration": 3.76,
+   "text": "obviously we know that it provides, and"
+  },
+  {
+   "start": 105.48,
+   "duration": 4.96,
+   "text": "what custom tools you are adding uh to"
+  },
+  {
+   "start": 107.76,
+   "duration": 4.84,
+   "text": "your Claude Agent, and obviously we know"
+  },
+  {
+   "start": 110.44,
+   "duration": 4.76,
+   "text": "about allowed tools. So, yeah, just a"
+  },
+  {
+   "start": 112.6,
+   "duration": 4.96,
+   "text": "blueprint, yeah. Just um"
+  },
+  {
+   "start": 115.2,
+   "duration": 4.56,
+   "text": "I thought starting the video with with"
+  },
+  {
+   "start": 117.56,
+   "duration": 4.76,
+   "text": "this cute little in- infographic uh"
+  },
+  {
+   "start": 119.76,
+   "duration": 3.84,
+   "text": "would give you a better idea of what"
+  },
+  {
+   "start": 122.32,
+   "duration": 5.08,
+   "text": "we're going to achieve in this"
+  },
+  {
+   "start": 123.6,
+   "duration": 6.4,
+   "text": "particular, you know, video. Okay. So,"
+  },
+  {
+   "start": 127.4,
+   "duration": 5.12,
+   "text": "as I told you this thing, you know, as"
+  },
+  {
+   "start": 130.0,
+   "duration": 7.0,
+   "text": "we know that custom tools like grep can"
+  },
+  {
+   "start": 132.52,
+   "duration": 6.56,
+   "text": "search, for example, for a word def."
+  },
+  {
+   "start": 137.0,
+   "duration": 4.44,
+   "text": "Yeah, def is nothing but a function in"
+  },
+  {
+   "start": 139.08,
+   "duration": 4.16,
+   "text": "Python, right? But def doesn't tell you"
+  },
+  {
+   "start": 141.44,
+   "duration": 4.36,
+   "text": "whether the thing"
+  },
+  {
+   "start": 143.24,
+   "duration": 4.2,
+   "text": "under it has documentation or not. So,"
+  },
+  {
+   "start": 145.8,
+   "duration": 3.56,
+   "text": "for example, you are"
+  },
+  {
+   "start": 147.44,
+   "duration": 3.4,
+   "text": "you want to a kind of,"
+  },
+  {
+   "start": 149.36,
+   "duration": 3.32,
+   "text": "you know, you want your agent to figure"
+  },
+  {
+   "start": 150.84,
+   "duration": 4.08,
+   "text": "out if under a particular function in"
+  },
+  {
+   "start": 152.68,
+   "duration": 3.96,
+   "text": "your code, there is proper documentation"
+  },
+  {
+   "start": 154.92,
+   "duration": 4.64,
+   "text": "or not. Yeah?"
+  },
+  {
+   "start": 156.64,
+   "duration": 5.36,
+   "text": "So, that is not what a grep can do or a"
+  },
+  {
+   "start": 159.56,
+   "duration": 4.92,
+   "text": "read tool can do, right? That is the"
+  },
+  {
+   "start": 162.0,
+   "duration": 3.92,
+   "text": "work of a custom function, which will uh"
+  },
+  {
+   "start": 164.48,
+   "duration": 3.56,
+   "text": "have some custom code which will"
+  },
+  {
+   "start": 165.92,
+   "duration": 3.96,
+   "text": "identify, okay, you can identify"
+  },
+  {
+   "start": 168.04,
+   "duration": 4.04,
+   "text": "functions using the"
+  },
+  {
+   "start": 169.88,
+   "duration": 4.32,
+   "text": "uh grep tool that Claude already"
+  },
+  {
+   "start": 172.08,
+   "duration": 4.96,
+   "text": "provides. Yeah, the agent SDK already"
+  },
+  {
+   "start": 174.2,
+   "duration": 5.56,
+   "text": "provides, but you cannot figure out if"
+  },
+  {
+   "start": 177.04,
+   "duration": 4.76,
+   "text": "that content is, you know, that function"
+  },
+  {
+   "start": 179.76,
+   "duration": 3.479,
+   "text": "has a documentation or not. It is"
+  },
+  {
+   "start": 181.8,
+   "duration": 2.56,
+   "text": "simple."
+  },
+  {
+   "start": 183.239,
+   "duration": 2.801,
+   "text": "So,"
+  },
+  {
+   "start": 184.36,
+   "duration": 3.84,
+   "text": "you cannot"
+  },
+  {
+   "start": 186.04,
+   "duration": 3.96,
+   "text": "handle the situation using, you know,"
+  },
+  {
+   "start": 188.2,
+   "duration": 3.48,
+   "text": "default tools."
+  },
+  {
+   "start": 190.0,
+   "duration": 4.4,
+   "text": "If the question is find every function"
+  },
+  {
+   "start": 191.68,
+   "duration": 5.04,
+   "text": "missing a docstring, for example,"
+  },
+  {
+   "start": 194.4,
+   "duration": 3.8,
+   "text": "just using grep will not work out. So,"
+  },
+  {
+   "start": 196.72,
+   "duration": 3.799,
+   "text": "here we're going to see how we're going"
+  },
+  {
+   "start": 198.2,
+   "duration": 3.52,
+   "text": "to create a new tool."
+  },
+  {
+   "start": 200.519,
+   "duration": 2.921,
+   "text": "Yeah, because"
+  },
+  {
+   "start": 201.72,
+   "duration": 4.799,
+   "text": "as you can see on the"
+  },
+  {
+   "start": 203.44,
+   "duration": 6.0,
+   "text": "you know, the PPT or the presentation,"
+  },
+  {
+   "start": 206.519,
+   "duration": 6.841,
+   "text": "built-ins cannot pass structure. So,"
+  },
+  {
+   "start": 209.44,
+   "duration": 5.72,
+   "text": "we're going to see how to create a very"
+  },
+  {
+   "start": 213.36,
+   "duration": 4.08,
+   "text": "custom tool."
+  },
+  {
+   "start": 215.16,
+   "duration": 3.68,
+   "text": "So, where this fits? And as you know,"
+  },
+  {
+   "start": 217.44,
+   "duration": 2.96,
+   "text": "this is the episode number three where"
+  },
+  {
+   "start": 218.84,
+   "duration": 4.72,
+   "text": "we're going to talk about custom tools."
+  },
+  {
+   "start": 220.4,
+   "duration": 4.16,
+   "text": "So, episode one, we had built, you know,"
+  },
+  {
+   "start": 223.56,
+   "duration": 3.959,
+   "text": "uh"
+  },
+  {
+   "start": 224.56,
+   "duration": 4.44,
+   "text": "uh the agent using the raw messages API."
+  },
+  {
+   "start": 227.519,
+   "duration": 3.841,
+   "text": "You understood how the agent tick loop"
+  },
+  {
+   "start": 229.0,
+   "duration": 4.56,
+   "text": "works. In episode number two, we"
+  },
+  {
+   "start": 231.36,
+   "duration": 3.88,
+   "text": "switched we now know that, okay, this is"
+  },
+  {
+   "start": 233.56,
+   "duration": 3.92,
+   "text": "how the agentic loop works. We switched"
+  },
+  {
+   "start": 235.24,
+   "duration": 3.88,
+   "text": "to you know, the agent SDK where you"
+  },
+  {
+   "start": 237.48,
+   "duration": 4.68,
+   "text": "don't have to worry about the agentic"
+  },
+  {
+   "start": 239.12,
+   "duration": 5.28,
+   "text": "loop anymore. We We kind of you know,"
+  },
+  {
+   "start": 242.16,
+   "duration": 3.96,
+   "text": "talked about the query method or we we"
+  },
+  {
+   "start": 244.4,
+   "duration": 3.96,
+   "text": "understood what Claude agent options"
+  },
+  {
+   "start": 246.12,
+   "duration": 4.48,
+   "text": "class is and we we learned about the"
+  },
+  {
+   "start": 248.36,
+   "duration": 4.48,
+   "text": "built-in tools. And now here, custom"
+  },
+  {
+   "start": 250.6,
+   "duration": 3.48,
+   "text": "tools will fill the domain knowledge"
+  },
+  {
+   "start": 252.84,
+   "duration": 2.2,
+   "text": "gap."
+  },
+  {
+   "start": 254.08,
+   "duration": 3.32,
+   "text": "Yeah?"
+  },
+  {
+   "start": 255.04,
+   "duration": 3.84,
+   "text": "But so basically, yeah, it's going to be"
+  },
+  {
+   "start": 257.4,
+   "duration": 3.6,
+   "text": "amazing. Going to see how to create a"
+  },
+  {
+   "start": 258.88,
+   "duration": 3.84,
+   "text": "tool and plug it in in Claude agent SDK."
+  },
+  {
+   "start": 261.0,
+   "duration": 3.24,
+   "text": "It's going to be awesome."
+  },
+  {
+   "start": 262.72,
+   "duration": 3.72,
+   "text": "Yeah?"
+  },
+  {
+   "start": 264.24,
+   "duration": 6.08,
+   "text": "So, one very important thing to"
+  },
+  {
+   "start": 266.44,
+   "duration": 3.88,
+   "text": "understand before we actually built it."
+  },
+  {
+   "start": 270.4,
+   "duration": 5.56,
+   "text": "And here's the mental model that makes"
+  },
+  {
+   "start": 273.56,
+   "duration": 5.44,
+   "text": "the rest of this episode of this video"
+  },
+  {
+   "start": 275.96,
+   "duration": 6.64,
+   "text": "really click in your mind."
+  },
+  {
+   "start": 279.0,
+   "duration": 7.08,
+   "text": "When you write a built-in tools config"
+  },
+  {
+   "start": 282.6,
+   "duration": 5.88,
+   "text": "or connect an external MCP server,"
+  },
+  {
+   "start": 286.08,
+   "duration": 5.8,
+   "text": "you're basically mostly just flipping"
+  },
+  {
+   "start": 288.48,
+   "duration": 5.68,
+   "text": "switches. Yeah? I mean, the tool"
+  },
+  {
+   "start": 291.88,
+   "duration": 3.84,
+   "text": "actually exists already. So, you already"
+  },
+  {
+   "start": 294.16,
+   "duration": 4.2,
+   "text": "have the tool."
+  },
+  {
+   "start": 295.72,
+   "duration": 6.36,
+   "text": "It already has a description."
+  },
+  {
+   "start": 298.36,
+   "duration": 4.68,
+   "text": "You are just turning it on."
+  },
+  {
+   "start": 302.08,
+   "duration": 5.72,
+   "text": "Yeah?"
+  },
+  {
+   "start": 303.04,
+   "duration": 4.76,
+   "text": "Writing a custom tool is different."
+  },
+  {
+   "start": 307.96,
+   "duration": 4.56,
+   "text": "You know?"
+  },
+  {
+   "start": 310.0,
+   "duration": 4.2,
+   "text": "You You are actually in in in the case"
+  },
+  {
+   "start": 312.52,
+   "duration": 3.88,
+   "text": "of a custom tool, we know that how to"
+  },
+  {
+   "start": 314.2,
+   "duration": 3.88,
+   "text": "create the tools, right? You Every tool"
+  },
+  {
+   "start": 316.4,
+   "duration": 3.4,
+   "text": "has a description. And we're going to"
+  },
+  {
+   "start": 318.08,
+   "duration": 4.4,
+   "text": "understand all the important component"
+  },
+  {
+   "start": 319.8,
+   "duration": 4.6,
+   "text": "of a tool in just a minute, but just for"
+  },
+  {
+   "start": 322.48,
+   "duration": 3.72,
+   "text": "now, you know that every tool that you"
+  },
+  {
+   "start": 324.4,
+   "duration": 3.2,
+   "text": "write for your agent has a description."
+  },
+  {
+   "start": 326.2,
+   "duration": 3.44,
+   "text": "And you are the one writing the"
+  },
+  {
+   "start": 327.6,
+   "duration": 3.88,
+   "text": "description."
+  },
+  {
+   "start": 329.64,
+   "duration": 4.279,
+   "text": "When you write the description, Claude"
+  },
+  {
+   "start": 331.48,
+   "duration": 4.88,
+   "text": "reads the description to decide when to"
+  },
+  {
+   "start": 333.919,
+   "duration": 4.641,
+   "text": "reach for it."
+  },
+  {
+   "start": 336.36,
+   "duration": 4.28,
+   "text": "Nobody else wrote it for you, right?"
+  },
+  {
+   "start": 338.56,
+   "duration": 4.72,
+   "text": "That is That is the thing."
+  },
+  {
+   "start": 340.64,
+   "duration": 5.44,
+   "text": "So, think of it like like"
+  },
+  {
+   "start": 343.28,
+   "duration": 5.24,
+   "text": "writing a job posting, right? A A vague"
+  },
+  {
+   "start": 346.08,
+   "duration": 4.44,
+   "text": "posting like for example, someone who's"
+  },
+  {
+   "start": 348.52,
+   "duration": 3.76,
+   "text": "good with computers."
+  },
+  {
+   "start": 350.52,
+   "duration": 3.6,
+   "text": "It It doesn't make sense. It's It's a"
+  },
+  {
+   "start": 352.28,
+   "duration": 4.24,
+   "text": "very general thing."
+  },
+  {
+   "start": 354.12,
+   "duration": 4.6,
+   "text": "Right? But, a specific posting, for"
+  },
+  {
+   "start": 356.52,
+   "duration": 5.24,
+   "text": "example, what that particular role does."
+  },
+  {
+   "start": 358.72,
+   "duration": 5.32,
+   "text": "For example, we need an AI engineer."
+  },
+  {
+   "start": 361.76,
+   "duration": 3.6,
+   "text": "So, that will attract the right"
+  },
+  {
+   "start": 364.04,
+   "duration": 3.68,
+   "text": "kind of candidate. So, that is why"
+  },
+  {
+   "start": 365.36,
+   "duration": 3.6,
+   "text": "descriptions for your custom tools are"
+  },
+  {
+   "start": 367.72,
+   "duration": 3.28,
+   "text": "really really,"
+  },
+  {
+   "start": 368.96,
+   "duration": 3.76,
+   "text": "uh, you know, important. Claude doesn't"
+  },
+  {
+   "start": 371.0,
+   "duration": 3.56,
+   "text": "read your code. It It reads your"
+  },
+  {
+   "start": 372.72,
+   "duration": 3.72,
+   "text": "description. And that also we understood"
+  },
+  {
+   "start": 374.56,
+   "duration": 5.12,
+   "text": "somehow in the first episode as well"
+  },
+  {
+   "start": 376.44,
+   "duration": 5.12,
+   "text": "because we had created a custom tool"
+  },
+  {
+   "start": 379.68,
+   "duration": 3.28,
+   "text": "function. Um,"
+  },
+  {
+   "start": 381.56,
+   "duration": 3.359,
+   "text": "I mean, it was just a function, by the"
+  },
+  {
+   "start": 382.96,
+   "duration": 4.52,
+   "text": "way. It was using the raw messages SDK."
+  },
+  {
+   "start": 384.919,
+   "duration": 4.281,
+   "text": "So, you can easily, you know, um, do"
+  },
+  {
+   "start": 387.48,
+   "duration": 3.88,
+   "text": "whatever you want. It's just a function."
+  },
+  {
+   "start": 389.2,
+   "duration": 4.8,
+   "text": "Here also it's just a function, but it's"
+  },
+  {
+   "start": 391.36,
+   "duration": 3.6,
+   "text": "a little bit systematic out here."
+  },
+  {
+   "start": 394.0,
+   "duration": 2.76,
+   "text": "Right? And we're going to see the"
+  },
+  {
+   "start": 394.96,
+   "duration": 4.2,
+   "text": "structure, how we're going to create"
+  },
+  {
+   "start": 396.76,
+   "duration": 3.88,
+   "text": "that tool and plug it in the Claude"
+  },
+  {
+   "start": 399.16,
+   "duration": 3.84,
+   "text": "agent SDK,"
+  },
+  {
+   "start": 400.64,
+   "duration": 3.68,
+   "text": "uh, I am I mean, in a minute. Yeah? So,"
+  },
+  {
+   "start": 403.0,
+   "duration": 3.76,
+   "text": "try to This is very important to"
+  },
+  {
+   "start": 404.32,
+   "duration": 6.2,
+   "text": "understand the description part."
+  },
+  {
+   "start": 406.76,
+   "duration": 5.4,
+   "text": "Right? So, now, um,"
+  },
+  {
+   "start": 410.52,
+   "duration": 2.8,
+   "text": "going forward in this particular"
+  },
+  {
+   "start": 412.16,
+   "duration": 2.36,
+   "text": "episode,"
+  },
+  {
+   "start": 413.32,
+   "duration": 3.32,
+   "text": "maybe in the next episode, we're going"
+  },
+  {
+   "start": 414.52,
+   "duration": 5.0,
+   "text": "to use more tools. Now, it has been"
+  },
+  {
+   "start": 416.64,
+   "duration": 4.84,
+   "text": "split into two files, right? Um, so, we"
+  },
+  {
+   "start": 419.52,
+   "duration": 4.52,
+   "text": "already have a agent.py file which"
+  },
+  {
+   "start": 421.48,
+   "duration": 5.72,
+   "text": "contains the agent code that we kind of"
+  },
+  {
+   "start": 424.04,
+   "duration": 5.92,
+   "text": "write it live in the episode. And then"
+  },
+  {
+   "start": 427.2,
+   "duration": 4.4,
+   "text": "we have the tools.py file. That is a new"
+  },
+  {
+   "start": 429.96,
+   "duration": 3.6,
+   "text": "file that got introduced because that is"
+  },
+  {
+   "start": 431.6,
+   "duration": 4.44,
+   "text": "where your custom tools will live as of"
+  },
+  {
+   "start": 433.56,
+   "duration": 4.12,
+   "text": "now. We don't have a remote MCP server"
+  },
+  {
+   "start": 436.04,
+   "duration": 4.64,
+   "text": "or something like that. It is just"
+  },
+  {
+   "start": 437.68,
+   "duration": 4.64,
+   "text": "sitting there and the whatever agent,"
+  },
+  {
+   "start": 440.68,
+   "duration": 3.84,
+   "text": "you know, the tool code, whatever tool"
+  },
+  {
+   "start": 442.32,
+   "duration": 5.2,
+   "text": "functions, whatever you have, it will be"
+  },
+  {
+   "start": 444.52,
+   "duration": 5.52,
+   "text": "residing in your tools.py."
+  },
+  {
+   "start": 447.52,
+   "duration": 4.16,
+   "text": "Right? I hope that is making sense. So,"
+  },
+  {
+   "start": 450.04,
+   "duration": 3.92,
+   "text": "I hope you are understanding the"
+  },
+  {
+   "start": 451.68,
+   "duration": 3.84,
+   "text": "structure. So, people who are new, for"
+  },
+  {
+   "start": 453.96,
+   "duration": 3.48,
+   "text": "every episode we are having one one"
+  },
+  {
+   "start": 455.52,
+   "duration": 5.04,
+   "text": "folders. Obviously, the agent.py,"
+  },
+  {
+   "start": 457.44,
+   "duration": 4.92,
+   "text": "obviously, this agent.py is the upgrade"
+  },
+  {
+   "start": 460.56,
+   "duration": 3.96,
+   "text": "version of episode number one, episode"
+  },
+  {
+   "start": 462.36,
+   "duration": 4.08,
+   "text": "number three. agent.py is an upgrade"
+  },
+  {
+   "start": 464.52,
+   "duration": 4.16,
+   "text": "version of episode number two and so on"
+  },
+  {
+   "start": 466.44,
+   "duration": 3.76,
+   "text": "and so on. I just segregated this so"
+  },
+  {
+   "start": 468.68,
+   "duration": 3.6,
+   "text": "that um you know, you don't get"
+  },
+  {
+   "start": 470.2,
+   "duration": 4.32,
+   "text": "confused. So, at which episode we"
+  },
+  {
+   "start": 472.28,
+   "duration": 4.04,
+   "text": "covered what kind of theory and what"
+  },
+  {
+   "start": 474.52,
+   "duration": 4.6,
+   "text": "concepts you would be able to figure"
+  },
+  {
+   "start": 476.32,
+   "duration": 5.48,
+   "text": "out. Yeah? So, that is the thing."
+  },
+  {
+   "start": 479.12,
+   "duration": 4.96,
+   "text": "Okay. Now, coming to"
+  },
+  {
+   "start": 481.8,
+   "duration": 5.2,
+   "text": "um custom tools, right?"
+  },
+  {
+   "start": 484.08,
+   "duration": 5.8,
+   "text": "So, every custom tools has exactly four"
+  },
+  {
+   "start": 487.0,
+   "duration": 4.96,
+   "text": "parts. So, before we touch the code, we"
+  },
+  {
+   "start": 489.88,
+   "duration": 4.24,
+   "text": "need to understand this."
+  },
+  {
+   "start": 491.96,
+   "duration": 3.68,
+   "text": "Right? So, the first thing is the name."
+  },
+  {
+   "start": 494.12,
+   "duration": 4.2,
+   "text": "So, name is nothing but the unique"
+  },
+  {
+   "start": 495.64,
+   "duration": 4.68,
+   "text": "identifier Claude"
+  },
+  {
+   "start": 498.32,
+   "duration": 3.48,
+   "text": "calls the tool by."
+  },
+  {
+   "start": 500.32,
+   "duration": 3.4,
+   "text": "Nothing nothing special about that. It's"
+  },
+  {
+   "start": 501.8,
+   "duration": 3.36,
+   "text": "just a unique identifier."
+  },
+  {
+   "start": 503.72,
+   "duration": 2.84,
+   "text": "Next comes the description. Very very"
+  },
+  {
+   "start": 505.16,
+   "duration": 3.52,
+   "text": "important."
+  },
+  {
+   "start": 506.56,
+   "duration": 4.76,
+   "text": "The description is what actually Claude"
+  },
+  {
+   "start": 508.68,
+   "duration": 4.44,
+   "text": "reads to decide when to reach for it."
+  },
+  {
+   "start": 511.32,
+   "duration": 3.0,
+   "text": "It's basically the job posting example"
+  },
+  {
+   "start": 513.12,
+   "duration": 2.56,
+   "text": "that I gave you, right? That is the"
+  },
+  {
+   "start": 514.32,
+   "duration": 4.0,
+   "text": "thing."
+  },
+  {
+   "start": 515.68,
+   "duration": 3.919,
+   "text": "Next comes the input schema that you see"
+  },
+  {
+   "start": 518.32,
+   "duration": 4.36,
+   "text": "over here."
+  },
+  {
+   "start": 519.599,
+   "duration": 7.801,
+   "text": "So, in input schema is basically the"
+  },
+  {
+   "start": 522.68,
+   "duration": 7.12,
+   "text": "arguments that Claude must provide"
+  },
+  {
+   "start": 527.4,
+   "duration": 4.16,
+   "text": "to the particular tool."
+  },
+  {
+   "start": 529.8,
+   "duration": 4.039,
+   "text": "Yeah, it should be converted to JSON"
+  },
+  {
+   "start": 531.56,
+   "duration": 4.84,
+   "text": "schema under the hood."
+  },
+  {
+   "start": 533.839,
+   "duration": 4.161,
+   "text": "Right? So, basically the argument Claude"
+  },
+  {
+   "start": 536.4,
+   "duration": 4.4,
+   "text": "must provide"
+  },
+  {
+   "start": 538.0,
+   "duration": 4.0,
+   "text": "converted to JSON schema."
+  },
+  {
+   "start": 540.8,
+   "duration": 3.44,
+   "text": "Okay?"
+  },
+  {
+   "start": 542.0,
+   "duration": 4.24,
+   "text": "Then comes the handler."
+  },
+  {
+   "start": 544.24,
+   "duration": 4.28,
+   "text": "The handler is nothing but the"
+  },
+  {
+   "start": 546.24,
+   "duration": 3.92,
+   "text": "asynchronous function."
+  },
+  {
+   "start": 548.52,
+   "duration": 4.8,
+   "text": "See, at the end of the day, our tool is"
+  },
+  {
+   "start": 550.16,
+   "duration": 4.84,
+   "text": "nothing but a function, right? So, here"
+  },
+  {
+   "start": 553.32,
+   "duration": 3.32,
+   "text": "as it is more systematic as I told you"
+  },
+  {
+   "start": 555.0,
+   "duration": 3.52,
+   "text": "because we're using the SDK, so it"
+  },
+  {
+   "start": 556.64,
+   "duration": 4.4,
+   "text": "should be in this particular format. So,"
+  },
+  {
+   "start": 558.52,
+   "duration": 5.04,
+   "text": "the handler basically the asynchronous"
+  },
+  {
+   "start": 561.04,
+   "duration": 4.08,
+   "text": "function that actually runs when Claude"
+  },
+  {
+   "start": 563.56,
+   "duration": 3.84,
+   "text": "calls it."
+  },
+  {
+   "start": 565.12,
+   "duration": 4.68,
+   "text": "Yeah? So, in Python,"
+  },
+  {
+   "start": 567.4,
+   "duration": 4.16,
+   "text": "all four get passed straight into the"
+  },
+  {
+   "start": 569.8,
+   "duration": 3.28,
+   "text": "decorator, which is So, the decorator"
+  },
+  {
+   "start": 571.56,
+   "duration": 3.0,
+   "text": "that we're going to use is called as at"
+  },
+  {
+   "start": 573.08,
+   "duration": 4.12,
+   "text": "the rate tool."
+  },
+  {
+   "start": 574.56,
+   "duration": 4.56,
+   "text": "Yeah? So, that will basically annotate"
+  },
+  {
+   "start": 577.2,
+   "duration": 4.04,
+   "text": "that okay, this function is a tool. Now,"
+  },
+  {
+   "start": 579.12,
+   "duration": 3.8,
+   "text": "previously in while we are using the"
+  },
+  {
+   "start": 581.24,
+   "duration": 3.76,
+   "text": "messages API, we were doing all the"
+  },
+  {
+   "start": 582.92,
+   "duration": 4.2,
+   "text": "code, so we knew that okay, this is a"
+  },
+  {
+   "start": 585.0,
+   "duration": 4.8,
+   "text": "this is a tool. We are maintaining a"
+  },
+  {
+   "start": 587.12,
+   "duration": 4.8,
+   "text": "list of tools. Yeah, so to mark them as"
+  },
+  {
+   "start": 589.8,
+   "duration": 4.28,
+   "text": "tools, and then, you know, we were"
+  },
+  {
+   "start": 591.92,
+   "duration": 3.96,
+   "text": "executing them by ourselves and then we"
+  },
+  {
+   "start": 594.08,
+   "duration": 3.24,
+   "text": "are appending the result to the messages"
+  },
+  {
+   "start": 595.88,
+   "duration": 3.4,
+   "text": "array. In the first episode, we were"
+  },
+  {
+   "start": 597.32,
+   "duration": 4.24,
+   "text": "doing that when we are using the raw"
+  },
+  {
+   "start": 599.28,
+   "duration": 4.52,
+   "text": "messages API, but here you don't have to"
+  },
+  {
+   "start": 601.56,
+   "duration": 4.08,
+   "text": "do much, right? You just mark the tool"
+  },
+  {
+   "start": 603.8,
+   "duration": 3.48,
+   "text": "as a tool. So, whenever you're going to"
+  },
+  {
+   "start": 605.64,
+   "duration": 3.36,
+   "text": "use it in your SDK, it will"
+  },
+  {
+   "start": 607.28,
+   "duration": 3.48,
+   "text": "automatically identify okay, this is a"
+  },
+  {
+   "start": 609.0,
+   "duration": 3.96,
+   "text": "tool, and Claude will read the"
+  },
+  {
+   "start": 610.76,
+   "duration": 4.04,
+   "text": "description, okay, and will understand"
+  },
+  {
+   "start": 612.96,
+   "duration": 3.28,
+   "text": "when to use the tool."
+  },
+  {
+   "start": 614.8,
+   "duration": 2.88,
+   "text": "So, that is why it is more systematic."
+  },
+  {
+   "start": 616.24,
+   "duration": 2.96,
+   "text": "So, the handler is nothing but the"
+  },
+  {
+   "start": 617.68,
+   "duration": 4.16,
+   "text": "asynchronous function that you're going"
+  },
+  {
+   "start": 619.2,
+   "duration": 5.36,
+   "text": "to write that will contain the logic for"
+  },
+  {
+   "start": 621.84,
+   "duration": 4.2,
+   "text": "your tool. Yeah, pretty simple."
+  },
+  {
+   "start": 624.56,
+   "duration": 4.24,
+   "text": "As I told you, if you're doing it in"
+  },
+  {
+   "start": 626.04,
+   "duration": 5.16,
+   "text": "Python, all four get passed. Yeah,"
+  },
+  {
+   "start": 628.8,
+   "duration": 5.2,
+   "text": "straight into one decorator, which is at"
+  },
+  {
+   "start": 631.2,
+   "duration": 5.88,
+   "text": "the rate tool, and that will have name,"
+  },
+  {
+   "start": 634.0,
+   "duration": 5.0,
+   "text": "description, input schema."
+  },
+  {
+   "start": 637.08,
+   "duration": 4.32,
+   "text": "Right? So,"
+  },
+  {
+   "start": 639.0,
+   "duration": 4.48,
+   "text": "that that is the entire mental model"
+  },
+  {
+   "start": 641.4,
+   "duration": 3.68,
+   "text": "that you need to follow."
+  },
+  {
+   "start": 643.48,
+   "duration": 3.76,
+   "text": "You know, we are just going to fill in"
+  },
+  {
+   "start": 645.08,
+   "duration": 5.92,
+   "text": "each part of it, and we're going to see"
+  },
+  {
+   "start": 647.24,
+   "duration": 5.8,
+   "text": "how each part fits over here, right? I"
+  },
+  {
+   "start": 651.0,
+   "duration": 3.92,
+   "text": "hope that is making sense."
+  },
+  {
+   "start": 653.04,
+   "duration": 4.4,
+   "text": "Okay, so"
+  },
+  {
+   "start": 654.92,
+   "duration": 3.64,
+   "text": "let's see what we are building right"
+  },
+  {
+   "start": 657.44,
+   "duration": 2.52,
+   "text": "now."
+  },
+  {
+   "start": 658.56,
+   "duration": 3.08,
+   "text": "So, we're going to building so if you"
+  },
+  {
+   "start": 659.96,
+   "duration": 4.08,
+   "text": "ever see the code over here, currently"
+  },
+  {
+   "start": 661.64,
+   "duration": 4.68,
+   "text": "there is nothing. So, this agent.py is"
+  },
+  {
+   "start": 664.04,
+   "duration": 5.64,
+   "text": "also kind of"
+  },
+  {
+   "start": 666.32,
+   "duration": 5.96,
+   "text": "blank, right? And I'm going to create"
+  },
+  {
+   "start": 669.68,
+   "duration": 5.12,
+   "text": "another file over here, and I'm going to"
+  },
+  {
+   "start": 672.28,
+   "duration": 4.88,
+   "text": "name it as tools.py"
+  },
+  {
+   "start": 674.8,
+   "duration": 4.08,
+   "text": "because anyways, the tools whatever"
+  },
+  {
+   "start": 677.16,
+   "duration": 3.72,
+   "text": "we're going to create will be residing"
+  },
+  {
+   "start": 678.88,
+   "duration": 4.76,
+   "text": "in this particular file."
+  },
+  {
+   "start": 680.88,
+   "duration": 5.24,
+   "text": "So, tools.py. Now, to in inside"
+  },
+  {
+   "start": 683.64,
+   "duration": 5.28,
+   "text": "tools.py, we're going to write, you"
+  },
+  {
+   "start": 686.12,
+   "duration": 3.719,
+   "text": "know, a tool, basically. And as we move"
+  },
+  {
+   "start": 688.92,
+   "duration": 3.44,
+   "text": "on"
+  },
+  {
+   "start": 689.839,
+   "duration": 5.921,
+   "text": "in our lecture or in our episode, we're"
+  },
+  {
+   "start": 692.36,
+   "duration": 5.48,
+   "text": "going to also populate our agent.py."
+  },
+  {
+   "start": 695.76,
+   "duration": 4.52,
+   "text": "Okay, so"
+  },
+  {
+   "start": 697.84,
+   "duration": 4.32,
+   "text": "let's start coding. So, as you can see,"
+  },
+  {
+   "start": 700.28,
+   "duration": 4.04,
+   "text": "I have my snippets file. So, basically,"
+  },
+  {
+   "start": 702.16,
+   "duration": 4.0,
+   "text": "as we move forward"
+  },
+  {
+   "start": 704.32,
+   "duration": 4.2,
+   "text": "with our code, we just just going to"
+  },
+  {
+   "start": 706.16,
+   "duration": 4.0,
+   "text": "copy paste some pieces of code from here"
+  },
+  {
+   "start": 708.52,
+   "duration": 3.12,
+   "text": "and keep building our agent and our"
+  },
+  {
+   "start": 710.16,
+   "duration": 4.8,
+   "text": "tools.py."
+  },
+  {
+   "start": 711.64,
+   "duration": 5.24,
+   "text": "Um yeah. So, the first thing what we are"
+  },
+  {
+   "start": 714.96,
+   "duration": 4.64,
+   "text": "going to build. So, yeah, so we are"
+  },
+  {
+   "start": 716.88,
+   "duration": 5.16,
+   "text": "building one um"
+  },
+  {
+   "start": 719.6,
+   "duration": 4.8,
+   "text": "you know, a custom tool known as check"
+  },
+  {
+   "start": 722.04,
+   "duration": 5.12,
+   "text": "docstring coverage. So, at the start of"
+  },
+  {
+   "start": 724.4,
+   "duration": 5.08,
+   "text": "this video, we discussed that okay, uh"
+  },
+  {
+   "start": 727.16,
+   "duration": 3.64,
+   "text": "how do we know that um"
+  },
+  {
+   "start": 729.48,
+   "duration": 3.76,
+   "text": "a particular"
+  },
+  {
+   "start": 730.8,
+   "duration": 4.32,
+   "text": "method or something has documentation or"
+  },
+  {
+   "start": 733.24,
+   "duration": 4.24,
+   "text": "not? It has a docstring or not,"
+  },
+  {
+   "start": 735.12,
+   "duration": 5.4,
+   "text": "basically. So,"
+  },
+  {
+   "start": 737.48,
+   "duration": 6.44,
+   "text": "here, basically, this tool will just"
+  },
+  {
+   "start": 740.52,
+   "duration": 6.24,
+   "text": "parse a Python file. Yeah? It will not"
+  },
+  {
+   "start": 743.92,
+   "duration": 7.16,
+   "text": "parse it with regex, not with grep, but"
+  },
+  {
+   "start": 746.76,
+   "duration": 6.96,
+   "text": "with Python's own AST module."
+  },
+  {
+   "start": 751.08,
+   "duration": 5.92,
+   "text": "So, it's like"
+  },
+  {
+   "start": 753.72,
+   "duration": 6.08,
+   "text": "same concept like a linter uses, right?"
+  },
+  {
+   "start": 757.0,
+   "duration": 5.16,
+   "text": "Yeah? And it will report every function"
+  },
+  {
+   "start": 759.8,
+   "duration": 4.08,
+   "text": "and class definition that is missing a"
+  },
+  {
+   "start": 762.16,
+   "duration": 3.64,
+   "text": "docstring."
+  },
+  {
+   "start": 763.88,
+   "duration": 4.76,
+   "text": "And it will also give you the line"
+  },
+  {
+   "start": 765.8,
+   "duration": 5.52,
+   "text": "numbers as well where it is missing."
+  },
+  {
+   "start": 768.64,
+   "duration": 4.36,
+   "text": "So, why does this need a custom tool"
+  },
+  {
+   "start": 771.32,
+   "duration": 4.04,
+   "text": "instead of grep? That question I've"
+  },
+  {
+   "start": 773.0,
+   "duration": 4.56,
+   "text": "already answered because grep matches"
+  },
+  {
+   "start": 775.36,
+   "duration": 5.56,
+   "text": "the text, but here we're going to use a"
+  },
+  {
+   "start": 777.56,
+   "duration": 6.12,
+   "text": "custom Python module over here."
+  },
+  {
+   "start": 780.92,
+   "duration": 4.76,
+   "text": "Custom Python library."
+  },
+  {
+   "start": 783.68,
+   "duration": 3.44,
+   "text": "And we're going to write some logic over"
+  },
+  {
+   "start": 785.68,
+   "duration": 3.8,
+   "text": "here. That is that will be our own"
+  },
+  {
+   "start": 787.12,
+   "duration": 6.0,
+   "text": "logic. So, that that is why"
+  },
+  {
+   "start": 789.48,
+   "duration": 5.44,
+   "text": "your custom tools will not work out."
+  },
+  {
+   "start": 793.12,
+   "duration": 3.68,
+   "text": "Yeah? So,"
+  },
+  {
+   "start": 794.92,
+   "duration": 3.52,
+   "text": "yeah, I hope you understand what tool we"
+  },
+  {
+   "start": 796.8,
+   "duration": 4.4,
+   "text": "are going to be building."
+  },
+  {
+   "start": 798.44,
+   "duration": 2.76,
+   "text": "So, as you know,"
+  },
+  {
+   "start": 802.0,
+   "duration": 3.76,
+   "text": "for running small snippets of code or"
+  },
+  {
+   "start": 803.839,
+   "duration": 3.761,
+   "text": "for some sanity tests,"
+  },
+  {
+   "start": 805.76,
+   "duration": 4.32,
+   "text": "we're going to be using the"
+  },
+  {
+   "start": 807.6,
+   "duration": 4.52,
+   "text": "terminal. Yeah, I If if you watch"
+  },
+  {
+   "start": 810.08,
+   "duration": 4.0,
+   "text": "episode number one, I have told exactly"
+  },
+  {
+   "start": 812.12,
+   "duration": 3.36,
+   "text": "the steps how to set it up. It's pretty"
+  },
+  {
+   "start": 814.08,
+   "duration": 4.92,
+   "text": "simple. You just have to do a pip"
+  },
+  {
+   "start": 815.48,
+   "duration": 5.28,
+   "text": "install IPython. And that's it. So, the"
+  },
+  {
+   "start": 819.0,
+   "duration": 5.08,
+   "text": "first thing that we're going to do is"
+  },
+  {
+   "start": 820.76,
+   "duration": 6.4,
+   "text": "I'm going to see if AST is there and"
+  },
+  {
+   "start": 824.08,
+   "duration": 4.52,
+   "text": "we're going to see uh, if it is it is"
+  },
+  {
+   "start": 827.16,
+   "duration": 4.12,
+   "text": "working out or not. So, I'm just going"
+  },
+  {
+   "start": 828.6,
+   "duration": 5.28,
+   "text": "to copy-paste this snippet of"
+  },
+  {
+   "start": 831.28,
+   "duration": 6.12,
+   "text": "code from here and"
+  },
+  {
+   "start": 833.88,
+   "duration": 5.76,
+   "text": "it just parses the agent episode one"
+  },
+  {
+   "start": 837.4,
+   "duration": 4.56,
+   "text": "inside the episode one."
+  },
+  {
+   "start": 839.64,
+   "duration": 7.16,
+   "text": "We have agent.py, but I think it will"
+  },
+  {
+   "start": 841.96,
+   "duration": 7.84,
+   "text": "not work out because um, I'm inside"
+  },
+  {
+   "start": 846.8,
+   "duration": 6.12,
+   "text": "episode three. So, I have to go one step"
+  },
+  {
+   "start": 849.8,
+   "duration": 7.32,
+   "text": "back over here kind of. Yeah."
+  },
+  {
+   "start": 852.92,
+   "duration": 4.2,
+   "text": "And then I'm going to have to like"
+  },
+  {
+   "start": 857.52,
+   "duration": 4.0,
+   "text": "I have to then give the proper location"
+  },
+  {
+   "start": 859.48,
+   "duration": 3.68,
+   "text": "basically. So, I'm going to just If I"
+  },
+  {
+   "start": 861.52,
+   "duration": 4.08,
+   "text": "run this, it will probably give me an"
+  },
+  {
+   "start": 863.16,
+   "duration": 2.44,
+   "text": "error."
+  },
+  {
+   "start": 865.76,
+   "duration": 4.44,
+   "text": "Okay, my bad."
+  },
+  {
+   "start": 867.12,
+   "duration": 5.16,
+   "text": "Let me just go till the end"
+  },
+  {
+   "start": 870.2,
+   "duration": 3.8,
+   "text": "and try to run this."
+  },
+  {
+   "start": 872.28,
+   "duration": 3.44,
+   "text": "Okay. So, it is"
+  },
+  {
+   "start": 874.0,
+   "duration": 2.88,
+   "text": "that that thing doesn't exist. So, what"
+  },
+  {
+   "start": 875.72,
+   "duration": 3.0,
+   "text": "what we're going to do is basically"
+  },
+  {
+   "start": 876.88,
+   "duration": 2.92,
+   "text": "we're going to do say dot dot slash so"
+  },
+  {
+   "start": 878.72,
+   "duration": 3.2,
+   "text": "that"
+  },
+  {
+   "start": 879.8,
+   "duration": 3.64,
+   "text": "it will go one level above and then it"
+  },
+  {
+   "start": 881.92,
+   "duration": 4.4,
+   "text": "will go inside the"
+  },
+  {
+   "start": 883.44,
+   "duration": 6.44,
+   "text": "basically the episode number one. So,"
+  },
+  {
+   "start": 886.32,
+   "duration": 7.84,
+   "text": "I'm just going to go over here."
+  },
+  {
+   "start": 889.88,
+   "duration": 7.44,
+   "text": "Copy-paste it again and paste it here."
+  },
+  {
+   "start": 894.16,
+   "duration": 5.72,
+   "text": "Now, it should"
+  },
+  {
+   "start": 897.32,
+   "duration": 5.68,
+   "text": "Yeah. So, it is telling that uh, read"
+  },
+  {
+   "start": 899.88,
+   "duration": 5.6,
+   "text": "repo file is true and run agent is true"
+  },
+  {
+   "start": 903.0,
+   "duration": 5.04,
+   "text": "basically. So, what it does is basically"
+  },
+  {
+   "start": 905.48,
+   "duration": 3.56,
+   "text": "it will try to open this agent.py file."
+  },
+  {
+   "start": 908.04,
+   "duration": 3.16,
+   "text": "Yeah."
+  },
+  {
+   "start": 909.04,
+   "duration": 5.64,
+   "text": "It's a very simple for node in"
+  },
+  {
+   "start": 911.2,
+   "duration": 5.8,
+   "text": "ast.walktree just a loop, right?"
+  },
+  {
+   "start": 914.68,
+   "duration": 3.88,
+   "text": "We're going to just you know,"
+  },
+  {
+   "start": 917.0,
+   "duration": 4.0,
+   "text": "just basically going through the file"
+  },
+  {
+   "start": 918.56,
+   "duration": 5.36,
+   "text": "basically in a loop. So, So, is instance"
+  },
+  {
+   "start": 921.0,
+   "duration": 4.6,
+   "text": "node AST.functiondef, some"
+  },
+  {
+   "start": 923.92,
+   "duration": 5.44,
+   "text": "logic is over here."
+  },
+  {
+   "start": 925.6,
+   "duration": 6.44,
+   "text": "We're going to print the node name and"
+  },
+  {
+   "start": 929.36,
+   "duration": 5.08,
+   "text": "we're going to see what it is. So, here"
+  },
+  {
+   "start": 932.04,
+   "duration": 3.96,
+   "text": "if you see, it is printing us the read"
+  },
+  {
+   "start": 934.44,
+   "duration": 3.76,
+   "text": "repo file, which is basically the"
+  },
+  {
+   "start": 936.0,
+   "duration": 3.68,
+   "text": "function that we had created in"
+  },
+  {
+   "start": 938.2,
+   "duration": 2.96,
+   "text": "agent.py."
+  },
+  {
+   "start": 939.68,
+   "duration": 5.0,
+   "text": "Right? So, if you see, this is the read"
+  },
+  {
+   "start": 941.16,
+   "duration": 6.96,
+   "text": "repo file that it is returning."
+  },
+  {
+   "start": 944.68,
+   "duration": 5.72,
+   "text": "Yeah? So, then run agent. Run agent is"
+  },
+  {
+   "start": 948.12,
+   "duration": 3.84,
+   "text": "nothing but another function over here,"
+  },
+  {
+   "start": 950.4,
+   "duration": 3.72,
+   "text": "which is basically the agentic loop. It"
+  },
+  {
+   "start": 951.96,
+   "duration": 4.28,
+   "text": "is saying that read repo file,"
+  },
+  {
+   "start": 954.12,
+   "duration": 5.52,
+   "text": "it is telling yes, the docstring is"
+  },
+  {
+   "start": 956.24,
+   "duration": 5.28,
+   "text": "there because we have proper kind of a"
+  },
+  {
+   "start": 959.64,
+   "duration": 5.24,
+   "text": "docstring over here. Here also, we have"
+  },
+  {
+   "start": 961.52,
+   "duration": 6.52,
+   "text": "docstring. And yeah, we have that. So,"
+  },
+  {
+   "start": 964.88,
+   "duration": 5.04,
+   "text": "it is kind of telling me, \"Okay.\" Um"
+  },
+  {
+   "start": 968.04,
+   "duration": 3.48,
+   "text": "it is returning us true, and for run"
+  },
+  {
+   "start": 969.92,
+   "duration": 3.6,
+   "text": "agent, it is also returning us true"
+  },
+  {
+   "start": 971.52,
+   "duration": 3.88,
+   "text": "because both have docstrings. So, yeah,"
+  },
+  {
+   "start": 973.52,
+   "duration": 4.96,
+   "text": "now we did the sanity test. Our AST"
+  },
+  {
+   "start": 975.4,
+   "duration": 5.84,
+   "text": "module is working properly. Now, what we"
+  },
+  {
+   "start": 978.48,
+   "duration": 4.76,
+   "text": "have to do is nothing but uh plug it in"
+  },
+  {
+   "start": 981.24,
+   "duration": 4.56,
+   "text": "the tool, right? We're going to have to"
+  },
+  {
+   "start": 983.24,
+   "duration": 5.72,
+   "text": "write it as a tool, and then we have to"
+  },
+  {
+   "start": 985.8,
+   "duration": 6.56,
+   "text": "plug it in in the cloud agent SDK."
+  },
+  {
+   "start": 988.96,
+   "duration": 4.64,
+   "text": "Right? I hope that is making sense."
+  },
+  {
+   "start": 992.36,
+   "duration": 3.92,
+   "text": "Yeah?"
+  },
+  {
+   "start": 993.6,
+   "duration": 5.32,
+   "text": "So, let's move on. Let's start with the"
+  },
+  {
+   "start": 996.28,
+   "duration": 4.76,
+   "text": "tools file. So, if you move uh"
+  },
+  {
+   "start": 998.92,
+   "duration": 6.4,
+   "text": "a little bit further down uh in the"
+  },
+  {
+   "start": 1001.04,
+   "duration": 4.28,
+   "text": "snippets file, you would see um"
+  },
+  {
+   "start": 1005.36,
+   "duration": 5.4,
+   "text": "you would see some code over here. So,"
+  },
+  {
+   "start": 1008.48,
+   "duration": 5.48,
+   "text": "we have"
+  },
+  {
+   "start": 1010.76,
+   "duration": 5.76,
+   "text": "basically this import.ast."
+  },
+  {
+   "start": 1013.96,
+   "duration": 4.4,
+   "text": "Uh we we we should also"
+  },
+  {
+   "start": 1016.52,
+   "duration": 3.48,
+   "text": "take this"
+  },
+  {
+   "start": 1018.36,
+   "duration": 3.8,
+   "text": "some"
+  },
+  {
+   "start": 1020.0,
+   "duration": 5.319,
+   "text": "descriptions, and"
+  },
+  {
+   "start": 1022.16,
+   "duration": 5.12,
+   "text": "we're going to copy it till here."
+  },
+  {
+   "start": 1025.319,
+   "duration": 4.12,
+   "text": "And um"
+  },
+  {
+   "start": 1027.28,
+   "duration": 3.799,
+   "text": "we have to then let's let's paste it"
+  },
+  {
+   "start": 1029.439,
+   "duration": 3.52,
+   "text": "over here, right? This is our tools.py."
+  },
+  {
+   "start": 1031.079,
+   "duration": 4.081,
+   "text": "So, here what is happening is"
+  },
+  {
+   "start": 1032.959,
+   "duration": 4.841,
+   "text": "So, here uh obviously, the imports are"
+  },
+  {
+   "start": 1035.16,
+   "duration": 5.2,
+   "text": "first, right? Plus,"
+  },
+  {
+   "start": 1037.8,
+   "duration": 5.36,
+   "text": "uh one thing we have not needed until"
+  },
+  {
+   "start": 1040.36,
+   "duration": 4.56,
+   "text": "now. Basically, a way to anchor file"
+  },
+  {
+   "start": 1043.16,
+   "duration": 4.56,
+   "text": "paths to the repo root. If you see the"
+  },
+  {
+   "start": 1044.92,
+   "duration": 5.4,
+   "text": "problem what happened previously is that"
+  },
+  {
+   "start": 1047.72,
+   "duration": 4.84,
+   "text": "uh I had to properly give the file path,"
+  },
+  {
+   "start": 1050.32,
+   "duration": 4.44,
+   "text": "yeah, to episode number one."
+  },
+  {
+   "start": 1052.56,
+   "duration": 4.84,
+   "text": "So, instead of doing that, we are going"
+  },
+  {
+   "start": 1054.76,
+   "duration": 3.2,
+   "text": "to resolve the parent, basically."
+  },
+  {
+   "start": 1057.4,
+   "duration": 1.68,
+   "text": "Uh"
+  },
+  {
+   "start": 1057.96,
+   "duration": 2.92,
+   "text": "basically, we're going to resolve the"
+  },
+  {
+   "start": 1059.08,
+   "duration": 4.6,
+   "text": "repo root itself."
+  },
+  {
+   "start": 1060.88,
+   "duration": 4.96,
+   "text": "So that whatever path we're going to"
+  },
+  {
+   "start": 1063.68,
+   "duration": 3.48,
+   "text": "give later on, it will be relative to"
+  },
+  {
+   "start": 1065.84,
+   "duration": 3.12,
+   "text": "that. We're going to discuss that in"
+  },
+  {
+   "start": 1067.16,
+   "duration": 4.2,
+   "text": "detail in a minute why we are actually"
+  },
+  {
+   "start": 1068.96,
+   "duration": 4.84,
+   "text": "resolving the repo root over here, but"
+  },
+  {
+   "start": 1071.36,
+   "duration": 5.64,
+   "text": "try to understand that as the files are"
+  },
+  {
+   "start": 1073.8,
+   "duration": 5.44,
+   "text": "in specific episode directories, so if"
+  },
+  {
+   "start": 1077.0,
+   "duration": 5.72,
+   "text": "we kind of resolve the repo root from"
+  },
+  {
+   "start": 1079.24,
+   "duration": 5.64,
+   "text": "the start, then we can easily pass the"
+  },
+  {
+   "start": 1082.72,
+   "duration": 4.32,
+   "text": "agent.py from episode number one by just"
+  },
+  {
+   "start": 1084.88,
+   "duration": 4.16,
+   "text": "saying, \"Okay, from the repo root go to"
+  },
+  {
+   "start": 1087.04,
+   "duration": 4.4,
+   "text": "agent uh sorry, go to episode number one"
+  },
+  {
+   "start": 1089.04,
+   "duration": 5.32,
+   "text": "directory and insert in insert inside of"
+  },
+  {
+   "start": 1091.44,
+   "duration": 4.2,
+   "text": "that, we have the agent.py file.\" Simple"
+  },
+  {
+   "start": 1094.36,
+   "duration": 3.56,
+   "text": "as that."
+  },
+  {
+   "start": 1095.64,
+   "duration": 4.16,
+   "text": "And then we have our imports"
+  },
+  {
+   "start": 1097.92,
+   "duration": 3.12,
+   "text": "over here. Right?"
+  },
+  {
+   "start": 1099.8,
+   "duration": 4.32,
+   "text": "And uh you're going to understand it"
+  },
+  {
+   "start": 1101.04,
+   "duration": 5.72,
+   "text": "properly why uh this got resolved just"
+  },
+  {
+   "start": 1104.12,
+   "duration": 5.36,
+   "text": "in a couple of more slides or more"
+  },
+  {
+   "start": 1106.76,
+   "duration": 4.64,
+   "text": "snippets, whatever."
+  },
+  {
+   "start": 1109.48,
+   "duration": 3.6,
+   "text": "So, the next thing uh you need to"
+  },
+  {
+   "start": 1111.4,
+   "duration": 2.96,
+   "text": "understand, this is nothing but we did"
+  },
+  {
+   "start": 1113.08,
+   "duration": 2.88,
+   "text": "the imports and all those things. The"
+  },
+  {
+   "start": 1114.36,
+   "duration": 3.08,
+   "text": "next thing is actually the tool"
+  },
+  {
+   "start": 1115.96,
+   "duration": 4.16,
+   "text": "decorator that we're going to use to"
+  },
+  {
+   "start": 1117.44,
+   "duration": 5.68,
+   "text": "decorate our tool. Basically, mark our"
+  },
+  {
+   "start": 1120.12,
+   "duration": 4.68,
+   "text": "function or function or whatever we have"
+  },
+  {
+   "start": 1123.12,
+   "duration": 4.88,
+   "text": "as a tool."
+  },
+  {
+   "start": 1124.8,
+   "duration": 5.12,
+   "text": "And so, if you see, this is our tool."
+  },
+  {
+   "start": 1128.0,
+   "duration": 4.6,
+   "text": "So, I'm just going to copy it from here"
+  },
+  {
+   "start": 1129.92,
+   "duration": 3.88,
+   "text": "to here. This is the part that it needs"
+  },
+  {
+   "start": 1132.6,
+   "duration": 4.24,
+   "text": "to go"
+  },
+  {
+   "start": 1133.8,
+   "duration": 4.8,
+   "text": "uh here. So, we're going to put it here."
+  },
+  {
+   "start": 1136.84,
+   "duration": 3.84,
+   "text": "So, here is the decorator, basically,"
+  },
+  {
+   "start": 1138.6,
+   "duration": 3.96,
+   "text": "and um"
+  },
+  {
+   "start": 1140.68,
+   "duration": 5.04,
+   "text": "you can see there are three out of four"
+  },
+  {
+   "start": 1142.56,
+   "duration": 4.6,
+   "text": "parts in one call. So, if you see"
+  },
+  {
+   "start": 1145.72,
+   "duration": 3.32,
+   "text": "try to read the description over here"
+  },
+  {
+   "start": 1147.16,
+   "duration": 4.2,
+   "text": "and do it very slowly. You can pause the"
+  },
+  {
+   "start": 1149.04,
+   "duration": 6.48,
+   "text": "video and do it very slowly."
+  },
+  {
+   "start": 1151.36,
+   "duration": 6.16,
+   "text": "So, every clause that you see is"
+  },
+  {
+   "start": 1155.52,
+   "duration": 3.76,
+   "text": "actually doing real world. It is telling"
+  },
+  {
+   "start": 1157.52,
+   "duration": 4.88,
+   "text": "Claude"
+  },
+  {
+   "start": 1159.28,
+   "duration": 5.16,
+   "text": "you know, just what to do and when to"
+  },
+  {
+   "start": 1162.4,
+   "duration": 4.36,
+   "text": "use this, what to do, and what not to"
+  },
+  {
+   "start": 1164.44,
+   "duration": 4.16,
+   "text": "do. So, if you see, check docstring"
+  },
+  {
+   "start": 1166.76,
+   "duration": 4.2,
+   "text": "coverage, parse a Python file with the"
+  },
+  {
+   "start": 1168.6,
+   "duration": 5.12,
+   "text": "AST module, and report every function"
+  },
+  {
+   "start": 1170.96,
+   "duration": 4.56,
+   "text": "and class definition missing a docstring"
+  },
+  {
+   "start": 1173.72,
+   "duration": 4.0,
+   "text": "with the line numbers. More reliable"
+  },
+  {
+   "start": 1175.52,
+   "duration": 4.44,
+   "text": "than grepping for def. It understands"
+  },
+  {
+   "start": 1177.72,
+   "duration": 4.52,
+   "text": "the Python structure, not just text"
+  },
+  {
+   "start": 1179.96,
+   "duration": 4.8,
+   "text": "patterns. Use this before approving a PR"
+  },
+  {
+   "start": 1182.24,
+   "duration": 6.2,
+   "text": "that touches public functions or"
+  },
+  {
+   "start": 1184.76,
+   "duration": 5.68,
+   "text": "classes. Optionally, um you know, pass"
+  },
+  {
+   "start": 1188.44,
+   "duration": 4.56,
+   "text": "include private equals to do true to"
+  },
+  {
+   "start": 1190.44,
+   "duration": 3.64,
+   "text": "also flag private methods and functions,"
+  },
+  {
+   "start": 1193.0,
+   "duration": 3.4,
+   "text": "whatever."
+  },
+  {
+   "start": 1194.08,
+   "duration": 4.92,
+   "text": "So, this is proper definitions over"
+  },
+  {
+   "start": 1196.4,
+   "duration": 4.4,
+   "text": "here. So, that is the tool decorator"
+  },
+  {
+   "start": 1199.0,
+   "duration": 3.16,
+   "text": "that we are using."
+  },
+  {
+   "start": 1200.8,
+   "duration": 4.56,
+   "text": "Yeah."
+  },
+  {
+   "start": 1202.16,
+   "duration": 5.12,
+   "text": "I hope that is making sense. Yeah, and"
+  },
+  {
+   "start": 1205.36,
+   "duration": 4.44,
+   "text": "um I hope that you're not getting"
+  },
+  {
+   "start": 1207.28,
+   "duration": 4.76,
+   "text": "confused right now, and please don't get"
+  },
+  {
+   "start": 1209.8,
+   "duration": 4.24,
+   "text": "confused. I know it will be a little bit"
+  },
+  {
+   "start": 1212.04,
+   "duration": 4.92,
+   "text": "confusing from the start, but it will"
+  },
+  {
+   "start": 1214.04,
+   "duration": 4.0,
+   "text": "get better. So, don't worry about that."
+  },
+  {
+   "start": 1216.96,
+   "duration": 2.4,
+   "text": "Okay?"
+  },
+  {
+   "start": 1218.04,
+   "duration": 4.64,
+   "text": "So,"
+  },
+  {
+   "start": 1219.36,
+   "duration": 5.92,
+   "text": "one little fact check, um"
+  },
+  {
+   "start": 1222.68,
+   "duration": 4.16,
+   "text": "I know you guys could get confused in"
+  },
+  {
+   "start": 1225.28,
+   "duration": 3.52,
+   "text": "this annotated thing that is happening"
+  },
+  {
+   "start": 1226.84,
+   "duration": 4.56,
+   "text": "here."
+  },
+  {
+   "start": 1228.8,
+   "duration": 4.76,
+   "text": "So, what is typing.annotated, and let's"
+  },
+  {
+   "start": 1231.4,
+   "duration": 3.96,
+   "text": "kind of verify that."
+  },
+  {
+   "start": 1233.56,
+   "duration": 3.08,
+   "text": "Right? So, what what is happening over"
+  },
+  {
+   "start": 1235.36,
+   "duration": 2.16,
+   "text": "here?"
+  },
+  {
+   "start": 1236.64,
+   "duration": 2.6,
+   "text": "Yeah?"
+  },
+  {
+   "start": 1237.52,
+   "duration": 4.8,
+   "text": "So, um"
+  },
+  {
+   "start": 1239.24,
+   "duration": 5.04,
+   "text": "annotated is nothing but a real piece of"
+  },
+  {
+   "start": 1242.32,
+   "duration": 5.08,
+   "text": "Python syntax that is happening over"
+  },
+  {
+   "start": 1244.28,
+   "duration": 5.92,
+   "text": "here. Yeah, it is nothing not not like"
+  },
+  {
+   "start": 1247.4,
+   "duration": 5.24,
+   "text": "something that Anthropic has invented."
+  },
+  {
+   "start": 1250.2,
+   "duration": 4.56,
+   "text": "It It It comes from, uh"
+  },
+  {
+   "start": 1252.64,
+   "duration": 3.6,
+   "text": "you know, Python's built-in typing"
+  },
+  {
+   "start": 1254.76,
+   "duration": 3.56,
+   "text": "module."
+  },
+  {
+   "start": 1256.24,
+   "duration": 3.84,
+   "text": "Right? So, basically, if you see, from"
+  },
+  {
+   "start": 1258.32,
+   "duration": 3.84,
+   "text": "typing import annotated we are doing,"
+  },
+  {
+   "start": 1260.08,
+   "duration": 3.8,
+   "text": "right? From typing import annotated we"
+  },
+  {
+   "start": 1262.16,
+   "duration": 3.36,
+   "text": "are doing from at the top of the file."
+  },
+  {
+   "start": 1263.88,
+   "duration": 3.88,
+   "text": "I'm I'm explaining the the because so"
+  },
+  {
+   "start": 1265.52,
+   "duration": 3.68,
+   "text": "that you don't blindly just do Claude"
+  },
+  {
+   "start": 1267.76,
+   "duration": 3.64,
+   "text": "code every time. You need to understand"
+  },
+  {
+   "start": 1269.2,
+   "duration": 4.88,
+   "text": "what is happening over here."
+  },
+  {
+   "start": 1271.4,
+   "duration": 5.4,
+   "text": "So, it's it's it's it's Python standard"
+  },
+  {
+   "start": 1274.08,
+   "duration": 7.08,
+   "text": "way of saying that this is"
+  },
+  {
+   "start": 1276.8,
+   "duration": 6.2,
+   "text": "STR or a Boolean or an int etc."
+  },
+  {
+   "start": 1281.16,
+   "duration": 4.56,
+   "text": "Yeah? And"
+  },
+  {
+   "start": 1283.0,
+   "duration": 5.56,
+   "text": "here we are using annotated. Inside that"
+  },
+  {
+   "start": 1285.72,
+   "duration": 5.08,
+   "text": "we are saying, \"Okay, this is the STR.\""
+  },
+  {
+   "start": 1288.56,
+   "duration": 4.08,
+   "text": "And it is saying that whatever So,"
+  },
+  {
+   "start": 1290.8,
+   "duration": 3.32,
+   "text": "basically this is the arguments, right?"
+  },
+  {
+   "start": 1292.64,
+   "duration": 2.84,
+   "text": "That Claude is going to pass. So,"
+  },
+  {
+   "start": 1294.12,
+   "duration": 3.24,
+   "text": "basically"
+  },
+  {
+   "start": 1295.48,
+   "duration": 4.36,
+   "text": "the tool will accept this kind of"
+  },
+  {
+   "start": 1297.36,
+   "duration": 5.52,
+   "text": "argument, which is basically a path to"
+  },
+  {
+   "start": 1299.84,
+   "duration": 4.96,
+   "text": "the Python file to check the relative to"
+  },
+  {
+   "start": 1302.88,
+   "duration": 3.2,
+   "text": "the repo root."
+  },
+  {
+   "start": 1304.8,
+   "duration": 3.72,
+   "text": "Right? This is the argument we need"
+  },
+  {
+   "start": 1306.08,
+   "duration": 4.44,
+   "text": "because we need the path of the file"
+  },
+  {
+   "start": 1308.52,
+   "duration": 4.48,
+   "text": "that needs to be parsed. The AST module"
+  },
+  {
+   "start": 1310.52,
+   "duration": 3.64,
+   "text": "will work on that, right?"
+  },
+  {
+   "start": 1313.0,
+   "duration": 3.56,
+   "text": "Right?"
+  },
+  {
+   "start": 1314.16,
+   "duration": 4.2,
+   "text": "So, it's it's like a Python standard way"
+  },
+  {
+   "start": 1316.56,
+   "duration": 3.16,
+   "text": "of saying this is a STR, Boolean,"
+  },
+  {
+   "start": 1318.36,
+   "duration": 4.0,
+   "text": "integer, whatever, right? I told you."
+  },
+  {
+   "start": 1319.72,
+   "duration": 4.64,
+   "text": "And here is some extra descriptive"
+  },
+  {
+   "start": 1322.36,
+   "duration": 3.64,
+   "text": "metadata attached to it."
+  },
+  {
+   "start": 1324.36,
+   "duration": 4.52,
+   "text": "As you can see that this is the metadata"
+  },
+  {
+   "start": 1326.0,
+   "duration": 5.88,
+   "text": "to this STR. What What does this STR do?"
+  },
+  {
+   "start": 1328.88,
+   "duration": 5.76,
+   "text": "What does the argument does basically?"
+  },
+  {
+   "start": 1331.88,
+   "duration": 5.52,
+   "text": "Yeah? And it's been this annotated thing"
+  },
+  {
+   "start": 1334.64,
+   "duration": 5.6,
+   "text": "has been part of Python since"
+  },
+  {
+   "start": 1337.4,
+   "duration": 4.32,
+   "text": "version 3.9 and above."
+  },
+  {
+   "start": 1340.24,
+   "duration": 4.16,
+   "text": "It's nothing nothing related to"
+  },
+  {
+   "start": 1341.72,
+   "duration": 6.08,
+   "text": "Anthropic SDK. Yeah? So, breaking this"
+  },
+  {
+   "start": 1344.4,
+   "duration": 7.56,
+   "text": "thing down, so this is the actual type"
+  },
+  {
+   "start": 1347.8,
+   "duration": 6.92,
+   "text": "and this is nothing but description."
+  },
+  {
+   "start": 1351.96,
+   "duration": 5.0,
+   "text": "Yeah? So, what What is happening over"
+  },
+  {
+   "start": 1354.72,
+   "duration": 4.56,
+   "text": "here? This Claude's SDK looks at that"
+  },
+  {
+   "start": 1356.96,
+   "duration": 5.12,
+   "text": "bundle and pulls the description out to"
+  },
+  {
+   "start": 1359.28,
+   "duration": 5.16,
+   "text": "show Claude basically"
+  },
+  {
+   "start": 1362.08,
+   "duration": 3.52,
+   "text": "that here is what the field means,"
+  },
+  {
+   "start": 1364.44,
+   "duration": 2.68,
+   "text": "right?"
+  },
+  {
+   "start": 1365.6,
+   "duration": 2.96,
+   "text": "I mean,"
+  },
+  {
+   "start": 1367.12,
+   "duration": 3.24,
+   "text": "it's it's important to understand that"
+  },
+  {
+   "start": 1368.56,
+   "duration": 3.96,
+   "text": "Claude reads these descriptions. That is"
+  },
+  {
+   "start": 1370.36,
+   "duration": 3.16,
+   "text": "why descriptions are important."
+  },
+  {
+   "start": 1372.52,
+   "duration": 4.56,
+   "text": "Right?"
+  },
+  {
+   "start": 1373.52,
+   "duration": 5.64,
+   "text": "I mean, while Python itself treats it"
+  },
+  {
+   "start": 1377.08,
+   "duration": 5.52,
+   "text": "just like a normal STR underneath, it's"
+  },
+  {
+   "start": 1379.16,
+   "duration": 5.56,
+   "text": "a it's a general-purpose Python feature."
+  },
+  {
+   "start": 1382.6,
+   "duration": 3.72,
+   "text": "Yeah? One more thing I want to point out"
+  },
+  {
+   "start": 1384.72,
+   "duration": 4.08,
+   "text": "over here so that you don't get confused"
+  },
+  {
+   "start": 1386.32,
+   "duration": 4.52,
+   "text": "is that here uh"
+  },
+  {
+   "start": 1388.8,
+   "duration": 3.92,
+   "text": "I'm I'm get saying that okay, this is a"
+  },
+  {
+   "start": 1390.84,
+   "duration": 3.04,
+   "text": "file path, right?"
+  },
+  {
+   "start": 1392.72,
+   "duration": 3.04,
+   "text": "And uh"
+  },
+  {
+   "start": 1393.88,
+   "duration": 4.48,
+   "text": "one thing to keep in mind is that in"
+  },
+  {
+   "start": 1395.76,
+   "duration": 4.8,
+   "text": "Python's plain dict schema, there is"
+  },
+  {
+   "start": 1398.36,
+   "duration": 4.28,
+   "text": "basically whatever keys you actually"
+  },
+  {
+   "start": 1400.56,
+   "duration": 4.24,
+   "text": "provide over here as you know that that"
+  },
+  {
+   "start": 1402.64,
+   "duration": 4.08,
+   "text": "requires an argument, it [snorts] is it"
+  },
+  {
+   "start": 1404.8,
+   "duration": 3.64,
+   "text": "is not optional. You have to provide the"
+  },
+  {
+   "start": 1406.72,
+   "duration": 3.88,
+   "text": "file path at any time."
+  },
+  {
+   "start": 1408.44,
+   "duration": 4.2,
+   "text": "But what if you need an optional"
+  },
+  {
+   "start": 1410.6,
+   "duration": 5.32,
+   "text": "argument? If you if you if you check out"
+  },
+  {
+   "start": 1412.64,
+   "duration": 6.04,
+   "text": "the uh TypeScript version of this SDK,"
+  },
+  {
+   "start": 1415.92,
+   "duration": 6.24,
+   "text": "right? You can write, for example,"
+  },
+  {
+   "start": 1418.68,
+   "duration": 5.72,
+   "text": ".optional. Okay, it is it is it is there"
+  },
+  {
+   "start": 1422.16,
+   "duration": 3.84,
+   "text": "mentioned in Anthropic's pages."
+  },
+  {
+   "start": 1424.4,
+   "duration": 4.68,
+   "text": "But"
+  },
+  {
+   "start": 1426.0,
+   "duration": 5.44,
+   "text": "in here, you cannot actually pass in an"
+  },
+  {
+   "start": 1429.08,
+   "duration": 4.28,
+   "text": "optional thing. I I mean, you can pass"
+  },
+  {
+   "start": 1431.44,
+   "duration": 3.48,
+   "text": "it, but there is a way to do that. But"
+  },
+  {
+   "start": 1433.36,
+   "duration": 4.08,
+   "text": "if you're mentioning"
+  },
+  {
+   "start": 1434.92,
+   "duration": 4.92,
+   "text": "a dict over here, a key,"
+  },
+  {
+   "start": 1437.44,
+   "duration": 5.44,
+   "text": "yeah, inside the dict, basically, you"
+  },
+  {
+   "start": 1439.84,
+   "duration": 5.56,
+   "text": "have to kind of use that argument. You"
+  },
+  {
+   "start": 1442.88,
+   "duration": 3.8,
+   "text": "cannot just leave that argument as as"
+  },
+  {
+   "start": 1445.4,
+   "duration": 3.08,
+   "text": "optional."
+  },
+  {
+   "start": 1446.68,
+   "duration": 4.32,
+   "text": "That is that is just a point I wanted to"
+  },
+  {
+   "start": 1448.48,
+   "duration": 4.72,
+   "text": "make. And I'm going to tell you because"
+  },
+  {
+   "start": 1451.0,
+   "duration": 3.64,
+   "text": "sometimes uh"
+  },
+  {
+   "start": 1453.2,
+   "duration": 3.8,
+   "text": "we're going to add one more feature to"
+  },
+  {
+   "start": 1454.64,
+   "duration": 4.52,
+   "text": "this particular parser that include"
+  },
+  {
+   "start": 1457.0,
+   "duration": 3.28,
+   "text": "private methods. That's a Boolean value,"
+  },
+  {
+   "start": 1459.16,
+   "duration": 2.72,
+   "text": "yes or no."
+  },
+  {
+   "start": 1460.28,
+   "duration": 3.68,
+   "text": "That needs to be optional because if I"
+  },
+  {
+   "start": 1461.88,
+   "duration": 4.72,
+   "text": "don't supply a yes or no, then it"
+  },
+  {
+   "start": 1463.96,
+   "duration": 4.28,
+   "text": "should, you know, do some other stuff."
+  },
+  {
+   "start": 1466.6,
+   "duration": 2.76,
+   "text": "If I supply yes, then it should do some"
+  },
+  {
+   "start": 1468.24,
+   "duration": 3.68,
+   "text": "other stuff."
+  },
+  {
+   "start": 1469.36,
+   "duration": 4.24,
+   "text": "So, for that if I mention it here,"
+  },
+  {
+   "start": 1471.92,
+   "duration": 3.8,
+   "text": "right? Then I have to supply that"
+  },
+  {
+   "start": 1473.6,
+   "duration": 3.88,
+   "text": "parameter, which I, you know, sometimes"
+  },
+  {
+   "start": 1475.72,
+   "duration": 4.08,
+   "text": "I don't want to do. So, keep that in"
+  },
+  {
+   "start": 1477.48,
+   "duration": 4.76,
+   "text": "mind while you are working out with this"
+  },
+  {
+   "start": 1479.8,
+   "duration": 4.36,
+   "text": "particular, you know, schema or with"
+  },
+  {
+   "start": 1482.24,
+   "duration": 3.6,
+   "text": "annotated, right?"
+  },
+  {
+   "start": 1484.16,
+   "duration": 3.88,
+   "text": "Okay, so the next part is basically the"
+  },
+  {
+   "start": 1485.84,
+   "duration": 4.4,
+   "text": "handler,"
+  },
+  {
+   "start": 1488.04,
+   "duration": 4.4,
+   "text": "which is I have already selected."
+  },
+  {
+   "start": 1490.24,
+   "duration": 3.8,
+   "text": "Uh handler is nothing but the function,"
+  },
+  {
+   "start": 1492.44,
+   "duration": 3.72,
+   "text": "right? The actual function. So, this is"
+  },
+  {
+   "start": 1494.04,
+   "duration": 3.68,
+   "text": "this is the tool decorator, and then"
+  },
+  {
+   "start": 1496.16,
+   "duration": 2.44,
+   "text": "we're going to have the handler over"
+  },
+  {
+   "start": 1497.72,
+   "duration": 1.76,
+   "text": "here."
+  },
+  {
+   "start": 1498.6,
+   "duration": 3.72,
+   "text": "Yeah?"
+  },
+  {
+   "start": 1499.48,
+   "duration": 5.0,
+   "text": "Um that is a handler where the real work"
+  },
+  {
+   "start": 1502.32,
+   "duration": 3.84,
+   "text": "happens, and this is the fourth and the"
+  },
+  {
+   "start": 1504.48,
+   "duration": 3.6,
+   "text": "final part."
+  },
+  {
+   "start": 1506.16,
+   "duration": 3.68,
+   "text": "It's nothing if you see, it is nothing"
+  },
+  {
+   "start": 1508.08,
+   "duration": 6.04,
+   "text": "but just a"
+  },
+  {
+   "start": 1509.84,
+   "duration": 5.92,
+   "text": "an Sorry, not a an async function."
+  },
+  {
+   "start": 1514.12,
+   "duration": 4.84,
+   "text": "Yeah?"
+  },
+  {
+   "start": 1515.76,
+   "duration": 6.24,
+   "text": "It's taking one dict of validated"
+  },
+  {
+   "start": 1518.96,
+   "duration": 5.56,
+   "text": "arguments, args, over here."
+  },
+  {
+   "start": 1522.0,
+   "duration": 5.52,
+   "text": "Right? And returning a dict with a"
+  },
+  {
+   "start": 1524.52,
+   "duration": 5.4,
+   "text": "content array, if you see over here."
+  },
+  {
+   "start": 1527.52,
+   "duration": 5.16,
+   "text": "Nothing. Nothing's special over here."
+  },
+  {
+   "start": 1529.92,
+   "duration": 6.08,
+   "text": "Right? So, that's the basically the"
+  },
+  {
+   "start": 1532.68,
+   "duration": 5.76,
+   "text": "entire contract, you know, same shape no"
+  },
+  {
+   "start": 1536.0,
+   "duration": 4.16,
+   "text": "matter what your tool does underneath,"
+  },
+  {
+   "start": 1538.44,
+   "duration": 4.2,
+   "text": "right? That is the four parts of your"
+  },
+  {
+   "start": 1540.16,
+   "duration": 6.08,
+   "text": "tool, basically, that you must define."
+  },
+  {
+   "start": 1542.64,
+   "duration": 5.76,
+   "text": "Right? The description, the arguments,"
+  },
+  {
+   "start": 1546.24,
+   "duration": 3.84,
+   "text": "uh you know, your function, and all"
+  },
+  {
+   "start": 1548.4,
+   "duration": 3.4,
+   "text": "those things."
+  },
+  {
+   "start": 1550.08,
+   "duration": 3.28,
+   "text": "Yeah, I I I I I hope that is making"
+  },
+  {
+   "start": 1551.8,
+   "duration": 4.2,
+   "text": "sense over here."
+  },
+  {
+   "start": 1553.36,
+   "duration": 3.64,
+   "text": "Now, two things worth pausing on over"
+  },
+  {
+   "start": 1556.0,
+   "duration": 5.08,
+   "text": "here."
+  },
+  {
+   "start": 1557.0,
+   "duration": 5.6,
+   "text": "First thing is the file not found error."
+  },
+  {
+   "start": 1561.08,
+   "duration": 2.44,
+   "text": "Right? The file not found error, if you"
+  },
+  {
+   "start": 1562.6,
+   "duration": 3.48,
+   "text": "see,"
+  },
+  {
+   "start": 1563.52,
+   "duration": 3.56,
+   "text": "um in this particular method,"
+  },
+  {
+   "start": 1566.08,
+   "duration": 2.48,
+   "text": "yeah?"
+  },
+  {
+   "start": 1567.08,
+   "duration": 6.08,
+   "text": "Uh it it"
+  },
+  {
+   "start": 1568.56,
+   "duration": 7.0,
+   "text": "it returns a flag known as is error."
+  },
+  {
+   "start": 1573.16,
+   "duration": 4.68,
+   "text": "Yeah? It returns a flag known as is"
+  },
+  {
+   "start": 1575.56,
+   "duration": 4.64,
+   "text": "error, and if you see, it is set to"
+  },
+  {
+   "start": 1577.84,
+   "duration": 2.36,
+   "text": "true."
+  },
+  {
+   "start": 1580.72,
+   "duration": 4.04,
+   "text": "Now, it is returning true instead of"
+  },
+  {
+   "start": 1582.96,
+   "duration": 4.52,
+   "text": "crashing out. Now, people who have gone"
+  },
+  {
+   "start": 1584.76,
+   "duration": 5.92,
+   "text": "through my cloud architect series"
+  },
+  {
+   "start": 1587.48,
+   "duration": 6.84,
+   "text": "exactly know why we are returning true"
+  },
+  {
+   "start": 1590.68,
+   "duration": 6.88,
+   "text": "instead of, you know, just ending the"
+  },
+  {
+   "start": 1594.32,
+   "duration": 5.56,
+   "text": "function or re- you know, just just just"
+  },
+  {
+   "start": 1597.56,
+   "duration": 3.92,
+   "text": "crash over there by just throwing an ex-"
+  },
+  {
+   "start": 1599.88,
+   "duration": 4.04,
+   "text": "exception."
+  },
+  {
+   "start": 1601.48,
+   "duration": 4.88,
+   "text": "The real reason is that when when you"
+  },
+  {
+   "start": 1603.92,
+   "duration": 4.28,
+   "text": "are dealing with sub agents and multiple"
+  },
+  {
+   "start": 1606.36,
+   "duration": 3.48,
+   "text": "agents, right? There is a coordinator on"
+  },
+  {
+   "start": 1608.2,
+   "duration": 2.92,
+   "text": "top, for example, who is coordinating"
+  },
+  {
+   "start": 1609.84,
+   "duration": 3.28,
+   "text": "the sub agents."
+  },
+  {
+   "start": 1611.12,
+   "duration": 3.6,
+   "text": "You have to let the coordinator know."
+  },
+  {
+   "start": 1613.12,
+   "duration": 3.08,
+   "text": "Now, there is this this is just a single"
+  },
+  {
+   "start": 1614.72,
+   "duration": 3.32,
+   "text": "agent, but if there is a coordinator up"
+  },
+  {
+   "start": 1616.2,
+   "duration": 3.92,
+   "text": "top, you you need to let the coordinator"
+  },
+  {
+   "start": 1618.04,
+   "duration": 3.12,
+   "text": "know that there is an error that has"
+  },
+  {
+   "start": 1620.12,
+   "duration": 4.68,
+   "text": "happened."
+  },
+  {
+   "start": 1621.16,
+   "duration": 7.52,
+   "text": "If your subagent silently crashes out,"
+  },
+  {
+   "start": 1624.8,
+   "duration": 6.92,
+   "text": "crashes crash crashes crashes out some"
+  },
+  {
+   "start": 1628.68,
+   "duration": 4.88,
+   "text": "or it throws an exception and it dies."
+  },
+  {
+   "start": 1631.72,
+   "duration": 3.56,
+   "text": "The coordinator will not know if the if"
+  },
+  {
+   "start": 1633.56,
+   "duration": 3.52,
+   "text": "the subagent actually, you know,"
+  },
+  {
+   "start": 1635.28,
+   "duration": 4.8,
+   "text": "finished its work or not. It will not"
+  },
+  {
+   "start": 1637.08,
+   "duration": 4.4,
+   "text": "get any proper output out of it."
+  },
+  {
+   "start": 1640.08,
+   "duration": 3.8,
+   "text": "So,"
+  },
+  {
+   "start": 1641.48,
+   "duration": 5.04,
+   "text": "that is how you compose the exact"
+  },
+  {
+   "start": 1643.88,
+   "duration": 4.8,
+   "text": "message Claude reads is error flag. And"
+  },
+  {
+   "start": 1646.52,
+   "duration": 4.4,
+   "text": "I have discussed this in detail in my"
+  },
+  {
+   "start": 1648.68,
+   "duration": 5.2,
+   "text": "Claude Certified Architect course."
+  },
+  {
+   "start": 1650.92,
+   "duration": 5.68,
+   "text": "Right? So, instead of a raw Python trace"
+  },
+  {
+   "start": 1653.88,
+   "duration": 4.8,
+   "text": "back, yeah,"
+  },
+  {
+   "start": 1656.6,
+   "duration": 3.92,
+   "text": "we are we are sending the flag as that"
+  },
+  {
+   "start": 1658.68,
+   "duration": 3.72,
+   "text": "some kind of error happened and we are"
+  },
+  {
+   "start": 1660.52,
+   "duration": 3.72,
+   "text": "also sending in the content. So, that is"
+  },
+  {
+   "start": 1662.4,
+   "duration": 3.72,
+   "text": "how you actually compose a message in a"
+  },
+  {
+   "start": 1664.24,
+   "duration": 3.8,
+   "text": "proper format and you send it back if"
+  },
+  {
+   "start": 1666.12,
+   "duration": 3.56,
+   "text": "some kind of error happens."
+  },
+  {
+   "start": 1668.04,
+   "duration": 3.0,
+   "text": "Yeah?"
+  },
+  {
+   "start": 1669.68,
+   "duration": 3.56,
+   "text": "Um"
+  },
+  {
+   "start": 1671.04,
+   "duration": 4.6,
+   "text": "and if you see the missing docstring"
+  },
+  {
+   "start": 1673.24,
+   "duration": 3.92,
+   "text": "check kind of skips private methods by"
+  },
+  {
+   "start": 1675.64,
+   "duration": 3.0,
+   "text": "default. That is the second point I"
+  },
+  {
+   "start": 1677.16,
+   "duration": 4.72,
+   "text": "wanted to make because we talked about"
+  },
+  {
+   "start": 1678.64,
+   "duration": 4.88,
+   "text": "the optional parameter, right? Um"
+  },
+  {
+   "start": 1681.88,
+   "duration": 3.08,
+   "text": "it, you know, it skips the private"
+  },
+  {
+   "start": 1683.52,
+   "duration": 3.24,
+   "text": "methods by default. If I don't send in"
+  },
+  {
+   "start": 1684.96,
+   "duration": 3.68,
+   "text": "anything, it skips the private methods"
+  },
+  {
+   "start": 1686.76,
+   "duration": 3.04,
+   "text": "by default. It checks only the public"
+  },
+  {
+   "start": 1688.64,
+   "duration": 3.4,
+   "text": "methods."
+  },
+  {
+   "start": 1689.8,
+   "duration": 5.12,
+   "text": "Um if you see"
+  },
+  {
+   "start": 1692.04,
+   "duration": 4.52,
+   "text": "that is how we are, you know, kind of"
+  },
+  {
+   "start": 1694.92,
+   "duration": 4.0,
+   "text": "controlling this optional parameter over"
+  },
+  {
+   "start": 1696.56,
+   "duration": 4.24,
+   "text": "here. This is an optional parameter. So,"
+  },
+  {
+   "start": 1698.92,
+   "duration": 3.76,
+   "text": "it is not in the schema. So, you have to"
+  },
+  {
+   "start": 1700.8,
+   "duration": 5.32,
+   "text": "do a dot get over here. So, if you are"
+  },
+  {
+   "start": 1702.68,
+   "duration": 5.64,
+   "text": "passing an include private parameter,"
+  },
+  {
+   "start": 1706.12,
+   "duration": 4.88,
+   "text": "uh you know,"
+  },
+  {
+   "start": 1708.32,
+   "duration": 4.64,
+   "text": "we are get, you know, just getting the"
+  },
+  {
+   "start": 1711.0,
+   "duration": 3.28,
+   "text": "value include pri- include private and"
+  },
+  {
+   "start": 1712.96,
+   "duration": 3.12,
+   "text": "if it is not there, we are saying,"
+  },
+  {
+   "start": 1714.28,
+   "duration": 3.149,
+   "text": "\"Okay, false.\" Then just skip all the"
+  },
+  {
+   "start": 1716.08,
+   "duration": 1.56,
+   "text": "private methods."
+  },
+  {
+   "start": 1717.429,
+   "duration": 2.291,
+   "text": ">> [snorts]"
+  },
+  {
+   "start": 1717.64,
+   "duration": 3.16,
+   "text": ">> Yeah? I'm hope I hope that is making"
+  },
+  {
+   "start": 1719.72,
+   "duration": 3.56,
+   "text": "sense. You're understanding what is"
+  },
+  {
+   "start": 1720.8,
+   "duration": 6.24,
+   "text": "happening over here in this code. Yeah?"
+  },
+  {
+   "start": 1723.28,
+   "duration": 5.24,
+   "text": "So, we have now written our function uh"
+  },
+  {
+   "start": 1727.04,
+   "duration": 3.76,
+   "text": "which is basically our handler over"
+  },
+  {
+   "start": 1728.52,
+   "duration": 2.28,
+   "text": "here."
+  },
+  {
+   "start": 1731.92,
+   "duration": 4.6,
+   "text": "One more thing I wanted to just figure"
+  },
+  {
+   "start": 1734.56,
+   "duration": 3.36,
+   "text": "out before we actually run this function"
+  },
+  {
+   "start": 1736.52,
+   "duration": 3.68,
+   "text": "and do a sanity check is that your"
+  },
+  {
+   "start": 1737.92,
+   "duration": 5.64,
+   "text": "handler doesn't know what"
+  },
+  {
+   "start": 1740.2,
+   "duration": 4.88,
+   "text": "CWD or current working directory you set"
+  },
+  {
+   "start": 1743.56,
+   "duration": 3.6,
+   "text": "on Claude."
+  },
+  {
+   "start": 1745.08,
+   "duration": 5.4,
+   "text": "And that is why if you remember"
+  },
+  {
+   "start": 1747.16,
+   "duration": 5.52,
+   "text": "we had done something known as this repo"
+  },
+  {
+   "start": 1750.48,
+   "duration": 4.88,
+   "text": "root over here."
+  },
+  {
+   "start": 1752.68,
+   "duration": 4.2,
+   "text": "Yeah? So"
+  },
+  {
+   "start": 1755.36,
+   "duration": 4.36,
+   "text": "because if you remember in episode"
+  },
+  {
+   "start": 1756.88,
+   "duration": 5.0,
+   "text": "number two we we had set CWD equals to"
+  },
+  {
+   "start": 1759.72,
+   "duration": 4.28,
+   "text": "dot dot slash. If you go to episode"
+  },
+  {
+   "start": 1761.88,
+   "duration": 4.76,
+   "text": "number two over here and go to the"
+  },
+  {
+   "start": 1764.0,
+   "duration": 4.76,
+   "text": "agent.py if you see we are setting the"
+  },
+  {
+   "start": 1766.64,
+   "duration": 4.64,
+   "text": "repo root over here."
+  },
+  {
+   "start": 1768.76,
+   "duration": 4.2,
+   "text": "Right? So it lets Claude reach episode"
+  },
+  {
+   "start": 1771.28,
+   "duration": 3.36,
+   "text": "one, you know,"
+  },
+  {
+   "start": 1772.96,
+   "duration": 3.64,
+   "text": "agent.py."
+  },
+  {
+   "start": 1774.64,
+   "duration": 3.64,
+   "text": "But if you see over here this is in"
+  },
+  {
+   "start": 1776.6,
+   "duration": 4.04,
+   "text": "episode number three in this tools we"
+  },
+  {
+   "start": 1778.28,
+   "duration": 4.56,
+   "text": "are not using any any built-in tool of"
+  },
+  {
+   "start": 1780.64,
+   "duration": 4.04,
+   "text": "Claude. This is our custom tool."
+  },
+  {
+   "start": 1782.84,
+   "duration": 4.48,
+   "text": "Right? So"
+  },
+  {
+   "start": 1784.68,
+   "duration": 5.08,
+   "text": "here we have to resolve the current"
+  },
+  {
+   "start": 1787.32,
+   "duration": 4.88,
+   "text": "working directory by ourselves."
+  },
+  {
+   "start": 1789.76,
+   "duration": 4.28,
+   "text": "Right? There is no special parameter or"
+  },
+  {
+   "start": 1792.2,
+   "duration": 4.76,
+   "text": "option or something like that that we"
+  },
+  {
+   "start": 1794.04,
+   "duration": 4.64,
+   "text": "can pass to do resolve the CWD. That is"
+  },
+  {
+   "start": 1796.96,
+   "duration": 4.4,
+   "text": "why we are resolving the repo root from"
+  },
+  {
+   "start": 1798.68,
+   "duration": 4.76,
+   "text": "the start so that, you know, your tool"
+  },
+  {
+   "start": 1801.36,
+   "duration": 4.12,
+   "text": "works properly and it doesn't get"
+  },
+  {
+   "start": 1803.44,
+   "duration": 3.52,
+   "text": "confused about this thing and no errors"
+  },
+  {
+   "start": 1805.48,
+   "duration": 4.32,
+   "text": "are thrown. Simple as that. So I just"
+  },
+  {
+   "start": 1806.96,
+   "duration": 5.8,
+   "text": "wanted to point out that gotcha so that"
+  },
+  {
+   "start": 1809.8,
+   "duration": 4.24,
+   "text": "you don't get confused why we have done"
+  },
+  {
+   "start": 1812.76,
+   "duration": 3.24,
+   "text": "that."
+  },
+  {
+   "start": 1814.04,
+   "duration": 4.52,
+   "text": "Okay. Now moving on"
+  },
+  {
+   "start": 1816.0,
+   "duration": 3.88,
+   "text": "let's test the handler before we"
+  },
+  {
+   "start": 1818.56,
+   "duration": 4.28,
+   "text": "actually plug it in. We don't I don't"
+  },
+  {
+   "start": 1819.88,
+   "duration": 6.16,
+   "text": "want to waste tokens and then debug. So"
+  },
+  {
+   "start": 1822.84,
+   "duration": 4.52,
+   "text": "let's check if our function or you know"
+  },
+  {
+   "start": 1826.04,
+   "duration": 3.24,
+   "text": "our handler is nothing but a function,"
+  },
+  {
+   "start": 1827.36,
+   "duration": 3.68,
+   "text": "right? That is what the tool will invoke"
+  },
+  {
+   "start": 1829.28,
+   "duration": 4.52,
+   "text": "at the end of the day. So let's try and"
+  },
+  {
+   "start": 1831.04,
+   "duration": 6.16,
+   "text": "check if the if our function is actually"
+  },
+  {
+   "start": 1833.8,
+   "duration": 5.4,
+   "text": "reading our episode one agent.py and it"
+  },
+  {
+   "start": 1837.2,
+   "duration": 3.68,
+   "text": "is returning some data or it is working"
+  },
+  {
+   "start": 1839.2,
+   "duration": 3.56,
+   "text": "as expected or not. So I'm going to just"
+  },
+  {
+   "start": 1840.88,
+   "duration": 3.52,
+   "text": "go back to"
+  },
+  {
+   "start": 1842.76,
+   "duration": 3.16,
+   "text": "um"
+  },
+  {
+   "start": 1844.4,
+   "duration": 3.28,
+   "text": "Uh for now I'm just First of all, I'm"
+  },
+  {
+   "start": 1845.92,
+   "duration": 4.24,
+   "text": "going to save the tools.py and let's"
+  },
+  {
+   "start": 1847.68,
+   "duration": 4.76,
+   "text": "let's go to snippets. If you just scroll"
+  },
+  {
+   "start": 1850.16,
+   "duration": 4.32,
+   "text": "down a bit over here,"
+  },
+  {
+   "start": 1852.44,
+   "duration": 3.88,
+   "text": "um we're going to do a sanity check"
+  },
+  {
+   "start": 1854.48,
+   "duration": 4.68,
+   "text": "before we actually plug it in the cloud"
+  },
+  {
+   "start": 1856.32,
+   "duration": 3.4,
+   "text": "agent SDK. So, here"
+  },
+  {
+   "start": 1859.16,
+   "duration": 3.56,
+   "text": "uh"
+  },
+  {
+   "start": 1859.72,
+   "duration": 7.8,
+   "text": "just going to go"
+  },
+  {
+   "start": 1862.72,
+   "duration": 4.8,
+   "text": "from here, I guess. Yeah. And"
+  },
+  {
+   "start": 1868.08,
+   "duration": 5.24,
+   "text": "Okay, that is uh that is Okay, we're"
+  },
+  {
+   "start": 1870.08,
+   "duration": 3.24,
+   "text": "just going to have to"
+  },
+  {
+   "start": 1873.44,
+   "duration": 3.28,
+   "text": "put it over here. So, I I've also"
+  },
+  {
+   "start": 1874.72,
+   "duration": 4.12,
+   "text": "included where you should run it,"
+  },
+  {
+   "start": 1876.72,
+   "duration": 4.56,
+   "text": "right? From where which directory?"
+  },
+  {
+   "start": 1878.84,
+   "duration": 4.12,
+   "text": "Because uh if you see in IPython, uh we"
+  },
+  {
+   "start": 1881.28,
+   "duration": 4.4,
+   "text": "are importing"
+  },
+  {
+   "start": 1882.96,
+   "duration": 4.56,
+   "text": "um you know, from tools. So, tools.py is"
+  },
+  {
+   "start": 1885.68,
+   "duration": 3.8,
+   "text": "in episode number three folder. So, you"
+  },
+  {
+   "start": 1887.52,
+   "duration": 3.52,
+   "text": "have to start the IPython terminal in"
+  },
+  {
+   "start": 1889.48,
+   "duration": 4.28,
+   "text": "episode number three folder. So, make"
+  },
+  {
+   "start": 1891.04,
+   "duration": 5.96,
+   "text": "sure that all this code you are running"
+  },
+  {
+   "start": 1893.76,
+   "duration": 4.84,
+   "text": "in episode number three folder."
+  },
+  {
+   "start": 1897.0,
+   "duration": 3.56,
+   "text": "Yeah? So, I'm just going to paste it"
+  },
+  {
+   "start": 1898.6,
+   "duration": 3.92,
+   "text": "over here. And we're going to just"
+  },
+  {
+   "start": 1900.56,
+   "duration": 4.72,
+   "text": "import that check docstring coverage"
+  },
+  {
+   "start": 1902.52,
+   "duration": 4.2,
+   "text": "from tools.py and then we just have to"
+  },
+  {
+   "start": 1905.28,
+   "duration": 4.12,
+   "text": "run the function."
+  },
+  {
+   "start": 1906.72,
+   "duration": 5.24,
+   "text": "And if we run it, then"
+  },
+  {
+   "start": 1909.4,
+   "duration": 3.72,
+   "text": "uh it is telling us in episode.py there"
+  },
+  {
+   "start": 1911.96,
+   "duration": 3.68,
+   "text": "are the"
+  },
+  {
+   "start": 1913.12,
+   "duration": 5.08,
+   "text": "episode one agent.py there are two"
+  },
+  {
+   "start": 1915.64,
+   "duration": 5.28,
+   "text": "uh missing docstrings. Um"
+  },
+  {
+   "start": 1918.2,
+   "duration": 6.24,
+   "text": "line number 12, function read_repo_file."
+  },
+  {
+   "start": 1920.92,
+   "duration": 5.8,
+   "text": "Um line number 42, function run_agent."
+  },
+  {
+   "start": 1924.44,
+   "duration": 4.04,
+   "text": "I think uh that initial code that I had"
+  },
+  {
+   "start": 1926.72,
+   "duration": 3.16,
+   "text": "run that had some different kind of"
+  },
+  {
+   "start": 1928.48,
+   "duration": 3.88,
+   "text": "code. That's why it was returning as"
+  },
+  {
+   "start": 1929.88,
+   "duration": 4.12,
+   "text": "Okay. Uh okay, that code uh we were"
+  },
+  {
+   "start": 1932.36,
+   "duration": 3.36,
+   "text": "checking Okay, the functions are"
+  },
+  {
+   "start": 1934.0,
+   "duration": 3.08,
+   "text": "existing or not."
+  },
+  {
+   "start": 1935.72,
+   "duration": 4.36,
+   "text": "Okay, that was not actually checking the"
+  },
+  {
+   "start": 1937.08,
+   "duration": 4.6,
+   "text": "docstring. My bad. That was my fault. I"
+  },
+  {
+   "start": 1940.08,
+   "duration": 3.32,
+   "text": "I I kind of told you that it was"
+  },
+  {
+   "start": 1941.68,
+   "duration": 4.0,
+   "text": "checking the docstring, but here"
+  },
+  {
+   "start": 1943.4,
+   "duration": 4.48,
+   "text": "actually this method this method that we"
+  },
+  {
+   "start": 1945.68,
+   "duration": 3.64,
+   "text": "wrote in tools.py, it is actually"
+  },
+  {
+   "start": 1947.88,
+   "duration": 2.72,
+   "text": "checking the docstring. And it is"
+  },
+  {
+   "start": 1949.32,
+   "duration": 3.12,
+   "text": "telling that there are two missing"
+  },
+  {
+   "start": 1950.6,
+   "duration": 4.72,
+   "text": "docstrings. Line number 12,"
+  },
+  {
+   "start": 1952.44,
+   "duration": 5.12,
+   "text": "read_repo_file, and line number 42, that"
+  },
+  {
+   "start": 1955.32,
+   "duration": 3.88,
+   "text": "function run_agent also does not have"
+  },
+  {
+   "start": 1957.56,
+   "duration": 3.28,
+   "text": "the um"
+  },
+  {
+   "start": 1959.2,
+   "duration": 3.72,
+   "text": "docstring. So, where were we? Okay, we"
+  },
+  {
+   "start": 1960.84,
+   "duration": 3.4,
+   "text": "were at this point."
+  },
+  {
+   "start": 1962.92,
+   "duration": 2.76,
+   "text": "Okay, so cool."
+  },
+  {
+   "start": 1964.24,
+   "duration": 3.04,
+   "text": "Uh now, um"
+  },
+  {
+   "start": 1965.68,
+   "duration": 3.44,
+   "text": "it is the real output. There is no model"
+  },
+  {
+   "start": 1967.28,
+   "duration": 3.4,
+   "text": "involved. So, if this kind of looks"
+  },
+  {
+   "start": 1969.12,
+   "duration": 3.92,
+   "text": "wrong, you can fix it over here before"
+  },
+  {
+   "start": 1970.68,
+   "duration": 4.56,
+   "text": "actually spending your tokens calling"
+  },
+  {
+   "start": 1973.04,
+   "duration": 4.4,
+   "text": "the model and all those things. Yeah."
+  },
+  {
+   "start": 1975.24,
+   "duration": 4.16,
+   "text": "So, a bug in your handler is uh you"
+  },
+  {
+   "start": 1977.44,
+   "duration": 4.8,
+   "text": "know, 100 times cheaper to catch before"
+  },
+  {
+   "start": 1979.4,
+   "duration": 5.04,
+   "text": "actually Claude runs it and spends your"
+  },
+  {
+   "start": 1982.24,
+   "duration": 4.68,
+   "text": "um money for the tokens."
+  },
+  {
+   "start": 1984.44,
+   "duration": 4.32,
+   "text": "Okay. So, let's move on to the next"
+  },
+  {
+   "start": 1986.92,
+   "duration": 5.0,
+   "text": "thing. Now, what we need to do is"
+  },
+  {
+   "start": 1988.76,
+   "duration": 5.84,
+   "text": "wrapping it in a server."
+  },
+  {
+   "start": 1991.92,
+   "duration": 5.2,
+   "text": "Because we need it in MCP format, right?"
+  },
+  {
+   "start": 1994.6,
+   "duration": 4.88,
+   "text": "And you know, one"
+  },
+  {
+   "start": 1997.12,
+   "duration": 4.68,
+   "text": "tool isn't useful to Claude on its own."
+  },
+  {
+   "start": 1999.48,
+   "duration": 4.76,
+   "text": "It needs to live inside a MCP server."
+  },
+  {
+   "start": 2001.8,
+   "duration": 4.52,
+   "text": "Yeah. MCP stand for model context"
+  },
+  {
+   "start": 2004.24,
+   "duration": 5.72,
+   "text": "protocol. So,"
+  },
+  {
+   "start": 2006.32,
+   "duration": 6.64,
+   "text": "even an in-process one, you know, um"
+  },
+  {
+   "start": 2009.96,
+   "duration": 4.12,
+   "text": "just for demo purposes, a very small MCP"
+  },
+  {
+   "start": 2012.96,
+   "duration": 3.88,
+   "text": "server."
+  },
+  {
+   "start": 2014.08,
+   "duration": 5.16,
+   "text": "Uh we have to create bundle it as an MCP"
+  },
+  {
+   "start": 2016.84,
+   "duration": 5.6,
+   "text": "server, and it's pretty easy to do that."
+  },
+  {
+   "start": 2019.24,
+   "duration": 3.2,
+   "text": "Yeah. So, I'm just going to"
+  },
+  {
+   "start": 2023.2,
+   "duration": 3.96,
+   "text": "check out the step number five, wrap it"
+  },
+  {
+   "start": 2025.32,
+   "duration": 2.8,
+   "text": "in the MCP server. Yeah. So, I'm just"
+  },
+  {
+   "start": 2027.16,
+   "duration": 2.28,
+   "text": "going to"
+  },
+  {
+   "start": 2028.12,
+   "duration": 2.68,
+   "text": "copy this"
+  },
+  {
+   "start": 2029.44,
+   "duration": 3.04,
+   "text": "piece of code."
+  },
+  {
+   "start": 2030.8,
+   "duration": 4.12,
+   "text": "Uh again, piece of code. That's a good"
+  },
+  {
+   "start": 2032.48,
+   "duration": 3.56,
+   "text": "pun that I've been using. And put it"
+  },
+  {
+   "start": 2034.92,
+   "duration": 4.6,
+   "text": "over here."
+  },
+  {
+   "start": 2036.04,
+   "duration": 6.6,
+   "text": "Yeah. So, every MCP tool Claude sees"
+  },
+  {
+   "start": 2039.52,
+   "duration": 8.28,
+   "text": "uh remember that it is kind of in this"
+  },
+  {
+   "start": 2042.64,
+   "duration": 5.16,
+   "text": "format, okay? Just going to put one um"
+  },
+  {
+   "start": 2048.2,
+   "duration": 5.28,
+   "text": "um ca- comment over here. So, Claude"
+  },
+  {
+   "start": 2051.12,
+   "duration": 4.72,
+   "text": "sees uh MCP server in this format. So,"
+  },
+  {
+   "start": 2053.48,
+   "duration": 3.72,
+   "text": "it it will start with MCP"
+  },
+  {
+   "start": 2055.84,
+   "duration": 3.24,
+   "text": "underscore."
+  },
+  {
+   "start": 2057.2,
+   "duration": 3.88,
+   "text": "This is how Claude sees. Then we have"
+  },
+  {
+   "start": 2059.08,
+   "duration": 3.92,
+   "text": "the server name."
+  },
+  {
+   "start": 2061.08,
+   "duration": 4.76,
+   "text": "Server underscore name."
+  },
+  {
+   "start": 2063.0,
+   "duration": 5.28,
+   "text": "Right? And then underscore"
+  },
+  {
+   "start": 2065.84,
+   "duration": 5.319,
+   "text": "the tool name."
+  },
+  {
+   "start": 2068.28,
+   "duration": 4.68,
+   "text": "Right? So, if you see over here, the"
+  },
+  {
+   "start": 2071.159,
+   "duration": 3.561,
+   "text": "server that we have created and the"
+  },
+  {
+   "start": 2072.96,
+   "duration": 4.199,
+   "text": "server name is review tools over here"
+  },
+  {
+   "start": 2074.72,
+   "duration": 4.959,
+   "text": "that we have created, right?"
+  },
+  {
+   "start": 2077.159,
+   "duration": 5.201,
+   "text": "So, what will it will what will be the"
+  },
+  {
+   "start": 2079.679,
+   "duration": 3.321,
+   "text": "name basically? So, in this case, the"
+  },
+  {
+   "start": 2082.36,
+   "duration": 3.0,
+   "text": "uh"
+  },
+  {
+   "start": 2083.0,
+   "duration": 5.96,
+   "text": "the name would be basically Cloud will"
+  },
+  {
+   "start": 2085.36,
+   "duration": 4.96,
+   "text": "identify as MCP {underscore} I think it"
+  },
+  {
+   "start": 2088.96,
+   "duration": 2.24,
+   "text": "has two {underscores} or something like"
+  },
+  {
+   "start": 2090.32,
+   "duration": 1.92,
+   "text": "that."
+  },
+  {
+   "start": 2091.2,
+   "duration": 2.4,
+   "text": "Um"
+  },
+  {
+   "start": 2092.24,
+   "duration": 3.159,
+   "text": "review"
+  },
+  {
+   "start": 2093.6,
+   "duration": 5.52,
+   "text": "{underscore} hyphen tools, that is the"
+  },
+  {
+   "start": 2095.399,
+   "duration": 5.801,
+   "text": "server name and then {underscore} check"
+  },
+  {
+   "start": 2099.12,
+   "duration": 2.08,
+   "text": "um"
+  },
+  {
+   "start": 2101.64,
+   "duration": 3.76,
+   "text": "Okay, so this tools is different."
+  },
+  {
+   "start": 2105.6,
+   "duration": 4.72,
+   "text": "It's not an {underscore} actually, I"
+  },
+  {
+   "start": 2107.0,
+   "duration": 4.84,
+   "text": "think it's a big {underscore} or a"
+  },
+  {
+   "start": 2110.32,
+   "duration": 3.28,
+   "text": "um"
+  },
+  {
+   "start": 2111.84,
+   "duration": 3.72,
+   "text": "two {underscores} I guess, yeah. It's"
+  },
+  {
+   "start": 2113.6,
+   "duration": 3.72,
+   "text": "two {underscores}, my bad."
+  },
+  {
+   "start": 2115.56,
+   "duration": 2.96,
+   "text": "So, it should be two {underscores},"
+  },
+  {
+   "start": 2117.32,
+   "duration": 2.72,
+   "text": "yeah? Because there are {underscores}"
+  },
+  {
+   "start": 2118.52,
+   "duration": 3.28,
+   "text": "here, so it needs to differentiate"
+  },
+  {
+   "start": 2120.04,
+   "duration": 4.16,
+   "text": "between MCP and server name and also"
+  },
+  {
+   "start": 2121.8,
+   "duration": 4.6,
+   "text": "tool name, so two {underscores}. So, MCP"
+  },
+  {
+   "start": 2124.2,
+   "duration": 4.56,
+   "text": "{underscore} {underscore}"
+  },
+  {
+   "start": 2126.4,
+   "duration": 4.24,
+   "text": "review tools. Tools spelling is wrong,"
+  },
+  {
+   "start": 2128.76,
+   "duration": 3.0,
+   "text": "so let's"
+  },
+  {
+   "start": 2130.64,
+   "duration": 3.68,
+   "text": "just"
+  },
+  {
+   "start": 2131.76,
+   "duration": 4.32,
+   "text": "do that and {underscore} {underscore}"
+  },
+  {
+   "start": 2134.32,
+   "duration": 6.32,
+   "text": "What is our handler name basically?"
+  },
+  {
+   "start": 2136.08,
+   "duration": 4.56,
+   "text": "Check {underscore} docstring."
+  },
+  {
+   "start": 2141.68,
+   "duration": 3.48,
+   "text": "{underscore}"
+  },
+  {
+   "start": 2143.4,
+   "duration": 4.56,
+   "text": "coverage, yeah, coverage. That is the"
+  },
+  {
+   "start": 2145.16,
+   "duration": 5.32,
+   "text": "name. So, this is how So, when we are"
+  },
+  {
+   "start": 2147.96,
+   "duration": 5.16,
+   "text": "going to host it in MCP server, like a"
+  },
+  {
+   "start": 2150.48,
+   "duration": 4.68,
+   "text": "simple small MCP server, this is how"
+  },
+  {
+   "start": 2153.12,
+   "duration": 3.48,
+   "text": "Cloud will look at it and this is how it"
+  },
+  {
+   "start": 2155.16,
+   "duration": 3.68,
+   "text": "will identify, okay, this is the tool"
+  },
+  {
+   "start": 2156.6,
+   "duration": 4.24,
+   "text": "inside this MCP server. Because an MCP"
+  },
+  {
+   "start": 2158.84,
+   "duration": 4.76,
+   "text": "server can contain a lot of tools,"
+  },
+  {
+   "start": 2160.84,
+   "duration": 4.8,
+   "text": "right? So, it it will first identify the"
+  },
+  {
+   "start": 2163.6,
+   "duration": 3.56,
+   "text": "MCP server and then it will identify the"
+  },
+  {
+   "start": 2165.64,
+   "duration": 2.96,
+   "text": "particular tools that are there in the"
+  },
+  {
+   "start": 2167.16,
+   "duration": 3.64,
+   "text": "MCP server, basically which is tool"
+  },
+  {
+   "start": 2168.6,
+   "duration": 4.4,
+   "text": "discovery, right? I have a very"
+  },
+  {
+   "start": 2170.8,
+   "duration": 4.4,
+   "text": "standalone video on MCP servers as well."
+  },
+  {
+   "start": 2173.0,
+   "duration": 3.76,
+   "text": "I have also covered that in detail in my"
+  },
+  {
+   "start": 2175.2,
+   "duration": 3.24,
+   "text": "Cloud Certified Architect course. You"
+  },
+  {
+   "start": 2176.76,
+   "duration": 3.4,
+   "text": "can go and have a look at that video."
+  },
+  {
+   "start": 2178.44,
+   "duration": 3.16,
+   "text": "I'm going to link the playlist to this"
+  },
+  {
+   "start": 2180.16,
+   "duration": 3.96,
+   "text": "description."
+  },
+  {
+   "start": 2181.6,
+   "duration": 4.84,
+   "text": "Yeah, so that is what is going to be"
+  },
+  {
+   "start": 2184.12,
+   "duration": 5.0,
+   "text": "happening over here in simple words."
+  },
+  {
+   "start": 2186.44,
+   "duration": 4.4,
+   "text": "Uh Cloud will identify your MCP and then"
+  },
+  {
+   "start": 2189.12,
+   "duration": 3.6,
+   "text": "it will do tool discovery and it will be"
+  },
+  {
+   "start": 2190.84,
+   "duration": 3.68,
+   "text": "knowing that okay, these are the tools"
+  },
+  {
+   "start": 2192.72,
+   "duration": 3.84,
+   "text": "and then once it"
+  },
+  {
+   "start": 2194.52,
+   "duration": 3.4,
+   "text": "uh, sees the tools descriptions which"
+  },
+  {
+   "start": 2196.56,
+   "duration": 3.8,
+   "text": "you have provided here, it will"
+  },
+  {
+   "start": 2197.92,
+   "duration": 4.44,
+   "text": "understand which tool to use in that MCP"
+  },
+  {
+   "start": 2200.36,
+   "duration": 5.72,
+   "text": "server at what time and when it is"
+  },
+  {
+   "start": 2202.36,
+   "duration": 4.76,
+   "text": "required. I hope that is making sense."
+  },
+  {
+   "start": 2206.08,
+   "duration": 2.48,
+   "text": "Okay."
+  },
+  {
+   "start": 2207.12,
+   "duration": 3.44,
+   "text": "Now, um,"
+  },
+  {
+   "start": 2208.56,
+   "duration": 5.08,
+   "text": "now coming to the agent.py. Now, our"
+  },
+  {
+   "start": 2210.56,
+   "duration": 4.76,
+   "text": "tools.py is almost ready. We created our"
+  },
+  {
+   "start": 2213.64,
+   "duration": 3.96,
+   "text": "tool, we gave the description, we used"
+  },
+  {
+   "start": 2215.32,
+   "duration": 4.48,
+   "text": "the tool decorator, and then we create"
+  },
+  {
+   "start": 2217.6,
+   "duration": 5.0,
+   "text": "our handler function, and then we"
+  },
+  {
+   "start": 2219.8,
+   "duration": 6.04,
+   "text": "wrapped up wrapped it up in one"
+  },
+  {
+   "start": 2222.6,
+   "duration": 4.88,
+   "text": "cute little MCP server over here."
+  },
+  {
+   "start": 2225.84,
+   "duration": 5.08,
+   "text": "Now, coming to agent.py. Now, it is"
+  },
+  {
+   "start": 2227.48,
+   "duration": 5.72,
+   "text": "completely, uh, you know, kind of, um,"
+  },
+  {
+   "start": 2230.92,
+   "duration": 4.2,
+   "text": "empty. So, let's fill it up. So, it will"
+  },
+  {
+   "start": 2233.2,
+   "duration": 3.52,
+   "text": "not it will be nothing but pretty much"
+  },
+  {
+   "start": 2235.12,
+   "duration": 3.44,
+   "text": "of similar to what we were doing in the"
+  },
+  {
+   "start": 2236.72,
+   "duration": 3.92,
+   "text": "previous"
+  },
+  {
+   "start": 2238.56,
+   "duration": 4.4,
+   "text": "episode. Basically, first we'll start"
+  },
+  {
+   "start": 2240.64,
+   "duration": 4.2,
+   "text": "with the imports."
+  },
+  {
+   "start": 2242.96,
+   "duration": 3.36,
+   "text": "Yeah, what we are needing. Obviously, we"
+  },
+  {
+   "start": 2244.84,
+   "duration": 2.4,
+   "text": "need the Cloud Agent SDK, right? So,"
+  },
+  {
+   "start": 2246.32,
+   "duration": 2.84,
+   "text": "we're going to"
+  },
+  {
+   "start": 2247.24,
+   "duration": 3.48,
+   "text": "copy this part."
+  },
+  {
+   "start": 2249.16,
+   "duration": 3.84,
+   "text": "And obviously, we need Cloud Agent"
+  },
+  {
+   "start": 2250.72,
+   "duration": 5.32,
+   "text": "Options. So, till here we're going to"
+  },
+  {
+   "start": 2253.0,
+   "duration": 4.56,
+   "text": "copy and we're going to put it in the"
+  },
+  {
+   "start": 2256.04,
+   "duration": 3.12,
+   "text": "agent.py."
+  },
+  {
+   "start": 2257.56,
+   "duration": 3.52,
+   "text": "And if you see, it's pretty simple to"
+  },
+  {
+   "start": 2259.16,
+   "duration": 4.6,
+   "text": "understand. Uh, we're going to use the"
+  },
+  {
+   "start": 2261.08,
+   "duration": 4.4,
+   "text": "anyio to communicate for asynchronous"
+  },
+  {
+   "start": 2263.76,
+   "duration": 3.4,
+   "text": "communications, then we use the Cloud"
+  },
+  {
+   "start": 2265.48,
+   "duration": 4.52,
+   "text": "Agent SDK, we need the Cloud Agent"
+  },
+  {
+   "start": 2267.16,
+   "duration": 4.48,
+   "text": "Options, we need assistant message, and"
+  },
+  {
+   "start": 2270.0,
+   "duration": 4.92,
+   "text": "all these message types I have discussed"
+  },
+  {
+   "start": 2271.64,
+   "duration": 4.64,
+   "text": "in detail in episode number two. Yeah,"
+  },
+  {
+   "start": 2274.92,
+   "duration": 4.2,
+   "text": "the last episode."
+  },
+  {
+   "start": 2276.28,
+   "duration": 6.0,
+   "text": "Um, each message type has specific"
+  },
+  {
+   "start": 2279.12,
+   "duration": 4.92,
+   "text": "blocks that we can access and we can,"
+  },
+  {
+   "start": 2282.28,
+   "duration": 3.24,
+   "text": "you know, do a lot of things."
+  },
+  {
+   "start": 2284.04,
+   "duration": 4.56,
+   "text": "So, obviously, we're going to import the"
+  },
+  {
+   "start": 2285.52,
+   "duration": 5.84,
+   "text": "tools from tools import review tools."
+  },
+  {
+   "start": 2288.6,
+   "duration": 5.28,
+   "text": "Yeah. So, uh, in the prompt, check"
+  },
+  {
+   "start": 2291.36,
+   "duration": 5.36,
+   "text": "docstring coverage on episode one"
+  },
+  {
+   "start": 2293.88,
+   "duration": 4.48,
+   "text": "agent.py and episode two agent.py. For"
+  },
+  {
+   "start": 2296.72,
+   "duration": 4.08,
+   "text": "each file, tell me what's missing and"
+  },
+  {
+   "start": 2298.36,
+   "duration": 4.92,
+   "text": "whether it's worth fixing before merge,"
+  },
+  {
+   "start": 2300.8,
+   "duration": 4.2,
+   "text": "right? Pretty simple, that is what will"
+  },
+  {
+   "start": 2303.28,
+   "duration": 3.2,
+   "text": "happen. So, in these two files episode"
+  },
+  {
+   "start": 2305.0,
+   "duration": 2.92,
+   "text": "number one agent.py, episode number two"
+  },
+  {
+   "start": 2306.48,
+   "duration": 4.4,
+   "text": "agent.py"
+  },
+  {
+   "start": 2307.92,
+   "duration": 5.08,
+   "text": "um Claude should actually run that"
+  },
+  {
+   "start": 2310.88,
+   "duration": 3.88,
+   "text": "particular tool and check it out"
+  },
+  {
+   "start": 2313.0,
+   "duration": 3.28,
+   "text": "basically. Whatever you're giving in the"
+  },
+  {
+   "start": 2314.76,
+   "duration": 4.04,
+   "text": "prompt. Then we have Claude agent option"
+  },
+  {
+   "start": 2316.28,
+   "duration": 4.84,
+   "text": "where we specify the model, we specify"
+  },
+  {
+   "start": 2318.8,
+   "duration": 4.08,
+   "text": "the MCP servers, right? So, obviously"
+  },
+  {
+   "start": 2321.12,
+   "duration": 4.04,
+   "text": "from this MCP server"
+  },
+  {
+   "start": 2322.88,
+   "duration": 3.12,
+   "text": "um it will identify the tools."
+  },
+  {
+   "start": 2325.16,
+   "duration": 3.0,
+   "text": "Uh"
+  },
+  {
+   "start": 2326.0,
+   "duration": 4.32,
+   "text": "we're keeping the tools as empty because"
+  },
+  {
+   "start": 2328.16,
+   "duration": 4.8,
+   "text": "we are not using any built-in Claude"
+  },
+  {
+   "start": 2330.32,
+   "duration": 4.56,
+   "text": "tools, right? Only custom tools our"
+  },
+  {
+   "start": 2332.96,
+   "duration": 4.4,
+   "text": "custom tool is visible. We're not going"
+  },
+  {
+   "start": 2334.88,
+   "duration": 4.52,
+   "text": "to give any other tool over here, any"
+  },
+  {
+   "start": 2337.36,
+   "duration": 3.68,
+   "text": "built-in tools. Now, allowed tools"
+  },
+  {
+   "start": 2339.4,
+   "duration": 3.92,
+   "text": "inside allowed tools we obviously this"
+  },
+  {
+   "start": 2341.04,
+   "duration": 4.24,
+   "text": "is same concept, right? Uh we're telling"
+  },
+  {
+   "start": 2343.32,
+   "duration": 5.04,
+   "text": "this tool that is there in that MCP"
+  },
+  {
+   "start": 2345.28,
+   "duration": 4.56,
+   "text": "server use it without my permission. You"
+  },
+  {
+   "start": 2348.36,
+   "duration": 3.6,
+   "text": "don't have to ask for my permission and"
+  },
+  {
+   "start": 2349.84,
+   "duration": 4.88,
+   "text": "that is what allowed tools is, right?"
+  },
+  {
+   "start": 2351.96,
+   "duration": 5.16,
+   "text": "Basically, whatever tool you specify"
+  },
+  {
+   "start": 2354.72,
+   "duration": 4.76,
+   "text": "it will basically uh you're allowing the"
+  },
+  {
+   "start": 2357.12,
+   "duration": 4.76,
+   "text": "tool to be used without your permission."
+  },
+  {
+   "start": 2359.48,
+   "duration": 5.08,
+   "text": "Yeah? It It has nothing to do with tool"
+  },
+  {
+   "start": 2361.88,
+   "duration": 4.6,
+   "text": "visibility or whatnot. It is just you"
+  },
+  {
+   "start": 2364.56,
+   "duration": 3.72,
+   "text": "are giving the"
+  },
+  {
+   "start": 2366.48,
+   "duration": 4.24,
+   "text": "telling that don't ask for my permission"
+  },
+  {
+   "start": 2368.28,
+   "duration": 4.56,
+   "text": "to run this tool."
+  },
+  {
+   "start": 2370.72,
+   "duration": 3.88,
+   "text": "System prompt, you are a senior Python"
+  },
+  {
+   "start": 2372.84,
+   "duration": 4.4,
+   "text": "reviewer, be concise and specific. It's"
+  },
+  {
+   "start": 2374.6,
+   "duration": 5.28,
+   "text": "a very stupid little system prompt, but"
+  },
+  {
+   "start": 2377.24,
+   "duration": 5.44,
+   "text": "just for the sake of the"
+  },
+  {
+   "start": 2379.88,
+   "duration": 5.28,
+   "text": "uh demo I'm just using it. Uh obviously"
+  },
+  {
+   "start": 2382.68,
+   "duration": 5.2,
+   "text": "you need to have better system prompts,"
+  },
+  {
+   "start": 2385.16,
+   "duration": 4.16,
+   "text": "right? So, I hope that is um making"
+  },
+  {
+   "start": 2387.88,
+   "duration": 4.56,
+   "text": "sense."
+  },
+  {
+   "start": 2389.32,
+   "duration": 4.08,
+   "text": "Okay. Now, coming to the next part of"
+  },
+  {
+   "start": 2392.44,
+   "duration": 3.48,
+   "text": "the"
+  },
+  {
+   "start": 2393.4,
+   "duration": 3.88,
+   "text": "agentic code. So, if you go back we have"
+  },
+  {
+   "start": 2395.92,
+   "duration": 3.24,
+   "text": "the"
+  },
+  {
+   "start": 2397.28,
+   "duration": 4.0,
+   "text": "run loop basically. It has the same"
+  },
+  {
+   "start": 2399.16,
+   "duration": 4.56,
+   "text": "shape as episode number two's loop with"
+  },
+  {
+   "start": 2401.28,
+   "duration": 5.12,
+   "text": "one addition we print every tool use"
+  },
+  {
+   "start": 2403.72,
+   "duration": 4.88,
+   "text": "block as it happens over here. So, I'm"
+  },
+  {
+   "start": 2406.4,
+   "duration": 3.36,
+   "text": "just going to copy this uh loop code"
+  },
+  {
+   "start": 2408.6,
+   "duration": 6.28,
+   "text": "from here."
+  },
+  {
+   "start": 2409.76,
+   "duration": 6.72,
+   "text": "Um just going to copy it from here. Hm."
+  },
+  {
+   "start": 2414.88,
+   "duration": 5.68,
+   "text": "Pretty It's"
+  },
+  {
+   "start": 2416.48,
+   "duration": 6.12,
+   "text": "Take this up. go to agent.py and just"
+  },
+  {
+   "start": 2420.56,
+   "duration": 4.6,
+   "text": "basically paste it over here."
+  },
+  {
+   "start": 2422.6,
+   "duration": 4.4,
+   "text": "So, we are doing what? We are We print"
+  },
+  {
+   "start": 2425.16,
+   "duration": 4.72,
+   "text": "every tool used block as it happens, so"
+  },
+  {
+   "start": 2427.0,
+   "duration": 4.8,
+   "text": "you can watch basically live exactly"
+  },
+  {
+   "start": 2429.88,
+   "duration": 3.8,
+   "text": "when and how Claude decides to reach for"
+  },
+  {
+   "start": 2431.8,
+   "duration": 3.96,
+   "text": "the tool. Because it's like our own"
+  },
+  {
+   "start": 2433.68,
+   "duration": 3.56,
+   "text": "custom tool that we have plugged it in."
+  },
+  {
+   "start": 2435.76,
+   "duration": 3.64,
+   "text": "So, you'll be able to see what is"
+  },
+  {
+   "start": 2437.24,
+   "duration": 4.08,
+   "text": "happening and when Claude decides to do"
+  },
+  {
+   "start": 2439.4,
+   "duration": 4.64,
+   "text": "what. And we are not controlling any by"
+  },
+  {
+   "start": 2441.32,
+   "duration": 4.52,
+   "text": "the way By the way, we are not written"
+  },
+  {
+   "start": 2444.04,
+   "duration": 4.04,
+   "text": "any agentic loop on our own. We are not"
+  },
+  {
+   "start": 2445.84,
+   "duration": 3.64,
+   "text": "checking for the stop reason. Nothing."
+  },
+  {
+   "start": 2448.08,
+   "duration": 3.76,
+   "text": "Everything will be handled by Claude"
+  },
+  {
+   "start": 2449.48,
+   "duration": 4.96,
+   "text": "agent SDK. We just plugged in our own"
+  },
+  {
+   "start": 2451.84,
+   "duration": 4.56,
+   "text": "custom tool. Right? If along with the"
+  },
+  {
+   "start": 2454.44,
+   "duration": 3.96,
+   "text": "own custom tool, if you need some"
+  },
+  {
+   "start": 2456.4,
+   "duration": 4.04,
+   "text": "built-in tools, you can specify it in"
+  },
+  {
+   "start": 2458.4,
+   "duration": 3.36,
+   "text": "the tools, right? So, it will become"
+  },
+  {
+   "start": 2460.44,
+   "duration": 5.0,
+   "text": "visible."
+  },
+  {
+   "start": 2461.76,
+   "duration": 5.88,
+   "text": "Okay. So, here we are"
+  },
+  {
+   "start": 2465.44,
+   "duration": 3.88,
+   "text": "obviously and um"
+  },
+  {
+   "start": 2467.64,
+   "duration": 4.04,
+   "text": "this is the"
+  },
+  {
+   "start": 2469.32,
+   "duration": 5.44,
+   "text": "I think end. So, we can now run our"
+  },
+  {
+   "start": 2471.68,
+   "duration": 4.88,
+   "text": "agent.py code and see what is happening."
+  },
+  {
+   "start": 2474.76,
+   "duration": 2.92,
+   "text": "So, let me just save all of these three"
+  },
+  {
+   "start": 2476.56,
+   "duration": 2.76,
+   "text": "files."
+  },
+  {
+   "start": 2477.68,
+   "duration": 4.48,
+   "text": "Um I'm just going to go back into our"
+  },
+  {
+   "start": 2479.32,
+   "duration": 5.52,
+   "text": "terminal, clear up some things, and I'm"
+  },
+  {
+   "start": 2482.16,
+   "duration": 6.36,
+   "text": "going to just say python 3. Okay, let's"
+  },
+  {
+   "start": 2484.84,
+   "duration": 5.76,
+   "text": "go inside CD episode 0"
+  },
+  {
+   "start": 2488.52,
+   "duration": 3.84,
+   "text": "EP03."
+  },
+  {
+   "start": 2490.6,
+   "duration": 2.96,
+   "text": "And from here, we're going to say python"
+  },
+  {
+   "start": 2492.36,
+   "duration": 5.68,
+   "text": "3"
+  },
+  {
+   "start": 2493.56,
+   "duration": 8.68,
+   "text": "uh and we're going to run agent.py."
+  },
+  {
+   "start": 2498.04,
+   "duration": 6.64,
+   "text": "And we're going to see it in action."
+  },
+  {
+   "start": 2502.24,
+   "duration": 4.8,
+   "text": "So, it is saying that it is calling the"
+  },
+  {
+   "start": 2504.68,
+   "duration": 4.56,
+   "text": "tool once once it is calling as you can"
+  },
+  {
+   "start": 2507.04,
+   "duration": 3.88,
+   "text": "see that Claude is taking the decision."
+  },
+  {
+   "start": 2509.24,
+   "duration": 4.64,
+   "text": "Once it is calling"
+  },
+  {
+   "start": 2510.92,
+   "duration": 2.96,
+   "text": "for um"
+  },
+  {
+   "start": 2515.32,
+   "duration": 4.2,
+   "text": "Sorry, my bad. So, when it's doing a"
+  },
+  {
+   "start": 2517.32,
+   "duration": 4.16,
+   "text": "tool call, uh which is basically in that"
+  },
+  {
+   "start": 2519.52,
+   "duration": 5.08,
+   "text": "MCP server, right? This tool it is"
+  },
+  {
+   "start": 2521.48,
+   "duration": 6.36,
+   "text": "using. Um yeah, I was right. It is"
+  },
+  {
+   "start": 2524.6,
+   "duration": 4.96,
+   "text": "two underscores. Yeah, now it is right."
+  },
+  {
+   "start": 2527.84,
+   "duration": 4.48,
+   "text": "Um and it is doing that running that"
+  },
+  {
+   "start": 2529.56,
+   "duration": 4.52,
+   "text": "tool for episode one agent.py and it is"
+  },
+  {
+   "start": 2532.32,
+   "duration": 3.88,
+   "text": "running the tool again for episode 2"
+  },
+  {
+   "start": 2534.08,
+   "duration": 4.84,
+   "text": "agent.py and it is telling some some"
+  },
+  {
+   "start": 2536.2,
+   "duration": 4.08,
+   "text": "things. Read repo file worth fixing"
+  },
+  {
+   "start": 2538.92,
+   "duration": 3.36,
+   "text": "anything that touches the file system"
+  },
+  {
+   "start": 2540.28,
+   "duration": 4.96,
+   "text": "repo contains should"
+  },
+  {
+   "start": 2542.28,
+   "duration": 4.12,
+   "text": "expect should document expected args,"
+  },
+  {
+   "start": 2545.24,
+   "duration": 2.44,
+   "text": "right?"
+  },
+  {
+   "start": 2546.4,
+   "duration": 2.96,
+   "text": "Something something like that. Verdict"
+  },
+  {
+   "start": 2547.68,
+   "duration": 3.2,
+   "text": "I'll flag this before merging at least"
+  },
+  {
+   "start": 2549.36,
+   "duration": 3.88,
+   "text": "for the run agent since it's probably"
+  },
+  {
+   "start": 2550.88,
+   "duration": 4.24,
+   "text": "the primary's public interface. Not a"
+  },
+  {
+   "start": 2553.24,
+   "duration": 5.68,
+   "text": "blocker it is telling, okay."
+  },
+  {
+   "start": 2555.12,
+   "duration": 6.08,
+   "text": "Episode number 2 agent.py one missing"
+  },
+  {
+   "start": 2558.92,
+   "duration": 3.76,
+   "text": "somewhere it is here in the main do not"
+  },
+  {
+   "start": 2561.2,
+   "duration": 3.6,
+   "text": "do not worth blocking the merge over"
+  },
+  {
+   "start": 2562.68,
+   "duration": 3.48,
+   "text": "nice to have not a real gap. So, as you"
+  },
+  {
+   "start": 2564.8,
+   "duration": 2.84,
+   "text": "can see that as we're you know"
+  },
+  {
+   "start": 2566.16,
+   "duration": 5.08,
+   "text": "progressing through the episodes we are"
+  },
+  {
+   "start": 2567.64,
+   "duration": 6.28,
+   "text": "building our nice little code reviewer"
+  },
+  {
+   "start": 2571.24,
+   "duration": 4.84,
+   "text": "agent and we added the docstring feature"
+  },
+  {
+   "start": 2573.92,
+   "duration": 4.88,
+   "text": "as a custom tool. It was pretty amazing,"
+  },
+  {
+   "start": 2576.08,
+   "duration": 4.96,
+   "text": "right? It's so easy and so amazing and"
+  },
+  {
+   "start": 2578.8,
+   "duration": 4.08,
+   "text": "I hope you understand where what fits"
+  },
+  {
+   "start": 2581.04,
+   "duration": 3.16,
+   "text": "in. That is the important point you need"
+  },
+  {
+   "start": 2582.88,
+   "duration": 3.44,
+   "text": "to understand. Even though you use"
+  },
+  {
+   "start": 2584.2,
+   "duration": 4.72,
+   "text": "Claude code to do everything"
+  },
+  {
+   "start": 2586.32,
+   "duration": 4.4,
+   "text": "you need to understand that you know"
+  },
+  {
+   "start": 2588.92,
+   "duration": 3.0,
+   "text": "you need to you you are the person"
+  },
+  {
+   "start": 2590.72,
+   "duration": 2.6,
+   "text": "reviewing the code. You need you need to"
+  },
+  {
+   "start": 2591.92,
+   "duration": 3.16,
+   "text": "understand what is happening in your own"
+  },
+  {
+   "start": 2593.32,
+   "duration": 2.92,
+   "text": "code. Yeah?"
+  },
+  {
+   "start": 2595.08,
+   "duration": 2.96,
+   "text": "So,"
+  },
+  {
+   "start": 2596.24,
+   "duration": 3.96,
+   "text": "a question to you."
+  },
+  {
+   "start": 2598.04,
+   "duration": 3.48,
+   "text": "Let me see if I can go back to the"
+  },
+  {
+   "start": 2600.2,
+   "duration": 4.64,
+   "text": "slides."
+  },
+  {
+   "start": 2601.52,
+   "duration": 4.48,
+   "text": "Okay. So, this is the tool decorator."
+  },
+  {
+   "start": 2604.84,
+   "duration": 3.28,
+   "text": "Yeah."
+  },
+  {
+   "start": 2606.0,
+   "duration": 4.48,
+   "text": "And"
+  },
+  {
+   "start": 2608.12,
+   "duration": 4.24,
+   "text": "this is how the structure it is, right?"
+  },
+  {
+   "start": 2610.48,
+   "duration": 4.12,
+   "text": "Wrapping the tool in a server two two"
+  },
+  {
+   "start": 2612.36,
+   "duration": 4.24,
+   "text": "underscore server name another two"
+  },
+  {
+   "start": 2614.6,
+   "duration": 4.28,
+   "text": "underscores and then the tool name. That"
+  },
+  {
+   "start": 2616.6,
+   "duration": 3.44,
+   "text": "is how Claude sees basically your custom"
+  },
+  {
+   "start": 2618.88,
+   "duration": 5.12,
+   "text": "tools."
+  },
+  {
+   "start": 2620.04,
+   "duration": 5.44,
+   "text": "Um we did this."
+  },
+  {
+   "start": 2624.0,
+   "duration": 4.52,
+   "text": "Okay."
+  },
+  {
+   "start": 2625.48,
+   "duration": 4.28,
+   "text": "Okay. So, a question to you."
+  },
+  {
+   "start": 2628.52,
+   "duration": 3.32,
+   "text": "Uh"
+  },
+  {
+   "start": 2629.76,
+   "duration": 3.36,
+   "text": "Uh it's a pretty easy question."
+  },
+  {
+   "start": 2631.84,
+   "duration": 3.64,
+   "text": "When"
+  },
+  {
+   "start": 2633.12,
+   "duration": 4.44,
+   "text": "if Claude keeps confusing two similar"
+  },
+  {
+   "start": 2635.48,
+   "duration": 4.52,
+   "text": "custom tools"
+  },
+  {
+   "start": 2637.56,
+   "duration": 4.32,
+   "text": "or reaches for the wrong one."
+  },
+  {
+   "start": 2640.0,
+   "duration": 3.8,
+   "text": "Right? Uh this is the mental model you"
+  },
+  {
+   "start": 2641.88,
+   "duration": 4.64,
+   "text": "have to check, right?"
+  },
+  {
+   "start": 2643.8,
+   "duration": 5.36,
+   "text": "Your first move isn't more examples or"
+  },
+  {
+   "start": 2646.52,
+   "duration": 5.28,
+   "text": "giving a few short examples or you know"
+  },
+  {
+   "start": 2649.16,
+   "duration": 4.72,
+   "text": "improving the system prompt or whatnot."
+  },
+  {
+   "start": 2651.8,
+   "duration": 4.32,
+   "text": "The problem is is not in the routing"
+  },
+  {
+   "start": 2653.88,
+   "duration": 5.12,
+   "text": "layer. The problem is"
+  },
+  {
+   "start": 2656.12,
+   "duration": 4.92,
+   "text": "is is is in front of you in your tools."
+  },
+  {
+   "start": 2659.0,
+   "duration": 4.26,
+   "text": "Right? If Claude is getting confused"
+  },
+  {
+   "start": 2661.04,
+   "duration": 2.48,
+   "text": "between tools,"
+  },
+  {
+   "start": 2663.26,
+   "duration": 1.38,
+   "text": ">> [snorts]"
+  },
+  {
+   "start": 2663.52,
+   "duration": 3.92,
+   "text": ">> it is"
+  },
+  {
+   "start": 2664.64,
+   "duration": 4.56,
+   "text": "99% of the time time it has to do"
+  },
+  {
+   "start": 2667.44,
+   "duration": 3.72,
+   "text": "something with the description and this"
+  },
+  {
+   "start": 2669.2,
+   "duration": 3.52,
+   "text": "kind of question comes a lot in the exam"
+  },
+  {
+   "start": 2671.16,
+   "duration": 3.28,
+   "text": "as well. From an exam perspective also"
+  },
+  {
+   "start": 2672.72,
+   "duration": 3.92,
+   "text": "this is very important."
+  },
+  {
+   "start": 2674.44,
+   "duration": 4.16,
+   "text": "So, make sure that your descriptions are"
+  },
+  {
+   "start": 2676.64,
+   "duration": 2.96,
+   "text": "very very good. Like I I wrote a"
+  },
+  {
+   "start": 2678.6,
+   "duration": 2.88,
+   "text": "description, right? It was like a"
+  },
+  {
+   "start": 2679.6,
+   "duration": 4.4,
+   "text": "paragraph. It is telling Claude when to"
+  },
+  {
+   "start": 2681.48,
+   "duration": 4.56,
+   "text": "use it, when not to use,"
+  },
+  {
+   "start": 2684.0,
+   "duration": 3.4,
+   "text": "and what to do basically."
+  },
+  {
+   "start": 2686.04,
+   "duration": 3.72,
+   "text": "Right? So, your description should be"
+  },
+  {
+   "start": 2687.4,
+   "duration": 4.32,
+   "text": "picture perfect in my opinion. So, one"
+  },
+  {
+   "start": 2689.76,
+   "duration": 4.2,
+   "text": "thing to go away with, please always"
+  },
+  {
+   "start": 2691.72,
+   "duration": 3.6,
+   "text": "remember to keep your custom tools"
+  },
+  {
+   "start": 2693.96,
+   "duration": 2.76,
+   "text": "description"
+  },
+  {
+   "start": 2695.32,
+   "duration": 5.64,
+   "text": "very good."
+  },
+  {
+   "start": 2696.72,
+   "duration": 5.72,
+   "text": "Right? So, I hope that is making sense."
+  },
+  {
+   "start": 2700.96,
+   "duration": 2.96,
+   "text": "Yeah. So, all the code is there."
+  },
+  {
+   "start": 2702.44,
+   "duration": 3.16,
+   "text": "Obviously, I'm going to push the code."
+  },
+  {
+   "start": 2703.92,
+   "duration": 3.32,
+   "text": "You'll get the slides and everything."
+  },
+  {
+   "start": 2705.6,
+   "duration": 3.28,
+   "text": "The tools.py, the snippets file,"
+  },
+  {
+   "start": 2707.24,
+   "duration": 3.4,
+   "text": "everything you will get"
+  },
+  {
+   "start": 2708.88,
+   "duration": 3.72,
+   "text": "per episode in the folders. So, you"
+  },
+  {
+   "start": 2710.64,
+   "duration": 5.76,
+   "text": "don't have to worry about that."
+  },
+  {
+   "start": 2712.6,
+   "duration": 5.32,
+   "text": "Yeah. And five things to walk away with."
+  },
+  {
+   "start": 2716.4,
+   "duration": 3.64,
+   "text": "Just like a summary of what we have"
+  },
+  {
+   "start": 2717.92,
+   "duration": 4.44,
+   "text": "learned in this particular episode."
+  },
+  {
+   "start": 2720.04,
+   "duration": 4.28,
+   "text": "Custom tools have four parts, right?"
+  },
+  {
+   "start": 2722.36,
+   "duration": 4.36,
+   "text": "What are those? Name, description, input"
+  },
+  {
+   "start": 2724.32,
+   "duration": 5.24,
+   "text": "schema, and handler. They are bundled by"
+  },
+  {
+   "start": 2726.72,
+   "duration": 4.96,
+   "text": "the at the rate tool decorator. And it"
+  },
+  {
+   "start": 2729.56,
+   "duration": 5.52,
+   "text": "is registered with"
+  },
+  {
+   "start": 2731.68,
+   "duration": 6.44,
+   "text": "create SDK MCP server."
+  },
+  {
+   "start": 2735.08,
+   "duration": 4.68,
+   "text": "Or an MCP server. In Python, the"
+  },
+  {
+   "start": 2738.12,
+   "duration": 4.36,
+   "text": "annotated type, remember that we had"
+  },
+  {
+   "start": 2739.76,
+   "duration": 4.96,
+   "text": "discussed, yeah? It adds per parameter"
+  },
+  {
+   "start": 2742.48,
+   "duration": 4.4,
+   "text": "description as you saw like the file"
+  },
+  {
+   "start": 2744.72,
+   "duration": 5.6,
+   "text": "path is an STR and then we had a"
+  },
+  {
+   "start": 2746.88,
+   "duration": 5.96,
+   "text": "description over there, right? So, yeah."
+  },
+  {
+   "start": 2750.32,
+   "duration": 4.48,
+   "text": "Every key in the plain dict schema is"
+  },
+  {
+   "start": 2752.84,
+   "duration": 3.56,
+   "text": "required. That is how we handle If you"
+  },
+  {
+   "start": 2754.8,
+   "duration": 3.56,
+   "text": "if you remember how did we handle the"
+  },
+  {
+   "start": 2756.4,
+   "duration": 4.24,
+   "text": "optional parameter? If you if you"
+  },
+  {
+   "start": 2758.36,
+   "duration": 4.92,
+   "text": "specify that in the dict as a key, you"
+  },
+  {
+   "start": 2760.64,
+   "duration": 5.12,
+   "text": "have to always supply it."
+  },
+  {
+   "start": 2763.28,
+   "duration": 5.24,
+   "text": "Yeah, and we also remember why did we"
+  },
+  {
+   "start": 2765.76,
+   "duration": 4.76,
+   "text": "resolve the repo root before? Because in"
+  },
+  {
+   "start": 2768.52,
+   "duration": 4.48,
+   "text": "a custom tools, you have to do it in"
+  },
+  {
+   "start": 2770.52,
+   "duration": 4.72,
+   "text": "your own way. You cannot just have a"
+  },
+  {
+   "start": 2773.0,
+   "duration": 5.0,
+   "text": "have an option like CWD and resolve it"
+  },
+  {
+   "start": 2775.24,
+   "duration": 4.6,
+   "text": "on its own. You have to do it, you know,"
+  },
+  {
+   "start": 2778.0,
+   "duration": 4.32,
+   "text": "by yourself."
+  },
+  {
+   "start": 2779.84,
+   "duration": 4.56,
+   "text": "Tool controls availability. Allowed"
+  },
+  {
+   "start": 2782.32,
+   "duration": 3.92,
+   "text": "tools, last episode also I discussed"
+  },
+  {
+   "start": 2784.4,
+   "duration": 3.4,
+   "text": "that in detail. If something is in the"
+  },
+  {
+   "start": 2786.24,
+   "duration": 3.92,
+   "text": "allowed tools,"
+  },
+  {
+   "start": 2787.8,
+   "duration": 4.36,
+   "text": "that tool is you are just specifying"
+  },
+  {
+   "start": 2790.16,
+   "duration": 3.64,
+   "text": "that, \"Okay,"
+  },
+  {
+   "start": 2792.16,
+   "duration": 2.84,
+   "text": "Claude, please use this tool. You don't"
+  },
+  {
+   "start": 2793.8,
+   "duration": 3.84,
+   "text": "need my permission to use it.\""
+  },
+  {
+   "start": 2795.0,
+   "duration": 4.68,
+   "text": "Basically, so that is what the concept"
+  },
+  {
+   "start": 2797.64,
+   "duration": 3.08,
+   "text": "of allowed tools is."
+  },
+  {
+   "start": 2799.68,
+   "duration": 3.24,
+   "text": "Yeah?"
+  },
+  {
+   "start": 2800.72,
+   "duration": 3.64,
+   "text": "So, that was all about this episode or"
+  },
+  {
+   "start": 2802.92,
+   "duration": 3.4,
+   "text": "this lesson. In the next episode, we're"
+  },
+  {
+   "start": 2804.36,
+   "duration": 4.16,
+   "text": "going to talk about hooks, and we're"
+  },
+  {
+   "start": 2806.32,
+   "duration": 4.28,
+   "text": "going to see how you can implement hooks"
+  },
+  {
+   "start": 2808.52,
+   "duration": 3.16,
+   "text": "in the Claude agent Claude using the"
+  },
+  {
+   "start": 2810.6,
+   "duration": 3.04,
+   "text": "Claude"
+  },
+  {
+   "start": 2811.68,
+   "duration": 4.84,
+   "text": "agent SDK itself. Going to be a lot of"
+  },
+  {
+   "start": 2813.64,
+   "duration": 4.4,
+   "text": "fun, and I'll see you in the next one."
+  },
+  {
+   "start": 2816.52,
+   "duration": 2.64,
+   "text": "Till then, have a nice day. Take care."
+  },
+  {
+   "start": 2818.04,
+   "duration": 3.36,
+   "text": "Bye-bye."
+  },
+  {
+   "start": 2819.16,
+   "duration": 2.24,
+   "text": "Ta-da."
+  }
+ ]
+}

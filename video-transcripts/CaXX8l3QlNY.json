@@ -1,0 +1,6333 @@
+{
+ "video_id": "CaXX8l3QlNY",
+ "episode": "Ep 04",
+ "title": "Model Selection & System Prompts",
+ "lane": "ccar-p",
+ "segments": [
+  {
+   "start": 1.439,
+   "duration": 7.041,
+   "text": "and welcome to this lesson. So here's a"
+  },
+  {
+   "start": 4.96,
+   "duration": 7.759,
+   "text": "question you will never see on the CCP"
+  },
+  {
+   "start": 8.48,
+   "duration": 7.84,
+   "text": "exam. The question is which claude model"
+  },
+  {
+   "start": 12.719,
+   "duration": 5.281,
+   "text": "is the best? Yeah. And and that's a"
+  },
+  {
+   "start": 16.32,
+   "duration": 4.32,
+   "text": "trick question and the and the exam"
+  },
+  {
+   "start": 18.0,
+   "duration": 5.119,
+   "text": "knows it. There is no best in"
+  },
+  {
+   "start": 20.64,
+   "duration": 5.52,
+   "text": "quotations, right? There is only best"
+  },
+  {
+   "start": 23.119,
+   "duration": 5.121,
+   "text": "for this constraint set."
+  },
+  {
+   "start": 26.16,
+   "duration": 4.56,
+   "text": "Now the professional exam gives you a"
+  },
+  {
+   "start": 28.24,
+   "duration": 5.6,
+   "text": "scenario you know a latency budget a"
+  },
+  {
+   "start": 30.72,
+   "duration": 6.32,
+   "text": "cost ceiling a kind of a quality bar and"
+  },
+  {
+   "start": 33.84,
+   "duration": 5.76,
+   "text": "asks you to pick the model that fits."
+  },
+  {
+   "start": 37.04,
+   "duration": 5.199,
+   "text": "Pretty simple right? So it tries to"
+  },
+  {
+   "start": 39.6,
+   "duration": 5.2,
+   "text": "tests you whether you you can treat"
+  },
+  {
+   "start": 42.239,
+   "duration": 5.041,
+   "text": "model selection as a architectural"
+  },
+  {
+   "start": 44.8,
+   "duration": 5.36,
+   "text": "decision because everything on this exam"
+  },
+  {
+   "start": 47.28,
+   "duration": 4.88,
+   "text": "is an architectural decision."
+  },
+  {
+   "start": 50.16,
+   "duration": 4.0,
+   "text": "And it kind of goes further. Okay. It"
+  },
+  {
+   "start": 52.16,
+   "duration": 4.32,
+   "text": "tests whether you know how to steer that"
+  },
+  {
+   "start": 54.16,
+   "duration": 4.879,
+   "text": "model reliably through you know system"
+  },
+  {
+   "start": 56.48,
+   "duration": 4.8,
+   "text": "prompts that actually constrain behavior"
+  },
+  {
+   "start": 59.039,
+   "duration": 4.961,
+   "text": "across thousands of requests not just"
+  },
+  {
+   "start": 61.28,
+   "duration": 5.199,
+   "text": "the five you tested during prototyping."
+  },
+  {
+   "start": 64.0,
+   "duration": 5.2,
+   "text": "I hope that that thing get sinks in in"
+  },
+  {
+   "start": 66.479,
+   "duration": 4.881,
+   "text": "your head. Yeah. And that's what we are"
+  },
+  {
+   "start": 69.2,
+   "duration": 8.239,
+   "text": "building today you know and and let's"
+  },
+  {
+   "start": 71.36,
+   "duration": 9.439,
+   "text": "get into it. Okay. So um here we are and"
+  },
+  {
+   "start": 77.439,
+   "duration": 5.441,
+   "text": "what we are covering today. So I welcome"
+  },
+  {
+   "start": 80.799,
+   "duration": 3.201,
+   "text": "you to this professional series cla"
+  },
+  {
+   "start": 82.88,
+   "duration": 3.52,
+   "text": "certified architecture professional"
+  },
+  {
+   "start": 84.0,
+   "duration": 5.04,
+   "text": "series and this is episode number four"
+  },
+  {
+   "start": 86.4,
+   "duration": 4.64,
+   "text": "and we are entering domain two which is"
+  },
+  {
+   "start": 89.04,
+   "duration": 5.28,
+   "text": "claude models prompting and context"
+  },
+  {
+   "start": 91.04,
+   "duration": 6.0,
+   "text": "engineering which is worth 13% of the"
+  },
+  {
+   "start": 94.32,
+   "duration": 5.6,
+   "text": "exam and it is spread across five"
+  },
+  {
+   "start": 97.04,
+   "duration": 6.96,
+   "text": "objectives and today we are tackling the"
+  },
+  {
+   "start": 99.92,
+   "duration": 7.28,
+   "text": "first two objectives in that domain. So"
+  },
+  {
+   "start": 104.0,
+   "duration": 5.119,
+   "text": "objective number 2.1 which says select"
+  },
+  {
+   "start": 107.2,
+   "duration": 3.52,
+   "text": "appropriate clawed models based on"
+  },
+  {
+   "start": 109.119,
+   "duration": 4.081,
+   "text": "tradeoffs"
+  },
+  {
+   "start": 110.72,
+   "duration": 4.64,
+   "text": "and objective number 2.2 which says"
+  },
+  {
+   "start": 113.2,
+   "duration": 3.68,
+   "text": "design system prompts templates and"
+  },
+  {
+   "start": 115.36,
+   "duration": 3.92,
+   "text": "guardrails."
+  },
+  {
+   "start": 116.88,
+   "duration": 4.48,
+   "text": "By the end of this episode you you would"
+  },
+  {
+   "start": 119.28,
+   "duration": 4.799,
+   "text": "know how to build a model selection"
+  },
+  {
+   "start": 121.36,
+   "duration": 5.359,
+   "text": "matrix for any production system. Okay?"
+  },
+  {
+   "start": 124.079,
+   "duration": 5.441,
+   "text": "And I guarantee that and you can design"
+  },
+  {
+   "start": 126.719,
+   "duration": 4.081,
+   "text": "multimodel architectures that use you"
+  },
+  {
+   "start": 129.52,
+   "duration": 3.359,
+   "text": "know different models for different"
+  },
+  {
+   "start": 130.8,
+   "duration": 4.56,
+   "text": "roles. And I'm going to show you an"
+  },
+  {
+   "start": 132.879,
+   "duration": 4.881,
+   "text": "example as well which I had used in my"
+  },
+  {
+   "start": 135.36,
+   "duration": 3.76,
+   "text": "developer series. I I thought that uh"
+  },
+  {
+   "start": 137.76,
+   "duration": 3.04,
+   "text": "you know that will be a little bit more"
+  },
+  {
+   "start": 139.12,
+   "duration": 4.64,
+   "text": "relatable here as well. So I'm going to"
+  },
+  {
+   "start": 140.8,
+   "duration": 5.04,
+   "text": "show you that as well. And you can you"
+  },
+  {
+   "start": 143.76,
+   "duration": 4.24,
+   "text": "you would learn to write system prompts"
+  },
+  {
+   "start": 145.84,
+   "duration": 4.72,
+   "text": "that actually hold up at scale not just"
+  },
+  {
+   "start": 148.0,
+   "duration": 4.72,
+   "text": "in your notebook. Uh and in the next"
+  },
+  {
+   "start": 150.56,
+   "duration": 4.0,
+   "text": "episode we will finish domain 2 with"
+  },
+  {
+   "start": 152.72,
+   "duration": 4.4,
+   "text": "advanced prompt engineering context"
+  },
+  {
+   "start": 154.56,
+   "duration": 5.679,
+   "text": "window and caching. So please stay"
+  },
+  {
+   "start": 157.12,
+   "duration": 6.64,
+   "text": "tuned. But let's first look have a look"
+  },
+  {
+   "start": 160.239,
+   "duration": 5.28,
+   "text": "at these models. Now let's talk about"
+  },
+  {
+   "start": 163.76,
+   "duration": 3.44,
+   "text": "model selection. And I told you that"
+  },
+  {
+   "start": 165.519,
+   "duration": 4.8,
+   "text": "model selection is an architectural"
+  },
+  {
+   "start": 167.2,
+   "duration": 5.679,
+   "text": "decision. Now if you going to take an"
+  },
+  {
+   "start": 170.319,
+   "duration": 5.041,
+   "text": "analogy, right? We we love analogies. So"
+  },
+  {
+   "start": 172.879,
+   "duration": 4.08,
+   "text": "if you're designing a building, yeah, or"
+  },
+  {
+   "start": 175.36,
+   "duration": 4.08,
+   "text": "or a contractor, let's take an example"
+  },
+  {
+   "start": 176.959,
+   "duration": 5.28,
+   "text": "of a contractor. You don't use the same"
+  },
+  {
+   "start": 179.44,
+   "duration": 5.12,
+   "text": "material for every part. I mean you"
+  },
+  {
+   "start": 182.239,
+   "duration": 4.64,
+   "text": "would use steel for the structural beams"
+  },
+  {
+   "start": 184.56,
+   "duration": 4.24,
+   "text": "for example glass for windows and"
+  },
+  {
+   "start": 186.879,
+   "duration": 5.36,
+   "text": "concrete for the foundation and each"
+  },
+  {
+   "start": 188.8,
+   "duration": 5.76,
+   "text": "material has its own trade-offs. There"
+  },
+  {
+   "start": 192.239,
+   "duration": 4.561,
+   "text": "is cost, there is weight, uh there is"
+  },
+  {
+   "start": 194.56,
+   "duration": 4.48,
+   "text": "strength, there is transparency and and"
+  },
+  {
+   "start": 196.8,
+   "duration": 5.359,
+   "text": "you pick based on what that specific"
+  },
+  {
+   "start": 199.04,
+   "duration": 5.919,
+   "text": "part of the building needs to do. So"
+  },
+  {
+   "start": 202.159,
+   "duration": 4.881,
+   "text": "model selection works exactly the same"
+  },
+  {
+   "start": 204.959,
+   "duration": 4.64,
+   "text": "way. You are not picking the best model"
+  },
+  {
+   "start": 207.04,
+   "duration": 6.8,
+   "text": "out there. you're picking the right"
+  },
+  {
+   "start": 209.599,
+   "duration": 6.64,
+   "text": "model for each job in your system. Yeah."
+  },
+  {
+   "start": 213.84,
+   "duration": 4.56,
+   "text": "So if you're going to talk about a"
+  },
+  {
+   "start": 216.239,
+   "duration": 4.08,
+   "text": "mental model that you want to make is is"
+  },
+  {
+   "start": 218.4,
+   "duration": 4.08,
+   "text": "that model selection is like material"
+  },
+  {
+   "start": 220.319,
+   "duration": 4.161,
+   "text": "selection in construction. Yeah. That's"
+  },
+  {
+   "start": 222.48,
+   "duration": 5.119,
+   "text": "what I would relate. You watch the"
+  },
+  {
+   "start": 224.48,
+   "duration": 5.119,
+   "text": "material to the structural um not watch"
+  },
+  {
+   "start": 227.599,
+   "duration": 4.241,
+   "text": "you match the material to the structural"
+  },
+  {
+   "start": 229.599,
+   "duration": 5.121,
+   "text": "requirement. Uh not to your personal"
+  },
+  {
+   "start": 231.84,
+   "duration": 5.039,
+   "text": "preference. I like uh steel beams. So I"
+  },
+  {
+   "start": 234.72,
+   "duration": 4.56,
+   "text": "I cannot make windows out of it. Right?"
+  },
+  {
+   "start": 236.879,
+   "duration": 4.881,
+   "text": "Even if it is possible, it does it"
+  },
+  {
+   "start": 239.28,
+   "duration": 4.959,
+   "text": "doesn't make any sense."
+  },
+  {
+   "start": 241.76,
+   "duration": 5.039,
+   "text": "And just like an architect who defaults"
+  },
+  {
+   "start": 244.239,
+   "duration": 4.241,
+   "text": "to the most expensive steel everywhere"
+  },
+  {
+   "start": 246.799,
+   "duration": 3.761,
+   "text": "ends up with a building that's over"
+  },
+  {
+   "start": 248.48,
+   "duration": 5.039,
+   "text": "budget and overengineered."
+  },
+  {
+   "start": 250.56,
+   "duration": 5.36,
+   "text": "And an AI architect who kind of defaults"
+  },
+  {
+   "start": 253.519,
+   "duration": 4.881,
+   "text": "to Opus, let's say, for every call ends"
+  },
+  {
+   "start": 255.92,
+   "duration": 4.4,
+   "text": "up with kind of a system that's slow,"
+  },
+  {
+   "start": 258.4,
+   "duration": 6.16,
+   "text": "expensive, and doing the equivalent of"
+  },
+  {
+   "start": 260.32,
+   "duration": 7.2,
+   "text": "hiring a PhD scholar to sort out your"
+  },
+  {
+   "start": 264.56,
+   "duration": 6.079,
+   "text": "email. I know I I make a little bit of"
+  },
+  {
+   "start": 267.52,
+   "duration": 6.239,
+   "text": "lame jokes but I hope that's okay. Um"
+  },
+  {
+   "start": 270.639,
+   "duration": 5.12,
+   "text": "anyways so the exam tests exactly this"
+  },
+  {
+   "start": 273.759,
+   "duration": 5.921,
+   "text": "judgment right and and let's look at"
+  },
+  {
+   "start": 275.759,
+   "duration": 6.72,
+   "text": "what you are choosing between. Yeah. Now"
+  },
+  {
+   "start": 279.68,
+   "duration": 4.959,
+   "text": "uh the trade-off triangle um so claude"
+  },
+  {
+   "start": 282.479,
+   "duration": 4.72,
+   "text": "currently kind of ships uh three model"
+  },
+  {
+   "start": 284.639,
+   "duration": 4.721,
+   "text": "tiers and each one sits at different"
+  },
+  {
+   "start": 287.199,
+   "duration": 5.44,
+   "text": "point on the trade-off triangle of"
+  },
+  {
+   "start": 289.36,
+   "duration": 6.88,
+   "text": "quality cost and latency. So currently"
+  },
+  {
+   "start": 292.639,
+   "duration": 5.28,
+   "text": "we have Opus um current it's it's Opus 5"
+  },
+  {
+   "start": 296.24,
+   "duration": 4.0,
+   "text": "is the current flagship model but"
+  },
+  {
+   "start": 297.919,
+   "duration": 4.641,
+   "text": "anyways I've mentioned 4.8 because it's"
+  },
+  {
+   "start": 300.24,
+   "duration": 4.16,
+   "text": "my favorite kind of Opus model uh but"
+  },
+  {
+   "start": 302.56,
+   "duration": 4.079,
+   "text": "you can also relate to five as well"
+  },
+  {
+   "start": 304.4,
+   "duration": 5.6,
+   "text": "doesn't matter. So the strength of Opus"
+  },
+  {
+   "start": 306.639,
+   "duration": 6.241,
+   "text": "is the highest reasoning quality but the"
+  },
+  {
+   "start": 310.0,
+   "duration": 6.16,
+   "text": "trade-off is high cost plus latency."
+  },
+  {
+   "start": 312.88,
+   "duration": 5.84,
+   "text": "That is where it sits in the um"
+  },
+  {
+   "start": 316.16,
+   "duration": 5.12,
+   "text": "trade-off triangle. Yeah that's where it"
+  },
+  {
+   "start": 318.72,
+   "duration": 5.36,
+   "text": "sits over here. right over here and the"
+  },
+  {
+   "start": 321.28,
+   "duration": 5.44,
+   "text": "sweet spot I would say is uh if there is"
+  },
+  {
+   "start": 324.08,
+   "duration": 4.24,
+   "text": "any complex reasoning analysis ambiguous"
+  },
+  {
+   "start": 326.72,
+   "duration": 4.08,
+   "text": "judgment calls then obviously you're"
+  },
+  {
+   "start": 328.32,
+   "duration": 5.68,
+   "text": "going to stick with opus 4.8 Right."
+  },
+  {
+   "start": 330.8,
+   "duration": 5.04,
+   "text": "Talking about set 5. Sonnet 5 is best"
+  },
+  {
+   "start": 334.0,
+   "duration": 4.479,
+   "text": "the strength of set 5 is basically the"
+  },
+  {
+   "start": 335.84,
+   "duration": 4.799,
+   "text": "best quality per dollar or something"
+  },
+  {
+   "start": 338.479,
+   "duration": 6.081,
+   "text": "like that because it has kind of a"
+  },
+  {
+   "start": 340.639,
+   "duration": 6.0,
+   "text": "mid-tier pricing and uh there is also"
+  },
+  {
+   "start": 344.56,
+   "duration": 3.6,
+   "text": "some latency as well. So there is kind"
+  },
+  {
+   "start": 346.639,
+   "duration": 3.201,
+   "text": "of a little bit of trade-off but it's"
+  },
+  {
+   "start": 348.16,
+   "duration": 5.36,
+   "text": "kind of a little bit balanced I would"
+  },
+  {
+   "start": 349.84,
+   "duration": 7.919,
+   "text": "say. Now the sweet spot for sonnet 5 is"
+  },
+  {
+   "start": 353.52,
+   "duration": 6.959,
+   "text": "kind of um general purpose you know"
+  },
+  {
+   "start": 357.759,
+   "duration": 4.801,
+   "text": "things that you do uh the workhorse"
+  },
+  {
+   "start": 360.479,
+   "duration": 3.921,
+   "text": "default. Now I always say to my students"
+  },
+  {
+   "start": 362.56,
+   "duration": 3.759,
+   "text": "that if you don't know where to start"
+  },
+  {
+   "start": 364.4,
+   "duration": 4.799,
+   "text": "you start with sonnet. You don't start"
+  },
+  {
+   "start": 366.319,
+   "duration": 5.121,
+   "text": "with opus. If you are if your work is"
+  },
+  {
+   "start": 369.199,
+   "duration": 4.56,
+   "text": "ambiguous enough start with sonnet."
+  },
+  {
+   "start": 371.44,
+   "duration": 4.64,
+   "text": "Yeah. You either scale up or scale down."
+  },
+  {
+   "start": 373.759,
+   "duration": 5.201,
+   "text": "In most of the cases you would scale up."
+  },
+  {
+   "start": 376.08,
+   "duration": 5.28,
+   "text": "Yeah. Because if if it is so much"
+  },
+  {
+   "start": 378.96,
+   "duration": 4.48,
+   "text": "ambiguous and you don't know what to do"
+  },
+  {
+   "start": 381.36,
+   "duration": 4.48,
+   "text": "and it it it gets stuck in a loop and"
+  },
+  {
+   "start": 383.44,
+   "duration": 5.12,
+   "text": "there is no solution then you would then"
+  },
+  {
+   "start": 385.84,
+   "duration": 6.079,
+   "text": "in that case you have to kind of either"
+  },
+  {
+   "start": 388.56,
+   "duration": 5.919,
+   "text": "increase the model tier or maybe you"
+  },
+  {
+   "start": 391.919,
+   "duration": 4.56,
+   "text": "know go for more effort."
+  },
+  {
+   "start": 394.479,
+   "duration": 3.521,
+   "text": "So that is where you start the sweet"
+  },
+  {
+   "start": 396.479,
+   "duration": 3.761,
+   "text": "spot is starting with sonnet because"
+  },
+  {
+   "start": 398.0,
+   "duration": 4.56,
+   "text": "it's kind of provides you a balanced"
+  },
+  {
+   "start": 400.24,
+   "duration": 4.239,
+   "text": "kind of a thing. Now haiku on the other"
+  },
+  {
+   "start": 402.56,
+   "duration": 4.079,
+   "text": "hand is the cheapest and the fastest"
+  },
+  {
+   "start": 404.479,
+   "duration": 4.641,
+   "text": "model out there. uh but the trade-off is"
+  },
+  {
+   "start": 406.639,
+   "duration": 5.601,
+   "text": "it's lower quality kind of ceiling on"
+  },
+  {
+   "start": 409.12,
+   "duration": 5.68,
+   "text": "complex tasks. But the sweet spot is if"
+  },
+  {
+   "start": 412.24,
+   "duration": 4.239,
+   "text": "there is a very generic autonomous task"
+  },
+  {
+   "start": 414.8,
+   "duration": 4.88,
+   "text": "or a monotonous task like"
+  },
+  {
+   "start": 416.479,
+   "duration": 5.601,
+   "text": "classification, routing, extraction, uh"
+  },
+  {
+   "start": 419.68,
+   "duration": 6.0,
+   "text": "high volume simple tasks like sorting"
+  },
+  {
+   "start": 422.08,
+   "duration": 8.16,
+   "text": "out your email or classifying uh various"
+  },
+  {
+   "start": 425.68,
+   "duration": 6.56,
+   "text": "um things into various buckets. Yeah,"
+  },
+  {
+   "start": 430.24,
+   "duration": 4.799,
+   "text": "those kind of stuff. Haiku is the best I"
+  },
+  {
+   "start": 432.24,
+   "duration": 4.959,
+   "text": "would say. Now the key fact is uh sonnet"
+  },
+  {
+   "start": 435.039,
+   "duration": 5.28,
+   "text": "5 is the current workhorse default. It"
+  },
+  {
+   "start": 437.199,
+   "duration": 6.081,
+   "text": "it replaced sonnet 4 on around I think"
+  },
+  {
+   "start": 440.319,
+   "duration": 5.521,
+   "text": "June 30th 2026. Now for the exam sonnet"
+  },
+  {
+   "start": 443.28,
+   "duration": 5.6,
+   "text": "is the safe middle ground model unless"
+  },
+  {
+   "start": 445.84,
+   "duration": 4.72,
+   "text": "the scenario specifies a reason for you"
+  },
+  {
+   "start": 448.88,
+   "duration": 3.36,
+   "text": "to go higher. That's what I just"
+  },
+  {
+   "start": 450.56,
+   "duration": 4.32,
+   "text": "mentioned. If you don't know where to"
+  },
+  {
+   "start": 452.24,
+   "duration": 4.88,
+   "text": "start, you start with set."
+  },
+  {
+   "start": 454.88,
+   "duration": 4.08,
+   "text": "Now this table is like the starting"
+  },
+  {
+   "start": 457.12,
+   "duration": 4.16,
+   "text": "point but the exam doesn't just ask you"
+  },
+  {
+   "start": 458.96,
+   "duration": 5.04,
+   "text": "to kind of recite it. Okay? it gives you"
+  },
+  {
+   "start": 461.28,
+   "duration": 5.12,
+   "text": "a constraint and asks you which model"
+  },
+  {
+   "start": 464.0,
+   "duration": 4.33,
+   "text": "kind of fits. Uh that's the matrix we"
+  },
+  {
+   "start": 466.4,
+   "duration": 4.239,
+   "text": "need to build. But to start off, I hope"
+  },
+  {
+   "start": 468.33,
+   "duration": 4.709,
+   "text": "[snorts] this trade-off triangle is"
+  },
+  {
+   "start": 470.639,
+   "duration": 5.28,
+   "text": "pretty easy to understand."
+  },
+  {
+   "start": 473.039,
+   "duration": 7.041,
+   "text": "Right now multimodel selection in"
+  },
+  {
+   "start": 475.919,
+   "duration": 7.521,
+   "text": "practice. Now I kind of had"
+  },
+  {
+   "start": 480.08,
+   "duration": 6.559,
+   "text": "told you right a few minutes back that u"
+  },
+  {
+   "start": 483.44,
+   "duration": 6.64,
+   "text": "in the clot developer series we actually"
+  },
+  {
+   "start": 486.639,
+   "duration": 6.481,
+   "text": "built a multimodel system. uh we we"
+  },
+  {
+   "start": 490.08,
+   "duration": 5.76,
+   "text": "built a complete uh agent from scratch"
+  },
+  {
+   "start": 493.12,
+   "duration": 4.079,
+   "text": "uh over a course of around 15 episodes."
+  },
+  {
+   "start": 495.84,
+   "duration": 2.88,
+   "text": "So if you are interested in that"
+  },
+  {
+   "start": 497.199,
+   "duration": 4.881,
+   "text": "certification, you can go and have a"
+  },
+  {
+   "start": 498.72,
+   "duration": 6.0,
+   "text": "look at that u playlist as well. It's"
+  },
+  {
+   "start": 502.08,
+   "duration": 4.959,
+   "text": "complete and it's out there. So, but the"
+  },
+  {
+   "start": 504.72,
+   "duration": 5.52,
+   "text": "thing is uh in episode number five of"
+  },
+  {
+   "start": 507.039,
+   "duration": 5.68,
+   "text": "that series uh when we added sub agents"
+  },
+  {
+   "start": 510.24,
+   "duration": 5.12,
+   "text": "to our PR review agent that is that is"
+  },
+  {
+   "start": 512.719,
+   "duration": 5.041,
+   "text": "the agent that we built in that series"
+  },
+  {
+   "start": 515.36,
+   "duration": 5.28,
+   "text": "uh using the claude agent SDK we made a"
+  },
+  {
+   "start": 517.76,
+   "duration": 5.12,
+   "text": "deliberate architectural choice. So"
+  },
+  {
+   "start": 520.64,
+   "duration": 4.48,
+   "text": "there were two sub agents that we built"
+  },
+  {
+   "start": 522.88,
+   "duration": 5.36,
+   "text": "and there were there was one coordinated"
+  },
+  {
+   "start": 525.12,
+   "duration": 6.56,
+   "text": "sub aent sorry agent right so this is"
+  },
+  {
+   "start": 528.24,
+   "duration": 6.56,
+   "text": "the structure that it had. So what I"
+  },
+  {
+   "start": 531.68,
+   "duration": 5.599,
+   "text": "realized while I was kind of um showing"
+  },
+  {
+   "start": 534.8,
+   "duration": 5.28,
+   "text": "the demo live itself is that"
+  },
+  {
+   "start": 537.279,
+   "duration": 4.961,
+   "text": "unnecessarily my sub agents are using"
+  },
+  {
+   "start": 540.08,
+   "duration": 5.52,
+   "text": "sonnet but they are doing the the"
+  },
+  {
+   "start": 542.24,
+   "duration": 7.12,
+   "text": "prompters very kind of straightforward"
+  },
+  {
+   "start": 545.6,
+   "duration": 5.679,
+   "text": "and uh it there was no complexity in the"
+  },
+  {
+   "start": 549.36,
+   "duration": 4.0,
+   "text": "task. So unnecessarily I was paying a"
+  },
+  {
+   "start": 551.279,
+   "duration": 5.361,
+   "text": "very large amount. So what I had done"
+  },
+  {
+   "start": 553.36,
+   "duration": 5.44,
+   "text": "there is if I just open that real quick."
+  },
+  {
+   "start": 556.64,
+   "duration": 4.72,
+   "text": "So there is the sub aents py that I had"
+  },
+  {
+   "start": 558.8,
+   "duration": 4.24,
+   "text": "made during that series. So don't worry"
+  },
+  {
+   "start": 561.36,
+   "duration": 3.36,
+   "text": "about these things okay I just want to"
+  },
+  {
+   "start": 563.04,
+   "duration": 3.44,
+   "text": "show you the exact thing that I wanted"
+  },
+  {
+   "start": 564.72,
+   "duration": 3.52,
+   "text": "to show. So if you see there are two sub"
+  },
+  {
+   "start": 566.48,
+   "duration": 3.44,
+   "text": "aents. One is a dockstring reviewer sub"
+  },
+  {
+   "start": 568.24,
+   "duration": 4.159,
+   "text": "aent and another one is a security"
+  },
+  {
+   "start": 569.92,
+   "duration": 4.64,
+   "text": "reviewer sub aent. Now if you see the"
+  },
+  {
+   "start": 572.399,
+   "duration": 4.88,
+   "text": "model that I have put for both of this"
+  },
+  {
+   "start": 574.56,
+   "duration": 7.04,
+   "text": "sub aent is haiku. Yeah this is also"
+  },
+  {
+   "start": 577.279,
+   "duration": 6.24,
+   "text": "haiku. Yeah, because the prompt is very,"
+  },
+  {
+   "start": 581.6,
+   "duration": 4.96,
+   "text": "you know, straightforward and it is very"
+  },
+  {
+   "start": 583.519,
+   "duration": 6.241,
+   "text": "detailed and there is no complexity over"
+  },
+  {
+   "start": 586.56,
+   "duration": 6.719,
+   "text": "here. So the point that I wanted to make"
+  },
+  {
+   "start": 589.76,
+   "duration": 6.32,
+   "text": "here is that is what model selection is"
+  },
+  {
+   "start": 593.279,
+   "duration": 5.12,
+   "text": "in action. It's not any abstract"
+  },
+  {
+   "start": 596.08,
+   "duration": 4.879,
+   "text": "concept. It is real code. The"
+  },
+  {
+   "start": 598.399,
+   "duration": 4.481,
+   "text": "coordinator needed sonnet's reasoning to"
+  },
+  {
+   "start": 600.959,
+   "duration": 4.88,
+   "text": "synthesize two sub aents that I just"
+  },
+  {
+   "start": 602.88,
+   "duration": 5.36,
+   "text": "showed you. um the sub aents needed"
+  },
+  {
+   "start": 605.839,
+   "duration": 5.281,
+   "text": "speed and low cost for narrow repetitive"
+  },
+  {
+   "start": 608.24,
+   "duration": 5.36,
+   "text": "tasks. So here itself we use different"
+  },
+  {
+   "start": 611.12,
+   "duration": 5.12,
+   "text": "models for different roles. Now here's"
+  },
+  {
+   "start": 613.6,
+   "duration": 5.04,
+   "text": "where professional even goes further."
+  },
+  {
+   "start": 616.24,
+   "duration": 4.24,
+   "text": "How do you formalize that choice across"
+  },
+  {
+   "start": 618.64,
+   "duration": 3.52,
+   "text": "an entire production system? This is"
+  },
+  {
+   "start": 620.48,
+   "duration": 4.08,
+   "text": "this was just one example that I just"
+  },
+  {
+   "start": 622.16,
+   "duration": 4.56,
+   "text": "showed you. But how do you formalize"
+  },
+  {
+   "start": 624.56,
+   "duration": 3.92,
+   "text": "that choice across an entire production"
+  },
+  {
+   "start": 626.72,
+   "duration": 4.052,
+   "text": "system? That is the question that we"
+  },
+  {
+   "start": 628.48,
+   "duration": 5.039,
+   "text": "need to figure out in this lesson. Now"
+  },
+  {
+   "start": 630.772,
+   "duration": 4.988,
+   "text": "[snorts] here is the framework. Okay. Or"
+  },
+  {
+   "start": 633.519,
+   "duration": 4.641,
+   "text": "I would say the model selection matrix."
+  },
+  {
+   "start": 635.76,
+   "duration": 4.88,
+   "text": "So when you are starting at a production"
+  },
+  {
+   "start": 638.16,
+   "duration": 5.44,
+   "text": "design and need to pick a model, you run"
+  },
+  {
+   "start": 640.64,
+   "duration": 7.04,
+   "text": "it through three axis."
+  },
+  {
+   "start": 643.6,
+   "duration": 5.84,
+   "text": "Okay. Uh axis number one that is task"
+  },
+  {
+   "start": 647.68,
+   "duration": 6.08,
+   "text": "complexity. You can see that there is"
+  },
+  {
+   "start": 649.44,
+   "duration": 6.399,
+   "text": "this axis over here. Uh in this this is"
+  },
+  {
+   "start": 653.76,
+   "duration": 4.56,
+   "text": "this a straightforward extraction. Ask"
+  },
+  {
+   "start": 655.839,
+   "duration": 5.041,
+   "text": "yourself is this a classification or a"
+  },
+  {
+   "start": 658.32,
+   "duration": 5.759,
+   "text": "routing task or does it require"
+  },
+  {
+   "start": 660.88,
+   "duration": 6.639,
+   "text": "multi-step reasoning or nuanced judgment"
+  },
+  {
+   "start": 664.079,
+   "duration": 6.161,
+   "text": "or handling ambiguous instructions."
+  },
+  {
+   "start": 667.519,
+   "duration": 5.121,
+   "text": "So that means if it is low complexity"
+  },
+  {
+   "start": 670.24,
+   "duration": 4.159,
+   "text": "then it is either haiku or sonnet. If it"
+  },
+  {
+   "start": 672.64,
+   "duration": 4.639,
+   "text": "is high complexity it is sonnet or"
+  },
+  {
+   "start": 674.399,
+   "duration": 5.521,
+   "text": "oppus. So if you see there is a if you"
+  },
+  {
+   "start": 677.279,
+   "duration": 4.8,
+   "text": "if you do a ven diagram sonnet is kind"
+  },
+  {
+   "start": 679.92,
+   "duration": 4.64,
+   "text": "of a middle ground. That's what I said."
+  },
+  {
+   "start": 682.079,
+   "duration": 4.721,
+   "text": "If you're not able to figure this task"
+  },
+  {
+   "start": 684.56,
+   "duration": 5.04,
+   "text": "complexity out, you would probably stick"
+  },
+  {
+   "start": 686.8,
+   "duration": 5.76,
+   "text": "with sonnet. But most of the times the"
+  },
+  {
+   "start": 689.6,
+   "duration": 6.08,
+   "text": "choice is pretty clear when you actually"
+  },
+  {
+   "start": 692.56,
+   "duration": 4.48,
+   "text": "read the question. Okay. So the axis"
+  },
+  {
+   "start": 695.68,
+   "duration": 4.719,
+   "text": "one, I hope you understood task"
+  },
+  {
+   "start": 697.04,
+   "duration": 7.76,
+   "text": "complexity. Access number two, latency"
+  },
+  {
+   "start": 700.399,
+   "duration": 7.44,
+   "text": "budget. That is this axis. Now how long"
+  },
+  {
+   "start": 704.8,
+   "duration": 5.2,
+   "text": "can the user wait? re you know realtime"
+  },
+  {
+   "start": 707.839,
+   "duration": 6.081,
+   "text": "chat bots and interactive UIs need"
+  },
+  {
+   "start": 710.0,
+   "duration": 6.56,
+   "text": "subsecond to second responses that's"
+  },
+  {
+   "start": 713.92,
+   "duration": 5.12,
+   "text": "high core sonnet territory"
+  },
+  {
+   "start": 716.56,
+   "duration": 4.48,
+   "text": "batch processing or asynchronous"
+  },
+  {
+   "start": 719.04,
+   "duration": 5.68,
+   "text": "workflows where latency is minutes or"
+  },
+  {
+   "start": 721.04,
+   "duration": 5.52,
+   "text": "hours in that case you know opus becomes"
+  },
+  {
+   "start": 724.72,
+   "duration": 5.04,
+   "text": "viable"
+  },
+  {
+   "start": 726.56,
+   "duration": 6.32,
+   "text": "now comes the third I would say access"
+  },
+  {
+   "start": 729.76,
+   "duration": 5.04,
+   "text": "that is cost ceiling and that would I"
+  },
+  {
+   "start": 732.88,
+   "duration": 4.56,
+   "text": "would say the tiebreaker"
+  },
+  {
+   "start": 734.8,
+   "duration": 5.92,
+   "text": "what is your per request budget it. If"
+  },
+  {
+   "start": 737.44,
+   "duration": 5.68,
+   "text": "if two models could both do the same"
+  },
+  {
+   "start": 740.72,
+   "duration": 3.76,
+   "text": "job, the cost ceiling picks the winner."
+  },
+  {
+   "start": 743.12,
+   "duration": 4.0,
+   "text": "That's why it's in the middle. If you"
+  },
+  {
+   "start": 744.48,
+   "duration": 6.479,
+   "text": "see now, Opus at high volume gets"
+  },
+  {
+   "start": 747.12,
+   "duration": 7.44,
+   "text": "expensive really, really fast. Um, but"
+  },
+  {
+   "start": 750.959,
+   "duration": 6.56,
+   "text": "is the quality delta worth the spend. If"
+  },
+  {
+   "start": 754.56,
+   "duration": 5.519,
+   "text": "it is yes, then please stick with Opus."
+  },
+  {
+   "start": 757.519,
+   "duration": 5.201,
+   "text": "If it is no, then it is either Sonnet."
+  },
+  {
+   "start": 760.079,
+   "duration": 4.401,
+   "text": "It cannot be Hiko because if it is a"
+  },
+  {
+   "start": 762.72,
+   "duration": 4.239,
+   "text": "very complicated job, Haiko cannot"
+  },
+  {
+   "start": 764.48,
+   "duration": 4.56,
+   "text": "handle it. Even if you're spending"
+  },
+  {
+   "start": 766.959,
+   "duration": 4.161,
+   "text": "really less money and if it is very"
+  },
+  {
+   "start": 769.04,
+   "duration": 3.68,
+   "text": "really complicated, haiku cannot do the"
+  },
+  {
+   "start": 771.12,
+   "duration": 3.92,
+   "text": "job. So there is no point in sticking"
+  },
+  {
+   "start": 772.72,
+   "duration": 4.96,
+   "text": "with haiku that that decision becomes"
+  },
+  {
+   "start": 775.04,
+   "duration": 4.08,
+   "text": "between opus and sonnet. So that is the"
+  },
+  {
+   "start": 777.68,
+   "duration": 3.76,
+   "text": "three access number three the cost"
+  },
+  {
+   "start": 779.12,
+   "duration": 5.6,
+   "text": "ceiling the tiebreaker."
+  },
+  {
+   "start": 781.44,
+   "duration": 6.0,
+   "text": "Now the key fact is that the exam itself"
+  },
+  {
+   "start": 784.72,
+   "duration": 4.72,
+   "text": "gives you that constraint latency SLA"
+  },
+  {
+   "start": 787.44,
+   "duration": 4.0,
+   "text": "cost sealing task description and asks"
+  },
+  {
+   "start": 789.44,
+   "duration": 4.399,
+   "text": "you to choose. It doesn't ask which is"
+  },
+  {
+   "start": 791.44,
+   "duration": 5.04,
+   "text": "the best in the abstract. Now if you see"
+  },
+  {
+   "start": 793.839,
+   "duration": 5.281,
+   "text": "a question with no constraint specified"
+  },
+  {
+   "start": 796.48,
+   "duration": 4.56,
+   "text": "reread the stem that's why I would I am"
+  },
+  {
+   "start": 799.12,
+   "duration": 4.08,
+   "text": "sticking with reading the question two"
+  },
+  {
+   "start": 801.04,
+   "duration": 5.919,
+   "text": "times in the in the previous episode I"
+  },
+  {
+   "start": 803.2,
+   "duration": 5.439,
+   "text": "told you why now the constraint is there"
+  },
+  {
+   "start": 806.959,
+   "duration": 4.481,
+   "text": "you just missed it that's why you have"
+  },
+  {
+   "start": 808.639,
+   "duration": 4.961,
+   "text": "to find that most of the times you would"
+  },
+  {
+   "start": 811.44,
+   "duration": 6.959,
+   "text": "find the constraint related to latency"
+  },
+  {
+   "start": 813.6,
+   "duration": 7.6,
+   "text": "or cost in my experience so yeah that is"
+  },
+  {
+   "start": 818.399,
+   "duration": 4.481,
+   "text": "what that in in most of the cases but it"
+  },
+  {
+   "start": 821.2,
+   "duration": 3.84,
+   "text": "doesn't mean that it will stick with at"
+  },
+  {
+   "start": 822.88,
+   "duration": 4.48,
+   "text": "but try to find the exact constraint and"
+  },
+  {
+   "start": 825.04,
+   "duration": 4.32,
+   "text": "you would be able to figure figure that"
+  },
+  {
+   "start": 827.36,
+   "duration": 3.919,
+   "text": "out. It's not a very rocket science over"
+  },
+  {
+   "start": 829.36,
+   "duration": 4.56,
+   "text": "here."
+  },
+  {
+   "start": 831.279,
+   "duration": 5.841,
+   "text": "Now talking about multimodel"
+  },
+  {
+   "start": 833.92,
+   "duration": 6.64,
+   "text": "architectures now here it is where it"
+  },
+  {
+   "start": 837.12,
+   "duration": 5.76,
+   "text": "really gets in uh interesting and it is"
+  },
+  {
+   "start": 840.56,
+   "duration": 4.32,
+   "text": "where the exam separates the architects"
+  },
+  {
+   "start": 842.88,
+   "duration": 4.079,
+   "text": "from the developers. The professional"
+  },
+  {
+   "start": 844.88,
+   "duration": 4.88,
+   "text": "level pattern isn't pick one model for"
+  },
+  {
+   "start": 846.959,
+   "duration": 5.841,
+   "text": "the whole system. It's like use"
+  },
+  {
+   "start": 849.76,
+   "duration": 6.4,
+   "text": "different models for different roles"
+  },
+  {
+   "start": 852.8,
+   "duration": 5.2,
+   "text": "within the same system. Now it might you"
+  },
+  {
+   "start": 856.16,
+   "duration": 5.76,
+   "text": "would might feel a little bit you know"
+  },
+  {
+   "start": 858.0,
+   "duration": 7.279,
+   "text": "confused but I will uh clarify it. Now"
+  },
+  {
+   "start": 861.92,
+   "duration": 6.24,
+   "text": "this kind of a narration I would call"
+  },
+  {
+   "start": 865.279,
+   "duration": 5.12,
+   "text": "model tiered architecture and it's one"
+  },
+  {
+   "start": 868.16,
+   "duration": 4.56,
+   "text": "of the most cost effective patterns in"
+  },
+  {
+   "start": 870.399,
+   "duration": 4.88,
+   "text": "the production cloud system. Now what is"
+  },
+  {
+   "start": 872.72,
+   "duration": 5.28,
+   "text": "the idea behind that?"
+  },
+  {
+   "start": 875.279,
+   "duration": 6.161,
+   "text": "Now if I talk about haiku, haiku handles"
+  },
+  {
+   "start": 878.0,
+   "duration": 5.199,
+   "text": "the fast cheap u high volume work that I"
+  },
+  {
+   "start": 881.44,
+   "duration": 4.8,
+   "text": "have been talking about since the start"
+  },
+  {
+   "start": 883.199,
+   "duration": 4.801,
+   "text": "of this video. So whether it is related"
+  },
+  {
+   "start": 886.24,
+   "duration": 4.159,
+   "text": "to intent classification, routing"
+  },
+  {
+   "start": 888.0,
+   "duration": 5.519,
+   "text": "decisions, simple extraction, it's like"
+  },
+  {
+   "start": 890.399,
+   "duration": 5.761,
+   "text": "a traffic cop you know it decides where"
+  },
+  {
+   "start": 893.519,
+   "duration": 5.841,
+   "text": "the request goes but it doesn't do the"
+  },
+  {
+   "start": 896.16,
+   "duration": 5.28,
+   "text": "heavy thinking. Yeah. Sonnet on the"
+  },
+  {
+   "start": 899.36,
+   "duration": 4.24,
+   "text": "other handles the bulk of generation,"
+  },
+  {
+   "start": 901.44,
+   "duration": 4.32,
+   "text": "writing responses, summarizing content,"
+  },
+  {
+   "start": 903.6,
+   "duration": 5.28,
+   "text": "processing standard requests. It's the"
+  },
+  {
+   "start": 905.76,
+   "duration": 6.96,
+   "text": "workhorse. Yeah, most requests in most"
+  },
+  {
+   "start": 908.88,
+   "duration": 7.28,
+   "text": "systems live here. Now, Opus on the"
+  },
+  {
+   "start": 912.72,
+   "duration": 5.44,
+   "text": "other handles the hard cases, ambiguous"
+  },
+  {
+   "start": 916.16,
+   "duration": 4.56,
+   "text": "inputs, multi-step reasoning, high"
+  },
+  {
+   "start": 918.16,
+   "duration": 5.28,
+   "text": "stakes decisions that require the best"
+  },
+  {
+   "start": 920.72,
+   "duration": 5.919,
+   "text": "of the best quality. It's the specialist"
+  },
+  {
+   "start": 923.44,
+   "duration": 5.6,
+   "text": "you call when it matters."
+  },
+  {
+   "start": 926.639,
+   "duration": 4.721,
+   "text": "So the mental model is really simple."
+  },
+  {
+   "start": 929.04,
+   "duration": 5.359,
+   "text": "Think of it like a hospital's triad"
+  },
+  {
+   "start": 931.36,
+   "duration": 6.4,
+   "text": "system. Yeah. The the intake nurse haiku"
+  },
+  {
+   "start": 934.399,
+   "duration": 6.24,
+   "text": "classifies and routes. The attending"
+  },
+  {
+   "start": 937.76,
+   "duration": 5.6,
+   "text": "physician it's is sonnet. It handles"
+  },
+  {
+   "start": 940.639,
+   "duration": 5.361,
+   "text": "most of the cases. The specialist opus"
+  },
+  {
+   "start": 943.36,
+   "duration": 5.36,
+   "text": "gets called in for the complex ones. You"
+  },
+  {
+   "start": 946.0,
+   "duration": 5.6,
+   "text": "you never staff the intake desk with"
+  },
+  {
+   "start": 948.72,
+   "duration": 5.28,
+   "text": "specialists. It's it's very slow and"
+  },
+  {
+   "start": 951.6,
+   "duration": 5.76,
+   "text": "it's kind of not a very good use of"
+  },
+  {
+   "start": 954.0,
+   "duration": 6.399,
+   "text": "resources. Yeah. Um so the exam map is"
+  },
+  {
+   "start": 957.36,
+   "duration": 5.52,
+   "text": "pretty simple. Objective number 2.1"
+  },
+  {
+   "start": 960.399,
+   "duration": 5.761,
+   "text": "uh select appropriate cloud models based"
+  },
+  {
+   "start": 962.88,
+   "duration": 5.84,
+   "text": "on trade-offs. Multimodel architectures"
+  },
+  {
+   "start": 966.16,
+   "duration": 4.56,
+   "text": "are a valid tested pattern. The exam may"
+  },
+  {
+   "start": 968.72,
+   "duration": 4.64,
+   "text": "present a system design and ask which"
+  },
+  {
+   "start": 970.72,
+   "duration": 4.559,
+   "text": "model belongs at which stage uh or"
+  },
+  {
+   "start": 973.36,
+   "duration": 3.52,
+   "text": "present a single model design and ask"
+  },
+  {
+   "start": 975.279,
+   "duration": 4.641,
+   "text": "you how to optimize it. So that's"
+  },
+  {
+   "start": 976.88,
+   "duration": 5.519,
+   "text": "objective 2.1."
+  },
+  {
+   "start": 979.92,
+   "duration": 5.279,
+   "text": "Yeah, I hope that's making sense."
+  },
+  {
+   "start": 982.399,
+   "duration": 4.8,
+   "text": "Now uh let's talk about thinking modes"
+  },
+  {
+   "start": 985.199,
+   "duration": 4.0,
+   "text": "and most of you all uh while using"
+  },
+  {
+   "start": 987.199,
+   "duration": 4.481,
+   "text": "clawed web or something you would have"
+  },
+  {
+   "start": 989.199,
+   "duration": 4.801,
+   "text": "kind of experienced that but let's talk"
+  },
+  {
+   "start": 991.68,
+   "duration": 5.2,
+   "text": "about it a little bit in depth. Now"
+  },
+  {
+   "start": 994.0,
+   "duration": 6.16,
+   "text": "model selection is is not just which"
+  },
+  {
+   "start": 996.88,
+   "duration": 5.84,
+   "text": "model it's also how hard the model"
+  },
+  {
+   "start": 1000.16,
+   "duration": 5.2,
+   "text": "thinks. Now claude supports thinking"
+  },
+  {
+   "start": 1002.72,
+   "duration": 5.84,
+   "text": "modes that uh let you control reasoning"
+  },
+  {
+   "start": 1005.36,
+   "duration": 5.839,
+   "text": "depth. Okay. Now, think of it like uh"
+  },
+  {
+   "start": 1008.56,
+   "duration": 4.639,
+   "text": "asking someone like think carefully"
+  },
+  {
+   "start": 1011.199,
+   "duration": 6.08,
+   "text": "before answering"
+  },
+  {
+   "start": 1013.199,
+   "duration": 6.08,
+   "text": "versus just give me a quick answer. When"
+  },
+  {
+   "start": 1017.279,
+   "duration": 4.56,
+   "text": "generally you ask think carefully, the"
+  },
+  {
+   "start": 1019.279,
+   "duration": 4.8,
+   "text": "person who is opposite to you would"
+  },
+  {
+   "start": 1021.839,
+   "duration": 5.2,
+   "text": "think more. That is what Claude is doing"
+  },
+  {
+   "start": 1024.079,
+   "duration": 7.36,
+   "text": "whenever you switch that toggle."
+  },
+  {
+   "start": 1027.039,
+   "duration": 5.92,
+   "text": "Now, but here it's uh bit tricky. Uh you"
+  },
+  {
+   "start": 1031.439,
+   "duration": 3.201,
+   "text": "have to understand where it gets tricky"
+  },
+  {
+   "start": 1032.959,
+   "duration": 4.641,
+   "text": "actually. There are two different"
+  },
+  {
+   "start": 1034.64,
+   "duration": 6.159,
+   "text": "thinking APIs and which one you use"
+  },
+  {
+   "start": 1037.6,
+   "duration": 6.0,
+   "text": "depends on your model. The first thing"
+  },
+  {
+   "start": 1040.799,
+   "duration": 6.0,
+   "text": "is going to talk about adaptive"
+  },
+  {
+   "start": 1043.6,
+   "duration": 6.16,
+   "text": "thinking. Now current models opus 4.8"
+  },
+  {
+   "start": 1046.799,
+   "duration": 5.441,
+   "text": "eight set five. You set thinking type"
+  },
+  {
+   "start": 1049.76,
+   "duration": 5.039,
+   "text": "colon adaptive"
+  },
+  {
+   "start": 1052.24,
+   "duration": 7.12,
+   "text": "and guide depth with the effort"
+  },
+  {
+   "start": 1054.799,
+   "duration": 8.161,
+   "text": "parameter low, medium and high"
+  },
+  {
+   "start": 1059.36,
+   "duration": 5.92,
+   "text": "or max even and the and and u if you"
+  },
+  {
+   "start": 1062.96,
+   "duration": 7.28,
+   "text": "talk about the claude code there is also"
+  },
+  {
+   "start": 1065.28,
+   "duration": 7.04,
+   "text": "x high and max right so that is how it"
+  },
+  {
+   "start": 1070.24,
+   "duration": 3.84,
+   "text": "goes and claude dynamically decides how"
+  },
+  {
+   "start": 1072.32,
+   "duration": 3.68,
+   "text": "much to think based on the request"
+  },
+  {
+   "start": 1074.08,
+   "duration": 3.92,
+   "text": "complexity."
+  },
+  {
+   "start": 1076.0,
+   "duration": 5.679,
+   "text": "This is the recommended approach and the"
+  },
+  {
+   "start": 1078.0,
+   "duration": 7.039,
+   "text": "only option in opus 4.7 plus and sonnet"
+  },
+  {
+   "start": 1081.679,
+   "duration": 6.321,
+   "text": "5. Adaptive thinking claude think"
+  },
+  {
+   "start": 1085.039,
+   "duration": 6.161,
+   "text": "decides how much to think [gasps]"
+  },
+  {
+   "start": 1088.0,
+   "duration": 4.88,
+   "text": "and extended thinking. So one is"
+  },
+  {
+   "start": 1091.2,
+   "duration": 3.76,
+   "text": "adaptive thinking another one is"
+  },
+  {
+   "start": 1092.88,
+   "duration": 4.72,
+   "text": "extended thinking and extended thinking"
+  },
+  {
+   "start": 1094.96,
+   "duration": 5.12,
+   "text": "is for older models haiko 4.5 and"
+  },
+  {
+   "start": 1097.6,
+   "duration": 6.319,
+   "text": "earlier. So you set the thinking type is"
+  },
+  {
+   "start": 1100.08,
+   "duration": 7.52,
+   "text": "enabled with a fixed budget tokens cap"
+  },
+  {
+   "start": 1103.919,
+   "duration": 6.161,
+   "text": "budget tokens. Now this is a manual"
+  },
+  {
+   "start": 1107.6,
+   "duration": 5.28,
+   "text": "fixed budget approach. It still works on"
+  },
+  {
+   "start": 1110.08,
+   "duration": 7.04,
+   "text": "older models but it is deprecated on"
+  },
+  {
+   "start": 1112.88,
+   "duration": 7.36,
+   "text": "claude 4.6 and rejected with a 400 error"
+  },
+  {
+   "start": 1117.12,
+   "duration": 5.439,
+   "text": "on opus 4.7 plus and set 5. So the key"
+  },
+  {
+   "start": 1120.24,
+   "duration": 5.52,
+   "text": "fact that I want to make here is in the"
+  },
+  {
+   "start": 1122.559,
+   "duration": 5.041,
+   "text": "cloud agent SDK you configure thinking"
+  },
+  {
+   "start": 1125.76,
+   "duration": 5.12,
+   "text": "through the thinking and the effort"
+  },
+  {
+   "start": 1127.6,
+   "duration": 6.88,
+   "text": "options in cloud agent options."
+  },
+  {
+   "start": 1130.88,
+   "duration": 5.76,
+   "text": "Okay on the raw messages API it is a"
+  },
+  {
+   "start": 1134.48,
+   "duration": 4.88,
+   "text": "thinking object in the request body"
+  },
+  {
+   "start": 1136.64,
+   "duration": 5.039,
+   "text": "itself. Now either way thinking tokens"
+  },
+  {
+   "start": 1139.36,
+   "duration": 5.84,
+   "text": "are built but never visible to the end"
+  },
+  {
+   "start": 1141.679,
+   "duration": 6.0,
+   "text": "user. So you're paying for quality the"
+  },
+  {
+   "start": 1145.2,
+   "duration": 5.12,
+   "text": "user can't directly see. measure whether"
+  },
+  {
+   "start": 1147.679,
+   "duration": 5.041,
+   "text": "the improvement justifies the cost. Now"
+  },
+  {
+   "start": 1150.32,
+   "duration": 5.12,
+   "text": "if you guys are getting confused about"
+  },
+  {
+   "start": 1152.72,
+   "duration": 4.8,
+   "text": "this claw agent SDK"
+  },
+  {
+   "start": 1155.44,
+   "duration": 4.479,
+   "text": "cloud agent options, these are"
+  },
+  {
+   "start": 1157.52,
+   "duration": 4.88,
+   "text": "particularly uh required for the"
+  },
+  {
+   "start": 1159.919,
+   "duration": 4.721,
+   "text": "developer exam where you need to know"
+  },
+  {
+   "start": 1162.4,
+   "duration": 5.2,
+   "text": "how you can configure agent using the"
+  },
+  {
+   "start": 1164.64,
+   "duration": 6.08,
+   "text": "clawed agent options class. Okay, but"
+  },
+  {
+   "start": 1167.6,
+   "duration": 4.88,
+   "text": "for this exam this is not needed. So you"
+  },
+  {
+   "start": 1170.72,
+   "duration": 3.76,
+   "text": "just need to know what are the thinking"
+  },
+  {
+   "start": 1172.48,
+   "duration": 4.8,
+   "text": "types that I just explained adaptive"
+  },
+  {
+   "start": 1174.48,
+   "duration": 5.439,
+   "text": "thinking and extended thinking and which"
+  },
+  {
+   "start": 1177.28,
+   "duration": 5.36,
+   "text": "models are supported. That's it."
+  },
+  {
+   "start": 1179.919,
+   "duration": 4.561,
+   "text": "Whatever I just told you. Uh if you are"
+  },
+  {
+   "start": 1182.64,
+   "duration": 4.56,
+   "text": "interested in knowing about the cloud"
+  },
+  {
+   "start": 1184.48,
+   "duration": 5.52,
+   "text": "agent SDK, you can visit my developer"
+  },
+  {
+   "start": 1187.2,
+   "duration": 4.96,
+   "text": "certification series the playlist that I"
+  },
+  {
+   "start": 1190.0,
+   "duration": 4.72,
+   "text": "mentioned. But it is not required for"
+  },
+  {
+   "start": 1192.16,
+   "duration": 5.36,
+   "text": "this exam. So don't worry about it. Just"
+  },
+  {
+   "start": 1194.72,
+   "duration": 6.0,
+   "text": "this much information is okay."
+  },
+  {
+   "start": 1197.52,
+   "duration": 5.92,
+   "text": "Okay. Now going to when do you need to"
+  },
+  {
+   "start": 1200.72,
+   "duration": 5.52,
+   "text": "turn the effort up? Whenever there is a"
+  },
+  {
+   "start": 1203.44,
+   "duration": 5.92,
+   "text": "complex multi-step analysis, ambiguous"
+  },
+  {
+   "start": 1206.24,
+   "duration": 5.52,
+   "text": "inputs that need weighing or math and"
+  },
+  {
+   "start": 1209.36,
+   "duration": 5.52,
+   "text": "logic tasks where step-by-step reasoning"
+  },
+  {
+   "start": 1211.76,
+   "duration": 5.76,
+   "text": "improves accuracy, when to keep effort"
+  },
+  {
+   "start": 1214.88,
+   "duration": 4.24,
+   "text": "low or off. So if the it's a simple"
+  },
+  {
+   "start": 1217.52,
+   "duration": 4.32,
+   "text": "classification or a routing task"
+  },
+  {
+   "start": 1219.12,
+   "duration": 5.2,
+   "text": "extraction um realtime chat where"
+  },
+  {
+   "start": 1221.84,
+   "duration": 4.56,
+   "text": "latency is critical high volume batch"
+  },
+  {
+   "start": 1224.32,
+   "duration": 4.64,
+   "text": "tasks where cost scales with thinking"
+  },
+  {
+   "start": 1226.4,
+   "duration": 4.399,
+   "text": "tokens. Now the exam may present a"
+  },
+  {
+   "start": 1228.96,
+   "duration": 5.92,
+   "text": "scenario where cranking the effort to"
+  },
+  {
+   "start": 1230.799,
+   "duration": 6.561,
+   "text": "max is tempting but not justified."
+  },
+  {
+   "start": 1234.88,
+   "duration": 4.64,
+   "text": "Obviously the exam tries to trick you."
+  },
+  {
+   "start": 1237.36,
+   "duration": 3.52,
+   "text": "Maybe the task is simple or the latency"
+  },
+  {
+   "start": 1239.52,
+   "duration": 3.92,
+   "text": "budget doesn't allow it. The right"
+  },
+  {
+   "start": 1240.88,
+   "duration": 4.96,
+   "text": "answer is match thinking effort to the"
+  },
+  {
+   "start": 1243.44,
+   "duration": 4.08,
+   "text": "task complexity. That is all is required"
+  },
+  {
+   "start": 1245.84,
+   "duration": 4.0,
+   "text": "for the exam. That's why I did not go"
+  },
+  {
+   "start": 1247.52,
+   "duration": 3.76,
+   "text": "into the code to explain how to set it"
+  },
+  {
+   "start": 1249.84,
+   "duration": 4.079,
+   "text": "and all those things. So you don't have"
+  },
+  {
+   "start": 1251.28,
+   "duration": 5.519,
+   "text": "to worry about that."
+  },
+  {
+   "start": 1253.919,
+   "duration": 6.081,
+   "text": "Okay. Now uh let's talk about the"
+  },
+  {
+   "start": 1256.799,
+   "duration": 5.921,
+   "text": "sampling parameter trap. Before we move"
+  },
+  {
+   "start": 1260.0,
+   "duration": 5.2,
+   "text": "into prompts or system prompts, there is"
+  },
+  {
+   "start": 1262.72,
+   "duration": 5.199,
+   "text": "a technical detail the exam may test"
+  },
+  {
+   "start": 1265.2,
+   "duration": 5.76,
+   "text": "that catches a lot of people offguard."
+  },
+  {
+   "start": 1267.919,
+   "duration": 7.281,
+   "text": "Now the key fact is setting temperature"
+  },
+  {
+   "start": 1270.96,
+   "duration": 7.839,
+   "text": "top P or top K to non-default values on"
+  },
+  {
+   "start": 1275.2,
+   "duration": 6.0,
+   "text": "Opus 4.7 plus and set 5 returns a 400"
+  },
+  {
+   "start": 1278.799,
+   "duration": 5.201,
+   "text": "error. It's the same error that you saw"
+  },
+  {
+   "start": 1281.2,
+   "duration": 4.64,
+   "text": "for this uh thinking."
+  },
+  {
+   "start": 1284.0,
+   "duration": 4.159,
+   "text": "Yeah."
+  },
+  {
+   "start": 1285.84,
+   "duration": 4.64,
+   "text": "Now it is deprecated on 4.6 triggers 4"
+  },
+  {
+   "start": 1288.159,
+   "duration": 5.441,
+   "text": "400 error on 4.7. That is what we had"
+  },
+  {
+   "start": 1290.48,
+   "duration": 6.0,
+   "text": "discussed right for this temperature and"
+  },
+  {
+   "start": 1293.6,
+   "duration": 5.52,
+   "text": "top P and top K. Even if you try to set"
+  },
+  {
+   "start": 1296.48,
+   "duration": 6.0,
+   "text": "it to non-default values on Opus 4.7"
+  },
+  {
+   "start": 1299.12,
+   "duration": 5.52,
+   "text": "plus and set 5, it returns a 4 400 error"
+  },
+  {
+   "start": 1302.48,
+   "duration": 4.4,
+   "text": "same as that. Now these parameters are"
+  },
+  {
+   "start": 1304.64,
+   "duration": 4.8,
+   "text": "only supported on older model versions"
+  },
+  {
+   "start": 1306.88,
+   "duration": 4.48,
+   "text": "and haiku. Now why does this matter for"
+  },
+  {
+   "start": 1309.44,
+   "duration": 6.8,
+   "text": "architects? There are two reasons for"
+  },
+  {
+   "start": 1311.36,
+   "duration": 7.12,
+   "text": "that. So um first if you are migrating a"
+  },
+  {
+   "start": 1316.24,
+   "duration": 5.76,
+   "text": "system from an older clawed model to"
+  },
+  {
+   "start": 1318.48,
+   "duration": 7.84,
+   "text": "opus 4.8 8 or sonnet 5 any code that"
+  },
+  {
+   "start": 1322.0,
+   "duration": 7.2,
+   "text": "sets temperature equals to 7 0.7 or top"
+  },
+  {
+   "start": 1326.32,
+   "duration": 6.0,
+   "text": "k equals to 40 will break"
+  },
+  {
+   "start": 1329.2,
+   "duration": 6.0,
+   "text": "okay same story with budget tokens for"
+  },
+  {
+   "start": 1332.32,
+   "duration": 5.04,
+   "text": "extended thinking also a 400 on these"
+  },
+  {
+   "start": 1335.2,
+   "duration": 4.64,
+   "text": "models that's what we discussed a few"
+  },
+  {
+   "start": 1337.36,
+   "duration": 4.0,
+   "text": "minutes back now these are migration"
+  },
+  {
+   "start": 1339.84,
+   "duration": 4.8,
+   "text": "landmines"
+  },
+  {
+   "start": 1341.36,
+   "duration": 5.6,
+   "text": "second uh it changes how you think about"
+  },
+  {
+   "start": 1344.64,
+   "duration": 5.039,
+   "text": "controlling output variability on the"
+  },
+  {
+   "start": 1346.96,
+   "duration": 5.199,
+   "text": "newer models you steerh behavior through"
+  },
+  {
+   "start": 1349.679,
+   "duration": 5.521,
+   "text": "prompting and the effort parameter, not"
+  },
+  {
+   "start": 1352.159,
+   "duration": 5.281,
+   "text": "sampling parameters. You want more,"
+  },
+  {
+   "start": 1355.2,
+   "duration": 4.719,
+   "text": "let's say, creative output. You prompt"
+  },
+  {
+   "start": 1357.44,
+   "duration": 4.4,
+   "text": "for it. You want deterministic and"
+  },
+  {
+   "start": 1359.919,
+   "duration": 4.721,
+   "text": "consistent output. You write a system"
+  },
+  {
+   "start": 1361.84,
+   "duration": 4.8,
+   "text": "prompt with explicit constraints. Most"
+  },
+  {
+   "start": 1364.64,
+   "duration": 4.56,
+   "text": "of the model level knobs are kind of"
+  },
+  {
+   "start": 1366.64,
+   "duration": 4.32,
+   "text": "gone. It's not needed. The the prompt"
+  },
+  {
+   "start": 1369.2,
+   "duration": 4.24,
+   "text": "and the effort level are your steering"
+  },
+  {
+   "start": 1370.96,
+   "duration": 4.24,
+   "text": "wheels right now. Now this connects"
+  },
+  {
+   "start": 1373.44,
+   "duration": 4.8,
+   "text": "directly to our next topic because if"
+  },
+  {
+   "start": 1375.2,
+   "duration": 5.76,
+   "text": "prompting is the primary way to steer"
+  },
+  {
+   "start": 1378.24,
+   "duration": 6.319,
+   "text": "behavior on modern models your system"
+  },
+  {
+   "start": 1380.96,
+   "duration": 6.24,
+   "text": "prompts have to be the best"
+  },
+  {
+   "start": 1384.559,
+   "duration": 4.48,
+   "text": "because previously uh we used to steer"
+  },
+  {
+   "start": 1387.2,
+   "duration": 3.359,
+   "text": "the model behavior by using temperature."
+  },
+  {
+   "start": 1389.039,
+   "duration": 3.601,
+   "text": "If you lower the temperature you would"
+  },
+  {
+   "start": 1390.559,
+   "duration": 4.161,
+   "text": "get more deterministic or"
+  },
+  {
+   "start": 1392.64,
+   "duration": 4.72,
+   "text": "straightforward output. If you increase"
+  },
+  {
+   "start": 1394.72,
+   "duration": 4.0,
+   "text": "the uh temperature basically the the"
+  },
+  {
+   "start": 1397.36,
+   "duration": 3.84,
+   "text": "model would be creative and it might"
+  },
+  {
+   "start": 1398.72,
+   "duration": 6.0,
+   "text": "also hallucinate. But now it is gone."
+  },
+  {
+   "start": 1401.2,
+   "duration": 6.64,
+   "text": "Now your prompts would be the decider"
+  },
+  {
+   "start": 1404.72,
+   "duration": 5.76,
+   "text": "how the model behaves, how the newer"
+  },
+  {
+   "start": 1407.84,
+   "duration": 6.48,
+   "text": "models behaves. So you need to be very"
+  },
+  {
+   "start": 1410.48,
+   "duration": 6.24,
+   "text": "good at it. That's my point."
+  },
+  {
+   "start": 1414.32,
+   "duration": 5.04,
+   "text": "So talking about system prompt design at"
+  },
+  {
+   "start": 1416.72,
+   "duration": 6.0,
+   "text": "production scale. Now this is where we"
+  },
+  {
+   "start": 1419.36,
+   "duration": 5.84,
+   "text": "shift to objective number 2.2 of domain"
+  },
+  {
+   "start": 1422.72,
+   "duration": 4.4,
+   "text": "number two. Designing system prompts,"
+  },
+  {
+   "start": 1425.2,
+   "duration": 3.92,
+   "text": "templates and guardians. And I want to"
+  },
+  {
+   "start": 1427.12,
+   "duration": 3.919,
+   "text": "be very clear about the level we are"
+  },
+  {
+   "start": 1429.12,
+   "duration": 4.799,
+   "text": "operating at here."
+  },
+  {
+   "start": 1431.039,
+   "duration": 5.201,
+   "text": "Okay. Now, objective number 2.2 to"
+  },
+  {
+   "start": 1433.919,
+   "duration": 4.0,
+   "text": "describe it a bit more. It it asks about"
+  },
+  {
+   "start": 1436.24,
+   "duration": 4.4,
+   "text": "design, system prompts, templates, and"
+  },
+  {
+   "start": 1437.919,
+   "duration": 4.721,
+   "text": "guardrails. Right. The exam doesn't ask"
+  },
+  {
+   "start": 1440.64,
+   "duration": 4.0,
+   "text": "what is a system prompt. It asks given"
+  },
+  {
+   "start": 1442.64,
+   "duration": 4.56,
+   "text": "these constraints, which system prompt"
+  },
+  {
+   "start": 1444.64,
+   "duration": 4.96,
+   "text": "design choice is the most effective."
+  },
+  {
+   "start": 1447.2,
+   "duration": 5.12,
+   "text": "Right? Now, at the foundations level,"
+  },
+  {
+   "start": 1449.6,
+   "duration": 4.24,
+   "text": "you you learn what a system prompt is"
+  },
+  {
+   "start": 1452.32,
+   "duration": 2.959,
+   "text": "and how to write one. At the"
+  },
+  {
+   "start": 1453.84,
+   "duration": 4.8,
+   "text": "professional level, the question is"
+  },
+  {
+   "start": 1455.279,
+   "duration": 5.841,
+   "text": "different. How do you design a system"
+  },
+  {
+   "start": 1458.64,
+   "duration": 5.039,
+   "text": "prompt that constraints behavior"
+  },
+  {
+   "start": 1461.12,
+   "duration": 4.559,
+   "text": "reliably across thousands of requests"
+  },
+  {
+   "start": 1463.679,
+   "duration": 3.6,
+   "text": "from thousands of different users in"
+  },
+  {
+   "start": 1465.679,
+   "duration": 3.761,
+   "text": "production?"
+  },
+  {
+   "start": 1467.279,
+   "duration": 4.64,
+   "text": "Right now, that's a much harder problem"
+  },
+  {
+   "start": 1469.44,
+   "duration": 4.719,
+   "text": "because here is the thing. A system"
+  },
+  {
+   "start": 1471.919,
+   "duration": 5.281,
+   "text": "prompt that works perfectly in your"
+  },
+  {
+   "start": 1474.159,
+   "duration": 5.76,
+   "text": "notebook with five test cases can fail"
+  },
+  {
+   "start": 1477.2,
+   "duration": 5.44,
+   "text": "se kind of spectacularly"
+  },
+  {
+   "start": 1479.919,
+   "duration": 5.441,
+   "text": "spec spectacularly."
+  },
+  {
+   "start": 1482.64,
+   "duration": 5.12,
+   "text": "I hope that's correct at scale. And why"
+  },
+  {
+   "start": 1485.36,
+   "duration": 5.04,
+   "text": "is that? Because production traffic is"
+  },
+  {
+   "start": 1487.76,
+   "duration": 4.799,
+   "text": "kind of weird. Users send things you"
+  },
+  {
+   "start": 1490.4,
+   "duration": 4.72,
+   "text": "never anticipated, right? And the edge"
+  },
+  {
+   "start": 1492.559,
+   "duration": 5.201,
+   "text": "cases kind of multiply. And be helpful"
+  },
+  {
+   "start": 1495.12,
+   "duration": 4.32,
+   "text": "and professional. If you say that, which"
+  },
+  {
+   "start": 1497.76,
+   "duration": 4.64,
+   "text": "felt like a clear instruction when you"
+  },
+  {
+   "start": 1499.44,
+   "duration": 4.719,
+   "text": "wrote it, turns out to mean wildly"
+  },
+  {
+   "start": 1502.4,
+   "duration": 3.6,
+   "text": "different things depending on what the"
+  },
+  {
+   "start": 1504.159,
+   "duration": 3.76,
+   "text": "user asks."
+  },
+  {
+   "start": 1506.0,
+   "duration": 3.84,
+   "text": "Yeah."
+  },
+  {
+   "start": 1507.919,
+   "duration": 4.081,
+   "text": "Now, let's talk about what actually"
+  },
+  {
+   "start": 1509.84,
+   "duration": 4.16,
+   "text": "works. Now I hope you are not getting"
+  },
+  {
+   "start": 1512.0,
+   "duration": 6.24,
+   "text": "confused and you are understanding uh"
+  },
+  {
+   "start": 1514.0,
+   "duration": 8.64,
+   "text": "how these things actually are important."
+  },
+  {
+   "start": 1518.24,
+   "duration": 6.799,
+   "text": "Now explicit criteria beat vague"
+  },
+  {
+   "start": 1522.64,
+   "duration": 4.72,
+   "text": "instructions. Now this principle was"
+  },
+  {
+   "start": 1525.039,
+   "duration": 5.841,
+   "text": "covered in the architect foundations"
+  },
+  {
+   "start": 1527.36,
+   "duration": 5.12,
+   "text": "series uh episode number 13 or 14 I"
+  },
+  {
+   "start": 1530.88,
+   "duration": 3.919,
+   "text": "don't remember and it's so important I"
+  },
+  {
+   "start": 1532.48,
+   "duration": 5.36,
+   "text": "want to make sure we build it build on"
+  },
+  {
+   "start": 1534.799,
+   "duration": 5.521,
+   "text": "it kind of here. Uh so what I'm going to"
+  },
+  {
+   "start": 1537.84,
+   "duration": 4.56,
+   "text": "do is I'm going to cut to I I'll put"
+  },
+  {
+   "start": 1540.32,
+   "duration": 4.479,
+   "text": "that footage in this video itself. You"
+  },
+  {
+   "start": 1542.4,
+   "duration": 5.279,
+   "text": "you visit that kind of go through that"
+  },
+  {
+   "start": 1544.799,
+   "duration": 5.12,
+   "text": "footage and uh then we'll summarize what"
+  },
+  {
+   "start": 1547.679,
+   "duration": 4.081,
+   "text": "happened. So I'll see you after the"
+  },
+  {
+   "start": 1549.919,
+   "duration": 3.921,
+   "text": "footage. Let's talk about the first step"
+  },
+  {
+   "start": 1551.76,
+   "duration": 4.799,
+   "text": "that I told right don't write a vague"
+  },
+  {
+   "start": 1553.84,
+   "duration": 5.28,
+   "text": "system prompt right and why is this a"
+  },
+  {
+   "start": 1556.559,
+   "duration": 4.48,
+   "text": "culprit? Now this is a system prompt for"
+  },
+  {
+   "start": 1559.12,
+   "duration": 3.76,
+   "text": "example you're writing for your agent or"
+  },
+  {
+   "start": 1561.039,
+   "duration": 3.76,
+   "text": "for cloud code or for your CI/CD"
+  },
+  {
+   "start": 1562.88,
+   "duration": 5.36,
+   "text": "pipeline and you're writing something"
+  },
+  {
+   "start": 1564.799,
+   "duration": 6.561,
+   "text": "like this. Be thorough and conservative"
+  },
+  {
+   "start": 1568.24,
+   "duration": 6.319,
+   "text": "in your analysis. Now these are two"
+  },
+  {
+   "start": 1571.36,
+   "duration": 5.199,
+   "text": "reasonably sounding words, right? Thoro,"
+  },
+  {
+   "start": 1574.559,
+   "duration": 4.0,
+   "text": "thorough, it's thorough, right? I hope"
+  },
+  {
+   "start": 1576.559,
+   "duration": 4.48,
+   "text": "my pronunciation is correct. Thorough"
+  },
+  {
+   "start": 1578.559,
+   "duration": 4.561,
+   "text": "and conservative. Now for a human, a"
+  },
+  {
+   "start": 1581.039,
+   "duration": 3.841,
+   "text": "human will understand, right? Okay, I"
+  },
+  {
+   "start": 1583.12,
+   "duration": 4.08,
+   "text": "need to be more thorough. But still,"
+  },
+  {
+   "start": 1584.88,
+   "duration": 4.0,
+   "text": "even for a human that are still vague"
+  },
+  {
+   "start": 1587.2,
+   "duration": 3.839,
+   "text": "instructions."
+  },
+  {
+   "start": 1588.88,
+   "duration": 5.52,
+   "text": "Now these are reasonably sounding words."
+  },
+  {
+   "start": 1591.039,
+   "duration": 5.441,
+   "text": "Now let's see what happens. Now it's not"
+  },
+  {
+   "start": 1594.4,
+   "duration": 4.639,
+   "text": "that the model will not understand what"
+  },
+  {
+   "start": 1596.48,
+   "duration": 4.079,
+   "text": "you mean. It produces it produces the"
+  },
+  {
+   "start": 1599.039,
+   "duration": 4.24,
+   "text": "output. It produces everything. It"
+  },
+  {
+   "start": 1600.559,
+   "duration": 5.761,
+   "text": "produces everything basically style"
+  },
+  {
+   "start": 1603.279,
+   "duration": 5.601,
+   "text": "commands, opulated variable namings,"
+  },
+  {
+   "start": 1606.32,
+   "duration": 5.04,
+   "text": "performance, micro optimizations,"
+  },
+  {
+   "start": 1608.88,
+   "duration": 5.039,
+   "text": "suggestions to use list comprehensions,"
+  },
+  {
+   "start": 1611.36,
+   "duration": 5.76,
+   "text": "lot of things that is irrelevant to"
+  },
+  {
+   "start": 1613.919,
+   "duration": 5.841,
+   "text": "flag. Basically that is not needed for"
+  },
+  {
+   "start": 1617.12,
+   "duration": 4.48,
+   "text": "your you know CI/CD pipeline at all"
+  },
+  {
+   "start": 1619.76,
+   "duration": 5.6,
+   "text": "because"
+  },
+  {
+   "start": 1621.6,
+   "duration": 6.4,
+   "text": "the claude is not responsible for the"
+  },
+  {
+   "start": 1625.36,
+   "duration": 4.559,
+   "text": "CI/CD framework. Your team is your team"
+  },
+  {
+   "start": 1628.0,
+   "duration": 4.32,
+   "text": "will lay out the guidelines and claude"
+  },
+  {
+   "start": 1629.919,
+   "duration": 4.481,
+   "text": "should follow it. And how will Claude"
+  },
+  {
+   "start": 1632.32,
+   "duration": 4.32,
+   "text": "follow it when you tell Claude exactly"
+  },
+  {
+   "start": 1634.4,
+   "duration": 4.24,
+   "text": "what to do and that is via your system"
+  },
+  {
+   "start": 1636.64,
+   "duration": 3.919,
+   "text": "prompt."
+  },
+  {
+   "start": 1638.64,
+   "duration": 4.88,
+   "text": "Right? So that is the that is the thing"
+  },
+  {
+   "start": 1640.559,
+   "duration": 5.041,
+   "text": "right. I mean um it will it will it will"
+  },
+  {
+   "start": 1643.52,
+   "duration": 6.48,
+   "text": "it is opiated thing right it will work"
+  },
+  {
+   "start": 1645.6,
+   "duration": 6.0,
+   "text": "on whatever it feels is important and"
+  },
+  {
+   "start": 1650.0,
+   "duration": 4.559,
+   "text": "whatever it feels it's not because your"
+  },
+  {
+   "start": 1651.6,
+   "duration": 7.12,
+   "text": "system prompt is you know kind of vague"
+  },
+  {
+   "start": 1654.559,
+   "duration": 6.081,
+   "text": "okay now this is a very simple exam uh"
+  },
+  {
+   "start": 1658.72,
+   "duration": 3.92,
+   "text": "you know test that it will do basically"
+  },
+  {
+   "start": 1660.64,
+   "duration": 4.48,
+   "text": "in the exam they will ask you should we"
+  },
+  {
+   "start": 1662.64,
+   "duration": 5.12,
+   "text": "use these words and write this kind of a"
+  },
+  {
+   "start": 1665.12,
+   "duration": 4.64,
+   "text": "prompt for your particular scenario and"
+  },
+  {
+   "start": 1667.76,
+   "duration": 5.68,
+   "text": "in that case you should be no we should"
+  },
+  {
+   "start": 1669.76,
+   "duration": 5.36,
+   "text": "not do back basically right so that is"
+  },
+  {
+   "start": 1673.44,
+   "duration": 4.16,
+   "text": "one thing don't give vague instructions"
+  },
+  {
+   "start": 1675.12,
+   "duration": 5.84,
+   "text": "guys now let's talk about the trust"
+  },
+  {
+   "start": 1677.6,
+   "duration": 6.319,
+   "text": "collapse and it is worse than you think"
+  },
+  {
+   "start": 1680.96,
+   "duration": 5.199,
+   "text": "okay now the thing about the thing"
+  },
+  {
+   "start": 1683.919,
+   "duration": 4.24,
+   "text": "people miss about false positive is that"
+  },
+  {
+   "start": 1686.159,
+   "duration": 4.081,
+   "text": "it is not just annoying but it is very"
+  },
+  {
+   "start": 1688.159,
+   "duration": 4.081,
+   "text": "actively dangerous and we just discussed"
+  },
+  {
+   "start": 1690.24,
+   "duration": 3.919,
+   "text": "about this problem I think in the start"
+  },
+  {
+   "start": 1692.24,
+   "duration": 4.159,
+   "text": "of this lecture that if there are a lot"
+  },
+  {
+   "start": 1694.159,
+   "duration": 4.24,
+   "text": "of false positive eventually the"
+  },
+  {
+   "start": 1696.399,
+   "duration": 5.721,
+   "text": "developers the team will start ignoring"
+  },
+  {
+   "start": 1698.399,
+   "duration": 3.721,
+   "text": "them Right?"
+  },
+  {
+   "start": 1702.48,
+   "duration": 5.919,
+   "text": "And the problem is not with ignoring"
+  },
+  {
+   "start": 1705.2,
+   "duration": 5.12,
+   "text": "them but ignoring the real issues along"
+  },
+  {
+   "start": 1708.399,
+   "duration": 3.52,
+   "text": "with that."
+  },
+  {
+   "start": 1710.32,
+   "duration": 4.4,
+   "text": "That's why it is actively dangerous"
+  },
+  {
+   "start": 1711.919,
+   "duration": 5.601,
+   "text": "because trust doesn't work per category,"
+  },
+  {
+   "start": 1714.72,
+   "duration": 4.559,
+   "text": "right? You can't have like 90% false"
+  },
+  {
+   "start": 1717.52,
+   "duration": 4.08,
+   "text": "positive in the style category and"
+  },
+  {
+   "start": 1719.279,
+   "duration": 4.561,
+   "text": "somehow still have developers trust the"
+  },
+  {
+   "start": 1721.6,
+   "duration": 5.439,
+   "text": "security category because trust is kind"
+  },
+  {
+   "start": 1723.84,
+   "duration": 6.079,
+   "text": "of holistic, right? Once they learn to"
+  },
+  {
+   "start": 1727.039,
+   "duration": 4.561,
+   "text": "dismiss the bot, they dismiss all of it."
+  },
+  {
+   "start": 1729.919,
+   "duration": 4.961,
+   "text": "And that is a common behavior in"
+  },
+  {
+   "start": 1731.6,
+   "duration": 4.799,
+   "text": "developers. And as much as you tell"
+  },
+  {
+   "start": 1734.88,
+   "duration": 3.679,
+   "text": "them, you know, you can't blame them."
+  },
+  {
+   "start": 1736.399,
+   "duration": 4.4,
+   "text": "It's a it's a it's a waste of time to go"
+  },
+  {
+   "start": 1738.559,
+   "duration": 3.921,
+   "text": "through, you know, kind of the issues"
+  },
+  {
+   "start": 1740.799,
+   "duration": 3.76,
+   "text": "that is irrelevant, that is false"
+  },
+  {
+   "start": 1742.48,
+   "duration": 4.72,
+   "text": "positive, but you know, you don't know,"
+  },
+  {
+   "start": 1744.559,
+   "duration": 4.961,
+   "text": "maybe one or two major issues slip by,"
+  },
+  {
+   "start": 1747.2,
+   "duration": 4.64,
+   "text": "you know, go, you know, go past them and"
+  },
+  {
+   "start": 1749.52,
+   "duration": 6.24,
+   "text": "you can't help it. And that is why it is"
+  },
+  {
+   "start": 1751.84,
+   "duration": 5.76,
+   "text": "worse than you think, right? And it's"
+  },
+  {
+   "start": 1755.76,
+   "duration": 4.88,
+   "text": "like there was a story uh I don't know"
+  },
+  {
+   "start": 1757.6,
+   "duration": 5.12,
+   "text": "in our uh my grandmother used to tell me"
+  },
+  {
+   "start": 1760.64,
+   "duration": 5.759,
+   "text": "when I was a kid that you know there was"
+  },
+  {
+   "start": 1762.72,
+   "duration": 7.839,
+   "text": "a village and um there was one boy uh he"
+  },
+  {
+   "start": 1766.399,
+   "duration": 6.16,
+   "text": "who used to like um kind of tell lies to"
+  },
+  {
+   "start": 1770.559,
+   "duration": 4.881,
+   "text": "the villages that there is one tiger"
+  },
+  {
+   "start": 1772.559,
+   "duration": 4.961,
+   "text": "coming and one tiger coming right and"
+  },
+  {
+   "start": 1775.44,
+   "duration": 4.08,
+   "text": "the villagers used to get scared and"
+  },
+  {
+   "start": 1777.52,
+   "duration": 3.84,
+   "text": "used to go and protect that boy right"
+  },
+  {
+   "start": 1779.52,
+   "duration": 3.68,
+   "text": "and when they see that see that you know"
+  },
+  {
+   "start": 1781.36,
+   "duration": 3.84,
+   "text": "the there is no tiger the boy used to"
+  },
+  {
+   "start": 1783.2,
+   "duration": 3.92,
+   "text": "laugh and tell that you I just made a"
+  },
+  {
+   "start": 1785.2,
+   "duration": 4.4,
+   "text": "fool out of you. Now he did that four"
+  },
+  {
+   "start": 1787.12,
+   "duration": 4.799,
+   "text": "times, five times, six times, 10 times,"
+  },
+  {
+   "start": 1789.6,
+   "duration": 5.12,
+   "text": "but eventually one day a real tiger came"
+  },
+  {
+   "start": 1791.919,
+   "duration": 5.201,
+   "text": "and when he shouted for help, uh nobody"
+  },
+  {
+   "start": 1794.72,
+   "duration": 5.679,
+   "text": "came for his rescue and he was probably"
+  },
+  {
+   "start": 1797.12,
+   "duration": 6.4,
+   "text": "eaten by the tiger. So that is the thing"
+  },
+  {
+   "start": 1800.399,
+   "duration": 5.201,
+   "text": "about trust, right? You have to be very"
+  },
+  {
+   "start": 1803.52,
+   "duration": 5.6,
+   "text": "that's why I told you trust is holistic"
+  },
+  {
+   "start": 1805.6,
+   "duration": 6.16,
+   "text": "and if you have a lot of false positive"
+  },
+  {
+   "start": 1809.12,
+   "duration": 5.039,
+   "text": "in you know uh in your claude AI"
+  },
+  {
+   "start": 1811.76,
+   "duration": 5.279,
+   "text": "reviewer then people would stop trusting"
+  },
+  {
+   "start": 1814.159,
+   "duration": 5.041,
+   "text": "it right and what is the point of"
+  },
+  {
+   "start": 1817.039,
+   "duration": 5.681,
+   "text": "integrating claude then if if if they"
+  },
+  {
+   "start": 1819.2,
+   "duration": 5.28,
+   "text": "don't even see what claude has flagged"
+  },
+  {
+   "start": 1822.72,
+   "duration": 3.92,
+   "text": "so that is why it is very very important"
+  },
+  {
+   "start": 1824.48,
+   "duration": 5.199,
+   "text": "that you don't give vague instructions"
+  },
+  {
+   "start": 1826.64,
+   "duration": 4.639,
+   "text": "and we are going to see the techniques"
+  },
+  {
+   "start": 1829.679,
+   "duration": 4.72,
+   "text": "in which you can establish establish"
+  },
+  {
+   "start": 1831.279,
+   "duration": 5.52,
+   "text": "back that trust basically."
+  },
+  {
+   "start": 1834.399,
+   "duration": 4.561,
+   "text": "Okay. Now the first instinct that you"
+  },
+  {
+   "start": 1836.799,
+   "duration": 3.76,
+   "text": "would try to do is just tell you to be"
+  },
+  {
+   "start": 1838.96,
+   "duration": 5.199,
+   "text": "conservative and we just discussed about"
+  },
+  {
+   "start": 1840.559,
+   "duration": 5.521,
+   "text": "it right and this is an obvious fix for"
+  },
+  {
+   "start": 1844.159,
+   "duration": 5.441,
+   "text": "people who don't know much about prompt"
+  },
+  {
+   "start": 1846.08,
+   "duration": 5.12,
+   "text": "engineering be more conservative and and"
+  },
+  {
+   "start": 1849.6,
+   "duration": 3.199,
+   "text": "you just say that for example things"
+  },
+  {
+   "start": 1851.2,
+   "duration": 3.359,
+   "text": "like in the prompt you say that like you"
+  },
+  {
+   "start": 1852.799,
+   "duration": 5.201,
+   "text": "know only flag things you are highly"
+  },
+  {
+   "start": 1854.559,
+   "duration": 8.081,
+   "text": "confident about. It sounds reasonable,"
+  },
+  {
+   "start": 1858.0,
+   "duration": 7.52,
+   "text": "but look at what this actually does and"
+  },
+  {
+   "start": 1862.64,
+   "duration": 4.88,
+   "text": "it doesn't work. The model has no idea"
+  },
+  {
+   "start": 1865.52,
+   "duration": 4.399,
+   "text": "what conservative means in your context,"
+  },
+  {
+   "start": 1867.52,
+   "duration": 5.84,
+   "text": "right? I just explained that to you. And"
+  },
+  {
+   "start": 1869.919,
+   "duration": 6.561,
+   "text": "conservative relative to what, right? A"
+  },
+  {
+   "start": 1873.36,
+   "duration": 5.36,
+   "text": "security researcher or a junior develop"
+  },
+  {
+   "start": 1876.48,
+   "duration": 4.319,
+   "text": "developer or a team specific you know"
+  },
+  {
+   "start": 1878.72,
+   "duration": 4.959,
+   "text": "llinter configuration the model has not"
+  },
+  {
+   "start": 1880.799,
+   "duration": 4.641,
+   "text": "idea. I mean you can you can you can"
+  },
+  {
+   "start": 1883.679,
+   "duration": 3.201,
+   "text": "just uh tell me that you know you can"
+  },
+  {
+   "start": 1885.44,
+   "duration": 4.64,
+   "text": "argue with me saying that you know there"
+  },
+  {
+   "start": 1886.88,
+   "duration": 6.08,
+   "text": "might be a claw.md file and there might"
+  },
+  {
+   "start": 1890.08,
+   "duration": 4.719,
+   "text": "be some instructions there and before"
+  },
+  {
+   "start": 1892.96,
+   "duration": 3.68,
+   "text": "even starting the code review it will"
+  },
+  {
+   "start": 1894.799,
+   "duration": 5.12,
+   "text": "refer the cloud MD file and that makes"
+  },
+  {
+   "start": 1896.64,
+   "duration": 5.2,
+   "text": "sense but the thing is that is fine that"
+  },
+  {
+   "start": 1899.919,
+   "duration": 6.081,
+   "text": "sets up the background on which the"
+  },
+  {
+   "start": 1901.84,
+   "duration": 7.6,
+   "text": "claude needs to work but if your prompts"
+  },
+  {
+   "start": 1906.0,
+   "duration": 5.44,
+   "text": "are vague then that is also not going to"
+  },
+  {
+   "start": 1909.44,
+   "duration": 3.92,
+   "text": "help"
+  },
+  {
+   "start": 1911.44,
+   "duration": 4.88,
+   "text": "right If you just write be conservative"
+  },
+  {
+   "start": 1913.36,
+   "duration": 4.72,
+   "text": "and you know do the things that you are"
+  },
+  {
+   "start": 1916.32,
+   "duration": 3.44,
+   "text": "confident about now it will pick out"
+  },
+  {
+   "start": 1918.08,
+   "duration": 3.839,
+   "text": "some things some rules and regulation"
+  },
+  {
+   "start": 1919.76,
+   "duration": 4.72,
+   "text": "from the claw MD file but that is not"
+  },
+  {
+   "start": 1921.919,
+   "duration": 5.36,
+   "text": "enough in the cloud MD file you don't"
+  },
+  {
+   "start": 1924.48,
+   "duration": 4.24,
+   "text": "mention everything right you don't"
+  },
+  {
+   "start": 1927.279,
+   "duration": 4.0,
+   "text": "mention everything to a particular"
+  },
+  {
+   "start": 1928.72,
+   "duration": 5.52,
+   "text": "scenario you just give a overall picture"
+  },
+  {
+   "start": 1931.279,
+   "duration": 5.681,
+   "text": "of your application in the claw MD file"
+  },
+  {
+   "start": 1934.24,
+   "duration": 4.319,
+   "text": "and that is why if you are giving vague"
+  },
+  {
+   "start": 1936.96,
+   "duration": 5.28,
+   "text": "prompts like be conservative or"
+  },
+  {
+   "start": 1938.559,
+   "duration": 5.441,
+   "text": "something like that and vague confidence"
+  },
+  {
+   "start": 1942.24,
+   "duration": 4.4,
+   "text": "instructions do not really improve the"
+  },
+  {
+   "start": 1944.0,
+   "duration": 6.88,
+   "text": "precision and that will be tested on the"
+  },
+  {
+   "start": 1946.64,
+   "duration": 6.8,
+   "text": "exam. So don't do that guys. Right? So"
+  },
+  {
+   "start": 1950.88,
+   "duration": 4.159,
+   "text": "let's see the second instinct or the"
+  },
+  {
+   "start": 1953.44,
+   "duration": 4.16,
+   "text": "second technique that you might be"
+  },
+  {
+   "start": 1955.039,
+   "duration": 4.081,
+   "text": "attracted to is confidence score. For"
+  },
+  {
+   "start": 1957.6,
+   "duration": 3.439,
+   "text": "example,"
+  },
+  {
+   "start": 1959.12,
+   "duration": 3.84,
+   "text": "I mean this also sounds a little bit"
+  },
+  {
+   "start": 1961.039,
+   "duration": 3.201,
+   "text": "more uh realistic than the vake"
+  },
+  {
+   "start": 1962.96,
+   "duration": 3.92,
+   "text": "prompting thing, right? You will just"
+  },
+  {
+   "start": 1964.24,
+   "duration": 4.24,
+   "text": "say you know"
+  },
+  {
+   "start": 1966.88,
+   "duration": 3.2,
+   "text": "uh you you would just say to the prompt"
+  },
+  {
+   "start": 1968.48,
+   "duration": 3.52,
+   "text": "you write in the system prompt something"
+  },
+  {
+   "start": 1970.08,
+   "duration": 4.719,
+   "text": "like you know only flag things you are"
+  },
+  {
+   "start": 1972.0,
+   "duration": 6.32,
+   "text": "80% confident about"
+  },
+  {
+   "start": 1974.799,
+   "duration": 6.0,
+   "text": "I mean what does that mean the model's"
+  },
+  {
+   "start": 1978.32,
+   "duration": 5.599,
+   "text": "confidence scores aren't calibrated to"
+  },
+  {
+   "start": 1980.799,
+   "duration": 5.921,
+   "text": "your project standards right the model"
+  },
+  {
+   "start": 1983.919,
+   "duration": 5.681,
+   "text": "might be 85% confident about a variable"
+  },
+  {
+   "start": 1986.72,
+   "duration": 4.4,
+   "text": "naming thing for example because it"
+  },
+  {
+   "start": 1989.6,
+   "duration": 3.36,
+   "text": "appears thousands of time in its"
+  },
+  {
+   "start": 1991.12,
+   "duration": 4.08,
+   "text": "training data and it's a code review"
+  },
+  {
+   "start": 1992.96,
+   "duration": 5.28,
+   "text": "pattern that is what it has learned over"
+  },
+  {
+   "start": 1995.2,
+   "duration": 5.359,
+   "text": "the period of time and it it is for"
+  },
+  {
+   "start": 1998.24,
+   "duration": 5.2,
+   "text": "example 65% confident about a SQL"
+  },
+  {
+   "start": 2000.559,
+   "duration": 5.84,
+   "text": "injection pattern right but the thing is"
+  },
+  {
+   "start": 2003.44,
+   "duration": 5.359,
+   "text": "it doesn't know what standards you have"
+  },
+  {
+   "start": 2006.399,
+   "duration": 6.481,
+   "text": "set what standards your team has set to"
+  },
+  {
+   "start": 2008.799,
+   "duration": 5.76,
+   "text": "be confident you know so confidence is"
+  },
+  {
+   "start": 2012.88,
+   "duration": 4.639,
+   "text": "relative to the model's training"
+  },
+  {
+   "start": 2014.559,
+   "duration": 5.521,
+   "text": "distribution not your codebase not your"
+  },
+  {
+   "start": 2017.519,
+   "duration": 5.04,
+   "text": "team's definition of a real problem you"
+  },
+  {
+   "start": 2020.08,
+   "duration": 5.599,
+   "text": "are asking the model to judge its own"
+  },
+  {
+   "start": 2022.559,
+   "duration": 4.72,
+   "text": "judgment It's like you are going and"
+  },
+  {
+   "start": 2025.679,
+   "duration": 3.281,
+   "text": "asking the developer who developed the"
+  },
+  {
+   "start": 2027.279,
+   "duration": 3.76,
+   "text": "application will this work are you"
+  },
+  {
+   "start": 2028.96,
+   "duration": 3.92,
+   "text": "confident the developer says yes it will"
+  },
+  {
+   "start": 2031.039,
+   "duration": 3.76,
+   "text": "work and you just go with it to the"
+  },
+  {
+   "start": 2032.88,
+   "duration": 3.6,
+   "text": "production that doesn't happen right"
+  },
+  {
+   "start": 2034.799,
+   "duration": 4.161,
+   "text": "that's why there are testers because you"
+  },
+  {
+   "start": 2036.48,
+   "duration": 3.84,
+   "text": "don't trust the developer"
+  },
+  {
+   "start": 2038.96,
+   "duration": 3.599,
+   "text": "that doesn't make sense if you don't"
+  },
+  {
+   "start": 2040.32,
+   "duration": 5.12,
+   "text": "trust the developer who is a human being"
+  },
+  {
+   "start": 2042.559,
+   "duration": 4.881,
+   "text": "why are you testing an AI"
+  },
+  {
+   "start": 2045.44,
+   "duration": 4.479,
+   "text": "who has learned over time based on the"
+  },
+  {
+   "start": 2047.44,
+   "duration": 4.08,
+   "text": "training data that is why it is very"
+  },
+  {
+   "start": 2049.919,
+   "duration": 2.72,
+   "text": "very important that you don't go with"
+  },
+  {
+   "start": 2051.52,
+   "duration": 3.76,
+   "text": "the confidence"
+  },
+  {
+   "start": 2052.639,
+   "duration": 4.561,
+   "text": "score as well. And in the exam, it might"
+  },
+  {
+   "start": 2055.28,
+   "duration": 4.16,
+   "text": "test you. It will say, you know, tell"
+  },
+  {
+   "start": 2057.2,
+   "duration": 4.0,
+   "text": "the prompt that it's 90% confident about"
+  },
+  {
+   "start": 2059.44,
+   "duration": 6.159,
+   "text": "something, then it will flag something."
+  },
+  {
+   "start": 2061.2,
+   "duration": 7.439,
+   "text": "It doesn't make any sense. Right?"
+  },
+  {
+   "start": 2065.599,
+   "duration": 8.08,
+   "text": "Now, let's let's talk about the real"
+  },
+  {
+   "start": 2068.639,
+   "duration": 7.361,
+   "text": "fix. Stop asking, start telling."
+  },
+  {
+   "start": 2073.679,
+   "duration": 4.48,
+   "text": "Is the here is the very key insight,"
+  },
+  {
+   "start": 2076.0,
+   "duration": 3.359,
+   "text": "right? Both approach approaches that we"
+  },
+  {
+   "start": 2078.159,
+   "duration": 3.2,
+   "text": "just saw, right? you know be"
+  },
+  {
+   "start": 2079.359,
+   "duration": 5.121,
+   "text": "conservative and confidence threshold"
+  },
+  {
+   "start": 2081.359,
+   "duration": 5.28,
+   "text": "right I mean we are asking the model to"
+  },
+  {
+   "start": 2084.48,
+   "duration": 4.08,
+   "text": "develop judgment about what matters and"
+  },
+  {
+   "start": 2086.639,
+   "duration": 5.04,
+   "text": "the model doesn't have your judgment it"
+  },
+  {
+   "start": 2088.56,
+   "duration": 5.519,
+   "text": "has a training data okay the the model"
+  },
+  {
+   "start": 2091.679,
+   "duration": 6.92,
+   "text": "is not your buddy it's it's just"
+  },
+  {
+   "start": 2094.079,
+   "duration": 4.52,
+   "text": "something which learns over time right"
+  },
+  {
+   "start": 2099.2,
+   "duration": 5.68,
+   "text": "I mean the fix isn't better judgment"
+  },
+  {
+   "start": 2101.839,
+   "duration": 5.76,
+   "text": "instructions right the fix is"
+  },
+  {
+   "start": 2104.88,
+   "duration": 5.28,
+   "text": "categorical criteria"
+  },
+  {
+   "start": 2107.599,
+   "duration": 6.961,
+   "text": "you don't Ask the model to decide what"
+  },
+  {
+   "start": 2110.16,
+   "duration": 7.199,
+   "text": "matters. You tell you command you know"
+  },
+  {
+   "start": 2114.56,
+   "duration": 4.48,
+   "text": "because prompting is not just you know"
+  },
+  {
+   "start": 2117.359,
+   "duration": 3.921,
+   "text": "instructions you are giving commands to"
+  },
+  {
+   "start": 2119.04,
+   "duration": 5.44,
+   "text": "the LLM to follow it thoroughly. That is"
+  },
+  {
+   "start": 2121.28,
+   "duration": 6.079,
+   "text": "why there are you know constraints right"
+  },
+  {
+   "start": 2124.48,
+   "duration": 4.48,
+   "text": "there are you know all of these guard"
+  },
+  {
+   "start": 2127.359,
+   "duration": 5.441,
+   "text": "rails right all of these concepts in"
+  },
+  {
+   "start": 2128.96,
+   "duration": 5.76,
+   "text": "prompt engineering so that the LLM"
+  },
+  {
+   "start": 2132.8,
+   "duration": 4.48,
+   "text": "doesn't deviate from what the actual"
+  },
+  {
+   "start": 2134.72,
+   "duration": 5.92,
+   "text": "goal is and it follows exactly what you"
+  },
+  {
+   "start": 2137.28,
+   "duration": 6.319,
+   "text": "are kind of giving so it is up to you"
+  },
+  {
+   "start": 2140.64,
+   "duration": 6.32,
+   "text": "how your LLM behaves right so for"
+  },
+  {
+   "start": 2143.599,
+   "duration": 5.041,
+   "text": "example these are the examples of asking"
+  },
+  {
+   "start": 2146.96,
+   "duration": 3.119,
+   "text": "for judgment which is wrong for example"
+  },
+  {
+   "start": 2148.64,
+   "duration": 4.08,
+   "text": "be thorough and conservative that is"
+  },
+  {
+   "start": 2150.079,
+   "duration": 7.04,
+   "text": "wrong you should not do that. You should"
+  },
+  {
+   "start": 2152.72,
+   "duration": 6.48,
+   "text": "be giving for example rules or commands."
+  },
+  {
+   "start": 2157.119,
+   "duration": 5.121,
+   "text": "So you would be saying okay report SQL"
+  },
+  {
+   "start": 2159.2,
+   "duration": 5.68,
+   "text": "injection S XSS errors right or"
+  },
+  {
+   "start": 2162.24,
+   "duration": 4.8,
+   "text": "vulnerabilities sorry flag issues you"
+  },
+  {
+   "start": 2164.88,
+   "duration": 4.4,
+   "text": "are confident about. No instead of that"
+  },
+  {
+   "start": 2167.04,
+   "duration": 5.6,
+   "text": "report missing error handlers. Be"
+  },
+  {
+   "start": 2169.28,
+   "duration": 5.12,
+   "text": "specific. Just tell what you needs to be"
+  },
+  {
+   "start": 2172.64,
+   "duration": 4.16,
+   "text": "flagged about. You know previously it"
+  },
+  {
+   "start": 2174.4,
+   "duration": 4.64,
+   "text": "was flagging 50. It was flagging"
+  },
+  {
+   "start": 2176.8,
+   "duration": 4.08,
+   "text": "whatever it was thinking that is wrong"
+  },
+  {
+   "start": 2179.04,
+   "duration": 4.4,
+   "text": "and many of them were false positive."
+  },
+  {
+   "start": 2180.88,
+   "duration": 4.16,
+   "text": "But you as a developer and as your team"
+  },
+  {
+   "start": 2183.44,
+   "duration": 4.88,
+   "text": "member you know what is really"
+  },
+  {
+   "start": 2185.04,
+   "duration": 5.12,
+   "text": "important. So instead of asking for"
+  },
+  {
+   "start": 2188.32,
+   "duration": 3.84,
+   "text": "judgment you actually are giving the"
+  },
+  {
+   "start": 2190.16,
+   "duration": 4.88,
+   "text": "rules what you you know what you"
+  },
+  {
+   "start": 2192.16,
+   "duration": 4.56,
+   "text": "actually want clot to follow. Avoid"
+  },
+  {
+   "start": 2195.04,
+   "duration": 4.48,
+   "text": "nitpicky suggestions. That's a very"
+  },
+  {
+   "start": 2196.72,
+   "duration": 5.119,
+   "text": "vague thing right? Skip variable naming"
+  },
+  {
+   "start": 2199.52,
+   "duration": 4.96,
+   "text": "snake case. You don't want to highlight"
+  },
+  {
+   "start": 2201.839,
+   "duration": 4.561,
+   "text": "all this naming conventions right? Use"
+  },
+  {
+   "start": 2204.48,
+   "duration": 5.04,
+   "text": "your best judgment. Instead of that you"
+  },
+  {
+   "start": 2206.4,
+   "duration": 5.439,
+   "text": "you say skip style not in our llinter."
+  },
+  {
+   "start": 2209.52,
+   "duration": 5.36,
+   "text": "So you don't want that. So you're just"
+  },
+  {
+   "start": 2211.839,
+   "duration": 4.881,
+   "text": "telling it to skip this. I mean that is"
+  },
+  {
+   "start": 2214.88,
+   "duration": 3.92,
+   "text": "how you should go about it right? You're"
+  },
+  {
+   "start": 2216.72,
+   "duration": 4.16,
+   "text": "not asking the model to develop taste."
+  },
+  {
+   "start": 2218.8,
+   "duration": 4.48,
+   "text": "You are giving it a rule book. You are"
+  },
+  {
+   "start": 2220.88,
+   "duration": 4.4,
+   "text": "giving commands and models are really"
+  },
+  {
+   "start": 2223.28,
+   "duration": 4.4,
+   "text": "really good at following rules and"
+  },
+  {
+   "start": 2225.28,
+   "duration": 4.0,
+   "text": "commands. So that is how you should be"
+  },
+  {
+   "start": 2227.68,
+   "duration": 5.04,
+   "text": "working with an LLM. Right? And that's"
+  },
+  {
+   "start": 2229.28,
+   "duration": 4.96,
+   "text": "how prompt engineering foundations are."
+  },
+  {
+   "start": 2232.72,
+   "duration": 3.44,
+   "text": "Okay. I hope that is making sense. If"
+  },
+  {
+   "start": 2234.24,
+   "duration": 4.64,
+   "text": "you have any doubts, please put them in"
+  },
+  {
+   "start": 2236.16,
+   "duration": 5.199,
+   "text": "the chats, not the chats, the comments."
+  },
+  {
+   "start": 2238.88,
+   "duration": 4.08,
+   "text": "Basically, uh this is what it looks in"
+  },
+  {
+   "start": 2241.359,
+   "duration": 4.561,
+   "text": "practice. This is the prompt that"
+  },
+  {
+   "start": 2242.96,
+   "duration": 5.6,
+   "text": "replaces the vague thing. Uh you know,"
+  },
+  {
+   "start": 2245.92,
+   "duration": 5.919,
+   "text": "be thorough and conservative. So here"
+  },
+  {
+   "start": 2248.56,
+   "duration": 6.4,
+   "text": "what you see, we replaced two"
+  },
+  {
+   "start": 2251.839,
+   "duration": 5.201,
+   "text": "adjectives, right? Adjectives were what"
+  },
+  {
+   "start": 2254.96,
+   "duration": 4.24,
+   "text": "the thorough and conservative those were"
+  },
+  {
+   "start": 2257.04,
+   "duration": 5.12,
+   "text": "adjectives, right? And we are giving"
+  },
+  {
+   "start": 2259.2,
+   "duration": 6.639,
+   "text": "explicit lists over here."
+  },
+  {
+   "start": 2262.16,
+   "duration": 6.4,
+   "text": "So the report list is specific. It says"
+  },
+  {
+   "start": 2265.839,
+   "duration": 7.801,
+   "text": "SQL or SQL whatever you call it"
+  },
+  {
+   "start": 2268.56,
+   "duration": 5.08,
+   "text": "injection accesss CSRF"
+  },
+  {
+   "start": 2273.68,
+   "duration": 4.399,
+   "text": "and error. It is saying that okay this"
+  },
+  {
+   "start": 2275.76,
+   "duration": 4.24,
+   "text": "is this is coming in as critical right I"
+  },
+  {
+   "start": 2278.079,
+   "duration": 3.681,
+   "text": "mean this is the thing that you're"
+  },
+  {
+   "start": 2280.0,
+   "duration": 3.28,
+   "text": "telling this is this these errors are"
+  },
+  {
+   "start": 2281.76,
+   "duration": 3.68,
+   "text": "coming for example known security"
+  },
+  {
+   "start": 2283.28,
+   "duration": 4.559,
+   "text": "vulnerabilities these are critical then"
+  },
+  {
+   "start": 2285.44,
+   "duration": 4.24,
+   "text": "error significant logic errors missing"
+  },
+  {
+   "start": 2287.839,
+   "duration": 4.24,
+   "text": "error handlers in the critical paths"
+  },
+  {
+   "start": 2289.68,
+   "duration": 4.56,
+   "text": "race conditions in concurrency blocks"
+  },
+  {
+   "start": 2292.079,
+   "duration": 5.201,
+   "text": "these come under errors and then"
+  },
+  {
+   "start": 2294.24,
+   "duration": 5.92,
+   "text": "security uh reports are basically"
+  },
+  {
+   "start": 2297.28,
+   "duration": 4.559,
+   "text": "hard-coded credentials or you know weak"
+  },
+  {
+   "start": 2300.16,
+   "duration": 4.08,
+   "text": "encryption implementation these comes"
+  },
+  {
+   "start": 2301.839,
+   "duration": 4.961,
+   "text": "under security so you kind of grouping"
+  },
+  {
+   "start": 2304.24,
+   "duration": 5.68,
+   "text": "these kind of things in under one"
+  },
+  {
+   "start": 2306.8,
+   "duration": 5.84,
+   "text": "umbrella and the umbrella are the labels"
+  },
+  {
+   "start": 2309.92,
+   "duration": 6.0,
+   "text": "that your team kind of follows critical"
+  },
+  {
+   "start": 2312.64,
+   "duration": 5.84,
+   "text": "error and security and then we have a"
+  },
+  {
+   "start": 2315.92,
+   "duration": 6.24,
+   "text": "negative prompt or a constraint over"
+  },
+  {
+   "start": 2318.48,
+   "duration": 5.76,
+   "text": "here which says never report style no"
+  },
+  {
+   "start": 2322.16,
+   "duration": 4.24,
+   "text": "style issues llinter approved formatting"
+  },
+  {
+   "start": 2324.24,
+   "duration": 4.0,
+   "text": "snake case naming conventions comment"
+  },
+  {
+   "start": 2326.4,
+   "duration": 3.439,
+   "text": "style so don't report that because that"
+  },
+  {
+   "start": 2328.24,
+   "duration": 3.52,
+   "text": "is kind of false positives and that"
+  },
+  {
+   "start": 2329.839,
+   "duration": 3.921,
+   "text": "should not be part of the you know"
+  },
+  {
+   "start": 2331.76,
+   "duration": 4.56,
+   "text": "review process right we should only"
+  },
+  {
+   "start": 2333.76,
+   "duration": 4.96,
+   "text": "consider the actual actual bugs."
+  },
+  {
+   "start": 2336.32,
+   "duration": 4.72,
+   "text": "Performance sub 5 millisecond"
+  },
+  {
+   "start": 2338.72,
+   "duration": 4.639,
+   "text": "optimizations minor memory improvements."
+  },
+  {
+   "start": 2341.04,
+   "duration": 4.72,
+   "text": "So if the performance is lagging too"
+  },
+  {
+   "start": 2343.359,
+   "duration": 5.281,
+   "text": "much then please flag it but if it is"
+  },
+  {
+   "start": 2345.76,
+   "duration": 5.04,
+   "text": "very less like sub 5 milliseconds uh"
+  },
+  {
+   "start": 2348.64,
+   "duration": 5.12,
+   "text": "thingy then please don't report it."
+  },
+  {
+   "start": 2350.8,
+   "duration": 4.72,
+   "text": "Nitpicks minor stylistic choices do not"
+  },
+  {
+   "start": 2353.76,
+   "duration": 4.96,
+   "text": "affect functionality of security. you."
+  },
+  {
+   "start": 2355.52,
+   "duration": 4.8,
+   "text": "So you are explicitly excluding uh these"
+  },
+  {
+   "start": 2358.72,
+   "duration": 3.6,
+   "text": "things saying that llinter approved"
+  },
+  {
+   "start": 2360.32,
+   "duration": 5.36,
+   "text": "style snake case naming sum 5"
+  },
+  {
+   "start": 2362.32,
+   "duration": 5.2,
+   "text": "millisecond and optimize specificity is"
+  },
+  {
+   "start": 2365.68,
+   "duration": 3.84,
+   "text": "everything"
+  },
+  {
+   "start": 2367.52,
+   "duration": 3.839,
+   "text": "and if you see in the format we are"
+  },
+  {
+   "start": 2369.52,
+   "duration": 4.24,
+   "text": "giving an you know the format in which"
+  },
+  {
+   "start": 2371.359,
+   "duration": 4.961,
+   "text": "the output should be output must be a"
+  },
+  {
+   "start": 2373.76,
+   "duration": 6.24,
+   "text": "JSON array of object because by default"
+  },
+  {
+   "start": 2376.32,
+   "duration": 7.12,
+   "text": "your LLM gives you back the output as a"
+  },
+  {
+   "start": 2380.0,
+   "duration": 5.599,
+   "text": "raw string or you know as a pros passage"
+  },
+  {
+   "start": 2383.44,
+   "duration": 4.08,
+   "text": "or something like that right Sometimes"
+  },
+  {
+   "start": 2385.599,
+   "duration": 3.681,
+   "text": "as I've discussed earlier in my lectures"
+  },
+  {
+   "start": 2387.52,
+   "duration": 3.68,
+   "text": "as well if you're using it in for"
+  },
+  {
+   "start": 2389.28,
+   "duration": 4.24,
+   "text": "example a real world scenario like a"
+  },
+  {
+   "start": 2391.2,
+   "duration": 4.399,
+   "text": "CI/CD pipeline there might be a case"
+  },
+  {
+   "start": 2393.52,
+   "duration": 4.4,
+   "text": "that the next step in your CI/CD"
+  },
+  {
+   "start": 2395.599,
+   "duration": 4.24,
+   "text": "pipeline might need the data in a"
+  },
+  {
+   "start": 2397.92,
+   "duration": 5.52,
+   "text": "specific format. So you have to make"
+  },
+  {
+   "start": 2399.839,
+   "duration": 6.401,
+   "text": "sure that you know in the um system"
+  },
+  {
+   "start": 2403.44,
+   "duration": 5.04,
+   "text": "prompt you also specify that the output"
+  },
+  {
+   "start": 2406.24,
+   "duration": 3.92,
+   "text": "must be a you know of specific type or"
+  },
+  {
+   "start": 2408.48,
+   "duration": 3.76,
+   "text": "something like that. So that is very"
+  },
+  {
+   "start": 2410.16,
+   "duration": 4.88,
+   "text": "very important guys and you need to you"
+  },
+  {
+   "start": 2412.24,
+   "duration": 5.2,
+   "text": "know keep that in mind. So I hope you uh"
+  },
+  {
+   "start": 2415.04,
+   "duration": 4.4,
+   "text": "uh saw that footage uh from the"
+  },
+  {
+   "start": 2417.44,
+   "duration": 5.12,
+   "text": "foundation series that I had attached to"
+  },
+  {
+   "start": 2419.44,
+   "duration": 5.52,
+   "text": "this video. To keep it short, what uh I"
+  },
+  {
+   "start": 2422.56,
+   "duration": 4.48,
+   "text": "kind of explained in there is that if"
+  },
+  {
+   "start": 2424.96,
+   "duration": 5.6,
+   "text": "you if you telling claude to be"
+  },
+  {
+   "start": 2427.04,
+   "duration": 5.28,
+   "text": "conservative or be concise is vague. It"
+  },
+  {
+   "start": 2430.56,
+   "duration": 4.32,
+   "text": "leaves the interpretation up to the"
+  },
+  {
+   "start": 2432.32,
+   "duration": 5.039,
+   "text": "model on every single request. So what"
+  },
+  {
+   "start": 2434.88,
+   "duration": 5.04,
+   "text": "you want instead is"
+  },
+  {
+   "start": 2437.359,
+   "duration": 5.921,
+   "text": "explicit criteria which is measurable"
+  },
+  {
+   "start": 2439.92,
+   "duration": 6.8,
+   "text": "and testable constraints. So let's say"
+  },
+  {
+   "start": 2443.28,
+   "duration": 5.12,
+   "text": "limit responses to 150 words. Do not"
+  },
+  {
+   "start": 2446.72,
+   "duration": 4.0,
+   "text": "recommend any product not in the"
+  },
+  {
+   "start": 2448.4,
+   "duration": 4.48,
+   "text": "approved list. If the user's intent is"
+  },
+  {
+   "start": 2450.72,
+   "duration": 4.08,
+   "text": "ambiguous, ask a clarifying question"
+  },
+  {
+   "start": 2452.88,
+   "duration": 4.56,
+   "text": "before proceeding. If you are if these"
+  },
+  {
+   "start": 2454.8,
+   "duration": 5.84,
+   "text": "kind of things are in the prompt, then"
+  },
+  {
+   "start": 2457.44,
+   "duration": 5.76,
+   "text": "you are more or less in a good position."
+  },
+  {
+   "start": 2460.64,
+   "duration": 4.959,
+   "text": "Okay. So that's the foundation explicit"
+  },
+  {
+   "start": 2463.2,
+   "duration": 5.36,
+   "text": "over vague always. Now here's where the"
+  },
+  {
+   "start": 2465.599,
+   "duration": 5.281,
+   "text": "professional goes further at scale. you"
+  },
+  {
+   "start": 2468.56,
+   "duration": 5.519,
+   "text": "know explicit criteria alone are not"
+  },
+  {
+   "start": 2470.88,
+   "duration": 4.88,
+   "text": "enough and you need something known as"
+  },
+  {
+   "start": 2474.079,
+   "duration": 3.121,
+   "text": "structured."
+  },
+  {
+   "start": 2475.76,
+   "duration": 3.44,
+   "text": "So that's what we're going to learn"
+  },
+  {
+   "start": 2477.2,
+   "duration": 4.879,
+   "text": "right now. Building on top of the"
+  },
+  {
+   "start": 2479.2,
+   "duration": 6.399,
+   "text": "foundations knowledge right now"
+  },
+  {
+   "start": 2482.079,
+   "duration": 6.721,
+   "text": "structured system prompts for scale. A"
+  },
+  {
+   "start": 2485.599,
+   "duration": 5.121,
+   "text": "production grade system prompt is not"
+  },
+  {
+   "start": 2488.8,
+   "duration": 4.319,
+   "text": "just a single paragraph. It's a"
+  },
+  {
+   "start": 2490.72,
+   "duration": 5.119,
+   "text": "structured document with distinct"
+  },
+  {
+   "start": 2493.119,
+   "duration": 4.72,
+   "text": "sections each doing a specific job"
+  },
+  {
+   "start": 2495.839,
+   "duration": 5.28,
+   "text": "basically. Now here's the pattern that"
+  },
+  {
+   "start": 2497.839,
+   "duration": 6.801,
+   "text": "holds up at scale. First is role and"
+  },
+  {
+   "start": 2501.119,
+   "duration": 6.401,
+   "text": "identity that you see over here right"
+  },
+  {
+   "start": 2504.64,
+   "duration": 5.76,
+   "text": "who is clawed in this system you are not"
+  },
+  {
+   "start": 2507.52,
+   "duration": 6.079,
+   "text": "you are helpful but you are a customer"
+  },
+  {
+   "start": 2510.4,
+   "duration": 4.88,
+   "text": "support agent for acme crops or some"
+  },
+  {
+   "start": 2513.599,
+   "duration": 3.601,
+   "text": "other companies I don't know fill the"
+  },
+  {
+   "start": 2515.28,
+   "duration": 4.24,
+   "text": "blanks billing department you have"
+  },
+  {
+   "start": 2517.2,
+   "duration": 3.919,
+   "text": "access to the order database and refund"
+  },
+  {
+   "start": 2519.52,
+   "duration": 5.04,
+   "text": "tool"
+  },
+  {
+   "start": 2521.119,
+   "duration": 6.24,
+   "text": "that is role and identity who is claude"
+  },
+  {
+   "start": 2524.56,
+   "duration": 4.96,
+   "text": "second is behavioral constraints the"
+  },
+  {
+   "start": 2527.359,
+   "duration": 4.96,
+   "text": "explicit criteria basically what to do,"
+  },
+  {
+   "start": 2529.52,
+   "duration": 4.64,
+   "text": "what not to do with testable language."
+  },
+  {
+   "start": 2532.319,
+   "duration": 3.841,
+   "text": "Respond in three sentences or fewer"
+  },
+  {
+   "start": 2534.16,
+   "duration": 4.159,
+   "text": "unless the user asks for detail. So that"
+  },
+  {
+   "start": 2536.16,
+   "duration": 5.76,
+   "text": "is what you would put for behavioral"
+  },
+  {
+   "start": 2538.319,
+   "duration": 5.921,
+   "text": "constraints. Output format rules, you"
+  },
+  {
+   "start": 2541.92,
+   "duration": 5.12,
+   "text": "know, structure the output so downstream"
+  },
+  {
+   "start": 2544.24,
+   "duration": 6.8,
+   "text": "systems can parse it. If a tool expects"
+  },
+  {
+   "start": 2547.04,
+   "duration": 7.039,
+   "text": "JSON, say so. If the UI expects markdown"
+  },
+  {
+   "start": 2551.04,
+   "duration": 6.4,
+   "text": "headers, specify the format."
+  },
+  {
+   "start": 2554.079,
+   "duration": 5.841,
+   "text": "Next comes tool usage rules. When should"
+  },
+  {
+   "start": 2557.44,
+   "duration": 4.879,
+   "text": "Claude use each available tool? In what"
+  },
+  {
+   "start": 2559.92,
+   "duration": 4.159,
+   "text": "order? What inputs should it verify"
+  },
+  {
+   "start": 2562.319,
+   "duration": 4.401,
+   "text": "before calling a tool? This is the"
+  },
+  {
+   "start": 2564.079,
+   "duration": 5.28,
+   "text": "bridge between you know prompting and"
+  },
+  {
+   "start": 2566.72,
+   "duration": 5.52,
+   "text": "integration. And it directly connects to"
+  },
+  {
+   "start": 2569.359,
+   "duration": 5.521,
+   "text": "domain number three. How it connects?"
+  },
+  {
+   "start": 2572.24,
+   "duration": 6.8,
+   "text": "We'll see in that domain. Next comes"
+  },
+  {
+   "start": 2574.88,
+   "duration": 6.4,
+   "text": "escalation and edge edge cases. What"
+  },
+  {
+   "start": 2579.04,
+   "duration": 5.52,
+   "text": "happens when cla doesn't know? When the"
+  },
+  {
+   "start": 2581.28,
+   "duration": 6.079,
+   "text": "user is angry, when the request is out"
+  },
+  {
+   "start": 2584.56,
+   "duration": 4.32,
+   "text": "of scope, spell it out. If the user,"
+  },
+  {
+   "start": 2587.359,
+   "duration": 3.201,
+   "text": "let's say you put in the prompt, if the"
+  },
+  {
+   "start": 2588.88,
+   "duration": 3.52,
+   "text": "user mentions a legal threat, do not"
+  },
+  {
+   "start": 2590.56,
+   "duration": 4.16,
+   "text": "attempt to resolve. Hand off to the"
+  },
+  {
+   "start": 2592.4,
+   "duration": 4.32,
+   "text": "legal escalation queue. You have already"
+  },
+  {
+   "start": 2594.72,
+   "duration": 5.119,
+   "text": "mentioned that in the prompt. So Claude"
+  },
+  {
+   "start": 2596.72,
+   "duration": 6.399,
+   "text": "will behave in that manner. Next comes"
+  },
+  {
+   "start": 2599.839,
+   "duration": 4.961,
+   "text": "prohibited actions. The hard boundaries."
+  },
+  {
+   "start": 2603.119,
+   "duration": 4.561,
+   "text": "These are the hard boundaries, not"
+  },
+  {
+   "start": 2604.8,
+   "duration": 5.6,
+   "text": "guidelines. Absolute prohibitions. Never"
+  },
+  {
+   "start": 2607.68,
+   "duration": 5.2,
+   "text": "disclose internal pricing formulas."
+  },
+  {
+   "start": 2610.4,
+   "duration": 5.76,
+   "text": "Never generate content about competitor"
+  },
+  {
+   "start": 2612.88,
+   "duration": 5.199,
+   "text": "products. These are prohibited actions."
+  },
+  {
+   "start": 2616.16,
+   "duration": 3.76,
+   "text": "Now the mental model that you need to"
+  },
+  {
+   "start": 2618.079,
+   "duration": 4.321,
+   "text": "have is think of a production system"
+  },
+  {
+   "start": 2619.92,
+   "duration": 4.96,
+   "text": "prompt like a job description for a new"
+  },
+  {
+   "start": 2622.4,
+   "duration": 5.52,
+   "text": "employee, not like a sticky note. A"
+  },
+  {
+   "start": 2624.88,
+   "duration": 5.68,
+   "text": "sticky note says be nice in quotations."
+  },
+  {
+   "start": 2627.92,
+   "duration": 4.88,
+   "text": "A job description says, you know,"
+  },
+  {
+   "start": 2630.56,
+   "duration": 4.08,
+   "text": "defines roles, responsibilities,"
+  },
+  {
+   "start": 2632.8,
+   "duration": 3.92,
+   "text": "decision authority, escalation"
+  },
+  {
+   "start": 2634.64,
+   "duration": 5.04,
+   "text": "procedures, and hard boundaries."
+  },
+  {
+   "start": 2636.72,
+   "duration": 6.24,
+   "text": "Something like that."
+  },
+  {
+   "start": 2639.68,
+   "duration": 6.08,
+   "text": "Okay, so let's talk about guardrails."
+  },
+  {
+   "start": 2642.96,
+   "duration": 4.96,
+   "text": "Prompt level versus programmatic. Now,"
+  },
+  {
+   "start": 2645.76,
+   "duration": 4.319,
+   "text": "here's uh a critical architectural"
+  },
+  {
+   "start": 2647.92,
+   "duration": 4.8,
+   "text": "question, the exam test. When do you"
+  },
+  {
+   "start": 2650.079,
+   "duration": 5.201,
+   "text": "enforce a guard rail in the prompt and"
+  },
+  {
+   "start": 2652.72,
+   "duration": 4.32,
+   "text": "when do you enforce it programmatically?"
+  },
+  {
+   "start": 2655.28,
+   "duration": 4.16,
+   "text": "Because they are not the same thing and"
+  },
+  {
+   "start": 2657.04,
+   "duration": 5.84,
+   "text": "they fail kind of differently. Now"
+  },
+  {
+   "start": 2659.44,
+   "duration": 6.96,
+   "text": "prompt level guardrails they are"
+  },
+  {
+   "start": 2662.88,
+   "duration": 5.84,
+   "text": "instructions inside the system prompt uh"
+  },
+  {
+   "start": 2666.4,
+   "duration": 5.6,
+   "text": "which is like do not discuss competitor"
+  },
+  {
+   "start": 2668.72,
+   "duration": 5.76,
+   "text": "products. They are fast to implement."
+  },
+  {
+   "start": 2672.0,
+   "duration": 5.04,
+   "text": "They are easy to update and handle"
+  },
+  {
+   "start": 2674.48,
+   "duration": 4.56,
+   "text": "nuance really well but they are"
+  },
+  {
+   "start": 2677.04,
+   "duration": 4.079,
+   "text": "probabilistic and that is the case of"
+  },
+  {
+   "start": 2679.04,
+   "duration": 5.76,
+   "text": "every kind of prompt not just system"
+  },
+  {
+   "start": 2681.119,
+   "duration": 6.641,
+   "text": "prompts. So the model uh follows them"
+  },
+  {
+   "start": 2684.8,
+   "duration": 5.84,
+   "text": "most of the time but under adversarial"
+  },
+  {
+   "start": 2687.76,
+   "duration": 5.52,
+   "text": "pressure I would say or unusual inputs"
+  },
+  {
+   "start": 2690.64,
+   "duration": 7.28,
+   "text": "they can still fail. You can't guarantee"
+  },
+  {
+   "start": 2693.28,
+   "duration": 7.36,
+   "text": "100% adherance through prompting alone."
+  },
+  {
+   "start": 2697.92,
+   "duration": 4.64,
+   "text": "So you would say so okay sir so then"
+  },
+  {
+   "start": 2700.64,
+   "duration": 4.719,
+   "text": "what should I do? What is the solution"
+  },
+  {
+   "start": 2702.56,
+   "duration": 6.0,
+   "text": "to that? We're going to talk about"
+  },
+  {
+   "start": 2705.359,
+   "duration": 5.841,
+   "text": "programmatic guardrits. So they are code"
+  },
+  {
+   "start": 2708.56,
+   "duration": 4.16,
+   "text": "that runs before and after the model's"
+  },
+  {
+   "start": 2711.2,
+   "duration": 3.76,
+   "text": "response."
+  },
+  {
+   "start": 2712.72,
+   "duration": 5.52,
+   "text": "So input validation, output filtering,"
+  },
+  {
+   "start": 2714.96,
+   "duration": 6.08,
+   "text": "tool call in interception or hooks they"
+  },
+  {
+   "start": 2718.24,
+   "duration": 5.68,
+   "text": "are saying which we say as hooks. Uh"
+  },
+  {
+   "start": 2721.04,
+   "duration": 6.64,
+   "text": "they are deterministic. So if the code"
+  },
+  {
+   "start": 2723.92,
+   "duration": 5.919,
+   "text": "says block this, it's blocked period."
+  },
+  {
+   "start": 2727.68,
+   "duration": 4.399,
+   "text": "But they are less flexible and they are"
+  },
+  {
+   "start": 2729.839,
+   "duration": 5.601,
+   "text": "harder to update and can't handle"
+  },
+  {
+   "start": 2732.079,
+   "duration": 5.601,
+   "text": "nuanced context the way the model can."
+  },
+  {
+   "start": 2735.44,
+   "duration": 4.96,
+   "text": "But the thing is it's pretty simple"
+  },
+  {
+   "start": 2737.68,
+   "duration": 5.04,
+   "text": "right when do you want to go with hooks"
+  },
+  {
+   "start": 2740.4,
+   "duration": 4.16,
+   "text": "like pre-tool use hook or post tool use"
+  },
+  {
+   "start": 2742.72,
+   "duration": 5.76,
+   "text": "hook or when you want to stick with"
+  },
+  {
+   "start": 2744.56,
+   "duration": 5.84,
+   "text": "prompts. So if the enforcement"
+  },
+  {
+   "start": 2748.48,
+   "duration": 4.639,
+   "text": "uh if you're going to talk about it if"
+  },
+  {
+   "start": 2750.4,
+   "duration": 5.52,
+   "text": "you want to really enforce a policy"
+  },
+  {
+   "start": 2753.119,
+   "duration": 6.081,
+   "text": "let's say then it has to be controlled"
+  },
+  {
+   "start": 2755.92,
+   "duration": 5.04,
+   "text": "via hooks because you have to have 100%"
+  },
+  {
+   "start": 2759.2,
+   "duration": 3.36,
+   "text": "adherance."
+  },
+  {
+   "start": 2760.96,
+   "duration": 4.32,
+   "text": "So it is deterministic. Hooks are"
+  },
+  {
+   "start": 2762.56,
+   "duration": 5.519,
+   "text": "basically code. So before actually"
+  },
+  {
+   "start": 2765.28,
+   "duration": 5.2,
+   "text": "activating a tool, you want to uh check"
+  },
+  {
+   "start": 2768.079,
+   "duration": 4.881,
+   "text": "something, some kind of policy for for"
+  },
+  {
+   "start": 2770.48,
+   "duration": 4.72,
+   "text": "example, before processing a refund, you"
+  },
+  {
+   "start": 2772.96,
+   "duration": 4.879,
+   "text": "want some policy to be checked that will"
+  },
+  {
+   "start": 2775.2,
+   "duration": 5.52,
+   "text": "go inside a pre-tool use hook."
+  },
+  {
+   "start": 2777.839,
+   "duration": 6.401,
+   "text": "Obviously, that is where hooks comes in."
+  },
+  {
+   "start": 2780.72,
+   "duration": 6.08,
+   "text": "But if you want the model to take a"
+  },
+  {
+   "start": 2784.24,
+   "duration": 5.28,
+   "text": "decision by referring some kind of a"
+  },
+  {
+   "start": 2786.8,
+   "duration": 5.12,
+   "text": "policy I would say then in that case a"
+  },
+  {
+   "start": 2789.52,
+   "duration": 4.799,
+   "text": "programmatic sorry a prompt guardrail"
+  },
+  {
+   "start": 2791.92,
+   "duration": 4.08,
+   "text": "would also work out because you are also"
+  },
+  {
+   "start": 2794.319,
+   "duration": 3.601,
+   "text": "giving the model the flexibility to"
+  },
+  {
+   "start": 2796.0,
+   "duration": 4.64,
+   "text": "decide."
+  },
+  {
+   "start": 2797.92,
+   "duration": 6.0,
+   "text": "Yeah. So it's up to you to see if there"
+  },
+  {
+   "start": 2800.64,
+   "duration": 5.679,
+   "text": "is a hard kind of a stop on you know"
+  },
+  {
+   "start": 2803.92,
+   "duration": 4.32,
+   "text": "following some kind of HIPPA regulations"
+  },
+  {
+   "start": 2806.319,
+   "duration": 3.681,
+   "text": "or policies or something like that. it"
+  },
+  {
+   "start": 2808.24,
+   "duration": 4.4,
+   "text": "is mentioned in the question then"
+  },
+  {
+   "start": 2810.0,
+   "duration": 6.319,
+   "text": "obviously you would go with hooks also"
+  },
+  {
+   "start": 2812.64,
+   "duration": 6.24,
+   "text": "about output data structuring if claude"
+  },
+  {
+   "start": 2816.319,
+   "duration": 5.921,
+   "text": "has to always return an output in a"
+  },
+  {
+   "start": 2818.88,
+   "duration": 4.719,
+   "text": "specific format for example JSON and it"
+  },
+  {
+   "start": 2822.24,
+   "duration": 4.16,
+   "text": "should have all the respective"
+  },
+  {
+   "start": 2823.599,
+   "duration": 5.281,
+   "text": "parameters yeah key value pairs you want"
+  },
+  {
+   "start": 2826.4,
+   "duration": 4.4,
+   "text": "the data in that case you know you can"
+  },
+  {
+   "start": 2828.88,
+   "duration": 3.76,
+   "text": "specify in this system prompt okay"
+  },
+  {
+   "start": 2830.8,
+   "duration": 4.08,
+   "text": "return the data in this format but it"
+  },
+  {
+   "start": 2832.64,
+   "duration": 4.08,
+   "text": "might not follow it but if you have a"
+  },
+  {
+   "start": 2834.88,
+   "duration": 3.76,
+   "text": "post tool use hook which will take the"
+  },
+  {
+   "start": 2836.72,
+   "duration": 4.399,
+   "text": "raw response from claw and convert it"
+  },
+  {
+   "start": 2838.64,
+   "duration": 4.24,
+   "text": "into JSON. Uh it's like a function,"
+  },
+  {
+   "start": 2841.119,
+   "duration": 4.321,
+   "text": "right? So it will always give you the"
+  },
+  {
+   "start": 2842.88,
+   "duration": 5.12,
+   "text": "structured output. So in that case also"
+  },
+  {
+   "start": 2845.44,
+   "duration": 5.28,
+   "text": "hooks are the"
+  },
+  {
+   "start": 2848.0,
+   "duration": 5.28,
+   "text": "you know the the winners."
+  },
+  {
+   "start": 2850.72,
+   "duration": 4.8,
+   "text": "Now uh we'll dig much deeper into this"
+  },
+  {
+   "start": 2853.28,
+   "duration": 5.68,
+   "text": "uh in episode number 12 when we cover"
+  },
+  {
+   "start": 2855.52,
+   "duration": 5.44,
+   "text": "domain five governance, safety and um"
+  },
+  {
+   "start": 2858.96,
+   "duration": 4.56,
+   "text": "risk management. For now just lock in"
+  },
+  {
+   "start": 2860.96,
+   "duration": 5.52,
+   "text": "the principle. Hard limits go in code."
+  },
+  {
+   "start": 2863.52,
+   "duration": 5.92,
+   "text": "Nuanced guidance goes in the prompt and"
+  },
+  {
+   "start": 2866.48,
+   "duration": 4.72,
+   "text": "robust systems use both of them. I think"
+  },
+  {
+   "start": 2869.44,
+   "duration": 5.6,
+   "text": "I spent a little bit more time over here"
+  },
+  {
+   "start": 2871.2,
+   "duration": 6.159,
+   "text": "but anyways it was important. Now let's"
+  },
+  {
+   "start": 2875.04,
+   "duration": 4.4,
+   "text": "talk about a production case study the"
+  },
+  {
+   "start": 2877.359,
+   "duration": 4.72,
+   "text": "insurance claims pro processor and I've"
+  },
+  {
+   "start": 2879.44,
+   "duration": 4.399,
+   "text": "been referring the same case study for"
+  },
+  {
+   "start": 2882.079,
+   "duration": 3.921,
+   "text": "different scenarios. So would you you"
+  },
+  {
+   "start": 2883.839,
+   "duration": 5.121,
+   "text": "would understand how different cases"
+  },
+  {
+   "start": 2886.0,
+   "duration": 6.079,
+   "text": "fits into the same case study."
+  },
+  {
+   "start": 2888.96,
+   "duration": 5.119,
+   "text": "Now um let's talk about this thing. So a"
+  },
+  {
+   "start": 2892.079,
+   "duration": 4.24,
+   "text": "scenario is like a insurance company is"
+  },
+  {
+   "start": 2894.079,
+   "duration": 5.201,
+   "text": "building a claims processing system."
+  },
+  {
+   "start": 2896.319,
+   "duration": 5.841,
+   "text": "Requirements is uh number one process"
+  },
+  {
+   "start": 2899.28,
+   "duration": 6.4,
+   "text": "50,000 claims a day. Uh two classify"
+  },
+  {
+   "start": 2902.16,
+   "duration": 6.0,
+   "text": "claim type and urgency. Yeah. A and"
+  },
+  {
+   "start": 2905.68,
+   "duration": 4.48,
+   "text": "three generate initial assessment for"
+  },
+  {
+   "start": 2908.16,
+   "duration": 3.919,
+   "text": "straightforward claims. Four route"
+  },
+  {
+   "start": 2910.16,
+   "duration": 4.0,
+   "text": "complex or high value claims to human"
+  },
+  {
+   "start": 2912.079,
+   "duration": 4.24,
+   "text": "registers. And five latency"
+  },
+  {
+   "start": 2914.16,
+   "duration": 6.72,
+   "text": "classification must complete within 2"
+  },
+  {
+   "start": 2916.319,
+   "duration": 6.161,
+   "text": "seconds. And cost ceiling $0.02 02 per"
+  },
+  {
+   "start": 2920.88,
+   "duration": 3.12,
+   "text": "claim average. Now this is a little bit"
+  },
+  {
+   "start": 2922.48,
+   "duration": 3.599,
+   "text": "straightforward because I want you to"
+  },
+  {
+   "start": 2924.0,
+   "duration": 4.0,
+   "text": "understand where to fit what but in the"
+  },
+  {
+   "start": 2926.079,
+   "duration": 3.52,
+   "text": "question it will give you as a story"
+  },
+  {
+   "start": 2928.0,
+   "duration": 3.119,
+   "text": "like a problem presented to an"
+  },
+  {
+   "start": 2929.599,
+   "duration": 4.401,
+   "text": "architect."
+  },
+  {
+   "start": 2931.119,
+   "duration": 6.561,
+   "text": "So let's talk about different stuffs."
+  },
+  {
+   "start": 2934.0,
+   "duration": 6.319,
+   "text": "Let's architect this. So Hiko handles"
+  },
+  {
+   "start": 2937.68,
+   "duration": 4.399,
+   "text": "classification."
+  },
+  {
+   "start": 2940.319,
+   "duration": 4.481,
+   "text": "Every single claim passes through it."
+  },
+  {
+   "start": 2942.079,
+   "duration": 4.401,
+   "text": "It's it's a fast enough for the 2C SLA"
+  },
+  {
+   "start": 2944.8,
+   "duration": 4.96,
+   "text": "that is mentioned in the production case"
+  },
+  {
+   "start": 2946.48,
+   "duration": 7.2,
+   "text": "study and it is chief enough at even"
+  },
+  {
+   "start": 2949.76,
+   "duration": 6.16,
+   "text": "50,000 requests per day. Next, Sonnet."
+  },
+  {
+   "start": 2953.68,
+   "duration": 4.56,
+   "text": "Sonnet handles assessment generation for"
+  },
+  {
+   "start": 2955.92,
+   "duration": 4.399,
+   "text": "the 80% of the claims that are"
+  },
+  {
+   "start": 2958.24,
+   "duration": 4.4,
+   "text": "straightforward. So, the quality is"
+  },
+  {
+   "start": 2960.319,
+   "duration": 7.121,
+   "text": "excellent for structured reasoning on"
+  },
+  {
+   "start": 2962.64,
+   "duration": 7.199,
+   "text": "standard claims. Opus handles the 5% of"
+  },
+  {
+   "start": 2967.44,
+   "duration": 4.879,
+   "text": "claims that are complex, high value or"
+  },
+  {
+   "start": 2969.839,
+   "duration": 4.881,
+   "text": "ambiguous. the latency is higher but"
+  },
+  {
+   "start": 2972.319,
+   "duration": 5.121,
+   "text": "these claims are going to a human"
+  },
+  {
+   "start": 2974.72,
+   "duration": 6.0,
+   "text": "adjuster anyway the human is the latency"
+  },
+  {
+   "start": 2977.44,
+   "duration": 5.28,
+   "text": "bottleneck not opus and opus's kind of"
+  },
+  {
+   "start": 2980.72,
+   "duration": 5.28,
+   "text": "deeper reasoning means the adjuster gets"
+  },
+  {
+   "start": 2982.72,
+   "duration": 5.599,
+   "text": "a better preliminary analysis good I had"
+  },
+  {
+   "start": 2986.0,
+   "duration": 4.079,
+   "text": "problem spelling preliminary I still am"
+  },
+  {
+   "start": 2988.319,
+   "duration": 5.04,
+   "text": "having I thought I improved on that"
+  },
+  {
+   "start": 2990.079,
+   "duration": 7.201,
+   "text": "anyways the blended cost so blended cost"
+  },
+  {
+   "start": 2993.359,
+   "duration": 7.121,
+   "text": "comes out like 95% at haiku plus sonnet"
+  },
+  {
+   "start": 2997.28,
+   "duration": 5.44,
+   "text": "rates 5% at opus rates comes in under"
+  },
+  {
+   "start": 3000.48,
+   "duration": 4.639,
+   "text": "the $0.02"
+  },
+  {
+   "start": 3002.72,
+   "duration": 5.599,
+   "text": "claim ceiling. Yeah. So a single model"
+  },
+  {
+   "start": 3005.119,
+   "duration": 5.601,
+   "text": "approach for let's say using opus uh"
+  },
+  {
+   "start": 3008.319,
+   "duration": 6.161,
+   "text": "everywhere would blow the budget by four"
+  },
+  {
+   "start": 3010.72,
+   "duration": 6.56,
+   "text": "to 5x. So this is how you would use um"
+  },
+  {
+   "start": 3014.48,
+   "duration": 4.8,
+   "text": "things at different places. So the"
+  },
+  {
+   "start": 3017.28,
+   "duration": 3.92,
+   "text": "mental model is pretty simple over here."
+  },
+  {
+   "start": 3019.28,
+   "duration": 4.0,
+   "text": "Multimodel architecture lets you buy"
+  },
+  {
+   "start": 3021.2,
+   "duration": 5.04,
+   "text": "opus quality reasoning where it matters"
+  },
+  {
+   "start": 3023.28,
+   "duration": 6.799,
+   "text": "and hiku speed classification where it"
+  },
+  {
+   "start": 3026.24,
+   "duration": 5.68,
+   "text": "doesn't without paying opus prices on"
+  },
+  {
+   "start": 3030.079,
+   "duration": 3.921,
+   "text": "every request right that's the"
+  },
+  {
+   "start": 3031.92,
+   "duration": 4.96,
+   "text": "architecture decision the exam is kind"
+  },
+  {
+   "start": 3034.0,
+   "duration": 6.16,
+   "text": "of testing"
+  },
+  {
+   "start": 3036.88,
+   "duration": 7.12,
+   "text": "okay so I hope that's making sense so"
+  },
+  {
+   "start": 3040.16,
+   "duration": 5.919,
+   "text": "let's move on what would you do so very"
+  },
+  {
+   "start": 3044.0,
+   "duration": 3.839,
+   "text": "simple exam drill we're going to have so"
+  },
+  {
+   "start": 3046.079,
+   "duration": 4.081,
+   "text": "there is a SAS company which is building"
+  },
+  {
+   "start": 3047.839,
+   "duration": 4.081,
+   "text": "an AI assistant for their help desk."
+  },
+  {
+   "start": 3050.16,
+   "duration": 3.84,
+   "text": "Requirements are it must respond to"
+  },
+  {
+   "start": 3051.92,
+   "duration": 4.399,
+   "text": "customer queries within 3 seconds,"
+  },
+  {
+   "start": 3054.0,
+   "duration": 4.319,
+   "text": "handle 10,000 queries a day, maintain"
+  },
+  {
+   "start": 3056.319,
+   "duration": 4.081,
+   "text": "high quality responses for technical"
+  },
+  {
+   "start": 3058.319,
+   "duration": 5.681,
+   "text": "troubleshooting, and stay within a"
+  },
+  {
+   "start": 3060.4,
+   "duration": 6.08,
+   "text": "monthly AI spend of $5,000. The team"
+  },
+  {
+   "start": 3064.0,
+   "duration": 5.119,
+   "text": "currently uses Opus for all the queries."
+  },
+  {
+   "start": 3066.48,
+   "duration": 4.32,
+   "text": "Customer complain about slow responses."
+  },
+  {
+   "start": 3069.119,
+   "duration": 4.161,
+   "text": "Which architectural change is most"
+  },
+  {
+   "start": 3070.8,
+   "duration": 4.72,
+   "text": "effective? And answer is over there, but"
+  },
+  {
+   "start": 3073.28,
+   "duration": 5.039,
+   "text": "please try to answer it by yourself. So"
+  },
+  {
+   "start": 3075.52,
+   "duration": 4.48,
+   "text": "A is enable extended thinking on Opus to"
+  },
+  {
+   "start": 3078.319,
+   "duration": 4.881,
+   "text": "improve response quality and reduce"
+  },
+  {
+   "start": 3080.0,
+   "duration": 6.559,
+   "text": "follow-ups. B switch entirely to haiku"
+  },
+  {
+   "start": 3083.2,
+   "duration": 5.359,
+   "text": "for all queries. C is implement a tired"
+  },
+  {
+   "start": 3086.559,
+   "duration": 4.321,
+   "text": "architecture haiku for routing simple"
+  },
+  {
+   "start": 3088.559,
+   "duration": 5.121,
+   "text": "queries and sonnet for standard support"
+  },
+  {
+   "start": 3090.88,
+   "duration": 5.28,
+   "text": "opus reserved for complex escalations"
+  },
+  {
+   "start": 3093.68,
+   "duration": 4.56,
+   "text": "only. D is reduce the system prompt"
+  },
+  {
+   "start": 3096.16,
+   "duration": 5.199,
+   "text": "length to decrease opus's processing"
+  },
+  {
+   "start": 3098.24,
+   "duration": 5.119,
+   "text": "time. Obviously the answer is C because"
+  },
+  {
+   "start": 3101.359,
+   "duration": 4.881,
+   "text": "the core issue is that opus is being"
+  },
+  {
+   "start": 3103.359,
+   "duration": 6.0,
+   "text": "used for all queries. So we need a uh"
+  },
+  {
+   "start": 3106.24,
+   "duration": 5.04,
+   "text": "tired architecture model tiring we need"
+  },
+  {
+   "start": 3109.359,
+   "duration": 4.401,
+   "text": "uh in the same production case study"
+  },
+  {
+   "start": 3111.28,
+   "duration": 5.44,
+   "text": "that we discussed right so here also we"
+  },
+  {
+   "start": 3113.76,
+   "duration": 5.2,
+   "text": "have to have a tired architecture so I"
+  },
+  {
+   "start": 3116.72,
+   "duration": 5.2,
+   "text": "hope that's making sense"
+  },
+  {
+   "start": 3118.96,
+   "duration": 5.28,
+   "text": "okay so that was all about this lesson"
+  },
+  {
+   "start": 3121.92,
+   "duration": 5.76,
+   "text": "and let's talk about some key takeaways"
+  },
+  {
+   "start": 3124.24,
+   "duration": 6.24,
+   "text": "for the exam so model selection is an"
+  },
+  {
+   "start": 3127.68,
+   "duration": 5.679,
+   "text": "architectural decision don't kind of"
+  },
+  {
+   "start": 3130.48,
+   "duration": 5.28,
+   "text": "default decide match the model to the"
+  },
+  {
+   "start": 3133.359,
+   "duration": 4.96,
+   "text": "tasks complex lexity, latency, budget"
+  },
+  {
+   "start": 3135.76,
+   "duration": 6.559,
+   "text": "and cost ceiling using the three axis"
+  },
+  {
+   "start": 3138.319,
+   "duration": 6.481,
+   "text": "matrix that we discussed in this lesson."
+  },
+  {
+   "start": 3142.319,
+   "duration": 6.561,
+   "text": "Multimodel architectures are a valid and"
+  },
+  {
+   "start": 3144.8,
+   "duration": 6.319,
+   "text": "a tested pattern. Haiku routes sonnet"
+  },
+  {
+   "start": 3148.88,
+   "duration": 5.76,
+   "text": "generates opus reasons. Most production"
+  },
+  {
+   "start": 3151.119,
+   "duration": 5.921,
+   "text": "system should use more than one model."
+  },
+  {
+   "start": 3154.64,
+   "duration": 3.919,
+   "text": "Thinking modes matter and they have"
+  },
+  {
+   "start": 3157.04,
+   "duration": 4.079,
+   "text": "changed and how they have changed we"
+  },
+  {
+   "start": 3158.559,
+   "duration": 4.8,
+   "text": "have already discussed. Legacy"
+  },
+  {
+   "start": 3161.119,
+   "duration": 5.041,
+   "text": "parameters are gone on modern modern"
+  },
+  {
+   "start": 3163.359,
+   "duration": 5.361,
+   "text": "models like temperature uh top P top K"
+  },
+  {
+   "start": 3166.16,
+   "duration": 4.399,
+   "text": "and budget tokens. So make sure that you"
+  },
+  {
+   "start": 3168.72,
+   "duration": 3.68,
+   "text": "pay attention to that in the exam as"
+  },
+  {
+   "start": 3170.559,
+   "duration": 4.481,
+   "text": "well. Production system prompts are"
+  },
+  {
+   "start": 3172.4,
+   "duration": 5.04,
+   "text": "structured documents not paragraphs role"
+  },
+  {
+   "start": 3175.04,
+   "duration": 4.64,
+   "text": "constraints format tools escalation"
+  },
+  {
+   "start": 3177.44,
+   "duration": 4.24,
+   "text": "prohibitions combine prompt level"
+  },
+  {
+   "start": 3179.68,
+   "duration": 4.0,
+   "text": "guardrails for nuanced guidance with"
+  },
+  {
+   "start": 3181.68,
+   "duration": 5.84,
+   "text": "programmatic guardrails for hard safety"
+  },
+  {
+   "start": 3183.68,
+   "duration": 7.12,
+   "text": "limits and defense in depth I would say."
+  },
+  {
+   "start": 3187.52,
+   "duration": 5.76,
+   "text": "Okay. So next would uh that's that's"
+  },
+  {
+   "start": 3190.8,
+   "duration": 4.24,
+   "text": "objective numbers 2.1 and 2.2 as I've"
+  },
+  {
+   "start": 3193.28,
+   "duration": 4.16,
+   "text": "mentioned next episode we finish domain"
+  },
+  {
+   "start": 3195.04,
+   "duration": 4.079,
+   "text": "2 with advanced prompt and context"
+  },
+  {
+   "start": 3197.44,
+   "duration": 4.0,
+   "text": "engineering. We'll cover prompt"
+  },
+  {
+   "start": 3199.119,
+   "duration": 4.72,
+   "text": "techniques at the professional level few"
+  },
+  {
+   "start": 3201.44,
+   "duration": 5.36,
+   "text": "short chain of thought with each where"
+  },
+  {
+   "start": 3203.839,
+   "duration": 5.121,
+   "text": "each one fits and uh we talk about"
+  },
+  {
+   "start": 3206.8,
+   "duration": 4.64,
+   "text": "context window management as a"
+  },
+  {
+   "start": 3208.96,
+   "duration": 6.159,
+   "text": "production concern and prompt caching as"
+  },
+  {
+   "start": 3211.44,
+   "duration": 5.04,
+   "text": "well. Um that is what we have we're"
+  },
+  {
+   "start": 3215.119,
+   "duration": 2.96,
+   "text": "going to see in the next episode. a lot"
+  },
+  {
+   "start": 3216.48,
+   "duration": 3.44,
+   "text": "of fun stuff and I'll see you in the"
+  },
+  {
+   "start": 3218.079,
+   "duration": 5.04,
+   "text": "next one. Till then, have a nice day."
+  },
+  {
+   "start": 3219.92,
+   "duration": 3.199,
+   "text": "Take care. Bye-bye."
+  }
+ ]
+}

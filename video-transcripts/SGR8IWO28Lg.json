@@ -1,0 +1,6493 @@
+{
+ "video_id": "SGR8IWO28Lg",
+ "episode": "Ep 02",
+ "title": "Architecture Patterns",
+ "lane": "ccar-p",
+ "segments": [
+  {
+   "start": 1.36,
+   "duration": 5.6,
+   "text": "Hello everyone and welcome to this new"
+  },
+  {
+   "start": 3.679,
+   "duration": 6.88,
+   "text": "lesson. So here's a question right that"
+  },
+  {
+   "start": 6.96,
+   "duration": 6.16,
+   "text": "trips up a lot of people on the CCP that"
+  },
+  {
+   "start": 10.559,
+   "duration": 5.2,
+   "text": "the professional exam right you've got"
+  },
+  {
+   "start": 13.12,
+   "duration": 5.76,
+   "text": "three architecture patterns that is in"
+  },
+  {
+   "start": 15.759,
+   "duration": 6.321,
+   "text": "front of you that is workflow agentic"
+  },
+  {
+   "start": 18.88,
+   "duration": 6.239,
+   "text": "and augmented LLM and the question says"
+  },
+  {
+   "start": 22.08,
+   "duration": 4.8,
+   "text": "which one should you choose and the"
+  },
+  {
+   "start": 25.119,
+   "duration": 3.92,
+   "text": "instinct is to go with the most"
+  },
+  {
+   "start": 26.88,
+   "duration": 5.6,
+   "text": "impressive one agentic right because"
+  },
+  {
+   "start": 29.039,
+   "duration": 5.68,
+   "text": "that's like the buzzword nowadays in the"
+  },
+  {
+   "start": 32.48,
+   "duration": 6.079,
+   "text": "in the current software devel velopment"
+  },
+  {
+   "start": 34.719,
+   "duration": 6.241,
+   "text": "scenario or an AI engineering scenario."
+  },
+  {
+   "start": 38.559,
+   "duration": 5.441,
+   "text": "We have autonomous agents, modeldriven"
+  },
+  {
+   "start": 40.96,
+   "duration": 5.04,
+   "text": "loops. So all of these buzzwords that"
+  },
+  {
+   "start": 44.0,
+   "duration": 5.76,
+   "text": "you see and that sounds like the"
+  },
+  {
+   "start": 46.0,
+   "duration": 7.039,
+   "text": "advanced answer. Yeah, because the thing"
+  },
+  {
+   "start": 49.76,
+   "duration": 6.479,
+   "text": "is on this exam the answer is never"
+  },
+  {
+   "start": 53.039,
+   "duration": 6.0,
+   "text": "which pattern is best in the abstract."
+  },
+  {
+   "start": 56.239,
+   "duration": 5.921,
+   "text": "The answer is always which pattern fits"
+  },
+  {
+   "start": 59.039,
+   "duration": 4.881,
+   "text": "this specific constraint, right? a"
+  },
+  {
+   "start": 62.16,
+   "duration": 3.999,
+   "text": "latency budget, a compliance"
+  },
+  {
+   "start": 63.92,
+   "duration": 4.64,
+   "text": "requirement, a cost ceiling. The"
+  },
+  {
+   "start": 66.159,
+   "duration": 3.921,
+   "text": "constraint in the question stem that we"
+  },
+  {
+   "start": 68.56,
+   "duration": 4.48,
+   "text": "kind of discussed in detail in the"
+  },
+  {
+   "start": 70.08,
+   "duration": 5.76,
+   "text": "previous lesson is what decides the"
+  },
+  {
+   "start": 73.04,
+   "duration": 4.64,
+   "text": "answer, not which option sounds the most"
+  },
+  {
+   "start": 75.84,
+   "duration": 4.56,
+   "text": "sophisticated."
+  },
+  {
+   "start": 77.68,
+   "duration": 6.079,
+   "text": "Now that shift in thinking from best to"
+  },
+  {
+   "start": 80.4,
+   "duration": 5.039,
+   "text": "best fit is what separates a"
+  },
+  {
+   "start": 83.759,
+   "duration": 5.201,
+   "text": "professional level architect from"
+  },
+  {
+   "start": 85.439,
+   "duration": 5.521,
+   "text": "someone who just knows the patterns and"
+  },
+  {
+   "start": 88.96,
+   "duration": 4.24,
+   "text": "and you know that's exactly what we are"
+  },
+  {
+   "start": 90.96,
+   "duration": 4.64,
+   "text": "going to build today. Okay. And there is"
+  },
+  {
+   "start": 93.2,
+   "duration": 4.959,
+   "text": "one key fact that you need to know is"
+  },
+  {
+   "start": 95.6,
+   "duration": 5.519,
+   "text": "that the CCP exam presents constraints"
+  },
+  {
+   "start": 98.159,
+   "duration": 5.521,
+   "text": "in the question stem and asks you to"
+  },
+  {
+   "start": 101.119,
+   "duration": 5.36,
+   "text": "match the pattern to the constraint not"
+  },
+  {
+   "start": 103.68,
+   "duration": 4.56,
+   "text": "to pick the most advanced sounding"
+  },
+  {
+   "start": 106.479,
+   "duration": 3.68,
+   "text": "option. That's why there there will be a"
+  },
+  {
+   "start": 108.24,
+   "duration": 4.159,
+   "text": "lot of ambiguity when you're going to"
+  },
+  {
+   "start": 110.159,
+   "duration": 4.401,
+   "text": "answer the question because"
+  },
+  {
+   "start": 112.399,
+   "duration": 5.121,
+   "text": "all of the option might seem correct and"
+  },
+  {
+   "start": 114.56,
+   "duration": 5.12,
+   "text": "they might be but from the exams"
+  },
+  {
+   "start": 117.52,
+   "duration": 3.599,
+   "text": "perspective from from the perspective in"
+  },
+  {
+   "start": 119.68,
+   "duration": 3.6,
+   "text": "which they are testing you that might"
+  },
+  {
+   "start": 121.119,
+   "duration": 5.201,
+   "text": "not be the most efficient solution and"
+  },
+  {
+   "start": 123.28,
+   "duration": 4.959,
+   "text": "that's where you need to step up okay"
+  },
+  {
+   "start": 126.32,
+   "duration": 4.719,
+   "text": "that's where I come in I will try to"
+  },
+  {
+   "start": 128.239,
+   "duration": 5.441,
+   "text": "make uh you guys as ready as possible"
+  },
+  {
+   "start": 131.039,
+   "duration": 4.721,
+   "text": "through this course okay so what we are"
+  },
+  {
+   "start": 133.68,
+   "duration": 4.8,
+   "text": "covering today is"
+  },
+  {
+   "start": 135.76,
+   "duration": 4.8,
+   "text": "the plan for plan for today is we are"
+  },
+  {
+   "start": 138.48,
+   "duration": 4.479,
+   "text": "tackling two objectives from domain"
+  },
+  {
+   "start": 140.56,
+   "duration": 5.12,
+   "text": "number one of the syllabus solution"
+  },
+  {
+   "start": 142.959,
+   "duration": 5.28,
+   "text": "design and architecture. So we're going"
+  },
+  {
+   "start": 145.68,
+   "duration": 4.4,
+   "text": "to cover objective number 1.3 which says"
+  },
+  {
+   "start": 148.239,
+   "duration": 4.241,
+   "text": "select appropriate architectural"
+  },
+  {
+   "start": 150.08,
+   "duration": 6.0,
+   "text": "patterns workflow agentic and augmented"
+  },
+  {
+   "start": 152.48,
+   "duration": 5.52,
+   "text": "LLM and objective number 1.4 which says"
+  },
+  {
+   "start": 156.08,
+   "duration": 5.28,
+   "text": "design multi- aent systems and"
+  },
+  {
+   "start": 158.0,
+   "duration": 5.04,
+   "text": "orchestration strategies. So overall in"
+  },
+  {
+   "start": 161.36,
+   "duration": 3.28,
+   "text": "these two episodes, the previous one and"
+  },
+  {
+   "start": 163.04,
+   "duration": 4.32,
+   "text": "this one, we'll cover domain number one,"
+  },
+  {
+   "start": 164.64,
+   "duration": 4.959,
+   "text": "which is 17% of the exam and it's a very"
+  },
+  {
+   "start": 167.36,
+   "duration": 4.4,
+   "text": "big chunk. Okay. So first we are going"
+  },
+  {
+   "start": 169.599,
+   "duration": 5.201,
+   "text": "to walk through the three architectural"
+  },
+  {
+   "start": 171.76,
+   "duration": 5.04,
+   "text": "pattern families the exam tests between."
+  },
+  {
+   "start": 174.8,
+   "duration": 4.88,
+   "text": "Okay. [snorts] What each one looks like"
+  },
+  {
+   "start": 176.8,
+   "duration": 5.359,
+   "text": "and what it good at and where it breaks"
+  },
+  {
+   "start": 179.68,
+   "duration": 5.68,
+   "text": "down all the all the you know features"
+  },
+  {
+   "start": 182.159,
+   "duration": 6.08,
+   "text": "we're going to explore. Then we'll build"
+  },
+  {
+   "start": 185.36,
+   "duration": 5.12,
+   "text": "a decision framework, a matrix you can"
+  },
+  {
+   "start": 188.239,
+   "duration": 4.0,
+   "text": "carry into the exam. Yeah, like a cheat"
+  },
+  {
+   "start": 190.48,
+   "duration": 3.759,
+   "text": "sheet. Don't actually carry the cheat"
+  },
+  {
+   "start": 192.239,
+   "duration": 4.241,
+   "text": "sheet. You'll fail in the proctored"
+  },
+  {
+   "start": 194.239,
+   "duration": 4.64,
+   "text": "exam. But it's last minute study, I"
+  },
+  {
+   "start": 196.48,
+   "duration": 4.24,
+   "text": "mean. Okay. Uh so that will map the"
+  },
+  {
+   "start": 198.879,
+   "duration": 4.08,
+   "text": "constraints to the patterns directly. So"
+  },
+  {
+   "start": 200.72,
+   "duration": 4.4,
+   "text": "you'll have like a you know cheat sheet"
+  },
+  {
+   "start": 202.959,
+   "duration": 5.601,
+   "text": "before the exam which you can refer to."
+  },
+  {
+   "start": 205.12,
+   "duration": 6.08,
+   "text": "Uh we'll cut to two segments uh from the"
+  },
+  {
+   "start": 208.56,
+   "duration": 4.48,
+   "text": "architect foundation series. Okay. So"
+  },
+  {
+   "start": 211.2,
+   "duration": 4.0,
+   "text": "don't worry I will not give you a link"
+  },
+  {
+   "start": 213.04,
+   "duration": 4.08,
+   "text": "to the video. I'll actually cut the"
+  },
+  {
+   "start": 215.2,
+   "duration": 4.959,
+   "text": "footage directly in this video. So you"
+  },
+  {
+   "start": 217.12,
+   "duration": 6.56,
+   "text": "can continue in this video itself. So it"
+  },
+  {
+   "start": 220.159,
+   "duration": 6.321,
+   "text": "will not feel uh you know uh distracted"
+  },
+  {
+   "start": 223.68,
+   "duration": 4.88,
+   "text": "or something like that. Yeah. So uh"
+  },
+  {
+   "start": 226.48,
+   "duration": 4.16,
+   "text": "because I have already taught about uh"
+  },
+  {
+   "start": 228.56,
+   "duration": 4.399,
+   "text": "multi-agent mechanics and pipeline"
+  },
+  {
+   "start": 230.64,
+   "duration": 4.56,
+   "text": "decomposition in my foundation series."
+  },
+  {
+   "start": 232.959,
+   "duration": 3.601,
+   "text": "So I'll use that footage over here."
+  },
+  {
+   "start": 235.2,
+   "duration": 3.28,
+   "text": "Okay. Okay, I'll just cut that part and"
+  },
+  {
+   "start": 236.56,
+   "duration": 4.08,
+   "text": "put it over here and you can continue."
+  },
+  {
+   "start": 238.48,
+   "duration": 3.759,
+   "text": "If you have already watched that u and"
+  },
+  {
+   "start": 240.64,
+   "duration": 3.44,
+   "text": "you are confident in that concept, you"
+  },
+  {
+   "start": 242.239,
+   "duration": 4.161,
+   "text": "can just skip uh that portion of this"
+  },
+  {
+   "start": 244.08,
+   "duration": 4.719,
+   "text": "video. Yeah, I hope that's making sense."
+  },
+  {
+   "start": 246.4,
+   "duration": 4.399,
+   "text": "And then uh after we learn about that,"
+  },
+  {
+   "start": 248.799,
+   "duration": 4.561,
+   "text": "we'll extend those into the professional"
+  },
+  {
+   "start": 250.799,
+   "duration": 4.08,
+   "text": "level question. How how does that part"
+  },
+  {
+   "start": 253.36,
+   "duration": 4.48,
+   "text": "that we already learned in the"
+  },
+  {
+   "start": 254.879,
+   "duration": 6.401,
+   "text": "foundation exam comes across in the"
+  },
+  {
+   "start": 257.84,
+   "duration": 5.919,
+   "text": "professional level exam? And we see a"
+  },
+  {
+   "start": 261.28,
+   "duration": 4.639,
+   "text": "lot of exam drills. Yeah, it is very"
+  },
+  {
+   "start": 263.759,
+   "duration": 4.88,
+   "text": "interesting. Uh then we'll close with a"
+  },
+  {
+   "start": 265.919,
+   "duration": 6.0,
+   "text": "production case study uh like uh and a"
+  },
+  {
+   "start": 268.639,
+   "duration": 5.441,
+   "text": "what would you do drill exam drill the"
+  },
+  {
+   "start": 271.919,
+   "duration": 4.081,
+   "text": "kind of scenario the exam will throw at"
+  },
+  {
+   "start": 274.08,
+   "duration": 3.52,
+   "text": "you basically. Yeah, I hope you guys are"
+  },
+  {
+   "start": 276.0,
+   "duration": 4.8,
+   "text": "ready. It's going to be a lot of"
+  },
+  {
+   "start": 277.6,
+   "duration": 6.72,
+   "text": "information in this uh episode."
+  },
+  {
+   "start": 280.8,
+   "duration": 6.88,
+   "text": "Okay. So the three pattern families and"
+  },
+  {
+   "start": 284.32,
+   "duration": 5.52,
+   "text": "one decision. Before we go deep on any"
+  },
+  {
+   "start": 287.68,
+   "duration": 4.88,
+   "text": "one pattern, let's get the big picture"
+  },
+  {
+   "start": 289.84,
+   "duration": 4.639,
+   "text": "right. Okay. The exam organizes this"
+  },
+  {
+   "start": 292.56,
+   "duration": 4.639,
+   "text": "clot-based architectures into three"
+  },
+  {
+   "start": 294.479,
+   "duration": 5.201,
+   "text": "families. Okay, think of these uh three"
+  },
+  {
+   "start": 297.199,
+   "duration": 4.801,
+   "text": "different approaches to getting a meal."
+  },
+  {
+   "start": 299.68,
+   "duration": 4.16,
+   "text": "Okay, I like food a lot. So, I always"
+  },
+  {
+   "start": 302.0,
+   "duration": 4.479,
+   "text": "give this food related analogies. I'm"
+  },
+  {
+   "start": 303.84,
+   "duration": 4.799,
+   "text": "sorry if someone doesn't like it. Really"
+  },
+  {
+   "start": 306.479,
+   "duration": 3.761,
+   "text": "apologize for that. But anyways, this is"
+  },
+  {
+   "start": 308.639,
+   "duration": 3.28,
+   "text": "the mental model that I want to create"
+  },
+  {
+   "start": 310.24,
+   "duration": 4.799,
+   "text": "for you. So, when we talk about a"
+  },
+  {
+   "start": 311.919,
+   "duration": 5.12,
+   "text": "workflow that you see over here, so"
+  },
+  {
+   "start": 315.039,
+   "duration": 5.041,
+   "text": "workflow is nothing but a meal prep"
+  },
+  {
+   "start": 317.039,
+   "duration": 6.0,
+   "text": "assembly line. Every step is planned in"
+  },
+  {
+   "start": 320.08,
+   "duration": 4.8,
+   "text": "advance. Yeah. Ingredients go in one"
+  },
+  {
+   "start": 323.039,
+   "duration": 3.841,
+   "text": "end, dinner comes out in the other. It's"
+  },
+  {
+   "start": 324.88,
+   "duration": 5.52,
+   "text": "predictable. It's efficient. No"
+  },
+  {
+   "start": 326.88,
+   "duration": 6.0,
+   "text": "surprises. So I I I'm not sure if you if"
+  },
+  {
+   "start": 330.4,
+   "duration": 4.799,
+   "text": "you go to some kind of a store in Japan"
+  },
+  {
+   "start": 332.88,
+   "duration": 4.159,
+   "text": "that I have noticed. They have some kind"
+  },
+  {
+   "start": 335.199,
+   "duration": 3.601,
+   "text": "of a meal prep or something like that,"
+  },
+  {
+   "start": 337.039,
+   "duration": 4.0,
+   "text": "it's it's it's like a workflow setup"
+  },
+  {
+   "start": 338.8,
+   "duration": 5.679,
+   "text": "over there. You just supply the uh for"
+  },
+  {
+   "start": 341.039,
+   "duration": 5.121,
+   "text": "example um the fruits and it will"
+  },
+  {
+   "start": 344.479,
+   "duration": 4.72,
+   "text": "convert it into a smoothie. And that's"
+  },
+  {
+   "start": 346.16,
+   "duration": 5.92,
+   "text": "the same step for every time. Okay. I"
+  },
+  {
+   "start": 349.199,
+   "duration": 5.521,
+   "text": "think it is uh um there in family mart"
+  },
+  {
+   "start": 352.08,
+   "duration": 5.839,
+   "text": "if you go there or um 7-Eleven you will"
+  },
+  {
+   "start": 354.72,
+   "duration": 6.24,
+   "text": "find those u machines over there. So I"
+  },
+  {
+   "start": 357.919,
+   "duration": 5.12,
+   "text": "would relate the workflow to that exact"
+  },
+  {
+   "start": 360.96,
+   "duration": 4.72,
+   "text": "same number of steps every time. Yeah."
+  },
+  {
+   "start": 363.039,
+   "duration": 4.321,
+   "text": "You just give the input and it will do"
+  },
+  {
+   "start": 365.68,
+   "duration": 3.6,
+   "text": "all the steps in one order and the"
+  },
+  {
+   "start": 367.36,
+   "duration": 5.04,
+   "text": "output will come out at the end. It's"
+  },
+  {
+   "start": 369.28,
+   "duration": 6.479,
+   "text": "predictable. Next comes the agentic."
+  },
+  {
+   "start": 372.4,
+   "duration": 6.079,
+   "text": "Okay. So agentic is like a personal chef"
+  },
+  {
+   "start": 375.759,
+   "duration": 4.56,
+   "text": "who improvises. You say, you know, make"
+  },
+  {
+   "start": 378.479,
+   "duration": 3.84,
+   "text": "something amazing with what's in the"
+  },
+  {
+   "start": 380.319,
+   "duration": 4.241,
+   "text": "fridge. They open the fridge, they look"
+  },
+  {
+   "start": 382.319,
+   "duration": 4.641,
+   "text": "around, uh they decide what to cook and"
+  },
+  {
+   "start": 384.56,
+   "duration": 4.4,
+   "text": "they adjust on the fly. Flexible but"
+  },
+  {
+   "start": 386.96,
+   "duration": 4.239,
+   "text": "takes longer and obviously hiring a"
+  },
+  {
+   "start": 388.96,
+   "duration": 5.28,
+   "text": "personal chef or something like that"
+  },
+  {
+   "start": 391.199,
+   "duration": 6.161,
+   "text": "will cost a lot more. Yeah. Then comes"
+  },
+  {
+   "start": 394.24,
+   "duration": 6.239,
+   "text": "the augmented LLM. Okay. So you you are"
+  },
+  {
+   "start": 397.36,
+   "duration": 6.32,
+   "text": "cooking with a cookbook in augmented LLM"
+  },
+  {
+   "start": 400.479,
+   "duration": 6.0,
+   "text": "and a well stocked pantry is there. You"
+  },
+  {
+   "start": 403.68,
+   "duration": 5.44,
+   "text": "make one call. Okay, what should I make?"
+  },
+  {
+   "start": 406.479,
+   "duration": 6.0,
+   "text": "Uh and the book gives you a recipe based"
+  },
+  {
+   "start": 409.12,
+   "duration": 5.919,
+   "text": "on what's available. It's simple, it's"
+  },
+  {
+   "start": 412.479,
+   "duration": 4.401,
+   "text": "fast and it's one shot and you would"
+  },
+  {
+   "start": 415.039,
+   "duration": 4.72,
+   "text": "understand the advantages of augmented"
+  },
+  {
+   "start": 416.88,
+   "duration": 5.36,
+   "text": "LLM and sometimes or many times you"
+  },
+  {
+   "start": 419.759,
+   "duration": 4.88,
+   "text": "would choose that over an agentic system"
+  },
+  {
+   "start": 422.24,
+   "duration": 4.239,
+   "text": "as well. Yeah, because it's very cost"
+  },
+  {
+   "start": 424.639,
+   "duration": 3.521,
+   "text": "effective and very efficient. Anyways,"
+  },
+  {
+   "start": 426.479,
+   "duration": 3.44,
+   "text": "we're going to discuss that in detail in"
+  },
+  {
+   "start": 428.16,
+   "duration": 5.12,
+   "text": "some time, but for now this is what it"
+  },
+  {
+   "start": 429.919,
+   "duration": 5.601,
+   "text": "is. So, every architecture the exam"
+  },
+  {
+   "start": 433.28,
+   "duration": 4.4,
+   "text": "tests fall into one of these three"
+  },
+  {
+   "start": 435.52,
+   "duration": 5.119,
+   "text": "families, right? Or a hybrid that"
+  },
+  {
+   "start": 437.68,
+   "duration": 4.959,
+   "text": "combines elements from one you know more"
+  },
+  {
+   "start": 440.639,
+   "duration": 4.4,
+   "text": "than one as well. So that you have to be"
+  },
+  {
+   "start": 442.639,
+   "duration": 4.161,
+   "text": "very smart about it. Right? So let's"
+  },
+  {
+   "start": 445.039,
+   "duration": 3.44,
+   "text": "break each one of them in little bit"
+  },
+  {
+   "start": 446.8,
+   "duration": 4.959,
+   "text": "more detail. I hope you have understood"
+  },
+  {
+   "start": 448.479,
+   "duration": 5.44,
+   "text": "the analogies. Now a little bit more"
+  },
+  {
+   "start": 451.759,
+   "duration": 6.081,
+   "text": "technical things. So the workflow"
+  },
+  {
+   "start": 453.919,
+   "duration": 7.921,
+   "text": "pattern is the workhorse workhorse"
+  },
+  {
+   "start": 457.84,
+   "duration": 6.0,
+   "text": "sorry it's where you uh who is the"
+  },
+  {
+   "start": 461.84,
+   "duration": 5.12,
+   "text": "architect right? You are the architect"
+  },
+  {
+   "start": 463.84,
+   "duration": 6.24,
+   "text": "decide the order of operations at design"
+  },
+  {
+   "start": 466.96,
+   "duration": 4.959,
+   "text": "time. Okay not at runtime. So it's"
+  },
+  {
+   "start": 470.08,
+   "duration": 4.08,
+   "text": "already deterministic. It's already"
+  },
+  {
+   "start": 471.919,
+   "duration": 4.56,
+   "text": "decided what is going to happen. So the"
+  },
+  {
+   "start": 474.16,
+   "duration": 4.719,
+   "text": "model executes steps but it doesn't"
+  },
+  {
+   "start": 476.479,
+   "duration": 4.081,
+   "text": "decide which steps to take or in what"
+  },
+  {
+   "start": 478.879,
+   "duration": 4.241,
+   "text": "order because it's already decided by"
+  },
+  {
+   "start": 480.56,
+   "duration": 4.8,
+   "text": "you. That's why it's deterministic. Um"
+  },
+  {
+   "start": 483.12,
+   "duration": 4.639,
+   "text": "this is like clawed on rails and in"
+  },
+  {
+   "start": 485.36,
+   "duration": 6.32,
+   "text": "production that's often exactly what you"
+  },
+  {
+   "start": 487.759,
+   "duration": 6.16,
+   "text": "want. Yeah. There are four subpatterns"
+  },
+  {
+   "start": 491.68,
+   "duration": 6.32,
+   "text": "anthropic documents inside the workflow"
+  },
+  {
+   "start": 493.919,
+   "duration": 6.0,
+   "text": "family. Okay. So first pattern is prompt"
+  },
+  {
+   "start": 498.0,
+   "duration": 4.8,
+   "text": "chaining. Yeah. And it's one of my"
+  },
+  {
+   "start": 499.919,
+   "duration": 6.241,
+   "text": "favorite patterns. Um so what it does it"
+  },
+  {
+   "start": 502.8,
+   "duration": 7.28,
+   "text": "it breaks a complex task into sequential"
+  },
+  {
+   "start": 506.16,
+   "duration": 6.72,
+   "text": "steps where you know each steps output"
+  },
+  {
+   "start": 510.08,
+   "duration": 4.8,
+   "text": "feeds the next. So if you remember um"
+  },
+  {
+   "start": 512.88,
+   "duration": 4.399,
+   "text": "you know if you kind of compare it to a"
+  },
+  {
+   "start": 514.88,
+   "duration": 4.48,
+   "text": "CI/CD pipeline every step in a CI/CD"
+  },
+  {
+   "start": 517.279,
+   "duration": 4.56,
+   "text": "pipeline kind of feeds it to the next"
+  },
+  {
+   "start": 519.36,
+   "duration": 5.28,
+   "text": "step. So that is a very you know simple"
+  },
+  {
+   "start": 521.839,
+   "duration": 5.041,
+   "text": "example of prompt chaining. Yeah. So"
+  },
+  {
+   "start": 524.64,
+   "duration": 3.92,
+   "text": "think like you know extract entities"
+  },
+  {
+   "start": 526.88,
+   "duration": 5.6,
+   "text": "validate entities then generate a"
+  },
+  {
+   "start": 528.56,
+   "duration": 6.64,
+   "text": "summary and then format the output. So"
+  },
+  {
+   "start": 532.48,
+   "duration": 5.52,
+   "text": "each step is a separate clawed call with"
+  },
+  {
+   "start": 535.2,
+   "duration": 6.24,
+   "text": "a focused prompt. Yeah. So it's already"
+  },
+  {
+   "start": 538.0,
+   "duration": 7.12,
+   "text": "decided. Now comes to routing. Okay. So"
+  },
+  {
+   "start": 541.44,
+   "duration": 5.839,
+   "text": "routing is a classifier at the front"
+  },
+  {
+   "start": 545.12,
+   "duration": 4.719,
+   "text": "decides which pipeline to send the input"
+  },
+  {
+   "start": 547.279,
+   "duration": 5.281,
+   "text": "to. Is this a billing question? Is this"
+  },
+  {
+   "start": 549.839,
+   "duration": 5.12,
+   "text": "a technical question? Is it a complaint?"
+  },
+  {
+   "start": 552.56,
+   "duration": 3.839,
+   "text": "It's a classification mechanism, right?"
+  },
+  {
+   "start": 554.959,
+   "duration": 4.081,
+   "text": "So the route is fixed. The"
+  },
+  {
+   "start": 556.399,
+   "duration": 5.041,
+   "text": "classification is the only LLM call that"
+  },
+  {
+   "start": 559.04,
+   "duration": 7.12,
+   "text": "makes the decision. So that is another"
+  },
+  {
+   "start": 561.44,
+   "duration": 7.04,
+   "text": "way routing. Yeah. Now the third I would"
+  },
+  {
+   "start": 566.16,
+   "duration": 6.239,
+   "text": "say you know workflow that is"
+  },
+  {
+   "start": 568.48,
+   "duration": 6.4,
+   "text": "orchestrator workers. So orchestrator"
+  },
+  {
+   "start": 572.399,
+   "duration": 6.801,
+   "text": "workers there is a central coordinator"
+  },
+  {
+   "start": 574.88,
+   "duration": 7.6,
+   "text": "okay who breaks a task into subtasks and"
+  },
+  {
+   "start": 579.2,
+   "duration": 6.079,
+   "text": "then farms them to specialist workers"
+  },
+  {
+   "start": 582.48,
+   "duration": 5.28,
+   "text": "and then assembles the result. This is a"
+  },
+  {
+   "start": 585.279,
+   "duration": 5.12,
+   "text": "deterministic if the coordinator follows"
+  },
+  {
+   "start": 587.76,
+   "duration": 5.759,
+   "text": "a fixed plan. Yeah. Because that is the"
+  },
+  {
+   "start": 590.399,
+   "duration": 6.481,
+   "text": "the main agent you can say or you know"
+  },
+  {
+   "start": 593.519,
+   "duration": 5.281,
+   "text": "the main worker who will delegate it to"
+  },
+  {
+   "start": 596.88,
+   "duration": 3.519,
+   "text": "you know subworkers."
+  },
+  {
+   "start": 598.8,
+   "duration": 3.92,
+   "text": "So it is deterministic if the"
+  },
+  {
+   "start": 600.399,
+   "duration": 4.161,
+   "text": "coordinator follows a plan. It crosses"
+  },
+  {
+   "start": 602.72,
+   "duration": 3.92,
+   "text": "into agentic"
+  },
+  {
+   "start": 604.56,
+   "duration": 4.64,
+   "text": "if the coordinator decides the plan"
+  },
+  {
+   "start": 606.64,
+   "duration": 4.24,
+   "text": "dynamically. Yeah, that is where the sub"
+  },
+  {
+   "start": 609.2,
+   "duration": 3.44,
+   "text": "aents orchestration comes into the"
+  },
+  {
+   "start": 610.88,
+   "duration": 5.199,
+   "text": "picture. That is where it shifts the"
+  },
+  {
+   "start": 612.64,
+   "duration": 6.16,
+   "text": "dynamic from a deterministic workflow to"
+  },
+  {
+   "start": 616.079,
+   "duration": 4.641,
+   "text": "an agentic orchestration, sub aent"
+  },
+  {
+   "start": 618.8,
+   "duration": 3.76,
+   "text": "orchestration. I hope I am making the"
+  },
+  {
+   "start": 620.72,
+   "duration": 4.72,
+   "text": "difference uh clear over here so you"
+  },
+  {
+   "start": 622.56,
+   "duration": 5.92,
+   "text": "don't get confused. The fourth thing"
+  },
+  {
+   "start": 625.44,
+   "duration": 5.68,
+   "text": "that I would say is parallelization."
+  },
+  {
+   "start": 628.48,
+   "duration": 4.88,
+   "text": "So what you do here is you fan out the"
+  },
+  {
+   "start": 631.12,
+   "duration": 3.92,
+   "text": "same task to multiple workers"
+  },
+  {
+   "start": 633.36,
+   "duration": 5.12,
+   "text": "simultaneously"
+  },
+  {
+   "start": 635.04,
+   "duration": 5.52,
+   "text": "then you aggregate useful it's it's very"
+  },
+  {
+   "start": 638.48,
+   "duration": 4.16,
+   "text": "useful for things like multi-document"
+  },
+  {
+   "start": 640.56,
+   "duration": 5.519,
+   "text": "analysis where each document kind of"
+  },
+  {
+   "start": 642.64,
+   "duration": 6.24,
+   "text": "gets its own clawed call."
+  },
+  {
+   "start": 646.079,
+   "duration": 5.2,
+   "text": "Yeah. So I hope it's making sense these"
+  },
+  {
+   "start": 648.88,
+   "duration": 4.399,
+   "text": "four sub patterns and the key fact that"
+  },
+  {
+   "start": 651.279,
+   "duration": 3.761,
+   "text": "I'm going to tell you here is the the"
+  },
+  {
+   "start": 653.279,
+   "duration": 4.641,
+   "text": "defining feature of the workflow pattern"
+  },
+  {
+   "start": 655.04,
+   "duration": 5.44,
+   "text": "is the control flow is decided by the"
+  },
+  {
+   "start": 657.92,
+   "duration": 5.359,
+   "text": "architect at design time. It's very very"
+  },
+  {
+   "start": 660.48,
+   "duration": 5.68,
+   "text": "important just put it on quotes design"
+  },
+  {
+   "start": 663.279,
+   "duration": 4.721,
+   "text": "time not by the model at runtime because"
+  },
+  {
+   "start": 666.16,
+   "duration": 4.4,
+   "text": "I already mentioned if the model decides"
+  },
+  {
+   "start": 668.0,
+   "duration": 4.399,
+   "text": "what to do then it's not a deterministic"
+  },
+  {
+   "start": 670.56,
+   "duration": 4.88,
+   "text": "call at all right now it becomes"
+  },
+  {
+   "start": 672.399,
+   "duration": 5.361,
+   "text": "agentic. Yeah, because it is dynamic and"
+  },
+  {
+   "start": 675.44,
+   "duration": 5.68,
+   "text": "that's what we discussed a few minutes"
+  },
+  {
+   "start": 677.76,
+   "duration": 6.079,
+   "text": "back. So, this makes workflows"
+  },
+  {
+   "start": 681.12,
+   "duration": 5.52,
+   "text": "predictable, auditable, and lower"
+  },
+  {
+   "start": 683.839,
+   "duration": 4.881,
+   "text": "latency, right? But less flexible for"
+  },
+  {
+   "start": 686.64,
+   "duration": 4.319,
+   "text": "open-ended tasks, but sometimes this is"
+  },
+  {
+   "start": 688.72,
+   "duration": 4.96,
+   "text": "what you would want. I hope that's"
+  },
+  {
+   "start": 690.959,
+   "duration": 5.361,
+   "text": "making sense. Yeah, now comes the"
+  },
+  {
+   "start": 693.68,
+   "duration": 4.08,
+   "text": "agentic. And a lot of people are already"
+  },
+  {
+   "start": 696.32,
+   "duration": 3.519,
+   "text": "familiar with this, right? Because it's"
+  },
+  {
+   "start": 697.76,
+   "duration": 4.4,
+   "text": "it's kind of a buzz word. And I've also"
+  },
+  {
+   "start": 699.839,
+   "duration": 4.961,
+   "text": "made a lot of videos on this. Now the"
+  },
+  {
+   "start": 702.16,
+   "duration": 5.04,
+   "text": "agentic pattern is where the model takes"
+  },
+  {
+   "start": 704.8,
+   "duration": 4.159,
+   "text": "the wheel. Yeah, it's pretty simple to"
+  },
+  {
+   "start": 707.2,
+   "duration": 4.24,
+   "text": "understand. Instead of you designing a"
+  },
+  {
+   "start": 708.959,
+   "duration": 5.761,
+   "text": "fixed pipeline, you give the model a"
+  },
+  {
+   "start": 711.44,
+   "duration": 6.88,
+   "text": "goal, a set of tools and a loop and it"
+  },
+  {
+   "start": 714.72,
+   "duration": 5.76,
+   "text": "decides what to do next at each step. So"
+  },
+  {
+   "start": 718.32,
+   "duration": 4.32,
+   "text": "this is the pattern behind clawed code,"
+  },
+  {
+   "start": 720.48,
+   "duration": 4.56,
+   "text": "behind, you know, research agents,"
+  },
+  {
+   "start": 722.64,
+   "duration": 4.879,
+   "text": "behind complex customer service bots"
+  },
+  {
+   "start": 725.04,
+   "duration": 4.88,
+   "text": "that can actually do things, not just,"
+  },
+  {
+   "start": 727.519,
+   "duration": 4.161,
+   "text": "you know, answer questions. Yeah. So the"
+  },
+  {
+   "start": 729.92,
+   "duration": 3.52,
+   "text": "core loop is pretty simple. It's like a"
+  },
+  {
+   "start": 731.68,
+   "duration": 3.92,
+   "text": "agentic loop that I already have"
+  },
+  {
+   "start": 733.44,
+   "duration": 7.04,
+   "text": "discussed in detail in a lot of videos."
+  },
+  {
+   "start": 735.6,
+   "duration": 8.64,
+   "text": "So the thing is it is perceive, think,"
+  },
+  {
+   "start": 740.48,
+   "duration": 7.2,
+   "text": "act, observe and repeat. So this is a"
+  },
+  {
+   "start": 744.24,
+   "duration": 6.159,
+   "text": "very simple form of a loop. Yeah. So"
+  },
+  {
+   "start": 747.68,
+   "duration": 4.64,
+   "text": "this is the core loop. So the model"
+  },
+  {
+   "start": 750.399,
+   "duration": 5.361,
+   "text": "looks at the current state, reasons"
+  },
+  {
+   "start": 752.32,
+   "duration": 6.4,
+   "text": "about what to do next, takes an action,"
+  },
+  {
+   "start": 755.76,
+   "duration": 4.639,
+   "text": "usually a tool call. Yeah. and observes"
+  },
+  {
+   "start": 758.72,
+   "duration": 3.679,
+   "text": "the result and decides whether to"
+  },
+  {
+   "start": 760.399,
+   "duration": 3.601,
+   "text": "continue or stop. Now I know a lot of"
+  },
+  {
+   "start": 762.399,
+   "duration": 3.361,
+   "text": "people would say this is not actually"
+  },
+  {
+   "start": 764.0,
+   "duration": 4.16,
+   "text": "that the terms over here are not"
+  },
+  {
+   "start": 765.76,
+   "duration": 5.04,
+   "text": "actually which correlates to an agentic"
+  },
+  {
+   "start": 768.16,
+   "duration": 5.04,
+   "text": "loop but we are also going to see the"
+  },
+  {
+   "start": 770.8,
+   "duration": 4.64,
+   "text": "agentic loop later but here this is just"
+  },
+  {
+   "start": 773.2,
+   "duration": 5.439,
+   "text": "for understanding how what happens in a"
+  },
+  {
+   "start": 775.44,
+   "duration": 6.959,
+   "text": "loop basically in normal layman's terms"
+  },
+  {
+   "start": 778.639,
+   "duration": 9.041,
+   "text": "okay I hope that's making sense now um"
+  },
+  {
+   "start": 782.399,
+   "duration": 7.921,
+   "text": "when does agentic shine yeah so it"
+  },
+  {
+   "start": 787.68,
+   "duration": 5.12,
+   "text": "shines when it comes to open-ended tasks"
+  },
+  {
+   "start": 790.32,
+   "duration": 5.759,
+   "text": "where you genuinely can't predict the"
+  },
+  {
+   "start": 792.8,
+   "duration": 6.159,
+   "text": "sequence of steps at design time."
+  },
+  {
+   "start": 796.079,
+   "duration": 5.921,
+   "text": "Research is one of the things multifile"
+  },
+  {
+   "start": 798.959,
+   "duration": 5.601,
+   "text": "code refactoring investigations where"
+  },
+  {
+   "start": 802.0,
+   "duration": 5.68,
+   "text": "the next stage action depends on what"
+  },
+  {
+   "start": 804.56,
+   "duration": 5.519,
+   "text": "the previous action uncovered. Yeah. So"
+  },
+  {
+   "start": 807.68,
+   "duration": 4.159,
+   "text": "this is where you know the open-ended"
+  },
+  {
+   "start": 810.079,
+   "duration": 3.681,
+   "text": "tasks whenever you seen the question you"
+  },
+  {
+   "start": 811.839,
+   "duration": 3.921,
+   "text": "feel like it's an open-ended task that's"
+  },
+  {
+   "start": 813.76,
+   "duration": 5.759,
+   "text": "where the agentic system will come into"
+  },
+  {
+   "start": 815.76,
+   "duration": 6.319,
+   "text": "the picture. Now when does agentic hurt?"
+  },
+  {
+   "start": 819.519,
+   "duration": 4.56,
+   "text": "Here's where the exam you know gets"
+  },
+  {
+   "start": 822.079,
+   "duration": 4.961,
+   "text": "really interesting. Agentic loops are"
+  },
+  {
+   "start": 824.079,
+   "duration": 5.841,
+   "text": "expensive. Every iteration is a new"
+  },
+  {
+   "start": 827.04,
+   "duration": 5.44,
+   "text": "clawed call with the full conversation"
+  },
+  {
+   "start": 829.92,
+   "duration": 4.64,
+   "text": "history in the context. They are slower."
+  },
+  {
+   "start": 832.48,
+   "duration": 4.56,
+   "text": "The user is waiting while the model is"
+  },
+  {
+   "start": 834.56,
+   "duration": 4.24,
+   "text": "kind of looping and they are less"
+  },
+  {
+   "start": 837.04,
+   "duration": 4.479,
+   "text": "auditable."
+  },
+  {
+   "start": 838.8,
+   "duration": 4.719,
+   "text": "The exact path through the loop is not"
+  },
+  {
+   "start": 841.519,
+   "duration": 4.721,
+   "text": "known in advance which makes you know"
+  },
+  {
+   "start": 843.519,
+   "duration": 5.201,
+   "text": "compliance sensitive environments really"
+  },
+  {
+   "start": 846.24,
+   "duration": 5.44,
+   "text": "nervous. Okay. So that's one of the"
+  },
+  {
+   "start": 848.72,
+   "duration": 4.96,
+   "text": "things that is also the drawbacks."
+  },
+  {
+   "start": 851.68,
+   "duration": 4.56,
+   "text": "Now the key fact that I want to put it"
+  },
+  {
+   "start": 853.68,
+   "duration": 6.08,
+   "text": "out here is agentic loops you know kind"
+  },
+  {
+   "start": 856.24,
+   "duration": 5.279,
+   "text": "of trade uh predictability and cost for"
+  },
+  {
+   "start": 859.76,
+   "duration": 4.72,
+   "text": "flexibility."
+  },
+  {
+   "start": 861.519,
+   "duration": 5.521,
+   "text": "Yeah. So the exam tests whether you know"
+  },
+  {
+   "start": 864.48,
+   "duration": 4.159,
+   "text": "when the trade is worth making. That is"
+  },
+  {
+   "start": 867.04,
+   "duration": 3.52,
+   "text": "where your decision comes into the"
+  },
+  {
+   "start": 868.639,
+   "duration": 3.921,
+   "text": "picture. Now we'll come back to multi-"
+  },
+  {
+   "start": 870.56,
+   "duration": 4.48,
+   "text": "aent specifically the idea of multiple"
+  },
+  {
+   "start": 872.56,
+   "duration": 4.639,
+   "text": "agentic loops coordinating in a few more"
+  },
+  {
+   "start": 875.04,
+   "duration": 4.479,
+   "text": "slides. I would say uh that's where the"
+  },
+  {
+   "start": 877.199,
+   "duration": 4.561,
+   "text": "professional tier gets really"
+  },
+  {
+   "start": 879.519,
+   "duration": 4.241,
+   "text": "interesting. Okay. But for now just"
+  },
+  {
+   "start": 881.76,
+   "duration": 4.0,
+   "text": "understand what are the advantages and"
+  },
+  {
+   "start": 883.76,
+   "duration": 3.6,
+   "text": "when you will choose and what are the"
+  },
+  {
+   "start": 885.76,
+   "duration": 6.16,
+   "text": "drawbacks"
+  },
+  {
+   "start": 887.36,
+   "duration": 6.56,
+   "text": "right now comes the augmented LLM and we"
+  },
+  {
+   "start": 891.92,
+   "duration": 4.159,
+   "text": "we can also discuss about rag and dual"
+  },
+  {
+   "start": 893.92,
+   "duration": 4.479,
+   "text": "augmented calls but let's understand"
+  },
+  {
+   "start": 896.079,
+   "duration": 5.281,
+   "text": "what is augmented LLM. So the third"
+  },
+  {
+   "start": 898.399,
+   "duration": 5.601,
+   "text": "family is this the augmented alm and"
+  },
+  {
+   "start": 901.36,
+   "duration": 5.12,
+   "text": "this one trips people up because it"
+  },
+  {
+   "start": 904.0,
+   "duration": 6.639,
+   "text": "sounds less impressive"
+  },
+  {
+   "start": 906.48,
+   "duration": 8.0,
+   "text": "but I would say it's often the right"
+  },
+  {
+   "start": 910.639,
+   "duration": 7.281,
+   "text": "answer on the exam. So an augmented LLM"
+  },
+  {
+   "start": 914.48,
+   "duration": 6.56,
+   "text": "is a single clawed call that's enhanced"
+  },
+  {
+   "start": 917.92,
+   "duration": 6.24,
+   "text": "with you know external knowledge or tool"
+  },
+  {
+   "start": 921.04,
+   "duration": 6.88,
+   "text": "access. There is no loop. There is no"
+  },
+  {
+   "start": 924.16,
+   "duration": 6.88,
+   "text": "pipeline. Just one call but a really"
+  },
+  {
+   "start": 927.92,
+   "duration": 5.52,
+   "text": "welle equipped one."
+  },
+  {
+   "start": 931.04,
+   "duration": 4.72,
+   "text": "I'm going to talk about two flavors over"
+  },
+  {
+   "start": 933.44,
+   "duration": 4.399,
+   "text": "here. So the first flavor is this rag"
+  },
+  {
+   "start": 935.76,
+   "duration": 4.639,
+   "text": "that you see over here. And this is also"
+  },
+  {
+   "start": 937.839,
+   "duration": 4.081,
+   "text": "one of the buzzwords but it's a lot of"
+  },
+  {
+   "start": 940.399,
+   "duration": 3.281,
+   "text": "people are doing right now. So it's kind"
+  },
+  {
+   "start": 941.92,
+   "duration": 4.88,
+   "text": "of reducing I would say not completely"
+  },
+  {
+   "start": 943.68,
+   "duration": 5.68,
+   "text": "reduced but yeah it's also buzzword."
+  },
+  {
+   "start": 946.8,
+   "duration": 5.599,
+   "text": "Anyways so it stands for retrieval"
+  },
+  {
+   "start": 949.36,
+   "duration": 6.0,
+   "text": "augmented generation. So before calling"
+  },
+  {
+   "start": 952.399,
+   "duration": 6.161,
+   "text": "claude you retrieve relevant documents"
+  },
+  {
+   "start": 955.36,
+   "duration": 6.24,
+   "text": "from a vector store uh or a search index"
+  },
+  {
+   "start": 958.56,
+   "duration": 6.0,
+   "text": "and and stuff them into the context. So"
+  },
+  {
+   "start": 961.6,
+   "duration": 5.52,
+   "text": "Claude then answers based on both the"
+  },
+  {
+   "start": 964.56,
+   "duration": 4.399,
+   "text": "query and the retrieved context. This is"
+  },
+  {
+   "start": 967.12,
+   "duration": 4.24,
+   "text": "the architecture behind most knowledge"
+  },
+  {
+   "start": 968.959,
+   "duration": 4.32,
+   "text": "based chatbots. So you basically what"
+  },
+  {
+   "start": 971.36,
+   "duration": 3.76,
+   "text": "you do is you have your company and you"
+  },
+  {
+   "start": 973.279,
+   "duration": 4.0,
+   "text": "have your company's uh you know"
+  },
+  {
+   "start": 975.12,
+   "duration": 5.519,
+   "text": "knowledge documentation stored somewhere"
+  },
+  {
+   "start": 977.279,
+   "duration": 6.161,
+   "text": "in some data lake before you actually do"
+  },
+  {
+   "start": 980.639,
+   "duration": 5.521,
+   "text": "a call to the LLM you actually fetch"
+  },
+  {
+   "start": 983.44,
+   "duration": 5.199,
+   "text": "some data from that uh vector store or"
+  },
+  {
+   "start": 986.16,
+   "duration": 5.919,
+   "text": "from that data lake uh and then you push"
+  },
+  {
+   "start": 988.639,
+   "duration": 5.041,
+   "text": "it to the LLM as context so that the LLM"
+  },
+  {
+   "start": 992.079,
+   "duration": 4.161,
+   "text": "would be able to give you a very"
+  },
+  {
+   "start": 993.68,
+   "duration": 5.2,
+   "text": "grounded answer which is relevant to you"
+  },
+  {
+   "start": 996.24,
+   "duration": 4.48,
+   "text": "that's how it works right so that is"
+  },
+  {
+   "start": 998.88,
+   "duration": 4.079,
+   "text": "about rag we're going to discuss that in"
+  },
+  {
+   "start": 1000.72,
+   "duration": 4.64,
+   "text": "more detail later but just for now for"
+  },
+  {
+   "start": 1002.959,
+   "duration": 4.641,
+   "text": "understanding this is what it is. The"
+  },
+  {
+   "start": 1005.36,
+   "duration": 4.64,
+   "text": "next thing is tool augmented as you"
+  },
+  {
+   "start": 1007.6,
+   "duration": 4.72,
+   "text": "could see over here. So claude has"
+  },
+  {
+   "start": 1010.0,
+   "duration": 5.199,
+   "text": "access to tools you know APIs,"
+  },
+  {
+   "start": 1012.32,
+   "duration": 5.6,
+   "text": "databases, calculators and can make a"
+  },
+  {
+   "start": 1015.199,
+   "duration": 5.76,
+   "text": "single tool call to get the data it"
+  },
+  {
+   "start": 1017.92,
+   "duration": 4.479,
+   "text": "needs before generating a response. It's"
+  },
+  {
+   "start": 1020.959,
+   "duration": 3.761,
+   "text": "not a loop by the way. Don't get"
+  },
+  {
+   "start": 1022.399,
+   "duration": 4.481,
+   "text": "confused. It's not a loop just one shot"
+  },
+  {
+   "start": 1024.72,
+   "duration": 3.839,
+   "text": "with one tool call. If you compare it"
+  },
+  {
+   "start": 1026.88,
+   "duration": 4.159,
+   "text": "with the agentic loop that is different."
+  },
+  {
+   "start": 1028.559,
+   "duration": 4.24,
+   "text": "There can be multiple tool calls in one"
+  },
+  {
+   "start": 1031.039,
+   "duration": 4.561,
+   "text": "agentic loop sequence, right? It will"
+  },
+  {
+   "start": 1032.799,
+   "duration": 5.841,
+   "text": "call again and again. But here it's just"
+  },
+  {
+   "start": 1035.6,
+   "duration": 4.319,
+   "text": "adding more context to your prompt if"
+  },
+  {
+   "start": 1038.64,
+   "duration": 3.52,
+   "text": "you're going to call it in a simple"
+  },
+  {
+   "start": 1039.919,
+   "duration": 5.92,
+   "text": "words. You're adding more context to"
+  },
+  {
+   "start": 1042.16,
+   "duration": 6.08,
+   "text": "your prompt either through rag or"
+  },
+  {
+   "start": 1045.839,
+   "duration": 4.321,
+   "text": "through a tool call but it's a single"
+  },
+  {
+   "start": 1048.24,
+   "duration": 5.04,
+   "text": "call to the LM at the end of the day. I"
+  },
+  {
+   "start": 1050.16,
+   "duration": 5.519,
+   "text": "hope that's making sense. Now why is"
+  },
+  {
+   "start": 1053.28,
+   "duration": 5.36,
+   "text": "this pattern exam relevant? because the"
+  },
+  {
+   "start": 1055.679,
+   "duration": 6.481,
+   "text": "exam explicitly treats augmented LLM"
+  },
+  {
+   "start": 1058.64,
+   "duration": 6.32,
+   "text": "alongside workflow and agentic uh not"
+  },
+  {
+   "start": 1062.16,
+   "duration": 4.96,
+   "text": "like a subset of either. Okay, it's a"
+  },
+  {
+   "start": 1064.96,
+   "duration": 4.4,
+   "text": "legitimate top level architectural"
+  },
+  {
+   "start": 1067.12,
+   "duration": 4.799,
+   "text": "choice and for many knowledge retrieval"
+  },
+  {
+   "start": 1069.36,
+   "duration": 6.16,
+   "text": "tasks it's the simplest, cheapest and"
+  },
+  {
+   "start": 1071.919,
+   "duration": 5.521,
+   "text": "the lowest latency option and it makes"
+  },
+  {
+   "start": 1075.52,
+   "duration": 7.519,
+   "text": "the correct answer when the constraint"
+  },
+  {
+   "start": 1077.44,
+   "duration": 7.68,
+   "text": "is simplicity or cost in quotations. Now"
+  },
+  {
+   "start": 1083.039,
+   "duration": 4.0,
+   "text": "the mental model that you need to kind"
+  },
+  {
+   "start": 1085.12,
+   "duration": 4.64,
+   "text": "of make over here is you don't fall for"
+  },
+  {
+   "start": 1087.039,
+   "duration": 4.801,
+   "text": "the trap of thinking more complex is"
+  },
+  {
+   "start": 1089.76,
+   "duration": 3.76,
+   "text": "equal to more professional. The more"
+  },
+  {
+   "start": 1091.84,
+   "duration": 3.6,
+   "text": "professional answer is often the"
+  },
+  {
+   "start": 1093.52,
+   "duration": 4.88,
+   "text": "simplest architecture that meets the"
+  },
+  {
+   "start": 1095.44,
+   "duration": 6.32,
+   "text": "constraints. The exam rewards that"
+  },
+  {
+   "start": 1098.4,
+   "duration": 6.24,
+   "text": "judgment and it will reward you then you"
+  },
+  {
+   "start": 1101.76,
+   "duration": 4.32,
+   "text": "will pass the exam with flying colors. I"
+  },
+  {
+   "start": 1104.64,
+   "duration": 4.96,
+   "text": "know you guys can pass the exam with"
+  },
+  {
+   "start": 1106.08,
+   "duration": 6.16,
+   "text": "flying colors. So yeah let's move on"
+  },
+  {
+   "start": 1109.6,
+   "duration": 4.959,
+   "text": "now. Which pattern fits which"
+  },
+  {
+   "start": 1112.24,
+   "duration": 5.12,
+   "text": "constraint? That's where uh the main"
+  },
+  {
+   "start": 1114.559,
+   "duration": 5.12,
+   "text": "question comes to. So let's now put"
+  },
+  {
+   "start": 1117.36,
+   "duration": 5.28,
+   "text": "these together into a decision"
+  },
+  {
+   "start": 1119.679,
+   "duration": 4.88,
+   "text": "framework. And this is the matrix you"
+  },
+  {
+   "start": 1122.64,
+   "duration": 4.72,
+   "text": "will carry into the exam room and"
+  },
+  {
+   "start": 1124.559,
+   "duration": 6.24,
+   "text": "honestly into every architectural review"
+  },
+  {
+   "start": 1127.36,
+   "duration": 6.24,
+   "text": "you'll ever run. The question is never"
+  },
+  {
+   "start": 1130.799,
+   "duration": 4.961,
+   "text": "you know which pattern do I like? That's"
+  },
+  {
+   "start": 1133.6,
+   "duration": 3.52,
+   "text": "the very wrong answer that you would"
+  },
+  {
+   "start": 1135.76,
+   "duration": 5.2,
+   "text": "wrong question that you are asking"
+  },
+  {
+   "start": 1137.12,
+   "duration": 6.799,
+   "text": "yourself. Yeah. It's never which pattern"
+  },
+  {
+   "start": 1140.96,
+   "duration": 5.36,
+   "text": "do I like, it's which constraint am I"
+  },
+  {
+   "start": 1143.919,
+   "duration": 4.081,
+   "text": "designing against."
+  },
+  {
+   "start": 1146.32,
+   "duration": 4.239,
+   "text": "I hope that's making sense. So if you"
+  },
+  {
+   "start": 1148.0,
+   "duration": 5.44,
+   "text": "going to talk about the constraints, if"
+  },
+  {
+   "start": 1150.559,
+   "duration": 5.12,
+   "text": "the constraint is tight latency, SLA"
+  },
+  {
+   "start": 1153.44,
+   "duration": 4.479,
+   "text": "under 2 seconds,"
+  },
+  {
+   "start": 1155.679,
+   "duration": 5.681,
+   "text": "what about workflow pattern? It's the"
+  },
+  {
+   "start": 1157.919,
+   "duration": 6.081,
+   "text": "best fit because it has fixed steps. It"
+  },
+  {
+   "start": 1161.36,
+   "duration": 4.48,
+   "text": "has predictable timing. What about"
+  },
+  {
+   "start": 1164.0,
+   "duration": 3.919,
+   "text": "agentic?"
+  },
+  {
+   "start": 1165.84,
+   "duration": 3.6,
+   "text": "Agentic will not fit here because it has"
+  },
+  {
+   "start": 1167.919,
+   "duration": 3.521,
+   "text": "multiple loop iterations. It is"
+  },
+  {
+   "start": 1169.44,
+   "duration": 4.479,
+   "text": "unpredictable. It will cost you more and"
+  },
+  {
+   "start": 1171.44,
+   "duration": 4.4,
+   "text": "latency obviously would be a lot more."
+  },
+  {
+   "start": 1173.919,
+   "duration": 4.081,
+   "text": "What about augmented LM? Will it fit"
+  },
+  {
+   "start": 1175.84,
+   "duration": 4.16,
+   "text": "here? Yes, it will fit here because it"
+  },
+  {
+   "start": 1178.0,
+   "duration": 4.0,
+   "text": "has a single call and it's kind of the"
+  },
+  {
+   "start": 1180.0,
+   "duration": 5.84,
+   "text": "fastest option."
+  },
+  {
+   "start": 1182.0,
+   "duration": 6.0,
+   "text": "Yeah. Now coming to strict auditability"
+  },
+  {
+   "start": 1185.84,
+   "duration": 4.32,
+   "text": "if that is the constraint if if it is"
+  },
+  {
+   "start": 1188.0,
+   "duration": 4.559,
+   "text": "compliance and regulated that is one of"
+  },
+  {
+   "start": 1190.16,
+   "duration": 5.28,
+   "text": "the you know questions that you see in"
+  },
+  {
+   "start": 1192.559,
+   "duration": 5.681,
+   "text": "the question stem. So if you talk about"
+  },
+  {
+   "start": 1195.44,
+   "duration": 4.88,
+   "text": "workflow, you know, it is a good fit"
+  },
+  {
+   "start": 1198.24,
+   "duration": 3.84,
+   "text": "because every step is predetermined and"
+  },
+  {
+   "start": 1200.32,
+   "duration": 4.88,
+   "text": "fully traceable because it has a number"
+  },
+  {
+   "start": 1202.08,
+   "duration": 5.28,
+   "text": "of fixed steps. Agentic"
+  },
+  {
+   "start": 1205.2,
+   "duration": 5.28,
+   "text": "might or might not be because the path"
+  },
+  {
+   "start": 1207.36,
+   "duration": 6.559,
+   "text": "varies per run. It is harder to audit."
+  },
+  {
+   "start": 1210.48,
+   "duration": 5.28,
+   "text": "Yeah. Next comes the augmented LLM. It"
+  },
+  {
+   "start": 1213.919,
+   "duration": 4.081,
+   "text": "this is also going to fit because it's a"
+  },
+  {
+   "start": 1215.76,
+   "duration": 4.96,
+   "text": "single call and it's a simple trace. So"
+  },
+  {
+   "start": 1218.0,
+   "duration": 5.84,
+   "text": "for auditability purpose, augmented LM"
+  },
+  {
+   "start": 1220.72,
+   "duration": 5.199,
+   "text": "will also work out. Yeah. But workflow"
+  },
+  {
+   "start": 1223.84,
+   "duration": 3.6,
+   "text": "is the best for this because you have a"
+  },
+  {
+   "start": 1225.919,
+   "duration": 4.24,
+   "text": "fixed number of steps. That's why you"
+  },
+  {
+   "start": 1227.44,
+   "duration": 5.04,
+   "text": "don't see a tick in augmented LM over"
+  },
+  {
+   "start": 1230.159,
+   "duration": 3.681,
+   "text": "here. But sometimes based on this use"
+  },
+  {
+   "start": 1232.48,
+   "duration": 3.84,
+   "text": "case as well, you might go with"
+  },
+  {
+   "start": 1233.84,
+   "duration": 4.0,
+   "text": "augmented LLM. So that's the thing. What"
+  },
+  {
+   "start": 1236.32,
+   "duration": 3.359,
+   "text": "about open-ended task? There is no"
+  },
+  {
+   "start": 1237.84,
+   "duration": 5.36,
+   "text": "questions asked. If it is a open-ended"
+  },
+  {
+   "start": 1239.679,
+   "duration": 6.641,
+   "text": "task, then you can go with agentic."
+  },
+  {
+   "start": 1243.2,
+   "duration": 7.76,
+   "text": "Yeah. But augmented LLM might also be"
+  },
+  {
+   "start": 1246.32,
+   "duration": 7.04,
+   "text": "the answer. If it is an open-ended task,"
+  },
+  {
+   "start": 1250.96,
+   "duration": 5.76,
+   "text": "uh there is nothing much to maybe think"
+  },
+  {
+   "start": 1253.36,
+   "duration": 5.199,
+   "text": "about. Yeah. And the cost is also a"
+  },
+  {
+   "start": 1256.72,
+   "duration": 3.6,
+   "text": "factor over there. Then you might go"
+  },
+  {
+   "start": 1258.559,
+   "duration": 4.401,
+   "text": "with augmented LLM as well. That's why"
+  },
+  {
+   "start": 1260.32,
+   "duration": 6.239,
+   "text": "I'm telling that you cannot actually the"
+  },
+  {
+   "start": 1262.96,
+   "duration": 5.12,
+   "text": "every answer cannot be just one pattern."
+  },
+  {
+   "start": 1266.559,
+   "duration": 4.0,
+   "text": "It might be a combination of two"
+  },
+  {
+   "start": 1268.08,
+   "duration": 5.52,
+   "text": "patterns. Yeah. Based on the use case."
+  },
+  {
+   "start": 1270.559,
+   "duration": 6.401,
+   "text": "But you have to understand what is the"
+  },
+  {
+   "start": 1273.6,
+   "duration": 6.079,
+   "text": "core pattern at least to get the the get"
+  },
+  {
+   "start": 1276.96,
+   "duration": 4.64,
+   "text": "the path of the question right. That's"
+  },
+  {
+   "start": 1279.679,
+   "duration": 4.081,
+   "text": "why I have created this kind of a table."
+  },
+  {
+   "start": 1281.6,
+   "duration": 3.6,
+   "text": "Don't get confused. Just read through"
+  },
+  {
+   "start": 1283.76,
+   "duration": 4.24,
+   "text": "the question. You would understand the"
+  },
+  {
+   "start": 1285.2,
+   "duration": 6.4,
+   "text": "pattern and you would find the answer."
+  },
+  {
+   "start": 1288.0,
+   "duration": 6.799,
+   "text": "Now what if the pattern is the"
+  },
+  {
+   "start": 1291.6,
+   "duration": 5.28,
+   "text": "constraint is you know cost ceiling that"
+  },
+  {
+   "start": 1294.799,
+   "duration": 4.961,
+   "text": "the the question asks okay I need the"
+  },
+  {
+   "start": 1296.88,
+   "duration": 4.96,
+   "text": "least cost solution then without any"
+  },
+  {
+   "start": 1299.76,
+   "duration": 4.799,
+   "text": "thought it's augmented LM it's just a"
+  },
+  {
+   "start": 1301.84,
+   "duration": 5.12,
+   "text": "simp you know simple one call obviously"
+  },
+  {
+   "start": 1304.559,
+   "duration": 4.24,
+   "text": "workflow it might cost you more even"
+  },
+  {
+   "start": 1306.96,
+   "duration": 4.0,
+   "text": "though it has to go through unnecessary"
+  },
+  {
+   "start": 1308.799,
+   "duration": 4.88,
+   "text": "fixed steps which is not needed in that"
+  },
+  {
+   "start": 1310.96,
+   "duration": 5.12,
+   "text": "case workflow also will not work agentic"
+  },
+  {
+   "start": 1313.679,
+   "duration": 5.041,
+   "text": "obviously that's not a solution over"
+  },
+  {
+   "start": 1316.08,
+   "duration": 6.079,
+   "text": "here what if The constraint is high task"
+  },
+  {
+   "start": 1318.72,
+   "duration": 6.24,
+   "text": "complexity, multi-step reasoning. Now,"
+  },
+  {
+   "start": 1322.159,
+   "duration": 4.64,
+   "text": "if the steps are known, you know, a"
+  },
+  {
+   "start": 1324.96,
+   "duration": 3.92,
+   "text": "workflow can also be complicated with"
+  },
+  {
+   "start": 1326.799,
+   "duration": 4.24,
+   "text": "like 20 or 30 steps. But if they are"
+  },
+  {
+   "start": 1328.88,
+   "duration": 3.679,
+   "text": "known, then you can go with the workflow"
+  },
+  {
+   "start": 1331.039,
+   "duration": 5.041,
+   "text": "as well. You will save a lot of cost and"
+  },
+  {
+   "start": 1332.559,
+   "duration": 6.801,
+   "text": "latency as well. But if the steps are"
+  },
+  {
+   "start": 1336.08,
+   "duration": 6.16,
+   "text": "not known and the model has to decide at"
+  },
+  {
+   "start": 1339.36,
+   "duration": 4.64,
+   "text": "runtime, uh, okay, I need to invoke this"
+  },
+  {
+   "start": 1342.24,
+   "duration": 4.08,
+   "text": "sub agent or something like that,"
+  },
+  {
+   "start": 1344.0,
+   "duration": 5.44,
+   "text": "something that goes like that. In that"
+  },
+  {
+   "start": 1346.32,
+   "duration": 6.16,
+   "text": "scenario, you can go with an agentic"
+  },
+  {
+   "start": 1349.44,
+   "duration": 5.599,
+   "text": "case over there. But mostly it will"
+  },
+  {
+   "start": 1352.48,
+   "duration": 5.36,
+   "text": "stick with the agentic uh pattern over"
+  },
+  {
+   "start": 1355.039,
+   "duration": 6.241,
+   "text": "here. I hope that's making sense. So the"
+  },
+  {
+   "start": 1357.84,
+   "duration": 6.4,
+   "text": "exam map objective number 1.3 it is"
+  },
+  {
+   "start": 1361.28,
+   "duration": 4.96,
+   "text": "clearly states select appropriate"
+  },
+  {
+   "start": 1364.24,
+   "duration": 4.319,
+   "text": "architectural pattern workflow agentic"
+  },
+  {
+   "start": 1366.24,
+   "duration": 5.36,
+   "text": "and augmented LM. The exam gives you a"
+  },
+  {
+   "start": 1368.559,
+   "duration": 6.081,
+   "text": "constraint in the stem of the question"
+  },
+  {
+   "start": 1371.6,
+   "duration": 4.64,
+   "text": "and asks which pattern fits. So that is"
+  },
+  {
+   "start": 1374.64,
+   "duration": 3.919,
+   "text": "very very important you that you that"
+  },
+  {
+   "start": 1376.24,
+   "duration": 5.6,
+   "text": "you recognize and understand that. So"
+  },
+  {
+   "start": 1378.559,
+   "duration": 4.961,
+   "text": "this matrix is the decision framework."
+  },
+  {
+   "start": 1381.84,
+   "duration": 3.68,
+   "text": "Okay."
+  },
+  {
+   "start": 1383.52,
+   "duration": 4.72,
+   "text": "Okay. Now the very simple thing that I"
+  },
+  {
+   "start": 1385.52,
+   "duration": 5.279,
+   "text": "want to tell you regarding this uh"
+  },
+  {
+   "start": 1388.24,
+   "duration": 4.72,
+   "text": "framework is that the very easiest way"
+  },
+  {
+   "start": 1390.799,
+   "duration": 5.601,
+   "text": "to notice the pattern is augmented LLM"
+  },
+  {
+   "start": 1392.96,
+   "duration": 6.719,
+   "text": "wins on simplicity and cost. Workflow"
+  },
+  {
+   "start": 1396.4,
+   "duration": 6.0,
+   "text": "wins on predictability and auditability."
+  },
+  {
+   "start": 1399.679,
+   "duration": 5.201,
+   "text": "Agentic wins on flexibility for unknown"
+  },
+  {
+   "start": 1402.4,
+   "duration": 5.44,
+   "text": "paths. when the exam gives you a"
+  },
+  {
+   "start": 1404.88,
+   "duration": 5.76,
+   "text": "constraint, match it to this matrix and"
+  },
+  {
+   "start": 1407.84,
+   "duration": 6.719,
+   "text": "that's the whole strategy. Okay, I hope"
+  },
+  {
+   "start": 1410.64,
+   "duration": 6.24,
+   "text": "that's making sense. Now, multi-agent"
+  },
+  {
+   "start": 1414.559,
+   "duration": 5.041,
+   "text": "mechanics. Okay, now let's talk"
+  },
+  {
+   "start": 1416.88,
+   "duration": 5.12,
+   "text": "multi-agent. This builds on the hub and"
+  },
+  {
+   "start": 1419.6,
+   "duration": 5.04,
+   "text": "spoke pattern which I covered in depth"
+  },
+  {
+   "start": 1422.0,
+   "duration": 4.559,
+   "text": "in the architect foundation series. Uh"
+  },
+  {
+   "start": 1424.64,
+   "duration": 3.84,
+   "text": "it was I think episode number two or"
+  },
+  {
+   "start": 1426.559,
+   "duration": 3.521,
+   "text": "episode number three. So what I'm going"
+  },
+  {
+   "start": 1428.48,
+   "duration": 4.16,
+   "text": "to do is if you are interested in that"
+  },
+  {
+   "start": 1430.08,
+   "duration": 5.92,
+   "text": "concept I'm going to cut this right now"
+  },
+  {
+   "start": 1432.64,
+   "duration": 6.0,
+   "text": "and I I'm going to kind of join that uh"
+  },
+  {
+   "start": 1436.0,
+   "duration": 6.32,
+   "text": "video here so you can watch it. The"
+  },
+  {
+   "start": 1438.64,
+   "duration": 5.36,
+   "text": "huband spoke pattern um or if anyone has"
+  },
+  {
+   "start": 1442.32,
+   "duration": 3.599,
+   "text": "already seen it then you can just skip"
+  },
+  {
+   "start": 1444.0,
+   "duration": 4.0,
+   "text": "it. There will be timestamps in this"
+  },
+  {
+   "start": 1445.919,
+   "duration": 5.041,
+   "text": "video uh and I will clearly mention that"
+  },
+  {
+   "start": 1448.0,
+   "duration": 4.88,
+   "text": "this part of the video is from that uh"
+  },
+  {
+   "start": 1450.96,
+   "duration": 3.92,
+   "text": "series. So you can skip it and go to the"
+  },
+  {
+   "start": 1452.88,
+   "duration": 4.32,
+   "text": "next part. Okay. So I'll start that"
+  },
+  {
+   "start": 1454.88,
+   "duration": 4.48,
+   "text": "video right now. I'll see you after the"
+  },
+  {
+   "start": 1457.2,
+   "duration": 5.68,
+   "text": "video ends."
+  },
+  {
+   "start": 1459.36,
+   "duration": 5.76,
+   "text": "So first is the hub and spoke topology."
+  },
+  {
+   "start": 1462.88,
+   "duration": 4.159,
+   "text": "Now here if you see this is kind of a"
+  },
+  {
+   "start": 1465.12,
+   "duration": 3.84,
+   "text": "multi- aent pattern that you see on the"
+  },
+  {
+   "start": 1467.039,
+   "duration": 3.76,
+   "text": "screen. Now in this kind of a"
+  },
+  {
+   "start": 1468.96,
+   "duration": 4.079,
+   "text": "multi-agent pattern we have one"
+  },
+  {
+   "start": 1470.799,
+   "duration": 4.721,
+   "text": "coordinator agent or the coordinator"
+  },
+  {
+   "start": 1473.039,
+   "duration": 4.321,
+   "text": "node we will say in this case the role"
+  },
+  {
+   "start": 1475.52,
+   "duration": 4.159,
+   "text": "of the coordinator"
+  },
+  {
+   "start": 1477.36,
+   "duration": 4.24,
+   "text": "uh you know agent or the node is pretty"
+  },
+  {
+   "start": 1479.679,
+   "duration": 4.081,
+   "text": "simple coordinating between the sub"
+  },
+  {
+   "start": 1481.6,
+   "duration": 4.88,
+   "text": "aents."
+  },
+  {
+   "start": 1483.76,
+   "duration": 4.72,
+   "text": "So as you can see over here the routing"
+  },
+  {
+   "start": 1486.48,
+   "duration": 4.079,
+   "text": "mandate absolutely all communication"
+  },
+  {
+   "start": 1488.48,
+   "duration": 3.6,
+   "text": "route exclusively through the central"
+  },
+  {
+   "start": 1490.559,
+   "duration": 3.921,
+   "text": "coordinator or the central agent"
+  },
+  {
+   "start": 1492.08,
+   "duration": 4.88,
+   "text": "everything will go via the central"
+  },
+  {
+   "start": 1494.48,
+   "duration": 4.64,
+   "text": "agent. This sub aent cannot communicate"
+  },
+  {
+   "start": 1496.96,
+   "duration": 4.56,
+   "text": "with this sub aent. It has it doesn't"
+  },
+  {
+   "start": 1499.12,
+   "duration": 4.64,
+   "text": "know that this sub aent even exists. Now"
+  },
+  {
+   "start": 1501.52,
+   "duration": 3.36,
+   "text": "this sub aent same thing doesn't know"
+  },
+  {
+   "start": 1503.76,
+   "duration": 3.6,
+   "text": "this sub aent exist. They are"
+  },
+  {
+   "start": 1504.88,
+   "duration": 4.799,
+   "text": "independent to each other because we do"
+  },
+  {
+   "start": 1507.36,
+   "duration": 5.36,
+   "text": "not want to create a dependency between"
+  },
+  {
+   "start": 1509.679,
+   "duration": 6.081,
+   "text": "sub aents. The sub agent should be"
+  },
+  {
+   "start": 1512.72,
+   "duration": 6.48,
+   "text": "dependent on the central architect or"
+  },
+  {
+   "start": 1515.76,
+   "duration": 6.159,
+   "text": "the central agent you know which will be"
+  },
+  {
+   "start": 1519.2,
+   "duration": 6.32,
+   "text": "the coordinating coordinator between all"
+  },
+  {
+   "start": 1521.919,
+   "duration": 5.681,
+   "text": "the sub aents. Okay, for example, this"
+  },
+  {
+   "start": 1525.52,
+   "duration": 4.96,
+   "text": "so the advantages of that is that this"
+  },
+  {
+   "start": 1527.6,
+   "duration": 5.36,
+   "text": "particular you know agent can spawn up"
+  },
+  {
+   "start": 1530.48,
+   "duration": 4.079,
+   "text": "multiple sub aents you know in parallel"
+  },
+  {
+   "start": 1532.96,
+   "duration": 3.76,
+   "text": "because they are not dependent on each"
+  },
+  {
+   "start": 1534.559,
+   "duration": 4.321,
+   "text": "other they are independent right and"
+  },
+  {
+   "start": 1536.72,
+   "duration": 4.4,
+   "text": "they can individually finish their tasks"
+  },
+  {
+   "start": 1538.88,
+   "duration": 4.159,
+   "text": "and return the results to this"
+  },
+  {
+   "start": 1541.12,
+   "duration": 3.36,
+   "text": "coordinators agent for example or the"
+  },
+  {
+   "start": 1543.039,
+   "duration": 5.281,
+   "text": "coordinator node whatever you want to"
+  },
+  {
+   "start": 1544.48,
+   "duration": 7.36,
+   "text": "call it. Now this particular node will"
+  },
+  {
+   "start": 1548.32,
+   "duration": 4.959,
+   "text": "the agent will you know uh kind of u"
+  },
+  {
+   "start": 1551.84,
+   "duration": 3.52,
+   "text": "accumulate all of the results and"
+  },
+  {
+   "start": 1553.279,
+   "duration": 4.081,
+   "text": "whatever it has received and it will"
+  },
+  {
+   "start": 1555.36,
+   "duration": 3.6,
+   "text": "generate the final output. Sub agents"
+  },
+  {
+   "start": 1557.36,
+   "duration": 3.679,
+   "text": "will not be responsible for generating"
+  },
+  {
+   "start": 1558.96,
+   "duration": 3.92,
+   "text": "the final output they will do their"
+  },
+  {
+   "start": 1561.039,
+   "duration": 3.921,
+   "text": "work. For example there is a team there"
+  },
+  {
+   "start": 1562.88,
+   "duration": 3.84,
+   "text": "is a there are a lot of developers right"
+  },
+  {
+   "start": 1564.96,
+   "duration": 3.52,
+   "text": "they will do their job and then they"
+  },
+  {
+   "start": 1566.72,
+   "duration": 4.64,
+   "text": "will report to their architect. The"
+  },
+  {
+   "start": 1568.48,
+   "duration": 5.12,
+   "text": "architect finally will take up all of"
+  },
+  {
+   "start": 1571.36,
+   "duration": 3.919,
+   "text": "the particular things you know whatever"
+  },
+  {
+   "start": 1573.6,
+   "duration": 3.92,
+   "text": "these developers has developed and then"
+  },
+  {
+   "start": 1575.279,
+   "duration": 4.4,
+   "text": "the architect will be able to demo it or"
+  },
+  {
+   "start": 1577.52,
+   "duration": 4.24,
+   "text": "present it right that is how it is"
+  },
+  {
+   "start": 1579.679,
+   "duration": 4.401,
+   "text": "simple to understand"
+  },
+  {
+   "start": 1581.76,
+   "duration": 6.32,
+   "text": "so that is the hub and spoke topology"
+  },
+  {
+   "start": 1584.08,
+   "duration": 5.76,
+   "text": "and uh uh pretty easy to understand okay"
+  },
+  {
+   "start": 1588.08,
+   "duration": 4.32,
+   "text": "coordinator responsibilities I already"
+  },
+  {
+   "start": 1589.84,
+   "duration": 4.959,
+   "text": "covered some of it first is task"
+  },
+  {
+   "start": 1592.4,
+   "duration": 4.32,
+   "text": "decomposition break the overarching"
+  },
+  {
+   "start": 1594.799,
+   "duration": 5.36,
+   "text": "complex request into scoped assignable"
+  },
+  {
+   "start": 1596.72,
+   "duration": 7.36,
+   "text": "pieces that's the central coordinator"
+  },
+  {
+   "start": 1600.159,
+   "duration": 6.721,
+   "text": "agent or the central node whatever that"
+  },
+  {
+   "start": 1604.08,
+   "duration": 5.12,
+   "text": "particular guy is responsible for"
+  },
+  {
+   "start": 1606.88,
+   "duration": 4.72,
+   "text": "managing the tasks when to invoke which"
+  },
+  {
+   "start": 1609.2,
+   "duration": 6.64,
+   "text": "sub agent how many sub aents do I need"
+  },
+  {
+   "start": 1611.6,
+   "duration": 7.679,
+   "text": "to spawn um do I need a sub aent all"
+  },
+  {
+   "start": 1615.84,
+   "duration": 5.839,
+   "text": "these questions that central agent"
+  },
+  {
+   "start": 1619.279,
+   "duration": 5.28,
+   "text": "should be able to answer and that is the"
+  },
+  {
+   "start": 1621.679,
+   "duration": 5.281,
+   "text": "one responsible for it delegation"
+  },
+  {
+   "start": 1624.559,
+   "duration": 5.36,
+   "text": "obviously spawn the exact sub agent for"
+  },
+  {
+   "start": 1626.96,
+   "duration": 5.199,
+   "text": "each individual piece. So sub aents are"
+  },
+  {
+   "start": 1629.919,
+   "duration": 4.801,
+   "text": "specialized agents obviously. So there"
+  },
+  {
+   "start": 1632.159,
+   "duration": 5.041,
+   "text": "will be for example uh in a in a in a"
+  },
+  {
+   "start": 1634.72,
+   "duration": 4.48,
+   "text": "research kind of an architecture there"
+  },
+  {
+   "start": 1637.2,
+   "duration": 4.32,
+   "text": "will be one there will be one sub agent"
+  },
+  {
+   "start": 1639.2,
+   "duration": 4.32,
+   "text": "who is expert in writing articles. There"
+  },
+  {
+   "start": 1641.52,
+   "duration": 4.32,
+   "text": "is one agent who is expert in you know"
+  },
+  {
+   "start": 1643.52,
+   "duration": 4.72,
+   "text": "doing deep research. So whenever the"
+  },
+  {
+   "start": 1645.84,
+   "duration": 4.88,
+   "text": "central coordinator or the node you know"
+  },
+  {
+   "start": 1648.24,
+   "duration": 4.48,
+   "text": "feels like okay I need to spawn the"
+  },
+  {
+   "start": 1650.72,
+   "duration": 5.36,
+   "text": "writing sub aent so that it writes this"
+  },
+  {
+   "start": 1652.72,
+   "duration": 6.4,
+   "text": "article based on the research that uh"
+  },
+  {
+   "start": 1656.08,
+   "duration": 5.199,
+   "text": "the another sub aent gave"
+  },
+  {
+   "start": 1659.12,
+   "duration": 3.76,
+   "text": "right so that is called as delegation"
+  },
+  {
+   "start": 1661.279,
+   "duration": 3.841,
+   "text": "result aggregation I already told"
+  },
+  {
+   "start": 1662.88,
+   "duration": 5.2,
+   "text": "whatever the sub aents will work on they"
+  },
+  {
+   "start": 1665.12,
+   "duration": 5.52,
+   "text": "will report it back to the central node"
+  },
+  {
+   "start": 1668.08,
+   "duration": 4.079,
+   "text": "and the central coordinator or node"
+  },
+  {
+   "start": 1670.64,
+   "duration": 4.88,
+   "text": "whatever you want to call it a lot of"
+  },
+  {
+   "start": 1672.159,
+   "duration": 5.281,
+   "text": "names I'm calling you know Just just"
+  },
+  {
+   "start": 1675.52,
+   "duration": 3.92,
+   "text": "remember it as coordinator you know that"
+  },
+  {
+   "start": 1677.44,
+   "duration": 3.359,
+   "text": "is one agent who coordinates everything."
+  },
+  {
+   "start": 1679.44,
+   "duration": 3.2,
+   "text": "Collect the independent outputs and"
+  },
+  {
+   "start": 1680.799,
+   "duration": 4.961,
+   "text": "synthesize them into a unified final"
+  },
+  {
+   "start": 1682.64,
+   "duration": 5.759,
+   "text": "result. Okay very easy to understand"
+  },
+  {
+   "start": 1685.76,
+   "duration": 4.0,
+   "text": "error handling. So sub agents might"
+  },
+  {
+   "start": 1688.399,
+   "duration": 3.361,
+   "text": "there will there might be some failures"
+  },
+  {
+   "start": 1689.76,
+   "duration": 3.919,
+   "text": "in some sub aent. Some some some sub"
+  },
+  {
+   "start": 1691.76,
+   "duration": 5.44,
+   "text": "aent you know failed to do the task that"
+  },
+  {
+   "start": 1693.679,
+   "duration": 5.921,
+   "text": "it was relegated to. So in that case the"
+  },
+  {
+   "start": 1697.2,
+   "duration": 4.64,
+   "text": "coordinator must see how to handle that"
+  },
+  {
+   "start": 1699.6,
+   "duration": 4.0,
+   "text": "particular error gracefully. you know"
+  },
+  {
+   "start": 1701.84,
+   "duration": 4.0,
+   "text": "maybe some kind of a response or some"
+  },
+  {
+   "start": 1703.6,
+   "duration": 3.76,
+   "text": "kind of flag that it receives from the"
+  },
+  {
+   "start": 1705.84,
+   "duration": 4.4,
+   "text": "sub agent. For example, the sub agent"
+  },
+  {
+   "start": 1707.36,
+   "duration": 5.36,
+   "text": "itself gives a stop reason uh you know"
+  },
+  {
+   "start": 1710.24,
+   "duration": 3.919,
+   "text": "as tool use or you know end turn or"
+  },
+  {
+   "start": 1712.72,
+   "duration": 2.88,
+   "text": "something like that some something like"
+  },
+  {
+   "start": 1714.159,
+   "duration": 4.88,
+   "text": "that some kind of flag like that it"
+  },
+  {
+   "start": 1715.6,
+   "duration": 6.559,
+   "text": "gives so in so the coordinator is"
+  },
+  {
+   "start": 1719.039,
+   "duration": 5.841,
+   "text": "responsible to handle those errors and"
+  },
+  {
+   "start": 1722.159,
+   "duration": 5.12,
+   "text": "you know handle them gracefully right in"
+  },
+  {
+   "start": 1724.88,
+   "duration": 4.32,
+   "text": "an intelligent manner. So these are the"
+  },
+  {
+   "start": 1727.279,
+   "duration": 4.321,
+   "text": "four coordinator responsibilities easy"
+  },
+  {
+   "start": 1729.2,
+   "duration": 4.959,
+   "text": "to understand. Okay, so welcome back. Uh"
+  },
+  {
+   "start": 1731.6,
+   "duration": 4.24,
+   "text": "I hope you liked the that part that I"
+  },
+  {
+   "start": 1734.159,
+   "duration": 4.24,
+   "text": "have kind of attached to this video and"
+  },
+  {
+   "start": 1735.84,
+   "duration": 5.439,
+   "text": "you have understood um you know multi-"
+  },
+  {
+   "start": 1738.399,
+   "duration": 4.801,
+   "text": "aent basically. So to keep to put it in"
+  },
+  {
+   "start": 1741.279,
+   "duration": 4.721,
+   "text": "simple words, multi-agent means multiple"
+  },
+  {
+   "start": 1743.2,
+   "duration": 5.12,
+   "text": "clawed instances each with a specialized"
+  },
+  {
+   "start": 1746.0,
+   "duration": 4.159,
+   "text": "role coordinating to solve a problem."
+  },
+  {
+   "start": 1748.32,
+   "duration": 4.4,
+   "text": "Yeah, that was the whole crux of that"
+  },
+  {
+   "start": 1750.159,
+   "duration": 4.561,
+   "text": "particular section. So the most common"
+  },
+  {
+   "start": 1752.72,
+   "duration": 4.319,
+   "text": "topology as you have seen is the hub and"
+  },
+  {
+   "start": 1754.72,
+   "duration": 4.88,
+   "text": "spoke. Okay, one coordinator agent"
+  },
+  {
+   "start": 1757.039,
+   "duration": 4.481,
+   "text": "receives the task, decides how to break"
+  },
+  {
+   "start": 1759.6,
+   "duration": 4.4,
+   "text": "it up and then delegates to the"
+  },
+  {
+   "start": 1761.52,
+   "duration": 4.08,
+   "text": "specialist sub aents, the spokes"
+  },
+  {
+   "start": 1764.0,
+   "duration": 4.64,
+   "text": "basically and then assembles their"
+  },
+  {
+   "start": 1765.6,
+   "duration": 5.12,
+   "text": "output into a final answer. And each sub"
+  },
+  {
+   "start": 1768.64,
+   "duration": 4.8,
+   "text": "aent has its own system prompt as you"
+  },
+  {
+   "start": 1770.72,
+   "duration": 5.6,
+   "text": "would have seen its own tool set and its"
+  },
+  {
+   "start": 1773.44,
+   "duration": 5.2,
+   "text": "own isolated context. So the coordinator"
+  },
+  {
+   "start": 1776.32,
+   "duration": 4.8,
+   "text": "is the only one that talks to all of"
+  },
+  {
+   "start": 1778.64,
+   "duration": 5.44,
+   "text": "them. This gives you specialization."
+  },
+  {
+   "start": 1781.12,
+   "duration": 5.6,
+   "text": "Okay, so each agent does one thing and"
+  },
+  {
+   "start": 1784.08,
+   "duration": 5.36,
+   "text": "isolation. A failure in one sub agent"
+  },
+  {
+   "start": 1786.72,
+   "duration": 5.6,
+   "text": "doesn't corrupt the others and it also"
+  },
+  {
+   "start": 1789.44,
+   "duration": 4.959,
+   "text": "gives you scalability. You can add new"
+  },
+  {
+   "start": 1792.32,
+   "duration": 4.32,
+   "text": "specialists without redesigning the"
+  },
+  {
+   "start": 1794.399,
+   "duration": 4.241,
+   "text": "whole system. Yeah. So I hope this is"
+  },
+  {
+   "start": 1796.64,
+   "duration": 5.039,
+   "text": "this is a summary of whatever whatever"
+  },
+  {
+   "start": 1798.64,
+   "duration": 5.919,
+   "text": "you have so uh whatever you have seen um"
+  },
+  {
+   "start": 1801.679,
+   "duration": 6.961,
+   "text": "in that particular section. Okay. I hope"
+  },
+  {
+   "start": 1804.559,
+   "duration": 5.681,
+   "text": "that's making sense. Now coming back to"
+  },
+  {
+   "start": 1808.64,
+   "duration": 3.68,
+   "text": "another very important thing that is"
+  },
+  {
+   "start": 1810.24,
+   "duration": 3.84,
+   "text": "when to not use that when to not use"
+  },
+  {
+   "start": 1812.32,
+   "duration": 3.44,
+   "text": "multi-agent. Now you saw what"
+  },
+  {
+   "start": 1814.08,
+   "duration": 3.44,
+   "text": "multi-agent is and how it works in the"
+  },
+  {
+   "start": 1815.76,
+   "duration": 4.24,
+   "text": "hub and hub and spoke models and all"
+  },
+  {
+   "start": 1817.52,
+   "duration": 4.08,
+   "text": "those things but when to not use it. So"
+  },
+  {
+   "start": 1820.0,
+   "duration": 4.96,
+   "text": "at the foundations level the question"
+  },
+  {
+   "start": 1821.6,
+   "duration": 5.679,
+   "text": "was how does multi-agent work? At the"
+  },
+  {
+   "start": 1824.96,
+   "duration": 4.16,
+   "text": "professional level the question is when"
+  },
+  {
+   "start": 1827.279,
+   "duration": 6.321,
+   "text": "does multi-agent"
+  },
+  {
+   "start": 1829.12,
+   "duration": 6.88,
+   "text": "hurt you? Okay because here's the thing"
+  },
+  {
+   "start": 1833.6,
+   "duration": 5.679,
+   "text": "nobody tells you. Every additional agent"
+  },
+  {
+   "start": 1836.0,
+   "duration": 5.919,
+   "text": "you add to a system adds coordination"
+  },
+  {
+   "start": 1839.279,
+   "duration": 5.361,
+   "text": "overhead. The hub has to marshall"
+  },
+  {
+   "start": 1841.919,
+   "duration": 5.521,
+   "text": "inputs, wait for responses, handle"
+  },
+  {
+   "start": 1844.64,
+   "duration": 5.279,
+   "text": "failures, uh you know, merge outputs and"
+  },
+  {
+   "start": 1847.44,
+   "duration": 5.28,
+   "text": "that takes time. It takes tokens. It it"
+  },
+  {
+   "start": 1849.919,
+   "duration": 4.961,
+   "text": "adds failure modes. So one of the key"
+  },
+  {
+   "start": 1852.72,
+   "duration": 4.16,
+   "text": "facts that I would tell you is uh that"
+  },
+  {
+   "start": 1854.88,
+   "duration": 3.76,
+   "text": "you know multi- aent adds coordination"
+  },
+  {
+   "start": 1856.88,
+   "duration": 4.24,
+   "text": "overhead"
+  },
+  {
+   "start": 1858.64,
+   "duration": 5.36,
+   "text": "serialized communication context"
+  },
+  {
+   "start": 1861.12,
+   "duration": 5.52,
+   "text": "duplication across agents and failure"
+  },
+  {
+   "start": 1864.0,
+   "duration": 5.039,
+   "text": "propagation. Yeah the the exam tests you"
+  },
+  {
+   "start": 1866.64,
+   "duration": 4.72,
+   "text": "whether you know when that overhead is"
+  },
+  {
+   "start": 1869.039,
+   "duration": 4.24,
+   "text": "not justified."
+  },
+  {
+   "start": 1871.36,
+   "duration": 5.679,
+   "text": "So when should you not use the multi-"
+  },
+  {
+   "start": 1873.279,
+   "duration": 6.721,
+   "text": "aent? So I would say when a single agent"
+  },
+  {
+   "start": 1877.039,
+   "duration": 5.12,
+   "text": "with more tools can handle it. If you"
+  },
+  {
+   "start": 1880.0,
+   "duration": 4.88,
+   "text": "are adding let's say a second agent just"
+  },
+  {
+   "start": 1882.159,
+   "duration": 6.0,
+   "text": "because there are six tools and it feels"
+  },
+  {
+   "start": 1884.88,
+   "duration": 6.159,
+   "text": "like too many stop because a"
+  },
+  {
+   "start": 1888.159,
+   "duration": 5.12,
+   "text": "wellprompted single agent with six tools"
+  },
+  {
+   "start": 1891.039,
+   "duration": 4.561,
+   "text": "and those tools has proper tool"
+  },
+  {
+   "start": 1893.279,
+   "duration": 4.64,
+   "text": "descriptions by the way. Okay, because"
+  },
+  {
+   "start": 1895.6,
+   "duration": 4.079,
+   "text": "many people would argue that you know"
+  },
+  {
+   "start": 1897.919,
+   "duration": 3.76,
+   "text": "lot of tools would make the agent"
+  },
+  {
+   "start": 1899.679,
+   "duration": 3.761,
+   "text": "confused. You don't have to put 20 tools"
+  },
+  {
+   "start": 1901.679,
+   "duration": 4.561,
+   "text": "six eight tools with proper tool"
+  },
+  {
+   "start": 1903.44,
+   "duration": 7.119,
+   "text": "description any agent can be able to"
+  },
+  {
+   "start": 1906.24,
+   "duration": 5.84,
+   "text": "handle perfectly. Yeah. So"
+  },
+  {
+   "start": 1910.559,
+   "duration": 4.161,
+   "text": "here you have eliminated the"
+  },
+  {
+   "start": 1912.08,
+   "duration": 4.8,
+   "text": "coordination cost entirely because one"
+  },
+  {
+   "start": 1914.72,
+   "duration": 6.4,
+   "text": "single agent with tools is working out"
+  },
+  {
+   "start": 1916.88,
+   "duration": 5.919,
+   "text": "the whole thing. Now second way second"
+  },
+  {
+   "start": 1921.12,
+   "duration": 4.32,
+   "text": "uh you know option where you don't want"
+  },
+  {
+   "start": 1922.799,
+   "duration": 5.281,
+   "text": "multi- aent is when the latency budget"
+  },
+  {
+   "start": 1925.44,
+   "duration": 6.32,
+   "text": "yeah doesn't allow it. Multi-agent is"
+  },
+  {
+   "start": 1928.08,
+   "duration": 7.04,
+   "text": "inherently serial okay"
+  },
+  {
+   "start": 1931.76,
+   "duration": 5.759,
+   "text": "s e r i l I hope you don't uh confuse it"
+  },
+  {
+   "start": 1935.12,
+   "duration": 4.88,
+   "text": "with some other kind of serial. So the"
+  },
+  {
+   "start": 1937.519,
+   "duration": 5.361,
+   "text": "coordinator waits for the sub agent to"
+  },
+  {
+   "start": 1940.0,
+   "duration": 5.519,
+   "text": "finish. If you are under a 3-second SLA,"
+  },
+  {
+   "start": 1942.88,
+   "duration": 4.24,
+   "text": "a two hop multi- aent call might blow"
+  },
+  {
+   "start": 1945.519,
+   "duration": 5.441,
+   "text": "the budget where a single agent"
+  },
+  {
+   "start": 1947.12,
+   "duration": 5.679,
+   "text": "wouldn't. Okay, so that is the second"
+  },
+  {
+   "start": 1950.96,
+   "duration": 3.92,
+   "text": "point. And the third option or the third"
+  },
+  {
+   "start": 1952.799,
+   "duration": 5.12,
+   "text": "point where it is not good is when the"
+  },
+  {
+   "start": 1954.88,
+   "duration": 6.08,
+   "text": "task is decomposible by the architect"
+  },
+  {
+   "start": 1957.919,
+   "duration": 5.441,
+   "text": "not the model. If you already know the"
+  },
+  {
+   "start": 1960.96,
+   "duration": 3.76,
+   "text": "steps at design time, use a workflow."
+  },
+  {
+   "start": 1963.36,
+   "duration": 3.36,
+   "text": "Don't make a coordinator agent"
+  },
+  {
+   "start": 1964.72,
+   "duration": 3.92,
+   "text": "rediscover the decomposition at runtime"
+  },
+  {
+   "start": 1966.72,
+   "duration": 3.76,
+   "text": "on every request. So that's why"
+  },
+  {
+   "start": 1968.64,
+   "duration": 4.399,
+   "text": "architects exist like they already know"
+  },
+  {
+   "start": 1970.48,
+   "duration": 4.72,
+   "text": "what would be the best solution. If if"
+  },
+  {
+   "start": 1973.039,
+   "duration": 4.24,
+   "text": "the solution is already known, why do"
+  },
+  {
+   "start": 1975.2,
+   "duration": 4.079,
+   "text": "you put the overhead on the coordinator"
+  },
+  {
+   "start": 1977.279,
+   "duration": 4.801,
+   "text": "to decide?"
+  },
+  {
+   "start": 1979.279,
+   "duration": 4.721,
+   "text": "Yeah. And here if I'm going to so that"
+  },
+  {
+   "start": 1982.08,
+   "duration": 4.16,
+   "text": "is about when to not use it and if I"
+  },
+  {
+   "start": 1984.0,
+   "duration": 5.6,
+   "text": "have to map it to the exam, it comes to"
+  },
+  {
+   "start": 1986.24,
+   "duration": 5.439,
+   "text": "objective number 1.4 design multi-agent"
+  },
+  {
+   "start": 1989.6,
+   "duration": 4.079,
+   "text": "systems and orchestration strategies."
+  },
+  {
+   "start": 1991.679,
+   "duration": 4.24,
+   "text": "So, so the professional level framing"
+  },
+  {
+   "start": 1993.679,
+   "duration": 4.561,
+   "text": "says you are tested on knowing when"
+  },
+  {
+   "start": 1995.919,
+   "duration": 5.12,
+   "text": "multi-agent is the wrong answer, not"
+  },
+  {
+   "start": 1998.24,
+   "duration": 5.279,
+   "text": "just how it works mechanically. Yeah."
+  },
+  {
+   "start": 2001.039,
+   "duration": 4.401,
+   "text": "So, objective number 1.4. So, I'm"
+  },
+  {
+   "start": 2003.519,
+   "duration": 4.4,
+   "text": "telling every objectives now so that"
+  },
+  {
+   "start": 2005.44,
+   "duration": 4.8,
+   "text": "people can correlate across the syllabus"
+  },
+  {
+   "start": 2007.919,
+   "duration": 5.681,
+   "text": "what is happening here."
+  },
+  {
+   "start": 2010.24,
+   "duration": 5.76,
+   "text": "Okay. Now, uh pipeline productivity"
+  },
+  {
+   "start": 2013.6,
+   "duration": 4.24,
+   "text": "versus agent flexibility. There's"
+  },
+  {
+   "start": 2016.0,
+   "duration": 4.64,
+   "text": "there's and there is one more foundation"
+  },
+  {
+   "start": 2017.84,
+   "duration": 4.8,
+   "text": "to correct here. In the foundation"
+  },
+  {
+   "start": 2020.64,
+   "duration": 4.08,
+   "text": "series, episode number four or episode"
+  },
+  {
+   "start": 2022.64,
+   "duration": 3.68,
+   "text": "number five, I don't remember. I walked"
+  },
+  {
+   "start": 2024.72,
+   "duration": 3.36,
+   "text": "through the difference between fixed"
+  },
+  {
+   "start": 2026.32,
+   "duration": 5.28,
+   "text": "sequential pipelines and dynamic"
+  },
+  {
+   "start": 2028.08,
+   "duration": 6.4,
+   "text": "decomposition where uh the model decides"
+  },
+  {
+   "start": 2031.6,
+   "duration": 4.88,
+   "text": "how to break down the task at runtime."
+  },
+  {
+   "start": 2034.48,
+   "duration": 4.16,
+   "text": "For anyone who hasn't seen that episode,"
+  },
+  {
+   "start": 2036.48,
+   "duration": 4.559,
+   "text": "that is fine. I I I will attach that"
+  },
+  {
+   "start": 2038.64,
+   "duration": 7.759,
+   "text": "footage over here and you can watch uh"
+  },
+  {
+   "start": 2041.039,
+   "duration": 6.961,
+   "text": "this concept from here as well. Yeah. So"
+  },
+  {
+   "start": 2046.399,
+   "duration": 3.921,
+   "text": "what I'm going to do is the same thing."
+  },
+  {
+   "start": 2048.0,
+   "duration": 4.0,
+   "text": "I'm going to just uh cut to that video"
+  },
+  {
+   "start": 2050.32,
+   "duration": 5.44,
+   "text": "and then I will be back and then I'm"
+  },
+  {
+   "start": 2052.0,
+   "duration": 5.679,
+   "text": "going to continue with this episode. So"
+  },
+  {
+   "start": 2055.76,
+   "duration": 3.68,
+   "text": "let's pivot a little bit from the"
+  },
+  {
+   "start": 2057.679,
+   "duration": 3.68,
+   "text": "concept that we were just discussing and"
+  },
+  {
+   "start": 2059.44,
+   "duration": 4.0,
+   "text": "let's discuss about one more thing known"
+  },
+  {
+   "start": 2061.359,
+   "duration": 3.76,
+   "text": "as task decomposition. The two"
+  },
+  {
+   "start": 2063.44,
+   "duration": 3.679,
+   "text": "strategies"
+  },
+  {
+   "start": 2065.119,
+   "duration": 4.8,
+   "text": "I mean fundamentally different"
+  },
+  {
+   "start": 2067.119,
+   "duration": 6.161,
+   "text": "approaches that you would generally use"
+  },
+  {
+   "start": 2069.919,
+   "duration": 4.561,
+   "text": "in a multi-step agentic workflow. Okay,"
+  },
+  {
+   "start": 2073.28,
+   "duration": 3.359,
+   "text": "that's what we have been discussing"
+  },
+  {
+   "start": 2074.48,
+   "duration": 4.0,
+   "text": "right agentic workflows. So two"
+  },
+  {
+   "start": 2076.639,
+   "duration": 3.601,
+   "text": "approaches, one approach I want to talk"
+  },
+  {
+   "start": 2078.48,
+   "duration": 4.639,
+   "text": "about is the prompt chaining and second"
+  },
+  {
+   "start": 2080.24,
+   "duration": 5.04,
+   "text": "one is dynamic decomposition."
+  },
+  {
+   "start": 2083.119,
+   "duration": 4.48,
+   "text": "When to use what and what does these two"
+  },
+  {
+   "start": 2085.28,
+   "duration": 5.76,
+   "text": "things mean?"
+  },
+  {
+   "start": 2087.599,
+   "duration": 5.201,
+   "text": "Now before you actually start a"
+  },
+  {
+   "start": 2091.04,
+   "duration": 3.76,
+   "text": "particular agentic workflow, you have to"
+  },
+  {
+   "start": 2092.8,
+   "duration": 4.48,
+   "text": "ask yourself a question and even in the"
+  },
+  {
+   "start": 2094.8,
+   "duration": 4.0,
+   "text": "exam whenever a scenario comes up before"
+  },
+  {
+   "start": 2097.28,
+   "duration": 4.72,
+   "text": "answering that you have to ask yourself"
+  },
+  {
+   "start": 2098.8,
+   "duration": 8.319,
+   "text": "this question. Um,"
+  },
+  {
+   "start": 2102.0,
+   "duration": 7.359,
+   "text": "do you know what the steps are before"
+  },
+  {
+   "start": 2107.119,
+   "duration": 5.041,
+   "text": "you start this particular agentic"
+  },
+  {
+   "start": 2109.359,
+   "duration": 6.401,
+   "text": "workflow? Do you know exactly what you"
+  },
+  {
+   "start": 2112.16,
+   "duration": 5.36,
+   "text": "are doing? If you know exactly what you"
+  },
+  {
+   "start": 2115.76,
+   "duration": 5.599,
+   "text": "are doing,"
+  },
+  {
+   "start": 2117.52,
+   "duration": 6.72,
+   "text": "you would go with prompt chaining."
+  },
+  {
+   "start": 2121.359,
+   "duration": 5.681,
+   "text": "Now if your"
+  },
+  {
+   "start": 2124.24,
+   "duration": 5.68,
+   "text": "agentic workflow is dependent on"
+  },
+  {
+   "start": 2127.04,
+   "duration": 4.4,
+   "text": "findings and explorations then you would"
+  },
+  {
+   "start": 2129.92,
+   "duration": 4.094,
+   "text": "go with the second approach known as"
+  },
+  {
+   "start": 2131.44,
+   "duration": 3.2,
+   "text": "dynamic decomposition."
+  },
+  {
+   "start": 2134.014,
+   "duration": 2.786,
+   "text": "[snorts]"
+  },
+  {
+   "start": 2134.64,
+   "duration": 3.68,
+   "text": "Okay let's let's understand this in"
+  },
+  {
+   "start": 2136.8,
+   "duration": 4.4,
+   "text": "terms of example and then you would"
+  },
+  {
+   "start": 2138.32,
+   "duration": 5.12,
+   "text": "understand what I'm telling."
+  },
+  {
+   "start": 2141.2,
+   "duration": 5.2,
+   "text": "So basically in prompt chaining you"
+  },
+  {
+   "start": 2143.44,
+   "duration": 5.2,
+   "text": "break a task into predefined sequence."
+  },
+  {
+   "start": 2146.4,
+   "duration": 5.12,
+   "text": "So out output of step one is fed into"
+  },
+  {
+   "start": 2148.64,
+   "duration": 5.68,
+   "text": "output of step two and so on and so on"
+  },
+  {
+   "start": 2151.52,
+   "duration": 4.48,
+   "text": "right it's like an assembly line you"
+  },
+  {
+   "start": 2154.32,
+   "duration": 4.64,
+   "text": "know every station does exactly one"
+  },
+  {
+   "start": 2156.0,
+   "duration": 6.079,
+   "text": "focus thing in a fixed order"
+  },
+  {
+   "start": 2158.96,
+   "duration": 4.8,
+   "text": "I mean u great for compliance and"
+  },
+  {
+   "start": 2162.079,
+   "duration": 4.161,
+   "text": "reproducibility some kind of these"
+  },
+  {
+   "start": 2163.76,
+   "duration": 4.4,
+   "text": "things like a CI/CD pipeline let's see"
+  },
+  {
+   "start": 2166.24,
+   "duration": 6.599,
+   "text": "that you know one small example of that"
+  },
+  {
+   "start": 2168.16,
+   "duration": 4.679,
+   "text": "you know if you see over here"
+  },
+  {
+   "start": 2173.76,
+   "duration": 4.88,
+   "text": "per file review you know file reviews"
+  },
+  {
+   "start": 2176.16,
+   "duration": 5.12,
+   "text": "There is an array, a file is in changed"
+  },
+  {
+   "start": 2178.64,
+   "duration": 4.959,
+   "text": "files, you will uh review basically that"
+  },
+  {
+   "start": 2181.28,
+   "duration": 4.24,
+   "text": "file and you append it to the reviews,"
+  },
+  {
+   "start": 2183.599,
+   "duration": 4.161,
+   "text": "right? And then first step is per file"
+  },
+  {
+   "start": 2185.52,
+   "duration": 4.24,
+   "text": "review. Next is cross file integration."
+  },
+  {
+   "start": 2187.76,
+   "duration": 4.16,
+   "text": "You know the steps what you are doing in"
+  },
+  {
+   "start": 2189.76,
+   "duration": 4.56,
+   "text": "this particular workflow. Now you're"
+  },
+  {
+   "start": 2191.92,
+   "duration": 4.56,
+   "text": "telling basically after this is executed"
+  },
+  {
+   "start": 2194.32,
+   "duration": 3.759,
+   "text": "then you are chaining one more prompt"
+  },
+  {
+   "start": 2196.48,
+   "duration": 4.24,
+   "text": "telling that given these per file"
+  },
+  {
+   "start": 2198.079,
+   "duration": 5.601,
+   "text": "reviews identify crosscutting concerns."
+  },
+  {
+   "start": 2200.72,
+   "duration": 4.48,
+   "text": "Now whatever you are getting from here"
+  },
+  {
+   "start": 2203.68,
+   "duration": 2.8,
+   "text": "you are generating the final report"
+  },
+  {
+   "start": 2205.2,
+   "duration": 3.84,
+   "text": "based on that. So this this is an"
+  },
+  {
+   "start": 2206.48,
+   "duration": 4.8,
+   "text": "example of prompt chaining basically"
+  },
+  {
+   "start": 2209.04,
+   "duration": 4.4,
+   "text": "right. So generate a peer review summary"
+  },
+  {
+   "start": 2211.28,
+   "duration": 5.04,
+   "text": "rank issues by severity. This is how you"
+  },
+  {
+   "start": 2213.44,
+   "duration": 6.08,
+   "text": "do it."
+  },
+  {
+   "start": 2216.32,
+   "duration": 5.759,
+   "text": "So the same thing when you uh do by"
+  },
+  {
+   "start": 2219.52,
+   "duration": 3.92,
+   "text": "dynamic decomposition."
+  },
+  {
+   "start": 2222.079,
+   "duration": 3.76,
+   "text": "This is how you do for example in"
+  },
+  {
+   "start": 2223.44,
+   "duration": 4.72,
+   "text": "dynamic decomposition this is kind of a"
+  },
+  {
+   "start": 2225.839,
+   "duration": 4.321,
+   "text": "prompt you would write. You know you are"
+  },
+  {
+   "start": 2228.16,
+   "duration": 3.28,
+   "text": "investigating a production incident. You"
+  },
+  {
+   "start": 2230.16,
+   "duration": 3.36,
+   "text": "don't know anything about the production"
+  },
+  {
+   "start": 2231.44,
+   "duration": 4.159,
+   "text": "important. How would you write the steps"
+  },
+  {
+   "start": 2233.52,
+   "duration": 4.16,
+   "text": "when you haven't even debugged the"
+  },
+  {
+   "start": 2235.599,
+   "duration": 4.961,
+   "text": "production incident, right? This is the"
+  },
+  {
+   "start": 2237.68,
+   "duration": 4.88,
+   "text": "best example of dynamic decomposition."
+  },
+  {
+   "start": 2240.56,
+   "duration": 3.76,
+   "text": "So you would say what to do I mean"
+  },
+  {
+   "start": 2242.56,
+   "duration": 3.519,
+   "text": "generic steps what you need to do but"
+  },
+  {
+   "start": 2244.32,
+   "duration": 3.68,
+   "text": "you don't know exact steps how to fix"
+  },
+  {
+   "start": 2246.079,
+   "duration": 3.841,
+   "text": "that particular production issue. So you"
+  },
+  {
+   "start": 2248.0,
+   "duration": 4.0,
+   "text": "are investigating a production incident."
+  },
+  {
+   "start": 2249.92,
+   "duration": 4.08,
+   "text": "Start with error logs from the last 24"
+  },
+  {
+   "start": 2252.0,
+   "duration": 4.56,
+   "text": "hours based on what you find. Decide"
+  },
+  {
+   "start": 2254.0,
+   "duration": 4.32,
+   "text": "your next investigation step. Continue"
+  },
+  {
+   "start": 2256.56,
+   "duration": 4.64,
+   "text": "until you identify root cause and"
+  },
+  {
+   "start": 2258.32,
+   "duration": 5.6,
+   "text": "remediation. Tools you can provide like"
+  },
+  {
+   "start": 2261.2,
+   "duration": 5.28,
+   "text": "generic tools like read locks, query DB,"
+  },
+  {
+   "start": 2263.92,
+   "duration": 4.4,
+   "text": "check config and trace request."
+  },
+  {
+   "start": 2266.48,
+   "duration": 3.68,
+   "text": "Okay. So these are are examples of"
+  },
+  {
+   "start": 2268.32,
+   "duration": 4.4,
+   "text": "system prompt that you would use in your"
+  },
+  {
+   "start": 2270.16,
+   "duration": 5.04,
+   "text": "particular agentic workflow. Okay."
+  },
+  {
+   "start": 2272.72,
+   "duration": 4.8,
+   "text": "Similarly, I have used something in my"
+  },
+  {
+   "start": 2275.2,
+   "duration": 4.24,
+   "text": "capstone project in my order processing"
+  },
+  {
+   "start": 2277.52,
+   "duration": 5.599,
+   "text": "agent. If you have another agent like a"
+  },
+  {
+   "start": 2279.44,
+   "duration": 6.72,
+   "text": "CI/CD agent or a production you know"
+  },
+  {
+   "start": 2283.119,
+   "duration": 4.641,
+   "text": "specialist agent you would use different"
+  },
+  {
+   "start": 2286.16,
+   "duration": 4.08,
+   "text": "approaches and different kind of a"
+  },
+  {
+   "start": 2287.76,
+   "duration": 4.88,
+   "text": "stuffs. For example in my order"
+  },
+  {
+   "start": 2290.24,
+   "duration": 4.56,
+   "text": "processing agent I was kind of using a"
+  },
+  {
+   "start": 2292.64,
+   "duration": 4.32,
+   "text": "prompt chaining concept. So one tool"
+  },
+  {
+   "start": 2294.8,
+   "duration": 4.4,
+   "text": "will execute then another tool another"
+  },
+  {
+   "start": 2296.96,
+   "duration": 4.399,
+   "text": "tool another tool and we had multiple"
+  },
+  {
+   "start": 2299.2,
+   "duration": 3.84,
+   "text": "sub agents also. The coordinator was"
+  },
+  {
+   "start": 2301.359,
+   "duration": 4.961,
+   "text": "spawning the sub agent whenever it is"
+  },
+  {
+   "start": 2303.04,
+   "duration": 5.6,
+   "text": "needed. First the comes the for example"
+  },
+  {
+   "start": 2306.32,
+   "duration": 4.64,
+   "text": "the order you know customer verification"
+  },
+  {
+   "start": 2308.64,
+   "duration": 5.52,
+   "text": "sub aent and then the refund processing"
+  },
+  {
+   "start": 2310.96,
+   "duration": 4.8,
+   "text": "sub agent. Now each sub aent will after"
+  },
+  {
+   "start": 2314.16,
+   "duration": 3.52,
+   "text": "finishes and then the next sub aent"
+  },
+  {
+   "start": 2315.76,
+   "duration": 5.12,
+   "text": "comes into the picture. That is also an"
+  },
+  {
+   "start": 2317.68,
+   "duration": 5.76,
+   "text": "example of prompt chaining itself"
+  },
+  {
+   "start": 2320.88,
+   "duration": 4.56,
+   "text": "inside one sub agent also you can keep"
+  },
+  {
+   "start": 2323.44,
+   "duration": 3.76,
+   "text": "you know chaining the prompts. It"
+  },
+  {
+   "start": 2325.44,
+   "duration": 5.76,
+   "text": "depends on you how you execute your"
+  },
+  {
+   "start": 2327.2,
+   "duration": 5.52,
+   "text": "agentic loop. If that is you know a"
+  },
+  {
+   "start": 2331.2,
+   "duration": 2.96,
+   "text": "thing that you already know the steps"
+  },
+  {
+   "start": 2332.72,
+   "duration": 3.359,
+   "text": "you already know then you would go with"
+  },
+  {
+   "start": 2334.16,
+   "duration": 4.56,
+   "text": "prompt chaining otherwise you would go"
+  },
+  {
+   "start": 2336.079,
+   "duration": 4.641,
+   "text": "with dynamic decomposition and this is a"
+  },
+  {
+   "start": 2338.72,
+   "duration": 4.24,
+   "text": "very commonly occurring question in the"
+  },
+  {
+   "start": 2340.72,
+   "duration": 6.44,
+   "text": "claw certified exam guys and it is very"
+  },
+  {
+   "start": 2342.96,
+   "duration": 4.2,
+   "text": "very important that you understand it."
+  },
+  {
+   "start": 2347.44,
+   "duration": 4.399,
+   "text": "Okay. So that is about these two"
+  },
+  {
+   "start": 2350.24,
+   "duration": 2.96,
+   "text": "concepts that I wanted to discuss and"
+  },
+  {
+   "start": 2351.839,
+   "duration": 3.681,
+   "text": "you can have you can take a screenshot"
+  },
+  {
+   "start": 2353.2,
+   "duration": 4.48,
+   "text": "of this thing right you know steps up"
+  },
+  {
+   "start": 2355.52,
+   "duration": 4.64,
+   "text": "front uh emergently from findings for"
+  },
+  {
+   "start": 2357.68,
+   "duration": 4.96,
+   "text": "dynamic decomposition control level high"
+  },
+  {
+   "start": 2360.16,
+   "duration": 4.8,
+   "text": "control level low best for code reviews"
+  },
+  {
+   "start": 2362.64,
+   "duration": 5.36,
+   "text": "bug investigation"
+  },
+  {
+   "start": 2364.96,
+   "duration": 5.6,
+   "text": "example is CI/CD review pipeline"
+  },
+  {
+   "start": 2368.0,
+   "duration": 5.04,
+   "text": "monolith to microservices migration all"
+  },
+  {
+   "start": 2370.56,
+   "duration": 4.88,
+   "text": "of these things kind of"
+  },
+  {
+   "start": 2373.04,
+   "duration": 4.559,
+   "text": "so you see I've just whatever I just"
+  },
+  {
+   "start": 2375.44,
+   "duration": 4.159,
+   "text": "showed it is there in uh screen. So"
+  },
+  {
+   "start": 2377.599,
+   "duration": 4.0,
+   "text": "basically step by step you know"
+  },
+  {
+   "start": 2379.599,
+   "duration": 4.24,
+   "text": "predefined sequential steps executed in"
+  },
+  {
+   "start": 2381.599,
+   "duration": 5.601,
+   "text": "a fixed order. So the output of the step"
+  },
+  {
+   "start": 2383.839,
+   "duration": 6.0,
+   "text": "n feeds directly into step n plus one."
+  },
+  {
+   "start": 2387.2,
+   "duration": 4.24,
+   "text": "So warning and it's also a thing that"
+  },
+  {
+   "start": 2389.839,
+   "duration": 3.52,
+   "text": "comes in the exam. Do not use prompt"
+  },
+  {
+   "start": 2391.44,
+   "duration": 4.08,
+   "text": "chaining for open-ended tasks."
+  },
+  {
+   "start": 2393.359,
+   "duration": 4.161,
+   "text": "Predefined steps become wrong when the"
+  },
+  {
+   "start": 2395.52,
+   "duration": 6.24,
+   "text": "exact moment actual findings diverts"
+  },
+  {
+   "start": 2397.52,
+   "duration": 6.48,
+   "text": "from the initial assumptions. Exactly."
+  },
+  {
+   "start": 2401.76,
+   "duration": 4.4,
+   "text": "dynamic decomposition"
+  },
+  {
+   "start": 2404.0,
+   "duration": 5.04,
+   "text": "basically steps are generated"
+  },
+  {
+   "start": 2406.16,
+   "duration": 4.64,
+   "text": "dynamically right and on basis of that"
+  },
+  {
+   "start": 2409.04,
+   "duration": 4.0,
+   "text": "next step is executed that is the"
+  },
+  {
+   "start": 2410.8,
+   "duration": 4.88,
+   "text": "meaning of dynamic decomposition and"
+  },
+  {
+   "start": 2413.04,
+   "duration": 4.64,
+   "text": "I've explained it when to use what so I"
+  },
+  {
+   "start": 2415.68,
+   "duration": 3.679,
+   "text": "hope you understood uh the fixed"
+  },
+  {
+   "start": 2417.68,
+   "duration": 4.48,
+   "text": "sequential pipelines and dynamic"
+  },
+  {
+   "start": 2419.359,
+   "duration": 5.681,
+   "text": "decomposition from the previous footage"
+  },
+  {
+   "start": 2422.16,
+   "duration": 5.6,
+   "text": "so the thing is a fixed pipeline you"
+  },
+  {
+   "start": 2425.04,
+   "duration": 6.319,
+   "text": "know prompt chaining for example is"
+  },
+  {
+   "start": 2427.76,
+   "duration": 6.64,
+   "text": "designed by you so step one always feeds"
+  },
+  {
+   "start": 2431.359,
+   "duration": 5.681,
+   "text": "feeds step two and step two always feeds"
+  },
+  {
+   "start": 2434.4,
+   "duration": 4.64,
+   "text": "step three. You know the path, you know"
+  },
+  {
+   "start": 2437.04,
+   "duration": 4.079,
+   "text": "the cost, you know the timing and"
+  },
+  {
+   "start": 2439.04,
+   "duration": 5.039,
+   "text": "dynamic decomposition means the model"
+  },
+  {
+   "start": 2441.119,
+   "duration": 6.48,
+   "text": "looks at the input and kind of decides"
+  },
+  {
+   "start": 2444.079,
+   "duration": 6.801,
+   "text": "on the fly this needs steps A, C and F"
+  },
+  {
+   "start": 2447.599,
+   "duration": 5.441,
+   "text": "for example, but not B and D. So it's"
+  },
+  {
+   "start": 2450.88,
+   "duration": 5.12,
+   "text": "more flexible. But you can't predict"
+  },
+  {
+   "start": 2453.04,
+   "duration": 5.92,
+   "text": "runtime or cost in advance."
+  },
+  {
+   "start": 2456.0,
+   "duration": 4.96,
+   "text": "Okay. So that's the mechanical"
+  },
+  {
+   "start": 2458.96,
+   "duration": 4.8,
+   "text": "distinction. Now the professional"
+  },
+  {
+   "start": 2460.96,
+   "duration": 5.52,
+   "text": "extension is when is pipeline"
+  },
+  {
+   "start": 2463.76,
+   "duration": 4.559,
+   "text": "predictability worth more than agent"
+  },
+  {
+   "start": 2466.48,
+   "duration": 4.48,
+   "text": "flexibility."
+  },
+  {
+   "start": 2468.319,
+   "duration": 4.561,
+   "text": "The answer kind of comes down to your"
+  },
+  {
+   "start": 2470.96,
+   "duration": 5.2,
+   "text": "constraints. Again if you are in a"
+  },
+  {
+   "start": 2472.88,
+   "duration": 6.0,
+   "text": "regulated environment where every"
+  },
+  {
+   "start": 2476.16,
+   "duration": 5.6,
+   "text": "decision path must be documented and"
+  },
+  {
+   "start": 2478.88,
+   "duration": 5.199,
+   "text": "auditable the pipeline kind of wins. If"
+  },
+  {
+   "start": 2481.76,
+   "duration": 5.04,
+   "text": "you are behind an SLA Yeah. that"
+  },
+  {
+   "start": 2484.079,
+   "duration": 6.0,
+   "text": "requires for example let's say sub 2C"
+  },
+  {
+   "start": 2486.8,
+   "duration": 5.76,
+   "text": "responses the pipeline wins."
+  },
+  {
+   "start": 2490.079,
+   "duration": 6.0,
+   "text": "If the task is high volume and"
+  },
+  {
+   "start": 2492.56,
+   "duration": 6.0,
+   "text": "repetitive, same shape of input, same"
+  },
+  {
+   "start": 2496.079,
+   "duration": 4.561,
+   "text": "shape of output, let's say thousand"
+  },
+  {
+   "start": 2498.56,
+   "duration": 4.48,
+   "text": "times a day, the pipeline wins because"
+  },
+  {
+   "start": 2500.64,
+   "duration": 5.439,
+   "text": "you can optimize each step"
+  },
+  {
+   "start": 2503.04,
+   "duration": 5.52,
+   "text": "independently. Agent flexibility wins"
+  },
+  {
+   "start": 2506.079,
+   "duration": 4.161,
+   "text": "when the input space is kind of"
+  },
+  {
+   "start": 2508.56,
+   "duration": 4.16,
+   "text": "generally"
+  },
+  {
+   "start": 2510.24,
+   "duration": 4.8,
+   "text": "or genuinely unpredictable."
+  },
+  {
+   "start": 2512.72,
+   "duration": 4.24,
+   "text": "Yeah, when two users, you know, might"
+  },
+  {
+   "start": 2515.04,
+   "duration": 4.48,
+   "text": "need completely different sequences of"
+  },
+  {
+   "start": 2516.96,
+   "duration": 5.2,
+   "text": "actions and you can't predesign the"
+  },
+  {
+   "start": 2519.52,
+   "duration": 5.2,
+   "text": "graph. So the mental model that you need"
+  },
+  {
+   "start": 2522.16,
+   "duration": 5.52,
+   "text": "to make here is predictability is a"
+  },
+  {
+   "start": 2524.72,
+   "duration": 5.68,
+   "text": "feature not a limitation."
+  },
+  {
+   "start": 2527.68,
+   "duration": 5.2,
+   "text": "And the exam kind of rewards architects"
+  },
+  {
+   "start": 2530.4,
+   "duration": 5.679,
+   "text": "who choose predictable patterns when the"
+  },
+  {
+   "start": 2532.88,
+   "duration": 5.439,
+   "text": "constraints call for a predictability,"
+  },
+  {
+   "start": 2536.079,
+   "duration": 5.52,
+   "text": "not architects who always reach for the"
+  },
+  {
+   "start": 2538.319,
+   "duration": 5.201,
+   "text": "most flexible tool. So"
+  },
+  {
+   "start": 2541.599,
+   "duration": 3.041,
+   "text": "that's what my point is until now"
+  },
+  {
+   "start": 2543.52,
+   "duration": 2.96,
+   "text": "through the whole series I've been"
+  },
+  {
+   "start": 2544.64,
+   "duration": 4.24,
+   "text": "telling you the most impressive looking"
+  },
+  {
+   "start": 2546.48,
+   "duration": 6.16,
+   "text": "one might not be the best solution out"
+  },
+  {
+   "start": 2548.88,
+   "duration": 7.12,
+   "text": "there. I hope that's making sense."
+  },
+  {
+   "start": 2552.64,
+   "duration": 6.08,
+   "text": "Okay. Now the capability bloat trap. So"
+  },
+  {
+   "start": 2556.0,
+   "duration": 4.96,
+   "text": "let's talk about one of the most tested"
+  },
+  {
+   "start": 2558.72,
+   "duration": 5.04,
+   "text": "antiatterns on this exam that is known"
+  },
+  {
+   "start": 2560.96,
+   "duration": 5.28,
+   "text": "as the capability bloat. So capability"
+  },
+  {
+   "start": 2563.76,
+   "duration": 5.44,
+   "text": "bloat is what happens when an architect"
+  },
+  {
+   "start": 2566.24,
+   "duration": 5.2,
+   "text": "gives an agent or a multi- aent system"
+  },
+  {
+   "start": 2569.2,
+   "duration": 4.639,
+   "text": "uh you know more tools more sub agents"
+  },
+  {
+   "start": 2571.44,
+   "duration": 5.6,
+   "text": "more capability than it actually needs"
+  },
+  {
+   "start": 2573.839,
+   "duration": 4.961,
+   "text": "for the task. The reasoning usually kind"
+  },
+  {
+   "start": 2577.04,
+   "duration": 4.079,
+   "text": "of sounds like you know well the agent"
+  },
+  {
+   "start": 2578.8,
+   "duration": 6.24,
+   "text": "might need this tool someday so let's"
+  },
+  {
+   "start": 2581.119,
+   "duration": 7.121,
+   "text": "include it. Now why does this you know"
+  },
+  {
+   "start": 2585.04,
+   "duration": 7.44,
+   "text": "capability bloat hurt? Basically why is"
+  },
+  {
+   "start": 2588.24,
+   "duration": 6.64,
+   "text": "that so bad? I would say every tool uh"
+  },
+  {
+   "start": 2592.48,
+   "duration": 6.16,
+   "text": "you add to an agent's tool list goes"
+  },
+  {
+   "start": 2594.88,
+   "duration": 6.0,
+   "text": "into the system prompt. Okay. So that's"
+  },
+  {
+   "start": 2598.64,
+   "duration": 4.64,
+   "text": "what that's tokens."
+  },
+  {
+   "start": 2600.88,
+   "duration": 4.719,
+   "text": "If you if you go at scale thousands of"
+  },
+  {
+   "start": 2603.28,
+   "duration": 5.28,
+   "text": "requests per day unnecessary tool"
+  },
+  {
+   "start": 2605.599,
+   "duration": 5.281,
+   "text": "descriptions which cost actual real"
+  },
+  {
+   "start": 2608.56,
+   "duration": 4.24,
+   "text": "money in input tokens because at the end"
+  },
+  {
+   "start": 2610.88,
+   "duration": 4.16,
+   "text": "of the day if they are loaded into the"
+  },
+  {
+   "start": 2612.8,
+   "duration": 5.279,
+   "text": "context they would cost tokens which"
+  },
+  {
+   "start": 2615.04,
+   "duration": 6.079,
+   "text": "will in turn cost money. But the bigger"
+  },
+  {
+   "start": 2618.079,
+   "duration": 6.0,
+   "text": "problem is decision quality. The more"
+  },
+  {
+   "start": 2621.119,
+   "duration": 4.96,
+   "text": "tools a model has to choose from, the"
+  },
+  {
+   "start": 2624.079,
+   "duration": 5.28,
+   "text": "more likely it is to make the wrong"
+  },
+  {
+   "start": 2626.079,
+   "duration": 5.201,
+   "text": "choice. This is not just theoretical."
+  },
+  {
+   "start": 2629.359,
+   "duration": 4.321,
+   "text": "Yeah. Anthropic's own research shows"
+  },
+  {
+   "start": 2631.28,
+   "duration": 4.799,
+   "text": "that tool selection accuracy kind of"
+  },
+  {
+   "start": 2633.68,
+   "duration": 5.12,
+   "text": "degrades as the number of available tool"
+  },
+  {
+   "start": 2636.079,
+   "duration": 5.04,
+   "text": "increases. So let's say you give an"
+  },
+  {
+   "start": 2638.8,
+   "duration": 5.6,
+   "text": "agent 30 tools when it only needs five."
+  },
+  {
+   "start": 2641.119,
+   "duration": 5.761,
+   "text": "What happens? The model spends more time"
+  },
+  {
+   "start": 2644.4,
+   "duration": 6.08,
+   "text": "doing what? reasoning about which tool"
+  },
+  {
+   "start": 2646.88,
+   "duration": 6.32,
+   "text": "to use and gets it wrong more often. So"
+  },
+  {
+   "start": 2650.48,
+   "duration": 5.44,
+   "text": "more agents is not equals to better"
+  },
+  {
+   "start": 2653.2,
+   "duration": 6.24,
+   "text": "system and more tools is not equals to"
+  },
+  {
+   "start": 2655.92,
+   "duration": 5.52,
+   "text": "better agent. Why I say this? Because"
+  },
+  {
+   "start": 2659.44,
+   "duration": 4.159,
+   "text": "sometime back in this episode I told you"
+  },
+  {
+   "start": 2661.44,
+   "duration": 4.399,
+   "text": "that instead of creating multiple agents"
+  },
+  {
+   "start": 2663.599,
+   "duration": 4.48,
+   "text": "which would just add to your latency,"
+  },
+  {
+   "start": 2665.839,
+   "duration": 4.081,
+   "text": "give it more tools to a single agent."
+  },
+  {
+   "start": 2668.079,
+   "duration": 4.481,
+   "text": "Now some people would say now you are"
+  },
+  {
+   "start": 2669.92,
+   "duration": 5.679,
+   "text": "telling more tools means uh there's also"
+  },
+  {
+   "start": 2672.56,
+   "duration": 5.6,
+   "text": "a problem. That is where your architect"
+  },
+  {
+   "start": 2675.599,
+   "duration": 6.0,
+   "text": "mind comes into the picture."
+  },
+  {
+   "start": 2678.16,
+   "duration": 5.52,
+   "text": "If you give an agent unnecessary tools,"
+  },
+  {
+   "start": 2681.599,
+   "duration": 5.121,
+   "text": "that is an antipattern."
+  },
+  {
+   "start": 2683.68,
+   "duration": 5.12,
+   "text": "Also, if you don't need more agents, but"
+  },
+  {
+   "start": 2686.72,
+   "duration": 4.8,
+   "text": "you are creating them uselessly, that is"
+  },
+  {
+   "start": 2688.8,
+   "duration": 5.519,
+   "text": "also an antiattern. So, the decision"
+  },
+  {
+   "start": 2691.52,
+   "duration": 5.68,
+   "text": "rests with you. Whatever is the most"
+  },
+  {
+   "start": 2694.319,
+   "duration": 5.921,
+   "text": "efficient, you have to do that. If an"
+  },
+  {
+   "start": 2697.2,
+   "duration": 6.399,
+   "text": "agent needs five tools, give it five"
+  },
+  {
+   "start": 2700.24,
+   "duration": 5.28,
+   "text": "tools. It should use all five tools. in"
+  },
+  {
+   "start": 2703.599,
+   "duration": 4.48,
+   "text": "whatever work it is doing. Don't give it"
+  },
+  {
+   "start": 2705.52,
+   "duration": 4.96,
+   "text": "10 tools and let's say maybe after some"
+  },
+  {
+   "start": 2708.079,
+   "duration": 4.321,
+   "text": "time it might need it. If it might need"
+  },
+  {
+   "start": 2710.48,
+   "duration": 5.119,
+   "text": "it then you can add it to the allowed"
+  },
+  {
+   "start": 2712.4,
+   "duration": 6.32,
+   "text": "tools maybe later on. But when it is"
+  },
+  {
+   "start": 2715.599,
+   "duration": 6.081,
+   "text": "only needed the same logic you would"
+  },
+  {
+   "start": 2718.72,
+   "duration": 6.32,
+   "text": "apply to more agents. If one my agent"
+  },
+  {
+   "start": 2721.68,
+   "duration": 6.0,
+   "text": "can do the same thing. My agent if there"
+  },
+  {
+   "start": 2725.04,
+   "duration": 4.72,
+   "text": "is an agent for web searching. You would"
+  },
+  {
+   "start": 2727.68,
+   "duration": 3.76,
+   "text": "not like to create two agents to search"
+  },
+  {
+   "start": 2729.76,
+   "duration": 4.64,
+   "text": "for two different queries, right? The"
+  },
+  {
+   "start": 2731.44,
+   "duration": 4.96,
+   "text": "same agent which does the web search can"
+  },
+  {
+   "start": 2734.4,
+   "duration": 4.959,
+   "text": "run the query two times. So why do you"
+  },
+  {
+   "start": 2736.4,
+   "duration": 4.56,
+   "text": "need another agent? So that kind of uh"
+  },
+  {
+   "start": 2739.359,
+   "duration": 4.321,
+   "text": "you know this is a very simple example"
+  },
+  {
+   "start": 2740.96,
+   "duration": 5.44,
+   "text": "but that kind of kind of mentality you"
+  },
+  {
+   "start": 2743.68,
+   "duration": 6.8,
+   "text": "need to have the the decision making"
+  },
+  {
+   "start": 2746.4,
+   "duration": 6.719,
+   "text": "that will kind of take you to the final"
+  },
+  {
+   "start": 2750.48,
+   "duration": 5.119,
+   "text": "rope or whatever. Yeah that's where you"
+  },
+  {
+   "start": 2753.119,
+   "duration": 4.24,
+   "text": "win. So I hope that's making sense. Now"
+  },
+  {
+   "start": 2755.599,
+   "duration": 4.161,
+   "text": "moving on"
+  },
+  {
+   "start": 2757.359,
+   "duration": 4.881,
+   "text": "let's talk about a case study and this"
+  },
+  {
+   "start": 2759.76,
+   "duration": 5.12,
+   "text": "case study is about a insurance claims"
+  },
+  {
+   "start": 2762.24,
+   "duration": 4.64,
+   "text": "processor. Let's put all of this"
+  },
+  {
+   "start": 2764.88,
+   "duration": 6.0,
+   "text": "together into a production scenario. the"
+  },
+  {
+   "start": 2766.88,
+   "duration": 5.92,
+   "text": "kind this exam loves the most. Now the"
+  },
+  {
+   "start": 2770.88,
+   "duration": 3.68,
+   "text": "situation, let's talk about it. An"
+  },
+  {
+   "start": 2772.8,
+   "duration": 4.559,
+   "text": "insurance company wants to automate"
+  },
+  {
+   "start": 2774.56,
+   "duration": 5.12,
+   "text": "their claims processing pipeline. And"
+  },
+  {
+   "start": 2777.359,
+   "duration": 4.72,
+   "text": "here are the constraints that they have"
+  },
+  {
+   "start": 2779.68,
+   "duration": 4.159,
+   "text": "kind of given you. Just have a look over"
+  },
+  {
+   "start": 2782.079,
+   "duration": 4.961,
+   "text": "here. I'm going to also explain it to"
+  },
+  {
+   "start": 2783.839,
+   "duration": 5.76,
+   "text": "you. So they process about 5,000 claims"
+  },
+  {
+   "start": 2787.04,
+   "duration": 5.36,
+   "text": "per day. Each claim follows the same"
+  },
+  {
+   "start": 2789.599,
+   "duration": 5.52,
+   "text": "shape. uh extract data from the"
+  },
+  {
+   "start": 2792.4,
+   "duration": 7.6,
+   "text": "submitted form, validate it against"
+  },
+  {
+   "start": 2795.119,
+   "duration": 7.681,
+   "text": "policy records, classify the claim type,"
+  },
+  {
+   "start": 2800.0,
+   "duration": 5.44,
+   "text": "yeah, classification,"
+  },
+  {
+   "start": 2802.8,
+   "duration": 5.36,
+   "text": "route it to the right adjuster team and"
+  },
+  {
+   "start": 2805.44,
+   "duration": 4.879,
+   "text": "then generate a summary. Now, what is"
+  },
+  {
+   "start": 2808.16,
+   "duration": 5.84,
+   "text": "this SLA they need over here? Let's talk"
+  },
+  {
+   "start": 2810.319,
+   "duration": 7.201,
+   "text": "about that. under 5 seconds per claim."
+  },
+  {
+   "start": 2814.0,
+   "duration": 6.88,
+   "text": "The system must be auditable"
+  },
+  {
+   "start": 2817.52,
+   "duration": 6.64,
+   "text": "for any kind of regulatory review. Every"
+  },
+  {
+   "start": 2820.88,
+   "duration": 4.959,
+   "text": "step's decision must be traceable. If it"
+  },
+  {
+   "start": 2824.16,
+   "duration": 4.959,
+   "text": "is auditable, then obviously it should"
+  },
+  {
+   "start": 2825.839,
+   "duration": 5.681,
+   "text": "be traceable. Yeah. And cost also"
+  },
+  {
+   "start": 2829.119,
+   "duration": 5.681,
+   "text": "matters a lot. They are processing like"
+  },
+  {
+   "start": 2831.52,
+   "duration": 5.28,
+   "text": "5,000 of these claims per day that I"
+  },
+  {
+   "start": 2834.8,
+   "duration": 5.44,
+   "text": "have already mentioned."
+  },
+  {
+   "start": 2836.8,
+   "duration": 6.24,
+   "text": "Now, three proposals are at your desk."
+  },
+  {
+   "start": 2840.24,
+   "duration": 4.879,
+   "text": "You are an architect. Proposal number A,"
+  },
+  {
+   "start": 2843.04,
+   "duration": 4.079,
+   "text": "a multi- aent system with a coordinator"
+  },
+  {
+   "start": 2845.119,
+   "duration": 4.881,
+   "text": "agent. Yeah, you can see that first"
+  },
+  {
+   "start": 2847.119,
+   "duration": 4.48,
+   "text": "proposal over here. Uh an extraction sub"
+  },
+  {
+   "start": 2850.0,
+   "duration": 2.88,
+   "text": "agent, a validation sub aent, a"
+  },
+  {
+   "start": 2851.599,
+   "duration": 2.881,
+   "text": "classification sub agent and a"
+  },
+  {
+   "start": 2852.88,
+   "duration": 3.36,
+   "text": "summarization sub agent. So there are"
+  },
+  {
+   "start": 2854.48,
+   "duration": 3.839,
+   "text": "four sub agents. So one coordinator with"
+  },
+  {
+   "start": 2856.24,
+   "duration": 3.76,
+   "text": "four sub agents. That's one pattern."
+  },
+  {
+   "start": 2858.319,
+   "duration": 4.561,
+   "text": "Proposal number B says that a"
+  },
+  {
+   "start": 2860.0,
+   "duration": 6.48,
+   "text": "deterministic prompt chaining workflow"
+  },
+  {
+   "start": 2862.88,
+   "duration": 5.92,
+   "text": "that it has five fixed uh kind of steps"
+  },
+  {
+   "start": 2866.48,
+   "duration": 4.8,
+   "text": "and each a separate cloud call running"
+  },
+  {
+   "start": 2868.8,
+   "duration": 6.48,
+   "text": "in a sequence. That's proposal number B."
+  },
+  {
+   "start": 2871.28,
+   "duration": 6.96,
+   "text": "Proposal number C says that uh a single"
+  },
+  {
+   "start": 2875.28,
+   "duration": 6.88,
+   "text": "augmented LLM call with all policy"
+  },
+  {
+   "start": 2878.24,
+   "duration": 6.64,
+   "text": "records in in context via rag doing"
+  },
+  {
+   "start": 2882.16,
+   "duration": 4.4,
+   "text": "everything in one shot."
+  },
+  {
+   "start": 2884.88,
+   "duration": 4.239,
+   "text": "Now I'm going to just pause the video"
+  },
+  {
+   "start": 2886.56,
+   "duration": 5.44,
+   "text": "for now and think about the answer and"
+  },
+  {
+   "start": 2889.119,
+   "duration": 4.96,
+   "text": "we'll answer this probably in some in a"
+  },
+  {
+   "start": 2892.0,
+   "duration": 5.359,
+   "text": "few in a minute. Just pause it and kind"
+  },
+  {
+   "start": 2894.079,
+   "duration": 6.641,
+   "text": "of think about it. Yeah."
+  },
+  {
+   "start": 2897.359,
+   "duration": 7.2,
+   "text": "So I hope you guys got the right answer"
+  },
+  {
+   "start": 2900.72,
+   "duration": 7.839,
+   "text": "and so the right answer in my opinion is"
+  },
+  {
+   "start": 2904.559,
+   "duration": 7.76,
+   "text": "B which is deterministic prompt chaining"
+  },
+  {
+   "start": 2908.559,
+   "duration": 5.601,
+   "text": "workflow. Why is that? See the steps are"
+  },
+  {
+   "start": 2912.319,
+   "duration": 3.921,
+   "text": "known and fixed. I've already mentioned"
+  },
+  {
+   "start": 2914.16,
+   "duration": 5.36,
+   "text": "that whenever the steps are known and"
+  },
+  {
+   "start": 2916.24,
+   "duration": 5.52,
+   "text": "fixed workflows are the best. But let's"
+  },
+  {
+   "start": 2919.52,
+   "duration": 4.0,
+   "text": "talk about this case scenario right now."
+  },
+  {
+   "start": 2921.76,
+   "duration": 4.319,
+   "text": "So every claim kind of goes through the"
+  },
+  {
+   "start": 2923.52,
+   "duration": 4.4,
+   "text": "same exact five stages it is fixed. So"
+  },
+  {
+   "start": 2926.079,
+   "duration": 4.801,
+   "text": "that's the textbook definition of a"
+  },
+  {
+   "start": 2927.92,
+   "duration": 4.639,
+   "text": "workflow pattern. There is no reason for"
+  },
+  {
+   "start": 2930.88,
+   "duration": 4.719,
+   "text": "the model to decide the steps"
+  },
+  {
+   "start": 2932.559,
+   "duration": 5.441,
+   "text": "dynamically. Right? Next thing is"
+  },
+  {
+   "start": 2935.599,
+   "duration": 4.641,
+   "text": "auditability. Now each step in the chain"
+  },
+  {
+   "start": 2938.0,
+   "duration": 4.4,
+   "text": "produces a traceable output. A regulator"
+  },
+  {
+   "start": 2940.24,
+   "duration": 4.96,
+   "text": "can see exactly what happened at each"
+  },
+  {
+   "start": 2942.4,
+   "duration": 4.959,
+   "text": "stage. A multi-agent and agentic loops"
+  },
+  {
+   "start": 2945.2,
+   "duration": 7.119,
+   "text": "both introduce you know path variance"
+  },
+  {
+   "start": 2947.359,
+   "duration": 7.521,
+   "text": "that makes the audit trail harder. Yeah."
+  },
+  {
+   "start": 2952.319,
+   "duration": 4.481,
+   "text": "5-second SLA a 5-second uh you know"
+  },
+  {
+   "start": 2954.88,
+   "duration": 3.199,
+   "text": "fivestep chain with haiku for"
+  },
+  {
+   "start": 2956.8,
+   "duration": 3.6,
+   "text": "classification and sonnet for"
+  },
+  {
+   "start": 2958.079,
+   "duration": 5.76,
+   "text": "summarization can comfortably hit this."
+  },
+  {
+   "start": 2960.4,
+   "duration": 6.4,
+   "text": "So 5-second and 5,000 a day claims also"
+  },
+  {
+   "start": 2963.839,
+   "duration": 4.961,
+   "text": "the cost factor also we'll kind of"
+  },
+  {
+   "start": 2966.8,
+   "duration": 4.08,
+   "text": "mitigate it because prompt chaining"
+  },
+  {
+   "start": 2968.8,
+   "duration": 4.319,
+   "text": "gives you perstep control over model"
+  },
+  {
+   "start": 2970.88,
+   "duration": 3.76,
+   "text": "selection but in on the other hand if"
+  },
+  {
+   "start": 2973.119,
+   "duration": 3.44,
+   "text": "you go with agentic loops they will"
+  },
+  {
+   "start": 2974.64,
+   "duration": 4.719,
+   "text": "think and then they will do all those"
+  },
+  {
+   "start": 2976.559,
+   "duration": 5.361,
+   "text": "unnecessary uh you know thinkings and it"
+  },
+  {
+   "start": 2979.359,
+   "duration": 5.921,
+   "text": "will cost you a lot"
+  },
+  {
+   "start": 2981.92,
+   "duration": 4.8,
+   "text": "yeah so I would always go with if this"
+  },
+  {
+   "start": 2985.28,
+   "duration": 3.36,
+   "text": "is the scenario where the steps are"
+  },
+  {
+   "start": 2986.72,
+   "duration": 3.359,
+   "text": "fixed I'm going to always go with you"
+  },
+  {
+   "start": 2988.64,
+   "duration": 4.32,
+   "text": "know deterministic prompt chaining"
+  },
+  {
+   "start": 2990.079,
+   "duration": 4.161,
+   "text": "workflow and multi-agent obviously is"
+  },
+  {
+   "start": 2992.96,
+   "duration": 3.359,
+   "text": "not going to work over here because the"
+  },
+  {
+   "start": 2994.24,
+   "duration": 5.2,
+   "text": "steps are fixed. I mean it will work but"
+  },
+  {
+   "start": 2996.319,
+   "duration": 6.881,
+   "text": "that is not the correct option for you."
+  },
+  {
+   "start": 2999.44,
+   "duration": 6.879,
+   "text": "Um and the fourth option was I think"
+  },
+  {
+   "start": 3003.2,
+   "duration": 5.28,
+   "text": "proposal number C was augmented LLM. Now"
+  },
+  {
+   "start": 3006.319,
+   "duration": 4.481,
+   "text": "I would not go with a one single call to"
+  },
+  {
+   "start": 3008.48,
+   "duration": 6.56,
+   "text": "the LLM because as the steps are fixed"
+  },
+  {
+   "start": 3010.8,
+   "duration": 6.559,
+   "text": "so each step would do some kind of a job"
+  },
+  {
+   "start": 3015.04,
+   "duration": 4.559,
+   "text": "step 1 2 3 4 5 and they have already"
+  },
+  {
+   "start": 3017.359,
+   "duration": 5.921,
+   "text": "clearly mentioned the steps. So in one"
+  },
+  {
+   "start": 3019.599,
+   "duration": 6.321,
+   "text": "call it might not work out. So when the"
+  },
+  {
+   "start": 3023.28,
+   "duration": 4.88,
+   "text": "steps are fixed I would say the workflow"
+  },
+  {
+   "start": 3025.92,
+   "duration": 6.48,
+   "text": "is the best pattern over here. I hope"
+  },
+  {
+   "start": 3028.16,
+   "duration": 6.399,
+   "text": "that's making sense. Okay. Now"
+  },
+  {
+   "start": 3032.4,
+   "duration": 4.56,
+   "text": "um talking about the architecture"
+  },
+  {
+   "start": 3034.559,
+   "duration": 4.0,
+   "text": "selection cheat sheet. I I have pro I"
+  },
+  {
+   "start": 3036.96,
+   "duration": 5.04,
+   "text": "had promised that that I would give you"
+  },
+  {
+   "start": 3038.559,
+   "duration": 5.921,
+   "text": "a very good cheat sheet to to kind of um"
+  },
+  {
+   "start": 3042.0,
+   "duration": 6.16,
+   "text": "get get it you know before the exam and"
+  },
+  {
+   "start": 3044.48,
+   "duration": 5.359,
+   "text": "kind of review it. So the here it is. So"
+  },
+  {
+   "start": 3048.16,
+   "duration": 4.08,
+   "text": "it's a quick decision tree you can keep"
+  },
+  {
+   "start": 3049.839,
+   "duration": 4.081,
+   "text": "in your head for the exam and for real"
+  },
+  {
+   "start": 3052.24,
+   "duration": 3.92,
+   "text": "architecture reviews in your companies"
+  },
+  {
+   "start": 3053.92,
+   "duration": 4.96,
+   "text": "as well. Okay, that's that's my kind of"
+  },
+  {
+   "start": 3056.16,
+   "duration": 5.679,
+   "text": "uh how I take the decision. So three"
+  },
+  {
+   "start": 3058.88,
+   "duration": 4.8,
+   "text": "rules of thumb to carry out um this"
+  },
+  {
+   "start": 3061.839,
+   "duration": 3.76,
+   "text": "episode. Okay, always kind of key"
+  },
+  {
+   "start": 3063.68,
+   "duration": 4.24,
+   "text": "takeaway. So rule number one, start"
+  },
+  {
+   "start": 3065.599,
+   "duration": 5.601,
+   "text": "simple, add complexity only with"
+  },
+  {
+   "start": 3067.92,
+   "duration": 6.56,
+   "text": "evidence. So default to kind of"
+  },
+  {
+   "start": 3071.2,
+   "duration": 5.04,
+   "text": "augmented LLM, graduate to workflow when"
+  },
+  {
+   "start": 3074.48,
+   "duration": 3.359,
+   "text": "the one call is not enough. That's what"
+  },
+  {
+   "start": 3076.24,
+   "duration": 4.0,
+   "text": "we did in the last case study. If you"
+  },
+  {
+   "start": 3077.839,
+   "duration": 4.72,
+   "text": "remember that is what the reason I gave"
+  },
+  {
+   "start": 3080.24,
+   "duration": 4.079,
+   "text": "why I did not go with augmented LLM"
+  },
+  {
+   "start": 3082.559,
+   "duration": 4.321,
+   "text": "because there were multiple steps and"
+  },
+  {
+   "start": 3084.319,
+   "duration": 5.441,
+   "text": "one call I thought maybe it might not"
+  },
+  {
+   "start": 3086.88,
+   "duration": 4.4,
+   "text": "handle it each step can do its job and"
+  },
+  {
+   "start": 3089.76,
+   "duration": 3.76,
+   "text": "it's fixed. So that's why I went with"
+  },
+  {
+   "start": 3091.28,
+   "duration": 4.72,
+   "text": "workflow. So you start simple default to"
+  },
+  {
+   "start": 3093.52,
+   "duration": 4.64,
+   "text": "augmented alum graduate to workflow when"
+  },
+  {
+   "start": 3096.0,
+   "duration": 4.8,
+   "text": "one call is not enough graduate to"
+  },
+  {
+   "start": 3098.16,
+   "duration": 5.919,
+   "text": "agentic only when the steps can't be"
+  },
+  {
+   "start": 3100.8,
+   "duration": 6.16,
+   "text": "predicted. And this is not laziness."
+  },
+  {
+   "start": 3104.079,
+   "duration": 5.601,
+   "text": "It's engineering discipline. Rule number"
+  },
+  {
+   "start": 3106.96,
+   "duration": 6.159,
+   "text": "two, the constraint decides not the"
+  },
+  {
+   "start": 3109.68,
+   "duration": 6.32,
+   "text": "patterns prestige. Okay? Agentic is not"
+  },
+  {
+   "start": 3113.119,
+   "duration": 5.121,
+   "text": "better that than workflow. Workflow"
+  },
+  {
+   "start": 3116.0,
+   "duration": 5.52,
+   "text": "isn't better than augmented LLM. Each"
+  },
+  {
+   "start": 3118.24,
+   "duration": 5.599,
+   "text": "one wins under a specific constraint or"
+  },
+  {
+   "start": 3121.52,
+   "duration": 4.4,
+   "text": "constraints. Read the constraints. That"
+  },
+  {
+   "start": 3123.839,
+   "duration": 4.0,
+   "text": "is very very important. Rule number"
+  },
+  {
+   "start": 3125.92,
+   "duration": 4.56,
+   "text": "three is multi- aent is a scaling"
+  },
+  {
+   "start": 3127.839,
+   "duration": 4.881,
+   "text": "pattern not a default. Use it when"
+  },
+  {
+   "start": 3130.48,
+   "duration": 4.4,
+   "text": "specialization and isolation genuinely"
+  },
+  {
+   "start": 3132.72,
+   "duration": 4.32,
+   "text": "improve the system. Don't use it because"
+  },
+  {
+   "start": 3134.88,
+   "duration": 3.439,
+   "text": "it feels like there are too many tools,"
+  },
+  {
+   "start": 3137.04,
+   "duration": 4.0,
+   "text": "you know, for [snorts] one agent."
+  },
+  {
+   "start": 3138.319,
+   "duration": 6.0,
+   "text": "Something like that. So the mental model"
+  },
+  {
+   "start": 3141.04,
+   "duration": 5.6,
+   "text": "is kind of the best architects uh don't"
+  },
+  {
+   "start": 3144.319,
+   "duration": 4.561,
+   "text": "build the most complex system. They"
+  },
+  {
+   "start": 3146.64,
+   "duration": 5.36,
+   "text": "build the simplest system that meets all"
+  },
+  {
+   "start": 3148.88,
+   "duration": 6.32,
+   "text": "of the constraints and the exam kind of"
+  },
+  {
+   "start": 3152.0,
+   "duration": 5.359,
+   "text": "rewards this kind of a judgment. I hope"
+  },
+  {
+   "start": 3155.2,
+   "duration": 3.84,
+   "text": "that's making sense and you can take a"
+  },
+  {
+   "start": 3157.359,
+   "duration": 4.161,
+   "text": "screenshot. Anyways the slides would be"
+  },
+  {
+   "start": 3159.04,
+   "duration": 4.88,
+   "text": "available in the repository once this"
+  },
+  {
+   "start": 3161.52,
+   "duration": 7.839,
+   "text": "video is published and you would get it."
+  },
+  {
+   "start": 3163.92,
+   "duration": 7.6,
+   "text": "So anyways u yeah now u key takeaways"
+  },
+  {
+   "start": 3169.359,
+   "duration": 4.96,
+   "text": "for this particular episode is three"
+  },
+  {
+   "start": 3171.52,
+   "duration": 5.28,
+   "text": "pattern families that I want to that we"
+  },
+  {
+   "start": 3174.319,
+   "duration": 5.52,
+   "text": "discuss workflow agentic and augmented"
+  },
+  {
+   "start": 3176.8,
+   "duration": 5.039,
+   "text": "alm. Yeah. Um the exam tests pattern"
+  },
+  {
+   "start": 3179.839,
+   "duration": 3.52,
+   "text": "selection against constraints because"
+  },
+  {
+   "start": 3181.839,
+   "duration": 3.841,
+   "text": "all these constraints are very very"
+  },
+  {
+   "start": 3183.359,
+   "duration": 5.441,
+   "text": "important like latency, auditability,"
+  },
+  {
+   "start": 3185.68,
+   "duration": 5.2,
+   "text": "cost, task complexity. Never it doesn't"
+  },
+  {
+   "start": 3188.8,
+   "duration": 3.68,
+   "text": "test you like which is the best kind of"
+  },
+  {
+   "start": 3190.88,
+   "duration": 3.199,
+   "text": "in abstract or which is the most"
+  },
+  {
+   "start": 3192.48,
+   "duration": 4.4,
+   "text": "complicated pattern. It doesn't test you"
+  },
+  {
+   "start": 3194.079,
+   "duration": 4.641,
+   "text": "like that. Multi-agent adds coordination"
+  },
+  {
+   "start": 3196.88,
+   "duration": 3.439,
+   "text": "overhead. You know at the professional"
+  },
+  {
+   "start": 3198.72,
+   "duration": 4.24,
+   "text": "level of the exam, you are tested on"
+  },
+  {
+   "start": 3200.319,
+   "duration": 4.8,
+   "text": "knowing when not to use it. Yeah. A"
+  },
+  {
+   "start": 3202.96,
+   "duration": 5.04,
+   "text": "single agent with more tools often wins"
+  },
+  {
+   "start": 3205.119,
+   "duration": 5.841,
+   "text": "if that fits the scenario. Capability"
+  },
+  {
+   "start": 3208.0,
+   "duration": 5.76,
+   "text": "bloat is a tested antiattern that we"
+  },
+  {
+   "start": 3210.96,
+   "duration": 4.96,
+   "text": "discussed in detail and default to the"
+  },
+  {
+   "start": 3213.76,
+   "duration": 3.599,
+   "text": "simplest pattern that meets all the"
+  },
+  {
+   "start": 3215.92,
+   "duration": 3.28,
+   "text": "constraints. So first try out with"
+  },
+  {
+   "start": 3217.359,
+   "duration": 4.0,
+   "text": "augmented LLM. If that doesn't work out"
+  },
+  {
+   "start": 3219.2,
+   "duration": 4.56,
+   "text": "go to workflow. If that doesn't work out"
+  },
+  {
+   "start": 3221.359,
+   "duration": 4.96,
+   "text": "then go with agentic. Complexity is a"
+  },
+  {
+   "start": 3223.76,
+   "duration": 6.799,
+   "text": "cost. It's not a feature."
+  },
+  {
+   "start": 3226.319,
+   "duration": 6.881,
+   "text": "Yeah I hope that's making sense. So"
+  },
+  {
+   "start": 3230.559,
+   "duration": 4.481,
+   "text": "um we are done with uh this episode or"
+  },
+  {
+   "start": 3233.2,
+   "duration": 3.52,
+   "text": "this lesson and in the next episode"
+  },
+  {
+   "start": 3235.04,
+   "duration": 4.72,
+   "text": "we're going to learn about decomposition"
+  },
+  {
+   "start": 3236.72,
+   "duration": 6.72,
+   "text": "strategies plus business value"
+  },
+  {
+   "start": 3239.76,
+   "duration": 4.88,
+   "text": "alignment. So till then have a nice day,"
+  },
+  {
+   "start": 3243.44,
+   "duration": 5.2,
+   "text": "take care. I'll see you in the next"
+  },
+  {
+   "start": 3244.64,
+   "duration": 4.0,
+   "text": "video and bye-bye."
+  }
+ ]
+}

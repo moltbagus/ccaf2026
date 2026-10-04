@@ -1,0 +1,5903 @@
+{
+ "video_id": "O8NOgPKnD20",
+ "episode": "Ep 12",
+ "title": "Claude Managed Agents",
+ "lane": "ccdv-f",
+ "segments": [
+  {
+   "start": 1.439,
+   "duration": 5.36,
+   "text": "everyone and welcome to this lesson. So"
+  },
+  {
+   "start": 3.84,
+   "duration": 6.08,
+   "text": "this lesson and this episode would mark"
+  },
+  {
+   "start": 6.799,
+   "duration": 6.401,
+   "text": "the complete syllabus completion for the"
+  },
+  {
+   "start": 9.92,
+   "duration": 5.679,
+   "text": "claude developer certification series."
+  },
+  {
+   "start": 13.2,
+   "duration": 5.04,
+   "text": "Obviously I would be posting more videos"
+  },
+  {
+   "start": 15.599,
+   "duration": 6.161,
+   "text": "but that would be bonus content. Okay,"
+  },
+  {
+   "start": 18.24,
+   "duration": 5.52,
+   "text": "maybe some updates or some questions or"
+  },
+  {
+   "start": 21.76,
+   "duration": 4.64,
+   "text": "some important informations, right? But"
+  },
+  {
+   "start": 23.76,
+   "duration": 5.439,
+   "text": "for the whole 100% syllabus, this is the"
+  },
+  {
+   "start": 26.4,
+   "duration": 7.04,
+   "text": "last episode or the last lesson. And I"
+  },
+  {
+   "start": 29.199,
+   "duration": 6.401,
+   "text": "hope that um the previous lessons you"
+  },
+  {
+   "start": 33.44,
+   "duration": 4.48,
+   "text": "kind of liked it and I hoped it helped"
+  },
+  {
+   "start": 35.6,
+   "duration": 4.88,
+   "text": "you. Uh if so, please let me know if you"
+  },
+  {
+   "start": 37.92,
+   "duration": 5.2,
+   "text": "clear the certification and I would be"
+  },
+  {
+   "start": 40.48,
+   "duration": 6.32,
+   "text": "happy. Yeah. So before I start this"
+  },
+  {
+   "start": 43.12,
+   "duration": 5.439,
+   "text": "lesson, I just wanted to uh kind of um"
+  },
+  {
+   "start": 46.8,
+   "duration": 4.32,
+   "text": "you know put something out of the way."
+  },
+  {
+   "start": 48.559,
+   "duration": 4.32,
+   "text": "When you see this, you built it now stop"
+  },
+  {
+   "start": 51.12,
+   "duration": 4.24,
+   "text": "running it. It doesn't mean that you"
+  },
+  {
+   "start": 52.879,
+   "duration": 5.281,
+   "text": "know you build the agent and now you"
+  },
+  {
+   "start": 55.36,
+   "duration": 4.879,
+   "text": "don't run the agent. Um it just means"
+  },
+  {
+   "start": 58.16,
+   "duration": 5.68,
+   "text": "that now you build the agent let"
+  },
+  {
+   "start": 60.239,
+   "duration": 6.481,
+   "text": "anthropic run your agent via the managed"
+  },
+  {
+   "start": 63.84,
+   "duration": 4.959,
+   "text": "agent runtime. Okay. Uh otherwise I"
+  },
+  {
+   "start": 66.72,
+   "duration": 4.079,
+   "text": "would uh see some comments saying that"
+  },
+  {
+   "start": 68.799,
+   "duration": 3.601,
+   "text": "you know if you if you build the agent"
+  },
+  {
+   "start": 70.799,
+   "duration": 4.161,
+   "text": "why not run it something like that. It's"
+  },
+  {
+   "start": 72.4,
+   "duration": 6.32,
+   "text": "funny but anyways just getting it out of"
+  },
+  {
+   "start": 74.96,
+   "duration": 6.56,
+   "text": "the way. Okay so here is the thing."
+  },
+  {
+   "start": 78.72,
+   "duration": 5.52,
+   "text": "Let's start. Okay. Over the last 11"
+  },
+  {
+   "start": 81.52,
+   "duration": 6.239,
+   "text": "episodes, we have built something very"
+  },
+  {
+   "start": 84.24,
+   "duration": 6.16,
+   "text": "real, right? We built an agent, a PR"
+  },
+  {
+   "start": 87.759,
+   "duration": 4.801,
+   "text": "review agent from a raw API call which"
+  },
+  {
+   "start": 90.4,
+   "duration": 4.64,
+   "text": "we did in episode number one, then all"
+  },
+  {
+   "start": 92.56,
+   "duration": 5.36,
+   "text": "the way up through custom tools, hooks,"
+  },
+  {
+   "start": 95.04,
+   "duration": 5.2,
+   "text": "sub agents, memory, structured output,"
+  },
+  {
+   "start": 97.92,
+   "duration": 5.519,
+   "text": "MCP, model selection, and at the end we"
+  },
+  {
+   "start": 100.24,
+   "duration": 5.839,
+   "text": "also talked about cost tracking as well."
+  },
+  {
+   "start": 103.439,
+   "duration": 5.441,
+   "text": "That is a lot of layers. And here is the"
+  },
+  {
+   "start": 106.079,
+   "duration": 4.801,
+   "text": "question nobody asks until it's like"
+  },
+  {
+   "start": 108.88,
+   "duration": 5.36,
+   "text": "2:00 in the morning and something kind"
+  },
+  {
+   "start": 110.88,
+   "duration": 5.519,
+   "text": "of breaks and it also breaks your sleep."
+  },
+  {
+   "start": 114.24,
+   "duration": 4.72,
+   "text": "Who is actually running this agent?"
+  },
+  {
+   "start": 116.399,
+   "duration": 5.36,
+   "text": "Where is it running? Yeah, till now it"
+  },
+  {
+   "start": 118.96,
+   "duration": 4.56,
+   "text": "was everything in our local. So like"
+  },
+  {
+   "start": 121.759,
+   "duration": 3.841,
+   "text": "right now it is running in your laptop"
+  },
+  {
+   "start": 123.52,
+   "duration": 4.799,
+   "text": "in your local your Python process your"
+  },
+  {
+   "start": 125.6,
+   "duration": 5.52,
+   "text": "terminal. Now if your Wi-Fi drops the"
+  },
+  {
+   "start": 128.319,
+   "duration": 5.601,
+   "text": "agent drops and to be honest that is not"
+  },
+  {
+   "start": 131.12,
+   "duration": 4.96,
+   "text": "how production agents are deployed. It"
+  },
+  {
+   "start": 133.92,
+   "duration": 4.959,
+   "text": "needs a proper runtime and it can be"
+  },
+  {
+   "start": 136.08,
+   "duration": 4.48,
+   "text": "your company's own hosted runtime or can"
+  },
+  {
+   "start": 138.879,
+   "duration": 3.521,
+   "text": "be a managed runtime which we're going"
+  },
+  {
+   "start": 140.56,
+   "duration": 3.679,
+   "text": "to discuss today."
+  },
+  {
+   "start": 142.4,
+   "duration": 4.559,
+   "text": "So that is the managed runtime that"
+  },
+  {
+   "start": 144.239,
+   "duration": 5.761,
+   "text": "we're going to discuss today is you hand"
+  },
+  {
+   "start": 146.959,
+   "duration": 5.36,
+   "text": "over the agent to anthropic and let them"
+  },
+  {
+   "start": 150.0,
+   "duration": 4.48,
+   "text": "run in the sandbox or in their own"
+  },
+  {
+   "start": 152.319,
+   "duration": 5.121,
+   "text": "environment and that is known as managed"
+  },
+  {
+   "start": 154.48,
+   "duration": 4.96,
+   "text": "agents and this whole episode is"
+  },
+  {
+   "start": 157.44,
+   "duration": 4.48,
+   "text": "everything about that because this also"
+  },
+  {
+   "start": 159.44,
+   "duration": 4.72,
+   "text": "covers a huge chunk of your developer"
+  },
+  {
+   "start": 161.92,
+   "duration": 3.92,
+   "text": "certification exam. I hope that's making"
+  },
+  {
+   "start": 164.16,
+   "duration": 4.88,
+   "text": "sense. I hope you understand what we are"
+  },
+  {
+   "start": 165.84,
+   "duration": 5.679,
+   "text": "going to cover here."
+  },
+  {
+   "start": 169.04,
+   "duration": 4.88,
+   "text": "Yeah. So uh just in a nutshell we're"
+  },
+  {
+   "start": 171.519,
+   "duration": 3.841,
+   "text": "going to understand what managed agents"
+  },
+  {
+   "start": 173.92,
+   "duration": 4.88,
+   "text": "actually are. We're going to understand"
+  },
+  {
+   "start": 175.36,
+   "duration": 5.92,
+   "text": "the four core primitives um you know"
+  },
+  {
+   "start": 178.8,
+   "duration": 5.92,
+   "text": "that we're going to understand here uh"
+  },
+  {
+   "start": 181.28,
+   "duration": 5.039,
+   "text": "of of of the managed agents runtime. Um"
+  },
+  {
+   "start": 184.72,
+   "duration": 3.2,
+   "text": "we're going to see that some kind of"
+  },
+  {
+   "start": 186.319,
+   "duration": 3.441,
+   "text": "difference is there while you want to"
+  },
+  {
+   "start": 187.92,
+   "duration": 3.76,
+   "text": "host your agent in managed agent"
+  },
+  {
+   "start": 189.76,
+   "duration": 3.6,
+   "text": "runtime. Some little bit of difference."
+  },
+  {
+   "start": 191.68,
+   "duration": 4.88,
+   "text": "There is no conceptual difference by the"
+  },
+  {
+   "start": 193.36,
+   "duration": 6.879,
+   "text": "way. some kind of a syntactical or you"
+  },
+  {
+   "start": 196.56,
+   "duration": 4.88,
+   "text": "know um architectural kind of a shift is"
+  },
+  {
+   "start": 200.239,
+   "duration": 4.561,
+   "text": "there which we're going to understand in"
+  },
+  {
+   "start": 201.44,
+   "duration": 5.2,
+   "text": "a minute that's not much. Yeah. And you"
+  },
+  {
+   "start": 204.8,
+   "duration": 4.719,
+   "text": "would get some new superpowers also out"
+  },
+  {
+   "start": 206.64,
+   "duration": 4.56,
+   "text": "of it because it is um everything is"
+  },
+  {
+   "start": 209.519,
+   "duration": 4.401,
+   "text": "managed by anthropic. And you would see"
+  },
+  {
+   "start": 211.2,
+   "duration": 5.119,
+   "text": "what all things you can do and when to"
+  },
+  {
+   "start": 213.92,
+   "duration": 6.239,
+   "text": "use managed agents and when to use your"
+  },
+  {
+   "start": 216.319,
+   "duration": 5.761,
+   "text": "own kind of um you know runtime"
+  },
+  {
+   "start": 220.159,
+   "duration": 4.72,
+   "text": "environment we also going to see for"
+  },
+  {
+   "start": 222.08,
+   "duration": 4.56,
+   "text": "that and you can also when you want to"
+  },
+  {
+   "start": 224.879,
+   "duration": 2.801,
+   "text": "just run it run the agent in your local"
+  },
+  {
+   "start": 226.64,
+   "duration": 2.959,
+   "text": "as well that also we're going to"
+  },
+  {
+   "start": 227.68,
+   "duration": 4.08,
+   "text": "understand. Yeah all these differences"
+  },
+  {
+   "start": 229.599,
+   "duration": 5.36,
+   "text": "we're going to kind of drill down and"
+  },
+  {
+   "start": 231.76,
+   "duration": 5.36,
+   "text": "understand. Okay, just one key fact that"
+  },
+  {
+   "start": 234.959,
+   "duration": 4.961,
+   "text": "I want to just put it out there. Managed"
+  },
+  {
+   "start": 237.12,
+   "duration": 7.839,
+   "text": "agents has been in public beta since"
+  },
+  {
+   "start": 239.92,
+   "duration": 7.44,
+   "text": "April 8, 2026. Yeah. So, um"
+  },
+  {
+   "start": 244.959,
+   "duration": 8.081,
+   "text": "the SDK kind of, you know, if you see"
+  },
+  {
+   "start": 247.36,
+   "duration": 7.84,
+   "text": "the beta header managed agents 2026-401"
+  },
+  {
+   "start": 253.04,
+   "duration": 5.28,
+   "text": "that you see in the screen over here, it"
+  },
+  {
+   "start": 255.2,
+   "duration": 6.559,
+   "text": "is auto set by the SDK. Yeah, I mean"
+  },
+  {
+   "start": 258.32,
+   "duration": 6.24,
+   "text": "real production deployments exist but"
+  },
+  {
+   "start": 261.759,
+   "duration": 5.761,
+   "text": "API shapes can still change. So a lot of"
+  },
+  {
+   "start": 264.56,
+   "duration": 6.16,
+   "text": "real companies are in production. Uh to"
+  },
+  {
+   "start": 267.52,
+   "duration": 6.0,
+   "text": "name a few um you know notion, Rakutin,"
+  },
+  {
+   "start": 270.72,
+   "duration": 4.56,
+   "text": "Sentry, Asan, I don't remember a whole"
+  },
+  {
+   "start": 273.52,
+   "duration": 4.56,
+   "text": "lot of them but these are some of them"
+  },
+  {
+   "start": 275.28,
+   "duration": 5.44,
+   "text": "out of my mind. Yeah. But beta means the"
+  },
+  {
+   "start": 278.08,
+   "duration": 4.88,
+   "text": "API shapes and the event types uh the"
+  },
+  {
+   "start": 280.72,
+   "duration": 4.64,
+   "text": "pricing all of them can still change or"
+  },
+  {
+   "start": 282.96,
+   "duration": 4.799,
+   "text": "can still shift. Now if those those kind"
+  },
+  {
+   "start": 285.36,
+   "duration": 4.88,
+   "text": "of shift happens that's why I always"
+  },
+  {
+   "start": 287.759,
+   "duration": 4.241,
+   "text": "tell I might publish some bonus you know"
+  },
+  {
+   "start": 290.24,
+   "duration": 3.04,
+   "text": "episodes or some bonus videos if this"
+  },
+  {
+   "start": 292.0,
+   "duration": 3.759,
+   "text": "kind of change happens because it is"
+  },
+  {
+   "start": 293.28,
+   "duration": 4.72,
+   "text": "very relatively new. So that is just I"
+  },
+  {
+   "start": 295.759,
+   "duration": 4.401,
+   "text": "want to put it as a disclaimer. Okay. It"
+  },
+  {
+   "start": 298.0,
+   "duration": 4.0,
+   "text": "is up to date as of now but it might"
+  },
+  {
+   "start": 300.16,
+   "duration": 4.319,
+   "text": "change and if it changes you guys will"
+  },
+  {
+   "start": 302.0,
+   "duration": 5.199,
+   "text": "be the first to know via my channel or"
+  },
+  {
+   "start": 304.479,
+   "duration": 6.72,
+   "text": "through the video. Okay. Now going"
+  },
+  {
+   "start": 307.199,
+   "duration": 7.521,
+   "text": "forward three layers where managed agent"
+  },
+  {
+   "start": 311.199,
+   "duration": 6.081,
+   "text": "fits. So uh if you remember the three"
+  },
+  {
+   "start": 314.72,
+   "duration": 4.72,
+   "text": "layer model from episode number zero"
+  },
+  {
+   "start": 317.28,
+   "duration": 3.919,
+   "text": "that was the first episode this is the"
+  },
+  {
+   "start": 319.44,
+   "duration": 4.08,
+   "text": "framework that's been guiding the entire"
+  },
+  {
+   "start": 321.199,
+   "duration": 4.161,
+   "text": "series. Okay let's bring it back one"
+  },
+  {
+   "start": 323.52,
+   "duration": 5.28,
+   "text": "more time to kind of refresh our"
+  },
+  {
+   "start": 325.36,
+   "duration": 6.399,
+   "text": "memories. Okay so uh layer number one is"
+  },
+  {
+   "start": 328.8,
+   "duration": 5.44,
+   "text": "the raw messages API where you will run"
+  },
+  {
+   "start": 331.759,
+   "duration": 4.801,
+   "text": "the agentic loop and you will run the"
+  },
+  {
+   "start": 334.24,
+   "duration": 4.239,
+   "text": "sandbox. So the runtime as well as the"
+  },
+  {
+   "start": 336.56,
+   "duration": 3.6,
+   "text": "agentic loop is in your hands. You're"
+  },
+  {
+   "start": 338.479,
+   "duration": 3.44,
+   "text": "completely in control all the"
+  },
+  {
+   "start": 340.16,
+   "duration": 5.759,
+   "text": "infrastructure and everything. Next"
+  },
+  {
+   "start": 341.919,
+   "duration": 5.84,
+   "text": "comes the cloud agent SDK. So uh the the"
+  },
+  {
+   "start": 345.919,
+   "duration": 3.761,
+   "text": "loop the agentic loop and all of the"
+  },
+  {
+   "start": 347.759,
+   "duration": 4.561,
+   "text": "things that are required for the agent"
+  },
+  {
+   "start": 349.68,
+   "duration": 5.04,
+   "text": "just to function like tools um you know"
+  },
+  {
+   "start": 352.32,
+   "duration": 5.12,
+   "text": "the agentic loop uh you know if you"
+  },
+  {
+   "start": 354.72,
+   "duration": 5.52,
+   "text": "remember we also saw how it kind of"
+  },
+  {
+   "start": 357.44,
+   "duration": 6.24,
+   "text": "creates its own JSON files its memories"
+  },
+  {
+   "start": 360.24,
+   "duration": 5.04,
+   "text": "how you can resume a memory how uh you"
+  },
+  {
+   "start": 363.68,
+   "duration": 3.2,
+   "text": "know it automatically sets the"
+  },
+  {
+   "start": 365.28,
+   "duration": 3.84,
+   "text": "temperature all of these things that is"
+  },
+  {
+   "start": 366.88,
+   "duration": 5.2,
+   "text": "related to the agent it will be managed"
+  },
+  {
+   "start": 369.12,
+   "duration": 4.96,
+   "text": "by the cloud agent SDK. Yeah, but still"
+  },
+  {
+   "start": 372.08,
+   "duration": 5.52,
+   "text": "the runtime environment where the agent"
+  },
+  {
+   "start": 374.08,
+   "duration": 5.52,
+   "text": "will be get deployed maybe in AWS. Yeah,"
+  },
+  {
+   "start": 377.6,
+   "duration": 4.56,
+   "text": "maybe in your own company server that"
+  },
+  {
+   "start": 379.6,
+   "duration": 4.48,
+   "text": "still depends on you or in your local"
+  },
+  {
+   "start": 382.16,
+   "duration": 4.96,
+   "text": "all of that is your environment. Now"
+  },
+  {
+   "start": 384.08,
+   "duration": 6.239,
+   "text": "coming to managed agents here the loop"
+  },
+  {
+   "start": 387.12,
+   "duration": 5.199,
+   "text": "agentic loop is also managed by"
+  },
+  {
+   "start": 390.319,
+   "duration": 3.521,
+   "text": "anthropic and the sandbox or the"
+  },
+  {
+   "start": 392.319,
+   "duration": 4.16,
+   "text": "environment is also managed by"
+  },
+  {
+   "start": 393.84,
+   "duration": 4.799,
+   "text": "anthropic. So here you just define the"
+  },
+  {
+   "start": 396.479,
+   "duration": 4.56,
+   "text": "agent kind of like what kind of what I"
+  },
+  {
+   "start": 398.639,
+   "duration": 4.56,
+   "text": "what is my requirement basically and"
+  },
+  {
+   "start": 401.039,
+   "duration": 4.401,
+   "text": "anthropic will take care of it from zero"
+  },
+  {
+   "start": 403.199,
+   "duration": 5.201,
+   "text": "to the finish."
+  },
+  {
+   "start": 405.44,
+   "duration": 5.12,
+   "text": "Yeah. So I I gave you an example of this"
+  },
+  {
+   "start": 408.4,
+   "duration": 3.919,
+   "text": "cooking setup right where you order food"
+  },
+  {
+   "start": 410.56,
+   "duration": 3.28,
+   "text": "and where you actually cook the food and"
+  },
+  {
+   "start": 412.319,
+   "duration": 3.201,
+   "text": "where you order ingredients and then"
+  },
+  {
+   "start": 413.84,
+   "duration": 5.28,
+   "text": "cook the food something like that. So"
+  },
+  {
+   "start": 415.52,
+   "duration": 6.32,
+   "text": "you can just relate from it. Yeah. So"
+  },
+  {
+   "start": 419.12,
+   "duration": 4.639,
+   "text": "now let us talk about you know the four"
+  },
+  {
+   "start": 421.84,
+   "duration": 4.639,
+   "text": "primitives."
+  },
+  {
+   "start": 423.759,
+   "duration": 4.481,
+   "text": "Yeah. on which the managed agents are"
+  },
+  {
+   "start": 426.479,
+   "duration": 4.16,
+   "text": "built on and I'm going to show you the"
+  },
+  {
+   "start": 428.24,
+   "duration": 4.399,
+   "text": "dashboard of managed agents where it"
+  },
+  {
+   "start": 430.639,
+   "duration": 3.84,
+   "text": "will be pretty much of clear of what I'm"
+  },
+  {
+   "start": 432.639,
+   "duration": 5.441,
+   "text": "talking about. So the four main"
+  },
+  {
+   "start": 434.479,
+   "duration": 5.761,
+   "text": "primitives of managed agents are one is"
+  },
+  {
+   "start": 438.08,
+   "duration": 4.559,
+   "text": "agents, another one is environments,"
+  },
+  {
+   "start": 440.24,
+   "duration": 4.32,
+   "text": "third one is sessions and fourth one is"
+  },
+  {
+   "start": 442.639,
+   "duration": 3.601,
+   "text": "events. I'm going to show you in the"
+  },
+  {
+   "start": 444.56,
+   "duration": 3.52,
+   "text": "dashboard where you would be deploying"
+  },
+  {
+   "start": 446.24,
+   "duration": 5.76,
+   "text": "your agents in the anthropic console. So"
+  },
+  {
+   "start": 448.08,
+   "duration": 5.6,
+   "text": "just stay with me for a few minutes. So"
+  },
+  {
+   "start": 452.0,
+   "duration": 4.319,
+   "text": "managed agents is built around these"
+  },
+  {
+   "start": 453.68,
+   "duration": 4.639,
+   "text": "four concepts, four building blocks."
+  },
+  {
+   "start": 456.319,
+   "duration": 4.32,
+   "text": "Everything else is built on top of"
+  },
+  {
+   "start": 458.319,
+   "duration": 3.841,
+   "text": "these. And let me just walk through each"
+  },
+  {
+   "start": 460.639,
+   "duration": 4.801,
+   "text": "of them. Okay. So first one is agent"
+  },
+  {
+   "start": 462.16,
+   "duration": 5.68,
+   "text": "that was discussed. So the agent"
+  },
+  {
+   "start": 465.44,
+   "duration": 5.84,
+   "text": "what it is basically it is the model"
+  },
+  {
+   "start": 467.84,
+   "duration": 7.44,
+   "text": "plus the system prompt plus tools plus"
+  },
+  {
+   "start": 471.28,
+   "duration": 5.599,
+   "text": "MCP servers plus skills you know and a"
+  },
+  {
+   "start": 475.28,
+   "duration": 2.479,
+   "text": "reusable version configuration. And"
+  },
+  {
+   "start": 476.879,
+   "duration": 3.361,
+   "text": "we're going to understand what that"
+  },
+  {
+   "start": 477.759,
+   "duration": 4.641,
+   "text": "version configuration is. So the analogy"
+  },
+  {
+   "start": 480.24,
+   "duration": 5.12,
+   "text": "is basically the recipe card you would"
+  },
+  {
+   "start": 482.4,
+   "duration": 4.479,
+   "text": "say. So just you can relate it to the"
+  },
+  {
+   "start": 485.36,
+   "duration": 3.44,
+   "text": "agent that you just build using the"
+  },
+  {
+   "start": 486.879,
+   "duration": 4.16,
+   "text": "cloud agent SDK. It contains the system"
+  },
+  {
+   "start": 488.8,
+   "duration": 4.399,
+   "text": "prompt. It contains the tools. Contains"
+  },
+  {
+   "start": 491.039,
+   "duration": 4.241,
+   "text": "the MCP servers associated with it."
+  },
+  {
+   "start": 493.199,
+   "duration": 4.56,
+   "text": "Everything right? So that is what one of"
+  },
+  {
+   "start": 495.28,
+   "duration": 5.599,
+   "text": "the principle or the core architecture"
+  },
+  {
+   "start": 497.759,
+   "duration": 4.72,
+   "text": "of managed agents is. Simple as that."
+  },
+  {
+   "start": 500.879,
+   "duration": 3.681,
+   "text": "The second is environment. It's pretty"
+  },
+  {
+   "start": 502.479,
+   "duration": 4.881,
+   "text": "self-explanatory. It's just where the"
+  },
+  {
+   "start": 504.56,
+   "duration": 6.079,
+   "text": "session runs. It's an anthropic managed"
+  },
+  {
+   "start": 507.36,
+   "duration": 6.32,
+   "text": "cloud sandbox. Yeah, it's not"
+  },
+  {
+   "start": 510.639,
+   "duration": 5.28,
+   "text": "it's it's managed by anthropic or it can"
+  },
+  {
+   "start": 513.68,
+   "duration": 4.08,
+   "text": "be your own self-hosted sandbox. Now,"
+  },
+  {
+   "start": 515.919,
+   "duration": 4.401,
+   "text": "when I say self-hosted sandbox, it's not"
+  },
+  {
+   "start": 517.76,
+   "duration": 5.04,
+   "text": "that it is hosted outside of anthropic,"
+  },
+  {
+   "start": 520.32,
+   "duration": 3.839,
+   "text": "you know, I mean the sandbox will still"
+  },
+  {
+   "start": 522.8,
+   "duration": 5.2,
+   "text": "you will create it in the platform"
+  },
+  {
+   "start": 524.159,
+   "duration": 6.721,
+   "text": "itself in the anthropic platform. Uh but"
+  },
+  {
+   "start": 528.0,
+   "duration": 4.8,
+   "text": "you know it's your own hosted sandbox"
+  },
+  {
+   "start": 530.88,
+   "duration": 4.72,
+   "text": "that's it you are not deploying it in"
+  },
+  {
+   "start": 532.8,
+   "duration": 4.719,
+   "text": "AWS. Don't think about it like that. If"
+  },
+  {
+   "start": 535.6,
+   "duration": 4.0,
+   "text": "you are deploying it in AWS or your own"
+  },
+  {
+   "start": 537.519,
+   "duration": 4.641,
+   "text": "infrastructure then that is not managed"
+  },
+  {
+   "start": 539.6,
+   "duration": 4.0,
+   "text": "agents basically you are only creating"
+  },
+  {
+   "start": 542.16,
+   "duration": 2.64,
+   "text": "the agent and deploying it somewhere"
+  },
+  {
+   "start": 543.6,
+   "duration": 3.359,
+   "text": "else and you would understand the"
+  },
+  {
+   "start": 544.8,
+   "duration": 4.0,
+   "text": "difference. I hope that's making sense."
+  },
+  {
+   "start": 546.959,
+   "duration": 4.081,
+   "text": "Now if you can compare the environment"
+  },
+  {
+   "start": 548.8,
+   "duration": 4.64,
+   "text": "to the kitchen now as you have compared"
+  },
+  {
+   "start": 551.04,
+   "duration": 4.64,
+   "text": "the agent with the recipe card or the"
+  },
+  {
+   "start": 553.44,
+   "duration": 3.76,
+   "text": "recipe book the environment is just the"
+  },
+  {
+   "start": 555.68,
+   "duration": 5.36,
+   "text": "kitchen where the recipe is made"
+  },
+  {
+   "start": 557.2,
+   "duration": 6.4,
+   "text": "basically. Next comes the session. uh"
+  },
+  {
+   "start": 561.04,
+   "duration": 5.76,
+   "text": "session is nothing but uh a running"
+  },
+  {
+   "start": 563.6,
+   "duration": 5.679,
+   "text": "agent instance doing a specific task."
+  },
+  {
+   "start": 566.8,
+   "duration": 5.44,
+   "text": "Yeah, it has a transcript a sandbox"
+  },
+  {
+   "start": 569.279,
+   "duration": 4.321,
+   "text": "state and it also has outputs. So if"
+  },
+  {
+   "start": 572.24,
+   "duration": 4.64,
+   "text": "you're going to compare with the analogy"
+  },
+  {
+   "start": 573.6,
+   "duration": 6.0,
+   "text": "of the food whatever we are using it's"
+  },
+  {
+   "start": 576.88,
+   "duration": 4.48,
+   "text": "just just one meal that is being cooked"
+  },
+  {
+   "start": 579.6,
+   "duration": 3.52,
+   "text": "right now."
+  },
+  {
+   "start": 581.36,
+   "duration": 2.88,
+   "text": "And next we talked about events. I'm"
+  },
+  {
+   "start": 583.12,
+   "duration": 2.8,
+   "text": "going to discuss this in detail. It's"
+  },
+  {
+   "start": 584.24,
+   "duration": 4.0,
+   "text": "very important."
+  },
+  {
+   "start": 585.92,
+   "duration": 4.479,
+   "text": "It's just communication between your app"
+  },
+  {
+   "start": 588.24,
+   "duration": 4.48,
+   "text": "and the agent. user turns, tool results,"
+  },
+  {
+   "start": 590.399,
+   "duration": 4.481,
+   "text": "status updates. Your multiple agents can"
+  },
+  {
+   "start": 592.72,
+   "duration": 4.72,
+   "text": "communicate with each other using"
+  },
+  {
+   "start": 594.88,
+   "duration": 4.32,
+   "text": "events. Yeah, it's if you're going to"
+  },
+  {
+   "start": 597.44,
+   "duration": 4.16,
+   "text": "compare it with an analogy, it's it's"
+  },
+  {
+   "start": 599.2,
+   "duration": 4.88,
+   "text": "the order tickets going back and forth,"
+  },
+  {
+   "start": 601.6,
+   "duration": 4.56,
+   "text": "you know, ordering one meal, ordering"
+  },
+  {
+   "start": 604.08,
+   "duration": 3.84,
+   "text": "another meal, maybe making some changes"
+  },
+  {
+   "start": 606.16,
+   "duration": 2.88,
+   "text": "in my existing meal or something like"
+  },
+  {
+   "start": 607.92,
+   "duration": 2.96,
+   "text": "that if you're going to compare it with"
+  },
+  {
+   "start": 609.04,
+   "duration": 4.0,
+   "text": "the restaurant."
+  },
+  {
+   "start": 610.88,
+   "duration": 4.639,
+   "text": "Yeah. And here's the key thing, okay?"
+  },
+  {
+   "start": 613.04,
+   "duration": 5.2,
+   "text": "Agents and environment are created once"
+  },
+  {
+   "start": 615.519,
+   "duration": 6.0,
+   "text": "and reused. You don't inline the agent"
+  },
+  {
+   "start": 618.24,
+   "duration": 5.2,
+   "text": "config every time you start a session."
+  },
+  {
+   "start": 621.519,
+   "duration": 4.641,
+   "text": "Okay, you create the agent, you get back"
+  },
+  {
+   "start": 623.44,
+   "duration": 6.8,
+   "text": "an ID and then every session just"
+  },
+  {
+   "start": 626.16,
+   "duration": 6.96,
+   "text": "references that agent by ID. And a key"
+  },
+  {
+   "start": 630.24,
+   "duration": 4.96,
+   "text": "fact to remember is that agents in"
+  },
+  {
+   "start": 633.12,
+   "duration": 3.839,
+   "text": "managed runtime, you know, the managed"
+  },
+  {
+   "start": 635.2,
+   "duration": 4.72,
+   "text": "agents is in whatever we are learning"
+  },
+  {
+   "start": 636.959,
+   "duration": 6.401,
+   "text": "right now are versioned. Yeah. So every"
+  },
+  {
+   "start": 639.92,
+   "duration": 6.24,
+   "text": "time you update the config I when I say"
+  },
+  {
+   "start": 643.36,
+   "duration": 5.76,
+   "text": "update the config tweak the prompt add a"
+  },
+  {
+   "start": 646.16,
+   "duration": 6.32,
+   "text": "new tool a new immutable version kind of"
+  },
+  {
+   "start": 649.12,
+   "duration": 5.92,
+   "text": "is created session pin to a version at"
+  },
+  {
+   "start": 652.48,
+   "duration": 4.88,
+   "text": "creation time. This means you can"
+  },
+  {
+   "start": 655.04,
+   "duration": 4.56,
+   "text": "iterate on the agent without breaking"
+  },
+  {
+   "start": 657.36,
+   "duration": 4.96,
+   "text": "sessions that are already running. So"
+  },
+  {
+   "start": 659.6,
+   "duration": 5.919,
+   "text": "you can just compare it to like a new"
+  },
+  {
+   "start": 662.32,
+   "duration": 4.959,
+   "text": "deployment but your old session is still"
+  },
+  {
+   "start": 665.519,
+   "duration": 3.281,
+   "text": "running. It will not affect your old"
+  },
+  {
+   "start": 667.279,
+   "duration": 3.841,
+   "text": "session. it will still be running in the"
+  },
+  {
+   "start": 668.8,
+   "duration": 4.96,
+   "text": "old system prompt and all those things."
+  },
+  {
+   "start": 671.12,
+   "duration": 4.48,
+   "text": "Yeah. And uh that's that's just I think"
+  },
+  {
+   "start": 673.76,
+   "duration": 5.519,
+   "text": "that's pretty self-explanatory nothing"
+  },
+  {
+   "start": 675.6,
+   "duration": 5.84,
+   "text": "to um understand but you need to kind of"
+  },
+  {
+   "start": 679.279,
+   "duration": 4.321,
+   "text": "keep in mind that versioning piece is"
+  },
+  {
+   "start": 681.44,
+   "duration": 4.959,
+   "text": "really important. So because in our"
+  },
+  {
+   "start": 683.6,
+   "duration": 6.0,
+   "text": "agent SDK world if we change for example"
+  },
+  {
+   "start": 686.399,
+   "duration": 5.521,
+   "text": "agent. py that we are for example we are"
+  },
+  {
+   "start": 689.6,
+   "duration": 7.359,
+   "text": "doing it in our local uh while a session"
+  },
+  {
+   "start": 691.92,
+   "duration": 7.2,
+   "text": "is running things get weird right now in"
+  },
+  {
+   "start": 696.959,
+   "duration": 5.44,
+   "text": "managed agents each session is pinned to"
+  },
+  {
+   "start": 699.12,
+   "duration": 5.6,
+   "text": "a version it started with that what I'm"
+  },
+  {
+   "start": 702.399,
+   "duration": 4.321,
+   "text": "why I'm trying to tell is that see if"
+  },
+  {
+   "start": 704.72,
+   "duration": 3.52,
+   "text": "you if you have a python server it's"
+  },
+  {
+   "start": 706.72,
+   "duration": 4.16,
+   "text": "nothing but your agent is a python"
+  },
+  {
+   "start": 708.24,
+   "duration": 6.0,
+   "text": "server right it's a agent pua file and"
+  },
+  {
+   "start": 710.88,
+   "duration": 5.28,
+   "text": "if the server gets auto reloaded on auto"
+  },
+  {
+   "start": 714.24,
+   "duration": 4.4,
+   "text": "reloaded on every change then if there"
+  },
+  {
+   "start": 716.16,
+   "duration": 5.84,
+   "text": "is ongoing session then it gets weird it"
+  },
+  {
+   "start": 718.64,
+   "duration": 6.96,
+   "text": "gets affected but to not mitigate I mean"
+  },
+  {
+   "start": 722.0,
+   "duration": 4.88,
+   "text": "to mitigate that particular problem"
+  },
+  {
+   "start": 725.6,
+   "duration": 4.0,
+   "text": "each [clears throat] session in managed"
+  },
+  {
+   "start": 726.88,
+   "duration": 6.48,
+   "text": "agents each session is pinned to the"
+  },
+  {
+   "start": 729.6,
+   "duration": 6.32,
+   "text": "version it started with okay and you can"
+  },
+  {
+   "start": 733.36,
+   "duration": 4.64,
+   "text": "like do an AB test of the you know"
+  },
+  {
+   "start": 735.92,
+   "duration": 5.68,
+   "text": "version side by side you can roll back"
+  },
+  {
+   "start": 738.0,
+   "duration": 5.839,
+   "text": "if something regresses so all these um"
+  },
+  {
+   "start": 741.6,
+   "duration": 6.479,
+   "text": "advantages are there when you are using"
+  },
+  {
+   "start": 743.839,
+   "duration": 8.161,
+   "text": "managed agents yeah So I'm here in my um"
+  },
+  {
+   "start": 748.079,
+   "duration": 6.161,
+   "text": "console. Right now if you see over here"
+  },
+  {
+   "start": 752.0,
+   "duration": 6.8,
+   "text": "um okay just one thing to show that I"
+  },
+  {
+   "start": 754.24,
+   "duration": 7.44,
+   "text": "only am left with three uh 0.34"
+  },
+  {
+   "start": 758.8,
+   "duration": 5.92,
+   "text": "and you just yeah I have been using the"
+  },
+  {
+   "start": 761.68,
+   "duration": 5.44,
+   "text": "this API credits like uh very very uh"
+  },
+  {
+   "start": 764.72,
+   "duration": 4.32,
+   "text": "less you know. So just uh I'm just"
+  },
+  {
+   "start": 767.12,
+   "duration": 4.56,
+   "text": "trying I'm trying to tell you that even"
+  },
+  {
+   "start": 769.04,
+   "duration": 5.68,
+   "text": "if you are you know not recharging a lot"
+  },
+  {
+   "start": 771.68,
+   "duration": 5.76,
+   "text": "of money that is okay. uh try to use it"
+  },
+  {
+   "start": 774.72,
+   "duration": 4.559,
+   "text": "conservatively, right? Uh you can do a"
+  },
+  {
+   "start": 777.44,
+   "duration": 4.72,
+   "text": "lot more. You don't have to recharge"
+  },
+  {
+   "start": 779.279,
+   "duration": 5.521,
+   "text": "$100. If you use the proper models at"
+  },
+  {
+   "start": 782.16,
+   "duration": 4.56,
+   "text": "the proper time and don't waste uh you"
+  },
+  {
+   "start": 784.8,
+   "duration": 4.4,
+   "text": "know the credits on something that you"
+  },
+  {
+   "start": 786.72,
+   "duration": 4.0,
+   "text": "don't need, then you would obviously be"
+  },
+  {
+   "start": 789.2,
+   "duration": 3.6,
+   "text": "able [snorts] to do a lot of things."
+  },
+  {
+   "start": 790.72,
+   "duration": 4.16,
+   "text": "Okay, it's not expensive. It's just how"
+  },
+  {
+   "start": 792.8,
+   "duration": 3.52,
+   "text": "efficiently you use it. Okay, that is"
+  },
+  {
+   "start": 794.88,
+   "duration": 3.12,
+   "text": "out. Keeping that out of the way, I just"
+  },
+  {
+   "start": 796.32,
+   "duration": 3.68,
+   "text": "wanted to show you the four things that"
+  },
+  {
+   "start": 798.0,
+   "duration": 3.279,
+   "text": "I talked about. So if you see when you"
+  },
+  {
+   "start": 800.0,
+   "duration": 3.76,
+   "text": "come to platform.cloud.com/dashboard,"
+  },
+  {
+   "start": 801.279,
+   "duration": 4.481,
+   "text": "claw.com/dashboard"
+  },
+  {
+   "start": 803.76,
+   "duration": 4.319,
+   "text": "you would see this section known as"
+  },
+  {
+   "start": 805.76,
+   "duration": 4.96,
+   "text": "managed agents and if you see the four"
+  },
+  {
+   "start": 808.079,
+   "duration": 5.44,
+   "text": "primitive things that we are kind of I"
+  },
+  {
+   "start": 810.72,
+   "duration": 5.6,
+   "text": "kind of showed you our agents sessions"
+  },
+  {
+   "start": 813.519,
+   "duration": 4.88,
+   "text": "[snorts] environments yeah uh"
+  },
+  {
+   "start": 816.32,
+   "duration": 3.68,
+   "text": "deployments and all of I think events"
+  },
+  {
+   "start": 818.399,
+   "duration": 4.321,
+   "text": "was also there that that we cannot see"
+  },
+  {
+   "start": 820.0,
+   "duration": 4.0,
+   "text": "it here we can configure it later uh but"
+  },
+  {
+   "start": 822.72,
+   "duration": 3.2,
+   "text": "you can see that all the important"
+  },
+  {
+   "start": 824.0,
+   "duration": 3.44,
+   "text": "things are here and one best thing that"
+  },
+  {
+   "start": 825.92,
+   "duration": 3.44,
+   "text": "I saw over here is if you go to quick"
+  },
+  {
+   "start": 827.44,
+   "duration": 4.56,
+   "text": "start over here you would see that you"
+  },
+  {
+   "start": 829.36,
+   "duration": 5.039,
+   "text": "can create a agent based on a particular"
+  },
+  {
+   "start": 832.0,
+   "duration": 5.04,
+   "text": "template or you can start from a blank"
+  },
+  {
+   "start": 834.399,
+   "duration": 4.721,
+   "text": "agent. Okay. Now if I go to agents, this"
+  },
+  {
+   "start": 837.04,
+   "duration": 4.88,
+   "text": "will be your you know your agent object"
+  },
+  {
+   "start": 839.12,
+   "duration": 5.44,
+   "text": "or something like that. Um here you can"
+  },
+  {
+   "start": 841.92,
+   "duration": 4.56,
+   "text": "just create an agent by clicking here."
+  },
+  {
+   "start": 844.56,
+   "duration": 3.839,
+   "text": "And this is why the interface this is"
+  },
+  {
+   "start": 846.48,
+   "duration": 4.96,
+   "text": "how anthropic manages it. You don't have"
+  },
+  {
+   "start": 848.399,
+   "duration": 5.361,
+   "text": "to write the code yourself. Okay? You"
+  },
+  {
+   "start": 851.44,
+   "duration": 4.56,
+   "text": "can basically just uh describe your"
+  },
+  {
+   "start": 853.76,
+   "duration": 4.24,
+   "text": "agent in words. Okay? Right? For"
+  },
+  {
+   "start": 856.0,
+   "duration": 3.36,
+   "text": "example, I want to create a PR review"
+  },
+  {
+   "start": 858.0,
+   "duration": 2.72,
+   "text": "agent something like that. You can"
+  },
+  {
+   "start": 859.36,
+   "duration": 3.68,
+   "text": "describe your agent and the agent will"
+  },
+  {
+   "start": 860.72,
+   "duration": 4.239,
+   "text": "get created and then you can also start"
+  },
+  {
+   "start": 863.04,
+   "duration": 3.84,
+   "text": "from a template. Yeah. So if you see"
+  },
+  {
+   "start": 864.959,
+   "duration": 4.721,
+   "text": "this is the starting point all the"
+  },
+  {
+   "start": 866.88,
+   "duration": 4.639,
+   "text": "claude uh you know that options if you"
+  },
+  {
+   "start": 869.68,
+   "duration": 4.959,
+   "text": "remember."
+  },
+  {
+   "start": 871.519,
+   "duration": 5.841,
+   "text": "Yeah. So the build options uh where we"
+  },
+  {
+   "start": 874.639,
+   "duration": 5.601,
+   "text": "were setting the model where you know uh"
+  },
+  {
+   "start": 877.36,
+   "duration": 4.479,
+   "text": "the system prompt all this and and we"
+  },
+  {
+   "start": 880.24,
+   "duration": 4.0,
+   "text": "also define the tools as well. Just"
+  },
+  {
+   "start": 881.839,
+   "duration": 3.921,
+   "text": "consider that that particular thing that"
+  },
+  {
+   "start": 884.24,
+   "duration": 3.92,
+   "text": "we learned while learning the cloud"
+  },
+  {
+   "start": 885.76,
+   "duration": 4.48,
+   "text": "agent SDK, you can just do it in a"
+  },
+  {
+   "start": 888.16,
+   "duration": 5.039,
+   "text": "graphical manner over here. Or if you"
+  },
+  {
+   "start": 890.24,
+   "duration": 4.56,
+   "text": "want to kind of uh uh want a raw version"
+  },
+  {
+   "start": 893.199,
+   "duration": 4.88,
+   "text": "of it, you can see that this is a YAML"
+  },
+  {
+   "start": 894.8,
+   "duration": 6.399,
+   "text": "file agent config. Now, this this could"
+  },
+  {
+   "start": 898.079,
+   "duration": 5.841,
+   "text": "be a little bit uh familiar to you."
+  },
+  {
+   "start": 901.199,
+   "duration": 6.32,
+   "text": "Yeah, because this has a structure that"
+  },
+  {
+   "start": 903.92,
+   "duration": 5.44,
+   "text": "is kind of similar to that of a skill."
+  },
+  {
+   "start": 907.519,
+   "duration": 4.88,
+   "text": "Now let me tell you one thing that"
+  },
+  {
+   "start": 909.36,
+   "duration": 6.0,
+   "text": "agents nowadays are treated as skills. A"
+  },
+  {
+   "start": 912.399,
+   "duration": 4.641,
+   "text": "skill can be an agent. A skill you can"
+  },
+  {
+   "start": 915.36,
+   "duration": 3.76,
+   "text": "can define the tools over here and the"
+  },
+  {
+   "start": 917.04,
+   "duration": 4.239,
+   "text": "skill would basically be like a very"
+  },
+  {
+   "start": 919.12,
+   "duration": 5.68,
+   "text": "small instance of an agent, right? You"
+  },
+  {
+   "start": 921.279,
+   "duration": 5.041,
+   "text": "can just kind of um think like that."
+  },
+  {
+   "start": 924.8,
+   "duration": 4.159,
+   "text": "Okay. So that is why if you see in the"
+  },
+  {
+   "start": 926.32,
+   "duration": 4.24,
+   "text": "raw format it it's just a YAML file just"
+  },
+  {
+   "start": 928.959,
+   "duration": 3.44,
+   "text": "a configuration based you don't have to"
+  },
+  {
+   "start": 930.56,
+   "duration": 6.079,
+   "text": "write code it's just configuration"
+  },
+  {
+   "start": 932.399,
+   "duration": 5.601,
+   "text": "based. Yeah. And if you see um this is a"
+  },
+  {
+   "start": 936.639,
+   "duration": 3.361,
+   "text": "rendered version. You can give the"
+  },
+  {
+   "start": 938.0,
+   "duration": 4.88,
+   "text": "description over here. You can add a sub"
+  },
+  {
+   "start": 940.0,
+   "duration": 4.399,
+   "text": "agent. Yeah. But there are no uh agents"
+  },
+  {
+   "start": 942.88,
+   "duration": 3.28,
+   "text": "over here. You have to create an because"
+  },
+  {
+   "start": 944.399,
+   "duration": 3.521,
+   "text": "a sub aent is also an agent, right? All"
+  },
+  {
+   "start": 946.16,
+   "duration": 3.679,
+   "text": "these concepts are same. So you have to"
+  },
+  {
+   "start": 947.92,
+   "duration": 4.479,
+   "text": "create an agent and then add it as a sub"
+  },
+  {
+   "start": 949.839,
+   "duration": 5.44,
+   "text": "agent over here. Right? And then you can"
+  },
+  {
+   "start": 952.399,
+   "duration": 5.68,
+   "text": "also add a skill. You can add tools. And"
+  },
+  {
+   "start": 955.279,
+   "duration": 5.761,
+   "text": "if you see in the claw agent SDK, we"
+  },
+  {
+   "start": 958.079,
+   "duration": 6.081,
+   "text": "also were getting some built-in tools."
+  },
+  {
+   "start": 961.04,
+   "duration": 5.2,
+   "text": "And here also we are getting these eight"
+  },
+  {
+   "start": 964.16,
+   "duration": 4.799,
+   "text": "tools which is basically kind of built"
+  },
+  {
+   "start": 966.24,
+   "duration": 5.92,
+   "text": "in in cloud agent SDK as well. So here"
+  },
+  {
+   "start": 968.959,
+   "duration": 5.601,
+   "text": "you can just understand that okay"
+  },
+  {
+   "start": 972.16,
+   "duration": 4.4,
+   "text": "this is my uh kind of this is kind of"
+  },
+  {
+   "start": 974.56,
+   "duration": 3.92,
+   "text": "similar to cloud agent SDK but just the"
+  },
+  {
+   "start": 976.56,
+   "duration": 3.6,
+   "text": "interface is different. Now if you see"
+  },
+  {
+   "start": 978.48,
+   "duration": 3.12,
+   "text": "add a custom tool you can create a"
+  },
+  {
+   "start": 980.16,
+   "duration": 4.08,
+   "text": "custom tool and you can give the tool"
+  },
+  {
+   "start": 981.6,
+   "duration": 5.039,
+   "text": "definition basically what it does what"
+  },
+  {
+   "start": 984.24,
+   "duration": 4.32,
+   "text": "the tool will do basically you can also"
+  },
+  {
+   "start": 986.639,
+   "duration": 4.081,
+   "text": "kind of give it over here. So this is"
+  },
+  {
+   "start": 988.56,
+   "duration": 4.639,
+   "text": "similar to the build options that you"
+  },
+  {
+   "start": 990.72,
+   "duration": 3.919,
+   "text": "are working with you know in cloud agent"
+  },
+  {
+   "start": 993.199,
+   "duration": 2.88,
+   "text": "SDK. Now I'm not going to create the"
+  },
+  {
+   "start": 994.639,
+   "duration": 4.161,
+   "text": "agent. I'm just going to tell you how to"
+  },
+  {
+   "start": 996.079,
+   "duration": 5.041,
+   "text": "do it because obviously um it might cost"
+  },
+  {
+   "start": 998.8,
+   "duration": 5.279,
+   "text": "me later it's not needed also. Now"
+  },
+  {
+   "start": 1001.12,
+   "duration": 5.519,
+   "text": "coming to session. Now when you create a"
+  },
+  {
+   "start": 1004.079,
+   "duration": 4.641,
+   "text": "session you have to select an agent for"
+  },
+  {
+   "start": 1006.639,
+   "duration": 4.56,
+   "text": "which the session has to run obviously"
+  },
+  {
+   "start": 1008.72,
+   "duration": 5.119,
+   "text": "because the session will run which"
+  },
+  {
+   "start": 1011.199,
+   "duration": 6.241,
+   "text": "basically your agent will run a session."
+  },
+  {
+   "start": 1013.839,
+   "duration": 7.36,
+   "text": "Yeah. Now how is this session important"
+  },
+  {
+   "start": 1017.44,
+   "duration": 5.28,
+   "text": "and why is this session where better"
+  },
+  {
+   "start": 1021.199,
+   "duration": 4.88,
+   "text": "compared to the session that you run in"
+  },
+  {
+   "start": 1022.72,
+   "duration": 5.199,
+   "text": "the local? Yeah, the session is the"
+  },
+  {
+   "start": 1026.079,
+   "duration": 4.401,
+   "text": "actual running agent that we understand"
+  },
+  {
+   "start": 1027.919,
+   "duration": 4.561,
+   "text": "one agent definition one environment but"
+  },
+  {
+   "start": 1030.48,
+   "duration": 3.92,
+   "text": "you can spin up as many sessions as you"
+  },
+  {
+   "start": 1032.48,
+   "duration": 4.64,
+   "text": "want because the same agent can run in"
+  },
+  {
+   "start": 1034.4,
+   "duration": 5.84,
+   "text": "multiple sessions. Yeah. Now each"
+  },
+  {
+   "start": 1037.12,
+   "duration": 6.24,
+   "text": "session has its own isolated workspace"
+  },
+  {
+   "start": 1040.24,
+   "duration": 5.839,
+   "text": "with its own transcript, its own sandbox"
+  },
+  {
+   "start": 1043.36,
+   "duration": 5.52,
+   "text": "state and its own outputs. Now here is"
+  },
+  {
+   "start": 1046.079,
+   "duration": 5.521,
+   "text": "the magic part that I wanted to tell you"
+  },
+  {
+   "start": 1048.88,
+   "duration": 5.039,
+   "text": "in our agent SDK world if your Python"
+  },
+  {
+   "start": 1051.6,
+   "duration": 4.56,
+   "text": "for example process crashes right in"
+  },
+  {
+   "start": 1053.919,
+   "duration": 4.961,
+   "text": "your local or in your server in your own"
+  },
+  {
+   "start": 1056.16,
+   "duration": 4.24,
+   "text": "hosted server the session is gone. I"
+  },
+  {
+   "start": 1058.88,
+   "duration": 3.919,
+   "text": "mean the session exactly is not gone."
+  },
+  {
+   "start": 1060.4,
+   "duration": 4.24,
+   "text": "You can recover it from the JSON files"
+  },
+  {
+   "start": 1062.799,
+   "duration": 4.161,
+   "text": "and you can resume it maybe if you have"
+  },
+  {
+   "start": 1064.64,
+   "duration": 4.96,
+   "text": "the logic around there that that we had"
+  },
+  {
+   "start": 1066.96,
+   "duration": 4.56,
+   "text": "built in our own agent. But if you"
+  },
+  {
+   "start": 1069.6,
+   "duration": 4.56,
+   "text": "consider a barebones complete agent"
+  },
+  {
+   "start": 1071.52,
+   "duration": 5.36,
+   "text": "where all of these logic is not defined."
+  },
+  {
+   "start": 1074.16,
+   "duration": 3.92,
+   "text": "If the agent crashes gone simple as"
+  },
+  {
+   "start": 1076.88,
+   "duration": 3.84,
+   "text": "that. [snorts]"
+  },
+  {
+   "start": 1078.08,
+   "duration": 6.24,
+   "text": "But in managed agents sessions are"
+  },
+  {
+   "start": 1080.72,
+   "duration": 5.68,
+   "text": "durable. The session state lives in"
+  },
+  {
+   "start": 1084.32,
+   "duration": 5.599,
+   "text": "anthropics service because you are"
+  },
+  {
+   "start": 1086.4,
+   "duration": 5.279,
+   "text": "paying for this kind of uh uh uh you"
+  },
+  {
+   "start": 1089.919,
+   "duration": 3.201,
+   "text": "know this kind of ease as well. I'm"
+  },
+  {
+   "start": 1091.679,
+   "duration": 3.601,
+   "text": "going to show you how much you are going"
+  },
+  {
+   "start": 1093.12,
+   "duration": 6.32,
+   "text": "to pay per hour and all those things for"
+  },
+  {
+   "start": 1095.28,
+   "duration": 5.84,
+   "text": "managed agents. But that's how it works."
+  },
+  {
+   "start": 1099.44,
+   "duration": 3.28,
+   "text": "Yeah. So the session state lives in"
+  },
+  {
+   "start": 1101.12,
+   "duration": 3.52,
+   "text": "anthropic servers. If something crashes,"
+  },
+  {
+   "start": 1102.72,
+   "duration": 3.839,
+   "text": "you can recover. If you need to come"
+  },
+  {
+   "start": 1104.64,
+   "duration": 4.08,
+   "text": "back tomorrow and send let's say another"
+  },
+  {
+   "start": 1106.559,
+   "duration": 5.441,
+   "text": "message to the same session, you can."
+  },
+  {
+   "start": 1108.72,
+   "duration": 6.72,
+   "text": "The session ID is your kind of a handle"
+  },
+  {
+   "start": 1112.0,
+   "duration": 5.2,
+   "text": "or the key back in. Yeah. So the mental"
+  },
+  {
+   "start": 1115.44,
+   "duration": 4.479,
+   "text": "model that you need to make is in the"
+  },
+  {
+   "start": 1117.2,
+   "duration": 6.32,
+   "text": "agent SDK the session lives and dies"
+  },
+  {
+   "start": 1119.919,
+   "duration": 5.201,
+   "text": "with your process. If special kind of"
+  },
+  {
+   "start": 1123.52,
+   "duration": 3.92,
+   "text": "techniques you haven't implemented like"
+  },
+  {
+   "start": 1125.12,
+   "duration": 3.919,
+   "text": "resuming the session or using a JSL"
+  },
+  {
+   "start": 1127.44,
+   "duration": 2.8,
+   "text": "files and using the session ID and all"
+  },
+  {
+   "start": 1129.039,
+   "duration": 3.52,
+   "text": "those things. If you have not"
+  },
+  {
+   "start": 1130.24,
+   "duration": 4.88,
+   "text": "implemented that it just dies once it"
+  },
+  {
+   "start": 1132.559,
+   "duration": 4.48,
+   "text": "crashes your agent crashes. But in"
+  },
+  {
+   "start": 1135.12,
+   "duration": 4.48,
+   "text": "managed agents the session lives and"
+  },
+  {
+   "start": 1137.039,
+   "duration": 5.121,
+   "text": "dies on anthropics infrastructure. Your"
+  },
+  {
+   "start": 1139.6,
+   "duration": 4.8,
+   "text": "process is just a client talking to it."
+  },
+  {
+   "start": 1142.16,
+   "duration": 5.12,
+   "text": "That's it. So that is what a session is."
+  },
+  {
+   "start": 1144.4,
+   "duration": 5.36,
+   "text": "Now coming to environments. Now let's"
+  },
+  {
+   "start": 1147.28,
+   "duration": 3.92,
+   "text": "say what is an environment. Now we"
+  },
+  {
+   "start": 1149.76,
+   "duration": 5.039,
+   "text": "talked about a session. Session is"
+  },
+  {
+   "start": 1151.2,
+   "duration": 6.719,
+   "text": "basically a run of a agent. Now the"
+  },
+  {
+   "start": 1154.799,
+   "duration": 5.201,
+   "text": "environment if you go to environments"
+  },
+  {
+   "start": 1157.919,
+   "duration": 3.841,
+   "text": "and you click on create environment."
+  },
+  {
+   "start": 1160.0,
+   "duration": 3.2,
+   "text": "Yeah. And there are two options cloud"
+  },
+  {
+   "start": 1161.76,
+   "duration": 4.0,
+   "text": "and self-hosted. And we talked about"
+  },
+  {
+   "start": 1163.2,
+   "duration": 4.24,
+   "text": "both of these options, right? So what is"
+  },
+  {
+   "start": 1165.76,
+   "duration": 4.08,
+   "text": "an environment? First understand. So"
+  },
+  {
+   "start": 1167.44,
+   "duration": 4.8,
+   "text": "environment is where the sandbox"
+  },
+  {
+   "start": 1169.84,
+   "duration": 5.04,
+   "text": "actually lives. Now you've got two"
+  },
+  {
+   "start": 1172.24,
+   "duration": 5.04,
+   "text": "options here as I showed you."
+  },
+  {
+   "start": 1174.88,
+   "duration": 4.56,
+   "text": "One is cloud means anthropic manages"
+  },
+  {
+   "start": 1177.28,
+   "duration": 4.48,
+   "text": "everything or you can use self-hosted."
+  },
+  {
+   "start": 1179.44,
+   "duration": 5.84,
+   "text": "Yeah. If you need the sandbox on your"
+  },
+  {
+   "start": 1181.76,
+   "duration": 6.56,
+   "text": "own infrastructure but most uh kind of"
+  },
+  {
+   "start": 1185.28,
+   "duration": 5.519,
+   "text": "uh people start with cloud."
+  },
+  {
+   "start": 1188.32,
+   "duration": 5.2,
+   "text": "Yeah. And then we understood the"
+  },
+  {
+   "start": 1190.799,
+   "duration": 5.361,
+   "text": "session. Yeah. It's just like compare it"
+  },
+  {
+   "start": 1193.52,
+   "duration": 4.8,
+   "text": "to a kitchen in a restaurant, right? And"
+  },
+  {
+   "start": 1196.16,
+   "duration": 4.08,
+   "text": "that is how it works. Now, if I it's"
+  },
+  {
+   "start": 1198.32,
+   "duration": 4.32,
+   "text": "it's cloud means you don't have to worry"
+  },
+  {
+   "start": 1200.24,
+   "duration": 4.64,
+   "text": "about it. Um and then you have you can"
+  },
+  {
+   "start": 1202.64,
+   "duration": 3.44,
+   "text": "choose self-hosted or cloud whatever and"
+  },
+  {
+   "start": 1204.88,
+   "duration": 2.64,
+   "text": "you have to give the environment and"
+  },
+  {
+   "start": 1206.08,
+   "duration": 3.28,
+   "text": "then you can create the environment."
+  },
+  {
+   "start": 1207.52,
+   "duration": 5.039,
+   "text": "That's it."
+  },
+  {
+   "start": 1209.36,
+   "duration": 4.64,
+   "text": "Yeah, I hope that is making sense."
+  },
+  {
+   "start": 1212.559,
+   "duration": 4.641,
+   "text": "I think little by little you are"
+  },
+  {
+   "start": 1214.0,
+   "duration": 4.799,
+   "text": "understanding how uh these things works."
+  },
+  {
+   "start": 1217.2,
+   "duration": 3.68,
+   "text": "There are also a lot of things over"
+  },
+  {
+   "start": 1218.799,
+   "duration": 4.0,
+   "text": "here. This is nothing but your agent"
+  },
+  {
+   "start": 1220.88,
+   "duration": 3.36,
+   "text": "deployments. Yeah, a deployment binds an"
+  },
+  {
+   "start": 1222.799,
+   "duration": 4.401,
+   "text": "agent to the environment. Basically, the"
+  },
+  {
+   "start": 1224.24,
+   "duration": 4.88,
+   "text": "agent will be deployed and it also has"
+  },
+  {
+   "start": 1227.2,
+   "duration": 3.599,
+   "text": "credentials and schedule. So, what does"
+  },
+  {
+   "start": 1229.12,
+   "duration": 3.84,
+   "text": "this credential vaults and everything"
+  },
+  {
+   "start": 1230.799,
+   "duration": 3.601,
+   "text": "means? If you have some secrets or"
+  },
+  {
+   "start": 1232.96,
+   "duration": 4.4,
+   "text": "something that your agent needs to"
+  },
+  {
+   "start": 1234.4,
+   "duration": 5.84,
+   "text": "interact with generally in your local"
+  },
+  {
+   "start": 1237.36,
+   "duration": 4.88,
+   "text": "the agents would contain in your"
+  },
+  {
+   "start": 1240.24,
+   "duration": 3.84,
+   "text": "environment variables or wherever if"
+  },
+  {
+   "start": 1242.24,
+   "duration": 4.0,
+   "text": "you're deploying it in AWS, you would"
+  },
+  {
+   "start": 1244.08,
+   "duration": 3.92,
+   "text": "put it in AWS secrets. There also you"
+  },
+  {
+   "start": 1246.24,
+   "duration": 3.36,
+   "text": "are managing it yourself, right? But"
+  },
+  {
+   "start": 1248.0,
+   "duration": 4.24,
+   "text": "when it comes to managed agents and"
+  },
+  {
+   "start": 1249.6,
+   "duration": 5.76,
+   "text": "managed runtime in Anthropic, you can"
+  },
+  {
+   "start": 1252.24,
+   "duration": 6.48,
+   "text": "create a vault over here. Yeah. And you"
+  },
+  {
+   "start": 1255.36,
+   "duration": 6.0,
+   "text": "can store your um you know secrets over"
+  },
+  {
+   "start": 1258.72,
+   "duration": 4.8,
+   "text": "here or your values or whatnot, right?"
+  },
+  {
+   "start": 1261.36,
+   "duration": 4.08,
+   "text": "Um if you see uh it says your"
+  },
+  {
+   "start": 1263.52,
+   "duration": 4.08,
+   "text": "credentials obviously you can add to the"
+  },
+  {
+   "start": 1265.44,
+   "duration": 4.4,
+   "text": "vault. So it says credentials added to"
+  },
+  {
+   "start": 1267.6,
+   "duration": 4.24,
+   "text": "this vault will be usable by anyone with"
+  },
+  {
+   "start": 1269.84,
+   "duration": 3.68,
+   "text": "the API key access. So these are one"
+  },
+  {
+   "start": 1271.84,
+   "duration": 4.4,
+   "text": "thing you have to kind of understand"
+  },
+  {
+   "start": 1273.52,
+   "duration": 4.48,
+   "text": "that vaults are shared across this"
+  },
+  {
+   "start": 1276.24,
+   "duration": 4.16,
+   "text": "workspace."
+  },
+  {
+   "start": 1278.0,
+   "duration": 3.6,
+   "text": "Yeah, for now this is the kind of a"
+  },
+  {
+   "start": 1280.4,
+   "duration": 3.92,
+   "text": "thing that is there if you are using"
+  },
+  {
+   "start": 1281.6,
+   "duration": 4.88,
+   "text": "Waltz but just and you know it's very"
+  },
+  {
+   "start": 1284.32,
+   "duration": 4.08,
+   "text": "easy to understand how Walt is. So the"
+  },
+  {
+   "start": 1286.48,
+   "duration": 3.28,
+   "text": "environment and the deployment basically"
+  },
+  {
+   "start": 1288.4,
+   "duration": 3.2,
+   "text": "whenever you create a deployment for"
+  },
+  {
+   "start": 1289.76,
+   "duration": 4.32,
+   "text": "your agent it will bind your environment"
+  },
+  {
+   "start": 1291.6,
+   "duration": 4.24,
+   "text": "with all of this credential ws and"
+  },
+  {
+   "start": 1294.08,
+   "duration": 3.28,
+   "text": "everything uh everything will be"
+  },
+  {
+   "start": 1295.84,
+   "duration": 2.959,
+   "text": "available and then you can create a"
+  },
+  {
+   "start": 1297.36,
+   "duration": 3.12,
+   "text": "session of your agent and you can run"
+  },
+  {
+   "start": 1298.799,
+   "duration": 5.281,
+   "text": "the agent basically. I hope that is"
+  },
+  {
+   "start": 1300.48,
+   "duration": 6.24,
+   "text": "making sense. Yeah."
+  },
+  {
+   "start": 1304.08,
+   "duration": 5.92,
+   "text": "So now comes the memory stores. Memory"
+  },
+  {
+   "start": 1306.72,
+   "duration": 5.52,
+   "text": "stores is basically your agent's memory."
+  },
+  {
+   "start": 1310.0,
+   "duration": 3.76,
+   "text": "Yeah. And you don't have to worry about"
+  },
+  {
+   "start": 1312.24,
+   "duration": 3.6,
+   "text": "managing the memory yourself. If you"
+  },
+  {
+   "start": 1313.76,
+   "duration": 4.159,
+   "text": "remember in my memories uh memory"
+  },
+  {
+   "start": 1315.84,
+   "duration": 5.04,
+   "text": "lecture that we did a couple of episodes"
+  },
+  {
+   "start": 1317.919,
+   "duration": 4.88,
+   "text": "back, maybe we were managing our agents"
+  },
+  {
+   "start": 1320.88,
+   "duration": 3.44,
+   "text": "memory. How do we recover the memory?"
+  },
+  {
+   "start": 1322.799,
+   "duration": 3.76,
+   "text": "All of these things we were kind of"
+  },
+  {
+   "start": 1324.32,
+   "duration": 4.16,
+   "text": "doing it. We kind of even though cloud"
+  },
+  {
+   "start": 1326.559,
+   "duration": 4.48,
+   "text": "agent SDK was helping it, but the logic"
+  },
+  {
+   "start": 1328.48,
+   "duration": 6.48,
+   "text": "was more or less was defined by us."
+  },
+  {
+   "start": 1331.039,
+   "duration": 7.361,
+   "text": "Yeah. Here you just have to create a"
+  },
+  {
+   "start": 1334.96,
+   "duration": 4.64,
+   "text": "memory store. Yeah. And that's it. Name"
+  },
+  {
+   "start": 1338.4,
+   "duration": 3.279,
+   "text": "and description are rendered in the"
+  },
+  {
+   "start": 1339.6,
+   "duration": 3.84,
+   "text": "agent system prom when this store is"
+  },
+  {
+   "start": 1341.679,
+   "duration": 5.921,
+   "text": "attached. Yeah. So you have just create"
+  },
+  {
+   "start": 1343.44,
+   "duration": 5.92,
+   "text": "a memory store and it will maintain it"
+  },
+  {
+   "start": 1347.6,
+   "duration": 4.8,
+   "text": "will give your agents persistent cross"
+  },
+  {
+   "start": 1349.36,
+   "duration": 8.16,
+   "text": "session memory like that out of the box."
+  },
+  {
+   "start": 1352.4,
+   "duration": 7.279,
+   "text": "Okay, I hope that is making sense."
+  },
+  {
+   "start": 1357.52,
+   "duration": 4.56,
+   "text": "Okay, so we talked about environments"
+  },
+  {
+   "start": 1359.679,
+   "duration": 4.081,
+   "text": "and we talked about durable sessions"
+  },
+  {
+   "start": 1362.08,
+   "duration": 4.479,
+   "text": "which where we talked about the memory"
+  },
+  {
+   "start": 1363.76,
+   "duration": 4.799,
+   "text": "store. Yeah. And now let's talk about"
+  },
+  {
+   "start": 1366.559,
+   "duration": 5.281,
+   "text": "the events."
+  },
+  {
+   "start": 1368.559,
+   "duration": 6.641,
+   "text": "Now events is how you talk to a managed"
+  },
+  {
+   "start": 1371.84,
+   "duration": 7.36,
+   "text": "session. Yeah. So in agent SDK if you"
+  },
+  {
+   "start": 1375.2,
+   "duration": 6.08,
+   "text": "remember we used query query method and"
+  },
+  {
+   "start": 1379.2,
+   "duration": 4.8,
+   "text": "then inside we used to pass in the"
+  },
+  {
+   "start": 1381.28,
+   "duration": 6.879,
+   "text": "prompts and the options and got back and"
+  },
+  {
+   "start": 1384.0,
+   "duration": 6.08,
+   "text": "basically an async generator of messages"
+  },
+  {
+   "start": 1388.159,
+   "duration": 5.441,
+   "text": "very simple in managed agents the"
+  },
+  {
+   "start": 1390.08,
+   "duration": 6.32,
+   "text": "communication model is event based okay"
+  },
+  {
+   "start": 1393.6,
+   "duration": 5.36,
+   "text": "you open a stream on a session you send"
+  },
+  {
+   "start": 1396.4,
+   "duration": 5.84,
+   "text": "events in you receive events back it's a"
+  },
+  {
+   "start": 1398.96,
+   "duration": 5.44,
+   "text": "server send events under the hood okay"
+  },
+  {
+   "start": 1402.24,
+   "duration": 5.52,
+   "text": "you don't have to kind of understand"
+  },
+  {
+   "start": 1404.4,
+   "duration": 5.6,
+   "text": "like the you know completely uh how it"
+  },
+  {
+   "start": 1407.76,
+   "duration": 4.96,
+   "text": "works. Yeah, you just need to understand"
+  },
+  {
+   "start": 1410.0,
+   "duration": 5.28,
+   "text": "that events is how the the agents in"
+  },
+  {
+   "start": 1412.72,
+   "duration": 5.04,
+   "text": "your managed agents runtime talk to each"
+  },
+  {
+   "start": 1415.28,
+   "duration": 5.44,
+   "text": "other."
+  },
+  {
+   "start": 1417.76,
+   "duration": 6.159,
+   "text": "Yeah, I hope that is making sense. So I"
+  },
+  {
+   "start": 1420.72,
+   "duration": 7.04,
+   "text": "can already hear the question yeah from"
+  },
+  {
+   "start": 1423.919,
+   "duration": 6.88,
+   "text": "far away and because you just saw an UI"
+  },
+  {
+   "start": 1427.76,
+   "duration": 5.44,
+   "text": "where you fill in a form you name model"
+  },
+  {
+   "start": 1430.799,
+   "duration": 5.12,
+   "text": "system prompt tools and then you get an"
+  },
+  {
+   "start": 1433.2,
+   "duration": 4.32,
+   "text": "agent or you just copy paste a YAML file"
+  },
+  {
+   "start": 1435.919,
+   "duration": 4.24,
+   "text": "over there as a configuration and you"
+  },
+  {
+   "start": 1437.52,
+   "duration": 6.72,
+   "text": "get an agent. So the thing is was"
+  },
+  {
+   "start": 1440.159,
+   "duration": 7.201,
+   "text": "learning the agent SDK a waste of time."
+  },
+  {
+   "start": 1444.24,
+   "duration": 5.04,
+   "text": "Now I will answer that question and"
+  },
+  {
+   "start": 1447.36,
+   "duration": 4.319,
+   "text": "obviously"
+  },
+  {
+   "start": 1449.28,
+   "duration": 4.399,
+   "text": "100% it will not be a waste of time but"
+  },
+  {
+   "start": 1451.679,
+   "duration": 5.057,
+   "text": "a lot of people would think if I have a"
+  },
+  {
+   "start": 1453.679,
+   "duration": 3.761,
+   "text": "way of creating an agent in that way"
+  },
+  {
+   "start": 1456.736,
+   "duration": 3.264,
+   "text": "[snorts]"
+  },
+  {
+   "start": 1457.44,
+   "duration": 4.88,
+   "text": "in in the by using the UI or by using"
+  },
+  {
+   "start": 1460.0,
+   "duration": 5.2,
+   "text": "the configuration why do I need to code?"
+  },
+  {
+   "start": 1462.32,
+   "duration": 6.719,
+   "text": "That's a very interesting question."
+  },
+  {
+   "start": 1465.2,
+   "duration": 6.0,
+   "text": "And here's why it's not a waste of time."
+  },
+  {
+   "start": 1469.039,
+   "duration": 3.841,
+   "text": "Look at that particular form that I just"
+  },
+  {
+   "start": 1471.2,
+   "duration": 4.719,
+   "text": "showed you. Yeah. for creating the"
+  },
+  {
+   "start": 1472.88,
+   "duration": 6.48,
+   "text": "agent. Yeah, it asks you for a system"
+  },
+  {
+   "start": 1475.919,
+   "duration": 6.801,
+   "text": "prompt. What do you write in it? It asks"
+  },
+  {
+   "start": 1479.36,
+   "duration": 5.6,
+   "text": "you which tools to attach. How do you"
+  },
+  {
+   "start": 1482.72,
+   "duration": 5.68,
+   "text": "scope them? It asks you to define custom"
+  },
+  {
+   "start": 1484.96,
+   "duration": 6.079,
+   "text": "tools. What shape should the schema be?"
+  },
+  {
+   "start": 1488.4,
+   "duration": 4.879,
+   "text": "Should you know suggested fix be"
+  },
+  {
+   "start": 1491.039,
+   "duration": 5.681,
+   "text": "nullable or required? You know, it lets"
+  },
+  {
+   "start": 1493.279,
+   "duration": 5.681,
+   "text": "you configure MCP servers. Which ones"
+  },
+  {
+   "start": 1496.72,
+   "duration": 4.72,
+   "text": "with what credentials? How do you keep a"
+  },
+  {
+   "start": 1498.96,
+   "duration": 4.56,
+   "text": "token from leaking?"
+  },
+  {
+   "start": 1501.44,
+   "duration": 4.64,
+   "text": "Now the form is pretty easy that we just"
+  },
+  {
+   "start": 1503.52,
+   "duration": 4.08,
+   "text": "saw but what knowing what you put in"
+  },
+  {
+   "start": 1506.08,
+   "duration": 4.16,
+   "text": "that particular form is the hard part"
+  },
+  {
+   "start": 1507.6,
+   "duration": 5.04,
+   "text": "and how the different kind of fields"
+  },
+  {
+   "start": 1510.24,
+   "duration": 4.0,
+   "text": "work there are also very important to"
+  },
+  {
+   "start": 1512.64,
+   "duration": 4.0,
+   "text": "understand and that is what you learned"
+  },
+  {
+   "start": 1514.24,
+   "duration": 5.439,
+   "text": "in the cloud managed you know the the"
+  },
+  {
+   "start": 1516.64,
+   "duration": 5.519,
+   "text": "cloud agent SDK. Now I already mentioned"
+  },
+  {
+   "start": 1519.679,
+   "duration": 6.401,
+   "text": "this from the start that the cloud agent"
+  },
+  {
+   "start": 1522.159,
+   "duration": 6.961,
+   "text": "SDK you can create agents using any"
+  },
+  {
+   "start": 1526.08,
+   "duration": 5.36,
+   "text": "programming language. You can deploy it"
+  },
+  {
+   "start": 1529.12,
+   "duration": 5.2,
+   "text": "anywhere. You can deploy it in your"
+  },
+  {
+   "start": 1531.44,
+   "duration": 5.68,
+   "text": "company's u you know infrastructure or"
+  },
+  {
+   "start": 1534.32,
+   "duration": 5.12,
+   "text": "your own infrastructure. That is what"
+  },
+  {
+   "start": 1537.12,
+   "duration": 3.76,
+   "text": "where the flexibility comes in. If you"
+  },
+  {
+   "start": 1539.44,
+   "duration": 4.08,
+   "text": "create an agent using the raw messages"
+  },
+  {
+   "start": 1540.88,
+   "duration": 5.12,
+   "text": "API, you would have the same flexibility"
+  },
+  {
+   "start": 1543.52,
+   "duration": 5.36,
+   "text": "along with managing the agent"
+  },
+  {
+   "start": 1546.0,
+   "duration": 4.48,
+   "text": "flexibility as well. So it's not a waste"
+  },
+  {
+   "start": 1548.88,
+   "duration": 4.0,
+   "text": "of time. If you know how to configure"
+  },
+  {
+   "start": 1550.48,
+   "duration": 5.36,
+   "text": "MCP servers in a agent SDK or in the ROM"
+  },
+  {
+   "start": 1552.88,
+   "duration": 5.36,
+   "text": "as API configuring MCP servers here is"
+  },
+  {
+   "start": 1555.84,
+   "duration": 5.76,
+   "text": "just a piece of cake even less than that"
+  },
+  {
+   "start": 1558.24,
+   "duration": 5.679,
+   "text": "it's a piece of toffee for you."
+  },
+  {
+   "start": 1561.6,
+   "duration": 5.199,
+   "text": "Now if you're going to compare the agent"
+  },
+  {
+   "start": 1563.919,
+   "duration": 5.12,
+   "text": "SDK concept and the managed agents"
+  },
+  {
+   "start": 1566.799,
+   "duration": 4.561,
+   "text": "equivalent behavior side by side this is"
+  },
+  {
+   "start": 1569.039,
+   "duration": 4.88,
+   "text": "what it will come."
+  },
+  {
+   "start": 1571.36,
+   "duration": 4.48,
+   "text": "So you would remember a very important"
+  },
+  {
+   "start": 1573.919,
+   "duration": 4.88,
+   "text": "concept that we learned in cloud agent"
+  },
+  {
+   "start": 1575.84,
+   "duration": 5.12,
+   "text": "SDK that is the cloud agent options"
+  },
+  {
+   "start": 1578.799,
+   "duration": 3.841,
+   "text": "right where you do the system prompt"
+  },
+  {
+   "start": 1580.96,
+   "duration": 3.68,
+   "text": "design where where you put the system"
+  },
+  {
+   "start": 1582.64,
+   "duration": 4.639,
+   "text": "prompt I can show you that in this"
+  },
+  {
+   "start": 1584.64,
+   "duration": 4.399,
+   "text": "visual studio code uh that's where we"
+  },
+  {
+   "start": 1587.279,
+   "duration": 3.201,
+   "text": "give it right if you just go to episode"
+  },
+  {
+   "start": 1589.039,
+   "duration": 5.361,
+   "text": "number two over here and this is the"
+  },
+  {
+   "start": 1590.48,
+   "duration": 6.48,
+   "text": "cloud agent options that we talked about"
+  },
+  {
+   "start": 1594.4,
+   "duration": 4.24,
+   "text": "but here you just provide it in the"
+  },
+  {
+   "start": 1596.96,
+   "duration": 4.719,
+   "text": "system prompt field that we just saw in"
+  },
+  {
+   "start": 1598.64,
+   "duration": 4.96,
+   "text": "the managed agents tool schemas and"
+  },
+  {
+   "start": 1601.679,
+   "duration": 4.321,
+   "text": "scoping or description. We we used to"
+  },
+  {
+   "start": 1603.6,
+   "duration": 6.64,
+   "text": "use the at the rate tool decorator in"
+  },
+  {
+   "start": 1606.0,
+   "duration": 6.24,
+   "text": "the cloud agent SDK but you would do"
+  },
+  {
+   "start": 1610.24,
+   "duration": 3.84,
+   "text": "your custom tool definitions in the"
+  },
+  {
+   "start": 1612.24,
+   "duration": 4.08,
+   "text": "agent config itself. If you remember"
+  },
+  {
+   "start": 1614.08,
+   "duration": 3.76,
+   "text": "that popup that I had showed in managed"
+  },
+  {
+   "start": 1616.32,
+   "duration": 6.16,
+   "text": "agents."
+  },
+  {
+   "start": 1617.84,
+   "duration": 6.719,
+   "text": "Now um if you see uh you know we we used"
+  },
+  {
+   "start": 1622.48,
+   "duration": 4.16,
+   "text": "to give this allowed tools if you"
+  },
+  {
+   "start": 1624.559,
+   "duration": 4.081,
+   "text": "remember we used to give you know the"
+  },
+  {
+   "start": 1626.64,
+   "duration": 4.32,
+   "text": "allowed tools is basically you are"
+  },
+  {
+   "start": 1628.64,
+   "duration": 4.159,
+   "text": "allowing claw to use this tool without"
+  },
+  {
+   "start": 1630.96,
+   "duration": 4.64,
+   "text": "any permission that is what we used to"
+  },
+  {
+   "start": 1632.799,
+   "duration": 5.281,
+   "text": "do but here it's pretty straightforward"
+  },
+  {
+   "start": 1635.6,
+   "duration": 4.319,
+   "text": "managed agents you just mention which"
+  },
+  {
+   "start": 1638.08,
+   "duration": 3.04,
+   "text": "tool you want it to use or which tool"
+  },
+  {
+   "start": 1639.919,
+   "duration": 3.521,
+   "text": "you don't want to use. So if you"
+  },
+  {
+   "start": 1641.12,
+   "duration": 4.48,
+   "text": "remember if I go back to the agents over"
+  },
+  {
+   "start": 1643.44,
+   "duration": 4.479,
+   "text": "here and when I create the agent if you"
+  },
+  {
+   "start": 1645.6,
+   "duration": 4.8,
+   "text": "even see over here built-in tools there"
+  },
+  {
+   "start": 1647.919,
+   "duration": 4.401,
+   "text": "is an option as always allow always ask"
+  },
+  {
+   "start": 1650.4,
+   "duration": 5.2,
+   "text": "and always deny. When you say always"
+  },
+  {
+   "start": 1652.32,
+   "duration": 5.599,
+   "text": "allow it's just the allowed tools uh"
+  },
+  {
+   "start": 1655.6,
+   "duration": 5.199,
+   "text": "field that you see in that particular"
+  },
+  {
+   "start": 1657.919,
+   "duration": 4.961,
+   "text": "cloud agent SDK. Now you can also"
+  },
+  {
+   "start": 1660.799,
+   "duration": 5.841,
+   "text": "specifically say okay this is a custom"
+  },
+  {
+   "start": 1662.88,
+   "duration": 6.0,
+   "text": "okay for bash uh you know always deny or"
+  },
+  {
+   "start": 1666.64,
+   "duration": 4.56,
+   "text": "always allow. This is how it works. So"
+  },
+  {
+   "start": 1668.88,
+   "duration": 4.08,
+   "text": "here you can set it up. So the concepts"
+  },
+  {
+   "start": 1671.2,
+   "duration": 4.4,
+   "text": "are similar if you learned that"
+  },
+  {
+   "start": 1672.96,
+   "duration": 5.68,
+   "text": "basically this is a piece of cake."
+  },
+  {
+   "start": 1675.6,
+   "duration": 5.52,
+   "text": "Yeah. Now um let's talk about other"
+  },
+  {
+   "start": 1678.64,
+   "duration": 3.84,
+   "text": "stuffs like hooks and sub aents uh you"
+  },
+  {
+   "start": 1681.12,
+   "duration": 3.2,
+   "text": "know hooks for enforcement if you"
+  },
+  {
+   "start": 1682.48,
+   "duration": 5.679,
+   "text": "remember episode number four that we"
+  },
+  {
+   "start": 1684.32,
+   "duration": 7.28,
+   "text": "did. Now hooks still exist in you know"
+  },
+  {
+   "start": 1688.159,
+   "duration": 5.76,
+   "text": "managed agents but the enforcement logic"
+  },
+  {
+   "start": 1691.6,
+   "duration": 4.0,
+   "text": "travels. Okay it's a little bit"
+  },
+  {
+   "start": 1693.919,
+   "duration": 4.88,
+   "text": "different over here but the same concept"
+  },
+  {
+   "start": 1695.6,
+   "duration": 5.199,
+   "text": "applies. Sub agent obviously sub aents"
+  },
+  {
+   "start": 1698.799,
+   "duration": 3.921,
+   "text": "there were you you saw in that prompt"
+  },
+  {
+   "start": 1700.799,
+   "duration": 3.921,
+   "text": "where we were able to kind of attach sub"
+  },
+  {
+   "start": 1702.72,
+   "duration": 4.72,
+   "text": "aents you need to create another agent"
+  },
+  {
+   "start": 1704.72,
+   "duration": 5.12,
+   "text": "and kind of attach it uh to another"
+  },
+  {
+   "start": 1707.44,
+   "duration": 4.719,
+   "text": "agent saying that it is a sub agent if"
+  },
+  {
+   "start": 1709.84,
+   "duration": 5.04,
+   "text": "you remember that particular field that"
+  },
+  {
+   "start": 1712.159,
+   "duration": 4.481,
+   "text": "I saw about sub agents MCP server"
+  },
+  {
+   "start": 1714.88,
+   "duration": 4.399,
+   "text": "integration is pretty straightforward"
+  },
+  {
+   "start": 1716.64,
+   "duration": 4.32,
+   "text": "just go and add an MCP server while you"
+  },
+  {
+   "start": 1719.279,
+   "duration": 4.0,
+   "text": "are creating the agent itself right so"
+  },
+  {
+   "start": 1720.96,
+   "duration": 5.199,
+   "text": "it's it's pretty straightforward and"
+  },
+  {
+   "start": 1723.279,
+   "duration": 5.921,
+   "text": "memory context and all of those things"
+  },
+  {
+   "start": 1726.159,
+   "duration": 5.441,
+   "text": "are managed by anthropic itself. So you"
+  },
+  {
+   "start": 1729.2,
+   "duration": 5.52,
+   "text": "don't have to worry about that."
+  },
+  {
+   "start": 1731.6,
+   "duration": 5.04,
+   "text": "Yeah. But um but in the case of managed"
+  },
+  {
+   "start": 1734.72,
+   "duration": 4.64,
+   "text": "agents, you somehow have to manage that"
+  },
+  {
+   "start": 1736.64,
+   "duration": 5.36,
+   "text": "particular memory and all those things."
+  },
+  {
+   "start": 1739.36,
+   "duration": 4.559,
+   "text": "Yeah. So the console is a form. The SDK"
+  },
+  {
+   "start": 1742.0,
+   "duration": 4.72,
+   "text": "taught you what to put it in that form."
+  },
+  {
+   "start": 1743.919,
+   "duration": 4.721,
+   "text": "So in particular terms, this is how it"
+  },
+  {
+   "start": 1746.72,
+   "duration": 4.959,
+   "text": "works."
+  },
+  {
+   "start": 1748.64,
+   "duration": 4.88,
+   "text": "Yeah. So I hope that is making sense. So"
+  },
+  {
+   "start": 1751.679,
+   "duration": 4.561,
+   "text": "every row in that table that you just"
+  },
+  {
+   "start": 1753.52,
+   "duration": 5.68,
+   "text": "saw that the form Yeah. is a decision"
+  },
+  {
+   "start": 1756.24,
+   "duration": 5.52,
+   "text": "you now know how to make. Yeah. Not"
+  },
+  {
+   "start": 1759.2,
+   "duration": 4.479,
+   "text": "because you memorized a form field,"
+  },
+  {
+   "start": 1761.76,
+   "duration": 3.84,
+   "text": "okay? But because you built this thing"
+  },
+  {
+   "start": 1763.679,
+   "duration": 5.441,
+   "text": "from scratch and understand why each"
+  },
+  {
+   "start": 1765.6,
+   "duration": 7.199,
+   "text": "choice matters. So I hope that this kind"
+  },
+  {
+   "start": 1769.12,
+   "duration": 6.24,
+   "text": "of comparison answers your questions."
+  },
+  {
+   "start": 1772.799,
+   "duration": 4.081,
+   "text": "It's the same thing. Yeah, the agent"
+  },
+  {
+   "start": 1775.36,
+   "duration": 4.08,
+   "text": "concept is same. All of those things are"
+  },
+  {
+   "start": 1776.88,
+   "duration": 5.6,
+   "text": "same. It's just getting abstracted layer"
+  },
+  {
+   "start": 1779.44,
+   "duration": 5.04,
+   "text": "by layer from you. I hope that's making"
+  },
+  {
+   "start": 1782.48,
+   "duration": 5.84,
+   "text": "sense."
+  },
+  {
+   "start": 1784.48,
+   "duration": 6.16,
+   "text": "Okay, now uh let's talk about what"
+  },
+  {
+   "start": 1788.32,
+   "duration": 5.12,
+   "text": "changes. Obviously, we understood what"
+  },
+  {
+   "start": 1790.64,
+   "duration": 4.639,
+   "text": "the what the the same things that uh"
+  },
+  {
+   "start": 1793.44,
+   "duration": 3.92,
+   "text": "were same with the managed agents and"
+  },
+  {
+   "start": 1795.279,
+   "duration": 4.88,
+   "text": "the claudinous SD. What are the changes?"
+  },
+  {
+   "start": 1797.36,
+   "duration": 6.16,
+   "text": "What are the real differences basically?"
+  },
+  {
+   "start": 1800.159,
+   "duration": 6.081,
+   "text": "Okay, so let's be honest, not everything"
+  },
+  {
+   "start": 1803.52,
+   "duration": 4.159,
+   "text": "is same. The concepts are same, but some"
+  },
+  {
+   "start": 1806.24,
+   "duration": 3.84,
+   "text": "things are a little bit different. Okay."
+  },
+  {
+   "start": 1807.679,
+   "duration": 5.281,
+   "text": "And there are some real things that we"
+  },
+  {
+   "start": 1810.08,
+   "duration": 5.12,
+   "text": "need to understand and they matter for"
+  },
+  {
+   "start": 1812.96,
+   "duration": 3.92,
+   "text": "when you pick one over the other when"
+  },
+  {
+   "start": 1815.2,
+   "duration": 3.599,
+   "text": "you want to go with the managed agents"
+  },
+  {
+   "start": 1816.88,
+   "duration": 4.32,
+   "text": "when you want to go with the cloud agent"
+  },
+  {
+   "start": 1818.799,
+   "duration": 4.88,
+   "text": "SDK. So first is the processes life"
+  },
+  {
+   "start": 1821.2,
+   "duration": 5.04,
+   "text": "cycle. Agent SDK is local to you or"
+  },
+  {
+   "start": 1823.679,
+   "duration": 5.441,
+   "text": "local to your infrastructure and managed"
+  },
+  {
+   "start": 1826.24,
+   "duration": 5.52,
+   "text": "agents you know. So, so when when we"
+  },
+  {
+   "start": 1829.12,
+   "duration": 5.36,
+   "text": "talk about cloud agent SDK, you are you"
+  },
+  {
+   "start": 1831.76,
+   "duration": 4.639,
+   "text": "know kind of responsible for managing"
+  },
+  {
+   "start": 1834.48,
+   "duration": 4.88,
+   "text": "that process life cycle, your sessions"
+  },
+  {
+   "start": 1836.399,
+   "duration": 4.561,
+   "text": "and all of those things, right? So, if"
+  },
+  {
+   "start": 1839.36,
+   "duration": 3.199,
+   "text": "you haven't configured anything in your"
+  },
+  {
+   "start": 1840.96,
+   "duration": 3.52,
+   "text": "cloud agent SDK and it's running in a"
+  },
+  {
+   "start": 1842.559,
+   "duration": 4.561,
+   "text": "local, let's say for that example,"
+  },
+  {
+   "start": 1844.48,
+   "duration": 5.199,
+   "text": "everything dies with your process,"
+  },
+  {
+   "start": 1847.12,
+   "duration": 4.4,
+   "text": "right? But in case of managed agents, it"
+  },
+  {
+   "start": 1849.679,
+   "duration": 4.48,
+   "text": "survives a process. Durable sessions are"
+  },
+  {
+   "start": 1851.52,
+   "duration": 4.24,
+   "text": "there. And we also saw how you can use"
+  },
+  {
+   "start": 1854.159,
+   "duration": 4.24,
+   "text": "that sessions tab over there, right?"
+  },
+  {
+   "start": 1855.76,
+   "duration": 6.24,
+   "text": "It's one of the most primitive things of"
+  },
+  {
+   "start": 1858.399,
+   "duration": 5.041,
+   "text": "managed agents. Crash recovery that also"
+  },
+  {
+   "start": 1862.0,
+   "duration": 4.399,
+   "text": "you build it. If you remember our"
+  },
+  {
+   "start": 1863.44,
+   "duration": 4.479,
+   "text": "scratchpad files or all of those things"
+  },
+  {
+   "start": 1866.399,
+   "duration": 4.0,
+   "text": "that we had discussed in my previous"
+  },
+  {
+   "start": 1867.919,
+   "duration": 4.24,
+   "text": "episodes, you have you have to you have"
+  },
+  {
+   "start": 1870.399,
+   "duration": 4.561,
+   "text": "to kind of deal with your agent"
+  },
+  {
+   "start": 1872.159,
+   "duration": 4.64,
+   "text": "crashing. But here your your sessions"
+  },
+  {
+   "start": 1874.96,
+   "duration": 3.68,
+   "text": "your built-in sessions can resume from"
+  },
+  {
+   "start": 1876.799,
+   "duration": 4.801,
+   "text": "checkpoints that [snorts] is there in"
+  },
+  {
+   "start": 1878.64,
+   "duration": 4.72,
+   "text": "managed agents. observability. You built"
+  },
+  {
+   "start": 1881.6,
+   "duration": 4.72,
+   "text": "the observability. You kind of build it"
+  },
+  {
+   "start": 1883.36,
+   "duration": 5.36,
+   "text": "and we we we saw how you can uh observe"
+  },
+  {
+   "start": 1886.32,
+   "duration": 4.239,
+   "text": "your agents using a JSON files. If"
+  },
+  {
+   "start": 1888.72,
+   "duration": 4.559,
+   "text": "something happens to your agents midway"
+  },
+  {
+   "start": 1890.559,
+   "duration": 5.681,
+   "text": "and it crashes, you have to manually"
+  },
+  {
+   "start": 1893.279,
+   "duration": 4.88,
+   "text": "kind of go and check the JSON files and"
+  },
+  {
+   "start": 1896.24,
+   "duration": 3.679,
+   "text": "you have to see what what were the"
+  },
+  {
+   "start": 1898.159,
+   "duration": 3.841,
+   "text": "decisions taken by the agent by yourself"
+  },
+  {
+   "start": 1899.919,
+   "duration": 4.321,
+   "text": "or you build your own dashboard where"
+  },
+  {
+   "start": 1902.0,
+   "duration": 4.08,
+   "text": "those JSON if you upload it will show"
+  },
+  {
+   "start": 1904.24,
+   "duration": 4.88,
+   "text": "you a trace something like that you have"
+  },
+  {
+   "start": 1906.08,
+   "duration": 4.719,
+   "text": "to manage. But here console audit trail"
+  },
+  {
+   "start": 1909.12,
+   "duration": 3.76,
+   "text": "is there. You know your sessions audit"
+  },
+  {
+   "start": 1910.799,
+   "duration": 4.72,
+   "text": "trail is there in managed agents where"
+  },
+  {
+   "start": 1912.88,
+   "duration": 5.6,
+   "text": "you can just go and have a look. Next is"
+  },
+  {
+   "start": 1915.519,
+   "duration": 5.201,
+   "text": "scheduling. I mean whatever cron type of"
+  },
+  {
+   "start": 1918.48,
+   "duration": 5.36,
+   "text": "jobs you need you have to do it. You"
+  },
+  {
+   "start": 1920.72,
+   "duration": 6.559,
+   "text": "build it. You can build a cron a task se"
+  },
+  {
+   "start": 1923.84,
+   "duration": 5.92,
+   "text": "task q. But here it's built in chron"
+  },
+  {
+   "start": 1927.279,
+   "duration": 4.88,
+   "text": "style deployments which is available in"
+  },
+  {
+   "start": 1929.76,
+   "duration": 4.399,
+   "text": "as part of managed agents. Credentials"
+  },
+  {
+   "start": 1932.159,
+   "duration": 3.601,
+   "text": "as I mentioned uh you have to maintain"
+  },
+  {
+   "start": 1934.159,
+   "duration": 3.281,
+   "text": "it yourself. But in case we have"
+  },
+  {
+   "start": 1935.76,
+   "duration": 4.159,
+   "text": "credential vault which I have already"
+  },
+  {
+   "start": 1937.44,
+   "duration": 6.479,
+   "text": "shown you it's pretty simple multi-"
+  },
+  {
+   "start": 1939.919,
+   "duration": 5.6,
+   "text": "aents uh you have to define like you are"
+  },
+  {
+   "start": 1943.919,
+   "duration": 2.961,
+   "text": "using the hub and spoke model or"
+  },
+  {
+   "start": 1945.519,
+   "duration": 3.201,
+   "text": "something like that you have to see"
+  },
+  {
+   "start": 1946.88,
+   "duration": 4.48,
+   "text": "which sub aents gets invoked at which"
+  },
+  {
+   "start": 1948.72,
+   "duration": 4.72,
+   "text": "time at what decision does the"
+  },
+  {
+   "start": 1951.36,
+   "duration": 4.48,
+   "text": "coordinator invokes the sub aents all of"
+  },
+  {
+   "start": 1953.44,
+   "duration": 4.16,
+   "text": "these things you have to do but here"
+  },
+  {
+   "start": 1955.84,
+   "duration": 3.76,
+   "text": "we'll discuss it in a minute here"
+  },
+  {
+   "start": 1957.6,
+   "duration": 4.16,
+   "text": "managed orchestration and there are"
+  },
+  {
+   "start": 1959.6,
+   "duration": 5.199,
+   "text": "session threads where you can go and"
+  },
+  {
+   "start": 1961.76,
+   "duration": 4.72,
+   "text": "check okay this agent has uh you know"
+  },
+  {
+   "start": 1964.799,
+   "duration": 3.921,
+   "text": "kind of invoke this sub agent and this"
+  },
+  {
+   "start": 1966.48,
+   "duration": 4.16,
+   "text": "is the thread that is going on and"
+  },
+  {
+   "start": 1968.72,
+   "duration": 4.48,
+   "text": "everything you can just say. Now coming"
+  },
+  {
+   "start": 1970.64,
+   "duration": 5.36,
+   "text": "to the cost. Cost is pretty simple. When"
+  },
+  {
+   "start": 1973.2,
+   "duration": 4.959,
+   "text": "you are using cloud agent SDK, you are"
+  },
+  {
+   "start": 1976.0,
+   "duration": 5.44,
+   "text": "just paying for the tokens that you are"
+  },
+  {
+   "start": 1978.159,
+   "duration": 5.601,
+   "text": "using via the API calls. Yeah. But here"
+  },
+  {
+   "start": 1981.44,
+   "duration": 5.04,
+   "text": "you are you are paying for the tokens as"
+  },
+  {
+   "start": 1983.76,
+   "duration": 6.24,
+   "text": "well as a point, you know, 8 cents,"
+  },
+  {
+   "start": 1986.48,
+   "duration": 6.72,
+   "text": "right? It's 8 cents I guess. Um 8 cents"
+  },
+  {
+   "start": 1990.0,
+   "duration": 5.12,
+   "text": "per hour of active session runtime. So"
+  },
+  {
+   "start": 1993.2,
+   "duration": 5.04,
+   "text": "what does active session runtime means?"
+  },
+  {
+   "start": 1995.12,
+   "duration": 5.84,
+   "text": "When your agent is running in a session."
+  },
+  {
+   "start": 1998.24,
+   "duration": 5.279,
+   "text": "So if the agent is idle, you don't pay"
+  },
+  {
+   "start": 2000.96,
+   "duration": 4.48,
+   "text": "the session fee. Okay? And that's the"
+  },
+  {
+   "start": 2003.519,
+   "duration": 3.601,
+   "text": "trade-off. So you are getting more"
+  },
+  {
+   "start": 2005.44,
+   "duration": 4.32,
+   "text": "convenience, but you are getting"
+  },
+  {
+   "start": 2007.12,
+   "duration": 4.48,
+   "text": "slightly higher cost."
+  },
+  {
+   "start": 2009.76,
+   "duration": 4.159,
+   "text": "Yeah. So I hope that's that's that's"
+  },
+  {
+   "start": 2011.6,
+   "duration": 4.88,
+   "text": "making sense."
+  },
+  {
+   "start": 2013.919,
+   "duration": 5.041,
+   "text": "One slide over the console audit trail"
+  },
+  {
+   "start": 2016.48,
+   "duration": 4.96,
+   "text": "and and as you saw that when we went to"
+  },
+  {
+   "start": 2018.96,
+   "duration": 4.559,
+   "text": "the agents there was uh if you go back"
+  },
+  {
+   "start": 2021.44,
+   "duration": 4.959,
+   "text": "there was the sessions tab, right? So"
+  },
+  {
+   "start": 2023.519,
+   "duration": 5.441,
+   "text": "here you can you can filter by session"
+  },
+  {
+   "start": 2026.399,
+   "duration": 4.64,
+   "text": "ID. you can dig deep and see what has"
+  },
+  {
+   "start": 2028.96,
+   "duration": 4.48,
+   "text": "happened in a session's thread. So that"
+  },
+  {
+   "start": 2031.039,
+   "duration": 4.721,
+   "text": "is what you can do. You can do an audit"
+  },
+  {
+   "start": 2033.44,
+   "duration": 3.92,
+   "text": "trail of each session and you can see"
+  },
+  {
+   "start": 2035.76,
+   "duration": 3.279,
+   "text": "actually what the agent did in a"
+  },
+  {
+   "start": 2037.36,
+   "duration": 5.199,
+   "text": "particular session. It is the same as"
+  },
+  {
+   "start": 2039.039,
+   "duration": 5.921,
+   "text": "what we had discussed for observability"
+  },
+  {
+   "start": 2042.559,
+   "duration": 4.96,
+   "text": "uh in a couple of episodes back where"
+  },
+  {
+   "start": 2044.96,
+   "duration": 5.439,
+   "text": "you have to whenever an agent runs using"
+  },
+  {
+   "start": 2047.519,
+   "duration": 4.32,
+   "text": "a cloud agent SDK it generates a JSONL"
+  },
+  {
+   "start": 2050.399,
+   "duration": 2.881,
+   "text": "file for that particular session. You"
+  },
+  {
+   "start": 2051.839,
+   "duration": 3.681,
+   "text": "can go there and you can see what the"
+  },
+  {
+   "start": 2053.28,
+   "duration": 4.799,
+   "text": "agent did and all those things. But here"
+  },
+  {
+   "start": 2055.52,
+   "duration": 4.72,
+   "text": "it provides it out of the box. I hope"
+  },
+  {
+   "start": 2058.079,
+   "duration": 4.161,
+   "text": "that's making sense because it will come"
+  },
+  {
+   "start": 2060.24,
+   "duration": 4.48,
+   "text": "in the exam. So I kept a dedicated slide"
+  },
+  {
+   "start": 2062.24,
+   "duration": 4.96,
+   "text": "on it. Yeah. And you you can find it in"
+  },
+  {
+   "start": 2064.72,
+   "duration": 5.04,
+   "text": "platform.cloud.com where all the managed"
+  },
+  {
+   "start": 2067.2,
+   "duration": 5.04,
+   "text": "agents uh concepts are there right where"
+  },
+  {
+   "start": 2069.76,
+   "duration": 4.96,
+   "text": "you can build an agent. Okay. Now this"
+  },
+  {
+   "start": 2072.24,
+   "duration": 4.8,
+   "text": "very important thing something known as"
+  },
+  {
+   "start": 2074.72,
+   "duration": 4.32,
+   "text": "dreaming. Okay. And it's a very"
+  },
+  {
+   "start": 2077.04,
+   "duration": 4.0,
+   "text": "interesting concept and uh it's a very"
+  },
+  {
+   "start": 2079.04,
+   "duration": 5.28,
+   "text": "interesting name actually. So dreaming"
+  },
+  {
+   "start": 2081.04,
+   "duration": 5.28,
+   "text": "agents that learn between sessions. So"
+  },
+  {
+   "start": 2084.32,
+   "duration": 4.24,
+   "text": "this is one that gets people excited and"
+  },
+  {
+   "start": 2086.32,
+   "duration": 4.4,
+   "text": "it also got me a little bit excited. So"
+  },
+  {
+   "start": 2088.56,
+   "duration": 4.72,
+   "text": "and rightfully so because I want to set"
+  },
+  {
+   "start": 2090.72,
+   "duration": 5.199,
+   "text": "the right expectations here. So dreaming"
+  },
+  {
+   "start": 2093.28,
+   "duration": 6.72,
+   "text": "is a scheduled background process that"
+  },
+  {
+   "start": 2095.919,
+   "duration": 7.92,
+   "text": "reviews an agent's past sessions and"
+  },
+  {
+   "start": 2100.0,
+   "duration": 6.24,
+   "text": "memory stores. It finds patterns,"
+  },
+  {
+   "start": 2103.839,
+   "duration": 4.641,
+   "text": "extracts learnings and curates those"
+  },
+  {
+   "start": 2106.24,
+   "duration": 3.599,
+   "text": "memories. So the agent improves over"
+  },
+  {
+   "start": 2108.48,
+   "duration": 4.0,
+   "text": "time."
+  },
+  {
+   "start": 2109.839,
+   "duration": 4.721,
+   "text": "Think about it like this. You know how"
+  },
+  {
+   "start": 2112.48,
+   "duration": 4.56,
+   "text": "after a long day of coding, let's say"
+  },
+  {
+   "start": 2114.56,
+   "duration": 5.76,
+   "text": "for our developers, you kind of go to"
+  },
+  {
+   "start": 2117.04,
+   "duration": 6.88,
+   "text": "bed at 3:00 in the night and suddenly"
+  },
+  {
+   "start": 2120.32,
+   "duration": 5.6,
+   "text": "you wake up at 7:00 a.m. and something"
+  },
+  {
+   "start": 2123.92,
+   "duration": 4.88,
+   "text": "just clicks that you have been working"
+  },
+  {
+   "start": 2125.92,
+   "duration": 4.32,
+   "text": "right the past day completely. Your"
+  },
+  {
+   "start": 2128.8,
+   "duration": 4.64,
+   "text": "brain has kind of processed it"
+  },
+  {
+   "start": 2130.24,
+   "duration": 5.44,
+   "text": "overnight. That is basically what"
+  },
+  {
+   "start": 2133.44,
+   "duration": 4.48,
+   "text": "dreaming does for agents. It's not"
+  },
+  {
+   "start": 2135.68,
+   "duration": 5.439,
+   "text": "happening in that particular moment but"
+  },
+  {
+   "start": 2137.92,
+   "duration": 7.76,
+   "text": "it happens between sessions. Yeah. So"
+  },
+  {
+   "start": 2141.119,
+   "duration": 8.48,
+   "text": "real example. So there's a um this legal"
+  },
+  {
+   "start": 2145.68,
+   "duration": 6.08,
+   "text": "AI company Harvey reported a roughly um"
+  },
+  {
+   "start": 2149.599,
+   "duration": 4.881,
+   "text": "kind of a six-fold increase in task"
+  },
+  {
+   "start": 2151.76,
+   "duration": 6.079,
+   "text": "completion rates after implementing"
+  },
+  {
+   "start": 2154.48,
+   "duration": 6.48,
+   "text": "dreaming. That's a real example."
+  },
+  {
+   "start": 2157.839,
+   "duration": 5.361,
+   "text": "Wise another example you know cut uh"
+  },
+  {
+   "start": 2160.96,
+   "duration": 5.119,
+   "text": "document review time in half using"
+  },
+  {
+   "start": 2163.2,
+   "duration": 5.36,
+   "text": "outcomes. Yeah, and these are production"
+  },
+  {
+   "start": 2166.079,
+   "duration": 4.881,
+   "text": "numbers from real companies. So, it's a"
+  },
+  {
+   "start": 2168.56,
+   "duration": 4.64,
+   "text": "very interesting concept. But one thing"
+  },
+  {
+   "start": 2170.96,
+   "duration": 3.92,
+   "text": "to point out, a key fact is that uh"
+  },
+  {
+   "start": 2173.2,
+   "duration": 4.159,
+   "text": "Dreaming is currently in research"
+  },
+  {
+   "start": 2174.88,
+   "duration": 5.68,
+   "text": "preview. It's not in public beta. You"
+  },
+  {
+   "start": 2177.359,
+   "duration": 6.161,
+   "text": "need to request access. Um it shipped uh"
+  },
+  {
+   "start": 2180.56,
+   "duration": 5.519,
+   "text": "May 6th, I guess, 2026 alongside"
+  },
+  {
+   "start": 2183.52,
+   "duration": 6.16,
+   "text": "outcomes and multi-agent orchestration."
+  },
+  {
+   "start": 2186.079,
+   "duration": 5.76,
+   "text": "Um do not overstate its availability,"
+  },
+  {
+   "start": 2189.68,
+   "duration": 4.0,
+   "text": "you know, to anyone, right? If you are"
+  },
+  {
+   "start": 2191.839,
+   "duration": 3.921,
+   "text": "giving a presentation or if you are"
+  },
+  {
+   "start": 2193.68,
+   "duration": 6.0,
+   "text": "telling about dreaming, don't overstate"
+  },
+  {
+   "start": 2195.76,
+   "duration": 6.079,
+   "text": "its availability. Yeah. Um and I need to"
+  },
+  {
+   "start": 2199.68,
+   "duration": 6.56,
+   "text": "be very clear about this. Dreaming is u"
+  },
+  {
+   "start": 2201.839,
+   "duration": 8.24,
+   "text": "you know is is something that um is"
+  },
+  {
+   "start": 2206.24,
+   "duration": 8.16,
+   "text": "learned okay by the agents over time. So"
+  },
+  {
+   "start": 2210.079,
+   "duration": 6.321,
+   "text": "um I'm not sure if it will be you know"
+  },
+  {
+   "start": 2214.4,
+   "duration": 4.32,
+   "text": "uh the the the things that the agent"
+  },
+  {
+   "start": 2216.4,
+   "duration": 5.36,
+   "text": "would do would be completely"
+  },
+  {
+   "start": 2218.72,
+   "duration": 4.56,
+   "text": "uh as you would expect but who knows"
+  },
+  {
+   "start": 2221.76,
+   "duration": 3.52,
+   "text": "anything can happen that's why it's in"
+  },
+  {
+   "start": 2223.28,
+   "duration": 5.6,
+   "text": "research preview and let's see how it"
+  },
+  {
+   "start": 2225.28,
+   "duration": 6.4,
+   "text": "unfolds. Yeah. So I hope that is making"
+  },
+  {
+   "start": 2228.88,
+   "duration": 4.719,
+   "text": "sense. Okay. Now let's talk about"
+  },
+  {
+   "start": 2231.68,
+   "duration": 6.159,
+   "text": "outcomes that I just talked about. So"
+  },
+  {
+   "start": 2233.599,
+   "duration": 6.161,
+   "text": "outcomes is self-grading agents. Uh now"
+  },
+  {
+   "start": 2237.839,
+   "duration": 4.321,
+   "text": "that this is this is like the second big"
+  },
+  {
+   "start": 2239.76,
+   "duration": 4.64,
+   "text": "new primitive and this one you are going"
+  },
+  {
+   "start": 2242.16,
+   "duration": 4.64,
+   "text": "to also love it because it kind of"
+  },
+  {
+   "start": 2244.4,
+   "duration": 5.52,
+   "text": "solves a problem we kind of dance around"
+  },
+  {
+   "start": 2246.8,
+   "duration": 6.559,
+   "text": "in uh episodes number 7 and 11. So if"
+  },
+  {
+   "start": 2249.92,
+   "duration": 6.64,
+   "text": "you remember um"
+  },
+  {
+   "start": 2253.359,
+   "duration": 6.161,
+   "text": "you know u I had talked about this in in"
+  },
+  {
+   "start": 2256.56,
+   "duration": 6.0,
+   "text": "a lot of my videos that you do not use"
+  },
+  {
+   "start": 2259.52,
+   "duration": 5.36,
+   "text": "the same kind of a session or the agent"
+  },
+  {
+   "start": 2262.56,
+   "duration": 4.08,
+   "text": "who has written the code to review the"
+  },
+  {
+   "start": 2264.88,
+   "duration": 3.52,
+   "text": "code or test the code because it will be"
+  },
+  {
+   "start": 2266.64,
+   "duration": 5.92,
+   "text": "biased. It doesn't have a fresh"
+  },
+  {
+   "start": 2268.4,
+   "duration": 6.4,
+   "text": "perspective. Yeah. So it's kind of a"
+  },
+  {
+   "start": 2272.56,
+   "duration": 6.16,
+   "text": "solution to that as well. And here's how"
+  },
+  {
+   "start": 2274.8,
+   "duration": 5.92,
+   "text": "it works. you you kind of write a rubric"
+  },
+  {
+   "start": 2278.72,
+   "duration": 5.2,
+   "text": "a set of like it's a set of criteria"
+  },
+  {
+   "start": 2280.72,
+   "duration": 6.32,
+   "text": "that describes what success looks like"
+  },
+  {
+   "start": 2283.92,
+   "duration": 5.84,
+   "text": "or you can just say a success criteria"
+  },
+  {
+   "start": 2287.04,
+   "duration": 5.44,
+   "text": "for the particular agent. Then a"
+  },
+  {
+   "start": 2289.76,
+   "duration": 5.12,
+   "text": "separate grader model running in its own"
+  },
+  {
+   "start": 2292.48,
+   "duration": 5.04,
+   "text": "context window. So it's not influenced"
+  },
+  {
+   "start": 2294.88,
+   "duration": 5.28,
+   "text": "by the agent's reasoning. It evaluates"
+  },
+  {
+   "start": 2297.52,
+   "duration": 5.599,
+   "text": "the output against your rubric or your"
+  },
+  {
+   "start": 2300.16,
+   "duration": 5.04,
+   "text": "success criteria. If something isn't"
+  },
+  {
+   "start": 2303.119,
+   "duration": 4.561,
+   "text": "right, it tells the agent what to fix"
+  },
+  {
+   "start": 2305.2,
+   "duration": 5.04,
+   "text": "and the agent takes another pass. It's"
+  },
+  {
+   "start": 2307.68,
+   "duration": 5.12,
+   "text": "like a buddy programmer alongside"
+  },
+  {
+   "start": 2310.24,
+   "duration": 5.76,
+   "text": "another programmer. So it's a common"
+  },
+  {
+   "start": 2312.8,
+   "duration": 6.0,
+   "text": "kind of a scrum technique you know used"
+  },
+  {
+   "start": 2316.0,
+   "duration": 5.359,
+   "text": "by a lot of organization where if there"
+  },
+  {
+   "start": 2318.8,
+   "duration": 4.48,
+   "text": "is a topic there is a driver and there"
+  },
+  {
+   "start": 2321.359,
+   "duration": 4.321,
+   "text": "is a buddy programmer. The driver who"
+  },
+  {
+   "start": 2323.28,
+   "duration": 4.24,
+   "text": "actually does the heavy lifting but"
+  },
+  {
+   "start": 2325.68,
+   "duration": 4.399,
+   "text": "there is a buddy programmer who would"
+  },
+  {
+   "start": 2327.52,
+   "duration": 5.44,
+   "text": "understand what is happening. If might"
+  },
+  {
+   "start": 2330.079,
+   "duration": 5.76,
+   "text": "be a tester or a quality uh person as"
+  },
+  {
+   "start": 2332.96,
+   "duration": 5.6,
+   "text": "well quality assessment who does they"
+  },
+  {
+   "start": 2335.839,
+   "duration": 4.881,
+   "text": "will question the the driver or the main"
+  },
+  {
+   "start": 2338.56,
+   "duration": 3.84,
+   "text": "programmer and then the main programmer"
+  },
+  {
+   "start": 2340.72,
+   "duration": 4.32,
+   "text": "will take it into account the feedback"
+  },
+  {
+   "start": 2342.4,
+   "duration": 5.6,
+   "text": "and then work on it simple concept"
+  },
+  {
+   "start": 2345.04,
+   "duration": 5.44,
+   "text": "that's how outcomes works and that is"
+  },
+  {
+   "start": 2348.0,
+   "duration": 5.92,
+   "text": "the also yeah the problem also I told"
+  },
+  {
+   "start": 2350.48,
+   "duration": 6.16,
+   "text": "and how it fixes so this is also a beta"
+  },
+  {
+   "start": 2353.92,
+   "duration": 5.76,
+   "text": "feature right it's in public beta uh as"
+  },
+  {
+   "start": 2356.64,
+   "duration": 5.84,
+   "text": "I mentioned May 6th 2026 six is it uses"
+  },
+  {
+   "start": 2359.68,
+   "duration": 4.96,
+   "text": "a separate greater context [snorts] not"
+  },
+  {
+   "start": 2362.48,
+   "duration": 5.04,
+   "text": "the agent's own that's why it works"
+  },
+  {
+   "start": 2364.64,
+   "duration": 5.76,
+   "text": "better than self review yeah obviously"
+  },
+  {
+   "start": 2367.52,
+   "duration": 5.12,
+   "text": "that's how it solves the problem"
+  },
+  {
+   "start": 2370.4,
+   "duration": 4.16,
+   "text": "okay now let's talk about multi- aent"
+  },
+  {
+   "start": 2372.64,
+   "duration": 4.959,
+   "text": "orchestration and I already showed you"
+  },
+  {
+   "start": 2374.56,
+   "duration": 4.559,
+   "text": "in mult uh you know in um in that"
+  },
+  {
+   "start": 2377.599,
+   "duration": 3.441,
+   "text": "platformanthropic"
+  },
+  {
+   "start": 2379.119,
+   "duration": 5.121,
+   "text": "how to create a sub agent and how to"
+  },
+  {
+   "start": 2381.04,
+   "duration": 6.0,
+   "text": "link it to an agent right um manage"
+  },
+  {
+   "start": 2384.24,
+   "duration": 4.24,
+   "text": "multi multi-agent orchestration and it's"
+  },
+  {
+   "start": 2387.04,
+   "duration": 4.96,
+   "text": "pretty easy for you to understand"
+  },
+  {
+   "start": 2388.48,
+   "duration": 7.119,
+   "text": "because this is episodes five uh hub and"
+  },
+  {
+   "start": 2392.0,
+   "duration": 6.56,
+   "text": "spoke pattern. Okay, but running on"
+  },
+  {
+   "start": 2395.599,
+   "duration": 6.081,
+   "text": "anthropics infrastructure instead of"
+  },
+  {
+   "start": 2398.56,
+   "duration": 5.12,
+   "text": "separately, right? So in our agent SDK"
+  },
+  {
+   "start": 2401.68,
+   "duration": 3.919,
+   "text": "build, the coordinator fans out the sub"
+  },
+  {
+   "start": 2403.68,
+   "duration": 4.399,
+   "text": "aents, right? If you remember our two"
+  },
+  {
+   "start": 2405.599,
+   "duration": 4.721,
+   "text": "sub agents that we had built uh as part"
+  },
+  {
+   "start": 2408.079,
+   "duration": 4.401,
+   "text": "of our PR review agent, yeah, they run"
+  },
+  {
+   "start": 2410.32,
+   "duration": 4.08,
+   "text": "in the same process and all the context"
+  },
+  {
+   "start": 2412.48,
+   "duration": 4.48,
+   "text": "flows through the coordinator. That is"
+  },
+  {
+   "start": 2414.4,
+   "duration": 4.32,
+   "text": "how it works. Now that works great for"
+  },
+  {
+   "start": 2416.96,
+   "duration": 4.0,
+   "text": "our scale. But what happens when you"
+  },
+  {
+   "start": 2418.72,
+   "duration": 3.84,
+   "text": "need a coordinator managing 20 sub"
+  },
+  {
+   "start": 2420.96,
+   "duration": 3.28,
+   "text": "agents? If you remember the same"
+  },
+  {
+   "start": 2422.56,
+   "duration": 3.68,
+   "text": "question, the same problem we also"
+  },
+  {
+   "start": 2424.24,
+   "duration": 3.92,
+   "text": "discussed in that episode as well. This"
+  },
+  {
+   "start": 2426.24,
+   "duration": 4.96,
+   "text": "that when there are a lot of sub agents,"
+  },
+  {
+   "start": 2428.16,
+   "duration": 5.439,
+   "text": "what to do? Now when there are managing"
+  },
+  {
+   "start": 2431.2,
+   "duration": 4.639,
+   "text": "20 sub aents and each sub aent running"
+  },
+  {
+   "start": 2433.599,
+   "duration": 5.201,
+   "text": "heavy computation, each needing their"
+  },
+  {
+   "start": 2435.839,
+   "duration": 6.321,
+   "text": "own sandbox, what to do in that case?"
+  },
+  {
+   "start": 2438.8,
+   "duration": 7.039,
+   "text": "Yeah. So managed orchestration gives"
+  },
+  {
+   "start": 2442.16,
+   "duration": 6.4,
+   "text": "each sub aent its own session thread"
+  },
+  {
+   "start": 2445.839,
+   "duration": 5.201,
+   "text": "independent context independent sandbox."
+  },
+  {
+   "start": 2448.56,
+   "duration": 4.96,
+   "text": "The coordinator doesn't get bloated with"
+  },
+  {
+   "start": 2451.04,
+   "duration": 4.799,
+   "text": "every sub aents full output and sub"
+  },
+  {
+   "start": 2453.52,
+   "duration": 5.2,
+   "text": "aents can run in parallel across"
+  },
+  {
+   "start": 2455.839,
+   "duration": 4.721,
+   "text": "anthropics infrastructure"
+  },
+  {
+   "start": 2458.72,
+   "duration": 4.96,
+   "text": "not competing for the same Python"
+  },
+  {
+   "start": 2460.56,
+   "duration": 4.799,
+   "text": "process like it's in your machine. So it"
+  },
+  {
+   "start": 2463.68,
+   "duration": 4.639,
+   "text": "can run parallel in anthropics"
+  },
+  {
+   "start": 2465.359,
+   "duration": 6.081,
+   "text": "infrastructure and it will not get"
+  },
+  {
+   "start": 2468.319,
+   "duration": 5.121,
+   "text": "bloated. That is how it works."
+  },
+  {
+   "start": 2471.44,
+   "duration": 4.72,
+   "text": "And if I talk about a real example,"
+  },
+  {
+   "start": 2473.44,
+   "duration": 5.28,
+   "text": "Netflix uh you guys know right is using"
+  },
+  {
+   "start": 2476.16,
+   "duration": 4.48,
+   "text": "this to analyze logs from hundreds of"
+  },
+  {
+   "start": 2478.72,
+   "duration": 4.72,
+   "text": "builds simultaneously. And that's the"
+  },
+  {
+   "start": 2480.64,
+   "duration": 6.24,
+   "text": "kind of scale where local orchestration"
+  },
+  {
+   "start": 2483.44,
+   "duration": 6.24,
+   "text": "kind of stops making sense. Yeah. And"
+  },
+  {
+   "start": 2486.88,
+   "duration": 4.64,
+   "text": "also a key fact to pitch it in that"
+  },
+  {
+   "start": 2489.68,
+   "duration": 5.36,
+   "text": "managed multi-agent orchestration is"
+  },
+  {
+   "start": 2491.52,
+   "duration": 5.36,
+   "text": "also in public beta May 6th. Yeah, each"
+  },
+  {
+   "start": 2495.04,
+   "duration": 4.319,
+   "text": "sub agent gets his own session thread"
+  },
+  {
+   "start": 2496.88,
+   "duration": 5.199,
+   "text": "with independent context. Yeah, that I"
+  },
+  {
+   "start": 2499.359,
+   "duration": 4.641,
+   "text": "mentioned. Um it's just the same"
+  },
+  {
+   "start": 2502.079,
+   "duration": 3.28,
+   "text": "principle as our agent definition"
+  },
+  {
+   "start": 2504.0,
+   "duration": 3.92,
+   "text": "isolation. If you remember, we created"
+  },
+  {
+   "start": 2505.359,
+   "duration": 5.681,
+   "text": "an agent definition for our sub aents,"
+  },
+  {
+   "start": 2507.92,
+   "duration": 6.0,
+   "text": "right? Uh that's how it works. But it is"
+  },
+  {
+   "start": 2511.04,
+   "duration": 5.12,
+   "text": "managed at a infrastructure level. That"
+  },
+  {
+   "start": 2513.92,
+   "duration": 6.96,
+   "text": "is why this context bloating doesn't"
+  },
+  {
+   "start": 2516.16,
+   "duration": 7.36,
+   "text": "happen. Okay, good. So, uh when to"
+  },
+  {
+   "start": 2520.88,
+   "duration": 5.84,
+   "text": "choose which the managed agents when"
+  },
+  {
+   "start": 2523.52,
+   "duration": 5.52,
+   "text": "managed agents when agent SDK uh this"
+  },
+  {
+   "start": 2526.72,
+   "duration": 4.16,
+   "text": "slide probably just screenshot it"
+  },
+  {
+   "start": 2529.04,
+   "duration": 4.16,
+   "text": "because you know I already gave a"
+  },
+  {
+   "start": 2530.88,
+   "duration": 3.84,
+   "text": "difference what are the things that are"
+  },
+  {
+   "start": 2533.2,
+   "duration": 5.04,
+   "text": "common what are the things that are a"
+  },
+  {
+   "start": 2534.72,
+   "duration": 5.28,
+   "text": "little bit different. Um the thing I"
+  },
+  {
+   "start": 2538.24,
+   "duration": 4.0,
+   "text": "wanted to create this slide or this"
+  },
+  {
+   "start": 2540.0,
+   "duration": 4.48,
+   "text": "particular topic is that managed agent"
+  },
+  {
+   "start": 2542.24,
+   "duration": 4.72,
+   "text": "is not always the answer. That's why we"
+  },
+  {
+   "start": 2544.48,
+   "duration": 5.28,
+   "text": "spent 11 episodes on cloud agent SDK and"
+  },
+  {
+   "start": 2546.96,
+   "duration": 5.84,
+   "text": "only one episode on managed agents. See"
+  },
+  {
+   "start": 2549.76,
+   "duration": 5.839,
+   "text": "use manage agents when you need durable"
+  },
+  {
+   "start": 2552.8,
+   "duration": 5.76,
+   "text": "long running sessions you know tasks"
+  },
+  {
+   "start": 2555.599,
+   "duration": 5.921,
+   "text": "that take minutes or hours you know not"
+  },
+  {
+   "start": 2558.56,
+   "duration": 6.0,
+   "text": "seconds. Yeah, you need some kind of a"
+  },
+  {
+   "start": 2561.52,
+   "duration": 5.839,
+   "text": "crash recovery without caring about it"
+  },
+  {
+   "start": 2564.56,
+   "duration": 4.48,
+   "text": "or building it yourself. You need"
+  },
+  {
+   "start": 2567.359,
+   "duration": 3.681,
+   "text": "scheduled deployments. You need"
+  },
+  {
+   "start": 2569.04,
+   "duration": 3.92,
+   "text": "production grade observability out of"
+  },
+  {
+   "start": 2571.04,
+   "duration": 3.6,
+   "text": "the box. You're building a customerf"
+  },
+  {
+   "start": 2572.96,
+   "duration": 3.52,
+   "text": "facing product where reliability and"
+  },
+  {
+   "start": 2574.64,
+   "duration": 5.52,
+   "text": "auditability matter more than per"
+  },
+  {
+   "start": 2576.48,
+   "duration": 5.839,
+   "text": "session cost. Right? But the main thing"
+  },
+  {
+   "start": 2580.16,
+   "duration": 3.84,
+   "text": "is that the main thing is that you would"
+  },
+  {
+   "start": 2582.319,
+   "duration": 4.241,
+   "text": "only use managed agents when you"
+  },
+  {
+   "start": 2584.0,
+   "duration": 5.119,
+   "text": "actually want to work on anthropics own"
+  },
+  {
+   "start": 2586.56,
+   "duration": 4.88,
+   "text": "cloud or"
+  },
+  {
+   "start": 2589.119,
+   "duration": 4.321,
+   "text": "managed agents. If you want to use your"
+  },
+  {
+   "start": 2591.44,
+   "duration": 3.84,
+   "text": "own infrastructure, then you doesn't"
+  },
+  {
+   "start": 2593.44,
+   "duration": 3.84,
+   "text": "matter. The concepts are same the the"
+  },
+  {
+   "start": 2595.28,
+   "duration": 3.6,
+   "text": "same cloud using the cloud agent SDK you"
+  },
+  {
+   "start": 2597.28,
+   "duration": 3.6,
+   "text": "would build the agent but you want to"
+  },
+  {
+   "start": 2598.88,
+   "duration": 5.28,
+   "text": "build it deploy it somewhere else then"
+  },
+  {
+   "start": 2600.88,
+   "duration": 5.12,
+   "text": "that case managed agents is of no use"
+  },
+  {
+   "start": 2604.16,
+   "duration": 4.72,
+   "text": "because it's a dedicated you know"
+  },
+  {
+   "start": 2606.0,
+   "duration": 4.56,
+   "text": "runtime environment panthropic"
+  },
+  {
+   "start": 2608.88,
+   "duration": 3.6,
+   "text": "yeah so that is one of the things when"
+  },
+  {
+   "start": 2610.56,
+   "duration": 3.84,
+   "text": "you would go with the claw agent SDK so"
+  },
+  {
+   "start": 2612.48,
+   "duration": 5.04,
+   "text": "that's why cloud agent SDK is the"
+  },
+  {
+   "start": 2614.4,
+   "duration": 5.199,
+   "text": "important thing out here you just learn"
+  },
+  {
+   "start": 2617.52,
+   "duration": 3.599,
+   "text": "cloud agent SDK and managed agent is"
+  },
+  {
+   "start": 2619.599,
+   "duration": 3.76,
+   "text": "just a piece of cake for you if you have"
+  },
+  {
+   "start": 2621.119,
+   "duration": 5.121,
+   "text": "a lot of money as as well obviously you"
+  },
+  {
+   "start": 2623.359,
+   "duration": 5.041,
+   "text": "need money. Yeah."
+  },
+  {
+   "start": 2626.24,
+   "duration": 3.839,
+   "text": "So I hope you understand you can use the"
+  },
+  {
+   "start": 2628.4,
+   "duration": 3.919,
+   "text": "agent SDK when you need integration in"
+  },
+  {
+   "start": 2630.079,
+   "duration": 4.0,
+   "text": "your existing CI/CD infra that's what I"
+  },
+  {
+   "start": 2632.319,
+   "duration": 5.28,
+   "text": "want to tell you want that that's when"
+  },
+  {
+   "start": 2634.079,
+   "duration": 5.52,
+   "text": "you will use a agent SDK you zero data"
+  },
+  {
+   "start": 2637.599,
+   "duration": 3.841,
+   "text": "retention HIPPA compliance all of these"
+  },
+  {
+   "start": 2639.599,
+   "duration": 3.441,
+   "text": "things if augars you know there is some"
+  },
+  {
+   "start": 2641.44,
+   "duration": 4.24,
+   "text": "sensitive data that you are dealing with"
+  },
+  {
+   "start": 2643.04,
+   "duration": 5.12,
+   "text": "and your own company's AI principles"
+  },
+  {
+   "start": 2645.68,
+   "duration": 6.48,
+   "text": "don't use don't want you to use any kind"
+  },
+  {
+   "start": 2648.16,
+   "duration": 5.84,
+   "text": "of a um other cloud environments where"
+  },
+  {
+   "start": 2652.16,
+   "duration": 3.76,
+   "text": "you want to deploy your agents and it"
+  },
+  {
+   "start": 2654.0,
+   "duration": 3.44,
+   "text": "will be managed by somebody else if that"
+  },
+  {
+   "start": 2655.92,
+   "duration": 3.439,
+   "text": "is the case then obviously you cannot go"
+  },
+  {
+   "start": 2657.44,
+   "duration": 4.879,
+   "text": "with managed agents. So yeah it comes"
+  },
+  {
+   "start": 2659.359,
+   "duration": 5.681,
+   "text": "with conven con convenience. Yeah but"
+  },
+  {
+   "start": 2662.319,
+   "duration": 4.561,
+   "text": "there's a lot of things that people do"
+  },
+  {
+   "start": 2665.04,
+   "duration": 4.079,
+   "text": "not go with managed agents as well. So"
+  },
+  {
+   "start": 2666.88,
+   "duration": 4.64,
+   "text": "this is the popular guide by the way."
+  },
+  {
+   "start": 2669.119,
+   "duration": 3.841,
+   "text": "Yeah. So don't get influenced."
+  },
+  {
+   "start": 2671.52,
+   "duration": 3.04,
+   "text": "Very simple interactive drill we'll"
+  },
+  {
+   "start": 2672.96,
+   "duration": 4.399,
+   "text": "have. We are almost at the end of the"
+  },
+  {
+   "start": 2674.56,
+   "duration": 5.039,
+   "text": "session. So in managed agents what is"
+  },
+  {
+   "start": 2677.359,
+   "duration": 4.321,
+   "text": "the difference between an agent and a"
+  },
+  {
+   "start": 2679.599,
+   "duration": 5.041,
+   "text": "session? Pretty simple, right? Pretty"
+  },
+  {
+   "start": 2681.68,
+   "duration": 5.439,
+   "text": "simple. So simple answer is an agent is"
+  },
+  {
+   "start": 2684.64,
+   "duration": 4.32,
+   "text": "a reusable versioned configuration. We"
+  },
+  {
+   "start": 2687.119,
+   "duration": 4.081,
+   "text": "understood what a version configuration"
+  },
+  {
+   "start": 2688.96,
+   "duration": 4.159,
+   "text": "is well right [snorts] and a session is"
+  },
+  {
+   "start": 2691.2,
+   "duration": 4.96,
+   "text": "a running instance of that agent during"
+  },
+  {
+   "start": 2693.119,
+   "duration": 6.321,
+   "text": "a specific task in an environment. You"
+  },
+  {
+   "start": 2696.16,
+   "duration": 6.64,
+   "text": "create one agent and start many sessions"
+  },
+  {
+   "start": 2699.44,
+   "duration": 5.6,
+   "text": "from it and sessions pin to a specific"
+  },
+  {
+   "start": 2702.8,
+   "duration": 4.24,
+   "text": "agent version at creation time. So"
+  },
+  {
+   "start": 2705.04,
+   "duration": 3.36,
+   "text": "remember that you can have multiple"
+  },
+  {
+   "start": 2707.04,
+   "duration": 3.36,
+   "text": "versions of the agent running"
+  },
+  {
+   "start": 2708.4,
+   "duration": 3.679,
+   "text": "parallelly."
+  },
+  {
+   "start": 2710.4,
+   "duration": 4.64,
+   "text": "Which of dreaming outcomes or"
+  },
+  {
+   "start": 2712.079,
+   "duration": 6.081,
+   "text": "orchestration is in research preview?"
+  },
+  {
+   "start": 2715.04,
+   "duration": 5.2,
+   "text": "Okay, dreaming is in research preview."
+  },
+  {
+   "start": 2718.16,
+   "duration": 4.24,
+   "text": "It requires separate access request."
+  },
+  {
+   "start": 2720.24,
+   "duration": 4.96,
+   "text": "Outcomes and multi-agent orchestration"
+  },
+  {
+   "start": 2722.4,
+   "duration": 5.04,
+   "text": "are both in public beta."
+  },
+  {
+   "start": 2725.2,
+   "duration": 4.8,
+   "text": "Third, your should you use managed"
+  },
+  {
+   "start": 2727.44,
+   "duration": 4.159,
+   "text": "agents? Your team needs zero data"
+  },
+  {
+   "start": 2730.0,
+   "duration": 4.16,
+   "text": "retention compliance. Should you use"
+  },
+  {
+   "start": 2731.599,
+   "duration": 5.441,
+   "text": "managed agents? Obviously no. Managed"
+  },
+  {
+   "start": 2734.16,
+   "duration": 4.48,
+   "text": "agents are stateful by design. Okay."
+  },
+  {
+   "start": 2737.04,
+   "duration": 3.84,
+   "text": "They store the conversation history,"
+  },
+  {
+   "start": 2738.64,
+   "duration": 4.0,
+   "text": "sandbox states and outputs server side,"
+  },
+  {
+   "start": 2740.88,
+   "duration": 5.76,
+   "text": "right? It's currently not eligible for"
+  },
+  {
+   "start": 2742.64,
+   "duration": 6.4,
+   "text": "zero data retention or HIPPA BA coverage"
+  },
+  {
+   "start": 2746.64,
+   "duration": 4.88,
+   "text": "or something like that. Use the agent"
+  },
+  {
+   "start": 2749.04,
+   "duration": 4.24,
+   "text": "SDK agent if that is the thing, right?"
+  },
+  {
+   "start": 2751.52,
+   "duration": 4.4,
+   "text": "If you want a little bit more control."
+  },
+  {
+   "start": 2753.28,
+   "duration": 5.52,
+   "text": "Okay. So now that we are done with the"
+  },
+  {
+   "start": 2755.92,
+   "duration": 4.56,
+   "text": "syllabus and uh with the entire course"
+  },
+  {
+   "start": 2758.8,
+   "duration": 3.039,
+   "text": "content, I just want to take a few"
+  },
+  {
+   "start": 2760.48,
+   "duration": 3.119,
+   "text": "minutes to actually tell you which"
+  },
+  {
+   "start": 2761.839,
+   "duration": 4.081,
+   "text": "episodes cover which part of the"
+  },
+  {
+   "start": 2763.599,
+   "duration": 3.76,
+   "text": "syllabus and how it is 100%. So"
+  },
+  {
+   "start": 2765.92,
+   "duration": 5.76,
+   "text": "application and integration which is"
+  },
+  {
+   "start": 2767.359,
+   "duration": 7.281,
+   "text": "33.1% of the um course it is covered in"
+  },
+  {
+   "start": 2771.68,
+   "duration": 5.04,
+   "text": "1 2 3 7 and 11 episodes these are the"
+  },
+  {
+   "start": 2774.64,
+   "duration": 5.199,
+   "text": "episode numbers model selection and"
+  },
+  {
+   "start": 2776.72,
+   "duration": 4.8,
+   "text": "optimization which is around 16.8%"
+  },
+  {
+   "start": 2779.839,
+   "duration": 4.961,
+   "text": "it is covered in episode number 10 and"
+  },
+  {
+   "start": 2781.52,
+   "duration": 7.839,
+   "text": "11 agents and workflows 14.7% of the"
+  },
+  {
+   "start": 2784.8,
+   "duration": 7.12,
+   "text": "exam episodes number 01 2 4 5 and 12 and"
+  },
+  {
+   "start": 2789.359,
+   "duration": 5.558,
+   "text": "we have tools and MCPS which is 10.6% 6%"
+  },
+  {
+   "start": 2791.92,
+   "duration": 5.12,
+   "text": "is covered in episodes number 3 8 and 9."
+  },
+  {
+   "start": 2794.917,
+   "duration": 6.202,
+   "text": "[snorts] Prompt and context engineering"
+  },
+  {
+   "start": 2797.04,
+   "duration": 7.52,
+   "text": "11% episode number 6 and 7. Security and"
+  },
+  {
+   "start": 2801.119,
+   "duration": 5.601,
+   "text": "safety itself is 8.1%"
+  },
+  {
+   "start": 2804.56,
+   "duration": 6.24,
+   "text": "which is covered entirely in episode"
+  },
+  {
+   "start": 2806.72,
+   "duration": 6.399,
+   "text": "number four. Cloud code 3.1% covered"
+  },
+  {
+   "start": 2810.8,
+   "duration": 4.96,
+   "text": "evaluation testing and debugging that is"
+  },
+  {
+   "start": 2813.119,
+   "duration": 4.96,
+   "text": "around 2.6% and it is covered in episode"
+  },
+  {
+   "start": 2815.76,
+   "duration": 4.72,
+   "text": "number 11. So total exam has been"
+  },
+  {
+   "start": 2818.079,
+   "duration": 4.161,
+   "text": "covered. I hope that answers a lot of"
+  },
+  {
+   "start": 2820.48,
+   "duration": 4.0,
+   "text": "your questions."
+  },
+  {
+   "start": 2822.24,
+   "duration": 4.48,
+   "text": "Okay, I hope that is making sense. Now"
+  },
+  {
+   "start": 2824.48,
+   "duration": 4.08,
+   "text": "the key takeaways from this video is"
+  },
+  {
+   "start": 2826.72,
+   "duration": 5.04,
+   "text": "managed agents obviously anthropic runs"
+  },
+  {
+   "start": 2828.56,
+   "duration": 6.559,
+   "text": "the loop sandbox state and recovery four"
+  },
+  {
+   "start": 2831.76,
+   "duration": 6.48,
+   "text": "primitives agent environment um session"
+  },
+  {
+   "start": 2835.119,
+   "duration": 5.2,
+   "text": "and event. Now the architecture transfer"
+  },
+  {
+   "start": 2838.24,
+   "duration": 4.48,
+   "text": "transfers you know just kind of kind of"
+  },
+  {
+   "start": 2840.319,
+   "duration": 5.601,
+   "text": "correlated with the cloud agent SDK how"
+  },
+  {
+   "start": 2842.72,
+   "duration": 5.28,
+   "text": "it matters and how it differs um and"
+  },
+  {
+   "start": 2845.92,
+   "duration": 4.0,
+   "text": "what are the common things advanced"
+  },
+  {
+   "start": 2848.0,
+   "duration": 4.56,
+   "text": "features are dreaming outcomes and"
+  },
+  {
+   "start": 2849.92,
+   "duration": 4.24,
+   "text": "multi- aent now dreaming is in preview"
+  },
+  {
+   "start": 2852.56,
+   "duration": 4.4,
+   "text": "research preview but these two are in"
+  },
+  {
+   "start": 2854.16,
+   "duration": 5.439,
+   "text": "beta as of now decision framework"
+  },
+  {
+   "start": 2856.96,
+   "duration": 5.359,
+   "text": "managed for durability scale SDK for"
+  },
+  {
+   "start": 2859.599,
+   "duration": 5.921,
+   "text": "more control and compliance"
+  },
+  {
+   "start": 2862.319,
+   "duration": 5.441,
+   "text": "yeah that's that's it that's it that's"
+  },
+  {
+   "start": 2865.52,
+   "duration": 2.24,
+   "text": "the"
+  },
+  {
+   "start": 2868.48,
+   "duration": 7.359,
+   "text": "Okay, so that was all about this"
+  },
+  {
+   "start": 2871.68,
+   "duration": 8.639,
+   "text": "particular uh you know series guys and"
+  },
+  {
+   "start": 2875.839,
+   "duration": 6.721,
+   "text": "um I might have a bonus episode where um"
+  },
+  {
+   "start": 2880.319,
+   "duration": 4.8,
+   "text": "we might do a little bit more you know"
+  },
+  {
+   "start": 2882.56,
+   "duration": 5.039,
+   "text": "but for from the course perspective"
+  },
+  {
+   "start": 2885.119,
+   "duration": 5.601,
+   "text": "everything is done and I hope you guys"
+  },
+  {
+   "start": 2887.599,
+   "duration": 4.881,
+   "text": "like this series and it really helps you"
+  },
+  {
+   "start": 2890.72,
+   "duration": 4.16,
+   "text": "in the exam and please let me know in"
+  },
+  {
+   "start": 2892.48,
+   "duration": 4.639,
+   "text": "some in case of questions. Uh, till"
+  },
+  {
+   "start": 2894.88,
+   "duration": 5.68,
+   "text": "then, I'll see you in the next one. Have"
+  },
+  {
+   "start": 2897.119,
+   "duration": 3.441,
+   "text": "a nice day. Take care."
+  }
+ ]
+}

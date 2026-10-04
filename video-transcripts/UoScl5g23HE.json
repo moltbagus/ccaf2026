@@ -1,0 +1,5803 @@
+{
+ "video_id": "UoScl5g23HE",
+ "episode": "Ep 10",
+ "title": "Opus vs Sonnet vs Haiku, Thinking & Effort",
+ "lane": "ccdv-f",
+ "segments": [
+  {
+   "start": 0.0,
+   "duration": 3.88,
+   "text": "Hello"
+  },
+  {
+   "start": 1.64,
+   "duration": 5.64,
+   "text": "everyone and welcome to this lesson."
+  },
+  {
+   "start": 3.88,
+   "duration": 6.56,
+   "text": "So, you've been using one model this"
+  },
+  {
+   "start": 7.28,
+   "duration": 6.52,
+   "text": "whole time. So, some real talk right"
+  },
+  {
+   "start": 10.44,
+   "duration": 5.04,
+   "text": "now. Okay, so for nine episodes straight"
+  },
+  {
+   "start": 13.8,
+   "duration": 3.0,
+   "text": "and this is like the 10th episode in"
+  },
+  {
+   "start": 15.48,
+   "duration": 4.64,
+   "text": "this course,"
+  },
+  {
+   "start": 16.8,
+   "duration": 5.4,
+   "text": "we built a really genuinely serious"
+  },
+  {
+   "start": 20.12,
+   "duration": 4.4,
+   "text": "agent, right? Like we added custom"
+  },
+  {
+   "start": 22.2,
+   "duration": 4.52,
+   "text": "tools, we added hooks, we added sub"
+  },
+  {
+   "start": 24.52,
+   "duration": 5.64,
+   "text": "agents, we added memory, we added"
+  },
+  {
+   "start": 26.72,
+   "duration": 5.399,
+   "text": "structured output, real MCP servers and"
+  },
+  {
+   "start": 30.16,
+   "duration": 3.64,
+   "text": "all that things, right? And it was it's"
+  },
+  {
+   "start": 32.119,
+   "duration": 5.561,
+   "text": "it's it's it's a brilliant journey. We"
+  },
+  {
+   "start": 33.8,
+   "duration": 5.72,
+   "text": "have like uh enhanced our agent to be at"
+  },
+  {
+   "start": 37.68,
+   "duration": 4.92,
+   "text": "the top."
+  },
+  {
+   "start": 39.52,
+   "duration": 5.96,
+   "text": "And in all this time, right? We never"
+  },
+  {
+   "start": 42.6,
+   "duration": 5.32,
+   "text": "actually once stopped and asked the most"
+  },
+  {
+   "start": 45.48,
+   "duration": 4.88,
+   "text": "basic question in the whole stack. Maybe"
+  },
+  {
+   "start": 47.92,
+   "duration": 5.2,
+   "text": "I have asked that, if you remember, in"
+  },
+  {
+   "start": 50.36,
+   "duration": 5.0,
+   "text": "episode number five uh or four or five,"
+  },
+  {
+   "start": 53.12,
+   "duration": 4.64,
+   "text": "I don't remember the exact episode."
+  },
+  {
+   "start": 55.36,
+   "duration": 4.72,
+   "text": "Uh I was kind of concerned about the"
+  },
+  {
+   "start": 57.76,
+   "duration": 5.88,
+   "text": "cost that it was kind of"
+  },
+  {
+   "start": 60.08,
+   "duration": 5.6,
+   "text": "um my agent was actually bearing."
+  },
+  {
+   "start": 63.64,
+   "duration": 3.44,
+   "text": "I mean, I am I was bearing the cost. My"
+  },
+  {
+   "start": 65.68,
+   "duration": 3.72,
+   "text": "agent was kind of kind of using the"
+  },
+  {
+   "start": 67.08,
+   "duration": 4.32,
+   "text": "tokens. And then I changed something."
+  },
+  {
+   "start": 69.4,
+   "duration": 3.48,
+   "text": "Okay, I'm going to kind of"
+  },
+  {
+   "start": 71.4,
+   "duration": 3.4,
+   "text": "tell you in a minute, but if you"
+  },
+  {
+   "start": 72.88,
+   "duration": 4.28,
+   "text": "remember that reference"
+  },
+  {
+   "start": 74.8,
+   "duration": 4.16,
+   "text": "uh to episode number five, you would"
+  },
+  {
+   "start": 77.16,
+   "duration": 4.12,
+   "text": "remember what all things we faced and"
+  },
+  {
+   "start": 78.96,
+   "duration": 5.0,
+   "text": "what I changed. Okay?"
+  },
+  {
+   "start": 81.28,
+   "duration": 4.04,
+   "text": "But more or less, we kind of stuck to"
+  },
+  {
+   "start": 83.96,
+   "duration": 3.2,
+   "text": "the default."
+  },
+  {
+   "start": 85.32,
+   "duration": 3.8,
+   "text": "Yeah, and"
+  },
+  {
+   "start": 87.16,
+   "duration": 3.76,
+   "text": "that is basically the brain of our"
+  },
+  {
+   "start": 89.12,
+   "duration": 3.96,
+   "text": "agent. We kind of stuck for the default"
+  },
+  {
+   "start": 90.92,
+   "duration": 4.52,
+   "text": "for most of the time. And look, for"
+  },
+  {
+   "start": 93.08,
+   "duration": 4.28,
+   "text": "learning that's totally fine, right? But"
+  },
+  {
+   "start": 95.44,
+   "duration": 4.76,
+   "text": "in production, that that quiet little"
+  },
+  {
+   "start": 97.36,
+   "duration": 5.56,
+   "text": "habit is how you end up with a bill that"
+  },
+  {
+   "start": 100.2,
+   "duration": 4.44,
+   "text": "makes your eyes water."
+  },
+  {
+   "start": 102.92,
+   "duration": 5.12,
+   "text": "There will be water in your eyes. You"
+  },
+  {
+   "start": 104.64,
+   "duration": 4.6,
+   "text": "would be crying your eyes out."
+  },
+  {
+   "start": 108.04,
+   "duration": 2.92,
+   "text": "So,"
+  },
+  {
+   "start": 109.24,
+   "duration": 3.88,
+   "text": "that particular thing we are we are"
+  },
+  {
+   "start": 110.96,
+   "duration": 5.24,
+   "text": "going to kind of like learn in this"
+  },
+  {
+   "start": 113.12,
+   "duration": 5.68,
+   "text": "particular lesson. And this This matters"
+  },
+  {
+   "start": 116.2,
+   "duration": 4.0,
+   "text": "more than it look more than it looks, by"
+  },
+  {
+   "start": 118.8,
+   "duration": 3.96,
+   "text": "the way."
+  },
+  {
+   "start": 120.2,
+   "duration": 4.72,
+   "text": "For developers, for people who develop"
+  },
+  {
+   "start": 122.76,
+   "duration": 4.04,
+   "text": "with Cloud Agent SDK and are preparing"
+  },
+  {
+   "start": 124.92,
+   "duration": 6.96,
+   "text": "for the certification, this model"
+  },
+  {
+   "start": 126.8,
+   "duration": 7.0,
+   "text": "selection and optimization is 16.8%"
+  },
+  {
+   "start": 131.88,
+   "duration": 4.12,
+   "text": "nearly 17%"
+  },
+  {
+   "start": 133.8,
+   "duration": 4.56,
+   "text": "of the entire"
+  },
+  {
+   "start": 136.0,
+   "duration": 4.28,
+   "text": "you know, the developer exam."
+  },
+  {
+   "start": 138.36,
+   "duration": 3.88,
+   "text": "The CCDV-F"
+  },
+  {
+   "start": 140.28,
+   "duration": 4.48,
+   "text": "exam."
+  },
+  {
+   "start": 142.24,
+   "duration": 4.28,
+   "text": "The single biggest domain we"
+  },
+  {
+   "start": 144.76,
+   "duration": 4.6,
+   "text": "kind of didn't touch it, and I wanted to"
+  },
+  {
+   "start": 146.52,
+   "duration": 6.16,
+   "text": "keep this now because you would realize"
+  },
+  {
+   "start": 149.36,
+   "duration": 5.12,
+   "text": "its importance now, right?"
+  },
+  {
+   "start": 152.68,
+   "duration": 5.44,
+   "text": "So, this particular episode would cover"
+  },
+  {
+   "start": 154.48,
+   "duration": 6.12,
+   "text": "like about 15 to 17% of the course, and"
+  },
+  {
+   "start": 158.12,
+   "duration": 4.28,
+   "text": "it would be most probably the shortest"
+  },
+  {
+   "start": 160.6,
+   "duration": 3.92,
+   "text": "of the videos, and it will cover a lot"
+  },
+  {
+   "start": 162.4,
+   "duration": 3.32,
+   "text": "of nitty-gritties that you guys need to"
+  },
+  {
+   "start": 164.52,
+   "duration": 3.88,
+   "text": "understand."
+  },
+  {
+   "start": 165.72,
+   "duration": 4.32,
+   "text": "Yeah? So, if you see here, that's 16.8%"
+  },
+  {
+   "start": 168.4,
+   "duration": 3.92,
+   "text": "of the exam."
+  },
+  {
+   "start": 170.04,
+   "duration": 4.88,
+   "text": "Okay. So, what we are covering today,"
+  },
+  {
+   "start": 172.32,
+   "duration": 3.72,
+   "text": "and here's the plan, and see the"
+  },
+  {
+   "start": 174.92,
+   "duration": 3.039,
+   "text": "Whatever you're going to learn today is"
+  },
+  {
+   "start": 176.04,
+   "duration": 3.56,
+   "text": "not just for the agent, okay? Whenever"
+  },
+  {
+   "start": 177.959,
+   "duration": 5.0,
+   "text": "you're using even Claude code, you have"
+  },
+  {
+   "start": 179.6,
+   "duration": 5.6,
+   "text": "to be mindful of which model, what"
+  },
+  {
+   "start": 182.959,
+   "duration": 3.641,
+   "text": "reasoning depth, and what is the effort"
+  },
+  {
+   "start": 185.2,
+   "duration": 4.319,
+   "text": "you are using. All of those things we're"
+  },
+  {
+   "start": 186.6,
+   "duration": 4.88,
+   "text": "going to kind of learn in this lecture,"
+  },
+  {
+   "start": 189.519,
+   "duration": 3.041,
+   "text": "and it's going to be amazing."
+  },
+  {
+   "start": 191.48,
+   "duration": 2.4,
+   "text": "So,"
+  },
+  {
+   "start": 192.56,
+   "duration": 2.88,
+   "text": "um"
+  },
+  {
+   "start": 193.88,
+   "duration": 3.88,
+   "text": "And I'm going to promise you it's less"
+  },
+  {
+   "start": 195.44,
+   "duration": 4.6,
+   "text": "dry than just model selection, okay?"
+  },
+  {
+   "start": 197.76,
+   "duration": 4.64,
+   "text": "It's not just select what is the best"
+  },
+  {
+   "start": 200.04,
+   "duration": 3.56,
+   "text": "model to select. It is a lot of concepts"
+  },
+  {
+   "start": 202.4,
+   "duration": 3.68,
+   "text": "that you're going to learn."
+  },
+  {
+   "start": 203.6,
+   "duration": 4.52,
+   "text": "First, a tiny bit of how does a model"
+  },
+  {
+   "start": 206.08,
+   "duration": 3.0,
+   "text": "even work? We're going to see. Just"
+  },
+  {
+   "start": 208.12,
+   "duration": 3.6,
+   "text": "enough"
+  },
+  {
+   "start": 209.08,
+   "duration": 4.48,
+   "text": "that the rest of it just clicks."
+  },
+  {
+   "start": 211.72,
+   "duration": 4.36,
+   "text": "Okay? We're going to learn about tokens,"
+  },
+  {
+   "start": 213.56,
+   "duration": 4.6,
+   "text": "context windows, and you get a very"
+  },
+  {
+   "start": 216.08,
+   "duration": 3.56,
+   "text": "different answer every time you ask the"
+  },
+  {
+   "start": 218.16,
+   "duration": 4.12,
+   "text": "same thing when you're going to take all"
+  },
+  {
+   "start": 219.64,
+   "duration": 4.16,
+   "text": "of these thing into account."
+  },
+  {
+   "start": 222.28,
+   "duration": 3.4,
+   "text": "Yeah? Then the"
+  },
+  {
+   "start": 223.8,
+   "duration": 3.92,
+   "text": "Then when we'll have the fun part, okay?"
+  },
+  {
+   "start": 225.68,
+   "duration": 4.0,
+   "text": "There will be three tiers."
+  },
+  {
+   "start": 227.72,
+   "duration": 4.84,
+   "text": "everybody is mostly, you know, aware of"
+  },
+  {
+   "start": 229.68,
+   "duration": 4.4,
+   "text": "that. Opus, Sonnet, and Haiku."
+  },
+  {
+   "start": 232.56,
+   "duration": 4.08,
+   "text": "And there is a little trade-off over"
+  },
+  {
+   "start": 234.08,
+   "duration": 4.56,
+   "text": "there. And yeah, we can also learn about"
+  },
+  {
+   "start": 236.64,
+   "duration": 5.48,
+   "text": "that."
+  },
+  {
+   "start": 238.64,
+   "duration": 5.2,
+   "text": "Okay, so let's move on, I guess. Um"
+  },
+  {
+   "start": 242.12,
+   "duration": 4.2,
+   "text": "also, there is one more thing, why you"
+  },
+  {
+   "start": 243.84,
+   "duration": 4.36,
+   "text": "pin your model string. That is you know,"
+  },
+  {
+   "start": 246.32,
+   "duration": 3.84,
+   "text": "the model string, exact model string,"
+  },
+  {
+   "start": 248.2,
+   "duration": 3.4,
+   "text": "why you pin it, and all those things"
+  },
+  {
+   "start": 250.16,
+   "duration": 4.24,
+   "text": "we're going to learn."
+  },
+  {
+   "start": 251.6,
+   "duration": 5.16,
+   "text": "Okay. Where this fits and why there is"
+  },
+  {
+   "start": 254.4,
+   "duration": 4.72,
+   "text": "no new file. So, today probably we're"
+  },
+  {
+   "start": 256.76,
+   "duration": 5.16,
+   "text": "not going to be creating any new file."
+  },
+  {
+   "start": 259.12,
+   "duration": 4.56,
+   "text": "Yeah. So, we where we are in this build,"
+  },
+  {
+   "start": 261.92,
+   "duration": 3.64,
+   "text": "basically, you'll ask me the question."
+  },
+  {
+   "start": 263.68,
+   "duration": 4.28,
+   "text": "So, our repo and PR review agent is"
+  },
+  {
+   "start": 265.56,
+   "duration": 3.84,
+   "text": "basically structurally complete, kind of"
+  },
+  {
+   "start": 267.96,
+   "duration": 2.44,
+   "text": "you can say."
+  },
+  {
+   "start": 269.4,
+   "duration": 3.08,
+   "text": "Okay."
+  },
+  {
+   "start": 270.4,
+   "duration": 4.72,
+   "text": "Everything that is left is about"
+  },
+  {
+   "start": 272.48,
+   "duration": 5.48,
+   "text": "shipping it perfectly."
+  },
+  {
+   "start": 275.12,
+   "duration": 5.16,
+   "text": "So, this is episode number 10, where"
+  },
+  {
+   "start": 277.96,
+   "duration": 3.72,
+   "text": "we're going to select the model, or"
+  },
+  {
+   "start": 280.28,
+   "duration": 4.2,
+   "text": "we're going to learn about how to select"
+  },
+  {
+   "start": 281.68,
+   "duration": 4.28,
+   "text": "the efficient model. Episode number 11,"
+  },
+  {
+   "start": 284.48,
+   "duration": 3.84,
+   "text": "that is going to be the next episode,"
+  },
+  {
+   "start": 285.96,
+   "duration": 4.2,
+   "text": "probably, we're going to see how you"
+  },
+  {
+   "start": 288.32,
+   "duration": 4.24,
+   "text": "deal with costs. We're going to talk"
+  },
+  {
+   "start": 290.16,
+   "duration": 3.96,
+   "text": "about cost tracking. Then, episode"
+  },
+  {
+   "start": 292.56,
+   "duration": 3.48,
+   "text": "number 12"
+  },
+  {
+   "start": 294.12,
+   "duration": 4.56,
+   "text": "hands the basically whole thing to"
+  },
+  {
+   "start": 296.04,
+   "duration": 5.16,
+   "text": "managed agents, which is basically your"
+  },
+  {
+   "start": 298.68,
+   "duration": 4.72,
+   "text": "Claude's runtime, where your agent will"
+  },
+  {
+   "start": 301.2,
+   "duration": 3.6,
+   "text": "work. So, building the agent is kind of"
+  },
+  {
+   "start": 303.4,
+   "duration": 3.96,
+   "text": "you are done. You are You are kind of"
+  },
+  {
+   "start": 304.8,
+   "duration": 7.28,
+   "text": "understood all of the concepts out"
+  },
+  {
+   "start": 307.36,
+   "duration": 7.84,
+   "text": "there. Now is about how you would"
+  },
+  {
+   "start": 312.08,
+   "duration": 4.8,
+   "text": "kind of ship it to production. Yeah, how"
+  },
+  {
+   "start": 315.2,
+   "duration": 2.76,
+   "text": "you can make your agent production"
+  },
+  {
+   "start": 316.88,
+   "duration": 4.52,
+   "text": "ready."
+  },
+  {
+   "start": 317.96,
+   "duration": 4.6,
+   "text": "So, that is what I mean to explain in"
+  },
+  {
+   "start": 321.4,
+   "duration": 3.64,
+   "text": "this video."
+  },
+  {
+   "start": 322.56,
+   "duration": 4.96,
+   "text": "And here's the thing, every single one"
+  },
+  {
+   "start": 325.04,
+   "duration": 5.32,
+   "text": "of those forces you answer, you know,"
+  },
+  {
+   "start": 327.52,
+   "duration": 6.08,
+   "text": "okay, but which model? So, this episode"
+  },
+  {
+   "start": 330.36,
+   "duration": 7.08,
+   "text": "is like the hinge the rest of the kind"
+  },
+  {
+   "start": 333.6,
+   "duration": 6.0,
+   "text": "of the series kind of swings on."
+  },
+  {
+   "start": 337.44,
+   "duration": 4.36,
+   "text": "Yeah, you know, so"
+  },
+  {
+   "start": 339.6,
+   "duration": 5.48,
+   "text": "we are not going to open agent.py. We're"
+  },
+  {
+   "start": 341.8,
+   "duration": 4.8,
+   "text": "going to not open anything, yeah, or"
+  },
+  {
+   "start": 345.08,
+   "duration": 2.84,
+   "text": "create any new file, but I'm going to"
+  },
+  {
+   "start": 346.6,
+   "duration": 4.0,
+   "text": "show you"
+  },
+  {
+   "start": 347.92,
+   "duration": 5.24,
+   "text": "one of the changes that if you remember"
+  },
+  {
+   "start": 350.6,
+   "duration": 5.48,
+   "text": "that I had made in episode number five."
+  },
+  {
+   "start": 353.16,
+   "duration": 4.96,
+   "text": "But it has been staying consistent since"
+  },
+  {
+   "start": 356.08,
+   "duration": 4.36,
+   "text": "then. So we can you can open any of the"
+  },
+  {
+   "start": 358.12,
+   "duration": 5.76,
+   "text": "subagents.py file"
+  },
+  {
+   "start": 360.44,
+   "duration": 6.04,
+   "text": "in your repository."
+  },
+  {
+   "start": 363.88,
+   "duration": 5.8,
+   "text": "And you would see that the model is"
+  },
+  {
+   "start": 366.48,
+   "duration": 4.28,
+   "text": "Claude Haiku 4.5 and this entire string"
+  },
+  {
+   "start": 369.68,
+   "duration": 2.72,
+   "text": "over here. And we're going to understand"
+  },
+  {
+   "start": 370.76,
+   "duration": 5.4,
+   "text": "what that string is."
+  },
+  {
+   "start": 372.4,
+   "duration": 5.6,
+   "text": "Yeah. And this choice, you know,"
+  },
+  {
+   "start": 376.16,
+   "duration": 3.08,
+   "text": "it's been there since episode number"
+  },
+  {
+   "start": 378.0,
+   "duration": 4.64,
+   "text": "five."
+  },
+  {
+   "start": 379.24,
+   "duration": 6.8,
+   "text": "And there was a reason why I changed it."
+  },
+  {
+   "start": 382.64,
+   "duration": 4.76,
+   "text": "So I kind of kept my subagents to Claude"
+  },
+  {
+   "start": 386.04,
+   "duration": 2.52,
+   "text": "Haiku."
+  },
+  {
+   "start": 387.4,
+   "duration": 4.08,
+   "text": "Yeah."
+  },
+  {
+   "start": 388.56,
+   "duration": 6.64,
+   "text": "But if you if you see my agent.py, yeah,"
+  },
+  {
+   "start": 391.48,
+   "duration": 3.72,
+   "text": "it should be Sonnet."
+  },
+  {
+   "start": 395.36,
+   "duration": 3.96,
+   "text": "Okay, I didn't specify a model, so it"
+  },
+  {
+   "start": 397.24,
+   "duration": 3.2,
+   "text": "will default to the best model out"
+  },
+  {
+   "start": 399.32,
+   "duration": 4.96,
+   "text": "there."
+  },
+  {
+   "start": 400.44,
+   "duration": 5.88,
+   "text": "But specifically for subagent.py,"
+  },
+  {
+   "start": 404.28,
+   "duration": 4.36,
+   "text": "we are for our subagents basically in"
+  },
+  {
+   "start": 406.32,
+   "duration": 4.599,
+   "text": "our in this subagents.py file, we are"
+  },
+  {
+   "start": 408.64,
+   "duration": 3.96,
+   "text": "defaulting it to Haiku."
+  },
+  {
+   "start": 410.919,
+   "duration": 3.041,
+   "text": "Yeah, and you can understand why I did"
+  },
+  {
+   "start": 412.6,
+   "duration": 3.0,
+   "text": "that. And if you go back to episode"
+  },
+  {
+   "start": 413.96,
+   "duration": 3.12,
+   "text": "number five, you would understand as"
+  },
+  {
+   "start": 415.6,
+   "duration": 2.44,
+   "text": "well."
+  },
+  {
+   "start": 417.08,
+   "duration": 2.4,
+   "text": "Okay."
+  },
+  {
+   "start": 418.04,
+   "duration": 4.32,
+   "text": "So,"
+  },
+  {
+   "start": 419.48,
+   "duration": 4.52,
+   "text": "how a model actually decides what to"
+  },
+  {
+   "start": 422.36,
+   "duration": 4.2,
+   "text": "say?"
+  },
+  {
+   "start": 424.0,
+   "duration": 5.36,
+   "text": "Let's kind of demystify the magic in"
+  },
+  {
+   "start": 426.56,
+   "duration": 5.24,
+   "text": "about 30 seconds to 1 minute, okay?"
+  },
+  {
+   "start": 429.36,
+   "duration": 4.4,
+   "text": "Because it's makes, you know, everything"
+  },
+  {
+   "start": 431.8,
+   "duration": 6.16,
+   "text": "after this very obvious."
+  },
+  {
+   "start": 433.76,
+   "duration": 8.0,
+   "text": "So a language model is at its core"
+  },
+  {
+   "start": 437.96,
+   "duration": 5.959,
+   "text": "kind of autocomplete on caffeine or on,"
+  },
+  {
+   "start": 441.76,
+   "duration": 4.72,
+   "text": "you know, something else."
+  },
+  {
+   "start": 443.919,
+   "duration": 3.641,
+   "text": "Some kind of stuff. Yeah, on alcohol or"
+  },
+  {
+   "start": 446.48,
+   "duration": 3.439,
+   "text": "something like that."
+  },
+  {
+   "start": 447.56,
+   "duration": 3.24,
+   "text": "So it's autocomplete Pro Max, you can"
+  },
+  {
+   "start": 449.919,
+   "duration": 2.041,
+   "text": "say."
+  },
+  {
+   "start": 450.8,
+   "duration": 4.119,
+   "text": "That's it."
+  },
+  {
+   "start": 451.96,
+   "duration": 5.92,
+   "text": "Yeah. It kind of reads everything so"
+  },
+  {
+   "start": 454.919,
+   "duration": 4.0,
+   "text": "far, predicts the next little chunk of"
+  },
+  {
+   "start": 457.88,
+   "duration": 3.76,
+   "text": "text,"
+  },
+  {
+   "start": 458.919,
+   "duration": 4.281,
+   "text": "uh sticks it on the end, and does the"
+  },
+  {
+   "start": 461.64,
+   "duration": 3.36,
+   "text": "whole thing again. It's kind of a"
+  },
+  {
+   "start": 463.2,
+   "duration": 2.88,
+   "text": "recurring process. It's a looping kind"
+  },
+  {
+   "start": 465.0,
+   "duration": 2.8,
+   "text": "of a thing."
+  },
+  {
+   "start": 466.08,
+   "duration": 4.76,
+   "text": "Again and again it does the same thing,"
+  },
+  {
+   "start": 467.8,
+   "duration": 4.72,
+   "text": "right? Read, predict, append. Read,"
+  },
+  {
+   "start": 470.84,
+   "duration": 4.2,
+   "text": "predict, append."
+  },
+  {
+   "start": 472.52,
+   "duration": 4.64,
+   "text": "All of that is just one loop and it's"
+  },
+  {
+   "start": 475.04,
+   "duration": 4.92,
+   "text": "running really, really fast."
+  },
+  {
+   "start": 477.16,
+   "duration": 6.76,
+   "text": "So, those kind of little chunks have a"
+  },
+  {
+   "start": 479.96,
+   "duration": 9.2,
+   "text": "name. That is known as tokens. Okay?"
+  },
+  {
+   "start": 483.92,
+   "duration": 6.28,
+   "text": "A token is roughly 3/4 of a word, 3/4 of"
+  },
+  {
+   "start": 489.16,
+   "duration": 3.12,
+   "text": "a word."
+  },
+  {
+   "start": 490.2,
+   "duration": 4.44,
+   "text": "Okay? It's roughly 3/4 of the word. And"
+  },
+  {
+   "start": 492.28,
+   "duration": 4.0,
+   "text": "what does"
+  },
+  {
+   "start": 494.64,
+   "duration": 4.6,
+   "text": "In in an average I'm saying, it's not"
+  },
+  {
+   "start": 496.28,
+   "duration": 4.96,
+   "text": "exactly. I would just say 3/4 of a word"
+  },
+  {
+   "start": 499.24,
+   "duration": 3.08,
+   "text": "on average."
+  },
+  {
+   "start": 501.24,
+   "duration": 3.32,
+   "text": "Yeah?"
+  },
+  {
+   "start": 502.32,
+   "duration": 5.76,
+   "text": "It might be sometimes a whole word or"
+  },
+  {
+   "start": 504.56,
+   "duration": 6.04,
+   "text": "sometimes just ing or a comma. It's just"
+  },
+  {
+   "start": 508.08,
+   "duration": 5.24,
+   "text": "an average I'm telling."
+  },
+  {
+   "start": 510.6,
+   "duration": 5.68,
+   "text": "Yeah? So,"
+  },
+  {
+   "start": 513.32,
+   "duration": 4.88,
+   "text": "why do you care about this?"
+  },
+  {
+   "start": 516.28,
+   "duration": 4.0,
+   "text": "Why do you care about it? Because you"
+  },
+  {
+   "start": 518.2,
+   "duration": 4.839,
+   "text": "pay per token."
+  },
+  {
+   "start": 520.28,
+   "duration": 5.36,
+   "text": "Because the tokens that you send in and"
+  },
+  {
+   "start": 523.039,
+   "duration": 5.041,
+   "text": "the tokens the model writes back out."
+  },
+  {
+   "start": 525.64,
+   "duration": 5.52,
+   "text": "So, see there is always this calculation"
+  },
+  {
+   "start": 528.08,
+   "duration": 4.88,
+   "text": "of tokens input and tokens output. The"
+  },
+  {
+   "start": 531.16,
+   "duration": 4.28,
+   "text": "tokens input basically which you send"
+  },
+  {
+   "start": 532.96,
+   "duration": 6.08,
+   "text": "into the model and the tokens out is"
+  },
+  {
+   "start": 535.44,
+   "duration": 6.16,
+   "text": "basically what the model gives you back."
+  },
+  {
+   "start": 539.04,
+   "duration": 4.52,
+   "text": "That is how the meter works, this token"
+  },
+  {
+   "start": 541.6,
+   "duration": 4.2,
+   "text": "meter."
+  },
+  {
+   "start": 543.56,
+   "duration": 5.92,
+   "text": "Everything about cost in the in this"
+  },
+  {
+   "start": 545.8,
+   "duration": 4.64,
+   "text": "episode traces back to this one fact."
+  },
+  {
+   "start": 549.48,
+   "duration": 3.4,
+   "text": "Yeah?"
+  },
+  {
+   "start": 550.44,
+   "duration": 4.8,
+   "text": "And if you see the exam map, LLM"
+  },
+  {
+   "start": 552.88,
+   "duration": 4.84,
+   "text": "fundamentals 5.2% plus technical"
+  },
+  {
+   "start": 555.24,
+   "duration": 4.88,
+   "text": "fundamentals 6.1%."
+  },
+  {
+   "start": 557.72,
+   "duration": 3.88,
+   "text": "And tokens play a very important part in"
+  },
+  {
+   "start": 560.12,
+   "duration": 4.28,
+   "text": "LLM fundamentals because that is the"
+  },
+  {
+   "start": 561.6,
+   "duration": 6.6,
+   "text": "currency that is being used, you know,"
+  },
+  {
+   "start": 564.4,
+   "duration": 5.68,
+   "text": "when you are paying for the you know, um"
+  },
+  {
+   "start": 568.2,
+   "duration": 3.52,
+   "text": "your LLM model."
+  },
+  {
+   "start": 570.08,
+   "duration": 3.759,
+   "text": "So, let's say there is a word called"
+  },
+  {
+   "start": 571.72,
+   "duration": 4.48,
+   "text": "unbelievable."
+  },
+  {
+   "start": 573.839,
+   "duration": 4.641,
+   "text": "Yeah, I know I'm unbelievable, but you"
+  },
+  {
+   "start": 576.2,
+   "duration": 4.48,
+   "text": "know, just kind of bragging, but"
+  },
+  {
+   "start": 578.48,
+   "duration": 4.88,
+   "text": "anyways. So, if you take unbelievable,"
+  },
+  {
+   "start": 580.68,
+   "duration": 6.64,
+   "text": "if you kind of say 3/4 of unbelievable,"
+  },
+  {
+   "start": 583.36,
+   "duration": 6.76,
+   "text": "so you might say un is one of the token,"
+  },
+  {
+   "start": 587.32,
+   "duration": 4.24,
+   "text": "belief is one of the token, and able is"
+  },
+  {
+   "start": 590.12,
+   "duration": 2.8,
+   "text": "one of the token. So, total three"
+  },
+  {
+   "start": 591.56,
+   "duration": 4.48,
+   "text": "tokens."
+  },
+  {
+   "start": 592.92,
+   "duration": 5.48,
+   "text": "And you are paying for these tokens"
+  },
+  {
+   "start": 596.04,
+   "duration": 4.24,
+   "text": "because that is the currency."
+  },
+  {
+   "start": 598.4,
+   "duration": 4.36,
+   "text": "So, you need to understand that whatever"
+  },
+  {
+   "start": 600.28,
+   "duration": 5.16,
+   "text": "you kind of write, it's not just plain"
+  },
+  {
+   "start": 602.76,
+   "duration": 3.92,
+   "text": "English, but it's kind of being The"
+  },
+  {
+   "start": 605.44,
+   "duration": 3.24,
+   "text": "meter is kind of running in the"
+  },
+  {
+   "start": 606.68,
+   "duration": 3.84,
+   "text": "background. So, that is how you need to"
+  },
+  {
+   "start": 608.68,
+   "duration": 3.84,
+   "text": "understand about tokens. I hope that"
+  },
+  {
+   "start": 610.52,
+   "duration": 3.6,
+   "text": "making sense. And that is how the cost"
+  },
+  {
+   "start": 612.52,
+   "duration": 4.36,
+   "text": "kind of accumulates."
+  },
+  {
+   "start": 614.12,
+   "duration": 6.72,
+   "text": "So, context windows,"
+  },
+  {
+   "start": 616.88,
+   "duration": 6.68,
+   "text": "the model's desk, not its memory."
+  },
+  {
+   "start": 620.84,
+   "duration": 5.28,
+   "text": "And here's the next idea, and this one"
+  },
+  {
+   "start": 623.56,
+   "duration": 3.88,
+   "text": "trips people up constantly, the context"
+  },
+  {
+   "start": 626.12,
+   "duration": 4.28,
+   "text": "window."
+  },
+  {
+   "start": 627.44,
+   "duration": 5.8,
+   "text": "So, picture a desk. Yeah, everything the"
+  },
+  {
+   "start": 630.4,
+   "duration": 6.08,
+   "text": "model can actually see at this moment"
+  },
+  {
+   "start": 633.24,
+   "duration": 4.64,
+   "text": "has to physically fit on that desk at"
+  },
+  {
+   "start": 636.48,
+   "duration": 3.04,
+   "text": "once."
+  },
+  {
+   "start": 637.88,
+   "duration": 2.68,
+   "text": "Yeah, you For example, you have your"
+  },
+  {
+   "start": 639.52,
+   "duration": 3.96,
+   "text": "desk."
+  },
+  {
+   "start": 640.56,
+   "duration": 5.24,
+   "text": "Whatever is on your particular desk,"
+  },
+  {
+   "start": 643.48,
+   "duration": 4.16,
+   "text": "you will be able to see."
+  },
+  {
+   "start": 645.8,
+   "duration": 3.44,
+   "text": "Yeah? So,"
+  },
+  {
+   "start": 647.64,
+   "duration": 3.52,
+   "text": "if you are going to consider your"
+  },
+  {
+   "start": 649.24,
+   "duration": 4.24,
+   "text": "model's desk,"
+  },
+  {
+   "start": 651.16,
+   "duration": 4.44,
+   "text": "what can fit on the model's desk? Your"
+  },
+  {
+   "start": 653.48,
+   "duration": 5.12,
+   "text": "system prompt, the whole conversation so"
+  },
+  {
+   "start": 655.6,
+   "duration": 5.84,
+   "text": "far, every tool result, any files you've"
+  },
+  {
+   "start": 658.6,
+   "duration": 5.2,
+   "text": "added. Yeah, the context window is just"
+  },
+  {
+   "start": 661.44,
+   "duration": 5.6,
+   "text": "how big the desk is, measured in tokens."
+  },
+  {
+   "start": 663.8,
+   "duration": 5.8,
+   "text": "If larger the desk or larger the context"
+  },
+  {
+   "start": 667.04,
+   "duration": 5.0,
+   "text": "window, it can hold a lot of things."
+  },
+  {
+   "start": 669.6,
+   "duration": 4.64,
+   "text": "If smaller the desk, for example, 200K"
+  },
+  {
+   "start": 672.04,
+   "duration": 4.2,
+   "text": "context window, obviously, a 1 million"
+  },
+  {
+   "start": 674.24,
+   "duration": 5.24,
+   "text": "context window, which is practically a"
+  },
+  {
+   "start": 676.24,
+   "duration": 5.56,
+   "text": "very big desk, can hold a lot of things."
+  },
+  {
+   "start": 679.48,
+   "duration": 3.96,
+   "text": "But a smaller desk, let's say 200K"
+  },
+  {
+   "start": 681.8,
+   "duration": 4.0,
+   "text": "context window,"
+  },
+  {
+   "start": 683.44,
+   "duration": 4.2,
+   "text": "you kind of kind of have to clear it up"
+  },
+  {
+   "start": 685.8,
+   "duration": 3.84,
+   "text": "once in a while."
+  },
+  {
+   "start": 687.64,
+   "duration": 4.04,
+   "text": "Because it cannot hold as much as 1"
+  },
+  {
+   "start": 689.64,
+   "duration": 4.52,
+   "text": "million context window. That is the"
+  },
+  {
+   "start": 691.68,
+   "duration": 4.64,
+   "text": "desk. Yeah?"
+  },
+  {
+   "start": 694.16,
+   "duration": 5.24,
+   "text": "Now, the thing is you will say, \"But"
+  },
+  {
+   "start": 696.32,
+   "duration": 5.44,
+   "text": "wait, yeah? You would be thinking, so it"
+  },
+  {
+   "start": 699.4,
+   "duration": 4.6,
+   "text": "remembers our chats, is it Is it like"
+  },
+  {
+   "start": 701.76,
+   "duration": 4.32,
+   "text": "memory or something?\""
+  },
+  {
+   "start": 704.0,
+   "duration": 3.32,
+   "text": "See, the No, that is not the thing."
+  },
+  {
+   "start": 706.08,
+   "duration": 3.76,
+   "text": "Yeah, that is where you are getting it"
+  },
+  {
+   "start": 707.32,
+   "duration": 5.68,
+   "text": "wrong. And this is the part people miss."
+  },
+  {
+   "start": 709.84,
+   "duration": 6.16,
+   "text": "The desk is not the memory."
+  },
+  {
+   "start": 713.0,
+   "duration": 4.36,
+   "text": "Close the session and the desk gets"
+  },
+  {
+   "start": 716.0,
+   "duration": 4.4,
+   "text": "wiped clean."
+  },
+  {
+   "start": 717.36,
+   "duration": 6.0,
+   "text": "That's the entire reason episode 6"
+  },
+  {
+   "start": 720.4,
+   "duration": 5.12,
+   "text": "existed, session resume, that little"
+  },
+  {
+   "start": 723.36,
+   "duration": 5.16,
+   "text": "index file. We were faking memory"
+  },
+  {
+   "start": 725.52,
+   "duration": 4.48,
+   "text": "because the model doesn't have any."
+  },
+  {
+   "start": 728.52,
+   "duration": 3.08,
+   "text": "And you are remembering how If you"
+  },
+  {
+   "start": 730.0,
+   "duration": 2.72,
+   "text": "remember how we were resuming our"
+  },
+  {
+   "start": 731.6,
+   "duration": 4.12,
+   "text": "sessions,"
+  },
+  {
+   "start": 732.72,
+   "duration": 5.04,
+   "text": "our JSONL files that I had shown you in"
+  },
+  {
+   "start": 735.72,
+   "duration": 4.0,
+   "text": "your dot cloud folders, if you remember."
+  },
+  {
+   "start": 737.76,
+   "duration": 4.04,
+   "text": "That is where your memory actually is,"
+  },
+  {
+   "start": 739.72,
+   "duration": 4.56,
+   "text": "not in your context window."
+  },
+  {
+   "start": 741.8,
+   "duration": 3.92,
+   "text": "So, consider your you know, a context"
+  },
+  {
+   "start": 744.28,
+   "duration": 3.12,
+   "text": "window something like you have a"
+  },
+  {
+   "start": 745.72,
+   "duration": 4.2,
+   "text": "temporary seat at your office. You don't"
+  },
+  {
+   "start": 747.4,
+   "duration": 5.2,
+   "text": "have your fixed seat. You have a"
+  },
+  {
+   "start": 749.92,
+   "duration": 5.2,
+   "text": "temporary seat and your temporary seat"
+  },
+  {
+   "start": 752.6,
+   "duration": 4.4,
+   "text": "is very huge. So, at once you can keep a"
+  },
+  {
+   "start": 755.12,
+   "duration": 4.84,
+   "text": "lot of things on your desk at your"
+  },
+  {
+   "start": 757.0,
+   "duration": 4.56,
+   "text": "temporary seat. Yeah? But, once you have"
+  },
+  {
+   "start": 759.96,
+   "duration": 3.08,
+   "text": "to go back home, you have to clear"
+  },
+  {
+   "start": 761.56,
+   "duration": 3.2,
+   "text": "everything out"
+  },
+  {
+   "start": 763.04,
+   "duration": 3.92,
+   "text": "and go back home. And at the end of the"
+  },
+  {
+   "start": 764.76,
+   "duration": 4.12,
+   "text": "day, it's empty."
+  },
+  {
+   "start": 766.96,
+   "duration": 3.92,
+   "text": "Yeah? So, once you start a new session,"
+  },
+  {
+   "start": 768.88,
+   "duration": 3.72,
+   "text": "your context window refreshes, it starts"
+  },
+  {
+   "start": 770.88,
+   "duration": 4.08,
+   "text": "kind of clean. But, if you are"
+  },
+  {
+   "start": 772.6,
+   "duration": 3.88,
+   "text": "continuing in the same session,"
+  },
+  {
+   "start": 774.96,
+   "duration": 2.96,
+   "text": "your context window is kind of getting"
+  },
+  {
+   "start": 776.48,
+   "duration": 3.12,
+   "text": "filled up."
+  },
+  {
+   "start": 777.92,
+   "duration": 3.0,
+   "text": "So, model can see a lot of things, but"
+  },
+  {
+   "start": 779.6,
+   "duration": 3.12,
+   "text": "it doesn't mean that it will"
+  },
+  {
+   "start": 780.92,
+   "duration": 3.36,
+   "text": "automatically remember all of these"
+  },
+  {
+   "start": 782.72,
+   "duration": 3.24,
+   "text": "things when you start with a new"
+  },
+  {
+   "start": 784.28,
+   "duration": 4.48,
+   "text": "session. That's why all this session"
+  },
+  {
+   "start": 785.96,
+   "duration": 4.48,
+   "text": "resume, you know, fork session,"
+  },
+  {
+   "start": 788.76,
+   "duration": 4.16,
+   "text": "um session"
+  },
+  {
+   "start": 790.44,
+   "duration": 4.16,
+   "text": "ID, all of these things exist for for"
+  },
+  {
+   "start": 792.92,
+   "duration": 4.08,
+   "text": "that memory purpose. I hope that's"
+  },
+  {
+   "start": 794.6,
+   "duration": 3.92,
+   "text": "making sense."
+  },
+  {
+   "start": 797.0,
+   "duration": 2.839,
+   "text": "And I hope you're not getting confused."
+  },
+  {
+   "start": 798.52,
+   "duration": 3.84,
+   "text": "If you're getting confused, please let"
+  },
+  {
+   "start": 799.839,
+   "duration": 4.361,
+   "text": "me know, I'll explain it again."
+  },
+  {
+   "start": 802.36,
+   "duration": 4.56,
+   "text": "Okay, so you Why do you get a different"
+  },
+  {
+   "start": 804.2,
+   "duration": 4.2,
+   "text": "answer every time? So,"
+  },
+  {
+   "start": 806.92,
+   "duration": 4.08,
+   "text": "every"
+  },
+  {
+   "start": 808.4,
+   "duration": 5.2,
+   "text": "you know, not every, you know,"
+  },
+  {
+   "start": 811.0,
+   "duration": 4.8,
+   "text": "ever ask a model"
+  },
+  {
+   "start": 813.6,
+   "duration": 4.24,
+   "text": "the exact same thing twice and gotten"
+  },
+  {
+   "start": 815.8,
+   "duration": 3.52,
+   "text": "two different answers. A lot of people"
+  },
+  {
+   "start": 817.84,
+   "duration": 4.8,
+   "text": "have got that."
+  },
+  {
+   "start": 819.32,
+   "duration": 4.96,
+   "text": "And that is not a bug, it's on purpose."
+  },
+  {
+   "start": 822.64,
+   "duration": 3.44,
+   "text": "Yeah, and"
+  },
+  {
+   "start": 824.28,
+   "duration": 4.04,
+   "text": "I might be, you know, reiterating this"
+  },
+  {
+   "start": 826.08,
+   "duration": 5.32,
+   "text": "thing that people already know, but it"
+  },
+  {
+   "start": 828.32,
+   "duration": 6.0,
+   "text": "is very important to understand on the"
+  },
+  {
+   "start": 831.4,
+   "duration": 5.52,
+   "text": "basis of the exam and how you actually"
+  },
+  {
+   "start": 834.32,
+   "duration": 5.12,
+   "text": "work with models. See,"
+  },
+  {
+   "start": 836.92,
+   "duration": 5.32,
+   "text": "the model predicts the next token as a"
+  },
+  {
+   "start": 839.44,
+   "duration": 4.92,
+   "text": "list of probabilities."
+  },
+  {
+   "start": 842.24,
+   "duration": 4.56,
+   "text": "It usually"
+  },
+  {
+   "start": 844.36,
+   "duration": 4.08,
+   "text": "doesn't just grab the single most likely"
+  },
+  {
+   "start": 846.8,
+   "duration": 3.32,
+   "text": "one."
+  },
+  {
+   "start": 848.44,
+   "duration": 5.52,
+   "text": "Right? It doesn't do that."
+  },
+  {
+   "start": 850.12,
+   "duration": 7.04,
+   "text": "It samples from the top options like uh"
+  },
+  {
+   "start": 853.96,
+   "duration": 5.68,
+   "text": "rolling a lightly weighted"
+  },
+  {
+   "start": 857.16,
+   "duration": 3.76,
+   "text": "dice."
+  },
+  {
+   "start": 859.64,
+   "duration": 5.28,
+   "text": "Yeah, or a"
+  },
+  {
+   "start": 860.92,
+   "duration": 7.44,
+   "text": "I think uh the the single singular of"
+  },
+  {
+   "start": 864.92,
+   "duration": 5.32,
+   "text": "dice is die?"
+  },
+  {
+   "start": 868.36,
+   "duration": 3.2,
+   "text": "Is it though? Let me just check that"
+  },
+  {
+   "start": 870.24,
+   "duration": 4.36,
+   "text": "out."
+  },
+  {
+   "start": 871.56,
+   "duration": 4.96,
+   "text": "Singular of dice is"
+  },
+  {
+   "start": 874.6,
+   "duration": 5.12,
+   "text": "what?"
+  },
+  {
+   "start": 876.52,
+   "duration": 4.465,
+   "text": "It's die. I I thought so, you know? I"
+  },
+  {
+   "start": 879.72,
+   "duration": 1.28,
+   "text": "thought so."
+  },
+  {
+   "start": 880.985,
+   "duration": 1.135,
+   "text": ">> [laughter]"
+  },
+  {
+   "start": 881.0,
+   "duration": 3.56,
+   "text": ">> My bad."
+  },
+  {
+   "start": 882.12,
+   "duration": 5.12,
+   "text": "I I just got distracted. Anyways, so"
+  },
+  {
+   "start": 884.56,
+   "duration": 4.88,
+   "text": "it's like rolling a lightly weighted"
+  },
+  {
+   "start": 887.24,
+   "duration": 4.2,
+   "text": "die. It sounds a bit weird, but that's"
+  },
+  {
+   "start": 889.44,
+   "duration": 5.44,
+   "text": "the singular form, yeah."
+  },
+  {
+   "start": 891.44,
+   "duration": 6.0,
+   "text": "I hope you learned something in grammar."
+  },
+  {
+   "start": 894.88,
+   "duration": 5.04,
+   "text": "Okay. It's the same prompt, slightly"
+  },
+  {
+   "start": 897.44,
+   "duration": 3.76,
+   "text": "different role. Yeah, slightly different"
+  },
+  {
+   "start": 899.92,
+   "duration": 3.08,
+   "text": "wording. That's"
+  },
+  {
+   "start": 901.2,
+   "duration": 4.2,
+   "text": "that little bit of randomness is called"
+  },
+  {
+   "start": 903.0,
+   "duration": 5.68,
+   "text": "non-determinism."
+  },
+  {
+   "start": 905.4,
+   "duration": 5.96,
+   "text": "Okay? Now, historically,"
+  },
+  {
+   "start": 908.68,
+   "duration": 5.92,
+   "text": "you would control that with knobs. Okay,"
+  },
+  {
+   "start": 911.36,
+   "duration": 7.32,
+   "text": "how much randomness do I want?"
+  },
+  {
+   "start": 914.6,
+   "duration": 6.72,
+   "text": "And that knob is known as temperature."
+  },
+  {
+   "start": 918.68,
+   "duration": 4.6,
+   "text": "Top P, top K."
+  },
+  {
+   "start": 921.32,
+   "duration": 5.84,
+   "text": "So, if you crank the temperature down to"
+  },
+  {
+   "start": 923.28,
+   "duration": 5.84,
+   "text": "zero for consistency, yeah, that kind of"
+  },
+  {
+   "start": 927.16,
+   "duration": 5.8,
+   "text": "thing."
+  },
+  {
+   "start": 929.12,
+   "duration": 6.16,
+   "text": "Crank it to zero for consistency."
+  },
+  {
+   "start": 932.96,
+   "duration": 4.84,
+   "text": "Crank it higher."
+  },
+  {
+   "start": 935.28,
+   "duration": 5.2,
+   "text": "And it will, you know, um"
+  },
+  {
+   "start": 937.8,
+   "duration": 5.6,
+   "text": "do a lot of stuffs, you know, it will it"
+  },
+  {
+   "start": 940.48,
+   "duration": 5.16,
+   "text": "will it can hallucinate us."
+  },
+  {
+   "start": 943.4,
+   "duration": 4.48,
+   "text": "Okay. So,"
+  },
+  {
+   "start": 945.64,
+   "duration": 5.4,
+   "text": "a key fact that I want to tell you is"
+  },
+  {
+   "start": 947.88,
+   "duration": 5.96,
+   "text": "basically on Opus 4.7 plus and Sonnet 5"
+  },
+  {
+   "start": 951.04,
+   "duration": 5.32,
+   "text": "setting temperature, you know, top P top"
+  },
+  {
+   "start": 953.84,
+   "duration": 4.96,
+   "text": "K to a non-default value returns a hard"
+  },
+  {
+   "start": 956.36,
+   "duration": 4.52,
+   "text": "400 error. That is a thing you need to"
+  },
+  {
+   "start": 958.8,
+   "duration": 3.48,
+   "text": "do. So, you can run cannot randomly set"
+  },
+  {
+   "start": 960.88,
+   "duration": 2.92,
+   "text": "whatever temperature you want. So, that"
+  },
+  {
+   "start": 962.28,
+   "duration": 2.56,
+   "text": "is one of the key facts that I wanted to"
+  },
+  {
+   "start": 963.8,
+   "duration": 3.6,
+   "text": "tell you."
+  },
+  {
+   "start": 964.84,
+   "duration": 4.64,
+   "text": "The the literal default temperature one"
+  },
+  {
+   "start": 967.4,
+   "duration": 4.0,
+   "text": "still passes. So, that is a temperature"
+  },
+  {
+   "start": 969.48,
+   "duration": 3.88,
+   "text": "1.0."
+  },
+  {
+   "start": 971.4,
+   "duration": 4.56,
+   "text": "Anything else fails. Anthropic's"
+  },
+  {
+   "start": 973.36,
+   "duration": 6.44,
+   "text": "recommended replacement is prompting,"
+  },
+  {
+   "start": 975.96,
+   "duration": 5.8,
+   "text": "not a knob. Okay. So, if you for example"
+  },
+  {
+   "start": 979.8,
+   "duration": 4.08,
+   "text": "set the temperature"
+  },
+  {
+   "start": 981.76,
+   "duration": 4.28,
+   "text": "like this, you set the model and then"
+  },
+  {
+   "start": 983.88,
+   "duration": 6.16,
+   "text": "you select the temperature, you would"
+  },
+  {
+   "start": 986.04,
+   "duration": 5.88,
+   "text": "probably going to get a 400 bad request."
+  },
+  {
+   "start": 990.04,
+   "duration": 3.6,
+   "text": "So, make sure that"
+  },
+  {
+   "start": 991.92,
+   "duration": 3.48,
+   "text": "um"
+  },
+  {
+   "start": 993.64,
+   "duration": 5.199,
+   "text": "if in the exam you get something like if"
+  },
+  {
+   "start": 995.4,
+   "duration": 7.2,
+   "text": "you pass temperature as 1.0"
+  },
+  {
+   "start": 998.839,
+   "duration": 5.641,
+   "text": "uh explicitly, does it error?"
+  },
+  {
+   "start": 1002.6,
+   "duration": 6.44,
+   "text": "And the answer is no."
+  },
+  {
+   "start": 1004.48,
+   "duration": 7.64,
+   "text": "Only non-default values error. The exact"
+  },
+  {
+   "start": 1009.04,
+   "duration": 5.08,
+   "text": "default 1.0 is still accepted, which is"
+  },
+  {
+   "start": 1012.12,
+   "duration": 4.52,
+   "text": "why, you know, some frameworks that pass"
+  },
+  {
+   "start": 1014.12,
+   "duration": 6.64,
+   "text": "it to satisfy a type check still work."
+  },
+  {
+   "start": 1016.64,
+   "duration": 6.68,
+   "text": "But if you're uh some old tutorials are"
+  },
+  {
+   "start": 1020.76,
+   "duration": 5.12,
+   "text": "setting it to for example zero, um you"
+  },
+  {
+   "start": 1023.32,
+   "duration": 5.24,
+   "text": "know, for consistency, that line is now"
+  },
+  {
+   "start": 1025.88,
+   "duration": 4.24,
+   "text": "a crash. You delete it. Don't consider"
+  },
+  {
+   "start": 1028.56,
+   "duration": 5.08,
+   "text": "that video."
+  },
+  {
+   "start": 1030.12,
+   "duration": 5.92,
+   "text": "Yeah. So, but but uh I think in my older"
+  },
+  {
+   "start": 1033.64,
+   "duration": 3.92,
+   "text": "videos or in some other lectures, I kind"
+  },
+  {
+   "start": 1036.04,
+   "duration": 4.2,
+   "text": "of played around with temperature. I"
+  },
+  {
+   "start": 1037.56,
+   "duration": 5.56,
+   "text": "think in my AWS Certified Practitioner"
+  },
+  {
+   "start": 1040.24,
+   "duration": 5.719,
+   "text": "series when I was kind of"
+  },
+  {
+   "start": 1043.12,
+   "duration": 5.199,
+   "text": "trying out some models in Bedrock, I"
+  },
+  {
+   "start": 1045.959,
+   "duration": 3.681,
+   "text": "think. I was kind of cranking up and"
+  },
+  {
+   "start": 1048.319,
+   "duration": 3.481,
+   "text": "down the temperatures and kind of"
+  },
+  {
+   "start": 1049.64,
+   "duration": 5.56,
+   "text": "playing with the non-determinism a lot."
+  },
+  {
+   "start": 1051.8,
+   "duration": 6.12,
+   "text": "But now it's kind of set to defaults."
+  },
+  {
+   "start": 1055.2,
+   "duration": 4.72,
+   "text": "So that is why you kind of face this I"
+  },
+  {
+   "start": 1057.92,
+   "duration": 4.4,
+   "text": "would not say it's an issue."
+  },
+  {
+   "start": 1059.92,
+   "duration": 4.0,
+   "text": "Yeah, I don't consider, you know,"
+  },
+  {
+   "start": 1062.32,
+   "duration": 3.04,
+   "text": "playing around with temperatures because"
+  },
+  {
+   "start": 1063.92,
+   "duration": 4.2,
+   "text": "they will give you the best default"
+  },
+  {
+   "start": 1065.36,
+   "duration": 5.6,
+   "text": "settings so kind of go with it. Um so"
+  },
+  {
+   "start": 1068.12,
+   "duration": 7.8,
+   "text": "that is what it is. Okay. So meet the"
+  },
+  {
+   "start": 1070.96,
+   "duration": 7.08,
+   "text": "three tiers, Opus, Sonnet, and Haiku."
+  },
+  {
+   "start": 1075.92,
+   "duration": 5.16,
+   "text": "Yeah. So this is the main event, right?"
+  },
+  {
+   "start": 1078.04,
+   "duration": 5.32,
+   "text": "Anthropic ships three main tiers and the"
+  },
+  {
+   "start": 1081.08,
+   "duration": 5.52,
+   "text": "cleanest way to hold them in your head"
+  },
+  {
+   "start": 1083.36,
+   "duration": 4.52,
+   "text": "is picking a vehicle for your trip. Very"
+  },
+  {
+   "start": 1086.6,
+   "duration": 2.16,
+   "text": "simple."
+  },
+  {
+   "start": 1087.88,
+   "duration": 4.52,
+   "text": "So"
+  },
+  {
+   "start": 1088.76,
+   "duration": 6.36,
+   "text": "Haiku is like your scooter or scooty,"
+  },
+  {
+   "start": 1092.4,
+   "duration": 4.8,
+   "text": "whatever, right? It's light, it's quick."
+  },
+  {
+   "start": 1095.12,
+   "duration": 5.44,
+   "text": "It's very cheap to run. Yeah, maybe one"
+  },
+  {
+   "start": 1097.2,
+   "duration": 5.56,
+   "text": "of those EV scooties, right? Perfect"
+  },
+  {
+   "start": 1100.56,
+   "duration": 4.48,
+   "text": "for, you know, your short, well-defined"
+  },
+  {
+   "start": 1102.76,
+   "duration": 5.24,
+   "text": "trips. Nothing, you know, lesser about"
+  },
+  {
+   "start": 1105.04,
+   "duration": 4.84,
+   "text": "it. It's just built for a different job."
+  },
+  {
+   "start": 1108.0,
+   "duration": 5.6,
+   "text": "Yeah, it's So if you compare it to"
+  },
+  {
+   "start": 1109.88,
+   "duration": 7.52,
+   "text": "Haiku, Haiku is really, really cheap. $1"
+  },
+  {
+   "start": 1113.6,
+   "duration": 6.36,
+   "text": "in and $5 per million"
+  },
+  {
+   "start": 1117.4,
+   "duration": 3.6,
+   "text": "dollars. Sorry, per million tokens, not"
+  },
+  {
+   "start": 1119.96,
+   "duration": 2.6,
+   "text": "dollars."
+  },
+  {
+   "start": 1121.0,
+   "duration": 4.4,
+   "text": "My bad."
+  },
+  {
+   "start": 1122.56,
+   "duration": 5.16,
+   "text": "Yeah. So when would you use Haiku? Haiku"
+  },
+  {
+   "start": 1125.4,
+   "duration": 3.68,
+   "text": "is great when your requirement is well"
+  },
+  {
+   "start": 1127.72,
+   "duration": 4.08,
+   "text": "defined."
+  },
+  {
+   "start": 1129.08,
+   "duration": 5.2,
+   "text": "You have every step completely defined"
+  },
+  {
+   "start": 1131.8,
+   "duration": 5.2,
+   "text": "in your prompt or something like that."
+  },
+  {
+   "start": 1134.28,
+   "duration": 3.88,
+   "text": "It's very There is no unclear or very"
+  },
+  {
+   "start": 1137.0,
+   "duration": 3.52,
+   "text": "less"
+  },
+  {
+   "start": 1138.16,
+   "duration": 3.44,
+   "text": "things that the LLM needs to think"
+  },
+  {
+   "start": 1140.52,
+   "duration": 3.16,
+   "text": "about."
+  },
+  {
+   "start": 1141.6,
+   "duration": 3.88,
+   "text": "Yeah, it's pretty straightforward. Most"
+  },
+  {
+   "start": 1143.68,
+   "duration": 4.56,
+   "text": "of your automation jobs, your daily"
+  },
+  {
+   "start": 1145.48,
+   "duration": 4.36,
+   "text": "runs, something like that, Haiku is the"
+  },
+  {
+   "start": 1148.24,
+   "duration": 4.64,
+   "text": "best fit."
+  },
+  {
+   "start": 1149.84,
+   "duration": 4.88,
+   "text": "Next comes Sonnet. Sonnet is like your"
+  },
+  {
+   "start": 1152.88,
+   "duration": 3.92,
+   "text": "everyday car or your general car that"
+  },
+  {
+   "start": 1154.72,
+   "duration": 5.4,
+   "text": "you have, right? The the one that you"
+  },
+  {
+   "start": 1156.8,
+   "duration": 5.24,
+   "text": "reach for by default. You know, handles"
+  },
+  {
+   "start": 1160.12,
+   "duration": 4.32,
+   "text": "almost any kind of trip with a great"
+  },
+  {
+   "start": 1162.04,
+   "duration": 4.2,
+   "text": "balance of, you know, capable, quick,"
+  },
+  {
+   "start": 1164.44,
+   "duration": 3.6,
+   "text": "and affordable."
+  },
+  {
+   "start": 1166.24,
+   "duration": 3.2,
+   "text": "Yeah, I don't own a car or anything, so"
+  },
+  {
+   "start": 1168.04,
+   "duration": 3.64,
+   "text": "don't think that I'm very rich and"
+  },
+  {
+   "start": 1169.44,
+   "duration": 4.24,
+   "text": "giving you all these examples. I'm just"
+  },
+  {
+   "start": 1171.68,
+   "duration": 4.0,
+   "text": "kind of trying to compare it with the"
+  },
+  {
+   "start": 1173.68,
+   "duration": 4.48,
+   "text": "real-life scenario, so it will kind of"
+  },
+  {
+   "start": 1175.68,
+   "duration": 4.96,
+   "text": "give you more thoughts."
+  },
+  {
+   "start": 1178.16,
+   "duration": 6.24,
+   "text": "So, the cost is pretty reasonable. Yeah,"
+  },
+  {
+   "start": 1180.64,
+   "duration": 7.76,
+   "text": "it's $2 in and $10 out per million kind"
+  },
+  {
+   "start": 1184.4,
+   "duration": 6.64,
+   "text": "of tokens. Um around 3 to $15. See, it"
+  },
+  {
+   "start": 1188.4,
+   "duration": 5.28,
+   "text": "depends on um you know, what kind of"
+  },
+  {
+   "start": 1191.04,
+   "duration": 4.2,
+   "text": "uh effort you set. So, kind of the"
+  },
+  {
+   "start": 1193.68,
+   "duration": 3.6,
+   "text": "the you can see the difference in cost."
+  },
+  {
+   "start": 1195.24,
+   "duration": 4.2,
+   "text": "Yeah, this might be the in in the medium"
+  },
+  {
+   "start": 1197.28,
+   "duration": 5.36,
+   "text": "or high effort, and when you go with X"
+  },
+  {
+   "start": 1199.44,
+   "duration": 7.16,
+   "text": "high or, you know, uh extra effort, you"
+  },
+  {
+   "start": 1202.64,
+   "duration": 6.36,
+   "text": "might, you know, spend more tokens out."
+  },
+  {
+   "start": 1206.6,
+   "duration": 4.44,
+   "text": "So, you know, it's it's you're going to"
+  },
+  {
+   "start": 1209.0,
+   "duration": 3.96,
+   "text": "use Sonnet if you want to do a little"
+  },
+  {
+   "start": 1211.04,
+   "duration": 3.56,
+   "text": "bit of exploration task, but it's not"
+  },
+  {
+   "start": 1212.96,
+   "duration": 4.28,
+   "text": "like a very rocket science kind of a"
+  },
+  {
+   "start": 1214.6,
+   "duration": 5.48,
+   "text": "thing. Your regular coding jobs, you"
+  },
+  {
+   "start": 1217.24,
+   "duration": 3.4,
+   "text": "know, um editing files,"
+  },
+  {
+   "start": 1220.08,
+   "duration": 2.04,
+   "text": "um"
+  },
+  {
+   "start": 1220.64,
+   "duration": 4.68,
+   "text": "it can do more than editing files. It"
+  },
+  {
+   "start": 1222.12,
+   "duration": 4.92,
+   "text": "can also compare repositories, but it's"
+  },
+  {
+   "start": 1225.32,
+   "duration": 3.4,
+   "text": "you know, it it would be kind of, you"
+  },
+  {
+   "start": 1227.04,
+   "duration": 3.92,
+   "text": "know, kind of doable. You know, it kind"
+  },
+  {
+   "start": 1228.72,
+   "duration": 5.04,
+   "text": "of falls into the category where you"
+  },
+  {
+   "start": 1230.96,
+   "duration": 4.72,
+   "text": "kind of define the requirement that you"
+  },
+  {
+   "start": 1233.76,
+   "duration": 3.52,
+   "text": "need for your agent or in Claude code,"
+  },
+  {
+   "start": 1235.68,
+   "duration": 3.64,
+   "text": "wherever you're using."
+  },
+  {
+   "start": 1237.28,
+   "duration": 4.72,
+   "text": "And there is also room for thought or"
+  },
+  {
+   "start": 1239.32,
+   "duration": 4.8,
+   "text": "improvement that the LLM can think and"
+  },
+  {
+   "start": 1242.0,
+   "duration": 5.08,
+   "text": "improve, but it is not that much kind of"
+  },
+  {
+   "start": 1244.12,
+   "duration": 3.68,
+   "text": "a, you know, critical job or, you know,"
+  },
+  {
+   "start": 1247.08,
+   "duration": 2.8,
+   "text": "uh"
+  },
+  {
+   "start": 1247.8,
+   "duration": 4.24,
+   "text": "where it needs, you know,"
+  },
+  {
+   "start": 1249.88,
+   "duration": 4.28,
+   "text": "where the LLM is needed to think a lot,"
+  },
+  {
+   "start": 1252.04,
+   "duration": 4.08,
+   "text": "basically. So, in that case, you would"
+  },
+  {
+   "start": 1254.16,
+   "duration": 4.88,
+   "text": "use Sonnet."
+  },
+  {
+   "start": 1256.12,
+   "duration": 4.76,
+   "text": "Opus, like your semi-truck, like some"
+  },
+  {
+   "start": 1259.04,
+   "duration": 3.04,
+   "text": "kind of like Toyota Hilux or something,"
+  },
+  {
+   "start": 1260.88,
+   "duration": 2.8,
+   "text": "right?"
+  },
+  {
+   "start": 1262.08,
+   "duration": 3.96,
+   "text": "It's the most powerful and most"
+  },
+  {
+   "start": 1263.68,
+   "duration": 4.8,
+   "text": "expensive to run. It's It's slower kind"
+  },
+  {
+   "start": 1266.04,
+   "duration": 4.64,
+   "text": "of off the line. You bring it out for"
+  },
+  {
+   "start": 1268.48,
+   "duration": 4.36,
+   "text": "genuinely heavy hauls."
+  },
+  {
+   "start": 1270.68,
+   "duration": 4.32,
+   "text": "You know, kind of comparing multiple"
+  },
+  {
+   "start": 1272.84,
+   "duration": 3.6,
+   "text": "repositories, finding out, you know, or"
+  },
+  {
+   "start": 1275.0,
+   "duration": 3.0,
+   "text": "you are work you know, you are working"
+  },
+  {
+   "start": 1276.44,
+   "duration": 3.84,
+   "text": "on something"
+  },
+  {
+   "start": 1278.0,
+   "duration": 4.0,
+   "text": "uh you know, kind of a new thing or a"
+  },
+  {
+   "start": 1280.28,
+   "duration": 4.8,
+   "text": "very good idea you are working on and"
+  },
+  {
+   "start": 1282.0,
+   "duration": 5.44,
+   "text": "you know, you want an approach. Yeah. Uh"
+  },
+  {
+   "start": 1285.08,
+   "duration": 3.88,
+   "text": "you want an intelligent approach, right?"
+  },
+  {
+   "start": 1287.44,
+   "duration": 3.0,
+   "text": "Something like that. You can you can"
+  },
+  {
+   "start": 1288.96,
+   "duration": 4.16,
+   "text": "kind of come up with an intelligent"
+  },
+  {
+   "start": 1290.44,
+   "duration": 4.68,
+   "text": "approach using Opus. Yeah, you can"
+  },
+  {
+   "start": 1293.12,
+   "duration": 4.8,
+   "text": "design and plan it out and probably you"
+  },
+  {
+   "start": 1295.12,
+   "duration": 4.8,
+   "text": "Sonnet to actually create the app or"
+  },
+  {
+   "start": 1297.92,
+   "duration": 5.36,
+   "text": "something like that. So, you can switch"
+  },
+  {
+   "start": 1299.92,
+   "duration": 5.52,
+   "text": "between models. Yeah, and it's not that"
+  },
+  {
+   "start": 1303.28,
+   "duration": 4.16,
+   "text": "if you stick with one model, you have to"
+  },
+  {
+   "start": 1305.44,
+   "duration": 4.52,
+   "text": "stick with that. Yeah, you have to kind"
+  },
+  {
+   "start": 1307.44,
+   "duration": 4.04,
+   "text": "of, you know, uh use the model at the"
+  },
+  {
+   "start": 1309.96,
+   "duration": 3.48,
+   "text": "right time. Use the particular model at"
+  },
+  {
+   "start": 1311.48,
+   "duration": 4.04,
+   "text": "the right time. Yeah."
+  },
+  {
+   "start": 1313.44,
+   "duration": 4.28,
+   "text": "So, Opus, if you're going to compare it"
+  },
+  {
+   "start": 1315.52,
+   "duration": 5.16,
+   "text": "with Haiku, it's five times more"
+  },
+  {
+   "start": 1317.72,
+   "duration": 5.04,
+   "text": "expensive than Haiku in plain, you know,"
+  },
+  {
+   "start": 1320.68,
+   "duration": 3.84,
+   "text": "calculation terms. Yeah."
+  },
+  {
+   "start": 1322.76,
+   "duration": 4.28,
+   "text": "So, let's move on. I hope you understood"
+  },
+  {
+   "start": 1324.52,
+   "duration": 4.92,
+   "text": "the three kind of, you know, offerings"
+  },
+  {
+   "start": 1327.04,
+   "duration": 3.8,
+   "text": "out there. Trade-off triangle, and it's"
+  },
+  {
+   "start": 1329.44,
+   "duration": 2.52,
+   "text": "the same thing that I've been talking"
+  },
+  {
+   "start": 1330.84,
+   "duration": 2.88,
+   "text": "about, right? When you are switching"
+  },
+  {
+   "start": 1331.96,
+   "duration": 4.32,
+   "text": "from one model to another, you are"
+  },
+  {
+   "start": 1333.72,
+   "duration": 5.24,
+   "text": "sacrificing one or the another."
+  },
+  {
+   "start": 1336.28,
+   "duration": 5.76,
+   "text": "Yeah. So, every model lives inside a"
+  },
+  {
+   "start": 1338.96,
+   "duration": 6.56,
+   "text": "triangle with three corners, okay?"
+  },
+  {
+   "start": 1342.04,
+   "duration": 6.32,
+   "text": "Capability, cost, and latency."
+  },
+  {
+   "start": 1345.52,
+   "duration": 4.76,
+   "text": "That's just a fancy word for speed."
+  },
+  {
+   "start": 1348.36,
+   "duration": 3.24,
+   "text": "Okay? Latency is just a fancy word for"
+  },
+  {
+   "start": 1350.28,
+   "duration": 3.64,
+   "text": "speed."
+  },
+  {
+   "start": 1351.6,
+   "duration": 7.32,
+   "text": "And you're always trading between them."
+  },
+  {
+   "start": 1353.92,
+   "duration": 7.44,
+   "text": "So, capability, cost, and latency. They"
+  },
+  {
+   "start": 1358.92,
+   "duration": 4.64,
+   "text": "cannot be on the same page at all the"
+  },
+  {
+   "start": 1361.36,
+   "duration": 3.2,
+   "text": "times. Yeah. So, you have to pick your"
+  },
+  {
+   "start": 1363.56,
+   "duration": 3.2,
+   "text": "corner."
+  },
+  {
+   "start": 1364.56,
+   "duration": 5.0,
+   "text": "So, Haiku kind of hugs the cheap and"
+  },
+  {
+   "start": 1366.76,
+   "duration": 5.6,
+   "text": "fast corner with a lower ceiling. Opus"
+  },
+  {
+   "start": 1369.56,
+   "duration": 4.92,
+   "text": "lives in the top capability corner and"
+  },
+  {
+   "start": 1372.36,
+   "duration": 4.48,
+   "text": "pays for it in, you know, dollars or"
+  },
+  {
+   "start": 1374.48,
+   "duration": 4.2,
+   "text": "euros and seconds. Sonnet sits"
+  },
+  {
+   "start": 1376.84,
+   "duration": 3.52,
+   "text": "comfortably in the middle, which is"
+  },
+  {
+   "start": 1378.68,
+   "duration": 2.92,
+   "text": "exactly why it's"
+  },
+  {
+   "start": 1380.36,
+   "duration": 3.32,
+   "text": "the you know,"
+  },
+  {
+   "start": 1381.6,
+   "duration": 4.16,
+   "text": "the the the kind of the default for most"
+  },
+  {
+   "start": 1383.68,
+   "duration": 4.64,
+   "text": "of your works. You know, your everyday"
+  },
+  {
+   "start": 1385.76,
+   "duration": 4.84,
+   "text": "works, your everyday coding things."
+  },
+  {
+   "start": 1388.32,
+   "duration": 5.52,
+   "text": "So, the big reframe, there is no best"
+  },
+  {
+   "start": 1390.6,
+   "duration": 5.24,
+   "text": "model, there is only best for this task"
+  },
+  {
+   "start": 1393.84,
+   "duration": 5.28,
+   "text": "that I kind of give you an example a few"
+  },
+  {
+   "start": 1395.84,
+   "duration": 5.48,
+   "text": "moments back. There's always"
+  },
+  {
+   "start": 1399.12,
+   "duration": 4.6,
+   "text": "you know, you always use the smartest"
+  },
+  {
+   "start": 1401.32,
+   "duration": 4.64,
+   "text": "one is not a very good strategy, okay?"
+  },
+  {
+   "start": 1403.72,
+   "duration": 3.76,
+   "text": "It's just how you get"
+  },
+  {
+   "start": 1405.96,
+   "duration": 3.16,
+   "text": "a shocking price at the end of the day"
+  },
+  {
+   "start": 1407.48,
+   "duration": 3.56,
+   "text": "for your agent. Okay, I hope that's"
+  },
+  {
+   "start": 1409.12,
+   "duration": 3.44,
+   "text": "making sense. And that is also one of"
+  },
+  {
+   "start": 1411.04,
+   "duration": 3.32,
+   "text": "the reasons,"
+  },
+  {
+   "start": 1412.56,
+   "duration": 4.72,
+   "text": "if you remember in episode number five"
+  },
+  {
+   "start": 1414.36,
+   "duration": 5.68,
+   "text": "when our agent had, you know, just"
+  },
+  {
+   "start": 1417.28,
+   "duration": 4.68,
+   "text": "Sonnet by default, but it was taking,"
+  },
+  {
+   "start": 1420.04,
+   "duration": 3.68,
+   "text": "you know, it was costing me a lot of"
+  },
+  {
+   "start": 1421.96,
+   "duration": 4.84,
+   "text": "money, but to be honest, these"
+  },
+  {
+   "start": 1423.72,
+   "duration": 5.08,
+   "text": "sub-agents are are very well structured."
+  },
+  {
+   "start": 1426.8,
+   "duration": 4.64,
+   "text": "Yeah, it doesn't need too much thinking."
+  },
+  {
+   "start": 1428.8,
+   "duration": 5.12,
+   "text": "So, I just kind of uh stripped it back"
+  },
+  {
+   "start": 1431.44,
+   "duration": 3.96,
+   "text": "to Haiku, which also does the job. So, I"
+  },
+  {
+   "start": 1433.92,
+   "duration": 3.4,
+   "text": "hope that's making So, the coordinator"
+  },
+  {
+   "start": 1435.4,
+   "duration": 3.8,
+   "text": "is kind of do you know, having the"
+  },
+  {
+   "start": 1437.32,
+   "duration": 4.36,
+   "text": "Sonnet model or the Opus model, which is"
+  },
+  {
+   "start": 1439.2,
+   "duration": 4.48,
+   "text": "the default, but the sub-agents are"
+  },
+  {
+   "start": 1441.68,
+   "duration": 3.72,
+   "text": "having kind of the Haiku model, right?"
+  },
+  {
+   "start": 1443.68,
+   "duration": 5.28,
+   "text": "Which is kind of the cheapest. So, I"
+  },
+  {
+   "start": 1445.4,
+   "duration": 3.56,
+   "text": "hope that's making sense."
+  },
+  {
+   "start": 1449.04,
+   "duration": 5.24,
+   "text": "Okay."
+  },
+  {
+   "start": 1450.16,
+   "duration": 5.6,
+   "text": "Yeah. So, even more examples, which one"
+  },
+  {
+   "start": 1454.28,
+   "duration": 3.36,
+   "text": "when? So, more examples, you'll"
+  },
+  {
+   "start": 1455.76,
+   "duration": 4.32,
+   "text": "understand better. So, let me give you a"
+  },
+  {
+   "start": 1457.64,
+   "duration": 4.28,
+   "text": "framework you can actually use. So,"
+  },
+  {
+   "start": 1460.08,
+   "duration": 4.24,
+   "text": "actual framework, right? Not just, you"
+  },
+  {
+   "start": 1461.92,
+   "duration": 4.44,
+   "text": "know, suggestions. More examples."
+  },
+  {
+   "start": 1464.32,
+   "duration": 3.48,
+   "text": "So, reach for Haiku when the job is very"
+  },
+  {
+   "start": 1466.36,
+   "duration": 4.12,
+   "text": "well scoped."
+  },
+  {
+   "start": 1467.8,
+   "duration": 6.0,
+   "text": "Yeah, you know, it's high volume and has"
+  },
+  {
+   "start": 1470.48,
+   "duration": 5.72,
+   "text": "a clear you know, clear right answer."
+  },
+  {
+   "start": 1473.8,
+   "duration": 5.68,
+   "text": "Like classification, extraction,"
+  },
+  {
+   "start": 1476.2,
+   "duration": 5.28,
+   "text": "formatting, quick lookups, boring, you"
+  },
+  {
+   "start": 1479.48,
+   "duration": 3.68,
+   "text": "know, repetitive, just do the thing"
+  },
+  {
+   "start": 1481.48,
+   "duration": 3.56,
+   "text": "work."
+  },
+  {
+   "start": 1483.16,
+   "duration": 5.44,
+   "text": "Yeah, for example, you're extracting"
+  },
+  {
+   "start": 1485.04,
+   "duration": 5.0,
+   "text": "some data from a structured document. If"
+  },
+  {
+   "start": 1488.6,
+   "duration": 3.04,
+   "text": "the document is structured, there is"
+  },
+  {
+   "start": 1490.04,
+   "duration": 2.84,
+   "text": "nothing to think about it. You already"
+  },
+  {
+   "start": 1491.64,
+   "duration": 3.64,
+   "text": "know where you have to find the"
+  },
+  {
+   "start": 1492.88,
+   "duration": 5.48,
+   "text": "particular information. So, why do use"
+  },
+  {
+   "start": 1495.28,
+   "duration": 5.4,
+   "text": "even Sonnet or Opus for, you know,"
+  },
+  {
+   "start": 1498.36,
+   "duration": 4.4,
+   "text": "why do give that cost?"
+  },
+  {
+   "start": 1500.68,
+   "duration": 4.8,
+   "text": "You know, Haiku can do it."
+  },
+  {
+   "start": 1502.76,
+   "duration": 6.04,
+   "text": "Reach for Sonnet for most real work."
+  },
+  {
+   "start": 1505.48,
+   "duration": 6.0,
+   "text": "Most 80% of the work Sonnet can do well."
+  },
+  {
+   "start": 1508.8,
+   "duration": 5.2,
+   "text": "Coding, review, multi-step tool use,"
+  },
+  {
+   "start": 1511.48,
+   "duration": 5.16,
+   "text": "anything needed, you know, needing some"
+  },
+  {
+   "start": 1514.0,
+   "duration": 5.52,
+   "text": "kind of balanced judgment."
+  },
+  {
+   "start": 1516.64,
+   "duration": 4.84,
+   "text": "Honestly, if you're not sure, you start"
+  },
+  {
+   "start": 1519.52,
+   "duration": 3.4,
+   "text": "with Sonnet."
+  },
+  {
+   "start": 1521.48,
+   "duration": 2.6,
+   "text": "People do the"
+  },
+  {
+   "start": 1522.92,
+   "duration": 3.72,
+   "text": "uh kind of the opposite thing. They"
+  },
+  {
+   "start": 1524.08,
+   "duration": 3.8,
+   "text": "start with Opus. If they're not sure,"
+  },
+  {
+   "start": 1526.64,
+   "duration": 3.32,
+   "text": "they you know, let's go with the"
+  },
+  {
+   "start": 1527.88,
+   "duration": 4.36,
+   "text": "smartest model. But you are doing one"
+  },
+  {
+   "start": 1529.96,
+   "duration": 4.72,
+   "text": "line change in one of the files. It's a"
+  },
+  {
+   "start": 1532.24,
+   "duration": 4.4,
+   "text": "normal grep search. Why can't start with"
+  },
+  {
+   "start": 1534.68,
+   "duration": 4.24,
+   "text": "Sonnet at least?"
+  },
+  {
+   "start": 1536.64,
+   "duration": 4.76,
+   "text": "Now, start with Opus or reach for Opus"
+  },
+  {
+   "start": 1538.92,
+   "duration": 5.8,
+   "text": "when it's open-ended. Yeah, high stakes"
+  },
+  {
+   "start": 1541.4,
+   "duration": 4.92,
+   "text": "or genuinely it requires really, really"
+  },
+  {
+   "start": 1544.72,
+   "duration": 3.92,
+   "text": "hard reasoning."
+  },
+  {
+   "start": 1546.32,
+   "duration": 4.12,
+   "text": "The task, you know, that actually needs"
+  },
+  {
+   "start": 1548.64,
+   "duration": 4.2,
+   "text": "that particular ceiling. And often,"
+  },
+  {
+   "start": 1550.44,
+   "duration": 5.4,
+   "text": "you'll plan for pre-capture, you know,"
+  },
+  {
+   "start": 1552.84,
+   "duration": 4.44,
+   "text": "that one rather than run in a loop,"
+  },
+  {
+   "start": 1555.84,
+   "duration": 3.28,
+   "text": "right? You know, instead of running in a"
+  },
+  {
+   "start": 1557.28,
+   "duration": 4.16,
+   "text": "loop, you know, that needs a lot of"
+  },
+  {
+   "start": 1559.12,
+   "duration": 4.76,
+   "text": "thinking. So, if you remember in some of"
+  },
+  {
+   "start": 1561.44,
+   "duration": 5.2,
+   "text": "my videos, uh when I was teaching how to"
+  },
+  {
+   "start": 1563.88,
+   "duration": 4.36,
+   "text": "switch between models, um I I was"
+  },
+  {
+   "start": 1566.64,
+   "duration": 3.4,
+   "text": "starting with the lower models first."
+  },
+  {
+   "start": 1568.24,
+   "duration": 3.28,
+   "text": "And if there was a complicated task,"
+  },
+  {
+   "start": 1570.04,
+   "duration": 3.48,
+   "text": "they were going in a loop. And I saw"
+  },
+  {
+   "start": 1571.52,
+   "duration": 4.2,
+   "text": "that they're going in a loop. So, it's"
+  },
+  {
+   "start": 1573.52,
+   "duration": 4.52,
+   "text": "kind of evident there that that"
+  },
+  {
+   "start": 1575.72,
+   "duration": 3.72,
+   "text": "particular model is not working out. You"
+  },
+  {
+   "start": 1578.04,
+   "duration": 2.88,
+   "text": "know, it's going in a loop. It's kind of"
+  },
+  {
+   "start": 1579.44,
+   "duration": 4.56,
+   "text": "trying the same things again and again."
+  },
+  {
+   "start": 1580.92,
+   "duration": 5.2,
+   "text": "So, I needed more reasoning. So, that is"
+  },
+  {
+   "start": 1584.0,
+   "duration": 4.76,
+   "text": "where I kind of switched to model, you"
+  },
+  {
+   "start": 1586.12,
+   "duration": 4.88,
+   "text": "know, Opus model. It might take some of"
+  },
+  {
+   "start": 1588.76,
+   "duration": 3.68,
+   "text": "your some few minutes of your life, but"
+  },
+  {
+   "start": 1591.0,
+   "duration": 2.92,
+   "text": "it will save,"
+  },
+  {
+   "start": 1592.44,
+   "duration": 3.32,
+   "text": "you know, hundreds of dollars or"
+  },
+  {
+   "start": 1593.92,
+   "duration": 2.92,
+   "text": "hundreds of euros for you."
+  },
+  {
+   "start": 1595.76,
+   "duration": 2.88,
+   "text": "So, I hope that's making sense. So,"
+  },
+  {
+   "start": 1596.84,
+   "duration": 4.2,
+   "text": "whenever the thing reasoning is"
+  },
+  {
+   "start": 1598.64,
+   "duration": 4.32,
+   "text": "ambiguous, something some kind of idea"
+  },
+  {
+   "start": 1601.04,
+   "duration": 4.72,
+   "text": "you want to research on, something like"
+  },
+  {
+   "start": 1602.96,
+   "duration": 3.72,
+   "text": "that, then please go with Opus."
+  },
+  {
+   "start": 1605.76,
+   "duration": 2.52,
+   "text": "Yeah?"
+  },
+  {
+   "start": 1606.68,
+   "duration": 3.48,
+   "text": "So, a drill is a high-volume data"
+  },
+  {
+   "start": 1608.28,
+   "duration": 3.84,
+   "text": "reformatting classification, please go"
+  },
+  {
+   "start": 1610.16,
+   "duration": 3.84,
+   "text": "with Haiku. That's, you know, it will do"
+  },
+  {
+   "start": 1612.12,
+   "duration": 2.84,
+   "text": "the job."
+  },
+  {
+   "start": 1614.0,
+   "duration": 4.2,
+   "text": "Okay."
+  },
+  {
+   "start": 1614.96,
+   "duration": 3.92,
+   "text": "So the model decision I already kind of"
+  },
+  {
+   "start": 1618.2,
+   "duration": 3.8,
+   "text": "um"
+  },
+  {
+   "start": 1618.88,
+   "duration": 5.08,
+   "text": "showed you that our two sub agents"
+  },
+  {
+   "start": 1622.0,
+   "duration": 4.48,
+   "text": "our coordinator is having the default"
+  },
+  {
+   "start": 1623.96,
+   "duration": 5.4,
+   "text": "model. Yeah, but I have changed our two"
+  },
+  {
+   "start": 1626.48,
+   "duration": 4.64,
+   "text": "sub agents to Haiku."
+  },
+  {
+   "start": 1629.36,
+   "duration": 4.36,
+   "text": "Because to be honest, I already told you"
+  },
+  {
+   "start": 1631.12,
+   "duration": 4.04,
+   "text": "that our sub agents are not doing that"
+  },
+  {
+   "start": 1633.72,
+   "duration": 3.32,
+   "text": "much of thinking or that much of"
+  },
+  {
+   "start": 1635.16,
+   "duration": 3.8,
+   "text": "complicated work. So why not stick with"
+  },
+  {
+   "start": 1637.04,
+   "duration": 4.2,
+   "text": "Haiku? And I already showed you in our"
+  },
+  {
+   "start": 1638.96,
+   "duration": 4.6,
+   "text": "agent definitions"
+  },
+  {
+   "start": 1641.24,
+   "duration": 4.04,
+   "text": "for our docstring reviewer sub agent and"
+  },
+  {
+   "start": 1643.56,
+   "duration": 4.48,
+   "text": "our security reviewer sub agent, we are"
+  },
+  {
+   "start": 1645.28,
+   "duration": 3.88,
+   "text": "already using Haiku over here."
+  },
+  {
+   "start": 1648.04,
+   "duration": 2.8,
+   "text": "I hope that's making sense. I'm not"
+  },
+  {
+   "start": 1649.16,
+   "duration": 4.12,
+   "text": "going to waste too much time in this"
+  },
+  {
+   "start": 1650.84,
+   "duration": 6.24,
+   "text": "particular thing."
+  },
+  {
+   "start": 1653.28,
+   "duration": 4.84,
+   "text": "Now, let's talk about thinking."
+  },
+  {
+   "start": 1657.08,
+   "duration": 2.4,
+   "text": "And"
+  },
+  {
+   "start": 1658.12,
+   "duration": 3.08,
+   "text": "it's it's really important that you"
+  },
+  {
+   "start": 1659.48,
+   "duration": 4.16,
+   "text": "understand this, okay?"
+  },
+  {
+   "start": 1661.2,
+   "duration": 3.88,
+   "text": "Now, that is the other big knob. One of"
+  },
+  {
+   "start": 1663.64,
+   "duration": 3.92,
+   "text": "the knobs that we talked about is"
+  },
+  {
+   "start": 1665.08,
+   "duration": 4.72,
+   "text": "temperature. Another knob that, you"
+  },
+  {
+   "start": 1667.56,
+   "duration": 3.52,
+   "text": "know, kind of I'm talking about is"
+  },
+  {
+   "start": 1669.8,
+   "duration": 3.32,
+   "text": "thinking."
+  },
+  {
+   "start": 1671.08,
+   "duration": 5.2,
+   "text": "So you've heard, you know, reasoning"
+  },
+  {
+   "start": 1673.12,
+   "duration": 5.08,
+   "text": "models, extended thinking, all that term"
+  },
+  {
+   "start": 1676.28,
+   "duration": 4.4,
+   "text": "terminologies you guys are kind of"
+  },
+  {
+   "start": 1678.2,
+   "duration": 4.4,
+   "text": "hearing it nowadays with LLMs, right? So"
+  },
+  {
+   "start": 1680.68,
+   "duration": 4.56,
+   "text": "let's kind of cut through it, okay? So"
+  },
+  {
+   "start": 1682.6,
+   "duration": 5.48,
+   "text": "the analogy is pretty simple. Imagine a"
+  },
+  {
+   "start": 1685.24,
+   "duration": 5.48,
+   "text": "really, really hard math problem. You"
+  },
+  {
+   "start": 1688.08,
+   "duration": 4.16,
+   "text": "can blurt the answer."
+  },
+  {
+   "start": 1690.72,
+   "duration": 4.88,
+   "text": "Like"
+  },
+  {
+   "start": 1692.24,
+   "duration": 5.84,
+   "text": "what is, you know, integration of two"
+  },
+  {
+   "start": 1695.6,
+   "duration": 4.4,
+   "text": "over 10 or something like that. What is,"
+  },
+  {
+   "start": 1698.08,
+   "duration": 3.76,
+   "text": "you know, um"
+  },
+  {
+   "start": 1700.0,
+   "duration": 3.0,
+   "text": "some kind of trigonometry problem. I"
+  },
+  {
+   "start": 1701.84,
+   "duration": 2.52,
+   "text": "don't know. I'm just giving random"
+  },
+  {
+   "start": 1703.0,
+   "duration": 4.84,
+   "text": "examples over here."
+  },
+  {
+   "start": 1704.36,
+   "duration": 5.68,
+   "text": "So you can just blurt the answer, 10."
+  },
+  {
+   "start": 1707.84,
+   "duration": 3.6,
+   "text": "Or you can work it out on a scratch"
+  },
+  {
+   "start": 1710.04,
+   "duration": 4.4,
+   "text": "paper first."
+  },
+  {
+   "start": 1711.44,
+   "duration": 5.2,
+   "text": "Yeah? So that is also one of the ways."
+  },
+  {
+   "start": 1714.44,
+   "duration": 4.32,
+   "text": "So thinking is the model doing that"
+  },
+  {
+   "start": 1716.64,
+   "duration": 5.24,
+   "text": "scratch paper example that I just gave"
+  },
+  {
+   "start": 1718.76,
+   "duration": 5.2,
+   "text": "you. It generates a private stream of"
+  },
+  {
+   "start": 1721.88,
+   "duration": 4.48,
+   "text": "reasoning tokens"
+  },
+  {
+   "start": 1723.96,
+   "duration": 4.36,
+   "text": "before it writes the answer you actually"
+  },
+  {
+   "start": 1726.36,
+   "duration": 4.16,
+   "text": "seek."
+  },
+  {
+   "start": 1728.32,
+   "duration": 4.88,
+   "text": "Yeah, so more thinking genuinely helps"
+  },
+  {
+   "start": 1730.52,
+   "duration": 5.24,
+   "text": "on hard problems, but here's the catch"
+  },
+  {
+   "start": 1733.2,
+   "duration": 6.16,
+   "text": "people forget."
+  },
+  {
+   "start": 1735.76,
+   "duration": 5.04,
+   "text": "You know, thinking tokens are still"
+  },
+  {
+   "start": 1739.36,
+   "duration": 3.92,
+   "text": "tokens."
+  },
+  {
+   "start": 1740.8,
+   "duration": 4.32,
+   "text": "You pay for that scratch paper and you"
+  },
+  {
+   "start": 1743.28,
+   "duration": 4.56,
+   "text": "wait for it. Even though the response"
+  },
+  {
+   "start": 1745.12,
+   "duration": 4.56,
+   "text": "only shows a summary of it, thinking is"
+  },
+  {
+   "start": 1747.84,
+   "duration": 4.24,
+   "text": "not free."
+  },
+  {
+   "start": 1749.68,
+   "duration": 4.84,
+   "text": "It's traded for cost and latency. Lot of"
+  },
+  {
+   "start": 1752.08,
+   "duration": 3.76,
+   "text": "my students and you know, people on"
+  },
+  {
+   "start": 1754.52,
+   "duration": 2.8,
+   "text": "LinkedIn"
+  },
+  {
+   "start": 1755.84,
+   "duration": 2.84,
+   "text": "various other platforms, they ask me,"
+  },
+  {
+   "start": 1757.32,
+   "duration": 3.6,
+   "text": "you know, I'm running out of context"
+  },
+  {
+   "start": 1758.68,
+   "duration": 4.24,
+   "text": "window even though I'm using Sonnet."
+  },
+  {
+   "start": 1760.92,
+   "duration": 5.0,
+   "text": "Then I ask the question,"
+  },
+  {
+   "start": 1762.92,
+   "duration": 5.0,
+   "text": "which effort are you using? Which which"
+  },
+  {
+   "start": 1765.92,
+   "duration": 6.48,
+   "text": "mode are you using Sonnet?"
+  },
+  {
+   "start": 1767.92,
+   "duration": 6.84,
+   "text": "Yeah, are you using extended thinking?"
+  },
+  {
+   "start": 1772.4,
+   "duration": 4.96,
+   "text": "You know, are you using the effort on"
+  },
+  {
+   "start": 1774.76,
+   "duration": 4.36,
+   "text": "extra high? All these questions I ask."
+  },
+  {
+   "start": 1777.36,
+   "duration": 4.88,
+   "text": "If you're using it, then what's the"
+  },
+  {
+   "start": 1779.12,
+   "duration": 4.92,
+   "text": "point of optimization?"
+  },
+  {
+   "start": 1782.24,
+   "duration": 3.56,
+   "text": "You use it when it is really a very"
+  },
+  {
+   "start": 1784.04,
+   "duration": 4.16,
+   "text": "difficult problem. But if it is not,"
+  },
+  {
+   "start": 1785.8,
+   "duration": 4.56,
+   "text": "then you're just you know, wasting your"
+  },
+  {
+   "start": 1788.2,
+   "duration": 4.2,
+   "text": "tokens. That is one of the things that"
+  },
+  {
+   "start": 1790.36,
+   "duration": 5.6,
+   "text": "you need to keep in mind. How you can"
+  },
+  {
+   "start": 1792.4,
+   "duration": 4.64,
+   "text": "set up the thinking uh in you you know,"
+  },
+  {
+   "start": 1795.96,
+   "duration": 4.24,
+   "text": "your"
+  },
+  {
+   "start": 1797.04,
+   "duration": 6.88,
+   "text": "agent basically. So, one kind of catch I"
+  },
+  {
+   "start": 1800.2,
+   "duration": 5.92,
+   "text": "would tell you over here, right? Uh"
+  },
+  {
+   "start": 1803.92,
+   "duration": 4.76,
+   "text": "the difference between the raw messages"
+  },
+  {
+   "start": 1806.12,
+   "duration": 4.96,
+   "text": "API and the SDK. So, if you go to"
+  },
+  {
+   "start": 1808.68,
+   "duration": 4.16,
+   "text": "episode number one in our agent file"
+  },
+  {
+   "start": 1811.08,
+   "duration": 4.52,
+   "text": "where we are kind of you know,"
+  },
+  {
+   "start": 1812.84,
+   "duration": 5.12,
+   "text": "constructing this raw message API and"
+  },
+  {
+   "start": 1815.6,
+   "duration": 5.0,
+   "text": "we're going to do all the stuff by you"
+  },
+  {
+   "start": 1817.96,
+   "duration": 4.24,
+   "text": "know, our own manual agentic loop. Here"
+  },
+  {
+   "start": 1820.6,
+   "duration": 3.92,
+   "text": "you can set the max tokens, you can set"
+  },
+  {
+   "start": 1822.2,
+   "duration": 4.16,
+   "text": "the model, you can set the tools,"
+  },
+  {
+   "start": 1824.52,
+   "duration": 5.0,
+   "text": "obviously the messages. And here you can"
+  },
+  {
+   "start": 1826.36,
+   "duration": 6.12,
+   "text": "set one more thing known as output"
+  },
+  {
+   "start": 1829.52,
+   "duration": 6.36,
+   "text": "config and you can set it"
+  },
+  {
+   "start": 1832.48,
+   "duration": 4.64,
+   "text": "here the effort. Yeah, you can just say"
+  },
+  {
+   "start": 1835.88,
+   "duration": 4.2,
+   "text": "effort"
+  },
+  {
+   "start": 1837.12,
+   "duration": 5.16,
+   "text": "and you can put for example, uh high,"
+  },
+  {
+   "start": 1840.08,
+   "duration": 4.12,
+   "text": "low, max, it's all already suggesting"
+  },
+  {
+   "start": 1842.28,
+   "duration": 5.48,
+   "text": "me. So, let's say I want to keep the"
+  },
+  {
+   "start": 1844.2,
+   "duration": 6.24,
+   "text": "medium effort of Sonnet 5. You can also"
+  },
+  {
+   "start": 1847.76,
+   "duration": 3.72,
+   "text": "set something known as"
+  },
+  {
+   "start": 1850.44,
+   "duration": 2.24,
+   "text": "you know,"
+  },
+  {
+   "start": 1851.48,
+   "duration": 2.64,
+   "text": "um"
+  },
+  {
+   "start": 1852.68,
+   "duration": 3.88,
+   "text": "the thinking that we were just"
+  },
+  {
+   "start": 1854.12,
+   "duration": 4.32,
+   "text": "discussing, right? So, the effort is"
+  },
+  {
+   "start": 1856.56,
+   "duration": 4.8,
+   "text": "basically nothing but your knob number"
+  },
+  {
+   "start": 1858.44,
+   "duration": 5.0,
+   "text": "two. Yeah? The effort setting, you know,"
+  },
+  {
+   "start": 1861.36,
+   "duration": 5.28,
+   "text": "is a is kind of a ladder, you know,"
+  },
+  {
+   "start": 1863.44,
+   "duration": 5.44,
+   "text": "roughly low, medium, high, extra high,"
+  },
+  {
+   "start": 1866.64,
+   "duration": 4.96,
+   "text": "and max, you know, on bigger models. So,"
+  },
+  {
+   "start": 1868.88,
+   "duration": 4.92,
+   "text": "if you turn it up, like currently I'm on"
+  },
+  {
+   "start": 1871.6,
+   "duration": 4.72,
+   "text": "medium over here, right? As you go"
+  },
+  {
+   "start": 1873.8,
+   "duration": 4.64,
+   "text": "higher, as you, you know, turn it up,"
+  },
+  {
+   "start": 1876.32,
+   "duration": 5.0,
+   "text": "the model thinks and spends more. It's"
+  },
+  {
+   "start": 1878.44,
+   "duration": 3.88,
+   "text": "just the thinking capability, how much,"
+  },
+  {
+   "start": 1881.32,
+   "duration": 3.72,
+   "text": "you know,"
+  },
+  {
+   "start": 1882.32,
+   "duration": 5.12,
+   "text": "in-depth the particular model can think,"
+  },
+  {
+   "start": 1885.04,
+   "duration": 4.44,
+   "text": "how much intellectually the model can"
+  },
+  {
+   "start": 1887.44,
+   "duration": 4.48,
+   "text": "think, basically. If you turn it down,"
+  },
+  {
+   "start": 1889.48,
+   "duration": 4.2,
+   "text": "it's faster and it's kind of dumbed"
+  },
+  {
+   "start": 1891.92,
+   "duration": 3.92,
+   "text": "down, I would say. But, when you stick"
+  },
+  {
+   "start": 1893.68,
+   "duration": 4.28,
+   "text": "with My My favorite combination, you"
+  },
+  {
+   "start": 1895.84,
+   "duration": 3.44,
+   "text": "know, I would tell you is Sonnet with"
+  },
+  {
+   "start": 1897.96,
+   "duration": 4.36,
+   "text": "medium,"
+  },
+  {
+   "start": 1899.28,
+   "duration": 5.52,
+   "text": "uh kind of, you know, um effort."
+  },
+  {
+   "start": 1902.32,
+   "duration": 4.44,
+   "text": "Yeah, and no thinking."
+  },
+  {
+   "start": 1904.8,
+   "duration": 4.6,
+   "text": "I will only consider thinking with"
+  },
+  {
+   "start": 1906.76,
+   "duration": 5.08,
+   "text": "Sonnet when, uh you know, I am doing"
+  },
+  {
+   "start": 1909.4,
+   "duration": 3.04,
+   "text": "some kind of a coding task, you know,"
+  },
+  {
+   "start": 1911.84,
+   "duration": 2.8,
+   "text": "um"
+  },
+  {
+   "start": 1912.44,
+   "duration": 4.24,
+   "text": "it's already kind of defaults to that in"
+  },
+  {
+   "start": 1914.64,
+   "duration": 5.2,
+   "text": "Claude code, yeah?"
+  },
+  {
+   "start": 1916.68,
+   "duration": 4.84,
+   "text": "Um I I always keep it in medium or high,"
+  },
+  {
+   "start": 1919.84,
+   "duration": 3.24,
+   "text": "yeah, in Claude code. And in in the"
+  },
+  {
+   "start": 1921.52,
+   "duration": 3.36,
+   "text": "agents, you would probably keep it"
+  },
+  {
+   "start": 1923.08,
+   "duration": 3.2,
+   "text": "medium all the time."
+  },
+  {
+   "start": 1924.88,
+   "duration": 3.12,
+   "text": "Because, you know, if your agent is"
+  },
+  {
+   "start": 1926.28,
+   "duration": 4.52,
+   "text": "doing a very complicated job, then maybe"
+  },
+  {
+   "start": 1928.0,
+   "duration": 4.04,
+   "text": "you you will set it up to you know, uh"
+  },
+  {
+   "start": 1930.8,
+   "duration": 2.88,
+   "text": "high or"
+  },
+  {
+   "start": 1932.04,
+   "duration": 3.76,
+   "text": "something like that. So, that is how you"
+  },
+  {
+   "start": 1933.68,
+   "duration": 3.52,
+   "text": "set up the effort over here. But, if you"
+  },
+  {
+   "start": 1935.8,
+   "duration": 3.16,
+   "text": "want to set up the thinking, you can"
+  },
+  {
+   "start": 1937.2,
+   "duration": 3.92,
+   "text": "just say thinking over here, thinking"
+  },
+  {
+   "start": 1938.96,
+   "duration": 4.96,
+   "text": "equals to, and here you just have to"
+  },
+  {
+   "start": 1941.12,
+   "duration": 5.76,
+   "text": "put, uh for example, a type, you have to"
+  },
+  {
+   "start": 1943.92,
+   "duration": 5.76,
+   "text": "say type, and you have to then specify,"
+  },
+  {
+   "start": 1946.88,
+   "duration": 4.6,
+   "text": "um you know, adaptive thinking or"
+  },
+  {
+   "start": 1949.68,
+   "duration": 3.76,
+   "text": "something like that."
+  },
+  {
+   "start": 1951.48,
+   "duration": 3.16,
+   "text": "Right? So, when you say adaptive"
+  },
+  {
+   "start": 1953.44,
+   "duration": 3.8,
+   "text": "thinking,"
+  },
+  {
+   "start": 1954.64,
+   "duration": 5.44,
+   "text": "yeah? You are saying, uh you know, let"
+  },
+  {
+   "start": 1957.24,
+   "duration": 6.36,
+   "text": "the model decide uh you know, what would"
+  },
+  {
+   "start": 1960.08,
+   "duration": 5.68,
+   "text": "be you know, my thinking basically."
+  },
+  {
+   "start": 1963.6,
+   "duration": 4.12,
+   "text": "You are kind of giving"
+  },
+  {
+   "start": 1965.76,
+   "duration": 4.48,
+   "text": "the the the the the decision to the"
+  },
+  {
+   "start": 1967.72,
+   "duration": 5.2,
+   "text": "model. If if if the if the code is"
+  },
+  {
+   "start": 1970.24,
+   "duration": 4.96,
+   "text": "complicated, then basically it will take"
+  },
+  {
+   "start": 1972.92,
+   "duration": 3.84,
+   "text": "more time. It will think more. Or if it"
+  },
+  {
+   "start": 1975.2,
+   "duration": 3.04,
+   "text": "is a very straightforward task, it will"
+  },
+  {
+   "start": 1976.76,
+   "duration": 3.44,
+   "text": "not think at all. That's why I told in"
+  },
+  {
+   "start": 1978.24,
+   "duration": 4.36,
+   "text": "Claude code anyways,"
+  },
+  {
+   "start": 1980.2,
+   "duration": 5.48,
+   "text": "it is adaptive kind of thinking."
+  },
+  {
+   "start": 1982.6,
+   "duration": 5.44,
+   "text": "Uh then effort, you set it manually. So,"
+  },
+  {
+   "start": 1985.68,
+   "duration": 5.52,
+   "text": "this was about the raw messages API. But"
+  },
+  {
+   "start": 1988.04,
+   "duration": 4.28,
+   "text": "when we talk about the"
+  },
+  {
+   "start": 1991.2,
+   "duration": 2.56,
+   "text": "you know, your"
+  },
+  {
+   "start": 1992.32,
+   "duration": 4.64,
+   "text": "SDK"
+  },
+  {
+   "start": 1993.76,
+   "duration": 5.84,
+   "text": "there unfortunately, you cannot set up"
+  },
+  {
+   "start": 1996.96,
+   "duration": 5.24,
+   "text": "any kind of thinking or effort. See, the"
+  },
+  {
+   "start": 1999.6,
+   "duration": 4.76,
+   "text": "thing is in raw messages API, you kind"
+  },
+  {
+   "start": 2002.2,
+   "duration": 4.08,
+   "text": "of handle the agentic loop and"
+  },
+  {
+   "start": 2004.36,
+   "duration": 3.56,
+   "text": "everything on your own. So, thinking and"
+  },
+  {
+   "start": 2006.28,
+   "duration": 3.16,
+   "text": "everything also you can set it up on"
+  },
+  {
+   "start": 2007.92,
+   "duration": 3.44,
+   "text": "your own. But when it comes to the"
+  },
+  {
+   "start": 2009.44,
+   "duration": 4.04,
+   "text": "Claude agent SDK"
+  },
+  {
+   "start": 2011.36,
+   "duration": 6.52,
+   "text": "the heavy lifting of the agentic loop is"
+  },
+  {
+   "start": 2013.48,
+   "duration": 5.88,
+   "text": "done by the um SDK itself. So, you just"
+  },
+  {
+   "start": 2017.88,
+   "duration": 3.92,
+   "text": "give it a model, okay, I want to use"
+  },
+  {
+   "start": 2019.36,
+   "duration": 4.32,
+   "text": "this model. Rest of it just leave it"
+  },
+  {
+   "start": 2021.8,
+   "duration": 3.4,
+   "text": "like that. You don't have to configure."
+  },
+  {
+   "start": 2023.68,
+   "duration": 3.88,
+   "text": "So, that is one point that I want to"
+  },
+  {
+   "start": 2025.2,
+   "duration": 4.96,
+   "text": "differentiate. You can set it up like"
+  },
+  {
+   "start": 2027.56,
+   "duration": 5.96,
+   "text": "manually in the raw messages API, but"
+  },
+  {
+   "start": 2030.16,
+   "duration": 6.68,
+   "text": "you have to kind of you know, leave it"
+  },
+  {
+   "start": 2033.52,
+   "duration": 6.56,
+   "text": "to the SDK in um"
+  },
+  {
+   "start": 2036.84,
+   "duration": 6.04,
+   "text": "um you know, the Claude agent SDK."
+  },
+  {
+   "start": 2040.08,
+   "duration": 3.92,
+   "text": "I hope that is making sense."
+  },
+  {
+   "start": 2042.88,
+   "duration": 2.6,
+   "text": "Yeah."
+  },
+  {
+   "start": 2044.0,
+   "duration": 4.44,
+   "text": "Now, um"
+  },
+  {
+   "start": 2045.48,
+   "duration": 5.159,
+   "text": "let's talk about some more concepts now."
+  },
+  {
+   "start": 2048.44,
+   "duration": 3.959,
+   "text": "I hope you understood this thing, right?"
+  },
+  {
+   "start": 2050.639,
+   "duration": 5.52,
+   "text": "Um"
+  },
+  {
+   "start": 2052.399,
+   "duration": 5.161,
+   "text": "when do you think thinking helps?"
+  },
+  {
+   "start": 2056.159,
+   "duration": 4.641,
+   "text": "And"
+  },
+  {
+   "start": 2057.56,
+   "duration": 5.2,
+   "text": "when it's just burning your money?"
+  },
+  {
+   "start": 2060.8,
+   "duration": 3.96,
+   "text": "So, when do you actually crank up the"
+  },
+  {
+   "start": 2062.76,
+   "duration": 4.24,
+   "text": "effort and when it's just pure waste? A"
+  },
+  {
+   "start": 2064.76,
+   "duration": 4.96,
+   "text": "very simple test. Let's understand it."
+  },
+  {
+   "start": 2067.0,
+   "duration": 4.159,
+   "text": "Because people cannot or or people"
+  },
+  {
+   "start": 2069.72,
+   "duration": 3.6,
+   "text": "cannot kind of"
+  },
+  {
+   "start": 2071.159,
+   "duration": 4.201,
+   "text": "judge when do I have to use this"
+  },
+  {
+   "start": 2073.32,
+   "duration": 4.04,
+   "text": "adaptive thinking or more thinking or"
+  },
+  {
+   "start": 2075.36,
+   "duration": 4.279,
+   "text": "extended thinking, yeah?"
+  },
+  {
+   "start": 2077.36,
+   "duration": 4.559,
+   "text": "The thing is everything is available to"
+  },
+  {
+   "start": 2079.639,
+   "duration": 4.961,
+   "text": "people, so they kind of crank it up"
+  },
+  {
+   "start": 2081.919,
+   "duration": 5.041,
+   "text": "everything, you know, Opus 5 with"
+  },
+  {
+   "start": 2084.6,
+   "duration": 4.48,
+   "text": "extended thinking. It will burn your"
+  },
+  {
+   "start": 2086.96,
+   "duration": 4.16,
+   "text": "tokens in 5 minutes."
+  },
+  {
+   "start": 2089.08,
+   "duration": 4.68,
+   "text": "That is the thing. You are just wasting,"
+  },
+  {
+   "start": 2091.12,
+   "duration": 5.0,
+   "text": "you know, money at that point. So,"
+  },
+  {
+   "start": 2093.76,
+   "duration": 4.4,
+   "text": "thinking you have to you have to be very"
+  },
+  {
+   "start": 2096.12,
+   "duration": 5.88,
+   "text": "kind of judgmental over here. Thinking"
+  },
+  {
+   "start": 2098.16,
+   "duration": 6.52,
+   "text": "earns its keep on multi-step reasoning."
+  },
+  {
+   "start": 2102.0,
+   "duration": 5.4,
+   "text": "You know, we have, for example, very"
+  },
+  {
+   "start": 2104.68,
+   "duration": 5.68,
+   "text": "gnarly, you know, debugging. There is"
+  },
+  {
+   "start": 2107.4,
+   "duration": 5.68,
+   "text": "there are architectural decisions, math,"
+  },
+  {
+   "start": 2110.36,
+   "duration": 5.24,
+   "text": "genuinely ambiguous judgment calls."
+  },
+  {
+   "start": 2113.08,
+   "duration": 5.2,
+   "text": "Whenever, you know, being wrong costs"
+  },
+  {
+   "start": 2115.6,
+   "duration": 4.36,
+   "text": "more than being slow."
+  },
+  {
+   "start": 2118.28,
+   "duration": 4.56,
+   "text": "That is where thinking earns. For"
+  },
+  {
+   "start": 2119.96,
+   "duration": 4.84,
+   "text": "example, you are doing a multi-step CICD"
+  },
+  {
+   "start": 2122.84,
+   "duration": 3.92,
+   "text": "review or something like that. It's a"
+  },
+  {
+   "start": 2124.8,
+   "duration": 3.32,
+   "text": "very complicated thing. There thinking"
+  },
+  {
+   "start": 2126.76,
+   "duration": 3.4,
+   "text": "will help you."
+  },
+  {
+   "start": 2128.12,
+   "duration": 4.32,
+   "text": "Yeah."
+  },
+  {
+   "start": 2130.16,
+   "duration": 4.68,
+   "text": "That is one of the examples. Now,"
+  },
+  {
+   "start": 2132.44,
+   "duration": 4.6,
+   "text": "thinking is wasted on, let's say,"
+  },
+  {
+   "start": 2134.84,
+   "duration": 4.88,
+   "text": "classification, formatting, simple"
+  },
+  {
+   "start": 2137.04,
+   "duration": 4.48,
+   "text": "extraction, friendly chit-chat."
+  },
+  {
+   "start": 2139.72,
+   "duration": 4.76,
+   "text": "You know, cranking effort there just"
+  },
+  {
+   "start": 2141.52,
+   "duration": 4.56,
+   "text": "adds latency and cost for basically zero"
+  },
+  {
+   "start": 2144.48,
+   "duration": 2.96,
+   "text": "quality bump."
+  },
+  {
+   "start": 2146.08,
+   "duration": 4.12,
+   "text": "Yeah. So,"
+  },
+  {
+   "start": 2147.44,
+   "duration": 4.88,
+   "text": "tie it back to us. Our Haiku sub agents,"
+  },
+  {
+   "start": 2150.2,
+   "duration": 5.68,
+   "text": "yeah, that in in our sub agents, our two"
+  },
+  {
+   "start": 2152.32,
+   "duration": 5.92,
+   "text": "sub agents, we are using Haiku. Those"
+  },
+  {
+   "start": 2155.88,
+   "duration": 5.0,
+   "text": "are they doing, you know, mechanical"
+  },
+  {
+   "start": 2158.24,
+   "duration": 2.64,
+   "text": "scans?"
+  },
+  {
+   "start": 2160.96,
+   "duration": 4.12,
+   "text": "Do we need more thinking or less"
+  },
+  {
+   "start": 2162.76,
+   "duration": 4.52,
+   "text": "thinking, yeah?"
+  },
+  {
+   "start": 2165.08,
+   "duration": 4.16,
+   "text": "And the answer is they are not they they"
+  },
+  {
+   "start": 2167.28,
+   "duration": 3.44,
+   "text": "do not need any kind of thinking at all."
+  },
+  {
+   "start": 2169.24,
+   "duration": 4.2,
+   "text": "As I already told you, the reason I"
+  },
+  {
+   "start": 2170.72,
+   "duration": 4.4,
+   "text": "switched it back to Haiku because those"
+  },
+  {
+   "start": 2173.44,
+   "duration": 4.2,
+   "text": "agents"
+  },
+  {
+   "start": 2175.12,
+   "duration": 3.36,
+   "text": "are having very straightforward, you"
+  },
+  {
+   "start": 2177.64,
+   "duration": 2.48,
+   "text": "know,"
+  },
+  {
+   "start": 2178.48,
+   "duration": 4.44,
+   "text": "requirements over there. The prompt is"
+  },
+  {
+   "start": 2180.12,
+   "duration": 5.08,
+   "text": "very detailed. It's easy to follow, and"
+  },
+  {
+   "start": 2182.92,
+   "duration": 3.84,
+   "text": "it's a routine job. So,"
+  },
+  {
+   "start": 2185.2,
+   "duration": 3.28,
+   "text": "no thinking needed. But anyways, you"
+  },
+  {
+   "start": 2186.76,
+   "duration": 3.44,
+   "text": "cannot set it over there. But, I'm just"
+  },
+  {
+   "start": 2188.48,
+   "duration": 4.08,
+   "text": "giving an example."
+  },
+  {
+   "start": 2190.2,
+   "duration": 4.2,
+   "text": "But, a coordinator, if you are if you're"
+  },
+  {
+   "start": 2192.56,
+   "duration": 4.04,
+   "text": "going by the raw messages API, and you"
+  },
+  {
+   "start": 2194.4,
+   "duration": 5.44,
+   "text": "understand, okay, the coordinator is"
+  },
+  {
+   "start": 2196.6,
+   "duration": 5.92,
+   "text": "doing a very kind of decision-making"
+  },
+  {
+   "start": 2199.84,
+   "duration": 4.76,
+   "text": "process. It is considering errors from"
+  },
+  {
+   "start": 2202.52,
+   "duration": 4.84,
+   "text": "various sub-agents and doing multi-step"
+  },
+  {
+   "start": 2204.6,
+   "duration": 4.32,
+   "text": "thinking. They're doing the retry and"
+  },
+  {
+   "start": 2207.36,
+   "duration": 3.52,
+   "text": "calling the sub-agent again. So, all of"
+  },
+  {
+   "start": 2208.92,
+   "duration": 3.88,
+   "text": "this is thinking."
+  },
+  {
+   "start": 2210.88,
+   "duration": 3.16,
+   "text": "You know, if you are the coordinator,"
+  },
+  {
+   "start": 2212.8,
+   "duration": 4.32,
+   "text": "you would think at that point, right?"
+  },
+  {
+   "start": 2214.04,
+   "duration": 5.72,
+   "text": "So, at that point, this logic might"
+  },
+  {
+   "start": 2217.12,
+   "duration": 4.76,
+   "text": "actually need more thinking. So, that is"
+  },
+  {
+   "start": 2219.76,
+   "duration": 3.08,
+   "text": "where you would enable the thinking"
+  },
+  {
+   "start": 2221.88,
+   "duration": 2.6,
+   "text": "thing."
+  },
+  {
+   "start": 2222.84,
+   "duration": 4.12,
+   "text": "That is where you spend the particular"
+  },
+  {
+   "start": 2224.48,
+   "duration": 3.52,
+   "text": "effort budget. And you would enable"
+  },
+  {
+   "start": 2226.96,
+   "duration": 3.12,
+   "text": "thinking."
+  },
+  {
+   "start": 2228.0,
+   "duration": 4.6,
+   "text": "I'm saying thinking a lot of time times,"
+  },
+  {
+   "start": 2230.08,
+   "duration": 5.04,
+   "text": "you know, don't don't kind of say that"
+  },
+  {
+   "start": 2232.6,
+   "duration": 5.0,
+   "text": "you said it like a million times. I say"
+  },
+  {
+   "start": 2235.12,
+   "duration": 4.96,
+   "text": "you know also a million times, so people"
+  },
+  {
+   "start": 2237.6,
+   "duration": 4.68,
+   "text": "have commented out, but anyways, thanks"
+  },
+  {
+   "start": 2240.08,
+   "duration": 4.08,
+   "text": "for your comments. I really it kind of"
+  },
+  {
+   "start": 2242.28,
+   "duration": 4.12,
+   "text": "brings a smile to my face."
+  },
+  {
+   "start": 2244.16,
+   "duration": 4.04,
+   "text": "So, anyways, but I hope you're kind of"
+  },
+  {
+   "start": 2246.4,
+   "duration": 4.04,
+   "text": "getting it, right?"
+  },
+  {
+   "start": 2248.2,
+   "duration": 4.52,
+   "text": "Okay."
+  },
+  {
+   "start": 2250.44,
+   "duration": 3.92,
+   "text": "So, now um"
+  },
+  {
+   "start": 2252.72,
+   "duration": 3.04,
+   "text": "if you remember when"
+  },
+  {
+   "start": 2254.36,
+   "duration": 4.28,
+   "text": "you know, I was kind of showing the"
+  },
+  {
+   "start": 2255.76,
+   "duration": 4.88,
+   "text": "Haiku model, yeah? Um"
+  },
+  {
+   "start": 2258.64,
+   "duration": 4.08,
+   "text": "I was kind of"
+  },
+  {
+   "start": 2260.64,
+   "duration": 3.16,
+   "text": "giving the entire model string over"
+  },
+  {
+   "start": 2262.72,
+   "duration": 2.72,
+   "text": "there."
+  },
+  {
+   "start": 2263.8,
+   "duration": 3.28,
+   "text": "Yeah, and that is known as pin your"
+  },
+  {
+   "start": 2265.44,
+   "duration": 4.84,
+   "text": "model string. And here's the trap. If"
+  },
+  {
+   "start": 2267.08,
+   "duration": 5.8,
+   "text": "you point at a floating alias or an"
+  },
+  {
+   "start": 2270.28,
+   "duration": 4.44,
+   "text": "unpinned default, the model underneath"
+  },
+  {
+   "start": 2272.88,
+   "duration": 4.24,
+   "text": "can quietly change on you."
+  },
+  {
+   "start": 2274.72,
+   "duration": 4.28,
+   "text": "So, a new version ships, its behavior"
+  },
+  {
+   "start": 2277.12,
+   "duration": 4.72,
+   "text": "shifts a little, and suddenly the"
+  },
+  {
+   "start": 2279.0,
+   "duration": 4.76,
+   "text": "prompts you carefully tuned to the old"
+  },
+  {
+   "start": 2281.84,
+   "duration": 3.76,
+   "text": "one kind of regress."
+  },
+  {
+   "start": 2283.76,
+   "duration": 4.32,
+   "text": "Yeah, and you did not touch a single"
+  },
+  {
+   "start": 2285.6,
+   "duration": 5.4,
+   "text": "line of your code. You it's like scoop"
+  },
+  {
+   "start": 2288.08,
+   "duration": 5.16,
+   "text": "you not scoopies, spooky action at a"
+  },
+  {
+   "start": 2291.0,
+   "duration": 3.96,
+   "text": "distance, and you won't understand what"
+  },
+  {
+   "start": 2293.24,
+   "duration": 4.36,
+   "text": "is happening. So, that is why if you"
+  },
+  {
+   "start": 2294.96,
+   "duration": 3.8,
+   "text": "see, I have kind of pinned over here, if"
+  },
+  {
+   "start": 2297.6,
+   "duration": 2.28,
+   "text": "you see"
+  },
+  {
+   "start": 2298.76,
+   "duration": 3.76,
+   "text": "my"
+  },
+  {
+   "start": 2299.88,
+   "duration": 3.92,
+   "text": "my sub-agents file. See, there's I'm"
+  },
+  {
+   "start": 2302.52,
+   "duration": 3.12,
+   "text": "kind of saying, \"Okay, this is the"
+  },
+  {
+   "start": 2303.8,
+   "duration": 4.36,
+   "text": "particular Haiku model that I want to"
+  },
+  {
+   "start": 2305.64,
+   "duration": 3.6,
+   "text": "use. That is a stable thing that I want"
+  },
+  {
+   "start": 2308.16,
+   "duration": 3.8,
+   "text": "to use.\""
+  },
+  {
+   "start": 2309.24,
+   "duration": 4.8,
+   "text": "Now, this is a hypothetical, okay? It It"
+  },
+  {
+   "start": 2311.96,
+   "duration": 4.76,
+   "text": "all happened this year. So, new"
+  },
+  {
+   "start": 2314.04,
+   "duration": 5.32,
+   "text": "tokenizers changed token counts. So,"
+  },
+  {
+   "start": 2316.72,
+   "duration": 4.96,
+   "text": "costs kind of moved even though the"
+  },
+  {
+   "start": 2319.36,
+   "duration": 3.92,
+   "text": "sticker price did not."
+  },
+  {
+   "start": 2321.68,
+   "duration": 3.24,
+   "text": "So, kind of think it in a way you have"
+  },
+  {
+   "start": 2323.28,
+   "duration": 4.08,
+   "text": "been buying a product. The name of the"
+  },
+  {
+   "start": 2324.92,
+   "duration": 4.48,
+   "text": "product is same, but they changed the"
+  },
+  {
+   "start": 2327.36,
+   "duration": 3.52,
+   "text": "packaging and now it is costing more."
+  },
+  {
+   "start": 2329.4,
+   "duration": 3.0,
+   "text": "Something like that. So, if you know"
+  },
+  {
+   "start": 2330.88,
+   "duration": 4.12,
+   "text": "that a particular"
+  },
+  {
+   "start": 2332.4,
+   "duration": 4.0,
+   "text": "kind of model is there and it's stable"
+  },
+  {
+   "start": 2335.0,
+   "duration": 3.24,
+   "text": "and it's costing you less and it is"
+  },
+  {
+   "start": 2336.4,
+   "duration": 3.8,
+   "text": "doing your job, then why not stick with"
+  },
+  {
+   "start": 2338.24,
+   "duration": 3.56,
+   "text": "it? There are a lot of mechanisms that"
+  },
+  {
+   "start": 2340.2,
+   "duration": 6.24,
+   "text": "you use that you can use like auto"
+  },
+  {
+   "start": 2341.8,
+   "duration": 6.76,
+   "text": "upgrade or you can have multiple"
+  },
+  {
+   "start": 2346.44,
+   "duration": 4.12,
+   "text": "you know, versions of the model"
+  },
+  {
+   "start": 2348.56,
+   "duration": 3.24,
+   "text": "cycling throughout. A lot of things are"
+  },
+  {
+   "start": 2350.56,
+   "duration": 2.56,
+   "text": "there, but"
+  },
+  {
+   "start": 2351.8,
+   "duration": 3.4,
+   "text": "that this is one of the things that I"
+  },
+  {
+   "start": 2353.12,
+   "duration": 4.24,
+   "text": "wanted to point it out, right?"
+  },
+  {
+   "start": 2355.2,
+   "duration": 5.04,
+   "text": "Yeah. So, for example, the key fact that"
+  },
+  {
+   "start": 2357.36,
+   "duration": 5.44,
+   "text": "I want to tell you that pin explicit"
+  },
+  {
+   "start": 2360.24,
+   "duration": 4.64,
+   "text": "dated model IDs like here, like the"
+  },
+  {
+   "start": 2362.8,
+   "duration": 3.92,
+   "text": "Claude Haiku 45"
+  },
+  {
+   "start": 2364.88,
+   "duration": 4.16,
+   "text": "20251001,"
+  },
+  {
+   "start": 2366.72,
+   "duration": 5.16,
+   "text": "yeah? Like in our sub agents, not a bare"
+  },
+  {
+   "start": 2369.04,
+   "duration": 5.28,
+   "text": "Haiku, then you know, once you know that"
+  },
+  {
+   "start": 2371.88,
+   "duration": 5.64,
+   "text": "a newer model is upgraded and you have"
+  },
+  {
+   "start": 2374.32,
+   "duration": 4.72,
+   "text": "tested it out, right? So, then upgrade"
+  },
+  {
+   "start": 2377.52,
+   "duration": 3.72,
+   "text": "on purpose."
+  },
+  {
+   "start": 2379.04,
+   "duration": 4.08,
+   "text": "Then you bump the particular pin."
+  },
+  {
+   "start": 2381.24,
+   "duration": 4.36,
+   "text": "Yeah? Retest it"
+  },
+  {
+   "start": 2383.12,
+   "duration": 4.84,
+   "text": "and then ship."
+  },
+  {
+   "start": 2385.6,
+   "duration": 4.8,
+   "text": "Okay? I hope that is making sense and"
+  },
+  {
+   "start": 2387.96,
+   "duration": 5.92,
+   "text": "this is comes under technical"
+  },
+  {
+   "start": 2390.4,
+   "duration": 4.48,
+   "text": "fundamentals that is almost 3 to 4% of"
+  },
+  {
+   "start": 2393.88,
+   "duration": 2.92,
+   "text": "your"
+  },
+  {
+   "start": 2394.88,
+   "duration": 4.24,
+   "text": "exam. So, this is not something that you"
+  },
+  {
+   "start": 2396.8,
+   "duration": 4.56,
+   "text": "should skip. The exam questions will"
+  },
+  {
+   "start": 2399.12,
+   "duration": 4.32,
+   "text": "come from here as well. I hope that's"
+  },
+  {
+   "start": 2401.36,
+   "duration": 7.4,
+   "text": "making sense. So, always use a pinned"
+  },
+  {
+   "start": 2403.44,
+   "duration": 7.4,
+   "text": "version of a model in your agents."
+  },
+  {
+   "start": 2408.76,
+   "duration": 3.96,
+   "text": "Okay?"
+  },
+  {
+   "start": 2410.84,
+   "duration": 3.8,
+   "text": "Yeah. So,"
+  },
+  {
+   "start": 2412.72,
+   "duration": 4.68,
+   "text": "a very quick drill I'm going to tell you"
+  },
+  {
+   "start": 2414.64,
+   "duration": 4.28,
+   "text": "pick the the model. Let's do a very fast"
+  },
+  {
+   "start": 2417.4,
+   "duration": 4.0,
+   "text": "fast things. I'm going to ask you the"
+  },
+  {
+   "start": 2418.92,
+   "duration": 4.76,
+   "text": "question in rapid-fire mode. So, a"
+  },
+  {
+   "start": 2421.4,
+   "duration": 4.36,
+   "text": "high-volume endpoint sorting incoming"
+  },
+  {
+   "start": 2423.68,
+   "duration": 3.88,
+   "text": "emails into five buckets."
+  },
+  {
+   "start": 2425.76,
+   "duration": 3.92,
+   "text": "That is the requirement."
+  },
+  {
+   "start": 2427.56,
+   "duration": 4.4,
+   "text": "And the answer is Haiku."
+  },
+  {
+   "start": 2429.68,
+   "duration": 3.84,
+   "text": "Hey, the answer is already here."
+  },
+  {
+   "start": 2431.96,
+   "duration": 3.92,
+   "text": "But anyways, just don't look at the"
+  },
+  {
+   "start": 2433.52,
+   "duration": 4.88,
+   "text": "answer and just tell me."
+  },
+  {
+   "start": 2435.88,
+   "duration": 5.96,
+   "text": "Refactoring a tangled 800-line module"
+  },
+  {
+   "start": 2438.4,
+   "duration": 5.28,
+   "text": "where several valid approaches exist."
+  },
+  {
+   "start": 2441.84,
+   "duration": 2.96,
+   "text": "Now, here you can either go with Opus or"
+  },
+  {
+   "start": 2443.68,
+   "duration": 2.76,
+   "text": "Sonnet."
+  },
+  {
+   "start": 2444.8,
+   "duration": 3.88,
+   "text": "If you're going with Sonnet, I would go"
+  },
+  {
+   "start": 2446.44,
+   "duration": 5.32,
+   "text": "with high effort and with thinking on."
+  },
+  {
+   "start": 2448.68,
+   "duration": 5.12,
+   "text": "And honestly, plan it first, yeah?"
+  },
+  {
+   "start": 2451.76,
+   "duration": 4.2,
+   "text": "You can plan this thing with Opus maybe"
+  },
+  {
+   "start": 2453.8,
+   "duration": 4.32,
+   "text": "and then use Sonnet at medium or high"
+  },
+  {
+   "start": 2455.96,
+   "duration": 4.0,
+   "text": "level to do the implementation. So, it's"
+  },
+  {
+   "start": 2458.12,
+   "duration": 4.16,
+   "text": "like an average of the cost and you"
+  },
+  {
+   "start": 2459.96,
+   "duration": 4.2,
+   "text": "would not anyway spend"
+  },
+  {
+   "start": 2462.28,
+   "duration": 3.64,
+   "text": "the if you do completely on Opus,"
+  },
+  {
+   "start": 2464.16,
+   "duration": 3.6,
+   "text": "something like that."
+  },
+  {
+   "start": 2465.92,
+   "duration": 4.16,
+   "text": "So, the third uh kind of a drill is"
+  },
+  {
+   "start": 2467.76,
+   "duration": 3.88,
+   "text": "everyday PR review with tool use,"
+  },
+  {
+   "start": 2470.08,
+   "duration": 4.12,
+   "text": "balanced judgment, and cost that"
+  },
+  {
+   "start": 2471.64,
+   "duration": 4.76,
+   "text": "matters. It is plain Sonnet with"
+  },
+  {
+   "start": 2474.2,
+   "duration": 4.8,
+   "text": "adaptive thinking. It will automatically"
+  },
+  {
+   "start": 2476.4,
+   "duration": 5.8,
+   "text": "kind of adjust its thinking. Uh if it is"
+  },
+  {
+   "start": 2479.0,
+   "duration": 4.84,
+   "text": "needed, it will use it, otherwise not."
+  },
+  {
+   "start": 2482.2,
+   "duration": 4.32,
+   "text": "So, the skill is"
+  },
+  {
+   "start": 2483.84,
+   "duration": 4.84,
+   "text": "uh reason about the task, not the brand."
+  },
+  {
+   "start": 2486.52,
+   "duration": 4.08,
+   "text": "See, the thing is"
+  },
+  {
+   "start": 2488.68,
+   "duration": 3.6,
+   "text": "that is where why, you know, the you"
+  },
+  {
+   "start": 2490.6,
+   "duration": 4.16,
+   "text": "know, the AI"
+  },
+  {
+   "start": 2492.28,
+   "duration": 3.64,
+   "text": "kind of cannot replace you because you"
+  },
+  {
+   "start": 2494.76,
+   "duration": 3.4,
+   "text": "are"
+  },
+  {
+   "start": 2495.92,
+   "duration": 4.12,
+   "text": "kind of applying at what point I need"
+  },
+  {
+   "start": 2498.16,
+   "duration": 4.08,
+   "text": "that particular model."
+  },
+  {
+   "start": 2500.04,
+   "duration": 4.04,
+   "text": "You're not blindly just going with Opus,"
+  },
+  {
+   "start": 2502.24,
+   "duration": 4.8,
+   "text": "spending like thousands of dollars and"
+  },
+  {
+   "start": 2504.08,
+   "duration": 5.96,
+   "text": "doing Then, there is no kind of"
+  },
+  {
+   "start": 2507.04,
+   "duration": 4.4,
+   "text": "optimization or you no credit that goes"
+  },
+  {
+   "start": 2510.04,
+   "duration": 3.32,
+   "text": "to you because you are not doing the"
+  },
+  {
+   "start": 2511.44,
+   "duration": 3.52,
+   "text": "judgment over there."
+  },
+  {
+   "start": 2513.36,
+   "duration": 3.4,
+   "text": "Yeah, it's okay if you get stuck in a"
+  },
+  {
+   "start": 2514.96,
+   "duration": 2.92,
+   "text": "loop. Then, change the then bump up the"
+  },
+  {
+   "start": 2516.76,
+   "duration": 2.84,
+   "text": "model."
+  },
+  {
+   "start": 2517.88,
+   "duration": 3.24,
+   "text": "So, you have to kind of think about it,"
+  },
+  {
+   "start": 2519.6,
+   "duration": 3.52,
+   "text": "reason about it, and then choose the"
+  },
+  {
+   "start": 2521.12,
+   "duration": 4.04,
+   "text": "model."
+  },
+  {
+   "start": 2523.12,
+   "duration": 5.28,
+   "text": "Yeah?"
+  },
+  {
+   "start": 2525.16,
+   "duration": 5.76,
+   "text": "Okay. So, some key takeaways. Model just"
+  },
+  {
+   "start": 2528.4,
+   "duration": 4.84,
+   "text": "predicts the next token and you pay per"
+  },
+  {
+   "start": 2530.92,
+   "duration": 4.84,
+   "text": "token both in and out and that's the"
+  },
+  {
+   "start": 2533.24,
+   "duration": 3.88,
+   "text": "meter. Yeah, there are three tiers and"
+  },
+  {
+   "start": 2535.76,
+   "duration": 2.68,
+   "text": "there is a trade-off triangle. We"
+  },
+  {
+   "start": 2537.12,
+   "duration": 4.16,
+   "text": "understood what are the three tiers,"
+  },
+  {
+   "start": 2538.44,
+   "duration": 4.8,
+   "text": "Haiku, Sonnet, and Opus and we also"
+  },
+  {
+   "start": 2541.28,
+   "duration": 4.6,
+   "text": "understood the trade-off triangle. Now,"
+  },
+  {
+   "start": 2543.24,
+   "duration": 5.72,
+   "text": "match the model to the job."
+  },
+  {
+   "start": 2545.88,
+   "duration": 4.4,
+   "text": "Cheap, narrow things, please stick with"
+  },
+  {
+   "start": 2548.96,
+   "duration": 3.36,
+   "text": "Haiku."
+  },
+  {
+   "start": 2550.28,
+   "duration": 4.08,
+   "text": "If it is a everyday task, Sonnet. If it"
+  },
+  {
+   "start": 2552.32,
+   "duration": 4.24,
+   "text": "is something that needs,"
+  },
+  {
+   "start": 2554.36,
+   "duration": 4.2,
+   "text": "you know, research, judgment, and a lot"
+  },
+  {
+   "start": 2556.56,
+   "duration": 4.88,
+   "text": "of thinking, then go with Opus."
+  },
+  {
+   "start": 2558.56,
+   "duration": 5.32,
+   "text": "Thinking is a paid scratchpad."
+  },
+  {
+   "start": 2561.44,
+   "duration": 4.6,
+   "text": "Okay? Adaptive thinking plus the effort"
+  },
+  {
+   "start": 2563.88,
+   "duration": 3.96,
+   "text": "dial, let the model spend only when it"
+  },
+  {
+   "start": 2566.04,
+   "duration": 4.44,
+   "text": "is worth it."
+  },
+  {
+   "start": 2567.84,
+   "duration": 4.16,
+   "text": "Pin-dated model strings, that's what we"
+  },
+  {
+   "start": 2570.48,
+   "duration": 4.04,
+   "text": "learned."
+  },
+  {
+   "start": 2572.0,
+   "duration": 3.56,
+   "text": "Yeah? And that is all about this video,"
+  },
+  {
+   "start": 2574.52,
+   "duration": 2.88,
+   "text": "guys."
+  },
+  {
+   "start": 2575.56,
+   "duration": 3.2,
+   "text": "This was very important"
+  },
+  {
+   "start": 2577.4,
+   "duration": 2.48,
+   "text": "video."
+  },
+  {
+   "start": 2578.76,
+   "duration": 3.16,
+   "text": "Yeah?"
+  },
+  {
+   "start": 2579.88,
+   "duration": 4.44,
+   "text": "And also a very, very important another"
+  },
+  {
+   "start": 2581.92,
+   "duration": 3.28,
+   "text": "video is coming up as the next episode."
+  },
+  {
+   "start": 2584.32,
+   "duration": 2.48,
+   "text": "And"
+  },
+  {
+   "start": 2585.2,
+   "duration": 3.88,
+   "text": "then we're going to talk about cost and"
+  },
+  {
+   "start": 2586.8,
+   "duration": 4.64,
+   "text": "tokens in detail. And I'm going to see"
+  },
+  {
+   "start": 2589.08,
+   "duration": 4.28,
+   "text": "you in that video."
+  },
+  {
+   "start": 2591.44,
+   "duration": 5.6,
+   "text": "Best of luck for your exam"
+  },
+  {
+   "start": 2593.36,
+   "duration": 6.6,
+   "text": "and take care. Bye-bye."
+  },
+  {
+   "start": 2597.04,
+   "duration": 2.92,
+   "text": "And I'll see you."
+  }
+ ]
+}

@@ -1,0 +1,7133 @@
+{
+ "video_id": "YXmzGhb4qC4",
+ "episode": "Ep 06",
+ "title": "Agent Memory, Sessions, Resume & Forking",
+ "lane": "ccdv-f",
+ "segments": [
+  {
+   "start": 3.28,
+   "duration": 4.72,
+   "text": "Hello everyone and welcome to this"
+  },
+  {
+   "start": 4.799,
+   "duration": 6.401,
+   "text": "lesson. Now as you can see"
+  },
+  {
+   "start": 8.0,
+   "duration": 5.28,
+   "text": "we are going to solve one problem. So"
+  },
+  {
+   "start": 11.2,
+   "duration": 5.28,
+   "text": "your agent that we have been developing"
+  },
+  {
+   "start": 13.28,
+   "duration": 7.28,
+   "text": "till now has amnesia"
+  },
+  {
+   "start": 16.48,
+   "duration": 6.959,
+   "text": "and it's costing you a lot of money. So"
+  },
+  {
+   "start": 20.56,
+   "duration": 4.879,
+   "text": "what are going to do about that? So it's"
+  },
+  {
+   "start": 23.439,
+   "duration": 6.08,
+   "text": "it's a very crucial problem and it's one"
+  },
+  {
+   "start": 25.439,
+   "duration": 7.441,
+   "text": "of the most um you know sought after"
+  },
+  {
+   "start": 29.519,
+   "duration": 5.601,
+   "text": "problems right in this agentic AI"
+  },
+  {
+   "start": 32.88,
+   "duration": 4.32,
+   "text": "development or in you know in the exam"
+  },
+  {
+   "start": 35.12,
+   "duration": 4.8,
+   "text": "as well in the cloud certified developer"
+  },
+  {
+   "start": 37.2,
+   "duration": 7.28,
+   "text": "exam as well you'll be tested a lot you"
+  },
+  {
+   "start": 39.92,
+   "duration": 6.4,
+   "text": "know around this concept yeah so so"
+  },
+  {
+   "start": 44.48,
+   "duration": 4.399,
+   "text": "let's talk about it first right here's"
+  },
+  {
+   "start": 46.32,
+   "duration": 4.64,
+   "text": "something you know nobody tells you when"
+  },
+  {
+   "start": 48.879,
+   "duration": 4.561,
+   "text": "you kind of build your first agent right"
+  },
+  {
+   "start": 50.96,
+   "duration": 5.2,
+   "text": "you you kind of get it working. It's"
+  },
+  {
+   "start": 53.44,
+   "duration": 5.599,
+   "text": "brilliant. It reads your repo. Uh it"
+  },
+  {
+   "start": 56.16,
+   "duration": 4.96,
+   "text": "reasons about your code. It posts a very"
+  },
+  {
+   "start": 59.039,
+   "duration": 3.84,
+   "text": "genuinely useful review and that we have"
+  },
+  {
+   "start": 61.12,
+   "duration": 5.039,
+   "text": "seen in action since the past few"
+  },
+  {
+   "start": 62.879,
+   "duration": 4.961,
+   "text": "lessons, right? But then you run it"
+  },
+  {
+   "start": 66.159,
+   "duration": 7.201,
+   "text": "again"
+  },
+  {
+   "start": 67.84,
+   "duration": 8.08,
+   "text": "on the same pull request, right? And if"
+  },
+  {
+   "start": 73.36,
+   "duration": 4.96,
+   "text": "you going to pay attention to it, it"
+  },
+  {
+   "start": 75.92,
+   "duration": 6.48,
+   "text": "kind of rereads every file right from"
+  },
+  {
+   "start": 78.32,
+   "duration": 7.36,
+   "text": "scratch like it has never seen this rep"
+  },
+  {
+   "start": 82.4,
+   "duration": 5.44,
+   "text": "repository in its life, right? And the"
+  },
+  {
+   "start": 85.68,
+   "duration": 7.04,
+   "text": "and and the answer is or the the truth"
+  },
+  {
+   "start": 87.84,
+   "duration": 7.279,
+   "text": "is it has not. Yeah. Every agent"
+  },
+  {
+   "start": 92.72,
+   "duration": 5.2,
+   "text": "run, right? Every agent run that you do,"
+  },
+  {
+   "start": 95.119,
+   "duration": 6.241,
+   "text": "it starts from nothing. It's a blank"
+  },
+  {
+   "start": 97.92,
+   "duration": 6.159,
+   "text": "slate. Yeah. So the model has no memory"
+  },
+  {
+   "start": 101.36,
+   "duration": 4.56,
+   "text": "between calls, none of that. Yeah, that"
+  },
+  {
+   "start": 104.079,
+   "duration": 4.561,
+   "text": "that brilliant session session that you"
+  },
+  {
+   "start": 105.92,
+   "duration": 5.6,
+   "text": "just had, it's it's gone the moment the"
+  },
+  {
+   "start": 108.64,
+   "duration": 4.24,
+   "text": "process just exited. And we we already"
+  },
+  {
+   "start": 111.52,
+   "duration": 2.879,
+   "text": "know this thing, right? Every agent"
+  },
+  {
+   "start": 112.88,
+   "duration": 3.84,
+   "text": "whenever it starts running, it starts"
+  },
+  {
+   "start": 114.399,
+   "duration": 4.561,
+   "text": "with a blank slate. Every sub agent when"
+  },
+  {
+   "start": 116.72,
+   "duration": 3.92,
+   "text": "it starts uh its execution, it starts"
+  },
+  {
+   "start": 118.96,
+   "duration": 3.36,
+   "text": "with, you know, a blank slate. So that's"
+  },
+  {
+   "start": 120.64,
+   "duration": 4.72,
+   "text": "why in sub agent orchestration, we"
+  },
+  {
+   "start": 122.32,
+   "duration": 5.84,
+   "text": "always pass in the context."
+  },
+  {
+   "start": 125.36,
+   "duration": 4.64,
+   "text": "But what about this overall thingy about"
+  },
+  {
+   "start": 128.16,
+   "duration": 3.76,
+   "text": "memory, right? because you don't want to"
+  },
+  {
+   "start": 130.0,
+   "duration": 3.599,
+   "text": "every time reread everything, right?"
+  },
+  {
+   "start": 131.92,
+   "duration": 3.6,
+   "text": "Because at least the coordinator or the"
+  },
+  {
+   "start": 133.599,
+   "duration": 5.28,
+   "text": "main agent when you start it should have"
+  },
+  {
+   "start": 135.52,
+   "duration": 6.48,
+   "text": "something with in its uh toolbox, right?"
+  },
+  {
+   "start": 138.879,
+   "duration": 4.641,
+   "text": "Starting every time uh fresh is going to"
+  },
+  {
+   "start": 142.0,
+   "duration": 3.12,
+   "text": "cost you a lot of money. You're just"
+  },
+  {
+   "start": 143.52,
+   "duration": 4.88,
+   "text": "doing the same thing over and over"
+  },
+  {
+   "start": 145.12,
+   "duration": 5.92,
+   "text": "again. So today we fix that and we fix"
+  },
+  {
+   "start": 148.4,
+   "duration": 4.24,
+   "text": "it properly not with not like a hacky"
+  },
+  {
+   "start": 151.04,
+   "duration": 4.0,
+   "text": "thing, right? We're going to understand"
+  },
+  {
+   "start": 152.64,
+   "duration": 3.52,
+   "text": "the concepts of agentic memory or"
+  },
+  {
+   "start": 155.04,
+   "duration": 3.279,
+   "text": "something like that, whatever you want"
+  },
+  {
+   "start": 156.16,
+   "duration": 5.28,
+   "text": "to call it. and we're going to"
+  },
+  {
+   "start": 158.319,
+   "duration": 6.0,
+   "text": "understand four real mechanisms that"
+  },
+  {
+   "start": 161.44,
+   "duration": 4.96,
+   "text": "make an agent actually remember things."
+  },
+  {
+   "start": 164.319,
+   "duration": 4.321,
+   "text": "So stay tuned to this episode. It's"
+  },
+  {
+   "start": 166.4,
+   "duration": 5.919,
+   "text": "going to be mind-blowing by the way."
+  },
+  {
+   "start": 168.64,
+   "duration": 7.36,
+   "text": "Yeah, literally and uh figuratively."
+  },
+  {
+   "start": 172.319,
+   "duration": 5.601,
+   "text": "Okay. So if if I want to just put what"
+  },
+  {
+   "start": 176.0,
+   "duration": 4.08,
+   "text": "we are going to cover cover today, we I"
+  },
+  {
+   "start": 177.92,
+   "duration": 3.84,
+   "text": "already discussed that. But if we going"
+  },
+  {
+   "start": 180.08,
+   "duration": 3.519,
+   "text": "to take a recap of what we have done"
+  },
+  {
+   "start": 181.76,
+   "duration": 3.92,
+   "text": "till now since the first lesson or the"
+  },
+  {
+   "start": 183.599,
+   "duration": 5.041,
+   "text": "first episode till now. So in episode"
+  },
+  {
+   "start": 185.68,
+   "duration": 5.199,
+   "text": "number one we had written or hand rolled"
+  },
+  {
+   "start": 188.64,
+   "duration": 4.8,
+   "text": "the agentic loop you know using the raw"
+  },
+  {
+   "start": 190.879,
+   "duration": 4.561,
+   "text": "messages API. In episode number two we"
+  },
+  {
+   "start": 193.44,
+   "duration": 4.159,
+   "text": "swapped it with the clawed agent SDK and"
+  },
+  {
+   "start": 195.44,
+   "duration": 4.879,
+   "text": "we saw the magic happen. In episode"
+  },
+  {
+   "start": 197.599,
+   "duration": 4.481,
+   "text": "number three we used custom tools. Yeah"
+  },
+  {
+   "start": 200.319,
+   "duration": 4.241,
+   "text": "because in the previous previously we"
+  },
+  {
+   "start": 202.08,
+   "duration": 4.4,
+   "text": "were using default tools but then we"
+  },
+  {
+   "start": 204.56,
+   "duration": 4.64,
+   "text": "kind of created our own custom tools and"
+  },
+  {
+   "start": 206.48,
+   "duration": 4.72,
+   "text": "then we wired it up in our agent. In"
+  },
+  {
+   "start": 209.2,
+   "duration": 4.0,
+   "text": "episode number four, we talked about"
+  },
+  {
+   "start": 211.2,
+   "duration": 4.16,
+   "text": "hooks and guardrails and about some"
+  },
+  {
+   "start": 213.2,
+   "duration": 3.84,
+   "text": "security principles. And in episode"
+  },
+  {
+   "start": 215.36,
+   "duration": 5.04,
+   "text": "number five, which was like the recent"
+  },
+  {
+   "start": 217.04,
+   "duration": 5.279,
+   "text": "lesson, we fanned out two parallel sub"
+  },
+  {
+   "start": 220.4,
+   "duration": 3.919,
+   "text": "agents."
+  },
+  {
+   "start": 222.319,
+   "duration": 3.92,
+   "text": "I hope that's making sense. So the the"
+  },
+  {
+   "start": 224.319,
+   "duration": 4.48,
+   "text": "we did the sub aent orchestration and"
+  },
+  {
+   "start": 226.239,
+   "duration": 4.64,
+   "text": "all that. So a PR review agent is"
+  },
+  {
+   "start": 228.799,
+   "duration": 5.36,
+   "text": "genuinely very capable right now, right?"
+  },
+  {
+   "start": 230.879,
+   "duration": 5.681,
+   "text": "And but the thing is it has a brain a"
+  },
+  {
+   "start": 234.159,
+   "duration": 5.761,
+   "text": "brain of that of a goldfish."
+  },
+  {
+   "start": 236.56,
+   "duration": 6.239,
+   "text": "Yeah. So today we're going to give it"
+  },
+  {
+   "start": 239.92,
+   "duration": 6.56,
+   "text": "four kinds of memory or four ways. Yeah."
+  },
+  {
+   "start": 242.799,
+   "duration": 6.401,
+   "text": "Or kind of enhance it in four different"
+  },
+  {
+   "start": 246.48,
+   "duration": 4.88,
+   "text": "ways so that it can remember. Yeah."
+  },
+  {
+   "start": 249.2,
+   "duration": 5.119,
+   "text": "Because memory is one of the most"
+  },
+  {
+   "start": 251.36,
+   "duration": 5.92,
+   "text": "overloaded words in this whole space."
+  },
+  {
+   "start": 254.319,
+   "duration": 4.801,
+   "text": "And if you kind of blur this four things"
+  },
+  {
+   "start": 257.28,
+   "duration": 4.639,
+   "text": "together, you will build the wrong"
+  },
+  {
+   "start": 259.12,
+   "duration": 5.84,
+   "text": "thing. So you need to know where to use"
+  },
+  {
+   "start": 261.919,
+   "duration": 5.681,
+   "text": "what because sometimes more is not"
+  },
+  {
+   "start": 264.96,
+   "duration": 4.72,
+   "text": "better. Yeah. you have to do things"
+  },
+  {
+   "start": 267.6,
+   "duration": 4.8,
+   "text": "sometimes smartly and that's what we're"
+  },
+  {
+   "start": 269.68,
+   "duration": 6.72,
+   "text": "going to learn um in this uh lesson"
+  },
+  {
+   "start": 272.4,
+   "duration": 5.6,
+   "text": "today basically. So uh just to see what"
+  },
+  {
+   "start": 276.4,
+   "duration": 3.519,
+   "text": "uh is going to be the folder structure"
+  },
+  {
+   "start": 278.0,
+   "duration": 5.04,
+   "text": "for episode number six or lesson number"
+  },
+  {
+   "start": 279.919,
+   "duration": 5.041,
+   "text": "six. We're going to have the uh so this"
+  },
+  {
+   "start": 283.04,
+   "duration": 3.52,
+   "text": "will be a new file cloud. MD I'm going"
+  },
+  {
+   "start": 284.96,
+   "duration": 3.2,
+   "text": "to discuss that in a minute. What are"
+  },
+  {
+   "start": 286.56,
+   "duration": 3.68,
+   "text": "the advantages and all that and these"
+  },
+  {
+   "start": 288.16,
+   "duration": 4.8,
+   "text": "two new files? Obviously you would be"
+  },
+  {
+   "start": 290.24,
+   "duration": 5.04,
+   "text": "curious uh what is session indexing and"
+  },
+  {
+   "start": 292.96,
+   "duration": 3.519,
+   "text": "what is context checking. All these uh"
+  },
+  {
+   "start": 295.28,
+   "duration": 3.6,
+   "text": "things we're going to do in these two"
+  },
+  {
+   "start": 296.479,
+   "duration": 4.481,
+   "text": "new files. Uh we already had the hooks"
+  },
+  {
+   "start": 298.88,
+   "duration": 4.8,
+   "text": "where we had written our pre-tool use"
+  },
+  {
+   "start": 300.96,
+   "duration": 5.76,
+   "text": "hook and post tool use hooks. uh we're"
+  },
+  {
+   "start": 303.68,
+   "duration": 4.56,
+   "text": "going to update it a bit. So the the the"
+  },
+  {
+   "start": 306.72,
+   "duration": 2.8,
+   "text": "previous things will be carry forwarded"
+  },
+  {
+   "start": 308.24,
+   "duration": 4.239,
+   "text": "from the previous lesson and we're going"
+  },
+  {
+   "start": 309.52,
+   "duration": 4.16,
+   "text": "to update uh it with something the agent"
+  },
+  {
+   "start": 312.479,
+   "duration": 2.321,
+   "text": "some previous thing will be carry"
+  },
+  {
+   "start": 313.68,
+   "duration": 3.359,
+   "text": "forwarded and we're going to update"
+  },
+  {
+   "start": 314.8,
+   "duration": 4.239,
+   "text": "update it with our new stuffs that we're"
+  },
+  {
+   "start": 317.039,
+   "duration": 4.801,
+   "text": "going to do. We're not going to touch"
+  },
+  {
+   "start": 319.039,
+   "duration": 5.761,
+   "text": "the sub aents. py or tools py which we"
+  },
+  {
+   "start": 321.84,
+   "duration": 4.88,
+   "text": "have already kind of you know written"
+  },
+  {
+   "start": 324.8,
+   "duration": 4.08,
+   "text": "sub aents are in this file and all our"
+  },
+  {
+   "start": 326.72,
+   "duration": 3.919,
+   "text": "custom tools are in this file. So what I"
+  },
+  {
+   "start": 328.88,
+   "duration": 3.759,
+   "text": "have done is basically uh for episode"
+  },
+  {
+   "start": 330.639,
+   "duration": 4.161,
+   "text": "number six I have just copy pasted this"
+  },
+  {
+   "start": 332.639,
+   "duration": 4.4,
+   "text": "sub aents and tools which basically"
+  },
+  {
+   "start": 334.8,
+   "duration": 4.72,
+   "text": "contains our sub aents um agent"
+  },
+  {
+   "start": 337.039,
+   "duration": 3.521,
+   "text": "definition and our tools custom tools"
+  },
+  {
+   "start": 339.52,
+   "duration": 4.72,
+   "text": "over here because we're not going to"
+  },
+  {
+   "start": 340.56,
+   "duration": 5.52,
+   "text": "touch it so why not keep it ready all"
+  },
+  {
+   "start": 344.24,
+   "duration": 4.799,
+   "text": "the all the files we're going to create"
+  },
+  {
+   "start": 346.08,
+   "duration": 7.119,
+   "text": "it on the fly yeah so I hope that is"
+  },
+  {
+   "start": 349.039,
+   "duration": 7.201,
+   "text": "making sense okay now u four different"
+  },
+  {
+   "start": 353.199,
+   "duration": 4.72,
+   "text": "things people call memory"
+  },
+  {
+   "start": 356.24,
+   "duration": 3.36,
+   "text": "and let's first understand the anal"
+  },
+  {
+   "start": 357.919,
+   "duration": 4.881,
+   "text": "technology, right? Because once you've"
+  },
+  {
+   "start": 359.6,
+   "duration": 5.84,
+   "text": "got it, the API surface becomes very"
+  },
+  {
+   "start": 362.8,
+   "duration": 5.92,
+   "text": "obvious and it's just a piece of cake."
+  },
+  {
+   "start": 365.44,
+   "duration": 6.4,
+   "text": "So imagine for example, you hire a"
+  },
+  {
+   "start": 368.72,
+   "duration": 6.16,
+   "text": "contractor to work on your house, right?"
+  },
+  {
+   "start": 371.84,
+   "duration": 5.28,
+   "text": "There are four different kinds of"
+  },
+  {
+   "start": 374.88,
+   "duration": 4.4,
+   "text": "remembering that is going on or memory"
+  },
+  {
+   "start": 377.12,
+   "duration": 5.199,
+   "text": "that is going on, right? So the first"
+  },
+  {
+   "start": 379.28,
+   "duration": 6.479,
+   "text": "one is let's say the house rules that"
+  },
+  {
+   "start": 382.319,
+   "duration": 5.361,
+   "text": "you have and yeah you hand hand the"
+  },
+  {
+   "start": 385.759,
+   "duration": 4.801,
+   "text": "house rules to that contractor or the"
+  },
+  {
+   "start": 387.68,
+   "duration": 5.519,
+   "text": "people working on it from day one like"
+  },
+  {
+   "start": 390.56,
+   "duration": 5.6,
+   "text": "take your shoes off don't touch this"
+  },
+  {
+   "start": 393.199,
+   "duration": 4.72,
+   "text": "fuse box for example and they read it"
+  },
+  {
+   "start": 396.16,
+   "duration": 4.479,
+   "text": "every single morning and that is known"
+  },
+  {
+   "start": 397.919,
+   "duration": 5.84,
+   "text": "as clouded MD file the rules and"
+  },
+  {
+   "start": 400.639,
+   "duration": 6.321,
+   "text": "regulations of your project basically."
+  },
+  {
+   "start": 403.759,
+   "duration": 6.321,
+   "text": "Next comes point number two."
+  },
+  {
+   "start": 406.96,
+   "duration": 4.88,
+   "text": "Second thing is they do those people"
+  },
+  {
+   "start": 410.08,
+   "duration": 3.2,
+   "text": "also keep track of something. They keep"
+  },
+  {
+   "start": 411.84,
+   "duration": 3.28,
+   "text": "some kind of a notebook or something"
+  },
+  {
+   "start": 413.28,
+   "duration": 4.88,
+   "text": "with them or some kind of papers with"
+  },
+  {
+   "start": 415.12,
+   "duration": 4.799,
+   "text": "them. Right? So they note it down as"
+  },
+  {
+   "start": 418.16,
+   "duration": 3.84,
+   "text": "they keep on working on your house. They"
+  },
+  {
+   "start": 419.919,
+   "duration": 4.081,
+   "text": "note it down. For example, the upstairs"
+  },
+  {
+   "start": 422.0,
+   "duration": 3.84,
+   "text": "bathroom sink is broken or something"
+  },
+  {
+   "start": 424.0,
+   "duration": 4.319,
+   "text": "like that. Right? So they will remember"
+  },
+  {
+   "start": 425.84,
+   "duration": 5.04,
+   "text": "that thing and they you are not doing"
+  },
+  {
+   "start": 428.319,
+   "duration": 5.041,
+   "text": "something with that. But on the other"
+  },
+  {
+   "start": 430.88,
+   "duration": 4.48,
+   "text": "hand, those contractors or the people"
+  },
+  {
+   "start": 433.36,
+   "duration": 5.04,
+   "text": "who are working on it keep a track of it"
+  },
+  {
+   "start": 435.36,
+   "duration": 4.72,
+   "text": "on their own like in the notebook."
+  },
+  {
+   "start": 438.4,
+   "duration": 3.6,
+   "text": "Nobody told them that. They learned it"
+  },
+  {
+   "start": 440.08,
+   "duration": 6.08,
+   "text": "and they wrote it down. And that's known"
+  },
+  {
+   "start": 442.0,
+   "duration": 6.08,
+   "text": "as automemory or the memory tool. Yeah,"
+  },
+  {
+   "start": 446.16,
+   "duration": 3.599,
+   "text": "remember all of these terms. Those are"
+  },
+  {
+   "start": 448.08,
+   "duration": 4.0,
+   "text": "going to come in the exam. You don't"
+  },
+  {
+   "start": 449.759,
+   "duration": 4.481,
+   "text": "have to, you know, kind of mug it up by"
+  },
+  {
+   "start": 452.08,
+   "duration": 4.559,
+   "text": "heart, but you need to understand what"
+  },
+  {
+   "start": 454.24,
+   "duration": 5.92,
+   "text": "each thing does."
+  },
+  {
+   "start": 456.639,
+   "duration": 5.921,
+   "text": "Number three uh comes the you know the"
+  },
+  {
+   "start": 460.16,
+   "duration": 4.24,
+   "text": "conversation the two of you had"
+  },
+  {
+   "start": 462.56,
+   "duration": 4.96,
+   "text": "yesterday about for example let's say"
+  },
+  {
+   "start": 464.4,
+   "duration": 4.72,
+   "text": "the kitchen. Yeah. And that is still a"
+  },
+  {
+   "start": 467.52,
+   "duration": 3.119,
+   "text": "flowing conversation you are having with"
+  },
+  {
+   "start": 469.12,
+   "duration": 3.919,
+   "text": "the with the contractor and that is"
+  },
+  {
+   "start": 470.639,
+   "duration": 7.041,
+   "text": "known as your session right your"
+  },
+  {
+   "start": 473.039,
+   "duration": 7.44,
+   "text": "session. Uh the fourth thing is um like"
+  },
+  {
+   "start": 477.68,
+   "duration": 6.48,
+   "text": "what happens when that conversation gets"
+  },
+  {
+   "start": 480.479,
+   "duration": 6.56,
+   "text": "so long. Yeah. that they can't hold it"
+  },
+  {
+   "start": 484.16,
+   "duration": 4.4,
+   "text": "all in their head or you also get like"
+  },
+  {
+   "start": 487.039,
+   "duration": 3.28,
+   "text": "exhausted."
+  },
+  {
+   "start": 488.56,
+   "duration": 4.16,
+   "text": "So what they do is they kind of mentally"
+  },
+  {
+   "start": 490.319,
+   "duration": 5.681,
+   "text": "summarize it down. For example, let's"
+  },
+  {
+   "start": 492.72,
+   "duration": 7.36,
+   "text": "say with very simple um compact words,"
+  },
+  {
+   "start": 496.0,
+   "duration": 7.039,
+   "text": "let's say kitchen agreed on oak."
+  },
+  {
+   "start": 500.08,
+   "duration": 5.6,
+   "text": "Yeah. And the court is spending. But you"
+  },
+  {
+   "start": 503.039,
+   "duration": 5.121,
+   "text": "had discussed this a lot, right? Because"
+  },
+  {
+   "start": 505.68,
+   "duration": 5.04,
+   "text": "that that that discussion on agreeing on"
+  },
+  {
+   "start": 508.16,
+   "duration": 4.16,
+   "text": "on selecting oak is very long. But still"
+  },
+  {
+   "start": 510.72,
+   "duration": 4.879,
+   "text": "the most important thing that they"
+  },
+  {
+   "start": 512.32,
+   "duration": 6.399,
+   "text": "remembered is that I need to use oak for"
+  },
+  {
+   "start": 515.599,
+   "duration": 5.761,
+   "text": "the modularization of this kitchen right"
+  },
+  {
+   "start": 518.719,
+   "duration": 5.601,
+   "text": "and the quote is still pending."
+  },
+  {
+   "start": 521.36,
+   "duration": 6.32,
+   "text": "So that is known as compaction. So that"
+  },
+  {
+   "start": 524.32,
+   "duration": 6.639,
+   "text": "is how the real world analogy is and all"
+  },
+  {
+   "start": 527.68,
+   "duration": 6.64,
+   "text": "four of these are memory. Yeah. None of"
+  },
+  {
+   "start": 530.959,
+   "duration": 5.281,
+   "text": "them are interchangeable."
+  },
+  {
+   "start": 534.32,
+   "duration": 5.12,
+   "text": "Just remember that it's very important."
+  },
+  {
+   "start": 536.24,
+   "duration": 6.08,
+   "text": "So if you put a rule in a session, it"
+  },
+  {
+   "start": 539.44,
+   "duration": 5.68,
+   "text": "will evaporate. Yeah. Put a conversation"
+  },
+  {
+   "start": 542.32,
+   "duration": 5.519,
+   "text": "in claw.md and you will bloat every"
+  },
+  {
+   "start": 545.12,
+   "duration": 6.159,
+   "text": "single run. So every single thing is"
+  },
+  {
+   "start": 547.839,
+   "duration": 6.881,
+   "text": "meant for a specific purpose and you"
+  },
+  {
+   "start": 551.279,
+   "duration": 6.481,
+   "text": "need to understand that purpose."
+  },
+  {
+   "start": 554.72,
+   "duration": 5.76,
+   "text": "Yeah. So I hope uh that is making sense."
+  },
+  {
+   "start": 557.76,
+   "duration": 5.04,
+   "text": "And from the exam perspective uh this"
+  },
+  {
+   "start": 560.48,
+   "duration": 5.76,
+   "text": "whole episode sits un under context"
+  },
+  {
+   "start": 562.8,
+   "duration": 7.44,
+   "text": "engineering right which is uh like 3.8%"
+  },
+  {
+   "start": 566.24,
+   "duration": 6.08,
+   "text": "8% in in domain number six, right? um"
+  },
+  {
+   "start": 570.24,
+   "duration": 4.8,
+   "text": "you know then we have prompt and context"
+  },
+  {
+   "start": 572.32,
+   "duration": 4.88,
+   "text": "engineering which is 11% of the total of"
+  },
+  {
+   "start": 575.04,
+   "duration": 5.04,
+   "text": "the claude certified developer you know"
+  },
+  {
+   "start": 577.2,
+   "duration": 6.319,
+   "text": "foundations syllabus right it's it's"
+  },
+  {
+   "start": 580.08,
+   "duration": 8.72,
+   "text": "kind of a small weight but it has a lot"
+  },
+  {
+   "start": 583.519,
+   "duration": 7.601,
+   "text": "of u huge world class implementations"
+  },
+  {
+   "start": 588.8,
+   "duration": 4.64,
+   "text": "and also uh the weightage doesn't matter"
+  },
+  {
+   "start": 591.12,
+   "duration": 4.8,
+   "text": "in my opinion in the exams because they"
+  },
+  {
+   "start": 593.44,
+   "duration": 4.399,
+   "text": "will not ask the questions directly they"
+  },
+  {
+   "start": 595.92,
+   "duration": 4.4,
+   "text": "will include this indirectly in some"
+  },
+  {
+   "start": 597.839,
+   "duration": 4.161,
+   "text": "other domains as well So the domains"
+  },
+  {
+   "start": 600.32,
+   "duration": 3.36,
+   "text": "when they say that this is the weightage"
+  },
+  {
+   "start": 602.0,
+   "duration": 3.68,
+   "text": "it just means that you need to learn it."
+  },
+  {
+   "start": 603.68,
+   "duration": 3.599,
+   "text": "It doesn't mean that you can skip it. If"
+  },
+  {
+   "start": 605.68,
+   "duration": 4.08,
+   "text": "you skip it you would be missing on"
+  },
+  {
+   "start": 607.279,
+   "duration": 4.721,
+   "text": "certain parts of the previous domains as"
+  },
+  {
+   "start": 609.76,
+   "duration": 5.44,
+   "text": "well. And and that is uh very very"
+  },
+  {
+   "start": 612.0,
+   "duration": 6.32,
+   "text": "important to kind of you know understand"
+  },
+  {
+   "start": 615.2,
+   "duration": 5.6,
+   "text": "right I hope I'm making sense. Okay. Now"
+  },
+  {
+   "start": 618.32,
+   "duration": 4.959,
+   "text": "let's talk about the claw.md file and"
+  },
+  {
+   "start": 620.8,
+   "duration": 4.64,
+   "text": "also talk about the settings sources"
+  },
+  {
+   "start": 623.279,
+   "duration": 5.441,
+   "text": "trap. But first let's talk about the"
+  },
+  {
+   "start": 625.44,
+   "duration": 5.36,
+   "text": "claw.md. Now we'll start with this very"
+  },
+  {
+   "start": 628.72,
+   "duration": 5.679,
+   "text": "simple thing, right? And it's the most"
+  },
+  {
+   "start": 630.8,
+   "duration": 7.52,
+   "text": "underrated thing. Okay, so claude.m MD"
+  },
+  {
+   "start": 634.399,
+   "duration": 6.721,
+   "text": "is a plain markdown file. Yeah, it's in"
+  },
+  {
+   "start": 638.32,
+   "duration": 4.48,
+   "text": "your project. In your project, a plain"
+  },
+  {
+   "start": 641.12,
+   "duration": 3.36,
+   "text": "markdown file which has a name of"
+  },
+  {
+   "start": 642.8,
+   "duration": 4.159,
+   "text": "cloud.md."
+  },
+  {
+   "start": 644.48,
+   "duration": 5.28,
+   "text": "So the agent SDK"
+  },
+  {
+   "start": 646.959,
+   "duration": 5.44,
+   "text": "loads it into the system prompt at the"
+  },
+  {
+   "start": 649.76,
+   "duration": 4.72,
+   "text": "start of every session"
+  },
+  {
+   "start": 652.399,
+   "duration": 3.921,
+   "text": "automatically."
+  },
+  {
+   "start": 654.48,
+   "duration": 3.84,
+   "text": "I mean is the same file that cloud code"
+  },
+  {
+   "start": 656.32,
+   "duration": 3.759,
+   "text": "uses which is which is quite the"
+  },
+  {
+   "start": 658.32,
+   "duration": 4.32,
+   "text": "superpower here. Your interactive"
+  },
+  {
+   "start": 660.079,
+   "duration": 5.521,
+   "text": "sessions and your programmatic agents"
+  },
+  {
+   "start": 662.64,
+   "duration": 6.08,
+   "text": "read the exact same rules that is there"
+  },
+  {
+   "start": 665.6,
+   "duration": 6.08,
+   "text": "in your cloud. MD file right now the"
+  },
+  {
+   "start": 668.72,
+   "duration": 4.799,
+   "text": "thing is what okay you can ask me a"
+  },
+  {
+   "start": 671.68,
+   "duration": 3.92,
+   "text": "question should I always keep it in the"
+  },
+  {
+   "start": 673.519,
+   "duration": 4.0,
+   "text": "project level can I keep it globally yes"
+  },
+  {
+   "start": 675.6,
+   "duration": 4.799,
+   "text": "you can keep it globally in your own"
+  },
+  {
+   "start": 677.519,
+   "duration": 4.721,
+   "text": "user's home directory there would be you"
+  },
+  {
+   "start": 680.399,
+   "duration": 4.0,
+   "text": "know a clouded MD if you want to keep it"
+  },
+  {
+   "start": 682.24,
+   "duration": 4.4,
+   "text": "there you can also keep a cloud MD file"
+  },
+  {
+   "start": 684.399,
+   "duration": 3.841,
+   "text": "there but it is it will be a very"
+  },
+  {
+   "start": 686.64,
+   "duration": 3.84,
+   "text": "general cloud MD file because it will be"
+  },
+  {
+   "start": 688.24,
+   "duration": 5.12,
+   "text": "accessible throughout your whole system"
+  },
+  {
+   "start": 690.48,
+   "duration": 6.24,
+   "text": "so it is a better approach that you keep"
+  },
+  {
+   "start": 693.36,
+   "duration": 5.44,
+   "text": "at least at the project level. There are"
+  },
+  {
+   "start": 696.72,
+   "duration": 5.44,
+   "text": "certain scenarios where people even keep"
+  },
+  {
+   "start": 698.8,
+   "duration": 5.279,
+   "text": "the cloud MD file in subfolders of their"
+  },
+  {
+   "start": 702.16,
+   "duration": 3.76,
+   "text": "projects as well, right? For each"
+  },
+  {
+   "start": 704.079,
+   "duration": 3.281,
+   "text": "particular feature, there might be some"
+  },
+  {
+   "start": 705.92,
+   "duration": 3.84,
+   "text": "rules which they will keep in their"
+  },
+  {
+   "start": 707.36,
+   "duration": 5.599,
+   "text": "cloud. MD file, but it's up to you. But"
+  },
+  {
+   "start": 709.76,
+   "duration": 5.44,
+   "text": "in general day-to-day scenario basis,"
+  },
+  {
+   "start": 712.959,
+   "duration": 5.201,
+   "text": "project level cloud MD file is the best"
+  },
+  {
+   "start": 715.2,
+   "duration": 5.92,
+   "text": "approach in my opinion. Okay. So, what"
+  },
+  {
+   "start": 718.16,
+   "duration": 6.64,
+   "text": "goes inside this cloud MD file? That's"
+  },
+  {
+   "start": 721.12,
+   "duration": 5.6,
+   "text": "also very important to understand. So"
+  },
+  {
+   "start": 724.8,
+   "duration": 5.2,
+   "text": "just a very simple mental model, right?"
+  },
+  {
+   "start": 726.72,
+   "duration": 5.84,
+   "text": "Things that are always true and that"
+  },
+  {
+   "start": 730.0,
+   "duration": 6.56,
+   "text": "Claude would get wrong without being"
+  },
+  {
+   "start": 732.56,
+   "duration": 6.24,
+   "text": "told. Yeah, not documentation, not a"
+  },
+  {
+   "start": 736.56,
+   "duration": 4.64,
+   "text": "readme. Some constraints, the very"
+  },
+  {
+   "start": 738.8,
+   "duration": 4.08,
+   "text": "important constraints."
+  },
+  {
+   "start": 741.2,
+   "duration": 3.04,
+   "text": "Right"
+  },
+  {
+   "start": 742.88,
+   "duration": 4.639,
+   "text": "now, let me show you an example of the"
+  },
+  {
+   "start": 744.24,
+   "duration": 6.159,
+   "text": "cloud MDL which we'll later add uh you"
+  },
+  {
+   "start": 747.519,
+   "duration": 5.44,
+   "text": "know over uh over the over the course of"
+  },
+  {
+   "start": 750.399,
+   "duration": 7.081,
+   "text": "this video. So I'm just going to go over"
+  },
+  {
+   "start": 752.959,
+   "duration": 4.521,
+   "text": "here. It should be somewhere"
+  },
+  {
+   "start": 758.639,
+   "duration": 5.361,
+   "text": "around in the snippets file. So let me"
+  },
+  {
+   "start": 761.36,
+   "duration": 5.64,
+   "text": "search for cloud.md"
+  },
+  {
+   "start": 764.0,
+   "duration": 3.0,
+   "text": "file."
+  },
+  {
+   "start": 767.6,
+   "duration": 9.08,
+   "text": "Okay. Just let cloud MD. Let's search"
+  },
+  {
+   "start": 772.16,
+   "duration": 4.52,
+   "text": "for that. Yeah."
+  },
+  {
+   "start": 777.279,
+   "duration": 3.401,
+   "text": "Where is that?"
+  },
+  {
+   "start": 782.48,
+   "duration": 5.28,
+   "text": "I can okay I think this is this one is"
+  },
+  {
+   "start": 785.68,
+   "duration": 4.0,
+   "text": "yeah so this is the thing this is what"
+  },
+  {
+   "start": 787.76,
+   "duration": 3.68,
+   "text": "it is review contract every finding"
+  },
+  {
+   "start": 789.68,
+   "duration": 3.76,
+   "text": "sites a file path and line number no no"
+  },
+  {
+   "start": 791.44,
+   "duration": 3.839,
+   "text": "line number no finding severity is"
+  },
+  {
+   "start": 793.44,
+   "duration": 4.0,
+   "text": "exactly one of the blocking so these are"
+  },
+  {
+   "start": 795.279,
+   "duration": 4.641,
+   "text": "the thing repo facts compact"
+  },
+  {
+   "start": 797.44,
+   "duration": 4.639,
+   "text": "instructions all of these are kind of"
+  },
+  {
+   "start": 799.92,
+   "duration": 6.159,
+   "text": "constraints or the important things that"
+  },
+  {
+   "start": 802.079,
+   "duration": 6.0,
+   "text": "claude needs to kind of remember yeah"
+  },
+  {
+   "start": 806.079,
+   "duration": 4.481,
+   "text": "and uh it's it's very important for the"
+  },
+  {
+   "start": 808.079,
+   "duration": 5.041,
+   "text": "session and for agentic you know loop to"
+  },
+  {
+   "start": 810.56,
+   "duration": 4.959,
+   "text": "run for that particular run right so"
+  },
+  {
+   "start": 813.12,
+   "duration": 5.12,
+   "text": "very good mental model is that claw.md"
+  },
+  {
+   "start": 815.519,
+   "duration": 5.521,
+   "text": "always is always loaded which means"
+  },
+  {
+   "start": 818.24,
+   "duration": 6.96,
+   "text": "every line you add is a tax on every"
+  },
+  {
+   "start": 821.04,
+   "duration": 7.44,
+   "text": "single run right so write it like you're"
+  },
+  {
+   "start": 825.2,
+   "duration": 5.439,
+   "text": "paying by the word because you are so"
+  },
+  {
+   "start": 828.48,
+   "duration": 4.64,
+   "text": "use the claude MD file as much as"
+  },
+  {
+   "start": 830.639,
+   "duration": 4.88,
+   "text": "possible to the you know the to the to"
+  },
+  {
+   "start": 833.12,
+   "duration": 6.64,
+   "text": "the maximum extent I hope that's making"
+  },
+  {
+   "start": 835.519,
+   "duration": 9.041,
+   "text": "sense okay now talking about the setting"
+  },
+  {
+   "start": 839.76,
+   "duration": 9.04,
+   "text": "sources trap, right? So,"
+  },
+  {
+   "start": 844.56,
+   "duration": 6.8,
+   "text": "here is a very bit of a cache, you know,"
+  },
+  {
+   "start": 848.8,
+   "duration": 4.56,
+   "text": "that people always kind of get confused,"
+  },
+  {
+   "start": 851.36,
+   "duration": 4.479,
+   "text": "right? And I want you to really hear"
+  },
+  {
+   "start": 853.36,
+   "duration": 5.919,
+   "text": "this one because the failure mode is"
+  },
+  {
+   "start": 855.839,
+   "duration": 7.761,
+   "text": "completely silent. Yeah, the SDK only"
+  },
+  {
+   "start": 859.279,
+   "duration": 8.081,
+   "text": "reads your cloud MD if you let it."
+  },
+  {
+   "start": 863.6,
+   "duration": 7.76,
+   "text": "Okay, there is a option called as"
+  },
+  {
+   "start": 867.36,
+   "duration": 5.68,
+   "text": "setting sources, right? Setting sources"
+  },
+  {
+   "start": 871.36,
+   "duration": 3.52,
+   "text": "and it is that option is there in the"
+  },
+  {
+   "start": 873.04,
+   "duration": 4.08,
+   "text": "cloud agent option. So if you want to"
+  },
+  {
+   "start": 874.88,
+   "duration": 4.639,
+   "text": "set it somewhere, I'm going to show you"
+  },
+  {
+   "start": 877.12,
+   "duration": 4.24,
+   "text": "uh an example of the agent.py, right? We"
+  },
+  {
+   "start": 879.519,
+   "duration": 3.76,
+   "text": "have our clawed agent options over"
+  },
+  {
+   "start": 881.36,
+   "duration": 4.32,
+   "text": "there. So we have a lot of properties"
+  },
+  {
+   "start": 883.279,
+   "duration": 4.881,
+   "text": "over there, right? Like allow tools, MCP"
+  },
+  {
+   "start": 885.68,
+   "duration": 5.76,
+   "text": "servers, agents and all those things,"
+  },
+  {
+   "start": 888.16,
+   "duration": 4.96,
+   "text": "right? So what does it mean that the SDK"
+  },
+  {
+   "start": 891.44,
+   "duration": 4.48,
+   "text": "only reads your cloud empty if you let"
+  },
+  {
+   "start": 893.12,
+   "duration": 4.32,
+   "text": "it? So like these options there is a"
+  },
+  {
+   "start": 895.92,
+   "duration": 4.24,
+   "text": "option known as setting sources. So it"
+  },
+  {
+   "start": 897.44,
+   "duration": 4.32,
+   "text": "will come something like setting"
+  },
+  {
+   "start": 900.16,
+   "duration": 5.119,
+   "text": "sources. So you can see that it's"
+  },
+  {
+   "start": 901.76,
+   "duration": 6.0,
+   "text": "already suggesting me this right now"
+  },
+  {
+   "start": 905.279,
+   "duration": 5.281,
+   "text": "it's basically"
+  },
+  {
+   "start": 907.76,
+   "duration": 6.16,
+   "text": "you have to put something like yeah"
+  },
+  {
+   "start": 910.56,
+   "duration": 6.32,
+   "text": "pretty simple like we have our like an"
+  },
+  {
+   "start": 913.92,
+   "duration": 5.2,
+   "text": "array and a comma over here and here we"
+  },
+  {
+   "start": 916.88,
+   "duration": 4.88,
+   "text": "have to put something like project. Now"
+  },
+  {
+   "start": 919.12,
+   "duration": 4.8,
+   "text": "what does this thing mean? Right? So"
+  },
+  {
+   "start": 921.76,
+   "duration": 3.92,
+   "text": "when you set the setting sources to"
+  },
+  {
+   "start": 923.92,
+   "duration": 5.039,
+   "text": "project level, it just means that you"
+  },
+  {
+   "start": 925.68,
+   "duration": 7.279,
+   "text": "are telling uh your agent that you know"
+  },
+  {
+   "start": 928.959,
+   "duration": 5.521,
+   "text": "read the cloud MD file which is there at"
+  },
+  {
+   "start": 932.959,
+   "duration": 4.641,
+   "text": "the project level which is basically"
+  },
+  {
+   "start": 934.48,
+   "duration": 6.4,
+   "text": "your project. But what happens if you"
+  },
+  {
+   "start": 937.6,
+   "duration": 6.32,
+   "text": "don't at all specify you know the"
+  },
+  {
+   "start": 940.88,
+   "duration": 5.28,
+   "text": "settings sources in this case what will"
+  },
+  {
+   "start": 943.92,
+   "duration": 4.56,
+   "text": "happen is"
+  },
+  {
+   "start": 946.16,
+   "duration": 4.56,
+   "text": "it will consider your user level"
+  },
+  {
+   "start": 948.48,
+   "duration": 5.84,
+   "text": "cloud.mmd file the which will basically"
+  },
+  {
+   "start": 950.72,
+   "duration": 6.16,
+   "text": "be global to your entire system right"
+  },
+  {
+   "start": 954.32,
+   "duration": 4.48,
+   "text": "and basically it will override any kind"
+  },
+  {
+   "start": 956.88,
+   "duration": 4.0,
+   "text": "of your project dot you know project"
+  },
+  {
+   "start": 958.8,
+   "duration": 3.52,
+   "text": "cloudmd file so it will kindly consider"
+  },
+  {
+   "start": 960.88,
+   "duration": 4.56,
+   "text": "you know consider all of your you know"
+  },
+  {
+   "start": 962.32,
+   "duration": 4.319,
+   "text": "their global cloudmd file right if you"
+  },
+  {
+   "start": 965.44,
+   "duration": 3.12,
+   "text": "Don't specify anything. You're just"
+  },
+  {
+   "start": 966.639,
+   "duration": 4.801,
+   "text": "telling your agent, you know, just read"
+  },
+  {
+   "start": 968.56,
+   "duration": 5.12,
+   "text": "the global cloud MD file, your user"
+  },
+  {
+   "start": 971.44,
+   "duration": 3.759,
+   "text": "level. Yeah."
+  },
+  {
+   "start": 973.68,
+   "duration": 4.719,
+   "text": "But"
+  },
+  {
+   "start": 975.199,
+   "duration": 5.44,
+   "text": "what if you specify what if you specify"
+  },
+  {
+   "start": 978.399,
+   "duration": 5.68,
+   "text": "the setting sources?"
+  },
+  {
+   "start": 980.639,
+   "duration": 8.081,
+   "text": "Um, what did I do? Okay."
+  },
+  {
+   "start": 984.079,
+   "duration": 7.76,
+   "text": "Oh, my bad. It's not going. Ah, okay."
+  },
+  {
+   "start": 988.72,
+   "duration": 5.119,
+   "text": "What if I don't specify anything"
+  },
+  {
+   "start": 991.839,
+   "duration": 3.601,
+   "text": "anything in this particular array, you"
+  },
+  {
+   "start": 993.839,
+   "duration": 5.041,
+   "text": "know, in the setting. sources setting"
+  },
+  {
+   "start": 995.44,
+   "duration": 5.28,
+   "text": "sources thing if I don't specify"
+  },
+  {
+   "start": 998.88,
+   "duration": 4.24,
+   "text": "anything over here and you know just"
+  },
+  {
+   "start": 1000.72,
+   "duration": 4.88,
+   "text": "specify an empty array then it will run"
+  },
+  {
+   "start": 1003.12,
+   "duration": 5.519,
+   "text": "in isolation mode it will not consider"
+  },
+  {
+   "start": 1005.6,
+   "duration": 6.08,
+   "text": "any cloud MD file at all so it will not"
+  },
+  {
+   "start": 1008.639,
+   "duration": 5.521,
+   "text": "load any context whatsoever which is"
+  },
+  {
+   "start": 1011.68,
+   "duration": 4.64,
+   "text": "specific to your project or which is"
+  },
+  {
+   "start": 1014.16,
+   "duration": 4.0,
+   "text": "present in your whole global level"
+  },
+  {
+   "start": 1016.32,
+   "duration": 4.319,
+   "text": "cloudmd file it will just start out"
+  },
+  {
+   "start": 1018.16,
+   "duration": 5.2,
+   "text": "blank and which is basically which you"
+  },
+  {
+   "start": 1020.639,
+   "duration": 4.881,
+   "text": "do not want so by default you know uh"
+  },
+  {
+   "start": 1023.36,
+   "duration": 3.92,
+   "text": "according to anthrops Entropics SDK,"
+  },
+  {
+   "start": 1025.52,
+   "duration": 4.24,
+   "text": "cloud agent SDK, it will load your"
+  },
+  {
+   "start": 1027.28,
+   "duration": 4.72,
+   "text": "cloud.mmd files. But if you explicitly"
+  },
+  {
+   "start": 1029.76,
+   "duration": 4.64,
+   "text": "don't mention anything over here, then"
+  },
+  {
+   "start": 1032.0,
+   "duration": 4.799,
+   "text": "it will not load anything. So that is"
+  },
+  {
+   "start": 1034.4,
+   "duration": 4.88,
+   "text": "the one point that you need to remember."
+  },
+  {
+   "start": 1036.799,
+   "duration": 5.12,
+   "text": "It will be also be tested in the exam as"
+  },
+  {
+   "start": 1039.28,
+   "duration": 4.88,
+   "text": "well. So I wanted to show you something"
+  },
+  {
+   "start": 1041.919,
+   "duration": 5.92,
+   "text": "known as automemory. But something I"
+  },
+  {
+   "start": 1044.16,
+   "duration": 6.72,
+   "text": "realized uh while I was actually kind of"
+  },
+  {
+   "start": 1047.839,
+   "duration": 4.801,
+   "text": "um doing uh creating this course or this"
+  },
+  {
+   "start": 1050.88,
+   "duration": 3.36,
+   "text": "particular episode is that there was"
+  },
+  {
+   "start": 1052.64,
+   "duration": 6.32,
+   "text": "some contradiction between the"
+  },
+  {
+   "start": 1054.24,
+   "duration": 7.52,
+   "text": "documentation of uh claude agent SDK and"
+  },
+  {
+   "start": 1058.96,
+   "duration": 5.12,
+   "text": "that's why I am not going to cover this"
+  },
+  {
+   "start": 1061.76,
+   "duration": 4.56,
+   "text": "automemory thing. Instead I'm going to"
+  },
+  {
+   "start": 1064.08,
+   "duration": 4.4,
+   "text": "cover what is actually there because in"
+  },
+  {
+   "start": 1066.32,
+   "duration": 3.76,
+   "text": "our channel we talk about what is"
+  },
+  {
+   "start": 1068.48,
+   "duration": 3.6,
+   "text": "actually there and what is going to come"
+  },
+  {
+   "start": 1070.08,
+   "duration": 4.88,
+   "text": "in your exam and what is beneficial to"
+  },
+  {
+   "start": 1072.08,
+   "duration": 5.04,
+   "text": "you. So to actually uh you know uh not"
+  },
+  {
+   "start": 1074.96,
+   "duration": 5.2,
+   "text": "blindly trust the documentation I tried"
+  },
+  {
+   "start": 1077.12,
+   "duration": 6.48,
+   "text": "something. Okay. So we all know that we"
+  },
+  {
+   "start": 1080.16,
+   "duration": 6.399,
+   "text": "have our you know our cloud folder in"
+  },
+  {
+   "start": 1083.6,
+   "duration": 5.28,
+   "text": "our systems right so here whatever is"
+  },
+  {
+   "start": 1086.559,
+   "duration": 5.521,
+   "text": "related to your cloud code your cloud"
+  },
+  {
+   "start": 1088.88,
+   "duration": 6.72,
+   "text": "code agent SDK uh sorry cloud agent SDK"
+  },
+  {
+   "start": 1092.08,
+   "duration": 5.36,
+   "text": "everything are there. Okay. Now if you"
+  },
+  {
+   "start": 1095.6,
+   "duration": 5.28,
+   "text": "go inside your CL you know dotcloud"
+  },
+  {
+   "start": 1097.44,
+   "duration": 5.84,
+   "text": "folder it it will also um contain a lot"
+  },
+  {
+   "start": 1100.88,
+   "duration": 6.24,
+   "text": "of uh things actually your settings.json"
+  },
+  {
+   "start": 1103.28,
+   "duration": 6.32,
+   "text": "and similarly it contains your projects"
+  },
+  {
+   "start": 1107.12,
+   "duration": 4.96,
+   "text": "right now if you go inside the projects"
+  },
+  {
+   "start": 1109.6,
+   "duration": 5.12,
+   "text": "and have a look at these directories"
+  },
+  {
+   "start": 1112.08,
+   "duration": 4.88,
+   "text": "that are autocreated. It was not created"
+  },
+  {
+   "start": 1114.72,
+   "duration": 5.04,
+   "text": "at all by me. It was autocreated by"
+  },
+  {
+   "start": 1116.96,
+   "duration": 5.839,
+   "text": "your, you know, your cloud code or your"
+  },
+  {
+   "start": 1119.76,
+   "duration": 4.96,
+   "text": "cloud agent SDK. And have a look at"
+  },
+  {
+   "start": 1122.799,
+   "duration": 3.281,
+   "text": "these folders that you see. Episode"
+  },
+  {
+   "start": 1124.72,
+   "duration": 2.959,
+   "text": "number two, episode number three,"
+  },
+  {
+   "start": 1126.08,
+   "duration": 4.959,
+   "text": "episode number four and episode number"
+  },
+  {
+   "start": 1127.679,
+   "duration": 5.921,
+   "text": "five. Now, if you look at it, you would"
+  },
+  {
+   "start": 1131.039,
+   "duration": 6.401,
+   "text": "understand a very interesting thing."
+  },
+  {
+   "start": 1133.6,
+   "duration": 7.84,
+   "text": "Yeah. That episode number one directory"
+  },
+  {
+   "start": 1137.44,
+   "duration": 6.08,
+   "text": "is not there. Okay? And I'll tell you a"
+  },
+  {
+   "start": 1141.44,
+   "duration": 4.56,
+   "text": "reason. If you remember for episode"
+  },
+  {
+   "start": 1143.52,
+   "duration": 5.279,
+   "text": "number one or lesson number one, we had"
+  },
+  {
+   "start": 1146.0,
+   "duration": 5.12,
+   "text": "you know done the agent by hand. We used"
+  },
+  {
+   "start": 1148.799,
+   "duration": 6.161,
+   "text": "the raw messages API. We were handling"
+  },
+  {
+   "start": 1151.12,
+   "duration": 6.08,
+   "text": "the you know uh the the the agentic loop"
+  },
+  {
+   "start": 1154.96,
+   "duration": 5.44,
+   "text": "and everything was uh done you know"
+  },
+  {
+   "start": 1157.2,
+   "duration": 7.359,
+   "text": "manually. From episode number two we"
+  },
+  {
+   "start": 1160.4,
+   "duration": 5.92,
+   "text": "started creating you know the"
+  },
+  {
+   "start": 1164.559,
+   "duration": 5.761,
+   "text": "uh we started implementing the cloud"
+  },
+  {
+   "start": 1166.32,
+   "duration": 6.16,
+   "text": "agent SDK. Now the best example or the"
+  },
+  {
+   "start": 1170.32,
+   "duration": 5.599,
+   "text": "best advantage of cloud agent SDK that"
+  },
+  {
+   "start": 1172.48,
+   "duration": 6.079,
+   "text": "you would see over here is that whatever"
+  },
+  {
+   "start": 1175.919,
+   "duration": 5.521,
+   "text": "we were doing in the session of a claude"
+  },
+  {
+   "start": 1178.559,
+   "duration": 6.24,
+   "text": "agent SDK run, it is getting"
+  },
+  {
+   "start": 1181.44,
+   "duration": 5.28,
+   "text": "automatically saved as a JSON L file."
+  },
+  {
+   "start": 1184.799,
+   "duration": 3.521,
+   "text": "Yeah. So episode number two has it,"
+  },
+  {
+   "start": 1186.72,
+   "duration": 3.28,
+   "text": "episode number three has it, episode"
+  },
+  {
+   "start": 1188.32,
+   "duration": 4.8,
+   "text": "number four has it and episode number"
+  },
+  {
+   "start": 1190.0,
+   "duration": 7.039,
+   "text": "five as well has it. Now the question"
+  },
+  {
+   "start": 1193.12,
+   "duration": 6.4,
+   "text": "arises now is that okay why not for"
+  },
+  {
+   "start": 1197.039,
+   "duration": 5.121,
+   "text": "episode number one how do we save the"
+  },
+  {
+   "start": 1199.52,
+   "duration": 4.56,
+   "text": "sessions that a particular agent runs"
+  },
+  {
+   "start": 1202.16,
+   "duration": 4.639,
+   "text": "when we are doing using the raw messages"
+  },
+  {
+   "start": 1204.08,
+   "duration": 5.68,
+   "text": "API that's a good question and the"
+  },
+  {
+   "start": 1206.799,
+   "duration": 5.601,
+   "text": "answer to that is using the memory tool"
+  },
+  {
+   "start": 1209.76,
+   "duration": 5.68,
+   "text": "yeah you have to manually specify in"
+  },
+  {
+   "start": 1212.4,
+   "duration": 5.279,
+   "text": "your uh you know um agentic loop that"
+  },
+  {
+   "start": 1215.44,
+   "duration": 4.239,
+   "text": "raw messages API that you are using you"
+  },
+  {
+   "start": 1217.679,
+   "duration": 4.401,
+   "text": "have to specify that okay I want to save"
+  },
+  {
+   "start": 1219.679,
+   "duration": 5.681,
+   "text": "the session just understand it logically"
+  },
+  {
+   "start": 1222.08,
+   "duration": 5.04,
+   "text": "now and we'll see the syntax in a bit"
+  },
+  {
+   "start": 1225.36,
+   "duration": 3.36,
+   "text": "but you don't have to do that if you're"
+  },
+  {
+   "start": 1227.12,
+   "duration": 3.84,
+   "text": "using the claw agent SDK it will"
+  },
+  {
+   "start": 1228.72,
+   "duration": 6.72,
+   "text": "automatically save the sessions like in"
+  },
+  {
+   "start": 1230.96,
+   "duration": 6.56,
+   "text": "JSONL files okay now another great"
+  },
+  {
+   "start": 1235.44,
+   "duration": 5.52,
+   "text": "question should come into your mind if"
+  },
+  {
+   "start": 1237.52,
+   "duration": 6.72,
+   "text": "these session files are being saved why"
+  },
+  {
+   "start": 1240.96,
+   "duration": 5.68,
+   "text": "are these session files not loaded when"
+  },
+  {
+   "start": 1244.24,
+   "duration": 4.08,
+   "text": "we are using the claw when we are using"
+  },
+  {
+   "start": 1246.64,
+   "duration": 3.68,
+   "text": "when we running the agent created by the"
+  },
+  {
+   "start": 1248.32,
+   "duration": 5.12,
+   "text": "cloud agent SDK that's a very good"
+  },
+  {
+   "start": 1250.32,
+   "duration": 5.04,
+   "text": "question. The simple answer is that I"
+  },
+  {
+   "start": 1253.44,
+   "duration": 4.16,
+   "text": "was trying I was trying to figure out"
+  },
+  {
+   "start": 1255.36,
+   "duration": 3.6,
+   "text": "how that works. Okay, that's why I was"
+  },
+  {
+   "start": 1257.6,
+   "duration": 5.04,
+   "text": "kind of looking into the cloud"
+  },
+  {
+   "start": 1258.96,
+   "duration": 5.68,
+   "text": "automemory thing. Okay, so at some point"
+  },
+  {
+   "start": 1262.64,
+   "duration": 4.88,
+   "text": "I saw that you know using the cloud"
+  },
+  {
+   "start": 1264.64,
+   "duration": 5.36,
+   "text": "agent SDK's automemory automatically"
+  },
+  {
+   "start": 1267.52,
+   "duration": 4.48,
+   "text": "these context will be loaded you know"
+  },
+  {
+   "start": 1270.0,
+   "duration": 4.64,
+   "text": "into the system prompt whenever you"
+  },
+  {
+   "start": 1272.0,
+   "duration": 5.2,
+   "text": "start a new agent run. But at some other"
+  },
+  {
+   "start": 1274.64,
+   "duration": 5.44,
+   "text": "place it is saying that it is not in you"
+  },
+  {
+   "start": 1277.2,
+   "duration": 4.56,
+   "text": "know GA or it is in beta phase. Uh and"
+  },
+  {
+   "start": 1280.08,
+   "duration": 4.24,
+   "text": "the out of memory doesn't work. And then"
+  },
+  {
+   "start": 1281.76,
+   "duration": 5.36,
+   "text": "I verified it. I tried to run the agent"
+  },
+  {
+   "start": 1284.32,
+   "duration": 5.76,
+   "text": "directly and um I I thought it will pick"
+  },
+  {
+   "start": 1287.12,
+   "duration": 4.799,
+   "text": "up something from you know as a context"
+  },
+  {
+   "start": 1290.08,
+   "duration": 4.079,
+   "text": "uh from these files but it was not"
+  },
+  {
+   "start": 1291.919,
+   "duration": 3.76,
+   "text": "picking right. So it was not picking"
+  },
+  {
+   "start": 1294.159,
+   "duration": 3.681,
+   "text": "automatically. So then I came to a"
+  },
+  {
+   "start": 1295.679,
+   "duration": 4.801,
+   "text": "conclusion that automemory is not"
+  },
+  {
+   "start": 1297.84,
+   "duration": 5.92,
+   "text": "working out as of now. Currently as per"
+  },
+  {
+   "start": 1300.48,
+   "duration": 6.0,
+   "text": "my understanding and as per my uh"
+  },
+  {
+   "start": 1303.76,
+   "duration": 5.52,
+   "text": "research and whatever I have executed in"
+  },
+  {
+   "start": 1306.48,
+   "duration": 4.72,
+   "text": "my own code automemory is not kind of"
+  },
+  {
+   "start": 1309.28,
+   "duration": 5.6,
+   "text": "working out."
+  },
+  {
+   "start": 1311.2,
+   "duration": 6.32,
+   "text": "So now the question arises how do we"
+  },
+  {
+   "start": 1314.88,
+   "duration": 4.72,
+   "text": "trigger that automemory thing that you"
+  },
+  {
+   "start": 1317.52,
+   "duration": 3.92,
+   "text": "know obviously it stores these files"
+  },
+  {
+   "start": 1319.6,
+   "duration": 3.52,
+   "text": "obviously these are very important I"
+  },
+  {
+   "start": 1321.44,
+   "duration": 4.32,
+   "text": "mean it will give you the agent more"
+  },
+  {
+   "start": 1323.12,
+   "duration": 5.679,
+   "text": "context right. So how do we do that? So"
+  },
+  {
+   "start": 1325.76,
+   "duration": 4.799,
+   "text": "one of the ways you can uh you know"
+  },
+  {
+   "start": 1328.799,
+   "duration": 3.921,
+   "text": "continue the conversation or load that"
+  },
+  {
+   "start": 1330.559,
+   "duration": 3.681,
+   "text": "memory is by using this technique which"
+  },
+  {
+   "start": 1332.72,
+   "duration": 4.16,
+   "text": "we are going to see in a minute."
+  },
+  {
+   "start": 1334.24,
+   "duration": 5.6,
+   "text": "Basically uh continue the conversation"
+  },
+  {
+   "start": 1336.88,
+   "duration": 4.56,
+   "text": "or resume the session or fork session."
+  },
+  {
+   "start": 1339.84,
+   "duration": 4.319,
+   "text": "Okay, that is one of the ways that your"
+  },
+  {
+   "start": 1341.44,
+   "duration": 4.88,
+   "text": "agent can actually you know read those"
+  },
+  {
+   "start": 1344.159,
+   "duration": 4.64,
+   "text": "memories and make something out of it."
+  },
+  {
+   "start": 1346.32,
+   "duration": 6.4,
+   "text": "Another way which in my opinion is also"
+  },
+  {
+   "start": 1348.799,
+   "duration": 6.161,
+   "text": "very good is uh on the agent SDK you own"
+  },
+  {
+   "start": 1352.72,
+   "duration": 4.24,
+   "text": "your memory or something like that. How"
+  },
+  {
+   "start": 1354.96,
+   "duration": 3.599,
+   "text": "do you do that? I mean I'm not want to"
+  },
+  {
+   "start": 1356.96,
+   "duration": 3.839,
+   "text": "make you guys confused but I'm giving"
+  },
+  {
+   "start": 1358.559,
+   "duration": 4.561,
+   "text": "you more ideas that you can explore. So"
+  },
+  {
+   "start": 1360.799,
+   "duration": 4.961,
+   "text": "on the agent SDK"
+  },
+  {
+   "start": 1363.12,
+   "duration": 4.88,
+   "text": "give the agent a right tool. Obviously"
+  },
+  {
+   "start": 1365.76,
+   "duration": 4.24,
+   "text": "all these built-in tools are there. Why"
+  },
+  {
+   "start": 1368.0,
+   "duration": 5.52,
+   "text": "not use it? So give the agent a right"
+  },
+  {
+   "start": 1370.0,
+   "duration": 6.64,
+   "text": "tool and let's say a notes file inside"
+  },
+  {
+   "start": 1373.52,
+   "duration": 5.92,
+   "text": "your own project right and tell it in"
+  },
+  {
+   "start": 1376.64,
+   "duration": 6.159,
+   "text": "claw.md because it's the house rules and"
+  },
+  {
+   "start": 1379.44,
+   "duration": 6.719,
+   "text": "the agent has to follow it that when you"
+  },
+  {
+   "start": 1382.799,
+   "duration": 6.481,
+   "text": "should update it it is less magic but"
+  },
+  {
+   "start": 1386.159,
+   "duration": 5.681,
+   "text": "it's in your repo your git tracks it and"
+  },
+  {
+   "start": 1389.28,
+   "duration": 4.96,
+   "text": "there is no documentation ambiguity now"
+  },
+  {
+   "start": 1391.84,
+   "duration": 4.16,
+   "text": "you would ask me a question what if the"
+  },
+  {
+   "start": 1394.24,
+   "duration": 3.6,
+   "text": "agent writes it down every time then"
+  },
+  {
+   "start": 1396.0,
+   "duration": 2.88,
+   "text": "there is a lot of token consumptions and"
+  },
+  {
+   "start": 1397.84,
+   "duration": 3.36,
+   "text": "it is a messy"
+  },
+  {
+   "start": 1398.88,
+   "duration": 4.32,
+   "text": "So your cloud MD should file should be"
+  },
+  {
+   "start": 1401.2,
+   "duration": 4.16,
+   "text": "very much of specific that okay once you"
+  },
+  {
+   "start": 1403.2,
+   "duration": 5.599,
+   "text": "do an operation take a summary or"
+  },
+  {
+   "start": 1405.36,
+   "duration": 5.36,
+   "text": "compact it and then put that into that"
+  },
+  {
+   "start": 1408.799,
+   "duration": 4.24,
+   "text": "particular memory MD file or something"
+  },
+  {
+   "start": 1410.72,
+   "duration": 5.36,
+   "text": "like that which would be there in your"
+  },
+  {
+   "start": 1413.039,
+   "duration": 5.76,
+   "text": "own repo. So I hope you understand what"
+  },
+  {
+   "start": 1416.08,
+   "duration": 5.76,
+   "text": "is happening and what are the two ways"
+  },
+  {
+   "start": 1418.799,
+   "duration": 5.841,
+   "text": "which your cloud agent the agent created"
+  },
+  {
+   "start": 1421.84,
+   "duration": 5.199,
+   "text": "by the claw agent SDK will remember uh"
+  },
+  {
+   "start": 1424.64,
+   "duration": 4.8,
+   "text": "once it you know runs again it doesn't"
+  },
+  {
+   "start": 1427.039,
+   "duration": 4.081,
+   "text": "start with a blank slate. I hope that is"
+  },
+  {
+   "start": 1429.44,
+   "duration": 3.84,
+   "text": "you know kind of making sense and you"
+  },
+  {
+   "start": 1431.12,
+   "duration": 5.6,
+   "text": "are understanding the concepts uh that"
+  },
+  {
+   "start": 1433.28,
+   "duration": 6.08,
+   "text": "that you know um that basically is"
+  },
+  {
+   "start": 1436.72,
+   "duration": 4.4,
+   "text": "working out. Now uh as I told you when"
+  },
+  {
+   "start": 1439.36,
+   "duration": 3.84,
+   "text": "you are using the raw messages API and"
+  },
+  {
+   "start": 1441.12,
+   "duration": 4.0,
+   "text": "we saw that there is no JSON L files"
+  },
+  {
+   "start": 1443.2,
+   "duration": 3.68,
+   "text": "that we found in our system right it is"
+  },
+  {
+   "start": 1445.12,
+   "duration": 3.679,
+   "text": "not automatically creating those files"
+  },
+  {
+   "start": 1446.88,
+   "duration": 4.159,
+   "text": "yeah it's not automatically recording"
+  },
+  {
+   "start": 1448.799,
+   "duration": 5.12,
+   "text": "what it is doing so in that case you"
+  },
+  {
+   "start": 1451.039,
+   "duration": 7.281,
+   "text": "would have to use something known as a"
+  },
+  {
+   "start": 1453.919,
+   "duration": 6.721,
+   "text": "memory tool type right so that's it"
+  },
+  {
+   "start": 1458.32,
+   "duration": 4.0,
+   "text": "that's it you just use a tool type that"
+  },
+  {
+   "start": 1460.64,
+   "duration": 4.159,
+   "text": "is known as memory and I think I have"
+  },
+  {
+   "start": 1462.32,
+   "duration": 5.599,
+   "text": "should have recorded that in my snippets"
+  },
+  {
+   "start": 1464.799,
+   "duration": 5.76,
+   "text": "file yeah if I just go back back to the"
+  },
+  {
+   "start": 1467.919,
+   "duration": 5.36,
+   "text": "top and let's let's skim through it a"
+  },
+  {
+   "start": 1470.559,
+   "duration": 4.401,
+   "text": "bit. Yeah. So if you see this particular"
+  },
+  {
+   "start": 1473.279,
+   "duration": 4.4,
+   "text": "piece of code which you can actually"
+  },
+  {
+   "start": 1474.96,
+   "duration": 6.16,
+   "text": "include in the episode one uh if you if"
+  },
+  {
+   "start": 1477.679,
+   "duration": 4.641,
+   "text": "you need uh so there is no claw. You"
+  },
+  {
+   "start": 1481.12,
+   "duration": 4.72,
+   "text": "know imports or anything. It's just"
+  },
+  {
+   "start": 1482.32,
+   "duration": 5.839,
+   "text": "plain old anthropics uh own um you know"
+  },
+  {
+   "start": 1485.84,
+   "duration": 3.839,
+   "text": "messages API. So these are all the"
+  },
+  {
+   "start": 1488.159,
+   "duration": 4.4,
+   "text": "properties you already know and the"
+  },
+  {
+   "start": 1489.679,
+   "duration": 6.161,
+   "text": "tools if you see um this is what it is"
+  },
+  {
+   "start": 1492.559,
+   "duration": 6.561,
+   "text": "right. So um I mean message is equal to"
+  },
+  {
+   "start": 1495.84,
+   "duration": 4.8,
+   "text": "ro user review PR42 and remember what"
+  },
+  {
+   "start": 1499.12,
+   "duration": 3.6,
+   "text": "you have find. Yeah you can put it in"
+  },
+  {
+   "start": 1500.64,
+   "duration": 4.8,
+   "text": "the in your agentic loop and you can try"
+  },
+  {
+   "start": 1502.72,
+   "duration": 5.12,
+   "text": "that out. That's it. So here you can say"
+  },
+  {
+   "start": 1505.44,
+   "duration": 4.719,
+   "text": "that you know there is a little bit more"
+  },
+  {
+   "start": 1507.84,
+   "duration": 6.16,
+   "text": "magic in the raw messages API then we"
+  },
+  {
+   "start": 1510.159,
+   "duration": 6.4,
+   "text": "are getting it in the um agent SDK but"
+  },
+  {
+   "start": 1514.0,
+   "duration": 6.559,
+   "text": "you know some pros are also there that"
+  },
+  {
+   "start": 1516.559,
+   "duration": 5.921,
+   "text": "you should not actually um skip. Yeah."
+  },
+  {
+   "start": 1520.559,
+   "duration": 3.921,
+   "text": "So I hope that is making sense. Okay."
+  },
+  {
+   "start": 1522.48,
+   "duration": 4.24,
+   "text": "Okay. So I hope this part is clear"
+  },
+  {
+   "start": 1524.48,
+   "duration": 4.559,
+   "text": "because that is where most of the people"
+  },
+  {
+   "start": 1526.72,
+   "duration": 4.48,
+   "text": "get confused about this memory thing."
+  },
+  {
+   "start": 1529.039,
+   "duration": 3.681,
+   "text": "Yeah, there is no automemory that I have"
+  },
+  {
+   "start": 1531.2,
+   "duration": 4.16,
+   "text": "already verified and I already showed"
+  },
+  {
+   "start": 1532.72,
+   "duration": 5.28,
+   "text": "you right in cloud agent SDK you have to"
+  },
+  {
+   "start": 1535.36,
+   "duration": 5.6,
+   "text": "specify yeah what to load and what what"
+  },
+  {
+   "start": 1538.0,
+   "duration": 5.279,
+   "text": "and you can also control how you know"
+  },
+  {
+   "start": 1540.96,
+   "duration": 4.24,
+   "text": "your agent records the memories and how"
+  },
+  {
+   "start": 1543.279,
+   "duration": 3.841,
+   "text": "it loads as well. I also gave you a"
+  },
+  {
+   "start": 1545.2,
+   "duration": 4.8,
+   "text": "solution for that. You can try that out."
+  },
+  {
+   "start": 1547.12,
+   "duration": 6.64,
+   "text": "Yeah. Okay. So moving on to the next"
+  },
+  {
+   "start": 1550.0,
+   "duration": 5.52,
+   "text": "thing. um sessions okay and I talked a"
+  },
+  {
+   "start": 1553.76,
+   "duration": 3.84,
+   "text": "little bit about sessions and we're"
+  },
+  {
+   "start": 1555.52,
+   "duration": 5.039,
+   "text": "going to explore more on this front"
+  },
+  {
+   "start": 1557.6,
+   "duration": 5.28,
+   "text": "right now sessions is the third layer"
+  },
+  {
+   "start": 1560.559,
+   "duration": 5.041,
+   "text": "okay and this is the one that actually"
+  },
+  {
+   "start": 1562.88,
+   "duration": 5.679,
+   "text": "solves our um you know rereads"
+  },
+  {
+   "start": 1565.6,
+   "duration": 5.12,
+   "text": "everything problem right and uh also"
+  },
+  {
+   "start": 1568.559,
+   "duration": 4.321,
+   "text": "that that it will connect back to this"
+  },
+  {
+   "start": 1570.72,
+   "duration": 4.16,
+   "text": "memory thingies that we I just showed"
+  },
+  {
+   "start": 1572.88,
+   "duration": 4.32,
+   "text": "you over here this JSONL files and what"
+  },
+  {
+   "start": 1574.88,
+   "duration": 4.56,
+   "text": "are all these numbers that you see right"
+  },
+  {
+   "start": 1577.2,
+   "duration": 4.959,
+   "text": "and it will it it will all make sense"
+  },
+  {
+   "start": 1579.44,
+   "duration": 5.52,
+   "text": "right now So a session is the full"
+  },
+  {
+   "start": 1582.159,
+   "duration": 4.721,
+   "text": "conversation history. Uh the SDK"
+  },
+  {
+   "start": 1584.96,
+   "duration": 4.0,
+   "text": "accumulates while your agent works and"
+  },
+  {
+   "start": 1586.88,
+   "duration": 5.12,
+   "text": "we I just showed you that in the file"
+  },
+  {
+   "start": 1588.96,
+   "duration": 5.199,
+   "text": "your prompt every tool call or you know"
+  },
+  {
+   "start": 1592.0,
+   "duration": 4.4,
+   "text": "every tool result every response and the"
+  },
+  {
+   "start": 1594.159,
+   "duration": 4.561,
+   "text": "SDK writes it on the disk automatically."
+  },
+  {
+   "start": 1596.4,
+   "duration": 5.2,
+   "text": "You don't opt in it just happens. So if"
+  },
+  {
+   "start": 1598.72,
+   "duration": 5.439,
+   "text": "I just go back and randomly take a JSON"
+  },
+  {
+   "start": 1601.6,
+   "duration": 4.72,
+   "text": "file and I just open it with for example"
+  },
+  {
+   "start": 1604.159,
+   "duration": 5.12,
+   "text": "uh text edit and let's say what is there"
+  },
+  {
+   "start": 1606.32,
+   "duration": 5.44,
+   "text": "over here. So if you see these are all"
+  },
+  {
+   "start": 1609.279,
+   "duration": 4.721,
+   "text": "the messages all the tool calls and"
+  },
+  {
+   "start": 1611.76,
+   "duration": 4.72,
+   "text": "everything that you see that the agent"
+  },
+  {
+   "start": 1614.0,
+   "duration": 4.32,
+   "text": "has written itself automatically on the"
+  },
+  {
+   "start": 1616.48,
+   "duration": 3.76,
+   "text": "disk. That is what I was mentioning"
+  },
+  {
+   "start": 1618.32,
+   "duration": 4.239,
+   "text": "right now. So just showed you so it"
+  },
+  {
+   "start": 1620.24,
+   "duration": 4.48,
+   "text": "doesn't uh you know makes you confused."
+  },
+  {
+   "start": 1622.559,
+   "duration": 4.641,
+   "text": "Yeah. So"
+  },
+  {
+   "start": 1624.72,
+   "duration": 4.88,
+   "text": "which means you can come back to those"
+  },
+  {
+   "start": 1627.2,
+   "duration": 4.64,
+   "text": "conversations. Yeah. Obviously it is"
+  },
+  {
+   "start": 1629.6,
+   "duration": 3.76,
+   "text": "there. I mean I just cleared the fact on"
+  },
+  {
+   "start": 1631.84,
+   "duration": 4.16,
+   "text": "the automemory thing. It will not get"
+  },
+  {
+   "start": 1633.36,
+   "duration": 4.799,
+   "text": "automatically loaded. What you need to"
+  },
+  {
+   "start": 1636.0,
+   "duration": 4.64,
+   "text": "do is you have to use certain things for"
+  },
+  {
+   "start": 1638.159,
+   "duration": 4.64,
+   "text": "it. Okay. The first thing that you can"
+  },
+  {
+   "start": 1640.64,
+   "duration": 4.88,
+   "text": "do is continue conversation equals to"
+  },
+  {
+   "start": 1642.799,
+   "duration": 5.521,
+   "text": "true. So what it will do is it will pick"
+  },
+  {
+   "start": 1645.52,
+   "duration": 5.68,
+   "text": "up the most re recent session ID in the"
+  },
+  {
+   "start": 1648.32,
+   "duration": 4.88,
+   "text": "directory. So if you see if I have one"
+  },
+  {
+   "start": 1651.2,
+   "duration": 4.16,
+   "text": "session, right? So this is the session"
+  },
+  {
+   "start": 1653.2,
+   "duration": 3.359,
+   "text": "ID that you see over here. Right? If I"
+  },
+  {
+   "start": 1655.36,
+   "duration": 3.04,
+   "text": "have one session, then there will"
+  },
+  {
+   "start": 1656.559,
+   "duration": 4.081,
+   "text": "probably be only one file with the"
+  },
+  {
+   "start": 1658.4,
+   "duration": 3.92,
+   "text": "session ID. In episode number five, I"
+  },
+  {
+   "start": 1660.64,
+   "duration": 3.76,
+   "text": "probably had multiple sessions like two"
+  },
+  {
+   "start": 1662.32,
+   "duration": 4.08,
+   "text": "sessions. So it has two ids. So whenever"
+  },
+  {
+   "start": 1664.4,
+   "duration": 5.2,
+   "text": "you say continue conversation equals to"
+  },
+  {
+   "start": 1666.4,
+   "duration": 5.84,
+   "text": "true, it will load the most recent kind"
+  },
+  {
+   "start": 1669.6,
+   "duration": 6.0,
+   "text": "of the session ID that your agent had"
+  },
+  {
+   "start": 1672.24,
+   "duration": 6.319,
+   "text": "created. Right? Next is resume equals to"
+  },
+  {
+   "start": 1675.6,
+   "duration": 6.0,
+   "text": "ID. And this code and all syntax you"
+  },
+  {
+   "start": 1678.559,
+   "duration": 6.161,
+   "text": "will see uh in my completed files in the"
+  },
+  {
+   "start": 1681.6,
+   "duration": 4.64,
+   "text": "episode 6 directory and um you would"
+  },
+  {
+   "start": 1684.72,
+   "duration": 3.28,
+   "text": "understand how it has been implemented"
+  },
+  {
+   "start": 1686.24,
+   "duration": 4.24,
+   "text": "in the code as well. For now let's"
+  },
+  {
+   "start": 1688.0,
+   "duration": 4.48,
+   "text": "understand the concept. So resume equals"
+  },
+  {
+   "start": 1690.48,
+   "duration": 4.16,
+   "text": "to ID. It will resume a specific session"
+  },
+  {
+   "start": 1692.48,
+   "duration": 5.6,
+   "text": "with the ID. We all know what ID is that"
+  },
+  {
+   "start": 1694.64,
+   "duration": 6.0,
+   "text": "I just showed you. Next is fork session."
+  },
+  {
+   "start": 1698.08,
+   "duration": 4.4,
+   "text": "Now forking is uh you know it's not"
+  },
+  {
+   "start": 1700.64,
+   "duration": 3.84,
+   "text": "complicated. Just compare it with a git"
+  },
+  {
+   "start": 1702.48,
+   "duration": 4.64,
+   "text": "fork or something like that. Right? So"
+  },
+  {
+   "start": 1704.48,
+   "duration": 4.64,
+   "text": "it will copy the history into a new"
+  },
+  {
+   "start": 1707.12,
+   "duration": 4.32,
+   "text": "session. So it's just like a fork is"
+  },
+  {
+   "start": 1709.12,
+   "duration": 4.32,
+   "text": "just a copy of a repository. Right? So"
+  },
+  {
+   "start": 1711.44,
+   "duration": 4.64,
+   "text": "similarly if you go for a fork session"
+  },
+  {
+   "start": 1713.44,
+   "duration": 4.32,
+   "text": "over here it will just copy the contents"
+  },
+  {
+   "start": 1716.08,
+   "duration": 4.8,
+   "text": "of the other session that you want to"
+  },
+  {
+   "start": 1717.76,
+   "duration": 5.44,
+   "text": "fork. Yeah. And just create a fork"
+  },
+  {
+   "start": 1720.88,
+   "duration": 4.96,
+   "text": "session out of it. Yeah. So you're"
+  },
+  {
+   "start": 1723.2,
+   "duration": 5.199,
+   "text": "basically you'll use it when uh you"
+  },
+  {
+   "start": 1725.84,
+   "duration": 5.12,
+   "text": "would you would basically you know want"
+  },
+  {
+   "start": 1728.399,
+   "duration": 4.721,
+   "text": "to try a different direction. Yeah."
+  },
+  {
+   "start": 1730.96,
+   "duration": 3.68,
+   "text": "Without losing the original conversation"
+  },
+  {
+   "start": 1733.12,
+   "duration": 4.48,
+   "text": "or the original thing that you were"
+  },
+  {
+   "start": 1734.64,
+   "duration": 5.279,
+   "text": "trying out. Yeah. So if you want to make"
+  },
+  {
+   "start": 1737.6,
+   "duration": 5.36,
+   "text": "a mental model continue is like carry on"
+  },
+  {
+   "start": 1739.919,
+   "duration": 4.561,
+   "text": "where I left off. Nothing uh you know no"
+  },
+  {
+   "start": 1742.96,
+   "duration": 2.959,
+   "text": "session ID or something like that you"
+  },
+  {
+   "start": 1744.48,
+   "duration": 4.64,
+   "text": "want to give just carry on where"
+  },
+  {
+   "start": 1745.919,
+   "duration": 5.201,
+   "text": "wherever I had left off. Uh resume is uh"
+  },
+  {
+   "start": 1749.12,
+   "duration": 4.64,
+   "text": "you know carry on that specific"
+  },
+  {
+   "start": 1751.12,
+   "duration": 4.4,
+   "text": "conversation. Yeah. And fork is get"
+  },
+  {
+   "start": 1753.76,
+   "duration": 5.12,
+   "text": "branch for a conversation. The original"
+  },
+  {
+   "start": 1755.52,
+   "duration": 7.36,
+   "text": "is untouched and it's still resumable."
+  },
+  {
+   "start": 1758.88,
+   "duration": 7.039,
+   "text": "Yeah. A key fact that I want to just um"
+  },
+  {
+   "start": 1762.88,
+   "duration": 6.159,
+   "text": "just tell over here is that sessions"
+  },
+  {
+   "start": 1765.919,
+   "duration": 6.24,
+   "text": "persist the conversation not the file"
+  },
+  {
+   "start": 1769.039,
+   "duration": 5.681,
+   "text": "system. Yeah. So fork if you fork a"
+  },
+  {
+   "start": 1772.159,
+   "duration": 4.961,
+   "text": "session and let the fork edit files"
+  },
+  {
+   "start": 1774.72,
+   "duration": 4.48,
+   "text": "those edits are real and visible to"
+  },
+  {
+   "start": 1777.12,
+   "duration": 4.799,
+   "text": "every other session in that directory."
+  },
+  {
+   "start": 1779.2,
+   "duration": 4.479,
+   "text": "Yeah. branching you know the transcript"
+  },
+  {
+   "start": 1781.919,
+   "duration": 3.921,
+   "text": "does not branch your working tree. So"
+  },
+  {
+   "start": 1783.679,
+   "duration": 5.36,
+   "text": "both are separate things. Your actual"
+  },
+  {
+   "start": 1785.84,
+   "duration": 5.6,
+   "text": "edits you know will happen if it could"
+  },
+  {
+   "start": 1789.039,
+   "duration": 4.401,
+   "text": "have be done by one you know session or"
+  },
+  {
+   "start": 1791.44,
+   "duration": 4.88,
+   "text": "another session that doesn't matter."
+  },
+  {
+   "start": 1793.44,
+   "duration": 4.64,
+   "text": "Sessions are just the conversation and"
+  },
+  {
+   "start": 1796.32,
+   "duration": 6.479,
+   "text": "just the tools which your agent had"
+  },
+  {
+   "start": 1798.08,
+   "duration": 7.04,
+   "text": "used. That's it. Okay. So um yeah so"
+  },
+  {
+   "start": 1802.799,
+   "duration": 5.281,
+   "text": "that was uh about this thing that I"
+  },
+  {
+   "start": 1805.12,
+   "duration": 7.2,
+   "text": "wanted to cover and uh let's let's let's"
+  },
+  {
+   "start": 1808.08,
+   "duration": 6.8,
+   "text": "see. Yeah. So capturing the session ID."
+  },
+  {
+   "start": 1812.32,
+   "duration": 5.28,
+   "text": "Yeah. to to resume anything you need its"
+  },
+  {
+   "start": 1814.88,
+   "duration": 5.679,
+   "text": "ID. We just saw that about the the res"
+  },
+  {
+   "start": 1817.6,
+   "duration": 7.12,
+   "text": "resume kind of the option right and"
+  },
+  {
+   "start": 1820.559,
+   "duration": 6.801,
+   "text": "there's exactly you know um one place uh"
+  },
+  {
+   "start": 1824.72,
+   "duration": 5.04,
+   "text": "you should be reading it from so every"
+  },
+  {
+   "start": 1827.36,
+   "duration": 4.24,
+   "text": "run that you see right ends with a"
+  },
+  {
+   "start": 1829.76,
+   "duration": 4.639,
+   "text": "result message that we already know"
+  },
+  {
+   "start": 1831.6,
+   "duration": 5.199,
+   "text": "every agentic run yeah and result"
+  },
+  {
+   "start": 1834.399,
+   "duration": 4.961,
+   "text": "message do session ID is present on"
+  },
+  {
+   "start": 1836.799,
+   "duration": 5.441,
+   "text": "every result"
+  },
+  {
+   "start": 1839.36,
+   "duration": 6.319,
+   "text": "either it can be success or it can be"
+  },
+  {
+   "start": 1842.24,
+   "duration": 5.76,
+   "text": "failure yeah and the The last part"
+  },
+  {
+   "start": 1845.679,
+   "duration": 5.761,
+   "text": "matters a lot and I'll show you in"
+  },
+  {
+   "start": 1848.0,
+   "duration": 6.48,
+   "text": "action uh right now. So if I go to my"
+  },
+  {
+   "start": 1851.44,
+   "duration": 4.479,
+   "text": "snippets over here and I don't think I"
+  },
+  {
+   "start": 1854.48,
+   "duration": 3.679,
+   "text": "have that snippet. Do I have that"
+  },
+  {
+   "start": 1855.919,
+   "duration": 5.36,
+   "text": "snippet?"
+  },
+  {
+   "start": 1858.159,
+   "duration": 6.161,
+   "text": "I don't have that snippet. It's weird. I"
+  },
+  {
+   "start": 1861.279,
+   "duration": 5.28,
+   "text": "just uh paused the video and just typed"
+  },
+  {
+   "start": 1864.32,
+   "duration": 4.56,
+   "text": "in this thing very simple thing right."
+  },
+  {
+   "start": 1866.559,
+   "duration": 6.0,
+   "text": "So here if you see I was just trying out"
+  },
+  {
+   "start": 1868.88,
+   "duration": 6.24,
+   "text": "if uh we capture this session ID or not"
+  },
+  {
+   "start": 1872.559,
+   "duration": 4.48,
+   "text": "in every kind of a run. So for a sync"
+  },
+  {
+   "start": 1875.12,
+   "duration": 4.08,
+   "text": "for message and query this is from the"
+  },
+  {
+   "start": 1877.039,
+   "duration": 4.481,
+   "text": "cloud cloud agent SDK itself. It's a"
+  },
+  {
+   "start": 1879.2,
+   "duration": 3.839,
+   "text": "very simple uh you know prompt. You can"
+  },
+  {
+   "start": 1881.52,
+   "duration": 3.519,
+   "text": "just send hello as well and you would"
+  },
+  {
+   "start": 1883.039,
+   "duration": 3.681,
+   "text": "get a session id right. So it's it's"
+  },
+  {
+   "start": 1885.039,
+   "duration": 3.36,
+   "text": "just I'm going trying to connect the"
+  },
+  {
+   "start": 1886.72,
+   "duration": 4.64,
+   "text": "pieces over here. So you get the session"
+  },
+  {
+   "start": 1888.399,
+   "duration": 5.121,
+   "text": "ID over here. Right now uh if you see"
+  },
+  {
+   "start": 1891.36,
+   "duration": 5.199,
+   "text": "clearly over here also you have the"
+  },
+  {
+   "start": 1893.52,
+   "duration": 4.8,
+   "text": "session ID of every kind of a agent run"
+  },
+  {
+   "start": 1896.559,
+   "duration": 3.36,
+   "text": "that you see over here. And okay that is"
+  },
+  {
+   "start": 1898.32,
+   "duration": 4.32,
+   "text": "a very interesting thing that I want to"
+  },
+  {
+   "start": 1899.919,
+   "duration": 5.36,
+   "text": "just tell you. uh in this episode number"
+  },
+  {
+   "start": 1902.64,
+   "duration": 4.639,
+   "text": "five we had kind of discovered about sub"
+  },
+  {
+   "start": 1905.279,
+   "duration": 4.321,
+   "text": "agents. So if you see in this session"
+  },
+  {
+   "start": 1907.279,
+   "duration": 3.841,
+   "text": "there is a there is a subfolder for sub"
+  },
+  {
+   "start": 1909.6,
+   "duration": 3.12,
+   "text": "aents as well because they are also"
+  },
+  {
+   "start": 1911.12,
+   "duration": 4.559,
+   "text": "agents. Now if you go inside the sub"
+  },
+  {
+   "start": 1912.72,
+   "duration": 5.199,
+   "text": "aents folder over here and you would see"
+  },
+  {
+   "start": 1915.679,
+   "duration": 4.321,
+   "text": "their session ids as well. What did"
+  },
+  {
+   "start": 1917.919,
+   "duration": 4.961,
+   "text": "those sub aents do? That is also being"
+  },
+  {
+   "start": 1920.0,
+   "duration": 5.12,
+   "text": "autotracked over here you know and that"
+  },
+  {
+   "start": 1922.88,
+   "duration": 5.36,
+   "text": "is the interesting thing that your agent"
+  },
+  {
+   "start": 1925.12,
+   "duration": 4.96,
+   "text": "SDK brings in right now going back to"
+  },
+  {
+   "start": 1928.24,
+   "duration": 3.6,
+   "text": "this thing. So we have our session ID"
+  },
+  {
+   "start": 1930.08,
+   "duration": 5.52,
+   "text": "where should where we can resume the"
+  },
+  {
+   "start": 1931.84,
+   "duration": 6.959,
+   "text": "session ID. So um if you go to your any"
+  },
+  {
+   "start": 1935.6,
+   "duration": 4.959,
+   "text": "agent file for example if I go to"
+  },
+  {
+   "start": 1938.799,
+   "duration": 4.161,
+   "text": "episode number five agent right and we"
+  },
+  {
+   "start": 1940.559,
+   "duration": 4.561,
+   "text": "have our cloud agent options right here"
+  },
+  {
+   "start": 1942.96,
+   "duration": 5.04,
+   "text": "and I showed you how you can put the"
+  },
+  {
+   "start": 1945.12,
+   "duration": 5.52,
+   "text": "setting sources as well. H that's that's"
+  },
+  {
+   "start": 1948.0,
+   "duration": 5.76,
+   "text": "pretty self-explanatory. Now if I go"
+  },
+  {
+   "start": 1950.64,
+   "duration": 7.039,
+   "text": "back and I I add one more very simple"
+  },
+  {
+   "start": 1953.76,
+   "duration": 6.24,
+   "text": "thing over here and uh that is known as"
+  },
+  {
+   "start": 1957.679,
+   "duration": 5.6,
+   "text": "resume. So this is all this also has a"
+  },
+  {
+   "start": 1960.0,
+   "duration": 6.159,
+   "text": "resume property. And here"
+  },
+  {
+   "start": 1963.279,
+   "duration": 6.4,
+   "text": "what you can do is basically your"
+  },
+  {
+   "start": 1966.159,
+   "duration": 5.841,
+   "text": "session ID. Resume equals to your"
+  },
+  {
+   "start": 1969.679,
+   "duration": 4.161,
+   "text": "session ID. That's it. Your session ID."
+  },
+  {
+   "start": 1972.0,
+   "duration": 3.84,
+   "text": "And the session ID you you already got"
+  },
+  {
+   "start": 1973.84,
+   "duration": 4.0,
+   "text": "it from here,"
+  },
+  {
+   "start": 1975.84,
+   "duration": 5.679,
+   "text": "right? So you can just paste in your"
+  },
+  {
+   "start": 1977.84,
+   "duration": 6.559,
+   "text": "session ID or I have to paste it as a"
+  },
+  {
+   "start": 1981.519,
+   "duration": 6.4,
+   "text": "string I guess that's it. Now whenever"
+  },
+  {
+   "start": 1984.399,
+   "duration": 6.081,
+   "text": "this agent runs it will resume from this"
+  },
+  {
+   "start": 1987.919,
+   "duration": 4.401,
+   "text": "session ID. So that is how things"
+  },
+  {
+   "start": 1990.48,
+   "duration": 3.52,
+   "text": "connect back. I hope that is making"
+  },
+  {
+   "start": 1992.32,
+   "duration": 5.359,
+   "text": "sense and you are not getting confused"
+  },
+  {
+   "start": 1994.0,
+   "duration": 6.159,
+   "text": "on how to use the resume thingy as well."
+  },
+  {
+   "start": 1997.679,
+   "duration": 5.12,
+   "text": "And um yeah and that's why this uh your"
+  },
+  {
+   "start": 2000.159,
+   "duration": 6.4,
+   "text": "your your system also has the resume ID."
+  },
+  {
+   "start": 2002.799,
+   "duration": 5.521,
+   "text": "If you want to you know kind of you know"
+  },
+  {
+   "start": 2006.559,
+   "duration": 3.681,
+   "text": "resume from a session ID you can"
+  },
+  {
+   "start": 2008.32,
+   "duration": 3.68,
+   "text": "actually get this session ID read it"
+  },
+  {
+   "start": 2010.24,
+   "duration": 2.88,
+   "text": "somewhere some using some file system or"
+  },
+  {
+   "start": 2012.0,
+   "duration": 3.2,
+   "text": "anything and you can just get the"
+  },
+  {
+   "start": 2013.12,
+   "duration": 3.84,
+   "text": "session ID and resume it from there. I"
+  },
+  {
+   "start": 2015.2,
+   "duration": 3.68,
+   "text": "hope that is making sense. I'm just"
+  },
+  {
+   "start": 2016.96,
+   "duration": 5.04,
+   "text": "going to save it. You guys can actually"
+  },
+  {
+   "start": 2018.88,
+   "duration": 5.519,
+   "text": "get those files um from the repo itself"
+  },
+  {
+   "start": 2022.0,
+   "duration": 4.88,
+   "text": "and check it out. So that is what I was"
+  },
+  {
+   "start": 2024.399,
+   "duration": 7.201,
+   "text": "um trying to tell resume by ID and how"
+  },
+  {
+   "start": 2026.88,
+   "duration": 7.36,
+   "text": "do you resume by ID actually. Yeah. Um"
+  },
+  {
+   "start": 2031.6,
+   "duration": 5.6,
+   "text": "so this was resume and uh next is"
+  },
+  {
+   "start": 2034.24,
+   "duration": 5.12,
+   "text": "forking and forking is pretty simple. So"
+  },
+  {
+   "start": 2037.2,
+   "duration": 4.959,
+   "text": "if you"
+  },
+  {
+   "start": 2039.36,
+   "duration": 5.6,
+   "text": "and just to be honest fork is one of my"
+  },
+  {
+   "start": 2042.159,
+   "duration": 5.92,
+   "text": "favorites in git as well and now here as"
+  },
+  {
+   "start": 2044.96,
+   "duration": 6.32,
+   "text": "well right and it's barely even talked"
+  },
+  {
+   "start": 2048.079,
+   "duration": 6.641,
+   "text": "about right and if you add fork session"
+  },
+  {
+   "start": 2051.28,
+   "duration": 5.44,
+   "text": "equals to true alongside for example um"
+  },
+  {
+   "start": 2054.72,
+   "duration": 3.76,
+   "text": "resume so if we add did resume over here"
+  },
+  {
+   "start": 2056.72,
+   "duration": 4.72,
+   "text": "and if you go to the cloud agent options"
+  },
+  {
+   "start": 2058.48,
+   "duration": 5.52,
+   "text": "and I say add fork session equals to"
+  },
+  {
+   "start": 2061.44,
+   "duration": 5.199,
+   "text": "true over here. Now what happens now?"
+  },
+  {
+   "start": 2064.0,
+   "duration": 4.32,
+   "text": "Yeah. So if you just hover over it, it"
+  },
+  {
+   "start": 2066.639,
+   "duration": 4.641,
+   "text": "should give you some details, right?"
+  },
+  {
+   "start": 2068.32,
+   "duration": 5.519,
+   "text": "When true, resumed sessions fork to a"
+  },
+  {
+   "start": 2071.28,
+   "duration": 5.359,
+   "text": "new session ID rather than continuing"
+  },
+  {
+   "start": 2073.839,
+   "duration": 5.201,
+   "text": "the previous session. Use with resume."
+  },
+  {
+   "start": 2076.639,
+   "duration": 6.161,
+   "text": "That is very important to understand. So"
+  },
+  {
+   "start": 2079.04,
+   "duration": 6.079,
+   "text": "say um why does it matters to you? Say"
+  },
+  {
+   "start": 2082.8,
+   "duration": 4.72,
+   "text": "the reviewer flagged 12 things and you"
+  },
+  {
+   "start": 2085.119,
+   "duration": 5.361,
+   "text": "want to ask what if we only enforced the"
+  },
+  {
+   "start": 2087.52,
+   "duration": 4.72,
+   "text": "blocking once, right? And that's an expl"
+  },
+  {
+   "start": 2090.48,
+   "duration": 5.04,
+   "text": "that's that's a very explanatory"
+  },
+  {
+   "start": 2092.24,
+   "duration": 5.359,
+   "text": "question, right? You don't want it"
+  },
+  {
+   "start": 2095.52,
+   "duration": 3.839,
+   "text": "polluting the real review thread that"
+  },
+  {
+   "start": 2097.599,
+   "duration": 5.921,
+   "text": "your PR review agent has already"
+  },
+  {
+   "start": 2099.359,
+   "duration": 6.321,
+   "text": "created, right? So fork it, you know,"
+  },
+  {
+   "start": 2103.52,
+   "duration": 4.319,
+   "text": "ask and throw the fork away. That is"
+  },
+  {
+   "start": 2105.68,
+   "duration": 4.32,
+   "text": "what you can do. And it is very very"
+  },
+  {
+   "start": 2107.839,
+   "duration": 3.921,
+   "text": "important to understand how you use the"
+  },
+  {
+   "start": 2110.0,
+   "duration": 3.52,
+   "text": "fork session along with the resume"
+  },
+  {
+   "start": 2111.76,
+   "duration": 4.96,
+   "text": "session. So you are kind of forking this"
+  },
+  {
+   "start": 2113.52,
+   "duration": 5.44,
+   "text": "session into a new kind of a forked"
+  },
+  {
+   "start": 2116.72,
+   "duration": 4.399,
+   "text": "session, right? And that is very"
+  },
+  {
+   "start": 2118.96,
+   "duration": 4.639,
+   "text": "important to understand."
+  },
+  {
+   "start": 2121.119,
+   "duration": 4.48,
+   "text": "Okay. Now one mental model that uh is"
+  },
+  {
+   "start": 2123.599,
+   "duration": 5.201,
+   "text": "very important is as resume is a commit"
+  },
+  {
+   "start": 2125.599,
+   "duration": 7.041,
+   "text": "on the same branch. Okay,"
+  },
+  {
+   "start": 2128.8,
+   "duration": 6.64,
+   "text": "fork is kind of like git checkout"
+  },
+  {
+   "start": 2132.64,
+   "duration": 5.6,
+   "text": "hyphen B and just like get the branches"
+  },
+  {
+   "start": 2135.44,
+   "duration": 5.6,
+   "text": "on your history or working tree shared"
+  },
+  {
+   "start": 2138.24,
+   "duration": 5.119,
+   "text": "files the fork edits are edited for"
+  },
+  {
+   "start": 2141.04,
+   "duration": 3.84,
+   "text": "everyone basically. I hope that's making"
+  },
+  {
+   "start": 2143.359,
+   "duration": 3.441,
+   "text": "sense."
+  },
+  {
+   "start": 2144.88,
+   "duration": 4.0,
+   "text": "Okay, the next thing I want to talk"
+  },
+  {
+   "start": 2146.8,
+   "duration": 4.96,
+   "text": "about is compaction and people who are"
+  },
+  {
+   "start": 2148.88,
+   "duration": 4.479,
+   "text": "using cloud code already know about"
+  },
+  {
+   "start": 2151.76,
+   "duration": 2.88,
+   "text": "this, right? There is also autoco"
+  },
+  {
+   "start": 2153.359,
+   "duration": 2.881,
+   "text": "compaction feature. If you have been"
+  },
+  {
+   "start": 2154.64,
+   "duration": 4.0,
+   "text": "using cloud code for a very long time,"
+  },
+  {
+   "start": 2156.24,
+   "duration": 4.8,
+   "text": "it will automatically compact you know"
+  },
+  {
+   "start": 2158.64,
+   "duration": 5.28,
+   "text": "uh the messages uh the conversation"
+  },
+  {
+   "start": 2161.04,
+   "duration": 5.76,
+   "text": "history. So uh you know it frees up your"
+  },
+  {
+   "start": 2163.92,
+   "duration": 4.88,
+   "text": "context window basically right now"
+  },
+  {
+   "start": 2166.8,
+   "duration": 4.559,
+   "text": "context windows are very big now but"
+  },
+  {
+   "start": 2168.8,
+   "duration": 4.48,
+   "text": "they are not infinite right we have 1"
+  },
+  {
+   "start": 2171.359,
+   "duration": 5.441,
+   "text": "million context window 200k context"
+  },
+  {
+   "start": 2173.28,
+   "duration": 5.12,
+   "text": "window yeah I mean u people there is one"
+  },
+  {
+   "start": 2176.8,
+   "duration": 3.68,
+   "text": "thing that people really underestimate"
+  },
+  {
+   "start": 2178.4,
+   "duration": 5.12,
+   "text": "you don't have to hit the limit for it"
+  },
+  {
+   "start": 2180.48,
+   "duration": 5.44,
+   "text": "to hurt that is very very important yeah"
+  },
+  {
+   "start": 2183.52,
+   "duration": 5.76,
+   "text": "as context fills in right you know"
+  },
+  {
+   "start": 2185.92,
+   "duration": 5.439,
+   "text": "response quality also degrades and you"
+  },
+  {
+   "start": 2189.28,
+   "duration": 4.319,
+   "text": "know the model has a lot of things to"
+  },
+  {
+   "start": 2191.359,
+   "duration": 4.881,
+   "text": "attend to and gets less precise about it"
+  },
+  {
+   "start": 2193.599,
+   "duration": 5.201,
+   "text": "all. So when a session grows past a"
+  },
+  {
+   "start": 2196.24,
+   "duration": 5.28,
+   "text": "particular threshold, uh the SDK"
+  },
+  {
+   "start": 2198.8,
+   "duration": 5.279,
+   "text": "compacts, it summarizes the old part of"
+  },
+  {
+   "start": 2201.52,
+   "duration": 5.839,
+   "text": "the conversation and continues from that"
+  },
+  {
+   "start": 2204.079,
+   "duration": 5.121,
+   "text": "particular summary and that's a rescue."
+  },
+  {
+   "start": 2207.359,
+   "duration": 4.961,
+   "text": "It's not a feature you should be relying"
+  },
+  {
+   "start": 2209.2,
+   "duration": 5.68,
+   "text": "on basically because summaries are kind"
+  },
+  {
+   "start": 2212.32,
+   "duration": 5.44,
+   "text": "of lossy by design and what they"
+  },
+  {
+   "start": 2214.88,
+   "duration": 6.0,
+   "text": "optimize for is what do I do next? Yeah,"
+  },
+  {
+   "start": 2217.76,
+   "duration": 4.8,
+   "text": "that is that is the question and they"
+  },
+  {
+   "start": 2220.88,
+   "duration": 4.08,
+   "text": "they will not ask their question you"
+  },
+  {
+   "start": 2222.56,
+   "duration": 5.68,
+   "text": "know these LLMs will not ask them the"
+  },
+  {
+   "start": 2224.96,
+   "duration": 5.28,
+   "text": "the question that why did we decide that"
+  },
+  {
+   "start": 2228.24,
+   "duration": 4.08,
+   "text": "yeah their question would be what do I"
+  },
+  {
+   "start": 2230.24,
+   "duration": 3.839,
+   "text": "do next and accordingly they will"
+  },
+  {
+   "start": 2232.32,
+   "duration": 4.24,
+   "text": "compact and keep on only the relevant"
+  },
+  {
+   "start": 2234.079,
+   "duration": 6.0,
+   "text": "things yeah and decision context is the"
+  },
+  {
+   "start": 2236.56,
+   "duration": 7.12,
+   "text": "first thing that goes away"
+  },
+  {
+   "start": 2240.079,
+   "duration": 6.321,
+   "text": "so compaction is like your backup"
+  },
+  {
+   "start": 2243.68,
+   "duration": 4.96,
+   "text": "strategy it's it's like a pressure valve"
+  },
+  {
+   "start": 2246.4,
+   "duration": 4.0,
+   "text": "it's not a memory strategy that is that"
+  },
+  {
+   "start": 2248.64,
+   "duration": 4.719,
+   "text": "is the one distinction that you need to"
+  },
+  {
+   "start": 2250.4,
+   "duration": 4.8,
+   "text": "make in your mind right if if losing you"
+  },
+  {
+   "start": 2253.359,
+   "duration": 4.48,
+   "text": "know the raw conversation would break"
+  },
+  {
+   "start": 2255.2,
+   "duration": 4.879,
+   "text": "your agent that information was in the"
+  },
+  {
+   "start": 2257.839,
+   "duration": 4.24,
+   "text": "wrong place itself that's the mental"
+  },
+  {
+   "start": 2260.079,
+   "duration": 5.201,
+   "text": "model right anything you know"
+  },
+  {
+   "start": 2262.079,
+   "duration": 5.201,
+   "text": "loadbearing belongs in cloud MD a memory"
+  },
+  {
+   "start": 2265.28,
+   "duration": 4.72,
+   "text": "file or your own database somewhere a"
+  },
+  {
+   "start": 2267.28,
+   "duration": 5.36,
+   "text": "summary can't erase it important things"
+  },
+  {
+   "start": 2270.0,
+   "duration": 4.48,
+   "text": "you cannot depend on the compact to keep"
+  },
+  {
+   "start": 2272.64,
+   "duration": 5.12,
+   "text": "it because it will only keep what it is"
+  },
+  {
+   "start": 2274.48,
+   "duration": 6.16,
+   "text": "relevant which it needs to work on the"
+  },
+  {
+   "start": 2277.76,
+   "duration": 5.12,
+   "text": "next task basically. Yeah. But you do"
+  },
+  {
+   "start": 2280.64,
+   "duration": 5.199,
+   "text": "get one lever though and it's it's uh"
+  },
+  {
+   "start": 2282.88,
+   "duration": 5.76,
+   "text": "underused. A compact instruction section"
+  },
+  {
+   "start": 2285.839,
+   "duration": 5.201,
+   "text": "in claw.md tells the summarizer what to"
+  },
+  {
+   "start": 2288.64,
+   "duration": 3.68,
+   "text": "preserve. See that is why the claw.md"
+  },
+  {
+   "start": 2291.04,
+   "duration": 4.4,
+   "text": "file is very very important and you"
+  },
+  {
+   "start": 2292.32,
+   "duration": 6.56,
+   "text": "should use a claw.md very very"
+  },
+  {
+   "start": 2295.44,
+   "duration": 6.88,
+   "text": "efficiently and smartly. Okay. because"
+  },
+  {
+   "start": 2298.88,
+   "duration": 5.36,
+   "text": "your clauded MD file if you just uh you"
+  },
+  {
+   "start": 2302.32,
+   "duration": 4.0,
+   "text": "know pollute it with a lot of"
+  },
+  {
+   "start": 2304.24,
+   "duration": 4.56,
+   "text": "information then that is that is a lot"
+  },
+  {
+   "start": 2306.32,
+   "duration": 5.12,
+   "text": "of uh unused information that will fill"
+  },
+  {
+   "start": 2308.8,
+   "duration": 5.039,
+   "text": "up your context instead you keep you"
+  },
+  {
+   "start": 2311.44,
+   "duration": 4.72,
+   "text": "know you can also write the cloud MD by"
+  },
+  {
+   "start": 2313.839,
+   "duration": 4.401,
+   "text": "yourself so you only keep whatever is"
+  },
+  {
+   "start": 2316.16,
+   "duration": 6.08,
+   "text": "purely necessary keep it short and keep"
+  },
+  {
+   "start": 2318.24,
+   "duration": 6.16,
+   "text": "it very constraint specific yeah so for"
+  },
+  {
+   "start": 2322.24,
+   "duration": 4.0,
+   "text": "let's say uh you want to preserve keep"
+  },
+  {
+   "start": 2324.4,
+   "duration": 4.0,
+   "text": "the PR number keep every confirmed"
+  },
+  {
+   "start": 2326.24,
+   "duration": 5.359,
+   "text": "finding keep whether we have posted yet"
+  },
+  {
+   "start": 2328.4,
+   "duration": 6.16,
+   "text": "or not. Keep you know the comments"
+  },
+  {
+   "start": 2331.599,
+   "duration": 4.801,
+   "text": "preserved. Keep all the flagged PRs"
+  },
+  {
+   "start": 2334.56,
+   "duration": 3.44,
+   "text": "preserved. All of these rules you have"
+  },
+  {
+   "start": 2336.4,
+   "duration": 3.52,
+   "text": "to put it in clouded empty. So even if"
+  },
+  {
+   "start": 2338.0,
+   "duration": 3.839,
+   "text": "you are compacting you know you're not"
+  },
+  {
+   "start": 2339.92,
+   "duration": 4.96,
+   "text": "compacting the actual numbers that"
+  },
+  {
+   "start": 2341.839,
+   "duration": 5.601,
+   "text": "decide you know the next operation. I"
+  },
+  {
+   "start": 2344.88,
+   "duration": 7.199,
+   "text": "hope that's making sense."
+  },
+  {
+   "start": 2347.44,
+   "duration": 8.88,
+   "text": "Okay. Now let's do a very interesting uh"
+  },
+  {
+   "start": 2352.079,
+   "duration": 7.76,
+   "text": "thing and um we will watch the context"
+  },
+  {
+   "start": 2356.32,
+   "duration": 6.56,
+   "text": "meter live now. Yeah. So um there is one"
+  },
+  {
+   "start": 2359.839,
+   "duration": 7.121,
+   "text": "thing known as claude s you know claude"
+  },
+  {
+   "start": 2362.88,
+   "duration": 6.719,
+   "text": "SDK client. Yeah. Cloud SDK client. It"
+  },
+  {
+   "start": 2366.96,
+   "duration": 5.52,
+   "text": "exposes the get context usage. I mean"
+  },
+  {
+   "start": 2369.599,
+   "duration": 5.76,
+   "text": "the same breakdown the /context command"
+  },
+  {
+   "start": 2372.48,
+   "duration": 5.28,
+   "text": "shows you in the CLI. Okay. It is now"
+  },
+  {
+   "start": 2375.359,
+   "duration": 5.681,
+   "text": "available programmatically."
+  },
+  {
+   "start": 2377.76,
+   "duration": 8.079,
+   "text": "So I'm going to just go back to uh my uh"
+  },
+  {
+   "start": 2381.04,
+   "duration": 6.88,
+   "text": "snippets file and if we go over here"
+  },
+  {
+   "start": 2385.839,
+   "duration": 3.601,
+   "text": "context check final. You can find the"
+  },
+  {
+   "start": 2387.92,
+   "duration": 4.64,
+   "text": "code over here. So I'm just going to"
+  },
+  {
+   "start": 2389.44,
+   "duration": 6.72,
+   "text": "create a new file over here and I'm just"
+  },
+  {
+   "start": 2392.56,
+   "duration": 7.12,
+   "text": "going to name it as context"
+  },
+  {
+   "start": 2396.16,
+   "duration": 7.12,
+   "text": "check. py something like this. So if I"
+  },
+  {
+   "start": 2399.68,
+   "duration": 5.76,
+   "text": "go over here and I just um"
+  },
+  {
+   "start": 2403.28,
+   "duration": 3.839,
+   "text": "print the whole context. Okay. Well, let"
+  },
+  {
+   "start": 2405.44,
+   "duration": 7.56,
+   "text": "me just copy it and then I I'll just"
+  },
+  {
+   "start": 2407.119,
+   "duration": 5.881,
+   "text": "kind of um you know kind of"
+  },
+  {
+   "start": 2415.04,
+   "duration": 6.0,
+   "text": "explain"
+  },
+  {
+   "start": 2417.04,
+   "duration": 5.84,
+   "text": "I just kind of stopped over there. Okay."
+  },
+  {
+   "start": 2421.04,
+   "duration": 5.36,
+   "text": "So, what do we actually get it from"
+  },
+  {
+   "start": 2422.88,
+   "duration": 5.52,
+   "text": "here? Okay. Now, if we run this right,"
+  },
+  {
+   "start": 2426.4,
+   "duration": 4.32,
+   "text": "we'll see something very genuinely"
+  },
+  {
+   "start": 2428.4,
+   "duration": 4.16,
+   "text": "useful. We are not starting from zero."
+  },
+  {
+   "start": 2430.72,
+   "duration": 4.639,
+   "text": "the system prompt, the tool definitions,"
+  },
+  {
+   "start": 2432.56,
+   "duration": 4.72,
+   "text": "cloud.mmd and sub aent definitions. All"
+  },
+  {
+   "start": 2435.359,
+   "duration": 3.76,
+   "text": "of it is all should already be in the"
+  },
+  {
+   "start": 2437.28,
+   "duration": 4.48,
+   "text": "context window before we type a single"
+  },
+  {
+   "start": 2439.119,
+   "duration": 4.72,
+   "text": "word. But the thing is we do not have a"
+  },
+  {
+   "start": 2441.76,
+   "duration": 3.52,
+   "text": "cloud. MD file over here as of now. So"
+  },
+  {
+   "start": 2443.839,
+   "duration": 2.961,
+   "text": "for now, what I'm going to do is I'm not"
+  },
+  {
+   "start": 2445.28,
+   "duration": 3.68,
+   "text": "going to run this context check. So"
+  },
+  {
+   "start": 2446.8,
+   "duration": 4.0,
+   "text": "whenever you run a /context, it will"
+  },
+  {
+   "start": 2448.96,
+   "duration": 4.48,
+   "text": "show you what is in the context of that"
+  },
+  {
+   "start": 2450.8,
+   "duration": 4.4,
+   "text": "particular uh cloud code session. I'm"
+  },
+  {
+   "start": 2453.44,
+   "duration": 4.399,
+   "text": "talking about cloud code right now. But"
+  },
+  {
+   "start": 2455.2,
+   "duration": 5.919,
+   "text": "the same thing you can actually see in"
+  },
+  {
+   "start": 2457.839,
+   "duration": 5.361,
+   "text": "your you know um SDK as well and"
+  },
+  {
+   "start": 2461.119,
+   "duration": 3.921,
+   "text": "basically there is this cloud SDK client"
+  },
+  {
+   "start": 2463.2,
+   "duration": 4.32,
+   "text": "which provides you this get context"
+  },
+  {
+   "start": 2465.04,
+   "duration": 4.16,
+   "text": "usage method right and it will give you"
+  },
+  {
+   "start": 2467.52,
+   "duration": 3.28,
+   "text": "all of the things right but now"
+  },
+  {
+   "start": 2469.2,
+   "duration": 3.52,
+   "text": "currently we don't have the cloud MD"
+  },
+  {
+   "start": 2470.8,
+   "duration": 3.68,
+   "text": "file I'm going to add it in a minute so"
+  },
+  {
+   "start": 2472.72,
+   "duration": 4.32,
+   "text": "let's wait for that and later we'll run"
+  },
+  {
+   "start": 2474.48,
+   "duration": 4.8,
+   "text": "this right so just remember I'm going to"
+  },
+  {
+   "start": 2477.04,
+   "duration": 6.559,
+   "text": "remember so that we are not kind of"
+  },
+  {
+   "start": 2479.28,
+   "duration": 6.319,
+   "text": "forgetting it yeah okay now uh we're"
+  },
+  {
+   "start": 2483.599,
+   "duration": 3.601,
+   "text": "going to talk about the claw MD file"
+  },
+  {
+   "start": 2485.599,
+   "duration": 3.601,
+   "text": "right now and what we are going to get"
+  },
+  {
+   "start": 2487.2,
+   "duration": 5.76,
+   "text": "in the cloud.md file. Yeah. Okay. One"
+  },
+  {
+   "start": 2489.2,
+   "duration": 8.08,
+   "text": "thing is if context control on your raw"
+  },
+  {
+   "start": 2492.96,
+   "duration": 6.8,
+   "text": "API right um your on on the raw messages"
+  },
+  {
+   "start": 2497.28,
+   "duration": 6.4,
+   "text": "API you get three tools that the SDK"
+  },
+  {
+   "start": 2499.76,
+   "duration": 6.16,
+   "text": "handles for you invisibly and here you"
+  },
+  {
+   "start": 2503.68,
+   "duration": 5.679,
+   "text": "control every one of them. Okay. So we"
+  },
+  {
+   "start": 2505.92,
+   "duration": 6.64,
+   "text": "have the compact. Yeah. So this is kind"
+  },
+  {
+   "start": 2509.359,
+   "duration": 5.76,
+   "text": "of in a beta state you can say. Yeah. uh"
+  },
+  {
+   "start": 2512.56,
+   "duration": 5.68,
+   "text": "clear tool uses it drops the old tool"
+  },
+  {
+   "start": 2515.119,
+   "duration": 5.521,
+   "text": "results keeps the last numbers and then"
+  },
+  {
+   "start": 2518.24,
+   "duration": 5.04,
+   "text": "we have clear thinking yeah so it trims"
+  },
+  {
+   "start": 2520.64,
+   "duration": 6.32,
+   "text": "thinking blocks from the earlier turns"
+  },
+  {
+   "start": 2523.28,
+   "duration": 5.36,
+   "text": "now um I'm not going to run this or tell"
+  },
+  {
+   "start": 2526.96,
+   "duration": 3.76,
+   "text": "you something because the raw API we're"
+  },
+  {
+   "start": 2528.64,
+   "duration": 4.16,
+   "text": "not exploring that much we are currently"
+  },
+  {
+   "start": 2530.72,
+   "duration": 3.68,
+   "text": "focusing on the agent SDK so everything"
+  },
+  {
+   "start": 2532.8,
+   "duration": 4.0,
+   "text": "related on the agent SDK we are"
+  },
+  {
+   "start": 2534.4,
+   "duration": 4.4,
+   "text": "exploring a bit in detail just but you"
+  },
+  {
+   "start": 2536.8,
+   "duration": 5.279,
+   "text": "need to know that in your raw messages"
+  },
+  {
+   "start": 2538.8,
+   "duration": 5.519,
+   "text": "API as well like we um you know like the"
+  },
+  {
+   "start": 2542.079,
+   "duration": 4.0,
+   "text": "tool for memory, we also have the tool"
+  },
+  {
+   "start": 2544.319,
+   "duration": 4.161,
+   "text": "for context control and these are the"
+  },
+  {
+   "start": 2546.079,
+   "duration": 6.161,
+   "text": "tools as of now. I hope that is making"
+  },
+  {
+   "start": 2548.48,
+   "duration": 6.4,
+   "text": "sense. Yeah. Um okay. So one thing is"
+  },
+  {
+   "start": 2552.24,
+   "duration": 6.0,
+   "text": "exclude tools memory. Now what is this"
+  },
+  {
+   "start": 2554.88,
+   "duration": 6.16,
+   "text": "basically? Now this exclude tools memory"
+  },
+  {
+   "start": 2558.24,
+   "duration": 4.48,
+   "text": "line is the whole trick. Okay. And if"
+  },
+  {
+   "start": 2561.04,
+   "duration": 3.279,
+   "text": "you remember why are we excluding the"
+  },
+  {
+   "start": 2562.72,
+   "duration": 5.28,
+   "text": "memory tool over here when we were using"
+  },
+  {
+   "start": 2564.319,
+   "duration": 6.0,
+   "text": "it prop you know before. So without it"
+  },
+  {
+   "start": 2568.0,
+   "duration": 5.28,
+   "text": "um you know a clearing pass can delete"
+  },
+  {
+   "start": 2570.319,
+   "duration": 5.681,
+   "text": "the tool results that record what Claude"
+  },
+  {
+   "start": 2573.28,
+   "duration": 4.96,
+   "text": "just saved to memory. So the agent kind"
+  },
+  {
+   "start": 2576.0,
+   "duration": 4.48,
+   "text": "of writes a note and then loses the"
+  },
+  {
+   "start": 2578.24,
+   "duration": 3.92,
+   "text": "receipt kind of if you if you're going"
+  },
+  {
+   "start": 2580.48,
+   "duration": 4.879,
+   "text": "to compare it to a real world scenario."
+  },
+  {
+   "start": 2582.16,
+   "duration": 6.56,
+   "text": "So memory and clearing are designed to"
+  },
+  {
+   "start": 2585.359,
+   "duration": 5.601,
+   "text": "work together. Claude gets warned before"
+  },
+  {
+   "start": 2588.72,
+   "duration": 4.08,
+   "text": "the threshold writes what matters to a"
+  },
+  {
+   "start": 2590.96,
+   "duration": 3.6,
+   "text": "memory file and then the results get"
+  },
+  {
+   "start": 2592.8,
+   "duration": 3.92,
+   "text": "cleared."
+  },
+  {
+   "start": 2594.56,
+   "duration": 4.24,
+   "text": "Right? So I'm hoping that makes sense."
+  },
+  {
+   "start": 2596.72,
+   "duration": 5.28,
+   "text": "So without exclude tools, a clearing"
+  },
+  {
+   "start": 2598.8,
+   "duration": 5.84,
+   "text": "pass deletes the um you know the tool"
+  },
+  {
+   "start": 2602.0,
+   "duration": 4.56,
+   "text": "results that record what claude just"
+  },
+  {
+   "start": 2604.64,
+   "duration": 3.679,
+   "text": "saved to memory. So you are do you are"
+  },
+  {
+   "start": 2606.56,
+   "duration": 4.08,
+   "text": "erasing whatever you have just done"
+  },
+  {
+   "start": 2608.319,
+   "duration": 5.201,
+   "text": "right now. So I hope that is making"
+  },
+  {
+   "start": 2610.64,
+   "duration": 5.439,
+   "text": "sense why this exclude tools is um"
+  },
+  {
+   "start": 2613.52,
+   "duration": 6.079,
+   "text": "there. Okay. Now let's talk about the"
+  },
+  {
+   "start": 2616.079,
+   "duration": 5.28,
+   "text": "cloud MD file and uh we we also going to"
+  },
+  {
+   "start": 2619.599,
+   "duration": 3.201,
+   "text": "talk about the session index. py. So"
+  },
+  {
+   "start": 2621.359,
+   "duration": 3.601,
+   "text": "we're going to put everything now"
+  },
+  {
+   "start": 2622.8,
+   "duration": 4.48,
+   "text": "together and see everything in action."
+  },
+  {
+   "start": 2624.96,
+   "duration": 5.92,
+   "text": "So for the claw.md file, you can just go"
+  },
+  {
+   "start": 2627.28,
+   "duration": 6.16,
+   "text": "over here in the snippets MD file and uh"
+  },
+  {
+   "start": 2630.88,
+   "duration": 4.88,
+   "text": "we are going to just uh take this um"
+  },
+  {
+   "start": 2633.44,
+   "duration": 4.24,
+   "text": "kind of uh things from here. And if you"
+  },
+  {
+   "start": 2635.76,
+   "duration": 5.12,
+   "text": "see uh this cloud MD file that I have"
+  },
+  {
+   "start": 2637.68,
+   "duration": 5.6,
+   "text": "prepared is pretty small and slick. It"
+  },
+  {
+   "start": 2640.88,
+   "duration": 4.959,
+   "text": "doesn't have too much information. So um"
+  },
+  {
+   "start": 2643.28,
+   "duration": 4.559,
+   "text": "we're going to just uh create the cloud."
+  },
+  {
+   "start": 2645.839,
+   "duration": 4.161,
+   "text": "So it should be in capital letters and"
+  },
+  {
+   "start": 2647.839,
+   "duration": 3.76,
+   "text": "then just put the MD over there and we"
+  },
+  {
+   "start": 2650.0,
+   "duration": 4.72,
+   "text": "are good. and just paste it over here."
+  },
+  {
+   "start": 2651.599,
+   "duration": 4.801,
+   "text": "So what we have um review contract every"
+  },
+  {
+   "start": 2654.72,
+   "duration": 3.52,
+   "text": "finding sites a file path and a line"
+  },
+  {
+   "start": 2656.4,
+   "duration": 3.919,
+   "text": "number no line number no finding so some"
+  },
+  {
+   "start": 2658.24,
+   "duration": 4.72,
+   "text": "kind of a things we wrote over here"
+  },
+  {
+   "start": 2660.319,
+   "duration": 5.361,
+   "text": "repoacts application code lives in src"
+  },
+  {
+   "start": 2662.96,
+   "duration": 4.08,
+   "text": "test live in / tests uh compact"
+  },
+  {
+   "start": 2665.68,
+   "duration": 3.52,
+   "text": "conversation if this conversation is"
+  },
+  {
+   "start": 2667.04,
+   "duration": 4.319,
+   "text": "summarized preserve the PR number every"
+  },
+  {
+   "start": 2669.2,
+   "duration": 4.24,
+   "text": "finding already confirmed file line"
+  },
+  {
+   "start": 2671.359,
+   "duration": 4.48,
+   "text": "severity and whether the review comment"
+  },
+  {
+   "start": 2673.44,
+   "duration": 4.72,
+   "text": "has been posted yet so also when I have"
+  },
+  {
+   "start": 2675.839,
+   "duration": 5.601,
+   "text": "put this as compact instruction so we do"
+  },
+  {
+   "start": 2678.16,
+   "duration": 6.24,
+   "text": "not whenever it is compacting we we are"
+  },
+  {
+   "start": 2681.44,
+   "duration": 5.6,
+   "text": "um not kind of you know throwing out the"
+  },
+  {
+   "start": 2684.4,
+   "duration": 4.24,
+   "text": "important details as well. So I hope"
+  },
+  {
+   "start": 2687.04,
+   "duration": 4.559,
+   "text": "that is making sense. So this is about"
+  },
+  {
+   "start": 2688.64,
+   "duration": 5.04,
+   "text": "the cloud md file. Next is the session"
+  },
+  {
+   "start": 2691.599,
+   "duration": 5.281,
+   "text": "index py file and I'm going to tell you"
+  },
+  {
+   "start": 2693.68,
+   "duration": 5.28,
+   "text": "what that does. Yeah. And we already"
+  },
+  {
+   "start": 2696.88,
+   "duration": 4.88,
+   "text": "talked about this session indexes,"
+  },
+  {
+   "start": 2698.96,
+   "duration": 5.84,
+   "text": "right? So we're going to see how we can"
+  },
+  {
+   "start": 2701.76,
+   "duration": 5.12,
+   "text": "u you know kind of work it out in a real"
+  },
+  {
+   "start": 2704.8,
+   "duration": 5.36,
+   "text": "world scenario. So, I'm going to go to,"
+  },
+  {
+   "start": 2706.88,
+   "duration": 6.719,
+   "text": "you know, our um"
+  },
+  {
+   "start": 2710.16,
+   "duration": 5.84,
+   "text": "snippets.mmd file."
+  },
+  {
+   "start": 2713.599,
+   "duration": 5.401,
+   "text": "Oh, no, no, no. Yeah, this is from"
+  },
+  {
+   "start": 2716.0,
+   "duration": 3.0,
+   "text": "where?"
+  },
+  {
+   "start": 2721.44,
+   "duration": 5.76,
+   "text": "Okay, let me just go. Oh, okay. We have"
+  },
+  {
+   "start": 2723.839,
+   "duration": 5.52,
+   "text": "that. Uh, so we are going to go to the"
+  },
+  {
+   "start": 2727.2,
+   "duration": 4.0,
+   "text": "snippets. So, what is this? I also put a"
+  },
+  {
+   "start": 2729.359,
+   "duration": 4.72,
+   "text": "note over here. So, it is our own"
+  },
+  {
+   "start": 2731.2,
+   "duration": 6.879,
+   "text": "bookkeeping. So it's a JSON map of PR"
+  },
+  {
+   "start": 2734.079,
+   "duration": 6.161,
+   "text": "number to SDK session ID. So so"
+  },
+  {
+   "start": 2738.079,
+   "duration": 4.641,
+   "text": "basically a second review of the same PR"
+  },
+  {
+   "start": 2740.24,
+   "duration": 4.4,
+   "text": "can resume its earlier conversation. So"
+  },
+  {
+   "start": 2742.72,
+   "duration": 4.24,
+   "text": "that's where the magic lives right we I"
+  },
+  {
+   "start": 2744.64,
+   "duration": 4.08,
+   "text": "I showed you that the session ids are"
+  },
+  {
+   "start": 2746.96,
+   "duration": 4.24,
+   "text": "living here. But how do you get the"
+  },
+  {
+   "start": 2748.72,
+   "duration": 4.56,
+   "text": "session ID? So after every run we get"
+  },
+  {
+   "start": 2751.2,
+   "duration": 3.919,
+   "text": "the session ID, right? So we kind of"
+  },
+  {
+   "start": 2753.28,
+   "duration": 4.24,
+   "text": "record it. That's what it is doing."
+  },
+  {
+   "start": 2755.119,
+   "duration": 4.561,
+   "text": "Yeah. So the SDK already writes a full"
+  },
+  {
+   "start": 2757.52,
+   "duration": 4.079,
+   "text": "transcript disk at here. The only thing"
+  },
+  {
+   "start": 2759.68,
+   "duration": 4.399,
+   "text": "it cannot know is which of these session"
+  },
+  {
+   "start": 2761.599,
+   "duration": 4.561,
+   "text": "belongs to PR which PR number or"
+  },
+  {
+   "start": 2764.079,
+   "duration": 4.0,
+   "text": "whatever review that has already been"
+  },
+  {
+   "start": 2766.16,
+   "duration": 4.24,
+   "text": "done. So we're just mapping the session"
+  },
+  {
+   "start": 2768.079,
+   "duration": 4.0,
+   "text": "ID with the PR number that has been"
+  },
+  {
+   "start": 2770.4,
+   "duration": 4.48,
+   "text": "reviewed. So it can pick it up from"
+  },
+  {
+   "start": 2772.079,
+   "duration": 6.321,
+   "text": "there. So similarly I'm just going to"
+  },
+  {
+   "start": 2774.88,
+   "duration": 5.6,
+   "text": "copy it from here. And"
+  },
+  {
+   "start": 2778.4,
+   "duration": 4.8,
+   "text": "that's it. That's all. That's all we"
+  },
+  {
+   "start": 2780.48,
+   "duration": 5.76,
+   "text": "have to do right now. And we're going to"
+  },
+  {
+   "start": 2783.2,
+   "duration": 4.72,
+   "text": "go to sessionindex. py. And uh that's"
+  },
+  {
+   "start": 2786.24,
+   "duration": 2.96,
+   "text": "that's it. That's that's all that's how"
+  },
+  {
+   "start": 2787.92,
+   "duration": 3.28,
+   "text": "you're going to implement in the real"
+  },
+  {
+   "start": 2789.2,
+   "duration": 4.399,
+   "text": "life scenario. So don't get confused of"
+  },
+  {
+   "start": 2791.2,
+   "duration": 5.52,
+   "text": "all the uh you know in information that"
+  },
+  {
+   "start": 2793.599,
+   "duration": 6.161,
+   "text": "I gave you right okay now we have also"
+  },
+  {
+   "start": 2796.72,
+   "duration": 4.96,
+   "text": "need to modify a third file which is"
+  },
+  {
+   "start": 2799.76,
+   "duration": 7.2,
+   "text": "hooks py. So I'm going to create a new"
+  },
+  {
+   "start": 2801.68,
+   "duration": 7.12,
+   "text": "file known as hooks py. Yeah. So"
+  },
+  {
+   "start": 2806.96,
+   "duration": 3.6,
+   "text": "uh there is there is a one small thing"
+  },
+  {
+   "start": 2808.8,
+   "duration": 4.08,
+   "text": "that I'm going to you know implement"
+  },
+  {
+   "start": 2810.56,
+   "duration": 5.039,
+   "text": "here that is known as pre-mpact. Right."
+  },
+  {
+   "start": 2812.88,
+   "duration": 6.56,
+   "text": "So the top is pretty simple. This these"
+  },
+  {
+   "start": 2815.599,
+   "duration": 6.0,
+   "text": "are basically um you know um the top of"
+  },
+  {
+   "start": 2819.44,
+   "duration": 4.08,
+   "text": "the hooks file that we already had like"
+  },
+  {
+   "start": 2821.599,
+   "duration": 4.161,
+   "text": "the dangerous patterns and the injection"
+  },
+  {
+   "start": 2823.52,
+   "duration": 4.0,
+   "text": "markers and all those things. So these"
+  },
+  {
+   "start": 2825.76,
+   "duration": 4.48,
+   "text": "things we have already know right these"
+  },
+  {
+   "start": 2827.52,
+   "duration": 4.799,
+   "text": "are all the like the pre-tool use hooks"
+  },
+  {
+   "start": 2830.24,
+   "duration": 4.16,
+   "text": "that we have already designed. So I'm"
+  },
+  {
+   "start": 2832.319,
+   "duration": 5.52,
+   "text": "going to go to the hooks.py and paste it"
+  },
+  {
+   "start": 2834.4,
+   "duration": 6.32,
+   "text": "right over here. Now if you go back to"
+  },
+  {
+   "start": 2837.839,
+   "duration": 6.801,
+   "text": "the bottom what the new things we are"
+  },
+  {
+   "start": 2840.72,
+   "duration": 7.68,
+   "text": "actually giving is basically"
+  },
+  {
+   "start": 2844.64,
+   "duration": 7.04,
+   "text": "so the pre-ompact hook yeah so the"
+  },
+  {
+   "start": 2848.4,
+   "duration": 5.919,
+   "text": "pre-ompact fires just before the SDK"
+  },
+  {
+   "start": 2851.68,
+   "duration": 4.399,
+   "text": "summarizes this is kind of a new hook we"
+  },
+  {
+   "start": 2854.319,
+   "duration": 3.361,
+   "text": "are kind of learning right now so we"
+  },
+  {
+   "start": 2856.079,
+   "duration": 3.121,
+   "text": "already learned about the pre-tool use"
+  },
+  {
+   "start": 2857.68,
+   "duration": 4.88,
+   "text": "hook the post tool use hook the"
+  },
+  {
+   "start": 2859.2,
+   "duration": 6.08,
+   "text": "pre-ompact hook basically fires just"
+  },
+  {
+   "start": 2862.56,
+   "duration": 4.96,
+   "text": "before the SDK summarizes and I want to"
+  },
+  {
+   "start": 2865.28,
+   "duration": 6.16,
+   "text": "be honest about what this hook is. It's"
+  },
+  {
+   "start": 2867.52,
+   "duration": 6.24,
+   "text": "an observability hook. Remember that it"
+  },
+  {
+   "start": 2871.44,
+   "duration": 4.96,
+   "text": "is a observability hook. You can compare"
+  },
+  {
+   "start": 2873.76,
+   "duration": 6.0,
+   "text": "it to the same kind of if you're going"
+  },
+  {
+   "start": 2876.4,
+   "duration": 5.12,
+   "text": "to compare it to something known as um"
+  },
+  {
+   "start": 2879.76,
+   "duration": 4.8,
+   "text": "controller advice or all those things"
+  },
+  {
+   "start": 2881.52,
+   "duration": 5.12,
+   "text": "right um um things that we were using"
+  },
+  {
+   "start": 2884.56,
+   "duration": 4.24,
+   "text": "it. It is like a around thing that is"
+  },
+  {
+   "start": 2886.64,
+   "duration": 4.8,
+   "text": "happening around the execution of a"
+  },
+  {
+   "start": 2888.8,
+   "duration": 6.08,
+   "text": "method right in this case it is uh it is"
+  },
+  {
+   "start": 2891.44,
+   "duration": 5.919,
+   "text": "a observability you know before the SDK"
+  },
+  {
+   "start": 2894.88,
+   "duration": 4.479,
+   "text": "summarizes what is the final result it"
+  },
+  {
+   "start": 2897.359,
+   "duration": 3.521,
+   "text": "is not an enforcement one you cannot use"
+  },
+  {
+   "start": 2899.359,
+   "duration": 3.681,
+   "text": "it to enforce something like we are"
+  },
+  {
+   "start": 2900.88,
+   "duration": 5.28,
+   "text": "doing it using the pre-tool user right"
+  },
+  {
+   "start": 2903.04,
+   "duration": 5.68,
+   "text": "so by the time it fires it already it's"
+  },
+  {
+   "start": 2906.16,
+   "duration": 5.36,
+   "text": "you know it's it's it's too late to save"
+  },
+  {
+   "start": 2908.72,
+   "duration": 4.56,
+   "text": "anything and that only lived in a"
+  },
+  {
+   "start": 2911.52,
+   "duration": 4.16,
+   "text": "conversation which is exactly the lesson"
+  },
+  {
+   "start": 2913.28,
+   "duration": 4.88,
+   "text": "if this line ever prints and you feel a"
+  },
+  {
+   "start": 2915.68,
+   "duration": 4.32,
+   "text": "little panicky"
+  },
+  {
+   "start": 2918.16,
+   "duration": 3.919,
+   "text": "uh your durable state was in the wrong"
+  },
+  {
+   "start": 2920.0,
+   "duration": 4.319,
+   "text": "place itself. So you should have already"
+  },
+  {
+   "start": 2922.079,
+   "duration": 4.48,
+   "text": "handled that thing in some kind of a"
+  },
+  {
+   "start": 2924.319,
+   "duration": 4.561,
+   "text": "pre-tool use hook or some other hook."
+  },
+  {
+   "start": 2926.559,
+   "duration": 5.601,
+   "text": "But this is just for observability. So I"
+  },
+  {
+   "start": 2928.88,
+   "duration": 6.32,
+   "text": "hope you understand. So that is the"
+  },
+  {
+   "start": 2932.16,
+   "duration": 4.64,
+   "text": "pre-ompact thingy. Uh so I'm just going"
+  },
+  {
+   "start": 2935.2,
+   "duration": 3.119,
+   "text": "to go back over here. So this is the"
+  },
+  {
+   "start": 2936.8,
+   "duration": 5.2,
+   "text": "final file. So I'm just going to copy it"
+  },
+  {
+   "start": 2938.319,
+   "duration": 5.601,
+   "text": "from here to here so that it is not uh"
+  },
+  {
+   "start": 2942.0,
+   "duration": 3.92,
+   "text": "we don't miss anything. So this is the"
+  },
+  {
+   "start": 2943.92,
+   "duration": 3.36,
+   "text": "final hooks file. These are all the"
+  },
+  {
+   "start": 2945.92,
+   "duration": 3.6,
+   "text": "things that were already there, right?"
+  },
+  {
+   "start": 2947.28,
+   "duration": 4.16,
+   "text": "The require evidence and all those hooks"
+  },
+  {
+   "start": 2949.52,
+   "duration": 4.0,
+   "text": "were already there. Uh you know the"
+  },
+  {
+   "start": 2951.44,
+   "duration": 4.159,
+   "text": "pre-tool and the post tool use hooks. Uh"
+  },
+  {
+   "start": 2953.52,
+   "duration": 3.68,
+   "text": "you can check out the previous video."
+  },
+  {
+   "start": 2955.599,
+   "duration": 3.121,
+   "text": "Previous video to previous video I think"
+  },
+  {
+   "start": 2957.2,
+   "duration": 3.2,
+   "text": "hooks. I don't remember. I think episode"
+  },
+  {
+   "start": 2958.72,
+   "duration": 3.52,
+   "text": "number four. Yeah, episode number four"
+  },
+  {
+   "start": 2960.4,
+   "duration": 3.439,
+   "text": "was about hooks. Yeah, there we had"
+  },
+  {
+   "start": 2962.24,
+   "duration": 4.879,
+   "text": "covered. So I'm just going to replace"
+  },
+  {
+   "start": 2963.839,
+   "duration": 5.121,
+   "text": "this file completely. So this is the new"
+  },
+  {
+   "start": 2967.119,
+   "duration": 3.361,
+   "text": "thing that is log pre-ompact. The"
+  },
+  {
+   "start": 2968.96,
+   "duration": 3.84,
+   "text": "conversation is about to be summarized."
+  },
+  {
+   "start": 2970.48,
+   "duration": 3.92,
+   "text": "Write it down. took observability hook"
+  },
+  {
+   "start": 2972.8,
+   "duration": 3.12,
+   "text": "not an enforcement one by the time it"
+  },
+  {
+   "start": 2974.4,
+   "duration": 4.719,
+   "text": "fires it already too late to save"
+  },
+  {
+   "start": 2975.92,
+   "duration": 5.6,
+   "text": "anything basically so that is the thing"
+  },
+  {
+   "start": 2979.119,
+   "duration": 5.041,
+   "text": "I hope you are understanding what is"
+  },
+  {
+   "start": 2981.52,
+   "duration": 5.12,
+   "text": "happening over here and at the end we"
+  },
+  {
+   "start": 2984.16,
+   "duration": 4.32,
+   "text": "have the agent py that is the last piece"
+  },
+  {
+   "start": 2986.64,
+   "duration": 4.24,
+   "text": "of the puzzle so I'm just going to"
+  },
+  {
+   "start": 2988.48,
+   "duration": 5.28,
+   "text": "create a new file over here and that is"
+  },
+  {
+   "start": 2990.88,
+   "duration": 5.92,
+   "text": "agent py"
+  },
+  {
+   "start": 2993.76,
+   "duration": 5.839,
+   "text": "right and if I go to my snippets file I"
+  },
+  {
+   "start": 2996.8,
+   "duration": 5.759,
+   "text": "should see the agent py the final file"
+  },
+  {
+   "start": 2999.599,
+   "duration": 7.601,
+   "text": "is over here. Okay. So, I'm just going"
+  },
+  {
+   "start": 3002.559,
+   "duration": 7.201,
+   "text": "to grab this uh from here and we are"
+  },
+  {
+   "start": 3007.2,
+   "duration": 5.119,
+   "text": "going to be good. Uh good, good, good,"
+  },
+  {
+   "start": 3009.76,
+   "duration": 5.28,
+   "text": "good."
+  },
+  {
+   "start": 3012.319,
+   "duration": 4.321,
+   "text": "So, I don't know where is it. This is"
+  },
+  {
+   "start": 3015.04,
+   "duration": 6.0,
+   "text": "from episode number five. Save it and"
+  },
+  {
+   "start": 3016.64,
+   "duration": 8.08,
+   "text": "close it. And uh if I go and paste it"
+  },
+  {
+   "start": 3021.04,
+   "duration": 6.72,
+   "text": "over here. Yeah."
+  },
+  {
+   "start": 3024.72,
+   "duration": 4.72,
+   "text": "Okay. So if you see run this from"
+  },
+  {
+   "start": 3027.76,
+   "duration": 3.599,
+   "text": "episode number six I've already put the"
+  },
+  {
+   "start": 3029.44,
+   "duration": 4.399,
+   "text": "instruction claw.md is discovered from"
+  },
+  {
+   "start": 3031.359,
+   "duration": 5.361,
+   "text": "the working directory upward because if"
+  },
+  {
+   "start": 3033.839,
+   "duration": 4.641,
+   "text": "you see I would have put something known"
+  },
+  {
+   "start": 3036.72,
+   "duration": 4.24,
+   "text": "as setting sources which we have already"
+  },
+  {
+   "start": 3038.48,
+   "duration": 5.119,
+   "text": "learned. So from the project it will"
+  },
+  {
+   "start": 3040.96,
+   "duration": 5.119,
+   "text": "pick this cloudmd file. So I only want"
+  },
+  {
+   "start": 3043.599,
+   "duration": 4.561,
+   "text": "the project level cloud.mmd file and"
+  },
+  {
+   "start": 3046.079,
+   "duration": 4.561,
+   "text": "session transcripts are keyed by the"
+  },
+  {
+   "start": 3048.16,
+   "duration": 5.199,
+   "text": "working directory. So resume from a"
+  },
+  {
+   "start": 3050.64,
+   "duration": 4.8,
+   "text": "different CWD silently starts a brand"
+  },
+  {
+   "start": 3053.359,
+   "duration": 5.2,
+   "text": "new conversation. So if you see over"
+  },
+  {
+   "start": 3055.44,
+   "duration": 5.2,
+   "text": "here these are the hooks. So we have the"
+  },
+  {
+   "start": 3058.559,
+   "duration": 4.961,
+   "text": "resume ID and we also have the fork over"
+  },
+  {
+   "start": 3060.64,
+   "duration": 4.719,
+   "text": "here. So resume is none on the first run"
+  },
+  {
+   "start": 3063.52,
+   "duration": 3.92,
+   "text": "which the SDK reads as fresh because on"
+  },
+  {
+   "start": 3065.359,
+   "duration": 5.841,
+   "text": "the fresh run you don't have any kind of"
+  },
+  {
+   "start": 3067.44,
+   "duration": 6.24,
+   "text": "a uh resume id. So if you see this"
+  },
+  {
+   "start": 3071.2,
+   "duration": 6.56,
+   "text": "resume id yeah these are coming you know"
+  },
+  {
+   "start": 3073.68,
+   "duration": 7.28,
+   "text": "is there in the build options. Yeah. So"
+  },
+  {
+   "start": 3077.76,
+   "duration": 4.799,
+   "text": "these are over here. So all the things"
+  },
+  {
+   "start": 3080.96,
+   "duration": 4.08,
+   "text": "that is there from the episode 1 to"
+  },
+  {
+   "start": 3082.559,
+   "duration": 4.961,
+   "text": "episode 5 is still there. The MCP"
+  },
+  {
+   "start": 3085.04,
+   "duration": 4.799,
+   "text": "servers, the sub agents, the guardrails."
+  },
+  {
+   "start": 3087.52,
+   "duration": 4.48,
+   "text": "And if you see these are the three"
+  },
+  {
+   "start": 3089.839,
+   "duration": 4.881,
+   "text": "things, the new things that we added is"
+  },
+  {
+   "start": 3092.0,
+   "duration": 4.8,
+   "text": "just the session getting the session ID."
+  },
+  {
+   "start": 3094.72,
+   "duration": 3.599,
+   "text": "Uh the resume thing and the fork thing,"
+  },
+  {
+   "start": 3096.8,
+   "duration": 4.48,
+   "text": "right? And if you go to the previous"
+  },
+  {
+   "start": 3098.319,
+   "duration": 5.76,
+   "text": "snippets and if you go to the top, I"
+  },
+  {
+   "start": 3101.28,
+   "duration": 5.039,
+   "text": "would have written what it does. Yeah."
+  },
+  {
+   "start": 3104.079,
+   "duration": 3.76,
+   "text": "So the main agent rewritten for the"
+  },
+  {
+   "start": 3106.319,
+   "duration": 4.8,
+   "text": "build options that I just showed you"
+  },
+  {
+   "start": 3107.839,
+   "duration": 5.921,
+   "text": "right in in in in just a minute ago"
+  },
+  {
+   "start": 3111.119,
+   "duration": 4.96,
+   "text": "right where the resume ID and all the"
+  },
+  {
+   "start": 3113.76,
+   "duration": 4.96,
+   "text": "stuffs was there it's a factory so the"
+  },
+  {
+   "start": 3116.079,
+   "duration": 5.601,
+   "text": "same config can be rebuilt with the"
+  },
+  {
+   "start": 3118.72,
+   "duration": 5.359,
+   "text": "resume ID for a fork flag"
+  },
+  {
+   "start": 3121.68,
+   "duration": 5.12,
+   "text": "so this review PR will looks look up for"
+  },
+  {
+   "start": 3124.079,
+   "duration": 5.52,
+   "text": "any prior session for the PR because if"
+  },
+  {
+   "start": 3126.8,
+   "duration": 5.039,
+   "text": "you remember this session indexing that"
+  },
+  {
+   "start": 3129.599,
+   "duration": 4.321,
+   "text": "we are doing is basically we are mapping"
+  },
+  {
+   "start": 3131.839,
+   "duration": 4.081,
+   "text": "the PR review to a particular ular"
+  },
+  {
+   "start": 3133.92,
+   "duration": 5.6,
+   "text": "session ID. So that will be used over"
+  },
+  {
+   "start": 3135.92,
+   "duration": 7.439,
+   "text": "here. Yeah. So I hope that is making"
+  },
+  {
+   "start": 3139.52,
+   "duration": 5.2,
+   "text": "sense and um I don't want to waste time"
+  },
+  {
+   "start": 3143.359,
+   "duration": 2.72,
+   "text": "by going through the whole code. I hope"
+  },
+  {
+   "start": 3144.72,
+   "duration": 3.04,
+   "text": "you have understood how all of these"
+  },
+  {
+   "start": 3146.079,
+   "duration": 3.841,
+   "text": "things work. Anyways, this will be"
+  },
+  {
+   "start": 3147.76,
+   "duration": 6.4,
+   "text": "uploaded and you can check it out once."
+  },
+  {
+   "start": 3149.92,
+   "duration": 9.12,
+   "text": "So for the final thing, let us run this"
+  },
+  {
+   "start": 3154.16,
+   "duration": 7.679,
+   "text": "um kind of um code. So we are already in"
+  },
+  {
+   "start": 3159.04,
+   "duration": 6.0,
+   "text": "the episode number six and I just want"
+  },
+  {
+   "start": 3161.839,
+   "duration": 5.841,
+   "text": "to say should we actually start a new"
+  },
+  {
+   "start": 3165.04,
+   "duration": 4.4,
+   "text": "terminal. So all the new things are"
+  },
+  {
+   "start": 3167.68,
+   "duration": 4.159,
+   "text": "anyways and the new environment will be"
+  },
+  {
+   "start": 3169.44,
+   "duration": 3.84,
+   "text": "loaded over here. Okay, it is loaded. So"
+  },
+  {
+   "start": 3171.839,
+   "duration": 4.561,
+   "text": "I'm just going to go to episode number"
+  },
+  {
+   "start": 3173.28,
+   "duration": 6.72,
+   "text": "06 and here I'm just going to say Python"
+  },
+  {
+   "start": 3176.4,
+   "duration": 7.439,
+   "text": "3 agent. py."
+  },
+  {
+   "start": 3180.0,
+   "duration": 7.28,
+   "text": "So it is a new session for PR143."
+  },
+  {
+   "start": 3183.839,
+   "duration": 8.561,
+   "text": "Yeah. And if you remember the PR143"
+  },
+  {
+   "start": 3187.28,
+   "duration": 8.24,
+   "text": "should be should be here. Here we go."
+  },
+  {
+   "start": 3192.4,
+   "duration": 5.6,
+   "text": "This is the thing."
+  },
+  {
+   "start": 3195.52,
+   "duration": 5.039,
+   "text": "Yeah."
+  },
+  {
+   "start": 3198.0,
+   "duration": 4.96,
+   "text": "So it is also fan it is also saying I'll"
+  },
+  {
+   "start": 3200.559,
+   "duration": 4.641,
+   "text": "fan out to the you know through the to"
+  },
+  {
+   "start": 3202.96,
+   "duration": 3.84,
+   "text": "the sub aents in parallel and then"
+  },
+  {
+   "start": 3205.2,
+   "duration": 3.6,
+   "text": "aggregate. First let me load the tool"
+  },
+  {
+   "start": 3206.8,
+   "duration": 5.2,
+   "text": "schemes. I will read. So it is doing its"
+  },
+  {
+   "start": 3208.8,
+   "duration": 6.08,
+   "text": "job which it should be doing."
+  },
+  {
+   "start": 3212.0,
+   "duration": 2.88,
+   "text": "Yeah."
+  },
+  {
+   "start": 3217.2,
+   "duration": 4.08,
+   "text": "Let's wait."
+  },
+  {
+   "start": 3219.839,
+   "duration": 3.601,
+   "text": "Okay. So, it is saying that security"
+  },
+  {
+   "start": 3221.28,
+   "duration": 6.92,
+   "text": "passes back all the things it is doing"
+  },
+  {
+   "start": 3223.44,
+   "duration": 4.76,
+   "text": "which I'm treating as uh as data."
+  },
+  {
+   "start": 3234.16,
+   "duration": 3.76,
+   "text": "Yeah. So,"
+  },
+  {
+   "start": 3236.16,
+   "duration": 4.24,
+   "text": "so it is saying that no src or test"
+  },
+  {
+   "start": 3237.92,
+   "duration": 4.159,
+   "text": "directory exists here. Let me check what"
+  },
+  {
+   "start": 3240.4,
+   "duration": 3.84,
+   "text": "the dock string tool actually operates"
+  },
+  {
+   "start": 3242.079,
+   "duration": 4.0,
+   "text": "on. So it is we don't have those f you"
+  },
+  {
+   "start": 3244.24,
+   "duration": 5.56,
+   "text": "know those those directories but yeah"
+  },
+  {
+   "start": 3246.079,
+   "duration": 3.721,
+   "text": "it's fine it's just"
+  },
+  {
+   "start": 3252.88,
+   "duration": 6.479,
+   "text": "so there is no change I'll run the"
+  },
+  {
+   "start": 3255.28,
+   "duration": 8.36,
+   "text": "string pass over the repo actual python"
+  },
+  {
+   "start": 3259.359,
+   "duration": 4.281,
+   "text": "sources Okay."
+  },
+  {
+   "start": 3284.48,
+   "duration": 4.28,
+   "text": "Okay. So, it is aggregating now."
+  },
+  {
+   "start": 3297.92,
+   "duration": 6.08,
+   "text": "So it has done some comments and if I go"
+  },
+  {
+   "start": 3300.24,
+   "duration": 8.319,
+   "text": "to uh my preview snippets, right? So"
+  },
+  {
+   "start": 3304.0,
+   "duration": 6.8,
+   "text": "just go down a bit over here. Yeah. So"
+  },
+  {
+   "start": 3308.559,
+   "duration": 4.641,
+   "text": "if you want to run on a specific PR, for"
+  },
+  {
+   "start": 3310.8,
+   "duration": 9.2,
+   "text": "example, PR number 42, you can run it,"
+  },
+  {
+   "start": 3313.2,
+   "duration": 8.8,
+   "text": "right? Uh and if I I just go down. Yeah."
+  },
+  {
+   "start": 3320.0,
+   "duration": 5.839,
+   "text": "Okay. Now,"
+  },
+  {
+   "start": 3322.0,
+   "duration": 6.48,
+   "text": "so the so if you want to do a second you"
+  },
+  {
+   "start": 3325.839,
+   "duration": 4.801,
+   "text": "know preview of the same PR so what it"
+  },
+  {
+   "start": 3328.48,
+   "duration": 3.599,
+   "text": "does is we are supplying the PR name and"
+  },
+  {
+   "start": 3330.64,
+   "duration": 4.0,
+   "text": "we are saying the author pushed a fix"
+  },
+  {
+   "start": 3332.079,
+   "duration": 5.201,
+   "text": "does the SQL injection"
+  },
+  {
+   "start": 3334.64,
+   "duration": 4.56,
+   "text": "finding still stand right. So what it"
+  },
+  {
+   "start": 3337.28,
+   "duration": 4.4,
+   "text": "does is the second review of the same"
+  },
+  {
+   "start": 3339.2,
+   "duration": 5.359,
+   "text": "PR. Now there's a remembered session."
+  },
+  {
+   "start": 3341.68,
+   "duration": 6.32,
+   "text": "Right? So agent.py py prints resuming"
+  },
+  {
+   "start": 3344.559,
+   "duration": 6.0,
+   "text": "and um okay so if you see there is this"
+  },
+  {
+   "start": 3348.0,
+   "duration": 4.48,
+   "text": "PR session dojson right so let's just do"
+  },
+  {
+   "start": 3350.559,
+   "duration": 4.881,
+   "text": "this cat command now and let's see for"
+  },
+  {
+   "start": 3352.48,
+   "duration": 4.8,
+   "text": "which PR which session ID exists right"
+  },
+  {
+   "start": 3355.44,
+   "duration": 4.56,
+   "text": "so we're going to ask the same question"
+  },
+  {
+   "start": 3357.28,
+   "duration": 5.279,
+   "text": "again for that particular thing so it is"
+  },
+  {
+   "start": 3360.0,
+   "duration": 5.04,
+   "text": "saying that for PR number 143 this"
+  },
+  {
+   "start": 3362.559,
+   "duration": 4.481,
+   "text": "session ID exists so I ran it for so the"
+  },
+  {
+   "start": 3365.04,
+   "duration": 3.6,
+   "text": "if you don't specify the PR number over"
+  },
+  {
+   "start": 3367.04,
+   "duration": 4.0,
+   "text": "here it will take the default PR which"
+  },
+  {
+   "start": 3368.64,
+   "duration": 4.88,
+   "text": "is 143 so that is why when I just ran"
+  },
+  {
+   "start": 3371.04,
+   "duration": 6.48,
+   "text": "Python 3 agent py Right? It kind of did"
+  },
+  {
+   "start": 3373.52,
+   "duration": 5.52,
+   "text": "the review for the PR number 143. Now,"
+  },
+  {
+   "start": 3377.52,
+   "duration": 3.36,
+   "text": "uh"
+  },
+  {
+   "start": 3379.04,
+   "duration": 4.4,
+   "text": "now that the session ID is stored over"
+  },
+  {
+   "start": 3380.88,
+   "duration": 4.239,
+   "text": "here, we can ask further questions now."
+  },
+  {
+   "start": 3383.44,
+   "duration": 3.919,
+   "text": "So, if you see in the snippets file, I'm"
+  },
+  {
+   "start": 3385.119,
+   "duration": 6.401,
+   "text": "using 42. You can use any PR number in"
+  },
+  {
+   "start": 3387.359,
+   "duration": 6.0,
+   "text": "that mock PR thingy that I have. So, uh"
+  },
+  {
+   "start": 3391.52,
+   "duration": 4.16,
+   "text": "what I'm going to say is I'm going to"
+  },
+  {
+   "start": 3393.359,
+   "duration": 4.881,
+   "text": "copy this command. It's going back to"
+  },
+  {
+   "start": 3395.68,
+   "duration": 6.879,
+   "text": "the this place. Okay. Anyways, I'm going"
+  },
+  {
+   "start": 3398.24,
+   "duration": 6.16,
+   "text": "to just change it to 1 143 and I'm just"
+  },
+  {
+   "start": 3402.559,
+   "duration": 4.401,
+   "text": "going to change it to Python 3 over here"
+  },
+  {
+   "start": 3404.4,
+   "duration": 5.76,
+   "text": "and I'm going to ask a question now. So,"
+  },
+  {
+   "start": 3406.96,
+   "duration": 4.72,
+   "text": "it will kind of fetch this, you know,"
+  },
+  {
+   "start": 3410.16,
+   "duration": 3.439,
+   "text": "conversation from that particular"
+  },
+  {
+   "start": 3411.68,
+   "duration": 4.399,
+   "text": "session ID that you see over here and it"
+  },
+  {
+   "start": 3413.599,
+   "duration": 4.48,
+   "text": "will do the job. So, I'm going to just"
+  },
+  {
+   "start": 3416.079,
+   "duration": 4.881,
+   "text": "run this again. So, it is saying"
+  },
+  {
+   "start": 3418.079,
+   "duration": 5.04,
+   "text": "resuming session for this particular PR"
+  },
+  {
+   "start": 3420.96,
+   "duration": 3.68,
+   "text": "uh 143 and will it will do the review"
+  },
+  {
+   "start": 3423.119,
+   "duration": 4.24,
+   "text": "based on the command that I'm giving it"
+  },
+  {
+   "start": 3424.64,
+   "duration": 5.28,
+   "text": "right now. it will not reread everything"
+  },
+  {
+   "start": 3427.359,
+   "duration": 4.081,
+   "text": "right because that is already there. So"
+  },
+  {
+   "start": 3429.92,
+   "duration": 5.0,
+   "text": "you see this might be a little bit"
+  },
+  {
+   "start": 3431.44,
+   "duration": 3.48,
+   "text": "faster now"
+  },
+  {
+   "start": 3436.24,
+   "duration": 4.24,
+   "text": "right. So while it is executing let's go"
+  },
+  {
+   "start": 3438.96,
+   "duration": 4.639,
+   "text": "back and let's kind of finish up the"
+  },
+  {
+   "start": 3440.48,
+   "duration": 6.639,
+   "text": "slides. So we had all of these things"
+  },
+  {
+   "start": 3443.599,
+   "duration": 6.561,
+   "text": "done and we ran this command. So um just"
+  },
+  {
+   "start": 3447.119,
+   "duration": 6.881,
+   "text": "to know u this particular episode also"
+  },
+  {
+   "start": 3450.16,
+   "duration": 6.88,
+   "text": "covers almost 10 to 11% of uh the"
+  },
+  {
+   "start": 3454.0,
+   "duration": 4.799,
+   "text": "developer certification. Yeah. As by the"
+  },
+  {
+   "start": 3457.04,
+   "duration": 4.0,
+   "text": "time this course ends it will be 100%"
+  },
+  {
+   "start": 3458.799,
+   "duration": 4.8,
+   "text": "obviously. So we are covering kind of"
+  },
+  {
+   "start": 3461.04,
+   "duration": 5.759,
+   "text": "context engineering completely which is"
+  },
+  {
+   "start": 3463.599,
+   "duration": 4.881,
+   "text": "around 4% 3.8%. Claude application"
+  },
+  {
+   "start": 3466.799,
+   "duration": 4.881,
+   "text": "design partially we are covering so"
+  },
+  {
+   "start": 3468.48,
+   "duration": 4.879,
+   "text": "around 3 to 4% right and cloud API"
+  },
+  {
+   "start": 3471.68,
+   "duration": 4.96,
+   "text": "mechanics also we are covering around 3"
+  },
+  {
+   "start": 3473.359,
+   "duration": 6.48,
+   "text": "to 4%. So that's around 11 to 12% of the"
+  },
+  {
+   "start": 3476.64,
+   "duration": 6.0,
+   "text": "exam itself. Right now the most testable"
+  },
+  {
+   "start": 3479.839,
+   "duration": 6.161,
+   "text": "distinction is basically"
+  },
+  {
+   "start": 3482.64,
+   "duration": 5.84,
+   "text": "yeah from you know um which mechanism"
+  },
+  {
+   "start": 3486.0,
+   "duration": 5.44,
+   "text": "belongs to which layer. The memory tool"
+  },
+  {
+   "start": 3488.48,
+   "duration": 5.2,
+   "text": "and the context management are for the"
+  },
+  {
+   "start": 3491.44,
+   "duration": 7.6,
+   "text": "raw messages API that we already"
+  },
+  {
+   "start": 3493.68,
+   "duration": 9.52,
+   "text": "understood. um auto session creation um"
+  },
+  {
+   "start": 3499.04,
+   "duration": 5.759,
+   "text": "setting sources auto compaction and"
+  },
+  {
+   "start": 3503.2,
+   "duration": 4.159,
+   "text": "forking"
+  },
+  {
+   "start": 3504.799,
+   "duration": 5.441,
+   "text": "uh then resume these are all related to"
+  },
+  {
+   "start": 3507.359,
+   "duration": 7.44,
+   "text": "the agent SDK right I hope that is"
+  },
+  {
+   "start": 3510.24,
+   "duration": 8.76,
+   "text": "making sense yeah so if I go back it"
+  },
+  {
+   "start": 3514.799,
+   "duration": 4.201,
+   "text": "should have already okay"
+  },
+  {
+   "start": 3519.359,
+   "duration": 6.081,
+   "text": "I think uh it is saying there is not"
+  },
+  {
+   "start": 3523.2,
+   "duration": 3.76,
+   "text": "never a SQL injection big filing finding"
+  },
+  {
+   "start": 3525.44,
+   "duration": 2.879,
+   "text": "to begin with. Okay. So it is telling"
+  },
+  {
+   "start": 3526.96,
+   "duration": 3.52,
+   "text": "from the previous conversation also"
+  },
+  {
+   "start": 3528.319,
+   "duration": 5.28,
+   "text": "there was no SQL injection. Let me check"
+  },
+  {
+   "start": 3530.48,
+   "duration": 5.2,
+   "text": "the mock here. I think um there is no"
+  },
+  {
+   "start": 3533.599,
+   "duration": 6.161,
+   "text": "SQL injection at at all over there. So"
+  },
+  {
+   "start": 3535.68,
+   "duration": 7.439,
+   "text": "if I see the 143 ah okay there is no SQL"
+  },
+  {
+   "start": 3539.76,
+   "duration": 5.12,
+   "text": "injection. H"
+  },
+  {
+   "start": 3543.119,
+   "duration": 3.281,
+   "text": "so if there had been a SQL injection it"
+  },
+  {
+   "start": 3544.88,
+   "duration": 3.28,
+   "text": "would have told okay whatever review I"
+  },
+  {
+   "start": 3546.4,
+   "duration": 3.76,
+   "text": "had done previously there was no there"
+  },
+  {
+   "start": 3548.16,
+   "duration": 5.12,
+   "text": "was an SQL injection but there was no"
+  },
+  {
+   "start": 3550.16,
+   "duration": 5.679,
+   "text": "SQL queries or input sanitization"
+  },
+  {
+   "start": 3553.28,
+   "duration": 5.12,
+   "text": "uh it is telling"
+  },
+  {
+   "start": 3555.839,
+   "duration": 5.52,
+   "text": "uh it's fine I mean so it remembered the"
+  },
+  {
+   "start": 3558.4,
+   "duration": 5.52,
+   "text": "session it kind of took some points from"
+  },
+  {
+   "start": 3561.359,
+   "duration": 4.24,
+   "text": "there but there was never an SQL"
+  },
+  {
+   "start": 3563.92,
+   "duration": 3.76,
+   "text": "injection so it is telling it's never an"
+  },
+  {
+   "start": 3565.599,
+   "duration": 4.081,
+   "text": "SQL injection okay no worries that is"
+  },
+  {
+   "start": 3567.68,
+   "duration": 4.0,
+   "text": "not uh important but I hope you guys"
+  },
+  {
+   "start": 3569.68,
+   "duration": 4.72,
+   "text": "understood how these these things uh you"
+  },
+  {
+   "start": 3571.68,
+   "duration": 6.08,
+   "text": "know kind of works out. Yeah. So key"
+  },
+  {
+   "start": 3574.4,
+   "duration": 4.88,
+   "text": "takeaways and what is the next thing"
+  },
+  {
+   "start": 3577.76,
+   "duration": 3.28,
+   "text": "this is this was one of the most"
+  },
+  {
+   "start": 3579.28,
+   "duration": 3.92,
+   "text": "interesting lectures that I have"
+  },
+  {
+   "start": 3581.04,
+   "duration": 4.48,
+   "text": "recorded because you know lot of"
+  },
+  {
+   "start": 3583.2,
+   "duration": 4.96,
+   "text": "research and uh you know findings"
+  },
+  {
+   "start": 3585.52,
+   "duration": 4.72,
+   "text": "because everything is kind of new and it"
+  },
+  {
+   "start": 3588.16,
+   "duration": 5.36,
+   "text": "keeps changing like you know every week"
+  },
+  {
+   "start": 3590.24,
+   "duration": 5.68,
+   "text": "or every day. So uh it was interesting"
+  },
+  {
+   "start": 3593.52,
+   "duration": 4.319,
+   "text": "validating everything by myself felt"
+  },
+  {
+   "start": 3595.92,
+   "duration": 4.08,
+   "text": "really good you know I hope you also"
+  },
+  {
+   "start": 3597.839,
+   "duration": 5.041,
+   "text": "liked it. So what are the key takeaways?"
+  },
+  {
+   "start": 3600.0,
+   "duration": 6.0,
+   "text": "Four mechanisms. Yeah. Uh four questions"
+  },
+  {
+   "start": 3602.88,
+   "duration": 5.919,
+   "text": "always true. Claw.md learned memory is"
+  },
+  {
+   "start": 3606.0,
+   "duration": 5.839,
+   "text": "kind of said sessions you know and"
+  },
+  {
+   "start": 3608.799,
+   "duration": 6.081,
+   "text": "compaction. Setting sources must include"
+  },
+  {
+   "start": 3611.839,
+   "duration": 4.96,
+   "text": "project or to so that the clouded MD"
+  },
+  {
+   "start": 3614.88,
+   "duration": 4.56,
+   "text": "from the project your project kind of"
+  },
+  {
+   "start": 3616.799,
+   "duration": 5.681,
+   "text": "loads right every time you know agent"
+  },
+  {
+   "start": 3619.44,
+   "duration": 5.28,
+   "text": "session starts. Uh capture uh result"
+  },
+  {
+   "start": 3622.48,
+   "duration": 3.68,
+   "text": "messenger session ID on every run"
+  },
+  {
+   "start": 3624.72,
+   "duration": 3.92,
+   "text": "including the failed ones. That is how"
+  },
+  {
+   "start": 3626.16,
+   "duration": 7.6,
+   "text": "you resume instead of you know kind of"
+  },
+  {
+   "start": 3628.64,
+   "duration": 8.08,
+   "text": "paying twice. Uh sessions are keyed by"
+  },
+  {
+   "start": 3633.76,
+   "duration": 7.28,
+   "text": "CWD. Okay. So wrong directory, wrong"
+  },
+  {
+   "start": 3636.72,
+   "duration": 7.04,
+   "text": "machine or missing JSON L means silent"
+  },
+  {
+   "start": 3641.04,
+   "duration": 5.92,
+   "text": "fresh start. It's not an error. And"
+  },
+  {
+   "start": 3643.76,
+   "duration": 5.28,
+   "text": "compaction is a pressure valve. Okay."
+  },
+  {
+   "start": 3646.96,
+   "duration": 3.44,
+   "text": "It's not a plan. Don't you do not plan"
+  },
+  {
+   "start": 3649.04,
+   "duration": 4.079,
+   "text": "for compaction. And if you want"
+  },
+  {
+   "start": 3650.4,
+   "duration": 4.719,
+   "text": "compaction to be efficient, please put"
+  },
+  {
+   "start": 3653.119,
+   "duration": 3.68,
+   "text": "the constraints in the claw.md file."
+  },
+  {
+   "start": 3655.119,
+   "duration": 3.281,
+   "text": "Otherwise it will be a disaster. Yeah."
+  },
+  {
+   "start": 3656.799,
+   "duration": 5.76,
+   "text": "You know you'll lose a lot of precious"
+  },
+  {
+   "start": 3658.4,
+   "duration": 6.8,
+   "text": "information. So the next uh episode um"
+  },
+  {
+   "start": 3662.559,
+   "duration": 5.121,
+   "text": "you know we are going to learn about"
+  },
+  {
+   "start": 3665.2,
+   "duration": 4.0,
+   "text": "structured output that you can trust and"
+  },
+  {
+   "start": 3667.68,
+   "duration": 4.08,
+   "text": "it is also going to be a very"
+  },
+  {
+   "start": 3669.2,
+   "duration": 4.8,
+   "text": "interesting episode. So stay tuned. Um I"
+  },
+  {
+   "start": 3671.76,
+   "duration": 6.0,
+   "text": "hope you're enjoying the course. Till"
+  },
+  {
+   "start": 3674.0,
+   "duration": 6.0,
+   "text": "then have a nice day. Take care and"
+  },
+  {
+   "start": 3677.76,
+   "duration": 2.24,
+   "text": "bye-bye."
+  }
+ ]
+}

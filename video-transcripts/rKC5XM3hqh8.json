@@ -1,0 +1,6218 @@
+{
+ "video_id": "rKC5XM3hqh8",
+ "episode": "Ep 11",
+ "title": "Prompt Caching, Token Costs & Error Handling",
+ "lane": "ccdv-f",
+ "segments": [
+  {
+   "start": 1.439,
+   "duration": 5.201,
+   "text": "everyone and welcome to this lesson. So"
+  },
+  {
+   "start": 4.4,
+   "duration": 4.159,
+   "text": "in this lesson as you can see we will"
+  },
+  {
+   "start": 6.64,
+   "duration": 5.28,
+   "text": "learn one of the most important things"
+  },
+  {
+   "start": 8.559,
+   "duration": 6.96,
+   "text": "when dealing with agents or any kind of"
+  },
+  {
+   "start": 11.92,
+   "duration": 6.32,
+   "text": "an AI application that is cost right and"
+  },
+  {
+   "start": 15.519,
+   "duration": 5.84,
+   "text": "most of us do ignore that but it is one"
+  },
+  {
+   "start": 18.24,
+   "duration": 5.76,
+   "text": "of the most important factors that kind"
+  },
+  {
+   "start": 21.359,
+   "duration": 5.84,
+   "text": "of guide your efficiency."
+  },
+  {
+   "start": 24.0,
+   "duration": 6.8,
+   "text": "So what we have done we have built an"
+  },
+  {
+   "start": 27.199,
+   "duration": 5.601,
+   "text": "agent your your agent works I mean our"
+  },
+  {
+   "start": 30.8,
+   "duration": 5.2,
+   "text": "PR review agent that we have built in"
+  },
+  {
+   "start": 32.8,
+   "duration": 5.759,
+   "text": "this course it reviews PRs it catches"
+  },
+  {
+   "start": 36.0,
+   "duration": 4.8,
+   "text": "prompt injections it writes clean"
+  },
+  {
+   "start": 38.559,
+   "duration": 5.601,
+   "text": "structured findings and you're feeling"
+  },
+  {
+   "start": 40.8,
+   "duration": 6.96,
+   "text": "pretty good about it right but then you"
+  },
+  {
+   "start": 44.16,
+   "duration": 5.2,
+   "text": "check your u anthropic dashboard and by"
+  },
+  {
+   "start": 47.76,
+   "duration": 4.319,
+   "text": "the way anthropic dashboard we're going"
+  },
+  {
+   "start": 49.36,
+   "duration": 4.719,
+   "text": "to see uh in the next episode yeah when"
+  },
+  {
+   "start": 52.079,
+   "duration": 5.841,
+   "text": "we actually deploy the agent to a"
+  },
+  {
+   "start": 54.079,
+   "duration": 5.841,
+   "text": "managed runtime in claude. Yeah, there"
+  },
+  {
+   "start": 57.92,
+   "duration": 5.119,
+   "text": "uh in in your anthropic dashboard you"
+  },
+  {
+   "start": 59.92,
+   "duration": 5.279,
+   "text": "can see like what is the consumption"
+  },
+  {
+   "start": 63.039,
+   "duration": 4.561,
+   "text": "um all the tokens and all those things"
+  },
+  {
+   "start": 65.199,
+   "duration": 4.081,
+   "text": "related to your um agent which was built"
+  },
+  {
+   "start": 67.6,
+   "duration": 3.28,
+   "text": "using your cloud agent SDK. So we're"
+  },
+  {
+   "start": 69.28,
+   "duration": 3.839,
+   "text": "going to learn about that. So just hold"
+  },
+  {
+   "start": 70.88,
+   "duration": 4.64,
+   "text": "on to that thought. Yeah. So you can"
+  },
+  {
+   "start": 73.119,
+   "duration": 5.36,
+   "text": "check your anthropic dashboard and the"
+  },
+  {
+   "start": 75.52,
+   "duration": 6.16,
+   "text": "number looking back at you is you know"
+  },
+  {
+   "start": 78.479,
+   "duration": 4.96,
+   "text": "bigger than you expected. Yeah. And"
+  },
+  {
+   "start": 81.68,
+   "duration": 3.84,
+   "text": "here's another version of the story,"
+  },
+  {
+   "start": 83.439,
+   "duration": 5.68,
+   "text": "right? Your agents is, you know, running"
+  },
+  {
+   "start": 85.52,
+   "duration": 6.32,
+   "text": "great, but it fails silently sometimes,"
+  },
+  {
+   "start": 89.119,
+   "duration": 5.36,
+   "text": "like a 2:00 a.m. on on a Friday, and you"
+  },
+  {
+   "start": 91.84,
+   "duration": 5.36,
+   "text": "don't want your Friday nights to get uh,"
+  },
+  {
+   "start": 94.479,
+   "duration": 5.761,
+   "text": "you know, this much affected. Yeah."
+  },
+  {
+   "start": 97.2,
+   "duration": 6.559,
+   "text": "Nobody notices it you know maybe after"
+  },
+  {
+   "start": 100.24,
+   "duration": 6.239,
+   "text": "some time by Monday let's say but by"
+  },
+  {
+   "start": 103.759,
+   "duration": 4.801,
+   "text": "then you know three or five PR went"
+  },
+  {
+   "start": 106.479,
+   "duration": 5.361,
+   "text": "unreviewed due to that silent failure"
+  },
+  {
+   "start": 108.56,
+   "duration": 5.04,
+   "text": "which has kind of occurred in your agent"
+  },
+  {
+   "start": 111.84,
+   "duration": 3.599,
+   "text": "see building the agent is pretty cool"
+  },
+  {
+   "start": 113.6,
+   "duration": 4.479,
+   "text": "that is the fun part and we've been"
+  },
+  {
+   "start": 115.439,
+   "duration": 5.121,
+   "text": "doing it for like you know 10 episodes"
+  },
+  {
+   "start": 118.079,
+   "duration": 4.161,
+   "text": "till date yeah all the episode in every"
+  },
+  {
+   "start": 120.56,
+   "duration": 5.599,
+   "text": "episode we were kind of enhancing the"
+  },
+  {
+   "start": 122.24,
+   "duration": 6.239,
+   "text": "agent but the real kind of um thing"
+  },
+  {
+   "start": 126.159,
+   "duration": 5.921,
+   "text": "happens when your agent actually ships"
+  },
+  {
+   "start": 128.479,
+   "duration": 5.201,
+   "text": "to production. Yeah. But until it"
+  },
+  {
+   "start": 132.08,
+   "duration": 4.72,
+   "text": "shipped to production is just a cool"
+  },
+  {
+   "start": 133.68,
+   "duration": 5.68,
+   "text": "demo on your uh you know laptop and at"
+  },
+  {
+   "start": 136.8,
+   "duration": 5.28,
+   "text": "some point of time you have to make it"
+  },
+  {
+   "start": 139.36,
+   "duration": 4.879,
+   "text": "productive. Yeah. So that was you know"
+  },
+  {
+   "start": 142.08,
+   "duration": 5.28,
+   "text": "the the just the introduction to this"
+  },
+  {
+   "start": 144.239,
+   "duration": 5.121,
+   "text": "lesson that I wanted to just put it out"
+  },
+  {
+   "start": 147.36,
+   "duration": 5.36,
+   "text": "there. All right. So what is the game"
+  },
+  {
+   "start": 149.36,
+   "duration": 6.48,
+   "text": "plan? We are going to cover three big"
+  },
+  {
+   "start": 152.72,
+   "duration": 5.68,
+   "text": "pillars today and honestly every"
+  },
+  {
+   "start": 155.84,
+   "duration": 5.6,
+   "text": "production system needs all of these"
+  },
+  {
+   "start": 158.4,
+   "duration": 7.28,
+   "text": "pillars. Yeah. It's not or it's all."
+  },
+  {
+   "start": 161.44,
+   "duration": 7.439,
+   "text": "Yeah. So pillar one is cost. So cost is"
+  },
+  {
+   "start": 165.68,
+   "duration": 5.36,
+   "text": "directly related to tokens pricing tiers"
+  },
+  {
+   "start": 168.879,
+   "duration": 4.481,
+   "text": "and one of the most important things"
+  },
+  {
+   "start": 171.04,
+   "duration": 5.36,
+   "text": "that you may or might not have heard"
+  },
+  {
+   "start": 173.36,
+   "duration": 5.28,
+   "text": "that is known as prompt caching. I mean"
+  },
+  {
+   "start": 176.4,
+   "duration": 4.559,
+   "text": "prompt caching could be occurring but"
+  },
+  {
+   "start": 178.64,
+   "duration": 4.4,
+   "text": "you would not be knowing but in your"
+  },
+  {
+   "start": 180.959,
+   "duration": 3.841,
+   "text": "agents you need to understand the"
+  },
+  {
+   "start": 183.04,
+   "duration": 5.04,
+   "text": "importance of prompt caching that we're"
+  },
+  {
+   "start": 184.8,
+   "duration": 6.96,
+   "text": "going to learn and prompt caching um is"
+  },
+  {
+   "start": 188.08,
+   "duration": 5.68,
+   "text": "probably the single biggest li lever or"
+  },
+  {
+   "start": 191.76,
+   "duration": 3.759,
+   "text": "lever I don't know how to pronounce that"
+  },
+  {
+   "start": 193.76,
+   "duration": 3.839,
+   "text": "you have for you know for cutting your"
+  },
+  {
+   "start": 195.519,
+   "duration": 4.561,
+   "text": "API bill and we're going to learn about"
+  },
+  {
+   "start": 197.599,
+   "duration": 5.121,
+   "text": "that now so pillar number two is"
+  },
+  {
+   "start": 200.08,
+   "duration": 5.439,
+   "text": "observability so your agent makes"
+  },
+  {
+   "start": 202.72,
+   "duration": 5.04,
+   "text": "decision at runtime that probably you"
+  },
+  {
+   "start": 205.519,
+   "duration": 4.64,
+   "text": "didn't write right it's an intelligent"
+  },
+  {
+   "start": 207.76,
+   "duration": 3.92,
+   "text": "piece of software and it will decide at"
+  },
+  {
+   "start": 210.159,
+   "duration": 3.041,
+   "text": "some point of time I need to do this I"
+  },
+  {
+   "start": 211.68,
+   "duration": 4.32,
+   "text": "need to call that tool and you need to"
+  },
+  {
+   "start": 213.2,
+   "duration": 5.84,
+   "text": "be able to see what it did you know that"
+  },
+  {
+   "start": 216.0,
+   "duration": 5.2,
+   "text": "is known as observability because after"
+  },
+  {
+   "start": 219.04,
+   "duration": 3.52,
+   "text": "a number of steps you don't know what"
+  },
+  {
+   "start": 221.2,
+   "duration": 4.0,
+   "text": "actually broke because you are not"
+  },
+  {
+   "start": 222.56,
+   "duration": 6.239,
+   "text": "keeping keeping an eye on your agent at"
+  },
+  {
+   "start": 225.2,
+   "duration": 5.52,
+   "text": "what point what it decides to do. So"
+  },
+  {
+   "start": 228.799,
+   "duration": 4.401,
+   "text": "coming to pillar number three that is"
+  },
+  {
+   "start": 230.72,
+   "duration": 4.32,
+   "text": "debugging and error handling. So when"
+  },
+  {
+   "start": 233.2,
+   "duration": 4.08,
+   "text": "something goes wrong in an agentic"
+  },
+  {
+   "start": 235.04,
+   "duration": 4.88,
+   "text": "system, it is genuinely very difficult"
+  },
+  {
+   "start": 237.28,
+   "duration": 4.959,
+   "text": "to debug it than debugging a normal"
+  },
+  {
+   "start": 239.92,
+   "duration": 6.56,
+   "text": "software. And we'll talk about why and"
+  },
+  {
+   "start": 242.239,
+   "duration": 6.0,
+   "text": "what patterns actually work. Yeah. So if"
+  },
+  {
+   "start": 246.48,
+   "duration": 3.44,
+   "text": "you're going to think about it and I"
+  },
+  {
+   "start": 248.239,
+   "duration": 4.08,
+   "text": "actually"
+  },
+  {
+   "start": 249.92,
+   "duration": 4.879,
+   "text": "you know kind of relate this mental"
+  },
+  {
+   "start": 252.319,
+   "duration": 4.001,
+   "text": "model a lot. I like talking about food."
+  },
+  {
+   "start": 254.799,
+   "duration": 4.241,
+   "text": "So I'm going to give an example about a"
+  },
+  {
+   "start": 256.32,
+   "duration": 5.199,
+   "text": "restaurant. So pillar one is knowing you"
+  },
+  {
+   "start": 259.04,
+   "duration": 4.4,
+   "text": "know your food costs."
+  },
+  {
+   "start": 261.519,
+   "duration": 4.161,
+   "text": "Pillar two is having cameras in the"
+  },
+  {
+   "start": 263.44,
+   "duration": 5.759,
+   "text": "kitchen. And pillar three is knowing"
+  },
+  {
+   "start": 265.68,
+   "duration": 7.12,
+   "text": "what to do when the oven or your cooker"
+  },
+  {
+   "start": 269.199,
+   "duration": 5.921,
+   "text": "or whatever you know breaks midservice."
+  },
+  {
+   "start": 272.8,
+   "duration": 5.119,
+   "text": "But you need all three to have a"
+  },
+  {
+   "start": 275.12,
+   "duration": 5.84,
+   "text": "functioning restaurant. Right? So that"
+  },
+  {
+   "start": 277.919,
+   "duration": 4.401,
+   "text": "is how it works uh in a real world"
+  },
+  {
+   "start": 280.96,
+   "duration": 4.08,
+   "text": "perspective and that's how we're going"
+  },
+  {
+   "start": 282.32,
+   "duration": 6.56,
+   "text": "to figure it out. Okay. So where this"
+  },
+  {
+   "start": 285.04,
+   "duration": 6.32,
+   "text": "fits in the build. Now a quick thing"
+  },
+  {
+   "start": 288.88,
+   "duration": 4.64,
+   "text": "last episode or episode number 10 we"
+  },
+  {
+   "start": 291.36,
+   "duration": 4.559,
+   "text": "learned how to choose the right model."
+  },
+  {
+   "start": 293.52,
+   "duration": 4.8,
+   "text": "So we we learned that opus is for heavy"
+  },
+  {
+   "start": 295.919,
+   "duration": 5.121,
+   "text": "reasoning sonnet is the workhorse and"
+  },
+  {
+   "start": 298.32,
+   "duration": 5.439,
+   "text": "haiku is for cheap and fast and we"
+  },
+  {
+   "start": 301.04,
+   "duration": 4.96,
+   "text": "understood the tradeoff triangle that"
+  },
+  {
+   "start": 303.759,
+   "duration": 4.88,
+   "text": "comes with choosing each or either of"
+  },
+  {
+   "start": 306.0,
+   "duration": 5.36,
+   "text": "these models. Now today we zoom out from"
+  },
+  {
+   "start": 308.639,
+   "duration": 6.0,
+   "text": "the model itself and ask okay you picked"
+  },
+  {
+   "start": 311.36,
+   "duration": 5.839,
+   "text": "the model. Yeah. Now, how do you run it"
+  },
+  {
+   "start": 314.639,
+   "duration": 5.681,
+   "text": "responsibly? How do you keep costs under"
+  },
+  {
+   "start": 317.199,
+   "duration": 6.801,
+   "text": "control? I mean, see what is happening"
+  },
+  {
+   "start": 320.32,
+   "duration": 5.599,
+   "text": "and you know handle failures. Yeah. And"
+  },
+  {
+   "start": 324.0,
+   "duration": 3.759,
+   "text": "in the next episode, we're going to just"
+  },
+  {
+   "start": 325.919,
+   "duration": 4.72,
+   "text": "hand it off to anthropic and we're going"
+  },
+  {
+   "start": 327.759,
+   "duration": 5.201,
+   "text": "to see how managed agents work, how the"
+  },
+  {
+   "start": 330.639,
+   "duration": 4.641,
+   "text": "anthropic dashboards dashboard looks"
+  },
+  {
+   "start": 332.96,
+   "duration": 5.679,
+   "text": "like that I just teased in a few minutes"
+  },
+  {
+   "start": 335.28,
+   "duration": 5.359,
+   "text": "back. But you can't evaluate that option"
+  },
+  {
+   "start": 338.639,
+   "duration": 4.081,
+   "text": "in episode number 12 that is that we are"
+  },
+  {
+   "start": 340.639,
+   "duration": 4.801,
+   "text": "going to do. You can't evaluate that"
+  },
+  {
+   "start": 342.72,
+   "duration": 5.759,
+   "text": "until you understand what you are paying"
+  },
+  {
+   "start": 345.44,
+   "duration": 5.68,
+   "text": "for today. So this episode is like the"
+  },
+  {
+   "start": 348.479,
+   "duration": 5.28,
+   "text": "bridge between choosing the model and"
+  },
+  {
+   "start": 351.12,
+   "duration": 6.0,
+   "text": "then finally deploying your agent in the"
+  },
+  {
+   "start": 353.759,
+   "duration": 5.521,
+   "text": "managed runtime. So we have our uh repo"
+  },
+  {
+   "start": 357.12,
+   "duration": 3.76,
+   "text": "and PR review agent the project we've"
+  },
+  {
+   "start": 359.28,
+   "duration": 4.24,
+   "text": "been building since episode number one."
+  },
+  {
+   "start": 360.88,
+   "duration": 5.039,
+   "text": "It is it is kind of completely"
+  },
+  {
+   "start": 363.52,
+   "duration": 5.84,
+   "text": "featurerich till now. We don't have to"
+  },
+  {
+   "start": 365.919,
+   "duration": 6.081,
+   "text": "make any changes more here. just uh"
+  },
+  {
+   "start": 369.36,
+   "duration": 4.88,
+   "text": "these concepts of making it production"
+  },
+  {
+   "start": 372.0,
+   "duration": 4.319,
+   "text": "ready and we are zooming out and"
+  },
+  {
+   "start": 374.24,
+   "duration": 5.04,
+   "text": "understanding the economics and"
+  },
+  {
+   "start": 376.319,
+   "duration": 5.681,
+   "text": "operational reality of running what we"
+  },
+  {
+   "start": 379.28,
+   "duration": 5.68,
+   "text": "have already built. So your agent is"
+  },
+  {
+   "start": 382.0,
+   "duration": 5.12,
+   "text": "ready now ship it. That's the thing."
+  },
+  {
+   "start": 384.96,
+   "duration": 3.679,
+   "text": "Okay. So that is where it fits in the"
+  },
+  {
+   "start": 387.12,
+   "duration": 3.6,
+   "text": "build. We're not going to waste much"
+  },
+  {
+   "start": 388.639,
+   "duration": 4.241,
+   "text": "time and just quickly get things out of"
+  },
+  {
+   "start": 390.72,
+   "duration": 4.479,
+   "text": "the way. Now we have already understood"
+  },
+  {
+   "start": 392.88,
+   "duration": 3.92,
+   "text": "about tokens in the previous episode but"
+  },
+  {
+   "start": 395.199,
+   "duration": 3.601,
+   "text": "I'm going to just reiterate it so that"
+  },
+  {
+   "start": 396.8,
+   "duration": 3.76,
+   "text": "you would understand if you have missed"
+  },
+  {
+   "start": 398.8,
+   "duration": 5.519,
+   "text": "that episode or you are new on this then"
+  },
+  {
+   "start": 400.56,
+   "duration": 4.96,
+   "text": "you would not miss out on. So"
+  },
+  {
+   "start": 404.319,
+   "duration": 3.6,
+   "text": "we we're going to start with the"
+  },
+  {
+   "start": 405.52,
+   "duration": 5.6,
+   "text": "absolute foundation called tokens. Okay."
+  },
+  {
+   "start": 407.919,
+   "duration": 6.241,
+   "text": "So when you send text to claude a prompt"
+  },
+  {
+   "start": 411.12,
+   "duration": 5.68,
+   "text": "a tool definition a conversation history"
+  },
+  {
+   "start": 414.16,
+   "duration": 7.039,
+   "text": "Claude doesn't see words the way you and"
+  },
+  {
+   "start": 416.8,
+   "duration": 7.119,
+   "text": "I do. It sees tokens. And a token is um"
+  },
+  {
+   "start": 421.199,
+   "duration": 4.56,
+   "text": "it's like a chunk of text like if you"
+  },
+  {
+   "start": 423.919,
+   "duration": 6.0,
+   "text": "see here"
+  },
+  {
+   "start": 425.759,
+   "duration": 6.72,
+   "text": "um like this chunk of text in the word"
+  },
+  {
+   "start": 429.919,
+   "duration": 7.921,
+   "text": "authentication o is one token ent is one"
+  },
+  {
+   "start": 432.479,
+   "duration": 7.201,
+   "text": "token and eation is one token yeah it's"
+  },
+  {
+   "start": 437.84,
+   "duration": 4.0,
+   "text": "it's not just a single character but a"
+  },
+  {
+   "start": 439.68,
+   "duration": 5.6,
+   "text": "chunk somewhere in between it is and you"
+  },
+  {
+   "start": 441.84,
+   "duration": 6.639,
+   "text": "would not be able to exactly identify uh"
+  },
+  {
+   "start": 445.28,
+   "duration": 8.0,
+   "text": "I mean what a particular token is but"
+  },
+  {
+   "start": 448.479,
+   "duration": 7.361,
+   "text": "just to uh you know understand uh uh"
+  },
+  {
+   "start": 453.28,
+   "duration": 5.12,
+   "text": "this is how the token is framed by any"
+  },
+  {
+   "start": 455.84,
+   "duration": 4.96,
+   "text": "kind of LLM model."
+  },
+  {
+   "start": 458.4,
+   "duration": 4.56,
+   "text": "So tokens think of tokens to make it"
+  },
+  {
+   "start": 460.8,
+   "duration": 4.239,
+   "text": "simple think of tokens like syllables"
+  },
+  {
+   "start": 462.96,
+   "duration": 5.04,
+   "text": "right the word hello is one token the"
+  },
+  {
+   "start": 465.039,
+   "duration": 4.72,
+   "text": "word authentication uh and it's been"
+  },
+  {
+   "start": 468.0,
+   "duration": 4.479,
+   "text": "divided into three tokens and something"
+  },
+  {
+   "start": 469.759,
+   "duration": 5.601,
+   "text": "like that a line of Python code maybe"
+  },
+  {
+   "start": 472.479,
+   "duration": 5.681,
+   "text": "five to 15 tokens depending on how"
+  },
+  {
+   "start": 475.36,
+   "duration": 5.36,
+   "text": "verbose it is. Yeah. So the rough rule"
+  },
+  {
+   "start": 478.16,
+   "duration": 6.64,
+   "text": "of thumb is about four characters per"
+  },
+  {
+   "start": 480.72,
+   "duration": 6.879,
+   "text": "token you can just say in in English but"
+  },
+  {
+   "start": 484.8,
+   "duration": 5.519,
+   "text": "it really varies by language and content"
+  },
+  {
+   "start": 487.599,
+   "duration": 6.0,
+   "text": "type but for your understanding three to"
+  },
+  {
+   "start": 490.319,
+   "duration": 5.761,
+   "text": "four characters or five characters. Yeah"
+  },
+  {
+   "start": 493.599,
+   "duration": 4.401,
+   "text": "that's how you would actually classify."
+  },
+  {
+   "start": 496.08,
+   "duration": 4.48,
+   "text": "So when we talk about cost optimization"
+  },
+  {
+   "start": 498.0,
+   "duration": 5.12,
+   "text": "for an LLM application, what we are"
+  },
+  {
+   "start": 500.56,
+   "duration": 5.84,
+   "text": "really talking about is how do I get the"
+  },
+  {
+   "start": 503.12,
+   "duration": 5.28,
+   "text": "same quality output while sending and"
+  },
+  {
+   "start": 506.4,
+   "duration": 5.04,
+   "text": "receiving fewer tokens. So that should"
+  },
+  {
+   "start": 508.4,
+   "duration": 6.8,
+   "text": "be your end goal or at least we're going"
+  },
+  {
+   "start": 511.44,
+   "duration": 5.2,
+   "text": "to use cheaper tokens. Okay? And you"
+  },
+  {
+   "start": 515.2,
+   "duration": 3.68,
+   "text": "have to remember this thing is that"
+  },
+  {
+   "start": 516.64,
+   "duration": 5.68,
+   "text": "tokens are the fundamental billing unit"
+  },
+  {
+   "start": 518.88,
+   "duration": 7.28,
+   "text": "for every claw API call. Your total cost"
+  },
+  {
+   "start": 522.32,
+   "duration": 6.72,
+   "text": "is literally input tokens into input"
+  },
+  {
+   "start": 526.16,
+   "duration": 5.52,
+   "text": "price plus output tokens into output"
+  },
+  {
+   "start": 529.04,
+   "duration": 4.72,
+   "text": "price. You would always see a cost uh"
+  },
+  {
+   "start": 531.68,
+   "duration": 5.2,
+   "text": "that is associated with a model like"
+  },
+  {
+   "start": 533.76,
+   "duration": 6.0,
+   "text": "with H high coup it is uh $5 output"
+  },
+  {
+   "start": 536.88,
+   "duration": 5.84,
+   "text": "tokens, $1 input tokens. With the with"
+  },
+  {
+   "start": 539.76,
+   "duration": 4.8,
+   "text": "OPUS it is I think $25 output tokens and"
+  },
+  {
+   "start": 542.72,
+   "duration": 3.92,
+   "text": "something like that, right? So that is"
+  },
+  {
+   "start": 544.56,
+   "duration": 6.08,
+   "text": "what it is. That is the price you pay"
+  },
+  {
+   "start": 546.64,
+   "duration": 7.84,
+   "text": "for every LLM call that you do."
+  },
+  {
+   "start": 550.64,
+   "duration": 5.759,
+   "text": "Okay. Now the input output price gap. So"
+  },
+  {
+   "start": 554.48,
+   "duration": 3.68,
+   "text": "that is what I was just talking about"
+  },
+  {
+   "start": 556.399,
+   "duration": 3.761,
+   "text": "just a minute back. So there are two"
+  },
+  {
+   "start": 558.16,
+   "duration": 4.0,
+   "text": "types of tokens and the distinction is"
+  },
+  {
+   "start": 560.16,
+   "duration": 4.4,
+   "text": "it's the single most important thing for"
+  },
+  {
+   "start": 562.16,
+   "duration": 5.84,
+   "text": "understanding your costs. So input"
+  },
+  {
+   "start": 564.56,
+   "duration": 6.08,
+   "text": "tokens that's everything that you send."
+  },
+  {
+   "start": 568.0,
+   "duration": 4.399,
+   "text": "Yeah. Your system prompt, your"
+  },
+  {
+   "start": 570.64,
+   "duration": 4.8,
+   "text": "conversation history, your tool"
+  },
+  {
+   "start": 572.399,
+   "duration": 5.841,
+   "text": "definitions, the users message, all of"
+  },
+  {
+   "start": 575.44,
+   "duration": 4.72,
+   "text": "that tokenized is your input. And what"
+  },
+  {
+   "start": 578.24,
+   "duration": 4.719,
+   "text": "is the output tokens? It's everything"
+  },
+  {
+   "start": 580.16,
+   "duration": 5.2,
+   "text": "Claude generates and gives you back the"
+  },
+  {
+   "start": 582.959,
+   "duration": 5.521,
+   "text": "response text, the tool calls, the"
+  },
+  {
+   "start": 585.36,
+   "duration": 5.44,
+   "text": "reasoning that is your output. And here"
+  },
+  {
+   "start": 588.48,
+   "duration": 5.359,
+   "text": "is the thing that is you you should"
+  },
+  {
+   "start": 590.8,
+   "duration": 7.28,
+   "text": "notice is that output tokens cost"
+  },
+  {
+   "start": 593.839,
+   "duration": 7.12,
+   "text": "roughly five times more than input"
+  },
+  {
+   "start": 598.08,
+   "duration": 5.199,
+   "text": "tokens across every model tier. It's not"
+  },
+  {
+   "start": 600.959,
+   "duration": 5.921,
+   "text": "just for Opus, it's for Haiku as well."
+  },
+  {
+   "start": 603.279,
+   "duration": 6.161,
+   "text": "So if input tokens per million sorry or"
+  },
+  {
+   "start": 606.88,
+   "duration": 5.44,
+   "text": "I don't know the particular uh thing is"
+  },
+  {
+   "start": 609.44,
+   "duration": 5.44,
+   "text": "if it's $1 then output is $5. It's"
+  },
+  {
+   "start": 612.32,
+   "duration": 5.04,
+   "text": "something like that. And why is that?"
+  },
+  {
+   "start": 614.88,
+   "duration": 4.639,
+   "text": "Because reading text is computationally"
+  },
+  {
+   "start": 617.36,
+   "duration": 4.24,
+   "text": "very cheap."
+  },
+  {
+   "start": 619.519,
+   "duration": 5.841,
+   "text": "But the model processes the whole input"
+  },
+  {
+   "start": 621.6,
+   "duration": 6.32,
+   "text": "in one pass. But generating text"
+  },
+  {
+   "start": 625.36,
+   "duration": 5.919,
+   "text": "every single output token require its"
+  },
+  {
+   "start": 627.92,
+   "duration": 6.0,
+   "text": "own forward pass through the model. It's"
+  },
+  {
+   "start": 631.279,
+   "duration": 5.601,
+   "text": "just fundamentally you know more"
+  },
+  {
+   "start": 633.92,
+   "duration": 5.12,
+   "text": "expensive to create text than to just"
+  },
+  {
+   "start": 636.88,
+   "duration": 3.76,
+   "text": "read it because it is generating the"
+  },
+  {
+   "start": 639.04,
+   "duration": 4.479,
+   "text": "text. It's different from reading the"
+  },
+  {
+   "start": 640.64,
+   "duration": 6.0,
+   "text": "text. Reading is cheap but generating is"
+  },
+  {
+   "start": 643.519,
+   "duration": 5.681,
+   "text": "expensive. That is why more uh cost for"
+  },
+  {
+   "start": 646.64,
+   "duration": 6.8,
+   "text": "output tokens. So what does that mean"
+  },
+  {
+   "start": 649.2,
+   "duration": 6.879,
+   "text": "for you practically? Yeah, it means um"
+  },
+  {
+   "start": 653.44,
+   "duration": 5.68,
+   "text": "very chatty agent that writes long"
+  },
+  {
+   "start": 656.079,
+   "duration": 6.88,
+   "text": "detailed responses cost way more than"
+  },
+  {
+   "start": 659.12,
+   "duration": 5.68,
+   "text": "that's concise. Yeah. Is that the case?"
+  },
+  {
+   "start": 662.959,
+   "duration": 3.841,
+   "text": "Or a sub agent that returns a 10"
+  },
+  {
+   "start": 664.8,
+   "duration": 3.84,
+   "text": "paragraph summary when you asked for a"
+  },
+  {
+   "start": 666.8,
+   "duration": 5.12,
+   "text": "oneline answer that's burning your"
+  },
+  {
+   "start": 668.64,
+   "duration": 4.8,
+   "text": "budget on output tokens. Yeah, that is"
+  },
+  {
+   "start": 671.92,
+   "duration": 3.919,
+   "text": "true. And it is burning your output"
+  },
+  {
+   "start": 673.44,
+   "duration": 4.16,
+   "text": "tokens for no reason."
+  },
+  {
+   "start": 675.839,
+   "duration": 4.641,
+   "text": "Yeah. So that is the thing. Yeah, that"
+  },
+  {
+   "start": 677.6,
+   "duration": 5.2,
+   "text": "is why you should have a control over"
+  },
+  {
+   "start": 680.48,
+   "duration": 4.4,
+   "text": "what your agent or your LLM model"
+  },
+  {
+   "start": 682.8,
+   "duration": 3.76,
+   "text": "actually returns because it is returning"
+  },
+  {
+   "start": 684.88,
+   "duration": 3.6,
+   "text": "you unnecessary information. It is"
+  },
+  {
+   "start": 686.56,
+   "duration": 4.64,
+   "text": "hallucinating. It is generating"
+  },
+  {
+   "start": 688.48,
+   "duration": 4.56,
+   "text": "unnecessary text or something like that."
+  },
+  {
+   "start": 691.2,
+   "duration": 4.879,
+   "text": "Then your output tokens is getting"
+  },
+  {
+   "start": 693.04,
+   "duration": 4.88,
+   "text": "burnt. So that is why uh in all all of"
+  },
+  {
+   "start": 696.079,
+   "duration": 3.521,
+   "text": "my prompt engineering lectures also I"
+  },
+  {
+   "start": 697.92,
+   "duration": 4.64,
+   "text": "tell that you should have proper"
+  },
+  {
+   "start": 699.6,
+   "duration": 5.359,
+   "text": "guardrails which should instruct the pro"
+  },
+  {
+   "start": 702.56,
+   "duration": 4.0,
+   "text": "you know your LLM in your chat. I'm"
+  },
+  {
+   "start": 704.959,
+   "duration": 3.921,
+   "text": "talking about normal chat. Okay, I'm not"
+  },
+  {
+   "start": 706.56,
+   "duration": 4.16,
+   "text": "talking about agent. In your normal chat"
+  },
+  {
+   "start": 708.88,
+   "duration": 3.6,
+   "text": "also, whenever you are giving a message,"
+  },
+  {
+   "start": 710.72,
+   "duration": 3.84,
+   "text": "make sure that you give constraint at"
+  },
+  {
+   "start": 712.48,
+   "duration": 4.24,
+   "text": "the end that okay, I need the answer in"
+  },
+  {
+   "start": 714.56,
+   "duration": 5.68,
+   "text": "this format. Please don't go here and"
+  },
+  {
+   "start": 716.72,
+   "duration": 6.4,
+   "text": "there and um don't hallucinate and give"
+  },
+  {
+   "start": 720.24,
+   "duration": 5.52,
+   "text": "me something that I don't want."
+  },
+  {
+   "start": 723.12,
+   "duration": 5.2,
+   "text": "Yeah. And remember episode number seven,"
+  },
+  {
+   "start": 725.76,
+   "duration": 5.44,
+   "text": "I will just attach it to this part um"
+  },
+  {
+   "start": 728.32,
+   "duration": 5.6,
+   "text": "this particular video where we made uh"
+  },
+  {
+   "start": 731.2,
+   "duration": 5.68,
+   "text": "you know sub aents call submit finding."
+  },
+  {
+   "start": 733.92,
+   "duration": 5.68,
+   "text": "there was a tool right with structured"
+  },
+  {
+   "start": 736.88,
+   "duration": 6.959,
+   "text": "fields instead of handing the"
+  },
+  {
+   "start": 739.6,
+   "duration": 6.4,
+   "text": "coordinator a free text. So, so the sub"
+  },
+  {
+   "start": 743.839,
+   "duration": 5.361,
+   "text": "agents were returning kind of like free"
+  },
+  {
+   "start": 746.0,
+   "duration": 6.0,
+   "text": "text or a paragraph. But what we did is"
+  },
+  {
+   "start": 749.2,
+   "duration": 5.04,
+   "text": "we kind of made it structured. So when"
+  },
+  {
+   "start": 752.0,
+   "duration": 4.959,
+   "text": "you return back a structured response to"
+  },
+  {
+   "start": 754.24,
+   "duration": 5.279,
+   "text": "an LLM, it makes the reading also more"
+  },
+  {
+   "start": 756.959,
+   "duration": 5.361,
+   "text": "efficient as well as it returns the"
+  },
+  {
+   "start": 759.519,
+   "duration": 5.201,
+   "text": "output in a structured format."
+  },
+  {
+   "start": 762.32,
+   "duration": 5.44,
+   "text": "and structured output is almost always"
+  },
+  {
+   "start": 764.72,
+   "duration": 6.0,
+   "text": "shorter than free text. So remember free"
+  },
+  {
+   "start": 767.76,
+   "duration": 4.639,
+   "text": "text will cost you more because the LLM"
+  },
+  {
+   "start": 770.72,
+   "duration": 3.84,
+   "text": "can write anything in free text but if"
+  },
+  {
+   "start": 772.399,
+   "duration": 4.081,
+   "text": "you are specifying a structure for your"
+  },
+  {
+   "start": 774.56,
+   "duration": 4.48,
+   "text": "agent or in your chat wherever you are"
+  },
+  {
+   "start": 776.48,
+   "duration": 5.12,
+   "text": "using LLM it will always be costing you"
+  },
+  {
+   "start": 779.04,
+   "duration": 4.08,
+   "text": "fewer tokens. I hope that is making"
+  },
+  {
+   "start": 781.6,
+   "duration": 3.039,
+   "text": "sense and that is a very important thing"
+  },
+  {
+   "start": 783.12,
+   "duration": 3.839,
+   "text": "to understand because it will come in"
+  },
+  {
+   "start": 784.639,
+   "duration": 4.88,
+   "text": "the exam how do you actually work with"
+  },
+  {
+   "start": 786.959,
+   "duration": 5.761,
+   "text": "structured output and how it is directly"
+  },
+  {
+   "start": 789.519,
+   "duration": 6.481,
+   "text": "related to the cost. Okay. Now, model"
+  },
+  {
+   "start": 792.72,
+   "duration": 6.799,
+   "text": "pricing. I I don't want to actually u u"
+  },
+  {
+   "start": 796.0,
+   "duration": 5.44,
+   "text": "you know um waste much time here. Um so"
+  },
+  {
+   "start": 799.519,
+   "duration": 3.841,
+   "text": "we all know about the three models and"
+  },
+  {
+   "start": 801.44,
+   "duration": 4.639,
+   "text": "my previous episode had a detailed video"
+  },
+  {
+   "start": 803.36,
+   "duration": 5.2,
+   "text": "on that. So Haiku is the cheapest if you"
+  },
+  {
+   "start": 806.079,
+   "duration": 4.641,
+   "text": "just want grunt work, classification,"
+  },
+  {
+   "start": 808.56,
+   "duration": 3.519,
+   "text": "routing without thinking much like you"
+  },
+  {
+   "start": 810.72,
+   "duration": 4.08,
+   "text": "don't want the LLM to think much. It's"
+  },
+  {
+   "start": 812.079,
+   "duration": 4.801,
+   "text": "general automates or everyday tasks."
+  },
+  {
+   "start": 814.8,
+   "duration": 4.88,
+   "text": "Yeah. That doesn't need more thinking."
+  },
+  {
+   "start": 816.88,
+   "duration": 4.8,
+   "text": "Then go with haiku sonnet. the the"
+  },
+  {
+   "start": 819.68,
+   "duration": 3.36,
+   "text": "question you should ask yourself uh if"
+  },
+  {
+   "start": 821.68,
+   "duration": 3.599,
+   "text": "you want to choose between sonnet and"
+  },
+  {
+   "start": 823.04,
+   "duration": 4.4,
+   "text": "opus in one line I'm going to tell you"
+  },
+  {
+   "start": 825.279,
+   "duration": 4.481,
+   "text": "if you don't know about the workload or"
+  },
+  {
+   "start": 827.44,
+   "duration": 4.399,
+   "text": "if you don't know okay how much thinking"
+  },
+  {
+   "start": 829.76,
+   "duration": 4.319,
+   "text": "do I need do I need a intelligent model"
+  },
+  {
+   "start": 831.839,
+   "duration": 5.281,
+   "text": "or not in that case you always start"
+  },
+  {
+   "start": 834.079,
+   "duration": 4.88,
+   "text": "with sonnet yeah and if with sonnet you"
+  },
+  {
+   "start": 837.12,
+   "duration": 4.079,
+   "text": "are not able to achieve that then only"
+  },
+  {
+   "start": 838.959,
+   "duration": 5.68,
+   "text": "you upgrade with opus don't start with"
+  },
+  {
+   "start": 841.199,
+   "duration": 5.361,
+   "text": "opus as the default model yeah always if"
+  },
+  {
+   "start": 844.639,
+   "duration": 5.2,
+   "text": "you don't know what it is then always"
+  },
+  {
+   "start": 846.56,
+   "duration": 6.48,
+   "text": "start with sonet Yeah."
+  },
+  {
+   "start": 849.839,
+   "duration": 4.641,
+   "text": "Um so that is all. So uh if the task"
+  },
+  {
+   "start": 853.04,
+   "duration": 2.88,
+   "text": "complexity is medium you start with"
+  },
+  {
+   "start": 854.48,
+   "duration": 3.28,
+   "text": "sonnet. If or if you don't know the"
+  },
+  {
+   "start": 855.92,
+   "duration": 4.24,
+   "text": "complexity of the start start with set"
+  },
+  {
+   "start": 857.76,
+   "duration": 4.079,
+   "text": "and with opus you already know you know"
+  },
+  {
+   "start": 860.16,
+   "duration": 4.479,
+   "text": "that I need to use opus because the task"
+  },
+  {
+   "start": 861.839,
+   "duration": 4.721,
+   "text": "is already comp complicated. Either of"
+  },
+  {
+   "start": 864.639,
+   "duration": 3.121,
+   "text": "the time you you should reach opus when"
+  },
+  {
+   "start": 866.56,
+   "duration": 3.2,
+   "text": "you already know the task is"
+  },
+  {
+   "start": 867.76,
+   "duration": 5.199,
+   "text": "complicated. Either sonnet is not able"
+  },
+  {
+   "start": 869.76,
+   "duration": 5.12,
+   "text": "to do it or you already know by your own"
+  },
+  {
+   "start": 872.959,
+   "duration": 4.801,
+   "text": "understanding."
+  },
+  {
+   "start": 874.88,
+   "duration": 4.72,
+   "text": "So it's like don't hire senior engineers"
+  },
+  {
+   "start": 877.76,
+   "duration": 5.439,
+   "text": "to write boilerplate code something like"
+  },
+  {
+   "start": 879.6,
+   "duration": 5.84,
+   "text": "that. Um I also talked about that you"
+  },
+  {
+   "start": 883.199,
+   "duration": 4.64,
+   "text": "know in our episode 5 I'm just going to"
+  },
+  {
+   "start": 885.44,
+   "duration": 4.959,
+   "text": "give you a recap in episode 5 if you go"
+  },
+  {
+   "start": 887.839,
+   "duration": 6.721,
+   "text": "to uh sub aents I had changed my sub"
+  },
+  {
+   "start": 890.399,
+   "duration": 7.041,
+   "text": "agents um wait a minute it was not"
+  },
+  {
+   "start": 894.56,
+   "duration": 5.92,
+   "text": "episode 5 it was episode 6 I guess I'm"
+  },
+  {
+   "start": 897.44,
+   "duration": 7.92,
+   "text": "just going to go to sub aents now. Yeah."
+  },
+  {
+   "start": 900.48,
+   "duration": 8.96,
+   "text": "Uhhuh. Why can't I see"
+  },
+  {
+   "start": 905.36,
+   "duration": 6.32,
+   "text": "my sub agent or it was episode 9? Can I"
+  },
+  {
+   "start": 909.44,
+   "duration": 3.92,
+   "text": "just go to here?"
+  },
+  {
+   "start": 911.68,
+   "duration": 3.599,
+   "text": "Oh, whatever. I I don't remember in"
+  },
+  {
+   "start": 913.36,
+   "duration": 4.4,
+   "text": "which episode I actually changed the"
+  },
+  {
+   "start": 915.279,
+   "duration": 4.8,
+   "text": "model of my sub aents. But if you see"
+  },
+  {
+   "start": 917.76,
+   "duration": 5.199,
+   "text": "for my sub aents, I have kept it haiku"
+  },
+  {
+   "start": 920.079,
+   "duration": 4.241,
+   "text": "because um my sub aents had a proper"
+  },
+  {
+   "start": 922.959,
+   "duration": 2.88,
+   "text": "prompt. It has proper direction. And"
+  },
+  {
+   "start": 924.32,
+   "duration": 4.639,
+   "text": "there was nothing to think about and I"
+  },
+  {
+   "start": 925.839,
+   "duration": 5.201,
+   "text": "was unnecessarily spending more money on"
+  },
+  {
+   "start": 928.959,
+   "duration": 4.401,
+   "text": "uh keeping it sonnet or oppus. So I just"
+  },
+  {
+   "start": 931.04,
+   "duration": 4.88,
+   "text": "said you know my sub aents are doing"
+  },
+  {
+   "start": 933.36,
+   "duration": 5.44,
+   "text": "straightforward things so I'm just going"
+  },
+  {
+   "start": 935.92,
+   "duration": 4.64,
+   "text": "to change the model to haiku and uh my"
+  },
+  {
+   "start": 938.8,
+   "duration": 4.08,
+   "text": "coordinator can have the default model"
+  },
+  {
+   "start": 940.56,
+   "duration": 4.48,
+   "text": "which is opus or set right. So that is"
+  },
+  {
+   "start": 942.88,
+   "duration": 6.0,
+   "text": "how you need to choose and you need to"
+  },
+  {
+   "start": 945.04,
+   "duration": 6.88,
+   "text": "kind of um make the decision and if you"
+  },
+  {
+   "start": 948.88,
+   "duration": 5.759,
+   "text": "want more detailed uh you know things on"
+  },
+  {
+   "start": 951.92,
+   "duration": 5.599,
+   "text": "this particular choosing your model then"
+  },
+  {
+   "start": 954.639,
+   "duration": 5.041,
+   "text": "you can just watch my previous episode."
+  },
+  {
+   "start": 957.519,
+   "duration": 4.481,
+   "text": "Okay. Now let's come to prompt caching"
+  },
+  {
+   "start": 959.68,
+   "duration": 3.279,
+   "text": "which is the like one of the most"
+  },
+  {
+   "start": 962.0,
+   "duration": 4.959,
+   "text": "important things that we're going to"
+  },
+  {
+   "start": 962.959,
+   "duration": 6.56,
+   "text": "discuss in this um lesson. So if you"
+  },
+  {
+   "start": 966.959,
+   "duration": 5.761,
+   "text": "only remember one cost optimization from"
+  },
+  {
+   "start": 969.519,
+   "duration": 5.44,
+   "text": "this episode then make it this one."
+  },
+  {
+   "start": 972.72,
+   "duration": 3.919,
+   "text": "Okay. Because in a lot of interviews in"
+  },
+  {
+   "start": 974.959,
+   "duration": 4.481,
+   "text": "in in the exam you would be asked about"
+  },
+  {
+   "start": 976.639,
+   "duration": 5.2,
+   "text": "this and that you see about 90% discount"
+  },
+  {
+   "start": 979.44,
+   "duration": 3.92,
+   "text": "on tokens. Yes, that is true. And how"
+  },
+  {
+   "start": 981.839,
+   "duration": 3.12,
+   "text": "you would get it and how you are already"
+  },
+  {
+   "start": 983.36,
+   "duration": 3.52,
+   "text": "getting it we're going to discuss now."
+  },
+  {
+   "start": 984.959,
+   "duration": 3.761,
+   "text": "So think about what happens inside an"
+  },
+  {
+   "start": 986.88,
+   "duration": 4.48,
+   "text": "agentic loop. Just picture an agentic"
+  },
+  {
+   "start": 988.72,
+   "duration": 5.2,
+   "text": "loop right? Every time your agent makes"
+  },
+  {
+   "start": 991.36,
+   "duration": 4.479,
+   "text": "an API call,"
+  },
+  {
+   "start": 993.92,
+   "duration": 4.719,
+   "text": "uh just think about our own uh agent"
+  },
+  {
+   "start": 995.839,
+   "duration": 6.56,
+   "text": "that we have done, the PR review agent."
+  },
+  {
+   "start": 998.639,
+   "duration": 6.88,
+   "text": "Um now a PR review agent might make 10"
+  },
+  {
+   "start": 1002.399,
+   "duration": 5.521,
+   "text": "15 calls in a single run. So it sends"
+  },
+  {
+   "start": 1005.519,
+   "duration": 4.161,
+   "text": "the entire conversation context, the"
+  },
+  {
+   "start": 1007.92,
+   "duration": 5.039,
+   "text": "system prompt, the tool definition,"
+  },
+  {
+   "start": 1009.68,
+   "duration": 4.959,
+   "text": "everything, every call. Yeah. The full"
+  },
+  {
+   "start": 1012.959,
+   "duration": 4.641,
+   "text": "message and the history up to that"
+  },
+  {
+   "start": 1014.639,
+   "duration": 6.161,
+   "text": "point, it also sends that as well."
+  },
+  {
+   "start": 1017.6,
+   "duration": 6.8,
+   "text": "So that system prompt"
+  },
+  {
+   "start": 1020.8,
+   "duration": 5.68,
+   "text": "is in every call. Just imagine that the"
+  },
+  {
+   "start": 1024.4,
+   "duration": 4.559,
+   "text": "same thing we are sending in every call."
+  },
+  {
+   "start": 1026.48,
+   "duration": 7.439,
+   "text": "Those tool definition that agent sends"
+  },
+  {
+   "start": 1028.959,
+   "duration": 7.36,
+   "text": "in every call. Same every call. A big"
+  },
+  {
+   "start": 1033.919,
+   "duration": 5.361,
+   "text": "chunk of that conversation prefix same"
+  },
+  {
+   "start": 1036.319,
+   "duration": 6.161,
+   "text": "across consecutive calls. So without"
+  },
+  {
+   "start": 1039.28,
+   "duration": 6.159,
+   "text": "caching basically you are paying like"
+  },
+  {
+   "start": 1042.48,
+   "duration": 5.76,
+   "text": "full input token price for all of that"
+  },
+  {
+   "start": 1045.439,
+   "duration": 5.921,
+   "text": "repeated content every single time. It's"
+  },
+  {
+   "start": 1048.24,
+   "duration": 6.64,
+   "text": "like paying for a movie ticket every"
+  },
+  {
+   "start": 1051.36,
+   "duration": 6.24,
+   "text": "time you pause and unpause the film."
+  },
+  {
+   "start": 1054.88,
+   "duration": 5.039,
+   "text": "Yeah. So with prompt caching anthropic"
+  },
+  {
+   "start": 1057.6,
+   "duration": 3.84,
+   "text": "stores that repeated content server"
+  },
+  {
+   "start": 1059.919,
+   "duration": 3.601,
+   "text": "side."
+  },
+  {
+   "start": 1061.44,
+   "duration": 4.08,
+   "text": "So I I don't know if you guys know it"
+  },
+  {
+   "start": 1063.52,
+   "duration": 3.92,
+   "text": "but that is what prompt caching is. So"
+  },
+  {
+   "start": 1065.52,
+   "duration": 5.039,
+   "text": "with prompt caching anthropic actually"
+  },
+  {
+   "start": 1067.44,
+   "duration": 5.44,
+   "text": "stores that content server side when the"
+  },
+  {
+   "start": 1070.559,
+   "duration": 5.36,
+   "text": "next API call comes in and the prefix"
+  },
+  {
+   "start": 1072.88,
+   "duration": 6.0,
+   "text": "matches you get you get kind of roughly"
+  },
+  {
+   "start": 1075.919,
+   "duration": 5.281,
+   "text": "like 90% discount on those cacheed input"
+  },
+  {
+   "start": 1078.88,
+   "duration": 4.4,
+   "text": "tokens 90%."
+  },
+  {
+   "start": 1081.2,
+   "duration": 4.16,
+   "text": "So for our PR review agent which has"
+  },
+  {
+   "start": 1083.28,
+   "duration": 4.8,
+   "text": "non-trivial system prompt plus five"
+  },
+  {
+   "start": 1085.36,
+   "duration": 4.88,
+   "text": "custom tool definition plus sub aent"
+  },
+  {
+   "start": 1088.08,
+   "duration": 3.76,
+   "text": "definition that's probably you know"
+  },
+  {
+   "start": 1090.24,
+   "duration": 4.559,
+   "text": "these are all common things right this"
+  },
+  {
+   "start": 1091.84,
+   "duration": 6.0,
+   "text": "these can be cached by the way. So"
+  },
+  {
+   "start": 1094.799,
+   "duration": 6.481,
+   "text": "that's probably around 2,000 to 3,000"
+  },
+  {
+   "start": 1097.84,
+   "duration": 6.88,
+   "text": "tokens or more of fixed prefix. Yeah. So"
+  },
+  {
+   "start": 1101.28,
+   "duration": 6.08,
+   "text": "repeated 10 plus calls and it doesn't"
+  },
+  {
+   "start": 1104.72,
+   "duration": 4.319,
+   "text": "cache you are spending 20,000 to 30,000"
+  },
+  {
+   "start": 1107.36,
+   "duration": 3.92,
+   "text": "tokens"
+  },
+  {
+   "start": 1109.039,
+   "duration": 6.161,
+   "text": "by just sending the same thing over and"
+  },
+  {
+   "start": 1111.28,
+   "duration": 8.0,
+   "text": "over again. So caching turns that from a"
+  },
+  {
+   "start": 1115.2,
+   "duration": 5.52,
+   "text": "major cost center into almost nothing."
+  },
+  {
+   "start": 1119.28,
+   "duration": 2.8,
+   "text": "So the key fact that you need to"
+  },
+  {
+   "start": 1120.72,
+   "duration": 4.4,
+   "text": "remember over here is that prompt"
+  },
+  {
+   "start": 1122.08,
+   "duration": 6.32,
+   "text": "caching gives you 90% savings on"
+  },
+  {
+   "start": 1125.12,
+   "duration": 6.08,
+   "text": "repeated input tokens for agentic loops"
+  },
+  {
+   "start": 1128.4,
+   "duration": 4.32,
+   "text": "you know that make many API calls with"
+  },
+  {
+   "start": 1131.2,
+   "duration": 4.16,
+   "text": "the same system prompt and tool"
+  },
+  {
+   "start": 1132.72,
+   "duration": 5.6,
+   "text": "definitions. This is typically the"
+  },
+  {
+   "start": 1135.36,
+   "duration": 5.28,
+   "text": "single largest cost reduction that is"
+  },
+  {
+   "start": 1138.32,
+   "duration": 4.0,
+   "text": "available."
+  },
+  {
+   "start": 1140.64,
+   "duration": 3.52,
+   "text": "Okay, I hope that's making sense and I"
+  },
+  {
+   "start": 1142.32,
+   "duration": 4.16,
+   "text": "hope you understood what is prompt"
+  },
+  {
+   "start": 1144.16,
+   "duration": 5.68,
+   "text": "caching over here."
+  },
+  {
+   "start": 1146.48,
+   "duration": 5.199,
+   "text": "So how caching actually works. Okay. And"
+  },
+  {
+   "start": 1149.84,
+   "duration": 5.199,
+   "text": "uh I'm going to show you that. Yeah. And"
+  },
+  {
+   "start": 1151.679,
+   "duration": 8.24,
+   "text": "for that we have to kind of revisit our"
+  },
+  {
+   "start": 1155.039,
+   "duration": 6.561,
+   "text": "um episode one a bit because um to show"
+  },
+  {
+   "start": 1159.919,
+   "duration": 3.601,
+   "text": "that in action I need to use the raw"
+  },
+  {
+   "start": 1161.6,
+   "duration": 5.92,
+   "text": "messages API. So I'm just going to go is"
+  },
+  {
+   "start": 1163.52,
+   "duration": 6.32,
+   "text": "uh I'm just going to um do one thing is"
+  },
+  {
+   "start": 1167.52,
+   "duration": 5.2,
+   "text": "go to episode number one and open its"
+  },
+  {
+   "start": 1169.84,
+   "duration": 4.32,
+   "text": "snippets. There was a very simple um so"
+  },
+  {
+   "start": 1172.72,
+   "duration": 3.6,
+   "text": "I'm going to just start my IPython"
+  },
+  {
+   "start": 1174.16,
+   "duration": 4.32,
+   "text": "terminal while we are doing that. So cd"
+  },
+  {
+   "start": 1176.32,
+   "duration": 4.479,
+   "text": "episode01"
+  },
+  {
+   "start": 1178.48,
+   "duration": 4.88,
+   "text": "where and just start the ipython"
+  },
+  {
+   "start": 1180.799,
+   "duration": 4.321,
+   "text": "terminal over snippets uh md file for"
+  },
+  {
+   "start": 1183.36,
+   "duration": 4.24,
+   "text": "episode number one. If you see there was"
+  },
+  {
+   "start": 1185.12,
+   "duration": 6.64,
+   "text": "this very simple um you know this call"
+  },
+  {
+   "start": 1187.6,
+   "duration": 5.84,
+   "text": "to raw messages API. Yeah. And I just"
+  },
+  {
+   "start": 1191.76,
+   "duration": 4.08,
+   "text": "made a very small change over here."
+  },
+  {
+   "start": 1193.44,
+   "duration": 4.239,
+   "text": "Right. So in this system section we have"
+  },
+  {
+   "start": 1195.84,
+   "duration": 4.16,
+   "text": "our system prompt. You're a senior code"
+  },
+  {
+   "start": 1197.679,
+   "duration": 3.761,
+   "text": "reviewer. Very simple one. There is one"
+  },
+  {
+   "start": 1200.0,
+   "duration": 4.96,
+   "text": "thing that I've added here is called"
+  },
+  {
+   "start": 1201.44,
+   "duration": 5.76,
+   "text": "cache control and the type is ephemeral."
+  },
+  {
+   "start": 1204.96,
+   "duration": 5.04,
+   "text": "Yeah. So in the raw messages API you"
+  },
+  {
+   "start": 1207.2,
+   "duration": 5.92,
+   "text": "explicitly mark content blocks with a"
+  },
+  {
+   "start": 1210.0,
+   "duration": 6.08,
+   "text": "cache control flag like this. So the"
+  },
+  {
+   "start": 1213.12,
+   "duration": 4.64,
+   "text": "cache control tag says you know uh this"
+  },
+  {
+   "start": 1216.08,
+   "duration": 4.719,
+   "text": "particular tag it says everything from"
+  },
+  {
+   "start": 1217.76,
+   "duration": 6.72,
+   "text": "the start of this request up to and"
+  },
+  {
+   "start": 1220.799,
+   "duration": 6.161,
+   "text": "including this block you cache it. Yeah."
+  },
+  {
+   "start": 1224.48,
+   "duration": 5.76,
+   "text": "So on the next call if that prefix"
+  },
+  {
+   "start": 1226.96,
+   "duration": 6.8,
+   "text": "matches bite by bite it's called a cash"
+  },
+  {
+   "start": 1230.24,
+   "duration": 6.96,
+   "text": "hit 90% discount you would get a few"
+  },
+  {
+   "start": 1233.76,
+   "duration": 6.64,
+   "text": "rules to know the cash has roughly a 5"
+  },
+  {
+   "start": 1237.2,
+   "duration": 6.32,
+   "text": "minute TTL I mean TTL stands for time to"
+  },
+  {
+   "start": 1240.4,
+   "duration": 5.279,
+   "text": "live but every cash hit refreshes that"
+  },
+  {
+   "start": 1243.52,
+   "duration": 4.96,
+   "text": "particular timer so in an agentic loop"
+  },
+  {
+   "start": 1245.679,
+   "duration": 6.48,
+   "text": "where each call yeah happens seconds"
+  },
+  {
+   "start": 1248.48,
+   "duration": 6.8,
+   "text": "apart that cash kind of stays warm uh"
+  },
+  {
+   "start": 1252.159,
+   "duration": 6.801,
+   "text": "throughout the entire run of the agent"
+  },
+  {
+   "start": 1255.28,
+   "duration": 6.879,
+   "text": "And there is a minimum block size. Okay."
+  },
+  {
+   "start": 1258.96,
+   "duration": 5.92,
+   "text": "So I say uh on on the order of 1,024"
+  },
+  {
+   "start": 1262.159,
+   "duration": 5.601,
+   "text": "tokens for sonnet and opus before the"
+  },
+  {
+   "start": 1264.88,
+   "duration": 5.76,
+   "text": "cache actually kicks in. So your"
+  },
+  {
+   "start": 1267.76,
+   "duration": 5.36,
+   "text": "threeline system prompt might not"
+  },
+  {
+   "start": 1270.64,
+   "duration": 4.56,
+   "text": "actually qualify, but a real production"
+  },
+  {
+   "start": 1273.12,
+   "duration": 5.52,
+   "text": "system prompt with kind of tool"
+  },
+  {
+   "start": 1275.2,
+   "duration": 5.2,
+   "text": "definitions and review contracts almost"
+  },
+  {
+   "start": 1278.64,
+   "duration": 5.2,
+   "text": "certainly does. So it will obviously"
+  },
+  {
+   "start": 1280.4,
+   "duration": 6.72,
+   "text": "exceed the 1,024 token kind of a minimum"
+  },
+  {
+   "start": 1283.84,
+   "duration": 6.079,
+   "text": "cache um window"
+  },
+  {
+   "start": 1287.12,
+   "duration": 5.36,
+   "text": "and and the prefix rule uh is is very"
+  },
+  {
+   "start": 1289.919,
+   "duration": 4.24,
+   "text": "strict. The cache only works on content"
+  },
+  {
+   "start": 1292.48,
+   "duration": 4.0,
+   "text": "from the beginning of the request. You"
+  },
+  {
+   "start": 1294.159,
+   "duration": 4.801,
+   "text": "can't cache something in the middle."
+  },
+  {
+   "start": 1296.48,
+   "duration": 4.8,
+   "text": "Okay, that is why uh system prompts and"
+  },
+  {
+   "start": 1298.96,
+   "duration": 5.68,
+   "text": "tool definitions basically which"
+  },
+  {
+   "start": 1301.28,
+   "duration": 5.36,
+   "text": "naturally kind of sit at the top are"
+  },
+  {
+   "start": 1304.64,
+   "duration": 3.919,
+   "text": "ideal caching targets because they kind"
+  },
+  {
+   "start": 1306.64,
+   "duration": 4.159,
+   "text": "of like are the first things that goes"
+  },
+  {
+   "start": 1308.559,
+   "duration": 4.0,
+   "text": "to the LLM right your system prompts and"
+  },
+  {
+   "start": 1310.799,
+   "duration": 4.641,
+   "text": "your tool definitions and if you have"
+  },
+  {
+   "start": 1312.559,
+   "duration": 5.681,
+   "text": "skills your skill definitions as well"
+  },
+  {
+   "start": 1315.44,
+   "duration": 6.56,
+   "text": "now in the agent SDK so I'll just"
+  },
+  {
+   "start": 1318.24,
+   "duration": 6.16,
+   "text": "anyways uh you know just run it we don't"
+  },
+  {
+   "start": 1322.0,
+   "duration": 7.36,
+   "text": "have uh we anyways going to use the"
+  },
+  {
+   "start": 1324.4,
+   "duration": 8.399,
+   "text": "response in next uh thing. So"
+  },
+  {
+   "start": 1329.36,
+   "duration": 6.24,
+   "text": "client is not def defined. Oh uh I'm"
+  },
+  {
+   "start": 1332.799,
+   "duration": 4.88,
+   "text": "sorry I need to uh just going to clear"
+  },
+  {
+   "start": 1335.6,
+   "duration": 3.76,
+   "text": "this for a while and I I need to import"
+  },
+  {
+   "start": 1337.679,
+   "duration": 3.841,
+   "text": "these things as well. I just copied that"
+  },
+  {
+   "start": 1339.36,
+   "duration": 6.72,
+   "text": "part. So till here till here I'm just"
+  },
+  {
+   "start": 1341.52,
+   "duration": 6.8,
+   "text": "going to take it and run it out."
+  },
+  {
+   "start": 1346.08,
+   "duration": 4.079,
+   "text": "H okay so that that happened but I'm not"
+  },
+  {
+   "start": 1348.32,
+   "duration": 4.479,
+   "text": "printing anything. So that kind of call"
+  },
+  {
+   "start": 1350.159,
+   "duration": 5.201,
+   "text": "happened. Anyways uh here also I'm using"
+  },
+  {
+   "start": 1352.799,
+   "duration": 5.841,
+   "text": "claude haiku. I don't want to waste u"
+  },
+  {
+   "start": 1355.36,
+   "duration": 7.28,
+   "text": "money. If you remember, I started uh"
+  },
+  {
+   "start": 1358.64,
+   "duration": 7.6,
+   "text": "like two courses on a $5 API uh call"
+  },
+  {
+   "start": 1362.64,
+   "duration": 5.2,
+   "text": "limit. I it's still working. So,"
+  },
+  {
+   "start": 1366.24,
+   "duration": 4.72,
+   "text": "it's luck or something. But yeah, I'm"
+  },
+  {
+   "start": 1367.84,
+   "duration": 5.92,
+   "text": "also very careful about what um models I"
+  },
+  {
+   "start": 1370.96,
+   "duration": 5.04,
+   "text": "use and how much I'm using. So, yeah, $5"
+  },
+  {
+   "start": 1373.76,
+   "duration": 4.88,
+   "text": "is still working out. Okay. So in the"
+  },
+  {
+   "start": 1376.0,
+   "duration": 4.88,
+   "text": "agent SDK"
+  },
+  {
+   "start": 1378.64,
+   "duration": 5.039,
+   "text": "uh so this one we kind of tried on the"
+  },
+  {
+   "start": 1380.88,
+   "duration": 4.72,
+   "text": "raw messages API but on the agent SDK"
+  },
+  {
+   "start": 1383.679,
+   "duration": 4.401,
+   "text": "right you don't actually set the cache"
+  },
+  {
+   "start": 1385.6,
+   "duration": 4.72,
+   "text": "control manually. So if you go you would"
+  },
+  {
+   "start": 1388.08,
+   "duration": 5.36,
+   "text": "be thinking you know I would be setting"
+  },
+  {
+   "start": 1390.32,
+   "duration": 4.96,
+   "text": "the cache control maybe uh on the on the"
+  },
+  {
+   "start": 1393.44,
+   "duration": 5.84,
+   "text": "claw agent options that we have over"
+  },
+  {
+   "start": 1395.28,
+   "duration": 9.279,
+   "text": "here. So um but you will not be able to"
+  },
+  {
+   "start": 1399.28,
+   "duration": 7.12,
+   "text": "do that. Okay. So uh you cannot kind of"
+  },
+  {
+   "start": 1404.559,
+   "duration": 5.681,
+   "text": "uh use the cache control mechanism on"
+  },
+  {
+   "start": 1406.4,
+   "duration": 7.519,
+   "text": "the agent SDK. The A SDK manages the API"
+  },
+  {
+   "start": 1410.24,
+   "duration": 5.28,
+   "text": "calls for you and it can apply caching"
+  },
+  {
+   "start": 1413.919,
+   "duration": 4.161,
+   "text": "uh to system context and tool"
+  },
+  {
+   "start": 1415.52,
+   "duration": 5.039,
+   "text": "definitions under the hood. Okay, the"
+  },
+  {
+   "start": 1418.08,
+   "duration": 4.24,
+   "text": "mental model is same though. Yeah, your"
+  },
+  {
+   "start": 1420.559,
+   "duration": 4.801,
+   "text": "fixed prefix gets cheaper on the"
+  },
+  {
+   "start": 1422.32,
+   "duration": 5.599,
+   "text": "repeated calls. But on the uh raws API,"
+  },
+  {
+   "start": 1425.36,
+   "duration": 5.36,
+   "text": "you do it yourself. Yeah, you would have"
+  },
+  {
+   "start": 1427.919,
+   "duration": 4.561,
+   "text": "you specify it. uh you have full control"
+  },
+  {
+   "start": 1430.72,
+   "duration": 5.199,
+   "text": "if you want to cache or not but in agent"
+  },
+  {
+   "start": 1432.48,
+   "duration": 5.28,
+   "text": "SDK it automatically does it for you so"
+  },
+  {
+   "start": 1435.919,
+   "duration": 5.76,
+   "text": "you're kind of kind of giving up some"
+  },
+  {
+   "start": 1437.76,
+   "duration": 6.399,
+   "text": "control over convenience so um just just"
+  },
+  {
+   "start": 1441.679,
+   "duration": 7.521,
+   "text": "for the fact about the exam it kind of"
+  },
+  {
+   "start": 1444.159,
+   "duration": 7.12,
+   "text": "maps uh to actually um you know"
+  },
+  {
+   "start": 1449.2,
+   "duration": 4.88,
+   "text": "cost and token man management section of"
+  },
+  {
+   "start": 1451.279,
+   "duration": 4.88,
+   "text": "the uh claude certified developer exam"
+  },
+  {
+   "start": 1454.08,
+   "duration": 5.599,
+   "text": "this particular episode uh which is"
+  },
+  {
+   "start": 1456.159,
+   "duration": 5.52,
+   "text": "about 3 to 4% um the exam test whether"
+  },
+  {
+   "start": 1459.679,
+   "duration": 4.721,
+   "text": "you understand token pricing, input"
+  },
+  {
+   "start": 1461.679,
+   "duration": 4.401,
+   "text": "output symmetry and cost optimization"
+  },
+  {
+   "start": 1464.4,
+   "duration": 4.159,
+   "text": "strategies and all of these strategies"
+  },
+  {
+   "start": 1466.08,
+   "duration": 4.64,
+   "text": "that I'm talking about like the past two"
+  },
+  {
+   "start": 1468.559,
+   "duration": 3.761,
+   "text": "episodes including this is going to come"
+  },
+  {
+   "start": 1470.72,
+   "duration": 3.199,
+   "text": "in the exam. So don't think that I'm"
+  },
+  {
+   "start": 1472.32,
+   "duration": 4.64,
+   "text": "going to skip this and still I'm going"
+  },
+  {
+   "start": 1473.919,
+   "duration": 5.12,
+   "text": "to pass the exam. Um okay so that was"
+  },
+  {
+   "start": 1476.96,
+   "duration": 3.599,
+   "text": "how you have can implement caching"
+  },
+  {
+   "start": 1479.039,
+   "duration": 3.361,
+   "text": "actually. Yeah, still it's not"
+  },
+  {
+   "start": 1480.559,
+   "duration": 6.48,
+   "text": "completely theory. I try to incorporate"
+  },
+  {
+   "start": 1482.4,
+   "duration": 6.72,
+   "text": "some some kind of um fun for you. Yeah."
+  },
+  {
+   "start": 1487.039,
+   "duration": 3.921,
+   "text": "Okay. So tracking what you spend. Okay."
+  },
+  {
+   "start": 1489.12,
+   "duration": 4.48,
+   "text": "So you understand tokens, you understand"
+  },
+  {
+   "start": 1490.96,
+   "duration": 5.839,
+   "text": "caching now. Yeah. But how do you"
+  },
+  {
+   "start": 1493.6,
+   "duration": 5.439,
+   "text": "actually see what a run costs on the on"
+  },
+  {
+   "start": 1496.799,
+   "duration": 5.521,
+   "text": "the raw messages API? Every response"
+  },
+  {
+   "start": 1499.039,
+   "duration": 5.681,
+   "text": "includes a usage object. Yeah. And let's"
+  },
+  {
+   "start": 1502.32,
+   "duration": 4.8,
+   "text": "let's see the usage object. So I already"
+  },
+  {
+   "start": 1504.72,
+   "duration": 5.439,
+   "text": "ran uh this code, right? So I I will get"
+  },
+  {
+   "start": 1507.12,
+   "duration": 5.2,
+   "text": "the usage object. So uh I will I'll just"
+  },
+  {
+   "start": 1510.159,
+   "duration": 5.841,
+   "text": "kind of print that probably. Yeah. So"
+  },
+  {
+   "start": 1512.32,
+   "duration": 6.16,
+   "text": "I'm just going to say print um"
+  },
+  {
+   "start": 1516.0,
+   "duration": 4.559,
+   "text": "uh inside of it I'm going to say re it's"
+  },
+  {
+   "start": 1518.48,
+   "duration": 4.16,
+   "text": "a response"
+  },
+  {
+   "start": 1520.559,
+   "duration": 5.441,
+   "text": "response"
+  },
+  {
+   "start": 1522.64,
+   "duration": 6.0,
+   "text": "dot usage I guess that is the thing yeah"
+  },
+  {
+   "start": 1526.0,
+   "duration": 5.36,
+   "text": "so if I print this so it will give me a"
+  },
+  {
+   "start": 1528.64,
+   "duration": 4.32,
+   "text": "usage object so this is the usage block"
+  },
+  {
+   "start": 1531.36,
+   "duration": 3.36,
+   "text": "I would say there are a lot of blocks in"
+  },
+  {
+   "start": 1532.96,
+   "duration": 3.36,
+   "text": "our response right and we have already"
+  },
+  {
+   "start": 1534.72,
+   "duration": 4.88,
+   "text": "discussed about those so I'm not going"
+  },
+  {
+   "start": 1536.32,
+   "duration": 5.2,
+   "text": "to go inside that so um here if you see"
+  },
+  {
+   "start": 1539.6,
+   "duration": 4.64,
+   "text": "you will get all of these stuffs right"
+  },
+  {
+   "start": 1541.52,
+   "duration": 5.44,
+   "text": "you would say um you would see the input"
+  },
+  {
+   "start": 1544.24,
+   "duration": 4.72,
+   "text": "tokens. Yeah, it says 20. You would see"
+  },
+  {
+   "start": 1546.96,
+   "duration": 6.719,
+   "text": "the output tokens which is saying it is"
+  },
+  {
+   "start": 1548.96,
+   "duration": 8.16,
+   "text": "12. Um but see those last uh fields that"
+  },
+  {
+   "start": 1553.679,
+   "duration": 5.281,
+   "text": "you see um which is basically the cache"
+  },
+  {
+   "start": 1557.12,
+   "duration": 6.32,
+   "text": "fields where I can see the cache read"
+  },
+  {
+   "start": 1558.96,
+   "duration": 10.319,
+   "text": "input tokens that you see over here and"
+  },
+  {
+   "start": 1563.44,
+   "duration": 8.4,
+   "text": "one more is the cash read"
+  },
+  {
+   "start": 1569.279,
+   "duration": 4.481,
+   "text": "cash creation I'm not huh the cache"
+  },
+  {
+   "start": 1571.84,
+   "duration": 3.92,
+   "text": "creation input tokens and the cash read"
+  },
+  {
+   "start": 1573.76,
+   "duration": 4.88,
+   "text": "input token. So these are the two fields"
+  },
+  {
+   "start": 1575.76,
+   "duration": 6.08,
+   "text": "that you have to be concerned about for"
+  },
+  {
+   "start": 1578.64,
+   "duration": 6.159,
+   "text": "for now. So these fields uh cache"
+  },
+  {
+   "start": 1581.84,
+   "duration": 4.64,
+   "text": "created creation input tokens uh and"
+  },
+  {
+   "start": 1584.799,
+   "duration": 4.081,
+   "text": "cash freed input tokens. So what are"
+  },
+  {
+   "start": 1586.48,
+   "duration": 5.6,
+   "text": "they? So the cache creation input tokens"
+  },
+  {
+   "start": 1588.88,
+   "duration": 6.399,
+   "text": "tells you how many tokens were written"
+  },
+  {
+   "start": 1592.08,
+   "duration": 6.56,
+   "text": "to the cache on this call."
+  },
+  {
+   "start": 1595.279,
+   "duration": 5.601,
+   "text": "Okay, so that's a one-time cost slightly"
+  },
+  {
+   "start": 1598.64,
+   "duration": 5.36,
+   "text": "more expensive than the regular input."
+  },
+  {
+   "start": 1600.88,
+   "duration": 5.919,
+   "text": "And the cache read input tokens tells"
+  },
+  {
+   "start": 1604.0,
+   "duration": 4.559,
+   "text": "you how many were read from the cache."
+  },
+  {
+   "start": 1606.799,
+   "duration": 5.521,
+   "text": "So understand the difference. So the"
+  },
+  {
+   "start": 1608.559,
+   "duration": 6.321,
+   "text": "cache creation is how many uh you know"
+  },
+  {
+   "start": 1612.32,
+   "duration": 6.4,
+   "text": "um tokens were written into the cache"
+  },
+  {
+   "start": 1614.88,
+   "duration": 6.159,
+   "text": "and cash read is how many tokens were"
+  },
+  {
+   "start": 1618.72,
+   "duration": 5.199,
+   "text": "read from the cache"
+  },
+  {
+   "start": 1621.039,
+   "duration": 4.24,
+   "text": "and that is the 90% discount that I am"
+  },
+  {
+   "start": 1623.919,
+   "duration": 3.201,
+   "text": "talking about. Understand the"
+  },
+  {
+   "start": 1625.279,
+   "duration": 3.201,
+   "text": "difference. Okay. Just it's not like you"
+  },
+  {
+   "start": 1627.12,
+   "duration": 2.96,
+   "text": "are sending one request and you're"
+  },
+  {
+   "start": 1628.48,
+   "duration": 2.88,
+   "text": "getting 90% discount. where you are"
+  },
+  {
+   "start": 1630.08,
+   "duration": 3.599,
+   "text": "getting that is also important to"
+  },
+  {
+   "start": 1631.36,
+   "duration": 5.28,
+   "text": "understand and for now if you see it is"
+  },
+  {
+   "start": 1633.679,
+   "duration": 4.721,
+   "text": "zero because for I have already told"
+  },
+  {
+   "start": 1636.64,
+   "duration": 4.0,
+   "text": "that the limit is thousand at least"
+  },
+  {
+   "start": 1638.4,
+   "duration": 5.6,
+   "text": "thousand tokens you have to write uh it"
+  },
+  {
+   "start": 1640.64,
+   "duration": 6.24,
+   "text": "it is needed to write into the cache u"
+  },
+  {
+   "start": 1644.0,
+   "duration": 4.48,
+   "text": "and probably it will need uh you know uh"
+  },
+  {
+   "start": 1646.88,
+   "duration": 4.88,
+   "text": "you'll not see that on the first call"
+  },
+  {
+   "start": 1648.48,
+   "duration": 6.16,
+   "text": "itself even if it writes um on the first"
+  },
+  {
+   "start": 1651.76,
+   "duration": 7.279,
+   "text": "call you see the cache creation hit but"
+  },
+  {
+   "start": 1654.64,
+   "duration": 6.72,
+   "text": "here um it is actually very less so it's"
+  },
+  {
+   "start": 1659.039,
+   "duration": 4.24,
+   "text": "not creating the cache. But in a general"
+  },
+  {
+   "start": 1661.36,
+   "duration": 3.6,
+   "text": "scenario"
+  },
+  {
+   "start": 1663.279,
+   "duration": 5.921,
+   "text": "uh in the first call you will see the"
+  },
+  {
+   "start": 1664.96,
+   "duration": 7.92,
+   "text": "cash creation hit. Okay. One um on calls"
+  },
+  {
+   "start": 1669.2,
+   "duration": 6.32,
+   "text": "two through above you know you see the"
+  },
+  {
+   "start": 1672.88,
+   "duration": 4.64,
+   "text": "same amount shift to cash red because"
+  },
+  {
+   "start": 1675.52,
+   "duration": 4.32,
+   "text": "the same consecutive calls will happen"
+  },
+  {
+   "start": 1677.52,
+   "duration": 5.68,
+   "text": "after the first call. For example at"
+  },
+  {
+   "start": 1679.84,
+   "duration": 4.959,
+   "text": "that time if the prefix matches yeah in"
+  },
+  {
+   "start": 1683.2,
+   "duration": 4.079,
+   "text": "that case it will be read from the"
+  },
+  {
+   "start": 1684.799,
+   "duration": 5.36,
+   "text": "cache. So that is why the cache red"
+  },
+  {
+   "start": 1687.279,
+   "duration": 4.4,
+   "text": "input tokens will get populated. So how"
+  },
+  {
+   "start": 1690.159,
+   "duration": 4.24,
+   "text": "many tokens were read from the cache"
+  },
+  {
+   "start": 1691.679,
+   "duration": 6.24,
+   "text": "basically on the subsequent calls."
+  },
+  {
+   "start": 1694.399,
+   "duration": 5.52,
+   "text": "Yeah. So um that that is the thing."
+  },
+  {
+   "start": 1697.919,
+   "duration": 5.041,
+   "text": "Yeah. So but but you cannot do this on"
+  },
+  {
+   "start": 1699.919,
+   "duration": 4.88,
+   "text": "the SDK. Um on the agent SDK you don't"
+  },
+  {
+   "start": 1702.96,
+   "duration": 3.68,
+   "text": "get this per call usage breakdown"
+  },
+  {
+   "start": 1704.799,
+   "duration": 4.0,
+   "text": "directly from the query method that we"
+  },
+  {
+   "start": 1706.64,
+   "duration": 4.399,
+   "text": "use in the agent SDK. The SDK runs the"
+  },
+  {
+   "start": 1708.799,
+   "duration": 4.24,
+   "text": "agentic loop for you which means the"
+  },
+  {
+   "start": 1711.039,
+   "duration": 4.0,
+   "text": "individual API calls and the usage"
+  },
+  {
+   "start": 1713.039,
+   "duration": 3.52,
+   "text": "objects are kind of abstracted away. So"
+  },
+  {
+   "start": 1715.039,
+   "duration": 4.481,
+   "text": "that's the trade-off for convenience"
+  },
+  {
+   "start": 1716.559,
+   "duration": 6.081,
+   "text": "that I already told for but the thing is"
+  },
+  {
+   "start": 1719.52,
+   "duration": 6.0,
+   "text": "for per run per run cost visibility in"
+  },
+  {
+   "start": 1722.64,
+   "duration": 5.12,
+   "text": "SDK if you want your best options are"
+  },
+  {
+   "start": 1725.52,
+   "duration": 4.56,
+   "text": "the anthropic console dashboard that"
+  },
+  {
+   "start": 1727.76,
+   "duration": 5.279,
+   "text": "I've been talking about uh a few times"
+  },
+  {
+   "start": 1730.08,
+   "duration": 5.199,
+   "text": "in this uh lesson which uh the that"
+  },
+  {
+   "start": 1733.039,
+   "duration": 5.441,
+   "text": "dashboard shows you know aggregated"
+  },
+  {
+   "start": 1735.279,
+   "duration": 6.4,
+   "text": "usage by API key and if you need"
+  },
+  {
+   "start": 1738.48,
+   "duration": 5.52,
+   "text": "granular per run tracking um"
+  },
+  {
+   "start": 1741.679,
+   "duration": 6.24,
+   "text": "instrumenting at the API layer or using"
+  },
+  {
+   "start": 1744.0,
+   "duration": 6.799,
+   "text": "managed agents audit trail um is also"
+  },
+  {
+   "start": 1747.919,
+   "duration": 5.12,
+   "text": "you can something you can do uh but"
+  },
+  {
+   "start": 1750.799,
+   "duration": 3.841,
+   "text": "we'll see all about those concepts in"
+  },
+  {
+   "start": 1753.039,
+   "duration": 3.76,
+   "text": "episode number 12 which is the next"
+  },
+  {
+   "start": 1754.64,
+   "duration": 4.56,
+   "text": "episode yeah for now just understand"
+  },
+  {
+   "start": 1756.799,
+   "duration": 4.961,
+   "text": "that using the ROMs API you can do this"
+  },
+  {
+   "start": 1759.2,
+   "duration": 5.76,
+   "text": "directly but with agents uh you know"
+  },
+  {
+   "start": 1761.76,
+   "duration": 4.96,
+   "text": "with SDK agent SDK it's a little bit you"
+  },
+  {
+   "start": 1764.96,
+   "duration": 4.56,
+   "text": "know abstracted"
+  },
+  {
+   "start": 1766.72,
+   "duration": 6.079,
+   "text": "but it also has its advantages so I hope"
+  },
+  {
+   "start": 1769.52,
+   "duration": 6.0,
+   "text": "that is making sense to you yeah and if"
+  },
+  {
+   "start": 1772.799,
+   "duration": 4.48,
+   "text": "you if you see uh this is how you would"
+  },
+  {
+   "start": 1775.52,
+   "duration": 5.44,
+   "text": "the the red input tokens would be"
+  },
+  {
+   "start": 1777.279,
+   "duration": 6.64,
+   "text": "populated after the subsequent calls. Um"
+  },
+  {
+   "start": 1780.96,
+   "duration": 7.68,
+   "text": "so that is a thing. Now the SDK metering"
+  },
+  {
+   "start": 1783.919,
+   "duration": 8.321,
+   "text": "story what you actually pay. So this is"
+  },
+  {
+   "start": 1788.64,
+   "duration": 6.48,
+   "text": "the slide where we put on our confirmed"
+  },
+  {
+   "start": 1792.24,
+   "duration": 5.28,
+   "text": "versus rumored hat. We always check"
+  },
+  {
+   "start": 1795.12,
+   "duration": 5.039,
+   "text": "that. We always do fact checks before we"
+  },
+  {
+   "start": 1797.52,
+   "duration": 5.039,
+   "text": "actually I I I tell something because"
+  },
+  {
+   "start": 1800.159,
+   "duration": 5.681,
+   "text": "the business side of the agent SDK has"
+  },
+  {
+   "start": 1802.559,
+   "duration": 6.961,
+   "text": "been a little bit messy and let's be"
+  },
+  {
+   "start": 1805.84,
+   "duration": 5.6,
+   "text": "precise about what's what. So what is"
+  },
+  {
+   "start": 1809.52,
+   "duration": 3.519,
+   "text": "confirmed? Let's first talk about the"
+  },
+  {
+   "start": 1811.44,
+   "duration": 3.76,
+   "text": "confirmed things. So so the cloud agent"
+  },
+  {
+   "start": 1813.039,
+   "duration": 4.64,
+   "text": "SDK itself is free. You need to"
+  },
+  {
+   "start": 1815.2,
+   "duration": 4.88,
+   "text": "understand that there is no license, no"
+  },
+  {
+   "start": 1817.679,
+   "duration": 4.321,
+   "text": "subscription, no SDK fee. You install"
+  },
+  {
+   "start": 1820.08,
+   "duration": 4.4,
+   "text": "it, you use it and you don't pay for the"
+  },
+  {
+   "start": 1822.0,
+   "duration": 4.96,
+   "text": "SDK. So if someone says that the cloud"
+  },
+  {
+   "start": 1824.48,
+   "duration": 4.96,
+   "text": "agent SDK learning the cloud agent SDK"
+  },
+  {
+   "start": 1826.96,
+   "duration": 4.719,
+   "text": "requires money that person probably"
+  },
+  {
+   "start": 1829.44,
+   "duration": 7.04,
+   "text": "refers to the API calls that you would"
+  },
+  {
+   "start": 1831.679,
+   "duration": 6.48,
+   "text": "do to the LLM model. That's it. That"
+  },
+  {
+   "start": 1836.48,
+   "duration": 3.36,
+   "text": "that is what the second confirmed thing"
+  },
+  {
+   "start": 1838.159,
+   "duration": 4.561,
+   "text": "is. You pay per token through the"
+  },
+  {
+   "start": 1839.84,
+   "duration": 5.92,
+   "text": "anthropic API. Same pricing whether"
+  },
+  {
+   "start": 1842.72,
+   "duration": 6.4,
+   "text": "those tokens come from the raw messages"
+  },
+  {
+   "start": 1845.76,
+   "duration": 5.68,
+   "text": "API or from the SDKs query method. So if"
+  },
+  {
+   "start": 1849.12,
+   "duration": 4.08,
+   "text": "you are running the agentic loop you are"
+  },
+  {
+   "start": 1851.44,
+   "duration": 3.839,
+   "text": "running it yourself manually or the"
+  },
+  {
+   "start": 1853.2,
+   "duration": 4.24,
+   "text": "agent runs for you a token is always a"
+  },
+  {
+   "start": 1855.279,
+   "duration": 4.081,
+   "text": "token. So that is the second confirmed"
+  },
+  {
+   "start": 1857.44,
+   "duration": 5.28,
+   "text": "thing. Third confirmed thing is"
+  },
+  {
+   "start": 1859.36,
+   "duration": 4.96,
+   "text": "interactive usage. So claude AI claude"
+  },
+  {
+   "start": 1862.72,
+   "duration": 3.92,
+   "text": "code"
+  },
+  {
+   "start": 1864.32,
+   "duration": 5.68,
+   "text": "what you that you use in your terminal"
+  },
+  {
+   "start": 1866.64,
+   "duration": 5.6,
+   "text": "is completely separate from API billing."
+  },
+  {
+   "start": 1870.0,
+   "duration": 4.48,
+   "text": "Okay. So your pro subscription or your"
+  },
+  {
+   "start": 1872.24,
+   "duration": 5.439,
+   "text": "max subscription whatever plan you are"
+  },
+  {
+   "start": 1874.48,
+   "duration": 6.48,
+   "text": "on that covers that claude code thing."
+  },
+  {
+   "start": 1877.679,
+   "duration": 5.441,
+   "text": "Yeah. And uh this is your API billing is"
+  },
+  {
+   "start": 1880.96,
+   "duration": 4.079,
+   "text": "separate. Whatever this API calls we are"
+  },
+  {
+   "start": 1883.12,
+   "duration": 4.799,
+   "text": "doing right this is separate. So you"
+  },
+  {
+   "start": 1885.039,
+   "duration": 5.041,
+   "text": "have to you know recharge your credits"
+  },
+  {
+   "start": 1887.919,
+   "duration": 4.161,
+   "text": "that and that how to do all that I have"
+  },
+  {
+   "start": 1890.08,
+   "duration": 4.16,
+   "text": "already covered in lesson number one."
+  },
+  {
+   "start": 1892.08,
+   "duration": 3.76,
+   "text": "You have to go to anthropic platform"
+  },
+  {
+   "start": 1894.24,
+   "duration": 5.2,
+   "text": "anthropic console and there you have to"
+  },
+  {
+   "start": 1895.84,
+   "duration": 7.36,
+   "text": "recharge your credits. um"
+  },
+  {
+   "start": 1899.44,
+   "duration": 5.92,
+   "text": "that is thing and one onhold thing that"
+  },
+  {
+   "start": 1903.2,
+   "duration": 3.92,
+   "text": "I'm telling you is that on June 15th"
+  },
+  {
+   "start": 1905.36,
+   "duration": 5.6,
+   "text": "2026"
+  },
+  {
+   "start": 1907.12,
+   "duration": 7.52,
+   "text": "um Anthropic announced a metering split"
+  },
+  {
+   "start": 1910.96,
+   "duration": 5.92,
+   "text": "separating agent SDK usage from raw API"
+  },
+  {
+   "start": 1914.64,
+   "duration": 5.44,
+   "text": "usage into different billing tiers. That"
+  },
+  {
+   "start": 1916.88,
+   "duration": 6.48,
+   "text": "announcement was then kind of like you"
+  },
+  {
+   "start": 1920.08,
+   "duration": 4.88,
+   "text": "know I don't know what happened but no"
+  },
+  {
+   "start": 1923.36,
+   "duration": 4.24,
+   "text": "replacement has been announced as of"
+  },
+  {
+   "start": 1924.96,
+   "duration": 5.199,
+   "text": "today. So the net effect right now don't"
+  },
+  {
+   "start": 1927.6,
+   "duration": 4.799,
+   "text": "get confused. You pay for per token as"
+  },
+  {
+   "start": 1930.159,
+   "duration": 4.961,
+   "text": "of now. That's it. Don't over complicate"
+  },
+  {
+   "start": 1932.399,
+   "duration": 5.921,
+   "text": "it. This is just forformational purpose."
+  },
+  {
+   "start": 1935.12,
+   "duration": 5.679,
+   "text": "Okay. So um for now just remember a"
+  },
+  {
+   "start": 1938.32,
+   "duration": 5.28,
+   "text": "token is a token. Whatever API calls you"
+  },
+  {
+   "start": 1940.799,
+   "duration": 4.401,
+   "text": "would make in your SDK or your ROM SS"
+  },
+  {
+   "start": 1943.6,
+   "duration": 3.439,
+   "text": "API. You have to recharge your credits"
+  },
+  {
+   "start": 1945.2,
+   "duration": 3.92,
+   "text": "and generate your API key. That is the"
+  },
+  {
+   "start": 1947.039,
+   "duration": 3.681,
+   "text": "way to do it. Your cloud code and"
+  },
+  {
+   "start": 1949.12,
+   "duration": 4.96,
+   "text": "everything remains separate on your"
+  },
+  {
+   "start": 1950.72,
+   "duration": 4.64,
+   "text": "subscription plan. Okay. I hope that is"
+  },
+  {
+   "start": 1954.08,
+   "duration": 4.0,
+   "text": "making sense."
+  },
+  {
+   "start": 1955.36,
+   "duration": 5.76,
+   "text": "So don't get confused. If you have any"
+  },
+  {
+   "start": 1958.08,
+   "duration": 5.92,
+   "text": "questions, please let me know. Okay. Now"
+  },
+  {
+   "start": 1961.12,
+   "duration": 5.6,
+   "text": "coming to observability, opening the"
+  },
+  {
+   "start": 1964.0,
+   "duration": 4.08,
+   "text": "black box. Now pillar number two. Now we"
+  },
+  {
+   "start": 1966.72,
+   "duration": 3.76,
+   "text": "done with pillar number one. Pillar"
+  },
+  {
+   "start": 1968.08,
+   "duration": 5.599,
+   "text": "number two. And this one is honestly"
+  },
+  {
+   "start": 1970.48,
+   "duration": 5.6,
+   "text": "it's it's the one most people skip when"
+  },
+  {
+   "start": 1973.679,
+   "duration": 5.761,
+   "text": "they are building agents and it's the"
+  },
+  {
+   "start": 1976.08,
+   "duration": 6.4,
+   "text": "one they regret skipping first."
+  },
+  {
+   "start": 1979.44,
+   "duration": 4.64,
+   "text": "Okay. And to your surprise, I have"
+  },
+  {
+   "start": 1982.48,
+   "duration": 2.559,
+   "text": "already covered this by the I've already"
+  },
+  {
+   "start": 1984.08,
+   "duration": 3.199,
+   "text": "we have already talked about"
+  },
+  {
+   "start": 1985.039,
+   "duration": 6.081,
+   "text": "observability in one of my previous"
+  },
+  {
+   "start": 1987.279,
+   "duration": 5.841,
+   "text": "episodes. Yeah. So here's the thing"
+  },
+  {
+   "start": 1991.12,
+   "duration": 4.32,
+   "text": "about normal software, right? You write"
+  },
+  {
+   "start": 1993.12,
+   "duration": 4.72,
+   "text": "a function, it takes input, does some"
+  },
+  {
+   "start": 1995.44,
+   "duration": 4.32,
+   "text": "logic, returns output. If something goes"
+  },
+  {
+   "start": 1997.84,
+   "duration": 3.839,
+   "text": "wrong, you add a log line and you then"
+  },
+  {
+   "start": 1999.76,
+   "duration": 4.08,
+   "text": "you rerun it and you see exactly where"
+  },
+  {
+   "start": 2001.679,
+   "duration": 4.561,
+   "text": "it broke. It's very predictable and it"
+  },
+  {
+   "start": 2003.84,
+   "duration": 5.199,
+   "text": "is rep reproducible."
+  },
+  {
+   "start": 2006.24,
+   "duration": 4.96,
+   "text": "Right? Agentic software is different"
+  },
+  {
+   "start": 2009.039,
+   "duration": 4.721,
+   "text": "from it. So claude decides which tools"
+  },
+  {
+   "start": 2011.2,
+   "duration": 5.92,
+   "text": "to call in what order with what"
+  },
+  {
+   "start": 2013.76,
+   "duration": 5.36,
+   "text": "arguments. Yeah. Based on reasoning that"
+  },
+  {
+   "start": 2017.12,
+   "duration": 4.72,
+   "text": "you know happen inside the model."
+  },
+  {
+   "start": 2019.12,
+   "duration": 6.559,
+   "text": "Reasoning that you did not write and you"
+  },
+  {
+   "start": 2021.84,
+   "duration": 6.88,
+   "text": "are not the decider. Basically it's the"
+  },
+  {
+   "start": 2025.679,
+   "duration": 5.441,
+   "text": "agents decision making. It's a black"
+  },
+  {
+   "start": 2028.72,
+   "duration": 5.52,
+   "text": "box. That's why it's a black box. So"
+  },
+  {
+   "start": 2031.12,
+   "duration": 5.279,
+   "text": "observability for agents means after the"
+  },
+  {
+   "start": 2034.24,
+   "duration": 4.799,
+   "text": "run is done agentic run is done. Can you"
+  },
+  {
+   "start": 2036.399,
+   "duration": 6.241,
+   "text": "see what happened? Can you reconstruct"
+  },
+  {
+   "start": 2039.039,
+   "duration": 6.48,
+   "text": "why the agent did what it did? So the"
+  },
+  {
+   "start": 2042.64,
+   "duration": 5.279,
+   "text": "thing is what you want to capture. So"
+  },
+  {
+   "start": 2045.519,
+   "duration": 4.64,
+   "text": "you want to capture every tool call name"
+  },
+  {
+   "start": 2047.919,
+   "duration": 5.281,
+   "text": "arguments and result every model"
+  },
+  {
+   "start": 2050.159,
+   "duration": 5.76,
+   "text": "response timing per step you token usage"
+  },
+  {
+   "start": 2053.2,
+   "duration": 4.399,
+   "text": "per call if you have it and errors"
+  },
+  {
+   "start": 2055.919,
+   "duration": 5.361,
+   "text": "especially errors that the agent"
+  },
+  {
+   "start": 2057.599,
+   "duration": 5.361,
+   "text": "recovered silently. The silent errors"
+  },
+  {
+   "start": 2061.28,
+   "duration": 3.599,
+   "text": "for that observability is also"
+  },
+  {
+   "start": 2062.96,
+   "duration": 3.439,
+   "text": "dependent. It is correlated with the"
+  },
+  {
+   "start": 2064.879,
+   "duration": 4.0,
+   "text": "next pillar which is basically error"
+  },
+  {
+   "start": 2066.399,
+   "duration": 4.96,
+   "text": "handling. If you are not keeping proper"
+  },
+  {
+   "start": 2068.879,
+   "duration": 8.081,
+   "text": "observability on your agent, your errors"
+  },
+  {
+   "start": 2071.359,
+   "duration": 8.401,
+   "text": "will also you know um kind of be more."
+  },
+  {
+   "start": 2076.96,
+   "duration": 5.679,
+   "text": "The good news, the agent SDK already"
+  },
+  {
+   "start": 2079.76,
+   "duration": 5.04,
+   "text": "writes full session transcripts to disk."
+  },
+  {
+   "start": 2082.639,
+   "duration": 5.52,
+   "text": "If you remember from episode number six,"
+  },
+  {
+   "start": 2084.8,
+   "duration": 7.2,
+   "text": "I had shown you the JSONL files at uh in"
+  },
+  {
+   "start": 2088.159,
+   "duration": 5.601,
+   "text": "inside our dotcloud folder and um every"
+  },
+  {
+   "start": 2092.0,
+   "duration": 4.0,
+   "text": "session that the agent runs there is a"
+  },
+  {
+   "start": 2093.76,
+   "duration": 4.24,
+   "text": "file with a session ID with it"
+  },
+  {
+   "start": 2096.0,
+   "duration": 4.56,
+   "text": "associated with it and let me show you"
+  },
+  {
+   "start": 2098.0,
+   "duration": 5.44,
+   "text": "that again so you can kind of relate it."
+  },
+  {
+   "start": 2100.56,
+   "duration": 5.039,
+   "text": "So these are the JSONL files that I was"
+  },
+  {
+   "start": 2103.44,
+   "duration": 4.639,
+   "text": "talking about and which I have you know"
+  },
+  {
+   "start": 2105.599,
+   "duration": 6.24,
+   "text": "talked about in detail uh in episode"
+  },
+  {
+   "start": 2108.079,
+   "duration": 6.321,
+   "text": "number or lesson number six. Okay. So if"
+  },
+  {
+   "start": 2111.839,
+   "duration": 5.601,
+   "text": "you see every JSONL file is kind of"
+  },
+  {
+   "start": 2114.4,
+   "duration": 4.88,
+   "text": "associated with the session ID."
+  },
+  {
+   "start": 2117.44,
+   "duration": 4.32,
+   "text": "Yeah. And if you open up the session ID."
+  },
+  {
+   "start": 2119.28,
+   "duration": 4.48,
+   "text": "So these are all JSON files from the run"
+  },
+  {
+   "start": 2121.76,
+   "duration": 4.0,
+   "text": "of the agent that we have done in"
+  },
+  {
+   "start": 2123.76,
+   "duration": 4.16,
+   "text": "particular episodes. Right. And if you"
+  },
+  {
+   "start": 2125.76,
+   "duration": 3.68,
+   "text": "see for episode number one there is no"
+  },
+  {
+   "start": 2127.92,
+   "duration": 3.12,
+   "text": "uh folder because we had used the raw"
+  },
+  {
+   "start": 2129.44,
+   "duration": 4.56,
+   "text": "messages API and by default the raw"
+  },
+  {
+   "start": 2131.04,
+   "duration": 5.68,
+   "text": "message API doesn't write uh these"
+  },
+  {
+   "start": 2134.0,
+   "duration": 5.2,
+   "text": "files. The agent does it by default. So"
+  },
+  {
+   "start": 2136.72,
+   "duration": 4.16,
+   "text": "if I if I just open this one JSONL file,"
+  },
+  {
+   "start": 2139.2,
+   "duration": 4.0,
+   "text": "you would see what happened at each"
+  },
+  {
+   "start": 2140.88,
+   "duration": 4.88,
+   "text": "step, which tool call happened and all"
+  },
+  {
+   "start": 2143.2,
+   "duration": 4.32,
+   "text": "the responses and basically whatever is"
+  },
+  {
+   "start": 2145.76,
+   "duration": 5.28,
+   "text": "associated with that particular agent"
+  },
+  {
+   "start": 2147.52,
+   "duration": 5.92,
+   "text": "call is here. So this is plain text as"
+  },
+  {
+   "start": 2151.04,
+   "duration": 4.48,
+   "text": "of now. If you if you want uh you know"
+  },
+  {
+   "start": 2153.44,
+   "duration": 4.159,
+   "text": "observability tool for your agent for"
+  },
+  {
+   "start": 2155.52,
+   "duration": 4.64,
+   "text": "your organization, you can just"
+  },
+  {
+   "start": 2157.599,
+   "duration": 5.041,
+   "text": "basically feed it to a visualization"
+  },
+  {
+   "start": 2160.16,
+   "duration": 4.24,
+   "text": "application and it will visualize uh"
+  },
+  {
+   "start": 2162.64,
+   "duration": 3.28,
+   "text": "every particular step that happened for"
+  },
+  {
+   "start": 2164.4,
+   "duration": 3.28,
+   "text": "that particular agent. So you can use"
+  },
+  {
+   "start": 2165.92,
+   "duration": 4.08,
+   "text": "this data basically and that is what I"
+  },
+  {
+   "start": 2167.68,
+   "duration": 3.919,
+   "text": "wanted to show you. Yeah. And we have"
+  },
+  {
+   "start": 2170.0,
+   "duration": 4.16,
+   "text": "covered this in detail in episode number"
+  },
+  {
+   "start": 2171.599,
+   "duration": 4.801,
+   "text": "six. And I al I also covered how do you"
+  },
+  {
+   "start": 2174.16,
+   "duration": 4.48,
+   "text": "resume a session from that particular"
+  },
+  {
+   "start": 2176.4,
+   "duration": 3.679,
+   "text": "session ID as well. That also I have"
+  },
+  {
+   "start": 2178.64,
+   "duration": 4.24,
+   "text": "covered in episode number six. So this"
+  },
+  {
+   "start": 2180.079,
+   "duration": 4.961,
+   "text": "is also one of the ways you know um"
+  },
+  {
+   "start": 2182.88,
+   "duration": 4.719,
+   "text": "observability is very very important and"
+  },
+  {
+   "start": 2185.04,
+   "duration": 4.559,
+   "text": "you see this JSON and JSON L files and"
+  },
+  {
+   "start": 2187.599,
+   "duration": 4.961,
+   "text": "you now understand the importance of"
+  },
+  {
+   "start": 2189.599,
+   "duration": 4.961,
+   "text": "these generated files. Yeah. And that is"
+  },
+  {
+   "start": 2192.56,
+   "duration": 4.799,
+   "text": "your primary observability tool. every"
+  },
+  {
+   "start": 2194.56,
+   "duration": 5.76,
+   "text": "tool call, every response, every turn,"
+  },
+  {
+   "start": 2197.359,
+   "duration": 5.681,
+   "text": "it's all in there."
+  },
+  {
+   "start": 2200.32,
+   "duration": 4.72,
+   "text": "And if you remember our log pre-ompact"
+  },
+  {
+   "start": 2203.04,
+   "duration": 3.6,
+   "text": "hook that we had done in episode number"
+  },
+  {
+   "start": 2205.04,
+   "duration": 3.44,
+   "text": "six and if you want to have a look at"
+  },
+  {
+   "start": 2206.64,
+   "duration": 4.08,
+   "text": "that, I'm going to also show you that."
+  },
+  {
+   "start": 2208.48,
+   "duration": 4.56,
+   "text": "So from the in this lecture, we had our"
+  },
+  {
+   "start": 2210.72,
+   "duration": 4.639,
+   "text": "hooks. We already had our hooks uh"
+  },
+  {
+   "start": 2213.04,
+   "duration": 6.0,
+   "text": "plugged in and we will have our log"
+  },
+  {
+   "start": 2215.359,
+   "duration": 7.921,
+   "text": "pre-ompact, right? We have had that. So"
+  },
+  {
+   "start": 2219.04,
+   "duration": 5.76,
+   "text": "what this does is um the it's like the"
+  },
+  {
+   "start": 2223.28,
+   "duration": 3.36,
+   "text": "conversation is about to be summarized."
+  },
+  {
+   "start": 2224.8,
+   "duration": 3.6,
+   "text": "Write it down. The hook this hook is ob"
+  },
+  {
+   "start": 2226.64,
+   "duration": 3.84,
+   "text": "is an observability hook that I had"
+  },
+  {
+   "start": 2228.4,
+   "duration": 4.48,
+   "text": "already introduced but I hadn't talked"
+  },
+  {
+   "start": 2230.48,
+   "duration": 4.0,
+   "text": "about talked much about this because you"
+  },
+  {
+   "start": 2232.88,
+   "duration": 4.64,
+   "text": "would realize the importance of"
+  },
+  {
+   "start": 2234.48,
+   "duration": 4.72,
+   "text": "observability once you make it a habit"
+  },
+  {
+   "start": 2237.52,
+   "duration": 3.92,
+   "text": "of including it every time. If I say"
+  },
+  {
+   "start": 2239.2,
+   "duration": 4.0,
+   "text": "that this is observability and I I have"
+  },
+  {
+   "start": 2241.44,
+   "duration": 3.36,
+   "text": "added it you would think that why do I"
+  },
+  {
+   "start": 2243.2,
+   "duration": 3.52,
+   "text": "need observability? I will just build my"
+  },
+  {
+   "start": 2244.8,
+   "duration": 4.64,
+   "text": "agent and I'll be done with that's why I"
+  },
+  {
+   "start": 2246.72,
+   "duration": 4.8,
+   "text": "didn't talk that it's it's required for"
+  },
+  {
+   "start": 2249.44,
+   "duration": 5.04,
+   "text": "observability and all those things."
+  },
+  {
+   "start": 2251.52,
+   "duration": 4.8,
+   "text": "Yeah. So by the time it fires it it is"
+  },
+  {
+   "start": 2254.48,
+   "duration": 3.52,
+   "text": "already too late to save everything. Uh"
+  },
+  {
+   "start": 2256.32,
+   "duration": 3.6,
+   "text": "that only lived in the conversation"
+  },
+  {
+   "start": 2258.0,
+   "duration": 4.0,
+   "text": "which is exactly the point. If this line"
+  },
+  {
+   "start": 2259.92,
+   "duration": 4.0,
+   "text": "ever prints and you are surprised you"
+  },
+  {
+   "start": 2262.0,
+   "duration": 3.92,
+   "text": "are durable your durable state was in"
+  },
+  {
+   "start": 2263.92,
+   "duration": 5.199,
+   "text": "the wrong place. So that is what it was"
+  },
+  {
+   "start": 2265.92,
+   "duration": 6.24,
+   "text": "doing. It tells you when context was"
+  },
+  {
+   "start": 2269.119,
+   "duration": 7.041,
+   "text": "summarized away which is exactly the"
+  },
+  {
+   "start": 2272.16,
+   "duration": 6.48,
+   "text": "moment information can be lost."
+  },
+  {
+   "start": 2276.16,
+   "duration": 5.04,
+   "text": "Yeah. And if you remember uh we were"
+  },
+  {
+   "start": 2278.64,
+   "duration": 5.12,
+   "text": "also creating this PR sessions.json file"
+  },
+  {
+   "start": 2281.2,
+   "duration": 5.2,
+   "text": "which which was kind of saving the"
+  },
+  {
+   "start": 2283.76,
+   "duration": 4.079,
+   "text": "session ID against a PR number that was"
+  },
+  {
+   "start": 2286.4,
+   "duration": 3.52,
+   "text": "reviewed. So this is also one of the"
+  },
+  {
+   "start": 2287.839,
+   "duration": 4.321,
+   "text": "things you can do and all of these"
+  },
+  {
+   "start": 2289.92,
+   "duration": 3.679,
+   "text": "things I had discussed properly in that"
+  },
+  {
+   "start": 2292.16,
+   "duration": 3.52,
+   "text": "particular episode when we were talking"
+  },
+  {
+   "start": 2293.599,
+   "duration": 4.0,
+   "text": "about sessions and context and all of"
+  },
+  {
+   "start": 2295.68,
+   "duration": 4.24,
+   "text": "those things. So don't get confused for"
+  },
+  {
+   "start": 2297.599,
+   "duration": 4.721,
+   "text": "now. For now the thing is these files"
+  },
+  {
+   "start": 2299.92,
+   "duration": 3.919,
+   "text": "this JSON files and all of these things"
+  },
+  {
+   "start": 2302.32,
+   "duration": 3.6,
+   "text": "that we are doing that is for"
+  },
+  {
+   "start": 2303.839,
+   "duration": 3.921,
+   "text": "observability and why observability is"
+  },
+  {
+   "start": 2305.92,
+   "duration": 4.4,
+   "text": "important. You need to know what your"
+  },
+  {
+   "start": 2307.76,
+   "duration": 6.48,
+   "text": "agent is doing at what point of time."
+  },
+  {
+   "start": 2310.32,
+   "duration": 6.0,
+   "text": "Yeah, I hope that is making sense. Okay."
+  },
+  {
+   "start": 2314.24,
+   "duration": 4.32,
+   "text": "Now debugging agents is not like"
+  },
+  {
+   "start": 2316.32,
+   "duration": 5.039,
+   "text": "debugging quote and I have already"
+  },
+  {
+   "start": 2318.56,
+   "duration": 4.24,
+   "text": "talked about this. So what happens when"
+  },
+  {
+   "start": 2321.359,
+   "duration": 4.641,
+   "text": "things actually go wrong? Because"
+  },
+  {
+   "start": 2322.8,
+   "duration": 5.44,
+   "text": "debugging an agentic system is a"
+  },
+  {
+   "start": 2326.0,
+   "duration": 4.64,
+   "text": "different sport than debugging regular"
+  },
+  {
+   "start": 2328.24,
+   "duration": 4.64,
+   "text": "software. So what are the challenges"
+  },
+  {
+   "start": 2330.64,
+   "duration": 5.199,
+   "text": "that we face? First challenge challenge"
+  },
+  {
+   "start": 2332.88,
+   "duration": 4.64,
+   "text": "number one. Challenge number one is"
+  },
+  {
+   "start": 2335.839,
+   "duration": 3.681,
+   "text": "nondeterminism."
+  },
+  {
+   "start": 2337.52,
+   "duration": 4.4,
+   "text": "So what what is that? We already know"
+  },
+  {
+   "start": 2339.52,
+   "duration": 4.4,
+   "text": "about nondeterminism, right? Same input,"
+  },
+  {
+   "start": 2341.92,
+   "duration": 4.0,
+   "text": "different run, different tool sequence,"
+  },
+  {
+   "start": 2343.92,
+   "duration": 4.24,
+   "text": "different output. You can't just"
+  },
+  {
+   "start": 2345.92,
+   "duration": 4.8,
+   "text": "reproduce the bug here by rerunning with"
+  },
+  {
+   "start": 2348.16,
+   "duration": 4.08,
+   "text": "the same prompt. So Claude might take a"
+  },
+  {
+   "start": 2350.72,
+   "duration": 3.92,
+   "text": "completely different path the second"
+  },
+  {
+   "start": 2352.24,
+   "duration": 5.28,
+   "text": "time. So that is what is a challenge"
+  },
+  {
+   "start": 2354.64,
+   "duration": 6.08,
+   "text": "with the nondeterminism. Yeah. Challenge"
+  },
+  {
+   "start": 2357.52,
+   "duration": 5.76,
+   "text": "number two is compound errors. Claude"
+  },
+  {
+   "start": 2360.72,
+   "duration": 5.04,
+   "text": "misinterprets a tool result in step"
+  },
+  {
+   "start": 2363.28,
+   "duration": 4.88,
+   "text": "number three, for example, makes a"
+  },
+  {
+   "start": 2365.76,
+   "duration": 4.64,
+   "text": "slightly wrong decision in step number"
+  },
+  {
+   "start": 2368.16,
+   "duration": 4.48,
+   "text": "five based on that. And the actual"
+  },
+  {
+   "start": 2370.4,
+   "duration": 4.56,
+   "text": "visible failure shows up in step number"
+  },
+  {
+   "start": 2372.64,
+   "duration": 4.8,
+   "text": "nine. So it started from step number"
+  },
+  {
+   "start": 2374.96,
+   "duration": 5.68,
+   "text": "three but you saw that in step number"
+  },
+  {
+   "start": 2377.44,
+   "duration": 5.919,
+   "text": "nine. The bug you see and the bug that"
+  },
+  {
+   "start": 2380.64,
+   "duration": 5.36,
+   "text": "caused it are three steps three or more"
+  },
+  {
+   "start": 2383.359,
+   "duration": 4.48,
+   "text": "steps apart. And good luck in finding"
+  },
+  {
+   "start": 2386.0,
+   "duration": 3.76,
+   "text": "what without you know with a stack"
+  },
+  {
+   "start": 2387.839,
+   "duration": 3.681,
+   "text": "trace. You would not be able to do that."
+  },
+  {
+   "start": 2389.76,
+   "duration": 4.8,
+   "text": "It's not like a normal micros service"
+  },
+  {
+   "start": 2391.52,
+   "duration": 5.12,
+   "text": "that is running and producing logs."
+  },
+  {
+   "start": 2394.56,
+   "duration": 3.68,
+   "text": "Now challenge number three context"
+  },
+  {
+   "start": 2396.64,
+   "duration": 4.88,
+   "text": "degradation."
+  },
+  {
+   "start": 2398.24,
+   "duration": 5.44,
+   "text": "You know after many turns uh compaction"
+  },
+  {
+   "start": 2401.52,
+   "duration": 4.4,
+   "text": "kicks in and you will know know what is"
+  },
+  {
+   "start": 2403.68,
+   "duration": 4.399,
+   "text": "compaction is right we we saw this in"
+  },
+  {
+   "start": 2405.92,
+   "duration": 4.56,
+   "text": "episode number six you know or lesson"
+  },
+  {
+   "start": 2408.079,
+   "duration": 4.401,
+   "text": "number six earlier information gets"
+  },
+  {
+   "start": 2410.48,
+   "duration": 4.879,
+   "text": "summarized if something important got"
+  },
+  {
+   "start": 2412.48,
+   "duration": 5.04,
+   "text": "compressed away or it is lost um the"
+  },
+  {
+   "start": 2415.359,
+   "duration": 4.24,
+   "text": "agent makes decision based on incomplete"
+  },
+  {
+   "start": 2417.52,
+   "duration": 4.559,
+   "text": "information or incomplete context and"
+  },
+  {
+   "start": 2419.599,
+   "duration": 5.601,
+   "text": "it's not a bug in your code it's a bug"
+  },
+  {
+   "start": 2422.079,
+   "duration": 4.721,
+   "text": "in what the agent remembers. So that is"
+  },
+  {
+   "start": 2425.2,
+   "duration": 3.68,
+   "text": "challenge number three. And what is"
+  },
+  {
+   "start": 2426.8,
+   "duration": 4.08,
+   "text": "challenge number four? External"
+  },
+  {
+   "start": 2428.88,
+   "duration": 4.719,
+   "text": "dependencies."
+  },
+  {
+   "start": 2430.88,
+   "duration": 4.8,
+   "text": "External dependencies. So MCP servers if"
+  },
+  {
+   "start": 2433.599,
+   "duration": 5.76,
+   "text": "you remember from lesson number nine can"
+  },
+  {
+   "start": 2435.68,
+   "duration": 6.0,
+   "text": "fail, return unexpected data or just be"
+  },
+  {
+   "start": 2439.359,
+   "duration": 5.521,
+   "text": "you know slow. Your agent's reliability"
+  },
+  {
+   "start": 2441.68,
+   "duration": 5.6,
+   "text": "is only as good as its weakest external"
+  },
+  {
+   "start": 2444.88,
+   "duration": 5.04,
+   "text": "dependency. So that is also one of the"
+  },
+  {
+   "start": 2447.28,
+   "duration": 4.16,
+   "text": "things that you why it is needed. You"
+  },
+  {
+   "start": 2449.92,
+   "duration": 5.76,
+   "text": "know why why it is difficult to debug"
+  },
+  {
+   "start": 2451.44,
+   "duration": 6.8,
+   "text": "agents. Now what actually works?"
+  },
+  {
+   "start": 2455.68,
+   "duration": 4.0,
+   "text": "Yeah. So all these we have discussed"
+  },
+  {
+   "start": 2458.24,
+   "duration": 4.56,
+   "text": "about challenges but what actually"
+  },
+  {
+   "start": 2459.68,
+   "duration": 5.6,
+   "text": "works. Strategy number one read the"
+  },
+  {
+   "start": 2462.8,
+   "duration": 4.799,
+   "text": "transcript. The JSONL session that"
+  },
+  {
+   "start": 2465.28,
+   "duration": 5.6,
+   "text": "session file that I just saw you know"
+  },
+  {
+   "start": 2467.599,
+   "duration": 5.76,
+   "text": "that I showed you is your ground truth."
+  },
+  {
+   "start": 2470.88,
+   "duration": 5.439,
+   "text": "Don't guess read the actual sequence of"
+  },
+  {
+   "start": 2473.359,
+   "duration": 4.561,
+   "text": "the tool calls and the responses. That"
+  },
+  {
+   "start": 2476.319,
+   "duration": 3.201,
+   "text": "is where the compound error chain"
+  },
+  {
+   "start": 2477.92,
+   "duration": 4.0,
+   "text": "becomes visible. And if you are too lazy"
+  },
+  {
+   "start": 2479.52,
+   "duration": 4.559,
+   "text": "to read it, at least feed it to LLM and"
+  },
+  {
+   "start": 2481.92,
+   "duration": 5.12,
+   "text": "say where the the first kind of the"
+  },
+  {
+   "start": 2484.079,
+   "duration": 5.921,
+   "text": "error occurred, right? That that you can"
+  },
+  {
+   "start": 2487.04,
+   "duration": 6.559,
+   "text": "do. Anyways, strategy number two, binary"
+  },
+  {
+   "start": 2490.0,
+   "duration": 5.04,
+   "text": "search the tool chain."
+  },
+  {
+   "start": 2493.599,
+   "duration": 3.841,
+   "text": "So what does binary searching the tool"
+  },
+  {
+   "start": 2495.04,
+   "duration": 4.319,
+   "text": "chain means? Which tool call produce the"
+  },
+  {
+   "start": 2497.44,
+   "duration": 4.32,
+   "text": "first incorrect data? Start in the"
+  },
+  {
+   "start": 2499.359,
+   "duration": 5.041,
+   "text": "middle. Check if the data is right."
+  },
+  {
+   "start": 2501.76,
+   "duration": 5.12,
+   "text": "Narrow down from there. Same instinct as"
+  },
+  {
+   "start": 2504.4,
+   "duration": 5.28,
+   "text": "a git biseect or a normal binary search"
+  },
+  {
+   "start": 2506.88,
+   "duration": 4.479,
+   "text": "algorithm. Right? That is how it works."
+  },
+  {
+   "start": 2509.68,
+   "duration": 4.32,
+   "text": "Strategy number three, check your"
+  },
+  {
+   "start": 2511.359,
+   "duration": 5.281,
+   "text": "compaction logs. If the agent started"
+  },
+  {
+   "start": 2514.0,
+   "duration": 4.64,
+   "text": "strong but went off the rails at some"
+  },
+  {
+   "start": 2516.64,
+   "duration": 4.88,
+   "text": "point of time, look at whether a"
+  },
+  {
+   "start": 2518.64,
+   "duration": 5.679,
+   "text": "compaction event happened in between our"
+  },
+  {
+   "start": 2521.52,
+   "duration": 5.12,
+   "text": "you know our log premp compact hook you"
+  },
+  {
+   "start": 2524.319,
+   "duration": 4.561,
+   "text": "know that that you saw right timestamps"
+  },
+  {
+   "start": 2526.64,
+   "duration": 4.16,
+   "text": "these exactly for this particular"
+  },
+  {
+   "start": 2528.88,
+   "duration": 3.68,
+   "text": "reason."
+  },
+  {
+   "start": 2530.8,
+   "duration": 5.039,
+   "text": "So you can have that kind of hook as"
+  },
+  {
+   "start": 2532.56,
+   "duration": 5.44,
+   "text": "well. Yeah. So remember that the session"
+  },
+  {
+   "start": 2535.839,
+   "duration": 4.641,
+   "text": "transcript the JSONL file is your"
+  },
+  {
+   "start": 2538.0,
+   "duration": 4.72,
+   "text": "primary debugging tool for agentic"
+  },
+  {
+   "start": 2540.48,
+   "duration": 4.879,
+   "text": "systems. It it contains the the full"
+  },
+  {
+   "start": 2542.72,
+   "duration": 6.48,
+   "text": "sequence of tool calls, responses, the"
+  },
+  {
+   "start": 2545.359,
+   "duration": 6.96,
+   "text": "model reasoning, the the flight recorder"
+  },
+  {
+   "start": 2549.2,
+   "duration": 5.2,
+   "text": "for you know for every turn or every"
+  },
+  {
+   "start": 2552.319,
+   "duration": 4.561,
+   "text": "run."
+  },
+  {
+   "start": 2554.4,
+   "duration": 5.12,
+   "text": "Okay, I hope that's making sense. Now"
+  },
+  {
+   "start": 2556.88,
+   "duration": 5.12,
+   "text": "error handling and error handling"
+  },
+  {
+   "start": 2559.52,
+   "duration": 4.559,
+   "text": "patterns that actually scale or that you"
+  },
+  {
+   "start": 2562.0,
+   "duration": 4.88,
+   "text": "would actually use in your production"
+  },
+  {
+   "start": 2564.079,
+   "duration": 5.361,
+   "text": "systems. So now you know how to find"
+  },
+  {
+   "start": 2566.88,
+   "duration": 5.28,
+   "text": "problems. Yeah. Let's talk about how to"
+  },
+  {
+   "start": 2569.44,
+   "duration": 5.04,
+   "text": "handle them and the patterns that"
+  },
+  {
+   "start": 2572.16,
+   "duration": 4.72,
+   "text": "actually work at scale. So there are"
+  },
+  {
+   "start": 2574.48,
+   "duration": 4.639,
+   "text": "basically two antiatterns the exam will"
+  },
+  {
+   "start": 2576.88,
+   "duration": 3.84,
+   "text": "surely test you and they are both very"
+  },
+  {
+   "start": 2579.119,
+   "duration": 4.801,
+   "text": "tempting."
+  },
+  {
+   "start": 2580.72,
+   "duration": 4.8,
+   "text": "Okay. So antiattern number one silently"
+  },
+  {
+   "start": 2583.92,
+   "duration": 4.399,
+   "text": "swallowing errors. And this I have"
+  },
+  {
+   "start": 2585.52,
+   "duration": 5.52,
+   "text": "talked about a lot in in my claude"
+  },
+  {
+   "start": 2588.319,
+   "duration": 4.561,
+   "text": "architect course as well and now also"
+  },
+  {
+   "start": 2591.04,
+   "duration": 4.64,
+   "text": "I'm talking and I think in some of my"
+  },
+  {
+   "start": 2592.88,
+   "duration": 5.199,
+   "text": "previous um episodes for this course"
+  },
+  {
+   "start": 2595.68,
+   "duration": 4.56,
+   "text": "also I have talked about it. So silently"
+  },
+  {
+   "start": 2598.079,
+   "duration": 5.201,
+   "text": "swallowing errors. So let's say a tool"
+  },
+  {
+   "start": 2600.24,
+   "duration": 5.599,
+   "text": "call fails. You return an empty result."
+  },
+  {
+   "start": 2603.28,
+   "duration": 5.76,
+   "text": "The agent carries on as if nothing"
+  },
+  {
+   "start": 2605.839,
+   "duration": 5.52,
+   "text": "happened. The output looks complete but"
+  },
+  {
+   "start": 2609.04,
+   "duration": 3.92,
+   "text": "it's quietly missing an entire"
+  },
+  {
+   "start": 2611.359,
+   "duration": 3.841,
+   "text": "dimension."
+  },
+  {
+   "start": 2612.96,
+   "duration": 4.24,
+   "text": "And this is how you get a clean PR"
+  },
+  {
+   "start": 2615.2,
+   "duration": 4.399,
+   "text": "review that just you know didn't check"
+  },
+  {
+   "start": 2617.2,
+   "duration": 4.399,
+   "text": "for security issues because the security"
+  },
+  {
+   "start": 2619.599,
+   "duration": 4.641,
+   "text": "sub agent timed out silently. It will"
+  },
+  {
+   "start": 2621.599,
+   "duration": 4.321,
+   "text": "say okay done."
+  },
+  {
+   "start": 2624.24,
+   "duration": 3.68,
+   "text": "Yeah. So that that will happen and that"
+  },
+  {
+   "start": 2625.92,
+   "duration": 5.04,
+   "text": "is antiattern number one that you need"
+  },
+  {
+   "start": 2627.92,
+   "duration": 6.08,
+   "text": "to know. Antiattern number two is"
+  },
+  {
+   "start": 2630.96,
+   "duration": 5.92,
+   "text": "terminating on the first failure. So a"
+  },
+  {
+   "start": 2634.0,
+   "duration": 5.52,
+   "text": "single tool call fails and the entire"
+  },
+  {
+   "start": 2636.88,
+   "duration": 4.239,
+   "text": "agent run crashes. The dock string"
+  },
+  {
+   "start": 2639.52,
+   "duration": 3.44,
+   "text": "reviewer that that is one of our sub"
+  },
+  {
+   "start": 2641.119,
+   "duration": 5.121,
+   "text": "agents that we done for example finished"
+  },
+  {
+   "start": 2642.96,
+   "duration": 4.96,
+   "text": "its job perfectly but uh you threw away"
+  },
+  {
+   "start": 2646.24,
+   "duration": 3.76,
+   "text": "its findings because the security"
+  },
+  {
+   "start": 2647.92,
+   "duration": 4.96,
+   "text": "reviewer hit a network error or"
+  },
+  {
+   "start": 2650.0,
+   "duration": 4.56,
+   "text": "something you know bad happened with it."
+  },
+  {
+   "start": 2652.88,
+   "duration": 4.88,
+   "text": "That is also one of the antiatterns. You"
+  },
+  {
+   "start": 2654.56,
+   "duration": 6.24,
+   "text": "do not terminate on the first failure."
+  },
+  {
+   "start": 2657.76,
+   "duration": 6.16,
+   "text": "So what are the right patterns then? The"
+  },
+  {
+   "start": 2660.8,
+   "duration": 6.16,
+   "text": "right pattern is remember this thing"
+  },
+  {
+   "start": 2663.92,
+   "duration": 4.8,
+   "text": "structured errors with graceful"
+  },
+  {
+   "start": 2666.96,
+   "duration": 3.6,
+   "text": "degradation."
+  },
+  {
+   "start": 2668.72,
+   "duration": 4.16,
+   "text": "And if you remember in episode number"
+  },
+  {
+   "start": 2670.56,
+   "duration": 5.759,
+   "text": "seven, we used something known as is"
+  },
+  {
+   "start": 2672.88,
+   "duration": 6.8,
+   "text": "error. We already built this is error."
+  },
+  {
+   "start": 2676.319,
+   "duration": 5.681,
+   "text": "If you know um is error true. That is"
+  },
+  {
+   "start": 2679.68,
+   "duration": 4.56,
+   "text": "the return. That is the structured error"
+  },
+  {
+   "start": 2682.0,
+   "duration": 5.599,
+   "text": "pattern. When a tool fails, it tells the"
+  },
+  {
+   "start": 2684.24,
+   "duration": 6.32,
+   "text": "agent what failed, why, and whether it's"
+  },
+  {
+   "start": 2687.599,
+   "duration": 4.881,
+   "text": "worth retrying. The agent or the"
+  },
+  {
+   "start": 2690.56,
+   "duration": 3.279,
+   "text": "coordinator can make an intelligent"
+  },
+  {
+   "start": 2692.48,
+   "duration": 3.04,
+   "text": "decision based on that. So I'm going to"
+  },
+  {
+   "start": 2693.839,
+   "duration": 3.52,
+   "text": "just show you. So as you can see that we"
+  },
+  {
+   "start": 2695.52,
+   "duration": 3.92,
+   "text": "are connecting all of the dots what we"
+  },
+  {
+   "start": 2697.359,
+   "duration": 5.521,
+   "text": "did and you know everything. So if I go"
+  },
+  {
+   "start": 2699.44,
+   "duration": 6.48,
+   "text": "to uh tools over here maybe and if I say"
+  },
+  {
+   "start": 2702.88,
+   "duration": 6.32,
+   "text": "is error so if you see that this is the"
+  },
+  {
+   "start": 2705.92,
+   "duration": 5.28,
+   "text": "thing yeah submit finding um and if"
+  },
+  {
+   "start": 2709.2,
+   "duration": 4.08,
+   "text": "error validate finding if errors return"
+  },
+  {
+   "start": 2711.2,
+   "duration": 4.24,
+   "text": "content text finding rejected this is"
+  },
+  {
+   "start": 2713.28,
+   "duration": 4.0,
+   "text": "the reason and is error we are returning"
+  },
+  {
+   "start": 2715.44,
+   "duration": 4.639,
+   "text": "proper structured error we are"
+  },
+  {
+   "start": 2717.28,
+   "duration": 4.72,
+   "text": "returning. So based on this return the"
+  },
+  {
+   "start": 2720.079,
+   "duration": 4.721,
+   "text": "the the agent which called the tool"
+  },
+  {
+   "start": 2722.0,
+   "duration": 4.96,
+   "text": "maybe the coordinator or the sub agent"
+  },
+  {
+   "start": 2724.8,
+   "duration": 4.16,
+   "text": "will take an informed decision based on"
+  },
+  {
+   "start": 2726.96,
+   "duration": 3.92,
+   "text": "this."
+  },
+  {
+   "start": 2728.96,
+   "duration": 6.0,
+   "text": "And what does graceful degradation"
+  },
+  {
+   "start": 2730.88,
+   "duration": 6.32,
+   "text": "means? So partial results are better"
+  },
+  {
+   "start": 2734.96,
+   "duration": 5.04,
+   "text": "than no results. Remember that if sub"
+  },
+  {
+   "start": 2737.2,
+   "duration": 6.08,
+   "text": "aent B times out but sub aents let's say"
+  },
+  {
+   "start": 2740.0,
+   "duration": 6.8,
+   "text": "A and C succeeded post their findings"
+  },
+  {
+   "start": 2743.28,
+   "duration": 5.2,
+   "text": "and note that B's coverage is missing."
+  },
+  {
+   "start": 2746.8,
+   "duration": 4.559,
+   "text": "Maybe the coordinator or the human"
+  },
+  {
+   "start": 2748.48,
+   "duration": 5.599,
+   "text": "reviewer gets 70 70% of the value"
+  },
+  {
+   "start": 2751.359,
+   "duration": 5.921,
+   "text": "instead of 0%. And obviously 70% is"
+  },
+  {
+   "start": 2754.079,
+   "duration": 5.04,
+   "text": "better than 0%. Even with that 70% we"
+  },
+  {
+   "start": 2757.28,
+   "duration": 4.16,
+   "text": "would be able to find you know what was"
+  },
+  {
+   "start": 2759.119,
+   "duration": 6.48,
+   "text": "missed and then maybe rework on that."
+  },
+  {
+   "start": 2761.44,
+   "duration": 6.639,
+   "text": "But 0% there is nowhere to start."
+  },
+  {
+   "start": 2765.599,
+   "duration": 4.881,
+   "text": "Yeah. So I hope that is making sense. Is"
+  },
+  {
+   "start": 2768.079,
+   "duration": 5.04,
+   "text": "error flag is very very important for"
+  },
+  {
+   "start": 2770.48,
+   "duration": 5.04,
+   "text": "structured error handling. Um and when"
+  },
+  {
+   "start": 2773.119,
+   "duration": 4.24,
+   "text": "to use it. Basically every tool failure"
+  },
+  {
+   "start": 2775.52,
+   "duration": 4.96,
+   "text": "you always tell the agent what went"
+  },
+  {
+   "start": 2777.359,
+   "duration": 7.201,
+   "text": "wrong. Next comes the retry with back"
+  },
+  {
+   "start": 2780.48,
+   "duration": 7.04,
+   "text": "off. Okay. So for transient failures you"
+  },
+  {
+   "start": 2784.56,
+   "duration": 5.519,
+   "text": "know like for timeouts or for example"
+  },
+  {
+   "start": 2787.52,
+   "duration": 5.68,
+   "text": "your sub agent is calling some API and"
+  },
+  {
+   "start": 2790.079,
+   "duration": 4.481,
+   "text": "it it kind of threw a timeout error or"
+  },
+  {
+   "start": 2793.2,
+   "duration": 5.919,
+   "text": "something like that. So you don't kind"
+  },
+  {
+   "start": 2794.56,
+   "duration": 6.48,
+   "text": "of like throw throw out the um tool"
+  },
+  {
+   "start": 2799.119,
+   "duration": 3.521,
+   "text": "execution. You won't do that. You would"
+  },
+  {
+   "start": 2801.04,
+   "duration": 3.039,
+   "text": "retry it because that's a transient"
+  },
+  {
+   "start": 2802.64,
+   "duration": 5.679,
+   "text": "error. So that is why you retrive with"
+  },
+  {
+   "start": 2804.079,
+   "duration": 5.921,
+   "text": "the back off. You kind of set kind of a"
+  },
+  {
+   "start": 2808.319,
+   "duration": 4.721,
+   "text": "number of retries and you can do it"
+  },
+  {
+   "start": 2810.0,
+   "duration": 5.839,
+   "text": "easily using the clawed agent SDK."
+  },
+  {
+   "start": 2813.04,
+   "duration": 5.44,
+   "text": "So next is graceful degradation. You"
+  },
+  {
+   "start": 2815.839,
+   "duration": 5.601,
+   "text": "know like multi-agent fan out partial"
+  },
+  {
+   "start": 2818.48,
+   "duration": 5.92,
+   "text": "results are better than total failure."
+  },
+  {
+   "start": 2821.44,
+   "duration": 6.32,
+   "text": "So always remember that hooks as safety"
+  },
+  {
+   "start": 2824.4,
+   "duration": 5.28,
+   "text": "nets. You need to use that hooks."
+  },
+  {
+   "start": 2827.76,
+   "duration": 4.24,
+   "text": "So uh it's it's it's it's critical"
+  },
+  {
+   "start": 2829.68,
+   "duration": 4.399,
+   "text": "invariance things that must never happen"
+  },
+  {
+   "start": 2832.0,
+   "duration": 3.68,
+   "text": "regardless of model reasoning. So you"
+  },
+  {
+   "start": 2834.079,
+   "duration": 4.0,
+   "text": "have a pre hook which checks for"
+  },
+  {
+   "start": 2835.68,
+   "duration": 4.8,
+   "text": "policies. Yeah. You have a post hook"
+  },
+  {
+   "start": 2838.079,
+   "duration": 4.641,
+   "text": "which returns structured results. You"
+  },
+  {
+   "start": 2840.48,
+   "duration": 5.52,
+   "text": "are kind of already handling the error"
+  },
+  {
+   "start": 2842.72,
+   "duration": 4.96,
+   "text": "before it even occurs. So that is you"
+  },
+  {
+   "start": 2846.0,
+   "duration": 4.24,
+   "text": "know hooks"
+  },
+  {
+   "start": 2847.68,
+   "duration": 4.639,
+   "text": "contain that deterministic logic that"
+  },
+  {
+   "start": 2850.24,
+   "duration": 5.44,
+   "text": "your probabilistic prompt can never"
+  },
+  {
+   "start": 2852.319,
+   "duration": 6.641,
+   "text": "achieve. Remember that. So"
+  },
+  {
+   "start": 2855.68,
+   "duration": 4.72,
+   "text": "okay um I hope that is making sense and"
+  },
+  {
+   "start": 2858.96,
+   "duration": 3.76,
+   "text": "if I I'm going to compare it with the"
+  },
+  {
+   "start": 2860.4,
+   "duration": 4.4,
+   "text": "exam map this maps to debugging and"
+  },
+  {
+   "start": 2862.72,
+   "duration": 3.92,
+   "text": "error handling that is like 3% of the"
+  },
+  {
+   "start": 2864.8,
+   "duration": 4.88,
+   "text": "exam. So till now we have covered about"
+  },
+  {
+   "start": 2866.64,
+   "duration": 4.64,
+   "text": "6 to 7% in this episode itself. Yeah. uh"
+  },
+  {
+   "start": 2869.68,
+   "duration": 3.919,
+   "text": "in the in the in the particular exam"
+  },
+  {
+   "start": 2871.28,
+   "duration": 4.24,
+   "text": "syllabus, the exam specifically tests"
+  },
+  {
+   "start": 2873.599,
+   "duration": 4.24,
+   "text": "you whether you know you can distinguish"
+  },
+  {
+   "start": 2875.52,
+   "duration": 4.96,
+   "text": "between these two antiatterns that I"
+  },
+  {
+   "start": 2877.839,
+   "duration": 4.641,
+   "text": "just uh talked about silent swallowing"
+  },
+  {
+   "start": 2880.48,
+   "duration": 4.0,
+   "text": "and crash on first failure and the"
+  },
+  {
+   "start": 2882.48,
+   "duration": 4.56,
+   "text": "correct pattern structured error context"
+  },
+  {
+   "start": 2884.48,
+   "duration": 4.24,
+   "text": "that you know enables intelligent"
+  },
+  {
+   "start": 2887.04,
+   "duration": 3.2,
+   "text": "recovery. I hope that is making sense"
+  },
+  {
+   "start": 2888.72,
+   "duration": 3.44,
+   "text": "and you can relate it with the things"
+  },
+  {
+   "start": 2890.24,
+   "duration": 4.0,
+   "text": "that we have already done with the agent"
+  },
+  {
+   "start": 2892.16,
+   "duration": 3.6,
+   "text": "and that is important."
+  },
+  {
+   "start": 2894.24,
+   "duration": 4.48,
+   "text": "Okay."
+  },
+  {
+   "start": 2895.76,
+   "duration": 5.76,
+   "text": "Now uh a few drills before we wrap up"
+  },
+  {
+   "start": 2898.72,
+   "duration": 5.28,
+   "text": "this particular episode. Um"
+  },
+  {
+   "start": 2901.52,
+   "duration": 4.559,
+   "text": "okay the answer is already there but if"
+  },
+  {
+   "start": 2904.0,
+   "duration": 4.24,
+   "text": "you if you can just um pause it and"
+  },
+  {
+   "start": 2906.079,
+   "duration": 4.48,
+   "text": "think about it it will be better. So"
+  },
+  {
+   "start": 2908.24,
+   "duration": 5.599,
+   "text": "your multi- aent coordinator fans out to"
+  },
+  {
+   "start": 2910.559,
+   "duration": 6.081,
+   "text": "three sub aents. Sub agent B times out"
+  },
+  {
+   "start": 2913.839,
+   "duration": 6.48,
+   "text": "uh after 30 seconds for example. What"
+  },
+  {
+   "start": 2916.64,
+   "duration": 5.439,
+   "text": "should happen? Yeah. So A let's say the"
+  },
+  {
+   "start": 2920.319,
+   "duration": 4.401,
+   "text": "coordinator terminates and reports a"
+  },
+  {
+   "start": 2922.079,
+   "duration": 4.48,
+   "text": "complete failure to the user. B. Sub"
+  },
+  {
+   "start": 2924.72,
+   "duration": 4.0,
+   "text": "agent returns a structured error with is"
+  },
+  {
+   "start": 2926.559,
+   "duration": 5.361,
+   "text": "error as true. The coordinator posts"
+  },
+  {
+   "start": 2928.72,
+   "duration": 5.2,
+   "text": "findings from A and C, noting B's gap. C"
+  },
+  {
+   "start": 2931.92,
+   "duration": 4.48,
+   "text": "says coordinator silently skips B's"
+  },
+  {
+   "start": 2933.92,
+   "duration": 4.8,
+   "text": "results and posts a review based on A"
+  },
+  {
+   "start": 2936.4,
+   "duration": 4.56,
+   "text": "and C only. And D says coordinator"
+  },
+  {
+   "start": 2938.72,
+   "duration": 5.52,
+   "text": "retries B indefinitely until it"
+  },
+  {
+   "start": 2940.96,
+   "duration": 5.28,
+   "text": "succeeds. Obviously, the answer is B. B"
+  },
+  {
+   "start": 2944.24,
+   "duration": 3.839,
+   "text": "is correct because structured error"
+  },
+  {
+   "start": 2946.24,
+   "duration": 4.319,
+   "text": "reporting plus graceful degradation."
+  },
+  {
+   "start": 2948.079,
+   "duration": 4.561,
+   "text": "These are the two uh things that we"
+  },
+  {
+   "start": 2950.559,
+   "duration": 5.121,
+   "text": "discussed that will get you the right"
+  },
+  {
+   "start": 2952.64,
+   "duration": 4.88,
+   "text": "answer. Option A is too aggressive. You"
+  },
+  {
+   "start": 2955.68,
+   "duration": 3.919,
+   "text": "are throwing away A and C is perfectly"
+  },
+  {
+   "start": 2957.52,
+   "duration": 4.24,
+   "text": "good work. And obviously anything is"
+  },
+  {
+   "start": 2959.599,
+   "duration": 5.601,
+   "text": "better than 0%. Right? That we already"
+  },
+  {
+   "start": 2961.76,
+   "duration": 8.16,
+   "text": "discussed. Option C hides the gap. You"
+  },
+  {
+   "start": 2965.2,
+   "duration": 6.879,
+   "text": "know um the review looks complete but it"
+  },
+  {
+   "start": 2969.92,
+   "duration": 6.32,
+   "text": "isn't and nobody knows security wasn't"
+  },
+  {
+   "start": 2972.079,
+   "duration": 7.28,
+   "text": "checked. Yeah. Now option number D"
+  },
+  {
+   "start": 2976.24,
+   "duration": 5.52,
+   "text": "uh says could hang forever. I mean uh"
+  },
+  {
+   "start": 2979.359,
+   "duration": 5.121,
+   "text": "and you know it blocks the other results"
+  },
+  {
+   "start": 2981.76,
+   "duration": 5.28,
+   "text": "from being kind of delivered. Yeah. So"
+  },
+  {
+   "start": 2984.48,
+   "duration": 4.4,
+   "text": "because it is sil it silently skips B"
+  },
+  {
+   "start": 2987.04,
+   "duration": 4.48,
+   "text": "and post a review based on A and C only."
+  },
+  {
+   "start": 2988.88,
+   "duration": 4.959,
+   "text": "We don't know what happened in B."
+  },
+  {
+   "start": 2991.52,
+   "duration": 5.039,
+   "text": "Um"
+  },
+  {
+   "start": 2993.839,
+   "duration": 6.24,
+   "text": "yeah. Okay. I was talking about D I"
+  },
+  {
+   "start": 2996.559,
+   "duration": 5.28,
+   "text": "think. Yeah. Sorry. C is where um it"
+  },
+  {
+   "start": 3000.079,
+   "duration": 4.561,
+   "text": "hides the gap and D is basically the"
+  },
+  {
+   "start": 3001.839,
+   "duration": 4.72,
+   "text": "coordinator retries B uh retries B"
+  },
+  {
+   "start": 3004.64,
+   "duration": 4.0,
+   "text": "indefinitely until so basically you're"
+  },
+  {
+   "start": 3006.559,
+   "duration": 3.841,
+   "text": "not giving a particular counter or"
+  },
+  {
+   "start": 3008.64,
+   "duration": 3.679,
+   "text": "something right you are just trying it"
+  },
+  {
+   "start": 3010.4,
+   "duration": 3.76,
+   "text": "indefinitely which doesn't make sense so"
+  },
+  {
+   "start": 3012.319,
+   "duration": 3.52,
+   "text": "that's why D is not going to be here I"
+  },
+  {
+   "start": 3014.16,
+   "duration": 5.36,
+   "text": "just got a little bit confused but the"
+  },
+  {
+   "start": 3015.839,
+   "duration": 6.0,
+   "text": "actual answer is B okay"
+  },
+  {
+   "start": 3019.52,
+   "duration": 5.36,
+   "text": "now uh the exam map uh what we have"
+  },
+  {
+   "start": 3021.839,
+   "duration": 6.641,
+   "text": "covered today uh is basically around 6%"
+  },
+  {
+   "start": 3024.88,
+   "duration": 5.28,
+   "text": "of the exam where we we we five to 6% we"
+  },
+  {
+   "start": 3028.48,
+   "duration": 3.04,
+   "text": "talked about cost and token management."
+  },
+  {
+   "start": 3030.16,
+   "duration": 4.399,
+   "text": "We talked about debugging and error"
+  },
+  {
+   "start": 3031.52,
+   "duration": 4.48,
+   "text": "handling and um yeah that's what we"
+  },
+  {
+   "start": 3034.559,
+   "duration": 3.681,
+   "text": "talked about. So just letting you know"
+  },
+  {
+   "start": 3036.0,
+   "duration": 3.52,
+   "text": "that we are not uh it's not like we are"
+  },
+  {
+   "start": 3038.24,
+   "duration": 3.92,
+   "text": "not covering the exam. We are covering"
+  },
+  {
+   "start": 3039.52,
+   "duration": 5.44,
+   "text": "the exam but in a structured way. So"
+  },
+  {
+   "start": 3042.16,
+   "duration": 6.159,
+   "text": "you'll have fun while learning for the"
+  },
+  {
+   "start": 3044.96,
+   "duration": 6.24,
+   "text": "exam. So key takeaways."
+  },
+  {
+   "start": 3048.319,
+   "duration": 6.0,
+   "text": "So one output tokens cost about 5x input"
+  },
+  {
+   "start": 3051.2,
+   "duration": 5.44,
+   "text": "tokens. Yeah a concise agent is always a"
+  },
+  {
+   "start": 3054.319,
+   "duration": 4.481,
+   "text": "cheap agent. Yeah, it will cost you very"
+  },
+  {
+   "start": 3056.64,
+   "duration": 7.56,
+   "text": "less. Structured output from episode 7"
+  },
+  {
+   "start": 3058.8,
+   "duration": 5.4,
+   "text": "isn't just cleaner, it's cheaper."
+  },
+  {
+   "start": 3065.04,
+   "duration": 4.64,
+   "text": "Um the the the second key takeaway is"
+  },
+  {
+   "start": 3067.839,
+   "duration": 4.72,
+   "text": "prompt caching is your single biggest"
+  },
+  {
+   "start": 3069.68,
+   "duration": 6.08,
+   "text": "cost lever for like agentic loops. Same"
+  },
+  {
+   "start": 3072.559,
+   "duration": 5.681,
+   "text": "system prompt repeated across you know u"
+  },
+  {
+   "start": 3075.76,
+   "duration": 6.4,
+   "text": "15 calls you cash it and you roughly"
+  },
+  {
+   "start": 3078.24,
+   "duration": 6.079,
+   "text": "save 90% on the repeated prefix. Three"
+  },
+  {
+   "start": 3082.16,
+   "duration": 4.48,
+   "text": "match model tier to task complexity."
+  },
+  {
+   "start": 3084.319,
+   "duration": 4.481,
+   "text": "Your sub agents don't need opus. Your"
+  },
+  {
+   "start": 3086.64,
+   "duration": 5.36,
+   "text": "coordinator might not either. Haiku"
+  },
+  {
+   "start": 3088.8,
+   "duration": 4.4,
+   "text": "exists for a reason. So please uh make"
+  },
+  {
+   "start": 3092.0,
+   "duration": 4.88,
+   "text": "sure that you are choosing the right"
+  },
+  {
+   "start": 3093.2,
+   "duration": 5.76,
+   "text": "model. Four is um session transcript are"
+  },
+  {
+   "start": 3096.88,
+   "duration": 5.12,
+   "text": "your flight recorder. When an agent goes"
+  },
+  {
+   "start": 3098.96,
+   "duration": 4.96,
+   "text": "wrong, don't guess. Read the JSONL file."
+  },
+  {
+   "start": 3102.0,
+   "duration": 5.52,
+   "text": "Binary search the tool chain to find"
+  },
+  {
+   "start": 3103.92,
+   "duration": 5.28,
+   "text": "where the data went bad. Five is never"
+  },
+  {
+   "start": 3107.52,
+   "duration": 3.599,
+   "text": "silently swallow the errors and never"
+  },
+  {
+   "start": 3109.2,
+   "duration": 3.68,
+   "text": "terminate on the first failure. Use"
+  },
+  {
+   "start": 3111.119,
+   "duration": 4.561,
+   "text": "structured errors plus graceful"
+  },
+  {
+   "start": 3112.88,
+   "duration": 5.52,
+   "text": "degradation. Always be graceful guys"
+  },
+  {
+   "start": 3115.68,
+   "duration": 5.28,
+   "text": "please in your life in your relationship"
+  },
+  {
+   "start": 3118.4,
+   "duration": 5.439,
+   "text": "everywhere. Now I'm kind of drifting it"
+  },
+  {
+   "start": 3120.96,
+   "duration": 4.32,
+   "text": "off because of my ADHD I think but"
+  },
+  {
+   "start": 3123.839,
+   "duration": 4.161,
+   "text": "remember that that's also a good life"
+  },
+  {
+   "start": 3125.28,
+   "duration": 7.52,
+   "text": "lesson. Okay so that was all about the"
+  },
+  {
+   "start": 3128.0,
+   "duration": 7.359,
+   "text": "key takeaways and um we going to see the"
+  },
+  {
+   "start": 3132.8,
+   "duration": 4.48,
+   "text": "next episode and we're going to hand"
+  },
+  {
+   "start": 3135.359,
+   "duration": 4.561,
+   "text": "runtime to anthropic. We are almost done"
+  },
+  {
+   "start": 3137.28,
+   "duration": 4.799,
+   "text": "with the course guys. Uh thank you for"
+  },
+  {
+   "start": 3139.92,
+   "duration": 3.679,
+   "text": "everything. I mean no no no it's not"
+  },
+  {
+   "start": 3142.079,
+   "duration": 3.841,
+   "text": "over till now. I'm just saying that till"
+  },
+  {
+   "start": 3143.599,
+   "duration": 4.72,
+   "text": "now it has been really great creating"
+  },
+  {
+   "start": 3145.92,
+   "duration": 4.399,
+   "text": "these episodes and uh we'll be kind of"
+  },
+  {
+   "start": 3148.319,
+   "duration": 4.721,
+   "text": "finishing finishing it off in one more"
+  },
+  {
+   "start": 3150.319,
+   "duration": 5.361,
+   "text": "episode. So till then stay tuned. It's"
+  },
+  {
+   "start": 3153.04,
+   "duration": 7.039,
+   "text": "going to be amazing the last episode. Um"
+  },
+  {
+   "start": 3155.68,
+   "duration": 4.399,
+   "text": "take care. Bye. And I will see"
+  }
+ ]
+}

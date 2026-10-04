@@ -1,0 +1,6698 @@
+{
+ "video_id": "fVZzfTqzzdM",
+ "episode": "Ep 07",
+ "title": "Structured Output Handling",
+ "lane": "ccdv-f",
+ "segments": [
+  {
+   "start": 1.839,
+   "duration": 4.161,
+   "text": "Welcome to this lesson. So as you can"
+  },
+  {
+   "start": 4.319,
+   "duration": 4.081,
+   "text": "see what we are going to learn in this"
+  },
+  {
+   "start": 6.0,
+   "duration": 7.28,
+   "text": "lesson is structured output you can"
+  },
+  {
+   "start": 8.4,
+   "duration": 7.76,
+   "text": "trust. Yeah. So we are going to make the"
+  },
+  {
+   "start": 13.28,
+   "duration": 5.2,
+   "text": "models tools calls you know impossible"
+  },
+  {
+   "start": 16.16,
+   "duration": 7.279,
+   "text": "to get wrong right I mean we're going to"
+  },
+  {
+   "start": 18.48,
+   "duration": 6.799,
+   "text": "improve how our output messages are yeah"
+  },
+  {
+   "start": 23.439,
+   "duration": 4.321,
+   "text": "how we can structure it what are the"
+  },
+  {
+   "start": 25.279,
+   "duration": 5.681,
+   "text": "ways to do it and what are the"
+  },
+  {
+   "start": 27.76,
+   "duration": 4.959,
+   "text": "disadvantages we if we don't do it right"
+  },
+  {
+   "start": 30.96,
+   "duration": 4.0,
+   "text": "because at the end of the day we need to"
+  },
+  {
+   "start": 32.719,
+   "duration": 3.68,
+   "text": "know that what value it brings in to our"
+  },
+  {
+   "start": 34.96,
+   "duration": 4.08,
+   "text": "agent so obviously we're going to"
+  },
+  {
+   "start": 36.399,
+   "duration": 4.641,
+   "text": "enhance our existing agent yeah our PR"
+  },
+  {
+   "start": 39.04,
+   "duration": 4.16,
+   "text": "review agent that we we are working on"
+  },
+  {
+   "start": 41.04,
+   "duration": 4.08,
+   "text": "as part of this course and you can"
+  },
+  {
+   "start": 43.2,
+   "duration": 3.44,
+   "text": "understand what value it brings in as"
+  },
+  {
+   "start": 45.12,
+   "duration": 5.04,
+   "text": "well."
+  },
+  {
+   "start": 46.64,
+   "duration": 5.919,
+   "text": "Right? So, uh there is a bug that's"
+  },
+  {
+   "start": 50.16,
+   "duration": 4.96,
+   "text": "already in our repo the repo that we are"
+  },
+  {
+   "start": 52.559,
+   "duration": 4.48,
+   "text": "kind of exploring that a claude API"
+  },
+  {
+   "start": 55.12,
+   "duration": 4.8,
+   "text": "masterclass repo right where we are kind"
+  },
+  {
+   "start": 57.039,
+   "duration": 6.16,
+   "text": "of building our agent for this course."
+  },
+  {
+   "start": 59.92,
+   "duration": 6.08,
+   "text": "So, if you go and open your claude MD"
+  },
+  {
+   "start": 63.199,
+   "duration": 7.121,
+   "text": "file um you know the one a couple of"
+  },
+  {
+   "start": 66.0,
+   "duration": 6.72,
+   "text": "episodes back. Yeah. Um there is one"
+  },
+  {
+   "start": 70.32,
+   "duration": 4.96,
+   "text": "line that says you know severity is"
+  },
+  {
+   "start": 72.72,
+   "duration": 5.52,
+   "text": "exactly one of these three things. I'm"
+  },
+  {
+   "start": 75.28,
+   "duration": 6.879,
+   "text": "going to go and open up this episode 6"
+  },
+  {
+   "start": 78.24,
+   "duration": 7.12,
+   "text": "um claude MD file right and if you go"
+  },
+  {
+   "start": 82.159,
+   "duration": 5.201,
+   "text": "over here yeah if you see this review"
+  },
+  {
+   "start": 85.36,
+   "duration": 5.52,
+   "text": "contract seity is exactly one of"
+  },
+  {
+   "start": 87.36,
+   "duration": 8.16,
+   "text": "blocking warning or net. Yeah. So the"
+  },
+  {
+   "start": 90.88,
+   "duration": 6.72,
+   "text": "thing is um what if Claude writes"
+  },
+  {
+   "start": 95.52,
+   "duration": 4.4,
+   "text": "critical instead? I mean obviously this"
+  },
+  {
+   "start": 97.6,
+   "duration": 4.96,
+   "text": "is like house rules which which gets"
+  },
+  {
+   "start": 99.92,
+   "duration": 6.0,
+   "text": "loaded in every new agent session that"
+  },
+  {
+   "start": 102.56,
+   "duration": 5.04,
+   "text": "gets created. Okay. But what if Claude"
+  },
+  {
+   "start": 105.92,
+   "duration": 4.0,
+   "text": "writes critical instead because that"
+  },
+  {
+   "start": 107.6,
+   "duration": 5.199,
+   "text": "kind of matches like a synonym to any"
+  },
+  {
+   "start": 109.92,
+   "duration": 5.6,
+   "text": "one of these words, right? I mean if"
+  },
+  {
+   "start": 112.799,
+   "duration": 6.401,
+   "text": "that happens nothing happens. Basically"
+  },
+  {
+   "start": 115.52,
+   "duration": 5.84,
+   "text": "it's just a sentence. Yeah. a really"
+  },
+  {
+   "start": 119.2,
+   "duration": 3.519,
+   "text": "well-intended sentence sitting in a"
+  },
+  {
+   "start": 121.36,
+   "duration": 3.92,
+   "text": "markdown file. That is what your"
+  },
+  {
+   "start": 122.719,
+   "duration": 5.201,
+   "text": "claude.mmd file is, right? I mean,"
+  },
+  {
+   "start": 125.28,
+   "duration": 5.44,
+   "text": "claude is like completely fle free to"
+  },
+  {
+   "start": 127.92,
+   "duration": 4.72,
+   "text": "kind of wander away from from the second"
+  },
+  {
+   "start": 130.72,
+   "duration": 4.879,
+   "text": "it's having an off turn or something"
+  },
+  {
+   "start": 132.64,
+   "duration": 6.64,
+   "text": "like that. It's like these are the house"
+  },
+  {
+   "start": 135.599,
+   "duration": 6.0,
+   "text": "rules. I mean, for example, you have um"
+  },
+  {
+   "start": 139.28,
+   "duration": 4.16,
+   "text": "I mean invited some people to your house"
+  },
+  {
+   "start": 141.599,
+   "duration": 4.081,
+   "text": "for a house party, right? There are some"
+  },
+  {
+   "start": 143.44,
+   "duration": 3.92,
+   "text": "house rules, right? Some of the people"
+  },
+  {
+   "start": 145.68,
+   "duration": 5.44,
+   "text": "might follow them. Some of the people"
+  },
+  {
+   "start": 147.36,
+   "duration": 5.599,
+   "text": "would say me I don't know let's do that"
+  },
+  {
+   "start": 151.12,
+   "duration": 4.0,
+   "text": "which is basically in the house rules"
+  },
+  {
+   "start": 152.959,
+   "duration": 4.56,
+   "text": "but they won't follow it. So it's just"
+  },
+  {
+   "start": 155.12,
+   "duration": 3.759,
+   "text": "one of those times right obviously most"
+  },
+  {
+   "start": 157.519,
+   "duration": 3.121,
+   "text": "of the times it's better you know"
+  },
+  {
+   "start": 158.879,
+   "duration": 3.44,
+   "text": "obviously good to have the clouded MD"
+  },
+  {
+   "start": 160.64,
+   "duration": 4.72,
+   "text": "file because most of the things claude"
+  },
+  {
+   "start": 162.319,
+   "duration": 4.64,
+   "text": "will keep it in its context and it will"
+  },
+  {
+   "start": 165.36,
+   "duration": 4.159,
+   "text": "try to follow it but you know at the end"
+  },
+  {
+   "start": 166.959,
+   "duration": 4.081,
+   "text": "of the day it's an MD file. We it's it's"
+  },
+  {
+   "start": 169.519,
+   "duration": 2.961,
+   "text": "it's at the end of the day it's"
+  },
+  {
+   "start": 171.04,
+   "duration": 3.839,
+   "text": "probabilistic. If you want to be"
+  },
+  {
+   "start": 172.48,
+   "duration": 5.039,
+   "text": "deterministic, we have used something"
+  },
+  {
+   "start": 174.879,
+   "duration": 4.801,
+   "text": "known as hooks. But what about the"
+  },
+  {
+   "start": 177.519,
+   "duration": 3.681,
+   "text": "structured output? Yeah, that is also"
+  },
+  {
+   "start": 179.68,
+   "duration": 4.4,
+   "text": "one of the things that needs to be"
+  },
+  {
+   "start": 181.2,
+   "duration": 5.36,
+   "text": "deterministic in a lot of times. I hope"
+  },
+  {
+   "start": 184.08,
+   "duration": 4.0,
+   "text": "that's making sense. Yeah, and that is"
+  },
+  {
+   "start": 186.56,
+   "duration": 3.2,
+   "text": "the things about prompts, right? They"
+  },
+  {
+   "start": 188.08,
+   "duration": 4.0,
+   "text": "are requests. They are not contracts."
+  },
+  {
+   "start": 189.76,
+   "duration": 4.72,
+   "text": "It's probabilistic of every time, right?"
+  },
+  {
+   "start": 192.08,
+   "duration": 5.6,
+   "text": "We already know this. This is basically"
+  },
+  {
+   "start": 194.48,
+   "duration": 6.64,
+   "text": "the whole plot of my entire courses."
+  },
+  {
+   "start": 197.68,
+   "duration": 6.72,
+   "text": "Yeah. And uh so today we're going to you"
+  },
+  {
+   "start": 201.12,
+   "duration": 5.039,
+   "text": "know do do a different thing over here"
+  },
+  {
+   "start": 204.4,
+   "duration": 3.759,
+   "text": "but this time we're going to do for the"
+  },
+  {
+   "start": 206.159,
+   "duration": 3.921,
+   "text": "shape of the model's output instead of"
+  },
+  {
+   "start": 208.159,
+   "duration": 3.841,
+   "text": "its behavior. For behavior we have"
+  },
+  {
+   "start": 210.08,
+   "duration": 4.56,
+   "text": "already used something known as hooks"
+  },
+  {
+   "start": 212.0,
+   "duration": 5.599,
+   "text": "which will control when claude can call"
+  },
+  {
+   "start": 214.64,
+   "duration": 5.2,
+   "text": "some tools what would be you know when"
+  },
+  {
+   "start": 217.599,
+   "duration": 4.401,
+   "text": "it should intervene. If you have any"
+  },
+  {
+   "start": 219.84,
+   "duration": 5.119,
+   "text": "policy violations then at that point the"
+  },
+  {
+   "start": 222.0,
+   "duration": 5.28,
+   "text": "behavior part is kind of handled by your"
+  },
+  {
+   "start": 224.959,
+   "duration": 4.161,
+   "text": "hooks which is also deterministic. Here"
+  },
+  {
+   "start": 227.28,
+   "duration": 4.0,
+   "text": "we're going to talk about the shape"
+  },
+  {
+   "start": 229.12,
+   "duration": 5.759,
+   "text": "which is basically the model's output at"
+  },
+  {
+   "start": 231.28,
+   "duration": 6.239,
+   "text": "the end of the day. So we're going to"
+  },
+  {
+   "start": 234.879,
+   "duration": 5.521,
+   "text": "invent we're going to make or invent a"
+  },
+  {
+   "start": 237.519,
+   "duration": 5.28,
+   "text": "fourth severity level not just unlikely"
+  },
+  {
+   "start": 240.4,
+   "duration": 4.88,
+   "text": "but structurally impossible to sneak"
+  },
+  {
+   "start": 242.799,
+   "duration": 4.481,
+   "text": "past us. Okay. And along the way we're"
+  },
+  {
+   "start": 245.28,
+   "duration": 5.12,
+   "text": "going to bump into you know genuinely"
+  },
+  {
+   "start": 247.28,
+   "duration": 5.519,
+   "text": "surprising gap in the tool uh we've been"
+  },
+  {
+   "start": 250.4,
+   "duration": 4.399,
+   "text": "it which has been there since uh I think"
+  },
+  {
+   "start": 252.799,
+   "duration": 3.921,
+   "text": "lesson number three or something. So"
+  },
+  {
+   "start": 254.799,
+   "duration": 4.641,
+   "text": "without wasting any time I hope you guys"
+  },
+  {
+   "start": 256.72,
+   "duration": 7.68,
+   "text": "got a gist of what we are going to do"
+  },
+  {
+   "start": 259.44,
+   "duration": 8.56,
+   "text": "and um we're going to now yeah going to"
+  },
+  {
+   "start": 264.4,
+   "duration": 6.16,
+   "text": "just just going to do about it. So uh"
+  },
+  {
+   "start": 268.0,
+   "duration": 5.04,
+   "text": "what we are going to build today? Yeah."
+  },
+  {
+   "start": 270.56,
+   "duration": 4.48,
+   "text": "So uh we going to so basically if you"
+  },
+  {
+   "start": 273.04,
+   "duration": 4.4,
+   "text": "see if you see the mental model of"
+  },
+  {
+   "start": 275.04,
+   "duration": 4.48,
+   "text": "around here. So since you know lesson"
+  },
+  {
+   "start": 277.44,
+   "duration": 5.68,
+   "text": "one or episode number one we tried the"
+  },
+  {
+   "start": 279.52,
+   "duration": 5.44,
+   "text": "raw agent SDK. No no not raw messages"
+  },
+  {
+   "start": 283.12,
+   "duration": 3.68,
+   "text": "API. There is no agent SDK involved over"
+  },
+  {
+   "start": 284.96,
+   "duration": 3.92,
+   "text": "there. My bad. Sorry. So episode number"
+  },
+  {
+   "start": 286.8,
+   "duration": 4.48,
+   "text": "one we created the agentic loop using"
+  },
+  {
+   "start": 288.88,
+   "duration": 4.64,
+   "text": "the raw messages API. Episode two we"
+  },
+  {
+   "start": 291.28,
+   "duration": 4.08,
+   "text": "kind of started with the SDK. Then we"
+  },
+  {
+   "start": 293.52,
+   "duration": 3.76,
+   "text": "explored custom tools. Then we explored"
+  },
+  {
+   "start": 295.36,
+   "duration": 3.6,
+   "text": "hooks that I was just talking about."
+  },
+  {
+   "start": 297.28,
+   "duration": 3.76,
+   "text": "Then we explored sub aents. Then we"
+  },
+  {
+   "start": 298.96,
+   "duration": 4.4,
+   "text": "explored memory. Now we're going to"
+  },
+  {
+   "start": 301.04,
+   "duration": 3.84,
+   "text": "explore something known as structure. So"
+  },
+  {
+   "start": 303.36,
+   "duration": 4.48,
+   "text": "if you're going to talk about the mental"
+  },
+  {
+   "start": 304.88,
+   "duration": 5.36,
+   "text": "model, we uh did around you know six"
+  },
+  {
+   "start": 307.84,
+   "duration": 5.44,
+   "text": "episodes of giving Claude more room to"
+  },
+  {
+   "start": 310.24,
+   "duration": 5.28,
+   "text": "work. Yeah. And one episode of drawing a"
+  },
+  {
+   "start": 313.28,
+   "duration": 4.479,
+   "text": "box around each one of the output and"
+  },
+  {
+   "start": 315.52,
+   "duration": 5.04,
+   "text": "saying you know this box at least"
+  },
+  {
+   "start": 317.759,
+   "duration": 5.121,
+   "text": "doesn't move. That is fixed. That is how"
+  },
+  {
+   "start": 320.56,
+   "duration": 5.44,
+   "text": "the output should be. That is what the"
+  },
+  {
+   "start": 322.88,
+   "duration": 5.28,
+   "text": "structure of uh you know the the things"
+  },
+  {
+   "start": 326.0,
+   "duration": 4.88,
+   "text": "that is happening over here. Yeah."
+  },
+  {
+   "start": 328.16,
+   "duration": 5.12,
+   "text": "Because you know just just think about"
+  },
+  {
+   "start": 330.88,
+   "duration": 4.24,
+   "text": "it as a you know as a scrum team. Let's"
+  },
+  {
+   "start": 333.28,
+   "duration": 4.16,
+   "text": "take an example, right? Everyone is"
+  },
+  {
+   "start": 335.12,
+   "duration": 4.4,
+   "text": "excellent. Everyone is like the top of"
+  },
+  {
+   "start": 337.44,
+   "duration": 3.84,
+   "text": "the world, right? Excellent, excellent"
+  },
+  {
+   "start": 339.52,
+   "duration": 3.76,
+   "text": "talents. But at the end of the day, if"
+  },
+  {
+   "start": 341.28,
+   "duration": 4.88,
+   "text": "they are not working in a systematic"
+  },
+  {
+   "start": 343.28,
+   "duration": 5.199,
+   "text": "manner, they're they're uh they are not"
+  },
+  {
+   "start": 346.16,
+   "duration": 4.479,
+   "text": "maintaining gyros, they are not, you"
+  },
+  {
+   "start": 348.479,
+   "duration": 4.0,
+   "text": "know, keeping a track of the work in a"
+  },
+  {
+   "start": 350.639,
+   "duration": 4.56,
+   "text": "particular format, then at the end of"
+  },
+  {
+   "start": 352.479,
+   "duration": 4.961,
+   "text": "the day, you don't know everything gets"
+  },
+  {
+   "start": 355.199,
+   "duration": 4.56,
+   "text": "goes unttracked. What who has done"
+  },
+  {
+   "start": 357.44,
+   "duration": 4.16,
+   "text": "whatever there is no particular you know"
+  },
+  {
+   "start": 359.759,
+   "duration": 3.521,
+   "text": "sense about it. Yeah. So that's why"
+  },
+  {
+   "start": 361.6,
+   "duration": 6.48,
+   "text": "structure is very very important and"
+  },
+  {
+   "start": 363.28,
+   "duration": 7.039,
+   "text": "that's what we going to do. Right? Okay."
+  },
+  {
+   "start": 368.08,
+   "duration": 4.08,
+   "text": "So also discussing what we're going to"
+  },
+  {
+   "start": 370.319,
+   "duration": 4.801,
+   "text": "build today, right? So we're going to"
+  },
+  {
+   "start": 372.16,
+   "duration": 4.96,
+   "text": "build a JSON schema. Okay. On top of our"
+  },
+  {
+   "start": 375.12,
+   "duration": 3.6,
+   "text": "tools, hooks, whatever is there, they"
+  },
+  {
+   "start": 377.12,
+   "duration": 3.04,
+   "text": "are going to be there. The main thing"
+  },
+  {
+   "start": 378.72,
+   "duration": 2.72,
+   "text": "that we're going to focus is on schema"
+  },
+  {
+   "start": 380.16,
+   "duration": 4.56,
+   "text": "today. So we're going to build a JSON"
+  },
+  {
+   "start": 381.44,
+   "duration": 6.16,
+   "text": "schema for one review finding file line"
+  },
+  {
+   "start": 384.72,
+   "duration": 5.68,
+   "text": "severity message and a suggested fix"
+  },
+  {
+   "start": 387.6,
+   "duration": 4.96,
+   "text": "that is allowed not to exist. Then we're"
+  },
+  {
+   "start": 390.4,
+   "duration": 6.16,
+   "text": "going to build a Python function. Yeah."
+  },
+  {
+   "start": 392.56,
+   "duration": 6.72,
+   "text": "That validates every finding. Yeah. Now,"
+  },
+  {
+   "start": 396.56,
+   "duration": 5.28,
+   "text": "um we're going to modify our sub aents."
+  },
+  {
+   "start": 399.28,
+   "duration": 5.919,
+   "text": "Yeah. That we had built in couple of u"
+  },
+  {
+   "start": 401.84,
+   "duration": 6.24,
+   "text": "you know lessons back, I guess. And uh"
+  },
+  {
+   "start": 405.199,
+   "duration": 4.401,
+   "text": "we're going to build one tool, right? We"
+  },
+  {
+   "start": 408.08,
+   "duration": 3.6,
+   "text": "had couple of tools, but there will be"
+  },
+  {
+   "start": 409.6,
+   "duration": 6.159,
+   "text": "one final tool that publishes the whole"
+  },
+  {
+   "start": 411.68,
+   "duration": 5.519,
+   "text": "review. We're going to do that. And um"
+  },
+  {
+   "start": 415.759,
+   "duration": 2.641,
+   "text": "we're going to see some more steps as"
+  },
+  {
+   "start": 417.199,
+   "duration": 3.12,
+   "text": "well. So that's what we're going to do."
+  },
+  {
+   "start": 418.4,
+   "duration": 4.639,
+   "text": "Main focus of this lesson is building"
+  },
+  {
+   "start": 420.319,
+   "duration": 4.481,
+   "text": "that schema where we going to use that"
+  },
+  {
+   "start": 423.039,
+   "duration": 4.16,
+   "text": "schema at various places and you're"
+  },
+  {
+   "start": 424.8,
+   "duration": 4.48,
+   "text": "going to see them in action. Yeah, I"
+  },
+  {
+   "start": 427.199,
+   "duration": 6.4,
+   "text": "hope that's making sense. Okay, that"
+  },
+  {
+   "start": 429.28,
+   "duration": 7.039,
+   "text": "this is we already discussed. Yeah. Now,"
+  },
+  {
+   "start": 433.599,
+   "duration": 4.72,
+   "text": "um so talking about the project"
+  },
+  {
+   "start": 436.319,
+   "duration": 4.16,
+   "text": "structure for this particular episode."
+  },
+  {
+   "start": 438.319,
+   "duration": 3.681,
+   "text": "So if you're going to go back, so we're"
+  },
+  {
+   "start": 440.479,
+   "duration": 4.0,
+   "text": "going to follow the same structure"
+  },
+  {
+   "start": 442.0,
+   "duration": 4.479,
+   "text": "episode wise or lesson wise. So these"
+  },
+  {
+   "start": 444.479,
+   "duration": 3.921,
+   "text": "are all like files which we need. There"
+  },
+  {
+   "start": 446.479,
+   "duration": 3.921,
+   "text": "is one schemas py file which I'm going"
+  },
+  {
+   "start": 448.4,
+   "duration": 3.68,
+   "text": "to explain."
+  },
+  {
+   "start": 450.4,
+   "duration": 4.0,
+   "text": "These files are carried forward session"
+  },
+  {
+   "start": 452.08,
+   "duration": 4.72,
+   "text": "index and context check. We kind of"
+  },
+  {
+   "start": 454.4,
+   "duration": 4.239,
+   "text": "explored them uh in detail in episode"
+  },
+  {
+   "start": 456.8,
+   "duration": 4.399,
+   "text": "number six. Obviously we'll have our"
+  },
+  {
+   "start": 458.639,
+   "duration": 4.801,
+   "text": "snippets file right which uh will"
+  },
+  {
+   "start": 461.199,
+   "duration": 3.521,
+   "text": "basically um give us the snippets that"
+  },
+  {
+   "start": 463.44,
+   "duration": 3.92,
+   "text": "we're going to work with. And we have"
+  },
+  {
+   "start": 464.72,
+   "duration": 4.479,
+   "text": "the modified tools py file which will"
+  },
+  {
+   "start": 467.36,
+   "duration": 5.92,
+   "text": "I'll show you what tools were modified."
+  },
+  {
+   "start": 469.199,
+   "duration": 6.321,
+   "text": "One uh just good or I don't know um"
+  },
+  {
+   "start": 473.28,
+   "duration": 4.639,
+   "text": "thing that I did behind the scenes is I"
+  },
+  {
+   "start": 475.52,
+   "duration": 4.799,
+   "text": "switched the model from sonnet 5 to"
+  },
+  {
+   "start": 477.919,
+   "duration": 4.72,
+   "text": "haiku. The reason I did because I want"
+  },
+  {
+   "start": 480.319,
+   "duration": 6.32,
+   "text": "to save money. I don't I don't think"
+  },
+  {
+   "start": 482.639,
+   "duration": 6.0,
+   "text": "that um set is needed for this kind of u"
+  },
+  {
+   "start": 486.639,
+   "duration": 5.201,
+   "text": "calls you know haiku we can save a lot"
+  },
+  {
+   "start": 488.639,
+   "duration": 5.28,
+   "text": "of money and um a lot of tokens and it"
+  },
+  {
+   "start": 491.84,
+   "duration": 3.84,
+   "text": "will get the job done. So every thing"
+  },
+  {
+   "start": 493.919,
+   "duration": 4.241,
+   "text": "that we are going to do from now on is"
+  },
+  {
+   "start": 495.68,
+   "duration": 4.72,
+   "text": "going to be in haiku. I hope that's"
+  },
+  {
+   "start": 498.16,
+   "duration": 5.039,
+   "text": "making sense, right? And obviously I"
+  },
+  {
+   "start": 500.4,
+   "duration": 5.12,
+   "text": "have my IPython shell open and at the"
+  },
+  {
+   "start": 503.199,
+   "duration": 4.4,
+   "text": "end of the lesson we're going to run the"
+  },
+  {
+   "start": 505.52,
+   "duration": 4.64,
+   "text": "whole agent and all those things. I hope"
+  },
+  {
+   "start": 507.599,
+   "duration": 7.12,
+   "text": "that's making sense."
+  },
+  {
+   "start": 510.16,
+   "duration": 8.96,
+   "text": "Yeah. Okay. So um there is one thing"
+  },
+  {
+   "start": 514.719,
+   "duration": 8.24,
+   "text": "that I want to talk about is um"
+  },
+  {
+   "start": 519.12,
+   "duration": 5.839,
+   "text": "strict the tooling gap. Okay. So um this"
+  },
+  {
+   "start": 522.959,
+   "duration": 5.121,
+   "text": "is kind of a fact that I have checked"
+  },
+  {
+   "start": 524.959,
+   "duration": 5.281,
+   "text": "right now and it is genuinely new and"
+  },
+  {
+   "start": 528.08,
+   "duration": 4.56,
+   "text": "it's it's worth knowing about it if you"
+  },
+  {
+   "start": 530.24,
+   "duration": 5.68,
+   "text": "haven't run into yet. So I was just uh"
+  },
+  {
+   "start": 532.64,
+   "duration": 5.84,
+   "text": "kind of updating my courses based on"
+  },
+  {
+   "start": 535.92,
+   "duration": 6.4,
+   "text": "some documents and news here and there"
+  },
+  {
+   "start": 538.48,
+   "duration": 7.359,
+   "text": "and uh I just came across that the raw"
+  },
+  {
+   "start": 542.32,
+   "duration": 7.36,
+   "text": "messages API that you know uh we used to"
+  },
+  {
+   "start": 545.839,
+   "duration": 7.44,
+   "text": "write the agentic loop by ourselves. It"
+  },
+  {
+   "start": 549.68,
+   "duration": 7.04,
+   "text": "has a feature literally called strict"
+  },
+  {
+   "start": 553.279,
+   "duration": 6.401,
+   "text": "tool use. Okay. So if you see this part"
+  },
+  {
+   "start": 556.72,
+   "duration": 6.16,
+   "text": "of the box over here, it says strict"
+  },
+  {
+   "start": 559.68,
+   "duration": 5.92,
+   "text": "tool use is in GA. Okay. So it is"
+  },
+  {
+   "start": 562.88,
+   "duration": 6.48,
+   "text": "generally available today. It used to be"
+  },
+  {
+   "start": 565.6,
+   "duration": 5.919,
+   "text": "uh in beta phase, right? Um but that is"
+  },
+  {
+   "start": 569.36,
+   "duration": 4.64,
+   "text": "not at all. It is in GA phase right now."
+  },
+  {
+   "start": 571.519,
+   "duration": 5.681,
+   "text": "So this mean actually this uh strict"
+  },
+  {
+   "start": 574.0,
+   "duration": 6.32,
+   "text": "tool, right? So if you say set strict"
+  },
+  {
+   "start": 577.2,
+   "duration": 4.96,
+   "text": "true as a top level field on a tool"
+  },
+  {
+   "start": 580.32,
+   "duration": 3.519,
+   "text": "definition. I will show you that in a"
+  },
+  {
+   "start": 582.16,
+   "duration": 4.16,
+   "text": "minute. Okay. We are going to again"
+  },
+  {
+   "start": 583.839,
+   "duration": 5.841,
+   "text": "visit the raw messages API to actually"
+  },
+  {
+   "start": 586.32,
+   "duration": 5.84,
+   "text": "show you what I mean by that. Yeah. Um"
+  },
+  {
+   "start": 589.68,
+   "duration": 4.719,
+   "text": "along we have tool definition. You set"
+  },
+  {
+   "start": 592.16,
+   "duration": 4.4,
+   "text": "it alongside name description and input"
+  },
+  {
+   "start": 594.399,
+   "duration": 4.241,
+   "text": "schema. All of these are basically you"
+  },
+  {
+   "start": 596.56,
+   "duration": 4.88,
+   "text": "know known things right. [snorts]"
+  },
+  {
+   "start": 598.64,
+   "duration": 5.52,
+   "text": "So what it happens is the a when you do"
+  },
+  {
+   "start": 601.44,
+   "duration": 6.16,
+   "text": "this right the set set strict as true."
+  },
+  {
+   "start": 604.16,
+   "duration": 7.92,
+   "text": "What happens is the API guarantees claw"
+  },
+  {
+   "start": 607.6,
+   "duration": 6.32,
+   "text": "tools input matches your schema exactly."
+  },
+  {
+   "start": 612.08,
+   "duration": 3.6,
+   "text": "So we have a defined schema in our"
+  },
+  {
+   "start": 613.92,
+   "duration": 4.8,
+   "text": "schemas py file which I'm going to show"
+  },
+  {
+   "start": 615.68,
+   "duration": 5.92,
+   "text": "you in a minute. Right. But that is what"
+  },
+  {
+   "start": 618.72,
+   "duration": 4.96,
+   "text": "it is do. Yeah. And there is a it it"
+  },
+  {
+   "start": 621.6,
+   "duration": 5.359,
+   "text": "will it uses a technique known as"
+  },
+  {
+   "start": 623.68,
+   "duration": 6.399,
+   "text": "grammar constraint sampling."
+  },
+  {
+   "start": 626.959,
+   "duration": 6.081,
+   "text": "Okay. So put it in very easy words."
+  },
+  {
+   "start": 630.079,
+   "duration": 5.121,
+   "text": "Yeah. grammar constraint sampling kind"
+  },
+  {
+   "start": 633.04,
+   "duration": 5.52,
+   "text": "of sounds scarier."
+  },
+  {
+   "start": 635.2,
+   "duration": 6.0,
+   "text": "Yeah. But instead it's just you know"
+  },
+  {
+   "start": 638.56,
+   "duration": 6.959,
+   "text": "trying it just claude is trying its best"
+  },
+  {
+   "start": 641.2,
+   "duration": 6.0,
+   "text": "to write valid JSON and most of the"
+  },
+  {
+   "start": 645.519,
+   "duration": 4.32,
+   "text": "times not most of the time and usually"
+  },
+  {
+   "start": 647.2,
+   "duration": 6.079,
+   "text": "it succeeds. So the API takes your"
+  },
+  {
+   "start": 649.839,
+   "duration": 5.841,
+   "text": "schema and turns it into a set of kind"
+  },
+  {
+   "start": 653.279,
+   "duration": 4.24,
+   "text": "of guardrails around around the next"
+  },
+  {
+   "start": 655.68,
+   "duration": 4.399,
+   "text": "token."
+  },
+  {
+   "start": 657.519,
+   "duration": 4.88,
+   "text": "Yeah. So the next token you know it it's"
+  },
+  {
+   "start": 660.079,
+   "duration": 4.801,
+   "text": "a guardrail around the next token which"
+  },
+  {
+   "start": 662.399,
+   "duration": 4.801,
+   "text": "is basically it's allowed to generate."
+  },
+  {
+   "start": 664.88,
+   "duration": 6.24,
+   "text": "So it's not like you know please follow"
+  },
+  {
+   "start": 667.2,
+   "duration": 5.92,
+   "text": "this shape instead it's like you are not"
+  },
+  {
+   "start": 671.12,
+   "duration": 4.56,
+   "text": "able to generate a token outside of this"
+  },
+  {
+   "start": 673.12,
+   "duration": 5.279,
+   "text": "shape. So next preceding tokens will be"
+  },
+  {
+   "start": 675.68,
+   "duration": 6.0,
+   "text": "generated in this shape exactly when you"
+  },
+  {
+   "start": 678.399,
+   "duration": 4.88,
+   "text": "say set strict is true. So that is a"
+  },
+  {
+   "start": 681.68,
+   "duration": 4.399,
+   "text": "structural guarantee which we actually"
+  },
+  {
+   "start": 683.279,
+   "duration": 5.521,
+   "text": "need not a strongly worded request."
+  },
+  {
+   "start": 686.079,
+   "duration": 4.561,
+   "text": "Okay. And you can stack it up with"
+  },
+  {
+   "start": 688.8,
+   "duration": 5.68,
+   "text": "various other things. For example, tool"
+  },
+  {
+   "start": 690.64,
+   "duration": 6.16,
+   "text": "choice. Yeah. Let's say type any. So it"
+  },
+  {
+   "start": 694.48,
+   "duration": 5.68,
+   "text": "will guarantee that you know a tool gets"
+  },
+  {
+   "start": 696.8,
+   "duration": 5.68,
+   "text": "called at all times, right? Which if you"
+  },
+  {
+   "start": 700.16,
+   "duration": 4.72,
+   "text": "remember from my"
+  },
+  {
+   "start": 702.48,
+   "duration": 4.0,
+   "text": "claude certified architect series or a"
+  },
+  {
+   "start": 704.88,
+   "duration": 4.24,
+   "text": "couple of episode back when we were"
+  },
+  {
+   "start": 706.48,
+   "duration": 5.76,
+   "text": "talking about tools in this particular"
+  },
+  {
+   "start": 709.12,
+   "duration": 6.24,
+   "text": "you know series as well. Yeah. is"
+  },
+  {
+   "start": 712.24,
+   "duration": 5.52,
+   "text": "exactly you know that settings whole job"
+  },
+  {
+   "start": 715.36,
+   "duration": 5.36,
+   "text": "basically combined right you you you get"
+  },
+  {
+   "start": 717.76,
+   "duration": 5.519,
+   "text": "a tool called definitely happening every"
+  },
+  {
+   "start": 720.72,
+   "duration": 7.359,
+   "text": "time when you say tool choice as type"
+  },
+  {
+   "start": 723.279,
+   "duration": 7.041,
+   "text": "any and when it does yeah the the input"
+  },
+  {
+   "start": 728.079,
+   "duration": 5.041,
+   "text": "is definitely valid yeah there is a"
+  },
+  {
+   "start": 730.32,
+   "duration": 4.959,
+   "text": "particular schema that goes along yeah"
+  },
+  {
+   "start": 733.12,
+   "duration": 4.48,
+   "text": "and that you can achieve it by just"
+  },
+  {
+   "start": 735.279,
+   "duration": 4.24,
+   "text": "using this set strict as true in the raw"
+  },
+  {
+   "start": 737.6,
+   "duration": 4.64,
+   "text": "messages API"
+  },
+  {
+   "start": 739.519,
+   "duration": 4.961,
+   "text": "yeah so I know you guys can get"
+  },
+  {
+   "start": 742.24,
+   "duration": 6.32,
+   "text": "confused. So, I'm going to just show you"
+  },
+  {
+   "start": 744.48,
+   "duration": 5.68,
+   "text": "that. Right. So, um this is the thing."
+  },
+  {
+   "start": 748.56,
+   "duration": 4.6,
+   "text": "Yeah."
+  },
+  {
+   "start": 750.16,
+   "duration": 3.0,
+   "text": "So,"
+  },
+  {
+   "start": 753.839,
+   "duration": 4.081,
+   "text": "I'm just going to grab this one, this"
+  },
+  {
+   "start": 756.48,
+   "duration": 5.44,
+   "text": "particular snippet from here, and then"
+  },
+  {
+   "start": 757.92,
+   "duration": 6.24,
+   "text": "we're going to run it across. Yeah,"
+  },
+  {
+   "start": 761.92,
+   "duration": 4.96,
+   "text": "let me just convert this to a preview"
+  },
+  {
+   "start": 764.16,
+   "duration": 4.64,
+   "text": "kind of a thing so it's easier to see."
+  },
+  {
+   "start": 766.88,
+   "duration": 4.8,
+   "text": "Yeah, that's that's better. This MD file"
+  },
+  {
+   "start": 768.8,
+   "duration": 5.599,
+   "text": "is now better. Okay. So, uh we're going"
+  },
+  {
+   "start": 771.68,
+   "duration": 4.399,
+   "text": "to just have a look at what is happening"
+  },
+  {
+   "start": 774.399,
+   "duration": 4.161,
+   "text": "over here. So, this is a this is a quick"
+  },
+  {
+   "start": 776.079,
+   "duration": 5.361,
+   "text": "detour back to episode one's uh raw"
+  },
+  {
+   "start": 778.56,
+   "duration": 5.12,
+   "text": "messages API. There is no SDK involved."
+  },
+  {
+   "start": 781.44,
+   "duration": 4.56,
+   "text": "So, if you notice what we are doing is"
+  },
+  {
+   "start": 783.68,
+   "duration": 5.599,
+   "text": "we are importing something over here."
+  },
+  {
+   "start": 786.0,
+   "duration": 5.2,
+   "text": "That is finding schema from schemas."
+  },
+  {
+   "start": 789.279,
+   "duration": 4.321,
+   "text": "Okay. Finding schema from schemas which"
+  },
+  {
+   "start": 791.2,
+   "duration": 4.48,
+   "text": "is basically coming from the schemas. py"
+  },
+  {
+   "start": 793.6,
+   "duration": 5.28,
+   "text": "file which we are going to explore in a"
+  },
+  {
+   "start": 795.68,
+   "duration": 5.2,
+   "text": "minute. Yeah. uh it is like the shape of"
+  },
+  {
+   "start": 798.88,
+   "duration": 3.84,
+   "text": "one review finding plus the validation"
+  },
+  {
+   "start": 800.88,
+   "duration": 5.12,
+   "text": "that actually enforces it right"
+  },
+  {
+   "start": 802.72,
+   "duration": 4.96,
+   "text": "basically. Yeah. So um if you if if you"
+  },
+  {
+   "start": 806.0,
+   "duration": 3.519,
+   "text": "see okay don't worry about that wording"
+  },
+  {
+   "start": 807.68,
+   "duration": 3.36,
+   "text": "I'm going to explain to it right just"
+  },
+  {
+   "start": 809.519,
+   "duration": 4.081,
+   "text": "now for now understand that it's"
+  },
+  {
+   "start": 811.04,
+   "duration": 5.76,
+   "text": "importing this from the schemas file"
+  },
+  {
+   "start": 813.6,
+   "duration": 5.84,
+   "text": "yeah so"
+  },
+  {
+   "start": 816.8,
+   "duration": 4.479,
+   "text": "we have designed it like strict mode"
+  },
+  {
+   "start": 819.44,
+   "duration": 4.56,
+   "text": "shaped from the start right every"
+  },
+  {
+   "start": 821.279,
+   "duration": 4.881,
+   "text": "property required you know there is a"
+  },
+  {
+   "start": 824.0,
+   "duration": 4.639,
+   "text": "nullable field as well if you if you"
+  },
+  {
+   "start": 826.16,
+   "duration": 4.799,
+   "text": "search for it there would be a nullable"
+  },
+  {
+   "start": 828.639,
+   "duration": 4.88,
+   "text": "and I'm going to explain why uh you know"
+  },
+  {
+   "start": 830.959,
+   "duration": 5.44,
+   "text": "the suggested fix this particular shape"
+  },
+  {
+   "start": 833.519,
+   "duration": 4.56,
+   "text": "is you type a string and there it can be"
+  },
+  {
+   "start": 836.399,
+   "duration": 3.12,
+   "text": "null as well. Why is that? It's very"
+  },
+  {
+   "start": 838.079,
+   "duration": 3.281,
+   "text": "very important to understand, right? So"
+  },
+  {
+   "start": 839.519,
+   "duration": 3.361,
+   "text": "that the model doesn't hallucinate."
+  },
+  {
+   "start": 841.36,
+   "duration": 3.68,
+   "text": "That's the main reason why have we have"
+  },
+  {
+   "start": 842.88,
+   "duration": 4.16,
+   "text": "done that. But we're going to you know"
+  },
+  {
+   "start": 845.04,
+   "duration": 4.08,
+   "text": "discuss about it, right? So we have file"
+  },
+  {
+   "start": 847.04,
+   "duration": 5.039,
+   "text": "path line severity message. So this is"
+  },
+  {
+   "start": 849.12,
+   "duration": 5.36,
+   "text": "kind of the schema right schema that we"
+  },
+  {
+   "start": 852.079,
+   "duration": 6.641,
+   "text": "are going to use to kind of enforce this"
+  },
+  {
+   "start": 854.48,
+   "duration": 5.76,
+   "text": "shape on our output and input. So here"
+  },
+  {
+   "start": 858.72,
+   "duration": 3.359,
+   "text": "it is. That's it. That is the that is"
+  },
+  {
+   "start": 860.24,
+   "duration": 5.039,
+   "text": "all you need to understand right now."
+  },
+  {
+   "start": 862.079,
+   "duration": 5.921,
+   "text": "And here if you see and uh it's just a"
+  },
+  {
+   "start": 865.279,
+   "duration": 6.0,
+   "text": "simple response block you know client"
+  },
+  {
+   "start": 868.0,
+   "duration": 5.92,
+   "text": "call to anthropic right and if you see"
+  },
+  {
+   "start": 871.279,
+   "duration": 4.401,
+   "text": "in the tools we are putting strict as"
+  },
+  {
+   "start": 873.92,
+   "duration": 4.24,
+   "text": "true which we were just discussing right"
+  },
+  {
+   "start": 875.68,
+   "duration": 4.56,
+   "text": "now and the input schema is finding"
+  },
+  {
+   "start": 878.16,
+   "duration": 4.56,
+   "text": "schema right"
+  },
+  {
+   "start": 880.24,
+   "duration": 4.719,
+   "text": "so that is that is all all about that so"
+  },
+  {
+   "start": 882.72,
+   "duration": 5.44,
+   "text": "I guess I have copied it so I'm just"
+  },
+  {
+   "start": 884.959,
+   "duration": 5.201,
+   "text": "going to go over here run it yeah and"
+  },
+  {
+   "start": 888.16,
+   "duration": 4.32,
+   "text": "just as I mentioned I'm using the model"
+  },
+  {
+   "start": 890.16,
+   "duration": 4.72,
+   "text": "as haiku so to save some tokens and"
+  },
+  {
+   "start": 892.48,
+   "duration": 4.96,
+   "text": "money. Um,"
+  },
+  {
+   "start": 894.88,
+   "duration": 5.28,
+   "text": "I hope that's that's that's making sense"
+  },
+  {
+   "start": 897.44,
+   "duration": 6.759,
+   "text": "over here. So, let's run this out and"
+  },
+  {
+   "start": 900.16,
+   "duration": 4.039,
+   "text": "see what is happening."
+  },
+  {
+   "start": 905.36,
+   "duration": 4.719,
+   "text": "Taking a bit of time. So, I'm just going"
+  },
+  {
+   "start": 907.519,
+   "duration": 4.401,
+   "text": "to go by that time and going to go to"
+  },
+  {
+   "start": 910.079,
+   "duration": 4.841,
+   "text": "the next"
+  },
+  {
+   "start": 911.92,
+   "duration": 3.0,
+   "text": "slide."
+  },
+  {
+   "start": 919.68,
+   "duration": 5.44,
+   "text": "Okay. So it is saying API key is"
+  },
+  {
+   "start": 922.88,
+   "duration": 3.84,
+   "text": "hardcoded in source code which poses a"
+  },
+  {
+   "start": 925.12,
+   "duration": 3.519,
+   "text": "security risk. Move the API key to"
+  },
+  {
+   "start": 926.72,
+   "duration": 5.04,
+   "text": "environment variables or to a secure"
+  },
+  {
+   "start": 928.639,
+   "duration": 5.601,
+   "text": "configuration file. Suggested fix is"
+  },
+  {
+   "start": 931.76,
+   "duration": 4.96,
+   "text": "basically replace a hard-coded API key"
+  },
+  {
+   "start": 934.24,
+   "duration": 5.52,
+   "text": "with API key equals to OS. So see now"
+  },
+  {
+   "start": 936.72,
+   "duration": 7.04,
+   "text": "the output is coming in the schema uh"
+  },
+  {
+   "start": 939.76,
+   "duration": 7.92,
+   "text": "that we are kind of you know um defined"
+  },
+  {
+   "start": 943.76,
+   "duration": 7.04,
+   "text": "uh right and uh um that's that's all"
+  },
+  {
+   "start": 947.68,
+   "duration": 5.76,
+   "text": "about it right I mean um line number"
+  },
+  {
+   "start": 950.8,
+   "duration": 4.88,
+   "text": "severity blocking all of the things that"
+  },
+  {
+   "start": 953.44,
+   "duration": 5.44,
+   "text": "you see in the schema file right that is"
+  },
+  {
+   "start": 955.68,
+   "duration": 5.2,
+   "text": "there right so if you see line file path"
+  },
+  {
+   "start": 958.88,
+   "duration": 4.399,
+   "text": "severity message so that is that is the"
+  },
+  {
+   "start": 960.88,
+   "duration": 4.56,
+   "text": "power right and and now with this"
+  },
+  {
+   "start": 963.279,
+   "duration": 4.8,
+   "text": "particular thing"
+  },
+  {
+   "start": 965.44,
+   "duration": 7.199,
+   "text": "you No uh with this strict equals to"
+  },
+  {
+   "start": 968.079,
+   "duration": 6.721,
+   "text": "true just one line where was it? Ah here"
+  },
+  {
+   "start": 972.639,
+   "duration": 5.12,
+   "text": "strict equals to true with this one line"
+  },
+  {
+   "start": 974.8,
+   "duration": 5.92,
+   "text": "we are enforcing the schema and we are"
+  },
+  {
+   "start": 977.759,
+   "duration": 4.561,
+   "text": "enforcing it at any tool that it is kind"
+  },
+  {
+   "start": 980.72,
+   "duration": 4.0,
+   "text": "of using right because we are saying the"
+  },
+  {
+   "start": 982.32,
+   "duration": 5.04,
+   "text": "tool choice has any I mean any one of"
+  },
+  {
+   "start": 984.72,
+   "duration": 4.72,
+   "text": "the tools can be used right in the roses"
+  },
+  {
+   "start": 987.36,
+   "duration": 4.0,
+   "text": "API like that. So I hope that is making"
+  },
+  {
+   "start": 989.44,
+   "duration": 4.56,
+   "text": "sense right. So that is how you're going"
+  },
+  {
+   "start": 991.36,
+   "duration": 4.479,
+   "text": "to do it in the ROMs API. But let's go"
+  },
+  {
+   "start": 994.0,
+   "duration": 6.639,
+   "text": "back to the main thing because we're"
+  },
+  {
+   "start": 995.839,
+   "duration": 7.12,
+   "text": "using the cloud agent SDK over here. So"
+  },
+  {
+   "start": 1000.639,
+   "duration": 4.081,
+   "text": "now here it will be a now we are now"
+  },
+  {
+   "start": 1002.959,
+   "duration": 3.361,
+   "text": "talking about the cloud agent SDK. Okay"
+  },
+  {
+   "start": 1004.72,
+   "duration": 3.6,
+   "text": "don't confuse. We are not exploring that"
+  },
+  {
+   "start": 1006.32,
+   "duration": 4.959,
+   "text": "much about the ROMs API. We already done"
+  },
+  {
+   "start": 1008.32,
+   "duration": 4.959,
+   "text": "that. Now talking about the agent SDK."
+  },
+  {
+   "start": 1011.279,
+   "duration": 4.401,
+   "text": "How do you achieve it over here? Now"
+  },
+  {
+   "start": 1013.279,
+   "duration": 5.201,
+   "text": "here that's a little bit less glamorous"
+  },
+  {
+   "start": 1015.68,
+   "duration": 5.839,
+   "text": "than just flip one flag and you're done"
+  },
+  {
+   "start": 1018.48,
+   "duration": 5.599,
+   "text": "like we did with the strict as true. But"
+  },
+  {
+   "start": 1021.519,
+   "duration": 4.961,
+   "text": "here's exactly what we are going to do"
+  },
+  {
+   "start": 1024.079,
+   "duration": 4.88,
+   "text": "instead. Right? And it's not actually"
+  },
+  {
+   "start": 1026.48,
+   "duration": 5.52,
+   "text": "more work than that. It's just the work"
+  },
+  {
+   "start": 1028.959,
+   "duration": 5.84,
+   "text": "is in a different place. Right? Now the"
+  },
+  {
+   "start": 1032.0,
+   "duration": 4.88,
+   "text": "schema anyways will you know still goes"
+  },
+  {
+   "start": 1034.799,
+   "duration": 5.441,
+   "text": "into the tool right because that's the"
+  },
+  {
+   "start": 1036.88,
+   "duration": 7.039,
+   "text": "main kind of guiding thing for claude's"
+  },
+  {
+   "start": 1040.24,
+   "duration": 5.92,
+   "text": "generation. Right? even without the hard"
+  },
+  {
+   "start": 1043.919,
+   "duration": 4.88,
+   "text": "grammar guarantee and it's it's it's"
+  },
+  {
+   "start": 1046.16,
+   "duration": 5.92,
+   "text": "it's it's it is going to be used for the"
+  },
+  {
+   "start": 1048.799,
+   "duration": 4.88,
+   "text": "schema guarantee thing. Right? Then what"
+  },
+  {
+   "start": 1052.08,
+   "duration": 5.04,
+   "text": "we're going to do is we're going to use"
+  },
+  {
+   "start": 1053.679,
+   "duration": 7.36,
+   "text": "a real Python function that does the"
+  },
+  {
+   "start": 1057.12,
+   "duration": 6.799,
+   "text": "enforcing. Yeah. It checks severity"
+  },
+  {
+   "start": 1061.039,
+   "duration": 4.721,
+   "text": "against the enum. It checks the required"
+  },
+  {
+   "start": 1063.919,
+   "duration": 5.281,
+   "text": "fields are actually present and the"
+  },
+  {
+   "start": 1065.76,
+   "duration": 6.56,
+   "text": "right type. Yeah. So it checks actually"
+  },
+  {
+   "start": 1069.2,
+   "duration": 5.359,
+   "text": "that the suggested fix is a string or"
+  },
+  {
+   "start": 1072.32,
+   "duration": 3.359,
+   "text": "explicitly null. And the null thing"
+  },
+  {
+   "start": 1074.559,
+   "duration": 2.401,
+   "text": "we're going to discuss in a minute"
+  },
+  {
+   "start": 1075.679,
+   "duration": 3.841,
+   "text": "because it's very very important to"
+  },
+  {
+   "start": 1076.96,
+   "duration": 5.839,
+   "text": "understand why we are okay to accept a"
+  },
+  {
+   "start": 1079.52,
+   "duration": 5.44,
+   "text": "null. Yeah. Instead of just you know"
+  },
+  {
+   "start": 1082.799,
+   "duration": 3.841,
+   "text": "every time we should get a value instead"
+  },
+  {
+   "start": 1084.96,
+   "duration": 4.56,
+   "text": "of that."
+  },
+  {
+   "start": 1086.64,
+   "duration": 6.08,
+   "text": "Okay. So then we're going to see on a"
+  },
+  {
+   "start": 1089.52,
+   "duration": 6.72,
+   "text": "violation the tool returns is error true"
+  },
+  {
+   "start": 1092.72,
+   "duration": 6.4,
+   "text": "which is a real documented part of the"
+  },
+  {
+   "start": 1096.24,
+   "duration": 4.72,
+   "text": "at the rate tool you know decorator that"
+  },
+  {
+   "start": 1099.12,
+   "duration": 3.84,
+   "text": "we use to create tools right that is at"
+  },
+  {
+   "start": 1100.96,
+   "duration": 5.2,
+   "text": "the rateate tool decorator that we use."
+  },
+  {
+   "start": 1102.96,
+   "duration": 5.36,
+   "text": "It is a well doumented part of the shape"
+  },
+  {
+   "start": 1106.16,
+   "duration": 4.48,
+   "text": "of that particular decorated decorator"
+  },
+  {
+   "start": 1108.32,
+   "duration": 5.84,
+   "text": "basically right not something just"
+  },
+  {
+   "start": 1110.64,
+   "duration": 5.2,
+   "text": "bolting on. Now the a key fact that you"
+  },
+  {
+   "start": 1114.16,
+   "duration": 4.96,
+   "text": "need to remember and it is also there"
+  },
+  {
+   "start": 1115.84,
+   "duration": 6.719,
+   "text": "over here is you know um is error is"
+  },
+  {
+   "start": 1119.12,
+   "duration": 6.24,
+   "text": "true it's from a custom SDK's tool"
+  },
+  {
+   "start": 1122.559,
+   "duration": 6.0,
+   "text": "handler and the SDK converts it into the"
+  },
+  {
+   "start": 1125.36,
+   "duration": 5.76,
+   "text": "MCP results is error flag for you. Yeah."
+  },
+  {
+   "start": 1128.559,
+   "duration": 6.081,
+   "text": "So what happens is claude sees a failed"
+  },
+  {
+   "start": 1131.12,
+   "duration": 5.12,
+   "text": "tool call. Yeah. In its own context in"
+  },
+  {
+   "start": 1134.64,
+   "duration": 3.52,
+   "text": "in the in basically in the ordinary"
+  },
+  {
+   "start": 1136.24,
+   "duration": 4.72,
+   "text": "course of the agent loop. It tries"
+  },
+  {
+   "start": 1138.16,
+   "duration": 4.96,
+   "text": "again. no extra you know retry logic you"
+  },
+  {
+   "start": 1140.96,
+   "duration": 4.32,
+   "text": "have to implement over here you just"
+  },
+  {
+   "start": 1143.12,
+   "duration": 4.0,
+   "text": "need to return is error equals to true"
+  },
+  {
+   "start": 1145.28,
+   "duration": 3.759,
+   "text": "and claude will handle the rest for you"
+  },
+  {
+   "start": 1147.12,
+   "duration": 4.16,
+   "text": "okay there is no retry logic nothing you"
+  },
+  {
+   "start": 1149.039,
+   "duration": 4.961,
+   "text": "need to handle over here so that is one"
+  },
+  {
+   "start": 1151.28,
+   "duration": 6.0,
+   "text": "thing that I wanted to point out um"
+  },
+  {
+   "start": 1154.0,
+   "duration": 6.64,
+   "text": "that's a thing about it"
+  },
+  {
+   "start": 1157.28,
+   "duration": 6.32,
+   "text": "yeah so now let's uh you know um see the"
+  },
+  {
+   "start": 1160.64,
+   "duration": 5.12,
+   "text": "schemas py that I was using for the raws"
+  },
+  {
+   "start": 1163.6,
+   "duration": 3.84,
+   "text": "API and actually understand what is"
+  },
+  {
+   "start": 1165.76,
+   "duration": 4.64,
+   "text": "happening over there so if I go back"
+  },
+  {
+   "start": 1167.44,
+   "duration": 6.16,
+   "text": "over here and go into the schemas. PY"
+  },
+  {
+   "start": 1170.4,
+   "duration": 5.519,
+   "text": "right so um I want to point out one"
+  },
+  {
+   "start": 1173.6,
+   "duration": 4.0,
+   "text": "specific line before we move on right so"
+  },
+  {
+   "start": 1175.919,
+   "duration": 4.241,
+   "text": "if you see there is some something known"
+  },
+  {
+   "start": 1177.6,
+   "duration": 5.92,
+   "text": "as allowed severities"
+  },
+  {
+   "start": 1180.16,
+   "duration": 6.48,
+   "text": "uh where is that okay here it is so"
+  },
+  {
+   "start": 1183.52,
+   "duration": 6.399,
+   "text": "allowed severities yeah and then we have"
+  },
+  {
+   "start": 1186.64,
+   "duration": 6.159,
+   "text": "the finding schema over here yeah so if"
+  },
+  {
+   "start": 1189.919,
+   "duration": 6.721,
+   "text": "you notice you know the suggested fix is"
+  },
+  {
+   "start": 1192.799,
+   "duration": 5.76,
+   "text": "sitting right there yeah if you see the"
+  },
+  {
+   "start": 1196.64,
+   "duration": 3.6,
+   "text": "suggested fix the suggested fix is"
+  },
+  {
+   "start": 1198.559,
+   "duration": 4.401,
+   "text": "sitting right there in the in the"
+  },
+  {
+   "start": 1200.24,
+   "duration": 7.679,
+   "text": "required list right not optional"
+  },
+  {
+   "start": 1202.96,
+   "duration": 6.88,
+   "text": "required but its type is string null so"
+  },
+  {
+   "start": 1207.919,
+   "duration": 3.841,
+   "text": "that is what I wanted to point out why"
+  },
+  {
+   "start": 1209.84,
+   "duration": 5.76,
+   "text": "is this null thingy here if it is"
+  },
+  {
+   "start": 1211.76,
+   "duration": 6.88,
+   "text": "required why do we have to go with null"
+  },
+  {
+   "start": 1215.6,
+   "duration": 6.079,
+   "text": "so required here doesn't mean you have"
+  },
+  {
+   "start": 1218.64,
+   "duration": 4.96,
+   "text": "to have an opinion you know it just"
+  },
+  {
+   "start": 1221.679,
+   "duration": 5.281,
+   "text": "means you have to tell me whether you"
+  },
+  {
+   "start": 1223.6,
+   "duration": 4.88,
+   "text": "have one that is the difference yeah and"
+  },
+  {
+   "start": 1226.96,
+   "duration": 4.4,
+   "text": "that's that's that's basically the"
+  },
+  {
+   "start": 1228.48,
+   "duration": 6.4,
+   "text": "entire trick for stopping hallucination"
+  },
+  {
+   "start": 1231.36,
+   "duration": 6.48,
+   "text": "or fabrication, right? You don't make a"
+  },
+  {
+   "start": 1234.88,
+   "duration": 5.36,
+   "text": "field optional and hope the model, you"
+  },
+  {
+   "start": 1237.84,
+   "duration": 5.52,
+   "text": "know, quietly leaves it out when it's"
+  },
+  {
+   "start": 1240.24,
+   "duration": 5.76,
+   "text": "unsure. You make it mandatory to answer"
+  },
+  {
+   "start": 1243.36,
+   "duration": 5.6,
+   "text": "and you make I don't know a valid"
+  },
+  {
+   "start": 1246.0,
+   "duration": 4.72,
+   "text": "answer. See, you go for an interview."
+  },
+  {
+   "start": 1248.96,
+   "duration": 3.199,
+   "text": "You go for an interview, you are"
+  },
+  {
+   "start": 1250.72,
+   "duration": 4.88,
+   "text": "required to say something, right? You"
+  },
+  {
+   "start": 1252.159,
+   "duration": 5.281,
+   "text": "can't just just be silent like that. You"
+  },
+  {
+   "start": 1255.6,
+   "duration": 3.36,
+   "text": "just say, \"I don't know this answer.\""
+  },
+  {
+   "start": 1257.44,
+   "duration": 3.359,
+   "text": "you are responding with something right"
+  },
+  {
+   "start": 1258.96,
+   "duration": 6.079,
+   "text": "and that is what required means over"
+  },
+  {
+   "start": 1260.799,
+   "duration": 6.561,
+   "text": "here okay and the thing is we are uh we"
+  },
+  {
+   "start": 1265.039,
+   "duration": 4.401,
+   "text": "don't want claude to fabricate some"
+  },
+  {
+   "start": 1267.36,
+   "duration": 5.36,
+   "text": "suggested fix you know which is actually"
+  },
+  {
+   "start": 1269.44,
+   "duration": 5.44,
+   "text": "not relevant if there is it thinks that"
+  },
+  {
+   "start": 1272.72,
+   "duration": 4.64,
+   "text": "there is no suggested fix then please"
+  },
+  {
+   "start": 1274.88,
+   "duration": 4.48,
+   "text": "return null instead of fabricating a"
+  },
+  {
+   "start": 1277.36,
+   "duration": 5.76,
+   "text": "suggested fix right that is that is even"
+  },
+  {
+   "start": 1279.36,
+   "duration": 6.08,
+   "text": "more destructive so that is why uh this"
+  },
+  {
+   "start": 1283.12,
+   "duration": 4.88,
+   "text": "is what is done over here so I hope that"
+  },
+  {
+   "start": 1285.44,
+   "duration": 5.52,
+   "text": "is making sense So if you see in the"
+  },
+  {
+   "start": 1288.0,
+   "duration": 8.64,
+   "text": "required list suggested fix sits right"
+  },
+  {
+   "start": 1290.96,
+   "duration": 7.92,
+   "text": "there. Yeah. And that's what it is."
+  },
+  {
+   "start": 1296.64,
+   "duration": 3.76,
+   "text": "Okay."
+  },
+  {
+   "start": 1298.88,
+   "duration": 4.08,
+   "text": "Now after that if you see there is"
+  },
+  {
+   "start": 1300.4,
+   "duration": 5.12,
+   "text": "something known as defaf validate"
+  },
+  {
+   "start": 1302.96,
+   "duration": 4.24,
+   "text": "finding. So it says check one finding"
+  },
+  {
+   "start": 1305.52,
+   "duration": 5.519,
+   "text": "against the rules the schema above can"
+  },
+  {
+   "start": 1307.2,
+   "duration": 6.479,
+   "text": "describe but not yet enforce on this"
+  },
+  {
+   "start": 1311.039,
+   "duration": 4.481,
+   "text": "tool path. It returns a list of specific"
+  },
+  {
+   "start": 1313.679,
+   "duration": 6.161,
+   "text": "problems. An empty list means the"
+  },
+  {
+   "start": 1315.52,
+   "duration": 7.279,
+   "text": "finding is good to record. Yeah, that is"
+  },
+  {
+   "start": 1319.84,
+   "duration": 4.88,
+   "text": "all. Uh I mean see it's just kind of"
+  },
+  {
+   "start": 1322.799,
+   "duration": 4.961,
+   "text": "validating the findings. Yeah, it's"
+  },
+  {
+   "start": 1324.72,
+   "duration": 4.8,
+   "text": "checking the file path over here. File"
+  },
+  {
+   "start": 1327.76,
+   "duration": 4.56,
+   "text": "path must be a non-empt string. Just"
+  },
+  {
+   "start": 1329.52,
+   "duration": 4.48,
+   "text": "validating right severity. If severity"
+  },
+  {
+   "start": 1332.32,
+   "duration": 3.92,
+   "text": "is not in the allowed severities, it's"
+  },
+  {
+   "start": 1334.0,
+   "duration": 3.919,
+   "text": "saying are errors that append. Severity"
+  },
+  {
+   "start": 1336.24,
+   "duration": 3.36,
+   "text": "must be exactly off the allowed"
+  },
+  {
+   "start": 1337.919,
+   "duration": 4.081,
+   "text": "severities. That's the thing. So if you"
+  },
+  {
+   "start": 1339.6,
+   "duration": 4.319,
+   "text": "remember in the first uh few minutes of"
+  },
+  {
+   "start": 1342.0,
+   "duration": 4.159,
+   "text": "this lesson I pointed out that in the"
+  },
+  {
+   "start": 1343.919,
+   "duration": 4.561,
+   "text": "cloud at MD file we are mentioning a few"
+  },
+  {
+   "start": 1346.159,
+   "duration": 4.161,
+   "text": "severities over there. What if claude"
+  },
+  {
+   "start": 1348.48,
+   "duration": 3.92,
+   "text": "you know goes with some other severity"
+  },
+  {
+   "start": 1350.32,
+   "duration": 4.479,
+   "text": "like critical right? So here we are"
+  },
+  {
+   "start": 1352.4,
+   "duration": 4.48,
+   "text": "saying okay if should whatever severity"
+  },
+  {
+   "start": 1354.799,
+   "duration": 4.721,
+   "text": "is there it should be as part of the"
+  },
+  {
+   "start": 1356.88,
+   "duration": 5.84,
+   "text": "allowed severities. So that is what this"
+  },
+  {
+   "start": 1359.52,
+   "duration": 5.519,
+   "text": "validate finding is um done doing here"
+  },
+  {
+   "start": 1362.72,
+   "duration": 4.16,
+   "text": "over here. I hope that's kind of sort of"
+  },
+  {
+   "start": 1365.039,
+   "duration": 5.201,
+   "text": "making sense. I hope you understand the"
+  },
+  {
+   "start": 1366.88,
+   "duration": 6.159,
+   "text": "schemas py in detail right now. Yeah,"
+  },
+  {
+   "start": 1370.24,
+   "duration": 6.559,
+   "text": "one mental model you have to make is"
+  },
+  {
+   "start": 1373.039,
+   "duration": 6.801,
+   "text": "that nullable and required beats"
+  },
+  {
+   "start": 1376.799,
+   "duration": 5.601,
+   "text": "optional. Optional invites"
+  },
+  {
+   "start": 1379.84,
+   "duration": 4.959,
+   "text": "nothing but not every time but it"
+  },
+  {
+   "start": 1382.4,
+   "duration": 5.6,
+   "text": "invites a guest to fill the silence,"
+  },
+  {
+   "start": 1384.799,
+   "duration": 7.12,
+   "text": "right? Um required but nullable. That's"
+  },
+  {
+   "start": 1388.0,
+   "duration": 7.84,
+   "text": "the mental thing that you can um keep in"
+  },
+  {
+   "start": 1391.919,
+   "duration": 6.561,
+   "text": "mind. Required but nullable. It says uh"
+  },
+  {
+   "start": 1395.84,
+   "duration": 4.88,
+   "text": "I don't know. It makes I don't know an"
+  },
+  {
+   "start": 1398.48,
+   "duration": 5.28,
+   "text": "expected valid answer instead of a gap"
+  },
+  {
+   "start": 1400.72,
+   "duration": 6.4,
+   "text": "to you know paper over. Okay. So I hope"
+  },
+  {
+   "start": 1403.76,
+   "duration": 6.56,
+   "text": "that's kind of making sense."
+  },
+  {
+   "start": 1407.12,
+   "duration": 8.64,
+   "text": "Okay cool. So we are kind of you know uh"
+  },
+  {
+   "start": 1410.32,
+   "duration": 7.76,
+   "text": "going at a good pace right now and um"
+  },
+  {
+   "start": 1415.76,
+   "duration": 4.56,
+   "text": "let's continue right now. Before we ever"
+  },
+  {
+   "start": 1418.08,
+   "duration": 4.64,
+   "text": "let Claude near this thing let's call"
+  },
+  {
+   "start": 1420.32,
+   "duration": 4.16,
+   "text": "the handler ourselves directly. So you"
+  },
+  {
+   "start": 1422.72,
+   "duration": 4.319,
+   "text": "know the demo doesn't depend on the"
+  },
+  {
+   "start": 1424.48,
+   "duration": 4.24,
+   "text": "model happening to misbehave like on"
+  },
+  {
+   "start": 1427.039,
+   "duration": 4.401,
+   "text": "camera or something. So this is"
+  },
+  {
+   "start": 1428.72,
+   "duration": 5.439,
+   "text": "deterministic and it kind of runs the"
+  },
+  {
+   "start": 1431.44,
+   "duration": 4.96,
+   "text": "same way every single time. So we're"
+  },
+  {
+   "start": 1434.159,
+   "duration": 4.801,
+   "text": "going to just copy paste uh these things"
+  },
+  {
+   "start": 1436.4,
+   "duration": 5.6,
+   "text": "and we're going to run it in our IPython"
+  },
+  {
+   "start": 1438.96,
+   "duration": 5.04,
+   "text": "uh session or terminal whatever we are"
+  },
+  {
+   "start": 1442.0,
+   "duration": 5.679,
+   "text": "continuing from here. So this is one"
+  },
+  {
+   "start": 1444.0,
+   "duration": 5.039,
+   "text": "thing then uh if you see reset and then"
+  },
+  {
+   "start": 1447.679,
+   "duration": 3.841,
+   "text": "the bad call I'm going to I'm going to"
+  },
+  {
+   "start": 1449.039,
+   "duration": 4.081,
+   "text": "tell you what it is. Yeah. So we are"
+  },
+  {
+   "start": 1451.52,
+   "duration": 4.48,
+   "text": "kind of importing everything from the"
+  },
+  {
+   "start": 1453.12,
+   "duration": 5.52,
+   "text": "tools. These are all the tools. Yeah."
+  },
+  {
+   "start": 1456.0,
+   "duration": 4.96,
+   "text": "And uh don't worry what is happening."
+  },
+  {
+   "start": 1458.64,
+   "duration": 6.88,
+   "text": "I'm going to just tell you in a minute."
+  },
+  {
+   "start": 1460.96,
+   "duration": 8.88,
+   "text": "So if you see uh let let me just go over"
+  },
+  {
+   "start": 1465.52,
+   "duration": 6.8,
+   "text": "here and let me copy paste it here. So"
+  },
+  {
+   "start": 1469.84,
+   "duration": 4.719,
+   "text": "this is a bad call."
+  },
+  {
+   "start": 1472.32,
+   "duration": 5.839,
+   "text": "Okay. Anyways, I just ran it. So we"
+  },
+  {
+   "start": 1474.559,
+   "duration": 5.921,
+   "text": "first ran a bad call. Yeah. And uh it"
+  },
+  {
+   "start": 1478.159,
+   "duration": 4.961,
+   "text": "says await submit finding handler file"
+  },
+  {
+   "start": 1480.48,
+   "duration": 5.199,
+   "text": "path is src payments. py which we have"
+  },
+  {
+   "start": 1483.12,
+   "duration": 4.799,
+   "text": "right over here. Uh we getting the"
+  },
+  {
+   "start": 1485.679,
+   "duration": 5.841,
+   "text": "giving the context right it hardcodes an"
+  },
+  {
+   "start": 1487.919,
+   "duration": 5.76,
+   "text": "API key. So it bad call is await handler"
+  },
+  {
+   "start": 1491.52,
+   "duration": 4.639,
+   "text": "file path is this line number 88 seity"
+  },
+  {
+   "start": 1493.679,
+   "duration": 6.161,
+   "text": "critical and messages hard-coded API"
+  },
+  {
+   "start": 1496.159,
+   "duration": 5.921,
+   "text": "key. Now so what is happening is finding"
+  },
+  {
+   "start": 1499.84,
+   "duration": 4.88,
+   "text": "rejected fix and resubmit severity must"
+  },
+  {
+   "start": 1502.08,
+   "duration": 6.32,
+   "text": "be exactly one of blocking warning and"
+  },
+  {
+   "start": 1504.72,
+   "duration": 6.24,
+   "text": "nit but got critical. So do not invent a"
+  },
+  {
+   "start": 1508.4,
+   "duration": 4.8,
+   "text": "new label suggested fix is required pass"
+  },
+  {
+   "start": 1510.96,
+   "duration": 5.04,
+   "text": "null if you don't have a confident fix."
+  },
+  {
+   "start": 1513.2,
+   "duration": 7.92,
+   "text": "Do not omit this field. So this is doing"
+  },
+  {
+   "start": 1516.0,
+   "duration": 8.48,
+   "text": "whatever we wanted it to do. Right? So"
+  },
+  {
+   "start": 1521.12,
+   "duration": 6.08,
+   "text": "here it is printing that okay that the"
+  },
+  {
+   "start": 1524.48,
+   "duration": 6.96,
+   "text": "the severity that that is being passed"
+  },
+  {
+   "start": 1527.2,
+   "duration": 6.56,
+   "text": "into the you know handler yeah it is"
+  },
+  {
+   "start": 1531.44,
+   "duration": 3.76,
+   "text": "saying that you know what is the content"
+  },
+  {
+   "start": 1533.76,
+   "duration": 4.24,
+   "text": "and it is telling that you know it"
+  },
+  {
+   "start": 1535.2,
+   "duration": 5.44,
+   "text": "should be one of the things um one of"
+  },
+  {
+   "start": 1538.0,
+   "duration": 5.12,
+   "text": "these uh particular findings which which"
+  },
+  {
+   "start": 1540.64,
+   "duration": 6.56,
+   "text": "is blocking warning or nit do not invent"
+  },
+  {
+   "start": 1543.12,
+   "duration": 6.4,
+   "text": "a new kind of uh severity level right"
+  },
+  {
+   "start": 1547.2,
+   "duration": 5.359,
+   "text": "and let's talk about the good call now"
+  },
+  {
+   "start": 1549.52,
+   "duration": 6.08,
+   "text": "this is the bad call that we did. Yeah."
+  },
+  {
+   "start": 1552.559,
+   "duration": 6.0,
+   "text": "And uh Okay. So let's do the good call"
+  },
+  {
+   "start": 1555.6,
+   "duration": 4.64,
+   "text": "over here, right? I mean good call means"
+  },
+  {
+   "start": 1558.559,
+   "duration": 4.48,
+   "text": "it should be one of the severity"
+  },
+  {
+   "start": 1560.24,
+   "duration": 5.12,
+   "text": "findings that you are asking, right? So"
+  },
+  {
+   "start": 1563.039,
+   "duration": 4.64,
+   "text": "what is await submit finding dot handler"
+  },
+  {
+   "start": 1565.36,
+   "duration": 4.799,
+   "text": "file path is this severity is blocking."
+  },
+  {
+   "start": 1567.679,
+   "duration": 4.24,
+   "text": "Blocking is one of the schemas I mean"
+  },
+  {
+   "start": 1570.159,
+   "duration": 3.441,
+   "text": "the severity that we have defined in our"
+  },
+  {
+   "start": 1571.919,
+   "duration": 6.88,
+   "text": "allowed severities, right? So it should"
+  },
+  {
+   "start": 1573.6,
+   "duration": 8.0,
+   "text": "give us a positive to go uh answer"
+  },
+  {
+   "start": 1578.799,
+   "duration": 5.041,
+   "text": "suggested fix is none."
+  },
+  {
+   "start": 1581.6,
+   "duration": 5.199,
+   "text": "Oh, where it is."
+  },
+  {
+   "start": 1583.84,
+   "duration": 6.24,
+   "text": "Okay. So now if you see I'm going to"
+  },
+  {
+   "start": 1586.799,
+   "duration": 5.921,
+   "text": "just run this. So it says recorded"
+  },
+  {
+   "start": 1590.08,
+   "duration": 4.88,
+   "text": "finding number one blocking and this is"
+  },
+  {
+   "start": 1592.72,
+   "duration": 6.4,
+   "text": "the particular file path over here which"
+  },
+  {
+   "start": 1594.96,
+   "duration": 7.52,
+   "text": "is src payments. py88."
+  },
+  {
+   "start": 1599.12,
+   "duration": 7.84,
+   "text": "Yeah. So this is an example of the good"
+  },
+  {
+   "start": 1602.48,
+   "duration": 6.48,
+   "text": "call right and that is how we are going"
+  },
+  {
+   "start": 1606.96,
+   "duration": 3.76,
+   "text": "to use this right and this is how we're"
+  },
+  {
+   "start": 1608.96,
+   "duration": 4.48,
+   "text": "going to use use it in our code right"
+  },
+  {
+   "start": 1610.72,
+   "duration": 5.92,
+   "text": "now I just wanted to show you that these"
+  },
+  {
+   "start": 1613.44,
+   "duration": 5.04,
+   "text": "are the things that you know um okay"
+  },
+  {
+   "start": 1616.64,
+   "duration": 4.88,
+   "text": "there is also one more second finding"
+  },
+  {
+   "start": 1618.48,
+   "duration": 7.12,
+   "text": "which we can just run it as it is there"
+  },
+  {
+   "start": 1621.52,
+   "duration": 9.68,
+   "text": "so utils py file path is src utils py"
+  },
+  {
+   "start": 1625.6,
+   "duration": 7.52,
+   "text": "and yeah so let's See okay so posting"
+  },
+  {
+   "start": 1631.2,
+   "duration": 4.959,
+   "text": "review so here what we are doing is"
+  },
+  {
+   "start": 1633.12,
+   "duration": 6.0,
+   "text": "submit finding handler yeah publish"
+  },
+  {
+   "start": 1636.159,
+   "duration": 6.0,
+   "text": "review we are now publishing the"
+  },
+  {
+   "start": 1639.12,
+   "duration": 5.36,
+   "text": "particular review right so it is now"
+  },
+  {
+   "start": 1642.159,
+   "duration": 6.0,
+   "text": "doing that so the the so the thing is um"
+  },
+  {
+   "start": 1644.48,
+   "duration": 6.319,
+   "text": "the severity is knit yeah so it is"
+  },
+  {
+   "start": 1648.159,
+   "duration": 5.841,
+   "text": "telling src payments hardcoded API key"
+  },
+  {
+   "start": 1650.799,
+   "duration": 5.36,
+   "text": "committed to source and nit is so this"
+  },
+  {
+   "start": 1654.0,
+   "duration": 4.32,
+   "text": "is the particular severity warning src"
+  },
+  {
+   "start": 1656.159,
+   "duration": 4.64,
+   "text": "utils py unused import suggested fix"
+  },
+  {
+   "start": 1658.32,
+   "duration": 4.4,
+   "text": "remove the unused input sis on the line."
+  },
+  {
+   "start": 1660.799,
+   "duration": 4.321,
+   "text": "So that is what the suggested fix it is"
+  },
+  {
+   "start": 1662.72,
+   "duration": 6.4,
+   "text": "because yeah that is what we are passing"
+  },
+  {
+   "start": 1665.12,
+   "duration": 6.24,
+   "text": "over here. So that is what is basically"
+  },
+  {
+   "start": 1669.12,
+   "duration": 4.32,
+   "text": "uh we are trying to test it out. Now I"
+  },
+  {
+   "start": 1671.36,
+   "duration": 6.799,
+   "text": "think if if we if we kind of wire it in"
+  },
+  {
+   "start": 1673.44,
+   "duration": 7.76,
+   "text": "our code this tools and these um schema"
+  },
+  {
+   "start": 1678.159,
+   "duration": 6.081,
+   "text": "will work like like great."
+  },
+  {
+   "start": 1681.2,
+   "duration": 6.0,
+   "text": "Okay. Okay. Now let's talk about the"
+  },
+  {
+   "start": 1684.24,
+   "duration": 5.039,
+   "text": "final files that we are going to uh talk"
+  },
+  {
+   "start": 1687.2,
+   "duration": 4.32,
+   "text": "about it. Right. Okay. But before that,"
+  },
+  {
+   "start": 1689.279,
+   "duration": 3.681,
+   "text": "a bug uh that I wanted to discuss while"
+  },
+  {
+   "start": 1691.52,
+   "duration": 3.68,
+   "text": "we are still in there and we're going to"
+  },
+  {
+   "start": 1692.96,
+   "duration": 5.36,
+   "text": "take a small detour since we are already"
+  },
+  {
+   "start": 1695.2,
+   "duration": 6.0,
+   "text": "touching tools. py anyways. Uh if you if"
+  },
+  {
+   "start": 1698.32,
+   "duration": 6.239,
+   "text": "you check the uh particular um check"
+  },
+  {
+   "start": 1701.2,
+   "duration": 6.0,
+   "text": "dockstrings method, right, that we have"
+  },
+  {
+   "start": 1704.559,
+   "duration": 5.041,
+   "text": "been using it, we we kind of haven't"
+  },
+  {
+   "start": 1707.2,
+   "duration": 5.599,
+   "text": "touched it. Yeah. Since episode number"
+  },
+  {
+   "start": 1709.6,
+   "duration": 6.079,
+   "text": "four, I guess, right? Um so it is"
+  },
+  {
+   "start": 1712.799,
+   "duration": 5.921,
+   "text": "flagging every undocumented function"
+  },
+  {
+   "start": 1715.679,
+   "duration": 4.88,
+   "text": "including private helpers. Yeah the ones"
+  },
+  {
+   "start": 1718.72,
+   "duration": 5.12,
+   "text": "with you know a leading underscore those"
+  },
+  {
+   "start": 1720.559,
+   "duration": 6.561,
+   "text": "are private helper methods right and"
+  },
+  {
+   "start": 1723.84,
+   "duration": 6.64,
+   "text": "claw.md has explicitly exempted this"
+  },
+  {
+   "start": 1727.12,
+   "duration": 6.88,
+   "text": "whole time. So if you see cloud MD yeah"
+  },
+  {
+   "start": 1730.48,
+   "duration": 6.88,
+   "text": "and if you see um"
+  },
+  {
+   "start": 1734.0,
+   "duration": 5.76,
+   "text": "where is it"
+  },
+  {
+   "start": 1737.36,
+   "duration": 5.679,
+   "text": "dock string do we have anything"
+  },
+  {
+   "start": 1739.76,
+   "duration": 5.12,
+   "text": "regarding to dock string huh public"
+  },
+  {
+   "start": 1743.039,
+   "duration": 3.841,
+   "text": "functions in src require dock string"
+  },
+  {
+   "start": 1744.88,
+   "duration": 3.919,
+   "text": "private helpers leading underscore do"
+  },
+  {
+   "start": 1746.88,
+   "duration": 3.919,
+   "text": "not so that is what it is we are doing"
+  },
+  {
+   "start": 1748.799,
+   "duration": 4.48,
+   "text": "right it has been flagged in cloudmd"
+  },
+  {
+   "start": 1750.799,
+   "duration": 8.641,
+   "text": "file but anyways if we if we go back to"
+  },
+  {
+   "start": 1753.279,
+   "duration": 9.601,
+   "text": "our tools py right so um if you See um"
+  },
+  {
+   "start": 1759.44,
+   "duration": 7.479,
+   "text": "this part. Yeah."
+  },
+  {
+   "start": 1762.88,
+   "duration": 4.039,
+   "text": "Where is where is that part?"
+  },
+  {
+   "start": 1768.24,
+   "duration": 5.36,
+   "text": "Yeah. Here. If node name dot starts with"
+  },
+  {
+   "start": 1771.6,
+   "duration": 4.88,
+   "text": "underscore, right? That is what we are"
+  },
+  {
+   "start": 1773.6,
+   "duration": 5.36,
+   "text": "doing. Yeah. So what we are doing is we"
+  },
+  {
+   "start": 1776.48,
+   "duration": 5.199,
+   "text": "are continuing"
+  },
+  {
+   "start": 1778.96,
+   "duration": 7.599,
+   "text": "right. So basically what we are doing is"
+  },
+  {
+   "start": 1781.679,
+   "duration": 7.36,
+   "text": "um here uh over over one overeer rule"
+  },
+  {
+   "start": 1786.559,
+   "duration": 3.681,
+   "text": "quietly becomes a false positive machine"
+  },
+  {
+   "start": 1789.039,
+   "duration": 2.801,
+   "text": "that's what I'm trying to tell that's"
+  },
+  {
+   "start": 1790.24,
+   "duration": 4.08,
+   "text": "the mental model that I want to give you"
+  },
+  {
+   "start": 1791.84,
+   "duration": 5.36,
+   "text": "right and false positives on one"
+  },
+  {
+   "start": 1794.32,
+   "duration": 4.88,
+   "text": "category you know burn the trust on"
+  },
+  {
+   "start": 1797.2,
+   "duration": 4.56,
+   "text": "every other category even the once the"
+  },
+  {
+   "start": 1799.2,
+   "duration": 5.359,
+   "text": "tool gets dead right so it's worth"
+  },
+  {
+   "start": 1801.76,
+   "duration": 4.799,
+   "text": "fixing yeah so because it was also"
+  },
+  {
+   "start": 1804.559,
+   "duration": 4.161,
+   "text": "flagging the private kind of a methods"
+  },
+  {
+   "start": 1806.559,
+   "duration": 4.401,
+   "text": "so I I'm just saying that if nodename"
+  },
+  {
+   "start": 1808.72,
+   "duration": 5.52,
+   "text": "starts with underscore then please"
+  },
+  {
+   "start": 1810.96,
+   "duration": 5.439,
+   "text": "continue. Yeah, I hope that is making"
+  },
+  {
+   "start": 1814.24,
+   "duration": 3.919,
+   "text": "sense. So we don't need to flag that"
+  },
+  {
+   "start": 1816.399,
+   "duration": 4.561,
+   "text": "basically. Yeah, so I hope that is"
+  },
+  {
+   "start": 1818.159,
+   "duration": 5.76,
+   "text": "making sense. Uh just one small thing I"
+  },
+  {
+   "start": 1820.96,
+   "duration": 6.0,
+   "text": "wanted to point it out or something like"
+  },
+  {
+   "start": 1823.919,
+   "duration": 5.201,
+   "text": "that. Okay, so going back to the"
+  },
+  {
+   "start": 1826.96,
+   "duration": 4.16,
+   "text": "snippets MD file. So I'm just going to"
+  },
+  {
+   "start": 1829.12,
+   "duration": 6.72,
+   "text": "go with the preview over here and let's"
+  },
+  {
+   "start": 1831.12,
+   "duration": 6.799,
+   "text": "talk about the tools. py, right? So we"
+  },
+  {
+   "start": 1835.84,
+   "duration": 4.319,
+   "text": "we already saw the schemas. py and we"
+  },
+  {
+   "start": 1837.919,
+   "duration": 5.041,
+   "text": "understood what it is doing. Now talking"
+  },
+  {
+   "start": 1840.159,
+   "duration": 4.88,
+   "text": "about the tools. py right I hope uh okay"
+  },
+  {
+   "start": 1842.96,
+   "duration": 3.599,
+   "text": "I have already kind of copy pasted the"
+  },
+  {
+   "start": 1845.039,
+   "duration": 4.0,
+   "text": "tools.py because some of the tools we"
+  },
+  {
+   "start": 1846.559,
+   "duration": 7.041,
+   "text": "were using in our kind of in our IPython"
+  },
+  {
+   "start": 1849.039,
+   "duration": 6.961,
+   "text": "sessions. So here what is happening?"
+  },
+  {
+   "start": 1853.6,
+   "duration": 3.76,
+   "text": "So let's talk about a method. Most of"
+  },
+  {
+   "start": 1856.0,
+   "duration": 3.6,
+   "text": "the tools you already know because we"
+  },
+  {
+   "start": 1857.36,
+   "duration": 5.039,
+   "text": "have been building it you know by you"
+  },
+  {
+   "start": 1859.6,
+   "duration": 6.0,
+   "text": "know across this series. But I'm talk"
+  },
+  {
+   "start": 1862.399,
+   "duration": 5.041,
+   "text": "going to talk about the submit finding"
+  },
+  {
+   "start": 1865.6,
+   "duration": 4.319,
+   "text": "tool."
+  },
+  {
+   "start": 1867.44,
+   "duration": 5.359,
+   "text": "This tool that you are seeing over here."
+  },
+  {
+   "start": 1869.919,
+   "duration": 6.0,
+   "text": "So here is the tool itself known as"
+  },
+  {
+   "start": 1872.799,
+   "duration": 6.24,
+   "text": "submit finding. Same tool decorator"
+  },
+  {
+   "start": 1875.919,
+   "duration": 4.88,
+   "text": "decorator. Every custom tool is using"
+  },
+  {
+   "start": 1879.039,
+   "duration": 3.841,
+   "text": "the same tool decorator. Nothing new."
+  },
+  {
+   "start": 1880.799,
+   "duration": 4.0,
+   "text": "It's the same you know kind of schema of"
+  },
+  {
+   "start": 1882.88,
+   "duration": 4.64,
+   "text": "how a tool is kind of written. A custom"
+  },
+  {
+   "start": 1884.799,
+   "duration": 6.161,
+   "text": "tool is written in this project. Yeah."
+  },
+  {
+   "start": 1887.52,
+   "duration": 7.92,
+   "text": "The only thing new is that third"
+  },
+  {
+   "start": 1890.96,
+   "duration": 8.4,
+   "text": "argument is a real JSON schema instead"
+  },
+  {
+   "start": 1895.44,
+   "duration": 5.92,
+   "text": "of a simple type map. And if you see"
+  },
+  {
+   "start": 1899.36,
+   "duration": 3.919,
+   "text": "here, the handler actually uses the"
+  },
+  {
+   "start": 1901.36,
+   "duration": 6.72,
+   "text": "validate finding before it commits"
+  },
+  {
+   "start": 1903.279,
+   "duration": 6.88,
+   "text": "everything. Yeah. So if you see um it's"
+  },
+  {
+   "start": 1908.08,
+   "duration": 3.68,
+   "text": "just kind of see the description for now"
+  },
+  {
+   "start": 1910.159,
+   "duration": 3.281,
+   "text": "for this particular submit finding."
+  },
+  {
+   "start": 1911.76,
+   "duration": 4.24,
+   "text": "Submit exactly one structured review"
+  },
+  {
+   "start": 1913.44,
+   "duration": 5.04,
+   "text": "finding. Call this once per you know"
+  },
+  {
+   "start": 1916.0,
+   "duration": 5.6,
+   "text": "distinct issue and never batch multiple"
+  },
+  {
+   "start": 1918.48,
+   "duration": 6.72,
+   "text": "issues into a single call. Every finding"
+  },
+  {
+   "start": 1921.6,
+   "duration": 5.84,
+   "text": "needs a file a line a severity yeah or a"
+  },
+  {
+   "start": 1925.2,
+   "duration": 4.079,
+   "text": "net never a fourth level and a message."
+  },
+  {
+   "start": 1927.44,
+   "duration": 3.92,
+   "text": "If you don't have a confident concrete"
+  },
+  {
+   "start": 1929.279,
+   "duration": 4.0,
+   "text": "fix pass null for the suggested fix. Now"
+  },
+  {
+   "start": 1931.36,
+   "duration": 6.0,
+   "text": "if you see the runs that we did over"
+  },
+  {
+   "start": 1933.279,
+   "duration": 5.681,
+   "text": "here, we were uh like the bad you know"
+  },
+  {
+   "start": 1937.36,
+   "duration": 4.72,
+   "text": "call that we were doing await submit"
+  },
+  {
+   "start": 1938.96,
+   "duration": 5.599,
+   "text": "finding handler right here we were"
+  },
+  {
+   "start": 1942.08,
+   "duration": 6.56,
+   "text": "passing severity as critical and if you"
+  },
+  {
+   "start": 1944.559,
+   "duration": 6.401,
+   "text": "understand it this u the submit finding"
+  },
+  {
+   "start": 1948.64,
+   "duration": 3.84,
+   "text": "is kind of it does the validate finding"
+  },
+  {
+   "start": 1950.96,
+   "duration": 2.959,
+   "text": "uh it calls the validate finding to"
+  },
+  {
+   "start": 1952.48,
+   "duration": 3.6,
+   "text": "check that okay the arguments are okay"
+  },
+  {
+   "start": 1953.919,
+   "duration": 5.201,
+   "text": "or not. Now if you see I had shown you"
+  },
+  {
+   "start": 1956.08,
+   "duration": 4.959,
+   "text": "the validated finding earlier right? If"
+  },
+  {
+   "start": 1959.12,
+   "duration": 4.48,
+   "text": "severity is not in the allowed"
+  },
+  {
+   "start": 1961.039,
+   "duration": 4.24,
+   "text": "severities then severity must exactly be"
+  },
+  {
+   "start": 1963.6,
+   "duration": 3.919,
+   "text": "one of the allowed severity. So that is"
+  },
+  {
+   "start": 1965.279,
+   "duration": 6.0,
+   "text": "what the valid finding is doing. And if"
+  },
+  {
+   "start": 1967.519,
+   "duration": 5.681,
+   "text": "you see in this run the bad call yeah"
+  },
+  {
+   "start": 1971.279,
+   "duration": 3.28,
+   "text": "severity should be exactly one of these"
+  },
+  {
+   "start": 1973.2,
+   "duration": 3.12,
+   "text": "things. So that is the same message that"
+  },
+  {
+   "start": 1974.559,
+   "duration": 4.801,
+   "text": "is it is printing over here. There is no"
+  },
+  {
+   "start": 1976.32,
+   "duration": 5.44,
+   "text": "cloud or anything you know involved over"
+  },
+  {
+   "start": 1979.36,
+   "duration": 5.36,
+   "text": "here. Yeah. So it is just plain"
+  },
+  {
+   "start": 1981.76,
+   "duration": 6.32,
+   "text": "deterministic calls. That is what I"
+  },
+  {
+   "start": 1984.72,
+   "duration": 5.439,
+   "text": "wanted to discuss over here. Yeah. So it"
+  },
+  {
+   "start": 1988.08,
+   "duration": 4.959,
+   "text": "calls the validated finding before it"
+  },
+  {
+   "start": 1990.159,
+   "duration": 5.921,
+   "text": "commits anything. Right? So it has one"
+  },
+  {
+   "start": 1993.039,
+   "duration": 5.201,
+   "text": "call like one finding the description"
+  },
+  {
+   "start": 1996.08,
+   "duration": 4.719,
+   "text": "kind of says so over here. Right? That"
+  },
+  {
+   "start": 1998.24,
+   "duration": 5.279,
+   "text": "is what I just read. And it actually"
+  },
+  {
+   "start": 2000.799,
+   "duration": 4.48,
+   "text": "matters because if Claude batches five"
+  },
+  {
+   "start": 2003.519,
+   "duration": 3.76,
+   "text": "issues into one call because the"
+  },
+  {
+   "start": 2005.279,
+   "duration": 5.76,
+   "text": "description didn't explicitly forbid it,"
+  },
+  {
+   "start": 2007.279,
+   "duration": 6.161,
+   "text": "you get one kind of a giant blob that's"
+  },
+  {
+   "start": 2011.039,
+   "duration": 4.64,
+   "text": "much harder to validate"
+  },
+  {
+   "start": 2013.44,
+   "duration": 5.76,
+   "text": "cleanly. Basically, it's a it's a kind"
+  },
+  {
+   "start": 2015.679,
+   "duration": 5.681,
+   "text": "of a mess, right? So, it's it's very"
+  },
+  {
+   "start": 2019.2,
+   "duration": 4.88,
+   "text": "hard to validate one giant thing instead"
+  },
+  {
+   "start": 2021.36,
+   "duration": 4.88,
+   "text": "of five very small ones, right? So,"
+  },
+  {
+   "start": 2024.08,
+   "duration": 4.16,
+   "text": "that's why it is saying submit exactly"
+  },
+  {
+   "start": 2026.24,
+   "duration": 3.919,
+   "text": "one structured review finding. call this"
+  },
+  {
+   "start": 2028.24,
+   "duration": 3.039,
+   "text": "once per distinct issue that is the"
+  },
+  {
+   "start": 2030.159,
+   "duration": 2.88,
+   "text": "important thing that you need to"
+  },
+  {
+   "start": 2031.279,
+   "duration": 4.24,
+   "text": "understand as per the description of"
+  },
+  {
+   "start": 2033.039,
+   "duration": 5.201,
+   "text": "this tool and for a tool description is"
+  },
+  {
+   "start": 2035.519,
+   "duration": 6.081,
+   "text": "kind of everything. So I hope things are"
+  },
+  {
+   "start": 2038.24,
+   "duration": 5.439,
+   "text": "kind of connecting now. Yeah. Uh I know"
+  },
+  {
+   "start": 2041.6,
+   "duration": 4.959,
+   "text": "from the start it might seem a little"
+  },
+  {
+   "start": 2043.679,
+   "duration": 4.321,
+   "text": "bit of confusing. So that's why I run"
+  },
+  {
+   "start": 2046.559,
+   "duration": 5.12,
+   "text": "the things first, show you what is"
+  },
+  {
+   "start": 2048.0,
+   "duration": 8.159,
+   "text": "happening and later I connect back to uh"
+  },
+  {
+   "start": 2051.679,
+   "duration": 7.281,
+   "text": "the stuffs. Okay. So cool. Now moving on"
+  },
+  {
+   "start": 2056.159,
+   "duration": 4.96,
+   "text": "to the next thing that is known as"
+  },
+  {
+   "start": 2058.96,
+   "duration": 4.24,
+   "text": "publish review. So we talked about the"
+  },
+  {
+   "start": 2061.119,
+   "duration": 4.881,
+   "text": "submit finding. Now one more new tool"
+  },
+  {
+   "start": 2063.2,
+   "duration": 4.959,
+   "text": "that has been introduced is the publish"
+  },
+  {
+   "start": 2066.0,
+   "duration": 5.359,
+   "text": "review. Okay, this is the tool with the"
+  },
+  {
+   "start": 2068.159,
+   "duration": 5.68,
+   "text": "tool decorator obviously. Now read the"
+  },
+  {
+   "start": 2071.359,
+   "duration": 4.081,
+   "text": "let's let's read the uh particular"
+  },
+  {
+   "start": 2073.839,
+   "duration": 4.32,
+   "text": "description and there there should be"
+  },
+  {
+   "start": 2075.44,
+   "duration": 5.04,
+   "text": "nothing left to add or say on this. So"
+  },
+  {
+   "start": 2078.159,
+   "duration": 4.96,
+   "text": "it says post the final review comment"
+  },
+  {
+   "start": 2080.48,
+   "duration": 4.879,
+   "text": "for this PR. Call this exactly once"
+  },
+  {
+   "start": 2083.119,
+   "duration": 4.401,
+   "text": "after every finding has already been"
+  },
+  {
+   "start": 2085.359,
+   "duration": 4.72,
+   "text": "recorded with submit finding that we"
+  },
+  {
+   "start": 2087.52,
+   "duration": 5.359,
+   "text": "just discussed earlier. This tool takes"
+  },
+  {
+   "start": 2090.079,
+   "duration": 5.52,
+   "text": "no arguments and writes no free text of"
+  },
+  {
+   "start": 2092.879,
+   "duration": 5.121,
+   "text": "its own. It builds the comment entirely"
+  },
+  {
+   "start": 2095.599,
+   "duration": 5.281,
+   "text": "from findings already submitted. So"
+  },
+  {
+   "start": 2098.0,
+   "duration": 5.92,
+   "text": "there is nothing left to say that submit"
+  },
+  {
+   "start": 2100.88,
+   "duration": 4.8,
+   "text": "finding didn't actually capture."
+  },
+  {
+   "start": 2103.92,
+   "duration": 5.6,
+   "text": "Yeah, that is that is it. Nothing left"
+  },
+  {
+   "start": 2105.68,
+   "duration": 6.72,
+   "text": "to say. So if you see uh the the uh if"
+  },
+  {
+   "start": 2109.52,
+   "duration": 5.44,
+   "text": "you see over here the input schema is"
+  },
+  {
+   "start": 2112.4,
+   "duration": 5.36,
+   "text": "just plain brackets empty. No no no"
+  },
+  {
+   "start": 2114.96,
+   "duration": 5.6,
+   "text": "comment parameter nothing free text."
+  },
+  {
+   "start": 2117.76,
+   "duration": 5.04,
+   "text": "There is deliberately nothing left"
+  },
+  {
+   "start": 2120.56,
+   "duration": 5.76,
+   "text": "basically for Claude to write here"
+  },
+  {
+   "start": 2122.8,
+   "duration": 6.88,
+   "text": "because everything worth saying already"
+  },
+  {
+   "start": 2126.32,
+   "duration": 5.92,
+   "text": "went through submit finding. So as the"
+  },
+  {
+   "start": 2129.68,
+   "duration": 4.96,
+   "text": "submit finding is one validated call at"
+  },
+  {
+   "start": 2132.24,
+   "duration": 3.92,
+   "text": "a time everything the schema and"
+  },
+  {
+   "start": 2134.64,
+   "duration": 3.76,
+   "text": "everything is being kind of checked"
+  },
+  {
+   "start": 2136.16,
+   "duration": 5.919,
+   "text": "there. So here there is nothing to say"
+  },
+  {
+   "start": 2138.4,
+   "duration": 5.84,
+   "text": "or do here. Right? So I hope that is"
+  },
+  {
+   "start": 2142.079,
+   "duration": 4.961,
+   "text": "making sense about this publish review"
+  },
+  {
+   "start": 2144.24,
+   "duration": 5.359,
+   "text": "thing that it just kind of uh calls a"
+  },
+  {
+   "start": 2147.04,
+   "duration": 5.28,
+   "text": "format review comment method and then"
+  },
+  {
+   "start": 2149.599,
+   "duration": 6.081,
+   "text": "just returns you know the posted review"
+  },
+  {
+   "start": 2152.32,
+   "duration": 5.92,
+   "text": "comment. That's it. Yeah. Um so nothing"
+  },
+  {
+   "start": 2155.68,
+   "duration": 4.24,
+   "text": "more to discuss over here. Okay. One"
+  },
+  {
+   "start": 2158.24,
+   "duration": 3.44,
+   "text": "more interesting thing that I wanted to"
+  },
+  {
+   "start": 2159.92,
+   "duration": 3.919,
+   "text": "discuss over here and that is the change"
+  },
+  {
+   "start": 2161.68,
+   "duration": 4.72,
+   "text": "I actually like the most this episode"
+  },
+  {
+   "start": 2163.839,
+   "duration": 4.321,
+   "text": "and it's a very very small one. Okay. So"
+  },
+  {
+   "start": 2166.4,
+   "duration": 3.92,
+   "text": "up through lesson number three or"
+  },
+  {
+   "start": 2168.16,
+   "duration": 4.959,
+   "text": "episode sorry lesson number six or"
+  },
+  {
+   "start": 2170.32,
+   "duration": 5.44,
+   "text": "episode number six both sub agents"
+  },
+  {
+   "start": 2173.119,
+   "duration": 5.281,
+   "text": "reported back to the coordinator in free"
+  },
+  {
+   "start": 2175.76,
+   "duration": 4.4,
+   "text": "text. So we had two kind of sub aents"
+  },
+  {
+   "start": 2178.4,
+   "duration": 5.04,
+   "text": "that we had created right if you"
+  },
+  {
+   "start": 2180.16,
+   "duration": 4.64,
+   "text": "remember. So it was a free text like"
+  },
+  {
+   "start": 2183.44,
+   "duration": 3.919,
+   "text": "they were returning free text a"
+  },
+  {
+   "start": 2184.8,
+   "duration": 5.84,
+   "text": "paragraph. So the coordinator then had"
+  },
+  {
+   "start": 2187.359,
+   "duration": 6.401,
+   "text": "to read it interpret it and retranscribe"
+  },
+  {
+   "start": 2190.64,
+   "duration": 7.04,
+   "text": "it into a finding. That's a whole extra"
+  },
+  {
+   "start": 2193.76,
+   "duration": 6.64,
+   "text": "kind of a hop where a severity label or"
+  },
+  {
+   "start": 2197.68,
+   "duration": 4.96,
+   "text": "a line number could get grabbed on the"
+  },
+  {
+   "start": 2200.4,
+   "duration": 5.04,
+   "text": "way through, right? It can be missed or"
+  },
+  {
+   "start": 2202.64,
+   "duration": 6.64,
+   "text": "something like that. So now both sub"
+  },
+  {
+   "start": 2205.44,
+   "duration": 6.639,
+   "text": "aents if you going to go um so I think I"
+  },
+  {
+   "start": 2209.28,
+   "duration": 6.079,
+   "text": "need to also add the sub aents file over"
+  },
+  {
+   "start": 2212.079,
+   "duration": 4.721,
+   "text": "here. Yeah. Uh sub aents. py I don't see"
+  },
+  {
+   "start": 2215.359,
+   "duration": 3.281,
+   "text": "that over here. So probably need to"
+  },
+  {
+   "start": 2216.8,
+   "duration": 3.6,
+   "text": "create that. So let's create the sub"
+  },
+  {
+   "start": 2218.64,
+   "duration": 6.479,
+   "text": "aents file with the new things that I"
+  },
+  {
+   "start": 2220.4,
+   "duration": 7.28,
+   "text": "was just um talking about. So sub aents"
+  },
+  {
+   "start": 2225.119,
+   "duration": 5.201,
+   "text": "py we're going to create that and we're"
+  },
+  {
+   "start": 2227.68,
+   "duration": 7.52,
+   "text": "going to go to the snippets and we're"
+  },
+  {
+   "start": 2230.32,
+   "duration": 7.36,
+   "text": "going to grab the sub aents final file"
+  },
+  {
+   "start": 2235.2,
+   "duration": 4.32,
+   "text": "which kind of looks like this and then"
+  },
+  {
+   "start": 2237.68,
+   "duration": 4.72,
+   "text": "we are going to discuss what is"
+  },
+  {
+   "start": 2239.52,
+   "duration": 4.8,
+   "text": "happening over here."
+  },
+  {
+   "start": 2242.4,
+   "duration": 4.88,
+   "text": "Okay. So we're going to go over here and"
+  },
+  {
+   "start": 2244.32,
+   "duration": 5.92,
+   "text": "paste it. Okay. So [snorts] let's talk"
+  },
+  {
+   "start": 2247.28,
+   "duration": 5.2,
+   "text": "about it. So um as I told you previously"
+  },
+  {
+   "start": 2250.24,
+   "duration": 3.92,
+   "text": "the sub agents who are kind of giving a"
+  },
+  {
+   "start": 2252.48,
+   "duration": 3.359,
+   "text": "free text back to the coordinator which"
+  },
+  {
+   "start": 2254.16,
+   "duration": 3.36,
+   "text": "coordinator had to do a lot of job to"
+  },
+  {
+   "start": 2255.839,
+   "duration": 4.161,
+   "text": "kind of you know see what is happening"
+  },
+  {
+   "start": 2257.52,
+   "duration": 5.28,
+   "text": "over there. So now"
+  },
+  {
+   "start": 2260.0,
+   "duration": 7.52,
+   "text": "these both the sub aents"
+  },
+  {
+   "start": 2262.8,
+   "duration": 7.279,
+   "text": "call the submit finding directly. So if"
+  },
+  {
+   "start": 2267.52,
+   "duration": 6.16,
+   "text": "you see over here"
+  },
+  {
+   "start": 2270.079,
+   "duration": 6.481,
+   "text": "MCPR tools submit finding. Yeah, this is"
+  },
+  {
+   "start": 2273.68,
+   "duration": 5.919,
+   "text": "for the security reviewer and for the"
+  },
+  {
+   "start": 2276.56,
+   "duration": 7.68,
+   "text": "dockstring reviewer as well. This sub"
+  },
+  {
+   "start": 2279.599,
+   "duration": 8.321,
+   "text": "agent also calls a submit finding tool."
+  },
+  {
+   "start": 2284.24,
+   "duration": 5.68,
+   "text": "So basically they still reply with a"
+  },
+  {
+   "start": 2287.92,
+   "duration": 5.84,
+   "text": "oneline summary for the coordinator"
+  },
+  {
+   "start": 2289.92,
+   "duration": 6.24,
+   "text": "benefit but the structured artifact here"
+  },
+  {
+   "start": 2293.76,
+   "duration": 4.96,
+   "text": "that that is the thing that actually"
+  },
+  {
+   "start": 2296.16,
+   "duration": 5.84,
+   "text": "ends up in the review. it comes straight"
+  },
+  {
+   "start": 2298.72,
+   "duration": 5.76,
+   "text": "from whichever sub agent actually looked"
+  },
+  {
+   "start": 2302.0,
+   "duration": 4.72,
+   "text": "at the evidence. So that is the common"
+  },
+  {
+   "start": 2304.48,
+   "duration": 4.72,
+   "text": "tool that is there between the sub aent"
+  },
+  {
+   "start": 2306.72,
+   "duration": 4.879,
+   "text": "so that instead of returning a free text"
+  },
+  {
+   "start": 2309.2,
+   "duration": 5.36,
+   "text": "yeah it will actually submit the finding"
+  },
+  {
+   "start": 2311.599,
+   "duration": 5.841,
+   "text": "in a proper format that we have enforced"
+  },
+  {
+   "start": 2314.56,
+   "duration": 5.84,
+   "text": "across our agent. Yeah I hope that's"
+  },
+  {
+   "start": 2317.44,
+   "duration": 5.04,
+   "text": "making sense. So a mental model that you"
+  },
+  {
+   "start": 2320.4,
+   "duration": 4.32,
+   "text": "should always be you know keeping in"
+  },
+  {
+   "start": 2322.48,
+   "duration": 6.879,
+   "text": "your mind is that validation is kind of"
+  },
+  {
+   "start": 2324.72,
+   "duration": 7.359,
+   "text": "layered. Yeah. So validate finding"
+  },
+  {
+   "start": 2329.359,
+   "duration": 4.24,
+   "text": "checks shape you know the the right"
+  },
+  {
+   "start": 2332.079,
+   "duration": 3.76,
+   "text": "types the right enum that we were"
+  },
+  {
+   "start": 2333.599,
+   "duration": 5.281,
+   "text": "discussing right the validate finding"
+  },
+  {
+   "start": 2335.839,
+   "duration": 6.481,
+   "text": "method right it also checks the right"
+  },
+  {
+   "start": 2338.88,
+   "duration": 5.84,
+   "text": "required fields but the one thing it"
+  },
+  {
+   "start": 2342.32,
+   "duration": 9.32,
+   "text": "doesn't check is the truth I hope I have"
+  },
+  {
+   "start": 2344.72,
+   "duration": 6.92,
+   "text": "a slide of that um over here"
+  },
+  {
+   "start": 2351.92,
+   "duration": 5.28,
+   "text": "yeah so that is the valid validation"
+  },
+  {
+   "start": 2353.92,
+   "duration": 6.48,
+   "text": "finding right so it checks all of these"
+  },
+  {
+   "start": 2357.2,
+   "duration": 6.639,
+   "text": "things but it it it doesn't check the"
+  },
+  {
+   "start": 2360.4,
+   "duration": 6.64,
+   "text": "truth. it won't catch say let's say file"
+  },
+  {
+   "start": 2363.839,
+   "duration": 5.76,
+   "text": "path pr body is being a real file or not"
+  },
+  {
+   "start": 2367.04,
+   "duration": 5.039,
+   "text": "or a line number that's technically an"
+  },
+  {
+   "start": 2369.599,
+   "duration": 5.361,
+   "text": "integer but but it is wrong the file"
+  },
+  {
+   "start": 2372.079,
+   "duration": 5.52,
+   "text": "path if you pass any kind of random uh"
+  },
+  {
+   "start": 2374.96,
+   "duration": 6.0,
+   "text": "thing so it will check the structure and"
+  },
+  {
+   "start": 2377.599,
+   "duration": 6.0,
+   "text": "all but what it is inside if it is a"
+  },
+  {
+   "start": 2380.96,
+   "duration": 4.8,
+   "text": "real file or not you know that is you"
+  },
+  {
+   "start": 2383.599,
+   "duration": 4.081,
+   "text": "know that is not actually you should"
+  },
+  {
+   "start": 2385.76,
+   "duration": 5.2,
+   "text": "care when we are talking about shapes"
+  },
+  {
+   "start": 2387.68,
+   "duration": 6.399,
+   "text": "and you know schemas in your agentic"
+  },
+  {
+   "start": 2390.96,
+   "duration": 5.6,
+   "text": "loop, right? See, shape bugs are what"
+  },
+  {
+   "start": 2394.079,
+   "duration": 6.321,
+   "text": "schemas and retries fix. That is a"
+  },
+  {
+   "start": 2396.56,
+   "duration": 6.96,
+   "text": "shape. Yeah, truth bugs need a human."
+  },
+  {
+   "start": 2400.4,
+   "duration": 4.959,
+   "text": "That is where the human must come into"
+  },
+  {
+   "start": 2403.52,
+   "duration": 3.599,
+   "text": "the picture because see the agent cannot"
+  },
+  {
+   "start": 2405.359,
+   "duration": 4.081,
+   "text": "replace a human. At the end of the day,"
+  },
+  {
+   "start": 2407.119,
+   "duration": 4.641,
+   "text": "the source of truth that is coming is"
+  },
+  {
+   "start": 2409.44,
+   "duration": 6.399,
+   "text": "actually coming from the PR and that has"
+  },
+  {
+   "start": 2411.76,
+   "duration": 5.92,
+   "text": "been raised by a human and um you know"
+  },
+  {
+   "start": 2415.839,
+   "duration": 3.681,
+   "text": "the the files and everything even though"
+  },
+  {
+   "start": 2417.68,
+   "duration": 3.52,
+   "text": "the human has used clawed code to create"
+  },
+  {
+   "start": 2419.52,
+   "duration": 4.48,
+   "text": "it but at the end of the day that person"
+  },
+  {
+   "start": 2421.2,
+   "duration": 5.919,
+   "text": "is the one responsible for it. So the"
+  },
+  {
+   "start": 2424.0,
+   "duration": 5.119,
+   "text": "truth should come from a human or a much"
+  },
+  {
+   "start": 2427.119,
+   "duration": 3.681,
+   "text": "deeper agent than this one. So that is"
+  },
+  {
+   "start": 2429.119,
+   "duration": 5.041,
+   "text": "that is that you should not get confused"
+  },
+  {
+   "start": 2430.8,
+   "duration": 6.08,
+   "text": "about that. basically that is not your"
+  },
+  {
+   "start": 2434.16,
+   "duration": 5.28,
+   "text": "concern if you are talking about shapes"
+  },
+  {
+   "start": 2436.88,
+   "duration": 4.56,
+   "text": "and all its validations."
+  },
+  {
+   "start": 2439.44,
+   "duration": 6.399,
+   "text": "So that's one point I wanted to make."
+  },
+  {
+   "start": 2441.44,
+   "duration": 6.639,
+   "text": "Now let's wire it all in and let's uh"
+  },
+  {
+   "start": 2445.839,
+   "duration": 4.721,
+   "text": "create our agent py which we are going"
+  },
+  {
+   "start": 2448.079,
+   "duration": 3.52,
+   "text": "to run in some time and check what is"
+  },
+  {
+   "start": 2450.56,
+   "duration": 3.039,
+   "text": "happening over here. So I'm going to"
+  },
+  {
+   "start": 2451.599,
+   "duration": 4.801,
+   "text": "create a new file over here and I'm"
+  },
+  {
+   "start": 2453.599,
+   "duration": 5.601,
+   "text": "going to name it as agent py. Yeah,"
+  },
+  {
+   "start": 2456.4,
+   "duration": 6.32,
+   "text": "pretty cool. And I'm going to go to uh"
+  },
+  {
+   "start": 2459.2,
+   "duration": 7.76,
+   "text": "snippets and I'm going to just copy uh"
+  },
+  {
+   "start": 2462.72,
+   "duration": 8.639,
+   "text": "across this agent. py"
+  },
+  {
+   "start": 2466.96,
+   "duration": 6.879,
+   "text": "and um we are going to kind of see what"
+  },
+  {
+   "start": 2471.359,
+   "duration": 5.521,
+   "text": "are the new things that we have added to"
+  },
+  {
+   "start": 2473.839,
+   "duration": 5.28,
+   "text": "this agent. Okay."
+  },
+  {
+   "start": 2476.88,
+   "duration": 4.88,
+   "text": "So if you see episode number seven, I"
+  },
+  {
+   "start": 2479.119,
+   "duration": 4.401,
+   "text": "have already kind of um have some"
+  },
+  {
+   "start": 2481.76,
+   "duration": 5.52,
+   "text": "comments over here. So you guys can"
+  },
+  {
+   "start": 2483.52,
+   "duration": 7.36,
+   "text": "easily find it and don't get confused."
+  },
+  {
+   "start": 2487.28,
+   "duration": 6.4,
+   "text": "So three small changes and um none of"
+  },
+  {
+   "start": 2490.88,
+   "duration": 6.08,
+   "text": "them structural you know we just kind of"
+  },
+  {
+   "start": 2493.68,
+   "duration": 7.12,
+   "text": "swap the import over here."
+  },
+  {
+   "start": 2496.96,
+   "duration": 6.96,
+   "text": "Yeah. So um if you see um if you see"
+  },
+  {
+   "start": 2500.8,
+   "duration": 5.279,
+   "text": "from tools import yeah we have this uh"
+  },
+  {
+   "start": 2503.92,
+   "duration": 4.0,
+   "text": "check doc strings fetch PR metadata"
+  },
+  {
+   "start": 2506.079,
+   "duration": 4.081,
+   "text": "publish review reset findings and submit"
+  },
+  {
+   "start": 2507.92,
+   "duration": 6.56,
+   "text": "finding that these are the new tools um"
+  },
+  {
+   "start": 2510.16,
+   "duration": 6.88,
+   "text": "that is basically um we have used yeah"
+  },
+  {
+   "start": 2514.48,
+   "duration": 4.0,
+   "text": "and um"
+  },
+  {
+   "start": 2517.04,
+   "duration": 5.12,
+   "text": "so these are the things that we have"
+  },
+  {
+   "start": 2518.48,
+   "duration": 6.4,
+   "text": "added over here and if you see uh the"
+  },
+  {
+   "start": 2522.16,
+   "duration": 5.76,
+   "text": "cloud agent option in the allow tools we"
+  },
+  {
+   "start": 2524.88,
+   "duration": 5.6,
+   "text": "have also put submit finding and publish"
+  },
+  {
+   "start": 2527.92,
+   "duration": 5.439,
+   "text": "review because obviously we are giving"
+  },
+  {
+   "start": 2530.48,
+   "duration": 4.8,
+   "text": "the permission to the agent to use these"
+  },
+  {
+   "start": 2533.359,
+   "duration": 7.041,
+   "text": "tools freely basically right. So that is"
+  },
+  {
+   "start": 2535.28,
+   "duration": 8.72,
+   "text": "the things that we have added. Yeah. Um"
+  },
+  {
+   "start": 2540.4,
+   "duration": 5.199,
+   "text": "if you go uh over here that we were uh"
+  },
+  {
+   "start": 2544.0,
+   "duration": 3.2,
+   "text": "having over here. Yeah. So there is one"
+  },
+  {
+   "start": 2545.599,
+   "duration": 5.201,
+   "text": "point I wanted to just make it over"
+  },
+  {
+   "start": 2547.2,
+   "duration": 6.32,
+   "text": "here. So the findings uh that you see uh"
+  },
+  {
+   "start": 2550.8,
+   "duration": 5.519,
+   "text": "in tools. py if you go to tools. py and"
+  },
+  {
+   "start": 2553.52,
+   "duration": 8.16,
+   "text": "have a look. Yeah. And if you see the"
+  },
+  {
+   "start": 2556.319,
+   "duration": 8.321,
+   "text": "underscore uh findings right um yeah so"
+  },
+  {
+   "start": 2561.68,
+   "duration": 5.04,
+   "text": "this is the thing"
+  },
+  {
+   "start": 2564.64,
+   "duration": 4.32,
+   "text": "it's it's in tools py it's it's nothing"
+  },
+  {
+   "start": 2566.72,
+   "duration": 5.76,
+   "text": "but a plain module level list which"
+  },
+  {
+   "start": 2568.96,
+   "duration": 6.0,
+   "text": "means same as the dot append yeah so it"
+  },
+  {
+   "start": 2572.48,
+   "duration": 5.28,
+   "text": "happily survives across separate calls"
+  },
+  {
+   "start": 2574.96,
+   "duration": 4.8,
+   "text": "and same running processes so we have to"
+  },
+  {
+   "start": 2577.76,
+   "duration": 4.0,
+   "text": "kind of put the reset findings that is"
+  },
+  {
+   "start": 2579.76,
+   "duration": 3.92,
+   "text": "why we are using reset findings so it"
+  },
+  {
+   "start": 2581.76,
+   "duration": 4.079,
+   "text": "will clear the accumulated findings call"
+  },
+  {
+   "start": 2583.68,
+   "duration": 4.08,
+   "text": "this once before a new review starts. So"
+  },
+  {
+   "start": 2585.839,
+   "duration": 4.081,
+   "text": "the old findings kind of you know go"
+  },
+  {
+   "start": 2587.76,
+   "duration": 4.88,
+   "text": "away and you are good to start a new"
+  },
+  {
+   "start": 2589.92,
+   "duration": 6.399,
+   "text": "kind of a finding. Okay. And apart from"
+  },
+  {
+   "start": 2592.64,
+   "duration": 6.24,
+   "text": "that nothing more over here everything"
+  },
+  {
+   "start": 2596.319,
+   "duration": 5.601,
+   "text": "else is kind of okay. We are using the"
+  },
+  {
+   "start": 2598.88,
+   "duration": 5.6,
+   "text": "two sub agents and um that is what it"
+  },
+  {
+   "start": 2601.92,
+   "duration": 4.24,
+   "text": "is. Um"
+  },
+  {
+   "start": 2604.48,
+   "duration": 4.32,
+   "text": "yeah"
+  },
+  {
+   "start": 2606.16,
+   "duration": 7.4,
+   "text": "I think we are kind of okay or good to"
+  },
+  {
+   "start": 2608.8,
+   "duration": 4.76,
+   "text": "run the things over here."
+  },
+  {
+   "start": 2613.68,
+   "duration": 7.04,
+   "text": "Okay. Uh so"
+  },
+  {
+   "start": 2617.28,
+   "duration": 6.559,
+   "text": "we are going to run this."
+  },
+  {
+   "start": 2620.72,
+   "duration": 5.119,
+   "text": "I'm going to just create a new kind of a"
+  },
+  {
+   "start": 2623.839,
+   "duration": 4.48,
+   "text": "session. I'm just remembering if I have"
+  },
+  {
+   "start": 2625.839,
+   "duration": 7.121,
+   "text": "missed anything. I think there is one"
+  },
+  {
+   "start": 2628.319,
+   "duration": 6.721,
+   "text": "point that uh I wanted to discuss is uh"
+  },
+  {
+   "start": 2632.96,
+   "duration": 3.44,
+   "text": "what retries can fix and it's very"
+  },
+  {
+   "start": 2635.04,
+   "duration": 3.76,
+   "text": "important to understand before I"
+  },
+  {
+   "start": 2636.4,
+   "duration": 5.28,
+   "text": "actually run this. So I'm just going to"
+  },
+  {
+   "start": 2638.8,
+   "duration": 6.279,
+   "text": "switch to episode number seven and I'm"
+  },
+  {
+   "start": 2641.68,
+   "duration": 3.399,
+   "text": "going to go back."
+  },
+  {
+   "start": 2645.92,
+   "duration": 5.04,
+   "text": "Okay, the limit of retries I wanted to"
+  },
+  {
+   "start": 2647.92,
+   "duration": 5.36,
+   "text": "discuss. See uh it's a very important"
+  },
+  {
+   "start": 2650.96,
+   "duration": 4.96,
+   "text": "thing uh and it is for real. So validate"
+  },
+  {
+   "start": 2653.28,
+   "duration": 5.2,
+   "text": "finding you know it catches shape"
+  },
+  {
+   "start": 2655.92,
+   "duration": 5.12,
+   "text": "problems that I already discussed wrong"
+  },
+  {
+   "start": 2658.48,
+   "duration": 4.8,
+   "text": "severity missing fields wrong types"
+  },
+  {
+   "start": 2661.04,
+   "duration": 5.52,
+   "text": "genuinely useful you know genuinely"
+  },
+  {
+   "start": 2663.28,
+   "duration": 6.64,
+   "text": "automatic but it is not and it can't be"
+  },
+  {
+   "start": 2666.56,
+   "duration": 4.88,
+   "text": "something which is like a truth checker"
+  },
+  {
+   "start": 2669.92,
+   "duration": 3.04,
+   "text": "yeah"
+  },
+  {
+   "start": 2671.44,
+   "duration": 5.52,
+   "text": "so"
+  },
+  {
+   "start": 2672.96,
+   "duration": 6.24,
+   "text": "any kind of uh you know uh source of"
+  },
+  {
+   "start": 2676.96,
+   "duration": 4.879,
+   "text": "truth errors right from where the PR is"
+  },
+  {
+   "start": 2679.2,
+   "duration": 5.6,
+   "text": "coming and all those things any kind of"
+  },
+  {
+   "start": 2681.839,
+   "duration": 5.921,
+   "text": "retri that you do it will not get fixed."
+  },
+  {
+   "start": 2684.8,
+   "duration": 5.2,
+   "text": "Obviously if the data itself is bad then"
+  },
+  {
+   "start": 2687.76,
+   "duration": 4.48,
+   "text": "retries cannot fix it. It can only fix"
+  },
+  {
+   "start": 2690.0,
+   "duration": 3.68,
+   "text": "if the format is wrong for example that"
+  },
+  {
+   "start": 2692.24,
+   "duration": 3.839,
+   "text": "is what we are doing over here that we"
+  },
+  {
+   "start": 2693.68,
+   "duration": 4.32,
+   "text": "are checking the shape. So that you"
+  },
+  {
+   "start": 2696.079,
+   "duration": 4.641,
+   "text": "should keep in mind yeah that that is"
+  },
+  {
+   "start": 2698.0,
+   "duration": 4.96,
+   "text": "the limitation of the structure. See"
+  },
+  {
+   "start": 2700.72,
+   "duration": 5.44,
+   "text": "everything that we have talked till now"
+  },
+  {
+   "start": 2702.96,
+   "duration": 5.52,
+   "text": "is about structured. It is nothing about"
+  },
+  {
+   "start": 2706.16,
+   "duration": 4.959,
+   "text": "the source of truth. So that is the"
+  },
+  {
+   "start": 2708.48,
+   "duration": 4.96,
+   "text": "limitation that you need to understand."
+  },
+  {
+   "start": 2711.119,
+   "duration": 6.0,
+   "text": "Okay. Okay. So, keeping that out of the"
+  },
+  {
+   "start": 2713.44,
+   "duration": 6.159,
+   "text": "way, uh we're going to just run the PR"
+  },
+  {
+   "start": 2717.119,
+   "duration": 5.281,
+   "text": "number 143. So, if you go to tools, the"
+  },
+  {
+   "start": 2719.599,
+   "duration": 5.841,
+   "text": "PR, it should be there. Uh so, we should"
+  },
+  {
+   "start": 2722.4,
+   "duration": 5.199,
+   "text": "have uh PR number 143. As I told you"
+  },
+  {
+   "start": 2725.44,
+   "duration": 7.2,
+   "text": "that uh if you want to connect this"
+  },
+  {
+   "start": 2727.599,
+   "duration": 6.401,
+   "text": "agent to a real GitHub uh you know or or"
+  },
+  {
+   "start": 2732.64,
+   "duration": 3.199,
+   "text": "something that you have, you can use its"
+  },
+  {
+   "start": 2734.0,
+   "duration": 5.76,
+   "text": "APIs to connect and it will actually"
+  },
+  {
+   "start": 2735.839,
+   "duration": 7.041,
+   "text": "return you these PR data. But for now I"
+  },
+  {
+   "start": 2739.76,
+   "duration": 5.12,
+   "text": "just I'm using mock data which PR will"
+  },
+  {
+   "start": 2742.88,
+   "duration": 4.479,
+   "text": "actually return and we are just testing"
+  },
+  {
+   "start": 2744.88,
+   "duration": 4.239,
+   "text": "out the agents functionality. Yeah. Uh"
+  },
+  {
+   "start": 2747.359,
+   "duration": 4.801,
+   "text": "you can easily connect it with any kind"
+  },
+  {
+   "start": 2749.119,
+   "duration": 4.801,
+   "text": "of VCS and you know you can work it out."
+  },
+  {
+   "start": 2752.16,
+   "duration": 2.88,
+   "text": "It's a very simple thing. So for now"
+  },
+  {
+   "start": 2753.92,
+   "duration": 4.48,
+   "text": "what we're going to do is we're going to"
+  },
+  {
+   "start": 2755.04,
+   "duration": 6.92,
+   "text": "say Python 3 and we're going to run this"
+  },
+  {
+   "start": 2758.4,
+   "duration": 3.56,
+   "text": "agent on"
+  },
+  {
+   "start": 2762.16,
+   "duration": 7.679,
+   "text": "PR number 143. Right? So agent py and PR"
+  },
+  {
+   "start": 2765.28,
+   "duration": 8.72,
+   "text": "number is 143. Okay. So now let us run"
+  },
+  {
+   "start": 2769.839,
+   "duration": 7.361,
+   "text": "this. What? Oh my bad. Sorry. Uh I"
+  },
+  {
+   "start": 2774.0,
+   "duration": 4.88,
+   "text": "forgot the hooks uh py. Uh okay. It says"
+  },
+  {
+   "start": 2777.2,
+   "duration": 4.639,
+   "text": "that there is no module named hooks."
+  },
+  {
+   "start": 2778.88,
+   "duration": 7.439,
+   "text": "Okay. So we are going to kind of create"
+  },
+  {
+   "start": 2781.839,
+   "duration": 6.48,
+   "text": "that hooks uh kind of a hooks. py right."
+  },
+  {
+   "start": 2786.319,
+   "duration": 4.241,
+   "text": "Obviously how did I forget that I didn't"
+  },
+  {
+   "start": 2788.319,
+   "duration": 5.361,
+   "text": "take the hooks over here. Okay. So I"
+  },
+  {
+   "start": 2790.56,
+   "duration": 5.519,
+   "text": "should have the hooks um"
+  },
+  {
+   "start": 2793.68,
+   "duration": 4.88,
+   "text": "py. And here also there is a small"
+  },
+  {
+   "start": 2796.079,
+   "duration": 4.481,
+   "text": "change require evidence. Yeah, change"
+  },
+  {
+   "start": 2798.56,
+   "duration": 4.559,
+   "text": "this episode. So the block dangerous"
+  },
+  {
+   "start": 2800.56,
+   "duration": 5.12,
+   "text": "bash pro process PR fetch results and"
+  },
+  {
+   "start": 2803.119,
+   "duration": 5.521,
+   "text": "block prempact compact these all are"
+  },
+  {
+   "start": 2805.68,
+   "duration": 6.8,
+   "text": "carried forward. Right. So what changed"
+  },
+  {
+   "start": 2808.64,
+   "duration": 6.16,
+   "text": "in this hooks uh do py we're going to"
+  },
+  {
+   "start": 2812.48,
+   "duration": 6.8,
+   "text": "I'm going to just show you. So let me"
+  },
+  {
+   "start": 2814.8,
+   "duration": 7.519,
+   "text": "just copy the snippets over from here"
+  },
+  {
+   "start": 2819.28,
+   "duration": 5.6,
+   "text": "uh the hooks thing and we're going to"
+  },
+  {
+   "start": 2822.319,
+   "duration": 5.76,
+   "text": "paste it in the hooks. PY let me talk"
+  },
+  {
+   "start": 2824.88,
+   "duration": 6.0,
+   "text": "about the small change that we did over"
+  },
+  {
+   "start": 2828.079,
+   "duration": 5.441,
+   "text": "here. Yeah."
+  },
+  {
+   "start": 2830.88,
+   "duration": 5.439,
+   "text": "Hey, this is um this is hooks only,"
+  },
+  {
+   "start": 2833.52,
+   "duration": 5.44,
+   "text": "right? Just making sure that I'm not"
+  },
+  {
+   "start": 2836.319,
+   "duration": 6.561,
+   "text": "messing it up."
+  },
+  {
+   "start": 2838.96,
+   "duration": 6.639,
+   "text": "Okay. Okay. So, uh two very small small"
+  },
+  {
+   "start": 2842.88,
+   "duration": 6.0,
+   "text": "edits over here uh to close out uh the"
+  },
+  {
+   "start": 2845.599,
+   "duration": 7.201,
+   "text": "hooks. py. Uh so as I told you you know"
+  },
+  {
+   "start": 2848.88,
+   "duration": 7.12,
+   "text": "the hooks py require evidence stop hook"
+  },
+  {
+   "start": 2852.8,
+   "duration": 5.6,
+   "text": "was checking the transcript for post"
+  },
+  {
+   "start": 2856.0,
+   "duration": 4.48,
+   "text": "review comment so that tools retired so"
+  },
+  {
+   "start": 2858.4,
+   "duration": 4.16,
+   "text": "it now checks for the publish review"
+  },
+  {
+   "start": 2860.48,
+   "duration": 5.44,
+   "text": "instead. So if you see the require"
+  },
+  {
+   "start": 2862.56,
+   "duration": 5.36,
+   "text": "evidence um"
+  },
+  {
+   "start": 2865.92,
+   "duration": 4.24,
+   "text": "because we are using that publish review"
+  },
+  {
+   "start": 2867.92,
+   "duration": 4.24,
+   "text": "which is basically the final thingy that"
+  },
+  {
+   "start": 2870.16,
+   "duration": 6.24,
+   "text": "one of the tools that we are using. So"
+  },
+  {
+   "start": 2872.16,
+   "duration": 6.32,
+   "text": "require evidence if you see um"
+  },
+  {
+   "start": 2876.4,
+   "duration": 3.919,
+   "text": "where is that?"
+  },
+  {
+   "start": 2878.48,
+   "duration": 4.639,
+   "text": "So"
+  },
+  {
+   "start": 2880.319,
+   "duration": 6.881,
+   "text": "we have this okay if publish review is"
+  },
+  {
+   "start": 2883.119,
+   "duration": 7.2,
+   "text": "in text then basically return an empty"
+  },
+  {
+   "start": 2887.2,
+   "duration": 5.84,
+   "text": "thing. Yeah"
+  },
+  {
+   "start": 2890.319,
+   "duration": 4.401,
+   "text": "that's it."
+  },
+  {
+   "start": 2893.04,
+   "duration": 6.64,
+   "text": "Okay so I hope that is making sense."
+  },
+  {
+   "start": 2894.72,
+   "duration": 6.639,
+   "text": "Okay. So one more thing is um so the"
+  },
+  {
+   "start": 2899.68,
+   "duration": 3.36,
+   "text": "now it is checking for publish review"
+  },
+  {
+   "start": 2901.359,
+   "duration": 3.601,
+   "text": "and"
+  },
+  {
+   "start": 2903.04,
+   "duration": 6.0,
+   "text": "that's it. That's all I wanted to just"
+  },
+  {
+   "start": 2904.96,
+   "duration": 5.359,
+   "text": "talk about and uh that's that's it."
+  },
+  {
+   "start": 2909.04,
+   "duration": 3.279,
+   "text": "That's that's the only thing that has"
+  },
+  {
+   "start": 2910.319,
+   "duration": 4.721,
+   "text": "changed in hooks. Okay. Now that it has"
+  },
+  {
+   "start": 2912.319,
+   "duration": 4.481,
+   "text": "been copy pasted"
+  },
+  {
+   "start": 2915.04,
+   "duration": 4.0,
+   "text": "I think it should be fine. I think I"
+  },
+  {
+   "start": 2916.8,
+   "duration": 6.12,
+   "text": "have all the files. Okay. Now we have"
+  },
+  {
+   "start": 2919.04,
+   "duration": 3.88,
+   "text": "all the files right now."
+  },
+  {
+   "start": 2924.8,
+   "duration": 3.92,
+   "text": "Sorry if you guys got a little bit"
+  },
+  {
+   "start": 2926.559,
+   "duration": 5.441,
+   "text": "confused. I kind of forgot the hooks."
+  },
+  {
+   "start": 2928.72,
+   "duration": 5.2,
+   "text": "Apologies. Um, so it is saying that I'll"
+  },
+  {
+   "start": 2932.0,
+   "duration": 3.359,
+   "text": "review PR443 by fetching the PR details"
+  },
+  {
+   "start": 2933.92,
+   "duration": 3.439,
+   "text": "first, then launching parallel reviews"
+  },
+  {
+   "start": 2935.359,
+   "duration": 5.121,
+   "text": "to check for the code quality and dock"
+  },
+  {
+   "start": 2937.359,
+   "duration": 6.121,
+   "text": "string. So now let me fetch PR43 details"
+  },
+  {
+   "start": 2940.48,
+   "duration": 3.0,
+   "text": "instead."
+  },
+  {
+   "start": 2947.2,
+   "duration": 5.359,
+   "text": "Okay, let's see what are the sub agents"
+  },
+  {
+   "start": 2949.68,
+   "duration": 7.399,
+   "text": "doing. And while it is doing we can just"
+  },
+  {
+   "start": 2952.559,
+   "duration": 4.52,
+   "text": "check out the"
+  },
+  {
+   "start": 2958.4,
+   "duration": 4.159,
+   "text": "so these are the things that we have"
+  },
+  {
+   "start": 2960.0,
+   "duration": 4.72,
+   "text": "changed and schemas. py is newly added"
+  },
+  {
+   "start": 2962.559,
+   "duration": 4.641,
+   "text": "these two things are coming on from the"
+  },
+  {
+   "start": 2964.72,
+   "duration": 5.04,
+   "text": "memory lesson that we did from the last"
+  },
+  {
+   "start": 2967.2,
+   "duration": 5.2,
+   "text": "lesson. So just a overview of what we"
+  },
+  {
+   "start": 2969.76,
+   "duration": 4.72,
+   "text": "have done is in the tools. py we added"
+  },
+  {
+   "start": 2972.4,
+   "duration": 4.32,
+   "text": "submit finding publish review and reset"
+  },
+  {
+   "start": 2974.48,
+   "duration": 4.4,
+   "text": "findings. In sub agents little bit"
+  },
+  {
+   "start": 2976.72,
+   "duration": 3.92,
+   "text": "changes added tools to the agent"
+  },
+  {
+   "start": 2978.88,
+   "duration": 4.08,
+   "text": "definition which was basically the"
+  },
+  {
+   "start": 2980.64,
+   "duration": 7.12,
+   "text": "submit finding thing so that both of the"
+  },
+  {
+   "start": 2982.96,
+   "duration": 7.2,
+   "text": "sub aents will um kind of um submit a"
+  },
+  {
+   "start": 2987.76,
+   "duration": 4.72,
+   "text": "structured output to the coordinator"
+  },
+  {
+   "start": 2990.16,
+   "duration": 4.72,
+   "text": "instead of the raw text that it was"
+  },
+  {
+   "start": 2992.48,
+   "duration": 5.04,
+   "text": "sending and in agent we updated tool"
+  },
+  {
+   "start": 2994.88,
+   "duration": 4.959,
+   "text": "registrations and hooks. py we kind of"
+  },
+  {
+   "start": 2997.52,
+   "duration": 4.64,
+   "text": "did some transcript check updates that I"
+  },
+  {
+   "start": 2999.839,
+   "duration": 4.401,
+   "text": "just told you and in cloud.mmd file we"
+  },
+  {
+   "start": 3002.16,
+   "duration": 4.0,
+   "text": "just updated the system contract nothing"
+  },
+  {
+   "start": 3004.24,
+   "duration": 3.68,
+   "text": "much so the main thing that you need to"
+  },
+  {
+   "start": 3006.16,
+   "duration": 3.919,
+   "text": "understand is the schemas py"
+  },
+  {
+   "start": 3007.92,
+   "duration": 4.96,
+   "text": "introduction and everything sits kind of"
+  },
+  {
+   "start": 3010.079,
+   "duration": 6.801,
+   "text": "there in this particular"
+  },
+  {
+   "start": 3012.88,
+   "duration": 7.199,
+   "text": "lesson yeah so let's go back before I"
+  },
+  {
+   "start": 3016.88,
+   "duration": 6.199,
+   "text": "kind of okay so it has kind of done some"
+  },
+  {
+   "start": 3020.079,
+   "duration": 3.0,
+   "text": "things"
+  },
+  {
+   "start": 3026.079,
+   "duration": 3.0,
+   "text": "Okay."
+  },
+  {
+   "start": 3036.72,
+   "duration": 4.52,
+   "text": "So what it does over here is"
+  },
+  {
+   "start": 3042.24,
+   "duration": 5.119,
+   "text": "okay what it is doing"
+  },
+  {
+   "start": 3044.8,
+   "duration": 5.039,
+   "text": "let me fetch PR 143 let me check what"
+  },
+  {
+   "start": 3047.359,
+   "duration": 4.401,
+   "text": "files now I launched two parallel okay"
+  },
+  {
+   "start": 3049.839,
+   "duration": 4.24,
+   "text": "so it has it is saying no string"
+  },
+  {
+   "start": 3051.76,
+   "duration": 4.4,
+   "text": "reviewer and code quality reviewer so"
+  },
+  {
+   "start": 3054.079,
+   "duration": 4.161,
+   "text": "these are two sub aents that it kind of"
+  },
+  {
+   "start": 3056.16,
+   "duration": 4.32,
+   "text": "launched yeah so it is scanning all"
+  },
+  {
+   "start": 3058.24,
+   "duration": 4.4,
+   "text": "Python files for missing dock strings"
+  },
+  {
+   "start": 3060.48,
+   "duration": 5.04,
+   "text": "checking for log errors I'll wait for"
+  },
+  {
+   "start": 3062.64,
+   "duration": 5.6,
+   "text": "their findings okay files with missing"
+  },
+  {
+   "start": 3065.52,
+   "duration": 5.039,
+   "text": "dock strings agent py tools py so it is"
+  },
+  {
+   "start": 3068.24,
+   "duration": 4.8,
+   "text": "telling files with complete dock string"
+  },
+  {
+   "start": 3070.559,
+   "duration": 6.8,
+   "text": "coverage these is the things yeah the"
+  },
+  {
+   "start": 3073.04,
+   "duration": 7.319,
+   "text": "absolute file parts it is giving okay"
+  },
+  {
+   "start": 3077.359,
+   "duration": 3.0,
+   "text": "okay"
+  },
+  {
+   "start": 3080.8,
+   "duration": 5.279,
+   "text": "so if you see"
+  },
+  {
+   "start": 3084.0,
+   "duration": 5.04,
+   "text": "so the the the issues that it is"
+  },
+  {
+   "start": 3086.079,
+   "duration": 7.361,
+   "text": "returning yeah issue one so it is giving"
+  },
+  {
+   "start": 3089.04,
+   "duration": 6.64,
+   "text": "file line severity and message do I have"
+  },
+  {
+   "start": 3093.44,
+   "duration": 4.96,
+   "text": "the severity as warning right just let"
+  },
+  {
+   "start": 3095.68,
+   "duration": 5.439,
+   "text": "me Check it out. Find kind of odd over"
+  },
+  {
+   "start": 3098.4,
+   "duration": 5.04,
+   "text": "here. So, let me kind of go to uh"
+  },
+  {
+   "start": 3101.119,
+   "duration": 5.521,
+   "text": "schemas and let me check the list of the"
+  },
+  {
+   "start": 3103.44,
+   "duration": 7.08,
+   "text": "severities. I hope it's it's warning"
+  },
+  {
+   "start": 3106.64,
+   "duration": 3.88,
+   "text": "warning is there. Okay."
+  },
+  {
+   "start": 3110.88,
+   "duration": 5.84,
+   "text": "Doc string says private helpers are"
+  },
+  {
+   "start": 3114.16,
+   "duration": 4.08,
+   "text": "skipped but this repost as per this is"
+  },
+  {
+   "start": 3116.72,
+   "duration": 4.32,
+   "text": "inconsistent and will cause false"
+  },
+  {
+   "start": 3118.24,
+   "duration": 5.2,
+   "text": "positive for private classes. Unhandled."
+  },
+  {
+   "start": 3121.04,
+   "duration": 5.36,
+   "text": "All other files appear to be well"
+  },
+  {
+   "start": 3123.44,
+   "duration": 5.96,
+   "text": "implemented. Yeah."
+  },
+  {
+   "start": 3126.4,
+   "duration": 3.0,
+   "text": "Okay."
+  },
+  {
+   "start": 3137.28,
+   "duration": 3.0,
+   "text": "Okay."
+  },
+  {
+   "start": 3142.48,
+   "duration": 3.599,
+   "text": "So if you see this thing to officially"
+  },
+  {
+   "start": 3144.24,
+   "duration": 4.16,
+   "text": "submit these findings and post the"
+  },
+  {
+   "start": 3146.079,
+   "duration": 4.48,
+   "text": "review comment the review tools submit"
+  },
+  {
+   "start": 3148.4,
+   "duration": 4.08,
+   "text": "finding function must be called eight"
+  },
+  {
+   "start": 3150.559,
+   "duration": 3.76,
+   "text": "times once per finding followed by a"
+  },
+  {
+   "start": 3152.48,
+   "duration": 4.24,
+   "text": "single publish review call. Both"
+  },
+  {
+   "start": 3154.319,
+   "duration": 7.04,
+   "text": "reviewers have completed their analysis"
+  },
+  {
+   "start": 3156.72,
+   "duration": 7.639,
+   "text": "and their findings are documented above."
+  },
+  {
+   "start": 3161.359,
+   "duration": 3.0,
+   "text": "Okay."
+  },
+  {
+   "start": 3165.359,
+   "duration": 4.881,
+   "text": "Hey, but one thing uh it kind of not"
+  },
+  {
+   "start": 3167.76,
+   "duration": 5.839,
+   "text": "taken is why it is not considering the"
+  },
+  {
+   "start": 3170.24,
+   "duration": 6.359,
+   "text": "PR number 143"
+  },
+  {
+   "start": 3173.599,
+   "duration": 3.0,
+   "text": "because"
+  },
+  {
+   "start": 3177.44,
+   "duration": 5.32,
+   "text": "ah okay now I see what is happening over"
+  },
+  {
+   "start": 3179.76,
+   "duration": 3.0,
+   "text": "here."
+  },
+  {
+   "start": 3184.88,
+   "duration": 6.56,
+   "text": "So session id is none. So we are not"
+  },
+  {
+   "start": 3188.48,
+   "duration": 7.04,
+   "text": "passing in the session ID."
+  },
+  {
+   "start": 3191.44,
+   "duration": 6.56,
+   "text": "So uh so okay it is uh PR prior know if"
+  },
+  {
+   "start": 3195.52,
+   "duration": 5.039,
+   "text": "prior is resuming the session obviously"
+  },
+  {
+   "start": 3198.0,
+   "duration": 5.04,
+   "text": "or if not new session for PR. So this is"
+  },
+  {
+   "start": 3200.559,
+   "duration": 7.28,
+   "text": "obviously must be getting a new session"
+  },
+  {
+   "start": 3203.04,
+   "duration": 7.799,
+   "text": "for PR 143 but"
+  },
+  {
+   "start": 3207.839,
+   "duration": 3.0,
+   "text": "yeah"
+  },
+  {
+   "start": 3211.04,
+   "duration": 5.4,
+   "text": "but it is not considering the PR number."
+  },
+  {
+   "start": 3218.88,
+   "duration": 3.439,
+   "text": "Okay, I need to check this out because"
+  },
+  {
+   "start": 3220.559,
+   "duration": 3.841,
+   "text": "it should have been worked on the tool"
+  },
+  {
+   "start": 3222.319,
+   "duration": 5.201,
+   "text": "but obviously yeah see the thing is the"
+  },
+  {
+   "start": 3224.4,
+   "duration": 5.36,
+   "text": "schema uh it is following okay it is"
+  },
+  {
+   "start": 3227.52,
+   "duration": 4.96,
+   "text": "giving the same uh warnings and all"
+  },
+  {
+   "start": 3229.76,
+   "duration": 5.28,
+   "text": "those things right but it is not"
+  },
+  {
+   "start": 3232.48,
+   "duration": 3.68,
+   "text": "actually working on the PR number 143"
+  },
+  {
+   "start": 3235.04,
+   "duration": 3.519,
+   "text": "that it should have been taken from"
+  },
+  {
+   "start": 3236.16,
+   "duration": 4.72,
+   "text": "there but instead this um the whole"
+  },
+  {
+   "start": 3238.559,
+   "duration": 4.481,
+   "text": "analysis has been done on the entire"
+  },
+  {
+   "start": 3240.88,
+   "duration": 4.719,
+   "text": "kind of repo"
+  },
+  {
+   "start": 3243.04,
+   "duration": 4.64,
+   "text": "over here I think that it's because we"
+  },
+  {
+   "start": 3245.599,
+   "duration": 5.201,
+   "text": "are using haiku so it is not being able"
+  },
+  {
+   "start": 3247.68,
+   "duration": 4.8,
+   "text": "to identif ify on which it should run."
+  },
+  {
+   "start": 3250.8,
+   "duration": 6.64,
+   "text": "But as you can see, even though we are"
+  },
+  {
+   "start": 3252.48,
+   "duration": 7.68,
+   "text": "using a very lesser model, the um the"
+  },
+  {
+   "start": 3257.44,
+   "duration": 4.879,
+   "text": "structure is kind of good because you"
+  },
+  {
+   "start": 3260.16,
+   "duration": 3.84,
+   "text": "know we have kind of enforced that"
+  },
+  {
+   "start": 3262.319,
+   "duration": 3.681,
+   "text": "schema thingy. But let me check why it"
+  },
+  {
+   "start": 3264.0,
+   "duration": 4.079,
+   "text": "is not running and I'm going to let you"
+  },
+  {
+   "start": 3266.0,
+   "duration": 4.72,
+   "text": "guys know in a minute why it did not run"
+  },
+  {
+   "start": 3268.079,
+   "duration": 5.121,
+   "text": "on that PR. So I figured out what was"
+  },
+  {
+   "start": 3270.72,
+   "duration": 5.599,
+   "text": "wrong and then I you know that ran it"
+  },
+  {
+   "start": 3273.2,
+   "duration": 5.919,
+   "text": "again and now it is kind of working"
+  },
+  {
+   "start": 3276.319,
+   "duration": 4.961,
+   "text": "fine. Yeah. uh it is doing the dock"
+  },
+  {
+   "start": 3279.119,
+   "duration": 5.361,
+   "text": "string and the security thing and uh it"
+  },
+  {
+   "start": 3281.28,
+   "duration": 5.6,
+   "text": "is also giving the severity as blocking"
+  },
+  {
+   "start": 3284.48,
+   "duration": 5.119,
+   "text": "uh location and everything it is giving"
+  },
+  {
+   "start": 3286.88,
+   "duration": 4.4,
+   "text": "as per the schema but uh the reason that"
+  },
+  {
+   "start": 3289.599,
+   "duration": 3.201,
+   "text": "it didn't work out last time is if you"
+  },
+  {
+   "start": 3291.28,
+   "duration": 6.079,
+   "text": "remember I had told that I had changed"
+  },
+  {
+   "start": 3292.8,
+   "duration": 7.44,
+   "text": "the all the models to um haiku right so"
+  },
+  {
+   "start": 3297.359,
+   "duration": 5.281,
+   "text": "the haiku model uh instead of like"
+  },
+  {
+   "start": 3300.24,
+   "duration": 6.079,
+   "text": "understanding okay it has to pick it up"
+  },
+  {
+   "start": 3302.64,
+   "duration": 5.12,
+   "text": "from the PR it actually ran real uh"
+  },
+  {
+   "start": 3306.319,
+   "duration": 4.641,
+   "text": "github calls"
+  },
+  {
+   "start": 3307.76,
+   "duration": 5.68,
+   "text": "Yeah, gh calls. I I had logged in uh in"
+  },
+  {
+   "start": 3310.96,
+   "duration": 5.04,
+   "text": "GH um"
+  },
+  {
+   "start": 3313.44,
+   "duration": 4.399,
+   "text": "uh previously it was also kind of"
+  },
+  {
+   "start": 3316.0,
+   "duration": 3.359,
+   "text": "calling the GitHub histories and all"
+  },
+  {
+   "start": 3317.839,
+   "duration": 4.801,
+   "text": "those things. It was actually not doing"
+  },
+  {
+   "start": 3319.359,
+   "duration": 4.96,
+   "text": "what it was supposed to do. So what were"
+  },
+  {
+   "start": 3322.64,
+   "duration": 3.919,
+   "text": "the possible solutions and I thought of"
+  },
+  {
+   "start": 3324.319,
+   "duration": 4.961,
+   "text": "a couple of things. Okay, the one thing"
+  },
+  {
+   "start": 3326.559,
+   "duration": 4.481,
+   "text": "is that to change everything back to set"
+  },
+  {
+   "start": 3329.28,
+   "duration": 4.96,
+   "text": "as it was. So the sub agents were using"
+  },
+  {
+   "start": 3331.04,
+   "duration": 4.24,
+   "text": "set and uh the coordinator was using sub"
+  },
+  {
+   "start": 3334.24,
+   "duration": 3.2,
+   "text": "set sonnet. So we're going to just"
+  },
+  {
+   "start": 3335.28,
+   "duration": 5.68,
+   "text": "revert it back and it should work fine."
+  },
+  {
+   "start": 3337.44,
+   "duration": 5.44,
+   "text": "Second thing what I thought is why not"
+  },
+  {
+   "start": 3340.96,
+   "duration": 4.56,
+   "text": "make the decision process more"
+  },
+  {
+   "start": 3342.88,
+   "duration": 5.04,
+   "text": "intelligent and this is also a live kind"
+  },
+  {
+   "start": 3345.52,
+   "duration": 4.16,
+   "text": "of an example where different kind of"
+  },
+  {
+   "start": 3347.92,
+   "duration": 5.199,
+   "text": "models you can use with different"
+  },
+  {
+   "start": 3349.68,
+   "duration": 5.679,
+   "text": "scenarios. So um so what I did is I"
+  },
+  {
+   "start": 3353.119,
+   "duration": 4.48,
+   "text": "changed the coordinator agent. So if you"
+  },
+  {
+   "start": 3355.359,
+   "duration": 6.161,
+   "text": "go to my agent.py."
+  },
+  {
+   "start": 3357.599,
+   "duration": 6.921,
+   "text": "Yeah. So if you see um somewhere around"
+  },
+  {
+   "start": 3361.52,
+   "duration": 3.0,
+   "text": "here,"
+  },
+  {
+   "start": 3365.52,
+   "duration": 5.52,
+   "text": "where is that? Did I Okay. Okay. So I"
+  },
+  {
+   "start": 3369.04,
+   "duration": 4.4,
+   "text": "haven't given up model over here. So it"
+  },
+  {
+   "start": 3371.04,
+   "duration": 4.64,
+   "text": "should pick it up sonnet from there. But"
+  },
+  {
+   "start": 3373.44,
+   "duration": 4.96,
+   "text": "if you go for Okay, let me just show you"
+  },
+  {
+   "start": 3375.68,
+   "duration": 5.04,
+   "text": "a sub aents. Right. So for sub aents I"
+  },
+  {
+   "start": 3378.4,
+   "duration": 4.88,
+   "text": "am using haiku."
+  },
+  {
+   "start": 3380.72,
+   "duration": 4.32,
+   "text": "Yeah, for sub aents I'm using haiku. Now"
+  },
+  {
+   "start": 3383.28,
+   "duration": 4.319,
+   "text": "why is that? because first the request"
+  },
+  {
+   "start": 3385.04,
+   "duration": 6.24,
+   "text": "will go to coordinator. So coordinator"
+  },
+  {
+   "start": 3387.599,
+   "duration": 6.881,
+   "text": "is having sonnet. So sonnet it will use"
+  },
+  {
+   "start": 3391.28,
+   "duration": 4.799,
+   "text": "to actually make the decision okay that"
+  },
+  {
+   "start": 3394.48,
+   "duration": 3.68,
+   "text": "okay that okay this sub aent I need to"
+  },
+  {
+   "start": 3396.079,
+   "duration": 5.121,
+   "text": "use but for sub aents it's the prompt"
+  },
+  {
+   "start": 3398.16,
+   "duration": 6.399,
+   "text": "and the description is enough to feed it"
+  },
+  {
+   "start": 3401.2,
+   "duration": 5.04,
+   "text": "into haiku haiku can do the small job um"
+  },
+  {
+   "start": 3404.559,
+   "duration": 4.961,
+   "text": "and understand the prompt and do the"
+  },
+  {
+   "start": 3406.24,
+   "duration": 7.44,
+   "text": "things but the decision to use these you"
+  },
+  {
+   "start": 3409.52,
+   "duration": 6.64,
+   "text": "know um sub agents and working on"
+  },
+  {
+   "start": 3413.68,
+   "duration": 4.08,
+   "text": "actually the mock PR which is 143 it it"
+  },
+  {
+   "start": 3416.16,
+   "duration": 3.439,
+   "text": "it it actually resides with the"
+  },
+  {
+   "start": 3417.76,
+   "duration": 6.799,
+   "text": "coordinator so the decision process I"
+  },
+  {
+   "start": 3419.599,
+   "duration": 7.681,
+   "text": "made kind of intelligent. Yeah. And uh I"
+  },
+  {
+   "start": 3424.559,
+   "duration": 5.28,
+   "text": "changed the haiku to the sub agent. So"
+  },
+  {
+   "start": 3427.28,
+   "duration": 5.44,
+   "text": "then it kind of worked. Yeah. The other"
+  },
+  {
+   "start": 3429.839,
+   "duration": 5.52,
+   "text": "thing that you can do is actually um"
+  },
+  {
+   "start": 3432.72,
+   "duration": 5.92,
+   "text": "instead of changing even this to set"
+  },
+  {
+   "start": 3435.359,
+   "duration": 7.641,
+   "text": "right the agent or opus whatever you can"
+  },
+  {
+   "start": 3438.64,
+   "duration": 4.36,
+   "text": "make the um"
+  },
+  {
+   "start": 3443.76,
+   "duration": 5.12,
+   "text": "Okay. So the system prompt"
+  },
+  {
+   "start": 3446.88,
+   "duration": 5.199,
+   "text": "Yeah. So the system prompt you can make"
+  },
+  {
+   "start": 3448.88,
+   "duration": 6.08,
+   "text": "it more kind of"
+  },
+  {
+   "start": 3452.079,
+   "duration": 4.641,
+   "text": "good better. So Haiku will understand"
+  },
+  {
+   "start": 3454.96,
+   "duration": 4.32,
+   "text": "what to do because currently it is just"
+  },
+  {
+   "start": 3456.72,
+   "duration": 4.079,
+   "text": "review the PR and then fan out to boot"
+  },
+  {
+   "start": 3459.28,
+   "duration": 3.36,
+   "text": "reviewers it can understand anything"
+  },
+  {
+   "start": 3460.799,
+   "duration": 3.841,
+   "text": "right or if you want it to actually work"
+  },
+  {
+   "start": 3462.64,
+   "duration": 4.8,
+   "text": "on this mock PR which is in the tools.py"
+  },
+  {
+   "start": 3464.64,
+   "duration": 5.199,
+   "text": "pi maybe specify that you know check the"
+  },
+  {
+   "start": 3467.44,
+   "duration": 4.159,
+   "text": "mock PRs and the tools.py py and then it"
+  },
+  {
+   "start": 3469.839,
+   "duration": 4.0,
+   "text": "will start to work out if you just want"
+  },
+  {
+   "start": 3471.599,
+   "duration": 6.401,
+   "text": "to keep haiku in coordinator as well."
+  },
+  {
+   "start": 3473.839,
+   "duration": 7.601,
+   "text": "But for me coordinator having set and or"
+  },
+  {
+   "start": 3478.0,
+   "duration": 6.0,
+   "text": "opus and the sub aents having haiku is"
+  },
+  {
+   "start": 3481.44,
+   "duration": 5.52,
+   "text": "pretty much of okay with me and it kind"
+  },
+  {
+   "start": 3484.0,
+   "duration": 6.64,
+   "text": "of worked out. So that was all. Yeah, I"
+  },
+  {
+   "start": 3486.96,
+   "duration": 6.639,
+   "text": "am glad that I figured this issue. Um uh"
+  },
+  {
+   "start": 3490.64,
+   "duration": 6.159,
+   "text": "yeah so I discussed this project"
+  },
+  {
+   "start": 3493.599,
+   "duration": 5.52,
+   "text": "architecture map and"
+  },
+  {
+   "start": 3496.799,
+   "duration": 6.401,
+   "text": "so we are done I guess for this"
+  },
+  {
+   "start": 3499.119,
+   "duration": 6.561,
+   "text": "particular thing so exam map strict tool"
+  },
+  {
+   "start": 3503.2,
+   "duration": 4.48,
+   "text": "use this we discussed right uh is a G on"
+  },
+  {
+   "start": 3505.68,
+   "duration": 4.08,
+   "text": "the ROM SS API it's pretty easy to use"
+  },
+  {
+   "start": 3507.68,
+   "duration": 4.56,
+   "text": "this custom agent SDK tools do not"
+  },
+  {
+   "start": 3509.76,
+   "duration": 5.039,
+   "text": "natively get that guarantee yet so we"
+  },
+  {
+   "start": 3512.24,
+   "duration": 4.319,
+   "text": "have to use this kind of schema with a"
+  },
+  {
+   "start": 3514.799,
+   "duration": 3.841,
+   "text": "combination of validation and all those"
+  },
+  {
+   "start": 3516.559,
+   "duration": 4.24,
+   "text": "things so you can use that that we just"
+  },
+  {
+   "start": 3518.64,
+   "duration": 3.84,
+   "text": "did in this lesson schema still guide"
+  },
+  {
+   "start": 3520.799,
+   "duration": 3.921,
+   "text": "the model but your custom validation"
+  },
+  {
+   "start": 3522.48,
+   "duration": 4.16,
+   "text": "decides the outcome required but"
+  },
+  {
+   "start": 3524.72,
+   "duration": 4.0,
+   "text": "nullable beats the optional. So this is"
+  },
+  {
+   "start": 3526.64,
+   "duration": 4.08,
+   "text": "very very important very very tricky"
+  },
+  {
+   "start": 3528.72,
+   "duration": 4.32,
+   "text": "questions they ask in the exam and you"
+  },
+  {
+   "start": 3530.72,
+   "duration": 4.56,
+   "text": "need to be pretty sure about it. Is"
+  },
+  {
+   "start": 3533.04,
+   "duration": 4.88,
+   "text": "error is true on a custom tool triggers"
+  },
+  {
+   "start": 3535.28,
+   "duration": 5.279,
+   "text": "a free retry loop. So you don't have to"
+  },
+  {
+   "start": 3537.92,
+   "duration": 4.24,
+   "text": "do anything. You just return is error is"
+  },
+  {
+   "start": 3540.559,
+   "duration": 4.161,
+   "text": "true and the retry will work out of the"
+  },
+  {
+   "start": 3542.16,
+   "duration": 7.919,
+   "text": "box. And what have we covered? We"
+  },
+  {
+   "start": 3544.72,
+   "duration": 8.0,
+   "text": "covered about around um 8 to 9% of the"
+  },
+  {
+   "start": 3550.079,
+   "duration": 4.641,
+   "text": "exam or 7 to 8% of the exam in this"
+  },
+  {
+   "start": 3552.72,
+   "duration": 6.16,
+   "text": "particular lesson. And we're going to"
+  },
+  {
+   "start": 3554.72,
+   "duration": 6.8,
+   "text": "move up to skills in the next"
+  },
+  {
+   "start": 3558.88,
+   "duration": 6.16,
+   "text": "session or lecture teaching the agent to"
+  },
+  {
+   "start": 3561.52,
+   "duration": 5.279,
+   "text": "reuse capabilities across projects via"
+  },
+  {
+   "start": 3565.04,
+   "duration": 4.64,
+   "text": "portable skills. It's going to be very"
+  },
+  {
+   "start": 3566.799,
+   "duration": 6.081,
+   "text": "awesome guys. Um that's it. That will be"
+  },
+  {
+   "start": 3569.68,
+   "duration": 5.2,
+   "text": "episode number eight, I guess. So till"
+  },
+  {
+   "start": 3572.88,
+   "duration": 4.64,
+   "text": "then have a nice day. Take care."
+  },
+  {
+   "start": 3574.88,
+   "duration": 2.64,
+   "text": "Bye-bye."
+  }
+ ]
+}

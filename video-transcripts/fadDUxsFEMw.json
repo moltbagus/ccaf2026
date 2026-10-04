@@ -1,0 +1,6458 @@
+{
+ "video_id": "fadDUxsFEMw",
+ "episode": "Ep 06",
+ "title": "RAG Pipelines, Chunking & Retrieval",
+ "lane": "ccar-p",
+ "segments": [
+  {
+   "start": 1.439,
+   "duration": 6.721,
+   "text": "everyone and welcome to this lesson. So"
+  },
+  {
+   "start": 4.56,
+   "duration": 5.999,
+   "text": "let's start with a scenario that will"
+  },
+  {
+   "start": 8.16,
+   "duration": 5.12,
+   "text": "definitely haunt you in production. So"
+  },
+  {
+   "start": 10.559,
+   "duration": 4.561,
+   "text": "you've got a cloud powered Q&A system,"
+  },
+  {
+   "start": 13.28,
+   "duration": 5.2,
+   "text": "let's say, and it's working really"
+  },
+  {
+   "start": 15.12,
+   "duration": 5.68,
+   "text": "great. Okay, there are accurate answers,"
+  },
+  {
+   "start": 18.48,
+   "duration": 4.48,
+   "text": "happy users, and the management also"
+  },
+  {
+   "start": 20.8,
+   "duration": 4.88,
+   "text": "really loves it. And by management, I"
+  },
+  {
+   "start": 22.96,
+   "duration": 5.04,
+   "text": "mean your company, right? Then your team"
+  },
+  {
+   "start": 25.68,
+   "duration": 6.08,
+   "text": "kind of refreshes the document database"
+  },
+  {
+   "start": 28.0,
+   "duration": 7.36,
+   "text": "and new quarterly reports like updated"
+  },
+  {
+   "start": 31.76,
+   "duration": 7.52,
+   "text": "policy docs and suddenly the answers are"
+  },
+  {
+   "start": 35.36,
+   "duration": 7.6,
+   "text": "wrong confidently wrong. Okay, when I"
+  },
+  {
+   "start": 39.28,
+   "duration": 5.52,
+   "text": "say confidently wrong there is some"
+  },
+  {
+   "start": 42.96,
+   "duration": 3.599,
+   "text": "importance to that and that is what"
+  },
+  {
+   "start": 44.8,
+   "duration": 4.8,
+   "text": "you're going to understand how to"
+  },
+  {
+   "start": 46.559,
+   "duration": 5.441,
+   "text": "resolve today. So what would be a first"
+  },
+  {
+   "start": 49.6,
+   "duration": 4.959,
+   "text": "instinct in this scenario that it must"
+  },
+  {
+   "start": 52.0,
+   "duration": 5.12,
+   "text": "be the prompt let me kind of re-engineer"
+  },
+  {
+   "start": 54.559,
+   "duration": 5.121,
+   "text": "it right but here's the thing the prompt"
+  },
+  {
+   "start": 57.12,
+   "duration": 6.4,
+   "text": "did not change the model did not change"
+  },
+  {
+   "start": 59.68,
+   "duration": 7.04,
+   "text": "what broke was the layer in between so"
+  },
+  {
+   "start": 63.52,
+   "duration": 5.04,
+   "text": "that is the retrieval pipeline the"
+  },
+  {
+   "start": 66.72,
+   "duration": 4.56,
+   "text": "system that's kind of supposed to find"
+  },
+  {
+   "start": 68.56,
+   "duration": 4.32,
+   "text": "the right documents before the model"
+  },
+  {
+   "start": 71.28,
+   "duration": 4.159,
+   "text": "ever sees them that is your retrieval"
+  },
+  {
+   "start": 72.88,
+   "duration": 5.919,
+   "text": "pipeline that I'm talking about now"
+  },
+  {
+   "start": 75.439,
+   "duration": 7.201,
+   "text": "that's what rag is and That's why the"
+  },
+  {
+   "start": 78.799,
+   "duration": 6.32,
+   "text": "CCAP exam dedicates a huge chunk of its"
+  },
+  {
+   "start": 82.64,
+   "duration": 5.68,
+   "text": "heaviest domain which is integration"
+  },
+  {
+   "start": 85.119,
+   "duration": 5.601,
+   "text": "which is of 19% of the exam to whether"
+  },
+  {
+   "start": 88.32,
+   "duration": 6.159,
+   "text": "you actually understand how retrieval"
+  },
+  {
+   "start": 90.72,
+   "duration": 7.2,
+   "text": "works. Okay. And what can go wrong and"
+  },
+  {
+   "start": 94.479,
+   "duration": 6.0,
+   "text": "which strategy kind of fits which data"
+  },
+  {
+   "start": 97.92,
+   "duration": 4.48,
+   "text": "shape. Uh so this is episode number six"
+  },
+  {
+   "start": 100.479,
+   "duration": 4.801,
+   "text": "and today we are building the most"
+  },
+  {
+   "start": 102.4,
+   "duration": 4.399,
+   "text": "important pipeline most architects get"
+  },
+  {
+   "start": 105.28,
+   "duration": 5.119,
+   "text": "wrong."
+  },
+  {
+   "start": 106.799,
+   "duration": 6.32,
+   "text": "Okay. So, uh let's have a quick look on"
+  },
+  {
+   "start": 110.399,
+   "duration": 5.36,
+   "text": "what we are covering today. So, here's"
+  },
+  {
+   "start": 113.119,
+   "duration": 4.96,
+   "text": "the plan. So, we going to cover the full"
+  },
+  {
+   "start": 115.759,
+   "duration": 5.04,
+   "text": "rag pipeline from end to end. And this"
+  },
+  {
+   "start": 118.079,
+   "duration": 4.881,
+   "text": "is entirely new context. Uh neither the"
+  },
+  {
+   "start": 120.799,
+   "duration": 5.201,
+   "text": "architect foundation series nor the"
+  },
+  {
+   "start": 122.96,
+   "duration": 5.999,
+   "text": "developer course that I have built uh"
+  },
+  {
+   "start": 126.0,
+   "duration": 4.479,
+   "text": "cover rag pipeline design. Okay. So,"
+  },
+  {
+   "start": 128.959,
+   "duration": 3.36,
+   "text": "here is the ground up. So, we'll"
+  },
+  {
+   "start": 130.479,
+   "duration": 5.281,
+   "text": "understand what RAG actually is the"
+  },
+  {
+   "start": 132.319,
+   "duration": 5.441,
+   "text": "intuition not just the acronium. Okay."
+  },
+  {
+   "start": 135.76,
+   "duration": 3.76,
+   "text": "Yeah, that's that's a pun intended. Then"
+  },
+  {
+   "start": 137.76,
+   "duration": 3.839,
+   "text": "we have the full pipeline. We understand"
+  },
+  {
+   "start": 139.52,
+   "duration": 3.84,
+   "text": "the full pipeline uh like doc from"
+  },
+  {
+   "start": 141.599,
+   "duration": 4.401,
+   "text": "document ingestion to chunking to"
+  },
+  {
+   "start": 143.36,
+   "duration": 4.959,
+   "text": "embedding to indexing to retrieval to"
+  },
+  {
+   "start": 146.0,
+   "duration": 5.92,
+   "text": "generation. All of these uh step by step"
+  },
+  {
+   "start": 148.319,
+   "duration": 6.0,
+   "text": "we'll understand chunking strategies."
+  },
+  {
+   "start": 151.92,
+   "duration": 4.56,
+   "text": "We have fixed size, we have semantic and"
+  },
+  {
+   "start": 154.319,
+   "duration": 4.801,
+   "text": "document structure aware where where"
+  },
+  {
+   "start": 156.48,
+   "duration": 4.399,
+   "text": "each kind of chunking strategy fits."
+  },
+  {
+   "start": 159.12,
+   "duration": 3.759,
+   "text": "Then indexing strategies we're going to"
+  },
+  {
+   "start": 160.879,
+   "duration": 5.121,
+   "text": "understand like vector stores hybrid"
+  },
+  {
+   "start": 162.879,
+   "duration": 5.041,
+   "text": "indices metadata enriched indices and so"
+  },
+  {
+   "start": 166.0,
+   "duration": 3.519,
+   "text": "on and so on. uh we we're going to"
+  },
+  {
+   "start": 167.92,
+   "duration": 6.16,
+   "text": "understand about retrieval strategies"
+  },
+  {
+   "start": 169.519,
+   "duration": 7.041,
+   "text": "dense sparse hybrid metadata filtering"
+  },
+  {
+   "start": 174.08,
+   "duration": 5.36,
+   "text": "we we will match it to the data shape"
+  },
+  {
+   "start": 176.56,
+   "duration": 5.599,
+   "text": "and you'll see how uh efficient it is"
+  },
+  {
+   "start": 179.44,
+   "duration": 4.96,
+   "text": "right and we'll have a live demo as well"
+  },
+  {
+   "start": 182.159,
+   "duration": 5.281,
+   "text": "obviously because I thought this uh kind"
+  },
+  {
+   "start": 184.4,
+   "duration": 4.96,
+   "text": "of a rag pipeline deserves a demo and it"
+  },
+  {
+   "start": 187.44,
+   "duration": 5.12,
+   "text": "will also be helpful for you in your"
+  },
+  {
+   "start": 189.36,
+   "duration": 5.12,
+   "text": "exam as well and we're going to"
+  },
+  {
+   "start": 192.56,
+   "duration": 4.56,
+   "text": "understand the diagnostic pattern the"
+  },
+  {
+   "start": 194.48,
+   "duration": 6.399,
+   "text": "exam loves right when racks system"
+  },
+  {
+   "start": 197.12,
+   "duration": 5.68,
+   "text": "breaks after a data refresh when um you"
+  },
+  {
+   "start": 200.879,
+   "duration": 3.921,
+   "text": "know it kind of doesn't work out and all"
+  },
+  {
+   "start": 202.8,
+   "duration": 4.32,
+   "text": "those things we're going to see and the"
+  },
+  {
+   "start": 204.8,
+   "duration": 4.48,
+   "text": "two exam objectives today both from"
+  },
+  {
+   "start": 207.12,
+   "duration": 4.64,
+   "text": "domain 3 which is integration we're"
+  },
+  {
+   "start": 209.28,
+   "duration": 5.44,
+   "text": "going to cover which is 3.5 objective"
+  },
+  {
+   "start": 211.76,
+   "duration": 5.68,
+   "text": "number and objective number 3.6. So 3.5"
+  },
+  {
+   "start": 214.72,
+   "duration": 4.32,
+   "text": "says design a rag pipeline um with"
+  },
+  {
+   "start": 217.44,
+   "duration": 4.079,
+   "text": "appropriate chunking and indexing"
+  },
+  {
+   "start": 219.04,
+   "duration": 5.52,
+   "text": "strategies and objective number 3.6 Six"
+  },
+  {
+   "start": 221.519,
+   "duration": 5.681,
+   "text": "says apply retrieval strategies match to"
+  },
+  {
+   "start": 224.56,
+   "duration": 5.759,
+   "text": "data shape and query patterns. Okay, I"
+  },
+  {
+   "start": 227.2,
+   "duration": 6.399,
+   "text": "hope that's making sense. Now what is"
+  },
+  {
+   "start": 230.319,
+   "duration": 4.801,
+   "text": "rag? Let's first understand that and"
+  },
+  {
+   "start": 233.599,
+   "duration": 4.081,
+   "text": "let's understand with the library"
+  },
+  {
+   "start": 235.12,
+   "duration": 3.92,
+   "text": "analogy because I like like you if you"
+  },
+  {
+   "start": 237.68,
+   "duration": 3.839,
+   "text": "guys have been following I like"
+  },
+  {
+   "start": 239.04,
+   "duration": 4.559,
+   "text": "restaurant, food, books and all those an"
+  },
+  {
+   "start": 241.519,
+   "duration": 4.8,
+   "text": "analogy. So here also I'm going to use a"
+  },
+  {
+   "start": 243.599,
+   "duration": 6.401,
+   "text": "library analogy. So imagine you are a"
+  },
+  {
+   "start": 246.319,
+   "duration": 5.601,
+   "text": "brilliant lawyer. Now you will say you"
+  },
+  {
+   "start": 250.0,
+   "duration": 3.439,
+   "text": "just said library. Where did where did"
+  },
+  {
+   "start": 251.92,
+   "duration": 3.92,
+   "text": "the law lawyer came from? That's what"
+  },
+  {
+   "start": 253.439,
+   "duration": 3.841,
+   "text": "it's an surprise. So imagine you're a"
+  },
+  {
+   "start": 255.84,
+   "duration": 3.919,
+   "text": "brilliant lawyer. You know the law"
+  },
+  {
+   "start": 257.28,
+   "duration": 4.639,
+   "text": "inside and out. But a client walks in"
+  },
+  {
+   "start": 259.759,
+   "duration": 4.88,
+   "text": "with a question about a very specific"
+  },
+  {
+   "start": 261.919,
+   "duration": 5.361,
+   "text": "contract and you've never seen it"
+  },
+  {
+   "start": 264.639,
+   "duration": 5.201,
+   "text": "before. You you can't answer from memory"
+  },
+  {
+   "start": 267.28,
+   "duration": 5.44,
+   "text": "alone. And you need to go pull the right"
+  },
+  {
+   "start": 269.84,
+   "duration": 4.88,
+   "text": "files from the filing cabinet, read the"
+  },
+  {
+   "start": 272.72,
+   "duration": 5.6,
+   "text": "relevant kind of sections and then give"
+  },
+  {
+   "start": 274.72,
+   "duration": 7.44,
+   "text": "your answer. That is rag. That's it."
+  },
+  {
+   "start": 278.32,
+   "duration": 6.96,
+   "text": "That's it. Now, rag stands for retrieval"
+  },
+  {
+   "start": 282.16,
+   "duration": 5.2,
+   "text": "augmented generation. Uh the model is"
+  },
+  {
+   "start": 285.28,
+   "duration": 4.08,
+   "text": "the brilliant lawyer. If you're going to"
+  },
+  {
+   "start": 287.36,
+   "duration": 4.64,
+   "text": "compare, the model is a brilliant royal."
+  },
+  {
+   "start": 289.36,
+   "duration": 5.119,
+   "text": "It it knows how to reason, how to"
+  },
+  {
+   "start": 292.0,
+   "duration": 4.4,
+   "text": "synthesize, how to explain, but it"
+  },
+  {
+   "start": 294.479,
+   "duration": 4.72,
+   "text": "doesn't have your company's document"
+  },
+  {
+   "start": 296.4,
+   "duration": 5.6,
+   "text": "memorized. So before it generates an"
+  },
+  {
+   "start": 299.199,
+   "duration": 4.56,
+   "text": "answer uh a retrieval system goes and"
+  },
+  {
+   "start": 302.0,
+   "duration": 5.039,
+   "text": "fetches the relevant chunks of"
+  },
+  {
+   "start": 303.759,
+   "duration": 7.921,
+   "text": "information and hands them to the model"
+  },
+  {
+   "start": 307.039,
+   "duration": 7.201,
+   "text": "as what context because if your LLM"
+  },
+  {
+   "start": 311.68,
+   "duration": 6.0,
+   "text": "works in your context then what better"
+  },
+  {
+   "start": 314.24,
+   "duration": 5.76,
+   "text": "can be the solution. Yeah, if the model"
+  },
+  {
+   "start": 317.68,
+   "duration": 4.48,
+   "text": "doesn't work in the context, then that"
+  },
+  {
+   "start": 320.0,
+   "duration": 4.16,
+   "text": "is when it generally hallucinates. That"
+  },
+  {
+   "start": 322.16,
+   "duration": 4.16,
+   "text": "is when it becomes overconfident and"
+  },
+  {
+   "start": 324.16,
+   "duration": 4.96,
+   "text": "that is when you would get those"
+  },
+  {
+   "start": 326.32,
+   "duration": 4.48,
+   "text": "irrelevant results. Now, here's a very"
+  },
+  {
+   "start": 329.12,
+   "duration": 5.04,
+   "text": "critical insight I want to point out."
+  },
+  {
+   "start": 330.8,
+   "duration": 5.36,
+   "text": "Rag is an architecture pattern. It's not"
+  },
+  {
+   "start": 334.16,
+   "duration": 4.0,
+   "text": "a feature that you just, you know,"
+  },
+  {
+   "start": 336.16,
+   "duration": 4.319,
+   "text": "toggle it on. So, at the professional"
+  },
+  {
+   "start": 338.16,
+   "duration": 5.759,
+   "text": "level, the exam treats rag as a"
+  },
+  {
+   "start": 340.479,
+   "duration": 5.921,
+   "text": "decision, sorry, a design decision."
+  },
+  {
+   "start": 343.919,
+   "duration": 4.881,
+   "text": "Okay? something you choose when when the"
+  },
+  {
+   "start": 346.4,
+   "duration": 4.4,
+   "text": "knowledge base is too large to fit in"
+  },
+  {
+   "start": 348.8,
+   "duration": 4.239,
+   "text": "the context window when when the"
+  },
+  {
+   "start": 350.8,
+   "duration": 5.119,
+   "text": "information changes frequently or when"
+  },
+  {
+   "start": 353.039,
+   "duration": 6.401,
+   "text": "you need grounding in authorative"
+  },
+  {
+   "start": 355.919,
+   "duration": 7.201,
+   "text": "sources. Now the key fact over here is"
+  },
+  {
+   "start": 359.44,
+   "duration": 6.96,
+   "text": "uh if your knowledge base is under"
+  },
+  {
+   "start": 363.12,
+   "duration": 6.4,
+   "text": "roughly 200,000 tokens let's say which"
+  },
+  {
+   "start": 366.4,
+   "duration": 5.28,
+   "text": "is about roughly about 500 pages you can"
+  },
+  {
+   "start": 369.52,
+   "duration": 5.04,
+   "text": "skip rag and put everything directly"
+  },
+  {
+   "start": 371.68,
+   "duration": 6.639,
+   "text": "into the prompt especially with prompt"
+  },
+  {
+   "start": 374.56,
+   "duration": 5.68,
+   "text": "caching you know reducing cost it is a"
+  },
+  {
+   "start": 378.319,
+   "duration": 3.44,
+   "text": "better approach in this scenario why I'm"
+  },
+  {
+   "start": 380.24,
+   "duration": 3.6,
+   "text": "saying this because the exam will try to"
+  },
+  {
+   "start": 381.759,
+   "duration": 3.521,
+   "text": "trick you when to use rag and when not"
+  },
+  {
+   "start": 383.84,
+   "duration": 5.12,
+   "text": "to that's why I'm giving you this key"
+  },
+  {
+   "start": 385.28,
+   "duration": 6.8,
+   "text": "fact rag Bank earns its complexity when"
+  },
+  {
+   "start": 388.96,
+   "duration": 5.679,
+   "text": "you are scaling beyond that"
+  },
+  {
+   "start": 392.08,
+   "duration": 4.88,
+   "text": "thousands 2 thousands of pages of"
+  },
+  {
+   "start": 394.639,
+   "duration": 5.441,
+   "text": "documents and lot of the the the number"
+  },
+  {
+   "start": 396.96,
+   "duration": 4.64,
+   "text": "is very huge that is where rag earns its"
+  },
+  {
+   "start": 400.08,
+   "duration": 4.32,
+   "text": "place."
+  },
+  {
+   "start": 401.6,
+   "duration": 6.719,
+   "text": "Now the full rag pipeline if you see"
+  },
+  {
+   "start": 404.4,
+   "duration": 5.84,
+   "text": "there are seven stages over here and"
+  },
+  {
+   "start": 408.319,
+   "duration": 5.361,
+   "text": "this is the architecture you need to"
+  },
+  {
+   "start": 410.24,
+   "duration": 7.2,
+   "text": "know cold for the exam and it it's just"
+  },
+  {
+   "start": 413.68,
+   "duration": 6.72,
+   "text": "how it is. So uh let me walk through"
+  },
+  {
+   "start": 417.44,
+   "duration": 5.68,
+   "text": "each stage quickly and we'll zoom into"
+  },
+  {
+   "start": 420.4,
+   "duration": 5.76,
+   "text": "the ones the exam really cares about"
+  },
+  {
+   "start": 423.12,
+   "duration": 6.24,
+   "text": "because we are mostly exam specific"
+  },
+  {
+   "start": 426.16,
+   "duration": 7.68,
+   "text": "which would help you. So document"
+  },
+  {
+   "start": 429.36,
+   "duration": 6.959,
+   "text": "ingestion first your raw sources PDFs"
+  },
+  {
+   "start": 433.84,
+   "duration": 4.639,
+   "text": "web pages database drums API feeds"
+  },
+  {
+   "start": 436.319,
+   "duration": 4.88,
+   "text": "whatever your organization stores"
+  },
+  {
+   "start": 438.479,
+   "duration": 4.881,
+   "text": "knowledge in that is document ingestion."
+  },
+  {
+   "start": 441.199,
+   "duration": 4.161,
+   "text": "So that is the first part of rag"
+  },
+  {
+   "start": 443.36,
+   "duration": 3.279,
+   "text": "pipeline."
+  },
+  {
+   "start": 445.36,
+   "duration": 3.44,
+   "text": "Anything that is related to your"
+  },
+  {
+   "start": 446.639,
+   "duration": 6.081,
+   "text": "organization to build up that context."
+  },
+  {
+   "start": 448.8,
+   "duration": 6.64,
+   "text": "Next is chunking. You can't embed an"
+  },
+  {
+   "start": 452.72,
+   "duration": 4.319,
+   "text": "entire 200page PDF as one vector. We'll"
+  },
+  {
+   "start": 455.44,
+   "duration": 4.08,
+   "text": "understand what a vector is, but for now"
+  },
+  {
+   "start": 457.039,
+   "duration": 4.88,
+   "text": "just understand you cannot use a 200"
+  },
+  {
+   "start": 459.52,
+   "duration": 4.72,
+   "text": "page as it is. You know, you break it"
+  },
+  {
+   "start": 461.919,
+   "duration": 5.361,
+   "text": "into smaller pieces. This is where most"
+  },
+  {
+   "start": 464.24,
+   "duration": 5.04,
+   "text": "pipelines succeed or fail. And we'll go"
+  },
+  {
+   "start": 467.28,
+   "duration": 3.6,
+   "text": "deep on this even. We'll see that in the"
+  },
+  {
+   "start": 469.28,
+   "duration": 4.24,
+   "text": "demo as well."
+  },
+  {
+   "start": 470.88,
+   "duration": 4.719,
+   "text": "embedding. Now each chunk whatever the"
+  },
+  {
+   "start": 473.52,
+   "duration": 5.119,
+   "text": "chunking happened, right? Each chunk"
+  },
+  {
+   "start": 475.599,
+   "duration": 4.88,
+   "text": "gets converted into a numerical vector."
+  },
+  {
+   "start": 478.639,
+   "duration": 4.0,
+   "text": "It's a mathematical representation of"
+  },
+  {
+   "start": 480.479,
+   "duration": 4.72,
+   "text": "its meaning using an embedding model."
+  },
+  {
+   "start": 482.639,
+   "duration": 4.721,
+   "text": "Why? Because it we have to deal with"
+  },
+  {
+   "start": 485.199,
+   "duration": 3.521,
+   "text": "numbers at the end of the day, right?"
+  },
+  {
+   "start": 487.36,
+   "duration": 4.72,
+   "text": "And we're going to understand why it is"
+  },
+  {
+   "start": 488.72,
+   "duration": 5.199,
+   "text": "necessary. Indexing. So those vectors"
+  },
+  {
+   "start": 492.08,
+   "duration": 4.48,
+   "text": "that that are there, right? Get stored"
+  },
+  {
+   "start": 493.919,
+   "duration": 6.161,
+   "text": "in a vector database. Um, optionally you"
+  },
+  {
+   "start": 496.56,
+   "duration": 6.0,
+   "text": "also build a keyword index uh like BM25"
+  },
+  {
+   "start": 500.08,
+   "duration": 4.48,
+   "text": "alongside it as well. Okay, don't worry"
+  },
+  {
+   "start": 502.56,
+   "duration": 3.919,
+   "text": "about all these terms. You're going to"
+  },
+  {
+   "start": 504.56,
+   "duration": 5.199,
+   "text": "understand it in in a minute. I'm just"
+  },
+  {
+   "start": 506.479,
+   "duration": 5.521,
+   "text": "listing down everything. Now, um, query"
+  },
+  {
+   "start": 509.759,
+   "duration": 4.08,
+   "text": "processing. So, when a user asks for a"
+  },
+  {
+   "start": 512.0,
+   "duration": 3.599,
+   "text": "question, that question also gets"
+  },
+  {
+   "start": 513.839,
+   "duration": 4.64,
+   "text": "embedded into the same vector space."
+  },
+  {
+   "start": 515.599,
+   "duration": 4.56,
+   "text": "It's like, you know, taking that query,"
+  },
+  {
+   "start": 518.479,
+   "duration": 4.0,
+   "text": "converting it into a vector and matching"
+  },
+  {
+   "start": 520.159,
+   "duration": 3.921,
+   "text": "it with the available vectors. What is"
+  },
+  {
+   "start": 522.479,
+   "duration": 4.401,
+   "text": "the nearest vector available? So that's"
+  },
+  {
+   "start": 524.08,
+   "duration": 5.199,
+   "text": "why that also needs conversion"
+  },
+  {
+   "start": 526.88,
+   "duration": 3.92,
+   "text": "um retrieval. Now the system finds the"
+  },
+  {
+   "start": 529.279,
+   "duration": 3.041,
+   "text": "chunks whose vectors are the most"
+  },
+  {
+   "start": 530.8,
+   "duration": 3.52,
+   "text": "similar to the query vector as I told"
+  },
+  {
+   "start": 532.32,
+   "duration": 3.92,
+   "text": "that matching would happen. Right? And"
+  },
+  {
+   "start": 534.32,
+   "duration": 4.32,
+   "text": "think of it as like nearest neighbors"
+  },
+  {
+   "start": 536.24,
+   "duration": 4.08,
+   "text": "and meaning space. We have a KN&N"
+  },
+  {
+   "start": 538.64,
+   "duration": 3.92,
+   "text": "classification in machine learning."
+  },
+  {
+   "start": 540.32,
+   "duration": 5.36,
+   "text": "Right? Nearest neighbors classification."
+  },
+  {
+   "start": 542.56,
+   "duration": 5.36,
+   "text": "So that is how it works. Same concept."
+  },
+  {
+   "start": 545.68,
+   "duration": 4.56,
+   "text": "And next we have generation. So the"
+  },
+  {
+   "start": 547.92,
+   "duration": 4.72,
+   "text": "retrieved chunks are injected into the"
+  },
+  {
+   "start": 550.24,
+   "duration": 4.24,
+   "text": "claude context window alongside the"
+  },
+  {
+   "start": 552.64,
+   "duration": 4.639,
+   "text": "user's question and claude generates a"
+  },
+  {
+   "start": 554.48,
+   "duration": 6.08,
+   "text": "grounded answer based on that context."
+  },
+  {
+   "start": 557.279,
+   "duration": 5.521,
+   "text": "So you see how the it got retrieved and"
+  },
+  {
+   "start": 560.56,
+   "duration": 4.959,
+   "text": "now it got fed into claude's context and"
+  },
+  {
+   "start": 562.8,
+   "duration": 5.44,
+   "text": "now based on the context Claude will"
+  },
+  {
+   "start": 565.519,
+   "duration": 4.401,
+   "text": "generate your answer."
+  },
+  {
+   "start": 568.24,
+   "duration": 4.24,
+   "text": "Okay. So phase one determines the"
+  },
+  {
+   "start": 569.92,
+   "duration": 5.68,
+   "text": "quality ceiling. Phase two determines"
+  },
+  {
+   "start": 572.48,
+   "duration": 5.12,
+   "text": "whether you reach it. Okay. So phase one"
+  },
+  {
+   "start": 575.6,
+   "duration": 4.48,
+   "text": "is injection, chunking, embedding,"
+  },
+  {
+   "start": 577.6,
+   "duration": 4.96,
+   "text": "indexing. Phase two is querying,"
+  },
+  {
+   "start": 580.08,
+   "duration": 4.96,
+   "text": "retrieve and generate. So this happens"
+  },
+  {
+   "start": 582.56,
+   "duration": 4.56,
+   "text": "per request. Phase one anyways would"
+  },
+  {
+   "start": 585.04,
+   "duration": 3.919,
+   "text": "happen on offline because it will kind"
+  },
+  {
+   "start": 587.12,
+   "duration": 4.48,
+   "text": "of process all the documents of your"
+  },
+  {
+   "start": 588.959,
+   "duration": 5.361,
+   "text": "organization. Phase two is runtime when"
+  },
+  {
+   "start": 591.6,
+   "duration": 5.44,
+   "text": "the user actually asks for something"
+  },
+  {
+   "start": 594.32,
+   "duration": 4.8,
+   "text": "querying, retrieving and generating."
+  },
+  {
+   "start": 597.04,
+   "duration": 3.6,
+   "text": "Okay. So phase one determines the"
+  },
+  {
+   "start": 599.12,
+   "duration": 3.279,
+   "text": "quality. Phase two determines whether"
+  },
+  {
+   "start": 600.64,
+   "duration": 3.52,
+   "text": "you actually reach it or not. And it's"
+  },
+  {
+   "start": 602.399,
+   "duration": 4.081,
+   "text": "very very important to understand the"
+  },
+  {
+   "start": 604.16,
+   "duration": 4.64,
+   "text": "both of the phases. I kind of divided it"
+  },
+  {
+   "start": 606.48,
+   "duration": 4.24,
+   "text": "into two phases but it's not not really"
+  },
+  {
+   "start": 608.8,
+   "duration": 3.44,
+   "text": "it is it just it's a logical"
+  },
+  {
+   "start": 610.72,
+   "duration": 4.0,
+   "text": "classification"
+  },
+  {
+   "start": 612.24,
+   "duration": 5.279,
+   "text": "for your better understanding. Okay."
+  },
+  {
+   "start": 614.72,
+   "duration": 5.76,
+   "text": "Okay. So chunking is where the magic"
+  },
+  {
+   "start": 617.519,
+   "duration": 5.681,
+   "text": "happens or you know where it falls apart"
+  },
+  {
+   "start": 620.48,
+   "duration": 6.56,
+   "text": "because the way you split your documents"
+  },
+  {
+   "start": 623.2,
+   "duration": 6.48,
+   "text": "into chunks directly determines what"
+  },
+  {
+   "start": 627.04,
+   "duration": 5.76,
+   "text": "your retrieval system can find. So if"
+  },
+  {
+   "start": 629.68,
+   "duration": 6.159,
+   "text": "you get this wrong, even a perfect"
+  },
+  {
+   "start": 632.8,
+   "duration": 5.44,
+   "text": "retrieval algorithm will return garbage."
+  },
+  {
+   "start": 635.839,
+   "duration": 4.961,
+   "text": "So what chunking is basically it's"
+  },
+  {
+   "start": 638.24,
+   "duration": 5.2,
+   "text": "pretty simple to understand. So we have"
+  },
+  {
+   "start": 640.8,
+   "duration": 4.88,
+   "text": "for example a document uh which has a"
+  },
+  {
+   "start": 643.44,
+   "duration": 4.24,
+   "text": "lot of text and other stuffs, right?"
+  },
+  {
+   "start": 645.68,
+   "duration": 5.36,
+   "text": "Chunking is basically dividing that"
+  },
+  {
+   "start": 647.68,
+   "duration": 6.56,
+   "text": "document into fragments. For example, it"
+  },
+  {
+   "start": 651.04,
+   "duration": 5.44,
+   "text": "can be anything. You can chunk it by any"
+  },
+  {
+   "start": 654.24,
+   "duration": 4.719,
+   "text": "technique, right? It can be for example"
+  },
+  {
+   "start": 656.48,
+   "duration": 4.0,
+   "text": "every paragraph is a chunk or every line"
+  },
+  {
+   "start": 658.959,
+   "duration": 3.281,
+   "text": "is a chunk. You have to figure out your"
+  },
+  {
+   "start": 660.48,
+   "duration": 5.2,
+   "text": "chunking strategy depends on your"
+  },
+  {
+   "start": 662.24,
+   "duration": 6.8,
+   "text": "requirement but the basic chunking thing"
+  },
+  {
+   "start": 665.68,
+   "duration": 5.839,
+   "text": "is basically dividing that into small"
+  },
+  {
+   "start": 669.04,
+   "duration": 5.039,
+   "text": "small kind of groups or small small"
+  },
+  {
+   "start": 671.519,
+   "duration": 5.041,
+   "text": "parts I would say. So the chunking"
+  },
+  {
+   "start": 674.079,
+   "duration": 4.801,
+   "text": "strategy also matters a lot. So there"
+  },
+  {
+   "start": 676.56,
+   "duration": 4.399,
+   "text": "are three major chunking strategies the"
+  },
+  {
+   "start": 678.88,
+   "duration": 4.639,
+   "text": "exam expects you to know and more"
+  },
+  {
+   "start": 680.959,
+   "duration": 6.801,
+   "text": "importantly each"
+  },
+  {
+   "start": 683.519,
+   "duration": 7.841,
+   "text": "when each one fits. Yeah. So the first"
+  },
+  {
+   "start": 687.76,
+   "duration": 6.319,
+   "text": "one is fixed size chunking. So how it"
+  },
+  {
+   "start": 691.36,
+   "duration": 5.36,
+   "text": "works basically you split every n tokens"
+  },
+  {
+   "start": 694.079,
+   "duration": 4.88,
+   "text": "for example 200 to 500 tokens with"
+  },
+  {
+   "start": 696.72,
+   "duration": 5.359,
+   "text": "optional overlap."
+  },
+  {
+   "start": 698.959,
+   "duration": 5.921,
+   "text": "Yeah. Now but but how does it what it is"
+  },
+  {
+   "start": 702.079,
+   "duration": 4.561,
+   "text": "best for? It's best for uniform"
+  },
+  {
+   "start": 704.88,
+   "duration": 4.399,
+   "text": "unstructured text. For example,"
+  },
+  {
+   "start": 706.64,
+   "duration": 6.24,
+   "text": "transcripts, chat logs and all those"
+  },
+  {
+   "start": 709.279,
+   "duration": 6.0,
+   "text": "things. So you're just chunking in at"
+  },
+  {
+   "start": 712.88,
+   "duration": 4.959,
+   "text": "every n number of tokens. 500 tokens,"
+  },
+  {
+   "start": 715.279,
+   "duration": 4.881,
+   "text": "thousand tokens. So every,000 tokens is"
+  },
+  {
+   "start": 717.839,
+   "duration": 4.961,
+   "text": "basically a chunk. Now what do you need"
+  },
+  {
+   "start": 720.16,
+   "duration": 5.52,
+   "text": "to watch out for? It cuts through"
+  },
+  {
+   "start": 722.8,
+   "duration": 6.08,
+   "text": "sentences and paragraphs. It it can"
+  },
+  {
+   "start": 725.68,
+   "duration": 4.8,
+   "text": "split a thought in half. For example,"
+  },
+  {
+   "start": 728.88,
+   "duration": 2.959,
+   "text": "there there are two paragraphs in a"
+  },
+  {
+   "start": 730.48,
+   "duration": 4.799,
+   "text": "document. And as I told you that you can"
+  },
+  {
+   "start": 731.839,
+   "duration": 6.24,
+   "text": "chunk at any strategy. So you chunked uh"
+  },
+  {
+   "start": 735.279,
+   "duration": 4.8,
+   "text": "at at at at one paragraph and that that"
+  },
+  {
+   "start": 738.079,
+   "duration": 4.161,
+   "text": "particular thing is continued in the"
+  },
+  {
+   "start": 740.079,
+   "duration": 5.521,
+   "text": "second paragraph but you kind of chunked"
+  },
+  {
+   "start": 742.24,
+   "duration": 6.56,
+   "text": "it in midway. So it's kind of a little"
+  },
+  {
+   "start": 745.6,
+   "duration": 5.2,
+   "text": "bit far apart. Now that same thought"
+  },
+  {
+   "start": 748.8,
+   "duration": 4.64,
+   "text": "process which should have continued in"
+  },
+  {
+   "start": 750.8,
+   "duration": 4.08,
+   "text": "the second paragraph, it's it's not"
+  },
+  {
+   "start": 753.44,
+   "duration": 3.6,
+   "text": "getting continued because you kind of"
+  },
+  {
+   "start": 754.88,
+   "duration": 5.12,
+   "text": "chunked it in the middle. I hope you are"
+  },
+  {
+   "start": 757.04,
+   "duration": 4.96,
+   "text": "getting what I'm putting at. So that is"
+  },
+  {
+   "start": 760.0,
+   "duration": 5.2,
+   "text": "one of the things that you know might"
+  },
+  {
+   "start": 762.0,
+   "duration": 4.959,
+   "text": "not be good for fixed size chunking. Now"
+  },
+  {
+   "start": 765.2,
+   "duration": 6.48,
+   "text": "the second strategy is semantic"
+  },
+  {
+   "start": 766.959,
+   "duration": 7.44,
+   "text": "chunking. So you use NLP yeah to detect"
+  },
+  {
+   "start": 771.68,
+   "duration": 4.8,
+   "text": "topic shifts or sentence boundaries"
+  },
+  {
+   "start": 774.399,
+   "duration": 5.041,
+   "text": "chunk by meaning. So NLP is natural"
+  },
+  {
+   "start": 776.48,
+   "duration": 5.12,
+   "text": "language processing right using NLP lot"
+  },
+  {
+   "start": 779.44,
+   "duration": 4.8,
+   "text": "of things people do like understanding"
+  },
+  {
+   "start": 781.6,
+   "duration": 4.08,
+   "text": "the sentiments of feedback by customers"
+  },
+  {
+   "start": 784.24,
+   "duration": 3.2,
+   "text": "something like that. So you are kind of"
+  },
+  {
+   "start": 785.68,
+   "duration": 4.0,
+   "text": "deriving meaning out of it. So that is"
+  },
+  {
+   "start": 787.44,
+   "duration": 4.72,
+   "text": "the basic process of NLP. That's how it"
+  },
+  {
+   "start": 789.68,
+   "duration": 5.04,
+   "text": "works. Now what you do is you use that"
+  },
+  {
+   "start": 792.16,
+   "duration": 4.4,
+   "text": "technique to detect topic shifts. Okay."
+  },
+  {
+   "start": 794.72,
+   "duration": 3.359,
+   "text": "So as I gave you the example of two"
+  },
+  {
+   "start": 796.56,
+   "duration": 3.68,
+   "text": "paragraphs where one topic was"
+  },
+  {
+   "start": 798.079,
+   "duration": 4.32,
+   "text": "continued. So you using NLP you"
+  },
+  {
+   "start": 800.24,
+   "duration": 4.32,
+   "text": "understood okay these two paragraphs one"
+  },
+  {
+   "start": 802.399,
+   "duration": 5.12,
+   "text": "topic is getting continued. So we kind"
+  },
+  {
+   "start": 804.56,
+   "duration": 5.44,
+   "text": "of let it be. So that is one chunk. Once"
+  },
+  {
+   "start": 807.519,
+   "duration": 4.88,
+   "text": "the topic shifts to something other"
+  },
+  {
+   "start": 810.0,
+   "duration": 4.8,
+   "text": "topic then from there and one more chunk"
+  },
+  {
+   "start": 812.399,
+   "duration": 4.961,
+   "text": "starts right. I hope you are getting it."
+  },
+  {
+   "start": 814.8,
+   "duration": 5.839,
+   "text": "So this is how so based on semantic"
+  },
+  {
+   "start": 817.36,
+   "duration": 6.159,
+   "text": "meaning you are chunking your documents."
+  },
+  {
+   "start": 820.639,
+   "duration": 6.721,
+   "text": "Now what it is best for it is best for"
+  },
+  {
+   "start": 823.519,
+   "duration": 7.601,
+   "text": "long form pros like articles reports"
+  },
+  {
+   "start": 827.36,
+   "duration": 7.12,
+   "text": "where topics flow kind of naturally."
+  },
+  {
+   "start": 831.12,
+   "duration": 6.0,
+   "text": "Yeah. But what where it doesn't work is"
+  },
+  {
+   "start": 834.48,
+   "duration": 5.44,
+   "text": "it's more expensive at indexing time"
+  },
+  {
+   "start": 837.12,
+   "duration": 4.959,
+   "text": "because chunk sizes will vary a lot"
+  },
+  {
+   "start": 839.92,
+   "duration": 4.159,
+   "text": "because one topic for example as I give"
+  },
+  {
+   "start": 842.079,
+   "duration": 5.281,
+   "text": "you the example of two paragraphs. Now"
+  },
+  {
+   "start": 844.079,
+   "duration": 5.281,
+   "text": "one topic can span across 10 paragraphs"
+  },
+  {
+   "start": 847.36,
+   "duration": 4.719,
+   "text": "and that will be a very big chunk while"
+  },
+  {
+   "start": 849.36,
+   "duration": 4.24,
+   "text": "another topic will be just half of a"
+  },
+  {
+   "start": 852.079,
+   "duration": 4.56,
+   "text": "paragraph. So that is a very small"
+  },
+  {
+   "start": 853.6,
+   "duration": 6.88,
+   "text": "chunk. So you have very large variations"
+  },
+  {
+   "start": 856.639,
+   "duration": 6.801,
+   "text": "of uh chunks and due to the this kind of"
+  },
+  {
+   "start": 860.48,
+   "duration": 4.96,
+   "text": "a thing it will be very expensive to"
+  },
+  {
+   "start": 863.44,
+   "duration": 5.36,
+   "text": "index."
+  },
+  {
+   "start": 865.44,
+   "duration": 6.48,
+   "text": "Now the third strategy is uh document"
+  },
+  {
+   "start": 868.8,
+   "duration": 5.76,
+   "text": "structure aware. Now use the document's"
+  },
+  {
+   "start": 871.92,
+   "duration": 5.039,
+   "text": "own structure basically like headings,"
+  },
+  {
+   "start": 874.56,
+   "duration": 4.8,
+   "text": "sections, tables, bullet lists as"
+  },
+  {
+   "start": 876.959,
+   "duration": 4.801,
+   "text": "natural chunk boundaries."
+  },
+  {
+   "start": 879.36,
+   "duration": 4.32,
+   "text": "So basically it's a reax based of"
+  },
+  {
+   "start": 881.76,
+   "duration": 4.16,
+   "text": "chunking. So you would say okay for"
+  },
+  {
+   "start": 883.68,
+   "duration": 4.88,
+   "text": "every heading I want one chunk every"
+  },
+  {
+   "start": 885.92,
+   "duration": 4.88,
+   "text": "section I want a chunk. So you use reax"
+  },
+  {
+   "start": 888.56,
+   "duration": 4.48,
+   "text": "and based on that you chunk it or if"
+  },
+  {
+   "start": 890.8,
+   "duration": 4.159,
+   "text": "there is a particular template of files"
+  },
+  {
+   "start": 893.04,
+   "duration": 4.08,
+   "text": "that you already have for your"
+  },
+  {
+   "start": 894.959,
+   "duration": 4.081,
+   "text": "organization. If all the files fall"
+  },
+  {
+   "start": 897.12,
+   "duration": 4.88,
+   "text": "under the same template then basically"
+  },
+  {
+   "start": 899.04,
+   "duration": 4.72,
+   "text": "you you just chunk it by the template."
+  },
+  {
+   "start": 902.0,
+   "duration": 4.639,
+   "text": "This is one section second section third"
+  },
+  {
+   "start": 903.76,
+   "duration": 6.079,
+   "text": "section something like that. So that is"
+  },
+  {
+   "start": 906.639,
+   "duration": 6.0,
+   "text": "document structure aware chunking and it"
+  },
+  {
+   "start": 909.839,
+   "duration": 5.761,
+   "text": "is best for technical documentations uh"
+  },
+  {
+   "start": 912.639,
+   "duration": 5.361,
+   "text": "legal filings API docs anything with a"
+  },
+  {
+   "start": 915.6,
+   "duration": 5.919,
+   "text": "clear formatting hierarchy as I said a"
+  },
+  {
+   "start": 918.0,
+   "duration": 6.16,
+   "text": "template or a reax right now what this"
+  },
+  {
+   "start": 921.519,
+   "duration": 4.88,
+   "text": "is best what it is best for but where it"
+  },
+  {
+   "start": 924.16,
+   "duration": 4.32,
+   "text": "fails or where it doesn't work is it"
+  },
+  {
+   "start": 926.399,
+   "duration": 4.721,
+   "text": "requires parsing the document structure"
+  },
+  {
+   "start": 928.48,
+   "duration": 5.12,
+   "text": "so but if it if the do if it is poorly"
+  },
+  {
+   "start": 931.12,
+   "duration": 6.0,
+   "text": "formatted the the docs kind of break it"
+  },
+  {
+   "start": 933.6,
+   "duration": 5.44,
+   "text": "and your chunking gets haywire. Now a"
+  },
+  {
+   "start": 937.12,
+   "duration": 4.56,
+   "text": "key fact that I want to tell here is the"
+  },
+  {
+   "start": 939.04,
+   "duration": 4.96,
+   "text": "exam test chunking strategy selection"
+  },
+  {
+   "start": 941.68,
+   "duration": 4.08,
+   "text": "not the implementation. So you don't"
+  },
+  {
+   "start": 944.0,
+   "duration": 5.12,
+   "text": "need to know how to code a semantic"
+  },
+  {
+   "start": 945.76,
+   "duration": 5.439,
+   "text": "chunker. Yeah, you need to know given a"
+  },
+  {
+   "start": 949.12,
+   "duration": 4.48,
+   "text": "knowledge base of legal contracts with"
+  },
+  {
+   "start": 951.199,
+   "duration": 4.961,
+   "text": "nested clause structures something kind"
+  },
+  {
+   "start": 953.6,
+   "duration": 5.359,
+   "text": "of this scenario which chunking strategy"
+  },
+  {
+   "start": 956.16,
+   "duration": 4.64,
+   "text": "preserves the most meaning and in this"
+  },
+  {
+   "start": 958.959,
+   "duration": 4.081,
+   "text": "case the answer would be document"
+  },
+  {
+   "start": 960.8,
+   "duration": 4.08,
+   "text": "structure aware because we already"
+  },
+  {
+   "start": 963.04,
+   "duration": 4.159,
+   "text": "mentioned in the uh question that you"
+  },
+  {
+   "start": 964.88,
+   "duration": 4.319,
+   "text": "know given a knowledge base of legal"
+  },
+  {
+   "start": 967.199,
+   "duration": 4.961,
+   "text": "contracts and legal contract will"
+  },
+  {
+   "start": 969.199,
+   "duration": 5.041,
+   "text": "obviously have a particular template or"
+  },
+  {
+   "start": 972.16,
+   "duration": 4.16,
+   "text": "you know um"
+  },
+  {
+   "start": 974.24,
+   "duration": 3.839,
+   "text": "clear formatting hierarchy. So in this"
+  },
+  {
+   "start": 976.32,
+   "duration": 4.0,
+   "text": "case this strategy would come into the"
+  },
+  {
+   "start": 978.079,
+   "duration": 3.841,
+   "text": "picture because see the thing is uh any"
+  },
+  {
+   "start": 980.32,
+   "duration": 3.36,
+   "text": "chunking strategy would be written by"
+  },
+  {
+   "start": 981.92,
+   "duration": 3.2,
+   "text": "claude. You would use claude code or"
+  },
+  {
+   "start": 983.68,
+   "duration": 3.599,
+   "text": "something like that. So you don't need"
+  },
+  {
+   "start": 985.12,
+   "duration": 5.36,
+   "text": "to actually code it but understand where"
+  },
+  {
+   "start": 987.279,
+   "duration": 5.521,
+   "text": "to use which chunking strategy. And here"
+  },
+  {
+   "start": 990.48,
+   "duration": 4.32,
+   "text": "is a trap most teams fall into. They"
+  },
+  {
+   "start": 992.8,
+   "duration": 4.719,
+   "text": "pick fixed size chunking because it's"
+  },
+  {
+   "start": 994.8,
+   "duration": 5.36,
+   "text": "very simple. Yeah. And they never"
+  },
+  {
+   "start": 997.519,
+   "duration": 6.0,
+   "text": "revisit it. Fixed size works fine for"
+  },
+  {
+   "start": 1000.16,
+   "duration": 5.679,
+   "text": "homogeneous text. Right. But the moment"
+  },
+  {
+   "start": 1003.519,
+   "duration": 4.801,
+   "text": "your corpus includes structured"
+  },
+  {
+   "start": 1005.839,
+   "duration": 5.201,
+   "text": "documents uh like tables, hierarchies,"
+  },
+  {
+   "start": 1008.32,
+   "duration": 4.319,
+   "text": "QA pairs, fixed size chunking will kind"
+  },
+  {
+   "start": 1011.04,
+   "duration": 3.359,
+   "text": "of slice through the structure and"
+  },
+  {
+   "start": 1012.639,
+   "duration": 3.44,
+   "text": "produce chunks that are meaningless on"
+  },
+  {
+   "start": 1014.399,
+   "duration": 3.761,
+   "text": "their own. As I gave you that example of"
+  },
+  {
+   "start": 1016.079,
+   "duration": 4.0,
+   "text": "two paragraphs, right? So that is how it"
+  },
+  {
+   "start": 1018.16,
+   "duration": 4.4,
+   "text": "works. So make sure that you understand"
+  },
+  {
+   "start": 1020.079,
+   "duration": 5.041,
+   "text": "the question well and apply the proper"
+  },
+  {
+   "start": 1022.56,
+   "duration": 4.96,
+   "text": "chunking strategies."
+  },
+  {
+   "start": 1025.12,
+   "duration": 5.52,
+   "text": "Now let's move on the context problem."
+  },
+  {
+   "start": 1027.52,
+   "duration": 5.679,
+   "text": "Why chunks lose their meaning? So the"
+  },
+  {
+   "start": 1030.64,
+   "duration": 5.279,
+   "text": "deeper problem with chunking what it is"
+  },
+  {
+   "start": 1033.199,
+   "duration": 4.561,
+   "text": "is this is something anthropic"
+  },
+  {
+   "start": 1035.919,
+   "duration": 4.0,
+   "text": "themselves have written about"
+  },
+  {
+   "start": 1037.76,
+   "duration": 4.24,
+   "text": "extensively."
+  },
+  {
+   "start": 1039.919,
+   "duration": 5.681,
+   "text": "When you rip a chunk out of a document"
+  },
+  {
+   "start": 1042.0,
+   "duration": 5.6,
+   "text": "it often loses its context and it's a"
+  },
+  {
+   "start": 1045.6,
+   "duration": 4.079,
+   "text": "very very good question to have in your"
+  },
+  {
+   "start": 1047.6,
+   "duration": 4.8,
+   "text": "mind as well. Now imagine you have"
+  },
+  {
+   "start": 1049.679,
+   "duration": 6.481,
+   "text": "embedded a knowledge base of SEC"
+  },
+  {
+   "start": 1052.4,
+   "duration": 7.2,
+   "text": "filings. A user asks let's say what was"
+  },
+  {
+   "start": 1056.16,
+   "duration": 6.48,
+   "text": "the revenue growth for ABC Corp for"
+  },
+  {
+   "start": 1059.6,
+   "duration": 4.56,
+   "text": "example in Q2 2023. Now the relevant"
+  },
+  {
+   "start": 1062.64,
+   "duration": 4.56,
+   "text": "chunk in your database says the"
+  },
+  {
+   "start": 1064.16,
+   "duration": 6.08,
+   "text": "company's let's say revenue growth uh"
+  },
+  {
+   "start": 1067.2,
+   "duration": 6.08,
+   "text": "was by 3% over the previous quarter. I"
+  },
+  {
+   "start": 1070.24,
+   "duration": 6.799,
+   "text": "I'm just pointing out a scenario. Do you"
+  },
+  {
+   "start": 1073.28,
+   "duration": 6.399,
+   "text": "see the problem over here? See the chunk"
+  },
+  {
+   "start": 1077.039,
+   "duration": 5.201,
+   "text": "doesn't say which company. It doesn't"
+  },
+  {
+   "start": 1079.679,
+   "duration": 5.36,
+   "text": "say which quarter. On its own, it's"
+  },
+  {
+   "start": 1082.24,
+   "duration": 5.52,
+   "text": "meaningless. The embedding captures"
+  },
+  {
+   "start": 1085.039,
+   "duration": 5.441,
+   "text": "revenue grew by 3%."
+  },
+  {
+   "start": 1087.76,
+   "duration": 4.88,
+   "text": "But it looks identical to a million"
+  },
+  {
+   "start": 1090.48,
+   "duration": 6.0,
+   "text": "other revenue sentences from other"
+  },
+  {
+   "start": 1092.64,
+   "duration": 6.159,
+   "text": "companies and other quarters. So I guess"
+  },
+  {
+   "start": 1096.48,
+   "duration": 5.04,
+   "text": "you see the problem over here. The"
+  },
+  {
+   "start": 1098.799,
+   "duration": 5.281,
+   "text": "question and the answer kind of just"
+  },
+  {
+   "start": 1101.52,
+   "duration": 5.68,
+   "text": "correlate and try to understand what did"
+  },
+  {
+   "start": 1104.08,
+   "duration": 5.12,
+   "text": "I ask and what did I get. Now an"
+  },
+  {
+   "start": 1107.2,
+   "duration": 5.12,
+   "text": "anthropic solution to this kind of a"
+  },
+  {
+   "start": 1109.2,
+   "duration": 6.0,
+   "text": "problem is called contextual retrieval."
+  },
+  {
+   "start": 1112.32,
+   "duration": 6.0,
+   "text": "So the idea is very simple but powerful."
+  },
+  {
+   "start": 1115.2,
+   "duration": 6.56,
+   "text": "Okay. Before you embed each chunk, you"
+  },
+  {
+   "start": 1118.32,
+   "duration": 7.28,
+   "text": "prepend a short context sentence"
+  },
+  {
+   "start": 1121.76,
+   "duration": 6.64,
+   "text": "generated by a lightweight model. Okay."
+  },
+  {
+   "start": 1125.6,
+   "duration": 4.64,
+   "text": "That situates the chunk within its"
+  },
+  {
+   "start": 1128.4,
+   "duration": 4.72,
+   "text": "source document."
+  },
+  {
+   "start": 1130.24,
+   "duration": 5.84,
+   "text": "So now the embedding captures the full"
+  },
+  {
+   "start": 1133.12,
+   "duration": 6.32,
+   "text": "meaning. And this isn't just"
+  },
+  {
+   "start": 1136.08,
+   "duration": 5.92,
+   "text": "theoretical. Anthropic published results"
+  },
+  {
+   "start": 1139.44,
+   "duration": 4.72,
+   "text": "showing contextual embeddings reduced"
+  },
+  {
+   "start": 1142.0,
+   "duration": 5.28,
+   "text": "the retrieval failure rates by around"
+  },
+  {
+   "start": 1144.16,
+   "duration": 5.6,
+   "text": "roughly 35%. And combined with"
+  },
+  {
+   "start": 1147.28,
+   "duration": 6.16,
+   "text": "contextual BM25"
+  },
+  {
+   "start": 1149.76,
+   "duration": 5.36,
+   "text": "by and it has reduced by roughly um the"
+  },
+  {
+   "start": 1153.44,
+   "duration": 5.44,
+   "text": "failure rates have reduced by roughly"
+  },
+  {
+   "start": 1155.12,
+   "duration": 6.4,
+   "text": "more than or equal to 49%. So the mental"
+  },
+  {
+   "start": 1158.88,
+   "duration": 4.72,
+   "text": "model is pretty simple. Every chunk"
+  },
+  {
+   "start": 1161.52,
+   "duration": 4.8,
+   "text": "should be self-sufficient. If someone"
+  },
+  {
+   "start": 1163.6,
+   "duration": 5.199,
+   "text": "reads just that chunk in isolation"
+  },
+  {
+   "start": 1166.32,
+   "duration": 4.8,
+   "text": "without seeing the source document, they"
+  },
+  {
+   "start": 1168.799,
+   "duration": 5.041,
+   "text": "should know what it's about and where it"
+  },
+  {
+   "start": 1171.12,
+   "duration": 5.52,
+   "text": "came from. Yeah. If they cannot, your"
+  },
+  {
+   "start": 1173.84,
+   "duration": 5.68,
+   "text": "chunking is losing context that"
+  },
+  {
+   "start": 1176.64,
+   "duration": 6.399,
+   "text": "retrieval needs. So because you are"
+  },
+  {
+   "start": 1179.52,
+   "duration": 5.12,
+   "text": "fetching blindly a chunk out of just"
+  },
+  {
+   "start": 1183.039,
+   "duration": 4.481,
+   "text": "based on your question without any"
+  },
+  {
+   "start": 1184.64,
+   "duration": 4.399,
+   "text": "context, then you don't know if you're"
+  },
+  {
+   "start": 1187.52,
+   "duration": 4.24,
+   "text": "getting the correct answer or not. It's"
+  },
+  {
+   "start": 1189.039,
+   "duration": 5.041,
+   "text": "it's it's plain and simple sentences."
+  },
+  {
+   "start": 1191.76,
+   "duration": 6.0,
+   "text": "Yeah, I hope you're making sense. So,"
+  },
+  {
+   "start": 1194.08,
+   "duration": 7.04,
+   "text": "every chunk should be self-sufficient."
+  },
+  {
+   "start": 1197.76,
+   "duration": 5.039,
+   "text": "Okay, now let's talk about indexing"
+  },
+  {
+   "start": 1201.12,
+   "duration": 3.36,
+   "text": "strategies. Vector, hybrid, and"
+  },
+  {
+   "start": 1202.799,
+   "duration": 4.0,
+   "text": "metadata."
+  },
+  {
+   "start": 1204.48,
+   "duration": 4.72,
+   "text": "So, once your chunks are embedded, you"
+  },
+  {
+   "start": 1206.799,
+   "duration": 4.721,
+   "text": "need to store them somewhere they can be"
+  },
+  {
+   "start": 1209.2,
+   "duration": 4.719,
+   "text": "searched efficiently. That's your index"
+  },
+  {
+   "start": 1211.52,
+   "duration": 4.96,
+   "text": "and and the indexing uh strategy you"
+  },
+  {
+   "start": 1213.919,
+   "duration": 5.361,
+   "text": "choose determines what kind of queries"
+  },
+  {
+   "start": 1216.48,
+   "duration": 4.8,
+   "text": "your system can answer. Well, so there"
+  },
+  {
+   "start": 1219.28,
+   "duration": 4.8,
+   "text": "are three indexing approaches. The exam"
+  },
+  {
+   "start": 1221.28,
+   "duration": 6.32,
+   "text": "expects you to know one is pure vector"
+  },
+  {
+   "start": 1224.08,
+   "duration": 6.24,
+   "text": "store. So you store only the embeddings."
+  },
+  {
+   "start": 1227.6,
+   "duration": 5.92,
+   "text": "You retrieve by semantic similarity"
+  },
+  {
+   "start": 1230.32,
+   "duration": 6.8,
+   "text": "simple fast for meaning based queries."
+  },
+  {
+   "start": 1233.52,
+   "duration": 5.92,
+   "text": "But it cannot do exact match lookups. So"
+  },
+  {
+   "start": 1237.12,
+   "duration": 6.48,
+   "text": "if someone searches for let's say error"
+  },
+  {
+   "start": 1239.44,
+   "duration": 6.32,
+   "text": "code 1 2 3 4. Now semantic similarity"
+  },
+  {
+   "start": 1243.6,
+   "duration": 4.4,
+   "text": "might return general error handling"
+  },
+  {
+   "start": 1245.76,
+   "duration": 4.24,
+   "text": "content instead of that specific code"
+  },
+  {
+   "start": 1248.0,
+   "duration": 5.2,
+   "text": "because it's you are you are putting you"
+  },
+  {
+   "start": 1250.0,
+   "duration": 6.159,
+   "text": "are searching by meaning. So that is the"
+  },
+  {
+   "start": 1253.2,
+   "duration": 5.76,
+   "text": "pure vector store in indexing. So you"
+  },
+  {
+   "start": 1256.159,
+   "duration": 6.081,
+   "text": "store only the embeddings. Now coming to"
+  },
+  {
+   "start": 1258.96,
+   "duration": 6.48,
+   "text": "hybrid indexing. So now if you remember"
+  },
+  {
+   "start": 1262.24,
+   "duration": 5.2,
+   "text": "I I I told you a term known as BM25. So"
+  },
+  {
+   "start": 1265.44,
+   "duration": 4.479,
+   "text": "hybrid indexing is vector plus"
+  },
+  {
+   "start": 1267.44,
+   "duration": 5.28,
+   "text": "keyword/BM25."
+  },
+  {
+   "start": 1269.919,
+   "duration": 6.24,
+   "text": "So you what you do is maintain a vector"
+  },
+  {
+   "start": 1272.72,
+   "duration": 6.4,
+   "text": "index and a traditional keyword index"
+  },
+  {
+   "start": 1276.159,
+   "duration": 5.681,
+   "text": "that is known as BM25."
+  },
+  {
+   "start": 1279.12,
+   "duration": 6.0,
+   "text": "So you retrieve from both then combine"
+  },
+  {
+   "start": 1281.84,
+   "duration": 5.6,
+   "text": "results using rank fusion. This is the"
+  },
+  {
+   "start": 1285.12,
+   "duration": 5.6,
+   "text": "gold standard for most production"
+  },
+  {
+   "start": 1287.44,
+   "duration": 6.96,
+   "text": "systems. You get semantic understanding"
+  },
+  {
+   "start": 1290.72,
+   "duration": 5.68,
+   "text": "and as well exact matching."
+  },
+  {
+   "start": 1294.4,
+   "duration": 4.24,
+   "text": "Yeah. So I hope it's making sense. You"
+  },
+  {
+   "start": 1296.4,
+   "duration": 5.92,
+   "text": "are using the the both the techniques"
+  },
+  {
+   "start": 1298.64,
+   "duration": 6.32,
+   "text": "over here. semantic and exact matching."
+  },
+  {
+   "start": 1302.32,
+   "duration": 5.2,
+   "text": "Yeah. So that is hybrid indexing vector"
+  },
+  {
+   "start": 1304.96,
+   "duration": 5.52,
+   "text": "plus BM25."
+  },
+  {
+   "start": 1307.52,
+   "duration": 5.2,
+   "text": "Now third is metadata enriched indexing."
+  },
+  {
+   "start": 1310.48,
+   "duration": 4.24,
+   "text": "I hope you understood the first two. So"
+  },
+  {
+   "start": 1312.72,
+   "duration": 5.76,
+   "text": "metadata enriched indexing. What is"
+  },
+  {
+   "start": 1314.72,
+   "duration": 5.839,
+   "text": "that? So you tag each chunk with"
+  },
+  {
+   "start": 1318.48,
+   "duration": 3.84,
+   "text": "structured metadata. So what is"
+  },
+  {
+   "start": 1320.559,
+   "duration": 4.801,
+   "text": "structured metadata? You have document"
+  },
+  {
+   "start": 1322.32,
+   "duration": 5.76,
+   "text": "type, date, author, department, access"
+  },
+  {
+   "start": 1325.36,
+   "duration": 5.52,
+   "text": "level, all of these things, right? and"
+  },
+  {
+   "start": 1328.08,
+   "duration": 6.719,
+   "text": "use metadata filters to narrow the"
+  },
+  {
+   "start": 1330.88,
+   "duration": 7.36,
+   "text": "search space before semantic retrieval."
+  },
+  {
+   "start": 1334.799,
+   "duration": 5.921,
+   "text": "Yeah, it's critical when your corpus"
+  },
+  {
+   "start": 1338.24,
+   "duration": 4.64,
+   "text": "includes timesensitive or access control"
+  },
+  {
+   "start": 1340.72,
+   "duration": 5.04,
+   "text": "documents because the metadata would"
+  },
+  {
+   "start": 1342.88,
+   "duration": 5.52,
+   "text": "behave like a filter over there because"
+  },
+  {
+   "start": 1345.76,
+   "duration": 4.64,
+   "text": "metadata includes document type, date,"
+  },
+  {
+   "start": 1348.4,
+   "duration": 5.12,
+   "text": "author, all of these things, right?"
+  },
+  {
+   "start": 1350.4,
+   "duration": 4.639,
+   "text": "Access level, you can like classify as"
+  },
+  {
+   "start": 1353.52,
+   "duration": 2.72,
+   "text": "well based on access levels or something"
+  },
+  {
+   "start": 1355.039,
+   "duration": 3.201,
+   "text": "like that. I don't know. I'm just giving"
+  },
+  {
+   "start": 1356.24,
+   "duration": 4.4,
+   "text": "you examples of metadata. Metadata can"
+  },
+  {
+   "start": 1358.24,
+   "duration": 4.319,
+   "text": "be anything. Now let's talk about a very"
+  },
+  {
+   "start": 1360.64,
+   "duration": 5.44,
+   "text": "key fact over here. So the hybrid"
+  },
+  {
+   "start": 1362.559,
+   "duration": 6.401,
+   "text": "approach which is embedded plus BM25"
+  },
+  {
+   "start": 1366.08,
+   "duration": 4.4,
+   "text": "consistently outperforms either method"
+  },
+  {
+   "start": 1368.96,
+   "duration": 4.079,
+   "text": "alone"
+  },
+  {
+   "start": 1370.48,
+   "duration": 4.88,
+   "text": "because anthropics published research"
+  },
+  {
+   "start": 1373.039,
+   "duration": 5.921,
+   "text": "shows that combining both techniques"
+  },
+  {
+   "start": 1375.36,
+   "duration": 6.319,
+   "text": "with contextual retrieval reduces"
+  },
+  {
+   "start": 1378.96,
+   "duration": 5.36,
+   "text": "retrieval failure significantly compared"
+  },
+  {
+   "start": 1381.679,
+   "duration": 4.561,
+   "text": "to embeddings only approaches which is"
+  },
+  {
+   "start": 1384.32,
+   "duration": 5.2,
+   "text": "basically the pure vector store that we"
+  },
+  {
+   "start": 1386.24,
+   "duration": 5.439,
+   "text": "discussed. So for exam purposes um if"
+  },
+  {
+   "start": 1389.52,
+   "duration": 4.48,
+   "text": "you see a question where the corpus"
+  },
+  {
+   "start": 1391.679,
+   "duration": 4.721,
+   "text": "includes both natural language content"
+  },
+  {
+   "start": 1394.0,
+   "duration": 5.36,
+   "text": "and technical identifiers or codes let's"
+  },
+  {
+   "start": 1396.4,
+   "duration": 4.48,
+   "text": "say hybrid is almost always the right"
+  },
+  {
+   "start": 1399.36,
+   "duration": 3.92,
+   "text": "answer because you have both of things"
+  },
+  {
+   "start": 1400.88,
+   "duration": 4.4,
+   "text": "over here you have the vector and you"
+  },
+  {
+   "start": 1403.28,
+   "duration": 4.96,
+   "text": "have the keyword so that is if you see"
+  },
+  {
+   "start": 1405.28,
+   "duration": 4.639,
+   "text": "them kind of that pair in the exam"
+  },
+  {
+   "start": 1408.24,
+   "duration": 4.16,
+   "text": "question or something like that hybrid"
+  },
+  {
+   "start": 1409.919,
+   "duration": 4.161,
+   "text": "index is your answer"
+  },
+  {
+   "start": 1412.4,
+   "duration": 3.92,
+   "text": "okay I hope I'm making sense if you have"
+  },
+  {
+   "start": 1414.08,
+   "duration": 4.16,
+   "text": "any questions please let me know in the"
+  },
+  {
+   "start": 1416.32,
+   "duration": 3.68,
+   "text": "comments and all those things. Let's"
+  },
+  {
+   "start": 1418.24,
+   "duration": 5.439,
+   "text": "talk about the retrieval strategies."
+  },
+  {
+   "start": 1420.0,
+   "duration": 6.24,
+   "text": "Now, now this is objective number 3.6 in"
+  },
+  {
+   "start": 1423.679,
+   "duration": 4.641,
+   "text": "the syllabus. Uh its own standalone"
+  },
+  {
+   "start": 1426.24,
+   "duration": 6.0,
+   "text": "objective and it's testing whether you"
+  },
+  {
+   "start": 1428.32,
+   "duration": 7.28,
+   "text": "can match the retrieval strategy to the"
+  },
+  {
+   "start": 1432.24,
+   "duration": 5.6,
+   "text": "data you are actually working on. Yeah."
+  },
+  {
+   "start": 1435.6,
+   "duration": 4.8,
+   "text": "So, not all retrieval is the same by the"
+  },
+  {
+   "start": 1437.84,
+   "duration": 5.36,
+   "text": "way. The the right approach depends on"
+  },
+  {
+   "start": 1440.4,
+   "duration": 4.88,
+   "text": "what your corpus looks like and how your"
+  },
+  {
+   "start": 1443.2,
+   "duration": 6.0,
+   "text": "users query it."
+  },
+  {
+   "start": 1445.28,
+   "duration": 5.6,
+   "text": "So this is object number 3.6 of domain"
+  },
+  {
+   "start": 1449.2,
+   "duration": 4.8,
+   "text": "number three which is integration of"
+  },
+  {
+   "start": 1450.88,
+   "duration": 4.72,
+   "text": "19%. It covers 19% of the exam. Now"
+  },
+  {
+   "start": 1454.0,
+   "duration": 4.08,
+   "text": "let's talk about retrieval strategies."
+  },
+  {
+   "start": 1455.6,
+   "duration": 5.04,
+   "text": "Now so the first retrieval strategy that"
+  },
+  {
+   "start": 1458.08,
+   "duration": 6.24,
+   "text": "I want to say is dense retrieval or"
+  },
+  {
+   "start": 1460.64,
+   "duration": 6.639,
+   "text": "semantic similarity. So you how it works"
+  },
+  {
+   "start": 1464.32,
+   "duration": 5.839,
+   "text": "is you embed the query find nearest"
+  },
+  {
+   "start": 1467.279,
+   "duration": 4.721,
+   "text": "vectors in the index."
+  },
+  {
+   "start": 1470.159,
+   "duration": 6.241,
+   "text": "It's the same thing right semantic"
+  },
+  {
+   "start": 1472.0,
+   "duration": 6.24,
+   "text": "similarity. Um what it is best for it's"
+  },
+  {
+   "start": 1476.4,
+   "duration": 4.399,
+   "text": "best for natural language questions"
+  },
+  {
+   "start": 1478.24,
+   "duration": 4.799,
+   "text": "against unstructured text. For example,"
+  },
+  {
+   "start": 1480.799,
+   "duration": 5.521,
+   "text": "what's our return policy some kind of"
+  },
+  {
+   "start": 1483.039,
+   "duration": 7.52,
+   "text": "queries like this? It it gets it gets"
+  },
+  {
+   "start": 1486.32,
+   "duration": 7.2,
+   "text": "tested against a knowledge base of pros."
+  },
+  {
+   "start": 1490.559,
+   "duration": 6.801,
+   "text": "Pros is and nothing but text."
+  },
+  {
+   "start": 1493.52,
+   "duration": 8.0,
+   "text": "So that is dense retrieval. Yeah."
+  },
+  {
+   "start": 1497.36,
+   "duration": 6.559,
+   "text": "Let's talk about sparse retrieval. BM25"
+  },
+  {
+   "start": 1501.52,
+   "duration": 4.399,
+   "text": "plus the keyword thing same thing that"
+  },
+  {
+   "start": 1503.919,
+   "duration": 4.561,
+   "text": "we kind of discussed previously but here"
+  },
+  {
+   "start": 1505.919,
+   "duration": 4.801,
+   "text": "in retrieval we are discussing. So how"
+  },
+  {
+   "start": 1508.48,
+   "duration": 6.319,
+   "text": "it works is you score documents by term"
+  },
+  {
+   "start": 1510.72,
+   "duration": 7.199,
+   "text": "frequency and exact path. Now it is best"
+  },
+  {
+   "start": 1514.799,
+   "duration": 6.721,
+   "text": "for technical queries with specific"
+  },
+  {
+   "start": 1517.919,
+   "duration": 5.601,
+   "text": "identifiers. For example, error 1 2 3 4"
+  },
+  {
+   "start": 1521.52,
+   "duration": 5.44,
+   "text": "part numbers, part text or something"
+  },
+  {
+   "start": 1523.52,
+   "duration": 6.639,
+   "text": "like that. API endpoint names or legal"
+  },
+  {
+   "start": 1526.96,
+   "duration": 6.16,
+   "text": "clause references. It's basically you"
+  },
+  {
+   "start": 1530.159,
+   "duration": 6.481,
+   "text": "can compare it to a dictionary"
+  },
+  {
+   "start": 1533.12,
+   "duration": 8.32,
+   "text": "or or I would say a gloss um or or I"
+  },
+  {
+   "start": 1536.64,
+   "duration": 7.279,
+   "text": "would say um in a company with some"
+  },
+  {
+   "start": 1541.44,
+   "duration": 4.56,
+   "text": "legal codes or something like that kind"
+  },
+  {
+   "start": 1543.919,
+   "duration": 4.64,
+   "text": "of a lookup kind of a thing with proper"
+  },
+  {
+   "start": 1546.0,
+   "duration": 6.559,
+   "text": "codes over there. So that is sparse"
+  },
+  {
+   "start": 1548.559,
+   "duration": 7.041,
+   "text": "retrieval. So dense is semantic sparse"
+  },
+  {
+   "start": 1552.559,
+   "duration": 7.041,
+   "text": "retrieval is BM2 or keyword specific"
+  },
+  {
+   "start": 1555.6,
+   "duration": 8.16,
+   "text": "retrieval. Next comes hybrid retrieval."
+  },
+  {
+   "start": 1559.6,
+   "duration": 6.24,
+   "text": "So here you run both dense and sparse"
+  },
+  {
+   "start": 1563.76,
+   "duration": 4.72,
+   "text": "and you combine with rank fusion. As you"
+  },
+  {
+   "start": 1565.84,
+   "duration": 6.079,
+   "text": "saw in the previous about hybrid"
+  },
+  {
+   "start": 1568.48,
+   "duration": 7.36,
+   "text": "indexing here it is hybrid retrieval. So"
+  },
+  {
+   "start": 1571.919,
+   "duration": 5.841,
+   "text": "it's a mixed thing where users ask both"
+  },
+  {
+   "start": 1575.84,
+   "duration": 6.4,
+   "text": "kind of questions or both kind of"
+  },
+  {
+   "start": 1577.76,
+   "duration": 6.159,
+   "text": "queries like how do I and find an error"
+  },
+  {
+   "start": 1582.24,
+   "duration": 3.439,
+   "text": "code."
+  },
+  {
+   "start": 1583.919,
+   "duration": 4.961,
+   "text": "Yeah,"
+  },
+  {
+   "start": 1585.679,
+   "duration": 5.281,
+   "text": "these type of queries and it's basically"
+  },
+  {
+   "start": 1588.88,
+   "duration": 4.0,
+   "text": "most productive system because most"
+  },
+  {
+   "start": 1590.96,
+   "duration": 4.959,
+   "text": "production system if they completely"
+  },
+  {
+   "start": 1592.88,
+   "duration": 6.08,
+   "text": "rely on dense retrieval then they lose"
+  },
+  {
+   "start": 1595.919,
+   "duration": 6.081,
+   "text": "out on the aspect of sparse retrieval"
+  },
+  {
+   "start": 1598.96,
+   "duration": 4.88,
+   "text": "which is for um keyword types you know"
+  },
+  {
+   "start": 1602.0,
+   "duration": 4.559,
+   "text": "matching"
+  },
+  {
+   "start": 1603.84,
+   "duration": 6.16,
+   "text": "but in hybrid you get the best of the"
+  },
+  {
+   "start": 1606.559,
+   "duration": 7.041,
+   "text": "both type of retrieval strategies. I"
+  },
+  {
+   "start": 1610.0,
+   "duration": 6.24,
+   "text": "hope that's making sense. Now"
+  },
+  {
+   "start": 1613.6,
+   "duration": 6.559,
+   "text": "the last one is metadata filtering. As"
+  },
+  {
+   "start": 1616.24,
+   "duration": 8.4,
+   "text": "you have already studied about indexing"
+  },
+  {
+   "start": 1620.159,
+   "duration": 6.241,
+   "text": "you know um metadata enriched indexing"
+  },
+  {
+   "start": 1624.64,
+   "duration": 4.399,
+   "text": "this retrieval thing will be also easy"
+  },
+  {
+   "start": 1626.4,
+   "duration": 4.8,
+   "text": "to understand. So in metadata filtering"
+  },
+  {
+   "start": 1629.039,
+   "duration": 4.721,
+   "text": "you apply structured constraints like"
+  },
+  {
+   "start": 1631.2,
+   "duration": 5.52,
+   "text": "date range document type access level"
+  },
+  {
+   "start": 1633.76,
+   "duration": 6.48,
+   "text": "before the retrieval. Right? So it's"
+  },
+  {
+   "start": 1636.72,
+   "duration": 5.6,
+   "text": "best for you know timesensitive content"
+  },
+  {
+   "start": 1640.24,
+   "duration": 5.439,
+   "text": "multi-tenant systems access control"
+  },
+  {
+   "start": 1642.32,
+   "duration": 7.76,
+   "text": "documents for example show me only Q2"
+  },
+  {
+   "start": 1645.679,
+   "duration": 6.561,
+   "text": "2024 reports from the finance team"
+  },
+  {
+   "start": 1650.08,
+   "duration": 4.64,
+   "text": "now the exam question pattern here is a"
+  },
+  {
+   "start": 1652.24,
+   "duration": 6.16,
+   "text": "systems corpus"
+  },
+  {
+   "start": 1654.72,
+   "duration": 7.04,
+   "text": "includes X users query it with Y which"
+  },
+  {
+   "start": 1658.4,
+   "duration": 6.24,
+   "text": "retrieval approach fits the constraint"
+  },
+  {
+   "start": 1661.76,
+   "duration": 4.56,
+   "text": "is always in the question stem based on"
+  },
+  {
+   "start": 1664.64,
+   "duration": 3.84,
+   "text": "the question stem"
+  },
+  {
+   "start": 1666.32,
+   "duration": 4.4,
+   "text": "uh you have to understand it. Basically"
+  },
+  {
+   "start": 1668.48,
+   "duration": 5.36,
+   "text": "the data shape and the query pattern"
+  },
+  {
+   "start": 1670.72,
+   "duration": 5.6,
+   "text": "decides the answer in this scenario."
+  },
+  {
+   "start": 1673.84,
+   "duration": 4.8,
+   "text": "Yeah. The query patterns are what if it"
+  },
+  {
+   "start": 1676.32,
+   "duration": 5.52,
+   "text": "is semantic based something like what's"
+  },
+  {
+   "start": 1678.64,
+   "duration": 6.399,
+   "text": "a return policy. If it is keyword based"
+  },
+  {
+   "start": 1681.84,
+   "duration": 5.839,
+   "text": "it will be error number this or this API"
+  },
+  {
+   "start": 1685.039,
+   "duration": 4.801,
+   "text": "endpoint or it can be a combination of"
+  },
+  {
+   "start": 1687.679,
+   "duration": 5.201,
+   "text": "both and it can be a hybrid retrieval as"
+  },
+  {
+   "start": 1689.84,
+   "duration": 4.88,
+   "text": "well. I hope you're making sense. So the"
+  },
+  {
+   "start": 1692.88,
+   "duration": 5.44,
+   "text": "mental model that you need to make over"
+  },
+  {
+   "start": 1694.72,
+   "duration": 5.76,
+   "text": "here is think of it as dense retrieval"
+  },
+  {
+   "start": 1698.32,
+   "duration": 6.64,
+   "text": "understands meaning sparse retrieval"
+  },
+  {
+   "start": 1700.48,
+   "duration": 7.439,
+   "text": "finds exact words. Um hybrid does both"
+  },
+  {
+   "start": 1704.96,
+   "duration": 5.76,
+   "text": "metadata narrows the field or filtering"
+  },
+  {
+   "start": 1707.919,
+   "duration": 5.36,
+   "text": "purpose. Most production system use a"
+  },
+  {
+   "start": 1710.72,
+   "duration": 5.439,
+   "text": "combination of hybrid and metadata"
+  },
+  {
+   "start": 1713.279,
+   "duration": 5.12,
+   "text": "filtering together. Yeah. Because it"
+  },
+  {
+   "start": 1716.159,
+   "duration": 6.801,
+   "text": "handles everything."
+  },
+  {
+   "start": 1718.399,
+   "duration": 7.121,
+   "text": "I hope it's making sense. Yeah. Now"
+  },
+  {
+   "start": 1722.96,
+   "duration": 4.8,
+   "text": "let's talk about reranking. What is"
+  },
+  {
+   "start": 1725.52,
+   "duration": 5.039,
+   "text": "that? What is reranking?"
+  },
+  {
+   "start": 1727.76,
+   "duration": 6.24,
+   "text": "This this is one more technique that"
+  },
+  {
+   "start": 1730.559,
+   "duration": 5.681,
+   "text": "takes retrieval from good to excellent."
+  },
+  {
+   "start": 1734.0,
+   "duration": 4.159,
+   "text": "Reranking. How does it fit in the"
+  },
+  {
+   "start": 1736.24,
+   "duration": 4.48,
+   "text": "pipeline? Let's understand that your"
+  },
+  {
+   "start": 1738.159,
+   "duration": 5.52,
+   "text": "initial retrieval whether dense, it can"
+  },
+  {
+   "start": 1740.72,
+   "duration": 6.48,
+   "text": "be dense, sparse or hybrid, it returns"
+  },
+  {
+   "start": 1743.679,
+   "duration": 5.921,
+   "text": "the top 100 or 150 potential relevant"
+  },
+  {
+   "start": 1747.2,
+   "duration": 5.52,
+   "text": "chunks. Right? Obviously that's how it"
+  },
+  {
+   "start": 1749.6,
+   "duration": 5.199,
+   "text": "works. That's a big haststack I would"
+  },
+  {
+   "start": 1752.72,
+   "duration": 5.839,
+   "text": "say. Still it's a very big haststack. A"
+  },
+  {
+   "start": 1754.799,
+   "duration": 7.681,
+   "text": "lot of those chunks are relevantish"
+  },
+  {
+   "start": 1758.559,
+   "duration": 5.921,
+   "text": "I would say but not truly the best. So"
+  },
+  {
+   "start": 1762.48,
+   "duration": 5.36,
+   "text": "reanking what it does it it takes that"
+  },
+  {
+   "start": 1764.48,
+   "duration": 6.559,
+   "text": "initial set passes each chunk alongside"
+  },
+  {
+   "start": 1767.84,
+   "duration": 7.28,
+   "text": "the original query through a specialized"
+  },
+  {
+   "start": 1771.039,
+   "duration": 6.801,
+   "text": "reranking model and scores each one for"
+  },
+  {
+   "start": 1775.12,
+   "duration": 5.919,
+   "text": "true relevance."
+  },
+  {
+   "start": 1777.84,
+   "duration": 5.76,
+   "text": "Then you take the top 10 or 20 with the"
+  },
+  {
+   "start": 1781.039,
+   "duration": 4.321,
+   "text": "highest scores and pass those to clot"
+  },
+  {
+   "start": 1783.6,
+   "duration": 5.04,
+   "text": "because those are the most relevant"
+  },
+  {
+   "start": 1785.36,
+   "duration": 5.439,
+   "text": "because they have been ranked. Yeah. So"
+  },
+  {
+   "start": 1788.64,
+   "duration": 6.08,
+   "text": "you went from around 100 or 150"
+  },
+  {
+   "start": 1790.799,
+   "duration": 6.401,
+   "text": "potential relevant chunks to 10 or 20."
+  },
+  {
+   "start": 1794.72,
+   "duration": 5.679,
+   "text": "So why does this matter? And there are"
+  },
+  {
+   "start": 1797.2,
+   "duration": 5.44,
+   "text": "two reasons I can give you. First better"
+  },
+  {
+   "start": 1800.399,
+   "duration": 5.76,
+   "text": "answers plain and simple. Claude gets"
+  },
+  {
+   "start": 1802.64,
+   "duration": 6.399,
+   "text": "more signal and less noise. Second thing"
+  },
+  {
+   "start": 1806.159,
+   "duration": 5.201,
+   "text": "is lower cost and latency. So if you"
+  },
+  {
+   "start": 1809.039,
+   "duration": 5.76,
+   "text": "have fewer tokens in the context window,"
+  },
+  {
+   "start": 1811.36,
+   "duration": 6.88,
+   "text": "it means faster and cheaper responses."
+  },
+  {
+   "start": 1814.799,
+   "duration": 6.081,
+   "text": "Yeah. You know, now anthropics published"
+  },
+  {
+   "start": 1818.24,
+   "duration": 5.439,
+   "text": "research shows that contextual retrieval"
+  },
+  {
+   "start": 1820.88,
+   "duration": 7.44,
+   "text": "combined with reranking reduces"
+  },
+  {
+   "start": 1823.679,
+   "duration": 6.801,
+   "text": "retrieval failures rates by roughly 67%"
+  },
+  {
+   "start": 1828.32,
+   "duration": 3.44,
+   "text": "compared to basic embeddings only"
+  },
+  {
+   "start": 1830.48,
+   "duration": 4.88,
+   "text": "retrieval. And that's a massive"
+  },
+  {
+   "start": 1831.76,
+   "duration": 5.76,
+   "text": "improvement. So we went from 35% to 49%,"
+  },
+  {
+   "start": 1835.36,
+   "duration": 4.48,
+   "text": "now we are at 67%. Now you understand"
+  },
+  {
+   "start": 1837.52,
+   "duration": 5.2,
+   "text": "how these techniques kind of put"
+  },
+  {
+   "start": 1839.84,
+   "duration": 5.52,
+   "text": "together will give you the best results."
+  },
+  {
+   "start": 1842.72,
+   "duration": 6.16,
+   "text": "So I'll leave you with a key fact over"
+  },
+  {
+   "start": 1845.36,
+   "duration": 6.319,
+   "text": "here saying that reranking adds a small"
+  },
+  {
+   "start": 1848.88,
+   "duration": 4.96,
+   "text": "amount of latency at runtime because"
+  },
+  {
+   "start": 1851.679,
+   "duration": 6.561,
+   "text": "it's an extra model call and you are"
+  },
+  {
+   "start": 1853.84,
+   "duration": 6.64,
+   "text": "ranking those um chunks but it reduces"
+  },
+  {
+   "start": 1858.24,
+   "duration": 5.439,
+   "text": "the token sent to claude and improves"
+  },
+  {
+   "start": 1860.48,
+   "duration": 6.16,
+   "text": "the answer quality. So the exam it"
+  },
+  {
+   "start": 1863.679,
+   "duration": 5.6,
+   "text": "whether you know the tradeoff reranking"
+  },
+  {
+   "start": 1866.64,
+   "duration": 6.08,
+   "text": "equals to better accuracy. Yeah that is"
+  },
+  {
+   "start": 1869.279,
+   "duration": 5.441,
+   "text": "the best way to remember. So but it's"
+  },
+  {
+   "start": 1872.72,
+   "duration": 5.52,
+   "text": "slightly more latency at the retrieval"
+  },
+  {
+   "start": 1874.72,
+   "duration": 5.679,
+   "text": "step that I said but co less cost at the"
+  },
+  {
+   "start": 1878.24,
+   "duration": 5.12,
+   "text": "generation step because claude has to"
+  },
+  {
+   "start": 1880.399,
+   "duration": 6.64,
+   "text": "deal with less things and not overcrowd"
+  },
+  {
+   "start": 1883.36,
+   "duration": 6.799,
+   "text": "its context window. So I hope you are"
+  },
+  {
+   "start": 1887.039,
+   "duration": 4.801,
+   "text": "understanding this concept as well."
+  },
+  {
+   "start": 1890.159,
+   "duration": 4.721,
+   "text": "Yeah, if you have any questions please"
+  },
+  {
+   "start": 1891.84,
+   "duration": 5.76,
+   "text": "let me know. So now let's talk about a"
+  },
+  {
+   "start": 1894.88,
+   "duration": 4.639,
+   "text": "production case study legal document"
+  },
+  {
+   "start": 1897.6,
+   "duration": 3.84,
+   "text": "Q&A."
+  },
+  {
+   "start": 1899.519,
+   "duration": 3.921,
+   "text": "uh here's a scenario that could show up"
+  },
+  {
+   "start": 1901.44,
+   "duration": 4.56,
+   "text": "in the exam and it definitely shows up"
+  },
+  {
+   "start": 1903.44,
+   "duration": 6.479,
+   "text": "in production of your company or similar"
+  },
+  {
+   "start": 1906.0,
+   "duration": 6.08,
+   "text": "kind of a uh scenario might be there."
+  },
+  {
+   "start": 1909.919,
+   "duration": 5.6,
+   "text": "So the system let's talk about that. So"
+  },
+  {
+   "start": 1912.08,
+   "duration": 6.4,
+   "text": "a law firm deploys a claude powered QA"
+  },
+  {
+   "start": 1915.519,
+   "duration": 6.241,
+   "text": "assistant for their attorneys. Attorneys"
+  },
+  {
+   "start": 1918.48,
+   "duration": 5.6,
+   "text": "yes it's attorneys not attorneys. Yeah."
+  },
+  {
+   "start": 1921.76,
+   "duration": 6.48,
+   "text": "So the knowledge base contains about"
+  },
+  {
+   "start": 1924.08,
+   "duration": 6.959,
+   "text": "50,000 plus legal documents uh contracts"
+  },
+  {
+   "start": 1928.24,
+   "duration": 4.96,
+   "text": "case precedents regulatory fi filings"
+  },
+  {
+   "start": 1931.039,
+   "duration": 5.601,
+   "text": "and internal memos something like all of"
+  },
+  {
+   "start": 1933.2,
+   "duration": 7.199,
+   "text": "these are legal documents right now the"
+  },
+  {
+   "start": 1936.64,
+   "duration": 5.68,
+   "text": "problem is atonis why am I spelling you"
+  },
+  {
+   "start": 1940.399,
+   "duration": 4.64,
+   "text": "know pronouncing it like that anyways"
+  },
+  {
+   "start": 1942.32,
+   "duration": 5.839,
+   "text": "they report that the system gives good"
+  },
+  {
+   "start": 1945.039,
+   "duration": 5.841,
+   "text": "answers for general legal questions but"
+  },
+  {
+   "start": 1948.159,
+   "duration": 5.041,
+   "text": "fails when they ask about specific"
+  },
+  {
+   "start": 1950.88,
+   "duration": 5.519,
+   "text": "clauses is in specific contracts. I hope"
+  },
+  {
+   "start": 1953.2,
+   "duration": 5.44,
+   "text": "something is getting uh blinked in your"
+  },
+  {
+   "start": 1956.399,
+   "duration": 4.88,
+   "text": "brain over there and you are kind you"
+  },
+  {
+   "start": 1958.64,
+   "duration": 4.08,
+   "text": "will get the answer I feel. Now what's"
+  },
+  {
+   "start": 1961.279,
+   "duration": 5.12,
+   "text": "for example what's the termination"
+  },
+  {
+   "start": 1962.72,
+   "duration": 5.36,
+   "text": "clause in ABC or ACME widget crop"
+  },
+  {
+   "start": 1966.399,
+   "duration": 3.441,
+   "text": "agreement something like that some name"
+  },
+  {
+   "start": 1968.08,
+   "duration": 4.0,
+   "text": "of agreement"
+  },
+  {
+   "start": 1969.84,
+   "duration": 4.559,
+   "text": "when it does that it returns a generic"
+  },
+  {
+   "start": 1972.08,
+   "duration": 4.24,
+   "text": "answer about termination clauses it does"
+  },
+  {
+   "start": 1974.399,
+   "duration": 3.76,
+   "text": "not actual"
+  },
+  {
+   "start": 1976.32,
+   "duration": 3.28,
+   "text": "give the it actually does not give the"
+  },
+  {
+   "start": 1978.159,
+   "duration": 3.841,
+   "text": "actual clause from that specific"
+  },
+  {
+   "start": 1979.6,
+   "duration": 3.919,
+   "text": "contract basically so it gives a"
+  },
+  {
+   "start": 1982.0,
+   "duration": 5.2,
+   "text": "generalized answer basically and it is"
+  },
+  {
+   "start": 1983.519,
+   "duration": 7.28,
+   "text": "is not giving you a proper proper um"
+  },
+  {
+   "start": 1987.2,
+   "duration": 6.64,
+   "text": "clause right with the particular cold."
+  },
+  {
+   "start": 1990.799,
+   "duration": 5.201,
+   "text": "So where do you investigate?"
+  },
+  {
+   "start": 1993.84,
+   "duration": 3.6,
+   "text": "Let's break down the diagnosis and"
+  },
+  {
+   "start": 1996.0,
+   "duration": 3.76,
+   "text": "that's how you would do in the exam as"
+  },
+  {
+   "start": 1997.44,
+   "duration": 3.839,
+   "text": "well. I know for this you would probably"
+  },
+  {
+   "start": 1999.76,
+   "duration": 3.12,
+   "text": "know the answer but understand the"
+  },
+  {
+   "start": 2001.279,
+   "duration": 5.841,
+   "text": "process of the diagnosis. How do you"
+  },
+  {
+   "start": 2002.88,
+   "duration": 8.08,
+   "text": "break it down? Now uh chunking. So they"
+  },
+  {
+   "start": 2007.12,
+   "duration": 8.08,
+   "text": "used fixed size 500 token chunks."
+  },
+  {
+   "start": 2010.96,
+   "duration": 6.319,
+   "text": "Yeah. So um legal contracts have nested"
+  },
+  {
+   "start": 2015.2,
+   "duration": 4.319,
+   "text": "clause structures as well. Right. A"
+  },
+  {
+   "start": 2017.279,
+   "duration": 4.24,
+   "text": "termination clause might span multiple"
+  },
+  {
+   "start": 2019.519,
+   "duration": 5.04,
+   "text": "sub clauses referencing other sections"
+  },
+  {
+   "start": 2021.519,
+   "duration": 5.04,
+   "text": "as well. Now fixedsize chunking sliced"
+  },
+  {
+   "start": 2024.559,
+   "duration": 4.081,
+   "text": "through these structures producing"
+  },
+  {
+   "start": 2026.559,
+   "duration": 3.84,
+   "text": "chunks where a clause reference points"
+  },
+  {
+   "start": 2028.64,
+   "duration": 4.159,
+   "text": "to a sub clause that ended up in a"
+  },
+  {
+   "start": 2030.399,
+   "duration": 5.441,
+   "text": "different chunk as the same problem that"
+  },
+  {
+   "start": 2032.799,
+   "duration": 6.48,
+   "text": "we talked about earlier. Now that that's"
+  },
+  {
+   "start": 2035.84,
+   "duration": 5.52,
+   "text": "for chunking for indexing"
+  },
+  {
+   "start": 2039.279,
+   "duration": 3.76,
+   "text": "pure vector store. No keyword indexing"
+  },
+  {
+   "start": 2041.36,
+   "duration": 4.799,
+   "text": "is done. Right? When an attorney"
+  },
+  {
+   "start": 2043.039,
+   "duration": 5.521,
+   "text": "searches for ACME widget corp"
+  },
+  {
+   "start": 2046.159,
+   "duration": 4.641,
+   "text": "termination clause for example, semantic"
+  },
+  {
+   "start": 2048.56,
+   "duration": 5.68,
+   "text": "similarity finds generic termination"
+  },
+  {
+   "start": 2050.8,
+   "duration": 6.559,
+   "text": "content. BM25 would have found the exact"
+  },
+  {
+   "start": 2054.24,
+   "duration": 6.32,
+   "text": "contract name. Right? That's what we"
+  },
+  {
+   "start": 2057.359,
+   "duration": 4.8,
+   "text": "understood in indexing. Now retrieval"
+  },
+  {
+   "start": 2060.56,
+   "duration": 4.24,
+   "text": "there is no metadata filtering over"
+  },
+  {
+   "start": 2062.159,
+   "duration": 4.72,
+   "text": "here. No way to narrow by contract name,"
+  },
+  {
+   "start": 2064.8,
+   "duration": 4.96,
+   "text": "party or date. Every query searches the"
+  },
+  {
+   "start": 2066.879,
+   "duration": 6.081,
+   "text": "entire 50,000 document corpus. Now the"
+  },
+  {
+   "start": 2069.76,
+   "duration": 6.159,
+   "text": "fix is switch to document structure"
+  },
+  {
+   "start": 2072.96,
+   "duration": 4.399,
+   "text": "aware chunking because this it's a legal"
+  },
+  {
+   "start": 2075.919,
+   "duration": 4.0,
+   "text": "system right and documents have"
+  },
+  {
+   "start": 2077.359,
+   "duration": 4.32,
+   "text": "structures templates so why not use this"
+  },
+  {
+   "start": 2079.919,
+   "duration": 4.561,
+   "text": "kind of chunking"
+  },
+  {
+   "start": 2081.679,
+   "duration": 5.2,
+   "text": "add contextual retrieval so you prepend"
+  },
+  {
+   "start": 2084.48,
+   "duration": 4.32,
+   "text": "contract name and clause hierarchy to"
+  },
+  {
+   "start": 2086.879,
+   "duration": 5.681,
+   "text": "each chunk that's what we understood"
+  },
+  {
+   "start": 2088.8,
+   "duration": 6.559,
+   "text": "about contextual retrieval right move to"
+  },
+  {
+   "start": 2092.56,
+   "duration": 6.4,
+   "text": "a hybrid kind of an indexing where you"
+  },
+  {
+   "start": 2095.359,
+   "duration": 6.401,
+   "text": "use vectors plus BM25 for exact entity"
+  },
+  {
+   "start": 2098.96,
+   "duration": 5.68,
+   "text": "matching and fourth thing you can do is"
+  },
+  {
+   "start": 2101.76,
+   "duration": 6.0,
+   "text": "metadata filtering by contract name,"
+  },
+  {
+   "start": 2104.64,
+   "duration": 5.76,
+   "text": "parties and date for scoped searches."
+  },
+  {
+   "start": 2107.76,
+   "duration": 4.319,
+   "text": "Yeah. So that's how you would fix this"
+  },
+  {
+   "start": 2110.4,
+   "duration": 4.48,
+   "text": "problem."
+  },
+  {
+   "start": 2112.079,
+   "duration": 5.121,
+   "text": "And um in one of the options you would"
+  },
+  {
+   "start": 2114.88,
+   "duration": 5.12,
+   "text": "probably find all of these. Once you"
+  },
+  {
+   "start": 2117.2,
+   "duration": 4.399,
+   "text": "kind of uh put together all of these"
+  },
+  {
+   "start": 2120.0,
+   "duration": 3.28,
+   "text": "concepts you would understand okay this"
+  },
+  {
+   "start": 2121.599,
+   "duration": 4.961,
+   "text": "is my pipeline and this is how it will"
+  },
+  {
+   "start": 2123.28,
+   "duration": 5.839,
+   "text": "work. So that's the exam map domain"
+  },
+  {
+   "start": 2126.56,
+   "duration": 4.48,
+   "text": "number three objective 3.5"
+  },
+  {
+   "start": 2129.119,
+   "duration": 3.361,
+   "text": "uh which is design a rack pipeline with"
+  },
+  {
+   "start": 2131.04,
+   "duration": 3.2,
+   "text": "appropriate chunking and indexing"
+  },
+  {
+   "start": 2132.48,
+   "duration": 4.24,
+   "text": "strategies. This case study is exactly"
+  },
+  {
+   "start": 2134.24,
+   "duration": 5.599,
+   "text": "the kind of scenario the exam presents"
+  },
+  {
+   "start": 2136.72,
+   "duration": 5.04,
+   "text": "the constraint is structured legal"
+  },
+  {
+   "start": 2139.839,
+   "duration": 4.161,
+   "text": "documents plus entity specific queries"
+  },
+  {
+   "start": 2141.76,
+   "duration": 4.72,
+   "text": "that is what you need to get it from the"
+  },
+  {
+   "start": 2144.0,
+   "duration": 7.92,
+   "text": "question stem the constraint"
+  },
+  {
+   "start": 2146.48,
+   "duration": 9.44,
+   "text": "and that itself decides the strategy."
+  },
+  {
+   "start": 2151.92,
+   "duration": 7.28,
+   "text": "Okay. Now uh some exam drills. Let's"
+  },
+  {
+   "start": 2155.92,
+   "duration": 6.24,
+   "text": "start. Uh very simple questions I would"
+  },
+  {
+   "start": 2159.2,
+   "duration": 6.96,
+   "text": "say just to keep things fun. So a"
+  },
+  {
+   "start": 2162.16,
+   "duration": 6.56,
+   "text": "healthcare company's rag based QA"
+  },
+  {
+   "start": 2166.16,
+   "duration": 5.84,
+   "text": "system QA system answers questions about"
+  },
+  {
+   "start": 2168.72,
+   "duration": 5.6,
+   "text": "internal clinic clinical protocols."
+  },
+  {
+   "start": 2172.0,
+   "duration": 4.24,
+   "text": "After a quarterly document refresh, new"
+  },
+  {
+   "start": 2174.32,
+   "duration": 4.4,
+   "text": "protocols added, some older ones"
+  },
+  {
+   "start": 2176.24,
+   "duration": 4.16,
+   "text": "updated. The system begins returning"
+  },
+  {
+   "start": 2178.72,
+   "duration": 3.68,
+   "text": "outdated information for updated"
+  },
+  {
+   "start": 2180.4,
+   "duration": 4.08,
+   "text": "protocols. So the prompt has not been"
+  },
+  {
+   "start": 2182.4,
+   "duration": 3.439,
+   "text": "changed, the model has not been changed."
+  },
+  {
+   "start": 2184.48,
+   "duration": 3.92,
+   "text": "Which area should the architect"
+  },
+  {
+   "start": 2185.839,
+   "duration": 5.441,
+   "text": "investigate first?"
+  },
+  {
+   "start": 2188.4,
+   "duration": 4.24,
+   "text": "So the answer is so you can get some"
+  },
+  {
+   "start": 2191.28,
+   "duration": 3.839,
+   "text": "options right four options you would"
+  },
+  {
+   "start": 2192.64,
+   "duration": 4.16,
+   "text": "get. So um option number A let's say"
+  },
+  {
+   "start": 2195.119,
+   "duration": 3.681,
+   "text": "re-engineer the system prompt which"
+  },
+  {
+   "start": 2196.8,
+   "duration": 4.559,
+   "text": "doesn't make any sense. Option number B"
+  },
+  {
+   "start": 2198.8,
+   "duration": 5.52,
+   "text": "would be let's say switch to larger more"
+  },
+  {
+   "start": 2201.359,
+   "duration": 6.0,
+   "text": "capable model. Does it does it make"
+  },
+  {
+   "start": 2204.32,
+   "duration": 5.2,
+   "text": "sense? No. C would say investigate the"
+  },
+  {
+   "start": 2207.359,
+   "duration": 4.801,
+   "text": "retrieval and the indexing pipeline. And"
+  },
+  {
+   "start": 2209.52,
+   "duration": 4.8,
+   "text": "that is your answer because"
+  },
+  {
+   "start": 2212.16,
+   "duration": 4.24,
+   "text": "this is this is the hallucination after"
+  },
+  {
+   "start": 2214.32,
+   "duration": 4.08,
+   "text": "document refresh diagnostic pattern."
+  },
+  {
+   "start": 2216.4,
+   "duration": 5.12,
+   "text": "Yeah. When a rack system suddenly"
+  },
+  {
+   "start": 2218.4,
+   "duration": 4.959,
+   "text": "degrades after a data refresh and"
+  },
+  {
+   "start": 2221.52,
+   "duration": 4.72,
+   "text": "nothing else changed, the retrieval"
+  },
+  {
+   "start": 2223.359,
+   "duration": 5.601,
+   "text": "layer is the prime suspect. So the"
+  },
+  {
+   "start": 2226.24,
+   "duration": 5.68,
+   "text": "likely causes would be reindexed chunks"
+  },
+  {
+   "start": 2228.96,
+   "duration": 5.04,
+   "text": "lost their contextual metadata. Yeah."
+  },
+  {
+   "start": 2231.92,
+   "duration": 5.199,
+   "text": "updated documents were not re-mbedded"
+  },
+  {
+   "start": 2234.0,
+   "duration": 5.119,
+   "text": "because they were new documents or stale"
+  },
+  {
+   "start": 2237.119,
+   "duration": 4.161,
+   "text": "embeddings from the embeddings from the"
+  },
+  {
+   "start": 2239.119,
+   "duration": 4.801,
+   "text": "old version are still in the index"
+  },
+  {
+   "start": 2241.28,
+   "duration": 4.72,
+   "text": "competing with the new ones. So the"
+  },
+  {
+   "start": 2243.92,
+   "duration": 3.76,
+   "text": "prompt and model are working fine."
+  },
+  {
+   "start": 2246.0,
+   "duration": 4.56,
+   "text": "They're just being fed the wrong"
+  },
+  {
+   "start": 2247.68,
+   "duration": 6.0,
+   "text": "context. That's it. Always investigate"
+  },
+  {
+   "start": 2250.56,
+   "duration": 6.24,
+   "text": "the retrieval part first."
+  },
+  {
+   "start": 2253.68,
+   "duration": 5.919,
+   "text": "Okay. Now second drill. An engineering"
+  },
+  {
+   "start": 2256.8,
+   "duration": 4.88,
+   "text": "team builds a support bot whose"
+  },
+  {
+   "start": 2259.599,
+   "duration": 4.561,
+   "text": "knowledge base contains both natural"
+  },
+  {
+   "start": 2261.68,
+   "duration": 5.679,
+   "text": "language troubleshooting guides and logs"
+  },
+  {
+   "start": 2264.16,
+   "duration": 7.28,
+   "text": "full of technical error codes like err"
+  },
+  {
+   "start": 2267.359,
+   "duration": 7.441,
+   "text": "4123 or con timeout SSL or something"
+  },
+  {
+   "start": 2271.44,
+   "duration": 6.48,
+   "text": "like that just random error codes I'm"
+  },
+  {
+   "start": 2274.8,
+   "duration": 6.96,
+   "text": "pointing out. So users ask both how do I"
+  },
+  {
+   "start": 2277.92,
+   "duration": 6.48,
+   "text": "fix my connection and what does ERR 4231"
+  },
+  {
+   "start": 2281.76,
+   "duration": 4.319,
+   "text": "means? Which retrieval strategy wins?"
+  },
+  {
+   "start": 2284.4,
+   "duration": 3.84,
+   "text": "Obviously the answer is hybrid"
+  },
+  {
+   "start": 2286.079,
+   "duration": 4.881,
+   "text": "retrieval. Why? Because the corpus is"
+  },
+  {
+   "start": 2288.24,
+   "duration": 6.0,
+   "text": "mixed over here. So the natural uh there"
+  },
+  {
+   "start": 2290.96,
+   "duration": 5.36,
+   "text": "is natural language guides uh which is"
+  },
+  {
+   "start": 2294.24,
+   "duration": 5.2,
+   "text": "saved for semantic retrieval and"
+  },
+  {
+   "start": 2296.32,
+   "duration": 4.48,
+   "text": "technical identifiers like um error"
+  },
+  {
+   "start": 2299.44,
+   "duration": 4.48,
+   "text": "number something or something like that"
+  },
+  {
+   "start": 2300.8,
+   "duration": 6.4,
+   "text": "which is best served by BM25 exact"
+  },
+  {
+   "start": 2303.92,
+   "duration": 5.679,
+   "text": "matching. So users query both ways."
+  },
+  {
+   "start": 2307.2,
+   "duration": 5.12,
+   "text": "Hybrid retrieval handles both of these"
+  },
+  {
+   "start": 2309.599,
+   "duration": 5.841,
+   "text": "kind of queries. Semantic similarity"
+  },
+  {
+   "start": 2312.32,
+   "duration": 6.88,
+   "text": "catches the um how do I fix question and"
+  },
+  {
+   "start": 2315.44,
+   "duration": 6.08,
+   "text": "BM25 catches the exact error code. So"
+  },
+  {
+   "start": 2319.2,
+   "duration": 4.24,
+   "text": "you're in good hands with hybrid"
+  },
+  {
+   "start": 2321.52,
+   "duration": 4.48,
+   "text": "retrieval. You have to just ignore the"
+  },
+  {
+   "start": 2323.44,
+   "duration": 5.52,
+   "text": "other options. So just a drill. I hope"
+  },
+  {
+   "start": 2326.0,
+   "duration": 5.44,
+   "text": "you understood the the the thing over"
+  },
+  {
+   "start": 2328.96,
+   "duration": 4.8,
+   "text": "here. Now we're going to see a very"
+  },
+  {
+   "start": 2331.44,
+   "duration": 5.6,
+   "text": "simple demo where we going to build a"
+  },
+  {
+   "start": 2333.76,
+   "duration": 5.52,
+   "text": "simple rag pipeline. Okay, we're going"
+  },
+  {
+   "start": 2337.04,
+   "duration": 5.44,
+   "text": "to build it from scratch. I'll show you"
+  },
+  {
+   "start": 2339.28,
+   "duration": 5.36,
+   "text": "the code. We'll ingest a few documents"
+  },
+  {
+   "start": 2342.48,
+   "duration": 4.48,
+   "text": "or very small document or something like"
+  },
+  {
+   "start": 2344.64,
+   "duration": 4.24,
+   "text": "that. Going to chunk them, embed them,"
+  },
+  {
+   "start": 2346.96,
+   "duration": 4.56,
+   "text": "retrieve the relevant chunks and pass"
+  },
+  {
+   "start": 2348.88,
+   "duration": 4.88,
+   "text": "them to cloud for generation. This is a"
+  },
+  {
+   "start": 2351.52,
+   "duration": 4.48,
+   "text": "teaching demo, not production code, but"
+  },
+  {
+   "start": 2353.76,
+   "duration": 5.28,
+   "text": "it shows you every stage of the pipeline"
+  },
+  {
+   "start": 2356.0,
+   "duration": 5.839,
+   "text": "in action. But a quick note before we"
+  },
+  {
+   "start": 2359.04,
+   "duration": 5.76,
+   "text": "start in real production rag system you"
+  },
+  {
+   "start": 2361.839,
+   "duration": 5.121,
+   "text": "would use a dedicated embedding model to"
+  },
+  {
+   "start": 2364.8,
+   "duration": 5.12,
+   "text": "convert your chunks and queries into"
+  },
+  {
+   "start": 2366.96,
+   "duration": 5.36,
+   "text": "dense numerical vectors"
+  },
+  {
+   "start": 2369.92,
+   "duration": 4.08,
+   "text": "highdimensional. So these are vectors"
+  },
+  {
+   "start": 2372.32,
+   "duration": 4.56,
+   "text": "are what highdimensional representation"
+  },
+  {
+   "start": 2374.0,
+   "duration": 6.4,
+   "text": "that capture semantic meaning. Yeah."
+  },
+  {
+   "start": 2376.88,
+   "duration": 7.68,
+   "text": "Anthropic specifically recommends Voyage"
+  },
+  {
+   "start": 2380.4,
+   "duration": 7.28,
+   "text": "AI and Google Gemini embeddings based on"
+  },
+  {
+   "start": 2384.56,
+   "duration": 5.039,
+   "text": "their contextual retrieval research."
+  },
+  {
+   "start": 2387.68,
+   "duration": 4.159,
+   "text": "These models are kind of trained"
+  },
+  {
+   "start": 2389.599,
+   "duration": 4.081,
+   "text": "specifically for retrieval. They"
+  },
+  {
+   "start": 2391.839,
+   "duration": 3.921,
+   "text": "understand, you know, that what's a"
+  },
+  {
+   "start": 2393.68,
+   "duration": 4.32,
+   "text": "written policy and a paragraph about"
+  },
+  {
+   "start": 2395.76,
+   "duration": 3.68,
+   "text": "refund procedures are semantically"
+  },
+  {
+   "start": 2398.0,
+   "duration": 3.28,
+   "text": "closed. They understand this kind of a"
+  },
+  {
+   "start": 2399.44,
+   "duration": 7.76,
+   "text": "matching thing, right? It's it's very"
+  },
+  {
+   "start": 2401.28,
+   "duration": 8.48,
+   "text": "well researched. um they they they work"
+  },
+  {
+   "start": 2407.2,
+   "duration": 5.84,
+   "text": "on a level even though these terms do"
+  },
+  {
+   "start": 2409.76,
+   "duration": 4.88,
+   "text": "not have any matching words still they"
+  },
+  {
+   "start": 2413.04,
+   "duration": 3.68,
+   "text": "will figure out that okay these are the"
+  },
+  {
+   "start": 2414.64,
+   "duration": 4.56,
+   "text": "nearest neighbors"
+  },
+  {
+   "start": 2416.72,
+   "duration": 4.639,
+   "text": "okay so it's best to go with these kind"
+  },
+  {
+   "start": 2419.2,
+   "duration": 4.08,
+   "text": "of embedding models"
+  },
+  {
+   "start": 2421.359,
+   "duration": 3.76,
+   "text": "but for this demo I want to keep it zero"
+  },
+  {
+   "start": 2423.28,
+   "duration": 4.0,
+   "text": "cost and zero setup because people if"
+  },
+  {
+   "start": 2425.119,
+   "duration": 3.601,
+   "text": "they want to do it in their own system"
+  },
+  {
+   "start": 2427.28,
+   "duration": 3.6,
+   "text": "as well they will be able to do it"
+  },
+  {
+   "start": 2428.72,
+   "duration": 4.96,
+   "text": "without any cost so instead of calling"
+  },
+  {
+   "start": 2430.88,
+   "duration": 6.959,
+   "text": "an external embedding API we'll will use"
+  },
+  {
+   "start": 2433.68,
+   "duration": 7.28,
+   "text": "TF - IDF term frequency inverse document"
+  },
+  {
+   "start": 2437.839,
+   "duration": 5.441,
+   "text": "frequency from scikitlearn library. So"
+  },
+  {
+   "start": 2440.96,
+   "duration": 4.72,
+   "text": "TF is the old school version of"
+  },
+  {
+   "start": 2443.28,
+   "duration": 5.2,
+   "text": "embedding. Just I'm giving you context"
+  },
+  {
+   "start": 2445.68,
+   "duration": 5.28,
+   "text": "so that you don't get lost while I show"
+  },
+  {
+   "start": 2448.48,
+   "duration": 5.44,
+   "text": "it. So what it does this library is it"
+  },
+  {
+   "start": 2450.96,
+   "duration": 5.359,
+   "text": "turns text into vector based on word"
+  },
+  {
+   "start": 2453.92,
+   "duration": 4.8,
+   "text": "importance. Words that appear often in a"
+  },
+  {
+   "start": 2456.319,
+   "duration": 5.601,
+   "text": "chunk that but rarely across the whole"
+  },
+  {
+   "start": 2458.72,
+   "duration": 5.76,
+   "text": "corpus get higher weight. Yeah, it's"
+  },
+  {
+   "start": 2461.92,
+   "duration": 5.28,
+   "text": "it's the same BM25 family we talked"
+  },
+  {
+   "start": 2464.48,
+   "duration": 5.359,
+   "text": "about earlier. It it won't capture deep"
+  },
+  {
+   "start": 2467.2,
+   "duration": 4.56,
+   "text": "semantic similarity the way this"
+  },
+  {
+   "start": 2469.839,
+   "duration": 4.641,
+   "text": "embedding models like this Voyage or"
+  },
+  {
+   "start": 2471.76,
+   "duration": 5.52,
+   "text": "Gemini would. Yeah. But for teaching"
+  },
+  {
+   "start": 2474.48,
+   "duration": 4.72,
+   "text": "demo with a small distinct document, it"
+  },
+  {
+   "start": 2477.28,
+   "duration": 5.92,
+   "text": "shows the pipeline mechanics perfectly."
+  },
+  {
+   "start": 2479.2,
+   "duration": 8.399,
+   "text": "So we'll stick with that. Okay."
+  },
+  {
+   "start": 2483.2,
+   "duration": 8.32,
+   "text": "So uh with that in mind uh obviously you"
+  },
+  {
+   "start": 2487.599,
+   "duration": 5.76,
+   "text": "know uh the simple steps of ingesting,"
+  },
+  {
+   "start": 2491.52,
+   "duration": 3.92,
+   "text": "chunking, vectorizing, retrieval and"
+  },
+  {
+   "start": 2493.359,
+   "duration": 5.041,
+   "text": "then generating. We'll do all of these"
+  },
+  {
+   "start": 2495.44,
+   "duration": 4.48,
+   "text": "steps and uh yeah let's start with the"
+  },
+  {
+   "start": 2498.4,
+   "duration": 4.4,
+   "text": "demo."
+  },
+  {
+   "start": 2499.92,
+   "duration": 4.48,
+   "text": "Okay. So this is a very basic rack"
+  },
+  {
+   "start": 2502.8,
+   "duration": 4.319,
+   "text": "pipeline that I have created. Obviously"
+  },
+  {
+   "start": 2504.4,
+   "duration": 5.28,
+   "text": "it's just one file where I would show"
+  },
+  {
+   "start": 2507.119,
+   "duration": 4.72,
+   "text": "basically all the steps that uh we had"
+  },
+  {
+   "start": 2509.68,
+   "duration": 6.159,
+   "text": "covered. Obviously the rack pipeline"
+  },
+  {
+   "start": 2511.839,
+   "duration": 6.161,
+   "text": "will be much more complicated and much"
+  },
+  {
+   "start": 2515.839,
+   "duration": 3.841,
+   "text": "more expansive when it is in production"
+  },
+  {
+   "start": 2518.0,
+   "duration": 4.079,
+   "text": "system but here we need to understand"
+  },
+  {
+   "start": 2519.68,
+   "duration": 5.2,
+   "text": "what is happening right so I've kept it"
+  },
+  {
+   "start": 2522.079,
+   "duration": 4.881,
+   "text": "pretty pretty simple and easy to"
+  },
+  {
+   "start": 2524.88,
+   "duration": 4.8,
+   "text": "understand and step by step we'll go"
+  },
+  {
+   "start": 2526.96,
+   "duration": 4.96,
+   "text": "through what is happening where so this"
+  },
+  {
+   "start": 2529.68,
+   "duration": 4.56,
+   "text": "is a very simple diagram that you would"
+  },
+  {
+   "start": 2531.92,
+   "duration": 4.8,
+   "text": "see that that is happening in this demo"
+  },
+  {
+   "start": 2534.24,
+   "duration": 5.119,
+   "text": "so documents are there I'm going to show"
+  },
+  {
+   "start": 2536.72,
+   "duration": 5.119,
+   "text": "the documents which we chunk it there is"
+  },
+  {
+   "start": 2539.359,
+   "duration": 5.441,
+   "text": "chunks then we vectorize it and then the"
+  },
+  {
+   "start": 2541.839,
+   "duration": 5.28,
+   "text": "vectors the index. Now there will be a"
+  },
+  {
+   "start": 2544.8,
+   "duration": 5.36,
+   "text": "query the user query uh it will be"
+  },
+  {
+   "start": 2547.119,
+   "duration": 5.121,
+   "text": "vectorized then it will retrieve the top"
+  },
+  {
+   "start": 2550.16,
+   "duration": 5.439,
+   "text": "k chunks."
+  },
+  {
+   "start": 2552.24,
+   "duration": 5.359,
+   "text": "Yeah. And then we kind of add it to the"
+  },
+  {
+   "start": 2555.599,
+   "duration": 4.161,
+   "text": "context send it to claude and claude"
+  },
+  {
+   "start": 2557.599,
+   "duration": 3.601,
+   "text": "will give us the answer in that context."
+  },
+  {
+   "start": 2559.76,
+   "duration": 5.359,
+   "text": "So that is what we have understood till"
+  },
+  {
+   "start": 2561.2,
+   "duration": 6.96,
+   "text": "now. Now uh as I've already explained we"
+  },
+  {
+   "start": 2565.119,
+   "duration": 6.321,
+   "text": "uh for the for the retrieval is local"
+  },
+  {
+   "start": 2568.16,
+   "duration": 5.04,
+   "text": "and free TF IDF we would be using but if"
+  },
+  {
+   "start": 2571.44,
+   "duration": 5.84,
+   "text": "you want to use embedding model you can"
+  },
+  {
+   "start": 2573.2,
+   "duration": 5.68,
+   "text": "go for voyage or Gemini embeddings okay"
+  },
+  {
+   "start": 2577.28,
+   "duration": 4.559,
+   "text": "and the model that we would be using"
+  },
+  {
+   "start": 2578.88,
+   "duration": 5.76,
+   "text": "here for the calls to claude is haiku I"
+  },
+  {
+   "start": 2581.839,
+   "duration": 6.081,
+   "text": "don't I don't want to spend more than"
+  },
+  {
+   "start": 2584.64,
+   "duration": 5.679,
+   "text": "one cent or something um these are all"
+  },
+  {
+   "start": 2587.92,
+   "duration": 4.56,
+   "text": "basic stuffs about anthropic client and"
+  },
+  {
+   "start": 2590.319,
+   "duration": 4.321,
+   "text": "all those things right now The main part"
+  },
+  {
+   "start": 2592.48,
+   "duration": 3.68,
+   "text": "is the documents. Now I don't have"
+  },
+  {
+   "start": 2594.64,
+   "duration": 4.24,
+   "text": "physical I mean PDFs or something like"
+  },
+  {
+   "start": 2596.16,
+   "duration": 5.199,
+   "text": "that. This is just a collection of pros"
+  },
+  {
+   "start": 2598.88,
+   "duration": 4.479,
+   "text": "uh things over here. Yeah. Which I'm"
+  },
+  {
+   "start": 2601.359,
+   "duration": 3.76,
+   "text": "printing as documents. So there be there"
+  },
+  {
+   "start": 2603.359,
+   "duration": 3.361,
+   "text": "might be one document employee leave"
+  },
+  {
+   "start": 2605.119,
+   "duration": 4.24,
+   "text": "policy. Another one is remote work"
+  },
+  {
+   "start": 2606.72,
+   "duration": 4.32,
+   "text": "policy and expense reimbursement policy."
+  },
+  {
+   "start": 2609.359,
+   "duration": 3.521,
+   "text": "Now what is happening here is step one"
+  },
+  {
+   "start": 2611.04,
+   "duration": 4.799,
+   "text": "is chunking. We split the document into"
+  },
+  {
+   "start": 2612.88,
+   "duration": 4.56,
+   "text": "small overlapping pieces. Overlap 50"
+  },
+  {
+   "start": 2615.839,
+   "duration": 3.361,
+   "text": "characters here keep sentences from"
+  },
+  {
+   "start": 2617.44,
+   "duration": 3.44,
+   "text": "being cut in half at the boundary. So"
+  },
+  {
+   "start": 2619.2,
+   "duration": 5.44,
+   "text": "that's what we had discussed about the"
+  },
+  {
+   "start": 2620.88,
+   "duration": 7.76,
+   "text": "problem. Right? Now if you see over here"
+  },
+  {
+   "start": 2624.64,
+   "duration": 6.4,
+   "text": "we are uh chunking um chunk size is 200"
+  },
+  {
+   "start": 2628.64,
+   "duration": 5.76,
+   "text": "and overlap is 50. Now we are building"
+  },
+  {
+   "start": 2631.04,
+   "duration": 6.24,
+   "text": "the chunk list over here. If you see um"
+  },
+  {
+   "start": 2634.4,
+   "duration": 6.32,
+   "text": "for dock in documents for chunk in chunk"
+  },
+  {
+   "start": 2637.28,
+   "duration": 6.24,
+   "text": "text we are calling this. Now if you see"
+  },
+  {
+   "start": 2640.72,
+   "duration": 5.28,
+   "text": "all all chunks is nothing but a list."
+  },
+  {
+   "start": 2643.52,
+   "duration": 4.88,
+   "text": "But here we are appending the chunk with"
+  },
+  {
+   "start": 2646.0,
+   "duration": 4.24,
+   "text": "the source which is the document title."
+  },
+  {
+   "start": 2648.4,
+   "duration": 4.08,
+   "text": "Now if you remember we were kind of"
+  },
+  {
+   "start": 2650.24,
+   "duration": 4.56,
+   "text": "talking about context associated with"
+  },
+  {
+   "start": 2652.48,
+   "duration": 6.0,
+   "text": "the chunk. If you leave the chunk like"
+  },
+  {
+   "start": 2654.8,
+   "duration": 6.4,
+   "text": "it is you know like"
+  },
+  {
+   "start": 2658.48,
+   "duration": 4.48,
+   "text": "say like just leave it like randomly"
+  },
+  {
+   "start": 2661.2,
+   "duration": 5.28,
+   "text": "then you don't know which chunk would be"
+  },
+  {
+   "start": 2662.96,
+   "duration": 6.0,
+   "text": "f fetched for which query and that would"
+  },
+  {
+   "start": 2666.48,
+   "duration": 6.48,
+   "text": "create a problem. So you always"
+  },
+  {
+   "start": 2668.96,
+   "duration": 5.6,
+   "text": "associate the chunk with context"
+  },
+  {
+   "start": 2672.96,
+   "duration": 3.52,
+   "text": "particular context where it came from"
+  },
+  {
+   "start": 2674.56,
+   "duration": 4.88,
+   "text": "like the document title or something. So"
+  },
+  {
+   "start": 2676.48,
+   "duration": 4.4,
+   "text": "every context is sufficient on its own."
+  },
+  {
+   "start": 2679.44,
+   "duration": 3.919,
+   "text": "That's what we have been discussing,"
+  },
+  {
+   "start": 2680.88,
+   "duration": 4.479,
+   "text": "right? Uh in this video. Now going to"
+  },
+  {
+   "start": 2683.359,
+   "duration": 5.921,
+   "text": "step number two is indexing. Vectorize"
+  },
+  {
+   "start": 2685.359,
+   "duration": 5.681,
+   "text": "each chunk with TDF IDF. Okay. Each"
+  },
+  {
+   "start": 2689.28,
+   "duration": 4.319,
+   "text": "chunk becomes a sparse vector. One"
+  },
+  {
+   "start": 2691.04,
+   "duration": 4.72,
+   "text": "dimension per vocab vocabulary word"
+  },
+  {
+   "start": 2693.599,
+   "duration": 5.201,
+   "text": "valued by how distinctive that word is"
+  },
+  {
+   "start": 2695.76,
+   "duration": 4.8,
+   "text": "in this chunk versus the whole corpus."
+  },
+  {
+   "start": 2698.8,
+   "duration": 3.44,
+   "text": "But if you are going in production, you"
+  },
+  {
+   "start": 2700.56,
+   "duration": 5.36,
+   "text": "would obviously use a real embedding"
+  },
+  {
+   "start": 2702.24,
+   "duration": 6.32,
+   "text": "model. Now we are doing this TF IDF"
+  },
+  {
+   "start": 2705.92,
+   "duration": 5.28,
+   "text": "vectorizer. The stop words we are"
+  },
+  {
+   "start": 2708.56,
+   "duration": 5.84,
+   "text": "putting as English over here and we'll"
+  },
+  {
+   "start": 2711.2,
+   "duration": 5.28,
+   "text": "just convert it into vectors. Yeah. Now"
+  },
+  {
+   "start": 2714.4,
+   "duration": 4.56,
+   "text": "step number three is retrieve. Vectorize"
+  },
+  {
+   "start": 2716.48,
+   "duration": 4.4,
+   "text": "the question the same way. So we have a"
+  },
+  {
+   "start": 2718.96,
+   "duration": 3.84,
+   "text": "query that you would see. We will have"
+  },
+  {
+   "start": 2720.88,
+   "duration": 4.0,
+   "text": "different queries to deal with. Uh"
+  },
+  {
+   "start": 2722.8,
+   "duration": 4.16,
+   "text": "vectorize the question the same way."
+  },
+  {
+   "start": 2724.88,
+   "duration": 4.0,
+   "text": "Then rank every chunk by cosine"
+  },
+  {
+   "start": 2726.96,
+   "duration": 4.159,
+   "text": "similarity. If you remember the ranking"
+  },
+  {
+   "start": 2728.88,
+   "duration": 5.28,
+   "text": "thing that we discussed, right? We fetch"
+  },
+  {
+   "start": 2731.119,
+   "duration": 6.161,
+   "text": "the top chunks and we rank them to get"
+  },
+  {
+   "start": 2734.16,
+   "duration": 5.919,
+   "text": "even more clarity and even more accuracy"
+  },
+  {
+   "start": 2737.28,
+   "duration": 4.4,
+   "text": "by claude and not crowd claude's context"
+  },
+  {
+   "start": 2740.079,
+   "duration": 3.361,
+   "text": "with a lot of chunks. So that is what"
+  },
+  {
+   "start": 2741.68,
+   "duration": 5.36,
+   "text": "we're going to do there in this retrieve"
+  },
+  {
+   "start": 2743.44,
+   "duration": 7.76,
+   "text": "method. So the query it will accept and"
+  },
+  {
+   "start": 2747.04,
+   "duration": 5.84,
+   "text": "will receive the top three top k things"
+  },
+  {
+   "start": 2751.2,
+   "duration": 4.72,
+   "text": "right which we kept as three. So we'll"
+  },
+  {
+   "start": 2752.88,
+   "duration": 5.68,
+   "text": "rank the top three and return it back."
+  },
+  {
+   "start": 2755.92,
+   "duration": 5.199,
+   "text": "Now is nothing but generate. generate is"
+  },
+  {
+   "start": 2758.56,
+   "duration": 4.96,
+   "text": "just whatever chunks you receive you"
+  },
+  {
+   "start": 2761.119,
+   "duration": 4.641,
+   "text": "just fed it to claude and claude will"
+  },
+  {
+   "start": 2763.52,
+   "duration": 4.64,
+   "text": "understand your query based on the"
+  },
+  {
+   "start": 2765.76,
+   "duration": 5.12,
+   "text": "context that you also give uh from your"
+  },
+  {
+   "start": 2768.16,
+   "duration": 4.88,
+   "text": "rack pipeline and it will answer your"
+  },
+  {
+   "start": 2770.88,
+   "duration": 4.64,
+   "text": "question now if you see we have couple"
+  },
+  {
+   "start": 2773.04,
+   "duration": 5.52,
+   "text": "of questions over here"
+  },
+  {
+   "start": 2775.52,
+   "duration": 5.92,
+   "text": "um if you if I just go down how many"
+  },
+  {
+   "start": 2778.56,
+   "duration": 4.72,
+   "text": "days can I work remotely per week so"
+  },
+  {
+   "start": 2781.44,
+   "duration": 4.159,
+   "text": "it's a question that docs can answer"
+  },
+  {
+   "start": 2783.28,
+   "duration": 4.079,
+   "text": "this this this question is there in one"
+  },
+  {
+   "start": 2785.599,
+   "duration": 4.801,
+   "text": "of the documents now why am I telling"
+  },
+  {
+   "start": 2787.359,
+   "duration": 4.801,
+   "text": "this This is pretty interesting. Uh demo"
+  },
+  {
+   "start": 2790.4,
+   "duration": 5.28,
+   "text": "number two. Another question. What is"
+  },
+  {
+   "start": 2792.16,
+   "duration": 6.159,
+   "text": "the company's dress code? Now here the"
+  },
+  {
+   "start": 2795.68,
+   "duration": 4.08,
+   "text": "document in the document there is no uh"
+  },
+  {
+   "start": 2798.319,
+   "duration": 3.52,
+   "text": "information about this. So let's see"
+  },
+  {
+   "start": 2799.76,
+   "duration": 6.559,
+   "text": "what claude does. Does it hallucinate or"
+  },
+  {
+   "start": 2801.839,
+   "duration": 7.441,
+   "text": "what it does? Um yeah. So let's try this"
+  },
+  {
+   "start": 2806.319,
+   "duration": 6.081,
+   "text": "out. So I'm just going to"
+  },
+  {
+   "start": 2809.28,
+   "duration": 8.0,
+   "text": "um just run this out over here. I'm just"
+  },
+  {
+   "start": 2812.4,
+   "duration": 8.32,
+   "text": "maybe paste it. Yeah. Rackpipeline. py."
+  },
+  {
+   "start": 2817.28,
+   "duration": 5.44,
+   "text": "So it is indexed 11 chunks."
+  },
+  {
+   "start": 2820.72,
+   "duration": 4.639,
+   "text": "I just ran this file. Okay, don't get"
+  },
+  {
+   "start": 2822.72,
+   "duration": 4.0,
+   "text": "confused. We have this rack pipeline. py"
+  },
+  {
+   "start": 2825.359,
+   "duration": 3.441,
+   "text": "and I'm running in the virtual"
+  },
+  {
+   "start": 2826.72,
+   "duration": 3.52,
+   "text": "environment. So this you can activate or"
+  },
+  {
+   "start": 2828.8,
+   "duration": 3.6,
+   "text": "source the virtual environment and then"
+  },
+  {
+   "start": 2830.24,
+   "duration": 4.4,
+   "text": "run it directly. It's up to you just"
+  },
+  {
+   "start": 2832.4,
+   "duration": 3.919,
+   "text": "different way of running. Okay. So how"
+  },
+  {
+   "start": 2834.64,
+   "duration": 4.8,
+   "text": "many days can I work in a week? So"
+  },
+  {
+   "start": 2836.319,
+   "duration": 6.241,
+   "text": "retrieve chunks the R in the rag which"
+  },
+  {
+   "start": 2839.44,
+   "duration": 5.12,
+   "text": "is retrieval, right? So all employees"
+  },
+  {
+   "start": 2842.56,
+   "duration": 4.799,
+   "text": "may work remotely up to 3 days per week"
+  },
+  {
+   "start": 2844.56,
+   "duration": 6.4,
+   "text": "with manager approval. So it's kind of"
+  },
+  {
+   "start": 2847.359,
+   "duration": 6.72,
+   "text": "getting lost here or truncated. Um but"
+  },
+  {
+   "start": 2850.96,
+   "duration": 4.72,
+   "text": "yeah you can just say how much um you"
+  },
+  {
+   "start": 2854.079,
+   "duration": 4.801,
+   "text": "can allow for an answer so it doesn't"
+  },
+  {
+   "start": 2855.68,
+   "duration": 5.52,
+   "text": "get truncated. Now it is it is having a"
+  },
+  {
+   "start": 2858.88,
+   "duration": 3.84,
+   "text": "similarity of 0.07."
+  },
+  {
+   "start": 2861.2,
+   "duration": 4.24,
+   "text": "Employees are entitled to 20 days of"
+  },
+  {
+   "start": 2862.72,
+   "duration": 4.399,
+   "text": "paid annual leave per calendar year um"
+  },
+  {
+   "start": 2865.44,
+   "duration": 4.159,
+   "text": "within 10 days of something something it"
+  },
+  {
+   "start": 2867.119,
+   "duration": 4.561,
+   "text": "is fetching. According to the remote"
+  },
+  {
+   "start": 2869.599,
+   "duration": 4.801,
+   "text": "work policy, all employees may work"
+  },
+  {
+   "start": 2871.68,
+   "duration": 4.399,
+   "text": "remotely up to 3 days"
+  },
+  {
+   "start": 2874.4,
+   "duration": 3.84,
+   "text": "per week and then we are kind of"
+  },
+  {
+   "start": 2876.079,
+   "duration": 5.28,
+   "text": "counting the tokens and the cost which"
+  },
+  {
+   "start": 2878.24,
+   "duration": 5.04,
+   "text": "is pretty less. What is the company's"
+  },
+  {
+   "start": 2881.359,
+   "duration": 5.441,
+   "text": "dress code?"
+  },
+  {
+   "start": 2883.28,
+   "duration": 6.0,
+   "text": "Now if you see the similarity is 0.260."
+  },
+  {
+   "start": 2886.8,
+   "duration": 6.08,
+   "text": "Yeah. So remote work policies uh"
+  },
+  {
+   "start": 2889.28,
+   "duration": 5.6,
+   "text": "similarity is 20.260."
+  },
+  {
+   "start": 2892.88,
+   "duration": 3.92,
+   "text": "Expense reimbursement policy. The"
+  },
+  {
+   "start": 2894.88,
+   "duration": 4.8,
+   "text": "similarity is zero because there is"
+  },
+  {
+   "start": 2896.8,
+   "duration": 5.6,
+   "text": "nothing related to uh dress code in"
+  },
+  {
+   "start": 2899.68,
+   "duration": 4.8,
+   "text": "expense reimbursement policy. Expense"
+  },
+  {
+   "start": 2902.4,
+   "duration": 4.56,
+   "text": "reimbursement policy here also the"
+  },
+  {
+   "start": 2904.48,
+   "duration": 4.56,
+   "text": "similarity is zero. Okay. So the answer"
+  },
+  {
+   "start": 2906.96,
+   "duration": 3.84,
+   "text": "is the provided context does not contain"
+  },
+  {
+   "start": 2909.04,
+   "duration": 6.72,
+   "text": "information about the company's dress"
+  },
+  {
+   "start": 2910.8,
+   "duration": 8.559,
+   "text": "code because if you see over here yeah"
+  },
+  {
+   "start": 2915.76,
+   "duration": 6.079,
+   "text": "um see the documents there is nothing"
+  },
+  {
+   "start": 2919.359,
+   "duration": 4.0,
+   "text": "about dress code. There is information"
+  },
+  {
+   "start": 2921.839,
+   "duration": 3.601,
+   "text": "about expense reimbursement. There is"
+  },
+  {
+   "start": 2923.359,
+   "duration": 3.921,
+   "text": "information about remote work policy."
+  },
+  {
+   "start": 2925.44,
+   "duration": 3.679,
+   "text": "There is information about employee"
+  },
+  {
+   "start": 2927.28,
+   "duration": 5.839,
+   "text": "leave policy but nothing on rest code."
+  },
+  {
+   "start": 2929.119,
+   "duration": 7.761,
+   "text": "So as the context did not did not found"
+  },
+  {
+   "start": 2933.119,
+   "duration": 6.48,
+   "text": "we are not considering uh to actually"
+  },
+  {
+   "start": 2936.88,
+   "duration": 4.56,
+   "text": "make to hallucinate. Now you can keep it"
+  },
+  {
+   "start": 2939.599,
+   "duration": 3.681,
+   "text": "in the system prompt. Okay. It's very"
+  },
+  {
+   "start": 2941.44,
+   "duration": 3.679,
+   "text": "very important is part of the exam as"
+  },
+  {
+   "start": 2943.28,
+   "duration": 5.52,
+   "text": "well. If the exam says if there was"
+  },
+  {
+   "start": 2945.119,
+   "duration": 6.081,
+   "text": "nothing found in your um rag basically"
+  },
+  {
+   "start": 2948.8,
+   "duration": 5.519,
+   "text": "whatever the you have retrieved from rag"
+  },
+  {
+   "start": 2951.2,
+   "duration": 5.2,
+   "text": "then what you know the the the response"
+  },
+  {
+   "start": 2954.319,
+   "duration": 4.161,
+   "text": "should be to the user. You cannot just"
+  },
+  {
+   "start": 2956.4,
+   "duration": 5.199,
+   "text": "hallucinate and give back an answer."
+  },
+  {
+   "start": 2958.48,
+   "duration": 5.2,
+   "text": "then you should have a very nice"
+  },
+  {
+   "start": 2961.599,
+   "duration": 4.96,
+   "text": "constraint or a guardrail in your prompt"
+  },
+  {
+   "start": 2963.68,
+   "duration": 6.159,
+   "text": "saying that if the context is not found"
+  },
+  {
+   "start": 2966.559,
+   "duration": 6.081,
+   "text": "in the retrieved sources then you just"
+  },
+  {
+   "start": 2969.839,
+   "duration": 5.921,
+   "text": "say I don't have context or in this case"
+  },
+  {
+   "start": 2972.64,
+   "duration": 4.56,
+   "text": "sorry about that and in this case the"
+  },
+  {
+   "start": 2975.76,
+   "duration": 3.2,
+   "text": "provided context does not contain"
+  },
+  {
+   "start": 2977.2,
+   "duration": 4.32,
+   "text": "information about the company's dress"
+  },
+  {
+   "start": 2978.96,
+   "duration": 5.2,
+   "text": "code simple as that so I hope you"
+  },
+  {
+   "start": 2981.52,
+   "duration": 5.52,
+   "text": "understand how this thing works"
+  },
+  {
+   "start": 2984.16,
+   "duration": 4.56,
+   "text": "and um yeah that's what it is and if you"
+  },
+  {
+   "start": 2987.04,
+   "duration": 3.68,
+   "text": "see the cost is pretty pretty much"
+  },
+  {
+   "start": 2988.72,
+   "duration": 5.2,
+   "text": "negligible. I'm just doing one haiku"
+  },
+  {
+   "start": 2990.72,
+   "duration": 5.359,
+   "text": "call um and it's it's also calculating"
+  },
+  {
+   "start": 2993.92,
+   "duration": 4.0,
+   "text": "the tokens in and tokens out. I'll share"
+  },
+  {
+   "start": 2996.079,
+   "duration": 5.121,
+   "text": "the code anyways. You can just have a"
+  },
+  {
+   "start": 2997.92,
+   "duration": 4.88,
+   "text": "look and you can just try it out. Okay,"
+  },
+  {
+   "start": 3001.2,
+   "duration": 3.68,
+   "text": "now let's talk about now that was the"
+  },
+  {
+   "start": 3002.8,
+   "duration": 3.44,
+   "text": "demo. I hope you guys liked it and if"
+  },
+  {
+   "start": 3004.88,
+   "duration": 2.959,
+   "text": "you have any questions, please let me"
+  },
+  {
+   "start": 3006.24,
+   "duration": 4.96,
+   "text": "know. Now let's talk about the post"
+  },
+  {
+   "start": 3007.839,
+   "duration": 5.52,
+   "text": "refresh regardation diagnostic"
+  },
+  {
+   "start": 3011.2,
+   "duration": 4.159,
+   "text": "and this is the most important"
+  },
+  {
+   "start": 3013.359,
+   "duration": 4.161,
+   "text": "diagnostic pattern for the exam. I"
+  },
+  {
+   "start": 3015.359,
+   "duration": 5.361,
+   "text": "mentioned it in the hook and in the"
+  },
+  {
+   "start": 3017.52,
+   "duration": 6.4,
+   "text": "drill and it's worth"
+  },
+  {
+   "start": 3020.72,
+   "duration": 6.96,
+   "text": "talking about over here. Now, here's why"
+  },
+  {
+   "start": 3023.92,
+   "duration": 6.159,
+   "text": "this pattern exists. Okay, after a data"
+  },
+  {
+   "start": 3027.68,
+   "duration": 4.159,
+   "text": "refresh, several things can go wrong in"
+  },
+  {
+   "start": 3030.079,
+   "duration": 3.681,
+   "text": "the retrieval layer. That's why I told"
+  },
+  {
+   "start": 3031.839,
+   "duration": 4.081,
+   "text": "you check the retrieval whenever this"
+  },
+  {
+   "start": 3033.76,
+   "duration": 3.92,
+   "text": "kind of new documents come and the old"
+  },
+  {
+   "start": 3035.92,
+   "duration": 5.439,
+   "text": "gets stale and all those kind of"
+  },
+  {
+   "start": 3037.68,
+   "duration": 6.32,
+   "text": "scenarios. Now, what can go wrong in the"
+  },
+  {
+   "start": 3041.359,
+   "duration": 5.281,
+   "text": "retrieval layer? basically stale"
+  },
+  {
+   "start": 3044.0,
+   "duration": 5.28,
+   "text": "embeddings. So old document versions are"
+  },
+  {
+   "start": 3046.64,
+   "duration": 5.199,
+   "text": "still in the index, right? The new"
+  },
+  {
+   "start": 3049.28,
+   "duration": 6.799,
+   "text": "documents are added but the old"
+  },
+  {
+   "start": 3051.839,
+   "duration": 6.881,
+   "text": "embeddings were not removed. So now old"
+  },
+  {
+   "start": 3056.079,
+   "duration": 4.561,
+   "text": "and new kind of sources compete with"
+  },
+  {
+   "start": 3058.72,
+   "duration": 5.76,
+   "text": "each other and sometimes the old version"
+  },
+  {
+   "start": 3060.64,
+   "duration": 6.8,
+   "text": "wins. That is stale embeddings."
+  },
+  {
+   "start": 3064.48,
+   "duration": 6.32,
+   "text": "The second uh failure that can happen is"
+  },
+  {
+   "start": 3067.44,
+   "duration": 5.919,
+   "text": "broken chunk context. Okay. So if you're"
+  },
+  {
+   "start": 3070.8,
+   "duration": 5.92,
+   "text": "using contextual retrieval, the new"
+  },
+  {
+   "start": 3073.359,
+   "duration": 5.441,
+   "text": "documents may not have had their context"
+  },
+  {
+   "start": 3076.72,
+   "duration": 4.96,
+   "text": "generated correctly."
+  },
+  {
+   "start": 3078.8,
+   "duration": 6.08,
+   "text": "So the chunks went in kind of naked"
+  },
+  {
+   "start": 3081.68,
+   "duration": 6.0,
+   "text": "without the context prefix that helps"
+  },
+  {
+   "start": 3084.88,
+   "duration": 5.52,
+   "text": "the retrieval find them. That is broken"
+  },
+  {
+   "start": 3087.68,
+   "duration": 4.639,
+   "text": "chunk context. There is"
+  },
+  {
+   "start": 3090.4,
+   "duration": 5.28,
+   "text": "the the chunks have broken up with the"
+  },
+  {
+   "start": 3092.319,
+   "duration": 6.641,
+   "text": "context basically in simple terms."
+  },
+  {
+   "start": 3095.68,
+   "duration": 8.72,
+   "text": "And the third thing I would say is index"
+  },
+  {
+   "start": 3098.96,
+   "duration": 8.56,
+   "text": "drift. So the BM25 index was rebuilt"
+  },
+  {
+   "start": 3104.4,
+   "duration": 5.52,
+   "text": "but the vector index was not and it can"
+  },
+  {
+   "start": 3107.52,
+   "duration": 6.72,
+   "text": "be vice versa as well. So the two"
+  },
+  {
+   "start": 3109.92,
+   "duration": 6.24,
+   "text": "indices are out of sync. So the chunks"
+  },
+  {
+   "start": 3114.24,
+   "duration": 5.92,
+   "text": "might be going haywire over here and"
+  },
+  {
+   "start": 3116.16,
+   "duration": 7.84,
+   "text": "there. Changed document structure or"
+  },
+  {
+   "start": 3120.16,
+   "duration": 6.64,
+   "text": "change structure. Now the new documents"
+  },
+  {
+   "start": 3124.0,
+   "duration": 4.64,
+   "text": "have a different format. your document"
+  },
+  {
+   "start": 3126.8,
+   "duration": 3.2,
+   "text": "structure aware chunker that you had"
+  },
+  {
+   "start": 3128.64,
+   "duration": 3.84,
+   "text": "used that is one of the chunking"
+  },
+  {
+   "start": 3130.0,
+   "duration": 5.599,
+   "text": "techniques or strategies right was tuned"
+  },
+  {
+   "start": 3132.48,
+   "duration": 4.8,
+   "text": "for the old format and it doesn't pass"
+  },
+  {
+   "start": 3135.599,
+   "duration": 3.76,
+   "text": "the new one correctly so that is also"
+  },
+  {
+   "start": 3137.28,
+   "duration": 4.64,
+   "text": "one of the problems or the failures but"
+  },
+  {
+   "start": 3139.359,
+   "duration": 4.96,
+   "text": "in every one of these cases the problem"
+  },
+  {
+   "start": 3141.92,
+   "duration": 3.76,
+   "text": "is upstream of the model claude is doing"
+  },
+  {
+   "start": 3144.319,
+   "duration": 2.721,
+   "text": "exactly what it should there is no"
+  },
+  {
+   "start": 3145.68,
+   "duration": 3.76,
+   "text": "problem with the system prompt or with"
+  },
+  {
+   "start": 3147.04,
+   "duration": 4.079,
+   "text": "claude yeah it's doing its job"
+  },
+  {
+   "start": 3149.44,
+   "duration": 3.6,
+   "text": "generating an answer from the context it"
+  },
+  {
+   "start": 3151.119,
+   "duration": 4.24,
+   "text": "was given now the context is wrong"
+  },
+  {
+   "start": 3153.04,
+   "duration": 5.44,
+   "text": "because the retrieval is broken so you"
+  },
+  {
+   "start": 3155.359,
+   "duration": 5.601,
+   "text": "need to first diagnose the retrieval as"
+  },
+  {
+   "start": 3158.48,
+   "duration": 5.359,
+   "text": "we did in the previous exam drills and"
+  },
+  {
+   "start": 3160.96,
+   "duration": 5.119,
+   "text": "other case studies."
+  },
+  {
+   "start": 3163.839,
+   "duration": 4.401,
+   "text": "Okay, so that's the exam map domain"
+  },
+  {
+   "start": 3166.079,
+   "duration": 5.841,
+   "text": "number three. Objective numbers 3.5 and"
+  },
+  {
+   "start": 3168.24,
+   "duration": 5.92,
+   "text": "3.6. Uh the post refresh degradation"
+  },
+  {
+   "start": 3171.92,
+   "duration": 4.08,
+   "text": "diagnostic is a direct test of whether"
+  },
+  {
+   "start": 3174.16,
+   "duration": 4.159,
+   "text": "you understand the rack pipelines"
+  },
+  {
+   "start": 3176.0,
+   "duration": 4.64,
+   "text": "failure modes. Okay. The correct first"
+  },
+  {
+   "start": 3178.319,
+   "duration": 5.201,
+   "text": "step is always to investigate the"
+  },
+  {
+   "start": 3180.64,
+   "duration": 6.64,
+   "text": "retrieval layer, not re-engineer the"
+  },
+  {
+   "start": 3183.52,
+   "duration": 6.0,
+   "text": "prompt. Okay, not switch models or add"
+  },
+  {
+   "start": 3187.28,
+   "duration": 5.36,
+   "text": "disclaimers and whatn not. All of those"
+  },
+  {
+   "start": 3189.52,
+   "duration": 5.839,
+   "text": "stupid things. Don't do that."
+  },
+  {
+   "start": 3192.64,
+   "duration": 5.84,
+   "text": "Okay, so that was it for this lecture or"
+  },
+  {
+   "start": 3195.359,
+   "duration": 5.521,
+   "text": "this lesson. The key takeaways are rag"
+  },
+  {
+   "start": 3198.48,
+   "duration": 5.04,
+   "text": "is an architectural pattern not a"
+  },
+  {
+   "start": 3200.88,
+   "duration": 4.4,
+   "text": "feature. Remember that. So you choose it"
+  },
+  {
+   "start": 3203.52,
+   "duration": 4.64,
+   "text": "when your knowledge base exceeds what"
+  },
+  {
+   "start": 3205.28,
+   "duration": 5.039,
+   "text": "fits in the context window when data"
+  },
+  {
+   "start": 3208.16,
+   "duration": 5.439,
+   "text": "kind of changes frequently or when you"
+  },
+  {
+   "start": 3210.319,
+   "duration": 6.561,
+   "text": "need grounding in authorative sources."
+  },
+  {
+   "start": 3213.599,
+   "duration": 6.321,
+   "text": "under 200k tokens consider putting it"
+  },
+  {
+   "start": 3216.88,
+   "duration": 6.08,
+   "text": "all in one prompt instead don't go for"
+  },
+  {
+   "start": 3219.92,
+   "duration": 5.679,
+   "text": "rag I would say chunking determines your"
+  },
+  {
+   "start": 3222.96,
+   "duration": 5.119,
+   "text": "quality ceiling so we have fixed size"
+  },
+  {
+   "start": 3225.599,
+   "duration": 4.801,
+   "text": "for uniform text semantic for flowing"
+  },
+  {
+   "start": 3228.079,
+   "duration": 5.201,
+   "text": "pros document structure aware for"
+  },
+  {
+   "start": 3230.4,
+   "duration": 4.24,
+   "text": "structured documents if your chunk lose"
+  },
+  {
+   "start": 3233.28,
+   "duration": 3.2,
+   "text": "their meaning in isolation your"
+  },
+  {
+   "start": 3234.64,
+   "duration": 4.8,
+   "text": "retrieval is broken before it starts"
+  },
+  {
+   "start": 3236.48,
+   "duration": 5.28,
+   "text": "always associate your chunks with proper"
+  },
+  {
+   "start": 3239.44,
+   "duration": 4.8,
+   "text": "context"
+  },
+  {
+   "start": 3241.76,
+   "duration": 4.319,
+   "text": "match retrieval strategy to data shape."
+  },
+  {
+   "start": 3244.24,
+   "duration": 3.28,
+   "text": "What does that mean? Dense retrieval, we"
+  },
+  {
+   "start": 3246.079,
+   "duration": 3.04,
+   "text": "have lot of retrieval strategies. So"
+  },
+  {
+   "start": 3247.52,
+   "duration": 4.72,
+   "text": "dense retrieval is for natural language"
+  },
+  {
+   "start": 3249.119,
+   "duration": 4.72,
+   "text": "queries. BM25 or sparse for exact"
+  },
+  {
+   "start": 3252.24,
+   "duration": 5.44,
+   "text": "identifier like error codes or something"
+  },
+  {
+   "start": 3253.839,
+   "duration": 5.921,
+   "text": "like that. Hybrid for mixed corpus"
+  },
+  {
+   "start": 3257.68,
+   "duration": 4.24,
+   "text": "and metadata filtering for scoped"
+  },
+  {
+   "start": 3259.76,
+   "duration": 5.839,
+   "text": "searches or filtering."
+  },
+  {
+   "start": 3261.92,
+   "duration": 7.439,
+   "text": "Now contextual retrieval plus re-ranking"
+  },
+  {
+   "start": 3265.599,
+   "duration": 6.401,
+   "text": "is the production grade stack about 67%"
+  },
+  {
+   "start": 3269.359,
+   "duration": 6.641,
+   "text": "decrease in failure reduction."
+  },
+  {
+   "start": 3272.0,
+   "duration": 6.319,
+   "text": "Yeah. Now when rag breaks after a data"
+  },
+  {
+   "start": 3276.0,
+   "duration": 5.359,
+   "text": "refresh, investigate the retrieval"
+  },
+  {
+   "start": 3278.319,
+   "duration": 5.201,
+   "text": "first, not the prompt, not the model."
+  },
+  {
+   "start": 3281.359,
+   "duration": 4.321,
+   "text": "The retrieval pipeline is almost always"
+  },
+  {
+   "start": 3283.52,
+   "duration": 5.68,
+   "text": "the root cause when nothing else has"
+  },
+  {
+   "start": 3285.68,
+   "duration": 5.04,
+   "text": "changed. So all of these key takeaways"
+  },
+  {
+   "start": 3289.2,
+   "duration": 3.2,
+   "text": "kind of remember, go through it,"
+  },
+  {
+   "start": 3290.72,
+   "duration": 5.04,
+   "text": "understand it, don't have to mug or mug"
+  },
+  {
+   "start": 3292.4,
+   "duration": 6.159,
+   "text": "mug it up or anything. It's uh concepts"
+  },
+  {
+   "start": 3295.76,
+   "duration": 4.079,
+   "text": "intuition and as you practice more and"
+  },
+  {
+   "start": 3298.559,
+   "duration": 3.52,
+   "text": "more questions and understand the"
+  },
+  {
+   "start": 3299.839,
+   "duration": 4.72,
+   "text": "concepts you would gain more confidence"
+  },
+  {
+   "start": 3302.079,
+   "duration": 4.561,
+   "text": "I would say. Okay. So next up is"
+  },
+  {
+   "start": 3304.559,
+   "duration": 5.201,
+   "text": "connection protocols authentication and"
+  },
+  {
+   "start": 3306.64,
+   "duration": 5.199,
+   "text": "capability bloat. So that was this was"
+  },
+  {
+   "start": 3309.76,
+   "duration": 5.599,
+   "text": "about the rack pipeline from documents"
+  },
+  {
+   "start": 3311.839,
+   "duration": 5.361,
+   "text": "to chunks to actors to answers. Um and"
+  },
+  {
+   "start": 3315.359,
+   "duration": 3.521,
+   "text": "you exactly now know what the exam will"
+  },
+  {
+   "start": 3317.2,
+   "duration": 3.84,
+   "text": "test you on this. Now in the next"
+  },
+  {
+   "start": 3318.88,
+   "duration": 4.32,
+   "text": "episode we are staying in domain 3"
+  },
+  {
+   "start": 3321.04,
+   "duration": 4.64,
+   "text": "integration but shifting from retrieval"
+  },
+  {
+   "start": 3323.2,
+   "duration": 4.96,
+   "text": "to other integration decisions. The exam"
+  },
+  {
+   "start": 3325.68,
+   "duration": 4.639,
+   "text": "tests when to use MCP versus a direct"
+  },
+  {
+   "start": 3328.16,
+   "duration": 3.919,
+   "text": "API call versus agent to agent"
+  },
+  {
+   "start": 3330.319,
+   "duration": 4.401,
+   "text": "communication. How to lock down"
+  },
+  {
+   "start": 3332.079,
+   "duration": 6.561,
+   "text": "authentication in agentic systems and"
+  },
+  {
+   "start": 3334.72,
+   "duration": 7.119,
+   "text": "the capability bloat trap. Yeah. Um"
+  },
+  {
+   "start": 3338.64,
+   "duration": 6.88,
+   "text": "yeah, if this episode you are liking it"
+  },
+  {
+   "start": 3341.839,
+   "duration": 5.361,
+   "text": "and it is helping you um please hit a"
+  },
+  {
+   "start": 3345.52,
+   "duration": 4.559,
+   "text": "like and subscribe and share it with"
+  },
+  {
+   "start": 3347.2,
+   "duration": 4.879,
+   "text": "your colleagues. Um and best of luck for"
+  },
+  {
+   "start": 3350.079,
+   "duration": 3.52,
+   "text": "your preparation. I'll see you in the"
+  },
+  {
+   "start": 3352.079,
+   "duration": 4.961,
+   "text": "next one. Till then have a nice day."
+  },
+  {
+   "start": 3353.599,
+   "duration": 3.441,
+   "text": "Take care. Bye-bye."
+  }
+ ]
+}

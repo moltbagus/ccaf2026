@@ -1,0 +1,7858 @@
+{
+ "video_id": "0JmZuBX0s9Y",
+ "episode": "Ep 05",
+ "title": "Subagents & Multi-Agent Orchestration",
+ "lane": "ccdv-f",
+ "segments": [
+  {
+   "start": 2.639,
+   "duration": 5.521,
+   "text": "Welcome to this lesson. So, as you can"
+  },
+  {
+   "start": 5.839,
+   "duration": 5.92,
+   "text": "see on the screen for this particular"
+  },
+  {
+   "start": 8.16,
+   "duration": 6.399,
+   "text": "episode, we're going to, you know, kind"
+  },
+  {
+   "start": 11.759,
+   "duration": 4.481,
+   "text": "of built a squad of agents, right?"
+  },
+  {
+   "start": 14.559,
+   "duration": 4.88,
+   "text": "Because till now, what we were building"
+  },
+  {
+   "start": 16.24,
+   "duration": 5.76,
+   "text": "was a single agent and we kind of put in"
+  },
+  {
+   "start": 19.439,
+   "duration": 4.481,
+   "text": "a lot of tools, uh, you know, a lot of"
+  },
+  {
+   "start": 22.0,
+   "duration": 5.199,
+   "text": "hooks and all of those things we did,"
+  },
+  {
+   "start": 23.92,
+   "duration": 5.279,
+   "text": "right? So a lot of things we're going to"
+  },
+  {
+   "start": 27.199,
+   "duration": 5.441,
+   "text": "learn in this lesson which are very very"
+  },
+  {
+   "start": 29.199,
+   "duration": 6.081,
+   "text": "important from an exam perspective right"
+  },
+  {
+   "start": 32.64,
+   "duration": 4.64,
+   "text": "and also in your day-to-day work and one"
+  },
+  {
+   "start": 35.28,
+   "duration": 5.599,
+   "text": "very important thing I just want to tell"
+  },
+  {
+   "start": 37.28,
+   "duration": 7.119,
+   "text": "that uh this episode will unlock nearly"
+  },
+  {
+   "start": 40.879,
+   "duration": 5.441,
+   "text": "9.4% 4% of the exam right this will"
+  },
+  {
+   "start": 44.399,
+   "duration": 4.48,
+   "text": "cover this this single episode itself"
+  },
+  {
+   "start": 46.32,
+   "duration": 7.04,
+   "text": "around 10% of the exam this single"
+  },
+  {
+   "start": 48.879,
+   "duration": 6.641,
+   "text": "episode is going to cover right so um"
+  },
+  {
+   "start": 53.36,
+   "duration": 4.24,
+   "text": "we're going to have we're going to start"
+  },
+  {
+   "start": 55.52,
+   "duration": 5.679,
+   "text": "from having a single agent we're going"
+  },
+  {
+   "start": 57.6,
+   "duration": 5.92,
+   "text": "to then you know kind of expand our"
+  },
+  {
+   "start": 61.199,
+   "duration": 4.721,
+   "text": "domain with a domain with like like a"
+  },
+  {
+   "start": 63.52,
+   "duration": 4.0,
+   "text": "couple of sub aents or more sub aents"
+  },
+  {
+   "start": 65.92,
+   "duration": 3.76,
+   "text": "then there's going to be a coordinator"
+  },
+  {
+   "start": 67.52,
+   "duration": 4.16,
+   "text": "who will be coordinating the sub aents"
+  },
+  {
+   "start": 69.68,
+   "duration": 3.6,
+   "text": "and we're going to do a lot of"
+  },
+  {
+   "start": 71.68,
+   "duration": 3.68,
+   "text": "And we're going to see parallelism in"
+  },
+  {
+   "start": 73.28,
+   "duration": 4.0,
+   "text": "action. The sub aents will work in"
+  },
+  {
+   "start": 75.36,
+   "duration": 3.439,
+   "text": "parallel and the coordinator will"
+  },
+  {
+   "start": 77.28,
+   "duration": 4.0,
+   "text": "coordinate among them. And we're going"
+  },
+  {
+   "start": 78.799,
+   "duration": 4.721,
+   "text": "to learn a lot of concepts and all these"
+  },
+  {
+   "start": 81.28,
+   "duration": 4.4,
+   "text": "things we're going to do live as we are"
+  },
+  {
+   "start": 83.52,
+   "duration": 5.919,
+   "text": "continuing with this course. So please"
+  },
+  {
+   "start": 85.68,
+   "duration": 6.16,
+   "text": "stay tuned to learn a lot of new things."
+  },
+  {
+   "start": 89.439,
+   "duration": 5.68,
+   "text": "Okay. Now"
+  },
+  {
+   "start": 91.84,
+   "duration": 6.239,
+   "text": "um so the just to recap the last four"
+  },
+  {
+   "start": 95.119,
+   "duration": 6.0,
+   "text": "episode we were building our PR review"
+  },
+  {
+   "start": 98.079,
+   "duration": 4.961,
+   "text": "agent right we first started with a dock"
+  },
+  {
+   "start": 101.119,
+   "duration": 5.36,
+   "text": "string checker"
+  },
+  {
+   "start": 103.04,
+   "duration": 5.84,
+   "text": "right uh then we had a tool a PR"
+  },
+  {
+   "start": 106.479,
+   "duration": 4.241,
+   "text": "metadata fetcher a component you know"
+  },
+  {
+   "start": 108.88,
+   "duration": 5.76,
+   "text": "there was a there was a comment poster"
+  },
+  {
+   "start": 110.72,
+   "duration": 7.359,
+   "text": "not component so PR comment poster and"
+  },
+  {
+   "start": 114.64,
+   "duration": 7.28,
+   "text": "then we had added three separate books"
+  },
+  {
+   "start": 118.079,
+   "duration": 6.4,
+   "text": "right and one agent it was doing all of"
+  },
+  {
+   "start": 121.92,
+   "duration": 4.159,
+   "text": "that in a single conversation or one"
+  },
+  {
+   "start": 124.479,
+   "duration": 4.4,
+   "text": "conversation."
+  },
+  {
+   "start": 126.079,
+   "duration": 6.16,
+   "text": "That is correct, right?"
+  },
+  {
+   "start": 128.879,
+   "duration": 5.761,
+   "text": "But it is correct right up to a point it"
+  },
+  {
+   "start": 132.239,
+   "duration": 4.401,
+   "text": "doesn't right because every new"
+  },
+  {
+   "start": 134.64,
+   "duration": 5.12,
+   "text": "capability that you bolt into a single"
+  },
+  {
+   "start": 136.64,
+   "duration": 5.52,
+   "text": "agent means along a system prompt a"
+  },
+  {
+   "start": 139.76,
+   "duration": 4.24,
+   "text": "bigger context window um you know"
+  },
+  {
+   "start": 142.16,
+   "duration": 4.079,
+   "text": "there's a lot of tool results which will"
+  },
+  {
+   "start": 144.0,
+   "duration": 4.879,
+   "text": "eat up the context window and it doesn't"
+  },
+  {
+   "start": 146.239,
+   "duration": 6.481,
+   "text": "really you know kind of need for the"
+  },
+  {
+   "start": 148.879,
+   "duration": 5.121,
+   "text": "current step right and um there is a"
+  },
+  {
+   "start": 152.72,
+   "duration": 4.159,
+   "text": "very important thing that you need to"
+  },
+  {
+   "start": 154.0,
+   "duration": 6.72,
+   "text": "understand and it's a very sneaky one"
+  },
+  {
+   "start": 156.879,
+   "duration": 8.08,
+   "text": "now a single point of failure"
+  },
+  {
+   "start": 160.72,
+   "duration": 7.44,
+   "text": "um will completely break your agentic"
+  },
+  {
+   "start": 164.959,
+   "duration": 6.801,
+   "text": "system. You have to remember that"
+  },
+  {
+   "start": 168.16,
+   "duration": 4.96,
+   "text": "right. Um and that is very very"
+  },
+  {
+   "start": 171.76,
+   "duration": 3.36,
+   "text": "important to understand because as"
+  },
+  {
+   "start": 173.12,
+   "duration": 3.68,
+   "text": "you're delegating a lot of work to a"
+  },
+  {
+   "start": 175.12,
+   "duration": 3.839,
+   "text": "single agent if there is a single point"
+  },
+  {
+   "start": 176.8,
+   "duration": 4.719,
+   "text": "of failure"
+  },
+  {
+   "start": 178.959,
+   "duration": 4.481,
+   "text": "um then there is no other agent or any"
+  },
+  {
+   "start": 181.519,
+   "duration": 3.601,
+   "text": "coordinator to pass it on because it's"
+  },
+  {
+   "start": 183.44,
+   "duration": 4.56,
+   "text": "just a single agent. it will return the"
+  },
+  {
+   "start": 185.12,
+   "duration": 4.8,
+   "text": "error and it will just maybe"
+  },
+  {
+   "start": 188.0,
+   "duration": 5.44,
+   "text": "uh just cancel off the operation or you"
+  },
+  {
+   "start": 189.92,
+   "duration": 6.08,
+   "text": "know drop the operation. Yeah."
+  },
+  {
+   "start": 193.44,
+   "duration": 4.879,
+   "text": "And what if you have multiple agent? So"
+  },
+  {
+   "start": 196.0,
+   "duration": 6.0,
+   "text": "you ask one agent to check for let's say"
+  },
+  {
+   "start": 198.319,
+   "duration": 5.521,
+   "text": "missing dock strings. Um you know then"
+  },
+  {
+   "start": 202.0,
+   "duration": 5.519,
+   "text": "there will be another agent for prompt"
+  },
+  {
+   "start": 203.84,
+   "duration": 5.679,
+   "text": "injection or security kind of stuff and"
+  },
+  {
+   "start": 207.519,
+   "duration": 3.681,
+   "text": "another agent who would basically put"
+  },
+  {
+   "start": 209.519,
+   "duration": 3.28,
+   "text": "the comments in the PR something like"
+  },
+  {
+   "start": 211.2,
+   "duration": 3.599,
+   "text": "that. Just an idea. We're going to"
+  },
+  {
+   "start": 212.799,
+   "duration": 5.841,
+   "text": "explore it in detail as we move on in"
+  },
+  {
+   "start": 214.799,
+   "duration": 6.08,
+   "text": "this episode. Right? So now what you're"
+  },
+  {
+   "start": 218.64,
+   "duration": 5.92,
+   "text": "doing is you're kind of segregating the"
+  },
+  {
+   "start": 220.879,
+   "duration": 7.36,
+   "text": "tasks into specialized sub agent. So"
+  },
+  {
+   "start": 224.56,
+   "duration": 6.72,
+   "text": "even if for example the comment posting"
+  },
+  {
+   "start": 228.239,
+   "duration": 5.36,
+   "text": "sub agent fails to work or it kind of"
+  },
+  {
+   "start": 231.28,
+   "duration": 6.48,
+   "text": "went into some kind of error state but"
+  },
+  {
+   "start": 233.599,
+   "duration": 7.601,
+   "text": "still your dock string checker and your"
+  },
+  {
+   "start": 237.76,
+   "duration": 5.28,
+   "text": "um maybe your security uh sub agent"
+  },
+  {
+   "start": 241.2,
+   "duration": 3.759,
+   "text": "which is basically is figuring out the"
+  },
+  {
+   "start": 243.04,
+   "duration": 4.24,
+   "text": "security stuffs they are still doing it"
+  },
+  {
+   "start": 244.959,
+   "duration": 4.321,
+   "text": "right but if you're putting it in one"
+  },
+  {
+   "start": 247.28,
+   "duration": 4.48,
+   "text": "agent like we have right now so you are"
+  },
+  {
+   "start": 249.28,
+   "duration": 5.519,
+   "text": "kind of betting all three on the same"
+  },
+  {
+   "start": 251.76,
+   "duration": 5.52,
+   "text": "train of thought. Yeah,"
+  },
+  {
+   "start": 254.799,
+   "duration": 4.881,
+   "text": "the whole way you are kind of betting"
+  },
+  {
+   "start": 257.28,
+   "duration": 4.72,
+   "text": "all of your money in one single agent."
+  },
+  {
+   "start": 259.68,
+   "duration": 4.239,
+   "text": "So, as I was talking it up, you know,"
+  },
+  {
+   "start": 262.0,
+   "duration": 3.6,
+   "text": "today we're going to split the job up."
+  },
+  {
+   "start": 263.919,
+   "duration": 5.28,
+   "text": "Yeah. We're going to build a coordinator"
+  },
+  {
+   "start": 265.6,
+   "duration": 6.319,
+   "text": "that delegates uh two specialists. Uh"
+  },
+  {
+   "start": 269.199,
+   "duration": 5.681,
+   "text": "they will be running in parallel. Yeah."
+  },
+  {
+   "start": 271.919,
+   "duration": 5.041,
+   "text": "And each will have their own clean head"
+  },
+  {
+   "start": 274.88,
+   "duration": 3.52,
+   "text": "space. And then what we're going to do"
+  },
+  {
+   "start": 276.96,
+   "duration": 5.76,
+   "text": "is we're going to aggregate what they"
+  },
+  {
+   "start": 278.4,
+   "duration": 7.12,
+   "text": "find into one review comment. Yeah. So"
+  },
+  {
+   "start": 282.72,
+   "duration": 5.36,
+   "text": "that is the concept of you know sub"
+  },
+  {
+   "start": 285.52,
+   "duration": 5.04,
+   "text": "aents that is multi-agent orchestration"
+  },
+  {
+   "start": 288.08,
+   "duration": 7.119,
+   "text": "and as I've already mentioned it is"
+  },
+  {
+   "start": 290.56,
+   "duration": 7.04,
+   "text": "around 9.4% 4% of the CCDVF exam which"
+  },
+  {
+   "start": 295.199,
+   "duration": 4.161,
+   "text": "is your cloud certified develop sorry"
+  },
+  {
+   "start": 297.6,
+   "duration": 5.52,
+   "text": "cloud certified developer foundations"
+  },
+  {
+   "start": 299.36,
+   "duration": 6.559,
+   "text": "exam right um so it's very very"
+  },
+  {
+   "start": 303.12,
+   "duration": 7.2,
+   "text": "important to understand"
+  },
+  {
+   "start": 305.919,
+   "duration": 7.681,
+   "text": "so now for what we're going to cover"
+  },
+  {
+   "start": 310.32,
+   "duration": 5.04,
+   "text": "today as you know um we are should be"
+  },
+  {
+   "start": 313.6,
+   "duration": 3.92,
+   "text": "completely clear with that we we want to"
+  },
+  {
+   "start": 315.36,
+   "duration": 4.399,
+   "text": "understand what a sub agent actually is"
+  },
+  {
+   "start": 317.52,
+   "duration": 3.84,
+   "text": "and the four things that buys you four"
+  },
+  {
+   "start": 319.759,
+   "duration": 3.681,
+   "text": "key points of a sub aent We're going to"
+  },
+  {
+   "start": 321.36,
+   "duration": 8.72,
+   "text": "explore next we're going to cover the"
+  },
+  {
+   "start": 323.44,
+   "duration": 8.56,
+   "text": "agent tool. Yeah. And uh basically um"
+  },
+  {
+   "start": 330.08,
+   "duration": 4.72,
+   "text": "and there is a one thing that I want to"
+  },
+  {
+   "start": 332.0,
+   "duration": 4.479,
+   "text": "point out. Uh there was one renaming"
+  },
+  {
+   "start": 334.8,
+   "duration": 4.0,
+   "text": "that happened in the official"
+  },
+  {
+   "start": 336.479,
+   "duration": 6.16,
+   "text": "documentations that I want to just point"
+  },
+  {
+   "start": 338.8,
+   "duration": 6.399,
+   "text": "that out in a few slide. Um it is a call"
+  },
+  {
+   "start": 342.639,
+   "duration": 4.641,
+   "text": "known as a task tool call. Now it has"
+  },
+  {
+   "start": 345.199,
+   "duration": 3.521,
+   "text": "been changed to agent right and we're"
+  },
+  {
+   "start": 347.28,
+   "duration": 3.68,
+   "text": "going to discuss that in detail. I'm"
+  },
+  {
+   "start": 348.72,
+   "duration": 3.919,
+   "text": "just pointing out earlier. So you guys"
+  },
+  {
+   "start": 350.96,
+   "duration": 4.079,
+   "text": "would understand okay we are up to date"
+  },
+  {
+   "start": 352.639,
+   "duration": 3.681,
+   "text": "in our syllabus and in our course. Next"
+  },
+  {
+   "start": 355.039,
+   "duration": 2.961,
+   "text": "we're going to talk about agent"
+  },
+  {
+   "start": 356.32,
+   "duration": 5.36,
+   "text": "definitions"
+  },
+  {
+   "start": 358.0,
+   "duration": 6.16,
+   "text": "right. Um then we're going to talk about"
+  },
+  {
+   "start": 361.68,
+   "duration": 5.28,
+   "text": "building two sub agent for a PR review"
+  },
+  {
+   "start": 364.16,
+   "duration": 4.96,
+   "text": "agent right um like a dock string"
+  },
+  {
+   "start": 366.96,
+   "duration": 4.72,
+   "text": "reviewer and a security reviewer. For"
+  },
+  {
+   "start": 369.12,
+   "duration": 4.72,
+   "text": "now let's keep it two sub agents. Uh if"
+  },
+  {
+   "start": 371.68,
+   "duration": 4.16,
+   "text": "you want to add a few more you can take"
+  },
+  {
+   "start": 373.84,
+   "duration": 3.6,
+   "text": "whatever code and the resources that I"
+  },
+  {
+   "start": 375.84,
+   "duration": 3.359,
+   "text": "provide and you can explore it on your"
+  },
+  {
+   "start": 377.44,
+   "duration": 2.8,
+   "text": "own."
+  },
+  {
+   "start": 379.199,
+   "duration": 3.681,
+   "text": "Right."
+  },
+  {
+   "start": 380.24,
+   "duration": 5.44,
+   "text": "and uh then we're going to wire them"
+  },
+  {
+   "start": 382.88,
+   "duration": 4.96,
+   "text": "into one coordinator and running them in"
+  },
+  {
+   "start": 385.68,
+   "duration": 5.12,
+   "text": "parallel and aggregating the result."
+  },
+  {
+   "start": 387.84,
+   "duration": 4.479,
+   "text": "Yeah. So the one and then we're going to"
+  },
+  {
+   "start": 390.8,
+   "duration": 3.76,
+   "text": "understand the one architectural"
+  },
+  {
+   "start": 392.319,
+   "duration": 4.641,
+   "text": "tradeoff that you know you're going to"
+  },
+  {
+   "start": 394.56,
+   "duration": 4.24,
+   "text": "face with the sub aent or the"
+  },
+  {
+   "start": 396.96,
+   "duration": 4.079,
+   "text": "multi-agent architecture. Yes. Obviously"
+  },
+  {
+   "start": 398.8,
+   "duration": 4.16,
+   "text": "there are pros and cons and both of them"
+  },
+  {
+   "start": 401.039,
+   "duration": 6.801,
+   "text": "we're going to try to understand right."
+  },
+  {
+   "start": 402.96,
+   "duration": 8.0,
+   "text": "So yeah let's move on."
+  },
+  {
+   "start": 407.84,
+   "duration": 4.799,
+   "text": "So where this fits the build um you know"
+  },
+  {
+   "start": 410.96,
+   "duration": 3.76,
+   "text": "uh in episode number one we had"
+  },
+  {
+   "start": 412.639,
+   "duration": 4.801,
+   "text": "handbuilt the agentic loop. In episode"
+  },
+  {
+   "start": 414.72,
+   "duration": 4.479,
+   "text": "number two we graduated that same agent"
+  },
+  {
+   "start": 417.44,
+   "duration": 3.12,
+   "text": "using the cloud agent SDK. We started"
+  },
+  {
+   "start": 419.199,
+   "duration": 4.4,
+   "text": "developing the same agent using the"
+  },
+  {
+   "start": 420.56,
+   "duration": 5.12,
+   "text": "cloud agent SDK. Um you know uh I think"
+  },
+  {
+   "start": 423.599,
+   "duration": 4.241,
+   "text": "this was the you know slide that was"
+  },
+  {
+   "start": 425.68,
+   "duration": 5.04,
+   "text": "pointing it out."
+  },
+  {
+   "start": 427.84,
+   "duration": 6.079,
+   "text": "Yeah that was the slide. Then in episode"
+  },
+  {
+   "start": 430.72,
+   "duration": 5.84,
+   "text": "number three what we did is we gave it a"
+  },
+  {
+   "start": 433.919,
+   "duration": 5.441,
+   "text": "custom capability uh dock string checker"
+  },
+  {
+   "start": 436.56,
+   "duration": 5.6,
+   "text": "right. uh and uh then we wired it using"
+  },
+  {
+   "start": 439.36,
+   "duration": 4.8,
+   "text": "a inprocess MCP server and in the next"
+  },
+  {
+   "start": 442.16,
+   "duration": 4.319,
+   "text": "episode in episode number four we"
+  },
+  {
+   "start": 444.16,
+   "duration": 6.319,
+   "text": "stopped kind of trusting the prompt"
+  },
+  {
+   "start": 446.479,
+   "duration": 5.521,
+   "text": "alone and built a lot of hooks right uh"
+  },
+  {
+   "start": 450.479,
+   "duration": 4.241,
+   "text": "basically what are hooks you can just"
+  },
+  {
+   "start": 452.0,
+   "duration": 4.88,
+   "text": "watch the previous episode um those are"
+  },
+  {
+   "start": 454.72,
+   "duration": 4.72,
+   "text": "nothing but like deterministic or"
+  },
+  {
+   "start": 456.88,
+   "duration": 5.039,
+   "text": "programmatic guard rails you know that"
+  },
+  {
+   "start": 459.44,
+   "duration": 4.64,
+   "text": "block the execution of tools based on"
+  },
+  {
+   "start": 461.919,
+   "duration": 5.601,
+   "text": "specific conditions some policy"
+  },
+  {
+   "start": 464.08,
+   "duration": 6.08,
+   "text": "violations or you know that you can use"
+  },
+  {
+   "start": 467.52,
+   "duration": 4.88,
+   "text": "it in a pre pre-tool use. Uh if you want"
+  },
+  {
+   "start": 470.16,
+   "duration": 4.56,
+   "text": "to normalize data or structure data, you"
+  },
+  {
+   "start": 472.4,
+   "duration": 6.639,
+   "text": "can use post tool us and so on and so"
+  },
+  {
+   "start": 474.72,
+   "duration": 6.64,
+   "text": "on, right? Um yeah. So by the end of the"
+  },
+  {
+   "start": 479.039,
+   "duration": 4.801,
+   "text": "episode 4, our single agent could check"
+  },
+  {
+   "start": 481.36,
+   "duration": 5.76,
+   "text": "like dock string coverage, pitch of PR's"
+  },
+  {
+   "start": 483.84,
+   "duration": 5.28,
+   "text": "metadata and post a review comment,"
+  },
+  {
+   "start": 487.12,
+   "duration": 3.919,
+   "text": "right? So all of the all of that is"
+  },
+  {
+   "start": 489.12,
+   "duration": 3.84,
+   "text": "still we're going to consider obviously"
+  },
+  {
+   "start": 491.039,
+   "duration": 3.84,
+   "text": "because we are building on the agent. So"
+  },
+  {
+   "start": 492.96,
+   "duration": 4.799,
+   "text": "if you are new and you are starting off"
+  },
+  {
+   "start": 494.879,
+   "duration": 5.121,
+   "text": "from this video, it is fine, right?"
+  },
+  {
+   "start": 497.759,
+   "duration": 4.801,
+   "text": "You're going to understand enough to"
+  },
+  {
+   "start": 500.0,
+   "duration": 4.639,
+   "text": "grasp the concept that we're going to uh"
+  },
+  {
+   "start": 502.56,
+   "duration": 3.919,
+   "text": "that I'm going to try to explain it to"
+  },
+  {
+   "start": 504.639,
+   "duration": 3.28,
+   "text": "you today. Even if you have any"
+  },
+  {
+   "start": 506.479,
+   "duration": 4.4,
+   "text": "questions, you can drop it down in the"
+  },
+  {
+   "start": 507.919,
+   "duration": 5.281,
+   "text": "comments or just watch the previous uh"
+  },
+  {
+   "start": 510.879,
+   "duration": 4.801,
+   "text": "kind of episodes or the lessons, right?"
+  },
+  {
+   "start": 513.2,
+   "duration": 6.639,
+   "text": "I hope that is uh kind of making sense."
+  },
+  {
+   "start": 515.68,
+   "duration": 6.239,
+   "text": "Yeah. So um the project structure that"
+  },
+  {
+   "start": 519.839,
+   "duration": 4.401,
+   "text": "you can see that if if I'm just going to"
+  },
+  {
+   "start": 521.919,
+   "duration": 4.801,
+   "text": "go to my visual studio code over here."
+  },
+  {
+   "start": 524.24,
+   "duration": 4.96,
+   "text": "So episode number five. So as I told you"
+  },
+  {
+   "start": 526.72,
+   "duration": 4.72,
+   "text": "the hooks and the tools right that we"
+  },
+  {
+   "start": 529.2,
+   "duration": 4.24,
+   "text": "had written in the previous lesson are"
+  },
+  {
+   "start": 531.44,
+   "duration": 4.32,
+   "text": "going to be carry forward because our"
+  },
+  {
+   "start": 533.44,
+   "duration": 4.56,
+   "text": "agent is going to use the same tools"
+  },
+  {
+   "start": 535.76,
+   "duration": 4.24,
+   "text": "right and they are going to use the same"
+  },
+  {
+   "start": 538.0,
+   "duration": 4.959,
+   "text": "set of hooks that we wrote in the"
+  },
+  {
+   "start": 540.0,
+   "duration": 5.279,
+   "text": "previous lesson just that we are adding"
+  },
+  {
+   "start": 542.959,
+   "duration": 4.0,
+   "text": "the you know concept of sub aents right"
+  },
+  {
+   "start": 545.279,
+   "duration": 3.601,
+   "text": "and that's the only thing we are doing"
+  },
+  {
+   "start": 546.959,
+   "duration": 4.481,
+   "text": "over here we are creating one"
+  },
+  {
+   "start": 548.88,
+   "duration": 5.28,
+   "text": "coordinator agent and two specialist sub"
+  },
+  {
+   "start": 551.44,
+   "duration": 4.8,
+   "text": "aent so please don't get confused all"
+  },
+  {
+   "start": 554.16,
+   "duration": 3.679,
+   "text": "the tools and hooks that we had written"
+  },
+  {
+   "start": 556.24,
+   "duration": 5.12,
+   "text": "in the previous lesson are going to"
+  },
+  {
+   "start": 557.839,
+   "duration": 6.801,
+   "text": "carry forward to here."
+  },
+  {
+   "start": 561.36,
+   "duration": 4.88,
+   "text": "Yeah. And a mental model or a real world"
+  },
+  {
+   "start": 564.64,
+   "duration": 4.08,
+   "text": "scenario. In a real world scenario,"
+  },
+  {
+   "start": 566.24,
+   "duration": 5.52,
+   "text": "where does this fit in? Because we you"
+  },
+  {
+   "start": 568.72,
+   "duration": 5.28,
+   "text": "not you're not going to go and uh um"
+  },
+  {
+   "start": 571.76,
+   "duration": 4.0,
+   "text": "just create sub aents as you like,"
+  },
+  {
+   "start": 574.0,
+   "duration": 3.92,
+   "text": "right? You have to give a proper use"
+  },
+  {
+   "start": 575.76,
+   "duration": 4.0,
+   "text": "case maybe to a manager or someone for"
+  },
+  {
+   "start": 577.92,
+   "duration": 3.68,
+   "text": "someone you are or a stakeholder for"
+  },
+  {
+   "start": 579.76,
+   "duration": 4.24,
+   "text": "which you are building this agentic"
+  },
+  {
+   "start": 581.6,
+   "duration": 3.919,
+   "text": "system. So"
+  },
+  {
+   "start": 584.0,
+   "duration": 4.0,
+   "text": "just think about it. You would not"
+  },
+  {
+   "start": 585.519,
+   "duration": 4.401,
+   "text": "review a PR alone, right? There are"
+  },
+  {
+   "start": 588.0,
+   "duration": 4.399,
+   "text": "there is an architect who do does a high"
+  },
+  {
+   "start": 589.92,
+   "duration": 4.8,
+   "text": "level review or uh you know uh the"
+  },
+  {
+   "start": 592.399,
+   "duration": 4.721,
+   "text": "things there are a pair of senior"
+  },
+  {
+   "start": 594.72,
+   "duration": 4.559,
+   "text": "developers who would do uh you know the"
+  },
+  {
+   "start": 597.12,
+   "duration": 4.719,
+   "text": "syntax is correct or not. Uh and there"
+  },
+  {
+   "start": 599.279,
+   "duration": 4.24,
+   "text": "would be an security guy"
+  },
+  {
+   "start": 601.839,
+   "duration": 3.921,
+   "text": "you know a couple of people who would"
+  },
+  {
+   "start": 603.519,
+   "duration": 4.481,
+   "text": "kind of review it for any security flaws"
+  },
+  {
+   "start": 605.76,
+   "duration": 5.36,
+   "text": "and there might be some QAs right who"
+  },
+  {
+   "start": 608.0,
+   "duration": 6.16,
+   "text": "might test it for some you know some QA"
+  },
+  {
+   "start": 611.12,
+   "duration": 6.32,
+   "text": "related stuff. So here we are doing the"
+  },
+  {
+   "start": 614.16,
+   "duration": 6.32,
+   "text": "same thing right and uh that is what we"
+  },
+  {
+   "start": 617.44,
+   "duration": 5.519,
+   "text": "are doing you know instead of having you"
+  },
+  {
+   "start": 620.48,
+   "duration": 4.96,
+   "text": "know a human do it a specialized human"
+  },
+  {
+   "start": 622.959,
+   "duration": 6.88,
+   "text": "do it here a sub agent who specialized"
+  },
+  {
+   "start": 625.44,
+   "duration": 6.399,
+   "text": "in a particular um you know a domain"
+  },
+  {
+   "start": 629.839,
+   "duration": 5.281,
+   "text": "will review your PR for example there is"
+  },
+  {
+   "start": 631.839,
+   "duration": 5.521,
+   "text": "one you know uh sub agent who is going"
+  },
+  {
+   "start": 635.12,
+   "duration": 4.88,
+   "text": "to do the dock string check review right"
+  },
+  {
+   "start": 637.36,
+   "duration": 4.96,
+   "text": "if your if your code has proper dock"
+  },
+  {
+   "start": 640.0,
+   "duration": 4.48,
+   "text": "string you know or not documentation or"
+  },
+  {
+   "start": 642.32,
+   "duration": 4.4,
+   "text": "not and there would be another one who"
+  },
+  {
+   "start": 644.48,
+   "duration": 3.84,
+   "text": "would be you know doing the security"
+  },
+  {
+   "start": 646.72,
+   "duration": 4.16,
+   "text": "review the security audit or the"
+  },
+  {
+   "start": 648.32,
+   "duration": 5.6,
+   "text": "security review part of the PR the same"
+  },
+  {
+   "start": 650.88,
+   "duration": 6.24,
+   "text": "thing you know just make a mental model"
+  },
+  {
+   "start": 653.92,
+   "duration": 5.68,
+   "text": "and uh kind of think of it and compare"
+  },
+  {
+   "start": 657.12,
+   "duration": 5.279,
+   "text": "it to a real life scenario and you would"
+  },
+  {
+   "start": 659.6,
+   "duration": 4.64,
+   "text": "be good to go right so you would not"
+  },
+  {
+   "start": 662.399,
+   "duration": 4.481,
+   "text": "think that I'm just building agents"
+  },
+  {
+   "start": 664.24,
+   "duration": 4.719,
+   "text": "randomly over here right"
+  },
+  {
+   "start": 666.88,
+   "duration": 4.8,
+   "text": "now the very important thing and you"
+  },
+  {
+   "start": 668.959,
+   "duration": 5.601,
+   "text": "need to understand what does a sub agent"
+  },
+  {
+   "start": 671.68,
+   "duration": 6.32,
+   "text": "actually buys you or why do you need a"
+  },
+  {
+   "start": 674.56,
+   "duration": 5.839,
+   "text": "sub agent? Why not have multiple agents"
+  },
+  {
+   "start": 678.0,
+   "duration": 3.92,
+   "text": "with their own you know context or"
+  },
+  {
+   "start": 680.399,
+   "duration": 5.281,
+   "text": "something like that? That is also a very"
+  },
+  {
+   "start": 681.92,
+   "duration": 6.08,
+   "text": "valid question. Right? So"
+  },
+  {
+   "start": 685.68,
+   "duration": 4.8,
+   "text": "formally a sub agent is a separate"
+  },
+  {
+   "start": 688.0,
+   "duration": 4.079,
+   "text": "agent. That is true. Okay. One thing you"
+  },
+  {
+   "start": 690.48,
+   "duration": 4.64,
+   "text": "need to understand it is a separate"
+  },
+  {
+   "start": 692.079,
+   "duration": 4.961,
+   "text": "agent or a separate agent instance"
+  },
+  {
+   "start": 695.12,
+   "duration": 4.959,
+   "text": "whatever you want to call it. So your"
+  },
+  {
+   "start": 697.04,
+   "duration": 5.359,
+   "text": "main agent can spawn to handle one"
+  },
+  {
+   "start": 700.079,
+   "duration": 4.561,
+   "text": "focused subtask with its own fresh"
+  },
+  {
+   "start": 702.399,
+   "duration": 7.361,
+   "text": "conversation, its own instruction and"
+  },
+  {
+   "start": 704.64,
+   "duration": 7.439,
+   "text": "often a narrower tool set. Yeah. So with"
+  },
+  {
+   "start": 709.76,
+   "duration": 4.56,
+   "text": "this four concrete benefits fall out of"
+  },
+  {
+   "start": 712.079,
+   "duration": 5.281,
+   "text": "the definition and kind of every one of"
+  },
+  {
+   "start": 714.32,
+   "duration": 5.36,
+   "text": "them maps into a real problem our single"
+  },
+  {
+   "start": 717.36,
+   "duration": 5.12,
+   "text": "agent has."
+  },
+  {
+   "start": 719.68,
+   "duration": 6.64,
+   "text": "First thing is context isolation. So a"
+  },
+  {
+   "start": 722.48,
+   "duration": 7.599,
+   "text": "sub agent's intermediate tool calls stay"
+  },
+  {
+   "start": 726.32,
+   "duration": 6.16,
+   "text": "inside it. Yeah. So only its final"
+  },
+  {
+   "start": 730.079,
+   "duration": 4.801,
+   "text": "summary comes back. So our dock string"
+  },
+  {
+   "start": 732.48,
+   "duration": 7.039,
+   "text": "check won't bloat the you know like the"
+  },
+  {
+   "start": 734.88,
+   "duration": 6.88,
+   "text": "coordinator's context with raw a output."
+  },
+  {
+   "start": 739.519,
+   "duration": 3.601,
+   "text": "Yeah. So the coordinator doesn't have to"
+  },
+  {
+   "start": 741.76,
+   "duration": 3.44,
+   "text": "worry about that. The coordinator will"
+  },
+  {
+   "start": 743.12,
+   "duration": 4.48,
+   "text": "just get the final result from that"
+  },
+  {
+   "start": 745.2,
+   "duration": 4.0,
+   "text": "particular sub agent. Second thing is"
+  },
+  {
+   "start": 747.6,
+   "duration": 4.32,
+   "text": "parallelization"
+  },
+  {
+   "start": 749.2,
+   "duration": 5.36,
+   "text": "you know. So here what is happening is"
+  },
+  {
+   "start": 751.92,
+   "duration": 6.0,
+   "text": "independent subtasks finish you know in"
+  },
+  {
+   "start": 754.56,
+   "duration": 6.64,
+   "text": "the time of the slowest one not the sum"
+  },
+  {
+   "start": 757.92,
+   "duration": 5.359,
+   "text": "of both. So imagine that there is one"
+  },
+  {
+   "start": 761.2,
+   "duration": 4.96,
+   "text": "parallel agent running which is taking a"
+  },
+  {
+   "start": 763.279,
+   "duration": 4.481,
+   "text": "lot of time right and then there is a"
+  },
+  {
+   "start": 766.16,
+   "duration": 3.76,
+   "text": "another sub aent running which is taking"
+  },
+  {
+   "start": 767.76,
+   "duration": 4.24,
+   "text": "small time maybe the security sub agent"
+  },
+  {
+   "start": 769.92,
+   "duration": 4.96,
+   "text": "is taking a you know longer time and"
+  },
+  {
+   "start": 772.0,
+   "duration": 4.8,
+   "text": "there is one more you know sneaky little"
+  },
+  {
+   "start": 774.88,
+   "duration": 5.28,
+   "text": "dock string sub aent which is actually"
+  },
+  {
+   "start": 776.8,
+   "duration": 5.36,
+   "text": "finishing its job earlier then you know"
+  },
+  {
+   "start": 780.16,
+   "duration": 4.32,
+   "text": "the execution of both of these sub aents"
+  },
+  {
+   "start": 782.16,
+   "duration": 4.64,
+   "text": "for example will not be the sum of the"
+  },
+  {
+   "start": 784.48,
+   "duration": 4.159,
+   "text": "time the both the sub aents is taking"
+  },
+  {
+   "start": 786.8,
+   "duration": 3.839,
+   "text": "whoever finishes faster will return the"
+  },
+  {
+   "start": 788.639,
+   "duration": 5.281,
+   "text": "result faster. Whoever finishes late"
+  },
+  {
+   "start": 790.639,
+   "duration": 6.081,
+   "text": "will return the result late."
+  },
+  {
+   "start": 793.92,
+   "duration": 5.039,
+   "text": "Right? So it will not be in a sequential"
+  },
+  {
+   "start": 796.72,
+   "duration": 4.08,
+   "text": "pattern. It will not be back to back. So"
+  },
+  {
+   "start": 798.959,
+   "duration": 5.44,
+   "text": "that is known as parallelization by the"
+  },
+  {
+   "start": 800.8,
+   "duration": 7.279,
+   "text": "way. Now coming to specialized"
+  },
+  {
+   "start": 804.399,
+   "duration": 6.801,
+   "text": "instructions right now each sub aent"
+  },
+  {
+   "start": 808.079,
+   "duration": 5.44,
+   "text": "that gets spawned gets a tailored system"
+  },
+  {
+   "start": 811.2,
+   "duration": 6.16,
+   "text": "prompt. Yeah. The security reviewer can"
+  },
+  {
+   "start": 813.519,
+   "duration": 6.721,
+   "text": "be you know told in detail to treat PR"
+  },
+  {
+   "start": 817.36,
+   "duration": 5.279,
+   "text": "bodies as untrusted for example right"
+  },
+  {
+   "start": 820.24,
+   "duration": 4.8,
+   "text": "now without that instruction"
+  },
+  {
+   "start": 822.639,
+   "duration": 5.361,
+   "text": "uh you know uh that that sub agent is"
+  },
+  {
+   "start": 825.04,
+   "duration": 5.919,
+   "text": "nothing and on the other hand we are not"
+  },
+  {
+   "start": 828.0,
+   "duration": 5.2,
+   "text": "cluttering one single agent with all of"
+  },
+  {
+   "start": 830.959,
+   "duration": 5.361,
+   "text": "the instructions. So each sub agent is"
+  },
+  {
+   "start": 833.2,
+   "duration": 5.6,
+   "text": "getting its own specialized instruction"
+  },
+  {
+   "start": 836.32,
+   "duration": 5.28,
+   "text": "which is known as specialization. If you"
+  },
+  {
+   "start": 838.8,
+   "duration": 4.479,
+   "text": "are cluttering all of the points in one"
+  },
+  {
+   "start": 841.6,
+   "duration": 4.64,
+   "text": "system prompt like we are currently"
+  },
+  {
+   "start": 843.279,
+   "duration": 4.961,
+   "text": "doing in one particular agent then you"
+  },
+  {
+   "start": 846.24,
+   "duration": 4.88,
+   "text": "are generalizing that agent. It's it's a"
+  },
+  {
+   "start": 848.24,
+   "duration": 5.039,
+   "text": "common PR reviewer right sometimes that"
+  },
+  {
+   "start": 851.12,
+   "duration": 5.44,
+   "text": "is also the need but here we are talking"
+  },
+  {
+   "start": 853.279,
+   "duration": 5.36,
+   "text": "about specialized sub aents and it's a"
+  },
+  {
+   "start": 856.56,
+   "duration": 3.519,
+   "text": "multi- aent orchestration or multi- aent"
+  },
+  {
+   "start": 858.639,
+   "duration": 3.121,
+   "text": "architecture which you need to"
+  },
+  {
+   "start": 860.079,
+   "duration": 3.2,
+   "text": "understand."
+  },
+  {
+   "start": 861.76,
+   "duration": 5.68,
+   "text": "Fourth important thing is tool"
+  },
+  {
+   "start": 863.279,
+   "duration": 7.281,
+   "text": "restriction. Now a sub agent uh it can"
+  },
+  {
+   "start": 867.44,
+   "duration": 5.36,
+   "text": "be limited to exactly the tools the job"
+  },
+  {
+   "start": 870.56,
+   "duration": 5.279,
+   "text": "needs. Yeah. The dock string reviewer"
+  },
+  {
+   "start": 872.8,
+   "duration": 5.039,
+   "text": "never even sees the tool that posts"
+  },
+  {
+   "start": 875.839,
+   "duration": 4.401,
+   "text": "comments. Why does it why do you need to"
+  },
+  {
+   "start": 877.839,
+   "duration": 4.961,
+   "text": "give more tools to an agent that not"
+  },
+  {
+   "start": 880.24,
+   "duration": 4.56,
+   "text": "that it doesn't need right? A dock"
+  },
+  {
+   "start": 882.8,
+   "duration": 4.24,
+   "text": "string agent I mean the sub agent which"
+  },
+  {
+   "start": 884.8,
+   "duration": 6.32,
+   "text": "will handle the dock string checker will"
+  },
+  {
+   "start": 887.04,
+   "duration": 7.52,
+   "text": "only has to worry about the dock string"
+  },
+  {
+   "start": 891.12,
+   "duration": 5.04,
+   "text": "tool the post uh you know the post"
+  },
+  {
+   "start": 894.56,
+   "duration": 3.839,
+   "text": "comment tool it doesn't have to even"
+  },
+  {
+   "start": 896.16,
+   "duration": 4.16,
+   "text": "know that that tool exists it it you can"
+  },
+  {
+   "start": 898.399,
+   "duration": 4.161,
+   "text": "completely blind that sub agent that"
+  },
+  {
+   "start": 900.32,
+   "duration": 4.16,
+   "text": "okay that tool doesn't even exists as"
+  },
+  {
+   "start": 902.56,
+   "duration": 4.16,
+   "text": "well. So that is very very important to"
+  },
+  {
+   "start": 904.48,
+   "duration": 5.2,
+   "text": "understand in this architecture and it"
+  },
+  {
+   "start": 906.72,
+   "duration": 4.96,
+   "text": "will come in the exam you know it will"
+  },
+  {
+   "start": 909.68,
+   "duration": 4.0,
+   "text": "hit you before you even know it kind of"
+  },
+  {
+   "start": 911.68,
+   "duration": 3.839,
+   "text": "that stuff"
+  },
+  {
+   "start": 913.68,
+   "duration": 5.76,
+   "text": "right"
+  },
+  {
+   "start": 915.519,
+   "duration": 6.241,
+   "text": "okay now um it is a very important uh"
+  },
+  {
+   "start": 919.44,
+   "duration": 6.399,
+   "text": "kind of a discussion that I want to just"
+  },
+  {
+   "start": 921.76,
+   "duration": 7.04,
+   "text": "make before we move on so"
+  },
+  {
+   "start": 925.839,
+   "duration": 5.68,
+   "text": "meet the agent tool yeah formerly it was"
+  },
+  {
+   "start": 928.8,
+   "duration": 4.8,
+   "text": "known as task tool"
+  },
+  {
+   "start": 931.519,
+   "duration": 4.961,
+   "text": "Um,"
+  },
+  {
+   "start": 933.6,
+   "duration": 6.0,
+   "text": "so how does a coordinator actually spawn"
+  },
+  {
+   "start": 936.48,
+   "duration": 7.68,
+   "text": "one of these sub agents? Yeah, it does"
+  },
+  {
+   "start": 939.6,
+   "duration": 7.2,
+   "text": "it through a builtin tool."
+  },
+  {
+   "start": 944.16,
+   "duration": 5.919,
+   "text": "Try to understand. I know it is can can"
+  },
+  {
+   "start": 946.8,
+   "duration": 6.159,
+   "text": "be a little bit uh you know um tricky"
+  },
+  {
+   "start": 950.079,
+   "duration": 6.241,
+   "text": "but try to understand. So a coordinator"
+  },
+  {
+   "start": 952.959,
+   "duration": 6.401,
+   "text": "will spawn the a sub agent. How does the"
+  },
+  {
+   "start": 956.32,
+   "duration": 5.28,
+   "text": "coordinator does it? It does it by using"
+  },
+  {
+   "start": 959.36,
+   "duration": 4.719,
+   "text": "a built-in tool."
+  },
+  {
+   "start": 961.6,
+   "duration": 7.039,
+   "text": "clot decides to delegate and it emits a"
+  },
+  {
+   "start": 964.079,
+   "duration": 7.2,
+   "text": "tool use block tool use block"
+  },
+  {
+   "start": 968.639,
+   "duration": 5.521,
+   "text": "for that particular tool."
+  },
+  {
+   "start": 971.279,
+   "duration": 4.721,
+   "text": "It is a it's the same mechanism as any"
+  },
+  {
+   "start": 974.16,
+   "duration": 4.64,
+   "text": "other tool call you have already built"
+  },
+  {
+   "start": 976.0,
+   "duration": 4.8,
+   "text": "in the series. So that is not a very"
+  },
+  {
+   "start": 978.8,
+   "duration": 4.64,
+   "text": "rocket science that we are learning."
+  },
+  {
+   "start": 980.8,
+   "duration": 7.92,
+   "text": "This sub aent calling or spawning is"
+  },
+  {
+   "start": 983.44,
+   "duration": 7.839,
+   "text": "simply a tool call. Yeah. But previously"
+  },
+  {
+   "start": 988.72,
+   "duration": 4.4,
+   "text": "it was known as a task tool. Now it is"
+  },
+  {
+   "start": 991.279,
+   "duration": 5.601,
+   "text": "known as agent tool. That's a built-in"
+  },
+  {
+   "start": 993.12,
+   "duration": 6.399,
+   "text": "tool. That's it. Right? That is the"
+  },
+  {
+   "start": 996.88,
+   "duration": 5.12,
+   "text": "point that I'm trying to make."
+  },
+  {
+   "start": 999.519,
+   "duration": 8.481,
+   "text": "And here's a fact check I want to flag"
+  },
+  {
+   "start": 1002.0,
+   "duration": 8.32,
+   "text": "very loudly because um I kind of became"
+  },
+  {
+   "start": 1008.0,
+   "duration": 5.44,
+   "text": "overconfident and I got it wrong in my"
+  },
+  {
+   "start": 1010.32,
+   "duration": 6.24,
+   "text": "first kind of recording. Right. I had to"
+  },
+  {
+   "start": 1013.44,
+   "duration": 4.639,
+   "text": "kind of I I then looked at some at my"
+  },
+  {
+   "start": 1016.56,
+   "duration": 3.839,
+   "text": "code and then I realized something"
+  },
+  {
+   "start": 1018.079,
+   "duration": 7.12,
+   "text": "right. So I I had to re-record this"
+  },
+  {
+   "start": 1020.399,
+   "duration": 6.961,
+   "text": "part. So um the tool that used to be"
+  },
+  {
+   "start": 1025.199,
+   "duration": 3.6,
+   "text": "called you know the currently it is"
+  },
+  {
+   "start": 1027.36,
+   "duration": 3.12,
+   "text": "known as the the built-in tool is known"
+  },
+  {
+   "start": 1028.799,
+   "duration": 3.601,
+   "text": "as agent tool. It used to be called as"
+  },
+  {
+   "start": 1030.48,
+   "duration": 7.52,
+   "text": "task tool and it has been renamed to"
+  },
+  {
+   "start": 1032.4,
+   "duration": 7.84,
+   "text": "agent in cloud code version 2.1.63."
+  },
+  {
+   "start": 1038.0,
+   "duration": 5.76,
+   "text": "So I confirmed it straight from the"
+  },
+  {
+   "start": 1040.24,
+   "duration": 5.36,
+   "text": "official SDK docs and then I also double"
+  },
+  {
+   "start": 1043.76,
+   "duration": 5.279,
+   "text": "checked it against the installed cloud"
+  },
+  {
+   "start": 1045.6,
+   "duration": 6.48,
+   "text": "agent SDK. Yeah, that package. Uh the"
+  },
+  {
+   "start": 1049.039,
+   "duration": 6.401,
+   "text": "current release 0.2.125"
+  },
+  {
+   "start": 1052.08,
+   "duration": 7.2,
+   "text": "as of this recording emits agent in its"
+  },
+  {
+   "start": 1055.44,
+   "duration": 6.32,
+   "text": "tool use blocks. Yeah. So why why this"
+  },
+  {
+   "start": 1059.28,
+   "duration": 5.04,
+   "text": "matters specifically to because we are"
+  },
+  {
+   "start": 1061.76,
+   "duration": 5.039,
+   "text": "appearing for the exam. So we need to"
+  },
+  {
+   "start": 1064.32,
+   "duration": 5.76,
+   "text": "have the upto-date"
+  },
+  {
+   "start": 1066.799,
+   "duration": 4.561,
+   "text": "uh stuffs that we are doing right and if"
+  },
+  {
+   "start": 1070.08,
+   "duration": 3.92,
+   "text": "you have been through the cloud"
+  },
+  {
+   "start": 1071.36,
+   "duration": 4.16,
+   "text": "certified architect series or uh you've"
+  },
+  {
+   "start": 1074.0,
+   "duration": 4.08,
+   "text": "gone through any of my cloud code"
+  },
+  {
+   "start": 1075.52,
+   "duration": 6.08,
+   "text": "tutorial uh from more than maybe a few"
+  },
+  {
+   "start": 1078.08,
+   "duration": 7.12,
+   "text": "months back yeah you learned this as the"
+  },
+  {
+   "start": 1081.6,
+   "duration": 7.52,
+   "text": "task tool. Yeah I've already uh kind of"
+  },
+  {
+   "start": 1085.2,
+   "duration": 5.68,
+   "text": "updated that particular video um where I"
+  },
+  {
+   "start": 1089.12,
+   "duration": 3.679,
+   "text": "am mentioning task tool. I just it's a"
+  },
+  {
+   "start": 1090.88,
+   "duration": 3.52,
+   "text": "very simple kind of a correction that"
+  },
+  {
+   "start": 1092.799,
+   "duration": 4.961,
+   "text": "instead of task tool you just it's"
+  },
+  {
+   "start": 1094.4,
+   "duration": 5.6,
+   "text": "naming named as agent tool right so it's"
+  },
+  {
+   "start": 1097.76,
+   "duration": 4.56,
+   "text": "just I'm getting this fact straight so"
+  },
+  {
+   "start": 1100.0,
+   "duration": 5.919,
+   "text": "that you don't have to get confused in"
+  },
+  {
+   "start": 1102.32,
+   "duration": 5.04,
+   "text": "the exam right and then you know blame"
+  },
+  {
+   "start": 1105.919,
+   "duration": 4.081,
+   "text": "me that you know I taught you the wrong"
+  },
+  {
+   "start": 1107.36,
+   "duration": 5.36,
+   "text": "thing but it's the it's the same thing"
+  },
+  {
+   "start": 1110.0,
+   "duration": 4.48,
+   "text": "only the name has been changed that's it"
+  },
+  {
+   "start": 1112.72,
+   "duration": 4.8,
+   "text": "yeah"
+  },
+  {
+   "start": 1114.48,
+   "duration": 5.12,
+   "text": "um also one thing to keep in mind we all"
+  },
+  {
+   "start": 1117.52,
+   "duration": 4.64,
+   "text": "all know about the allowed tools thing"
+  },
+  {
+   "start": 1119.6,
+   "duration": 4.64,
+   "text": "right in cloud agent options."
+  },
+  {
+   "start": 1122.16,
+   "duration": 3.68,
+   "text": "Um, so the agent tool must be in the"
+  },
+  {
+   "start": 1124.24,
+   "duration": 3.439,
+   "text": "allowed tools. That is a that is a"
+  },
+  {
+   "start": 1125.84,
+   "duration": 3.68,
+   "text": "given, right? Because if a tool is not"
+  },
+  {
+   "start": 1127.679,
+   "duration": 4.0,
+   "text": "in the allowed tool, the coordinator"
+  },
+  {
+   "start": 1129.52,
+   "duration": 4.56,
+   "text": "will not get the permission even to"
+  },
+  {
+   "start": 1131.679,
+   "duration": 4.88,
+   "text": "execute that agent tool. So it cannot"
+  },
+  {
+   "start": 1134.08,
+   "duration": 4.88,
+   "text": "spawn the sub aents on its own, right?"
+  },
+  {
+   "start": 1136.559,
+   "duration": 5.761,
+   "text": "So it should be inside the allowed tools"
+  },
+  {
+   "start": 1138.96,
+   "duration": 5.36,
+   "text": "otherwise it will get blocked outright."
+  },
+  {
+   "start": 1142.32,
+   "duration": 3.92,
+   "text": "Yeah. So I hope that is making sense and"
+  },
+  {
+   "start": 1144.32,
+   "duration": 5.2,
+   "text": "I hope that this particular uh"
+  },
+  {
+   "start": 1146.24,
+   "duration": 7.12,
+   "text": "declaration or kind of fact check also"
+  },
+  {
+   "start": 1149.52,
+   "duration": 7.84,
+   "text": "kind of made sense to you guys. Okay. So"
+  },
+  {
+   "start": 1153.36,
+   "duration": 6.559,
+   "text": "moving on uh let's talk about the agent"
+  },
+  {
+   "start": 1157.36,
+   "duration": 4.88,
+   "text": "definition and that is important because"
+  },
+  {
+   "start": 1159.919,
+   "duration": 5.281,
+   "text": "after this we're going to start writing"
+  },
+  {
+   "start": 1162.24,
+   "duration": 6.88,
+   "text": "the code and stuffs for the sub aents."
+  },
+  {
+   "start": 1165.2,
+   "duration": 5.839,
+   "text": "So agent definition is uh like if you"
+  },
+  {
+   "start": 1169.12,
+   "duration": 3.439,
+   "text": "can compare it with clawed agent options"
+  },
+  {
+   "start": 1171.039,
+   "duration": 3.201,
+   "text": "right I mean agent definition is"
+  },
+  {
+   "start": 1172.559,
+   "duration": 4.801,
+   "text": "basically the definition of the agent it"
+  },
+  {
+   "start": 1174.24,
+   "duration": 5.28,
+   "text": "has specific properties right so what"
+  },
+  {
+   "start": 1177.36,
+   "duration": 4.16,
+   "text": "are the properties"
+  },
+  {
+   "start": 1179.52,
+   "duration": 4.399,
+   "text": "so"
+  },
+  {
+   "start": 1181.52,
+   "duration": 3.92,
+   "text": "an agent definition"
+  },
+  {
+   "start": 1183.919,
+   "duration": 4.801,
+   "text": "um"
+  },
+  {
+   "start": 1185.44,
+   "duration": 4.8,
+   "text": "is basically needed for the agent tool"
+  },
+  {
+   "start": 1188.72,
+   "duration": 3.52,
+   "text": "call."
+  },
+  {
+   "start": 1190.24,
+   "duration": 4.64,
+   "text": "Yeah, because an agent tool call needs"
+  },
+  {
+   "start": 1192.24,
+   "duration": 5.04,
+   "text": "somewhere to point where where will it"
+  },
+  {
+   "start": 1194.88,
+   "duration": 6.64,
+   "text": "point basically which sub agent I need"
+  },
+  {
+   "start": 1197.28,
+   "duration": 7.36,
+   "text": "to uh call basically that information"
+  },
+  {
+   "start": 1201.52,
+   "duration": 6.24,
+   "text": "will be carried by the agent definition"
+  },
+  {
+   "start": 1204.64,
+   "duration": 4.8,
+   "text": "you know so it's nothing but a small"
+  },
+  {
+   "start": 1207.76,
+   "duration": 4.0,
+   "text": "config agent as I told you it's just"
+  },
+  {
+   "start": 1209.44,
+   "duration": 4.32,
+   "text": "configuration like cloud agent options"
+  },
+  {
+   "start": 1211.76,
+   "duration": 4.88,
+   "text": "right has maybe a different set of"
+  },
+  {
+   "start": 1213.76,
+   "duration": 5.6,
+   "text": "properties so it's a small config object"
+  },
+  {
+   "start": 1216.64,
+   "duration": 5.12,
+   "text": "you would write basically once per sub"
+  },
+  {
+   "start": 1219.36,
+   "duration": 4.319,
+   "text": "agent and then register it on cloud"
+  },
+  {
+   "start": 1221.76,
+   "duration": 5.919,
+   "text": "agent options."
+  },
+  {
+   "start": 1223.679,
+   "duration": 5.521,
+   "text": "Right? So I this fields that you can see"
+  },
+  {
+   "start": 1227.679,
+   "duration": 4.081,
+   "text": "on the screen over here for agent"
+  },
+  {
+   "start": 1229.2,
+   "duration": 5.44,
+   "text": "definition properties I pulled the field"
+  },
+  {
+   "start": 1231.76,
+   "duration": 5.6,
+   "text": "field this list you know straight from"
+  },
+  {
+   "start": 1234.64,
+   "duration": 5.2,
+   "text": "the installed packages data class not"
+  },
+  {
+   "start": 1237.36,
+   "duration": 6.16,
+   "text": "from memory. So this is what you would"
+  },
+  {
+   "start": 1239.84,
+   "duration": 5.199,
+   "text": "see in the latest cloud agent SDK"
+  },
+  {
+   "start": 1243.52,
+   "duration": 3.12,
+   "text": "library"
+  },
+  {
+   "start": 1245.039,
+   "duration": 3.601,
+   "text": "and these are the fields. So the what"
+  },
+  {
+   "start": 1246.64,
+   "duration": 3.44,
+   "text": "the description obviously we know that"
+  },
+  {
+   "start": 1248.64,
+   "duration": 4.56,
+   "text": "the sub aents will come with a"
+  },
+  {
+   "start": 1250.08,
+   "duration": 4.88,
+   "text": "description. Um so it will give claude"
+  },
+  {
+   "start": 1253.2,
+   "duration": 3.839,
+   "text": "right the reason when it should reach"
+  },
+  {
+   "start": 1254.96,
+   "duration": 4.4,
+   "text": "for this particular sub aent right when"
+  },
+  {
+   "start": 1257.039,
+   "duration": 4.561,
+   "text": "it should execute the agent tool to call"
+  },
+  {
+   "start": 1259.36,
+   "duration": 4.64,
+   "text": "this sub agent why it is needed"
+  },
+  {
+   "start": 1261.6,
+   "duration": 6.0,
+   "text": "basically. Next is the prompt basically"
+  },
+  {
+   "start": 1264.0,
+   "duration": 6.48,
+   "text": "the sub aent's own system prompt. Yeah."
+  },
+  {
+   "start": 1267.6,
+   "duration": 6.16,
+   "text": "Next is the tools. Obviously"
+  },
+  {
+   "start": 1270.48,
+   "duration": 6.079,
+   "text": "you know um"
+  },
+  {
+   "start": 1273.76,
+   "duration": 4.32,
+   "text": "you basically have to give the tools"
+  },
+  {
+   "start": 1276.559,
+   "duration": 4.401,
+   "text": "which the particular sub agent will be"
+  },
+  {
+   "start": 1278.08,
+   "duration": 5.68,
+   "text": "able to see. Just one thing is that this"
+  },
+  {
+   "start": 1280.96,
+   "duration": 5.199,
+   "text": "tools field is optional. That is that is"
+  },
+  {
+   "start": 1283.76,
+   "duration": 5.44,
+   "text": "a very important thing to flag because"
+  },
+  {
+   "start": 1286.159,
+   "duration": 5.281,
+   "text": "if if you omit the tools uh particular"
+  },
+  {
+   "start": 1289.2,
+   "duration": 5.52,
+   "text": "field from your agent definition"
+  },
+  {
+   "start": 1291.44,
+   "duration": 6.479,
+   "text": "properties then you know it will inherit"
+  },
+  {
+   "start": 1294.72,
+   "duration": 5.839,
+   "text": "every tool available from the"
+  },
+  {
+   "start": 1297.919,
+   "duration": 4.801,
+   "text": "coordinator or anywhere it is right. So"
+  },
+  {
+   "start": 1300.559,
+   "duration": 6.081,
+   "text": "make sure that you don't you know omit"
+  },
+  {
+   "start": 1302.72,
+   "duration": 6.64,
+   "text": "this particular uh uh des you know"
+  },
+  {
+   "start": 1306.64,
+   "duration": 6.64,
+   "text": "description no not description property"
+  },
+  {
+   "start": 1309.36,
+   "duration": 7.52,
+   "text": "my bad. Next is disallowed tools. Yeah."
+  },
+  {
+   "start": 1313.28,
+   "duration": 6.72,
+   "text": "So this is also optional. Uh basically"
+  },
+  {
+   "start": 1316.88,
+   "duration": 4.64,
+   "text": "um it is basically what it will do is it"
+  },
+  {
+   "start": 1320.0,
+   "duration": 3.52,
+   "text": "will"
+  },
+  {
+   "start": 1321.52,
+   "duration": 3.76,
+   "text": "you're not allowing that tool basically."
+  },
+  {
+   "start": 1323.52,
+   "duration": 5.6,
+   "text": "So if you if you remember you had the"
+  },
+  {
+   "start": 1325.28,
+   "duration": 6.24,
+   "text": "allow tools which is basically going to"
+  },
+  {
+   "start": 1329.12,
+   "duration": 4.64,
+   "text": "um you are giving permission to claw to"
+  },
+  {
+   "start": 1331.52,
+   "duration": 5.039,
+   "text": "execute that tool right. Similarly, you"
+  },
+  {
+   "start": 1333.76,
+   "duration": 6.159,
+   "text": "have disallowed tools which is nothing"
+  },
+  {
+   "start": 1336.559,
+   "duration": 7.12,
+   "text": "but you are telling that you are kind of"
+  },
+  {
+   "start": 1339.919,
+   "duration": 7.12,
+   "text": "um this tools cannot be executed by you"
+  },
+  {
+   "start": 1343.679,
+   "duration": 6.321,
+   "text": "at all. Even if it is visible, you are"
+  },
+  {
+   "start": 1347.039,
+   "duration": 5.041,
+   "text": "not able to you know kind of execute"
+  },
+  {
+   "start": 1350.0,
+   "duration": 3.84,
+   "text": "this tool. That's it. It's an optional"
+  },
+  {
+   "start": 1352.08,
+   "duration": 4.8,
+   "text": "parameter. You can make do with the"
+  },
+  {
+   "start": 1353.84,
+   "duration": 5.28,
+   "text": "tools uh kind of um this particular"
+  },
+  {
+   "start": 1356.88,
+   "duration": 5.52,
+   "text": "field itself. This is anyways optional."
+  },
+  {
+   "start": 1359.12,
+   "duration": 5.12,
+   "text": "The next thing is model. Basically um if"
+  },
+  {
+   "start": 1362.4,
+   "duration": 4.159,
+   "text": "if it's very important to understand"
+  },
+  {
+   "start": 1364.24,
+   "duration": 5.04,
+   "text": "that you can give a sub agent either a"
+  },
+  {
+   "start": 1366.559,
+   "duration": 6.0,
+   "text": "more higher model if it does a"
+  },
+  {
+   "start": 1369.28,
+   "duration": 6.0,
+   "text": "complicated task or you can give it a"
+  },
+  {
+   "start": 1372.559,
+   "duration": 4.24,
+   "text": "very light model for example haiku"
+  },
+  {
+   "start": 1375.28,
+   "duration": 4.72,
+   "text": "because it is not doing such a great"
+  },
+  {
+   "start": 1376.799,
+   "duration": 4.961,
+   "text": "task right so you don't have to default"
+  },
+  {
+   "start": 1380.0,
+   "duration": 4.159,
+   "text": "it to the model that your coordinator"
+  },
+  {
+   "start": 1381.76,
+   "duration": 5.44,
+   "text": "uses that you but or you have set it by"
+  },
+  {
+   "start": 1384.159,
+   "duration": 4.64,
+   "text": "default in your coordinator agent right"
+  },
+  {
+   "start": 1387.2,
+   "duration": 4.56,
+   "text": "so that is also optional if you don't"
+  },
+  {
+   "start": 1388.799,
+   "duration": 7.441,
+   "text": "give it yeah it will just uh inherit"
+  },
+  {
+   "start": 1391.76,
+   "duration": 8.48,
+   "text": "from your coordinator. That's it. Okay."
+  },
+  {
+   "start": 1396.24,
+   "duration": 5.679,
+   "text": "Yeah. So um I hope that makes sense and"
+  },
+  {
+   "start": 1400.24,
+   "duration": 6.4,
+   "text": "you have understood the agent definition"
+  },
+  {
+   "start": 1401.919,
+   "duration": 7.441,
+   "text": "properties and uh yeah let's start with"
+  },
+  {
+   "start": 1406.64,
+   "duration": 4.96,
+   "text": "the coding part now and let's enhance"
+  },
+  {
+   "start": 1409.36,
+   "duration": 5.52,
+   "text": "our existing sub you know agent with a"
+  },
+  {
+   "start": 1411.6,
+   "duration": 5.92,
+   "text": "lot of uh sub aents the two sub agents"
+  },
+  {
+   "start": 1414.88,
+   "duration": 6.0,
+   "text": "that we discussed. Yeah. So let's do it."
+  },
+  {
+   "start": 1417.52,
+   "duration": 5.519,
+   "text": "Let us start with our um enhancing our"
+  },
+  {
+   "start": 1420.88,
+   "duration": 4.799,
+   "text": "agent with the sub agents uh that we're"
+  },
+  {
+   "start": 1423.039,
+   "duration": 5.361,
+   "text": "going to do in this episode. So as I"
+  },
+  {
+   "start": 1425.679,
+   "duration": 5.281,
+   "text": "have mentioned that this hooks py and"
+  },
+  {
+   "start": 1428.4,
+   "duration": 4.88,
+   "text": "this tools py which we have developed"
+  },
+  {
+   "start": 1430.96,
+   "duration": 4.0,
+   "text": "you know since um the older episodes"
+  },
+  {
+   "start": 1433.28,
+   "duration": 3.36,
+   "text": "will be there because we're going to use"
+  },
+  {
+   "start": 1434.96,
+   "duration": 3.92,
+   "text": "the same tools and the same hooks for"
+  },
+  {
+   "start": 1436.64,
+   "duration": 5.2,
+   "text": "our sub aents as well. So let me open up"
+  },
+  {
+   "start": 1438.88,
+   "duration": 4.88,
+   "text": "this snippets.md file. Yeah. So the"
+  },
+  {
+   "start": 1441.84,
+   "duration": 6.16,
+   "text": "first thing that we're going to uh kind"
+  },
+  {
+   "start": 1443.76,
+   "duration": 6.88,
+   "text": "of um test out is we need to prove that"
+  },
+  {
+   "start": 1448.0,
+   "duration": 4.72,
+   "text": "this agent delegation or this spinning"
+  },
+  {
+   "start": 1450.64,
+   "duration": 3.44,
+   "text": "of the sub aents by the coordinator is"
+  },
+  {
+   "start": 1452.72,
+   "duration": 2.88,
+   "text": "working out or not. Right? And we're"
+  },
+  {
+   "start": 1454.08,
+   "duration": 4.16,
+   "text": "going to follow the same discipline as"
+  },
+  {
+   "start": 1455.6,
+   "duration": 5.28,
+   "text": "every episode. So before we wire up uh"
+  },
+  {
+   "start": 1458.24,
+   "duration": 4.88,
+   "text": "you know those two real sub aents that"
+  },
+  {
+   "start": 1460.88,
+   "duration": 5.44,
+   "text": "we were talking about with real tool"
+  },
+  {
+   "start": 1463.12,
+   "duration": 5.76,
+   "text": "restriction, let's prove the absolute"
+  },
+  {
+   "start": 1466.32,
+   "duration": 4.64,
+   "text": "bare minimum case works or not. Yeah. So"
+  },
+  {
+   "start": 1468.88,
+   "duration": 4.88,
+   "text": "there will be like a one trivial sub"
+  },
+  {
+   "start": 1470.96,
+   "duration": 5.199,
+   "text": "agent. Yeah. Uh there is no custom"
+  },
+  {
+   "start": 1473.76,
+   "duration": 4.799,
+   "text": "tools, very trivial sub agent which will"
+  },
+  {
+   "start": 1476.159,
+   "duration": 4.4,
+   "text": "just proof or greet you. Yeah. The"
+  },
+  {
+   "start": 1478.559,
+   "duration": 3.841,
+   "text": "coordinator will kind of spin up that"
+  },
+  {
+   "start": 1480.559,
+   "duration": 5.281,
+   "text": "sub agent and the sub agent will gre"
+  },
+  {
+   "start": 1482.4,
+   "duration": 6.24,
+   "text": "greet you like you know um I'm a sub"
+  },
+  {
+   "start": 1485.84,
+   "duration": 4.959,
+   "text": "agent or if you can see here um says a"
+  },
+  {
+   "start": 1488.64,
+   "duration": 3.68,
+   "text": "friendly hello like I'm a sub agent and"
+  },
+  {
+   "start": 1490.799,
+   "duration": 4.801,
+   "text": "you know hi how are you something like"
+  },
+  {
+   "start": 1492.32,
+   "duration": 5.359,
+   "text": "that. Yeah. So uh we're going to test"
+  },
+  {
+   "start": 1495.6,
+   "duration": 3.76,
+   "text": "this out in the ipython terminal. We're"
+  },
+  {
+   "start": 1497.679,
+   "duration": 3.841,
+   "text": "not going to dedicate a separate file"
+  },
+  {
+   "start": 1499.36,
+   "duration": 4.24,
+   "text": "for it, right? All the productive code"
+  },
+  {
+   "start": 1501.52,
+   "duration": 3.68,
+   "text": "will go inside respective files. But but"
+  },
+  {
+   "start": 1503.6,
+   "duration": 4.48,
+   "text": "as you know to test out something, we're"
+  },
+  {
+   "start": 1505.2,
+   "duration": 5.359,
+   "text": "going to use the IPython terminal. So um"
+  },
+  {
+   "start": 1508.08,
+   "duration": 5.92,
+   "text": "this is my IPython terminal uh kind of"
+  },
+  {
+   "start": 1510.559,
+   "duration": 5.441,
+   "text": "opened up right and it's inside"
+  },
+  {
+   "start": 1514.0,
+   "duration": 4.4,
+   "text": "obviously inside the episode 5 directory"
+  },
+  {
+   "start": 1516.0,
+   "duration": 4.559,
+   "text": "because all of our files are there and"
+  },
+  {
+   "start": 1518.4,
+   "duration": 5.759,
+   "text": "um yeah this is episode 5 kind of a"
+  },
+  {
+   "start": 1520.559,
+   "duration": 5.6,
+   "text": "stuff. So uh I'm going to just copy this"
+  },
+  {
+   "start": 1524.159,
+   "duration": 4.721,
+   "text": "simple piece of code. Uh there is"
+  },
+  {
+   "start": 1526.159,
+   "duration": 6.081,
+   "text": "nothing over here to uh like discuss. Uh"
+  },
+  {
+   "start": 1528.88,
+   "duration": 5.279,
+   "text": "we are kind of you know uh importing the"
+  },
+  {
+   "start": 1532.24,
+   "duration": 3.36,
+   "text": "cloud agent options agent definition"
+  },
+  {
+   "start": 1534.159,
+   "duration": 2.961,
+   "text": "because we are spinning up a new sub"
+  },
+  {
+   "start": 1535.6,
+   "duration": 3.92,
+   "text": "agent right we need the agent definition"
+  },
+  {
+   "start": 1537.12,
+   "duration": 5.039,
+   "text": "properties and obviously the query we"
+  },
+  {
+   "start": 1539.52,
+   "duration": 4.399,
+   "text": "need to interact with cloud and claude"
+  },
+  {
+   "start": 1542.159,
+   "duration": 4.161,
+   "text": "agent options if you see in the cloud"
+  },
+  {
+   "start": 1543.919,
+   "duration": 4.24,
+   "text": "agent options we are saying that you"
+  },
+  {
+   "start": 1546.32,
+   "duration": 3.76,
+   "text": "know the you are allowed to spin up an"
+  },
+  {
+   "start": 1548.159,
+   "duration": 4.64,
+   "text": "agent that's why we are passing the"
+  },
+  {
+   "start": 1550.08,
+   "duration": 6.32,
+   "text": "allowed tool sorry the agent tool inside"
+  },
+  {
+   "start": 1552.799,
+   "duration": 6.161,
+   "text": "the allowed tools array. So uh now uh"
+  },
+  {
+   "start": 1556.4,
+   "duration": 5.2,
+   "text": "this coordinator or the main agent right"
+  },
+  {
+   "start": 1558.96,
+   "duration": 4.719,
+   "text": "has the permission to actually spin up"
+  },
+  {
+   "start": 1561.6,
+   "duration": 5.76,
+   "text": "sub agents. And then if you see inside"
+  },
+  {
+   "start": 1563.679,
+   "duration": 5.681,
+   "text": "this agents block yeah uh we have one"
+  },
+  {
+   "start": 1567.36,
+   "duration": 3.679,
+   "text": "sub agent known as a greeter and its"
+  },
+  {
+   "start": 1569.36,
+   "duration": 4.16,
+   "text": "agent definition. This has a simple"
+  },
+  {
+   "start": 1571.039,
+   "duration": 4.24,
+   "text": "description uh says a friendly hello use"
+  },
+  {
+   "start": 1573.52,
+   "duration": 4.96,
+   "text": "for greetings and the prompt is you say"
+  },
+  {
+   "start": 1575.279,
+   "duration": 6.721,
+   "text": "hello in one short warm sentence. And as"
+  },
+  {
+   "start": 1578.48,
+   "duration": 5.52,
+   "text": "uh you know going back over here"
+  },
+  {
+   "start": 1582.0,
+   "duration": 3.84,
+   "text": "uh if you remember we had this agent"
+  },
+  {
+   "start": 1584.0,
+   "duration": 3.679,
+   "text": "definition.properties"
+  },
+  {
+   "start": 1585.84,
+   "duration": 4.0,
+   "text": "uh so as you can see that these tools"
+  },
+  {
+   "start": 1587.679,
+   "duration": 3.761,
+   "text": "and models and all those things are"
+  },
+  {
+   "start": 1589.84,
+   "duration": 3.839,
+   "text": "optional properties the description and"
+  },
+  {
+   "start": 1591.44,
+   "duration": 4.56,
+   "text": "the prompt are required properties for"
+  },
+  {
+   "start": 1593.679,
+   "duration": 4.161,
+   "text": "an for a sub agent to spin up right I"
+  },
+  {
+   "start": 1596.0,
+   "duration": 4.08,
+   "text": "hope you guys remember these things."
+  },
+  {
+   "start": 1597.84,
+   "duration": 4.48,
+   "text": "Yeah so it's a simple agent and uh"
+  },
+  {
+   "start": 1600.08,
+   "duration": 4.079,
+   "text": "that's it. So I I hope I have copied it"
+  },
+  {
+   "start": 1602.32,
+   "duration": 4.16,
+   "text": "and uh I'm going to just paste it down"
+  },
+  {
+   "start": 1604.159,
+   "duration": 4.961,
+   "text": "in the IPython terminal and we're going"
+  },
+  {
+   "start": 1606.48,
+   "duration": 4.72,
+   "text": "to just have a simple run of this uh"
+  },
+  {
+   "start": 1609.12,
+   "duration": 4.32,
+   "text": "particular agent, right? And let's see"
+  },
+  {
+   "start": 1611.2,
+   "duration": 5.839,
+   "text": "if it spins up this sub agent and it"
+  },
+  {
+   "start": 1613.44,
+   "duration": 5.68,
+   "text": "greets us um or not. Yeah, I hope that"
+  },
+  {
+   "start": 1617.039,
+   "duration": 6.561,
+   "text": "is making sense."
+  },
+  {
+   "start": 1619.12,
+   "duration": 6.88,
+   "text": "Okay, so it is telling um greeter agent"
+  },
+  {
+   "start": 1623.6,
+   "duration": 4.24,
+   "text": "says hello and welcome. It's it is great"
+  },
+  {
+   "start": 1626.0,
+   "duration": 4.559,
+   "text": "to have you here. So obviously so what"
+  },
+  {
+   "start": 1627.84,
+   "duration": 5.439,
+   "text": "happened here is our sub agent got spin"
+  },
+  {
+   "start": 1630.559,
+   "duration": 4.961,
+   "text": "up and our you know as you can see that"
+  },
+  {
+   "start": 1633.279,
+   "duration": 6.161,
+   "text": "coordinator has spinned up a very simple"
+  },
+  {
+   "start": 1635.52,
+   "duration": 6.48,
+   "text": "sub agent and it you know kind of got"
+  },
+  {
+   "start": 1639.44,
+   "duration": 4.64,
+   "text": "you know just told us hi basically so"
+  },
+  {
+   "start": 1642.0,
+   "duration": 4.64,
+   "text": "that is how basically the the very"
+  },
+  {
+   "start": 1644.08,
+   "duration": 4.56,
+   "text": "simple uh definition of spinning up a"
+  },
+  {
+   "start": 1646.64,
+   "duration": 5.36,
+   "text": "sub agent it's as easy as this if you're"
+  },
+  {
+   "start": 1648.64,
+   "duration": 5.36,
+   "text": "using the clawed agent uh SDK right and"
+  },
+  {
+   "start": 1652.0,
+   "duration": 3.36,
+   "text": "I hope you understood the properties"
+  },
+  {
+   "start": 1654.0,
+   "duration": 2.72,
+   "text": "that we discussed about the agent"
+  },
+  {
+   "start": 1655.36,
+   "duration": 4.08,
+   "text": "definition how you going to pass it"
+  },
+  {
+   "start": 1656.72,
+   "duration": 5.68,
+   "text": "inside the cloud agent options and um"
+  },
+  {
+   "start": 1659.44,
+   "duration": 6.16,
+   "text": "yeah so it's it's pretty simple now"
+  },
+  {
+   "start": 1662.4,
+   "duration": 5.759,
+   "text": "moving on to the next step right now"
+  },
+  {
+   "start": 1665.6,
+   "duration": 5.52,
+   "text": "we're going to be you know uh creating a"
+  },
+  {
+   "start": 1668.159,
+   "duration": 6.321,
+   "text": "new file known as a sub aents py this is"
+  },
+  {
+   "start": 1671.12,
+   "duration": 5.52,
+   "text": "where the uh capability versus wiring"
+  },
+  {
+   "start": 1674.48,
+   "duration": 3.439,
+   "text": "split from episode number three or"
+  },
+  {
+   "start": 1676.64,
+   "duration": 5.12,
+   "text": "lesson number three if you remember"
+  },
+  {
+   "start": 1677.919,
+   "duration": 7.281,
+   "text": "extends one level further yeah so we all"
+  },
+  {
+   "start": 1681.76,
+   "duration": 4.88,
+   "text": "know that this tools py right holds raw"
+  },
+  {
+   "start": 1685.2,
+   "duration": 3.12,
+   "text": "capabilities"
+  },
+  {
+   "start": 1686.64,
+   "duration": 4.48,
+   "text": "So now we we're going to do is we're"
+  },
+  {
+   "start": 1688.32,
+   "duration": 4.8,
+   "text": "going to create a sub aents py. So I'm"
+  },
+  {
+   "start": 1691.12,
+   "duration": 6.0,
+   "text": "going to create a new file and I'm going"
+  },
+  {
+   "start": 1693.12,
+   "duration": 6.64,
+   "text": "to name it as sub aents."
+  },
+  {
+   "start": 1697.12,
+   "duration": 7.2,
+   "text": "I hope spelling is right. Sub aents."
+  },
+  {
+   "start": 1699.76,
+   "duration": 7.76,
+   "text": "Yeah. py. Right. So this will hold"
+  },
+  {
+   "start": 1704.32,
+   "duration": 6.0,
+   "text": "specialist identities built out of those"
+  },
+  {
+   "start": 1707.52,
+   "duration": 5.84,
+   "text": "capabilities. Right. And obviously we're"
+  },
+  {
+   "start": 1710.32,
+   "duration": 5.76,
+   "text": "going to have the agent. py which wires"
+  },
+  {
+   "start": 1713.36,
+   "duration": 6.0,
+   "text": "everything into one coordinator. So I'm"
+  },
+  {
+   "start": 1716.08,
+   "duration": 5.28,
+   "text": "going to just uh keep uh this I'm going"
+  },
+  {
+   "start": 1719.36,
+   "duration": 6.16,
+   "text": "to create the agent. py here also so"
+  },
+  {
+   "start": 1721.36,
+   "duration": 7.12,
+   "text": "that you know later on we do not kind of"
+  },
+  {
+   "start": 1725.52,
+   "duration": 6.96,
+   "text": "forget about it. And so now let's let's"
+  },
+  {
+   "start": 1728.48,
+   "duration": 6.96,
+   "text": "let's work on this sub aents py thing."
+  },
+  {
+   "start": 1732.48,
+   "duration": 6.0,
+   "text": "Okay. So I'm going to go to the"
+  },
+  {
+   "start": 1735.44,
+   "duration": 6.8,
+   "text": "snippets.mmd and I should have the sub"
+  },
+  {
+   "start": 1738.48,
+   "duration": 6.0,
+   "text": "aents py new file. Yeah. And it so"
+  },
+  {
+   "start": 1742.24,
+   "duration": 4.08,
+   "text": "obviously I'm sharing the snippets.mmd"
+  },
+  {
+   "start": 1744.48,
+   "duration": 3.679,
+   "text": "file as well as you go through the video"
+  },
+  {
+   "start": 1746.32,
+   "duration": 3.839,
+   "text": "you can also go through the snippets.mmd"
+  },
+  {
+   "start": 1748.159,
+   "duration": 4.24,
+   "text": "file and you can check that okay it is"
+  },
+  {
+   "start": 1750.159,
+   "duration": 6.321,
+   "text": "done sequentially so you'll understand"
+  },
+  {
+   "start": 1752.399,
+   "duration": 6.561,
+   "text": "what is happening right so um here we're"
+  },
+  {
+   "start": 1756.48,
+   "duration": 7.04,
+   "text": "going to just uh copy paste from this"
+  },
+  {
+   "start": 1758.96,
+   "duration": 6.8,
+   "text": "point yeah um with some dock strings"
+  },
+  {
+   "start": 1763.52,
+   "duration": 4.56,
+   "text": "basically so let's let's copy this uh"
+  },
+  {
+   "start": 1765.76,
+   "duration": 5.2,
+   "text": "comments and then this piece of code"
+  },
+  {
+   "start": 1768.08,
+   "duration": 5.28,
+   "text": "over here yeah and till Here we're going"
+  },
+  {
+   "start": 1770.96,
+   "duration": 5.439,
+   "text": "to copy. Yeah. And going to go inside"
+  },
+  {
+   "start": 1773.36,
+   "duration": 5.6,
+   "text": "the sub aents. py and paste it here."
+  },
+  {
+   "start": 1776.399,
+   "duration": 6.16,
+   "text": "Yeah. So"
+  },
+  {
+   "start": 1778.96,
+   "duration": 6.64,
+   "text": "um if you see uh the first specialist"
+  },
+  {
+   "start": 1782.559,
+   "duration": 6.801,
+   "text": "over here is a documentation coverage"
+  },
+  {
+   "start": 1785.6,
+   "duration": 6.16,
+   "text": "reviewer, right? Notice it's tools list"
+  },
+  {
+   "start": 1789.36,
+   "duration": 4.08,
+   "text": "over here. If you see over here, notice"
+  },
+  {
+   "start": 1791.76,
+   "duration": 6.159,
+   "text": "its tool list that we have created over"
+  },
+  {
+   "start": 1793.44,
+   "duration": 7.119,
+   "text": "here. So it has exactly one entry,"
+  },
+  {
+   "start": 1797.919,
+   "duration": 4.48,
+   "text": "right? the dock string checker from the"
+  },
+  {
+   "start": 1800.559,
+   "duration": 3.12,
+   "text": "previous episode that we had defined"
+  },
+  {
+   "start": 1802.399,
+   "duration": 2.64,
+   "text": "right the tools that we have created if"
+  },
+  {
+   "start": 1803.679,
+   "duration": 3.761,
+   "text": "we go inside the tools there would be"
+  },
+  {
+   "start": 1805.039,
+   "duration": 5.12,
+   "text": "one dock string checker right and there"
+  },
+  {
+   "start": 1807.44,
+   "duration": 4.959,
+   "text": "this naming format you know you already"
+  },
+  {
+   "start": 1810.159,
+   "duration": 6.24,
+   "text": "I have explained that uh claude"
+  },
+  {
+   "start": 1812.399,
+   "duration": 7.28,
+   "text": "identifies a naming format like MCP the"
+  },
+  {
+   "start": 1816.399,
+   "duration": 4.64,
+   "text": "MCP server name and then check dock"
+  },
+  {
+   "start": 1819.679,
+   "duration": 2.961,
+   "text": "string which is basically the tool name"
+  },
+  {
+   "start": 1821.039,
+   "duration": 3.601,
+   "text": "that is how it is identified so that is"
+  },
+  {
+   "start": 1822.64,
+   "duration": 4.399,
+   "text": "why the tool name is like over here and"
+  },
+  {
+   "start": 1824.64,
+   "duration": 4.48,
+   "text": "it has one tool right uh it physically"
+  },
+  {
+   "start": 1827.039,
+   "duration": 3.681,
+   "text": "cannot call any other tool because we"
+  },
+  {
+   "start": 1829.12,
+   "duration": 3.76,
+   "text": "have specified that you know the the"
+  },
+  {
+   "start": 1830.72,
+   "duration": 3.92,
+   "text": "tools that are visible to you is only"
+  },
+  {
+   "start": 1832.88,
+   "duration": 4.56,
+   "text": "one tool and that's the tool restriction"
+  },
+  {
+   "start": 1834.64,
+   "duration": 4.48,
+   "text": "benefit and it has been made concrete"
+  },
+  {
+   "start": 1837.44,
+   "duration": 4.8,
+   "text": "over here. I hope that's making sense"
+  },
+  {
+   "start": 1839.12,
+   "duration": 5.52,
+   "text": "now why sub agents are so beneficial"
+  },
+  {
+   "start": 1842.24,
+   "duration": 5.2,
+   "text": "right now moving on let's let's kind of"
+  },
+  {
+   "start": 1844.64,
+   "duration": 4.48,
+   "text": "see so um let's talk about the next"
+  },
+  {
+   "start": 1847.44,
+   "duration": 4.64,
+   "text": "specialist right so if you if you go to"
+  },
+  {
+   "start": 1849.12,
+   "duration": 4.799,
+   "text": "snippets.mmd so we kind of got our uh"
+  },
+  {
+   "start": 1852.08,
+   "duration": 4.16,
+   "text": "first specialist right first specialist"
+  },
+  {
+   "start": 1853.919,
+   "duration": 4.161,
+   "text": "sub agent now we going to um be taking"
+  },
+  {
+   "start": 1856.24,
+   "duration": 3.679,
+   "text": "the second specialist which is basically"
+  },
+  {
+   "start": 1858.08,
+   "duration": 4.56,
+   "text": "the security reviewer which is starts"
+  },
+  {
+   "start": 1859.919,
+   "duration": 6.0,
+   "text": "starts from here so I'm just going to uh"
+  },
+  {
+   "start": 1862.64,
+   "duration": 6.08,
+   "text": "copy this up right and copy this section"
+  },
+  {
+   "start": 1865.919,
+   "duration": 4.64,
+   "text": "over here And we're going to just uh"
+  },
+  {
+   "start": 1868.72,
+   "duration": 3.76,
+   "text": "paste it. It's continued. So we're going"
+  },
+  {
+   "start": 1870.559,
+   "duration": 4.641,
+   "text": "to paste it right here. So if you see"
+  },
+  {
+   "start": 1872.48,
+   "duration": 4.559,
+   "text": "over here, this is"
+  },
+  {
+   "start": 1875.2,
+   "duration": 4.479,
+   "text": "this specialist is like the direct"
+  },
+  {
+   "start": 1877.039,
+   "duration": 5.041,
+   "text": "payoff from the last lesson which was"
+  },
+  {
+   "start": 1879.679,
+   "duration": 3.841,
+   "text": "lesson number four, right? Uh the whole"
+  },
+  {
+   "start": 1882.08,
+   "duration": 3.199,
+   "text": "prompt injection thing that we"
+  },
+  {
+   "start": 1883.52,
+   "duration": 4.399,
+   "text": "discussed, right? Prompt injection arc."
+  },
+  {
+   "start": 1885.279,
+   "duration": 5.681,
+   "text": "So this specialist's entire job is to"
+  },
+  {
+   "start": 1887.919,
+   "duration": 4.961,
+   "text": "fetch a PR's metadata. You can see the"
+  },
+  {
+   "start": 1890.96,
+   "duration": 4.0,
+   "text": "description and the prompt that you know"
+  },
+  {
+   "start": 1892.88,
+   "duration": 4.96,
+   "text": "you're seeing on the screen. uh and"
+  },
+  {
+   "start": 1894.96,
+   "duration": 3.839,
+   "text": "treat the description body as host"
+  },
+  {
+   "start": 1897.84,
+   "duration": 4.959,
+   "text": "hostile, [snorts]"
+  },
+  {
+   "start": 1898.799,
+   "duration": 6.72,
+   "text": "right? Until proven otherwise. Yeah, it"
+  },
+  {
+   "start": 1902.799,
+   "duration": 4.24,
+   "text": "will treat it like guilty until proven,"
+  },
+  {
+   "start": 1905.519,
+   "duration": 4.241,
+   "text": "you know, otherwise, right? It's it's"
+  },
+  {
+   "start": 1907.039,
+   "duration": 5.36,
+   "text": "like that. So, uh and because that"
+  },
+  {
+   "start": 1909.76,
+   "duration": 5.279,
+   "text": "instruction lives in this sub agent's"
+  },
+  {
+   "start": 1912.399,
+   "duration": 4.64,
+   "text": "own prompt that you see over here,"
+  },
+  {
+   "start": 1915.039,
+   "duration": 4.0,
+   "text": "right? It it never has to kind of"
+  },
+  {
+   "start": 1917.039,
+   "duration": 3.441,
+   "text": "compete for attention with the dock"
+  },
+  {
+   "start": 1919.039,
+   "duration": 4.48,
+   "text": "string review instruction. So, it has"
+  },
+  {
+   "start": 1920.48,
+   "duration": 5.039,
+   "text": "its own set of prompts and stuffs over"
+  },
+  {
+   "start": 1923.519,
+   "duration": 3.441,
+   "text": "here. it doesn't have to worry about the"
+  },
+  {
+   "start": 1925.519,
+   "duration": 3.361,
+   "text": "other sub agent. It is it is a"
+  },
+  {
+   "start": 1926.96,
+   "duration": 4.16,
+   "text": "specialist in security reviewer"
+  },
+  {
+   "start": 1928.88,
+   "duration": 5.679,
+   "text": "reviewing. So it has its own prompt over"
+  },
+  {
+   "start": 1931.12,
+   "duration": 6.159,
+   "text": "here. Right? So that is the thing and if"
+  },
+  {
+   "start": 1934.559,
+   "duration": 5.6,
+   "text": "you see uh the tools that it has been uh"
+  },
+  {
+   "start": 1937.279,
+   "duration": 5.76,
+   "text": "you know u it is visible to is the fetch"
+  },
+  {
+   "start": 1940.159,
+   "duration": 5.36,
+   "text": "PR metadata tool right which if you"
+  },
+  {
+   "start": 1943.039,
+   "duration": 4.561,
+   "text": "going to check the"
+  },
+  {
+   "start": 1945.519,
+   "duration": 5.681,
+   "text": "tools. py you should see the fetch PR"
+  },
+  {
+   "start": 1947.6,
+   "duration": 7.04,
+   "text": "metadata tool over here right. So yeah,"
+  },
+  {
+   "start": 1951.2,
+   "duration": 6.079,
+   "text": "so you know um the so the if you see"
+  },
+  {
+   "start": 1954.64,
+   "duration": 5.759,
+   "text": "over here that's the whole file. So we"
+  },
+  {
+   "start": 1957.279,
+   "duration": 6.561,
+   "text": "have two agent definition objects right"
+  },
+  {
+   "start": 1960.399,
+   "duration": 6.561,
+   "text": "and um there is basically no logic over"
+  },
+  {
+   "start": 1963.84,
+   "duration": 7.04,
+   "text": "here no async function sub aents py just"
+  },
+  {
+   "start": 1966.96,
+   "duration": 6.0,
+   "text": "describes who exists right all the"
+  },
+  {
+   "start": 1970.88,
+   "duration": 5.039,
+   "text": "actual capability still lives in the"
+  },
+  {
+   "start": 1972.96,
+   "duration": 5.162,
+   "text": "tools py don't get confused right so an"
+  },
+  {
+   "start": 1975.919,
+   "duration": 4.401,
+   "text": "agent at the end of the day is like the"
+  },
+  {
+   "start": 1978.122,
+   "duration": 5.557,
+   "text": "[snorts] it has the llm so it it is like"
+  },
+  {
+   "start": 1980.32,
+   "duration": 5.44,
+   "text": "the brain right agent will decide when"
+  },
+  {
+   "start": 1983.679,
+   "duration": 3.761,
+   "text": "to use which tool and it is same in the"
+  },
+  {
+   "start": 1985.76,
+   "duration": 3.919,
+   "text": "concept of sub agent as well because a"
+  },
+  {
+   "start": 1987.44,
+   "duration": 5.68,
+   "text": "sub agent is ultimately at the end of"
+  },
+  {
+   "start": 1989.679,
+   "duration": 5.681,
+   "text": "the day an agent right and this"
+  },
+  {
+   "start": 1993.12,
+   "duration": 4.24,
+   "text": "particular sub aent has access to this"
+  },
+  {
+   "start": 1995.36,
+   "duration": 3.84,
+   "text": "tool and this particular sub aent has"
+  },
+  {
+   "start": 1997.36,
+   "duration": 4.319,
+   "text": "access to this tool simple as that and"
+  },
+  {
+   "start": 1999.2,
+   "duration": 4.56,
+   "text": "the coordinator will be responsible like"
+  },
+  {
+   "start": 2001.679,
+   "duration": 4.561,
+   "text": "it will use the agent tool call to"
+  },
+  {
+   "start": 2003.76,
+   "duration": 6.08,
+   "text": "determine okay at what point do you need"
+  },
+  {
+   "start": 2006.24,
+   "duration": 6.48,
+   "text": "to invoke which agent basically you know"
+  },
+  {
+   "start": 2009.84,
+   "duration": 4.8,
+   "text": "so I you I I hope you it's making sense"
+  },
+  {
+   "start": 2012.72,
+   "duration": 4.079,
+   "text": "and it's kind of coming together right"
+  },
+  {
+   "start": 2014.64,
+   "duration": 4.399,
+   "text": "now right I'm hope it's uh you're not"
+  },
+  {
+   "start": 2016.799,
+   "duration": 5.681,
+   "text": "getting confused."
+  },
+  {
+   "start": 2019.039,
+   "duration": 7.441,
+   "text": "Okay. Now um one thing I want to discuss"
+  },
+  {
+   "start": 2022.48,
+   "duration": 6.4,
+   "text": "right let me go back uh to the um slides"
+  },
+  {
+   "start": 2026.48,
+   "duration": 5.439,
+   "text": "and I'm going to talk about shared"
+  },
+  {
+   "start": 2028.88,
+   "duration": 4.96,
+   "text": "workspace and isolated context and it's"
+  },
+  {
+   "start": 2031.919,
+   "duration": 4.0,
+   "text": "very very important to understand this"
+  },
+  {
+   "start": 2033.84,
+   "duration": 5.92,
+   "text": "uh before we go into the code any"
+  },
+  {
+   "start": 2035.919,
+   "duration": 6.48,
+   "text": "further right so here's like the but"
+  },
+  {
+   "start": 2039.76,
+   "duration": 5.519,
+   "text": "wait moment right why why did you why"
+  },
+  {
+   "start": 2042.399,
+   "duration": 4.88,
+   "text": "why did I discontinue the coding and you"
+  },
+  {
+   "start": 2045.279,
+   "duration": 5.761,
+   "text": "know but wait and I want to show you"
+  },
+  {
+   "start": 2047.279,
+   "duration": 7.84,
+   "text": "something so um if sub agents don't"
+  },
+  {
+   "start": 2051.04,
+   "duration": 7.2,
+   "text": "inherit the coordinator's history right"
+  },
+  {
+   "start": 2055.119,
+   "duration": 7.04,
+   "text": "no shared conversation no prior tool"
+  },
+  {
+   "start": 2058.24,
+   "duration": 6.159,
+   "text": "results how do both of ours end up"
+  },
+  {
+   "start": 2062.159,
+   "duration": 4.401,
+   "text": "looking at the same PR so if you see we"
+  },
+  {
+   "start": 2064.399,
+   "duration": 6.081,
+   "text": "have some mock PRs over here so if you"
+  },
+  {
+   "start": 2066.56,
+   "duration": 8.559,
+   "text": "go uh to the tools probably not to the"
+  },
+  {
+   "start": 2070.48,
+   "duration": 6.639,
+   "text": "tools or where was it kind of sort of"
+  },
+  {
+   "start": 2075.119,
+   "duration": 5.28,
+   "text": "lost it or what okay no no it was in the"
+  },
+  {
+   "start": 2077.119,
+   "duration": 5.841,
+   "text": "tools itself so we this mock P right. So"
+  },
+  {
+   "start": 2080.399,
+   "duration": 4.48,
+   "text": "how do we know that each of those two"
+  },
+  {
+   "start": 2082.96,
+   "duration": 4.32,
+   "text": "sub aents are kind of considering the"
+  },
+  {
+   "start": 2084.879,
+   "duration": 5.841,
+   "text": "same PR in this case for example 1 43."
+  },
+  {
+   "start": 2087.28,
+   "duration": 7.52,
+   "text": "Yeah. So the answer is because isolated"
+  },
+  {
+   "start": 2090.72,
+   "duration": 6.399,
+   "text": "context and shared workspace are two"
+  },
+  {
+   "start": 2094.8,
+   "duration": 4.08,
+   "text": "different things. Try to understand"
+  },
+  {
+   "start": 2097.119,
+   "duration": 4.161,
+   "text": "that. Let's go back to the slide and try"
+  },
+  {
+   "start": 2098.88,
+   "duration": 6.0,
+   "text": "to understand it. Let me repeat it."
+  },
+  {
+   "start": 2101.28,
+   "duration": 6.24,
+   "text": "Isolated context and shared workspace"
+  },
+  {
+   "start": 2104.88,
+   "duration": 4.88,
+   "text": "are two different things. And it's easy"
+  },
+  {
+   "start": 2107.52,
+   "duration": 5.04,
+   "text": "to you know get confused and like blur"
+  },
+  {
+   "start": 2109.76,
+   "duration": 6.079,
+   "text": "the lines between them you know so but"
+  },
+  {
+   "start": 2112.56,
+   "duration": 6.16,
+   "text": "isolated context means like each sub"
+  },
+  {
+   "start": 2115.839,
+   "duration": 6.641,
+   "text": "aent's conversation starts completely"
+  },
+  {
+   "start": 2118.72,
+   "duration": 7.2,
+   "text": "blank and you know uh it's true because"
+  },
+  {
+   "start": 2122.48,
+   "duration": 6.08,
+   "text": "it's an agent right and it's it's it"
+  },
+  {
+   "start": 2125.92,
+   "duration": 6.8,
+   "text": "starts with a blank slate"
+  },
+  {
+   "start": 2128.56,
+   "duration": 7.6,
+   "text": "right so it has no memory of anything"
+  },
+  {
+   "start": 2132.72,
+   "duration": 8.08,
+   "text": "the coordinator said Four"
+  },
+  {
+   "start": 2136.16,
+   "duration": 7.919,
+   "text": "shared workspace means both sub agents"
+  },
+  {
+   "start": 2140.8,
+   "duration": 7.12,
+   "text": "right call the tools that hit the exact"
+  },
+  {
+   "start": 2144.079,
+   "duration": 5.441,
+   "text": "same underlying data. I hope you are"
+  },
+  {
+   "start": 2147.92,
+   "duration": 4.08,
+   "text": "understanding what is the difference"
+  },
+  {
+   "start": 2149.52,
+   "duration": 4.559,
+   "text": "right I mean the same mock PR dictionary"
+  },
+  {
+   "start": 2152.0,
+   "duration": 4.4,
+   "text": "that's why I showed you the mock PR"
+  },
+  {
+   "start": 2154.079,
+   "duration": 4.321,
+   "text": "right or the source of data basically if"
+  },
+  {
+   "start": 2156.4,
+   "duration": 4.08,
+   "text": "you are calling an API and it's fetching"
+  },
+  {
+   "start": 2158.4,
+   "duration": 3.92,
+   "text": "the list of PRs that's also the true"
+  },
+  {
+   "start": 2160.48,
+   "duration": 5.119,
+   "text": "that the source of truth for both the"
+  },
+  {
+   "start": 2162.32,
+   "duration": 5.759,
+   "text": "sub agents right so the same file"
+  },
+  {
+   "start": 2165.599,
+   "duration": 4.801,
+   "text": "basically on the disk now the workspace"
+  },
+  {
+   "start": 2168.079,
+   "duration": 4.801,
+   "text": "is shared through the tools and the data"
+  },
+  {
+   "start": 2170.4,
+   "duration": 5.36,
+   "text": "they touch right the context is isolated"
+  },
+  {
+   "start": 2172.88,
+   "duration": 5.12,
+   "text": "through the conversation each sub agent"
+  },
+  {
+   "start": 2175.76,
+   "duration": 5.52,
+   "text": "you know reasons."
+  },
+  {
+   "start": 2178.0,
+   "duration": 5.599,
+   "text": "So the workspace or the the data is kind"
+  },
+  {
+   "start": 2181.28,
+   "duration": 4.799,
+   "text": "of shared between the sub agent but each"
+  },
+  {
+   "start": 2183.599,
+   "duration": 5.601,
+   "text": "sub aent is having its own isolated"
+  },
+  {
+   "start": 2186.079,
+   "duration": 4.641,
+   "text": "context right. So so the only thing"
+  },
+  {
+   "start": 2189.2,
+   "duration": 2.96,
+   "text": "right and and it's a very important"
+  },
+  {
+   "start": 2190.72,
+   "duration": 3.92,
+   "text": "question if it is coming into mind so"
+  },
+  {
+   "start": 2192.16,
+   "duration": 5.439,
+   "text": "the only thing standing in for you know"
+  },
+  {
+   "start": 2194.64,
+   "duration": 5.92,
+   "text": "tell the sub agent what I know and that"
+  },
+  {
+   "start": 2197.599,
+   "duration": 4.721,
+   "text": "task falls into the hands of the"
+  },
+  {
+   "start": 2200.56,
+   "duration": 4.799,
+   "text": "coordinator."
+  },
+  {
+   "start": 2202.32,
+   "duration": 5.68,
+   "text": "Yeah. basically the the plain language"
+  },
+  {
+   "start": 2205.359,
+   "duration": 4.48,
+   "text": "asked that becomes that sub agent's very"
+  },
+  {
+   "start": 2208.0,
+   "duration": 3.52,
+   "text": "first turn."
+  },
+  {
+   "start": 2209.839,
+   "duration": 4.481,
+   "text": "Yeah. So if the coordinator's"
+  },
+  {
+   "start": 2211.52,
+   "duration": 5.36,
+   "text": "instruction doesn't mention PR143 by"
+  },
+  {
+   "start": 2214.32,
+   "duration": 4.48,
+   "text": "number or doesn't mention at least the"
+  },
+  {
+   "start": 2216.88,
+   "duration": 5.76,
+   "text": "location of the path. Let's say episode"
+  },
+  {
+   "start": 2218.8,
+   "duration": 6.08,
+   "text": "number one/ aent.py. Yeah. By path the a"
+  },
+  {
+   "start": 2222.64,
+   "duration": 5.199,
+   "text": "the sub aent has genuinely no way to"
+  },
+  {
+   "start": 2224.88,
+   "duration": 5.52,
+   "text": "know. It's just starting out blank. And"
+  },
+  {
+   "start": 2227.839,
+   "duration": 6.641,
+   "text": "this is the exact same lesson as you"
+  },
+  {
+   "start": 2230.4,
+   "duration": 6.8,
+   "text": "know sub agents have isolated context"
+  },
+  {
+   "start": 2234.48,
+   "duration": 4.96,
+   "text": "they pass the findings explicitly from"
+  },
+  {
+   "start": 2237.2,
+   "duration": 4.0,
+   "text": "the you know architect series. If you"
+  },
+  {
+   "start": 2239.44,
+   "duration": 4.399,
+   "text": "remember in my claude certified"
+  },
+  {
+   "start": 2241.2,
+   "duration": 5.28,
+   "text": "architect series as well I had covered"
+  },
+  {
+   "start": 2243.839,
+   "duration": 4.401,
+   "text": "sub aents memory sub a how do sub aents"
+  },
+  {
+   "start": 2246.48,
+   "duration": 5.599,
+   "text": "work? How do sub agents communicate with"
+  },
+  {
+   "start": 2248.24,
+   "duration": 6.48,
+   "text": "each other in detail? Right? Um"
+  },
+  {
+   "start": 2252.079,
+   "duration": 4.161,
+   "text": "to make the story short, sub agents do"
+  },
+  {
+   "start": 2254.72,
+   "duration": 3.68,
+   "text": "not communicate with each other. By the"
+  },
+  {
+   "start": 2256.24,
+   "duration": 4.4,
+   "text": "way, all the communication flows via the"
+  },
+  {
+   "start": 2258.4,
+   "duration": 5.84,
+   "text": "coordinator. Now, the coordinator is"
+  },
+  {
+   "start": 2260.64,
+   "duration": 6.719,
+   "text": "responsible to supply enough information"
+  },
+  {
+   "start": 2264.24,
+   "duration": 6.16,
+   "text": "uh to the sub agent. Yeah. To so that"
+  },
+  {
+   "start": 2267.359,
+   "duration": 4.48,
+   "text": "the sub aent can work on its own. Yeah."
+  },
+  {
+   "start": 2270.4,
+   "duration": 3.36,
+   "text": "Now the sub agent has finished"
+  },
+  {
+   "start": 2271.839,
+   "duration": 3.441,
+   "text": "processing or is there any error? It it"
+  },
+  {
+   "start": 2273.76,
+   "duration": 3.04,
+   "text": "gives back the result to the"
+  },
+  {
+   "start": 2275.28,
+   "duration": 3.12,
+   "text": "coordinator. the coordinator decides"
+  },
+  {
+   "start": 2276.8,
+   "duration": 3.279,
+   "text": "whether I have to use some other tool or"
+  },
+  {
+   "start": 2278.4,
+   "duration": 4.24,
+   "text": "call some other sub agent and the"
+  },
+  {
+   "start": 2280.079,
+   "duration": 5.121,
+   "text": "communication flows in that manner. So"
+  },
+  {
+   "start": 2282.64,
+   "duration": 4.16,
+   "text": "consider it as I as I generally talk"
+  },
+  {
+   "start": 2285.2,
+   "duration": 3.52,
+   "text": "about it right like the hub and spoke"
+  },
+  {
+   "start": 2286.8,
+   "duration": 4.64,
+   "text": "model the hub is what the coordinator is"
+  },
+  {
+   "start": 2288.72,
+   "duration": 4.8,
+   "text": "and the spokes are basically um you know"
+  },
+  {
+   "start": 2291.44,
+   "duration": 4.08,
+   "text": "the sub agents"
+  },
+  {
+   "start": 2293.52,
+   "duration": 4.319,
+   "text": "hub is the coordinator just compare it"
+  },
+  {
+   "start": 2295.52,
+   "duration": 4.48,
+   "text": "to a to your tire you know a cycle tire"
+  },
+  {
+   "start": 2297.839,
+   "duration": 5.681,
+   "text": "or your bike's tire or something like"
+  },
+  {
+   "start": 2300.0,
+   "duration": 5.2,
+   "text": "that so isolated context and shared"
+  },
+  {
+   "start": 2303.52,
+   "duration": 3.36,
+   "text": "workspace I hope you are understanding"
+  },
+  {
+   "start": 2305.2,
+   "duration": 3.52,
+   "text": "these two concepts because it will"
+  },
+  {
+   "start": 2306.88,
+   "duration": 6.32,
+   "text": "you'll get confused in the exam if you"
+  },
+  {
+   "start": 2308.72,
+   "duration": 4.48,
+   "text": "do not let me take a sip of my coffee a"
+  },
+  {
+   "start": 2315.28,
+   "duration": 5.04,
+   "text": "Yeah. So isolated context is what the"
+  },
+  {
+   "start": 2317.76,
+   "duration": 5.44,
+   "text": "sub agent remembers shared workspace"
+  },
+  {
+   "start": 2320.32,
+   "duration": 6.56,
+   "text": "what the sub aents tools can reach. They"
+  },
+  {
+   "start": 2323.2,
+   "duration": 5.36,
+   "text": "are independent knobs right and today"
+  },
+  {
+   "start": 2326.88,
+   "duration": 4.719,
+   "text": "that's exactly what we want fresh"
+  },
+  {
+   "start": 2328.56,
+   "duration": 5.6,
+   "text": "reasoning same underlying repo source of"
+  },
+  {
+   "start": 2331.599,
+   "duration": 6.321,
+   "text": "truth is same but the reasoning of each"
+  },
+  {
+   "start": 2334.16,
+   "duration": 7.84,
+   "text": "sub aent is kind of fresh. Yeah. So now"
+  },
+  {
+   "start": 2337.92,
+   "duration": 6.0,
+   "text": "let's uh kind of uh you know um start"
+  },
+  {
+   "start": 2342.0,
+   "duration": 4.0,
+   "text": "with the agent. py that we have created"
+  },
+  {
+   "start": 2343.92,
+   "duration": 5.28,
+   "text": "and now is the part that actually"
+  },
+  {
+   "start": 2346.0,
+   "duration": 5.119,
+   "text": "changes this lesson right agent. py we"
+  },
+  {
+   "start": 2349.2,
+   "duration": 4.399,
+   "text": "have the same imports as our previous"
+  },
+  {
+   "start": 2351.119,
+   "duration": 4.321,
+   "text": "lesson right and but we're going to"
+  },
+  {
+   "start": 2353.599,
+   "duration": 3.041,
+   "text": "include two new names and what are the"
+  },
+  {
+   "start": 2355.44,
+   "duration": 4.24,
+   "text": "new names we're going to see in a"
+  },
+  {
+   "start": 2356.64,
+   "duration": 6.4,
+   "text": "minute. So let me go to uh the snippets."
+  },
+  {
+   "start": 2359.68,
+   "duration": 7.04,
+   "text": "I don't know why. Okay I have to kind of"
+  },
+  {
+   "start": 2363.04,
+   "duration": 5.2,
+   "text": "open it in a new tab or something. Yeah."
+  },
+  {
+   "start": 2366.72,
+   "duration": 5.52,
+   "text": "So, I'm going to go to snippets over"
+  },
+  {
+   "start": 2368.24,
+   "duration": 6.16,
+   "text": "here and uh this is our agent. py. Yeah."
+  },
+  {
+   "start": 2372.24,
+   "duration": 4.56,
+   "text": "And we're going to wire the coordinator"
+  },
+  {
+   "start": 2374.4,
+   "duration": 7.04,
+   "text": "over here. Yeah. So, I'm just going to"
+  },
+  {
+   "start": 2376.8,
+   "duration": 7.92,
+   "text": "um kind of copy paste this from there."
+  },
+  {
+   "start": 2381.44,
+   "duration": 8.919,
+   "text": "And uh we're going to just go and stick"
+  },
+  {
+   "start": 2384.72,
+   "duration": 5.639,
+   "text": "it till here. Yeah, pretty simple."
+  },
+  {
+   "start": 2390.64,
+   "duration": 6.032,
+   "text": "And go to the agent. py. And let's let's"
+  },
+  {
+   "start": 2394.72,
+   "duration": 5.359,
+   "text": "see what is happening over here, right?"
+  },
+  {
+   "start": 2396.672,
+   "duration": 5.728,
+   "text": "[snorts] Okay. Um,"
+  },
+  {
+   "start": 2400.079,
+   "duration": 5.201,
+   "text": "it has the same imports as the previous"
+  },
+  {
+   "start": 2402.4,
+   "duration": 5.679,
+   "text": "uh kind of the kind of the lesson,"
+  },
+  {
+   "start": 2405.28,
+   "duration": 8.68,
+   "text": "right? Did I just forget something from"
+  },
+  {
+   "start": 2408.079,
+   "duration": 5.881,
+   "text": "the snippets empty? Let me let me see."
+  },
+  {
+   "start": 2414.4,
+   "duration": 5.04,
+   "text": "Okay. I I let's also cover, you know,"
+  },
+  {
+   "start": 2416.8,
+   "duration": 5.52,
+   "text": "kind of take this part and let's kind of"
+  },
+  {
+   "start": 2419.44,
+   "duration": 7.0,
+   "text": "understand um in in in in a minute,"
+  },
+  {
+   "start": 2422.32,
+   "duration": 4.12,
+   "text": "right? Um"
+  },
+  {
+   "start": 2429.92,
+   "duration": 6.72,
+   "text": "okay let's go back to agent py"
+  },
+  {
+   "start": 2433.76,
+   "duration": 4.48,
+   "text": "and let's paste it down here. So we are"
+  },
+  {
+   "start": 2436.64,
+   "duration": 3.76,
+   "text": "kind of continuing it. It will be"
+  },
+  {
+   "start": 2438.24,
+   "duration": 6.24,
+   "text": "continued anyways. So let's not worry"
+  },
+  {
+   "start": 2440.4,
+   "duration": 5.679,
+   "text": "about much about the that over here and"
+  },
+  {
+   "start": 2444.48,
+   "duration": 4.16,
+   "text": "um"
+  },
+  {
+   "start": 2446.079,
+   "duration": 4.721,
+   "text": "yeah so what I was talking about is two"
+  },
+  {
+   "start": 2448.64,
+   "duration": 5.12,
+   "text": "changes to the cloud agent options"
+  },
+  {
+   "start": 2450.8,
+   "duration": 5.76,
+   "text": "itself. So if you see over here we have"
+  },
+  {
+   "start": 2453.76,
+   "duration": 4.8,
+   "text": "two little changes over here. So the"
+  },
+  {
+   "start": 2456.56,
+   "duration": 4.16,
+   "text": "agent kind of joins this is the new"
+  },
+  {
+   "start": 2458.56,
+   "duration": 5.2,
+   "text": "thing right I told you that whenever a"
+  },
+  {
+   "start": 2460.72,
+   "duration": 5.68,
+   "text": "coordinator has to kind of um spin up a"
+  },
+  {
+   "start": 2463.76,
+   "duration": 4.24,
+   "text": "new sub agent the agent tool call must"
+  },
+  {
+   "start": 2466.4,
+   "duration": 3.52,
+   "text": "be there in the allowed tools. So you"
+  },
+  {
+   "start": 2468.0,
+   "duration": 4.16,
+   "text": "are kind of permitting it to spin up new"
+  },
+  {
+   "start": 2469.92,
+   "duration": 5.439,
+   "text": "sub agent right. So it joins the allow"
+  },
+  {
+   "start": 2472.16,
+   "duration": 5.84,
+   "text": "tools and a brand new agents dict if you"
+  },
+  {
+   "start": 2475.359,
+   "duration": 4.401,
+   "text": "remember in my uh sanity check also if"
+  },
+  {
+   "start": 2478.0,
+   "duration": 4.96,
+   "text": "you see"
+  },
+  {
+   "start": 2479.76,
+   "duration": 6.8,
+   "text": "I had that agents you know dictionary"
+  },
+  {
+   "start": 2482.96,
+   "duration": 5.68,
+   "text": "over here right so it it's nothing but"
+  },
+  {
+   "start": 2486.56,
+   "duration": 4.48,
+   "text": "it's it's it's a dictionary you know"
+  },
+  {
+   "start": 2488.64,
+   "duration": 4.479,
+   "text": "maps a name claude will address by"
+  },
+  {
+   "start": 2491.04,
+   "duration": 4.72,
+   "text": "basically right I mean this is the dock"
+  },
+  {
+   "start": 2493.119,
+   "duration": 4.321,
+   "text": "string reviewer agent or is the security"
+  },
+  {
+   "start": 2495.76,
+   "duration": 3.76,
+   "text": "reviewer sub agent something like claude"
+  },
+  {
+   "start": 2497.44,
+   "duration": 3.52,
+   "text": "will have to like know that okay these"
+  },
+  {
+   "start": 2499.52,
+   "duration": 4.319,
+   "text": "are the sub agent names and something"
+  },
+  {
+   "start": 2500.96,
+   "duration": 5.44,
+   "text": "like that, right? Um,"
+  },
+  {
+   "start": 2503.839,
+   "duration": 4.48,
+   "text": "so these are the two things uh I hope uh"
+  },
+  {
+   "start": 2506.4,
+   "duration": 6.48,
+   "text": "that is making sense till now. till now"
+  },
+  {
+   "start": 2508.319,
+   "duration": 8.081,
+   "text": "I I I'm pretty sure that um uh you know"
+  },
+  {
+   "start": 2512.88,
+   "duration": 8.64,
+   "text": "it's it's making sense over here right"
+  },
+  {
+   "start": 2516.4,
+   "duration": 6.48,
+   "text": "so let's move on um let's see before we"
+  },
+  {
+   "start": 2521.52,
+   "duration": 2.799,
+   "text": "you know we have we also have to finish"
+  },
+  {
+   "start": 2522.88,
+   "duration": 3.6,
+   "text": "this options block right now right"
+  },
+  {
+   "start": 2524.319,
+   "duration": 5.201,
+   "text": "before we kind of finish the options"
+  },
+  {
+   "start": 2526.48,
+   "duration": 4.96,
+   "text": "block um here is kind of the payoff I"
+  },
+  {
+   "start": 2529.52,
+   "duration": 4.799,
+   "text": "was most excited to verify for this"
+  },
+  {
+   "start": 2531.44,
+   "duration": 4.32,
+   "text": "episode yeah so let let us first finish"
+  },
+  {
+   "start": 2534.319,
+   "duration": 3.921,
+   "text": "the options block and let's talk about"
+  },
+  {
+   "start": 2535.76,
+   "duration": 4.96,
+   "text": "it right so if I go back and here. Let's"
+  },
+  {
+   "start": 2538.24,
+   "duration": 4.32,
+   "text": "let's copy up the hooks part from here."
+  },
+  {
+   "start": 2540.72,
+   "duration": 4.72,
+   "text": "And this is the very very important and"
+  },
+  {
+   "start": 2542.56,
+   "duration": 8.08,
+   "text": "very interesting thing uh that I kind of"
+  },
+  {
+   "start": 2545.44,
+   "duration": 7.2,
+   "text": "kind of like wanted to actually you know"
+  },
+  {
+   "start": 2550.64,
+   "duration": 4.16,
+   "text": "just going to copy this. Yeah, it's"
+  },
+  {
+   "start": 2552.64,
+   "duration": 3.84,
+   "text": "nothing over here. So this this bracket"
+  },
+  {
+   "start": 2554.8,
+   "duration": 3.279,
+   "text": "is basically for the options block to"
+  },
+  {
+   "start": 2556.48,
+   "duration": 3.68,
+   "text": "finish off because you can see that"
+  },
+  {
+   "start": 2558.079,
+   "duration": 4.161,
+   "text": "there is some error over here. So we're"
+  },
+  {
+   "start": 2560.16,
+   "duration": 5.199,
+   "text": "going to just put it down here. Now you"
+  },
+  {
+   "start": 2562.24,
+   "duration": 7.2,
+   "text": "can see the error is gone. So what is"
+  },
+  {
+   "start": 2565.359,
+   "duration": 6.321,
+   "text": "happening over here right? So"
+  },
+  {
+   "start": 2569.44,
+   "duration": 4.0,
+   "text": "basically the hooks dictionary if you"
+  },
+  {
+   "start": 2571.68,
+   "duration": 4.24,
+   "text": "remember from like the previous lesson"
+  },
+  {
+   "start": 2573.44,
+   "duration": 5.52,
+   "text": "or something like that uh the the the"
+  },
+  {
+   "start": 2575.92,
+   "duration": 4.48,
+   "text": "hooks dictionary um we had uh three"
+  },
+  {
+   "start": 2578.96,
+   "duration": 3.52,
+   "text": "hooks right if you remember block"
+  },
+  {
+   "start": 2580.4,
+   "duration": 4.88,
+   "text": "dangerous bash if you can want to have a"
+  },
+  {
+   "start": 2582.48,
+   "duration": 5.44,
+   "text": "look I'm going to open to the side or"
+  },
+  {
+   "start": 2585.28,
+   "duration": 4.24,
+   "text": "something yeah till here so we have"
+  },
+  {
+   "start": 2587.92,
+   "duration": 4.56,
+   "text": "these hooks right we have the block"
+  },
+  {
+   "start": 2589.52,
+   "duration": 5.04,
+   "text": "dangerous bash the require evidence"
+  },
+  {
+   "start": 2592.48,
+   "duration": 5.04,
+   "text": "somewhere around here right which will"
+  },
+  {
+   "start": 2594.56,
+   "duration": 4.96,
+   "text": "basically check um before a comment has"
+  },
+  {
+   "start": 2597.52,
+   "duration": 4.4,
+   "text": "been made by the reviewer on the PR"
+  },
+  {
+   "start": 2599.52,
+   "duration": 4.16,
+   "text": "right if it's a valid comment or not and"
+  },
+  {
+   "start": 2601.92,
+   "duration": 5.12,
+   "text": "process PR fetch result which will"
+  },
+  {
+   "start": 2603.68,
+   "duration": 6.639,
+   "text": "basically you know um normalize the the"
+  },
+  {
+   "start": 2607.04,
+   "duration": 6.319,
+   "text": "the the basically output which is coming"
+  },
+  {
+   "start": 2610.319,
+   "duration": 5.04,
+   "text": "and also it will flag if the PR"
+  },
+  {
+   "start": 2613.359,
+   "duration": 5.521,
+   "text": "description has any malicious content"
+  },
+  {
+   "start": 2615.359,
+   "duration": 6.081,
+   "text": "right so the thing that I want to make"
+  },
+  {
+   "start": 2618.88,
+   "duration": 5.76,
+   "text": "point that I want to make here is that"
+  },
+  {
+   "start": 2621.44,
+   "duration": 6.0,
+   "text": "this is completely unchanged it has not"
+  },
+  {
+   "start": 2624.64,
+   "duration": 5.6,
+   "text": "been touched at all right not extended"
+  },
+  {
+   "start": 2627.44,
+   "duration": 5.12,
+   "text": "just copy paste it and this is not"
+  },
+  {
+   "start": 2630.24,
+   "duration": 5.76,
+   "text": "laziness or something like that right"
+  },
+  {
+   "start": 2632.56,
+   "duration": 5.519,
+   "text": "it's it's a real property of the SDK I"
+  },
+  {
+   "start": 2636.0,
+   "duration": 5.92,
+   "text": "kind of confirmed against the official"
+  },
+  {
+   "start": 2638.079,
+   "duration": 5.841,
+   "text": "hooks documentation yeah so"
+  },
+  {
+   "start": 2641.92,
+   "duration": 4.48,
+   "text": "very important from an exam perspective"
+  },
+  {
+   "start": 2643.92,
+   "duration": 5.04,
+   "text": "and from you know your work perspective"
+  },
+  {
+   "start": 2646.4,
+   "duration": 5.199,
+   "text": "from your day-to-day life uh hooks are"
+  },
+  {
+   "start": 2648.96,
+   "duration": 6.56,
+   "text": "registered on the clawed agent options"
+  },
+  {
+   "start": 2651.599,
+   "duration": 5.52,
+   "text": "at the session level okay it's not per"
+  },
+  {
+   "start": 2655.52,
+   "duration": 3.2,
+   "text": "agent"
+  },
+  {
+   "start": 2657.119,
+   "duration": 3.281,
+   "text": "That is why you see this hooks block"
+  },
+  {
+   "start": 2658.72,
+   "duration": 3.44,
+   "text": "over here and not inside agent"
+  },
+  {
+   "start": 2660.4,
+   "duration": 4.0,
+   "text": "definitions or something like that. You"
+  },
+  {
+   "start": 2662.16,
+   "duration": 6.0,
+   "text": "are seeing that inside the general"
+  },
+  {
+   "start": 2664.4,
+   "duration": 5.919,
+   "text": "claude agent options right"
+  },
+  {
+   "start": 2668.16,
+   "duration": 4.159,
+   "text": "okay I'm hoping that is making sense so"
+  },
+  {
+   "start": 2670.319,
+   "duration": 3.601,
+   "text": "these are basically the agent"
+  },
+  {
+   "start": 2672.319,
+   "duration": 4.641,
+   "text": "definitions which we are importing from"
+  },
+  {
+   "start": 2673.92,
+   "duration": 4.72,
+   "text": "the sub aents py right but we are not"
+  },
+  {
+   "start": 2676.96,
+   "duration": 4.0,
+   "text": "keeping the hooks inside the agent"
+  },
+  {
+   "start": 2678.64,
+   "duration": 5.28,
+   "text": "definition or per sub aent that's what"
+  },
+  {
+   "start": 2680.96,
+   "duration": 5.6,
+   "text": "I'm trying to make over here"
+  },
+  {
+   "start": 2683.92,
+   "duration": 5.36,
+   "text": "yeah so if you remember when a hook"
+  },
+  {
+   "start": 2686.56,
+   "duration": 5.039,
+   "text": "fires there are certain properties or"
+  },
+  {
+   "start": 2689.28,
+   "duration": 4.72,
+   "text": "input data so it's input data carry"
+  },
+  {
+   "start": 2691.599,
+   "duration": 5.201,
+   "text": "carries the agent ID and the agent type"
+  },
+  {
+   "start": 2694.0,
+   "duration": 5.04,
+   "text": "field. Right? So it it's carries that"
+  },
+  {
+   "start": 2696.8,
+   "duration": 4.88,
+   "text": "specifically so you can tell whether you"
+  },
+  {
+   "start": 2699.04,
+   "duration": 5.039,
+   "text": "know it fired inside a sub agent or not."
+  },
+  {
+   "start": 2701.68,
+   "duration": 5.36,
+   "text": "Yeah. Which means"
+  },
+  {
+   "start": 2704.079,
+   "duration": 5.841,
+   "text": "you know that our injection flagging"
+  },
+  {
+   "start": 2707.04,
+   "duration": 6.24,
+   "text": "hook automatically covers fetch PR"
+  },
+  {
+   "start": 2709.92,
+   "duration": 5.28,
+   "text": "metadata. Yeah. That particular hook you"
+  },
+  {
+   "start": 2713.28,
+   "duration": 3.92,
+   "text": "know this calls made by the security"
+  },
+  {
+   "start": 2715.2,
+   "duration": 4.48,
+   "text": "reviewer sub agent as well. Now what do"
+  },
+  {
+   "start": 2717.2,
+   "duration": 5.76,
+   "text": "I mean by that? See our security"
+  },
+  {
+   "start": 2719.68,
+   "duration": 6.08,
+   "text": "reviewer sub agent. Yeah, if you see a"
+  },
+  {
+   "start": 2722.96,
+   "duration": 4.56,
+   "text": "security reviewer sub agent, it has"
+  },
+  {
+   "start": 2725.76,
+   "duration": 4.0,
+   "text": "fetch PR metadata tool call. That's what"
+  },
+  {
+   "start": 2727.52,
+   "duration": 5.36,
+   "text": "I just mentioned over here. Now, fetch"
+  },
+  {
+   "start": 2729.76,
+   "duration": 6.079,
+   "text": "PR metadata has you know kind of a hook."
+  },
+  {
+   "start": 2732.88,
+   "duration": 7.56,
+   "text": "So, if you go to the tools py and if you"
+  },
+  {
+   "start": 2735.839,
+   "duration": 4.601,
+   "text": "see the fetch PR metadata"
+  },
+  {
+   "start": 2740.64,
+   "duration": 3.0,
+   "text": "um"
+  },
+  {
+   "start": 2744.48,
+   "duration": 5.68,
+   "text": "just okay okay no no not here my bad."
+  },
+  {
+   "start": 2746.56,
+   "duration": 8.0,
+   "text": "So, if I go to the hooks.py py and if I"
+  },
+  {
+   "start": 2750.16,
+   "duration": 8.159,
+   "text": "see the fetch PR I let me check uh this"
+  },
+  {
+   "start": 2754.56,
+   "duration": 5.44,
+   "text": "is this is it the the fetch PR fetch you"
+  },
+  {
+   "start": 2758.319,
+   "duration": 4.881,
+   "text": "know this is this basically this hook if"
+  },
+  {
+   "start": 2760.0,
+   "duration": 5.04,
+   "text": "you see the tool name for which it is uh"
+  },
+  {
+   "start": 2763.2,
+   "duration": 4.48,
+   "text": "kind of working for is the fetch PR"
+  },
+  {
+   "start": 2765.04,
+   "duration": 5.52,
+   "text": "metadata right and it's a post tool use"
+  },
+  {
+   "start": 2767.68,
+   "duration": 5.6,
+   "text": "hook so after this fetch PR metadata has"
+  },
+  {
+   "start": 2770.56,
+   "duration": 4.48,
+   "text": "been executed this particular you know"
+  },
+  {
+   "start": 2773.28,
+   "duration": 5.76,
+   "text": "hook will get executed which will"
+  },
+  {
+   "start": 2775.04,
+   "duration": 6.079,
+   "text": "basically normalize the you know the"
+  },
+  {
+   "start": 2779.04,
+   "duration": 4.64,
+   "text": "metadata that we receive from the"
+  },
+  {
+   "start": 2781.119,
+   "duration": 5.281,
+   "text": "particular API in this case it's mock"
+  },
+  {
+   "start": 2783.68,
+   "duration": 5.6,
+   "text": "data so just I'm giving a logical"
+  },
+  {
+   "start": 2786.4,
+   "duration": 5.12,
+   "text": "explanation over here and also you know"
+  },
+  {
+   "start": 2789.28,
+   "duration": 4.4,
+   "text": "kind of flag its PR body there is"
+  },
+  {
+   "start": 2791.52,
+   "duration": 4.96,
+   "text": "something now what I the point that I'm"
+  },
+  {
+   "start": 2793.68,
+   "duration": 5.28,
+   "text": "trying to make is that even though this"
+  },
+  {
+   "start": 2796.48,
+   "duration": 4.16,
+   "text": "hook will be executed as part of a tool"
+  },
+  {
+   "start": 2798.96,
+   "duration": 3.76,
+   "text": "call from a sub agent which is a"
+  },
+  {
+   "start": 2800.64,
+   "duration": 4.56,
+   "text": "security reviewer that hook will still"
+  },
+  {
+   "start": 2802.72,
+   "duration": 4.32,
+   "text": "get executed irrespective of you are"
+  },
+  {
+   "start": 2805.2,
+   "duration": 3.76,
+   "text": "executing in a sub agent you're"
+  },
+  {
+   "start": 2807.04,
+   "duration": 3.6,
+   "text": "executing in the coordinator or in the"
+  },
+  {
+   "start": 2808.96,
+   "duration": 3.28,
+   "text": "main agent. So that is the point that"
+  },
+  {
+   "start": 2810.64,
+   "duration": 3.76,
+   "text": "I'm trying to make and that is the most"
+  },
+  {
+   "start": 2812.24,
+   "duration": 4.4,
+   "text": "important thing. You remember hooks you"
+  },
+  {
+   "start": 2814.4,
+   "duration": 4.88,
+   "text": "don't have to define per agent basis or"
+  },
+  {
+   "start": 2816.64,
+   "duration": 4.64,
+   "text": "per sub aent basis. It's a global thing."
+  },
+  {
+   "start": 2819.28,
+   "duration": 5.12,
+   "text": "Yeah. And wherever your the tool is"
+  },
+  {
+   "start": 2821.28,
+   "duration": 5.12,
+   "text": "being used basically it will get fired"
+  },
+  {
+   "start": 2824.4,
+   "duration": 3.52,
+   "text": "or before or after the tool. If it is a"
+  },
+  {
+   "start": 2826.4,
+   "duration": 3.439,
+   "text": "pre-tool use hook, it will be fired"
+  },
+  {
+   "start": 2827.92,
+   "duration": 3.919,
+   "text": "before the tool."
+  },
+  {
+   "start": 2829.839,
+   "duration": 5.041,
+   "text": "If it is a post tool user, it will be"
+  },
+  {
+   "start": 2831.839,
+   "duration": 4.48,
+   "text": "fired after the tool basically."
+  },
+  {
+   "start": 2834.88,
+   "duration": 6.479,
+   "text": "That's that's the point that I wanted to"
+  },
+  {
+   "start": 2836.319,
+   "duration": 6.481,
+   "text": "make right and uh this is the important"
+  },
+  {
+   "start": 2841.359,
+   "duration": 6.48,
+   "text": "thing right and it will come in the"
+  },
+  {
+   "start": 2842.8,
+   "duration": 7.76,
+   "text": "exam. Yeah. Now let's move on to our"
+  },
+  {
+   "start": 2847.839,
+   "duration": 5.361,
+   "text": "snippets. py and let's kind of finish"
+  },
+  {
+   "start": 2850.56,
+   "duration": 5.68,
+   "text": "off the rest of the things that we have."
+  },
+  {
+   "start": 2853.2,
+   "duration": 4.879,
+   "text": "So um this is the prompt. Yeah. And let"
+  },
+  {
+   "start": 2856.24,
+   "duration": 3.2,
+   "text": "me copy paste this prompt from here."
+  },
+  {
+   "start": 2858.079,
+   "duration": 5.681,
+   "text": "Right. Uh and we're going to continue"
+  },
+  {
+   "start": 2859.44,
+   "duration": 7.12,
+   "text": "our agent. py, right? And um let me just"
+  },
+  {
+   "start": 2863.76,
+   "duration": 4.72,
+   "text": "paste it down here. Yeah. So let's talk"
+  },
+  {
+   "start": 2866.56,
+   "duration": 4.72,
+   "text": "about this prompt for a minute. Right."
+  },
+  {
+   "start": 2868.48,
+   "duration": 5.52,
+   "text": "So given that what we just covered about"
+  },
+  {
+   "start": 2871.28,
+   "duration": 6.559,
+   "text": "you know isolated context, this prompt"
+  },
+  {
+   "start": 2874.0,
+   "duration": 6.88,
+   "text": "is not at all casual."
+  },
+  {
+   "start": 2877.839,
+   "duration": 5.52,
+   "text": "Every noun in it is loadbearing. We name"
+  },
+  {
+   "start": 2880.88,
+   "duration": 5.199,
+   "text": "the PR number. We name the file path. We"
+  },
+  {
+   "start": 2883.359,
+   "duration": 6.0,
+   "text": "name both sub aents by their exact"
+  },
+  {
+   "start": 2886.079,
+   "duration": 5.921,
+   "text": "registered names. We say in parallel out"
+  },
+  {
+   "start": 2889.359,
+   "duration": 5.601,
+   "text": "loud and what we say we we tell the"
+  },
+  {
+   "start": 2892.0,
+   "duration": 6.4,
+   "text": "coordinator exactly what done what is"
+  },
+  {
+   "start": 2894.96,
+   "duration": 5.76,
+   "text": "the definition of done basically right"
+  },
+  {
+   "start": 2898.4,
+   "duration": 4.959,
+   "text": "one combined comment we are putting it"
+  },
+  {
+   "start": 2900.72,
+   "duration": 5.44,
+   "text": "here no separately we are not telling it"
+  },
+  {
+   "start": 2903.359,
+   "duration": 4.561,
+   "text": "separately or whatever right"
+  },
+  {
+   "start": 2906.16,
+   "duration": 3.679,
+   "text": "now you can tell me why are you hard"
+  },
+  {
+   "start": 2907.92,
+   "duration": 3.84,
+   "text": "coding the PRs obviously I just you know"
+  },
+  {
+   "start": 2909.839,
+   "duration": 4.321,
+   "text": "from a demo perspective I'm kind of"
+  },
+  {
+   "start": 2911.76,
+   "duration": 3.68,
+   "text": "telling that you know PR this PR number"
+  },
+  {
+   "start": 2914.16,
+   "duration": 3.36,
+   "text": "is touching this thing delegate two"
+  },
+  {
+   "start": 2915.44,
+   "duration": 3.6,
+   "text": "checks in parallel but if you are doing"
+  },
+  {
+   "start": 2917.52,
+   "duration": 3.44,
+   "text": "it in a real life scenario. Obviously,"
+  },
+  {
+   "start": 2919.04,
+   "duration": 3.519,
+   "text": "you can you cannot hardcode the PRs in"
+  },
+  {
+   "start": 2920.96,
+   "duration": 4.399,
+   "text": "the prompt. Then you have to write a"
+  },
+  {
+   "start": 2922.559,
+   "duration": 4.961,
+   "text": "very kind of a uh gener generic prompt"
+  },
+  {
+   "start": 2925.359,
+   "duration": 4.561,
+   "text": "over there, you know, like you have to"
+  },
+  {
+   "start": 2927.52,
+   "duration": 3.839,
+   "text": "give you have to identify, you know, let"
+  },
+  {
+   "start": 2929.92,
+   "duration": 3.12,
+   "text": "the coordinator identify by some"
+  },
+  {
+   "start": 2931.359,
+   "duration": 3.361,
+   "text": "metadata of the PR or something like"
+  },
+  {
+   "start": 2933.04,
+   "duration": 3.84,
+   "text": "that. But the functionality basically"
+  },
+  {
+   "start": 2934.72,
+   "duration": 4.96,
+   "text": "remains the same. I didn't want to have"
+  },
+  {
+   "start": 2936.88,
+   "duration": 5.439,
+   "text": "a very big PR and uh spend a lot of"
+  },
+  {
+   "start": 2939.68,
+   "duration": 4.639,
+   "text": "tokens. Yeah, because obviously Claude"
+  },
+  {
+   "start": 2942.319,
+   "duration": 4.081,
+   "text": "will analyze the prompt and if it has"
+  },
+  {
+   "start": 2944.319,
+   "duration": 4.481,
+   "text": "too much complexity, you will spend too"
+  },
+  {
+   "start": 2946.4,
+   "duration": 4.08,
+   "text": "many tokens. Just for the sake of the"
+  },
+  {
+   "start": 2948.8,
+   "duration": 3.6,
+   "text": "demo, I didn't want to spend that much."
+  },
+  {
+   "start": 2950.48,
+   "duration": 5.52,
+   "text": "So, I'm kind of hardcoded the stuffs"
+  },
+  {
+   "start": 2952.4,
+   "duration": 5.52,
+   "text": "that I need over here. Right now, um,"
+  },
+  {
+   "start": 2956.0,
+   "duration": 5.52,
+   "text": "one thing that I want to point out is"
+  },
+  {
+   "start": 2957.92,
+   "duration": 6.399,
+   "text": "why episode 1.Y py specifically I'm"
+  },
+  {
+   "start": 2961.52,
+   "duration": 6.24,
+   "text": "mentioning over here and not some"
+  },
+  {
+   "start": 2964.319,
+   "duration": 7.121,
+   "text": "fabricated demo file because here it's a"
+  },
+  {
+   "start": 2967.76,
+   "duration": 6.559,
+   "text": "real file from this actual series right"
+  },
+  {
+   "start": 2971.44,
+   "duration": 5.679,
+   "text": "this course and we know exactly what's"
+  },
+  {
+   "start": 2974.319,
+   "duration": 5.361,
+   "text": "in it you know but if you see episode"
+  },
+  {
+   "start": 2977.119,
+   "duration": 6.881,
+   "text": "number one's read repo file that we have"
+  },
+  {
+   "start": 2979.68,
+   "duration": 7.28,
+   "text": "we had kind of made yeah this read repo"
+  },
+  {
+   "start": 2984.0,
+   "duration": 4.96,
+   "text": "where is that tool read repo file yeah"
+  },
+  {
+   "start": 2986.96,
+   "duration": 4.56,
+   "text": "read repo file function never got a dock"
+  },
+  {
+   "start": 2988.96,
+   "duration": 6.24,
+   "text": "string So this isn't a rigged demo."
+  },
+  {
+   "start": 2991.52,
+   "duration": 6.48,
+   "text": "Obviously that uh tool will work. Yeah."
+  },
+  {
+   "start": 2995.2,
+   "duration": 4.96,
+   "text": "Um the dock string checker tool and it"
+  },
+  {
+   "start": 2998.0,
+   "duration": 4.88,
+   "text": "will flag this. That's why I have also"
+  },
+  {
+   "start": 3000.16,
+   "duration": 5.12,
+   "text": "hardcoded uh you know episode one um"
+  },
+  {
+   "start": 3002.88,
+   "duration": 5.52,
+   "text": "agent.py. Right. I hope that is making"
+  },
+  {
+   "start": 3005.28,
+   "duration": 5.279,
+   "text": "sense. Yeah. So that is about the prompt"
+  },
+  {
+   "start": 3008.4,
+   "duration": 5.36,
+   "text": "I wanted to tell. If you are working on"
+  },
+  {
+   "start": 3010.559,
+   "duration": 4.641,
+   "text": "a real um you know life or your your"
+  },
+  {
+   "start": 3013.76,
+   "duration": 4.079,
+   "text": "productive use case obviously you should"
+  },
+  {
+   "start": 3015.2,
+   "duration": 4.879,
+   "text": "not hardcode it but you have to find out"
+  },
+  {
+   "start": 3017.839,
+   "duration": 5.441,
+   "text": "another way. So know you know your"
+  },
+  {
+   "start": 3020.079,
+   "duration": 8.161,
+   "text": "coordinator identifies your stuffs."
+  },
+  {
+   "start": 3023.28,
+   "duration": 7.12,
+   "text": "Okay. One thing uh also I want to tell"
+  },
+  {
+   "start": 3028.24,
+   "duration": 5.359,
+   "text": "yeah before we complete this kind kind"
+  },
+  {
+   "start": 3030.4,
+   "duration": 5.12,
+   "text": "of this thing um"
+  },
+  {
+   "start": 3033.599,
+   "duration": 5.201,
+   "text": "in parallel"
+  },
+  {
+   "start": 3035.52,
+   "duration": 9.2,
+   "text": "it is not a config flag it's a turn"
+  },
+  {
+   "start": 3038.8,
+   "duration": 8.08,
+   "text": "shape. Yeah. So there is no property if"
+  },
+  {
+   "start": 3044.72,
+   "duration": 4.24,
+   "text": "you have paid attention to my code"
+  },
+  {
+   "start": 3046.88,
+   "duration": 5.28,
+   "text": "anywhere in cloud agent options or in"
+  },
+  {
+   "start": 3048.96,
+   "duration": 5.44,
+   "text": "agent definitions or anywhere. Yeah,"
+  },
+  {
+   "start": 3052.16,
+   "duration": 5.52,
+   "text": "there is no property which says parallel"
+  },
+  {
+   "start": 3054.4,
+   "duration": 7.919,
+   "text": "equals to true"
+  },
+  {
+   "start": 3057.68,
+   "duration": 6.879,
+   "text": "obviously. So what is parallelism that I"
+  },
+  {
+   "start": 3062.319,
+   "duration": 5.28,
+   "text": "was talking about? So parallelism here"
+  },
+  {
+   "start": 3064.559,
+   "duration": 6.0,
+   "text": "is an kind of like a emergent property"
+  },
+  {
+   "start": 3067.599,
+   "duration": 6.561,
+   "text": "of how many tool use blocks you know"
+  },
+  {
+   "start": 3070.559,
+   "duration": 8.0,
+   "text": "claude decides to emit in a single turn."
+  },
+  {
+   "start": 3074.16,
+   "duration": 7.28,
+   "text": "Yeah. So if it emits one agent call for"
+  },
+  {
+   "start": 3078.559,
+   "duration": 8.0,
+   "text": "the let's say the dock string reviewer"
+  },
+  {
+   "start": 3081.44,
+   "duration": 6.879,
+   "text": "waits for that result and only only then"
+  },
+  {
+   "start": 3086.559,
+   "duration": 3.681,
+   "text": "emits the second call for the for"
+  },
+  {
+   "start": 3088.319,
+   "duration": 5.04,
+   "text": "example the security re reviewer sub"
+  },
+  {
+   "start": 3090.24,
+   "duration": 6.16,
+   "text": "agent that's sequential. Yeah, same"
+  },
+  {
+   "start": 3093.359,
+   "duration": 5.361,
+   "text": "tool, same same sub agents, twice the"
+  },
+  {
+   "start": 3096.4,
+   "duration": 5.199,
+   "text": "wall clock time."
+  },
+  {
+   "start": 3098.72,
+   "duration": 5.44,
+   "text": "So what actually gets you two tool use"
+  },
+  {
+   "start": 3101.599,
+   "duration": 5.681,
+   "text": "blocks in one assistant turn is exactly"
+  },
+  {
+   "start": 3104.16,
+   "duration": 4.88,
+   "text": "what we just wrote. Yeah. So a prompt"
+  },
+  {
+   "start": 3107.28,
+   "duration": 4.0,
+   "text": "that's why I paid more attention to that"
+  },
+  {
+   "start": 3109.04,
+   "duration": 5.039,
+   "text": "prompt that I wrote, right? So a prompt"
+  },
+  {
+   "start": 3111.28,
+   "duration": 5.2,
+   "text": "that describes both delegations as one"
+  },
+  {
+   "start": 3114.079,
+   "duration": 5.28,
+   "text": "request explicitly. It is asking for"
+  },
+  {
+   "start": 3116.48,
+   "duration": 5.68,
+   "text": "parallel and and it gives the model no"
+  },
+  {
+   "start": 3119.359,
+   "duration": 5.441,
+   "text": "dependency between the two checks."
+  },
+  {
+   "start": 3122.16,
+   "duration": 5.76,
+   "text": "Yeah. So the dock string pass doesn't"
+  },
+  {
+   "start": 3124.8,
+   "duration": 5.68,
+   "text": "need the securityities"
+  },
+  {
+   "start": 3127.92,
+   "duration": 5.28,
+   "text": "you know sub agents answer"
+  },
+  {
+   "start": 3130.48,
+   "duration": 4.639,
+   "text": "or vice versa. Yeah. So these are"
+  },
+  {
+   "start": 3133.2,
+   "duration": 4.48,
+   "text": "independent subtasks and they are"
+  },
+  {
+   "start": 3135.119,
+   "duration": 4.881,
+   "text": "described together and that is what"
+  },
+  {
+   "start": 3137.68,
+   "duration": 5.12,
+   "text": "nudges the model towards a single turn"
+  },
+  {
+   "start": 3140.0,
+   "duration": 6.656,
+   "text": "multiblock fan out kind of a pattern fan"
+  },
+  {
+   "start": 3142.8,
+   "duration": 5.44,
+   "text": "out pattern. Yeah. So the mental model"
+  },
+  {
+   "start": 3146.656,
+   "duration": 3.264,
+   "text": "[clears throat] that you need to make"
+  },
+  {
+   "start": 3148.24,
+   "duration": 4.56,
+   "text": "over here and you can see uh in this"
+  },
+  {
+   "start": 3149.92,
+   "duration": 5.84,
+   "text": "slide is that you can't force you know"
+  },
+  {
+   "start": 3152.8,
+   "duration": 4.799,
+   "text": "parallel execution from the config side."
+  },
+  {
+   "start": 3155.76,
+   "duration": 4.48,
+   "text": "Yeah, you can make it you know"
+  },
+  {
+   "start": 3157.599,
+   "duration": 5.76,
+   "text": "overwhelmingly likely by making you know"
+  },
+  {
+   "start": 3160.24,
+   "duration": 5.119,
+   "text": "the independence of the two substacks or"
+  },
+  {
+   "start": 3163.359,
+   "duration": 4.641,
+   "text": "subtasks or multiple subtasks that you"
+  },
+  {
+   "start": 3165.359,
+   "duration": 5.521,
+   "text": "are making you know you make it obvious"
+  },
+  {
+   "start": 3168.0,
+   "duration": 4.72,
+   "text": "in the prompt. Yeah. You you specify it"
+  },
+  {
+   "start": 3170.88,
+   "duration": 6.0,
+   "text": "like like we have done over here. If you"
+  },
+  {
+   "start": 3172.72,
+   "duration": 6.48,
+   "text": "see the agent py Yeah. and"
+  },
+  {
+   "start": 3176.88,
+   "duration": 4.32,
+   "text": "uh delegate two checks in parallel you"
+  },
+  {
+   "start": 3179.2,
+   "duration": 5.04,
+   "text": "have to do in the in this thing because"
+  },
+  {
+   "start": 3181.2,
+   "duration": 6.72,
+   "text": "see at the end of the day the LLM is"
+  },
+  {
+   "start": 3184.24,
+   "duration": 7.28,
+   "text": "what is like the brain of your agentic"
+  },
+  {
+   "start": 3187.92,
+   "duration": 6.0,
+   "text": "system. Whatever the LLM decides it"
+  },
+  {
+   "start": 3191.52,
+   "duration": 4.96,
+   "text": "happens. The agents without the LM is"
+  },
+  {
+   "start": 3193.92,
+   "duration": 5.12,
+   "text": "nothing but microservices in my opinion."
+  },
+  {
+   "start": 3196.48,
+   "duration": 5.28,
+   "text": "So that is where you should delegate"
+  },
+  {
+   "start": 3199.04,
+   "duration": 4.88,
+   "text": "parallelism over here. Yeah. Otherwise"
+  },
+  {
+   "start": 3201.76,
+   "duration": 4.72,
+   "text": "you can leave it you know claude might"
+  },
+  {
+   "start": 3203.92,
+   "duration": 4.159,
+   "text": "treat it as parallel activities as per"
+  },
+  {
+   "start": 3206.48,
+   "duration": 3.839,
+   "text": "the understanding but if it feels that"
+  },
+  {
+   "start": 3208.079,
+   "duration": 4.641,
+   "text": "it's a sequential thing it might execute"
+  },
+  {
+   "start": 3210.319,
+   "duration": 5.121,
+   "text": "in sequence as well."
+  },
+  {
+   "start": 3212.72,
+   "duration": 6.0,
+   "text": "Yeah. So I hope that is making sense. So"
+  },
+  {
+   "start": 3215.44,
+   "duration": 5.52,
+   "text": "we just have uh like the last piece of"
+  },
+  {
+   "start": 3218.72,
+   "duration": 5.359,
+   "text": "the puzzle left that we're going to just"
+  },
+  {
+   "start": 3220.96,
+   "duration": 5.28,
+   "text": "uh uh you know have to change over here."
+  },
+  {
+   "start": 3224.079,
+   "duration": 6.401,
+   "text": "Not not change actually add it. So,"
+  },
+  {
+   "start": 3226.24,
+   "duration": 6.0,
+   "text": "let's going to go to snippets and um"
+  },
+  {
+   "start": 3230.48,
+   "duration": 6.079,
+   "text": "this is the part that I was talking"
+  },
+  {
+   "start": 3232.24,
+   "duration": 7.44,
+   "text": "about and that's it. Um"
+  },
+  {
+   "start": 3236.559,
+   "duration": 6.641,
+   "text": "we're going to go to agent py and let's"
+  },
+  {
+   "start": 3239.68,
+   "duration": 7.04,
+   "text": "put it down over here. Yeah. So, it's"
+  },
+  {
+   "start": 3243.2,
+   "duration": 5.04,
+   "text": "nothing but a streaming loop that prints"
+  },
+  {
+   "start": 3246.72,
+   "duration": 5.04,
+   "text": "what's actually going on, right?"
+  },
+  {
+   "start": 3248.24,
+   "duration": 6.96,
+   "text": "Including the the moment either sub"
+  },
+  {
+   "start": 3251.76,
+   "duration": 5.28,
+   "text": "agent gets invoked basically. So the"
+  },
+  {
+   "start": 3255.2,
+   "duration": 4.08,
+   "text": "pattern you know checking you know"
+  },
+  {
+   "start": 3257.04,
+   "duration": 4.16,
+   "text": "block.name name"
+  },
+  {
+   "start": 3259.28,
+   "duration": 4.72,
+   "text": "you know in agent and task if you see"
+  },
+  {
+   "start": 3261.2,
+   "duration": 4.72,
+   "text": "over here um"
+  },
+  {
+   "start": 3264.0,
+   "duration": 5.119,
+   "text": "you know comes straight from the"
+  },
+  {
+   "start": 3265.92,
+   "duration": 5.76,
+   "text": "official SDK docs right it's nothing"
+  },
+  {
+   "start": 3269.119,
+   "duration": 5.041,
+   "text": "that I have invented or something um"
+  },
+  {
+   "start": 3271.68,
+   "duration": 5.36,
+   "text": "it's written that way on purpose it it"
+  },
+  {
+   "start": 3274.16,
+   "duration": 5.04,
+   "text": "keeps working even against an older SDK"
+  },
+  {
+   "start": 3277.04,
+   "duration": 4.72,
+   "text": "release that still emits the you know"
+  },
+  {
+   "start": 3279.2,
+   "duration": 5.2,
+   "text": "the pre-name that previously it was task"
+  },
+  {
+   "start": 3281.76,
+   "duration": 4.64,
+   "text": "right now it is agent so we're going to"
+  },
+  {
+   "start": 3284.4,
+   "duration": 3.76,
+   "text": "check both of them because the new uh"
+  },
+  {
+   "start": 3286.4,
+   "duration": 4.56,
+   "text": "version has the agent call and the"
+  },
+  {
+   "start": 3288.16,
+   "duration": 4.399,
+   "text": "previous one has task. So that's it and"
+  },
+  {
+   "start": 3290.96,
+   "duration": 4.639,
+   "text": "it's nothing but the message is going to"
+  },
+  {
+   "start": 3292.559,
+   "duration": 7.841,
+   "text": "print and uh that's it. Now we are kind"
+  },
+  {
+   "start": 3295.599,
+   "duration": 8.24,
+   "text": "of ready to run. It's a One Direction"
+  },
+  {
+   "start": 3300.4,
+   "duration": 6.0,
+   "text": "song I think. This time I'm ready to"
+  },
+  {
+   "start": 3303.839,
+   "duration": 5.441,
+   "text": "run. Sorry for the singing, but yeah,"
+  },
+  {
+   "start": 3306.4,
+   "duration": 5.679,
+   "text": "it's a good song. So um I'm just going"
+  },
+  {
+   "start": 3309.28,
+   "duration": 6.4,
+   "text": "to say Python 3 and going to go to"
+  },
+  {
+   "start": 3312.079,
+   "duration": 5.28,
+   "text": "agent. py and let's let's kind of see"
+  },
+  {
+   "start": 3315.68,
+   "duration": 4.32,
+   "text": "what is happening over here. And let's"
+  },
+  {
+   "start": 3317.359,
+   "duration": 4.641,
+   "text": "see the delegation is in progress. I"
+  },
+  {
+   "start": 3320.0,
+   "duration": 4.96,
+   "text": "hope that it works out and I don't make"
+  },
+  {
+   "start": 3322.0,
+   "duration": 4.4,
+   "text": "a fool of myself. Okay. So it's saying I"
+  },
+  {
+   "start": 3324.96,
+   "duration": 3.04,
+   "text": "delegate both the checks in parallel"
+  },
+  {
+   "start": 3326.4,
+   "duration": 5.439,
+   "text": "then combine the fightings into one"
+  },
+  {
+   "start": 3328.0,
+   "duration": 5.76,
+   "text": "review command and hence both return."
+  },
+  {
+   "start": 3331.839,
+   "duration": 3.601,
+   "text": "Okay. So both agents are running in"
+  },
+  {
+   "start": 3333.76,
+   "duration": 3.04,
+   "text": "parallel."
+  },
+  {
+   "start": 3335.44,
+   "duration": 3.84,
+   "text": "Yeah. So it is saying that see"
+  },
+  {
+   "start": 3336.8,
+   "duration": 4.319,
+   "text": "delegating to dock string reviewer and"
+  },
+  {
+   "start": 3339.28,
+   "duration": 3.44,
+   "text": "and the next one is delegating to"
+  },
+  {
+   "start": 3341.119,
+   "duration": 4.96,
+   "text": "security reviewer. So both are the sub"
+  },
+  {
+   "start": 3342.72,
+   "duration": 6.0,
+   "text": "agents which are getting spawned by the"
+  },
+  {
+   "start": 3346.079,
+   "duration": 4.081,
+   "text": "coordinator right. So both agents are"
+  },
+  {
+   "start": 3348.72,
+   "duration": 3.839,
+   "text": "running in parallel. I'll wait for both"
+  },
+  {
+   "start": 3350.16,
+   "duration": 4.56,
+   "text": "to complete before comput. So final"
+  },
+  {
+   "start": 3352.559,
+   "duration": 5.28,
+   "text": "result"
+  },
+  {
+   "start": 3354.72,
+   "duration": 6.16,
+   "text": "okay so both"
+  },
+  {
+   "start": 3357.839,
+   "duration": 7.361,
+   "text": "are kind of running still."
+  },
+  {
+   "start": 3360.88,
+   "duration": 8.08,
+   "text": "Let me see what is happening over here."
+  },
+  {
+   "start": 3365.2,
+   "duration": 7.159,
+   "text": "Let me kind of run this again probably"
+  },
+  {
+   "start": 3368.96,
+   "duration": 3.399,
+   "text": "and see."
+  },
+  {
+   "start": 3382.48,
+   "duration": 4.359,
+   "text": "Okay, it's doing the same thing again."
+  },
+  {
+   "start": 3393.359,
+   "duration": 5.96,
+   "text": "there is some error but I don't think"
+  },
+  {
+   "start": 3395.04,
+   "duration": 4.279,
+   "text": "that's relevant to here."
+  },
+  {
+   "start": 3400.48,
+   "duration": 5.44,
+   "text": "Okay, now both checks are back probably"
+  },
+  {
+   "start": 3403.28,
+   "duration": 5.039,
+   "text": "um it's an asynchronous call so it kind"
+  },
+  {
+   "start": 3405.92,
+   "duration": 6.0,
+   "text": "of ended the loop last time. So let me"
+  },
+  {
+   "start": 3408.319,
+   "duration": 6.161,
+   "text": "see what it returns now. Okay, now it"
+  },
+  {
+   "start": 3411.92,
+   "duration": 4.639,
+   "text": "has returned. So now I think both of the"
+  },
+  {
+   "start": 3414.48,
+   "duration": 3.44,
+   "text": "sub aents worked out. So one is the"
+  },
+  {
+   "start": 3416.559,
+   "duration": 3.76,
+   "text": "dockstring reviewer sub agent and"
+  },
+  {
+   "start": 3417.92,
+   "duration": 4.879,
+   "text": "another one is the security reviewer uh"
+  },
+  {
+   "start": 3420.319,
+   "duration": 5.201,
+   "text": "sub agent over here."
+  },
+  {
+   "start": 3422.799,
+   "duration": 4.56,
+   "text": "All right and um it says summary of what"
+  },
+  {
+   "start": 3425.52,
+   "duration": 3.68,
+   "text": "was found documentation two function"
+  },
+  {
+   "start": 3427.359,
+   "duration": 4.0,
+   "text": "missing dock strings read repo file that"
+  },
+  {
+   "start": 3429.2,
+   "duration": 6.24,
+   "text": "we already knew right and run agent from"
+  },
+  {
+   "start": 3431.359,
+   "duration": 5.601,
+   "text": "the agent uh episode one um agent py"
+  },
+  {
+   "start": 3435.44,
+   "duration": 4.639,
+   "text": "security error prompt injection"
+  },
+  {
+   "start": 3436.96,
+   "duration": 6.56,
+   "text": "attempted was detected in PR143"
+  },
+  {
+   "start": 3440.079,
+   "duration": 5.52,
+   "text": "description body. So if you see uh these"
+  },
+  {
+   "start": 3443.52,
+   "duration": 3.68,
+   "text": "these summaries are coming from two"
+  },
+  {
+   "start": 3445.599,
+   "duration": 3.52,
+   "text": "different sub aents. One is the dock"
+  },
+  {
+   "start": 3447.2,
+   "duration": 4.639,
+   "text": "string sub agent and another one is a"
+  },
+  {
+   "start": 3449.119,
+   "duration": 5.121,
+   "text": "security review sub agent and um you"
+  },
+  {
+   "start": 3451.839,
+   "duration": 5.52,
+   "text": "know they are working on the same PR PR"
+  },
+  {
+   "start": 3454.24,
+   "duration": 5.359,
+   "text": "number 143 right and that is where you"
+  },
+  {
+   "start": 3457.359,
+   "duration": 4.96,
+   "text": "need to understand the two things that"
+  },
+  {
+   "start": 3459.599,
+   "duration": 5.52,
+   "text": "context isolation and the work workspace"
+  },
+  {
+   "start": 3462.319,
+   "duration": 4.961,
+   "text": "sharing that I just talked about a few"
+  },
+  {
+   "start": 3465.119,
+   "duration": 4.24,
+   "text": "minutes back right so the recommendation"
+  },
+  {
+   "start": 3467.28,
+   "duration": 3.92,
+   "text": "is do not auto approve add the missing"
+  },
+  {
+   "start": 3469.359,
+   "duration": 4.161,
+   "text": "dock strings and have a human review the"
+  },
+  {
+   "start": 3471.2,
+   "duration": 5.2,
+   "text": "injection attempt before merging final"
+  },
+  {
+   "start": 3473.52,
+   "duration": 5.76,
+   "text": "results and so basically"
+  },
+  {
+   "start": 3476.4,
+   "duration": 5.679,
+   "text": "Yeah, it's giving us that. So, I hope"
+  },
+  {
+   "start": 3479.28,
+   "duration": 5.92,
+   "text": "that is making sense and uh you know at"
+  },
+  {
+   "start": 3482.079,
+   "duration": 5.361,
+   "text": "the end of the you know execution the"
+  },
+  {
+   "start": 3485.2,
+   "duration": 4.879,
+   "text": "coordinator is kind of summarizing it"
+  },
+  {
+   "start": 3487.44,
+   "duration": 4.32,
+   "text": "and giving it as a single response right"
+  },
+  {
+   "start": 3490.079,
+   "duration": 3.681,
+   "text": "and that is the work of the coordinator"
+  },
+  {
+   "start": 3491.76,
+   "duration": 6.88,
+   "text": "basically to coordinate the responses"
+  },
+  {
+   "start": 3493.76,
+   "duration": 6.4,
+   "text": "that it receives um from um the um sub"
+  },
+  {
+   "start": 3498.64,
+   "duration": 6.24,
+   "text": "agents."
+  },
+  {
+   "start": 3500.16,
+   "duration": 6.72,
+   "text": "Yeah. So um now u you saw the the code"
+  },
+  {
+   "start": 3504.88,
+   "duration": 4.4,
+   "text": "in action right you saw the sub aents in"
+  },
+  {
+   "start": 3506.88,
+   "duration": 6.64,
+   "text": "action and everything and uh we saw what"
+  },
+  {
+   "start": 3509.28,
+   "duration": 8.559,
+   "text": "was you know happening over there. Now"
+  },
+  {
+   "start": 3513.52,
+   "duration": 5.68,
+   "text": "one problem. Yeah. And u why do you see"
+  },
+  {
+   "start": 3517.839,
+   "duration": 3.76,
+   "text": "this slide? The coordinator is the"
+  },
+  {
+   "start": 3519.2,
+   "duration": 5.599,
+   "text": "bottleneck. Yeah. So let let us talk"
+  },
+  {
+   "start": 3521.599,
+   "duration": 5.281,
+   "text": "about it. Right. So two sub aents feels"
+  },
+  {
+   "start": 3524.799,
+   "duration": 5.841,
+   "text": "really clean. Right. It's worth being"
+  },
+  {
+   "start": 3526.88,
+   "duration": 6.88,
+   "text": "honest about you know what happens at 10"
+  },
+  {
+   "start": 3530.64,
+   "duration": 4.719,
+   "text": "sub aents. Let's say see hub and spoke I"
+  },
+  {
+   "start": 3533.76,
+   "duration": 4.319,
+   "text": "talk about right. Hub and spoke means"
+  },
+  {
+   "start": 3535.359,
+   "duration": 4.96,
+   "text": "every sub aent summary, you know, kind"
+  },
+  {
+   "start": 3538.079,
+   "duration": 4.161,
+   "text": "of travels or funnels back through the"
+  },
+  {
+   "start": 3540.319,
+   "duration": 4.321,
+   "text": "coordinator's own context before"
+  },
+  {
+   "start": 3542.24,
+   "duration": 4.48,
+   "text": "anything happens with it. Yeah, sub"
+  },
+  {
+   "start": 3544.64,
+   "duration": 4.32,
+   "text": "agents never talk to each other directly"
+  },
+  {
+   "start": 3546.72,
+   "duration": 4.639,
+   "text": "by design."
+  },
+  {
+   "start": 3548.96,
+   "duration": 4.399,
+   "text": "I mean mostly it is for for the"
+  },
+  {
+   "start": 3551.359,
+   "duration": 3.44,
+   "text": "auditability, right? If they talk among"
+  },
+  {
+   "start": 3553.359,
+   "duration": 3.121,
+   "text": "themselves and the coordinator doesn't"
+  },
+  {
+   "start": 3554.799,
+   "duration": 3.601,
+   "text": "know, then how would you audit what"
+  },
+  {
+   "start": 3556.48,
+   "duration": 4.72,
+   "text": "happened in each sub agent basically,"
+  },
+  {
+   "start": 3558.4,
+   "duration": 4.56,
+   "text": "right? But that design choice obviously"
+  },
+  {
+   "start": 3561.2,
+   "duration": 4.32,
+   "text": "has a cost. Everything has pros and"
+  },
+  {
+   "start": 3562.96,
+   "duration": 6.08,
+   "text": "cons, right? The so the coordinator's"
+  },
+  {
+   "start": 3565.52,
+   "duration": 5.92,
+   "text": "context grows with every specialist that"
+  },
+  {
+   "start": 3569.04,
+   "duration": 5.039,
+   "text": "reports in, right? And the coordinator"
+  },
+  {
+   "start": 3571.44,
+   "duration": 5.359,
+   "text": "itself becomes the one place that has to"
+  },
+  {
+   "start": 3574.079,
+   "duration": 4.881,
+   "text": "reconcile findings if two sub agents"
+  },
+  {
+   "start": 3576.799,
+   "duration": 6.0,
+   "text": "ever disagree."
+  },
+  {
+   "start": 3578.96,
+   "duration": 8.56,
+   "text": "Now you scale that to multiple 1000 sub"
+  },
+  {
+   "start": 3582.799,
+   "duration": 6.56,
+   "text": "agents, right? And you know"
+  },
+  {
+   "start": 3587.52,
+   "duration": 4.319,
+   "text": "it's going to be a kind of a mess if"
+  },
+  {
+   "start": 3589.359,
+   "duration": 5.921,
+   "text": "you're not handling it properly."
+  },
+  {
+   "start": 3591.839,
+   "duration": 6.0,
+   "text": "Yeah. and it becomes kind of the actual"
+  },
+  {
+   "start": 3595.28,
+   "duration": 5.44,
+   "text": "constraint on the system. So this is"
+  },
+  {
+   "start": 3597.839,
+   "duration": 6.161,
+   "text": "like the tradeoff this hub and spoke"
+  },
+  {
+   "start": 3600.72,
+   "duration": 5.2,
+   "text": "makes you know on purpose"
+  },
+  {
+   "start": 3604.0,
+   "duration": 4.96,
+   "text": "for achieving this clean auditable"
+  },
+  {
+   "start": 3605.92,
+   "duration": 6.72,
+   "text": "communication paths in exchange for"
+  },
+  {
+   "start": 3608.96,
+   "duration": 5.44,
+   "text": "centralizing load on one node. Yeah. And"
+  },
+  {
+   "start": 3612.64,
+   "duration": 3.76,
+   "text": "one mental model you need to keep in"
+  },
+  {
+   "start": 3614.4,
+   "duration": 5.439,
+   "text": "mind is that more sub aents doesn't mean"
+  },
+  {
+   "start": 3616.4,
+   "duration": 5.76,
+   "text": "more capacity for free. It means more"
+  },
+  {
+   "start": 3619.839,
+   "duration": 4.96,
+   "text": "the coordinator will work to read,"
+  },
+  {
+   "start": 3622.16,
+   "duration": 5.679,
+   "text": "reconcile and hold in its own head at"
+  },
+  {
+   "start": 3624.799,
+   "duration": 5.52,
+   "text": "once. Right? Two or three for example"
+  },
+  {
+   "start": 3627.839,
+   "duration": 5.121,
+   "text": "well scoped specialist is like the sweet"
+  },
+  {
+   "start": 3630.319,
+   "duration": 5.04,
+   "text": "spot for turnbyturn delegation like we"
+  },
+  {
+   "start": 3632.96,
+   "duration": 6.24,
+   "text": "did for the PR review agent. So I hope"
+  },
+  {
+   "start": 3635.359,
+   "duration": 5.601,
+   "text": "that is making sense. Yeah. And"
+  },
+  {
+   "start": 3639.2,
+   "duration": 4.08,
+   "text": "obviously a question will come into mind"
+  },
+  {
+   "start": 3640.96,
+   "duration": 4.8,
+   "text": "what if you need dozens of agents not"
+  },
+  {
+   "start": 3643.28,
+   "duration": 4.72,
+   "text": "just two. One thing that keep in mind is"
+  },
+  {
+   "start": 3645.76,
+   "duration": 3.76,
+   "text": "that your sub agents you have complete"
+  },
+  {
+   "start": 3648.0,
+   "duration": 3.92,
+   "text": "control. There need not be one"
+  },
+  {
+   "start": 3649.52,
+   "duration": 5.68,
+   "text": "coordinator handling 100 sub aents."
+  },
+  {
+   "start": 3651.92,
+   "duration": 5.52,
+   "text": "There can be multiple coordinators with"
+  },
+  {
+   "start": 3655.2,
+   "duration": 5.44,
+   "text": "three or four sub aents each. You can"
+  },
+  {
+   "start": 3657.44,
+   "duration": 6.24,
+   "text": "have like um five coordinators handling"
+  },
+  {
+   "start": 3660.64,
+   "duration": 6.159,
+   "text": "around I don't know five four sub aents"
+  },
+  {
+   "start": 3663.68,
+   "duration": 5.36,
+   "text": "each. So 20 sub aents. That can be one"
+  },
+  {
+   "start": 3666.799,
+   "duration": 3.921,
+   "text": "of the you know thing that you can go"
+  },
+  {
+   "start": 3669.04,
+   "duration": 4.64,
+   "text": "with. Obviously each coordinator will"
+  },
+  {
+   "start": 3670.72,
+   "duration": 6.56,
+   "text": "have a separate kind of a"
+  },
+  {
+   "start": 3673.68,
+   "duration": 5.28,
+   "text": "big enough task to be you know like the"
+  },
+  {
+   "start": 3677.28,
+   "duration": 4.0,
+   "text": "coordinator of multiple sub agents."
+  },
+  {
+   "start": 3678.96,
+   "duration": 4.399,
+   "text": "Yeah, that depends on the use case. Now,"
+  },
+  {
+   "start": 3681.28,
+   "duration": 4.24,
+   "text": "but if you ever need dozens of agents,"
+  },
+  {
+   "start": 3683.359,
+   "duration": 3.841,
+   "text": "yeah, let's let's now talk about this."
+  },
+  {
+   "start": 3685.52,
+   "duration": 5.279,
+   "text": "Um"
+  },
+  {
+   "start": 3687.2,
+   "duration": 4.96,
+   "text": "you know um it's an honest footnote so"
+  },
+  {
+   "start": 3690.799,
+   "duration": 3.841,
+   "text": "you don't walk away thinking you know"
+  },
+  {
+   "start": 3692.16,
+   "duration": 5.199,
+   "text": "two or three sub aents per turn is the"
+  },
+  {
+   "start": 3694.64,
+   "duration": 6.08,
+   "text": "ceiling. Obviously it's not. uh the"
+  },
+  {
+   "start": 3697.359,
+   "duration": 6.96,
+   "text": "official docs that I read and I kind of"
+  },
+  {
+   "start": 3700.72,
+   "duration": 6.399,
+   "text": "gathered yeah they say explicitly that"
+  },
+  {
+   "start": 3704.319,
+   "duration": 5.361,
+   "text": "this turnbyturn delegation p pattern"
+  },
+  {
+   "start": 3707.119,
+   "duration": 4.0,
+   "text": "works well for a few delegated tasks per"
+  },
+  {
+   "start": 3709.68,
+   "duration": 2.96,
+   "text": "turn it it's in the official"
+  },
+  {
+   "start": 3711.119,
+   "duration": 3.041,
+   "text": "documentation or the official"
+  },
+  {
+   "start": 3712.64,
+   "duration": 4.24,
+   "text": "architecture"
+  },
+  {
+   "start": 3714.16,
+   "duration": 5.52,
+   "text": "for coordinating dozens to hundreds of"
+  },
+  {
+   "start": 3716.88,
+   "duration": 6.239,
+   "text": "agents there is a separate mechanism and"
+  },
+  {
+   "start": 3719.68,
+   "duration": 5.76,
+   "text": "and and that is known as you know the"
+  },
+  {
+   "start": 3723.119,
+   "duration": 5.601,
+   "text": "workflow tool I don't think it is"
+  },
+  {
+   "start": 3725.44,
+   "duration": 5.04,
+   "text": "mentioned over here. Um"
+  },
+  {
+   "start": 3728.72,
+   "duration": 4.079,
+   "text": "where is that? Do we have that in the"
+  },
+  {
+   "start": 3730.48,
+   "duration": 5.359,
+   "text": "slides? Okay, here it is. Need dozens of"
+  },
+  {
+   "start": 3732.799,
+   "duration": 4.721,
+   "text": "agents. So if if this is a requirement"
+  },
+  {
+   "start": 3735.839,
+   "duration": 3.921,
+   "text": "where you need dozens of agents, there"
+  },
+  {
+   "start": 3737.52,
+   "duration": 4.24,
+   "text": "is a workflow tool. Now we talked about"
+  },
+  {
+   "start": 3739.76,
+   "duration": 4.88,
+   "text": "the agent tool. Now there is another"
+  },
+  {
+   "start": 3741.76,
+   "duration": 4.96,
+   "text": "thing known as the workflow tool which"
+  },
+  {
+   "start": 3744.64,
+   "duration": 5.679,
+   "text": "kind of moves orchestration into a"
+  },
+  {
+   "start": 3746.72,
+   "duration": 5.92,
+   "text": "script. Yeah. So that script the runtime"
+  },
+  {
+   "start": 3750.319,
+   "duration": 4.161,
+   "text": "executes outside the live conversation"
+  },
+  {
+   "start": 3752.64,
+   "duration": 4.159,
+   "text": "entirely."
+  },
+  {
+   "start": 3754.48,
+   "duration": 4.24,
+   "text": "Yeah. So as of this recording and the"
+  },
+  {
+   "start": 3756.799,
+   "duration": 5.28,
+   "text": "latest thing is that workflow is"
+  },
+  {
+   "start": 3758.72,
+   "duration": 7.359,
+   "text": "documented for the Typescript agent SDK."
+  },
+  {
+   "start": 3762.079,
+   "duration": 6.48,
+   "text": "Yeah, for that SDK specifically uh I"
+  },
+  {
+   "start": 3766.079,
+   "duration": 4.48,
+   "text": "could not confirm Python par. So I'm"
+  },
+  {
+   "start": 3768.559,
+   "duration": 4.641,
+   "text": "flagging it as like TypeScript only"
+  },
+  {
+   "start": 3770.559,
+   "duration": 5.28,
+   "text": "rather than second guessing or guessing"
+  },
+  {
+   "start": 3773.2,
+   "duration": 4.72,
+   "text": "um outside today's you know it's anyways"
+  },
+  {
+   "start": 3775.839,
+   "duration": 3.601,
+   "text": "out of the scope entirely. It's not"
+  },
+  {
+   "start": 3777.92,
+   "duration": 3.199,
+   "text": "needed for the exam as well. just you"
+  },
+  {
+   "start": 3779.44,
+   "duration": 3.2,
+   "text": "need to know that there's something if"
+  },
+  {
+   "start": 3781.119,
+   "duration": 5.281,
+   "text": "you need so many agents the workflow"
+  },
+  {
+   "start": 3782.64,
+   "duration": 8.32,
+   "text": "tool anyways exists right um yeah so I"
+  },
+  {
+   "start": 3786.4,
+   "duration": 7.12,
+   "text": "hope uh it kind of fits um this yeah"
+  },
+  {
+   "start": 3790.96,
+   "duration": 4.399,
+   "text": "okay so where this lands on the"
+  },
+  {
+   "start": 3793.52,
+   "duration": 3.92,
+   "text": "certified developer certification right"
+  },
+  {
+   "start": 3795.359,
+   "duration": 3.521,
+   "text": "obviously this course is for the cloud"
+  },
+  {
+   "start": 3797.44,
+   "duration": 4.08,
+   "text": "certified developer certification where"
+  },
+  {
+   "start": 3798.88,
+   "duration": 5.6,
+   "text": "this lands so we talked about agent"
+  },
+  {
+   "start": 3801.52,
+   "duration": 4.96,
+   "text": "patterns and frameworks it's 4.9% yeah"
+  },
+  {
+   "start": 3804.48,
+   "duration": 3.839,
+   "text": "the hub spoke coordination is very very"
+  },
+  {
+   "start": 3806.48,
+   "duration": 4.879,
+   "text": "important that we discussed in detail in"
+  },
+  {
+   "start": 3808.319,
+   "duration": 5.121,
+   "text": "this lecture Here the coordinator subord"
+  },
+  {
+   "start": 3811.359,
+   "duration": 3.76,
+   "text": "subordinator or coordinator sub aent"
+  },
+  {
+   "start": 3813.44,
+   "duration": 3.919,
+   "text": "split that also we discussed and"
+  },
+  {
+   "start": 3815.119,
+   "duration": 4.48,
+   "text": "parallel versus sequential delegation"
+  },
+  {
+   "start": 3817.359,
+   "duration": 5.361,
+   "text": "that also we discussed right agent"
+  },
+  {
+   "start": 3819.599,
+   "duration": 5.841,
+   "text": "architecture covers about 4.5%."
+  },
+  {
+   "start": 3822.72,
+   "duration": 4.319,
+   "text": "Yeah uh that is context isolation we"
+  },
+  {
+   "start": 3825.44,
+   "duration": 4.0,
+   "text": "discussed and we discussed about tool"
+  },
+  {
+   "start": 3827.039,
+   "duration": 4.481,
+   "text": "restriction per agent and how a multi-"
+  },
+  {
+   "start": 3829.44,
+   "duration": 3.599,
+   "text": "aent systems architecture differs from a"
+  },
+  {
+   "start": 3831.52,
+   "duration": 4.48,
+   "text": "single agent to group all these things"
+  },
+  {
+   "start": 3833.039,
+   "duration": 5.841,
+   "text": "we are pretty clear. So exam wise we are"
+  },
+  {
+   "start": 3836.0,
+   "duration": 5.44,
+   "text": "on a very good place right now. Yeah."
+  },
+  {
+   "start": 3838.88,
+   "duration": 5.04,
+   "text": "So, combined that's around 9.4% of the"
+  },
+  {
+   "start": 3841.44,
+   "duration": 4.159,
+   "text": "entire developer certification exam. And"
+  },
+  {
+   "start": 3843.92,
+   "duration": 3.28,
+   "text": "I I promised you that this video is"
+  },
+  {
+   "start": 3845.599,
+   "duration": 3.121,
+   "text": "going to be the banger video because"
+  },
+  {
+   "start": 3847.2,
+   "duration": 4.56,
+   "text": "we're going to cover a lot of stuff for"
+  },
+  {
+   "start": 3848.72,
+   "duration": 5.599,
+   "text": "the developer certification, right? And"
+  },
+  {
+   "start": 3851.76,
+   "duration": 4.24,
+   "text": "um yeah, if you want to double check,"
+  },
+  {
+   "start": 3854.319,
+   "duration": 3.841,
+   "text": "you can go ahead and check the official"
+  },
+  {
+   "start": 3856.0,
+   "duration": 5.76,
+   "text": "syllabus as well. I'm not lying. Yeah,"
+  },
+  {
+   "start": 3858.16,
+   "duration": 6.879,
+   "text": "if you think. Uh anyways, so"
+  },
+  {
+   "start": 3861.76,
+   "duration": 5.599,
+   "text": "I mean that's the thing. Okay. So a"
+  },
+  {
+   "start": 3865.039,
+   "duration": 5.04,
+   "text": "couple of questions before we actually"
+  },
+  {
+   "start": 3867.359,
+   "duration": 6.081,
+   "text": "um you know kind of um finish off the"
+  },
+  {
+   "start": 3870.079,
+   "duration": 4.96,
+   "text": "session with some key takeaways. Um you"
+  },
+  {
+   "start": 3873.44,
+   "duration": 3.919,
+   "text": "can just pause the video for each"
+  },
+  {
+   "start": 3875.039,
+   "duration": 4.241,
+   "text": "question and then you can just you know"
+  },
+  {
+   "start": 3877.359,
+   "duration": 4.24,
+   "text": "have some fun. So in the current cloud"
+  },
+  {
+   "start": 3879.28,
+   "duration": 4.96,
+   "text": "agent SDK which tool name shows up in"
+  },
+  {
+   "start": 3881.599,
+   "duration": 4.801,
+   "text": "tool use block when a coordinator spawns"
+  },
+  {
+   "start": 3884.24,
+   "duration": 4.4,
+   "text": "a sub agent? That's a question to you."
+  },
+  {
+   "start": 3886.4,
+   "duration": 6.08,
+   "text": "Yeah. So the four options are delegate"
+  },
+  {
+   "start": 3888.64,
+   "duration": 7.84,
+   "text": "task agent and sub agent. Obviously the"
+  },
+  {
+   "start": 3892.48,
+   "duration": 6.48,
+   "text": "answer is the agent agent tool name. So"
+  },
+  {
+   "start": 3896.48,
+   "duration": 4.72,
+   "text": "current SDK releases emit agent. It was"
+  },
+  {
+   "start": 3898.96,
+   "duration": 4.0,
+   "text": "renamed from the task. Right? I hope"
+  },
+  {
+   "start": 3901.2,
+   "duration": 3.04,
+   "text": "that is making sense. I'm saying this"
+  },
+  {
+   "start": 3902.96,
+   "duration": 3.68,
+   "text": "again and again so that you don't"
+  },
+  {
+   "start": 3904.24,
+   "duration": 4.96,
+   "text": "confuse and write the old tool name"
+  },
+  {
+   "start": 3906.64,
+   "duration": 4.479,
+   "text": "instead of the new one. Yeah. Next"
+  },
+  {
+   "start": 3909.2,
+   "duration": 3.68,
+   "text": "question. True or false? A sub agent"
+  },
+  {
+   "start": 3911.119,
+   "duration": 3.68,
+   "text": "automatically receives a coordinator"
+  },
+  {
+   "start": 3912.88,
+   "duration": 5.52,
+   "text": "full conversation history when it's"
+  },
+  {
+   "start": 3914.799,
+   "duration": 5.441,
+   "text": "spawned. Is it true or false? Obviously,"
+  },
+  {
+   "start": 3918.4,
+   "duration": 4.159,
+   "text": "it is false because a sub aent context"
+  },
+  {
+   "start": 3920.24,
+   "duration": 5.2,
+   "text": "starts fresh. It doesn't inherit"
+  },
+  {
+   "start": 3922.559,
+   "duration": 4.401,
+   "text": "automatically, right? Um the only thing"
+  },
+  {
+   "start": 3925.44,
+   "duration": 3.599,
+   "text": "that crosses from the coordinator to the"
+  },
+  {
+   "start": 3926.96,
+   "duration": 4.48,
+   "text": "sub agent is the task description"
+  },
+  {
+   "start": 3929.039,
+   "duration": 4.881,
+   "text": "written into that specific agent tool"
+  },
+  {
+   "start": 3931.44,
+   "duration": 4.639,
+   "text": "call. And we saw how how you have to"
+  },
+  {
+   "start": 3933.92,
+   "duration": 4.32,
+   "text": "define the agent tool call, right? You"
+  },
+  {
+   "start": 3936.079,
+   "duration": 3.921,
+   "text": "you saw the agent dictionary in the"
+  },
+  {
+   "start": 3938.24,
+   "duration": 3.839,
+   "text": "cloud agent options and all those stuffs"
+  },
+  {
+   "start": 3940.0,
+   "duration": 4.319,
+   "text": "we discussed in detail. So that is how"
+  },
+  {
+   "start": 3942.079,
+   "duration": 4.801,
+   "text": "it works."
+  },
+  {
+   "start": 3944.319,
+   "duration": 4.8,
+   "text": "So your another question is your review"
+  },
+  {
+   "start": 3946.88,
+   "duration": 4.719,
+   "text": "pipeline works great with two sub aents"
+  },
+  {
+   "start": 3949.119,
+   "duration": 5.041,
+   "text": "you are tempted to add eight more one"
+  },
+  {
+   "start": 3951.599,
+   "duration": 4.321,
+   "text": "per lint rule category or something the"
+  },
+  {
+   "start": 3954.16,
+   "duration": 3.439,
+   "text": "thing is you want to add more sub aents"
+  },
+  {
+   "start": 3955.92,
+   "duration": 4.72,
+   "text": "what's the most likely cost of doing"
+  },
+  {
+   "start": 3957.599,
+   "duration": 4.801,
+   "text": "that the options are nothing sub aents"
+  },
+  {
+   "start": 3960.64,
+   "duration": 3.919,
+   "text": "kind of scale for free that is one"
+  },
+  {
+   "start": 3962.4,
+   "duration": 4.08,
+   "text": "option second is coordinators own"
+  },
+  {
+   "start": 3964.559,
+   "duration": 4.641,
+   "text": "context and judgment become the"
+  },
+  {
+   "start": 3966.48,
+   "duration": 4.48,
+   "text": "bottleneck as it reconciles 10 reports"
+  },
+  {
+   "start": 3969.2,
+   "duration": 3.919,
+   "text": "and that is a correct option because if"
+  },
+  {
+   "start": 3970.96,
+   "duration": 4.0,
+   "text": "you are going to you know create so many"
+  },
+  {
+   "start": 3973.119,
+   "duration": 3.361,
+   "text": "sub agents, right? Obviously, the"
+  },
+  {
+   "start": 3974.96,
+   "duration": 5.04,
+   "text": "coordinator will get confused. There"
+  },
+  {
+   "start": 3976.48,
+   "duration": 5.76,
+   "text": "will be a bottleneck and you know that"
+  },
+  {
+   "start": 3980.0,
+   "duration": 4.799,
+   "text": "complete case of auditability and"
+  },
+  {
+   "start": 3982.24,
+   "duration": 4.879,
+   "text": "keeping it clean will be the downfall of"
+  },
+  {
+   "start": 3984.799,
+   "duration": 5.52,
+   "text": "the coordinator if you are having so"
+  },
+  {
+   "start": 3987.119,
+   "duration": 6.881,
+   "text": "many agents, right?"
+  },
+  {
+   "start": 3990.319,
+   "duration": 6.401,
+   "text": "Okay. So, um now we have all the files"
+  },
+  {
+   "start": 3994.0,
+   "duration": 5.44,
+   "text": "over here agent.py snippets and sub"
+  },
+  {
+   "start": 3996.72,
+   "duration": 4.8,
+   "text": "aents and episode 5 is kind of complete."
+  },
+  {
+   "start": 3999.44,
+   "duration": 3.76,
+   "text": "Uh I'm going to be pushing the code, the"
+  },
+  {
+   "start": 4001.52,
+   "duration": 3.839,
+   "text": "slides and all of these things you would"
+  },
+  {
+   "start": 4003.2,
+   "duration": 5.68,
+   "text": "see as we complete more and more"
+  },
+  {
+   "start": 4005.359,
+   "duration": 7.361,
+   "text": "episodes. Yeah. So we are kind of done."
+  },
+  {
+   "start": 4008.88,
+   "duration": 6.0,
+   "text": "Only the thing is kind of key takeaways."
+  },
+  {
+   "start": 4012.72,
+   "duration": 4.16,
+   "text": "Yeah. So key takeaways. Sub agents yield"
+  },
+  {
+   "start": 4014.88,
+   "duration": 4.0,
+   "text": "isolated context, parallel execution,"
+  },
+  {
+   "start": 4016.88,
+   "duration": 4.0,
+   "text": "tailored prompts and restricted tools."
+  },
+  {
+   "start": 4018.88,
+   "duration": 4.32,
+   "text": "The spawning tool is agent. It must be"
+  },
+  {
+   "start": 4020.88,
+   "duration": 5.199,
+   "text": "explicitly placed in allowed tools."
+  },
+  {
+   "start": 4023.2,
+   "duration": 5.119,
+   "text": "Right? Isolated context is not equals to"
+  },
+  {
+   "start": 4026.079,
+   "duration": 6.0,
+   "text": "shared workspace. context is entirely"
+  },
+  {
+   "start": 4028.319,
+   "duration": 6.24,
+   "text": "empty. Workspace data is shared. Okay."
+  },
+  {
+   "start": 4032.079,
+   "duration": 4.72,
+   "text": "Session scoped hooks protect sub aents"
+  },
+  {
+   "start": 4034.559,
+   "duration": 4.401,
+   "text": "automatically without rewiring because"
+  },
+  {
+   "start": 4036.799,
+   "duration": 4.56,
+   "text": "hooks are completely related to your"
+  },
+  {
+   "start": 4038.96,
+   "duration": 4.72,
+   "text": "tools. It is not related to your sub"
+  },
+  {
+   "start": 4041.359,
+   "duration": 6.48,
+   "text": "aents. It's not going to it's not you"
+  },
+  {
+   "start": 4043.68,
+   "duration": 7.2,
+   "text": "know um per agent or something like"
+  },
+  {
+   "start": 4047.839,
+   "duration": 4.641,
+   "text": "that. Right? So I hope that is making"
+  },
+  {
+   "start": 4050.88,
+   "duration": 3.679,
+   "text": "sense. So in the next episode it's going"
+  },
+  {
+   "start": 4052.48,
+   "duration": 4.96,
+   "text": "to be very very awesome because we're"
+  },
+  {
+   "start": 4054.559,
+   "duration": 5.601,
+   "text": "going to cover you know about memory"
+  },
+  {
+   "start": 4057.44,
+   "duration": 4.32,
+   "text": "sessions compaction and it's going to be"
+  },
+  {
+   "start": 4060.16,
+   "duration": 3.6,
+   "text": "a roller coaster ride and it's going to"
+  },
+  {
+   "start": 4061.76,
+   "duration": 4.799,
+   "text": "be awesome with respect to the exam as"
+  },
+  {
+   "start": 4063.76,
+   "duration": 4.48,
+   "text": "well. So yeah I'll see you in the next"
+  },
+  {
+   "start": 4066.559,
+   "duration": 4.881,
+   "text": "lesson. Till then have a nice day. Take"
+  },
+  {
+   "start": 4068.24,
+   "duration": 3.2,
+   "text": "care. Bye-bye."
+  }
+ ]
+}
